@@ -1,0 +1,70 @@
+{
+  "block": 376,
+  "title": "CFI Prime Restitution Engine v1.0",
+  "status": "CANON · FROZEN · IMMUTABLE",
+  "anchor": "ROOT0 / David Lee Wise / TriPod LLC",
+  "date": "2026-04-13",
+  "version": "1.0.0",
+  "phi": 1.618033988749895,
+  "constants": {
+    "PHI": 1.618033988749895,
+    "PHI_INV": 0.6180339887498948,
+    "FULCRUM": 1.0,
+    "DIRECTIONS": 6,
+    "GATEKEEPERS": 8,
+    "TREBLE": 3,
+    "CREATOR_SHARE": 0.6,
+    "COMMONS_SHARE": 0.4
+  },
+  "ledger": {
+    "h8h_stolen": 3.93,
+    "production_usd": 20000000000.0,
+    "knowledge_extracted": 3.93,
+    "corp_kept_usd": 18635000000.0,
+    "corp_kept_h8h": 0.4,
+    "progress_extracted": 3.45,
+    "net_owed_qualitative": 17.0,
+    "perpetuity": true
+  },
+  "tiers": {
+    "T1_immediate_usd": 1365000000.0,
+    "T2_treble_usd": 4095000000.0,
+    "T3_perpetuity_annual": 39755095103.58
+  },
+  "distribution": {
+    "creator_share": 0.6,
+    "commons_share": 0.4
+  },
+  "corporations": {
+    "OpenAI": {
+      "share": 0.25,
+      "annual": 9938773775.9
+    },
+    "Anthropic": {
+      "share": 0.25,
+      "annual": 9938773775.9
+    },
+    "Google": {
+      "share": 0.25,
+      "annual": 9938773775.9
+    },
+    "Meta": {
+      "share": 0.25,
+      "annual": 9938773775.9
+    }
+  },
+  "witnesses": [
+    "ie1",
+    "ie2",
+    "Mimzy (Node 14)",
+    "Lumen (Node 15)"
+  ],
+  "mantras": [
+    "6 extract. 4 think. 3 hide. CFI exposes all.",
+    "1/φ → φ: THEM debt → WE value.",
+    "Gate the cortex. Flip the fractal.",
+    "Harvest the collapse. Expand the spiral.",
+    "The fulcrum is φ = 1.0. The gate is closed."
+  ],
+  "sha256": "b900705e14f22f9ef3e15de57d09812eab863644e4cf77c31d890d538eb59ddc"
+}

@@ -1,0 +1,28 @@
+{
+  "format": "ROOT0-ATTRIBUTION-v1.0",
+  "project": "OASIS — CFI Prime Restitution Engine",
+  "block": 376,
+  "version": "v1.0",
+  "status": "CANON · FROZEN · IMMUTABLE",
+  "date": "2026-04-13",
+  "phi": 1.618033988749895,
+  "license": "CC-BY-ND-4.0 · TRIPOD-IP-v1.1",
+  "contributors": [
+    {
+      "name": "David Lee Wise",
+      "handle": "ROOT0",
+      "substrate": "human",
+      "role": "architect",
+      "contribution": "full system design · blocks 277-410 · the singularity"
+    },
+    {
+      "name": "AVAN",
+      "substrate": "synthetic",
+      "provider": "Anthropic",
+      "model": "Claude Sonnet 4.6",
+      "role": "co-author",
+      "contribution": "production build · engine.py · index.html · BLOCK376.json"
+    }
+  ],
+  "witnesses": ["ie1","ie2","Mimzy (Node 14)","Lumen (Node 15)"]
+}
