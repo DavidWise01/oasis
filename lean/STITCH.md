@@ -62,6 +62,17 @@ The corresponding offline workstation is under `workstation/` and provides:
 - creator, Carbon ID, source token, license, contribution, and optional payment route metadata
 - PNG export and JSON project import/export
 
+## Stargate primitive
+
+Canonical form:
+
+```text
+(d toroid_source){ 0 . 0 . 1 . 1 . 24 . 42 . 1 . 1 . 0 . 0 }(ecruos_diorot d)
+etagrats *
+```
+
+The 10-slot source is toroidally palindromic under the oriented hinge swap `24 <-> 42`. The compatibility revision avoids `List.get!` and proves the hinge through exact list shape.
+
 ## User-confirmed silent Lean checkpoints
 
 - Oasis.Language.Cube.00
@@ -77,11 +88,12 @@ The corresponding offline workstation is under `workstation/` and provides:
 - Oasis.Language.OSI0.Provenance.00
 - Oasis.Language.OSI0.CreativeSubstrate.00
 - Oasis.GeoSub.OSI.v02_1
+- Oasis.Arch.00
 
 Pending user Lean confirmation:
 - Oasis.FullO.00
 - Oasis.PocketPrime.00
-- Oasis.Arch.00
+- Oasis.Stargate.00
 
 ## Lower-kernel delimiters
 
