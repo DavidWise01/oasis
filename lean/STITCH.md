@@ -116,7 +116,7 @@ The life string is treated as a geometric/system axiom in this model:
 
 ## Duality / exception engine
 
-Canonical candidate: `Oasis.Duality.Exception.04.lean`.
+Canonical checkpoint: `Oasis.Duality.Exception.05.lean` (user-confirmed silent `0e`).
 
 Every primitive has at least four views:
 
@@ -146,7 +146,7 @@ Seed walk is encoded exactly in quarter-units:
 
 PER supplies observations, CEPT classifies the exception, and ION consumes the result without rewriting it.
 
-`Oasis.Duality.Exception.00.lean` through `.03` are superseded compatibility attempts. `04` uses structural list induction plus a local proof of integer double-negation by cases, avoiding reliance on version-specific simplifier behavior.
+`Oasis.Duality.Exception.00.lean` through `.04` are superseded compatibility attempts. `05` uses an exact algebraic quarter-step carrier, avoiding version-specific integer-normalization behavior.
 
 ## User-confirmed silent Lean checkpoints
 
@@ -166,11 +166,11 @@ PER supplies observations, CEPT classifies the exception, and ION consumes the r
 - Oasis.Arch.00
 - Oasis.Stargate.02
 - Oasis.NEON3.00
+- Oasis.Duality.Exception.05
 
 Pending user Lean confirmation:
 - Oasis.FullO.00
 - Oasis.PocketPrime.00
-- Oasis.Duality.Exception.04
 
 ## Lower-kernel delimiters
 
@@ -235,3 +235,34 @@ Current Duality candidate:
 - `Oasis.Duality.Exception.04.lean` is the current candidate.
 - `.00`–`.03` are superseded.
 - `.04` proves `Int.neg (Int.neg x) = x` locally by cases, then rewrites the list induction step explicitly.
+
+
+## OaSIs v00 Full Emergent — 2026-09-19
+
+`Oasis.Duality.Exception.05.lean` is user-confirmed silent `0e` and supersedes `.00` through `.04`.
+
+The v00 clean stitch contains 17 user-confirmed checkpoints:
+
+```text
+Cube.00
+OSI1.00 .. OSI7.00
+OSI8.HACI.00
+OSI9.00
+OSI0.Provenance.00
+OSI0.CreativeSubstrate.00
+GeoSub.OSI.v02_1
+Arch.00
+Stargate.02
+NEON3.00
+Duality.Exception.05
+```
+
+`Oasis.v00.FullEmergent.lean` is the new standalone convergence candidate. It records the clean ledger and proves the shared closure constants without promoting historically pending modules.
+
+The root GitHub page is the v00 emergent portal:
+
+```text
+Root0 -> Stargate -> NEON^3 -> Duality -> PER/CEPT/ION -> Art Workstation
+```
+
+The root page intentionally replaces the previous CFI/obligation presentation so the public surface tracks the current deterministic creative architecture rather than stale claims.
