@@ -36,6 +36,7 @@ This is a symbolic/deterministic software model.
 
 namespace Oasis.Duality.Exception05
 
+/-- Four minimum uses/views of the same bounded object. -/
 inductive View where
   | forward
   | backward
@@ -45,12 +46,14 @@ inductive View where
 
 def viewCount : Nat := 4
 
+/-- Exact signed quarter-unit carrier. -/
 inductive QuarterStep where
   | zero
   | pos (quarters : Nat)
   | neg (quarters : Nat)
   deriving DecidableEq, BEq, Repr
 
+/-- Geometric inversion of a quarter-step. -/
 def invert : QuarterStep → QuarterStep
   | .zero => .zero
   | .pos n => .neg n
@@ -60,6 +63,7 @@ theorem invert_twice (q : QuarterStep) :
     invert (invert q) = q := by
   cases q <;> rfl
 
+/-- Apply the four views to an exact quarter-unit trace. -/
 def applyView : View → List QuarterStep → List QuarterStep
   | .forward, xs => xs
   | .backward, xs => xs.reverse
@@ -88,10 +92,15 @@ theorem upside_down_twice (xs : List QuarterStep) :
       simp only [List.map_cons]
       rw [invert_twice x, ih]
 
+/-- One true branch contributes exactly +0.25 = +1 quarter. -/
 def quarterBit : Bool → QuarterStep
   | false => .zero
   | true => .pos 1
 
+/--
+One canonical seed cycle:
+  -0.5, +0.25a, +0.25b, -0.5
+-/
 def seedWalk (a b : Bool) : List QuarterStep :=
   [.neg 2, quarterBit a, quarterBit b, .neg 2]
 
@@ -111,6 +120,7 @@ theorem seed_walk_ff :
     seedWalk false false = [.neg 2, .zero, .zero, .neg 2] := by
   rfl
 
+/-- Human-readable literal geometry retained alongside the exact carrier. -/
 def seedLiteral : String :=
   "-(.5) + (.25a) + (.25b) - (.5) :: repeat :: check(a,b)"
 
@@ -130,6 +140,7 @@ theorem check_b_preserved (a b : Bool) :
     (checkAB a b).b = b := by
   rfl
 
+/-- Compatibility-safe count of positive Waldo observations. -/
 def countTrue : List Bool → Nat
   | [] => 0
   | x :: xs => (if x then 1 else 0) + countTrue xs
@@ -141,6 +152,10 @@ inductive WaldoResult where
   | shadowWaldo (count : Nat)
   deriving DecidableEq, BEq, Repr
 
+/--
+`expected = true` means exactly one Waldo belongs in the scene.
+`expected = false` means no Waldo belongs in the scene.
+-/
 def classifyWaldo (expected : Bool) (observations : List Bool) : WaldoResult :=
   let n := countTrue observations
   if n > 1 then
@@ -170,6 +185,10 @@ theorem expected_clear_matches :
     classifyWaldo false [false, false, false] = .match := by
   decide
 
+/--
+PER -> CEPT -> ION stack.
+ION consumes CEPT; it does not rewrite the observation or classification.
+-/
 structure Perception where
   expectedWaldo : Bool
   observations : List Bool
