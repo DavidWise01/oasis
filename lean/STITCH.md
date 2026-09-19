@@ -165,11 +165,12 @@ PER supplies observations, CEPT classifies the exception, and ION consumes the r
 - Oasis.GeoSub.OSI.v02_1
 - Oasis.Arch.00
 - Oasis.Stargate.02
+- Oasis.NEON3.00
 
 Pending user Lean confirmation:
 - Oasis.FullO.00
 - Oasis.PocketPrime.00
-- Oasis.NEON3.00
+- Oasis.Duality.Exception.04
 
 ## Lower-kernel delimiters
 
