@@ -26,8 +26,10 @@ def leftSource : String := "(d toroid_source)"
 def rightSource : String := "(ecruos_diorot d)"
 def gateName : String := "etagrats *"
 
+/-- Canonical 10-slot toroidal source word. -/
 def sourceCore : List Nat := [0, 0, 1, 1, 24, 42, 1, 1, 0, 0]
 
+/-- The oriented hinge swaps 24 and 42 under toroidal reversal. -/
 def flipHinge : Nat → Nat
   | 24 => 42
   | 42 => 24
@@ -58,10 +60,15 @@ theorem source_hinge_pair :
       sourceCore = pre ++ [24, 42] ++ suf := by
   exact ⟨[0, 0, 1, 1], [1, 1, 0, 0], by decide⟩
 
+/--
+The source is not an ordinary palindrome.
+It becomes self-equal when reversed and hinge-flipped.
+-/
 theorem toroidal_source_palindrome :
     sourceCore.reverse.map flipHinge = sourceCore := by
   decide
 
+/-- A deterministic Stargate record. -/
 structure Gate where
   left : String
   core : List Nat
@@ -77,6 +84,7 @@ def canonical : Gate :=
     name := gateName
   }
 
+/-- Validity check for the canonical Stargate primitive. -/
 def valid (g : Gate) : Bool :=
   (g.left == leftSource) &&
   (g.right == rightSource) &&
@@ -84,6 +92,7 @@ def valid (g : Gate) : Bool :=
   (g.core.length == 10) &&
   (g.core.reverse.map flipHinge == g.core)
 
+/-- Deterministic open condition: only the canonical valid gate opens. -/
 def canOpen (g : Gate) : Bool :=
   valid g
 
@@ -95,6 +104,7 @@ theorem canonical_opens :
     canOpen canonical = true := by
   decide
 
+/-- A hinge-broken gate closes. -/
 def brokenCore : List Nat := [0, 0, 1, 1, 24, 24, 1, 1, 0, 0]
 
 def broken : Gate :=
@@ -109,6 +119,7 @@ theorem broken_does_not_open :
     canOpen broken = false := by
   decide
 
+/-- Executable closure check. -/
 def stargateCheck : Bool :=
   (leftSource == "(d toroid_source)") &&
   (rightSource == "(ecruos_diorot d)") &&
