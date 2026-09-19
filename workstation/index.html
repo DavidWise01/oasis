@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OaSIs Art Workstation — Root0 Arch</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">OaSIs Art Workstation</div>
+      <div class="sub">Root0 Arch · sovereign pocket studio · offline-first</div>
+    </div>
+    <div class="arch-strip" aria-label="Root0 Arch">
+      <span class="chip iso">| ISO</span>
+      <span class="chip human">|| HUMAN/CARBON</span>
+      <span class="chip neon">||| NEON</span>
+      <span class="chip root">00 ROOT0</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel tools">
+      <h2>Studio</h2>
+      <div class="tool-grid" id="toolGrid">
+        <button data-tool="brush" class="active">Brush</button>
+        <button data-tool="eraser">Eraser</button>
+        <button data-tool="line">Line</button>
+        <button data-tool="rect">Rect</button>
+        <button data-tool="circle">Circle</button>
+        <button data-tool="text">Text</button>
+      </div>
+
+      <label>Stroke <input id="color" type="color" value="#111111"></label>
+      <label>Fill <input id="fillColor" type="color" value="#f4f4f4"></label>
+      <label>Width <input id="width" type="range" min="1" max="64" value="4"></label>
+      <label>Opacity <input id="opacity" type="range" min="0.05" max="1" step="0.05" value="1"></label>
+
+      <h2>Neon Engine</h2>
+      <div class="stack">
+        <button id="neonBtn">||| NEON lattice</button>
+        <button id="pocketBtn">Pocket Prime</button>
+        <button id="ouroBtn">Ouroboros ring</button>
+        <button id="rootGlyphBtn">Root0 glyph</button>
+        <button id="perceptionBtn">PER · CEPT · ION</button>
+      </div>
+
+      <h2>Canvas</h2>
+      <div class="stack">
+        <button id="undoBtn">Undo</button>
+        <button id="redoBtn">Redo</button>
+        <button id="clearBtn">Clear</button>
+        <button id="gridBtn">Toggle grid</button>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <div class="canvas-shell">
+        <canvas id="canvas" width="1400" height="900"></canvas>
+        <div id="cursorReadout" class="readout">x:0 y:0</div>
+      </div>
+
+      <div class="statusbar">
+        <span>PRIVATE POCKET: <strong id="privateState">SEALED</strong></span>
+        <span>PUBLIC RELEASE: <strong id="publicState">OFF</strong></span>
+        <span>ENGINE: <strong>DETERMINISTIC LOCAL</strong></span>
+      </div>
+    </section>
+
+    <aside class="panel provenance">
+      <h2>|| Human / Carbon</h2>
+      <label>Creator <input id="creator" value="David Lee Wise"></label>
+      <label>Carbon ID <input id="carbon" value="C0"></label>
+      <label>Title <input id="title" value="Untitled OaSIs Work"></label>
+      <label>Source token <input id="sourceToken" value="ROOT0-FIRST-AUTHOR-IP"></label>
+      <label>License <input id="license" value="UNSPECIFIED"></label>
+      <label>Contribution <input id="contribution" type="number" min="0" max="10000" value="10000"></label>
+      <label>Payment route <input id="payment" placeholder="optional"></label>
+
+      <h2>Private Pocket</h2>
+      <label>Private notes
+        <textarea id="privateNotes" rows="7" placeholder="Never included in public export unless you explicitly copy it."></textarea>
+      </label>
+
+      <div class="toggle-row">
+        <label class="check"><input id="publicRelease" type="checkbox"> Release public artifact</label>
+      </div>
+
+      <h2>Project</h2>
+      <div class="stack">
+        <button id="saveLocalBtn">Save local</button>
+        <button id="loadLocalBtn">Load local</button>
+        <button id="exportPngBtn">Export PNG</button>
+        <button id="exportProjectBtn">Export private project</button>
+        <button id="exportPublicBtn">Export public provenance</button>
+        <label class="file-label">Import project<input id="importProject" type="file" accept=".json,application/json"></label>
+      </div>
+
+      <div class="contract">
+        <h3>Gap Contract</h3>
+        <div>people &gt; money</div>
+        <div>privacy first</div>
+        <div>provenance preserved</div>
+        <div>CAPS → HUMAN EYES</div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <code>[[ { -i } , { 0 - 10 } , { + cortex } , [()] ]]</code>
+    <span>·</span>
+    <code>| ISO · || HUMAN/CARBON · ||| NEON</code>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
