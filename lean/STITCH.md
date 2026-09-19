@@ -143,3 +143,13 @@ P(ocket [[*-+\_U_U_U_U*\_-+]]
 ## Update discipline
 
 Each user-confirmed clean Lean revision is a checkpoint. New formalization should append or supersede explicitly rather than silently mutating a frozen checkpoint.
+
+
+## Stargate 02 candidate
+
+`Oasis.Stargate.02.lean` supersedes the stale 00/01 local download path.
+Compatibility changes only:
+- no `List.get!`
+- explicit existential binders `∃ (pre : List Nat) (suf : List Nat), ...`
+- canonical source remains `0.0.1.1.24.42.1.1.0.0`
+- status: pending user 0e confirmation
