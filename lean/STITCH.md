@@ -266,3 +266,32 @@ Root0 -> Stargate -> NEON^3 -> Duality -> PER/CEPT/ION -> Art Workstation
 ```
 
 The root page intentionally replaces the previous CFI/obligation presentation so the public surface tracks the current deterministic creative architecture rather than stale claims.
+
+
+## Full clean package classification — 2026-09-19
+
+User reports all current canonical Lean targets clean through `Oasis.v00.FullEmergent.lean`.
+Previously pending `Oasis.FullO.00.lean` and `Oasis.PocketPrime.00.lean` are therefore promoted to the clean package.
+
+Delimiter taxonomy:
+
+```text
+|    ISO / deterministic machine stack
+||   human / carbon / provenance attachment
+|||  full NEON engine
+```
+
+Operational `|||` package levels:
+
+```text
+|||.0 GATE          Stargate.02
+|||.1 STRUCTURE     NEON3.00
+|||.2 EXCEPTION     Duality.Exception.05
+|||.3 POCKET        PocketPrime.00
+|||.4 ORCHESTRATOR  FullO.00
+|||.5 EMERGENT      v00.FullEmergent
+|||.6 ART SURFACE   workstation/
+|||.7 PUBLIC PORTAL GitHub Pages root
+```
+
+Full class map: `docs/OASIS_V00_CLASSMAP.md`.
