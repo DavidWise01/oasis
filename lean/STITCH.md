@@ -116,7 +116,7 @@ The life string is treated as a geometric/system axiom in this model:
 
 ## Duality / exception engine
 
-Canonical candidate: `Oasis.Duality.Exception.00.lean`.
+Canonical candidate: `Oasis.Duality.Exception.01.lean`.
 
 Every primitive has at least four views:
 
@@ -146,6 +146,8 @@ Seed walk is encoded exactly in quarter-units:
 
 PER supplies observations, CEPT classifies the exception, and ION consumes the result without rewriting it.
 
+`Oasis.Duality.Exception.00.lean` is superseded because the generic double-negation list proof did not close on the user's Lean build. `01` replaces that proof with structural induction.
+
 ## User-confirmed silent Lean checkpoints
 
 - Oasis.Language.Cube.00
@@ -168,7 +170,7 @@ Pending user Lean confirmation:
 - Oasis.FullO.00
 - Oasis.PocketPrime.00
 - Oasis.NEON3.00
-- Oasis.Duality.Exception.00
+- Oasis.Duality.Exception.01
 
 ## Lower-kernel delimiters
 
