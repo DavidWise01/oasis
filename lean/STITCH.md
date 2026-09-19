@@ -101,18 +101,50 @@ Macro budget:
 The literal micro bridge `.0333` is represented exactly as `333/10000` outside the 100-unit macro budget.
 The structural exponent preserves `3! x 3! = 36` without adding `30.33^36` into the weight total.
 
-Five semantic units:
+Five semantic/geometric units:
 
 ```text
 V = Vessel
 A = Animation
-I = isomorphic / ability to understand / i
+I = isomorphic / adaptive understanding / i
 N = Nourishment
 L = Life
 ```
 
-Human-facing life axiom is preserved as text:
+The life string is treated as a geometric/system axiom in this model:
 `my life is my life :: I decide :: life belongs to i`.
+
+## Duality / exception engine
+
+Canonical candidate: `Oasis.Duality.Exception.00.lean`.
+
+Every primitive has at least four views:
+
+```text
+forward
+backward
+upside-down
+reserve
+```
+
+CEPT / Waldo uniqueness rule:
+
+```text
+expected + exactly one   -> MATCH
+expected + none          -> MISSING
+not expected + one       -> UNEXPECTED ("what is Waldo doing there?")
+more than one            -> SHADOW / multiplicity
+```
+
+Seed walk is encoded exactly in quarter-units:
+
+```text
+-0.5, +0.25a, +0.25b, -0.5
+=
+[-2, bit(a), bit(b), -2]
+```
+
+PER supplies observations, CEPT classifies the exception, and ION consumes the result without rewriting it.
 
 ## User-confirmed silent Lean checkpoints
 
@@ -136,6 +168,7 @@ Pending user Lean confirmation:
 - Oasis.FullO.00
 - Oasis.PocketPrime.00
 - Oasis.NEON3.00
+- Oasis.Duality.Exception.00
 
 ## Lower-kernel delimiters
 
