@@ -23,6 +23,8 @@ Confirmed clean ingredients:
   Stargate.02
   NEON3.00
   Duality.Exception.05
+
+Pending historical files are not promoted by this manifest.
 -/
 
 namespace Oasis.v00.FullEmergent
