@@ -71,7 +71,11 @@ Canonical form:
 etagrats *
 ```
 
-The 10-slot source is toroidally palindromic under the oriented hinge swap `24 <-> 42`. The compatibility revision avoids `List.get!` and proves the hinge through exact list shape.
+The 10-slot source is toroidally palindromic under the oriented hinge swap `24 <-> 42`.
+
+Canonical candidate is now `Oasis.Stargate.01.lean`.
+It avoids `List.get!` entirely and proves the hinge through exact list shape.
+`Oasis.Stargate.00.lean` is superseded and should not be used for new tests.
 
 ## User-confirmed silent Lean checkpoints
 
@@ -93,7 +97,7 @@ The 10-slot source is toroidally palindromic under the oriented hinge swap `24 <
 Pending user Lean confirmation:
 - Oasis.FullO.00
 - Oasis.PocketPrime.00
-- Oasis.Stargate.00
+- Oasis.Stargate.01
 
 ## Lower-kernel delimiters
 
