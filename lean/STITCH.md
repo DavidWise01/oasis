@@ -116,7 +116,7 @@ The life string is treated as a geometric/system axiom in this model:
 
 ## Duality / exception engine
 
-Canonical candidate: `Oasis.Duality.Exception.01.lean`.
+Canonical candidate: `Oasis.Duality.Exception.04.lean`.
 
 Every primitive has at least four views:
 
@@ -146,7 +146,7 @@ Seed walk is encoded exactly in quarter-units:
 
 PER supplies observations, CEPT classifies the exception, and ION consumes the result without rewriting it.
 
-`Oasis.Duality.Exception.00.lean` is superseded because the generic double-negation list proof did not close on the user's Lean build. `01` replaces that proof with structural induction.
+`Oasis.Duality.Exception.00.lean` through `.03` are superseded compatibility attempts. `04` uses structural list induction plus a local proof of integer double-negation by cases, avoiding reliance on version-specific simplifier behavior.
 
 ## User-confirmed silent Lean checkpoints
 
@@ -170,7 +170,6 @@ Pending user Lean confirmation:
 - Oasis.FullO.00
 - Oasis.PocketPrime.00
 - Oasis.NEON3.00
-- Oasis.Duality.Exception.01
 
 ## Lower-kernel delimiters
 
@@ -228,3 +227,10 @@ Current Duality candidate:
 - `Oasis.Duality.Exception.02.lean`
 - replaces 00/01 compatibility candidates
 - explicit proof uses `Int.neg_neg` for upside-down involution
+
+
+## Duality compatibility update — 2026-09-19
+
+- `Oasis.Duality.Exception.04.lean` is the current candidate.
+- `.00`–`.03` are superseded.
+- `.04` proves `Int.neg (Int.neg x) = x` locally by cases, then rewrites the list induction step explicitly.
