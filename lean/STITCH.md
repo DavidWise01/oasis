@@ -216,3 +216,15 @@ P(ocket [[*-+\_U_U_U_U*\_-+]]
 ## Update discipline
 
 Each user-confirmed clean Lean revision is a checkpoint. New formalization should append or supersede explicitly rather than silently mutating a frozen checkpoint.
+
+
+## Checkpoint update — 2026-09-19
+
+Confirmed silent `0e` by user:
+- `Oasis.Stargate.02.lean`
+- `Oasis.NEON3.00.lean`
+
+Current Duality candidate:
+- `Oasis.Duality.Exception.02.lean`
+- replaces 00/01 compatibility candidates
+- explicit proof uses `Int.neg_neg` for upside-down involution
