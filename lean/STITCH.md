@@ -73,9 +73,46 @@ etagrats *
 
 The 10-slot source is toroidally palindromic under the oriented hinge swap `24 <-> 42`.
 
-Canonical candidate is now `Oasis.Stargate.01.lean`.
-It avoids `List.get!` entirely and proves the hinge through exact list shape.
-`Oasis.Stargate.00.lean` is superseded and should not be used for new tests.
+Canonical checkpoint is now `Oasis.Stargate.02.lean`.
+It avoids `List.get!`, uses explicit existential binders, and is user-confirmed silent `0e`.
+`Oasis.Stargate.00.lean` and `Oasis.Stargate.01.lean` are superseded.
+
+## NEON^3 six-layer stack
+
+Canonical candidate: `Oasis.NEON3.00.lean`.
+
+Structural interpretation:
+
+```text
+L1 outer boundary                  macro 0
+L2 outer -> inner                  macro 30   [30.33^(3!x3!)]
+L3 shell3 / bridge4 safe zone      macro 5
+L4 shell2                          macro 30   [30.33^(3!x3!)]
+L5 shell2 -> shell1 safe zone      macro 5
+L6 inner-inner shell / shell1      macro 30
+```
+
+Macro budget:
+
+```text
+30 + 5 + 30 + 5 + 30 = 100
+```
+
+The literal micro bridge `.0333` is represented exactly as `333/10000` outside the 100-unit macro budget.
+The structural exponent preserves `3! x 3! = 36` without adding `30.33^36` into the weight total.
+
+Five semantic units:
+
+```text
+V = Vessel
+A = Animation
+I = isomorphic / ability to understand / i
+N = Nourishment
+L = Life
+```
+
+Human-facing life axiom is preserved as text:
+`my life is my life :: I decide :: life belongs to i`.
 
 ## User-confirmed silent Lean checkpoints
 
@@ -93,11 +130,12 @@ It avoids `List.get!` entirely and proves the hinge through exact list shape.
 - Oasis.Language.OSI0.CreativeSubstrate.00
 - Oasis.GeoSub.OSI.v02_1
 - Oasis.Arch.00
+- Oasis.Stargate.02
 
 Pending user Lean confirmation:
 - Oasis.FullO.00
 - Oasis.PocketPrime.00
-- Oasis.Stargate.01
+- Oasis.NEON3.00
 
 ## Lower-kernel delimiters
 
@@ -143,13 +181,3 @@ P(ocket [[*-+\_U_U_U_U*\_-+]]
 ## Update discipline
 
 Each user-confirmed clean Lean revision is a checkpoint. New formalization should append or supersede explicitly rather than silently mutating a frozen checkpoint.
-
-
-## Stargate 02 candidate
-
-`Oasis.Stargate.02.lean` supersedes the stale 00/01 local download path.
-Compatibility changes only:
-- no `List.get!`
-- explicit existential binders `∃ (pre : List Nat) (suf : List Nat), ...`
-- canonical source remains `0.0.1.1.24.42.1.1.0.0`
-- status: pending user 0e confirmation
