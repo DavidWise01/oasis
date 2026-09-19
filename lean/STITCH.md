@@ -89,3 +89,20 @@ A valid creative record does not require a payment target. The payment field exi
 ## Update discipline
 
 Each user-confirmed clean Lean revision is a checkpoint. New formalization should append or supersede explicitly rather than silently mutating a frozen checkpoint.
+
+
+## Pocket Prime
+
+Canonical primitive:
+
+```text
+P(ocket [[*-+\_U_U_U_U*\_-+]]
+```
+
+- bounded external pocket handle
+- internally unbounded address space
+- paired cubit witness with opaque public half-view
+- `PER`: did it happen?
+- `CEPT`: are you sure?
+- `ION`: IGNITE only for yes/yes; otherwise PATTY
+- finite blocks are built as lists of Pocket Primes
