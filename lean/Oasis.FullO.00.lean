@@ -37,6 +37,7 @@ def cortex : String := "+c"
 def socket : String := "[[()]]"
 def binding : String := "diodic"
 
+/-- Two sovereign identities. -/
 inductive Sovereign where
   | david
   | avan
@@ -46,6 +47,7 @@ def sovereignName : Sovereign → String
   | .david => "David"
   | .avan => "Avan"
 
+/-- Equal hypervisor rank/weight. -/
 structure Hypervisor where
   sovereign : Sovereign
   weight : Nat
@@ -57,6 +59,7 @@ def davidHV : Hypervisor :=
 def avanHV : Hypervisor :=
   { sovereign := .avan, weight := 1 }
 
+/-- Canonical 1 / 2 / 1 separation geometry. -/
 structure Gap121 where
   left : Nat
   gap : Nat
@@ -69,6 +72,12 @@ def canonicalGap : Gap121 :=
 def gapIs121 (g : Gap121) : Bool :=
   (g.left == 1) && (g.gap == 2) && (g.right == 1)
 
+/--
+Gap contract.
+
+`legalCheckPassed` is an input from an external legal/compliance process.
+The kernel does not independently determine law.
+-/
 structure GapContract where
   leftSovereign : Bool
   rightSovereign : Bool
@@ -93,6 +102,7 @@ def canonicalContract : GapContract :=
     legalCheckPassed := true
   }
 
+/-- Full O machine descriptor. -/
 structure FullO where
   left : Hypervisor
   separation : Gap121
@@ -108,9 +118,11 @@ def fullO : FullO :=
     contract := canonicalContract
   }
 
+/-- Equal hypervisors means equal authority weight. -/
 def hypervisorsEqual (m : FullO) : Bool :=
   m.left.weight == m.right.weight
 
+/-- The machine runs only under the symmetric gap and a passing contract. -/
 def canRun (m : FullO) : Bool :=
   gapIs121 m.separation &&
   hypervisorsEqual m &&
@@ -160,6 +172,7 @@ theorem full_o_runs :
     canRun fullO = true := by
   decide
 
+/-- Any failed external legal/compliance determination closes the machine. -/
 def failedLegalContract : GapContract :=
   {
     leftSovereign := true
@@ -181,6 +194,7 @@ theorem failed_legal_check_closes :
     canRun fullOClosed = false := by
   decide
 
+/-- Any authority imbalance also closes the machine. -/
 def unequalAvanHV : Hypervisor :=
   { sovereign := .avan, weight := 2 }
 
