@@ -42,6 +42,26 @@ David HV(1) | GAP(2) | Avan HV(1)
 
 Both boxes are sovereign and the two hypervisors are equal-weight. The gap contract closes execution on failed sovereignty, cross-write, unequal-hypervisor, or externally supplied legal/compliance check. The Lean model does not independently determine law.
 
+## Root0 Arch art layer
+
+The Arch layer is a new Root0-facing interpretation of the bar delimiters:
+
+```text
+|    isomorphic OSI boundary
+||   immutable human/carbon attachment
+|||  full Neon engine attachment
+```
+
+This is distinct from earlier lower-kernel delimiter semantics; the namespace/layer determines interpretation.
+
+The corresponding offline workstation is under `workstation/` and provides:
+- brush / eraser / line / rectangle / circle / text tools
+- Neon lattice, Pocket Prime, Ouroboros, Root0, and PER/CEPT/ION generators
+- private local project state
+- public provenance export that omits private pocket state
+- creator, Carbon ID, source token, license, contribution, and optional payment route metadata
+- PNG export and JSON project import/export
+
 ## User-confirmed silent Lean checkpoints
 
 - Oasis.Language.Cube.00
@@ -60,8 +80,10 @@ Both boxes are sovereign and the two hypervisors are equal-weight. The gap contr
 
 Pending user Lean confirmation:
 - Oasis.FullO.00
+- Oasis.PocketPrime.00
+- Oasis.Arch.00
 
-## Kernel delimiters
+## Lower-kernel delimiters
 
 ```text
 |    inner kernel trust boundary
@@ -69,7 +91,7 @@ Pending user Lean confirmation:
 |||  third-party attachment
 ```
 
-Future routing/address delimiters remain append-only.
+These remain frozen in the lower-kernel namespace. Arch reuses the glyphs with its own scoped semantics.
 
 ## Provenance / creative substrate
 
@@ -86,11 +108,6 @@ optional payment route
 
 A valid creative record does not require a payment target. The payment field exists as future-facing infrastructure for creators.
 
-## Update discipline
-
-Each user-confirmed clean Lean revision is a checkpoint. New formalization should append or supersede explicitly rather than silently mutating a frozen checkpoint.
-
-
 ## Pocket Prime
 
 Canonical primitive:
@@ -106,3 +123,7 @@ P(ocket [[*-+\_U_U_U_U*\_-+]]
 - `CEPT`: are you sure?
 - `ION`: IGNITE only for yes/yes; otherwise PATTY
 - finite blocks are built as lists of Pocket Primes
+
+## Update discipline
+
+Each user-confirmed clean Lean revision is a checkpoint. New formalization should append or supersede explicitly rather than silently mutating a frozen checkpoint.
