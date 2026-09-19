@@ -36,6 +36,7 @@ def amplificationLabel : String := "30.33^(3!x3!)"
 def lifeAxiom : String :=
   "my life is my life :: I decide :: life belongs to i"
 
+/-- Six structural layers. -/
 inductive Layer where
   | outerBoundary
   | outerToInner
@@ -47,6 +48,10 @@ inductive Layer where
 
 def layerCount : Nat := 6
 
+/--
+Five positive macro-weight units distributed across the six structural layers.
+The outer boundary is a zero-weight structural delimiter.
+-/
 def macroWeight : Layer → Nat
   | .outerBoundary => 0
   | .outerToInner => 30
@@ -59,6 +64,7 @@ def macroWeights : List Nat := [30, 5, 30, 5, 30]
 def macroUnitCount : Nat := macroWeights.length
 def macroTotal : Nat := macroWeights.foldl (fun acc n => acc + n) 0
 
+/-- Literal .0333 micro coupling, exact as 333/10000. -/
 structure MicroWeight where
   numerator : Nat
   denominator : Nat
@@ -67,16 +73,22 @@ structure MicroWeight where
 def bridge0333 : MicroWeight :=
   { numerator := 333, denominator := 10000 }
 
+/-- Structural bridge label retained literally. -/
 def outerBridgeLabel : String := ".0333"
 
+/-- 3! = 6, represented without relying on library factorial compatibility. -/
 def factorial3 : Nat := 3 * 2 * 1
+
+/-- 3! x 3! = 36. -/
 def amplificationExponent : Nat := factorial3 * factorial3
 
+/-- Shells carrying the structural 30.33^(3!x3!) label. -/
 def amplified : Layer → Bool
   | .outerToInner => true
   | .shell2 => true
   | _ => false
 
+/-- Canonical ordered six-layer stack. -/
 def stack : List Layer :=
   [
     .outerBoundary,
@@ -87,6 +99,7 @@ def stack : List Layer :=
     .innerShell1
   ]
 
+/-- Five semantic units. -/
 inductive Unit5 where
   | V
   | A
@@ -103,6 +116,7 @@ def semanticName : Unit5 → String
   | .L => "Life"
 
 def semanticUnits : List Unit5 := [.V, .A, .I, .N, .L]
+
 def unitCount : Nat := semanticUnits.length
 
 theorem layer_count_is_six :
@@ -199,6 +213,7 @@ theorem L_is_life :
     semanticName .L = "Life" := by
   rfl
 
+/-- Executable closure check for NEON^3. -/
 def neon3Check : Bool :=
   (engineName == "NEON^3") &&
   (layerCount == 6) &&
