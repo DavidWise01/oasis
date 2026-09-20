@@ -1,0 +1,7 @@
+{
+  "source_sha256": "3783ff5595e24629849a52942af444b1b628fe03730b2cdcbb97b2403a58cdab",
+  "repaired_sha256": "f6ba55fb16433f984e60002e8e832e9bd70263733ba858c6f8ecd646d7c6754f",
+  "reverse_rebuilt_sha256": "3783ff5595e24629849a52942af444b1b628fe03730b2cdcbb97b2403a58cdab",
+  "reverse_matches_source": true,
+  "note": "Full third-party chapter text is not duplicated here; complete site-by-site transformation and reverse ledgers are retained."
+}
