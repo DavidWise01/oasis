@@ -1,0 +1,2988 @@
+{
+  "source": {
+    "title": "The Misadventures of the Venerable Mister Pinker - Chapter One",
+    "author": "Christian Goodrich",
+    "source_date": "2015-09-24"
+  },
+  "repair_count": 165,
+  "structural_geometry": {
+    "positive": "2^3",
+    "negative": "-2^3",
+    "phases": 4,
+    "rechecks_per_phase": 4,
+    "final_fifth": true,
+    "checks_per_repair": 17
+  },
+  "sites": [
+    {
+      "source_index": 85,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 89,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 116,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 196,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 686,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 719,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 952,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 966,
+      "damaged_cluster": "â€˜",
+      "repaired_unit": "‘",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 974,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 1339,
+      "damaged_cluster": "â€˜",
+      "repaired_unit": "‘",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 1350,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 1701,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 1906,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 1912,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 2011,
+      "damaged_cluster": "â€”",
+      "repaired_unit": "—",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 2014,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 2033,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 2059,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 2102,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 2765,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 2869,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 2998,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 3015,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 3088,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 3092,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 3108,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 3112,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 3137,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 3276,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 4578,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 4622,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 4663,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 4694,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 4710,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 4763,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 4786,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5081,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5107,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5166,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5181,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5213,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5230,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5361,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5644,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5924,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 5942,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 6079,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 6135,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 6150,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 6278,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 6697,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 6759,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 6981,
+      "damaged_cluster": "â€¦",
+      "repaired_unit": "…",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7072,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7098,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7174,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7251,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7304,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7353,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7380,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7392,
+      "damaged_cluster": "â€”",
+      "repaired_unit": "—",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7395,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7981,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 7985,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8002,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8017,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8118,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8501,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8518,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8558,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8568,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8589,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8651,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8672,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8677,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8688,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8725,
+      "damaged_cluster": "â€”",
+      "repaired_unit": "—",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8728,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8876,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8960,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8971,
+      "damaged_cluster": "â€¦",
+      "repaired_unit": "…",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 8974,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 9397,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 9429,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 9517,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 9663,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10159,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10168,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10185,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10295,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10300,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10351,
+      "damaged_cluster": "â€”",
+      "repaired_unit": "—",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10354,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10359,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10439,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10558,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10784,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10817,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 10967,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11002,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11042,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11076,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11127,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11156,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11269,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11293,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11298,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11347,
+      "damaged_cluster": "â€”",
+      "repaired_unit": "—",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11350,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11354,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11370,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11390,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11503,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11508,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11541,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11560,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11581,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11586,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11595,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11740,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11871,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11876,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 11888,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12333,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12350,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12443,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12461,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12528,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12574,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12579,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12591,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12636,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12703,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12723,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12957,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12988,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 12993,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13017,
+      "damaged_cluster": "â€”",
+      "repaired_unit": "—",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13032,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13037,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13069,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13646,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13692,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13729,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13783,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13823,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13849,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13854,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13879,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13883,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13889,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13898,
+      "damaged_cluster": "â€˜",
+      "repaired_unit": "‘",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13922,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 13958,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 14517,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 14531,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 15131,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 15155,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 15191,
+      "damaged_cluster": "â€™",
+      "repaired_unit": "’",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 15427,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 15446,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 16045,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 16068,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 16084,
+      "damaged_cluster": "â€œ",
+      "repaired_unit": "“",
+      "width": 3,
+      "path": [
+        "cp1252"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    },
+    {
+      "source_index": 16130,
+      "damaged_cluster": "â€",
+      "repaired_unit": "”",
+      "width": 3,
+      "path": [
+        "cp1252_loose"
+      ],
+      "structural_geometry": {
+        "positive": "2^3",
+        "negative": "-2^3",
+        "bits_per_unit": 8,
+        "phases": 4,
+        "rechecks_per_phase": 4,
+        "final_fifth": true,
+        "total_checks": 17
+      }
+    }
+  ]
+}
