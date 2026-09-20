@@ -310,3 +310,19 @@ i!i
 ```
 
 `inf 0,0` is defined symbolically as a bounded sandboxy box. No further primitive is introduced below `i!i`.
+
+## Ground-truth mitosis isomorph
+
+```text
+start 0 .
+goal:
+  0.1 ..
+  0.2 ...
+
+3 nodes
+× 6 isomorph width
++ 2 verify
+= 20
+```
+
+The transition glyph `{ /t/0\| + n | t+n || }` remains symbolic.

@@ -159,3 +159,20 @@ Canonical indexed progression:
 Isomorphic set form terminates at `::::x end .`; `inf 0,0` is a bounded sandboxy box.
 
 See `ground-truth-i-bang-i-v00.md`.
+
+## Mitosis isomorph v00
+
+Bounded symbolic proof:
+
+```text
+0 .
+├── 0.1 ..
+└── 0.2 ...
+
+1 parent + 2 outputs = 3 nodes
+3 × 6 + 2 verify = 20
+```
+
+Transition glyph is preserved literally as `{ /t/0\| + n | t+n || }`. The node labels remain symbolic strings.
+
+Lean: `Oasis.GroundTruth.MitosisIso.00.lean`.
