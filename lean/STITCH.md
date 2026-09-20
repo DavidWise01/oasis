@@ -554,3 +554,35 @@ ax::x::
 SubAtomicPrim.03 remains provenance. This is symbolic topology only; no physical cosmology claim is asserted.
 
 Lean status: **pending user 0e confirmation**.
+
+
+## MORE GARBAGE search primitive v05 — 2026-09-20
+
+Fresh descendant:
+
+~~~text
+Oasis.MoreGarbage.SearchPrimitive.05.lean
+~~~
+
+Correction to the prior terminal interpretation:
+
+~~~text
+prime → inf
+
+search until:
+├─ FOUND
+└─ observer stops waiting → PAUSED(nextIndex)
+~~~
+
+A timeout / patience cutoff is not evidence of absence. The primitive stores the continuation point and may resume later.
+
+~~~text
+PAUSED ≠ gone forever
+PAUSED ≠ not found in the unbounded space
+~~~
+
+The Lean search address space is `Nat`, providing no fixed maximum index. Each execution still consumes finite fuel, so the model does not pretend to complete an infinite traversal.
+
+`SubAtomicPrim.03` remains provenance, but its `goneForever` result is superseded for this unbounded search primitive.
+
+Lean status: **pending user 0e confirmation**.

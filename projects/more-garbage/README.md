@@ -439,3 +439,55 @@ lean/Oasis.MoreGarbage.SubAtomicPrim.04.lean
 ~~~
 
 Pending user `0e`.
+
+
+## Search primitive v05 — prime → inf
+
+Correction: **"gone forever" is not a normal search result.**
+
+This primitive scales from:
+
+~~~text
+prime → inf
+~~~
+
+The search runs until either:
+
+~~~text
+FOUND
+or
+STOP WAITING
+~~~
+
+Stopping is a pause, not proof of absence.
+
+~~~text
+search
+  ↓
+found? ── YES → FOUND
+  │
+  NO
+  ↓
+observer still waiting?
+  ├─ YES → continue
+  └─ NO  → PAUSE at continuation point
+~~~
+
+A paused search resumes from the exact saved index. This makes the primitive resumable across arbitrarily large finite search windows without pretending that infinity was completed.
+
+For the Mandel / Juliet instantiation:
+
+~~~text
+MANDEL = search process
+JULIET = boundary / tether being tested
+~~~
+
+The old v03 `goneForever` branch is superseded by `paused / unresolved` unless a separate finite proof of absence exists.
+
+Fresh Lean descendant:
+
+~~~text
+lean/Oasis.MoreGarbage.SearchPrimitive.05.lean
+~~~
+
+Fresh candidate, pending user `0e`.

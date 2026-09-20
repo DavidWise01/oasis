@@ -59,7 +59,24 @@ right?
 base walk: n
 search-down cost: n
 structural worst case: n × n = n²</pre></article>
-<article class="card wide"><div class="k">SubAtomicPrim.04 · U² escape / reverse inward</div><div class="flow">MANDEL | JULIET | || NEXT UNIVERSE</div><pre style="margin-top:18px">local search unresolved
+<article class="card wide"><div class="k">SearchPrimitive.05 · prime → inf</div><div class="flow">SEARCH UNTIL FOUND OR YOU STOP WAITING</div><pre style="margin-top:18px">scale:
+prime → inf
+
+result:
+FOUND
+or
+PAUSED(nextIndex)
+
+PAUSED ≠ absent
+PAUSED ≠ gone forever
+
+resume starts exactly at nextIndex
+
+MANDEL = search
+JULIET = boundary / tether
+
+v03 "gone forever" result is superseded for the unbounded primitive.</pre><div class="actions"><a class="btn" href="../../lean/Oasis.MoreGarbage.SearchPrimitive.05.lean">Lean SearchPrimitive.05</a></div></article>
+<article class="card wide"><div class="k">SubAtomicPrim.04 · U² escape / reverse inward provenance</div><div class="flow">MANDEL | JULIET | || NEXT UNIVERSE</div><pre style="margin-top:18px">local search unresolved
 ↓
 ax::x::  drill + sign
 ↓
