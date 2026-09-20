@@ -1,0 +1,4549 @@
+{
+  "schema": "OaSIs.PrimitiveLineage.v00",
+  "period": {
+    "start": "1969-01-01",
+    "end": "2026-09-19",
+    "half_year_units": 116
+  },
+  "counts": {
+    "domains": 6,
+    "families_per_domain": 9,
+    "atoms_per_family": 9,
+    "primitives_total": 486
+  },
+  "forward_language": {
+    "name": "Forward Language",
+    "root": "Alice -> encode -> bounded channel -> decode -> Bob -> witness/ack -> return path",
+    "roles": {
+      "Alice": "source of an intended state/message",
+      "Encoder": "maps source state into channel-compatible symbols",
+      "Channel": "bounded medium that may delay, lose, corrupt, reorder, or transform",
+      "Bob": "destination that reconstructs or acts on the received state",
+      "Witness": "observes result without silently rewriting intent",
+      "Return": "acknowledgment/error/provenance path back to Alice"
+    },
+    "domain_mapping": {
+      "ELECTRONICS": {
+        "Alice": "source voltage/state",
+        "Channel": "wire/gate/bus",
+        "Bob": "load/register",
+        "Witness": "probe/measurement"
+      },
+      "NETWORKING": {
+        "Alice": "sender/process",
+        "Channel": "link + packet network",
+        "Bob": "receiver/process",
+        "Witness": "ACK/log/trace"
+      },
+      "STORAGE_ISOLATION": {
+        "Alice": "process/host",
+        "Channel": "controller + bus + block layer",
+        "Bob": "media/namespace",
+        "Witness": "readback/hash/audit"
+      },
+      "JAVA": {
+        "Alice": "caller/object/thread",
+        "Channel": "method call/bytecode/runtime",
+        "Bob": "callee/object/thread",
+        "Witness": "return value/exception/test"
+      },
+      "FENG_SHUI_SPATIAL": {
+        "Alice": "person entering/acting",
+        "Channel": "path/room/layout",
+        "Bob": "destination/activity",
+        "Witness": "comfort/wayfinding/use observation"
+      },
+      "ART_BEAUTY": {
+        "Alice": "artist/system",
+        "Channel": "medium/composition",
+        "Bob": "viewer",
+        "Witness": "perception/recognition/feedback"
+      }
+    },
+    "toroid": "The return path closes the loop. This is an OaSIs architectural analogy, not a claim that Internet protocols or physical space are literally toroidal."
+  },
+  "domains": {
+    "ELECTRONICS": {
+      "primitive_count": 81,
+      "families": [
+        {
+          "index": 1,
+          "name": "Physical state",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.1.1",
+              "name": "charge"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.1.2",
+              "name": "electric field"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.1.3",
+              "name": "potential difference"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.1.4",
+              "name": "current"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.1.5",
+              "name": "energy"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.1.6",
+              "name": "power"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.1.7",
+              "name": "resistance"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.1.8",
+              "name": "capacitance"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.1.9",
+              "name": "inductance"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Material",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.2.1",
+              "name": "conductor"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.2.2",
+              "name": "insulator"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.2.3",
+              "name": "semiconductor"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.2.4",
+              "name": "junction"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.2.5",
+              "name": "dielectric"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.2.6",
+              "name": "magnetic medium"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.2.7",
+              "name": "substrate"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.2.8",
+              "name": "interconnect"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.2.9",
+              "name": "ground/reference"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Switching device",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.3.1",
+              "name": "diode"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.3.2",
+              "name": "BJT"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.3.3",
+              "name": "MOSFET"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.3.4",
+              "name": "open circuit"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.3.5",
+              "name": "closed circuit"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.3.6",
+              "name": "threshold"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.3.7",
+              "name": "gain"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.3.8",
+              "name": "saturation"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.3.9",
+              "name": "leakage"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Logic",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.4.1",
+              "name": "LOW"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.4.2",
+              "name": "HIGH"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.4.3",
+              "name": "NOT"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.4.4",
+              "name": "AND"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.4.5",
+              "name": "OR"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.4.6",
+              "name": "XOR"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.4.7",
+              "name": "NAND"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.4.8",
+              "name": "NOR"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.4.9",
+              "name": "tri-state"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "name": "State & time",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.5.1",
+              "name": "combinational"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.5.2",
+              "name": "latch"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.5.3",
+              "name": "flip-flop"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.5.4",
+              "name": "register"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.5.5",
+              "name": "counter"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.5.6",
+              "name": "clock"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.5.7",
+              "name": "reset"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.5.8",
+              "name": "enable"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.5.9",
+              "name": "metastability"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Compute",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.6.1",
+              "name": "bit"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.6.2",
+              "name": "nibble"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.6.3",
+              "name": "byte"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.6.4",
+              "name": "word"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.6.5",
+              "name": "opcode"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.6.6",
+              "name": "ALU"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.6.7",
+              "name": "register file"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.6.8",
+              "name": "control unit"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.6.9",
+              "name": "pipeline"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Memory",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.7.1",
+              "name": "cell"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.7.2",
+              "name": "address"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.7.3",
+              "name": "read"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.7.4",
+              "name": "write"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.7.5",
+              "name": "volatile"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.7.6",
+              "name": "nonvolatile"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.7.7",
+              "name": "cache"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.7.8",
+              "name": "DRAM"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.7.9",
+              "name": "flash"
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Interconnect",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.8.1",
+              "name": "wire"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.8.2",
+              "name": "bus"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.8.3",
+              "name": "lane"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.8.4",
+              "name": "serial"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.8.5",
+              "name": "parallel"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.8.6",
+              "name": "differential pair"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.8.7",
+              "name": "impedance"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.8.8",
+              "name": "termination"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.8.9",
+              "name": "connector"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Boundary & witness",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ELECTRONICS.9.1",
+              "name": "pin"
+            },
+            {
+              "index": 2,
+              "id": "ELECTRONICS.9.2",
+              "name": "port"
+            },
+            {
+              "index": 3,
+              "id": "ELECTRONICS.9.3",
+              "name": "interrupt"
+            },
+            {
+              "index": 4,
+              "id": "ELECTRONICS.9.4",
+              "name": "DMA"
+            },
+            {
+              "index": 5,
+              "id": "ELECTRONICS.9.5",
+              "name": "MMIO"
+            },
+            {
+              "index": 6,
+              "id": "ELECTRONICS.9.6",
+              "name": "IOMMU"
+            },
+            {
+              "index": 7,
+              "id": "ELECTRONICS.9.7",
+              "name": "power domain"
+            },
+            {
+              "index": 8,
+              "id": "ELECTRONICS.9.8",
+              "name": "probe"
+            },
+            {
+              "index": 9,
+              "id": "ELECTRONICS.9.9",
+              "name": "timing measurement"
+            }
+          ]
+        }
+      ]
+    },
+    "NETWORKING": {
+      "primitive_count": 81,
+      "families": [
+        {
+          "index": 1,
+          "name": "Message",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.1.1",
+              "name": "symbol"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.1.2",
+              "name": "bitstream"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.1.3",
+              "name": "message"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.1.4",
+              "name": "length"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.1.5",
+              "name": "ordering"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.1.6",
+              "name": "boundary"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.1.7",
+              "name": "encoding"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.1.8",
+              "name": "decoding"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.1.9",
+              "name": "error"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Link",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.2.1",
+              "name": "medium"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.2.2",
+              "name": "interface"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.2.3",
+              "name": "frame"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.2.4",
+              "name": "MAC identity"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.2.5",
+              "name": "MTU"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.2.6",
+              "name": "duplex"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.2.7",
+              "name": "link integrity"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.2.8",
+              "name": "link state"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.2.9",
+              "name": "local delivery"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Packet",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.3.1",
+              "name": "datagram"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.3.2",
+              "name": "source address"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.3.3",
+              "name": "destination address"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.3.4",
+              "name": "header"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.3.5",
+              "name": "payload"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.3.6",
+              "name": "hop"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.3.7",
+              "name": "TTL/hop-limit"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.3.8",
+              "name": "fragmentation"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.3.9",
+              "name": "reassembly"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Name & identity",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.4.1",
+              "name": "name"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.4.2",
+              "name": "address"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.4.3",
+              "name": "namespace"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.4.4",
+              "name": "resolver"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.4.5",
+              "name": "binding"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.4.6",
+              "name": "certificate"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.4.7",
+              "name": "key identity"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.4.8",
+              "name": "service identity"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.4.9",
+              "name": "endpoint"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Route",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.5.1",
+              "name": "neighbor"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.5.2",
+              "name": "next hop"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.5.3",
+              "name": "prefix"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.5.4",
+              "name": "route"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.5.5",
+              "name": "metric"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.5.6",
+              "name": "autonomous system"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.5.7",
+              "name": "policy"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.5.8",
+              "name": "convergence"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.5.9",
+              "name": "loop prevention"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Transport",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.6.1",
+              "name": "port"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.6.2",
+              "name": "connection"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.6.3",
+              "name": "stream"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.6.4",
+              "name": "sequence"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.6.5",
+              "name": "acknowledgment"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.6.6",
+              "name": "flow control"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.6.7",
+              "name": "congestion control"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.6.8",
+              "name": "retransmission"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.6.9",
+              "name": "multiplexing"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Security",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.7.1",
+              "name": "plaintext"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.7.2",
+              "name": "ciphertext"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.7.3",
+              "name": "key"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.7.4",
+              "name": "authentication"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.7.5",
+              "name": "integrity"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.7.6",
+              "name": "confidentiality"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.7.7",
+              "name": "forward secrecy"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.7.8",
+              "name": "handshake"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.7.9",
+              "name": "key rotation"
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Application",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.8.1",
+              "name": "request"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.8.2",
+              "name": "response"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.8.3",
+              "name": "method"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.8.4",
+              "name": "status"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.8.5",
+              "name": "representation"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.8.6",
+              "name": "session"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.8.7",
+              "name": "cache"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.8.8",
+              "name": "content negotiation"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.8.9",
+              "name": "application state"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Observation",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "NETWORKING.9.1",
+              "name": "timestamp"
+            },
+            {
+              "index": 2,
+              "id": "NETWORKING.9.2",
+              "name": "log"
+            },
+            {
+              "index": 3,
+              "id": "NETWORKING.9.3",
+              "name": "counter"
+            },
+            {
+              "index": 4,
+              "id": "NETWORKING.9.4",
+              "name": "trace"
+            },
+            {
+              "index": 5,
+              "id": "NETWORKING.9.5",
+              "name": "latency"
+            },
+            {
+              "index": 6,
+              "id": "NETWORKING.9.6",
+              "name": "loss"
+            },
+            {
+              "index": 7,
+              "id": "NETWORKING.9.7",
+              "name": "throughput"
+            },
+            {
+              "index": 8,
+              "id": "NETWORKING.9.8",
+              "name": "health"
+            },
+            {
+              "index": 9,
+              "id": "NETWORKING.9.9",
+              "name": "provenance"
+            }
+          ]
+        }
+      ]
+    },
+    "STORAGE_ISOLATION": {
+      "primitive_count": 81,
+      "families": [
+        {
+          "index": 1,
+          "name": "Medium",
+          "atoms": [            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.1.1",
+              "name": "magnetic disk"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.1.2",
+              "name": "solid-state flash"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.1.3",
+              "name": "optical"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.1.4",
+              "name": "tape"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.1.5",
+              "name": "volatile memory"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.1.6",
+              "name": "persistent memory"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.1.7",
+              "name": "removable media"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.1.8",
+              "name": "remote storage"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.1.9",
+              "name": "cloud logical media"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Block",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.2.1",
+              "name": "sector"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.2.2",
+              "name": "block"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.2.3",
+              "name": "LBA"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.2.4",
+              "name": "read"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.2.5",
+              "name": "write"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.2.6",
+              "name": "flush"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.2.7",
+              "name": "trim/discard"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.2.8",
+              "name": "atomicity"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.2.9",
+              "name": "integrity tag"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Controller",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.3.1",
+              "name": "device controller"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.3.2",
+              "name": "queue"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.3.3",
+              "name": "command"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.3.4",
+              "name": "completion"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.3.5",
+              "name": "firmware"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.3.6",
+              "name": "cache"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.3.7",
+              "name": "namespace"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.3.8",
+              "name": "reset"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.3.9",
+              "name": "health telemetry"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Bus",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.4.1",
+              "name": "PATA/IDE"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.4.2",
+              "name": "SCSI"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.4.3",
+              "name": "SATA"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.4.4",
+              "name": "SAS"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.4.5",
+              "name": "PCIe"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.4.6",
+              "name": "NVMe"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.4.7",
+              "name": "USB mass storage"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.4.8",
+              "name": "fabric transport"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.4.9",
+              "name": "DMA"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Logical boundary",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.5.1",
+              "name": "partition"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.5.2",
+              "name": "volume"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.5.3",
+              "name": "namespace"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.5.4",
+              "name": "filesystem"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.5.5",
+              "name": "mount"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.5.6",
+              "name": "read-only state"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.5.7",
+              "name": "ACL/permission"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.5.8",
+              "name": "quota"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.5.9",
+              "name": "snapshot"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Cryptographic boundary",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.6.1",
+              "name": "data-encryption key"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.6.2",
+              "name": "key-encryption key"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.6.3",
+              "name": "volume encryption"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.6.4",
+              "name": "authenticated encryption"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.6.5",
+              "name": "key escrow"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.6.6",
+              "name": "key rotation"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.6.7",
+              "name": "cryptographic erase"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.6.8",
+              "name": "key zeroization"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.6.9",
+              "name": "recovery key"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Device boundary",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.7.1",
+              "name": "offline device"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.7.2",
+              "name": "unbound driver"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.7.3",
+              "name": "IOMMU group"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.7.4",
+              "name": "DMA remap"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.7.5",
+              "name": "VFIO assignment"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.7.6",
+              "name": "controller passthrough"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.7.7",
+              "name": "hot-unplug"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.7.8",
+              "name": "separate controller"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.7.9",
+              "name": "device allowlist"
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Physical boundary",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.8.1",
+              "name": "data cable removed"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.8.2",
+              "name": "power removed"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.8.3",
+              "name": "write blocker"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.8.4",
+              "name": "removable enclosure"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.8.5",
+              "name": "air gap"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.8.6",
+              "name": "locked enclosure"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.8.7",
+              "name": "separate host"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.8.8",
+              "name": "physical removal"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.8.9",
+              "name": "destruction/sanitization"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Verification",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "STORAGE_ISOLATION.9.1",
+              "name": "device inventory"
+            },
+            {
+              "index": 2,
+              "id": "STORAGE_ISOLATION.9.2",
+              "name": "serial identity"
+            },
+            {
+              "index": 3,
+              "id": "STORAGE_ISOLATION.9.3",
+              "name": "hash"
+            },
+            {
+              "index": 4,
+              "id": "STORAGE_ISOLATION.9.4",
+              "name": "read-only verification"
+            },
+            {
+              "index": 5,
+              "id": "STORAGE_ISOLATION.9.5",
+              "name": "write test prohibition"
+            },
+            {
+              "index": 6,
+              "id": "STORAGE_ISOLATION.9.6",
+              "name": "audit log"
+            },
+            {
+              "index": 7,
+              "id": "STORAGE_ISOLATION.9.7",
+              "name": "sanitization validation"
+            },
+            {
+              "index": 8,
+              "id": "STORAGE_ISOLATION.9.8",
+              "name": "chain of custody"
+            },
+            {
+              "index": 9,
+              "id": "STORAGE_ISOLATION.9.9",
+              "name": "restore test"
+            }
+          ]
+        }
+      ]
+    },
+    "JAVA": {
+      "primitive_count": 81,
+      "families": [
+        {
+          "index": 1,
+          "name": "Lexical",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.1.1",
+              "name": "Unicode input"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.1.2",
+              "name": "token"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.1.3",
+              "name": "identifier"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.1.4",
+              "name": "keyword"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.1.5",
+              "name": "literal"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.1.6",
+              "name": "separator"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.1.7",
+              "name": "operator"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.1.8",
+              "name": "comment"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.1.9",
+              "name": "source unit"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Types",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.2.1",
+              "name": "boolean"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.2.2",
+              "name": "byte"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.2.3",
+              "name": "short"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.2.4",
+              "name": "int"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.2.5",
+              "name": "long"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.2.6",
+              "name": "char"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.2.7",
+              "name": "float"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.2.8",
+              "name": "double"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.2.9",
+              "name": "reference"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Control",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.3.1",
+              "name": "expression"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.3.2",
+              "name": "statement"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.3.3",
+              "name": "block"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.3.4",
+              "name": "if"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.3.5",
+              "name": "switch"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.3.6",
+              "name": "loop"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.3.7",
+              "name": "break/continue"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.3.8",
+              "name": "exception"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.3.9",
+              "name": "return"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Object model",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.4.1",
+              "name": "class"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.4.2",
+              "name": "interface"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.4.3",
+              "name": "object"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.4.4",
+              "name": "field"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.4.5",
+              "name": "constructor"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.4.6",
+              "name": "inheritance"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.4.7",
+              "name": "polymorphism"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.4.8",
+              "name": "encapsulation"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.4.9",
+              "name": "record/value carrier"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Call model",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.5.1",
+              "name": "method"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.5.2",
+              "name": "parameter"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.5.3",
+              "name": "argument"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.5.4",
+              "name": "return value"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.5.5",
+              "name": "overload"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.5.6",
+              "name": "override"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.5.7",
+              "name": "dynamic dispatch"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.5.8",
+              "name": "stack frame"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.5.9",
+              "name": "native boundary"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Memory",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.6.1",
+              "name": "heap"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.6.2",
+              "name": "stack"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.6.3",
+              "name": "reference"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.6.4",
+              "name": "allocation"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.6.5",
+              "name": "reachability"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.6.6",
+              "name": "garbage collection"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.6.7",
+              "name": "finalization/cleanup"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.6.8",
+              "name": "memory barrier"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.6.9",
+              "name": "memory model"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Concurrency",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.7.1",
+              "name": "thread"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.7.2",
+              "name": "monitor"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.7.3",
+              "name": "lock"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.7.4",
+              "name": "volatile"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.7.5",
+              "name": "atomic operation"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.7.6",
+              "name": "executor/task"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.7.7",
+              "name": "future"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.7.8",
+              "name": "virtual thread"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.7.9",
+              "name": "structured concurrency"
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "name": "VM",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.8.1",
+              "name": "class file"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.8.2",
+              "name": "bytecode"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.8.3",
+              "name": "operand stack"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.8.4",
+              "name": "local variable array"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.8.5",
+              "name": "class loader"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.8.6",
+              "name": "verifier"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.8.7",
+              "name": "interpreter"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.8.8",
+              "name": "JIT compiler"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.8.9",
+              "name": "runtime image"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Evolution",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "JAVA.9.1",
+              "name": "package"
+            },
+            {
+              "index": 2,
+              "id": "JAVA.9.2",
+              "name": "module"
+            },
+            {
+              "index": 3,
+              "id": "JAVA.9.3",
+              "name": "generic type"
+            },
+            {
+              "index": 4,
+              "id": "JAVA.9.4",
+              "name": "annotation"
+            },
+            {
+              "index": 5,
+              "id": "JAVA.9.5",
+              "name": "lambda"
+            },
+            {
+              "index": 6,
+              "id": "JAVA.9.6",
+              "name": "pattern"
+            },
+            {
+              "index": 7,
+              "id": "JAVA.9.7",
+              "name": "sealed type"
+            },
+            {
+              "index": 8,
+              "id": "JAVA.9.8",
+              "name": "preview feature"
+            },
+            {
+              "index": 9,
+              "id": "JAVA.9.9",
+              "name": "release cadence"
+            }
+          ]
+        }
+      ]
+    },
+    "FENG_SHUI_SPATIAL": {
+      "primitive_count": 81,
+      "families": [
+        {
+          "index": 1,
+          "name": "Site",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.1.1",
+              "name": "terrain"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.1.2",
+              "name": "water relationship"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.1.3",
+              "name": "approach"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.1.4",
+              "name": "shelter"
+            },
+            {
+              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.1.5",
+              "name": "exposure"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.1.6",
+              "name": "view"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.1.7",
+              "name": "noise"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.1.8",
+              "name": "microclimate"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.1.9",
+              "name": "context"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Boundary",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.2.1",
+              "name": "inside"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.2.2",
+              "name": "outside"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.2.3",
+              "name": "threshold"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.2.4",
+              "name": "wall"
+            },
+            {              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.2.5",
+              "name": "opening"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.2.6",
+              "name": "edge"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.2.7",
+              "name": "buffer"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.2.8",
+              "name": "privacy"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.2.9",
+              "name": "protection"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Entrance",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.3.1",
+              "name": "arrival"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.3.2",
+              "name": "door visibility"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.3.3",
+              "name": "clearance"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.3.4",
+              "name": "transition"
+            },
+            {
+              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.3.5",
+              "name": "first view"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.3.6",
+              "name": "compression"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.3.7",
+              "name": "release"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.3.8",
+              "name": "welcome"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.3.9",
+              "name": "obstruction"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Path / flow",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.4.1",
+              "name": "route"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.4.2",
+              "name": "turn"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.4.3",
+              "name": "branch"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.4.4",
+              "name": "crossing"
+            },
+            {
+              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.4.5",
+              "name": "dead end"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.4.6",
+              "name": "circulation width"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.4.7",
+              "name": "speed"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.4.8",
+              "name": "pause"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.4.9",
+              "name": "destination"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Center",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.5.1",
+              "name": "center of activity"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.5.2",
+              "name": "anchor"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.5.3",
+              "name": "void"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.5.4",
+              "name": "gathering point"
+            },
+            {
+              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.5.5",
+              "name": "balance point"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.5.6",
+              "name": "visual center"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.5.7",
+              "name": "functional center"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.5.8",
+              "name": "clear center"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.5.9",
+              "name": "distributed center"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Orientation",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.6.1",
+              "name": "front"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.6.2",
+              "name": "back"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.6.3",
+              "name": "left"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.6.4",
+              "name": "right"
+            },
+            {
+              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.6.5",
+              "name": "up"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.6.6",
+              "name": "down"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.6.7",
+              "name": "sun/light direction"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.6.8",
+              "name": "view direction"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.6.9",
+              "name": "cardinal orientation"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Balance",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.7.1",
+              "name": "yin/yang metaphor"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.7.2",
+              "name": "active/restful"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.7.3",
+              "name": "open/closed"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.7.4",
+              "name": "light/dark"
+            },
+            {
+              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.7.5",
+              "name": "hard/soft"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.7.6",
+              "name": "dense/sparse"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.7.7",
+              "name": "warm/cool"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.7.8",
+              "name": "symmetry/asymmetry"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.7.9",
+              "name": "stable/dynamic"
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Material & light",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.8.1",
+              "name": "daylight"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.8.2",
+              "name": "shadow"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.8.3",
+              "name": "air"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.8.4",
+              "name": "wood"
+            },
+            {
+              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.8.5",
+              "name": "stone"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.8.6",
+              "name": "metal"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.8.7",
+              "name": "water"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.8.8",
+              "name": "planting"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.8.9",
+              "name": "color"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Human fit",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "FENG_SHUI_SPATIAL.9.1",
+              "name": "reach"
+            },
+            {
+              "index": 2,
+              "id": "FENG_SHUI_SPATIAL.9.2",
+              "name": "visibility"
+            },
+            {
+              "index": 3,
+              "id": "FENG_SHUI_SPATIAL.9.3",
+              "name": "comfort"
+            },
+            {
+              "index": 4,
+              "id": "FENG_SHUI_SPATIAL.9.4",
+              "name": "wayfinding"
+            },
+            {
+              "index": 5,
+              "id": "FENG_SHUI_SPATIAL.9.5",
+              "name": "clutter"
+            },
+            {
+              "index": 6,
+              "id": "FENG_SHUI_SPATIAL.9.6",
+              "name": "accessibility"
+            },
+            {
+              "index": 7,
+              "id": "FENG_SHUI_SPATIAL.9.7",
+              "name": "social distance"
+            },
+            {
+              "index": 8,
+              "id": "FENG_SHUI_SPATIAL.9.8",
+              "name": "task fit"
+            },
+            {
+              "index": 9,
+              "id": "FENG_SHUI_SPATIAL.9.9",
+              "name": "personal meaning"
+            }
+          ]
+        }
+      ]
+    },
+    "ART_BEAUTY": {
+      "primitive_count": 81,
+      "families": [
+        {
+          "index": 1,
+          "name": "Geometry",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.1.1",
+              "name": "point"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.1.2",
+              "name": "line"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.1.3",
+              "name": "curve"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.1.4",
+              "name": "angle"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.1.5",
+              "name": "shape"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.1.6",
+              "name": "plane"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.1.7",
+              "name": "volume"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.1.8",
+              "name": "proportion"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.1.9",
+              "name": "scale"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Light & value",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.2.1",
+              "name": "light"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.2.2",
+              "name": "shadow"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.2.3",
+              "name": "highlight"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.2.4",
+              "name": "midtone"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.2.5",
+              "name": "dark"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.2.6",
+              "name": "contrast"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.2.7",
+              "name": "gradient"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.2.8",
+              "name": "edge"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.2.9",
+              "name": "value grouping"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Color",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.3.1",
+              "name": "hue"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.3.2",
+              "name": "saturation"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.3.3",
+              "name": "lightness"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.3.4",
+              "name": "temperature"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.3.5",
+              "name": "complement"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.3.6",
+              "name": "analogy"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.3.7",
+              "name": "accent"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.3.8",
+              "name": "palette"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.3.9",
+              "name": "color context"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Texture",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.4.1",
+              "name": "smooth"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.4.2",
+              "name": "rough"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.4.3",
+              "name": "soft"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.4.4",
+              "name": "hard"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.4.5",
+              "name": "fine"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.4.6",
+              "name": "coarse"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.4.7",
+              "name": "repetition"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.4.8",
+              "name": "material cue"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.4.9",
+              "name": "surface variation"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Space",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.5.1",
+              "name": "positive space"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.5.2",
+              "name": "negative space"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.5.3",
+              "name": "depth"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.5.4",
+              "name": "overlap"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.5.5",
+              "name": "perspective"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.5.6",
+              "name": "margin"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.5.7",
+              "name": "padding"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.5.8",
+              "name": "density"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.5.9",
+              "name": "breathing room"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Hierarchy",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.6.1",
+              "name": "focal point"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.6.2",
+              "name": "primary"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.6.3",
+              "name": "secondary"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.6.4",
+              "name": "tertiary"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.6.5",
+              "name": "emphasis"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.6.6",
+              "name": "subordination"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.6.7",
+              "name": "grouping"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.6.8",
+              "name": "alignment"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.6.9",
+              "name": "reading order"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Rhythm",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.7.1",
+              "name": "repetition"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.7.2",
+              "name": "alternation"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.7.3",
+              "name": "progression"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.7.4",
+              "name": "interval"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.7.5",
+              "name": "tempo"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.7.6",
+              "name": "pattern"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.7.7",
+              "name": "symmetry"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.7.8",
+              "name": "asymmetry"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.7.9",
+              "name": "movement"
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "name": "Figure / ground",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.8.1",
+              "name": "figure"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.8.2",
+              "name": "ground"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.8.3",
+              "name": "silhouette"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.8.4",
+              "name": "contour"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.8.5",
+              "name": "closure"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.8.6",
+              "name": "proximity"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.8.7",
+              "name": "similarity"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.8.8",
+              "name": "continuity"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.8.9",
+              "name": "common region"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "name": "Human meaning",
+          "atoms": [
+            {
+              "index": 1,
+              "id": "ART_BEAUTY.9.1",
+              "name": "legibility"
+            },
+            {
+              "index": 2,
+              "id": "ART_BEAUTY.9.2",
+              "name": "recognition"
+            },
+            {
+              "index": 3,
+              "id": "ART_BEAUTY.9.3",
+              "name": "memory"
+            },
+            {
+              "index": 4,
+              "id": "ART_BEAUTY.9.4",
+              "name": "emotion"
+            },
+            {
+              "index": 5,
+              "id": "ART_BEAUTY.9.5",
+              "name": "symbol"
+            },
+            {
+              "index": 6,
+              "id": "ART_BEAUTY.9.6",
+              "name": "culture"
+            },
+            {
+              "index": 7,
+              "id": "ART_BEAUTY.9.7",
+              "name": "accessibility"
+            },
+            {
+              "index": 8,
+              "id": "ART_BEAUTY.9.8",
+              "name": "context"
+            },
+            {
+              "index": 9,
+              "id": "ART_BEAUTY.9.9",
+              "name": "taste/preference"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "timeline": [
+    {
+      "unit": "U000",
+      "period": "1969-H1",
+      "start": "1969-01-01",
+      "end": "1969-06-30",
+      "selected_delta": "NETWORKING: RFC 1: Host Software",
+      "keep": "message boundaries, host links, explicit connection state",
+      "retire_or_deprecate": "ad-hoc assumptions tied to a tiny host set",
+      "repair_or_integrate": "keep the explicit endpoint/channel model; generalize it",
+      "source_ids": "RFC1"
+    },
+    {
+      "unit": "U001",
+      "period": "1969-H2",
+      "start": "1969-07-01",
+      "end": "1969-12-31",
+      "selected_delta": "NETWORKING: ARPANET first host-to-host message",
+      "keep": "packet-switched remote host communication",
+      "retire_or_deprecate": "single-network worldview",
+      "repair_or_integrate": "preserve packets; evolve toward internetworking",
+      "source_ids": "ARPANET"
+    },
+    {
+      "unit": "U002",
+      "period": "1970-H1",
+      "start": "1970-01-01",
+      "end": "1970-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U003",
+      "period": "1970-H2",
+      "start": "1970-07-01",
+      "end": "1970-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U004",
+      "period": "1971-H1",
+      "start": "1971-01-01",
+      "end": "1971-06-30",
+      "selected_delta": "STORAGE_ISOLATION: 1971: Floppy disk loads mainframe data",
+      "keep": "removable media as a bounded object",
+      "retire_or_deprecate": "paper/card dependence",
+      "repair_or_integrate": "retain removable-media boundary; improve integrity and access control",
+      "source_ids": "FLOPPY"
+    },
+    {
+      "unit": "U005",
+      "period": "1971-H2",
+      "start": "1971-07-01",
+      "end": "1971-12-31",
+      "selected_delta": "ELECTRONICS: 1971: Intel 4004 and Intel 1103 DRAM",
+      "keep": "CPU integration + semiconductor memory",
+      "retire_or_deprecate": "magnetic core as primary general memory",
+      "repair_or_integrate": "integrate logic + memory into smaller, faster layers",
+      "source_ids": "CHM1971"
+    },
+    {
+      "unit": "U006",
+      "period": "1972-H1",
+      "start": "1972-01-01",
+      "end": "1972-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U007",
+      "period": "1972-H2",
+      "start": "1972-07-01",
+      "end": "1972-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U008",
+      "period": "1973-H1",
+      "start": "1973-01-01",
+      "end": "1973-06-30",
+      "selected_delta": "NETWORKING: 1973: Ethernet and internetworking",
+      "keep": "shared local medium + frames",
+      "retire_or_deprecate": "vendor-specific local-network silos",
+      "repair_or_integrate": "retain framing; standardize link boundaries",
+      "source_ids": "ETHERNET"
+    },
+    {
+      "unit": "U009",
+      "period": "1973-H2",
+      "start": "1973-07-01",
+      "end": "1973-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U010",
+      "period": "1974-H1",
+      "start": "1974-01-01",
+      "end": "1974-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U011",
+      "period": "1974-H2",
+      "start": "1974-07-01",
+      "end": "1974-12-31",
+      "selected_delta": "NETWORKING: RFC 675: Internet Transmission Control Program",
+      "keep": "process-to-process internetwork transport",
+      "retire_or_deprecate": "monolithic transport/network coupling",
+      "repair_or_integrate": "split concerns into IP + transport",
+      "source_ids": "RFC675"
+    },
+    {
+      "unit": "U012",
+      "period": "1975-H1",
+      "start": "1975-01-01",
+      "end": "1975-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U013",
+      "period": "1975-H2",
+      "start": "1975-07-01",
+      "end": "1975-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U014",
+      "period": "1976-H1",
+      "start": "1976-01-01",
+      "end": "1976-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U015",
+      "period": "1976-H2",
+      "start": "1976-07-01",
+      "end": "1976-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U016",
+      "period": "1977-H1",
+      "start": "1977-01-01",
+      "end": "1977-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U017",
+      "period": "1977-H2",
+      "start": "1977-07-01",
+      "end": "1977-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U018",
+      "period": "1978-H1",
+      "start": "1978-01-01",
+      "end": "1978-06-30",
+      "selected_delta": "NETWORKING: Alice/Bob terminology enters cryptographic literature",
+      "keep": "named sender/receiver roles",
+      "retire_or_deprecate": "opaque A/B-only notation",
+      "repair_or_integrate": "retain human-readable role names; extend roles explicitly",
+      "source_ids": "ALICEBOB"
+    },
+    {
+      "unit": "U019",
+      "period": "1978-H2",
+      "start": "1978-07-01",
+      "end": "1978-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U020",
+      "period": "1979-H1",
+      "start": "1979-01-01",
+      "end": "1979-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U021",
+      "period": "1979-H2",
+      "start": "1979-07-01",
+      "end": "1979-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U022",
+      "period": "1980-H1",
+      "start": "1980-01-01",
+      "end": "1980-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U023",
+      "period": "1980-H2",
+      "start": "1980-07-01",
+      "end": "1980-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U024",
+      "period": "1981-H1",
+      "start": "1981-01-01",
+      "end": "1981-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U025",
+      "period": "1981-H2",
+      "start": "1981-07-01",
+      "end": "1981-12-31",
+      "selected_delta": "NETWORKING: RFC 791: Internet Protocol | NETWORKING: RFC 793: Transmission Control Protocol",
+      "keep": "best-effort datagram internetworking | reliable ordered byte stream",
+      "retire_or_deprecate": "network-specific routing semantics | original spec fragmentation across decades",
+      "repair_or_integrate": "retain minimal packet layer | retain semantics; later consolidate spec",
+      "source_ids": "IP;TCP793"
+    },
+    {
+      "unit": "U026",
+      "period": "1982-H1",
+      "start": "1982-01-01",
+      "end": "1982-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U027",
+      "period": "1982-H2",
+      "start": "1982-07-01",
+      "end": "1982-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U028",
+      "period": "1983-H1",
+      "start": "1983-01-01",
+      "end": "1983-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U029",
+      "period": "1983-H2",
+      "start": "1983-07-01",
+      "end": "1983-12-31",
+      "selected_delta": "NETWORKING: RFC 882: Domain Names concepts and facilities",
+      "keep": "hierarchical names separate from addresses",
+      "retire_or_deprecate": "flat host tables",
+      "repair_or_integrate": "retain naming indirection; revise protocol details",
+      "source_ids": "DNS882"
+    },
+    {
+      "unit": "U030",
+      "period": "1984-H1",
+      "start": "1984-01-01",
+      "end": "1984-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U031",
+      "period": "1984-H2",
+      "start": "1984-07-01",
+      "end": "1984-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U032",
+      "period": "1985-H1",
+      "start": "1985-01-01",
+      "end": "1985-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U033",
+      "period": "1985-H2",
+      "start": "1985-07-01",
+      "end": "1985-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U034",
+      "period": "1986-H1",
+      "start": "1986-01-01",
+      "end": "1986-06-30",
+      "selected_delta": "STORAGE_ISOLATION: 1986: SCSI-1 standard",
+      "keep": "standard command/interface boundary for storage",
+      "retire_or_deprecate": "per-device proprietary interfaces",
+      "repair_or_integrate": "retain controller/device abstraction",
+      "source_ids": "SCSI"
+    },
+    {
+      "unit": "U035",
+      "period": "1986-H2",
+      "start": "1986-07-01",
+      "end": "1986-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U036",
+      "period": "1987-H1",
+      "start": "1987-01-01",
+      "end": "1987-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U037",
+      "period": "1987-H2",
+      "start": "1987-07-01",
+      "end": "1987-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U038",
+      "period": "1988-H1",
+      "start": "1988-01-01",
+      "end": "1988-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U039",
+      "period": "1988-H2",
+      "start": "1988-07-01",
+      "end": "1988-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U040",
+      "period": "1989-H1",
+      "start": "1989-01-01",
+      "end": "1989-06-30",
+      "selected_delta": "NETWORKING: RFC 1105: Border Gateway Protocol | NETWORKING: 1989: World Wide Web proposal at CERN",
+      "keep": "policy exchange between autonomous systems | link + identifier + document retrieval",
+      "retire_or_deprecate": "single-admin routing assumptions | closed information silos",
+      "repair_or_integrate": "retain policy boundary; harden convergence/security | retain universal linking; separate content from transport",
+      "source_ids": "BGP;WEB"
+    },
+    {
+      "unit": "U041",
+      "period": "1989-H2",
+      "start": "1989-07-01",
+      "end": "1989-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U042",
+      "period": "1990-H1",
+      "start": "1990-01-01",
+      "end": "1990-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U043",
+      "period": "1990-H2",
+      "start": "1990-07-01",
+      "end": "1990-12-31",
+      "selected_delta": "NETWORKING: 1990: first browser/editor, website and server",
+      "keep": "browser/editor + server + URL/HTTP/HTML set",
+      "retire_or_deprecate": "local-only hypertext",
+      "repair_or_integrate": "retain client/server and linked-resource primitives",
+      "source_ids": "WEBLIVE"
+    },
+    {
+      "unit": "U044",
+      "period": "1991-H1",
+      "start": "1991-01-01",
+      "end": "1991-06-30",
+      "selected_delta": "JAVA: 1991: Green Project begins",
+      "keep": "portable managed-language goal",
+      "retire_or_deprecate": "tight binding to one machine/OS",
+      "repair_or_integrate": "retain VM abstraction and safety goal",
+      "source_ids": "JAVA_GREEN"
+    },
+    {
+      "unit": "U045",
+      "period": "1991-H2",
+      "start": "1991-07-01",
+      "end": "1991-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U046",
+      "period": "1992-H1",
+      "start": "1992-01-01",
+      "end": "1992-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U047",
+      "period": "1992-H2",
+      "start": "1992-07-01",
+      "end": "1992-12-31",
+      "selected_delta": "JAVA: 1992: Oak demonstrated on Star-7",
+      "keep": "portable object language + UI/device runtime",
+      "retire_or_deprecate": "C++ complexity for target use",
+      "repair_or_integrate": "retain managed portability; rename/evolve",
+      "source_ids": "OAK"
+    },
+    {
+      "unit": "U048",
+      "period": "1993-H1",
+      "start": "1993-01-01",
+      "end": "1993-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U049",
+      "period": "1993-H2",
+      "start": "1993-07-01",
+      "end": "1993-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U050",
+      "period": "1994-H1",
+      "start": "1994-01-01",
+      "end": "1994-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U051",
+      "period": "1994-H2",
+      "start": "1994-07-01",
+      "end": "1994-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U052",
+      "period": "1995-H1",
+      "start": "1995-01-01",
+      "end": "1995-06-30",
+      "selected_delta": "JAVA: 1995: Java 1.0 introduced",
+      "keep": "bytecode/JVM portability",
+      "retire_or_deprecate": "browser-centric applet assumptions",
+      "repair_or_integrate": "retain JVM; eventually retire applets",
+      "source_ids": "JAVA1"
+    },
+    {
+      "unit": "U053",
+      "period": "1995-H2",
+      "start": "1995-07-01",
+      "end": "1995-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U054",
+      "period": "1996-H1",
+      "start": "1996-01-01",
+      "end": "1996-06-30",
+      "selected_delta": "JAVA: 1996: JDK 1.0 FCS",
+      "keep": "stable developer/runtime toolchain",
+      "retire_or_deprecate": "draft-era API churn",
+      "repair_or_integrate": "retain toolchain/spec discipline",
+      "source_ids": "JDK1"
+    },
+    {
+      "unit": "U055",
+      "period": "1996-H2",
+      "start": "1996-07-01",
+      "end": "1996-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U056",
+      "period": "1997-H1",
+      "start": "1997-01-01",
+      "end": "1997-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U057",
+      "period": "1997-H2",
+      "start": "1997-07-01",
+      "end": "1997-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U058",
+      "period": "1998-H1",
+      "start": "1998-01-01",
+      "end": "1998-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U059",
+      "period": "1998-H2",
+      "start": "1998-07-01",
+      "end": "1998-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U060",
+      "period": "1999-H1",
+      "start": "1999-01-01",
+      "end": "1999-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U061",
+      "period": "1999-H2",
+      "start": "1999-07-01",
+      "end": "1999-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U062",
+      "period": "2000-H1",
+      "start": "2000-01-01",
+      "end": "2000-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U063",
+      "period": "2000-H2",
+      "start": "2000-07-01",
+      "end": "2000-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U064",
+      "period": "2001-H1",
+      "start": "2001-01-01",
+      "end": "2001-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U065",
+      "period": "2001-H2",
+      "start": "2001-07-01",
+      "end": "2001-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U066",
+      "period": "2002-H1",
+      "start": "2002-01-01",
+      "end": "2002-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U067",
+      "period": "2002-H2",
+      "start": "2002-07-01",
+      "end": "2002-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U068",
+      "period": "2003-H1",
+      "start": "2003-01-01",
+      "end": "2003-06-30",
+      "selected_delta": "STORAGE_ISOLATION: 2003: SATA 1.0a",
+      "keep": "simple serial storage link",
+      "retire_or_deprecate": "wide parallel ATA signaling limits",
+      "repair_or_integrate": "retain block-device abstraction; simplify physical link",
+      "source_ids": "SATA"
+    },
+    {
+      "unit": "U069",
+      "period": "2003-H2",
+      "start": "2003-07-01",
+      "end": "2003-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U070",
+      "period": "2004-H1",
+      "start": "2004-01-01",
+      "end": "2004-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U071",
+      "period": "2004-H2",
+      "start": "2004-07-01",
+      "end": "2004-12-31",
+      "selected_delta": "JAVA: 2004: Java SE 5 generics, annotations, autoboxing, enums, foreach",
+      "keep": "type-safe generics + language ergonomics",
+      "retire_or_deprecate": "raw collections/manual boxing boilerplate",
+      "repair_or_integrate": "retain compatibility while lifting type safety",
+      "source_ids": "JAVA5"
+    },
+    {
+      "unit": "U072",
+      "period": "2005-H1",
+      "start": "2005-01-01",
+      "end": "2005-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U073",
+      "period": "2005-H2",
+      "start": "2005-07-01",
+      "end": "2005-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U074",
+      "period": "2006-H1",
+      "start": "2006-01-01",
+      "end": "2006-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U075",
+      "period": "2006-H2",
+      "start": "2006-07-01",
+      "end": "2006-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U076",
+      "period": "2007-H1",
+      "start": "2007-01-01",
+      "end": "2007-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U077",
+      "period": "2007-H2",
+      "start": "2007-07-01",
+      "end": "2007-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U078",
+      "period": "2008-H1",
+      "start": "2008-01-01",
+      "end": "2008-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U079",
+      "period": "2008-H2",
+      "start": "2008-07-01",
+      "end": "2008-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U080",
+      "period": "2009-H1",
+      "start": "2009-01-01",
+      "end": "2009-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U081",
+      "period": "2009-H2",
+      "start": "2009-07-01",
+      "end": "2009-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U082",
+      "period": "2010-H1",
+      "start": "2010-01-01",
+      "end": "2010-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U083",
+      "period": "2010-H2",
+      "start": "2010-07-01",
+      "end": "2010-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U084",
+      "period": "2011-H1",
+      "start": "2011-01-01",
+      "end": "2011-06-30",
+      "selected_delta": "STORAGE_ISOLATION: 2011: NVMe 1.0",
+      "keep": "queue-oriented storage over PCIe",
+      "retire_or_deprecate": "SATA/AHCI assumptions for low-latency flash",
+      "repair_or_integrate": "retain block/namespace model; replace legacy host interface where appropriate",
+      "source_ids": "NVME1"
+    },
+    {
+      "unit": "U085",
+      "period": "2011-H2",
+      "start": "2011-07-01",
+      "end": "2011-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U086",
+      "period": "2012-H1",
+      "start": "2012-01-01",
+      "end": "2012-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U087",
+      "period": "2012-H2",
+      "start": "2012-07-01",
+      "end": "2012-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U088",
+      "period": "2013-H1",
+      "start": "2013-01-01",
+      "end": "2013-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U089",
+      "period": "2013-H2",
+      "start": "2013-07-01",
+      "end": "2013-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U090",
+      "period": "2014-H1",
+      "start": "2014-01-01",
+      "end": "2014-06-30",
+      "selected_delta": "JAVA: 2014: Java 8 lambda expressions and related language changes",
+      "keep": "lambdas/functional interfaces/default methods",
+      "retire_or_deprecate": "excess anonymous-class boilerplate",
+      "repair_or_integrate": "retain JVM compatibility; add composable behavior",
+      "source_ids": "JAVA8"
+    },
+    {
+      "unit": "U091",
+      "period": "2014-H2",
+      "start": "2014-07-01",
+      "end": "2014-12-31",
+      "selected_delta": "STORAGE_ISOLATION: 2014: NIST SP 800-88 Rev.1 era begins",
+      "keep": "clear/purge/destroy lifecycle thinking",
+      "retire_or_deprecate": "informal 'delete means gone' assumptions",
+      "repair_or_integrate": "separate runtime isolation from disposal/sanitization",
+      "source_ids": "NIST88R1"
+    },
+    {
+      "unit": "U092",
+      "period": "2015-H1",
+      "start": "2015-01-01",
+      "end": "2015-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U093",
+      "period": "2015-H2",
+      "start": "2015-07-01",
+      "end": "2015-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U094",
+      "period": "2016-H1",
+      "start": "2016-01-01",
+      "end": "2016-06-30",
+      "selected_delta": "STORAGE_ISOLATION: 2016: NVMe over Fabrics 1.0",
+      "keep": "NVMe semantics over fabrics",
+      "retire_or_deprecate": "storage tied only to local PCIe",
+      "repair_or_integrate": "retain queue/namespace semantics across network fabrics",
+      "source_ids": "NVMEOF"
+    },
+    {
+      "unit": "U095",
+      "period": "2016-H2",
+      "start": "2016-07-01",
+      "end": "2016-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U096",
+      "period": "2017-H1",
+      "start": "2017-01-01",
+      "end": "2017-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U097",
+      "period": "2017-H2",
+      "start": "2017-07-01",
+      "end": "2017-12-31",
+      "selected_delta": "JAVA: 2017: Java 9 module system | NETWORKING: 2017: RFC 8200 IPv6 specification",
+      "keep": "explicit modules and strong encapsulation | larger address space + extensible packet format",
+      "retire_or_deprecate": "unchecked reliance on JDK internals | IPv4 address scarcity",
+      "repair_or_integrate": "retain packages; add explicit dependency boundary | retain IP datagram model; expand addressing",
+      "source_ids": "JAVA9;IPV6"
+    },
+    {
+      "unit": "U098",
+      "period": "2018-H1",
+      "start": "2018-01-01",
+      "end": "2018-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U099",
+      "period": "2018-H2",
+      "start": "2018-07-01",
+      "end": "2018-12-31",
+      "selected_delta": "NETWORKING: 2018: TLS 1.3 | JAVA: 2018: Java 11 LTS in six-month cadence",
+      "keep": "simpler safer secure transport handshake | predictable six-month cadence + LTS anchor",
+      "retire_or_deprecate": "legacy weak cryptographic options | rare giant releases",
+      "repair_or_integrate": "retain authenticated encrypted channel; remove weak choices | retain compatibility while shipping smaller increments",
+      "source_ids": "TLS13;JAVA11"
+    },
+    {
+      "unit": "U100",
+      "period": "2019-H1",
+      "start": "2019-01-01",
+      "end": "2019-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U101",
+      "period": "2019-H2",
+      "start": "2019-07-01",
+      "end": "2019-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U102",
+      "period": "2020-H1",
+      "start": "2020-01-01",
+      "end": "2020-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U103",
+      "period": "2020-H2",
+      "start": "2020-07-01",
+      "end": "2020-12-31",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U104",
+      "period": "2021-H1",
+      "start": "2021-01-01",
+      "end": "2021-06-30",      "selected_delta": "NETWORKING: 2021: RFC 9000 QUIC",
+      "keep": "secure multiplexed streams over UDP with migration",
+      "retire_or_deprecate": "TCP+TLS handshake/HoL limitations for some apps",
+      "repair_or_integrate": "retain congestion/flow control; move transport evolution to userspace",
+      "source_ids": "QUIC"
+    },
+    {
+      "unit": "U105",
+      "period": "2021-H2",
+      "start": "2021-07-01",
+      "end": "2021-12-31",
+      "selected_delta": "JAVA: 2021: Java 17 LTS",
+      "keep": "LTS consolidation",
+      "retire_or_deprecate": "indefinite dependence on old unsupported runtimes",
+      "repair_or_integrate": "retain LTS rhythm",
+      "source_ids": "JAVA17"
+    },
+    {
+      "unit": "U106",
+      "period": "2022-H1",
+      "start": "2022-01-01",
+      "end": "2022-06-30",
+      "selected_delta": "NETWORKING: 2022: RFC 9114 HTTP/3",
+      "keep": "HTTP semantics over QUIC",
+      "retire_or_deprecate": "transport-layer head-of-line coupling in HTTP/2/TCP",
+      "repair_or_integrate": "retain HTTP semantics; change transport substrate",
+      "source_ids": "HTTP3"
+    },
+    {
+      "unit": "U107",
+      "period": "2022-H2",
+      "start": "2022-07-01",
+      "end": "2022-12-31",
+      "selected_delta": "NETWORKING: 2022: RFC 9293 consolidates modern TCP | FENG_SHUI_SPATIAL: 2022: exploratory sensor-based feng shui study",
+      "keep": "single consolidated modern TCP spec | test spatial claims with measured environment/user data",
+      "retire_or_deprecate": "piecemal updates around RFC793 | treating symbolic qi claims as engineering measurements",
+      "repair_or_integrate": "keep TCP behavior; retire obsolete base spec | retain circulation/orientation hypotheses only when independently testable",
+      "source_ids": "TCP9293;FENG_SENSOR"
+    },
+    {
+      "unit": "U108",
+      "period": "2023-H1",
+      "start": "2023-01-01",
+      "end": "2023-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U109",
+      "period": "2023-H2",
+      "start": "2023-07-01",
+      "end": "2023-12-31",
+      "selected_delta": "JAVA: 2023: Java 21 LTS",
+      "keep": "modern LTS including virtual-thread era",
+      "retire_or_deprecate": "thread-per-request cost assumptions",
+      "repair_or_integrate": "retain Java thread abstraction; make lightweight concurrency practical",
+      "source_ids": "JAVA21"
+    },
+    {
+      "unit": "U110",
+      "period": "2024-H1",
+      "start": "2024-01-01",
+      "end": "2024-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U111",
+      "period": "2024-H2",
+      "start": "2024-07-01",
+      "end": "2024-12-31",
+      "selected_delta": "STORAGE_ISOLATION: 2024: NVMe 2.1 specification family",
+      "keep": "modular specification set and richer transports/command sets",
+      "retire_or_deprecate": "single monolithic storage-interface framing",
+      "repair_or_integrate": "retain namespace/queue primitives; modularize",
+      "source_ids": "NVME21"
+    },
+    {
+      "unit": "U112",
+      "period": "2025-H1",
+      "start": "2025-01-01",
+      "end": "2025-06-30",
+      "selected_delta": "No selected lineage-breaking milestone in this synthesis; inherit the previous retained primitive set.",
+      "keep": "carry forward prior retained primitives",
+      "retire_or_deprecate": "nothing automatically retired in this unit",
+      "repair_or_integrate": "continue integration/testing; do not invent a change merely because six months elapsed",
+      "source_ids": ""
+    },
+    {
+      "unit": "U113",
+      "period": "2025-H2",
+      "start": "2025-07-01",
+      "end": "2025-12-31",
+      "selected_delta": "JAVA: 2025: Java 25 LTS | STORAGE_ISOLATION: 2025: NIST SP 800-88 Rev.2 | FENG_SHUI_SPATIAL: 2025: feng shui used explicitly as a visualization-design metaphor, not empirical truth",
+      "keep": "current LTS, modern language/runtime/security evolution | program-level sanitization + validation + crypto erase guidance | use cultural metaphor as a memory aid for clarity/accessibility",
+      "retire_or_deprecate": "stagnation on obsolete platform versions | tool-recipes treated as universal sanitization truth | presenting feng shui as empirical visualization physics",
+      "repair_or_integrate": "retain stable core + rolling previews/LTS | retain outcome/validation; defer techniques to current standards | retain metaphor separately from evidence",
+      "source_ids": "JAVA25;NIST88R2;FENG_VIS"
+    },
+    {
+      "unit": "U114",
+      "period": "2026-H1",
+      "start": "2026-01-01",
+      "end": "2026-06-30",
+      "selected_delta": "JAVA: 2026: Java SE 26 | NETWORKING: 2026: RFC 9958 Post-Quantum Cryptography for Engineers | ART_BEAUTY: WCAG 2.2: perceivable, operable, understandable, robust",
+      "keep": "six-month evolution continues | explicit migration planning for post-quantum cryptography | perceivable/operable/understandable/robust as design constraints",
+      "retire_or_deprecate": "waiting years for language/runtime improvements | assuming classical public-key algorithms are timeless | beauty that excludes users",
+      "repair_or_integrate": "retain cadence | retain protocol agility and inventory | retain beauty only when the interface remains usable",
+      "source_ids": "JAVA26;PQC_ENG;WCAG22"
+    },
+    {
+      "unit": "U115",
+      "period": "2026-H2",
+      "start": "2026-07-01",
+      "end": "2026-09-19",
+      "selected_delta": "NETWORKING: 2026: new TLS protocols must require TLS 1.3 | NETWORKING: 2026: PQ/traditional hybrid key agreements for TLS 1.3 | JAVA: 2026: Java SE 27 | ART_BEAUTY: Current layout guidance: hierarchy, spacing, progressive disclosure",
+      "keep": "TLS1.3 baseline for new TLS protocols | hybrid PQ + traditional key agreement | latest Java SE language/VM specification | hierarchy, spacing, grouping, progressive disclosure",
+      "retire_or_deprecate": "new designs defaulting to older TLS | single-algorithm transition risk | treating LTS as the only valid current language definition | controls crowding the content",
+      "repair_or_integrate": "retain secure channel primitive; raise minimum | retain algorithm agility; combine during migration | retain LTS for operations while tracking current spec | retain content-first layout and hide secondary complexity",
+      "source_ids": "TLS_REQ;PQTLS;JAVA27;APPLE_LAYOUT"
+    }
+  ],
+  "sources": [
+    {
+      "id": "RFC1",
+      "domain": "NETWORKING",
+      "title": "RFC 1: Host Software",
+      "date": "1969-04-07",
+      "url": "https://www.rfc-editor.org/rfc/rfc1.html"
+    },
+    {
+      "id": "ARPANET",
+      "domain": "NETWORKING",
+      "title": "ARPANET first host-to-host message",
+      "date": "1969-10-29",
+      "url": "https://computerhistory.org/blog/history-of-the-future-october-29-1969-fifty-years-of-a-connected-world/"
+    },
+    {
+      "id": "CHM1971",
+      "domain": "ELECTRONICS",
+      "title": "1971: Intel 4004 and Intel 1103 DRAM",
+      "date": "1971-11-01",
+      "url": "https://www.computerhistory.org/timeline/1971/"
+    },
+    {
+      "id": "FLOPPY",
+      "domain": "STORAGE_ISOLATION",
+      "title": "1971: Floppy disk loads mainframe data",
+      "date": "1971-01-01",
+      "url": "https://www.computerhistory.org/storageengine/floppy-disk-loads-mainframe-computer-data/"
+    },
+    {
+      "id": "ETHERNET",
+      "domain": "NETWORKING",
+      "title": "1973: Ethernet and internetworking",
+      "date": "1973-05-01",
+      "url": "https://www.computerhistory.org/timeline/1973/"
+    },
+    {
+      "id": "RFC675",
+      "domain": "NETWORKING",
+      "title": "RFC 675: Internet Transmission Control Program",
+      "date": "1974-12-01",
+      "url": "https://www.rfc-editor.org/info/rfc675/"
+    },
+    {
+      "id": "ALICEBOB",
+      "domain": "NETWORKING",
+      "title": "Rivest, Shamir & Adleman public-key paper / Alice-Bob lineage",
+      "date": "1978-02-01",
+      "url": "https://dspace.mit.edu/entities/publication/a2e09fea-6f05-48a5-9ce9-5073dfcde567"
+    },
+    {
+      "id": "IP",
+      "domain": "NETWORKING",
+      "title": "RFC 791: Internet Protocol",
+      "date": "1981-09-01",
+      "url": "https://www.rfc-editor.org/info/rfc791/"
+    },
+    {
+      "id": "TCP793",
+      "domain": "NETWORKING",
+      "title": "RFC 793: Transmission Control Protocol",
+      "date": "1981-09-01",
+      "url": "https://www.rfc-editor.org/info/rfc793/"
+    },
+    {
+      "id": "DNS882",
+      "domain": "NETWORKING",
+      "title": "RFC 882: Domain Names concepts and facilities",
+      "date": "1983-11-01",
+      "url": "https://www.rfc-editor.org/info/rfc882/"
+    },
+    {
+      "id": "SCSI",
+      "domain": "STORAGE_ISOLATION",
+      "title": "1986: SCSI-1 standard",
+      "date": "1986-01-01",
+      "url": "https://www.computerhistory.org/timeline/memory-storage/"
+    },
+    {
+      "id": "BGP",
+      "domain": "NETWORKING",
+      "title": "RFC 1105: Border Gateway Protocol",
+      "date": "1989-06-01",
+      "url": "https://www.rfc-editor.org/info/rfc1105/"
+    },
+    {
+      "id": "WEB",
+      "domain": "NETWORKING",
+      "title": "1989: World Wide Web proposal at CERN",
+      "date": "1989-03-01",
+      "url": "https://home.cern/science/computing/the-birth-of-the-web/short-history-web/"
+    },
+    {
+      "id": "WEBLIVE",
+      "domain": "NETWORKING",
+      "title": "1990: first browser/editor, website and server",
+      "date": "1990-12-20",
+      "url": "https://timeline.web.cern.ch/timeline-header/90"
+    },
+    {
+      "id": "JAVA_GREEN",
+      "domain": "JAVA",
+      "title": "1991: Green Project begins",
+      "date": "1991-06-01",
+      "url": "https://computerhistory.org/profile/james-gosling/"
+    },
+    {
+      "id": "OAK",
+      "domain": "JAVA",
+      "title": "1992: Oak demonstrated on Star-7",
+      "date": "1992-09-02",
+      "url": "https://computerhistory.org/profile/james-gosling/"
+    },
+    {
+      "id": "JAVA1",
+      "domain": "JAVA",
+      "title": "1995: Java 1.0 introduced",
+      "date": "1995-05-01",
+      "url": "https://www.computerhistory.org/timeline/1995/"
+    },
+    {
+      "id": "JDK1",
+      "domain": "JAVA",
+      "title": "1996: JDK 1.0 FCS",
+      "date": "1996-01-23",
+      "url": "https://docs.oracle.com/javase/tutorial/information/history.html"
+    },
+    {
+      "id": "JAVA5",
+      "domain": "JAVA",
+      "title": "2004: Java SE 5 generics, annotations, autoboxing, enums, foreach",
+      "date": "2004-09-30",
+      "url": "https://docs.oracle.com/javase/specs/jls/se7/html/jls-0-preface3.html"
+    },
+    {
+      "id": "SATA",
+      "domain": "STORAGE_ISOLATION",
+      "title": "2003: SATA 1.0a",
+      "date": "2003-01-01",
+      "url": "https://sata-io.org/sites/default/files/documents/SATA_Infographic_20_Years.pdf"
+    },
+    {
+      "id": "NVME1",
+      "domain": "STORAGE_ISOLATION",
+      "title": "2011: NVMe 1.0",
+      "date": "2011-03-01",
+      "url": "https://nvmexpress.org/ssd-drives-promise/"
+    },
+    {
+      "id": "JAVA8",
+      "domain": "JAVA",
+      "title": "2014: Java 8 lambda expressions and related language changes",
+      "date": "2014-03-01",
+      "url": "https://www.oracle.com/java/technologies/javase/8-whats-new.html"
+    },
+    {
+      "id": "NIST88R1",
+      "domain": "STORAGE_ISOLATION",
+      "title": "2014: NIST SP 800-88 Rev.1 era begins",
+      "date": "2014-12-17",
+      "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final"
+    },
+    {
+      "id": "NVMEOF",
+      "domain": "STORAGE_ISOLATION",
+      "title": "2016: NVMe over Fabrics 1.0",
+      "date": "2016-06-09",
+      "url": "https://nvmexpress.org/nvm-express-over-fabrics-specification-released/"
+    },
+    {
+      "id": "JAVA9",
+      "domain": "JAVA",
+      "title": "2017: Java 9 module system",
+      "date": "2017-09-01",
+      "url": "https://docs.oracle.com/javase/9/language/"
+    },
+    {
+      "id": "IPV6",
+      "domain": "NETWORKING",
+      "title": "2017: RFC 8200 IPv6 specification",
+      "date": "2017-07-01",
+      "url": "https://www.rfc-editor.org/info/rfc8200/"
+    },
+    {
+      "id": "TLS13",
+      "domain": "NETWORKING",
+      "title": "2018: TLS 1.3",
+      "date": "2018-08-01",
+      "url": "https://www.rfc-editor.org/info/rfc8446/"
+    },
+    {
+      "id": "JAVA11",
+      "domain": "JAVA",
+      "title": "2018: Java 11 LTS in six-month cadence",
+      "date": "2018-09-01",
+      "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html"
+    },
+    {
+      "id": "QUIC",
+      "domain": "NETWORKING",
+      "title": "2021: RFC 9000 QUIC",
+      "date": "2021-05-01",
+      "url": "https://www.rfc-editor.org/info/rfc9000/"
+    },
+    {
+      "id": "JAVA17",
+      "domain": "JAVA",
+      "title": "2021: Java 17 LTS",
+      "date": "2021-09-01",
+      "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html"
+    },
+    {
+      "id": "HTTP3",
+      "domain": "NETWORKING",
+      "title": "2022: RFC 9114 HTTP/3",
+      "date": "2022-06-01",
+      "url": "https://www.rfc-editor.org/rfc/rfc9114.html"
+    },
+    {
+      "id": "TCP9293",
+      "domain": "NETWORKING",
+      "title": "2022: RFC 9293 consolidates modern TCP",
+      "date": "2022-08-01",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.html"
+    },
+    {
+      "id": "FENG_SENSOR",
+      "domain": "FENG_SHUI_SPATIAL",
+      "title": "2022: exploratory sensor-based feng shui study",
+      "date": "2022-10-25",
+      "url": "https://arxiv.org/abs/2210.13672"
+    },
+    {
+      "id": "JAVA21",
+      "domain": "JAVA",
+      "title": "2023: Java 21 LTS",
+      "date": "2023-09-01",
+      "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html"
+    },
+    {
+      "id": "NVME21",
+      "domain": "STORAGE_ISOLATION",
+      "title": "2024: NVMe 2.1 specification family",
+      "date": "2024-08-01",
+      "url": "https://nvmexpress.org/specification/changes-in-nvm-express-revision-2-1/"
+    },
+    {
+      "id": "JAVA25",
+      "domain": "JAVA",
+      "title": "2025: Java 25 LTS",
+      "date": "2025-09-16",
+      "url": "https://www.oracle.com/news/announcement/oracle-releases-java-25-2025-09-16/"
+    },
+    {
+      "id": "NIST88R2",
+      "domain": "STORAGE_ISOLATION",
+      "title": "2025: NIST SP 800-88 Rev.2",
+      "date": "2025-09-26",
+      "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final"
+    },
+    {
+      "id": "FENG_VIS",
+      "domain": "FENG_SHUI_SPATIAL",
+      "title": "2025: feng shui used explicitly as a visualization-design metaphor, not empirical truth",
+      "date": "2025-09-30",
+      "url": "https://arxiv.org/abs/2510.00344"
+    },
+    {
+      "id": "JAVA26",
+      "domain": "JAVA",
+      "title": "2026: Java SE 26",
+      "date": "2026-03-01",
+      "url": "https://docs.oracle.com/javase/specs/"
+    },
+    {
+      "id": "PQC_ENG",
+      "domain": "NETWORKING",
+      "title": "2026: RFC 9958 Post-Quantum Cryptography for Engineers",
+      "date": "2026-06-01",
+      "url": "https://www.rfc-editor.org/rfc/rfc9958.html"
+    },
+    {
+      "id": "TLS_REQ",
+      "domain": "NETWORKING",
+      "title": "2026: new TLS protocols must require TLS 1.3",
+      "date": "2026-07-01",
+      "url": "https://www.rfc-editor.org/rfc/rfc9852.html"
+    },
+    {
+      "id": "PQTLS",
+      "domain": "NETWORKING",
+      "title": "2026: PQ/traditional hybrid key agreements for TLS 1.3",
+      "date": "2026-08-01",
+      "url": "https://www.rfc-editor.org/rfc/rfc10024.html"
+    },
+    {
+      "id": "JAVA27",
+      "domain": "JAVA",
+      "title": "2026: Java SE 27",
+      "date": "2026-09-01",
+      "url": "https://docs.oracle.com/javase/specs/"
+    },
+    {
+      "id": "APPLE_LAYOUT",
+      "domain": "ART_BEAUTY",
+      "title": "Current layout guidance: hierarchy, spacing, progressive disclosure",
+      "date": "2026-09-19",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/layout"
+    },
+    {
+      "id": "WCAG22",
+      "domain": "ART_BEAUTY",
+      "title": "WCAG 2.2: perceivable, operable, understandable, robust",
+      "date": "2026-02-11",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/"
+    }
+  ],
+  "current_unit": {
+    "unit": "U115",
+    "as_of": "2026-09-19",
+    "architecture": {
+      "root_pattern": "Alice -> encode -> bounded box/channel -> decode -> Bob -> witness/ack -> Alice",
+      "box": "explicit boundary",
+      "toroid": "feedback/verification loop; architectural analogy"
+    },
+    "domains": {
+      "ELECTRONICS": {
+        "first_primitives": [
+          "potential difference",
+          "current",
+          "switch",
+          "threshold",
+          "LOW/HIGH",
+          "NAND/NOR",
+          "state",
+          "clock",
+          "memory"
+        ],
+        "keep": "digital state + explicit timing + measured boundaries",
+        "retire": "assuming abstraction removes analog realities such as noise, leakage, timing, power",
+        "integrate": "every digital box has physical signal/power/timing witnesses"
+      },
+      "NETWORKING": {
+        "first_primitives": [
+          "message",
+          "frame",
+          "packet",
+          "address",
+          "name",
+          "route",
+          "stream",
+          "ack",
+          "key"
+        ],
+        "keep": "layered packet network, explicit endpoints, secure transport, naming indirection",
+        "retire": "new protocols designed around obsolete TLS versions; treating RFC793 as the current TCP base spec",
+        "integrate": "TLS 1.3 baseline, QUIC/HTTP3 where useful, PQ transition/algorithm agility"
+      },
+      "STORAGE_ISOLATION": {
+        "first_primitives": [
+          "block",
+          "address",
+          "controller",
+          "bus",
+          "namespace",
+          "key",
+          "device boundary",
+          "physical boundary",
+          "verification"
+        ],
+        "keep": "separate logical, cryptographic, DMA/controller, physical, and sanitization boundaries",
+        "retire": "calling partitions, folders, or deletion strong isolation",
+        "integrate": "encryption + key boundary; read-only/offline where appropriate; IOMMU/device separation for DMA paths; physical disconnect for stronger isolation; NIST-style validation for sanitization"
+      },
+      "JAVA": {
+        "first_primitives": [
+          "token",
+          "type",
+          "control",
+          "object",
+          "method",
+          "reference",
+          "thread",
+          "bytecode",
+          "module"
+        ],
+        "keep": "JVM portability, type safety, managed memory, compatibility, explicit modules, six-month evolution",
+        "retire": "applets and dependence on JDK internals; treating old LTS as the whole language",
+        "integrate": "operate on an LTS when stability requires it while tracking current SE 27 specification"
+      },
+      "FENG_SHUI_SPATIAL": {
+        "first_primitives": [
+          "site",
+          "boundary",
+          "entrance",
+          "path",
+          "center",
+          "orientation",
+          "balance",
+          "light/material",
+          "human fit"
+        ],
+        "keep": "circulation, orientation, sightlines, clutter reduction, light, personal/cultural meaning as design heuristics",
+        "retire": "presenting qi or auspicious mappings as experimentally established engineering quantities",
+        "integrate": "test practical layout choices with observation, accessibility, environmental data, and user preference"
+      },
+      "ART_BEAUTY": {
+        "first_primitives": [
+          "point/line",
+          "shape",
+          "value",
+          "color",
+          "texture",
+          "space",
+          "hierarchy",
+          "rhythm",
+          "figure-ground"
+        ],
+        "keep": "contrast, hierarchy, negative space, grouping, rhythm, legibility, cultural/contextual meaning",
+        "retire": "beauty as a single universal numeric truth or decoration that destroys usability",
+        "integrate": "content-first hierarchy + progressive disclosure + accessibility + individual taste"
+      }
+    }
+  }
+}
