@@ -1,0 +1,24 @@
+{
+  "schema": "OaSIs.Compact2x2.v00",
+  "expression": "2^2",
+  "cardinality": 4,
+  "axes": [
+    {
+      "id": "A",
+      "states": 2,
+      "semantics": null
+    },
+    {
+      "id": "B",
+      "states": 2,
+      "semantics": null
+    }
+  ],
+  "addresses": [
+    "00",
+    "01",
+    "10",
+    "11"
+  ],
+  "rule": "derive cardinality only; leave semantics unspecified"
+}
