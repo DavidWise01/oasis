@@ -1,0 +1,29 @@
+{
+  "suite": "MORE GARBAGE reverse structural geometry v04",
+  "direction": "genuine damaged chapter -> repaired -> reverse rebuild -> genuine damaged chapter",
+  "forward": {
+    "status": "DONE",
+    "repaired_primitives": 165,
+    "paused_primitives": 0,
+    "search_checks": 396793,
+    "structural_geometry_checks": 2805,
+    "source_sha256": "3783ff5595e24629849a52942af444b1b628fe03730b2cdcbb97b2403a58cdab",
+    "repaired_sha256": "f6ba55fb16433f984e60002e8e832e9bd70263733ba858c6f8ecd646d7c6754f"
+  },
+  "reverse": {
+    "operations": 165,
+    "structural_geometry_checks": 2805,
+    "rebuilt_sha256": "3783ff5595e24629849a52942af444b1b628fe03730b2cdcbb97b2403a58cdab",
+    "matches_original_input": true,
+    "hash_matches_original_input": true
+  },
+  "geometry": {
+    "unit": "2^3",
+    "holographic_counterpart": "-2^3",
+    "phases": 4,
+    "rechecks_per_phase": 4,
+    "final_fifth": true,
+    "checks_per_repair": 17
+  },
+  "elapsed_seconds_forward_plus_reverse": 51.736
+}
