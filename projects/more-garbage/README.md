@@ -128,3 +128,34 @@ any NO
 ```
 
 The engine does not carry a rejected working object forward for another repair pass.
+
+
+## Archimedes drill — `A::xx`
+
+`A::xx` is the feed-forward deletion edge.
+
+```text
+FAIL
+ ↓
+rm
+ ↓
+DELETE CURRENT
+ ↓
+FREE SPACE
+ ↓
+ADVANCE
+ ↓
+NEXT
+```
+
+Canonical law:
+
+```text
+delete means delete
+delete means move forward
+no retry
+no backtrack
+no carry
+```
+
+The drill removes the current obstruction and continues through the stream.

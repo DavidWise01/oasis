@@ -384,3 +384,12 @@ any one NO → rm → delete → free space → next candidate
 ```
 
 Rejected working objects do not re-enter the next cycle.
+
+
+### A::xx — Archimedes drill
+
+```text
+FAIL → rm → delete → free space → advance → next
+```
+
+Delete is terminal for the current object and forward-only for the stream.

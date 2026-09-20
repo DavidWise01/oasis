@@ -79,5 +79,19 @@
     ],
     "enters_next_cycle_on_failure": false,
     "retry_failed_candidate": false
+  },
+  "archimedes_drill": {
+    "token": "A::xx",
+    "role": "feed-forward delete-and-advance edge",
+    "sequence": [
+      "rm",
+      "delete current",
+      "free space",
+      "advance",
+      "next candidate"
+    ],
+    "retry": false,
+    "backtrack": false,
+    "carry_rejected_object": false
   }
 }
