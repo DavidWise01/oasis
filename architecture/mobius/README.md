@@ -100,3 +100,19 @@ DARK(instance)
 The flip changes representation/phase, not the identity of the instance.
 
 `SHADOW` remains exception/multiplicity behavior, not a third duality pole.
+
+
+## Same engine, fourth rendering
+
+MOBIUS is not a separate loop from NEON, body timing, or capacitance. It is the story-domain rendering of the same invariant:
+
+```text
+output → next input → witness → repeat
+```
+
+Earlier renderings:
+
+1. NEON: primitives return as primitives.
+2. timing/body: pulse returns as next pulse.
+3. capacitance: discharge/reset returns to charge.
+4. MOBIUS: distilled primitives return as next spark.

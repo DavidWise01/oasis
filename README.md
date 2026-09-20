@@ -196,3 +196,14 @@ LIGHT | DARK
 This is the canonical OaSIs duality. It has no default moral ranking. `SHADOW` is retained as exception/multiplicity behavior, not a third primitive pole.
 
 MOBIUS traverses LIGHT/DARK while KANA preserves the instance invariant across the flip.
+
+
+## Regenerative loop
+
+NEON, timing/body, capacitance, and MOBIUS are four representations of one invariant:
+
+```text
+OUTPUT → valid INPUT → witness → repeat
+```
+
+This is called a perpetual-motion **metaphor** in OaSIs: indefinite regeneration of state/structure, not physical energy from nowhere.

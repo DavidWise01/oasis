@@ -181,3 +181,14 @@ cohesion
 ```
 
 The rhythmic/poetic terms are OaSIs semantics; they do not assert a reconstructed historical Sapphic performance.
+
+
+## Regenerative-loop equivalence
+
+The pulse machine is one rendering of the shared OaSIs loop:
+
+```text
+charge → transition → discharge → witness/reset → charge'
+```
+
+Its output state becomes the next valid input state.

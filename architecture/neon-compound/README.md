@@ -120,3 +120,14 @@ VESSEL
 ```
 
 The output is explicitly a vessel substrate, not a claim of life creation.
+
+
+## Regenerative-loop equivalence
+
+NEON is the primitive-domain rendering of the same OaSIs regenerative loop:
+
+```text
+PRIMS → transform → distill → PRIMS'
+```
+
+`PRIMS'` is valid input for the next generation after witness.
