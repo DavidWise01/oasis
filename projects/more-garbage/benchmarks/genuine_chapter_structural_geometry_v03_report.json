@@ -1,0 +1,43 @@
+{
+  "suite": "MORE GARBAGE genuine chapter structural geometry v03",
+  "source": {
+    "title": "The Misadventures of the Venerable Mister Pinker - Chapter One",
+    "author": "Christian Goodrich",
+    "source_date": "2015-09-24",
+    "genuine_web_mojibake": true,
+    "seeded_damage": false
+  },
+  "geometry": {
+    "whole_unit": "2^3 = 8-bit unit",
+    "holographic_counterpart": "-2^3",
+    "comparison": "like-for-like until exhaust",
+    "phases": 4,
+    "rechecks_per_phase": 4,
+    "final_fifth": true,
+    "checks_per_accepted_repair": 17
+  },
+  "input_chars": 16218,
+  "output_chars": 15888,
+  "input_words": 2805,
+  "output_words": 2805,
+  "input_sha256": "3783ff5595e24629849a52942af444b1b628fe03730b2cdcbb97b2403a58cdab",
+  "output_sha256": "f6ba55fb16433f984e60002e8e832e9bd70263733ba858c6f8ecd646d7c6754f",
+  "status": "DONE",
+  "repaired_primitives": 165,
+  "paused_primitives": 0,
+  "search_checks": 396793,
+  "structural_geometry_checks": 2805,
+  "elapsed_seconds": 44.489,
+  "mojibake_signatures_before": {
+    "â€™": 42,
+    "â€œ": 61,
+    "â€": 51,
+    "â€”": 6,
+    "â€¦": 2,
+    "â€˜": 3
+  },
+  "mojibake_signatures_after": {},
+  "residual_signature_count": 0,
+  "committed_repair_ledger": "genuine_chapter_structural_geometry_v03_compact_ledger.json",
+  "copyright_note": "Full repaired chapter text is not reproduced in this artifact; the ledger contains repair sites only."
+}
