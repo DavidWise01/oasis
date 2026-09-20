@@ -532,3 +532,45 @@ benchmarks/hardest_unsolved_moji_v00.json
 ~~~
 
 Five collision classes are intentionally unresolved from the observed string alone.
+
+
+## v04 — bounded nibble reincarnation
+
+Correction to the "unsolved collision" framing: the lost primitive identity may be unknowable forever, but the **nibble/token can still become recoverable from structure**.
+
+~~~text
+? enters MANDEL
+↓
+recurse nibble
+1/4 → 2/4 → 3/4 → 4/4
+↓
+recoverable token?
+├─ YES → bind token → continue
+│        original lost primitive is NOT claimed
+└─ NO after 4
+   ↓
+   2+ errors + no next predictive + ~5% delete gate?
+   ├─ YES → delete FULL nibble → close seam → continue
+   └─ NO  → re-enter MANDEL with ?
+~~~
+
+The important distinction is:
+
+~~~text
+lost original primitive identity ≠ lost structure
+
+token recovered
+= deterministic structure is back in MANDEL
+= reincarnated token
+= "you will never know" which original primitive occupied the deleted slot
+~~~
+
+Fresh runtime:
+
+~~~text
+more_garbage_v04.py
+~~~
+
+Tested: **5/5 PASS** for recover-on-1, recover-on-4, reincarnation without false provenance, full-nibble delete fallback, and re-entry when the ~5% delete gate is not active.
+
+The previous `hardest_unsolved_moji_v00` benchmark remains provenance but is superseded in interpretation: it demonstrates original-primitive ambiguity, not unrecoverable token structure.

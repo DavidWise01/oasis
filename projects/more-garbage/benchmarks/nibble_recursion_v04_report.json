@@ -1,0 +1,55 @@
+{
+  "suite": "MORE GARBAGE bounded nibble recursion v04",
+  "rule": {
+    "max_recurse": 4,
+    "fallback_delete": "2+ errors AND no next predictive AND ~5% delete-rate gate",
+    "post_question": "deterministically re-enter MANDEL",
+    "recovered_token": "reincarnated token; original primitive identity remains unknowable"
+  },
+  "tests": 5,
+  "pass": 5,
+  "fail": 0,
+  "rows": [
+    {
+      "name": "recover_on_1",
+      "pass": true,
+      "status": "RECOVERED_TOKEN",
+      "token": "cafe",
+      "recurse_used": 1,
+      "original_primitive_known": false
+    },
+    {
+      "name": "recover_on_4",
+      "pass": true,
+      "status": "RECOVERED_TOKEN",
+      "token": "Mnchen",
+      "recurse_used": 4,
+      "original_primitive_known": false
+    },
+    {
+      "name": "never_claim_original",
+      "pass": true,
+      "status": "RECOVERED_TOKEN",
+      "token": "its",
+      "recurse_used": 2,
+      "original_primitive_known": false
+    },
+    {
+      "name": "two_errors_no_predictive_five_percent_delete",
+      "pass": true,
+      "status": "DELETE_FULL_NIBBLE",
+      "token": "",
+      "recurse_used": 4,
+      "original_primitive_known": false
+    },
+    {
+      "name": "do_not_delete_without_rate_gate",
+      "pass": true,
+      "status": "REENTER_MANDEL",
+      "token": "x??y",
+      "recurse_used": 4,
+      "original_primitive_known": false
+    }
+  ],
+  "deleted_nibble_seam_example": "the structure before after remains intact"
+}
