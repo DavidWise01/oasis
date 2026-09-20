@@ -326,3 +326,26 @@ goal:
 ```
 
 The transition glyph `{ /t/0\| + n | t+n || }` remains symbolic.
+
+
+## O3 — canonical frozen proof
+
+User-confirmed silent Lean `0e` on 2026-09-20.
+
+```text
+0 .
+├── 0.1 ..
+└── 0.2 ...
+
+3 nodes × 6 isomorph width + 2 verify = 20
+```
+
+Canonical source: `lean/O3.lean`.
+
+Source SHA-256:
+
+```text
+9ed23de7504fc284af95d4c39209a754d40886c0909d7d15c9121ff683e4d282
+```
+
+Public page: `architecture/o3/`. O3 is frozen; later work attaches as descendants.

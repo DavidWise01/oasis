@@ -1,0 +1,20 @@
+{
+  "schema": "OaSIs.O3.Freeze.v00",
+  "canonical_name": "O3",
+  "canonical_source": "lean/O3.lean",
+  "provenance_source": "lean/Oasis.GroundTruth.MitosisIso.00.lean",
+  "user_confirmed_clean": true,
+  "lean_status": "0e",
+  "frozen": true,
+  "frozen_date": "2026-09-20",
+  "sha256": "9ed23de7504fc284af95d4c39209a754d40886c0909d7d15c9121ff683e4d282",
+  "invariants": {
+    "outputs": 2,
+    "nodes": 3,
+    "isomorph_width": 6,
+    "verify_count": 2,
+    "verify_envelope": 20,
+    "ground_truth_token": "."
+  },
+  "rule": "append descendants; do not mutate O3"
+}

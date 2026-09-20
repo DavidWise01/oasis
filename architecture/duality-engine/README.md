@@ -176,3 +176,20 @@ Bounded symbolic proof:
 Transition glyph is preserved literally as `{ /t/0\| + n | t+n || }`. The node labels remain symbolic strings.
 
 Lean: `Oasis.GroundTruth.MitosisIso.00.lean`.
+
+
+## O3 — frozen canonical checkpoint
+
+The mitosis-isomorph proof is now user-confirmed Lean clean and frozen under the canonical name **O3**.
+
+```text
+0 .
+├── 0.1 ..
+└── 0.2 ...
+
+3 × 6 + 2 verify = 20
+```
+
+Canonical source: `lean/O3.lean`.
+
+Dedicated Pages surface: `architecture/o3/`.

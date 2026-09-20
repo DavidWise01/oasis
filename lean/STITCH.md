@@ -331,3 +331,36 @@ Root0, provenance, lineage, private Stargate, math engine, Duality, PER/CEPT/ION
 The first intended descendant probe is Tattoo Generator, but the tattoo engine is not part of the frozen A socket.
 
 New wrapper status: source generated and published; local Lean confirmation of these two new wrapper modules is still required before labeling the wrappers themselves `0e`.
+
+
+## O3 freeze — 2026-09-20
+
+Canonical name: **O3**.
+
+User-confirmed silent Lean `0e`.
+
+```text
+lean/O3.lean
+```
+
+Canonical source SHA-256:
+
+```text
+9ed23de7504fc284af95d4c39209a754d40886c0909d7d15c9121ff683e4d282
+```
+
+Frozen invariants:
+
+```text
+0 .
+├── 0.1 ..
+└── 0.2 ...
+
+outputs          = 2
+nodes            = 3
+isomorph width   = 6
+verify count     = 2
+verify envelope  = 20
+```
+
+The historical filename `Oasis.GroundTruth.MitosisIso.00.lean` remains provenance only. `O3` is immutable by release convention; descendants append rather than modify it.
