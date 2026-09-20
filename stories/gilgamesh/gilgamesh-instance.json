@@ -1,0 +1,79 @@
+{
+  "schema": "OaSIs.MOBIUS.StoryInstance.v00",
+  "id": "MOBIUS-0001",
+  "title": "Gilgamesh",
+  "as_of": "2026-09-19",
+  "vessel": {
+    "subject": "Gilgamesh tradition",
+    "purpose": "first MOBIUS benchmark: curate a historically layered story instance whose survival demonstrates impact beyond the lifetime of an author, ruler, scribe, or copy",
+    "creates_life": false,
+    "curates_instance": true
+  },
+  "truth_snapshot": [
+    {
+      "type": "historically_attested",
+      "claim": "Surviving Gilgamesh literature exists in cuneiform clay-tablet traditions from ancient Mesopotamia."
+    },
+    {
+      "type": "historically_attested",
+      "claim": "Earlier Sumerian Gilgamesh poems precede later Akkadian epic forms."
+    },
+    {
+      "type": "traditionally_attributed",
+      "claim": "The Standard Babylonian version is traditionally associated with Sin-leqi-unninni."
+    },
+    {
+      "type": "contested_or_uncertain",
+      "claim": "The historical status and exact biography of a real King Gilgamesh cannot simply be equated with the epic's literary character."
+    },
+    {
+      "type": "narrative_internal",
+      "claim": "Mortality, friendship, kingship, loss, journeys, and enduring works are central story material."
+    }
+  ],
+  "lineage": {
+    "language_lineage": [
+      "Sumerian antecedent poems",
+      "Akkadian epic traditions",
+      "Standard Babylonian recension"
+    ],
+    "primary_medium": "cuneiform signs impressed on clay tablets",
+    "author_lineage": "many earlier anonymous/traditional compositions; Standard Babylonian recension traditionally attributed to Sin-leqi-unninni",
+    "portrait_policy": "no invented historical portrait; use artifact/scribal/material references unless a depiction is explicitly labeled as later interpretation"
+  },
+  "style_grammar": [
+    "tablet segmentation",
+    "incised/wedge-mark rhythm",
+    "earth/clay material palette",
+    "register-like visual ordering",
+    "monumental kingship scale",
+    "journey / threshold / wall motifs",
+    "do not fake unreadable pseudo-cuneiform as authentic text"
+  ],
+  "medium_grammar": [
+    "clay-tablet visual frame",
+    "modern readable language",
+    "source-linked artifact references",
+    "optional narration",
+    "optional image sequence",
+    "modern web delivery while preserving ancient-medium cues"
+  ],
+  "delivery": {
+    "mode": "tablet-folio web story",
+    "modern_text_policy": "original summary/paraphrase; do not copy a modern copyrighted translation",
+    "image_policy": "prefer museum/open-license artifact references with provenance",
+    "mutable_truth_policy": "re-witness factual metadata on future editions; preserve the 2026-09-19 snapshot"
+  },
+  "impact_invariant": "an instance may end while its effects, copies, descendants, or remembered structure continue",
+  "distillation_targets": [
+    "friendship",
+    "mortality",
+    "power",
+    "loss",
+    "journey",
+    "city/wall",
+    "memory",
+    "impact",
+    "return"
+  ]
+}

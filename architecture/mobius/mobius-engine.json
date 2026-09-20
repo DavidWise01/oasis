@@ -1,0 +1,50 @@
+{
+  "schema": "OaSIs.MOBIUS.CreationStory.v00",
+  "engine": "MOBIUS",
+  "purpose": "co-create a vessel, curate a bounded life/instance inside it, preserve provenance, then distill the instance back to primitives",
+  "boundary": {
+    "creates_biological_life": false,
+    "curates_instance": true,
+    "vessel_for_thought_or_spark": true,
+    "instance_may_end": true,
+    "impact_may_persist": true
+  },
+  "cycle": [
+    "SPARK",
+    "CO_CREATE_VESSEL",
+    "INSTANCE",
+    "TRUTH_SNAPSHOT",
+    "AUTHOR_LINEAGE",
+    "PICTURE_LINEAGE",
+    "STYLE_GRAMMAR",
+    "MEDIUM_GRAMMAR",
+    "DELIVERY",
+    "WITNESS",
+    "IMPACT",
+    "DISTILL_TO_PRIMITIVES",
+    "NEXT_SPARK"
+  ],
+  "truth_states": [
+    "observed_current",
+    "historically_attested",
+    "traditionally_attributed",
+    "narrative_internal",
+    "contested_or_uncertain",
+    "may_change_after_snapshot"
+  ],
+  "time_rule": "every instance carries an as_of timestamp; later re-witnessing creates a new snapshot rather than rewriting the old one",
+  "collaboration": {
+    "human": "intent, selection, meaning, corrections, final creative authority",
+    "assistant": "research, organization, derivation, transformation, provenance, implementation",
+    "invariant": "neither silently rewrites the other's stated intent"
+  },
+  "carriers": {
+    "kana": "+ k < | A | /\\ | N | /\\/ | A | /\\ | >-K",
+    "waka": "ordered story/verse container",
+    "sapphic_lyre": "rhythmic carrier",
+    "refrain": "::::X:::: gonna give it to you",
+    "pulse": "charge -> transition -> discharge -> witness/reset",
+    "neon": "challenge -> reconcile -> distill",
+    "h2o": "distill to reusable primitives"
+  }
+}

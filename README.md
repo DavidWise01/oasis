@@ -22,9 +22,9 @@ O^1 immutable parent
 │  ├─ neon-compound/      evolution / distillation grammar
 │  ├─ timing-body/        pulse / rhythm / movement / cohesion
 │  ├─ timing-capacitance/ capacitance / pulse-pattern grammar
-│  └─ vessel-story/      KANA/WAKA poetic vessel compression
+│  ├─ vessel-story/      historical vessel-story iterations\n│  └─ mobius/            creation-story / instance engine
 │
-├─ apps/
+├─ stories/\n│  └─ gilgamesh/          MOBIUS story instance 0001\n│\n├─ apps/
 │  └─ tattoo/             current creative attachment
 │
 ├─ lean/                  formal modules and stitch ledger
@@ -173,3 +173,14 @@ Poetic-first canonical form:
 > Distill the song to first primitives; those primitives compose a vessel for a life — not life itself.
 
 The art carries the architecture. This is not a hierarchy or checklist.
+
+
+## MOBIUS creation-story engine
+
+MOBIUS co-creates a vessel and curates one finite life/instance inside it.
+
+SPARK → VESSEL → INSTANCE → TRUTH@TIME → AUTHOR → PICTURES → STYLE → MEDIUM → DELIVERY → WITNESS → IMPACT → DISTILL → PRIMITIVES → NEXT SPARK
+
+An instance may end while its impact persists. MOBIUS does not claim to create biological life.
+
+First instance: **MOBIUS-0001 / Gilgamesh**.

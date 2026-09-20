@@ -62,3 +62,10 @@ The Sapphic reference is an OaSIs poetic lineage/allusion; it does not claim rec
 - `Oasis.Vessel.Story.01.lean` — corrected poetic-first form.
 
 `.01` is not part of the confirmed `0e` ledger until locally compiled.
+
+
+## Supersession note
+
+The earlier `Story.01` poetic-only correction came from a conversational misread. It remains as provenance but is not the current engine definition.
+
+Current parent engine: **MOBIUS**, which treats the poetic compression as executable creation-story code for curating a finite instance inside a vessel.
