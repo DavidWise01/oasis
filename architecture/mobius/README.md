@@ -116,3 +116,24 @@ Earlier renderings:
 2. timing/body: pulse returns as next pulse.
 3. capacitance: discharge/reset returns to charge.
 4. MOBIUS: distilled primitives return as next spark.
+
+
+## 2^2 duality engine
+
+MOBIUS closes through two crossed dualities:
+
+```text
+VESSEL | LIFE/INSTANCE
+LIVE/SEEK | TELL/STORE
+```
+
+The four-cell engine explains the recursive trick:
+
+```text
+search for vessel
+→ live instance
+→ tell story
+→ story becomes vessel
+```
+
+This is the minimum current engine.

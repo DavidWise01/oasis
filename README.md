@@ -207,3 +207,17 @@ OUTPUT → valid INPUT → witness → repeat
 ```
 
 This is called a perpetual-motion **metaphor** in OaSIs: indefinite regeneration of state/structure, not physical energy from nowhere.
+
+
+## Duality engine — 2^2
+
+The current compact engine is the MOBIUS duality engine:
+
+```text
+VESSEL | LIFE/INSTANCE
+LIVE/SEEK | TELL/STORE
+```
+
+Crossed as `2^2 = 4`.
+
+The Möbius turn is that the character searches for a vessel to preserve life while the act of telling becomes the vessel that preserves the instance.

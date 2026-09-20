@@ -1,0 +1,48 @@
+{
+  "schema": "OaSIs.DualityEngine2x2.v00",
+  "expression": "2^2",
+  "cardinality": 4,
+  "axes": [
+    {
+      "id": "A",
+      "name": "VESSEL_LIFE",
+      "states": [
+        "VESSEL",
+        "LIFE_INSTANCE"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "LIVE_TELL",
+      "states": [
+        "LIVE_SEEK",
+        "TELL_STORE"
+      ]
+    }
+  ],
+  "cells": [
+    {
+      "a": "VESSEL",
+      "b": "LIVE_SEEK",
+      "meaning": "build/find container"
+    },
+    {
+      "a": "VESSEL",
+      "b": "TELL_STORE",
+      "meaning": "story/media as container"
+    },
+    {
+      "a": "LIFE_INSTANCE",
+      "b": "LIVE_SEEK",
+      "meaning": "lived event or spark"
+    },
+    {
+      "a": "LIFE_INSTANCE",
+      "b": "TELL_STORE",
+      "meaning": "preserved instance"
+    }
+  ],
+  "mobius_turn": "search for vessel -> live instance -> tell story -> story becomes vessel",
+  "invariant": "finite instance may end while impact/story persists",
+  "first_story": "MOBIUS-0001 Gilgamesh"
+}

@@ -57,3 +57,23 @@ person → story → tablet → copy → translation → reader → new instance
 ~~~
 
 That is the first MOBIUS return.
+
+## The recursive joke / engine lesson
+
+Gilgamesh spends the story seeking a way to preserve life beyond ordinary mortality.
+
+MOBIUS reads the recursion this way:
+
+```text
+he looks for a vessel
+      ↓
+he lives the instance
+      ↓
+the instance is told
+      ↓
+the story becomes a vessel
+      ↓
+the instance has impact after the moment ends
+```
+
+The story does not prove immortality. It demonstrates the duality engine: a finite life/instance can be carried by a vessel made of story and medium.
