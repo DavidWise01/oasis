@@ -1,0 +1,12 @@
+{
+  "suite": "synthetic-roundtrip-v00",
+  "generated_from": 20,
+  "encodings": [
+    "cp1252",
+    "latin1",
+    "mac_roman"
+  ],
+  "passed": 60,
+  "total": 60,
+  "status": "PASS"
+}

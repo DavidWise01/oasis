@@ -1,0 +1,16 @@
+{
+  "schema":"OaSIs.MoreGarbage.MojibakeBenchmark.v00",
+  "cases":[
+    {"id":"utf8-cp1252-cafe","input":"cafÃ©","expected_status":"PASS","expected_output":"café"},
+    {"id":"utf8-cp1252-munich","input":"MÃ¼nchen","expected_status":"PASS","expected_output":"München"},
+    {"id":"utf8-cp1252-francois","input":"FranÃ§ois","expected_status":"PASS","expected_output":"François"},
+    {"id":"utf8-cp1252-pokemon","input":"PokÃ©mon","expected_status":"PASS","expected_output":"Pokémon"},
+    {"id":"utf8-cp1252-apostrophe","input":"itâ€™s","expected_status":"PASS","expected_output":"it’s"},
+    {"id":"utf8-cp1252-emoji","input":"ðŸ˜‚","expected_status":"PASS","expected_output":"😂"},
+    {"id":"double-cp1252-cafe","input":"cafÃƒÂ©","expected_status":"PASS","expected_output":"café"},
+    {"id":"utf8-macroman-konig","input":"K√∂nig","expected_status":"PASS","expected_output":"König"},
+    {"id":"utf8-macroman-weiss","input":"wei√ü\"","expected_status":"PASS","expected_output":"weiß\""},
+    {"id":"replacement-loss","input":"caf�","expected_status":"RM","expected_output":null},
+    {"id":"clean-no-repair","input":"café","expected_status":"RM","expected_output":null}
+  ]
+}

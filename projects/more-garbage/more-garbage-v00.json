@@ -93,5 +93,27 @@
     "retry": false,
     "backtrack": false,
     "carry_rejected_object": false
+  },
+  "implementation": {
+    "runtime": "projects/more-garbage/more_garbage.py",
+    "lean": "lean/Oasis.MoreGarbage.00.lean",
+    "lean_status": "pending user 0e",
+    "search_encodings": [
+      "cp1252",
+      "latin1",
+      "mac_roman"
+    ],
+    "max_depth": 3,
+    "fixed_benchmark": {
+      "passed": 11,
+      "total": 11,
+      "status": "PASS"
+    },
+    "synthetic_benchmark": {
+      "passed": 60,
+      "total": 60,
+      "status": "PASS"
+    },
+    "compression_witness": "zlib reversible runtime witness; Ag remains symbolic"
   }
 }

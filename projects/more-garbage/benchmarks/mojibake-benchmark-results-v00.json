@@ -1,0 +1,115 @@
+{
+  "suite": "mojibake-benchmark-v00.json",
+  "passed": 11,
+  "total": 11,
+  "status": "PASS",
+  "results": [
+    {
+      "id": "utf8-cp1252-cafe",
+      "input": "cafÃ©",
+      "actual_output": "café",
+      "repair_path": [
+        "cp1252"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "utf8-cp1252-munich",
+      "input": "MÃ¼nchen",
+      "actual_output": "München",
+      "repair_path": [
+        "cp1252"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "utf8-cp1252-francois",
+      "input": "FranÃ§ois",
+      "actual_output": "François",
+      "repair_path": [
+        "cp1252"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "utf8-cp1252-pokemon",
+      "input": "PokÃ©mon",
+      "actual_output": "Pokémon",
+      "repair_path": [
+        "cp1252"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "utf8-cp1252-apostrophe",
+      "input": "itâ€™s",
+      "actual_output": "it’s",
+      "repair_path": [
+        "cp1252"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "utf8-cp1252-emoji",
+      "input": "ðŸ˜‚",
+      "actual_output": "😂",
+      "repair_path": [
+        "cp1252"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "double-cp1252-cafe",
+      "input": "cafÃƒÂ©",
+      "actual_output": "café",
+      "repair_path": [
+        "cp1252",
+        "cp1252"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "utf8-macroman-konig",
+      "input": "K√∂nig",
+      "actual_output": "König",
+      "repair_path": [
+        "mac_roman"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "utf8-macroman-weiss",
+      "input": "wei√ü\"",
+      "actual_output": "weiß\"",
+      "repair_path": [
+        "mac_roman"
+      ],
+      "actual_status": "PASS",
+      "pass": true
+    },
+    {
+      "id": "replacement-loss",
+      "input": "caf�",
+      "actual_output": null,
+      "repair_path": null,
+      "actual_status": "RM",
+      "pass": true
+    },
+    {
+      "id": "clean-no-repair",
+      "input": "café",
+      "actual_output": null,
+      "repair_path": null,
+      "actual_status": "RM",
+      "pass": true
+    }
+  ]
+}

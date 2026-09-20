@@ -57,7 +57,7 @@ changed invariant
 
 ## Current restraint
 
-`+sort` is is the ordinary sort operator in this riff.
+`+sort` is the ordinary sort operator in this riff.
 
 `Ag` is the standard chemical symbol for silver; here it is used as the project's compression pun/token. `MR FUSION` is a Back to the Future reference used as the project motif, not a claim of a physical fusion device.
 
@@ -66,8 +66,10 @@ changed invariant
 ```text
 phase     = riff / scaffold
 frozen    = false
-Lean      = none yet
-next      = define operator semantics by example
+Lean      = Oasis.MoreGarbage.00 candidate
+runtime   = more_garbage.py
+fixed     = 11/11 PASS
+synthetic = 60/60 PASS
 ```
 
 ## Repair law — isomorph or stop
@@ -159,3 +161,30 @@ no carry
 ```
 
 The drill removes the current obstruction and continues through the stream.
+
+
+## Executable v00
+
+The first reversible mojibake runtime is now wired:
+
+```text
++verify → +sort → +verify → compress → expand
+   any NO → rm / A::xx → delete → free → advance
+```
+
+The chosen repair must invert back to the exact garbage input. It is not accepted because it merely looks plausible.
+
+Local runtime tests before publication:
+
+```text
+fixed mojibake corpus  11 / 11 PASS
+synthetic roundtrip    60 / 60 PASS
+```
+
+Files:
+- `more_garbage.py`
+- `ALGORITHM.md`
+- `benchmarks/`
+- `../../lean/Oasis.MoreGarbage.00.lean`
+
+The Lean module proves the five-gate routing law and A::xx delete-and-advance semantics. It is fresh and remains pending user `0e` compilation.
