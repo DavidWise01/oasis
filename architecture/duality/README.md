@@ -1,3 +1,13 @@
+# Historical Duality Branch — superseded
+
+This LIGHT/DARK interpretation came from an assistant overread and is **not the current root duality definition**.
+
+Current canonical duality engine is bounded symbolic `O` / Ouroboros with isomorphic root `o` + Root0 + `o`, written `o` + "`0`" + `o`, and exactly four quads.
+
+The material below remains only as provenance/history.
+
+---
+
 # DUALITY — Light / Dark
 
 The root OaSIs duality is:

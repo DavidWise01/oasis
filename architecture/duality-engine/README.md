@@ -78,3 +78,20 @@ Q4  0^0^0 = 81
 Canonical outer glyph: `((2x2))^((2x2))^2`.
 
 See `four-quads-v00.md`. The Q4 equality is stored as symbolic OaSIs notation rather than ordinary exponent arithmetic.
+
+
+## Four-quad v01 — current
+
+v00 still contained ordinary-arithmetic interpretations for some exponent-looking tokens. That was a misread.
+
+Current rule:
+
+```text
+O
+└── o`0`o
+    └── four bounded symbolic quads
+```
+
+All operators remain symbolic inside the `O` Ouroboros bound. See `four-quads-v01.md`.
+
+`Oasis.Duality.FourQuads.01.lean` supersedes `.00` semantically; it proves preservation/count/bounds only, not arithmetic interpretations.

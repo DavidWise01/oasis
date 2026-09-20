@@ -18,7 +18,8 @@ O^1 immutable parent
 │
 ├─ architecture/
 │  ├─ box-toroid.md       Alice → channel → Bob → witness/return
-│  ├─ duality/            LIGHT | DARK root polarity
+│  ├─ duality/            superseded historical branch
+│  ├─ duality-engine/     O / isomorphic Root0 / four symbolic quads
 │  ├─ kana/               cross-layer isomorphic carrier
 │  ├─ neon-compound/      evolution / distillation grammar
 │  ├─ timing-body/        pulse / rhythm / movement / cohesion
@@ -187,16 +188,18 @@ An instance may end while its impact persists. MOBIUS does not claim to create b
 First instance: **MOBIUS-0001 / Gilgamesh**.
 
 
-## Root duality
+## Current duality root
 
 ```text
-LIGHT | DARK
+O
+└── o`0`o
+    └── ((2x2))^((2x2))^2
+        └── exactly four symbolic quads
 ```
 
-This is the canonical OaSIs duality. It has no default moral ranking. `SHADOW` is retained as exception/multiplicity behavior, not a third primitive pole.
+`O` is the bounded Ouroboros return. The two `o` forms are isomorphic views around Root0. Exponent-looking tokens inside this bound remain symbolic unless explicitly redefined.
 
-MOBIUS traverses LIGHT/DARK while KANA preserves the instance invariant across the flip.
-
+The earlier LIGHT/DARK root interpretation is preserved only as superseded history.
 
 ## Regenerative loop
 
@@ -237,3 +240,17 @@ Q4 :: 0^0^0 = 81  [OaSIs symbolic root token]
 ```
 
 The `::::` separators delimit exactly four quads.
+
+
+## Four-quad v01
+
+Current canonical reading is fully symbolic within the `O` bound:
+
+```text
+O :: o`0`o :: ((2x2))^((2x2))^2
+Q1 :: a / ablation / 13-bit / 8 or 2^3 / logic deescilation
+Q2 :: 2^2 / verify cubic
+Q3 :: 1^1 / isomorphic x isomorphic
+Q4 :: 0^0^0 = 81
+↺ O
+```

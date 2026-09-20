@@ -1,0 +1,55 @@
+{
+  "schema": "OaSIs.DualityEngine.FourQuads.v01",
+  "mode": "symbolic_within_bounds",
+  "bound": "O",
+  "bound_semantics": "Ouroboros / closed return",
+  "isomorphic_root": "o`0`o",
+  "isomorphic_root_semantics": "left o and right o are isomorphic views around Root0",
+  "outer_glyph": "((2x2))^((2x2))^2",
+  "outer_glyph_arithmetic": false,
+  "quad_count": 4,
+  "separator": "::::",
+  "quads": [
+    {
+      "id": "Q1",
+      "tokens": [
+        "a",
+        "ablation",
+        "must pass 13-bit emergent prims",
+        "8 or 2^3",
+        "logic deescilation"
+      ],
+      "arithmetic": false
+    },
+    {
+      "id": "Q2",
+      "tokens": [
+        "2^2",
+        "verify cubic"
+      ],
+      "arithmetic": false
+    },
+    {
+      "id": "Q3",
+      "tokens": [
+        "1^1",
+        "isomorphic x isomorphic"
+      ],
+      "arithmetic": false
+    },
+    {
+      "id": "Q4",
+      "tokens": [
+        "0^0^0 = 81"
+      ],
+      "arithmetic": false
+    }
+  ],
+  "invariant": [
+    "preserve glyph",
+    "preserve order",
+    "preserve bound",
+    "preserve isomorph"
+  ],
+  "return": "O"
+}
