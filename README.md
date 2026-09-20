@@ -18,7 +18,8 @@ O^1 immutable parent
 │
 ├─ architecture/
 │  ├─ box-toroid.md       Alice → channel → Bob → witness/return
-│  └─ kana/               cross-layer isomorphic carrier
+│  ├─ kana/               cross-layer isomorphic carrier
+│  └─ neon-compound/      evolution / distillation grammar
 │
 ├─ apps/
 │  └─ tattoo/             current creative attachment
@@ -107,3 +108,22 @@ KANA is applied to:
 - downstream attachments such as Tattoo.
 
 The frozen O^1 manifest is not modified; KANA is an append-only descendant adapter.
+
+
+## NEON semantic evolution
+
+New descendants use the canonical semantic cycle:
+
+```text
+PRIMS
+→ N_cold
+→ E_carrier
+→ O_hot
+→ N_gray
+→ H₂O_distill
+→ PRIMS'
+```
+
+KANA carries the invariant/provenance witness around the entire cycle. The resulting primitives seed the next generation.
+
+This is semantic/software language. It does not redefine physical neon, spectroscopy, oxygen chemistry, or water chemistry.

@@ -1,0 +1,164 @@
+{
+  "schema": "OaSIs.NEON.SemanticCompound.v00",
+  "parent": "Oasis.NEON3.00",
+  "source_order": "[[ n.e.o.n :: as compound :: analoged to life compound of neon :: semantic :: nitrogen.cold.blueshift :: energy :: oxygen rips apart, hot, red shift :: energy`gray` :: h2o : universal solvent, distills to prims :: ]]",
+  "scope": "semantic/software evolution cycle; not literal chemistry or spectroscopy",
+  "order": [
+    {
+      "id": "N_COLD",
+      "symbol": "N",
+      "name": "Nitrogen / Cold / Blueshift",
+      "role": "compression, binding, reserve, low-activity semantic phase"
+    },
+    {
+      "id": "E_CARRIER",
+      "symbol": "E",
+      "name": "Energy / Carrier",
+      "role": "transfer, activation, movement between representations"
+    },
+    {
+      "id": "O_HOT",
+      "symbol": "O",
+      "name": "Oxygen / Hot / Redshift",
+      "role": "break-apart, expose, transform, high-activity semantic phase"
+    },
+    {
+      "id": "N_GRAY",
+      "symbol": "N",
+      "name": "Neutral / Gray Energy",
+      "role": "settle, reconcile, equalize, hold unresolved remainder without fabricating"
+    },
+    {
+      "id": "H2O_DISTILL",
+      "symbol": "H₂O",
+      "name": "Water / Distill",
+      "role": "solvent metaphor: normalize outputs back into reusable primitives"
+    }
+  ],
+  "cycle": "PRIMS -> N_COLD -> E_CARRIER -> O_HOT -> N_GRAY -> H2O_DISTILL -> PRIMS'",
+  "invariant": "provenance + semantic intent + domain contract survive the cycle through KANA",
+  "kana_glyph": "+ k < | A | /\\ | N | /\\/ | A | /\\ | >-K",
+  "domains": [
+    {
+      "layer": "ROOT0/O1",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "ISO |",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "HUMAN/CARBON ||",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "NEON |||",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "ELECTRONICS",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "NETWORKING",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "STORAGE",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "JAVA",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "FENG_SHUI",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "ART_BEAUTY",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    },
+    {
+      "layer": "ATTACHMENT",
+      "input": "domain primitives / current state",
+      "nitrogen_cold": "compress/bind/select stable relations",
+      "energy_carrier": "move state through representation boundary",
+      "oxygen_hot": "decompose/test/expose transform effects",
+      "neutral_gray": "reconcile results; preserve uncertainty rather than fabricate",
+      "h2o_distill": "normalize retained result to primitives",
+      "output": "next-generation primitives / state",
+      "witness": "KANA invariant + provenance + return path"
+    }
+  ]
+}

@@ -75,3 +75,16 @@ In OaSIs KANA, **entangled** means:
 4. the return path records success, drift, or exception.
 
 This is a software architecture term here, not quantum entanglement.
+
+
+## NEON evolution binding
+
+KANA now witnesses the NEON evolution loop:
+
+```text
+PRIMS → N_cold → E_carrier → O_hot → N_gray → H₂O_distill → PRIMS'
+  ↑                                                           │
+  └────────────── KANA invariant / provenance ─────────────────┘
+```
+
+The shared invariant is carried across each representation change. A failed witness becomes explicit drift or unresolved gray state rather than being silently repaired.

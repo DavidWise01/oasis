@@ -97,5 +97,19 @@
       "domain result",
       "provenance/export"
     ]
-  ]
+  ],
+  "evolution": {
+    "name": "NEON semantic compound",
+    "cycle": [
+      "PRIMS",
+      "N_COLD",
+      "E_CARRIER",
+      "O_HOT",
+      "N_GRAY",
+      "H2O_DISTILL",
+      "PRIMS'"
+    ],
+    "invariant": "provenance + semantic intent + domain contract",
+    "failure_mode": "explicit drift or unresolved gray state; no silent fabrication"
+  }
 }
