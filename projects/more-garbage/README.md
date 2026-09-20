@@ -21,7 +21,7 @@ Initial operator chain:
 ```text
 `-rem`        MO
 `+verify`     RE
-`+sor`        GA
+`+sort`        GA
 `+verify`     RB
 `compress to` AG  (Ag / silver)
 `expand as`   E++...
@@ -34,7 +34,7 @@ MORE GARBAGE
    ↓ chunk
 MO | RE | GA | RB | AG | E
    ↓ operate
--rem | +verify | +sor | +verify | compress | expand
+-rem | +verify | +sort | +verify | compress | expand
    ↓
 NO MORE GARBAGE
    ↓
@@ -57,7 +57,7 @@ changed invariant
 
 ## Current restraint
 
-`+sor` is preserved literally as supplied. This scaffold does not yet define its full operator semantics.
+`+sort` is is the ordinary sort operator in this riff.
 
 `Ag` is the standard chemical symbol for silver; here it is used as the project's compression pun/token. `MR FUSION` is a Back to the Future reference used as the project motif, not a claim of a physical fusion device.
 

@@ -356,7 +356,7 @@ New unfrozen project:
 
 ```text
 MO | RE | GA | RB | AG | E
--rem | +verify | +sor | +verify | compress | expand
+-rem | +verify | +sort | +verify | compress | expand
 ```
 
 Working alias: **NO MORE GARBAGE**.
