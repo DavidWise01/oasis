@@ -334,3 +334,59 @@ lean/Oasis.MoreGarbage.Prim1Bit.02.lean
 ```
 
 `t5/t2/t1/t0` are preserved as symbolic tick labels. Fresh candidate, pending user `0e`.
+
+
+## Sub-atomic primitive v03 — Mandel / Juliet
+
+The search itself is now named **MANDEL**.
+
+~~~text
+mantissa = 360
+directions = 6
+
+forward
+backward
+up
+down
+in
+out
+
+360 × 6 = 2160 search positions
++ 2 = start / stop
+------------------
+2162 MANDEL envelope
+~~~
+
+**JULIET** is the boundary between:
+
+~~~text
+a | ?
+~~~
+
+The job is not to guess a replacement. It searches as much JULIET as the local `v - n` budget permits and asks whether that boundary is still bound to MANDEL.
+
+~~~text
+JULIET at v-n
+      ↓
+MANDEL search
+      ↓
+bound?
+├─ YES → a
+└─ NO / exhausted → ? → gone forever
+~~~
+
+The prior recursion ladder remains the route into the search:
+
+~~~text
+[ 8 , [t5] , 3 , [t2] , 1 , [t1] , 0 , [t0+n] ]
+~~~
+
+and `0` remains the recursion floor.
+
+Fresh Lean descendant:
+
+~~~text
+lean/Oasis.MoreGarbage.SubAtomicPrim.03.lean
+~~~
+
+This checkpoint stays at **sub-atomic primitive** scale. No byte/string/file scaling. Fresh candidate, pending user `0e`.

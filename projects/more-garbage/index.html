@@ -59,7 +59,26 @@ right?
 base walk: n
 search-down cost: n
 structural worst case: n × n = n²</pre></article>
-<article class="card wide"><div class="k">Prim1Bit.02 · exact recursion ladder</div><div class="flow">8 → [t5] → 3 → [t2] → 1 → [t1] → 0 → [t0+n]</div><pre style="margin-top:18px">at level 0:
+<article class="card wide"><div class="k">SubAtomicPrim.03 · Mandel / Juliet</div><div class="flow">MANDEL = SEARCH · JULIET = a | ?</div><pre style="margin-top:18px">MANDEL
+
+mantissa 360 × 6 directions
+forward / backward / up / down / in / out
+
+360 × 6 = 2160
++ start + stop = 2162 search envelope
+
+JULIET
+boundary = a | ?
+
+search as much JULIET as v - n permits
+
+bound to MANDEL?  YES → a
+                   NO → ? / gone forever
+
+scale = sub-atomic prim
+recursion floor = 0
+anchor = 0.[O].0</pre><div class="actions"><a class="btn" href="../../lean/Oasis.MoreGarbage.SubAtomicPrim.03.lean">Lean SubAtomicPrim.03</a></div></article>
+<article class="card wide"><div class="k">Prim1Bit.02 · recursion ladder provenance</div><div class="flow">8 → [t5] → 3 → [t2] → 1 → [t1] → 0 → [t0+n]</div><pre style="margin-top:18px">at level 0:
 
 n = y = 1
 → restart recursion at LEVEL 0

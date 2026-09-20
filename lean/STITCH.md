@@ -462,3 +462,54 @@ n = 0
 No descent below `0`. Recursive anchor remains `0.[O].0`. Primitive signature remains `[1 1 2 4] . n . n²`.
 
 Lean status: **pending user 0e confirmation**.
+
+
+## MORE GARBAGE sub-atomic primitive v03 — 2026-09-20
+
+Fresh descendant:
+
+~~~text
+Oasis.MoreGarbage.SubAtomicPrim.03.lean
+~~~
+
+Search semantics are now explicit:
+
+~~~text
+MANDEL = search
+
+mantissa = 360
+6 directions =
+  forward / backward / up / down / in / out
+
+360 × 6 = 2160
++ 2 start/stop
+= 2162 MANDEL envelope
+~~~
+
+JULIET is the literal boundary:
+
+~~~text
+a | ?
+~~~
+
+Search law:
+
+~~~text
+budget = v - n
+
+search JULIET within budget
+├─ bound to MANDEL → a
+└─ budget exhausted / no binding → ? / gone forever
+~~~
+
+Inherited ladder remains:
+
+~~~text
+[ 8 , [t5] , 3 , [t2] , 1 , [t1] , 0 , [t0+n] ]
+~~~
+
+`0` remains the recursion floor; `0.[O].0` remains the bounded anchor.
+
+Scale is explicitly **sub-atomic prim**. No byte/string/file expansion is asserted.
+
+Lean status: **pending user 0e confirmation**.
