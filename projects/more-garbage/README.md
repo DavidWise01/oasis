@@ -235,3 +235,57 @@ caf�                                              → caf   [rm failed primiti
 Fresh Lean descendant: `Oasis.MoreGarbage.01.lean`, pending user `0e`.
 
 v00 remains provenance and is superseded on **scope**, not erased.
+
+
+## One-bit reverse recursion correction
+
+The forward 1..8 interpretation in `Oasis.MoreGarbage.Prim1Bit.00.lean` is superseded.
+
+Current one-bit walk:
+
+```text
+find MOJI
+   ↓
+8
+↓
+3
+↓
+2
+↓
+1
+```
+
+Each unresolved stage recurses through the same bounded anchor:
+
+```text
+0.[O].0
+```
+
+and stops on:
+
+```text
+Y → repair
+N → no repair
+```
+
+The primitive signature remains:
+
+```text
+[ 1 1 2 4 ] . n . n²
+```
+
+Cohesion may still be established from the literal seed:
+
+```text
+1.1 of a nibble
+```
+
+after either Y or N. N does not claim that the original primitive was recovered; it only does not prevent the surviving state from cohering from `1.1`.
+
+Current Lean descendant:
+
+```text
+lean/Oasis.MoreGarbage.Prim1Bit.01.lean
+```
+
+Fresh candidate, pending user `0e`.

@@ -59,6 +59,21 @@ right?
 base walk: n
 search-down cost: n
 structural worst case: n × n = n²</pre></article>
+<article class="card wide"><div class="k">one-bit reverse recursion · current correction</div><div class="flow">MOJI → 8 → 3 → 2 → 1</div><pre style="margin-top:18px">unresolved stage
+   ↓
+0.[O].0
+   ↓ recurse
+Y → repair
+N → no repair
+
+signature = [ 1 1 2 4 ] . n . n²
+
+cohesion seed = 1.1 of a nibble
+Y → may cohere from 1.1
+N → may still cohere from 1.1
+
+Prim1Bit.00 forward 1..8 = superseded
+Prim1Bit.01 reverse 8/3/2/1 = current candidate</pre><div class="actions"><a class="btn" href="PRIM-1BIT-v01.md">one-bit notes</a><a class="btn" href="../../lean/Oasis.MoreGarbage.Prim1Bit.01.lean">Lean Prim1Bit.01</a></div></article>
 <article class="card wide"><div class="k">primitive benchmark</div><div class="flow">6 / 6 PASS</div><pre style="margin-top:18px">M → Y → +1 → move on
 
 Mona                                             → Mona
@@ -93,5 +108,5 @@ Python:
   fixed + synthetic benchmarks
 
 Lean status: pending local 0e</pre></article>
-<article class="card wide"><div class="note">This page is intentionally a scaffold, not a frozen grammar. <code>+sort</code> means sort; the final `t` was truncated in the original riff. Ag is used as the silver compression token/pun; “Mr Fusion” is the Back to the Future motif, not a physical-fusion claim.</div><div class="actions"><a class="btn" href="README.md">Project notes</a><a class="btn" href="more-garbage-v00.json">Machine-readable scaffold</a></div></article>
+<article class="card wide"><div class="note">This page is intentionally a scaffold, not a frozen grammar. <code>+sort</code> means sort; the final t was truncated in the original riff. Ag is used as the silver compression token/pun; “Mr Fusion” is the Back to the Future motif, not a physical-fusion claim.</div><div class="actions"><a class="btn" href="README.md">Project notes</a><a class="btn" href="more-garbage-v00.json">Machine-readable scaffold</a></div></article>
 </section></main><footer><div class="wrap">M.O.R.E.G.A.R.B.A.G.E. · OaSIs riff scaffold · keep the invariant, recycle the representation</div></footer></body></html>

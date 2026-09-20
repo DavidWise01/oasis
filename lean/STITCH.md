@@ -388,3 +388,44 @@ rm / A::xx = delete current + move forward
 Primitive-scope runtime regression: **6/6 PASS**.
 
 Lean v01 remains pending user `0e` confirmation.
+
+
+## MORE GARBAGE one-bit reverse recursion correction — 2026-09-20
+
+`Oasis.MoreGarbage.Prim1Bit.00.lean` is preserved as provenance but its forward 1..8 schedule is superseded.
+
+Fresh descendant:
+
+```text
+Oasis.MoreGarbage.Prim1Bit.01.lean
+```
+
+Current encoded invariants:
+
+```text
+primitive signature = [1 1 2 4] . n . n²
+
+find moji
+  ↓
+8
+↓
+3
+↓
+2
+↓
+1
+
+recursive anchor = 0.[O].0
+
+unresolved → recurse
+Y → repair
+N → no repair
+
+cohesion seed = literal 1.1 of a nibble
+Y may cohere from 1.1
+N may still cohere from 1.1
+```
+
+The N branch does not claim recovery of the original primitive.
+
+Lean status: **pending user 0e confirmation**.
