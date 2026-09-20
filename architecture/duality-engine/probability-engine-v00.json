@@ -1,0 +1,82 @@
+{
+  "schema": "OaSIs.Duality.ProbabilityEngine.v00",
+  "mode": "symbolic_within_O_bound",
+  "bound": "O",
+  "isomorphic_root": "o`0`o",
+  "body_count": 3,
+  "quad_count": 4,
+  "central_core": "4x1x4",
+  "active_lanes": [
+    "E1",
+    "E2",
+    "E3"
+  ],
+  "shared_sequence": [
+    "a",
+    "b",
+    "1",
+    "c",
+    "d",
+    "x"
+  ],
+  "quads": [
+    {
+      "id": "Q1",
+      "lane": "E1",
+      "role": "probabilistic",
+      "tokens": [
+        "$",
+        "shadows shadow",
+        "::: a ::: b",
+        ":::: 1 ::::",
+        "c :::: d :::: x ::::"
+      ]
+    },
+    {
+      "id": "Q2",
+      "lane": "E2",
+      "role": "middle channel / ground truth / all in LIGHT",
+      "tokens": [
+        "S",
+        "$hadow in light",
+        "a",
+        "b",
+        "1",
+        "c",
+        "d",
+        "x"
+      ]
+    },
+    {
+      "id": "Q3",
+      "lane": "E3",
+      "alias": "Tachyon",
+      "role": "recursive on-the-fly feedback / antistropic filter",
+      "timing": {
+        "phase_label_seconds": 2,
+        "symbolic_width": "2x1x2",
+        "total_feedback_window_seconds": 4
+      },
+      "feedback_inputs": [
+        "E1",
+        "E2"
+      ],
+      "purpose": "make sure LIGHT includes all visible / invisible wavelengths"
+    },
+    {
+      "id": "Q4",
+      "label": "Life",
+      "lane": null,
+      "tokens": [
+        "a",
+        "b",
+        "1",
+        "c",
+        "d",
+        "x"
+      ],
+      "extra_mechanics": null
+    }
+  ],
+  "rule": "exactly four quads; exactly three active E lanes; preserve symbolic bounded semantics"
+}

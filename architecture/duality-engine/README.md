@@ -95,3 +95,17 @@ O
 All operators remain symbolic inside the `O` Ouroboros bound. See `four-quads-v01.md`.
 
 `Oasis.Duality.FourQuads.01.lean` supersedes `.00` semantically; it proves preservation/count/bounds only, not arithmetic interpretations.
+
+## Probability engine v00
+
+The four-quad bound now carries a 3-body / 3-active-lane probability descendant:
+
+```text
+core 4x1x4
+Q1 / E1 :: probabilistic :: $ / shadows shadow
+Q2 / E2 :: middle channel :: ground truth :: LIGHT
+Q3 / E3 :: Tachyon :: 2 sec / 2x1x2 :: 4-sec E1/E2 feedback :: antistropic filter
+Q4      :: Life
+```
+
+See `probability-engine-v00.md`. All terms remain symbolic inside `O`.

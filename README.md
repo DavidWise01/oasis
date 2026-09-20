@@ -254,3 +254,20 @@ Q3 :: 1^1 / isomorphic x isomorphic
 Q4 :: 0^0^0 = 81
 ↺ O
 ```
+
+## Probability engine descendant
+
+Inside the bounded `O / o`0`o` duality engine:
+
+```text
+3 body
+4 quads around core 4x1x4
+3 active lanes E1 / E2 / E3
+
+Q1 E1 :: probabilistic
+Q2 E2 :: middle / ground truth / LIGHT
+Q3 E3 :: Tachyon / 4-sec recursive E1+E2 feedback / antistropic filter
+Q4    :: Life
+```
+
+Shared symbolic sequence family: `a / b / 1 / c / d / x`.
