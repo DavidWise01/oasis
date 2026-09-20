@@ -1,0 +1,101 @@
+{
+  "schema": "OaSIs.KANA.Isomorph.v00",
+  "glyph": "+ k < | A | /\\ | N | /\\/ | A | /\\ | >-K",
+  "semantics": {
+    "plus_k": "forward carrier / ingress polarity",
+    "left_angle": "enter transform envelope",
+    "left_A": "left anchor",
+    "down_edge": "contraction / normalization edge",
+    "N": "invariant center / neutral witness",
+    "hinge": "reversible hinge",
+    "right_A": "right anchor",
+    "close_edge": "closure edge",
+    "right_angle": "leave transform envelope",
+    "minus_K": "return carrier / egress polarity"
+  },
+  "entanglement": "symbolic/software invariant coupling; not physical quantum entanglement",
+  "delimiter_bindings": {
+    "|": "isomorphic conversion boundary",
+    "||": "human/carbon provenance attachment",
+    "|||": "engine attachment"
+  },
+  "layers": [
+    [
+      "ROOT0/O1",
+      "requested state",
+      "root/provenance identity",
+      "emitted state",
+      "lineage check"
+    ],
+    [
+      "ISO |",
+      "source representation",
+      "semantic invariant",
+      "target representation",
+      "round-trip check"
+    ],
+    [
+      "HUMAN/CARBON ||",
+      "authored intent",
+      "provenance",
+      "attached artifact",
+      "attribution witness"
+    ],
+    [
+      "NEON |||",
+      "engine input",
+      "contract/invariant",
+      "engine output",
+      "deterministic check"
+    ],
+    [
+      "ELECTRONICS",
+      "input signal/state",
+      "threshold/logical state",
+      "output signal/state",
+      "measurement"
+    ],
+    [
+      "NETWORKING",
+      "sender meaning",
+      "message/payload identity",
+      "receiver meaning",
+      "ACK/hash/trace"
+    ],
+    [
+      "STORAGE",
+      "logical object",
+      "block/integrity identity",
+      "recovered object",
+      "readback/hash"
+    ],
+    [
+      "JAVA",
+      "source/runtime intent",
+      "typed/behavioral invariant",
+      "observed behavior",
+      "return/test/exception"
+    ],
+    [
+      "FENG_SHUI",
+      "occupant/use intent",
+      "spatial fit invariant",
+      "experienced arrangement",
+      "observation/rearrangement"
+    ],
+    [
+      "ART_BEAUTY",
+      "creative intent",
+      "composition/read invariant",
+      "viewer-facing artifact",
+      "perception/critique"
+    ],
+    [
+      "ATTACHMENT",
+      "user brief",
+      "attachment contract",
+      "domain result",
+      "provenance/export"
+    ]
+  ]
+}

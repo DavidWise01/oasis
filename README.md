@@ -17,7 +17,8 @@ O^1 immutable parent
 │  └─ tattoo/             tattoo skill atlas
 │
 ├─ architecture/
-│  └─ box-toroid.md       Alice → channel → Bob → witness/return
+│  ├─ box-toroid.md       Alice → channel → Bob → witness/return
+│  └─ kana/               cross-layer isomorphic carrier
 │
 ├─ apps/
 │  └─ tattoo/             current creative attachment
@@ -67,3 +68,42 @@ Expected project-page URL:
 ## Historical preservation
 
 The previous root page and README are preserved under `legacy/`; they are not treated as the current project description.
+
+
+## KANA isomorphic carrier
+
+Canonical glyph:
+
+```text
++ k < | A | /\ | N | /\/ | A | /\ | >-K
+```
+
+KANA is a cross-layer adapter:
+
+```text
+A_L
+ ↓ representation change
+N   invariant / witness center
+ ↓ representation change
+A_R
+```
+
+The envelope `+k ... -K` preserves direction and return polarity. The repeated `|A|` anchors state on both sides of the transformation. `|N|` is the invariant center. The geometric separators `/\`, `/\/`, `/\` mark transform/hinge stages.
+
+In this repository **entanglement means a software relation**: two layer bindings are coupled by the same invariant and must agree on its witness value. It is not a claim of physical quantum entanglement.
+
+KANA is applied to:
+
+- Root0 / O^1 descendants;
+- `|` isomorphic boundary;
+- `||` human/carbon provenance boundary;
+- `|||` engine boundary;
+- electronics;
+- networking;
+- storage/isolation;
+- Java/runtime;
+- Feng Shui/spatial;
+- art/beauty;
+- downstream attachments such as Tattoo.
+
+The frozen O^1 manifest is not modified; KANA is an append-only descendant adapter.

@@ -23,3 +23,23 @@ Metaphysical claims such as measurable qi are not encoded as established physica
 ## Surface rule
 
 The engine may retain all 81 primitives internally. A human-facing attachment should expose only the smallest number of choices required for the current decision.
+
+
+## KANA binding
+
+Feng Shui is the first public KANA domain binding:
+
+```text
++k
+ ↓
+|A|  occupant / use intent
+ /\
+|N|  spatial invariant:
+     circulation + orientation + light + access + task fit
+ /\/
+|A|  experienced arrangement / destination
+ /\
+-K   witness / feedback / rearrangement
+```
+
+The spatial vocabulary may change representation between plan, room, photograph, measurement, and human description. The KANA invariant is the part that must survive that conversion without silent semantic drift.

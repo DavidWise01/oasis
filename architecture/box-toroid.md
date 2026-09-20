@@ -77,3 +77,29 @@ Important distinctions:
 - Sanitization is a lifecycle/disposal control, not a runtime isolation substitute.
 
 The architecture goal is to choose the **lowest layer that actually blocks the threat/path you care about**, then witness that boundary.
+
+## KANA cross-layer carrier
+
+```text
++ k < | A | /\ | N | /\/ | A | /\ | >-K
+```
+
+KANA sits orthogonally across the existing box/toroid model:
+
+```text
+          +k
+           │
+Alice →  |A|  → transform
+           │
+          |N|  invariant / witness
+           │
+        transform → |A| → Bob
+                       │
+                      -K
+                       │
+             witness / return
+```
+
+The box bounds the transform. The toroidal return path verifies it. KANA states what must be preserved while crossing the box.
+
+This use of "entangled" is symbolic/software architectural coupling: bindings share one invariant and are checked together.
