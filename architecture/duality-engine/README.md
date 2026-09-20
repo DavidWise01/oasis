@@ -109,3 +109,23 @@ Q4      :: Life
 ```
 
 See `probability-engine-v00.md`. All terms remain symbolic inside `O`.
+
+## Canonical root clarification
+
+Current root definition:
+
+```text
+O
+└── o . 0 . o
+    ├── boxy1[permutate o]
+    ├── . = ground-truth blast zone bounded to 0
+    ├── boxy2[permutate 0]
+    ├── . = ground-truth blast zone bounded to 0
+    └── boxy3[permutate o]
+```
+
+Scalable form: `o^n.0^n.o^n`.
+
+The probability-engine material is an expanded/permuted definition within this root, not another top-level engine.
+
+See `o-dot-zero-o-v00.md`.

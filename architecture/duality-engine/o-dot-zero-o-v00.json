@@ -1,0 +1,39 @@
+{
+  "schema": "OaSIs.Duality.ODotZeroO.v00",
+  "mode": "symbolic_within_O_bound",
+  "bound": "O",
+  "root": "o.0.o",
+  "scalable_form": "o^n.0^n.o^n",
+  "boxies": [
+    {
+      "id": "boxy1",
+      "symbol": "o",
+      "operation": "permutate"
+    },
+    {
+      "id": "boxy2",
+      "symbol": "0",
+      "operation": "permutate"
+    },
+    {
+      "id": "boxy3",
+      "symbol": "o",
+      "operation": "permutate"
+    }
+  ],
+  "blast_zone": {
+    "token": ".",
+    "name": "ground truth blast zone",
+    "bounded_to": "0",
+    "count_in_root": 2,
+    "is_box": false
+  },
+  "isomorph": {
+    "left": "boxy1:o",
+    "center": "boxy2:0",
+    "right": "boxy3:o",
+    "relation": "outer o forms are isomorphic around center 0"
+  },
+  "probability_relation": "prior probability-engine notation is an expanded/permuted definition within this root, not a separate top-level engine",
+  "rule": "preserve three boxies, two dot blast zones, center 0, and O bound"
+}

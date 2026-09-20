@@ -271,3 +271,15 @@ Q4    :: Life
 ```
 
 Shared symbolic sequence family: `a / b / 1 / c / d / x`.
+
+## Isomorphic boxy root
+
+```text
+O
+└── o . 0 . o
+    = o^n . 0^n . o^n
+```
+
+Three permutable boxies carry `o / 0 / o`. Each `.` is a ground-truth blast zone bounded to `0`, not a fourth box.
+
+The bounded probability engine is an expanded definition inside this root.

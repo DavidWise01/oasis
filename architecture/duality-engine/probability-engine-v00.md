@@ -99,3 +99,17 @@ E2  ground-truth lane
 
 Q4 Life remains inside the same O bound.
 ```
+
+## Root clarification
+
+This entire probability structure is an expanded definition **inside** the canonical root:
+
+```text
+o . 0 . o
+```
+
+with scalable form `o^n.0^n.o^n`.
+
+The three permutable boxies are `o / 0 / o`. The `.` positions are ground-truth blast zones bounded to `0`; they are not extra boxies.
+
+No lane-to-boxy one-to-one mapping is asserted here unless explicitly supplied.
