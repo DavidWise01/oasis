@@ -73,3 +73,17 @@ o.0.o returns inside O
 ```
 
 `O` supplies the closed Ouroboros bound; `o.0.o` supplies the three-box isomorphic root with two ground-truth blast zones.
+
+## Isomorphic six
+
+Canonical relation:
+
+```text
+!i!
+
+|||...  ≅ 111000
+```
+
+Inside the bounded alphabet, `||| ≅ 111` and `... ≅ 000`: three bars and three dots are six positions, equivalently three ones and three zeros.
+
+`!i!` is the isomorphic relation token; it introduces no additional box or state.

@@ -283,3 +283,14 @@ O
 Three permutable boxies carry `o / 0 / o`. Each `.` is a ground-truth blast zone bounded to `0`, not a fourth box.
 
 The bounded probability engine is an expanded definition inside this root.
+
+## !i! isomorphic six
+
+```text
+O / o.0.o
+└── !i!
+    ├── |||...
+    └── 111000
+```
+
+Three bars + three dots = six positions, isomorphic to three ones + three zeros.

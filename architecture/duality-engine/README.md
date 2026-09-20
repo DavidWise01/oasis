@@ -129,3 +129,13 @@ Scalable form: `o^n.0^n.o^n`.
 The probability-engine material is an expanded/permuted definition within this root, not another top-level engine.
 
 See `o-dot-zero-o-v00.md`.
+
+## !i! — isomorphic six
+
+```text
+|||...  !i!  111000
+```
+
+Three `|` plus three `.` = six positions = three `1` plus three `0`.
+
+See `isomorphic-six-v00.md`.

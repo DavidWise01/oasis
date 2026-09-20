@@ -1,0 +1,18 @@
+{
+  "schema": "OaSIs.IsomorphicSix.v00",
+  "bound": "O",
+  "root": "o.0.o",
+  "isomorph_token": "!i!",
+  "symbolic": "|||...",
+  "binary": "111000",
+  "total_positions": 6,
+  "bar_count": 3,
+  "dot_count": 3,
+  "one_count": 3,
+  "zero_count": 3,
+  "mapping": {
+    "|||": "111",
+    "...": "000"
+  },
+  "rule": "isomorphic representation only; adds no new state"
+}
