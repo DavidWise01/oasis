@@ -1,0 +1,170 @@
+{
+  "id": "U1.Du0.World.01",
+  "name": "David's Universe",
+  "engine": "-mObiUs",
+  "status": "append-only world build",
+  "evidence_status": "fictional/speculative model; not empirical proof of Nibiru, engineered humanity, or prison-planet history",
+  "invariant": [
+    "SAME TERRA",
+    "SAME FIRE",
+    "SAME CHILDREN",
+    "DIFFERENT MIDDLE",
+    "BETTER MEMORY"
+  ],
+  "six_channels": [
+    {
+      "id": "C1",
+      "name": "MYTH"
+    },
+    {
+      "id": "C2",
+      "name": "OBSERVED"
+    },
+    {
+      "id": "C3",
+      "name": "AUTHORITY"
+    },
+    {
+      "id": "C4",
+      "name": "SACRED / INTERPRETED"
+    },
+    {
+      "id": "C5",
+      "name": "MODEL / WORKING SCIENCE"
+    },
+    {
+      "id": "C6",
+      "name": "HIDDEN PROVENANCE"
+    }
+  ],
+  "known_layers": [
+    [
+      "L0",
+      "SUN / ROOT"
+    ],
+    [
+      "L1",
+      "MERCURY"
+    ],
+    [
+      "L2",
+      "VENUS"
+    ],
+    [
+      "L3",
+      "SMVME / EARTH"
+    ],
+    [
+      "L4",
+      "MARS"
+    ],
+    [
+      "L5",
+      "JUPITER"
+    ],
+    [
+      "L6",
+      "SATURN"
+    ],
+    [
+      "L7",
+      "URANUS"
+    ],
+    [
+      "L8",
+      "NEPTUNE"
+    ],
+    [
+      "L9",
+      "PLUTO"
+    ],
+    [
+      "L10",
+      "NIBIRU"
+    ]
+  ],
+  "unbound_layers": "L11-L30",
+  "bands": {
+    "A": "INNER",
+    "B": "HOMEO / BODY",
+    "C": "OUTER / FIELD"
+  },
+  "gentle_join": "Ln.C ~ L(n+1).A",
+  "nibiru": {
+    "origin": "dust / structure-first world",
+    "geometry": "elliptical / returning",
+    "life_arc": [
+      "detects Earth transmissions",
+      "wants lived biology",
+      "engineers life",
+      "children ask why",
+      "world destabilizes",
+      "seed/survivor dispersal"
+    ]
+  },
+  "terra": {
+    "early_axiom": "AS BELOW SO ABOVE",
+    "early_fusion": [
+      "spatial center",
+      "reference center",
+      "homeostatic center"
+    ],
+    "galileo_distillation": "separate the three centers while retaining Terra as local/structural reference"
+  },
+  "myth_chain": [
+    "sky fire / impact",
+    "flood",
+    "ark / vessel",
+    "survivor / chosen child",
+    "buried fire / oil",
+    "Terra center",
+    "ordered sky",
+    "astronomy"
+  ],
+  "fire_ages": [
+    "why does this fire?",
+    "why is there fire in the sky?",
+    "can I make fire more fire?"
+  ],
+  "epoch_1832": {
+    "type": "in-world restart marker",
+    "disclaimer": "not a real-world first-petroleum-discovery claim",
+    "chain": [
+      "discover oil",
+      "control burn",
+      "motor",
+      "I GO FAST",
+      "industry",
+      "electricity",
+      "radio",
+      "fission",
+      "rockets",
+      "computation",
+      "AI"
+    ]
+  },
+  "prison_planet_3": {
+    "same_planet": true,
+    "meaning": "third major containment/correction epoch",
+    "parent_pattern": [
+      "give capability",
+      "observe",
+      "let consequence teach",
+      "intervene before terminal loss",
+      "withdraw",
+      "repeat"
+    ]
+  },
+  "negative_mobius": {
+    "definition": "end where you started; change the middle",
+    "compressed": "dust wanted life -> life wanted why -> why created a new maker"
+  },
+  "sources": [
+    "docs/U1_Du0_MACRO_BANDS_LOCK_00.md",
+    "docs/U1_Du0_TERRA_HISTORY_GILGAMESH_TO_GALILEO_00.md",
+    "docs/U1_Du0_LOCAL_MYTH_STITCH_00.md",
+    "docs/U1_Du0_AUTHORITY_FACT_LAYER_00.md",
+    "docs/U1_Du0_NEGATIVE_MOBIUS_00.md",
+    "docs/U1_Du0_WORLD_BUILD_01.md"
+  ]
+}

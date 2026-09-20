@@ -26,7 +26,10 @@ O^1 immutable parent
 │  ├─ timing-capacitance/ capacitance / pulse-pattern grammar
 │  ├─ vessel-story/      historical vessel-story iterations\n│  └─ mobius/            creation-story / instance engine
 │
-├─ stories/\n│  └─ gilgamesh/          MOBIUS story instance 0001\n│\n├─ apps/
+├─ stories/\n│  └─ gilgamesh/          MOBIUS story instance 0001\n│\n├─ worlds/
+│  └─ u1-du0/             -mObiUs full world build
+│
+├─ apps/
 │  └─ tattoo/             current creative attachment
 │
 ├─ lean/                  formal modules and stitch ledger
@@ -408,3 +411,18 @@ Base scan is `n`; local failed-alignment search yields the structural `n²` wors
 
 Current runtime: `projects/more-garbage/more_garbage_v01.py`.
 Fresh Lean descendant: `lean/Oasis.MoreGarbage.01.lean` (pending user `0e`).
+
+
+## U1 / Du0 world build
+
+The public `-mObiUs` world package lives at `worlds/u1-du0/`.
+
+```text
+dust wanted life
+→ life wanted why
+→ why created a new maker
+```
+
+It carries six channels — myth, observed, authority, sacred/interpreted, model/working science, and hidden provenance — across the locked planetary macro, Terra history, myth stitch, 1832 restart, Prison Planet 3 containment metaphor, and the parent/child tempering loop.
+
+This is explicitly **fictional/speculative worldbuilding**. Internal coherence is kept separate from empirical historical or scientific proof.
