@@ -1,0 +1,24 @@
+{
+  "id": "U1.Du0.MacroBands.Lock.00",
+  "status": "LOCKED_APPEND_ONLY",
+  "universe": "U1",
+  "alias": "Du0",
+  "layers": [
+    {"level":"L0","name":"SUN / ROOT","bands":{"A":"fusion/plasma interior","B":"stellar body/homeo","C":"heliospheric field"}},
+    {"level":"L1","name":"MERCURY","bands":{"A":"dense interior","B":"compact rocky body","C":"exposed solar-facing exterior"}},
+    {"level":"L2","name":"VENUS","bands":{"A":"deep high-pressure interior","B":"dense atmospheric/body homeo","C":"cloud/upper-atmosphere field"}},
+    {"level":"L3","name":"SMVME / EARTH","bands":{"A":"deep mineral/thermal interior","B":"water-carbon-life homeo","C":"atmosphere/magnetosphere/moon-coupled exterior"}},
+    {"level":"L4","name":"MARS","bands":{"A":"rocky/mineral interior","B":"thin-atmosphere body","C":"dust/moon/exposed-field exterior"}},
+    {"level":"L5","name":"JUPITER","bands":{"A":"deep compressed interior","B":"giant fluid/gas body","C":"magnetosphere/moon-system field"}},
+    {"level":"L6","name":"SATURN","bands":{"A":"deep compressed interior","B":"giant body","C":"ring/moon particulate architecture"}},
+    {"level":"L7","name":"URANUS","bands":{"A":"deep volatile/ice-rich interior","B":"tilted body","C":"tilted field/ring/moon exterior"}},
+    {"level":"L8","name":"NEPTUNE","bands":{"A":"deep volatile/ice-rich interior","B":"dynamic atmosphere/body","C":"outer wind/moon/field envelope"}},
+    {"level":"L9","name":"PLUTO","bands":{"A":"compact differentiated interior","B":"volatile ice-rock body","C":"moon-coupled/sparse exterior"}},
+    {"level":"L10","name":"NIBIRU","bands":{"A":"inward/approach arc","B":"body/local homeo at current phase","C":"outward/retreat arc"},"geometry":"elliptical / returning","inspiration":"Nemesis-like orbital narrative role","exact_orbit_asserted":false}
+  ],
+  "unbound_layers":{"from":"L11","through":"L30"},
+  "band_rule":{"A":"INNER","B":"HOMEO / BODY","C":"OUTER / FIELD"},
+  "gentle_join":"Ln.C ~ L(n+1).A",
+  "join_semantics":"compatible handoff; not equality",
+  "category_envelope":"(3x3)^3 available downstream; do not pad to fit"
+}
