@@ -222,3 +222,19 @@ commit next generation
 ```
 
 No witness means no silent commit.
+
+
+## Capacitance pulse descendant
+
+The body timing controller now has explicit pulse grammars:
+
+```text
+root  : 3×3^3 → 81 → 10^-10 timing label
+heart : [00 55 00] repeat      width 6
+lungs : [55 00] repeat         width 4
+head  : [77 55 00 00 55 77 00]
+body  : ..||..||||
+noble : :::: x ::::
+```
+
+All patterns reduce to `charge → transition → discharge → witness/reset`. See [timing-capacitance](../timing-capacitance/).

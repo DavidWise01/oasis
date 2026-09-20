@@ -20,7 +20,8 @@ O^1 immutable parent
 │  ├─ box-toroid.md       Alice → channel → Bob → witness/return
 │  ├─ kana/               cross-layer isomorphic carrier
 │  ├─ neon-compound/      evolution / distillation grammar
-│  └─ timing-body/        pulse / rhythm / movement / cohesion
+│  ├─ timing-body/        pulse / rhythm / movement / cohesion
+│  └─ timing-capacitance/ capacitance / pulse-pattern grammar
 │
 ├─ apps/
 │  └─ tattoo/             current creative attachment
@@ -145,3 +146,19 @@ The evolution engine is scheduled by a five-rank symbolic body model:
 Full-body controls are `5/5c1 HEAD`, `c2 ARMS`, `c3 INNER ID`, `c4 FEET/GROUND`, and `c5 COHESION`.
 
 The body and nuclear-battery language is systems analogy. The `10^-9` meter notation is preserved as an OaSIs timing-scale label, not a physiological timing claim.
+
+
+## Capacitance pulse grammar
+
+The timing layer now has a pattern descendant:
+
+```text
+root  3×3^3 → 81 → 10^-10 timebase label
+
+heart 4×1×4^4×4  [00 55 00] repeat
+lungs 2×1×2^2×2  [55 00] repeat
+body  4×1×4^4×4  ..||..||||  :::: x ::::
+head  3×1×3^3×3  [77 55 00 00 55 77 00]
+```
+
+The common primitive is `charge → transition → discharge → witness/reset`. Biological and capacitance terminology is systems analogy; the 10^-10 label is not asserted as physiological timing.

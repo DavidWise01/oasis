@@ -103,3 +103,18 @@ state@n+1
 ```
 
 The witness binds identity + provenance + timing order + domain contract. Phase disagreement is surfaced as drift rather than silently normalized.
+
+
+## Pulse-pattern witness
+
+KANA now also witnesses pulse grammar:
+
+```text
+pattern@n
+  ↓
+charge → transition → discharge → reset
+  ↓
+pattern@n+1
+```
+
+The invariant is pulse identity + ordering + provenance + reset state. Heart, lung, head, and body patterns may have different arity while remaining isomorphic to the same four-phase pulse primitive.

@@ -116,5 +116,48 @@
   },
   "scheduler": "BATTERY -> HEART -> 4/4 -> 2/2 -> FULL_BODY -> COHESION -> witness -> next pulse",
   "kana_invariant": "identity + provenance + timing order + domain contract",
-  "neon_relation": "each NEON evolution phase runs only inside a witnessed cohesion window"
+  "neon_relation": "each NEON evolution phase runs only inside a witnessed cohesion window",
+  "capacitance_pulse": {
+    "root_formula": "3×3^3",
+    "root_value": 81,
+    "timebase_label": "10^-10",
+    "discharge": "triangulated",
+    "pulse_window": "1/3 × 3",
+    "heart": {
+      "formula": "4×1×4^4×4",
+      "sequence": [
+        "00",
+        "55",
+        "00"
+      ],
+      "width": 6
+    },
+    "lungs": {
+      "formula": "2×1×2^2×2",
+      "sequence": [
+        "55",
+        "00"
+      ],
+      "width": 4
+    },
+    "body": {
+      "formula": "4×1×4^4×4",
+      "carrier": "..||..||||",
+      "noble": ":::: x ::::"
+    },
+    "head": {
+      "formula": "3×1×3^3×3",
+      "sequence": [
+        "77",
+        "55",
+        "00",
+        "00",
+        "55",
+        "77",
+        "00"
+      ],
+      "derived_width": 14
+    },
+    "common": "charge -> transition -> discharge -> witness/reset"
+  }
 }
