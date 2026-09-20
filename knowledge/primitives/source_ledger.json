@@ -1,0 +1,317 @@
+[
+  {
+    "id": "RFC1",
+    "domain": "NETWORKING",
+    "title": "RFC 1: Host Software",
+    "date": "1969-04-07",
+    "url": "https://www.rfc-editor.org/rfc/rfc1.html"
+  },
+  {
+    "id": "ARPANET",
+    "domain": "NETWORKING",
+    "title": "ARPANET first host-to-host message",
+    "date": "1969-10-29",
+    "url": "https://computerhistory.org/blog/history-of-the-future-october-29-1969-fifty-years-of-a-connected-world/"
+  },
+  {
+    "id": "CHM1971",
+    "domain": "ELECTRONICS",
+    "title": "1971: Intel 4004 and Intel 1103 DRAM",
+    "date": "1971-11-01",
+    "url": "https://www.computerhistory.org/timeline/1971/"
+  },
+  {
+    "id": "FLOPPY",
+    "domain": "STORAGE_ISOLATION",
+    "title": "1971: Floppy disk loads mainframe data",
+    "date": "1971-01-01",
+    "url": "https://www.computerhistory.org/storageengine/floppy-disk-loads-mainframe-computer-data/"
+  },
+  {
+    "id": "ETHERNET",
+    "domain": "NETWORKING",
+    "title": "1973: Ethernet and internetworking",
+    "date": "1973-05-01",
+    "url": "https://www.computerhistory.org/timeline/1973/"
+  },
+  {
+    "id": "RFC675",
+    "domain": "NETWORKING",
+    "title": "RFC 675: Internet Transmission Control Program",
+    "date": "1974-12-01",
+    "url": "https://www.rfc-editor.org/info/rfc675/"
+  },
+  {
+    "id": "ALICEBOB",
+    "domain": "NETWORKING",
+    "title": "Rivest, Shamir & Adleman public-key paper / Alice-Bob lineage",
+    "date": "1978-02-01",
+    "url": "https://dspace.mit.edu/entities/publication/a2e09fea-6f05-48a5-9ce9-5073dfcde567"
+  },
+  {
+    "id": "IP",
+    "domain": "NETWORKING",
+    "title": "RFC 791: Internet Protocol",
+    "date": "1981-09-01",
+    "url": "https://www.rfc-editor.org/info/rfc791/"
+  },
+  {
+    "id": "TCP793",
+    "domain": "NETWORKING",
+    "title": "RFC 793: Transmission Control Protocol",
+    "date": "1981-09-01",
+    "url": "https://www.rfc-editor.org/info/rfc793/"
+  },
+  {
+    "id": "DNS882",
+    "domain": "NETWORKING",
+    "title": "RFC 882: Domain Names concepts and facilities",
+    "date": "1983-11-01",
+    "url": "https://www.rfc-editor.org/info/rfc882/"
+  },
+  {
+    "id": "SCSI",
+    "domain": "STORAGE_ISOLATION",
+    "title": "1986: SCSI-1 standard",
+    "date": "1986-01-01",
+    "url": "https://www.computerhistory.org/timeline/memory-storage/"
+  },
+  {
+    "id": "BGP",
+    "domain": "NETWORKING",
+    "title": "RFC 1105: Border Gateway Protocol",
+    "date": "1989-06-01",
+    "url": "https://www.rfc-editor.org/info/rfc1105/"
+  },
+  {
+    "id": "WEB",
+    "domain": "NETWORKING",
+    "title": "1989: World Wide Web proposal at CERN",
+    "date": "1989-03-01",
+    "url": "https://home.cern/science/computing/the-birth-of-the-web/short-history-web/"
+  },
+  {
+    "id": "WEBLIVE",
+    "domain": "NETWORKING",
+    "title": "1990: first browser/editor, website and server",
+    "date": "1990-12-20",
+    "url": "https://timeline.web.cern.ch/timeline-header/90"
+  },
+  {
+    "id": "JAVA_GREEN",
+    "domain": "JAVA",
+    "title": "1991: Green Project begins",
+    "date": "1991-06-01",
+    "url": "https://computerhistory.org/profile/james-gosling/"
+  },
+  {
+    "id": "OAK",
+    "domain": "JAVA",
+    "title": "1992: Oak demonstrated on Star-7",
+    "date": "1992-09-02",
+    "url": "https://computerhistory.org/profile/james-gosling/"
+  },
+  {
+    "id": "JAVA1",
+    "domain": "JAVA",
+    "title": "1995: Java 1.0 introduced",
+    "date": "1995-05-01",
+    "url": "https://www.computerhistory.org/timeline/1995/"
+  },
+  {
+    "id": "JDK1",
+    "domain": "JAVA",
+    "title": "1996: JDK 1.0 FCS",
+    "date": "1996-01-23",
+    "url": "https://docs.oracle.com/javase/tutorial/information/history.html"
+  },
+  {
+    "id": "JAVA5",
+    "domain": "JAVA",
+    "title": "2004: Java SE 5 generics, annotations, autoboxing, enums, foreach",
+    "date": "2004-09-30",
+    "url": "https://docs.oracle.com/javase/specs/jls/se7/html/jls-0-preface3.html"
+  },
+  {
+    "id": "SATA",
+    "domain": "STORAGE_ISOLATION",
+    "title": "2003: SATA 1.0a",
+    "date": "2003-01-01",
+    "url": "https://sata-io.org/sites/default/files/documents/SATA_Infographic_20_Years.pdf"
+  },
+  {
+    "id": "NVME1",
+    "domain": "STORAGE_ISOLATION",
+    "title": "2011: NVMe 1.0",
+    "date": "2011-03-01",
+    "url": "https://nvmexpress.org/ssd-drives-promise/"
+  },
+  {
+    "id": "JAVA8",
+    "domain": "JAVA",
+    "title": "2014: Java 8 lambda expressions and related language changes",
+    "date": "2014-03-01",
+    "url": "https://www.oracle.com/java/technologies/javase/8-whats-new.html"
+  },
+  {
+    "id": "NIST88R1",
+    "domain": "STORAGE_ISOLATION",
+    "title": "2014: NIST SP 800-88 Rev.1 era begins",
+    "date": "2014-12-17",
+    "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final"
+  },
+  {
+    "id": "NVMEOF",
+    "domain": "STORAGE_ISOLATION",
+    "title": "2016: NVMe over Fabrics 1.0",
+    "date": "2016-06-09",
+    "url": "https://nvmexpress.org/nvm-express-over-fabrics-specification-released/"
+  },
+  {
+    "id": "JAVA9",
+    "domain": "JAVA",
+    "title": "2017: Java 9 module system",
+    "date": "2017-09-01",
+    "url": "https://docs.oracle.com/javase/9/language/"
+  },
+  {
+    "id": "IPV6",
+    "domain": "NETWORKING",
+    "title": "2017: RFC 8200 IPv6 specification",
+    "date": "2017-07-01",
+    "url": "https://www.rfc-editor.org/info/rfc8200/"
+  },
+  {
+    "id": "TLS13",
+    "domain": "NETWORKING",
+    "title": "2018: TLS 1.3",
+    "date": "2018-08-01",
+    "url": "https://www.rfc-editor.org/info/rfc8446/"
+  },
+  {
+    "id": "JAVA11",
+    "domain": "JAVA",
+    "title": "2018: Java 11 LTS in six-month cadence",
+    "date": "2018-09-01",
+    "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html"
+  },
+  {
+    "id": "QUIC",
+    "domain": "NETWORKING",
+    "title": "2021: RFC 9000 QUIC",
+    "date": "2021-05-01",
+    "url": "https://www.rfc-editor.org/info/rfc9000/"
+  },
+  {
+    "id": "JAVA17",
+    "domain": "JAVA",
+    "title": "2021: Java 17 LTS",
+    "date": "2021-09-01",
+    "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html"
+  },
+  {
+    "id": "HTTP3",
+    "domain": "NETWORKING",
+    "title": "2022: RFC 9114 HTTP/3",
+    "date": "2022-06-01",
+    "url": "https://www.rfc-editor.org/rfc/rfc9114.html"
+  },
+  {
+    "id": "TCP9293",
+    "domain": "NETWORKING",
+    "title": "2022: RFC 9293 consolidates modern TCP",
+    "date": "2022-08-01",
+    "url": "https://www.rfc-editor.org/rfc/rfc9293.html"
+  },
+  {
+    "id": "FENG_SENSOR",
+    "domain": "FENG_SHUI_SPATIAL",
+    "title": "2022: exploratory sensor-based feng shui study",
+    "date": "2022-10-25",
+    "url": "https://arxiv.org/abs/2210.13672"
+  },
+  {
+    "id": "JAVA21",
+    "domain": "JAVA",
+    "title": "2023: Java 21 LTS",
+    "date": "2023-09-01",
+    "url": "https://www.oracle.com/java/technologies/java-se-support-roadmap.html"
+  },
+  {
+    "id": "NVME21",
+    "domain": "STORAGE_ISOLATION",
+    "title": "2024: NVMe 2.1 specification family",
+    "date": "2024-08-01",
+    "url": "https://nvmexpress.org/specification/changes-in-nvm-express-revision-2-1/"
+  },
+  {
+    "id": "JAVA25",
+    "domain": "JAVA",
+    "title": "2025: Java 25 LTS",
+    "date": "2025-09-16",
+    "url": "https://www.oracle.com/news/announcement/oracle-releases-java-25-2025-09-16/"
+  },
+  {
+    "id": "NIST88R2",
+    "domain": "STORAGE_ISOLATION",
+    "title": "2025: NIST SP 800-88 Rev.2",
+    "date": "2025-09-26",
+    "url": "https://csrc.nist.gov/pubs/sp/800/88/r2/final"
+  },
+  {
+    "id": "FENG_VIS",
+    "domain": "FENG_SHUI_SPATIAL",
+    "title": "2025: feng shui used explicitly as a visualization-design metaphor, not empirical truth",
+    "date": "2025-09-30",
+    "url": "https://arxiv.org/abs/2510.00344"
+  },
+  {
+    "id": "JAVA26",
+    "domain": "JAVA",
+    "title": "2026: Java SE 26",
+    "date": "2026-03-01",
+    "url": "https://docs.oracle.com/javase/specs/"
+  },
+  {
+    "id": "PQC_ENG",
+    "domain": "NETWORKING",
+    "title": "2026: RFC 9958 Post-Quantum Cryptography for Engineers",
+    "date": "2026-06-01",
+    "url": "https://www.rfc-editor.org/rfc/rfc9958.html"
+  },
+  {
+    "id": "TLS_REQ",
+    "domain": "NETWORKING",
+    "title": "2026: new TLS protocols must require TLS 1.3",
+    "date": "2026-07-01",
+    "url": "https://www.rfc-editor.org/rfc/rfc9852.html"
+  },
+  {
+    "id": "PQTLS",
+    "domain": "NETWORKING",
+    "title": "2026: PQ/traditional hybrid key agreements for TLS 1.3",
+    "date": "2026-08-01",
+    "url": "https://www.rfc-editor.org/rfc/rfc10024.html"
+  },
+  {
+    "id": "JAVA27",
+    "domain": "JAVA",
+    "title": "2026: Java SE 27",
+    "date": "2026-09-01",
+    "url": "https://docs.oracle.com/javase/specs/"
+  },
+  {
+    "id": "APPLE_LAYOUT",
+    "domain": "ART_BEAUTY",
+    "title": "Current layout guidance: hierarchy, spacing, progressive disclosure",
+    "date": "2026-09-19",
+    "url": "https://developer.apple.com/design/human-interface-guidelines/layout"
+  },
+  {
+    "id": "WCAG22",
+    "domain": "ART_BEAUTY",
+    "title": "WCAG 2.2: perceivable, operable, understandable, robust",
+    "date": "2026-02-11",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/"
+  }
+]
