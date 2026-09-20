@@ -1,0 +1,49 @@
+{
+  "schema": "OaSIs.Project.MoreGarbage.v00",
+  "display_name": "M.O.R.E.G.A.R.B.A.G.E.",
+  "alias": "NO MORE GARBAGE",
+  "status": "riff_scaffold",
+  "frozen": false,
+  "source_chunks": [
+    "MO",
+    "RE",
+    "GA",
+    "RB",
+    "AG",
+    "E"
+  ],
+  "operators": [
+    {
+      "op": "-rem",
+      "input": "MO"
+    },
+    {
+      "op": "+verify",
+      "input": "RE"
+    },
+    {
+      "op": "+sor",
+      "input": "GA"
+    },
+    {
+      "op": "+verify",
+      "input": "RB"
+    },
+    {
+      "op": "compress to",
+      "input": "AG",
+      "annotation": "Ag / silver"
+    },
+    {
+      "op": "expand as",
+      "input": "E",
+      "output_hint": "E++..."
+    }
+  ],
+  "isomorphic_repair_rule": {
+    "same_invariant": "translate/repair representation directly",
+    "changed_invariant": "declare new explicit isomorph"
+  },
+  "motif": "MR FUSION / Back to the Future riff",
+  "lean": null
+}

@@ -349,3 +349,18 @@ Source SHA-256:
 ```
 
 Public page: `architecture/o3/`. O3 is frozen; later work attaches as descendants.
+
+## M.O.R.E.G.A.R.B.A.G.E. — riff scaffold
+
+New unfrozen project:
+
+```text
+MO | RE | GA | RB | AG | E
+-rem | +verify | +sor | +verify | compress | expand
+```
+
+Working alias: **NO MORE GARBAGE**.
+
+Isomorphic repair rule: if the invariant is unchanged, translate/repair the representation directly; if the invariant changes, declare another explicit isomorph.
+
+Project page: `projects/more-garbage/`. No Lean checkpoint yet.

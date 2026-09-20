@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d100e">
+<meta name="description" content="M.O.R.E.G.A.R.B.A.G.E. — an OaSIs isomorphic-language riff: remove, verify, carry, compress, expand.">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>M.O.R.E.G.A.R.B.A.G.E. · OaSIs</title>
+<style>
+:root{--bg:#0b0e0c;--panel:#141814;--line:#2b312c;--text:#f1f0e8;--muted:#969d94;--sage:#b5c6a5;--silver:#d2d5d6}*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 560px at 15% -10%,rgba(210,213,214,.10),transparent 62%),radial-gradient(720px 500px at 95% 10%,rgba(181,198,165,.08),transparent 58%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}.wrap{width:min(1100px,calc(100% - 28px));margin:auto}nav{position:sticky;top:0;background:rgba(11,14,12,.84);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);z-index:4}.nav{height:62px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900}.brand span{color:var(--silver)}a{color:inherit}.back{text-decoration:none;color:var(--muted);font-size:12px}.hero{padding:86px 0 38px}.eyebrow{font:700 11px ui-monospace;color:var(--sage);letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(38px,8vw,100px);letter-spacing:-.07em;line-height:.9;margin:16px 0 20px}.lead{max-width:760px;font-size:18px;line-height:1.65;color:#b7bcb4}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;padding:12px 0 64px}.card{grid-column:span 6;border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:20px}.wide{grid-column:1/-1}.k{font:700 10px ui-monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}pre{margin:0;white-space:pre-wrap;overflow:auto;font:13px/1.75 ui-monospace;color:#d3d8d1}.chunks{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.chunk{border:1px solid var(--line);border-radius:12px;padding:14px 8px;text-align:center;font:800 24px ui-monospace}.chunk small{display:block;margin-top:6px;font:10px ui-monospace;color:var(--muted)}.silver{color:var(--silver)}.flow{font:800 24px/1.35 ui-monospace}.muted{color:var(--muted)}.note{border-left:2px solid var(--silver);padding:12px 14px;color:var(--muted);background:rgba(210,213,214,.04);font-size:12px;line-height:1.6}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{text-decoration:none;border:1px solid #465246;border-radius:10px;padding:10px 13px;font-size:12px;font-weight:750;background:#171c18}.btn:hover{border-color:var(--sage)}footer{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--muted);font-size:11px}@media(max-width:800px){.card{grid-column:1/-1}.chunks{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav"><div class="brand">OaSIs <span>MORE GARBAGE</span></div><a class="back" href="../../">← root</a></div></nav>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">project riff · not frozen</div><h1>M.O.R.E.<br>G.A.R.B.A.G.E.</h1><p class="lead">A tiny isomorphic-language recycler: split the phrase into six chunks, apply the supplied operators, preserve the invariant, and see whether the output really deserves the name <strong>NO MORE GARBAGE</strong>.</p></section>
+<section class="grid">
+<article class="card wide"><div class="k">source chunks</div><div class="chunks"><div class="chunk">MO<small>-rem</small></div><div class="chunk">RE<small>+verify</small></div><div class="chunk">GA<small>+sor</small></div><div class="chunk">RB<small>+verify</small></div><div class="chunk silver">AG<small>compress → Ag</small></div><div class="chunk">E<small>expand → E++...</small></div></div></article>
+<article class="card"><div class="k">operator chain</div><pre>`-rem` mo
+`+verify` re
+`+sor` ga
+`+verify` rb
+`compress to` ag (silver)
+`expand as` e ++...</pre></article>
+<article class="card"><div class="k">mr fusion riff</div><div class="flow">MORE GARBAGE<br><span class="muted">↓</span><br>NO MORE GARBAGE<br><span class="muted">↓</span><br>MR FUSION</div></article>
+<article class="card wide"><div class="k">isomorphic repair rule</div><pre>same invariant + different spelling / chunking / medium
+→ translate or repair directly
+
+invariant changed
+→ declare another explicit isomorph</pre></article>
+<article class="card wide"><div class="note">This page is intentionally a scaffold, not a frozen grammar. <code>+sor</code> remains literal until examples define it. Ag is used as the silver compression token/pun; “Mr Fusion” is the Back to the Future motif, not a physical-fusion claim.</div><div class="actions"><a class="btn" href="README.md">Project notes</a><a class="btn" href="more-garbage-v00.json">Machine-readable scaffold</a></div></article>
+</section></main><footer><div class="wrap">M.O.R.E.G.A.R.B.A.G.E. · OaSIs riff scaffold · keep the invariant, recycle the representation</div></footer></body></html>
