@@ -586,3 +586,41 @@ The Lean search address space is `Nat`, providing no fixed maximum index. Each e
 `SubAtomicPrim.03` remains provenance, but its `goneForever` result is superseded for this unbounded search primitive.
 
 Lean status: **pending user 0e confirmation**.
+
+
+## BOXy general primitive — 2026-09-20
+
+Correction: the search machinery is an application of a more general BOXy primitive.
+
+Fresh candidate:
+
+~~~text
+Oasis.Boxy.GeneralPrimitive.00.lean
+~~~
+
+Literal relation:
+
+~~~text
+6 in 4
+trying to be 3
+while 2 = ?
+1 pushes
+0 is total
+~~~
+
+Role map:
+
+~~~text
+6 = inside
+4 = box
+3 = target
+2 = query / ?
+1 = push
+0 = total
+~~~
+
+This is relational notation, not ordinary arithmetic. The primitive does not assert `6 = 3`; it records `6` as the current inside value and `3` as the target role.
+
+Mandel / Juliet / mojibake search are descendants or applications, not required semantics of BOXy itself.
+
+Lean status: **pending user 0e confirmation**.
