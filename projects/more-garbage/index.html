@@ -46,7 +46,32 @@ rejected objects do not re-enter the cycle</pre></article>
 
 no plausible-guess repair
 no fabricated replacement</pre></article>
-<article class="card wide"><div class="k">executable v00 · benchmark</div><div class="flow">11 / 11 FIXED PASS<br>60 / 60 SYNTHETIC PASS</div><pre style="margin-top:18px">cafÃ©        → café          [cp1252]
+<article class="card wide"><div class="k">v01 · primitive scope · current</div><pre>i = current primitive
+
+right?
+├── Y → +1 → MOVE ON
+└── N → (0,0,0,-1) DOWN
+          ↓
+       local search
+          ↓
+       one recovered primitive
+
+base walk: n
+search-down cost: n
+structural worst case: n × n = n²</pre></article>
+<article class="card wide"><div class="k">primitive benchmark</div><div class="flow">6 / 6 PASS</div><pre style="margin-top:18px">M → Y → +1 → move on
+
+Mona                                             → Mona
+cafÃ©                                            → café
+cafÃƒÂ©                                          → café
+K√∂nig                                          → König
+Mona Lisa local corrupted apostrophe cluster     → ’
+caf�                                             → caf  [rm current primitive → advance]
+
+white-whale sentence cost: 91
+recursion/search invoked at exactly 1 local primitive</pre><div class="actions"><a class="btn" href="more_garbage_v01.py">v01 runtime</a><a class="btn" href="ALGORITHM-v01.md">v01 algorithm</a><a class="btn" href="benchmarks/primitive-scope-results-v01.json">v01 results</a><a class="btn" href="../../lean/Oasis.MoreGarbage.01.lean">Lean v01</a></div></article>
+<article class="card wide"><div class="note">The v00 whole-string benchmark remains historical provenance. v01 supersedes it on scope: scan primitives linearly and pay recursion/search cost only on a NO alignment.</div></article>
+<article class="card wide"><div class="k">executable v00 · benchmark · superseded scope</div><div class="flow">11 / 11 FIXED PASS<br>60 / 60 SYNTHETIC PASS</div><pre style="margin-top:18px">cafÃ©        → café          [cp1252]
 MÃ¼nchen     → München       [cp1252]
 itâ€™s       → it’s          [cp1252]
 ðŸ˜‚         → 😂            [cp1252]

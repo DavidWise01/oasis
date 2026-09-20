@@ -1,0 +1,61 @@
+{
+  "schema": "OaSIs.MoreGarbage.PrimitiveScopeResults.v01",
+  "status": "PASS",
+  "passed": 6,
+  "total": 6,
+  "cases": [
+    {
+      "id": "linear-mona",
+      "pass": true,
+      "output": "Mona",
+      "cost": 4,
+      "repaired_primitives": 0,
+      "removed_primitives": 0
+    },
+    {
+      "id": "cp1252-single-primitive",
+      "pass": true,
+      "output": "café",
+      "cost": 6,
+      "repaired_primitives": 1,
+      "removed_primitives": 0
+    },
+    {
+      "id": "double-cp1252-single-primitive",
+      "pass": true,
+      "output": "café",
+      "cost": 8,
+      "repaired_primitives": 1,
+      "removed_primitives": 0
+    },
+    {
+      "id": "macroman-single-primitive",
+      "pass": true,
+      "output": "König",
+      "cost": 9,
+      "repaired_primitives": 1,
+      "removed_primitives": 0
+    },
+    {
+      "id": "mona-lisa-local-white-whale",
+      "pass": true,
+      "output": "The Mona Lisa doesn’t have eyebrows.",
+      "cost": 91,
+      "repaired_primitives": 1,
+      "removed_primitives": 0
+    },
+    {
+      "id": "lost-primitive-rm-forward",
+      "pass": true,
+      "output": "caf",
+      "cost": 4,
+      "repaired_primitives": 0,
+      "removed_primitives": 1
+    }
+  ],
+  "cost_model": {
+    "aligned_scan": "n",
+    "failed_local_search": "n",
+    "structural_worst_case": "n^2"
+  }
+}

@@ -364,3 +364,27 @@ verify envelope  = 20
 ```
 
 The historical filename `Oasis.GroundTruth.MitosisIso.00.lean` remains provenance only. `O3` is immutable by release convention; descendants append rather than modify it.
+
+## MORE GARBAGE primitive-scope correction — 2026-09-20
+
+`Oasis.MoreGarbage.00.lean` is retained as provenance but its whole-object scope is superseded.
+
+Fresh candidate:
+
+```text
+Oasis.MoreGarbage.01.lean
+```
+
+v01 formalizes:
+
+```text
+Y → +1 → move on
+N → (0,0,0,-1) down → search
+scan cost = n
+search model = n × n = n²
+rm / A::xx = delete current + move forward
+```
+
+Primitive-scope runtime regression: **6/6 PASS**.
+
+Lean v01 remains pending user `0e` confirmation.

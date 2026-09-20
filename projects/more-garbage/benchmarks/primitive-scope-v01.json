@@ -1,0 +1,42 @@
+{
+  "schema": "OaSIs.MoreGarbage.PrimitiveScope.v01",
+  "cases": [
+    {
+      "id": "linear-mona",
+      "input": "Mona",
+      "expected_output": "Mona",
+      "expected_repairs": 0,
+      "law": "M is right -> Y -> +1 -> move on"
+    },
+    {
+      "id": "cp1252-single-primitive",
+      "input": "cafÃ©",
+      "expected_output": "café",
+      "expected_repairs": 1
+    },
+    {
+      "id": "double-cp1252-single-primitive",
+      "input": "cafÃƒÂ©",
+      "expected_output": "café",
+      "expected_repairs": 1
+    },
+    {
+      "id": "macroman-single-primitive",
+      "input": "K√∂nig",
+      "expected_output": "König",
+      "expected_repairs": 1
+    },
+    {
+      "id": "mona-lisa-local-white-whale",
+      "input": "The Mona Lisa doesnÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t have eyebrows.",
+      "expected_output": "The Mona Lisa doesn’t have eyebrows.",
+      "expected_repairs": 1
+    },
+    {
+      "id": "lost-primitive-rm-forward",
+      "input": "caf�",
+      "expected_output": "caf",
+      "expected_removed": 1
+    }
+  ]
+}

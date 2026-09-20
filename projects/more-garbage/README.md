@@ -188,3 +188,50 @@ Files:
 - `../../lean/Oasis.MoreGarbage.00.lean`
 
 The Lean module proves the five-gate routing law and A::xx delete-and-advance semantics. It is fresh and remains pending user `0e` compilation.
+
+
+## v01 correction — primitive scope
+
+v00 tested whole strings. That was the wrong scope for this engine.
+
+Current model:
+
+```text
+i = one current primitive
+
+right?
+├── Y → +1 → move on
+└── N → (0,0,0,-1) down
+          ↓
+       local search / recursion cost
+```
+
+For `Mona`:
+
+```text
+M → Y → +1
+o → Y → +1
+n → Y → +1
+a → Y → +1
+```
+
+A failed alignment pays the search cost. The base walk is linear `n`; searching down across a bounded local neighborhood gives the structural `n · n = n²` worst-case model.
+
+The corrected runtime is `more_garbage_v01.py`. It searches only when the current primitive answers NO, and a successful local search must distill the corrupted cluster to exactly one output primitive.
+
+Primitive-scope regression:
+
+```text
+6 / 6 PASS
+
+Mona                                              → Mona
+cafÃ©                                             → café
+cafÃƒÂ©                                           → café
+K√∂nig                                           → König
+The Mona Lisa doesnÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t ...       → The Mona Lisa doesn’t ...
+caf�                                              → caf   [rm failed primitive, advance]
+```
+
+Fresh Lean descendant: `Oasis.MoreGarbage.01.lean`, pending user `0e`.
+
+v00 remains provenance and is superseded on **scope**, not erased.

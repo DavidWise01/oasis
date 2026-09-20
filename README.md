@@ -393,3 +393,18 @@ FAIL → rm → delete → free space → advance → next
 ```
 
 Delete is terminal for the current object and forward-only for the stream.
+
+
+### MORE GARBAGE v01 — primitive scope
+
+The current recycler scope is one primitive at a time, not one sentence.
+
+```text
+right? Y → +1 → move on
+right? N → (0,0,0,-1) down → local search
+```
+
+Base scan is `n`; local failed-alignment search yields the structural `n²` worst-case model. Primitive regression: **6/6 PASS**.
+
+Current runtime: `projects/more-garbage/more_garbage_v01.py`.
+Fresh Lean descendant: `lean/Oasis.MoreGarbage.01.lean` (pending user `0e`).

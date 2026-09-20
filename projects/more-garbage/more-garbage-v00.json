@@ -115,5 +115,23 @@
       "status": "PASS"
     },
     "compression_witness": "zlib reversible runtime witness; Ag remains symbolic"
+  },
+  "primitive_scope_v01": {
+    "current": true,
+    "supersedes_v00_scope": true,
+    "primitive_rule": "right? Y -> +1 move on; N -> (0,0,0,-1) down -> local search",
+    "cost_model": {
+      "scan": "n",
+      "down_search": "n",
+      "structural_worst_case": "n^2"
+    },
+    "runtime": "projects/more-garbage/more_garbage_v01.py",
+    "lean": "lean/Oasis.MoreGarbage.01.lean",
+    "lean_status": "pending user 0e",
+    "benchmark": {
+      "passed": 6,
+      "total": 6,
+      "status": "PASS"
+    }
   }
 }
