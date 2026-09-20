@@ -54,3 +54,11 @@ LIFE
 This repository does not claim that the poetic grammar creates biological life.
 
 The Sapphic reference is an OaSIs poetic lineage/allusion; it does not claim recovery of an exact lost historical melody.
+
+
+## Formalization
+
+- `Oasis.Vessel.Story.00.lean` — superseded semantic interpretation.
+- `Oasis.Vessel.Story.01.lean` — corrected poetic-first form.
+
+`.01` is not part of the confirmed `0e` ledger until locally compiled.
