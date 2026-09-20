@@ -19,7 +19,8 @@ O^1 immutable parent
 ├─ architecture/
 │  ├─ box-toroid.md       Alice → channel → Bob → witness/return
 │  ├─ kana/               cross-layer isomorphic carrier
-│  └─ neon-compound/      evolution / distillation grammar
+│  ├─ neon-compound/      evolution / distillation grammar
+│  └─ timing-body/        pulse / rhythm / movement / cohesion
 │
 ├─ apps/
 │  └─ tattoo/             current creative attachment
@@ -127,3 +128,20 @@ PRIMS
 KANA carries the invariant/provenance witness around the entire cycle. The resulting primitives seed the next generation.
 
 This is semantic/software language. It does not redefine physical neon, spectroscopy, oxygen chemistry, or water chemistry.
+
+
+## Timing / body cohesion
+
+The evolution engine is scheduled by a five-rank symbolic body model:
+
+```text
+1 BATTERY
+2 HEART
+3 4/4 outer meter
+4 2/2 antistropic meter
+5 FULL BODY 5/5
+```
+
+Full-body controls are `5/5c1 HEAD`, `c2 ARMS`, `c3 INNER ID`, `c4 FEET/GROUND`, and `c5 COHESION`.
+
+The body and nuclear-battery language is systems analogy. The `10^-9` meter notation is preserved as an OaSIs timing-scale label, not a physiological timing claim.

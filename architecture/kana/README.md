@@ -88,3 +88,18 @@ PRIMS → N_cold → E_carrier → O_hot → N_gray → H₂O_distill → PRIMS'
 ```
 
 The shared invariant is carried across each representation change. A failed witness becomes explicit drift or unresolved gray state rather than being silently repaired.
+
+
+## Timing witness
+
+KANA's invariant now explicitly includes timing order:
+
+```text
+state@n
+  ↓
+BATTERY → HEART → 4/4 → 2/2 → BODY 5/5
+  ↓
+state@n+1
+```
+
+The witness binds identity + provenance + timing order + domain contract. Phase disagreement is surfaced as drift rather than silently normalized.

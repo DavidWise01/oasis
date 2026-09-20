@@ -90,3 +90,14 @@ A generation is valid when:
 8. the resulting primitives are smaller/equal in semantic ambiguity, or the ambiguity is explicitly recorded.
 
 This is the default evolution grammar for new OaSIs descendants.
+
+
+## Timing / cohesion gate
+
+NEON evolution is now scheduled inside the body-cohesion timing layer:
+
+```text
+BATTERY → HEART → [4/4 :: 2/2] → NEON cycle → FULL BODY 5/5 → COHESION → KANA witness
+```
+
+A generation may be computed before cohesion, but it is not silently committed as the next primitive generation until the timing/body contract and KANA witness pass.
