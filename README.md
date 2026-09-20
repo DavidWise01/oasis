@@ -21,7 +21,8 @@ O^1 immutable parent
 │  ├─ kana/               cross-layer isomorphic carrier
 │  ├─ neon-compound/      evolution / distillation grammar
 │  ├─ timing-body/        pulse / rhythm / movement / cohesion
-│  └─ timing-capacitance/ capacitance / pulse-pattern grammar
+│  ├─ timing-capacitance/ capacitance / pulse-pattern grammar
+│  └─ vessel-story/      KANA/WAKA poetic vessel compression
 │
 ├─ apps/
 │  └─ tattoo/             current creative attachment
@@ -162,3 +163,16 @@ head  3×1×3^3×3  [77 55 00 00 55 77 00]
 ```
 
 The common primitive is `charge → transition → discharge → witness/reset`. Biological and capacitance terminology is systems analogy; the 10^-10 label is not asserted as physiological timing.
+
+
+## Vessel story
+
+The current stack compresses to a two-sentence construction story:
+
+> KANA moves through WAKA, sung on a Sapphic-lyre pulse, carrying the centered refrain ::::X:::: gonna give it to you through rhythm, witness, and return until the structure distills back to primitives.
+
+> Those primitives do not create life; they assemble a vessel whose power, pulse, sensing, expression, diagnostics, grounding, and cohesion are ready to host or support life.
+
+Canonical refrain: `::::X:::: gonna give it to you`.
+
+The architecture explicitly distinguishes a **vessel for life** from **creation of life**.

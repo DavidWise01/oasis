@@ -160,3 +160,24 @@ NEON commit
 ```
 
 KANA witnesses pulse identity, ordering, provenance, and reset state. A malformed pulse is reported as drift rather than silently coerced.
+
+
+## WAKA / lyre handoff
+
+The capacitance patterns now feed the vessel narrative layer:
+
+```text
+KANA symbols
+  ↓
+WAKA ordering
+  ↓
+SAPPHIC_LYRE rhythmic mode
+  ↓
+::::X:::: centered refrain
+  ↓
+heart/lung/head/body pulse grammar
+  ↓
+cohesion
+```
+
+The rhythmic/poetic terms are OaSIs semantics; they do not assert a reconstructed historical Sapphic performance.

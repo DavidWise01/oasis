@@ -101,3 +101,22 @@ BATTERY → HEART → [4/4 :: 2/2] → NEON cycle → FULL BODY 5/5 → COHESION
 ```
 
 A generation may be computed before cohesion, but it is not silently committed as the next primitive generation until the timing/body contract and KANA witness pass.
+
+
+## Vessel distillation
+
+After pulse/body cohesion, the vessel story enters NEON and H₂O distillation:
+
+```text
+cohesive story
+  ↓
+NEON challenge/reconcile
+  ↓
+H₂O distill
+  ↓
+PRIMS
+  ↓
+VESSEL
+```
+
+The output is explicitly a vessel substrate, not a claim of life creation.

@@ -118,3 +118,14 @@ pattern@n+1
 ```
 
 The invariant is pulse identity + ordering + provenance + reset state. Heart, lung, head, and body patterns may have different arity while remaining isomorphic to the same four-phase pulse primitive.
+
+
+## KANA in WAKA
+
+The terminal narrative layer places KANA inside an ordered WAKA frame:
+
+```text
+KANA → WAKA → SAPPHIC_LYRE → ::::X:::: → pulse → witness
+```
+
+KANA still supplies the invariant. WAKA supplies sequence. The lyre mode supplies rhythm. `X` is the centered witness/transfer point. The completed narrative is later distilled back to primitives.
