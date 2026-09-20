@@ -491,3 +491,44 @@ lean/Oasis.MoreGarbage.SearchPrimitive.05.lean
 ~~~
 
 Fresh candidate, pending user `0e`.
+
+
+## Hardest unsolved moji target — irreversible collision
+
+The next target is deliberately not just deeper reversible mojibake. It is the first **information-loss collision**:
+
+~~~text
+different originals
+      ↓
+same observed U+FFFD site
+      ↓
+      �
+~~~
+
+Examples:
+
+~~~text
+caf�     ← café | cafè | cafê | cafë
+M�nchen  ← München | Mönchen
+it�s     ← it’s | it‘s | it´s
+�        ← 😂 | 😀 | 😭 | 💾 | é | ö | —
+~~~
+
+The runtime can correctly mark the site `PAUSED`, and nibble surgery can delete the unresolved placeholder, but that splice is not proof that the original primitive was recovered.
+
+This is the hard boundary:
+
+~~~text
+reversible corruption  → MANDEL can search/invert
+irreversible collision → multiple originals share one observed state
+                       → external witness required for unique recovery
+~~~
+
+Benchmark:
+
+~~~text
+benchmarks/hardest_unsolved_moji_v00.py
+benchmarks/hardest_unsolved_moji_v00.json
+~~~
+
+Five collision classes are intentionally unresolved from the observed string alone.

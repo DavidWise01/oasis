@@ -1,0 +1,46 @@
+{
+  "suite": "MORE GARBAGE hardest unsolved mojibake v00",
+  "target_class": "irreversible replacement-character collision",
+  "definition": "Two or more distinct source primitives produce the same observed U+FFFD-damaged text; therefore the original is not identifiable from the observed string alone.",
+  "status": "UNSOLVED_BY_DESIGN_WITHOUT_EXTERNAL_WITNESS",
+  "reason": "non-injective loss: multiple originals map to one observed state",
+  "cases": [
+    {
+      "observed": "caf�",
+      "originals": ["café", "cafè", "cafê", "cafë"],
+      "candidate_count": 4,
+      "runtime": {"stage1_status": "DONE_WITH_PAUSED", "stage1_output": "caf?", "suture_output": "caf", "paused_primitives": 1},
+      "uniquely_recoverable_from_observed_only": false
+    },
+    {
+      "observed": "M�nchen",
+      "originals": ["München", "Mönchen"],
+      "candidate_count": 2,
+      "runtime": {"stage1_status": "DONE_WITH_PAUSED", "stage1_output": "M?nchen", "suture_output": "Mnchen", "paused_primitives": 1},
+      "uniquely_recoverable_from_observed_only": false
+    },
+    {
+      "observed": "na�ve",
+      "originals": ["naïve", "naíve", "naîve"],
+      "candidate_count": 3,
+      "runtime": {"stage1_status": "DONE_WITH_PAUSED", "stage1_output": "na?ve", "suture_output": "nave", "paused_primitives": 1},
+      "uniquely_recoverable_from_observed_only": false
+    },
+    {
+      "observed": "it�s",
+      "originals": ["it’s", "it‘s", "it´s"],
+      "candidate_count": 3,
+      "runtime": {"stage1_status": "DONE_WITH_PAUSED", "stage1_output": "it?s", "suture_output": "its", "paused_primitives": 1},
+      "uniquely_recoverable_from_observed_only": false
+    },
+    {
+      "observed": "�",
+      "originals": ["😂", "😀", "😭", "💾", "é", "ö", "—"],
+      "candidate_count": 7,
+      "runtime": {"stage1_status": "DONE_WITH_PAUSED", "stage1_output": "?", "suture_output": "", "paused_primitives": 1},
+      "uniquely_recoverable_from_observed_only": false
+    }
+  ],
+  "all_cases_ambiguous": true,
+  "runtime_behavior": "v03 marks U+FFFD as PAUSED; nibble surgery can remove the placeholder, but deletion is a splice, not proof of original recovery."
+}
