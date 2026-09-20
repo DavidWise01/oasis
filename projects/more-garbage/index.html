@@ -29,6 +29,12 @@
 
 invariant changed
 → declare another explicit isomorph</pre></article>
+<article class="card wide"><div class="k">rm / cycle gate</div><pre>+verify → +sort → +verify → compress → expand
+
+all five YES → next cycle
+any NO       → rm → delete → free space → next candidate
+
+rejected objects do not re-enter the cycle</pre></article>
 <article class="card wide"><div class="k">repair law</div><pre>recover original invariant?
 ├── YES → ISOMORPHIC → distill → AETHER | TEMPORAL
 └── NO  → UNFIXABLE

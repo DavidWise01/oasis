@@ -374,3 +374,13 @@ NO  → UNFIXABLE
 ```
 
 The project does not substitute plausible-looking output for a recovered invariant.
+
+
+### MORE GARBAGE `rm` law
+
+```text
+five downstream checks all YES → next cycle
+any one NO → rm → delete → free space → next candidate
+```
+
+Rejected working objects do not re-enter the next cycle.

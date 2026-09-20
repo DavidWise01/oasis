@@ -60,5 +60,24 @@
       "fabricate": false
     },
     "rule": "plausibility is not repair"
+  },
+  "rm": {
+    "role": "rejection/free-space edge",
+    "downstream_checks": [
+      "+verify",
+      "+sort",
+      "+verify",
+      "compress",
+      "expand"
+    ],
+    "acceptance": "all five must be YES",
+    "on_any_no": [
+      "rm",
+      "delete working object",
+      "free space",
+      "move to next candidate"
+    ],
+    "enters_next_cycle_on_failure": false,
+    "retry_failed_candidate": false
   }
 }

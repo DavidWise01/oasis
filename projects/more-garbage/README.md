@@ -92,3 +92,39 @@ A candidate is valid only when the same underlying invariant can be recovered in
 If the invariant cannot be recovered, the engine must return **unfixable** rather than fabricate a replacement.
 
 `AETHER` and `TEMPORAL` are preserved here as named recoverable destinations. Their finer distinction is intentionally not inferred in this scaffold.
+
+
+## `rm` — rejection / free-space edge
+
+`rm` is not one of the five acceptance transforms. It is the failure edge around them.
+
+```text
+candidate
+   ↓
++verify → +sort → +verify → compress → expand
+   │         │        │         │         │
+   └── NO ───┴── NO ──┴── NO ───┴── NO ──┴── NO
+                       ↓
+                       rm
+                       ↓
+                     delete
+                       ↓
+                   free space
+                       ↓
+                 next candidate
+```
+
+Acceptance law:
+
+```text
+YES ∧ YES ∧ YES ∧ YES ∧ YES
+→ may enter next cycle
+
+any NO
+→ rm
+→ do not enter next cycle
+→ free the working space
+→ move on
+```
+
+The engine does not carry a rejected working object forward for another repair pass.
