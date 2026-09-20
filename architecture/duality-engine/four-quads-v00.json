@@ -1,0 +1,54 @@
+{
+  "schema": "OaSIs.DualityEngine.FourQuads.v00",
+  "outer_glyph": "((2x2))^((2x2))^2",
+  "interpretation": "four-quad envelope; not ordinary exponent expansion",
+  "quad_count": 4,
+  "quads": [
+    {
+      "id": "Q1",
+      "tokens": [
+        "a",
+        "ablation",
+        "must pass 13-bit emergent prims",
+        "8 or 2^3",
+        "logic deescilation"
+      ],
+      "emergent_width_bits": 13,
+      "ordinary_arithmetic": {
+        "expression": "2^3",
+        "value": 8
+      }
+    },
+    {
+      "id": "Q2",
+      "tokens": [
+        "2^2",
+        "verify cubic"
+      ],
+      "ordinary_arithmetic": {
+        "expression": "2^2",
+        "value": 4
+      }
+    },
+    {
+      "id": "Q3",
+      "tokens": [
+        "1^1",
+        "isomorphic x isomorphic"
+      ],
+      "ordinary_arithmetic": {
+        "expression": "1^1",
+        "value": 1
+      }
+    },
+    {
+      "id": "Q4",
+      "tokens": [
+        "0^0^0 = 81"
+      ],
+      "symbolic_root_value": 81,
+      "ordinary_arithmetic_claim": false
+    }
+  ],
+  "rule": "exactly four quads; separators :::: delimit quads; do not invent a fifth"
+}

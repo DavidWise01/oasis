@@ -221,3 +221,19 @@ LIVE/SEEK | TELL/STORE
 Crossed as `2^2 = 4`.
 
 The Möbius turn is that the character searches for a vessel to preserve life while the act of telling becomes the vessel that preserves the instance.
+
+
+## Four-quad duality descent
+
+Current explicit four-quad form:
+
+```text
+((2x2))^((2x2))^2
+
+Q1 :: a / ablation / 13-bit emergent / 2^3 = 8 / logic deescilation
+Q2 :: 2^2 = 4 / verify cubic
+Q3 :: 1^1 = 1 / isomorphic x isomorphic
+Q4 :: 0^0^0 = 81  [OaSIs symbolic root token]
+```
+
+The `::::` separators delimit exactly four quads.
