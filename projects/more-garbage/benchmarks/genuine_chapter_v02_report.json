@@ -1,0 +1,41 @@
+{
+  "suite": "MORE GARBAGE genuine messy chapter v02",
+  "source_title": "The Misadventures of the Venerable Mister Pinker - Chapter One",
+  "source_author": "Christian Goodrich",
+  "source_url": "https://neverwintervault.org/article/fan-fiction/misadventures-venerable-mister-pinker-chapter-one",
+  "source_page_date": "2015-09-24",
+  "source_type": "naturally mojibaked live web chapter; no benchmark-seeded corruption",
+  "input_sha256": "faf3010a6e2cd17d2fd74e89591fdb8e3dbb8c783b69ed11b97972dcc5bd6bf7",
+  "output_sha256": "a68ce3e5bddc335cf119bd68c91f9670cf435345e26246958279001f97966c44",
+  "input_chars": 14020,
+  "output_chars": 13728,
+  "input_words": 2396,
+  "output_words": 2396,
+  "status": "DONE",
+  "repaired_primitives": 146,
+  "paused_primitives": 0,
+  "search_checks": 348399,
+  "elapsed_seconds": 40.547,
+  "mojibake_signatures_before": {
+    "â€™": 36,
+    "â€œ": 55,
+    "â€": 47,
+    "â€”": 5,
+    "â€¦": 2
+  },
+  "mojibake_signatures_after": {},
+  "residual_signature_count": 0,
+  "repair_path_counts": {
+    "cp1252": 99,
+    "cp1252_loose": 47
+  },
+  "representative_repaired_outputs": {
+    "“": 55,
+    "”": 47,
+    "’": 36,
+    "—": 5,
+    "…": 2,
+    "‘": 1
+  },
+  "fix_trigger": "genuine page exposed hybrid cp1252 damage with undefined 0x9D preserved as U+009D; v06 adds exact reversible cp1252_loose path"
+}
