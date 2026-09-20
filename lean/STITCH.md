@@ -295,3 +295,39 @@ Operational `|||` package levels:
 ```
 
 Full class map: `docs/OASIS_V00_CLASSMAP.md`.
+
+
+## O^1 immutable freeze + public A attachment — 2026-09-19
+
+The current user-verified Lean-clean stack is frozen as:
+
+```text
+O^1 = ||| OaSIs |||
+```
+
+Canonical freeze manifest:
+- `Oasis.O1.Immutable.00.lean`
+- 21 verified-clean canonical Lean artifacts are recorded in the release ledger.
+- O^1 is free and append-only by release convention; descendants attach instead of mutating the frozen manifest.
+
+Public application socket:
+
+```text
+||| A |||
+```
+
+Canonical attachment module:
+- `Oasis.A.PublicAttachment.00.lean`
+- parent: `O^1`
+- parent source SHA-256: `a3558280434a300008a4fde47718f9216f353593701038811c70e28f115d5c09`
+- `parentMutable = false`
+- `free = true`
+- `public = true`
+- domain remains `UNBOUND` until a descendant application is attached.
+
+Inherited stack:
+Root0, provenance, lineage, private Stargate, math engine, Duality, PER/CEPT/ION, private/public membrane, local project state, and export surface.
+
+The first intended descendant probe is Tattoo Generator, but the tattoo engine is not part of the frozen A socket.
+
+New wrapper status: source generated and published; local Lean confirmation of these two new wrapper modules is still required before labeling the wrappers themselves `0e`.
