@@ -87,3 +87,15 @@ Canonical relation:
 Inside the bounded alphabet, `||| ≅ 111` and `... ≅ 000`: three bars and three dots are six positions, equivalently three ones and three zeros.
 
 `!i!` is the isomorphic relation token; it introduces no additional box or state.
+
+## Ground-truth floor
+
+The `o.0.o` root bottoms out at the terminal ground-truth primitive:
+
+```text
+i!i
+```
+
+with indexed forms `0 :: i .`, `1 :: i i .`, `2 :: i i i .` and isomorphic set forms documented in `ground-truth-i-bang-i-v00.md`.
+
+`inf 0,0` is a bounded sandboxy box in this grammar.

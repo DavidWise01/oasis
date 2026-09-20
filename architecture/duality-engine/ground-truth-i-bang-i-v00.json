@@ -1,0 +1,78 @@
+{
+  "schema": "OaSIs.GroundTruthPrimitive.iBangI.v00",
+  "token": "i!i",
+  "role": "primitive primitive of ground truth",
+  "terminal": true,
+  "further_descent": false,
+  "indexed_form": [
+    {
+      "index": 0,
+      "tokens": [
+        "i",
+        "."
+      ]
+    },
+    {
+      "index": 1,
+      "tokens": [
+        "i",
+        "i",
+        "."
+      ]
+    },
+    {
+      "index": 2,
+      "tokens": [
+        "i",
+        "i",
+        "i",
+        "."
+      ]
+    }
+  ],
+  "separators": [
+    "::::x::",
+    "::::x::",
+    ":::: isomorphic"
+  ],
+  "set_form": [
+    {
+      "index": 0,
+      "set": [
+        "inf",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "index": 1,
+      "set": [
+        "inf",
+        "i",
+        "i",
+        "."
+      ]
+    },
+    {
+      "index": 2,
+      "set": [
+        "inf",
+        "i",
+        "i",
+        "i",
+        "."
+      ]
+    }
+  ],
+  "end_token": "::::x end .",
+  "sandbox": {
+    "token": "inf 0,0",
+    "semantics": "bounded sandboxy box",
+    "bounded": true,
+    "anchor": [
+      "0",
+      "0"
+    ]
+  },
+  "rule": "preserve literal symbolic grammar; do not reduce below i!i"
+}

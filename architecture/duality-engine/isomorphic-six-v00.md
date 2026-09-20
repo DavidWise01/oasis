@@ -1,3 +1,19 @@
+# Historical !i! six-position interpretation — superseded
+
+The prior `!i!` six-position mapping was an assistant overread.
+
+The current terminal ground-truth primitive is:
+
+```text
+i!i
+```
+
+See `ground-truth-i-bang-i-v00.md`.
+
+The material below remains only as provenance.
+
+---
+
 # Isomorphic Six — !i! v00
 
 Canonical isomorphic token:

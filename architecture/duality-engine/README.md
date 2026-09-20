@@ -139,3 +139,23 @@ See `o-dot-zero-o-v00.md`.
 Three `|` plus three `.` = six positions = three `1` plus three `0`.
 
 See `isomorphic-six-v00.md`.
+
+## i!i — terminal ground-truth primitive
+
+```text
+i!i
+```
+
+`i!i` is the primitive primitive of ground truth. No further descent is defined below it.
+
+Canonical indexed progression:
+
+```text
+0 :: i .
+1 :: i i .
+2 :: i i i .
+```
+
+Isomorphic set form terminates at `::::x end .`; `inf 0,0` is a bounded sandboxy box.
+
+See `ground-truth-i-bang-i-v00.md`.

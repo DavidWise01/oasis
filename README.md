@@ -294,3 +294,19 @@ O / o.0.o
 ```
 
 Three bars + three dots = six positions, isomorphic to three ones + three zeros.
+
+## Ground-truth primitive floor
+
+Current terminal primitive:
+
+```text
+i!i
+```
+
+```text
+0 :: i .
+1 :: i i .
+2 :: i i i .
+```
+
+`inf 0,0` is defined symbolically as a bounded sandboxy box. No further primitive is introduced below `i!i`.
