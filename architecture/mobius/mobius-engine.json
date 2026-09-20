@@ -46,5 +46,16 @@
     "pulse": "charge -> transition -> discharge -> witness/reset",
     "neon": "challenge -> reconcile -> distill",
     "h2o": "distill to reusable primitives"
+  },
+  "duality": {
+    "primitive": [
+      "LIGHT",
+      "DARK"
+    ],
+    "relation": "LIGHT <-> DARK",
+    "moral_ranking": false,
+    "shadow_is_third_pole": false,
+    "shadow_role": "exception/multiplicity",
+    "kana_witness": "identity + provenance + instance intent survive phase traversal"
   }
 }

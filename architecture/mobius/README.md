@@ -78,3 +78,25 @@ PRIMITIVES    substrate for next instance
 MOBIUS / STORY 0001 / GILGAMESH
 
 See ../../stories/gilgamesh/.
+
+## Root duality
+
+MOBIUS does not invent a new polarity. Its root duality is the existing OaSIs primitive:
+
+```text
+LIGHT | DARK
+```
+
+Every curated instance may traverse both phases. Neither phase is given automatic moral priority.
+
+```text
+LIGHT(instance)
+      ↕
+      N   KANA invariant
+      ↕
+DARK(instance)
+```
+
+The flip changes representation/phase, not the identity of the instance.
+
+`SHADOW` remains exception/multiplicity behavior, not a third duality pole.

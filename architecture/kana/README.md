@@ -129,3 +129,18 @@ KANA → WAKA → SAPPHIC_LYRE → ::::X:::: → pulse → witness
 ```
 
 KANA still supplies the invariant. WAKA supplies sequence. The lyre mode supplies rhythm. `X` is the centered witness/transfer point. The completed narrative is later distilled back to primitives.
+
+
+## Light / dark duality
+
+KANA now binds the root OaSIs duality explicitly:
+
+```text
+LIGHT(A)
+   ↓
+ | N |
+   ↑
+DARK(A)
+```
+
+`N` witnesses the invariant across the phase flip. LIGHT and DARK are the two primitive poles. SHADOW remains an exception/multiplicity outcome rather than a third pole.

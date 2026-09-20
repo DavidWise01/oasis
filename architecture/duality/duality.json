@@ -1,0 +1,20 @@
+{
+  "schema": "OaSIs.Duality.LightDark.v00",
+  "primitive": [
+    "LIGHT",
+    "DARK"
+  ],
+  "relation": "LIGHT <-> DARK",
+  "moral_valence": "none",
+  "shadow_role": "exception/multiplicity result; not a third pole",
+  "mobius_relation": "one vessel may traverse light and dark phases while preserving its invariant",
+  "kana_invariant": "identity + provenance + instance intent survive LIGHT/DARK traversal",
+  "rules": [
+    "every instance may be represented in LIGHT",
+    "every instance may be represented in DARK",
+    "neither representation is privileged as morally correct",
+    "a flip changes phase/representation, not identity",
+    "KANA witnesses the invariant across the flip",
+    "shadow is generated only as an exception/multiplicity condition"
+  ]
+}

@@ -18,6 +18,7 @@ O^1 immutable parent
 │
 ├─ architecture/
 │  ├─ box-toroid.md       Alice → channel → Bob → witness/return
+│  ├─ duality/            LIGHT | DARK root polarity
 │  ├─ kana/               cross-layer isomorphic carrier
 │  ├─ neon-compound/      evolution / distillation grammar
 │  ├─ timing-body/        pulse / rhythm / movement / cohesion
@@ -184,3 +185,14 @@ SPARK → VESSEL → INSTANCE → TRUTH@TIME → AUTHOR → PICTURES → STYLE �
 An instance may end while its impact persists. MOBIUS does not claim to create biological life.
 
 First instance: **MOBIUS-0001 / Gilgamesh**.
+
+
+## Root duality
+
+```text
+LIGHT | DARK
+```
+
+This is the canonical OaSIs duality. It has no default moral ranking. `SHADOW` is retained as exception/multiplicity behavior, not a third primitive pole.
+
+MOBIUS traverses LIGHT/DARK while KANA preserves the instance invariant across the flip.
