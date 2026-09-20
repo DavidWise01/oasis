@@ -1,0 +1,192 @@
+{
+  "suite": "MORE GARBAGE difficult mojibake v02",
+  "scope": "primitive repair; generated reversible corruption depth 1..3",
+  "encodings": [
+    "cp1252",
+    "latin1",
+    "mac_roman"
+  ],
+  "reversible_cases": 526,
+  "reversible_pass": 526,
+  "reversible_fail": 0,
+  "lossy_cases": 3,
+  "lossy_policy": "U+FFFD => PAUSED / ?, never fabricated recovery",
+  "hard_examples": [
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "cp1252",
+        "cp1252"
+      ],
+      "damaged": "KÃƒÆ’Ã‚Â¶nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "cp1252",
+        "latin1"
+      ],
+      "damaged": "KÃÆÃÂ¶nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "cp1252",
+        "mac_roman"
+      ],
+      "damaged": "K√É∆í√Ç¬∂nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "latin1",
+        "cp1252"
+      ],
+      "damaged": "KÃƒÂƒÃ‚Â¶nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "latin1",
+        "latin1"
+      ],
+      "damaged": "KÃÂÃÂ¶nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "latin1",
+        "mac_roman"
+      ],
+      "damaged": "K√É¬É√Ç¬∂nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "mac_roman",
+        "cp1252"
+      ],
+      "damaged": "KâˆšÃ‰Â¬âˆ‚nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "mac_roman",
+        "latin1"
+      ],
+      "damaged": "KâÃÂ¬ânig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "cp1252",
+        "mac_roman",
+        "mac_roman"
+      ],
+      "damaged": "K‚àö√â¬¨‚àÇnig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "latin1",
+        "cp1252",
+        "cp1252"
+      ],
+      "damaged": "KÃƒÆ’Ã‚Â¶nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "latin1",
+        "cp1252",
+        "latin1"
+      ],
+      "damaged": "KÃÆÃÂ¶nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    },
+    {
+      "original": "König",
+      "corruption_path": [
+        "latin1",
+        "cp1252",
+        "mac_roman"
+      ],
+      "damaged": "K√É∆í√Ç¬∂nig",
+      "recovered": "König",
+      "pass": true,
+      "search_checks": 40,
+      "repaired_primitives": 1
+    }
+  ],
+  "lossy_examples": [
+    {
+      "damaged": "caf�",
+      "output": "caf?",
+      "status": "DONE_WITH_PAUSED",
+      "paused_primitives": 1
+    },
+    {
+      "damaged": "Fran�ois",
+      "output": "Fran?ois",
+      "status": "DONE_WITH_PAUSED",
+      "paused_primitives": 1
+    },
+    {
+      "damaged": "it�s",
+      "output": "it?s",
+      "status": "DONE_WITH_PAUSED",
+      "paused_primitives": 1
+    }
+  ]
+}
