@@ -1,0 +1,20 @@
+{
+  "suite": "MORE GARBAGE chapter decode v00",
+  "chapter_type": "deterministic synthetic benchmark chapter",
+  "paragraphs": 20,
+  "clean_words": 2120,
+  "clean_chars": 13689,
+  "damaged_chars": 14289,
+  "repaired_primitives": 280,
+  "paused_primitives": 0,
+  "search_checks": 363662,
+  "elapsed_seconds": 29.1174,
+  "pass": true,
+  "hashes": {
+    "damaged_sha256": "77a58442ad2a7f4d6eaabc4150f3951420323b5681fce27879851cbea1c60755",
+    "expected_sha256": "6175778de94372da855be1986238ce07fcf760e1aa1b2e6199d59e55d87451ed",
+    "decoded_sha256": "6175778de94372da855be1986238ce07fcf760e1aa1b2e6199d59e55d87451ed"
+  },
+  "invariant": "decoded SHA-256 equals expected SHA-256",
+  "mantissa_island": "xDEADBEEFX preserved intact"
+}
