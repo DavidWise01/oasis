@@ -624,3 +624,48 @@ This is relational notation, not ordinary arithmetic. The primitive does not ass
 Mandel / Juliet / mojibake search are descendants or applications, not required semantics of BOXy itself.
 
 Lean status: **pending user 0e confirmation**.
+
+
+## BOXy one-bit lattice — 2026-09-20
+
+Fresh descendant:
+
+~~~text
+Oasis.Boxy.BitLattice.01.lean
+~~~
+
+Current definition:
+
+~~~text
+one BOXy primitive = one bit
+one bit = one primitive in a lattice of bits
+~~~
+
+Direction may be:
+
+~~~text
+inward
+outward
+inward + outward
+~~~
+
+Extent:
+
+~~~text
+inward  → 0
+outward → inf
+~~~
+
+Here `inf` is preserved symbolically as the unbounded outward extent. The Lean lattice is indexed by `Nat`; no completed infinite traversal is claimed.
+
+The existing BOXy relation remains local to one lattice primitive:
+
+~~~text
+6 in 4
+trying to be 3
+while 2 = ?
+1 pushes
+0 is total
+~~~
+
+Lean status: **pending user 0e confirmation**.
