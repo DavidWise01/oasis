@@ -1,0 +1,49 @@
+{
+  "suite": "MORE GARBAGE 32dword mantissa island / kernel bridge v05",
+  "tests": 6,
+  "pass": 6,
+  "fail": 0,
+  "rules": {
+    "x...X": "32-bit mantissa island when core is exactly 8 hex digits",
+    "|...|": "kernel bridge when core is exactly 8 hex digits",
+    "gate_transmutation": "| -> /_"
+  },
+  "rows": [
+    {
+      "input": "xDEADBEEFX",
+      "status": "MANTISSA_ISLAND",
+      "output": "xDEADBEEFX",
+      "pass": true
+    },
+    {
+      "input": "Xdeadbeefx",
+      "status": "MANTISSA_ISLAND",
+      "output": "Xdeadbeefx",
+      "pass": true
+    },
+    {
+      "input": "|DEADBEEF|",
+      "status": "KERNEL_BRIDGE",
+      "output": "/_DEADBEEF/_",
+      "pass": true
+    },
+    {
+      "input": "|deadbeef|",
+      "status": "KERNEL_BRIDGE",
+      "output": "/_DEADBEEF/_",
+      "pass": true
+    },
+    {
+      "input": "|DEADZEEF|",
+      "status": "NOT_32DWORD_ISLAND",
+      "output": "|DEADZEEF|",
+      "pass": true
+    },
+    {
+      "input": "xDEADBEEFx",
+      "status": "MANTISSA_ISLAND",
+      "output": "xDEADBEEFx",
+      "pass": true
+    }
+  ]
+}
