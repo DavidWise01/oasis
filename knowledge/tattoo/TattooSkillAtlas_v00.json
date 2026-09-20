@@ -1,0 +1,2488 @@
+{
+  "schema": "OaSIs.Tattoo.SkillAtlas.v00",
+  "count_rule": {
+    "skills": 5,
+    "families_per_skill": 9,
+    "categories_per_family": 9,
+    "categories_per_skill": 81,
+    "total_categories": 405
+  },
+  "surface_rule": "Categories are engine-internal by default; user-facing UI exposes only compressed choices.",
+  "skills": {
+    "CREATE": {
+      "category_count": 81,
+      "families": [
+        {
+          "family_index": 1,
+          "name": "Intent & Brief",
+          "purpose": "Define what the tattoo is trying to be before drawing.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.1.1",
+              "name": "Primary subject"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.1.2",
+              "name": "Narrative role"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.1.3",
+              "name": "Emotional tone"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.1.4",
+              "name": "Symbolic meaning"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.1.5",
+              "name": "Personal context"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.1.6",
+              "name": "Visibility intent"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.1.7",
+              "name": "Permanence horizon"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.1.8",
+              "name": "Hard constraints"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.1.9",
+              "name": "Success criterion"
+            }
+          ]
+        },
+        {
+          "family_index": 2,
+          "name": "Reference Intelligence",
+          "purpose": "Gather useful references without letting references become the design.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.2.1",
+              "name": "Client-owned reference"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.2.2",
+              "name": "Licensed/open reference"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.2.3",
+              "name": "Anatomy reference"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.2.4",
+              "name": "Style reference"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.2.5",
+              "name": "Material reference"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.2.6",
+              "name": "Motif reference"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.2.7",
+              "name": "Cultural-context check"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.2.8",
+              "name": "Originality distance"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.2.9",
+              "name": "Rights/provenance record"
+            }
+          ]
+        },
+        {
+          "family_index": 3,
+          "name": "Composition Skeleton",
+          "purpose": "Build the first-read structure before detail.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.3.1",
+              "name": "Outer silhouette"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.3.2",
+              "name": "Primary focal point"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.3.3",
+              "name": "Secondary focal point"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.3.4",
+              "name": "Foreground layer"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.3.5",
+              "name": "Middleground layer"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.3.6",
+              "name": "Background layer"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.3.7",
+              "name": "Negative-space map"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.3.8",
+              "name": "Directional rhythm"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.3.9",
+              "name": "Edge/crop strategy"
+            }
+          ]
+        },
+        {
+          "family_index": 4,
+          "name": "Style Grammar",
+          "purpose": "Choose a coherent visual language rather than disconnected effects.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.4.1",
+              "name": "Line grammar"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.4.2",
+              "name": "Black-mass grammar"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.4.3",
+              "name": "Greywash grammar"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.4.4",
+              "name": "Color grammar"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.4.5",
+              "name": "Texture grammar"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.4.6",
+              "name": "Ornament grammar"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.4.7",
+              "name": "Geometry grammar"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.4.8",
+              "name": "Illustrative grammar"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.4.9",
+              "name": "Realism grammar"
+            }
+          ]
+        },
+        {
+          "family_index": 5,
+          "name": "Body-Aware Concept",
+          "purpose": "Shape the concept for the eventual body area from the beginning.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.5.1",
+              "name": "Placement envelope"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.5.2",
+              "name": "Aspect-ratio match"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.5.3",
+              "name": "Wrap allowance"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.5.4",
+              "name": "Front-view readability"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.5.5",
+              "name": "Joint clearance"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.5.6",
+              "name": "Muscle-flow direction"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.5.7",
+              "name": "Resting-pose orientation"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.5.8",
+              "name": "Expansion allowance"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.5.9",
+              "name": "Neighbor-tattoo relationship"
+            }
+          ]
+        },
+        {
+          "family_index": 6,
+          "name": "Construction Method",
+          "purpose": "Move from rough thought to controlled drawing in passes.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.6.1",
+              "name": "Thumbnail pass"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.6.2",
+              "name": "Guide-grid pass"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.6.3",
+              "name": "Symmetry scaffold"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.6.4",
+              "name": "Perspective scaffold"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.6.5",
+              "name": "Basic-shape block-in"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.6.6",
+              "name": "Layered sketch"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.6.7",
+              "name": "Refinement sketch"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.6.8",
+              "name": "Clean-line pass"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.6.9",
+              "name": "Variant branch"
+            }
+          ]
+        },
+        {
+          "family_index": 7,
+          "name": "Tattoo Readability",
+          "purpose": "Protect the design from becoming visually clever but physically unreadable.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.7.1",
+              "name": "Distance read"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.7.2",
+              "name": "Final-size read"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.7.3",
+              "name": "Detail-density budget"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.7.4",
+              "name": "Line-spacing budget"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.7.5",
+              "name": "Contrast hierarchy"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.7.6",
+              "name": "Black anchor"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.7.7",
+              "name": "Skin-break allowance"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.7.8",
+              "name": "Edge clarity"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.7.9",
+              "name": "Aging margin"
+            }
+          ]
+        },
+        {
+          "family_index": 8,
+          "name": "Originality Transform",
+          "purpose": "Turn influences into a new design language instead of copying a source.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.8.1",
+              "name": "Trope distillation"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.8.2",
+              "name": "Descriptor abstraction"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.8.3",
+              "name": "Source recombination"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.8.4",
+              "name": "Motif mutation"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.8.5",
+              "name": "Silhouette mutation"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.8.6",
+              "name": "Proportion mutation"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.8.7",
+              "name": "Context shift"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.8.8",
+              "name": "Signature-cue removal"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.8.9",
+              "name": "Transformation provenance"
+            }
+          ]
+        },
+        {
+          "family_index": 9,
+          "name": "Direction Selection",
+          "purpose": "Choose strong, meaningfully different directions before polishing.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "CREATE.9.1",
+              "name": "Candidate breadth"
+            },
+            {
+              "category_index": 2,
+              "id": "CREATE.9.2",
+              "name": "Candidate diversity"
+            },
+            {
+              "category_index": 3,
+              "id": "CREATE.9.3",
+              "name": "Internal coherence"
+            },
+            {
+              "category_index": 4,
+              "id": "CREATE.9.4",
+              "name": "Placement fit"
+            },
+            {
+              "category_index": 5,
+              "id": "CREATE.9.5",
+              "name": "Tattooability"
+            },
+            {
+              "category_index": 6,
+              "id": "CREATE.9.6",
+              "name": "Originality check"
+            },
+            {
+              "category_index": 7,
+              "id": "CREATE.9.7",
+              "name": "Emotional fit"
+            },
+            {
+              "category_index": 8,
+              "id": "CREATE.9.8",
+              "name": "Client preference fit"
+            },
+            {
+              "category_index": 9,
+              "id": "CREATE.9.9",
+              "name": "Top-three rationale"
+            }
+          ]
+        }
+      ]
+    },
+    "REFINE": {
+      "category_count": 81,
+      "families": [
+        {
+          "family_index": 1,
+          "name": "Line Architecture",
+          "purpose": "Make the line system deliberate, consistent, and tattoo-readable.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.1.1",
+              "name": "Line hierarchy"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.1.2",
+              "name": "Taper control"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.1.3",
+              "name": "Weight consistency"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.1.4",
+              "name": "Contour closure"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.1.5",
+              "name": "Intersection cleanup"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.1.6",
+              "name": "Tangent cleanup"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.1.7",
+              "name": "Curve quality"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.1.8",
+              "name": "Edge rhythm"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.1.9",
+              "name": "Line economy"
+            }
+          ]
+        },
+        {
+          "family_index": 2,
+          "name": "Value & Contrast",
+          "purpose": "Build depth and longevity through intentional value separation.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.2.1",
+              "name": "Black-to-skin ratio"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.2.2",
+              "name": "Grey-value bands"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.2.3",
+              "name": "Focal contrast"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.2.4",
+              "name": "Background recession"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.2.5",
+              "name": "Depth separation"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.2.6",
+              "name": "Black anchors"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.2.7",
+              "name": "Light channels"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.2.8",
+              "name": "Midtone restraint"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.2.9",
+              "name": "Contrast-at-size test"
+            }
+          ]
+        },
+        {
+          "family_index": 3,
+          "name": "Negative Space",
+          "purpose": "Treat exposed skin as active structure rather than leftover emptiness.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.3.1",
+              "name": "Breathing room"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.3.2",
+              "name": "Negative-space channels"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.3.3",
+              "name": "Island control"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.3.4",
+              "name": "Counterform quality"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.3.5",
+              "name": "Minimum gaps"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.3.6",
+              "name": "Edge release"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.3.7",
+              "name": "Internal windows"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.3.8",
+              "name": "Skin-tone balance"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.3.9",
+              "name": "Congestion threshold"
+            }
+          ]
+        },
+        {
+          "family_index": 4,
+          "name": "Shape & Form",
+          "purpose": "Correct geometry and volume before surface detail.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.4.1",
+              "name": "Proportion"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.4.2",
+              "name": "Silhouette correction"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.4.3",
+              "name": "Contour rhythm"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.4.4",
+              "name": "Curvature"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.4.5",
+              "name": "Perspective"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.4.6",
+              "name": "Foreshortening"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.4.7",
+              "name": "Volume cues"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.4.8",
+              "name": "Overlap logic"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.4.9",
+              "name": "Simplification"
+            }
+          ]
+        },
+        {
+          "family_index": 5,
+          "name": "Texture & Shading Language",
+          "purpose": "Use one coherent texture/shading system appropriate to the design.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.5.1",
+              "name": "Solid packing map"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.5.2",
+              "name": "Whip-gradient map"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.5.3",
+              "name": "Stipple map"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.5.4",
+              "name": "Hatch map"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.5.5",
+              "name": "Dotwork map"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.5.6",
+              "name": "Soft-wash map"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.5.7",
+              "name": "Hard-fill map"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.5.8",
+              "name": "Material texture"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.5.9",
+              "name": "Texture restraint"
+            }
+          ]
+        },
+        {
+          "family_index": 6,
+          "name": "Composition Polish",
+          "purpose": "Make every element serve the primary read.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.6.1",
+              "name": "Focal hierarchy"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.6.2",
+              "name": "Secondary support"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.6.3",
+              "name": "Repetition rhythm"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.6.4",
+              "name": "Symmetry balance"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.6.5",
+              "name": "Asymmetry balance"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.6.6",
+              "name": "Directional flow"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.6.7",
+              "name": "Crop refinement"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.6.8",
+              "name": "Background integration"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.6.9",
+              "name": "Transition quality"
+            }
+          ]
+        },
+        {
+          "family_index": 7,
+          "name": "Style Consistency",
+          "purpose": "Prevent a piece from becoming a pile of unrelated visual tricks.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.7.1",
+              "name": "Line-style consistency"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.7.2",
+              "name": "Shading-style consistency"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.7.3",
+              "name": "Motif vocabulary"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.7.4",
+              "name": "Palette discipline"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.7.5",
+              "name": "Ornament rules"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.7.6",
+              "name": "Geometry system"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.7.7",
+              "name": "Detail-scale consistency"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.7.8",
+              "name": "Edge treatment"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.7.9",
+              "name": "Signature restraint"
+            }
+          ]
+        },
+        {
+          "family_index": 8,
+          "name": "Transform & Edit",
+          "purpose": "Use digital transforms precisely and non-destructively.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.8.1",
+              "name": "Selection isolation"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.8.2",
+              "name": "Uniform scale"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.8.3",
+              "name": "Distort"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.8.4",
+              "name": "Warp mesh"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.8.5",
+              "name": "Rotation"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.8.6",
+              "name": "Flip/mirror"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.8.7",
+              "name": "Snapping/alignment"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.8.8",
+              "name": "Interpolation choice"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.8.9",
+              "name": "Non-destructive layering"
+            }
+          ]
+        },
+        {
+          "family_index": 9,
+          "name": "Review & QC",
+          "purpose": "Test the design under views that reveal hidden weaknesses.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "REFINE.9.1",
+              "name": "Zoom-out test"
+            },
+            {
+              "category_index": 2,
+              "id": "REFINE.9.2",
+              "name": "Mirror test"
+            },
+            {
+              "category_index": 3,
+              "id": "REFINE.9.3",
+              "name": "Grayscale test"
+            },
+            {
+              "category_index": 4,
+              "id": "REFINE.9.4",
+              "name": "Thumbnail test"
+            },
+            {
+              "category_index": 5,
+              "id": "REFINE.9.5",
+              "name": "Final-size test"
+            },
+            {
+              "category_index": 6,
+              "id": "REFINE.9.6",
+              "name": "Body-mockup test"
+            },
+            {
+              "category_index": 7,
+              "id": "REFINE.9.7",
+              "name": "Stencil-preview test"
+            },
+            {
+              "category_index": 8,
+              "id": "REFINE.9.8",
+              "name": "Print-preview test"
+            },
+            {
+              "category_index": 9,
+              "id": "REFINE.9.9",
+              "name": "Revision log"
+            }
+          ]
+        }
+      ]
+    },
+    "PLACE": {
+      "category_count": 81,
+      "families": [
+        {
+          "family_index": 1,
+          "name": "Body Region Geometry",
+          "purpose": "Understand the characteristic geometry of common placements.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.1.1",
+              "name": "Forearm"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.1.2",
+              "name": "Upper arm"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.1.3",
+              "name": "Shoulder"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.1.4",
+              "name": "Chest"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.1.5",
+              "name": "Back"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.1.6",
+              "name": "Thigh"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.1.7",
+              "name": "Calf"
+            },            {
+              "category_index": 8,
+              "id": "PLACE.1.8",
+              "name": "Ribs"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.1.9",
+              "name": "Wrist/hand"
+            }
+          ]
+        },
+        {
+          "family_index": 2,
+          "name": "Shape-to-Area Match",
+          "purpose": "Match composition type to the geometry available.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.2.1",
+              "name": "Vertical composition"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.2.2",
+              "name": "Horizontal composition"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.2.3",
+              "name": "Radial composition"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.2.4",
+              "name": "Compact composition"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.2.5",
+              "name": "Wrap composition"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.2.6",
+              "name": "Sleeve composition"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.2.7",
+              "name": "Panel composition"
+            },
+            {
+              "category_index": 8,
+              "id": "PLACE.2.8",
+              "name": "Band composition"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.2.9",
+              "name": "Gap-fill composition"
+            }
+          ]
+        },
+        {
+          "family_index": 3,
+          "name": "Anatomical Flow",
+          "purpose": "Make the tattoo move with the person instead of fighting the body.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.3.1",
+              "name": "Muscle S-curve"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.3.2",
+              "name": "Bone-line relationship"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.3.3",
+              "name": "Limb axis"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.3.4",
+              "name": "Joint motion"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.3.5",
+              "name": "Contraction/extension"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.3.6",
+              "name": "Resting posture"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.3.7",
+              "name": "Primary viewing angle"
+            },
+            {
+              "category_index": 8,
+              "id": "PLACE.3.8",
+              "name": "Skin-fold behavior"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.3.9",
+              "name": "Gravity/orientation"
+            }
+          ]
+        },
+        {
+          "family_index": 4,
+          "name": "Fit & Wrap",
+          "purpose": "Control how much of the design turns away from the primary view.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.4.1",
+              "name": "Primary-view containment"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.4.2",
+              "name": "Wrap threshold"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.4.3",
+              "name": "Overlap prevention"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.4.4",
+              "name": "Seam planning"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.4.5",
+              "name": "Edge landing"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.4.6",
+              "name": "Circumference response"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.4.7",
+              "name": "Limb taper response"
+            },
+            {
+              "category_index": 8,
+              "id": "PLACE.4.8",
+              "name": "Articulation clearance"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.4.9",
+              "name": "Neighbor-piece fit"
+            }
+          ]
+        },
+        {
+          "family_index": 5,
+          "name": "Scale & Detail",
+          "purpose": "Determine what amount of information the physical area can actually support.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.5.1",
+              "name": "Physical height/width"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.5.2",
+              "name": "DPI/pixel mapping"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.5.3",
+              "name": "Minimum line width"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.5.4",
+              "name": "Detail budget"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.5.5",
+              "name": "Focal-element size"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.5.6",
+              "name": "Minimum spacing"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.5.7",
+              "name": "Microdetail cutoff"
+            },
+            {
+              "category_index": 8,
+              "id": "PLACE.5.8",
+              "name": "Viewing-distance read"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.5.9",
+              "name": "Aging allowance"
+            }
+          ]
+        },
+        {
+          "family_index": 6,
+          "name": "Orientation",
+          "purpose": "Keep image direction intentional when the body is at rest.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.6.1",
+              "name": "Right-side-up check"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.6.2",
+              "name": "Face-inward check"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.6.3",
+              "name": "Face-forward check"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.6.4",
+              "name": "Text orientation"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.6.5",
+              "name": "Bilateral symmetry"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.6.6",
+              "name": "Left/right adaptation"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.6.7",
+              "name": "Forward/back direction"
+            },
+            {
+              "category_index": 8,
+              "id": "PLACE.6.8",
+              "name": "Mirror-state check"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.6.9",
+              "name": "Client-view vs observer-view"
+            }
+          ]
+        },
+        {
+          "family_index": 7,
+          "name": "Placement Transform",
+          "purpose": "Map flat artwork onto a photographed or modeled body surface.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.7.1",
+              "name": "Translation"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.7.2",
+              "name": "Uniform scale"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.7.3",
+              "name": "Rotation"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.7.4",
+              "name": "Perspective transform"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.7.5",
+              "name": "Warp mesh"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.7.6",
+              "name": "Opacity"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.7.7",
+              "name": "Blend mode"
+            },
+            {
+              "category_index": 8,
+              "id": "PLACE.7.8",
+              "name": "Occlusion mask"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.7.9",
+              "name": "Multi-view consistency"
+            }
+          ]
+        },
+        {
+          "family_index": 8,
+          "name": "Client & Skin Context",
+          "purpose": "Record non-aesthetic constraints that change placement decisions.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.8.1",
+              "name": "Visibility/lifestyle"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.8.2",
+              "name": "Clothing interaction"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.8.3",
+              "name": "Sun exposure"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.8.4",
+              "name": "Friction zone"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.8.5",
+              "name": "Hair coverage"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.8.6",
+              "name": "Scar/texture context"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.8.7",
+              "name": "Skin-tone contrast"
+            },
+            {
+              "category_index": 8,
+              "id": "PLACE.8.8",
+              "name": "Session/pain tolerance"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.8.9",
+              "name": "Future-expansion plan"
+            }
+          ]
+        },
+        {
+          "family_index": 9,
+          "name": "Placement Approval",
+          "purpose": "Make placement a deliberate reviewed state rather than an assumption.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "PLACE.9.1",
+              "name": "Standing-neutral check"
+            },
+            {
+              "category_index": 2,
+              "id": "PLACE.9.2",
+              "name": "Relaxed-pose check"
+            },
+            {
+              "category_index": 3,
+              "id": "PLACE.9.3",
+              "name": "Photo record"
+            },
+            {
+              "category_index": 4,
+              "id": "PLACE.9.4",
+              "name": "Physical measurement"
+            },
+            {
+              "category_index": 5,
+              "id": "PLACE.9.5",
+              "name": "Mirror check"
+            },
+            {
+              "category_index": 6,
+              "id": "PLACE.9.6",
+              "name": "Motion check"
+            },
+            {
+              "category_index": 7,
+              "id": "PLACE.9.7",
+              "name": "Stencil dry-fit"
+            },
+            {
+              "category_index": 8,
+              "id": "PLACE.9.8",
+              "name": "Artist approval"
+            },
+            {
+              "category_index": 9,
+              "id": "PLACE.9.9",
+              "name": "Client approval"
+            }
+          ]
+        }
+      ]
+    },
+    "STENCIL": {
+      "category_count": 81,
+      "families": [
+        {
+          "family_index": 1,
+          "name": "Source Preparation",
+          "purpose": "Create a stencil-specific derivative without destroying the artwork master.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.1.1",
+              "name": "Master duplication"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.1.2",
+              "name": "Dedicated stencil layer"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.1.3",
+              "name": "Color removal"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.1.4",
+              "name": "Value simplification"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.1.5",
+              "name": "Final-size setup"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.1.6",
+              "name": "Mirror-state setup"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.1.7",
+              "name": "Line cleanup"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.1.8",
+              "name": "Crop/margin setup"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.1.9",
+              "name": "Version lock"
+            }
+          ]
+        },
+        {
+          "family_index": 2,
+          "name": "Guide-Line Encoding",
+          "purpose": "Encode different kinds of tattoo information with distinct stencil marks.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.2.1",
+              "name": "Hard contour"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.2.2",
+              "name": "Internal contour"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.2.3",
+              "name": "Dotted shading guide"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.2.4",
+              "name": "Dashed construction guide"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.2.5",
+              "name": "Centerline"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.2.6",
+              "name": "Registration mark"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.2.7",
+              "name": "Landmark mark"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.2.8",
+              "name": "No-ink boundary"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.2.9",
+              "name": "Artist annotation"
+            }
+          ]
+        },
+        {
+          "family_index": 3,
+          "name": "Detail Reduction",
+          "purpose": "Remove information that will not transfer or will confuse execution.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.3.1",
+              "name": "Microdetail pruning"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.3.2",
+              "name": "Tiny-island removal"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.3.3",
+              "name": "Line-separation repair"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.3.4",
+              "name": "Intersection cleanup"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.3.5",
+              "name": "Contour preservation"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.3.6",
+              "name": "Texture conversion"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.3.7",
+              "name": "Shading-to-guide conversion"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.3.8",
+              "name": "Noise removal"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.3.9",
+              "name": "Legibility threshold"
+            }
+          ]
+        },
+        {
+          "family_index": 4,
+          "name": "Print Geometry",
+          "purpose": "Guarantee the paper output matches intended physical scale and direction.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.4.1",
+              "name": "Actual physical size"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.4.2",
+              "name": "Orientation"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.4.3",
+              "name": "Mirror verification"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.4.4",
+              "name": "Margins"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.4.5",
+              "name": "Paper size"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.4.6",
+              "name": "Page tiling"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.4.7",
+              "name": "100-percent scale"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.4.8",
+              "name": "Raster DPI"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.4.9",
+              "name": "Vector integrity"
+            }
+          ]
+        },
+        {
+          "family_index": 5,
+          "name": "Transfer Paper Handling",
+          "purpose": "Respect the structure and orientation of stencil transfer media.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.5.1",
+              "name": "Master-sheet identification"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.5.2",
+              "name": "Protective-sheet removal"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.5.3",
+              "name": "Carbon-layer orientation"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.5.4",
+              "name": "Backing-sheet support"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.5.5",
+              "name": "Feed direction"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.5.6",
+              "name": "Cutout strategy"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.5.7",
+              "name": "Clean handling"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.5.8",
+              "name": "Surface protection"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.5.9",
+              "name": "Storage"
+            }
+          ]
+        },
+        {
+          "family_index": 6,
+          "name": "Printer Setup",
+          "purpose": "Make printing repeatable rather than trial-and-error.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.6.1",
+              "name": "Power/readiness"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.6.2",
+              "name": "Media loading"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.6.3",
+              "name": "Straight feed"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.6.4",
+              "name": "Print density"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.6.5",
+              "name": "Print speed"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.6.6",
+              "name": "Copy/print mode"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.6.7",
+              "name": "Roller/path cleaning"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.6.8",
+              "name": "Jam prevention"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.6.9",
+              "name": "Test print"
+            }
+          ]
+        },
+        {
+          "family_index": 7,
+          "name": "Printed Stencil QC",
+          "purpose": "Catch output failures before the stencil reaches skin.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.7.1",
+              "name": "Complete transfer"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.7.2",
+              "name": "No smearing"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.7.3",
+              "name": "No doubled lines"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.7.4",
+              "name": "No broken lines"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.7.5",
+              "name": "Adequate density"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.7.6",
+              "name": "No oversaturation"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.7.7",
+              "name": "No skew"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.7.8",
+              "name": "No scale distortion"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.7.9",
+              "name": "Critical-detail presence"
+            }
+          ]
+        },
+        {
+          "family_index": 8,
+          "name": "Skin Placement Prep",
+          "purpose": "Prepare for accurate transfer while preserving hygiene and alignment.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.8.1",
+              "name": "Clean area"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.8.2",
+              "name": "Shave area"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.8.3",
+              "name": "Degrease area"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.8.4",
+              "name": "Dry area"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.8.5",
+              "name": "Alignment marks"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.8.6",
+              "name": "Primer tack"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.8.7",
+              "name": "Neutral body posture"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.8.8",
+              "name": "Center-out contact"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.8.9",
+              "name": "Controlled peel"
+            }
+          ]
+        },
+        {
+          "family_index": 9,
+          "name": "Set, Reapply & Verify",
+          "purpose": "Treat the applied stencil as a checkpoint that must pass review.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "STENCIL.9.1",
+              "name": "Set/dry time"
+            },
+            {
+              "category_index": 2,
+              "id": "STENCIL.9.2",
+              "name": "No-slide verification"
+            },
+            {
+              "category_index": 3,
+              "id": "STENCIL.9.3",
+              "name": "Residual-ink pat"
+            },
+            {
+              "category_index": 4,
+              "id": "STENCIL.9.4",
+              "name": "Failed-transfer removal"
+            },
+            {
+              "category_index": 5,
+              "id": "STENCIL.9.5",
+              "name": "Reapplication protocol"
+            },
+            {
+              "category_index": 6,
+              "id": "STENCIL.9.6",
+              "name": "Orientation recheck"
+            },
+            {
+              "category_index": 7,
+              "id": "STENCIL.9.7",
+              "name": "Size recheck"
+            },
+            {
+              "category_index": 8,
+              "id": "STENCIL.9.8",
+              "name": "Final approval"
+            },
+            {
+              "category_index": 9,
+              "id": "STENCIL.9.9",
+              "name": "Stencil photo/reference"
+            }
+          ]
+        }
+      ]
+    },
+    "DELIVER": {
+      "category_count": 81,
+      "families": [
+        {
+          "family_index": 1,
+          "name": "Master Package",
+          "purpose": "Keep editable, review, production, and metadata outputs distinct.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.1.1",
+              "name": "Editable master"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.1.2",
+              "name": "Flattened concept"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.1.3",
+              "name": "Vector concept"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.1.4",
+              "name": "Raster concept"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.1.5",
+              "name": "Stencil file"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.1.6",
+              "name": "Placement mockup"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.1.7",
+              "name": "Artist brief"
+            },
+            {
+              "category_index": 8,
+              "id": "DELIVER.1.8",
+              "name": "Provenance file"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.1.9",
+              "name": "Version manifest"
+            }
+          ]
+        },
+        {
+          "family_index": 2,
+          "name": "Export Formats",
+          "purpose": "Choose formats by downstream need rather than habit.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.2.1",
+              "name": "SVG"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.2.2",
+              "name": "PDF"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.2.3",
+              "name": "PNG"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.2.4",
+              "name": "TIFF"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.2.5",
+              "name": "JPEG"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.2.6",
+              "name": "PROCREATE/PSD"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.2.7",
+              "name": "JSON"
+            },
+            {
+              "category_index": 8,              "id": "DELIVER.2.8",
+              "name": "TXT/Markdown"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.2.9",
+              "name": "ZIP"
+            }
+          ]
+        },
+        {
+          "family_index": 3,
+          "name": "Resolution & Scale",
+          "purpose": "Preserve physical intent through export and print.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.3.1",
+              "name": "Final physical dimensions"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.3.2",
+              "name": "DPI"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.3.3",
+              "name": "Pixel dimensions"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.3.4",
+              "name": "Artboard bounds"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.3.5",
+              "name": "100-percent print scale"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.3.6",
+              "name": "Margins/bleed"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.3.7",
+              "name": "Measurement units"
+            },
+            {
+              "category_index": 8,
+              "id": "DELIVER.3.8",
+              "name": "Scale note"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.3.9",
+              "name": "Output verification"
+            }
+          ]
+        },
+        {
+          "family_index": 4,
+          "name": "Color & Ink Behavior",
+          "purpose": "Communicate intended ink behavior across devices and printed references.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.4.1",
+              "name": "RGB working copy"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.4.2",
+              "name": "CMYK/print copy"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.4.3",
+              "name": "Pure-black fallback"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.4.4",
+              "name": "Grayscale proof"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.4.5",
+              "name": "Accent-color record"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.4.6",
+              "name": "Color-profile record"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.4.7",
+              "name": "Transparency handling"
+            },
+            {
+              "category_index": 8,
+              "id": "DELIVER.4.8",
+              "name": "Contrast proof"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.4.9",
+              "name": "Monochrome fallback"
+            }
+          ]
+        },
+        {
+          "family_index": 5,
+          "name": "Naming & Versioning",
+          "purpose": "Make every file identify itself without opening it.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.5.1",
+              "name": "Project identifier"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.5.2",
+              "name": "Client-safe title"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.5.3",
+              "name": "Direction identifier"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.5.4",
+              "name": "Version number"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.5.5",
+              "name": "Date stamp"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.5.6",
+              "name": "Physical-size token"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.5.7",
+              "name": "Placement token"
+            },
+            {
+              "category_index": 8,
+              "id": "DELIVER.5.8",
+              "name": "Mirror-state token"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.5.9",
+              "name": "Approval-state token"
+            }
+          ]
+        },
+        {
+          "family_index": 6,
+          "name": "Artist Brief",
+          "purpose": "Transfer creative intent without pretending the concept is execution-ready.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.6.1",
+              "name": "Core concept"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.6.2",
+              "name": "Meaning/story"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.6.3",
+              "name": "Style target"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.6.4",
+              "name": "Placement"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.6.5",
+              "name": "Physical size"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.6.6",
+              "name": "Ink behavior"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.6.7",
+              "name": "Must-keep elements"
+            },
+            {
+              "category_index": 8,
+              "id": "DELIVER.6.8",
+              "name": "Flexible elements"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.6.9",
+              "name": "Avoid/do-not-copy list"
+            }
+          ]
+        },
+        {
+          "family_index": 7,
+          "name": "Placement Pack",
+          "purpose": "Give the artist enough spatial context to understand the intended fit.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.7.1",
+              "name": "Body reference photo"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.7.2",
+              "name": "Clean body photo"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.7.3",
+              "name": "Overlay mockup"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.7.4",
+              "name": "Front view"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.7.5",
+              "name": "Side/alternate view"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.7.6",
+              "name": "Physical measurement"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.7.7",
+              "name": "Angle/orientation note"
+            },
+            {
+              "category_index": 8,
+              "id": "DELIVER.7.8",
+              "name": "Anatomical landmarks"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.7.9",
+              "name": "Wrap/expansion notes"
+            }
+          ]
+        },
+        {
+          "family_index": 8,
+          "name": "Provenance & Rights",
+          "purpose": "Keep source lineage and permissions inspectable.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.8.1",
+              "name": "Source ledger"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.8.2",
+              "name": "License ledger"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.8.3",
+              "name": "Inspiration descriptor"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.8.4",
+              "name": "Transformation notes"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.8.5",
+              "name": "Generation state"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.8.6",
+              "name": "Client-supplied references"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.8.7",
+              "name": "Consent/permission note"
+            },
+            {
+              "category_index": 8,
+              "id": "DELIVER.8.8",
+              "name": "Checksums"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.8.9",
+              "name": "Lineage chain"
+            }
+          ]
+        },
+        {
+          "family_index": 9,
+          "name": "Handoff & Approval",
+          "purpose": "Close the loop with explicit review, backup, and privacy states.",
+          "categories": [
+            {
+              "category_index": 1,
+              "id": "DELIVER.9.1",
+              "name": "Client approval"
+            },
+            {
+              "category_index": 2,
+              "id": "DELIVER.9.2",
+              "name": "Artist review"
+            },
+            {
+              "category_index": 3,
+              "id": "DELIVER.9.3",
+              "name": "Open questions"
+            },
+            {
+              "category_index": 4,
+              "id": "DELIVER.9.4",
+              "name": "Change log"
+            },
+            {
+              "category_index": 5,
+              "id": "DELIVER.9.5",
+              "name": "Test print"
+            },
+            {
+              "category_index": 6,
+              "id": "DELIVER.9.6",
+              "name": "Backup copy"
+            },
+            {
+              "category_index": 7,
+              "id": "DELIVER.9.7",
+              "name": "Secure transfer"
+            },
+            {
+              "category_index": 8,
+              "id": "DELIVER.9.8",
+              "name": "Archive state"
+            },
+            {
+              "category_index": 9,
+              "id": "DELIVER.9.9",
+              "name": "Delete/privacy option"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "sources": {
+    "CREATE": {
+      "videos": [
+        {
+          "title": "How To Draw For Tattoos",
+          "creator": "Tattooing 101",
+          "year": 2022,
+          "url": "https://www.youtube.com/watch?v=Aaz2jf9TFAU"
+        },
+        {
+          "title": "How To Draw Tattoos",
+          "creator": "Tattooing 101",
+          "year": 2021,
+          "url": "https://www.youtube.com/watch?v=X2e7gj6ZGxE"
+        }
+      ],
+      "manual": {
+        "title": "Procreate Handbook \u2014 Drawing Guides: Create",
+        "publisher": "Procreate",
+        "url": "https://help.procreate.com/procreate/handbook/guides/guide-create"
+      },
+      "synthesis": "References, basic shapes, layered sketch construction, guides, symmetry/perspective, and designing specifically for tattoo fit rather than flat-page illustration."
+    },
+    "REFINE": {
+      "videos": [
+        {
+          "title": "Tattoo Shading Basics",
+          "creator": "Tattooing 101",
+          "year": 2021,
+          "url": "https://www.youtube.com/watch?v=KX5Nm2M3K9Q"
+        },
+        {
+          "title": "Tattoo Shading For Beginners Tutorial",
+          "creator": "Tattooing 101",
+          "year": 2022,
+          "url": "https://www.youtube.com/watch?v=Qp9_5MAWhOY"
+        }
+      ],
+      "manual": {
+        "title": "Adobe Photoshop Help \u2014 Reshape images with Transform Warp",
+        "publisher": "Adobe",
+        "url": "https://helpx.adobe.com/photoshop/desktop/effects-filters/artistic-stylize-filters/reshape-and-distort-images-with-transform-warp.html"
+      },
+      "synthesis": "Value separation, black/grey transitions, packing/whip/pendulum/stipple logic, plus mesh-based transform and non-destructive spatial refinement."
+    },
+    "PLACE": {
+      "videos": [
+        {
+          "title": "Tattooing 101 embedded video \u2014 Drawing Tattoo Designs that FIT the Body",
+          "creator": "Tattooing 101",
+          "year": 2022,
+          "url": "https://www.youtube.com/embed/kjZ2zWDcjbk"
+        },
+        {
+          "title": "Tattooing 101 embedded video \u2014 Drawing Tattoo Designs that FLOW With the Muscles",
+          "creator": "Tattooing 101",
+          "year": 2022,
+          "url": "https://www.youtube.com/embed/lecvizK4y-Q"
+        }
+      ],
+      "manual": {
+        "title": "Adobe Photoshop Help \u2014 Adjust image perspective with Perspective Warp",
+        "publisher": "Adobe",
+        "url": "https://helpx.adobe.com/photoshop/desktop/repair-retouch/clean-restore-images/manipulate-the-planes-to-adjust-perspective.html"
+      },
+      "synthesis": "Trace or photograph the body area, contain main elements in the primary view, follow muscular S-curves, account for wrap, then use perspective/warp transforms to test a flat design on a curved photographed body."
+    },
+    "STENCIL": {
+      "videos": [
+        {
+          "title": "How to Use a Thermal Printer for Tattoo Stencils \u2014 4 Easy Steps",
+          "creator": "Tattooing 101",
+          "year": 2025,
+          "url": "https://www.youtube.com/watch?v=8sWPmwTABtU"
+        },
+        {
+          "title": "How to use a Thermal Printer to Print a Tattoo Stencil",
+          "creator": "Denzel Gaynor",
+          "year": 2025,
+          "url": "https://www.youtube.com/watch?v=BGBDU7zOPQs"
+        }
+      ],
+      "manual": {
+        "title": "Brother PocketJet 8 PJ-823 User's Guide",
+        "publisher": "Brother Industries",
+        "url": "https://support.brother.com/g/s/es/htmldoc/mprint/pj800/usen/index.html?c=us&lang=en&prod=pj823eus"
+      },
+      "synthesis": "Stencil-specific line reduction, transfer-paper orientation, straight media feeding, printer readiness, density/quality checking, cutting/handling, and repeatable output before skin transfer."
+    },
+    "DELIVER": {
+      "videos": [
+        {
+          "title": "How to print from Procreate",
+          "creator": "iZoRun",
+          "year": 2025,
+          "url": "https://www.youtube.com/watch?v=E38PBoqLxEQ"
+        },
+        {
+          "title": "How to PRINT from PROCREATE on the iPad",
+          "creator": "LeanneLand Art",
+          "year": 2021,
+          "url": "https://www.youtube.com/watch?v=W1H5zqhE0WQ"
+        }
+      ],
+      "manual": {
+        "title": "Procreate Help \u2014 Export, Share, and Print",
+        "publisher": "Procreate",
+        "url": "https://help.procreate.com/articles/Soki2B-export-save-and-print"
+      },
+      "synthesis": "Separate editable masters from flattened exports, preserve physical size and DPI, choose formats deliberately, test print, and deliver a concise artist-oriented package with version/provenance metadata."
+    }
+  }
+}
