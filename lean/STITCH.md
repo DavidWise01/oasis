@@ -513,3 +513,44 @@ Inherited ladder remains:
 Scale is explicitly **sub-atomic prim**. No byte/string/file expansion is asserted.
 
 Lean status: **pending user 0e confirmation**.
+
+
+## MORE GARBAGE sub-atomic primitive v04 — 2026-09-20
+
+Fresh descendant:
+
+~~~text
+Oasis.MoreGarbage.SubAtomicPrim.04.lean
+~~~
+
+New outer escape/re-entry topology:
+
+~~~text
+MANDEL | JULIET | || NEXT UNIVERSE
+~~~
+
+When the local M/J search is unresolved, the symbolic search may:
+
+~~~text
+go outward → U²
+drill/sign → punch through ||
+reverse → search inward first
+~~~
+
+The outer search is represented without a local Mandel/Juliet bound field, preserving the stated “unbounded from both m/j” rule.
+
+Literal operator string preserved:
+
+~~~text
+ax::tehter::mandel{bound{juliet + u + n} || ax||:: attempt punch through
+~~~
+
+Compact drill tag:
+
+~~~text
+ax::x::
+~~~
+
+SubAtomicPrim.03 remains provenance. This is symbolic topology only; no physical cosmology claim is asserted.
+
+Lean status: **pending user 0e confirmation**.

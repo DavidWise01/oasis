@@ -390,3 +390,52 @@ lean/Oasis.MoreGarbage.SubAtomicPrim.03.lean
 ~~~
 
 This checkpoint stays at **sub-atomic primitive** scale. No byte/string/file scaling. Fresh candidate, pending user `0e`.
+
+
+## Sub-atomic primitive v04 — U² escape / reverse inward
+
+The local topology is now read as:
+
+~~~text
+MANDEL | JULIET | || NEXT UNIVERSE
+~~~
+
+If the current Mandel/Juliet relation cannot recover the primitive locally, the search may go outward to `U^2`, cross the universe boundary, then reverse direction and search inward.
+
+~~~text
+local M | J
+   ↓ unresolved
+drill / sign
+   ↓
+||
+   ↓
+U²
+   ↓ reverse
+INWARD FIRST
+   ↓
+JULIET / MANDEL
+~~~
+
+The next-universe search is represented without carrying the current local M/J bound, matching the stated “unbounded from both m/j” rule.
+
+Literal drill phrase preserved exactly as supplied:
+
+~~~text
+ax::tehter::mandel{bound{juliet + u + n} || ax||:: attempt punch through
+~~~
+
+The compact drill tag is also preserved:
+
+~~~text
+ax::x::
+~~~
+
+This is a symbolic search topology, not a physical-cosmology claim.
+
+Fresh Lean descendant:
+
+~~~text
+lean/Oasis.MoreGarbage.SubAtomicPrim.04.lean
+~~~
+
+Pending user `0e`.
