@@ -1,0 +1,24 @@
+{
+  "suite": "MORE GARBAGE nibble surgery v03",
+  "direct_cases": 5,
+  "direct_pass": 5,
+  "direct_fail": 0,
+  "e2e_cases": 3,
+  "e2e_pass": 3,
+  "e2e_fail": 0,
+  "rule": "box unresolved ?, delete placeholder only, concatenate surviving edges",
+  "quarter_metadata": ["1/4","2/4","3/4","4/4"],
+  "fabricated_replacement": false,
+  "results": [
+    {"input":"caf?e","nibble":"{caf?e}","quarter":"1/4","expected":"cafe","output":"cafe","pass":true,"deleted":1},
+    {"input":"Fran?ois","nibble":"{Fran?ois}","quarter":"2/4","expected":"Franois","output":"Franois","pass":true,"deleted":1},
+    {"input":"it?s","nibble":"{it?s}","quarter":"3/4","expected":"its","output":"its","pass":true,"deleted":1},
+    {"input":"?alpha","nibble":"{?alpha}","quarter":"1/4","expected":"alpha","output":"alpha","pass":true,"deleted":1},
+    {"input":"omega?","nibble":"{omega?}","quarter":"4/4","expected":"omega","output":"omega","pass":true,"deleted":1}
+  ],
+  "e2e": [
+    {"input":"caf�e","quarter":"1/4","stage1_output":"caf?e","stage2_output":"cafe","expected":"cafe","pass":true},
+    {"input":"Fran�ois","quarter":"2/4","stage1_output":"Fran?ois","stage2_output":"Franois","expected":"Franois","pass":true},
+    {"input":"it�s","quarter":"3/4","stage1_output":"it?s","stage2_output":"its","expected":"its","pass":true}
+  ]
+}
