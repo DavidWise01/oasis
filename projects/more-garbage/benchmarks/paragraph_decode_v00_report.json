@@ -1,0 +1,21 @@
+{
+  "suite": "MORE GARBAGE paragraph decode v00",
+  "clean_expected": "François ordered café in München while König wrote, “The Mona Lisa doesn’t smile 😂.” A naïve parser crossed xDEADBEEFX and kept reading.",
+  "damaged_input": "FranÃƒÂ§ois ordered caf‚àö¬© in MÃ¼nchen while Kâânig wrote, âThe Mona Lisa doesnât smile ð.â A naÃÂ¯ve parser crossed xDEADBEEFX and kept reading.",
+  "decoded_output": "François ordered café in München while König wrote, “The Mona Lisa doesn’t smile 😂.” A naïve parser crossed xDEADBEEFX and kept reading.",
+  "pass": true,
+  "status": "DONE",
+  "repaired_primitives": 9,
+  "paused_primitives": 0,
+  "search_checks": 5565,
+  "island": {
+    "status": "MANTISSA_ISLAND",
+    "input": "xDEADBEEFX",
+    "core": "DEADBEEF",
+    "hex_digits": 8,
+    "bits": 32,
+    "left_gate": "x",
+    "right_gate": "X",
+    "output": "xDEADBEEFX"
+  }
+}
