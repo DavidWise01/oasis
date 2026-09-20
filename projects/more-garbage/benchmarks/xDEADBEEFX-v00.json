@@ -1,0 +1,15 @@
+{
+  "benchmark": "xDEADBEEFX exact input",
+  "input": "xDEADBEEFX",
+  "runtime": "more_garbage_v04.py",
+  "result": {
+    "stage1_status": "DONE",
+    "stage1_output": "xDEADBEEFX",
+    "repaired_primitives": 0,
+    "paused_primitives": 0,
+    "search_checks": 0,
+    "stage2_status": "NO_HOLE",
+    "stage2_output": "xDEADBEEFX"
+  },
+  "conclusion": "All characters are aligned ASCII under the current mojibake detector. No '?' or U+FFFD exists, so the token is preserved exactly and no nibble surgery fires."
+}
