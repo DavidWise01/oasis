@@ -364,3 +364,13 @@ Working alias: **NO MORE GARBAGE**.
 Isomorphic repair rule: if the invariant is unchanged, translate/repair the representation directly; if the invariant changes, declare another explicit isomorph.
 
 Project page: `projects/more-garbage/`. No Lean checkpoint yet.
+
+### MORE GARBAGE repair law
+
+```text
+recover invariant?
+YES → isomorphic → distill → AETHER | TEMPORAL
+NO  → UNFIXABLE
+```
+
+The project does not substitute plausible-looking output for a recovered invariant.

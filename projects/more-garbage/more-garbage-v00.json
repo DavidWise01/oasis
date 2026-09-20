@@ -45,5 +45,20 @@
     "changed_invariant": "declare new explicit isomorph"
   },
   "motif": "MR FUSION / Back to the Future riff",
-  "lean": null
+  "lean": null,
+  "repair_law": {
+    "test": "can the original invariant be recovered inside the bounded system?",
+    "recoverable": {
+      "classification": "isomorphic",
+      "distill_to": [
+        "AETHER",
+        "TEMPORAL"
+      ]
+    },
+    "unrecoverable": {
+      "classification": "UNFIXABLE",
+      "fabricate": false
+    },
+    "rule": "plausibility is not repair"
+  }
 }

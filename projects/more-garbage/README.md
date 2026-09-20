@@ -69,3 +69,26 @@ frozen    = false
 Lean      = none yet
 next      = define operator semantics by example
 ```
+
+## Repair law — isomorph or stop
+
+The recycler does not accept "looks plausible" as repair.
+
+```text
+input garbage
+  ↓
+recover original invariant?
+  ├─ YES → ISOMORPHIC
+  │          ↓
+  │       distill
+  │          ↓
+  │    AETHER | TEMPORAL
+  │
+  └─ NO  → UNFIXABLE
+```
+
+A candidate is valid only when the same underlying invariant can be recovered inside the bounded system.
+
+If the invariant cannot be recovered, the engine must return **unfixable** rather than fabricate a replacement.
+
+`AETHER` and `TEMPORAL` are preserved here as named recoverable destinations. Their finer distinction is intentionally not inferred in this scaffold.
