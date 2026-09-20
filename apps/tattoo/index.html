@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d11">
+<title>OaSIs Tattoo Studio v04</title>
+<style>
+:root{
+  --bg:#0b0d11;
+  --bg2:#0f1217;
+  --panel:rgba(18,22,29,.86);
+  --panel-solid:#12161d;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.14);
+  --text:#f5f7fa;
+  --muted:#8995a5;
+  --muted2:#667281;
+  --accent:#9fe8ff;
+  --accent2:#c8a8ff;
+  --good:#9fe3b1;
+  --warn:#f0d183;
+  --paper:#f4f0e7;
+  --ink:#101216;
+  --shadow:0 24px 80px rgba(0,0,0,.42);
+  --r1:10px;
+  --r2:16px;
+  --r3:24px;
+  --blur:24px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{
+  background:
+   radial-gradient(1000px 700px at 10% -10%,rgba(103,180,214,.08),transparent 60%),
+   radial-gradient(900px 650px at 110% 0%,rgba(170,126,230,.07),transparent 58%),
+   linear-gradient(180deg,#0b0d11,#090b0f 70%);
+  overflow-x:hidden;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid rgba(159,232,255,.7);outline-offset:2px}
+.app{display:grid;grid-template-columns:68px minmax(0,1fr);min-height:100vh}
+.rail{
+  position:sticky;top:0;height:100vh;border-right:1px solid var(--line);
+  background:rgba(8,10,14,.74);backdrop-filter:blur(var(--blur));
+  display:flex;flex-direction:column;align-items:center;padding:12px 8px;gap:8px;z-index:40
+}
+.mark{
+  width:44px;height:44px;border:1px solid var(--line-strong);border-radius:14px;display:grid;place-items:center;
+  font:800 14px ui-monospace;letter-spacing:-.08em;background:linear-gradient(145deg,#161b23,#0e1218);
+  box-shadow:inset 0 1px rgba(255,255,255,.05),0 10px 24px rgba(0,0,0,.25)
+}
+.railbtn{
+  width:50px;height:50px;border:1px solid transparent;border-radius:13px;background:transparent;color:#768291;
+  display:grid;place-items:center;transition:.16s ease;position:relative
+}
+.railbtn:hover{background:rgba(255,255,255,.035);color:#c9d2dc}
+.railbtn.active{background:rgba(255,255,255,.06);border-color:var(--line);color:var(--text)}
+.railbtn span{font-size:18px;line-height:1}
+.railbtn::after{
+  content:attr(data-label);position:absolute;left:58px;top:50%;transform:translateY(-50%) translateX(-4px);
+  background:#171c24;border:1px solid var(--line);color:#dce3ea;padding:6px 8px;border-radius:8px;
+  font-size:10px;white-space:nowrap;opacity:0;pointer-events:none;transition:.14s;box-shadow:var(--shadow)
+}
+.railbtn:hover::after{opacity:1;transform:translateY(-50%) translateX(0)}
+.railspace{flex:1}
+.shell{min-width:0}
+.topbar{
+  height:64px;position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);
+  background:rgba(11,13,17,.72);backdrop-filter:blur(var(--blur));
+  display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:16px
+}
+.brandline{display:flex;align-items:center;gap:10px;min-width:0}
+.brandline b{font-size:13px;letter-spacing:.01em;white-space:nowrap}
+.breadcrumb{color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topactions{display:flex;gap:8px;align-items:center}
+.kbd{font:9px ui-monospace;border:1px solid var(--line);background:#0e1217;color:#697787;border-radius:6px;padding:4px 6px}
+.btn{
+  border:1px solid var(--line);background:#151a22;color:var(--text);border-radius:10px;padding:9px 11px;
+  font-size:11px;font-weight:650;box-shadow:inset 0 1px rgba(255,255,255,.03);transition:.15s
+}
+.btn:hover{border-color:#3b4655;background:#181e27}
+.btn.primary{background:linear-gradient(180deg,#233b46,#182832);border-color:#3d6f7c}
+.btn.primary:hover{border-color:var(--accent)}
+.btn.ghost{background:transparent}
+.workspace{padding:14px 14px 110px}
+.view{display:none}.view.active{display:block}
+
+.studio{
+  min-height:calc(100vh - 92px);
+  display:grid;grid-template-rows:auto minmax(0,1fr);gap:12px
+}
+.intro{
+  display:flex;justify-content:space-between;align-items:end;gap:16px;padding:6px 6px 0
+}
+.intro .left{max-width:720px}
+.eyebrow{font:9px ui-monospace;letter-spacing:.18em;color:#7996a4;text-transform:uppercase}
+.intro h1{font-size:clamp(24px,3vw,42px);line-height:1.02;letter-spacing:-.04em;margin:7px 0 5px;font-weight:720}
+.intro p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+.viewmeta{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.badge{border:1px solid var(--line);border-radius:999px;padding:6px 9px;font:9px ui-monospace;color:#7c8998;background:rgba(255,255,255,.02)}
+
+.gallery{
+  display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:12px;min-height:0
+}
+.wall{
+  min-height:680px;border:1px solid var(--line);border-radius:22px;overflow:hidden;position:relative;
+  background:
+   radial-gradient(circle at 50% 8%,rgba(255,255,255,.025),transparent 30%),
+   linear-gradient(180deg,#101319,#0d1015);
+  box-shadow:var(--shadow)
+}
+.wallgrid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:32px 32px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 85%)
+}
+.artstrip{
+  position:relative;z-index:2;height:100%;display:grid;grid-template-columns:.82fr 1.35fr .82fr;
+  align-items:center;gap:18px;padding:38px 34px 34px
+}
+.concept{
+  background:var(--paper);border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.3);
+  transition:transform .22s ease,opacity .22s ease,box-shadow .22s ease;cursor:pointer;position:relative
+}
+.concept.side{transform:scale(.93);opacity:.72}
+.concept.selected{transform:scale(1);opacity:1;box-shadow:0 34px 90px rgba(0,0,0,.38),0 0 0 1px rgba(159,232,255,.22)}
+.paper{aspect-ratio:4/5;display:grid;place-items:center;background:radial-gradient(circle at 50% 48%,#fffdf8,#eee8df)}
+.paper svg{width:100%;height:100%}
+.cap{
+  position:absolute;left:10px;right:10px;bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:8px 9px;border-radius:10px;background:rgba(13,15,18,.84);backdrop-filter:blur(12px);color:#eef2f6
+}
+.cap b{font-size:10px}.cap span{font:8px ui-monospace;color:#9aa6b5}
+.walltools{
+  position:absolute;z-index:3;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;gap:8px
+}
+.toolcluster{display:flex;gap:6px;padding:5px;border:1px solid var(--line);background:rgba(10,13,17,.72);backdrop-filter:blur(14px);border-radius:12px}
+.iconbtn{
+  width:34px;height:34px;border:1px solid transparent;border-radius:9px;background:transparent;color:#8d99a8;display:grid;place-items:center
+}
+.iconbtn:hover,.iconbtn.active{background:rgba(255,255,255,.055);border-color:var(--line);color:var(--text)}
+.inspector{
+  border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(18,22,29,.96),rgba(13,17,22,.96));
+  padding:14px;min-height:680px;box-shadow:var(--shadow);overflow:auto
+}
+.inspector h3{font-size:12px;margin:1px 0 4px}.sub{color:var(--muted);font-size:10px;line-height:1.5}
+.divider{border-top:1px solid var(--line);margin:14px 0}
+.label{display:flex;justify-content:space-between;gap:10px;font-size:10px;color:#97a4b4;margin-bottom:7px}
+input[type=range]{width:100%;accent-color:#8fdcf4}
+.control{margin:14px 0}
+.segment{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}
+.segment button{
+  border:1px solid var(--line);background:#0d1116;color:#778493;border-radius:9px;padding:8px 7px;font-size:9px
+}
+.segment button.active{color:#e9eef4;border-color:#445463;background:#151d25}
+.tagrow{display:flex;flex-wrap:wrap;gap:5px}.tag{font:8px ui-monospace;border:1px solid var(--line);border-radius:999px;padding:5px 6px;color:#7f8b9b}
+.readout{display:grid;gap:7px}
+.readline{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:9px;color:#7d8998}
+.readline b{color:#c9d2dc;font-weight:600}
+.inspector .btn{width:100%;margin-top:8px}
+
+.commanddock{
+  position:fixed;left:calc(68px + 50%);bottom:18px;transform:translateX(-50%);width:min(920px,calc(100vw - 110px));
+  z-index:60;border:1px solid var(--line-strong);border-radius:18px;background:rgba(16,20,26,.84);backdrop-filter:blur(24px);
+  box-shadow:0 24px 80px rgba(0,0,0,.5);padding:8px
+}
+.promptrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:end}
+.plusbtn{
+  width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:#0e1217;color:#8d99a8;font-size:18px
+}
+.promptrow textarea{
+  resize:none;min-height:42px;max-height:120px;border:0;background:transparent;color:var(--text);outline:0;padding:10px 6px;font-size:13px;line-height:1.45
+}
+.generate{height:42px;padding:0 16px}
+.dockmeta{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 4px 1px;flex-wrap:wrap}
+.quick{display:flex;gap:5px;flex-wrap:wrap}
+.qpill{
+  border:1px solid transparent;background:transparent;color:#74808f;border-radius:999px;padding:6px 8px;font-size:9px
+}
+.qpill:hover,.qpill.active{border-color:var(--line);background:rgba(255,255,255,.035);color:#c9d2dc}
+.localnote{font:8px ui-monospace;color:#596573}
+
+.place-layout,.stencil-layout,.deliver-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:12px}
+.stage{
+  min-height:720px;border:1px solid var(--line);border-radius:22px;background:#0f1218;position:relative;overflow:hidden;display:grid;place-items:center
+}
+.stage .empty{text-align:center;color:#778493;font-size:11px;line-height:1.6}
+.bodyimg{width:100%;height:100%;object-fit:contain;display:none}
+.overlay{position:absolute;left:50%;top:50%;width:230px;transform:translate(-50%,-50%);mix-blend-mode:multiply;pointer-events:none}
+.overlay svg{width:100%}
+.stencilpaper{min-height:720px;border-radius:22px;border:1px solid var(--line);background:#f0ece3;display:grid;place-items:center;padding:30px}
+.stencilpaper svg{width:min(640px,90%);max-height:670px}
+.deliverygrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.exportcard{border:1px solid var(--line);background:#10141a;border-radius:16px;padding:14px}
+.exportcard b{font-size:11px}.exportcard p{font-size:9px;color:var(--muted);line-height:1.5}
+.historygrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.hist{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#10141a;cursor:pointer}
+.hist .thumb{background:var(--paper);aspect-ratio:4/5}.hist svg{width:100%;height:100%}.hist .hm{padding:8px;font-size:9px;color:#7f8c9b}
+
+.drawer{
+  position:fixed;right:16px;bottom:88px;width:min(420px,calc(100vw - 100px));max-height:70vh;overflow:auto;
+  z-index:70;border:1px solid var(--line-strong);border-radius:18px;background:rgba(18,22,29,.96);backdrop-filter:blur(24px);
+  box-shadow:var(--shadow);padding:14px;display:none
+}
+.drawer.open{display:block}.drawerhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.drawerhead b{font-size:11px}.drawerclose{border:0;background:transparent;color:#7f8b99;font-size:18px}
+.refgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}
+.ref{aspect-ratio:1;border:1px dashed #384452;border-radius:12px;display:grid;place-items:center;overflow:hidden;color:#65717f;font-size:9px}
+.ref img{width:100%;height:100%;object-fit:cover}
+
+.modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.62);z-index:100;padding:18px}
+.modal.open{display:grid}
+.modalcard{width:min(680px,100%);border:1px solid var(--line-strong);border-radius:20px;background:#12161d;padding:18px;box-shadow:var(--shadow)}
+.modalcard h2{margin:0 0 6px;font-size:18px}.modalcard p{color:var(--muted);font-size:11px;line-height:1.55}
+.guide{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.guideitem{border:1px solid var(--line);border-radius:12px;padding:11px;background:#0d1116}.guideitem b{font-size:10px}.guideitem p{font-size:9px;margin:4px 0 0}
+
+@media(max-width:1180px){
+  .gallery{grid-template-columns:1fr}.inspector{min-height:auto}
+  .artstrip{grid-template-columns:.75fr 1.2fr .75fr;padding:34px 24px}
+  .historygrid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:820px){
+  .app{grid-template-columns:1fr}
+  .rail{position:fixed;left:0;right:0;top:auto;bottom:0;height:68px;flex-direction:row;justify-content:space-around;border-right:0;border-top:1px solid var(--line);padding:7px;z-index:80}
+  .mark,.railspace,.railbtn::after{display:none}.railbtn{width:52px;height:52px}
+  .shell{padding-bottom:72px}.topbar{height:58px;padding:0 12px}.topactions .kbd,.topactions .ghost{display:none}
+  .workspace{padding:10px 10px 106px}.intro{align-items:start;flex-direction:column}.viewmeta{display:none}
+  .wall{min-height:560px}.artstrip{grid-template-columns:1fr;gap:12px;padding:52px 16px 16px;overflow-y:auto}
+  .concept.side{transform:none;opacity:1}.concept{max-width:520px;margin:auto;width:100%}.cap{position:static;border-radius:0;background:#11151b}
+  .gallery{grid-template-columns:1fr}.inspector{display:none}
+  .commanddock{left:50%;width:calc(100vw - 16px);bottom:76px}.dockmeta{display:none}
+  .place-layout,.stencil-layout,.deliver-layout{grid-template-columns:1fr}.stage,.stencilpaper{min-height:560px}
+  .historygrid{grid-template-columns:repeat(2,1fr)}.guide{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff}.rail,.topbar,.commanddock,.inspector,.intro{display:none!important}
+  .app,.shell,.workspace,.view,.stencil-layout{display:block!important}.stencilpaper{border:0;min-height:0;padding:0}.stencilpaper svg{width:100%;max-height:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="rail">
+    <div class="mark">A|T</div>
+    <button class="railbtn active" data-view="create" data-label="Create"><span>✦</span></button>
+    <button class="railbtn" data-view="place" data-label="Place"><span>◎</span></button>
+    <button class="railbtn" data-view="stencil" data-label="Stencil"><span>⌁</span></button>
+    <button class="railbtn" data-view="deliver" data-label="Deliver"><span>⇧</span></button>
+    <div class="railspace"></div>
+    <button class="railbtn" data-view="history" data-label="History"><span>◷</span></button>
+  </nav>
+
+  <div class="shell">
+    <header class="topbar">
+      <div class="brandline"><b>OaSIs Tattoo Studio</b><span class="breadcrumb" id="crumb">Create / three directions</span></div>
+      <div class="topactions">
+        <span class="kbd">/ prompt</span>
+        <button class="btn ghost" id="help">Guide</button>
+        <button class="btn" id="save">Save</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="view active" id="viewCreate">
+        <div class="studio">
+          <div class="intro">
+            <div class="left">
+              <div class="eyebrow">Image-first workspace</div>
+              <h1>Three directions. One strong idea.</h1>
+              <p>Write the tattoo like you would explain it to an artist. The engine gives you three distinct visual directions, then gets out of the way.</p>
+            </div>
+            <div class="viewmeta"><span class="badge">local-first</span><span class="badge">3 distinct concepts</span><span class="badge">SVG / stencil / placement</span></div>
+          </div>
+
+          <div class="gallery">
+            <div class="wall">
+              <div class="wallgrid"></div>
+              <div class="walltools">
+                <div class="toolcluster">
+                  <button class="iconbtn active" data-artmode="art" title="Artwork">◫</button>
+                  <button class="iconbtn" data-artmode="line" title="Line study">⌁</button>
+                  <button class="iconbtn" data-artmode="contrast" title="Contrast map">◩</button>
+                </div>
+                <div class="toolcluster">
+                  <button class="iconbtn" id="reroll" title="Reroll selected">↻</button>
+                  <button class="iconbtn" id="refsBtn" title="References">＋</button>
+                </div>
+              </div>
+              <div class="artstrip" id="artstrip"></div>
+            </div>
+
+            <aside class="inspector">
+              <h3>Selected direction</h3>
+              <div class="sub">Only controls that materially change the artwork.</div>
+
+              <div class="control"><div class="label"><span>Complexity</span><output id="oComplexity">58</output></div><input id="complexity" type="range" min="10" max="100" value="58"></div>
+              <div class="control"><div class="label"><span>Contrast</span><output id="oContrast">72</output></div><input id="contrast" type="range" min="10" max="100" value="72"></div>
+              <div class="control"><div class="label"><span>Line weight</span><output id="oLine">52</output></div><input id="lineWeight" type="range" min="10" max="100" value="52"></div>
+              <div class="control"><div class="label"><span>Symmetry</span><output id="oSymmetry">70</output></div><input id="symmetry" type="range" min="0" max="100" value="70"></div>
+              <div class="control"><div class="label"><span>Body flow</span><output id="oFlow">68</output></div><input id="bodyFlow" type="range" min="0" max="100" value="68"></div>
+
+              <div class="divider"></div>
+              <div class="label"><span>Composition</span></div>
+              <div class="segment" id="composition">
+                <button class="active" data-comp="Totem">Totem</button><button data-comp="Sigil">Sigil</button>
+                <button data-comp="Flowing">Flowing</button><button data-comp="Contained">Contained</button>
+              </div>
+
+              <button class="btn primary" id="apply">Apply refinement</button>
+
+              <div class="divider"></div>
+              <div class="readout">
+                <div class="readline"><span>Style</span><b id="rStyle">Blackwork</b></div>
+                <div class="readline"><span>Placement</span><b id="rPlacement">Forearm</b></div>
+                <div class="readline"><span>DNA</span><b id="rDNA">—</b></div>
+              </div>
+              <div class="tagrow" id="tags" style="margin-top:10px"></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="viewPlace">
+        <div class="intro">
+          <div class="left"><div class="eyebrow">Placement</div><h1>See it on a body, not in a rectangle.</h1><p>Upload a local photo, then adjust scale, rotation, opacity, and blend.</p></div>
+        </div>
+        <div class="place-layout">
+          <div class="stage">
+            <div class="empty" id="bodyEmpty">Drop or choose a body photo.<br><br><button class="btn primary" id="chooseBody">Choose photo</button></div>
+            <img class="bodyimg" id="bodyImg" alt="">
+            <div class="overlay" id="overlay"></div>
+          </div>
+          <aside class="inspector" style="min-height:auto">
+            <h3>Placement controls</h3><div class="sub">Visual planning only; the artist confirms final fit.</div>
+            <div class="control"><div class="label"><span>Size</span><output id="oSize">100</output></div><input id="placeSize" type="range" min="30" max="220" value="100"></div>
+            <div class="control"><div class="label"><span>Rotate</span><output id="oRotate">0°</output></div><input id="placeRotate" type="range" min="-180" max="180" value="0"></div>
+            <div class="control"><div class="label"><span>Opacity</span><output id="oOpacity">72%</output></div><input id="placeOpacity" type="range" min="20" max="100" value="72"></div>
+            <div class="label"><span>Blend</span></div>
+            <div class="segment" id="blend"><button class="active" data-blend="multiply">Ink</button><button data-blend="normal">Reference</button></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="viewStencil">
+        <div class="intro">
+          <div class="left"><div class="eyebrow">Stencil</div><h1>Strip it down to transferable linework.</h1><p>Reduce the concept into a clean discussion stencil, then print or export SVG.</p></div>
+        </div>
+        <div class="stencil-layout">
+          <div class="stencilpaper" id="stencilPaper"></div>
+          <aside class="inspector" style="min-height:auto">
+            <h3>Stencil controls</h3>
+            <div class="control"><div class="label"><span>Detail</span><output id="oStencilDetail">62</output></div><input id="stencilDetail" type="range" min="10" max="100" value="62"></div>
+            <div class="control"><div class="label"><span>Line strength</span><output id="oStencilStrength">68</output></div><input id="stencilStrength" type="range" min="10" max="100" value="68"></div>
+            <button class="btn primary" id="updateStencil">Update stencil</button>
+            <button class="btn" id="printStencil">Print page</button>
+            <button class="btn" id="exportStencil">Export SVG</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="viewDeliver">
+        <div class="intro">
+          <div class="left"><div class="eyebrow">Deliver</div><h1>Hand the artist a useful pack.</h1><p>Artwork, stencil reference, creative brief, and project metadata. No mystery folder full of junk.</p></div>
+        </div>
+        <div class="deliver-layout">
+          <div class="deliverygrid">
+            <div class="exportcard"><b>Concept SVG</b><p>Vector concept with the current composition and refinement.</p><button class="btn" id="exportConceptSvg">Export</button></div>
+            <div class="exportcard"><b>Concept PNG</b><p>High-resolution raster reference for easy sharing.</p><button class="btn" id="exportConceptPng">Export</button></div>
+            <div class="exportcard"><b>Project JSON</b><p>Prompt, style, settings, placement notes, and selected direction.</p><button class="btn" id="exportJson">Export</button></div>
+            <div class="exportcard"><b>Artist brief</b><p>Short plain-text handoff written for a human tattoo artist.</p><button class="btn" id="exportBrief">Export</button></div>
+          </div>
+          <aside class="inspector" style="min-height:auto">
+            <h3>Selected</h3>
+            <div class="readout">
+              <div class="readline"><span>Direction</span><b id="dName">—</b></div>
+              <div class="readline"><span>Style</span><b id="dStyle">—</b></div>
+              <div class="readline"><span>Placement</span><b id="dPlacement">—</b></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="viewHistory">
+        <div class="intro">
+          <div class="left"><div class="eyebrow">History</div><h1>Saved locally.</h1><p>Your saved concepts live in this browser.</p></div>
+        </div>
+        <div class="historygrid" id="historygrid"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="commanddock">
+  <div class="promptrow">
+    <button class="plusbtn" id="openRefs" title="Add references">＋</button>
+    <textarea id="prompt" rows="1" placeholder="Describe the tattoo...">A razor-edged sci-fi villain with a calm singular center, dark but elegant, built for the forearm.</textarea>
+    <button class="btn primary generate" id="generate">Generate 3</button>
+  </div>
+  <div class="dockmeta">
+    <div class="quick" id="stylePills">
+      <button class="qpill active" data-style="Blackwork">Blackwork</button>
+      <button class="qpill" data-style="Fine line">Fine line</button>
+      <button class="qpill" data-style="Ornamental">Ornamental</button>
+      <button class="qpill" data-style="Geometric">Geometric</button>
+      <button class="qpill" data-style="Illustrative">Illustrative</button>
+      <button class="qpill" data-style="Biomechanical">Biomechanical</button>
+    </div>
+    <div class="quick">
+      <button class="qpill active" data-place="Forearm">Forearm</button>
+      <button class="qpill" data-place="Upper arm">Upper arm</button>
+      <button class="qpill" data-place="Calf">Calf</button>
+      <button class="qpill" data-place="Back">Back</button>
+    </div>
+    <span class="localnote">references + body photos stay local</span>
+  </div>
+</div>
+
+<div class="drawer" id="refsDrawer">
+  <div class="drawerhead"><b>Reference images</b><button class="drawerclose" id="closeRefs">×</button></div>
+  <p class="sub">Optional. Up to three local references. They are not uploaded anywhere by this page.</p>
+  <input id="refFiles" type="file" accept="image/*" multiple hidden>
+  <button class="btn" id="chooseRefs">Choose images</button>
+  <div class="refgrid" id="refgrid"></div>
+</div>
+
+<input id="bodyFile" type="file" accept="image/*" hidden>
+
+<div class="modal" id="guideModal">
+  <div class="modalcard">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div class="eyebrow">Quick guide</div><h2>Use it like a studio, not a form.</h2></div><button class="btn" id="closeGuide">Close</button></div>
+    <div class="guide">
+      <div class="guideitem"><b>Describe</b><p>One clear sentence. Say subject, feeling, and placement if they matter.</p></div>
+      <div class="guideitem"><b>Compare</b><p>Three different directions appear at once. Click the strongest one.</p></div>
+      <div class="guideitem"><b>Refine</b><p>Only five forces are exposed. Everything else stays derived.</p></div>
+      <div class="guideitem"><b>Place</b><p>Use a body photo locally to check scale and flow.</p></div>
+      <div class="guideitem"><b>Stencil</b><p>Generate clean linework for discussion and transfer planning.</p></div>
+      <div class="guideitem"><b>Deliver</b><p>Export one clean pack for the tattoo artist.</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const state={
+ style:"Blackwork",placement:"Forearm",seed:482731,designs:[],selected:1,artMode:"art",
+ comp:"Totem",refs:[],body:null
+};
+
+function hash32(s){let h=2166136261>>>0;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}h+=h<<13;h^=h>>>7;h+=h<<3;h^=h>>>17;h+=h<<5;return h>>>0}
+function rng(seed){let a=seed>>>0;return()=>{a=(a+0x6D2B79F5)|0;let t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296}}
+function pt(cx,cy,r,a){return[cx+Math.cos(a)*r,cy+Math.sin(a)*r]}
+function blade(cx,cy,len,w,a,bend=0){const n=a+Math.PI/2,t=pt(cx,cy,len,a),l=pt(cx,cy,w,n),r=pt(cx,cy,w,n+Math.PI),c1=[cx+Math.cos(a)*len*.56+Math.cos(n)*(w+bend),cy+Math.sin(a)*len*.56+Math.sin(n)*(w+bend)],c2=[cx+Math.cos(a)*len*.62-Math.cos(n)*(w+bend),cy+Math.sin(a)*len*.62-Math.sin(n)*(w+bend)];return`M${l[0]} ${l[1]} Q${c1[0]} ${c1[1]} ${t[0]} ${t[1]} Q${c2[0]} ${c2[1]} ${r[0]} ${r[1]} Z`}
+function dl(name,blob){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function signals(t){t=t.toLowerCase();return{
+ dark:/dark|villain|death|shadow|razor|blade|goth/.test(t),
+ organic:/flower|botan|vine|leaf|animal|wolf|bird|nature|organic/.test(t),
+ cosmic:/cosmic|star|moon|sun|space|planet|singular|black hole|orb/.test(t),
+ mech:/machine|robot|cyber|metal|biomech|sci-fi|scifi|mechan/.test(t),
+ eye:/eye|oracle|watch|vision/.test(t),
+ skull:/skull|bone/.test(t),
+ calm:/calm|elegant|simple|quiet|sacred/.test(t)
+}}
+function brief(){return{prompt:$("prompt").value.trim(),style:state.style,placement:state.placement,refs:state.refs.map(x=>x.name)}}
+function selected(){return state.designs[state.selected]}
+
+function renderSVG(o,stencil=false){
+ const {seed,index,comp,complexity,contrast,lineWeight,symmetry,bodyFlow,sig}=o,R=rng(seed);
+ const W=720,H=900,cx=360,cy=450,bg="#f4f0e7",fine=1.15+lineWeight/100*3.1,heavy=contrast>76?8:6,mirror=symmetry>56;
+ let s=[`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"><rect width="${W}" height="${H}" fill="${bg}"/><g fill="none" stroke="#101216" stroke-width="${stencil?Math.max(1.2,fine*.82):fine}" stroke-linecap="round" stroke-linejoin="round">`];
+
+ if(comp==="Sigil"){s.push(`<circle cx="${cx}" cy="${cy}" r="230"/>`,`<circle cx="${cx}" cy="${cy}" r="184" opacity=".46"/>`)}
+ else if(comp==="Flowing"){s.push(`<path d="M270 105 Q525 300 300 468 Q155 650 410 795" stroke-width="${fine*1.25}"/>`)}
+ else if(comp==="Contained"){s.push(`<path d="M210 140 Q360 80 510 140 L540 690 Q360 810 180 690Z"/>`)}
+ else{s.push(`<path d="M360 90 Q255 220 285 450 Q288 655 360 810 Q432 655 435 450 Q465 220 360 90Z"/>`)}
+
+ if(sig.organic){
+   s.push(`<path d="M360 178 Q292 395 360 742"/>`);
+   for(let i=0;i<7;i++){const y=260+i*70,w=40+(i%2)*11;s.push(`<ellipse cx="${360-w}" cy="${y}" rx="16" ry="42" transform="rotate(-32 ${360-w} ${y})" fill="${!stencil&&contrast>72?"#101216":"none"}"/>`,`<ellipse cx="${360+w}" cy="${y+23}" rx="16" ry="42" transform="rotate(32 ${360+w} ${y+23})" fill="${!stencil&&contrast>72?"#101216":"none"}"/>`)}
+ } else if(sig.eye){
+   s.push(`<path d="M175 450 Q360 310 545 450 Q360 590 175 450Z"/>`,`<circle cx="360" cy="450" r="72"/>`,`<circle cx="360" cy="450" r="24" fill="${stencil?"none":"#101216"}"/>`);
+ } else if(sig.skull){
+   s.push(`<ellipse cx="360" cy="425" rx="110" ry="132"/>`,`<circle cx="318" cy="405" r="24"/>`,`<circle cx="402" cy="405" r="24"/>`,`<path d="M316 520 Q360 555 404 520"/>`);
+ } else if(sig.mech||sig.dark){
+   const n=Math.round(7+complexity/12);
+   for(let i=0;i<n;i++){const a=-Math.PI/2+(i-(n-1)/2)*.13,len=165+R()*140,w=5+R()*9;s.push(`<path d="${blade(cx,cy,len,w,a,(R()-.5)*12)}" fill="${!stencil&&(i%2===0||contrast>82)?"#101216":"none"}" stroke-width="${i%3===0?heavy:fine}"/>`);if(mirror)s.push(`<path d="${blade(cx,cy,len*.96,w,Math.PI-a,(R()-.5)*12)}" fill="${!stencil&&(i%2===0||contrast>82)?"#101216":"none"}" stroke-width="${i%3===0?heavy:fine}"/>`)}
+ } else {
+   s.push(`<circle cx="360" cy="450" r="86"/>`,`<path d="M360 170 L360 730 M190 450 L530 450"/>`);
+ }
+
+ if(sig.cosmic){for(let i=0;i<4;i++)s.push(`<ellipse cx="360" cy="450" rx="${105+i*38}" ry="${58+i*25}" opacity="${.82-i*.14}"/>`);s.push(`<circle cx="360" cy="450" r="40" fill="${!stencil&&contrast>58?"#101216":"none"}"/>`)}
+ if(sig.mech){for(let i=0;i<7;i++){const y=270+i*62,w=62+(i%3)*14;s.push(`<path d="M350 ${y} Q${360-w} ${y+6} ${360-w-28} ${y+24}"/>`,`<path d="M370 ${y} Q${360+w} ${y+6} ${360+w+28} ${y+24}"/>`)}}
+
+ const micro=Math.round(12+complexity*.55);
+ for(let i=0;i<micro;i++){const a=R()*Math.PI*2,rr=40+R()*122,x=cx+Math.cos(a)*rr,y=cy+Math.sin(a)*rr*(comp==="Totem"?1.42:.76);if(index===1||state.style==="Fine line"||state.style==="Ornamental")s.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(0.8+R()*1.5).toFixed(1)}" fill="#101216" stroke="none"/>`);else if(!stencil)s.push(`<path d="M${(x-5).toFixed(1)} ${(y+5).toFixed(1)} L${(x+5).toFixed(1)} ${(y-5).toFixed(1)}" opacity=".22"/>`)}
+
+ if(bodyFlow>64||comp==="Totem")s.push(`<path d="M360 76 L360 824" opacity=".42"/>`);
+ if(comp==="Sigil")for(let i=0;i<8;i++){const a=i/8*Math.PI*2,p1=pt(cx,cy,248,a),p2=pt(cx,cy,276,a);s.push(`<path d="M${p1[0]} ${p1[1]} L${p2[0]} ${p2[1]}"/>`)}
+ s.push(`</g></svg>`);return s.join("")
+}
+
+function makeDesign(index,ov={}){
+ const b=brief(),sig=signals(b.prompt),seed=hash32(JSON.stringify(b)+"|"+state.seed+"|"+index+"|"+JSON.stringify(ov)),R=rng(seed);
+ const defaults=[
+  {comp:"Totem",complexity:62,contrast:78,lineWeight:60,symmetry:84,bodyFlow:76,name:"Core / Edge"},
+  {comp:"Sigil",complexity:54,contrast:66,lineWeight:42,symmetry:92,bodyFlow:58,name:"Orbit / Mark"},
+  {comp:"Flowing",complexity:47,contrast:72,lineWeight:50,symmetry:34,bodyFlow:88,name:"Drift / Body"}
+ ][index];
+ const d={...defaults,...ov,index,seed,sig,score:Math.round(84+R()*12)};
+ d.svg=renderSVG(d,false);return d
+}
+function generate(){
+ state.seed=(state.seed+1)>>>0;state.designs=[0,1,2].map(i=>makeDesign(i));state.selected=1;renderConcepts();sync()
+}
+function artFor(d){
+ if(state.artMode==="line")return renderSVG({...d,complexity:Math.max(20,d.complexity-16),contrast:50,lineWeight:Math.max(25,d.lineWeight-12)},true);
+ if(state.artMode==="contrast")return d.svg.replace(/stroke="#101216"/g,'stroke="#000"').replace(/fill="#101216"/g,'fill="#000"').replace(/opacity="\.[0-9]+"/g,'opacity=".95"');
+ return d.svg
+}
+function renderConcepts(){
+ $("artstrip").innerHTML=state.designs.map((d,i)=>`<article class="concept ${i===state.selected?"selected":"side"}" data-i="${i}"><div class="paper">${artFor(d)}</div><div class="cap"><b>${String(i+1).padStart(2,"0")} · ${esc(d.name)}</b><span>${d.score}% fit</span></div></article>`).join("")
+}
+$("artstrip").onclick=e=>{const c=e.target.closest("[data-i]");if(!c)return;state.selected=+c.dataset.i;renderConcepts();sync()}
+
+function sync(){
+ const d=selected();if(!d)return;
+ ["complexity","contrast","lineWeight","symmetry","bodyFlow"].forEach(id=>$(id).value=d[id]);
+ $("oComplexity").value=d.complexity;$("oContrast").value=d.contrast;$("oLine").value=d.lineWeight;$("oSymmetry").value=d.symmetry;$("oFlow").value=d.bodyFlow;
+ document.querySelectorAll("#composition button").forEach(b=>b.classList.toggle("active",b.dataset.comp===d.comp));state.comp=d.comp;
+ $("rStyle").textContent=state.style;$("rPlacement").textContent=state.placement;$("rDNA").textContent=d.seed.toString(16).padStart(8,"0");
+ $("tags").innerHTML=[state.style,state.placement,d.comp].map(x=>`<span class="tag">${esc(x)}</span>`).join("");
+ $("overlay").innerHTML=d.svg;updateStencil();
+ $("dName").textContent=d.name;$("dStyle").textContent=state.style;$("dPlacement").textContent=state.placement;
+}
+["complexity","contrast","lineWeight","symmetry","bodyFlow"].forEach(id=>$(id).oninput=()=>{
+ const map={complexity:"oComplexity",contrast:"oContrast",lineWeight:"oLine",symmetry:"oSymmetry",bodyFlow:"oFlow"};$(map[id]).value=$(id).value
+});
+$("composition").onclick=e=>{const b=e.target.closest("[data-comp]");if(!b)return;state.comp=b.dataset.comp;document.querySelectorAll("#composition button").forEach(x=>x.classList.toggle("active",x===b))}
+$("apply").onclick=()=>{const d=selected(),ov={comp:state.comp,complexity:+$("complexity").value,contrast:+$("contrast").value,lineWeight:+$("lineWeight").value,symmetry:+$("symmetry").value,bodyFlow:+$("bodyFlow").value,name:d.name};state.designs[state.selected]=makeDesign(state.selected,ov);renderConcepts();sync()}
+$("reroll").onclick=()=>{state.seed=(state.seed+137)>>>0;state.designs[state.selected]=makeDesign(state.selected,{comp:state.comp});renderConcepts();sync()}
+document.querySelector(".walltools").onclick=e=>{const b=e.target.closest("[data-artmode]");if(!b)return;state.artMode=b.dataset.artmode;document.querySelectorAll("[data-artmode]").forEach(x=>x.classList.toggle("active",x===b));renderConcepts()}
+
+function go(v){
+ document.querySelectorAll(".railbtn[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
+ document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));$("view"+v.charAt(0).toUpperCase()+v.slice(1)).classList.add("active");
+ const crumbs={create:"Create / three directions",place:"Place / body preview",stencil:"Stencil / linework",deliver:"Deliver / artist pack",history:"History / local saves"};$("crumb").textContent=crumbs[v];
+ if(v==="stencil")updateStencil();if(v==="history")renderHistory()
+}
+document.querySelector(".rail").onclick=e=>{const b=e.target.closest("[data-view]");if(b)go(b.dataset.view)}
+
+$("stylePills").onclick=e=>{const b=e.target.closest("[data-style]");if(!b)return;state.style=b.dataset.style;document.querySelectorAll("#stylePills [data-style]").forEach(x=>x.classList.toggle("active",x===b));$("rStyle").textContent=state.style}
+document.querySelector(".dockmeta").onclick=e=>{const b=e.target.closest("[data-place]");if(!b)return;state.placement=b.dataset.place;document.querySelectorAll("[data-place]").forEach(x=>x.classList.toggle("active",x===b));$("rPlacement").textContent=state.placement}
+$("generate").onclick=generate;
+document.addEventListener("keydown",e=>{if(e.key==="/"&&!["INPUT","TEXTAREA"].includes(document.activeElement.tagName)){e.preventDefault();$("prompt").focus()}});
+
+function openRefs(){ $("refsDrawer").classList.add("open") }
+$("openRefs").onclick=openRefs;$("refsBtn").onclick=openRefs;$("closeRefs").onclick=()=>$("refsDrawer").classList.remove("open");$("chooseRefs").onclick=()=>$("refFiles").click();
+$("refFiles").onchange=e=>{[...e.target.files].slice(0,3).forEach(f=>{const r=new FileReader();r.onload=()=>{state.refs.push({name:f.name,url:r.result});state.refs=state.refs.slice(-3);renderRefs()};r.readAsDataURL(f)})}
+function renderRefs(){ $("refgrid").innerHTML=state.refs.length?state.refs.map(r=>`<div class="ref"><img src="${r.url}" alt=""></div>`).join(""):`<div class="ref">empty</div><div class="ref">empty</div><div class="ref">empty</div>` }
+
+$("chooseBody").onclick=()=>$("bodyFile").click();$("bodyFile").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{state.body=r.result;$("bodyImg").src=r.result;$("bodyImg").style.display="block";$("bodyEmpty").style.display="none"};r.readAsDataURL(f)}
+function updatePlacement(){const s=+$("placeSize").value,r=+$("placeRotate").value,o=+$("placeOpacity").value/100;$("oSize").value=s;$("oRotate").value=r+"°";$("oOpacity").value=Math.round(o*100)+"%";$("overlay").style.width=(230*s/100)+"px";$("overlay").style.opacity=o;$("overlay").style.transform=`translate(-50%,-50%) rotate(${r}deg)`}
+["placeSize","placeRotate","placeOpacity"].forEach(id=>$(id).oninput=updatePlacement);
+$("blend").onclick=e=>{const b=e.target.closest("[data-blend]");if(!b)return;document.querySelectorAll("#blend [data-blend]").forEach(x=>x.classList.toggle("active",x===b));$("overlay").style.mixBlendMode=b.dataset.blend}
+
+function updateStencil(){const d=selected();if(!d)return;const detail=+$("stencilDetail").value,str=+$("stencilStrength").value;$("oStencilDetail").value=detail;$("oStencilStrength").value=str;$("stencilPaper").innerHTML=renderSVG({...d,complexity:Math.round(18+detail*.62),lineWeight:Math.round(18+str*.62),contrast:52},true)}
+["stencilDetail","stencilStrength"].forEach(id=>$(id).oninput=updateStencil);$("updateStencil").onclick=updateStencil;$("printStencil").onclick=()=>window.print();$("exportStencil").onclick=()=>dl("oasis-tattoo-stencil.svg",new Blob([$("stencilPaper").innerHTML],{type:"image/svg+xml"}));
+
+function exportPNG(svg,name,w=1600,h=2000){const blob=new Blob([svg],{type:"image/svg+xml"}),url=URL.createObjectURL(blob),img=new Image();img.onload=()=>{const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");x.fillStyle="#f4f0e7";x.fillRect(0,0,w,h);x.drawImage(img,0,0,w,h);URL.revokeObjectURL(url);c.toBlob(b=>dl(name,b),"image/png")};img.src=url}
+function project(){const d=selected();return{schema:"OaSIs.TattooStudio.v04",created:new Date().toISOString(),brief:brief(),selected:d?{name:d.name,composition:d.comp,complexity:d.complexity,contrast:d.contrast,lineWeight:d.lineWeight,symmetry:d.symmetry,bodyFlow:d.bodyFlow,dna:d.seed}:null,placementPreview:{size:+$("placeSize").value,rotation:+$("placeRotate").value,opacity:+$("placeOpacity").value,bodyPhotoPresent:!!state.body},privacy:"local-first; no automatic upload"}}
+function artistBrief(){const p=project(),d=selected();return`OaSIs Tattoo Studio — Artist Brief
+
+IDEA
+${p.brief.prompt}
+
+STYLE
+${p.brief.style}
+
+PLACEMENT
+${p.brief.placement}
+
+SELECTED DIRECTION
+${d?.name||"None"} / ${d?.comp||""}
+
+REFINEMENT
+Complexity ${d?.complexity}
+Contrast ${d?.contrast}
+Line weight ${d?.lineWeight}
+Symmetry ${d?.symmetry}
+Body flow ${d?.bodyFlow}
+
+NOTE
+This is a concept/reference pack. Final tattoo design, stencil adaptation, placement, scale, line weight, and execution remain with the tattoo artist and client.
+`}
+$("exportConceptSvg").onclick=()=>{const d=selected();if(d)dl("oasis-tattoo-concept.svg",new Blob([d.svg],{type:"image/svg+xml"}))};$("exportConceptPng").onclick=()=>{const d=selected();if(d)exportPNG(d.svg,"oasis-tattoo-concept.png")};$("exportJson").onclick=()=>dl("oasis-tattoo-project.json",new Blob([JSON.stringify(project(),null,2)],{type:"application/json"}));$("exportBrief").onclick=()=>dl("oasis-tattoo-artist-brief.txt",new Blob([artistBrief()],{type:"text/plain"}));
+
+$("save").onclick=()=>{const d=selected();if(!d)return;const h=JSON.parse(localStorage.getItem("oasis_tattoo_v04_history")||"[]");h.unshift({time:new Date().toISOString(),brief:brief(),design:{...d},thumb:d.svg});localStorage.setItem("oasis_tattoo_v04_history",JSON.stringify(h.slice(0,24)));$("save").textContent="Saved ✓";setTimeout(()=>$("save").textContent="Save",1200)}
+function renderHistory(){const h=JSON.parse(localStorage.getItem("oasis_tattoo_v04_history")||"[]");$("historygrid").innerHTML=h.length?h.map((x,i)=>`<article class="hist" data-h="${i}"><div class="thumb">${x.thumb}</div><div class="hm">${esc(x.design.name)} · ${new Date(x.time).toLocaleDateString()}</div></article>`).join(""):`<div class="sub">No saved concepts yet.</div>`}
+$("historygrid").onclick=e=>{const el=e.target.closest("[data-h]");if(!el)return;const h=JSON.parse(localStorage.getItem("oasis_tattoo_v04_history")||"[]"),x=h[+el.dataset.h];if(!x)return;$("prompt").value=x.brief.prompt;state.style=x.brief.style;state.placement=x.brief.placement;state.designs=[makeDesign(0),x.design,makeDesign(2)];state.selected=1;renderConcepts();sync();go("create")}
+
+$("help").onclick=()=>$("guideModal").classList.add("open");$("closeGuide").onclick=()=>$("guideModal").classList.remove("open");$("guideModal").onclick=e=>{if(e.target===$("guideModal"))$("guideModal").classList.remove("open")};
+
+generate();renderRefs();updatePlacement();
+</script>
+</body>
+</html>

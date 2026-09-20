@@ -1,0 +1,407 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: TattooSkillAtlas_405.csv>index,skill,family_index,family,category_index,category_id,category,family_purpose,surface_mode,source_bundle
+0,CREATE,1,Intent & Brief,1,CREATE.1.1,Primary subject,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+1,CREATE,1,Intent & Brief,2,CREATE.1.2,Narrative role,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+2,CREATE,1,Intent & Brief,3,CREATE.1.3,Emotional tone,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+3,CREATE,1,Intent & Brief,4,CREATE.1.4,Symbolic meaning,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+4,CREATE,1,Intent & Brief,5,CREATE.1.5,Personal context,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+5,CREATE,1,Intent & Brief,6,CREATE.1.6,Visibility intent,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+6,CREATE,1,Intent & Brief,7,CREATE.1.7,Permanence horizon,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+7,CREATE,1,Intent & Brief,8,CREATE.1.8,Hard constraints,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+8,CREATE,1,Intent & Brief,9,CREATE.1.9,Success criterion,Define what the tattoo is trying to be before drawing.,implicit,CREATE:2video+1manual
+9,CREATE,2,Reference Intelligence,1,CREATE.2.1,Client-owned reference,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+10,CREATE,2,Reference Intelligence,2,CREATE.2.2,Licensed/open reference,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+11,CREATE,2,Reference Intelligence,3,CREATE.2.3,Anatomy reference,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+12,CREATE,2,Reference Intelligence,4,CREATE.2.4,Style reference,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+13,CREATE,2,Reference Intelligence,5,CREATE.2.5,Material reference,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+14,CREATE,2,Reference Intelligence,6,CREATE.2.6,Motif reference,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+15,CREATE,2,Reference Intelligence,7,CREATE.2.7,Cultural-context check,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+16,CREATE,2,Reference Intelligence,8,CREATE.2.8,Originality distance,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+17,CREATE,2,Reference Intelligence,9,CREATE.2.9,Rights/provenance record,Gather useful references without letting references become the design.,implicit,CREATE:2video+1manual
+18,CREATE,3,Composition Skeleton,1,CREATE.3.1,Outer silhouette,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+19,CREATE,3,Composition Skeleton,2,CREATE.3.2,Primary focal point,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+20,CREATE,3,Composition Skeleton,3,CREATE.3.3,Secondary focal point,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+21,CREATE,3,Composition Skeleton,4,CREATE.3.4,Foreground layer,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+22,CREATE,3,Composition Skeleton,5,CREATE.3.5,Middleground layer,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+23,CREATE,3,Composition Skeleton,6,CREATE.3.6,Background layer,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+24,CREATE,3,Composition Skeleton,7,CREATE.3.7,Negative-space map,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+25,CREATE,3,Composition Skeleton,8,CREATE.3.8,Directional rhythm,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+26,CREATE,3,Composition Skeleton,9,CREATE.3.9,Edge/crop strategy,Build the first-read structure before detail.,implicit,CREATE:2video+1manual
+27,CREATE,4,Style Grammar,1,CREATE.4.1,Line grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+28,CREATE,4,Style Grammar,2,CREATE.4.2,Black-mass grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+29,CREATE,4,Style Grammar,3,CREATE.4.3,Greywash grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+30,CREATE,4,Style Grammar,4,CREATE.4.4,Color grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+31,CREATE,4,Style Grammar,5,CREATE.4.5,Texture grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+32,CREATE,4,Style Grammar,6,CREATE.4.6,Ornament grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+33,CREATE,4,Style Grammar,7,CREATE.4.7,Geometry grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+34,CREATE,4,Style Grammar,8,CREATE.4.8,Illustrative grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+35,CREATE,4,Style Grammar,9,CREATE.4.9,Realism grammar,Choose a coherent visual language rather than disconnected effects.,implicit,CREATE:2video+1manual
+36,CREATE,5,Body-Aware Concept,1,CREATE.5.1,Placement envelope,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+37,CREATE,5,Body-Aware Concept,2,CREATE.5.2,Aspect-ratio match,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+38,CREATE,5,Body-Aware Concept,3,CREATE.5.3,Wrap allowance,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+39,CREATE,5,Body-Aware Concept,4,CREATE.5.4,Front-view readability,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+40,CREATE,5,Body-Aware Concept,5,CREATE.5.5,Joint clearance,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+41,CREATE,5,Body-Aware Concept,6,CREATE.5.6,Muscle-flow direction,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+42,CREATE,5,Body-Aware Concept,7,CREATE.5.7,Resting-pose orientation,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+43,CREATE,5,Body-Aware Concept,8,CREATE.5.8,Expansion allowance,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+44,CREATE,5,Body-Aware Concept,9,CREATE.5.9,Neighbor-tattoo relationship,Shape the concept for the eventual body area from the beginning.,implicit,CREATE:2video+1manual
+45,CREATE,6,Construction Method,1,CREATE.6.1,Thumbnail pass,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+46,CREATE,6,Construction Method,2,CREATE.6.2,Guide-grid pass,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+47,CREATE,6,Construction Method,3,CREATE.6.3,Symmetry scaffold,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+48,CREATE,6,Construction Method,4,CREATE.6.4,Perspective scaffold,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+49,CREATE,6,Construction Method,5,CREATE.6.5,Basic-shape block-in,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+50,CREATE,6,Construction Method,6,CREATE.6.6,Layered sketch,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+51,CREATE,6,Construction Method,7,CREATE.6.7,Refinement sketch,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+52,CREATE,6,Construction Method,8,CREATE.6.8,Clean-line pass,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+53,CREATE,6,Construction Method,9,CREATE.6.9,Variant branch,Move from rough thought to controlled drawing in passes.,implicit,CREATE:2video+1manual
+54,CREATE,7,Tattoo Readability,1,CREATE.7.1,Distance read,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+55,CREATE,7,Tattoo Readability,2,CREATE.7.2,Final-size read,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+56,CREATE,7,Tattoo Readability,3,CREATE.7.3,Detail-density budget,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+57,CREATE,7,Tattoo Readability,4,CREATE.7.4,Line-spacing budget,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+58,CREATE,7,Tattoo Readability,5,CREATE.7.5,Contrast hierarchy,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+59,CREATE,7,Tattoo Readability,6,CREATE.7.6,Black anchor,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+60,CREATE,7,Tattoo Readability,7,CREATE.7.7,Skin-break allowance,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+61,CREATE,7,Tattoo Readability,8,CREATE.7.8,Edge clarity,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+62,CREATE,7,Tattoo Readability,9,CREATE.7.9,Aging margin,Protect the design from becoming visually clever but physically unreadable.,implicit,CREATE:2video+1manual
+63,CREATE,8,Originality Transform,1,CREATE.8.1,Trope distillation,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+64,CREATE,8,Originality Transform,2,CREATE.8.2,Descriptor abstraction,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+65,CREATE,8,Originality Transform,3,CREATE.8.3,Source recombination,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+66,CREATE,8,Originality Transform,4,CREATE.8.4,Motif mutation,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+67,CREATE,8,Originality Transform,5,CREATE.8.5,Silhouette mutation,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+68,CREATE,8,Originality Transform,6,CREATE.8.6,Proportion mutation,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+69,CREATE,8,Originality Transform,7,CREATE.8.7,Context shift,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+70,CREATE,8,Originality Transform,8,CREATE.8.8,Signature-cue removal,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+71,CREATE,8,Originality Transform,9,CREATE.8.9,Transformation provenance,Turn influences into a new design language instead of copying a source.,implicit,CREATE:2video+1manual
+72,CREATE,9,Direction Selection,1,CREATE.9.1,Candidate breadth,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+73,CREATE,9,Direction Selection,2,CREATE.9.2,Candidate diversity,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+74,CREATE,9,Direction Selection,3,CREATE.9.3,Internal coherence,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+75,CREATE,9,Direction Selection,4,CREATE.9.4,Placement fit,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+76,CREATE,9,Direction Selection,5,CREATE.9.5,Tattooability,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+77,CREATE,9,Direction Selection,6,CREATE.9.6,Originality check,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+78,CREATE,9,Direction Selection,7,CREATE.9.7,Emotional fit,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+79,CREATE,9,Direction Selection,8,CREATE.9.8,Client preference fit,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+80,CREATE,9,Direction Selection,9,CREATE.9.9,Top-three rationale,"Choose strong, meaningfully different directions before polishing.",implicit,CREATE:2video+1manual
+81,REFINE,1,Line Architecture,1,REFINE.1.1,Line hierarchy,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+82,REFINE,1,Line Architecture,2,REFINE.1.2,Taper control,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+83,REFINE,1,Line Architecture,3,REFINE.1.3,Weight consistency,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+84,REFINE,1,Line Architecture,4,REFINE.1.4,Contour closure,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+85,REFINE,1,Line Architecture,5,REFINE.1.5,Intersection cleanup,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+86,REFINE,1,Line Architecture,6,REFINE.1.6,Tangent cleanup,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+87,REFINE,1,Line Architecture,7,REFINE.1.7,Curve quality,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+88,REFINE,1,Line Architecture,8,REFINE.1.8,Edge rhythm,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+89,REFINE,1,Line Architecture,9,REFINE.1.9,Line economy,"Make the line system deliberate, consistent, and tattoo-readable.",implicit,REFINE:2video+1manual
+90,REFINE,2,Value & Contrast,1,REFINE.2.1,Black-to-skin ratio,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+91,REFINE,2,Value & Contrast,2,REFINE.2.2,Grey-value bands,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+92,REFINE,2,Value & Contrast,3,REFINE.2.3,Focal contrast,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+93,REFINE,2,Value & Contrast,4,REFINE.2.4,Background recession,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+94,REFINE,2,Value & Contrast,5,REFINE.2.5,Depth separation,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+95,REFINE,2,Value & Contrast,6,REFINE.2.6,Black anchors,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+96,REFINE,2,Value & Contrast,7,REFINE.2.7,Light channels,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+97,REFINE,2,Value & Contrast,8,REFINE.2.8,Midtone restraint,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+98,REFINE,2,Value & Contrast,9,REFINE.2.9,Contrast-at-size test,Build depth and longevity through intentional value separation.,implicit,REFINE:2video+1manual
+99,REFINE,3,Negative Space,1,REFINE.3.1,Breathing room,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+100,REFINE,3,Negative Space,2,REFINE.3.2,Negative-space channels,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+101,REFINE,3,Negative Space,3,REFINE.3.3,Island control,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+102,REFINE,3,Negative Space,4,REFINE.3.4,Counterform quality,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+103,REFINE,3,Negative Space,5,REFINE.3.5,Minimum gaps,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+104,REFINE,3,Negative Space,6,REFINE.3.6,Edge release,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+105,REFINE,3,Negative Space,7,REFINE.3.7,Internal windows,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+106,REFINE,3,Negative Space,8,REFINE.3.8,Skin-tone balance,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+107,REFINE,3,Negative Space,9,REFINE.3.9,Congestion threshold,Treat exposed skin as active structure rather than leftover emptiness.,implicit,REFINE:2video+1manual
+108,REFINE,4,Shape & Form,1,REFINE.4.1,Proportion,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+109,REFINE,4,Shape & Form,2,REFINE.4.2,Silhouette correction,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+110,REFINE,4,Shape & Form,3,REFINE.4.3,Contour rhythm,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+111,REFINE,4,Shape & Form,4,REFINE.4.4,Curvature,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+112,REFINE,4,Shape & Form,5,REFINE.4.5,Perspective,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+113,REFINE,4,Shape & Form,6,REFINE.4.6,Foreshortening,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+114,REFINE,4,Shape & Form,7,REFINE.4.7,Volume cues,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+115,REFINE,4,Shape & Form,8,REFINE.4.8,Overlap logic,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+116,REFINE,4,Shape & Form,9,REFINE.4.9,Simplification,Correct geometry and volume before surface detail.,implicit,REFINE:2video+1manual
+117,REFINE,5,Texture & Shading Language,1,REFINE.5.1,Solid packing map,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+118,REFINE,5,Texture & Shading Language,2,REFINE.5.2,Whip-gradient map,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+119,REFINE,5,Texture & Shading Language,3,REFINE.5.3,Stipple map,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+120,REFINE,5,Texture & Shading Language,4,REFINE.5.4,Hatch map,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+121,REFINE,5,Texture & Shading Language,5,REFINE.5.5,Dotwork map,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+122,REFINE,5,Texture & Shading Language,6,REFINE.5.6,Soft-wash map,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+123,REFINE,5,Texture & Shading Language,7,REFINE.5.7,Hard-fill map,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+124,REFINE,5,Texture & Shading Language,8,REFINE.5.8,Material texture,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+125,REFINE,5,Texture & Shading Language,9,REFINE.5.9,Texture restraint,Use one coherent texture/shading system appropriate to the design.,implicit,REFINE:2video+1manual
+126,REFINE,6,Composition Polish,1,REFINE.6.1,Focal hierarchy,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+127,REFINE,6,Composition Polish,2,REFINE.6.2,Secondary support,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+128,REFINE,6,Composition Polish,3,REFINE.6.3,Repetition rhythm,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+129,REFINE,6,Composition Polish,4,REFINE.6.4,Symmetry balance,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+130,REFINE,6,Composition Polish,5,REFINE.6.5,Asymmetry balance,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+131,REFINE,6,Composition Polish,6,REFINE.6.6,Directional flow,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+132,REFINE,6,Composition Polish,7,REFINE.6.7,Crop refinement,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+133,REFINE,6,Composition Polish,8,REFINE.6.8,Background integration,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+134,REFINE,6,Composition Polish,9,REFINE.6.9,Transition quality,Make every element serve the primary read.,implicit,REFINE:2video+1manual
+135,REFINE,7,Style Consistency,1,REFINE.7.1,Line-style consistency,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+136,REFINE,7,Style Consistency,2,REFINE.7.2,Shading-style consistency,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+137,REFINE,7,Style Consistency,3,REFINE.7.3,Motif vocabulary,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+138,REFINE,7,Style Consistency,4,REFINE.7.4,Palette discipline,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+139,REFINE,7,Style Consistency,5,REFINE.7.5,Ornament rules,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+140,REFINE,7,Style Consistency,6,REFINE.7.6,Geometry system,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+141,REFINE,7,Style Consistency,7,REFINE.7.7,Detail-scale consistency,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+142,REFINE,7,Style Consistency,8,REFINE.7.8,Edge treatment,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+143,REFINE,7,Style Consistency,9,REFINE.7.9,Signature restraint,Prevent a piece from becoming a pile of unrelated visual tricks.,implicit,REFINE:2video+1manual
+144,REFINE,8,Transform & Edit,1,REFINE.8.1,Selection isolation,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+145,REFINE,8,Transform & Edit,2,REFINE.8.2,Uniform scale,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+146,REFINE,8,Transform & Edit,3,REFINE.8.3,Distort,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+147,REFINE,8,Transform & Edit,4,REFINE.8.4,Warp mesh,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+148,REFINE,8,Transform & Edit,5,REFINE.8.5,Rotation,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+149,REFINE,8,Transform & Edit,6,REFINE.8.6,Flip/mirror,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+150,REFINE,8,Transform & Edit,7,REFINE.8.7,Snapping/alignment,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+151,REFINE,8,Transform & Edit,8,REFINE.8.8,Interpolation choice,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+152,REFINE,8,Transform & Edit,9,REFINE.8.9,Non-destructive layering,Use digital transforms precisely and non-destructively.,implicit,REFINE:2video+1manual
+153,REFINE,9,Review & QC,1,REFINE.9.1,Zoom-out test,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+154,REFINE,9,Review & QC,2,REFINE.9.2,Mirror test,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+155,REFINE,9,Review & QC,3,REFINE.9.3,Grayscale test,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+156,REFINE,9,Review & QC,4,REFINE.9.4,Thumbnail test,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+157,REFINE,9,Review & QC,5,REFINE.9.5,Final-size test,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+158,REFINE,9,Review & QC,6,REFINE.9.6,Body-mockup test,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+159,REFINE,9,Review & QC,7,REFINE.9.7,Stencil-preview test,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+160,REFINE,9,Review & QC,8,REFINE.9.8,Print-preview test,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+161,REFINE,9,Review & QC,9,REFINE.9.9,Revision log,Test the design under views that reveal hidden weaknesses.,implicit,REFINE:2video+1manual
+162,PLACE,1,Body Region Geometry,1,PLACE.1.1,Forearm,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+163,PLACE,1,Body Region Geometry,2,PLACE.1.2,Upper arm,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+164,PLACE,1,Body Region Geometry,3,PLACE.1.3,Shoulder,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+165,PLACE,1,Body Region Geometry,4,PLACE.1.4,Chest,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+166,PLACE,1,Body Region Geometry,5,PLACE.1.5,Back,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+167,PLACE,1,Body Region Geometry,6,PLACE.1.6,Thigh,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+168,PLACE,1,Body Region Geometry,7,PLACE.1.7,Calf,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+169,PLACE,1,Body Region Geometry,8,PLACE.1.8,Ribs,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+170,PLACE,1,Body Region Geometry,9,PLACE.1.9,Wrist/hand,Understand the characteristic geometry of common placements.,implicit,PLACE:2video+1manual
+171,PLACE,2,Shape-to-Area Match,1,PLACE.2.1,Vertical composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+172,PLACE,2,Shape-to-Area Match,2,PLACE.2.2,Horizontal composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+173,PLACE,2,Shape-to-Area Match,3,PLACE.2.3,Radial composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+174,PLACE,2,Shape-to-Area Match,4,PLACE.2.4,Compact composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+175,PLACE,2,Shape-to-Area Match,5,PLACE.2.5,Wrap composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+176,PLACE,2,Shape-to-Area Match,6,PLACE.2.6,Sleeve composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+177,PLACE,2,Shape-to-Area Match,7,PLACE.2.7,Panel composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+178,PLACE,2,Shape-to-Area Match,8,PLACE.2.8,Band composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+179,PLACE,2,Shape-to-Area Match,9,PLACE.2.9,Gap-fill composition,Match composition type to the geometry available.,implicit,PLACE:2video+1manual
+180,PLACE,3,Anatomical Flow,1,PLACE.3.1,Muscle S-curve,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+181,PLACE,3,Anatomical Flow,2,PLACE.3.2,Bone-line relationship,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+182,PLACE,3,Anatomical Flow,3,PLACE.3.3,Limb axis,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+183,PLACE,3,Anatomical Flow,4,PLACE.3.4,Joint motion,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+184,PLACE,3,Anatomical Flow,5,PLACE.3.5,Contraction/extension,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+185,PLACE,3,Anatomical Flow,6,PLACE.3.6,Resting posture,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+186,PLACE,3,Anatomical Flow,7,PLACE.3.7,Primary viewing angle,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+187,PLACE,3,Anatomical Flow,8,PLACE.3.8,Skin-fold behavior,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+188,PLACE,3,Anatomical Flow,9,PLACE.3.9,Gravity/orientation,Make the tattoo move with the person instead of fighting the body.,implicit,PLACE:2video+1manual
+189,PLACE,4,Fit & Wrap,1,PLACE.4.1,Primary-view containment,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+190,PLACE,4,Fit & Wrap,2,PLACE.4.2,Wrap threshold,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+191,PLACE,4,Fit & Wrap,3,PLACE.4.3,Overlap prevention,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+192,PLACE,4,Fit & Wrap,4,PLACE.4.4,Seam planning,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+193,PLACE,4,Fit & Wrap,5,PLACE.4.5,Edge landing,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+194,PLACE,4,Fit & Wrap,6,PLACE.4.6,Circumference response,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+195,PLACE,4,Fit & Wrap,7,PLACE.4.7,Limb taper response,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+196,PLACE,4,Fit & Wrap,8,PLACE.4.8,Articulation clearance,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+197,PLACE,4,Fit & Wrap,9,PLACE.4.9,Neighbor-piece fit,Control how much of the design turns away from the primary view.,implicit,PLACE:2video+1manual
+198,PLACE,5,Scale & Detail,1,PLACE.5.1,Physical height/width,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+199,PLACE,5,Scale & Detail,2,PLACE.5.2,DPI/pixel mapping,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+200,PLACE,5,Scale & Detail,3,PLACE.5.3,Minimum line width,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+201,PLACE,5,Scale & Detail,4,PLACE.5.4,Detail budget,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+202,PLACE,5,Scale & Detail,5,PLACE.5.5,Focal-element size,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+203,PLACE,5,Scale & Detail,6,PLACE.5.6,Minimum spacing,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+204,PLACE,5,Scale & Detail,7,PLACE.5.7,Microdetail cutoff,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+205,PLACE,5,Scale & Detail,8,PLACE.5.8,Viewing-distance read,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+206,PLACE,5,Scale & Detail,9,PLACE.5.9,Aging allowance,Determine what amount of information the physical area can actually support.,implicit,PLACE:2video+1manual
+207,PLACE,6,Orientation,1,PLACE.6.1,Right-side-up check,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+208,PLACE,6,Orientation,2,PLACE.6.2,Face-inward check,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+209,PLACE,6,Orientation,3,PLACE.6.3,Face-forward check,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+210,PLACE,6,Orientation,4,PLACE.6.4,Text orientation,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+211,PLACE,6,Orientation,5,PLACE.6.5,Bilateral symmetry,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+212,PLACE,6,Orientation,6,PLACE.6.6,Left/right adaptation,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+213,PLACE,6,Orientation,7,PLACE.6.7,Forward/back direction,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+214,PLACE,6,Orientation,8,PLACE.6.8,Mirror-state check,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+215,PLACE,6,Orientation,9,PLACE.6.9,Client-view vs observer-view,Keep image direction intentional when the body is at rest.,implicit,PLACE:2video+1manual
+216,PLACE,7,Placement Transform,1,PLACE.7.1,Translation,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+217,PLACE,7,Placement Transform,2,PLACE.7.2,Uniform scale,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+218,PLACE,7,Placement Transform,3,PLACE.7.3,Rotation,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+219,PLACE,7,Placement Transform,4,PLACE.7.4,Perspective transform,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+220,PLACE,7,Placement Transform,5,PLACE.7.5,Warp mesh,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+221,PLACE,7,Placement Transform,6,PLACE.7.6,Opacity,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+222,PLACE,7,Placement Transform,7,PLACE.7.7,Blend mode,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+223,PLACE,7,Placement Transform,8,PLACE.7.8,Occlusion mask,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+224,PLACE,7,Placement Transform,9,PLACE.7.9,Multi-view consistency,Map flat artwork onto a photographed or modeled body surface.,implicit,PLACE:2video+1manual
+225,PLACE,8,Client & Skin Context,1,PLACE.8.1,Visibility/lifestyle,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+226,PLACE,8,Client & Skin Context,2,PLACE.8.2,Clothing interaction,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+227,PLACE,8,Client & Skin Context,3,PLACE.8.3,Sun exposure,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+228,PLACE,8,Client & Skin Context,4,PLACE.8.4,Friction zone,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+229,PLACE,8,Client & Skin Context,5,PLACE.8.5,Hair coverage,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+230,PLACE,8,Client & Skin Context,6,PLACE.8.6,Scar/texture context,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+231,PLACE,8,Client & Skin Context,7,PLACE.8.7,Skin-tone contrast,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+232,PLACE,8,Client & Skin Context,8,PLACE.8.8,Session/pain tolerance,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+233,PLACE,8,Client & Skin Context,9,PLACE.8.9,Future-expansion plan,Record non-aesthetic constraints that change placement decisions.,implicit,PLACE:2video+1manual
+234,PLACE,9,Placement Approval,1,PLACE.9.1,Standing-neutral check,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+235,PLACE,9,Placement Approval,2,PLACE.9.2,Relaxed-pose check,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+236,PLACE,9,Placement Approval,3,PLACE.9.3,Photo record,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+237,PLACE,9,Placement Approval,4,PLACE.9.4,Physical measurement,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+238,PLACE,9,Placement Approval,5,PLACE.9.5,Mirror check,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+239,PLACE,9,Placement Approval,6,PLACE.9.6,Motion check,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+240,PLACE,9,Placement Approval,7,PLACE.9.7,Stencil dry-fit,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+241,PLACE,9,Placement Approval,8,PLACE.9.8,Artist approval,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+242,PLACE,9,Placement Approval,9,PLACE.9.9,Client approval,Make placement a deliberate reviewed state rather than an assumption.,implicit,PLACE:2video+1manual
+243,STENCIL,1,Source Preparation,1,STENCIL.1.1,Master duplication,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+244,STENCIL,1,Source Preparation,2,STENCIL.1.2,Dedicated stencil layer,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+245,STENCIL,1,Source Preparation,3,STENCIL.1.3,Color removal,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+246,STENCIL,1,Source Preparation,4,STENCIL.1.4,Value simplification,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+247,STENCIL,1,Source Preparation,5,STENCIL.1.5,Final-size setup,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+248,STENCIL,1,Source Preparation,6,STENCIL.1.6,Mirror-state setup,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+249,STENCIL,1,Source Preparation,7,STENCIL.1.7,Line cleanup,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+250,STENCIL,1,Source Preparation,8,STENCIL.1.8,Crop/margin setup,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+251,STENCIL,1,Source Preparation,9,STENCIL.1.9,Version lock,Create a stencil-specific derivative without destroying the artwork master.,implicit,STENCIL:2video+1manual
+252,STENCIL,2,Guide-Line Encoding,1,STENCIL.2.1,Hard contour,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+253,STENCIL,2,Guide-Line Encoding,2,STENCIL.2.2,Internal contour,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+254,STENCIL,2,Guide-Line Encoding,3,STENCIL.2.3,Dotted shading guide,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+255,STENCIL,2,Guide-Line Encoding,4,STENCIL.2.4,Dashed construction guide,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+256,STENCIL,2,Guide-Line Encoding,5,STENCIL.2.5,Centerline,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+257,STENCIL,2,Guide-Line Encoding,6,STENCIL.2.6,Registration mark,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+258,STENCIL,2,Guide-Line Encoding,7,STENCIL.2.7,Landmark mark,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+259,STENCIL,2,Guide-Line Encoding,8,STENCIL.2.8,No-ink boundary,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+260,STENCIL,2,Guide-Line Encoding,9,STENCIL.2.9,Artist annotation,Encode different kinds of tattoo information with distinct stencil marks.,implicit,STENCIL:2video+1manual
+261,STENCIL,3,Detail Reduction,1,STENCIL.3.1,Microdetail pruning,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+262,STENCIL,3,Detail Reduction,2,STENCIL.3.2,Tiny-island removal,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+263,STENCIL,3,Detail Reduction,3,STENCIL.3.3,Line-separation repair,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+264,STENCIL,3,Detail Reduction,4,STENCIL.3.4,Intersection cleanup,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+265,STENCIL,3,Detail Reduction,5,STENCIL.3.5,Contour preservation,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+266,STENCIL,3,Detail Reduction,6,STENCIL.3.6,Texture conversion,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+267,STENCIL,3,Detail Reduction,7,STENCIL.3.7,Shading-to-guide conversion,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+268,STENCIL,3,Detail Reduction,8,STENCIL.3.8,Noise removal,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+269,STENCIL,3,Detail Reduction,9,STENCIL.3.9,Legibility threshold,Remove information that will not transfer or will confuse execution.,implicit,STENCIL:2video+1manual
+270,STENCIL,4,Print Geometry,1,STENCIL.4.1,Actual physical size,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+271,STENCIL,4,Print Geometry,2,STENCIL.4.2,Orientation,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+272,STENCIL,4,Print Geometry,3,STENCIL.4.3,Mirror verification,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+273,STENCIL,4,Print Geometry,4,STENCIL.4.4,Margins,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+274,STENCIL,4,Print Geometry,5,STENCIL.4.5,Paper size,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+275,STENCIL,4,Print Geometry,6,STENCIL.4.6,Page tiling,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+276,STENCIL,4,Print Geometry,7,STENCIL.4.7,100-percent scale,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+277,STENCIL,4,Print Geometry,8,STENCIL.4.8,Raster DPI,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+278,STENCIL,4,Print Geometry,9,STENCIL.4.9,Vector integrity,Guarantee the paper output matches intended physical scale and direction.,implicit,STENCIL:2video+1manual
+279,STENCIL,5,Transfer Paper Handling,1,STENCIL.5.1,Master-sheet identification,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+280,STENCIL,5,Transfer Paper Handling,2,STENCIL.5.2,Protective-sheet removal,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+281,STENCIL,5,Transfer Paper Handling,3,STENCIL.5.3,Carbon-layer orientation,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+282,STENCIL,5,Transfer Paper Handling,4,STENCIL.5.4,Backing-sheet support,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+283,STENCIL,5,Transfer Paper Handling,5,STENCIL.5.5,Feed direction,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+284,STENCIL,5,Transfer Paper Handling,6,STENCIL.5.6,Cutout strategy,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+285,STENCIL,5,Transfer Paper Handling,7,STENCIL.5.7,Clean handling,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+286,STENCIL,5,Transfer Paper Handling,8,STENCIL.5.8,Surface protection,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+287,STENCIL,5,Transfer Paper Handling,9,STENCIL.5.9,Storage,Respect the structure and orientation of stencil transfer media.,implicit,STENCIL:2video+1manual
+288,STENCIL,6,Printer Setup,1,STENCIL.6.1,Power/readiness,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+289,STENCIL,6,Printer Setup,2,STENCIL.6.2,Media loading,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+290,STENCIL,6,Printer Setup,3,STENCIL.6.3,Straight feed,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+291,STENCIL,6,Printer Setup,4,STENCIL.6.4,Print density,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+292,STENCIL,6,Printer Setup,5,STENCIL.6.5,Print speed,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+293,STENCIL,6,Printer Setup,6,STENCIL.6.6,Copy/print mode,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+294,STENCIL,6,Printer Setup,7,STENCIL.6.7,Roller/path cleaning,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+295,STENCIL,6,Printer Setup,8,STENCIL.6.8,Jam prevention,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+296,STENCIL,6,Printer Setup,9,STENCIL.6.9,Test print,Make printing repeatable rather than trial-and-error.,implicit,STENCIL:2video+1manual
+297,STENCIL,7,Printed Stencil QC,1,STENCIL.7.1,Complete transfer,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+298,STENCIL,7,Printed Stencil QC,2,STENCIL.7.2,No smearing,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+299,STENCIL,7,Printed Stencil QC,3,STENCIL.7.3,No doubled lines,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+300,STENCIL,7,Printed Stencil QC,4,STENCIL.7.4,No broken lines,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+301,STENCIL,7,Printed Stencil QC,5,STENCIL.7.5,Adequate density,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+302,STENCIL,7,Printed Stencil QC,6,STENCIL.7.6,No oversaturation,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+303,STENCIL,7,Printed Stencil QC,7,STENCIL.7.7,No skew,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+304,STENCIL,7,Printed Stencil QC,8,STENCIL.7.8,No scale distortion,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+305,STENCIL,7,Printed Stencil QC,9,STENCIL.7.9,Critical-detail presence,Catch output failures before the stencil reaches skin.,implicit,STENCIL:2video+1manual
+306,STENCIL,8,Skin Placement Prep,1,STENCIL.8.1,Clean area,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+307,STENCIL,8,Skin Placement Prep,2,STENCIL.8.2,Shave area,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+308,STENCIL,8,Skin Placement Prep,3,STENCIL.8.3,Degrease area,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+309,STENCIL,8,Skin Placement Prep,4,STENCIL.8.4,Dry area,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+310,STENCIL,8,Skin Placement Prep,5,STENCIL.8.5,Alignment marks,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+311,STENCIL,8,Skin Placement Prep,6,STENCIL.8.6,Primer tack,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+312,STENCIL,8,Skin Placement Prep,7,STENCIL.8.7,Neutral body posture,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+313,STENCIL,8,Skin Placement Prep,8,STENCIL.8.8,Center-out contact,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+314,STENCIL,8,Skin Placement Prep,9,STENCIL.8.9,Controlled peel,Prepare for accurate transfer while preserving hygiene and alignment.,implicit,STENCIL:2video+1manual
+315,STENCIL,9,"Set, Reapply & Verify",1,STENCIL.9.1,Set/dry time,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+316,STENCIL,9,"Set, Reapply & Verify",2,STENCIL.9.2,No-slide verification,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+317,STENCIL,9,"Set, Reapply & Verify",3,STENCIL.9.3,Residual-ink pat,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+318,STENCIL,9,"Set, Reapply & Verify",4,STENCIL.9.4,Failed-transfer removal,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+319,STENCIL,9,"Set, Reapply & Verify",5,STENCIL.9.5,Reapplication protocol,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+320,STENCIL,9,"Set, Reapply & Verify",6,STENCIL.9.6,Orientation recheck,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+321,STENCIL,9,"Set, Reapply & Verify",7,STENCIL.9.7,Size recheck,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+322,STENCIL,9,"Set, Reapply & Verify",8,STENCIL.9.8,Final approval,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+323,STENCIL,9,"Set, Reapply & Verify",9,STENCIL.9.9,Stencil photo/reference,Treat the applied stencil as a checkpoint that must pass review.,implicit,STENCIL:2video+1manual
+324,DELIVER,1,Master Package,1,DELIVER.1.1,Editable master,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+325,DELIVER,1,Master Package,2,DELIVER.1.2,Flattened concept,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+326,DELIVER,1,Master Package,3,DELIVER.1.3,Vector concept,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+327,DELIVER,1,Master Package,4,DELIVER.1.4,Raster concept,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+328,DELIVER,1,Master Package,5,DELIVER.1.5,Stencil file,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+329,DELIVER,1,Master Package,6,DELIVER.1.6,Placement mockup,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+330,DELIVER,1,Master Package,7,DELIVER.1.7,Artist brief,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+331,DELIVER,1,Master Package,8,DELIVER.1.8,Provenance file,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+332,DELIVER,1,Master Package,9,DELIVER.1.9,Version manifest,"Keep editable, review, production, and metadata outputs distinct.",implicit,DELIVER:2video+1manual
+333,DELIVER,2,Export Formats,1,DELIVER.2.1,SVG,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+334,DELIVER,2,Export Formats,2,DELIVER.2.2,PDF,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+335,DELIVER,2,Export Formats,3,DELIVER.2.3,PNG,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+336,DELIVER,2,Export Formats,4,DELIVER.2.4,TIFF,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+337,DELIVER,2,Export Formats,5,DELIVER.2.5,JPEG,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+338,DELIVER,2,Export Formats,6,DELIVER.2.6,PROCREATE/PSD,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+339,DELIVER,2,Export Formats,7,DELIVER.2.7,JSON,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+340,DELIVER,2,Export Formats,8,DELIVER.2.8,TXT/Markdown,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+341,DELIVER,2,Export Formats,9,DELIVER.2.9,ZIP,Choose formats by downstream need rather than habit.,implicit,DELIVER:2video+1manual
+342,DELIVER,3,Resolution & Scale,1,DELIVER.3.1,Final physical dimensions,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+343,DELIVER,3,Resolution & Scale,2,DELIVER.3.2,DPI,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+344,DELIVER,3,Resolution & Scale,3,DELIVER.3.3,Pixel dimensions,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+345,DELIVER,3,Resolution & Scale,4,DELIVER.3.4,Artboard bounds,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+346,DELIVER,3,Resolution & Scale,5,DELIVER.3.5,100-percent print scale,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+347,DELIVER,3,Resolution & Scale,6,DELIVER.3.6,Margins/bleed,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+348,DELIVER,3,Resolution & Scale,7,DELIVER.3.7,Measurement units,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+349,DELIVER,3,Resolution & Scale,8,DELIVER.3.8,Scale note,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+350,DELIVER,3,Resolution & Scale,9,DELIVER.3.9,Output verification,Preserve physical intent through export and print.,implicit,DELIVER:2video+1manual
+351,DELIVER,4,Color & Ink Behavior,1,DELIVER.4.1,RGB working copy,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+352,DELIVER,4,Color & Ink Behavior,2,DELIVER.4.2,CMYK/print copy,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+353,DELIVER,4,Color & Ink Behavior,3,DELIVER.4.3,Pure-black fallback,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+354,DELIVER,4,Color & Ink Behavior,4,DELIVER.4.4,Grayscale proof,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+355,DELIVER,4,Color & Ink Behavior,5,DELIVER.4.5,Accent-color record,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+356,DELIVER,4,Color & Ink Behavior,6,DELIVER.4.6,Color-profile record,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+357,DELIVER,4,Color & Ink Behavior,7,DELIVER.4.7,Transparency handling,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+358,DELIVER,4,Color & Ink Behavior,8,DELIVER.4.8,Contrast proof,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+359,DELIVER,4,Color & Ink Behavior,9,DELIVER.4.9,Monochrome fallback,Communicate intended ink behavior across devices and printed references.,implicit,DELIVER:2video+1manual
+360,DELIVER,5,Naming & Versioning,1,DELIVER.5.1,Project identifier,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+361,DELIVER,5,Naming & Versioning,2,DELIVER.5.2,Client-safe title,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+362,DELIVER,5,Naming & Versioning,3,DELIVER.5.3,Direction identifier,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+363,DELIVER,5,Naming & Versioning,4,DELIVER.5.4,Version number,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+364,DELIVER,5,Naming & Versioning,5,DELIVER.5.5,Date stamp,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+365,DELIVER,5,Naming & Versioning,6,DELIVER.5.6,Physical-size token,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+366,DELIVER,5,Naming & Versioning,7,DELIVER.5.7,Placement token,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+367,DELIVER,5,Naming & Versioning,8,DELIVER.5.8,Mirror-state token,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+368,DELIVER,5,Naming & Versioning,9,DELIVER.5.9,Approval-state token,Make every file identify itself without opening it.,implicit,DELIVER:2video+1manual
+369,DELIVER,6,Artist Brief,1,DELIVER.6.1,Core concept,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+370,DELIVER,6,Artist Brief,2,DELIVER.6.2,Meaning/story,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+371,DELIVER,6,Artist Brief,3,DELIVER.6.3,Style target,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+372,DELIVER,6,Artist Brief,4,DELIVER.6.4,Placement,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+373,DELIVER,6,Artist Brief,5,DELIVER.6.5,Physical size,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+374,DELIVER,6,Artist Brief,6,DELIVER.6.6,Ink behavior,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+375,DELIVER,6,Artist Brief,7,DELIVER.6.7,Must-keep elements,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+376,DELIVER,6,Artist Brief,8,DELIVER.6.8,Flexible elements,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+377,DELIVER,6,Artist Brief,9,DELIVER.6.9,Avoid/do-not-copy list,Transfer creative intent without pretending the concept is execution-ready.,implicit,DELIVER:2video+1manual
+378,DELIVER,7,Placement Pack,1,DELIVER.7.1,Body reference photo,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+379,DELIVER,7,Placement Pack,2,DELIVER.7.2,Clean body photo,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+380,DELIVER,7,Placement Pack,3,DELIVER.7.3,Overlay mockup,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+381,DELIVER,7,Placement Pack,4,DELIVER.7.4,Front view,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+382,DELIVER,7,Placement Pack,5,DELIVER.7.5,Side/alternate view,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+383,DELIVER,7,Placement Pack,6,DELIVER.7.6,Physical measurement,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+384,DELIVER,7,Placement Pack,7,DELIVER.7.7,Angle/orientation note,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+385,DELIVER,7,Placement Pack,8,DELIVER.7.8,Anatomical landmarks,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+386,DELIVER,7,Placement Pack,9,DELIVER.7.9,Wrap/expansion notes,Give the artist enough spatial context to understand the intended fit.,implicit,DELIVER:2video+1manual
+387,DELIVER,8,Provenance & Rights,1,DELIVER.8.1,Source ledger,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+388,DELIVER,8,Provenance & Rights,2,DELIVER.8.2,License ledger,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+389,DELIVER,8,Provenance & Rights,3,DELIVER.8.3,Inspiration descriptor,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+390,DELIVER,8,Provenance & Rights,4,DELIVER.8.4,Transformation notes,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+391,DELIVER,8,Provenance & Rights,5,DELIVER.8.5,Generation state,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+392,DELIVER,8,Provenance & Rights,6,DELIVER.8.6,Client-supplied references,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+393,DELIVER,8,Provenance & Rights,7,DELIVER.8.7,Consent/permission note,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+394,DELIVER,8,Provenance & Rights,8,DELIVER.8.8,Checksums,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+395,DELIVER,8,Provenance & Rights,9,DELIVER.8.9,Lineage chain,Keep source lineage and permissions inspectable.,implicit,DELIVER:2video+1manual
+396,DELIVER,9,Handoff & Approval,1,DELIVER.9.1,Client approval,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
+397,DELIVER,9,Handoff & Approval,2,DELIVER.9.2,Artist review,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
+398,DELIVER,9,Handoff & Approval,3,DELIVER.9.3,Open questions,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
+399,DELIVER,9,Handoff & Approval,4,DELIVER.9.4,Change log,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
+400,DELIVER,9,Handoff & Approval,5,DELIVER.9.5,Test print,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
+401,DELIVER,9,Handoff & Approval,6,DELIVER.9.6,Backup copy,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
+402,DELIVER,9,Handoff & Approval,7,DELIVER.9.7,Secure transfer,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
+403,DELIVER,9,Handoff & Approval,8,DELIVER.9.8,Archive state,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
+404,DELIVER,9,Handoff & Approval,9,DELIVER.9.9,Delete/privacy option,"Close the loop with explicit review, backup, and privacy states.",implicit,DELIVER:2video+1manual
