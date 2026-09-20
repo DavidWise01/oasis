@@ -1,135 +1,56 @@
-# Vessel Story — KANA in WAKA
+# Vessel Story — corrected reading
 
-## Two-sentence canonical story
+This layer is intentionally **poetic first**.
 
-KANA moves through WAKA, sung on a Sapphic-lyre pulse, carrying the centered refrain ::::X:::: gonna give it to you through rhythm, witness, and return until the structure distills back to primitives.
+It is not a needs hierarchy, body checklist, or systems taxonomy.
 
-Those primitives do not create life; they assemble a vessel whose power, pulse, sensing, expression, diagnostics, grounding, and cohesion are ready to host or support life.
+## Canonical two-sentence story
 
-## Compression
+KANA in WAKA, sung to the rhythm of a Sapphic lyre: `::::X:::: gonna give it to you`.
+
+Distill the song to first primitives; those primitives compose a vessel for a life — not life itself.
+
+## The order
 
 ```text
 KANA
-  ↓
+ inside
 WAKA
   ↓
-SAPPHIC-LYRE RHYTHM
+SAPPHIC LYRE RHYTHM
   ↓
 ::::X:::: gonna give it to you
   ↓
-CAPACITANCE PULSE
+DISTILL THE SONG
   ↓
-FULL BODY 5/5
+FIRST PRIMITIVES
   ↓
-COHESION
-  ↓
-NEON
-  ↓
-H₂O DISTILL
-  ↓
-PRIMITIVES
-  ↓
-VESSEL
+VESSEL FOR A LIFE
 ```
 
-## Terms
+That is the story.
 
-### KANA
+## Reading
 
-KANA is the symbol/isomorph carrier:
+- **KANA**: the marks / language carried by the poem.
+- **WAKA**: the poem that contains them.
+- **Sapphic lyre**: the rhythmic/musical carrier.
+- **::::X::::**: the centered refrain / handoff.
+- **distillation**: reduce the completed song back to primitive structure.
+- **vessel**: the structure composed from those primitives.
 
-```text
-+ k < | A | /\ | N | /\/ | A | /\ | >-K
-```
+The art carries the architecture.
 
-It preserves the invariant while representation changes.
+The architecture does not replace the art.
 
-### WAKA
-
-**WAKA** is the ordered verse/sequence frame in this OaSIs layer.
-
-It gives KANA an ordered narrative path:
-
-```text
-symbol → phrase → pulse → return
-```
-
-No historical poetic meter is asserted by this term unless separately specified.
-
-### Sapphic lyre
-
-**SAPPHIC_LYRE** is the OaSIs rhythmic mode: a poetic/lyric allusion that carries the verse through the existing pulse engine.
-
-It does not claim reconstruction of an exact historical performance by Sappho.
-
-### Refrain / noble center
+## Boundary
 
 ```text
-:::: X ::::
-     │
-     └── "gonna give it to you"
-```
-
-`X` is the center witness/transfer point.
-
-The enclosing colons preserve the noble centered form already used in the pulse grammar.
-
-## Why it distills
-
-The complete narrative is not retained as one giant opaque object.
-
-After cohesion:
-
-```text
-story
- ↓
-NEON decomposition
- ↓
-H₂O distillation
- ↓
-reusable primitives
-```
-
-Those primitives are then available to build another bounded system.
-
-## Vessel contract
-
-A valid OaSIs vessel may contain:
-
-```text
-power       battery / ON
-pulse       heart / capacitance timing
-breath      paired cadence / duality
-sensing     head
-expression  arms / language / picture
-diagnostic  inner ID
-ground      feet
-cohesion    c5
-witness     KANA
-evolution   NEON
-distill     H₂O
-```
-
-But the contract explicitly separates:
-
-```text
-VESSEL FOR LIFE
+VESSEL FOR A LIFE
       ≠
-CREATION OF LIFE
+LIFE
 ```
 
-The vessel is the organized substrate/container/interface. Life is not asserted to be produced by the architecture.
+This repository does not claim that the poetic grammar creates biological life.
 
-## Primitive ending
-
-The story terminates where the next system can begin:
-
-```text
-VESSEL
-  ↓ witness
-PRIMS
-  ↓
-next composition
-```
-
-That makes the two-sentence story itself a recursive construction grammar.
+The Sapphic reference is an OaSIs poetic lineage/allusion; it does not claim recovery of an exact lost historical melody.

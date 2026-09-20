@@ -164,15 +164,12 @@ head  3×1×3^3×3  [77 55 00 00 55 77 00]
 
 The common primitive is `charge → transition → discharge → witness/reset`. Biological and capacitance terminology is systems analogy; the 10^-10 label is not asserted as physiological timing.
 
-
 ## Vessel story
 
-The current stack compresses to a two-sentence construction story:
+Poetic-first canonical form:
 
-> KANA moves through WAKA, sung on a Sapphic-lyre pulse, carrying the centered refrain ::::X:::: gonna give it to you through rhythm, witness, and return until the structure distills back to primitives.
+> KANA in WAKA, sung to the rhythm of a Sapphic lyre: `::::X:::: gonna give it to you`.
 
-> Those primitives do not create life; they assemble a vessel whose power, pulse, sensing, expression, diagnostics, grounding, and cohesion are ready to host or support life.
+> Distill the song to first primitives; those primitives compose a vessel for a life — not life itself.
 
-Canonical refrain: `::::X:::: gonna give it to you`.
-
-The architecture explicitly distinguishes a **vessel for life** from **creation of life**.
+The art carries the architecture. This is not a hierarchy or checklist.

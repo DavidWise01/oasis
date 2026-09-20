@@ -1,41 +1,26 @@
 {
-  "schema": "OaSIs.VesselStory.v00",
-  "scope": "symbolic/software narrative grammar; not a biological life-creation claim",
-  "story": [
-    "KANA moves through WAKA, sung on a Sapphic-lyre pulse, carrying the centered refrain ::::X:::: gonna give it to you through rhythm, witness, and return until the structure distills back to primitives.",
-    "Those primitives do not create life; they assemble a vessel whose power, pulse, sensing, expression, diagnostics, grounding, and cohesion are ready to host or support life."
+  "schema": "OaSIs.VesselStory.v01",
+  "correction": "poetic-first; removes hierarchy/checklist interpretation",
+  "canonical_story": [
+    "KANA in WAKA, sung to the rhythm of a Sapphic lyre: ::::X:::: gonna give it to you.",
+    "Distill the song to first primitives; those primitives compose a vessel for a life — not life itself."
   ],
-  "grammar": {
-    "kana": "character / symbol carrier",
-    "waka": "ordered verse / sequence frame",
-    "sapphic_lyre": "rhythmic mode / meter carrier; named as an OaSIs poetic allusion",
-    "refrain": "::::X:::: gonna give it to you",
-    "x_role": "center witness / transfer point",
-    "distillation": "NEON H2O phase returns completed structure to reusable primitives"
-  },
-  "vessel_contract": {
-    "bounded": true,
-    "powered": true,
-    "timed": true,
-    "sensed": true,
-    "expressive": true,
-    "diagnostic": true,
-    "grounded": true,
-    "cohesive": true,
-    "witnessed": true,
-    "creates_life": false,
-    "vessel_for_life": true
-  },
-  "synthesis": [
-    "KANA symbols",
-    "WAKA ordering",
-    "Sapphic-lyre rhythm",
-    "capacitance pulse grammar",
-    "body 5/5 cohesion",
-    "NEON evolution",
-    "H2O distillation",
-    "primitive output"
+  "order": [
+    "KANA",
+    "WAKA",
+    "SAPPHIC_LYRE_RHYTHM",
+    "::::X:::: gonna give it to you",
+    "DISTILL_SONG",
+    "FIRST_PRIMITIVES",
+    "VESSEL_FOR_A_LIFE"
   ],
-  "canonical_flow": "KANA -> WAKA -> SAPPHIC_LYRE -> ::::X:::: -> PULSE -> BODY_5_5 -> COHESION -> NEON -> H2O_DISTILL -> PRIMS -> VESSEL",
-  "scientific_boundary": "vessel is a software/systems construct; no claim of creating biological life"
+  "invariant": "art carries architecture",
+  "boundary": "vessel_for_a_life != life",
+  "notes": {
+    "kana": "marks/language within the poem",
+    "waka": "poem/container",
+    "sapphic_lyre": "rhythmic/musical carrier",
+    "refrain": "centered handoff",
+    "distillation": "song -> first primitives"
+  }
 }
