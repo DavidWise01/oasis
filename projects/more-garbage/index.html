@@ -59,7 +59,22 @@ right?
 base walk: n
 search-down cost: n
 structural worst case: n × n = n²</pre></article>
-<article class="card wide"><div class="k">one-bit reverse recursion · current correction</div><div class="flow">MOJI → 8 → 3 → 2 → 1</div><pre style="margin-top:18px">unresolved stage
+<article class="card wide"><div class="k">Prim1Bit.02 · exact recursion ladder</div><div class="flow">8 → [t5] → 3 → [t2] → 1 → [t1] → 0 → [t0+n]</div><pre style="margin-top:18px">at level 0:
+
+n = y = 1
+→ restart recursion at LEVEL 0
+→ FORWARD FIRST
+
+n = 0
+→ ? OR found
+→ STOP RECURSING
+
+anchor: 0.[O].0
+signature: [ 1 1 2 4 ] . n . n²
+
+Prim1Bit.01  8/3/2/1 only       = superseded
+Prim1Bit.02  interleaved ladder = current candidate</pre><div class="actions"><a class="btn" href="../../lean/Oasis.MoreGarbage.Prim1Bit.02.lean">Lean Prim1Bit.02</a></div></article>
+<article class="card wide"><div class="k">one-bit reverse recursion · superseded v01</div><div class="flow">MOJI → 8 → 3 → 2 → 1</div><pre style="margin-top:18px">unresolved stage
    ↓
 0.[O].0
    ↓ recurse

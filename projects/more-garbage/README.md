@@ -289,3 +289,48 @@ lean/Oasis.MoreGarbage.Prim1Bit.01.lean
 ```
 
 Fresh candidate, pending user `0e`.
+
+
+## One-bit recursion v02 — interleaved tick ladder
+
+`Prim1Bit.01` stopped too early by reducing the walk to `8 / 3 / 2 / 1`.
+
+Current literal walk:
+
+```text
+[ 8 , [t5] , 3 , [t2] , 1 , [t1] , 0 , [t0 + n] ]
+```
+
+At level `0`:
+
+```text
+n = y = 1
+→ restart recursion at that same level
+→ go FORWARD FIRST
+
+n = 0
+→ ? OR found
+→ STOP RECURSING
+```
+
+No level below `0` is introduced.
+
+The recursive anchor remains:
+
+```text
+0.[O].0
+```
+
+Primitive signature remains:
+
+```text
+[ 1 1 2 4 ] . n . n²
+```
+
+Fresh Lean descendant:
+
+```text
+lean/Oasis.MoreGarbage.Prim1Bit.02.lean
+```
+
+`t5/t2/t1/t0` are preserved as symbolic tick labels. Fresh candidate, pending user `0e`.

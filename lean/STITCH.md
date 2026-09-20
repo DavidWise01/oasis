@@ -429,3 +429,36 @@ N may still cohere from 1.1
 The N branch does not claim recovery of the original primitive.
 
 Lean status: **pending user 0e confirmation**.
+
+
+## MORE GARBAGE one-bit recursion v02 — 2026-09-20
+
+`Oasis.MoreGarbage.Prim1Bit.01.lean` is preserved as provenance but its compressed `8/3/2/1` walk is superseded.
+
+Fresh descendant:
+
+```text
+Oasis.MoreGarbage.Prim1Bit.02.lean
+```
+
+Exact walk:
+
+```text
+[ 8 , [t5] , 3 , [t2] , 1 , [t1] , 0 , [t0 + n] ]
+```
+
+Zero-level rule:
+
+```text
+n = y = 1
+→ restart recursion at level 0
+→ forward first
+
+n = 0
+→ ? or found
+→ stop recursing
+```
+
+No descent below `0`. Recursive anchor remains `0.[O].0`. Primitive signature remains `[1 1 2 4] . n . n²`.
+
+Lean status: **pending user 0e confirmation**.
