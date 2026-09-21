@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TheGame · Play Session 04</title>
+<style>
+:root{--ink:#eaf2ff;--dim:#91a1bb;--bg:#080d18;--panel:#111a2d;--line:#2d4166;--a:#62b7ff;--b:#ff7893;--pin:#f8d568;--ok:#77e3a2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#17274b,#080d18 50%);color:var(--ink);font:16px system-ui,sans-serif}
+main{max-width:1120px;margin:auto;padding:28px 18px 50px}h1{margin:0 0 5px;font-size:clamp(1.7rem,4vw,2.7rem)}p{color:var(--dim);line-height:1.45}.panel{background:#111a2de8;border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:16px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:14px}.side{border:1px solid var(--line);border-radius:12px;padding:14px}.a{border-color:#3679b8}.b{border-color:#b73b58}label{display:block;color:var(--dim);font-size:.82rem;margin-bottom:5px}select,button{font:inherit;border-radius:8px;padding:9px 11px;background:#0a1120;color:var(--ink);border:1px solid var(--line)}button{cursor:pointer}button:hover{border-color:var(--ok)}.board{display:grid;grid-template-columns:1fr 92px 1fr;gap:13px;align-items:center;margin-top:16px}.rail{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.slot{padding:8px 3px;text-align:center;min-height:38px}.slot.claimed-a{background:#153b62;border-color:#62b7ff}.slot.claimed-b{background:#5a1e31;border-color:#ff7893}.center{height:92px;display:grid;place-items:center;text-align:center;border:2px solid var(--pin);border-radius:50%;color:var(--pin);font-weight:700}.center small{display:block;font-weight:400;color:var(--dim)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}.status{margin-top:13px;padding:12px;border-radius:10px;background:#0a1120}.ledger{margin:12px 0 0;padding-left:20px;color:var(--dim)}.ledger li{margin:4px 0}.checkpoint{color:var(--ok)}@media(max-width:680px){.controls,.board{grid-template-columns:1fr}.center{border-radius:14px;height:60px}.rail{grid-template-columns:repeat(5,1fr)}}
+</style>
+</head>
+<body><main>
+<h1>TheGame · Play Session 04</h1>
+<p>Append-only session layer. Two vessels enter the fixed 53-state board: 26 A rail slots, 26 B rail slots, and one unowned pinned center.</p>
+<section class="panel controls">
+<div class="side a"><label for="aVessel">A rail · Good Forward vessel</label><select id="aVessel"></select></div>
+<div class="side b"><label for="bVessel">B rail · Devil Mirror vessel</label><select id="bVessel"></select></div>
+</section>
+<section class="panel">
+<div class="board"><div><label>A rail (A–Y + []0)</label><div class="rail" id="aRail"></div></div><div class="center">[] 0<small>pinned<br>unowned</small></div><div><label>B rail (A–Y + []0)</label><div class="rail" id="bRail"></div></div></div>
+<div class="actions"><button id="aStep">A +2 forward</button><button id="bStep">B +2 mirror</button><button id="vote">2×1×2 checkpoint vote</button><button id="clear">Clear this browser session</button></div>
+<div class="status" id="status">Choose vessels, then advance each rail in +2 steps. The center never moves.</div>
+<ol class="ledger" id="ledger"></ol>
+</section>
+<section class="panel"><strong>Checkpoint rule</strong><p>A local cell contains four positions. Passing requires 3 of 4 votes. A pass records an immutable checkpoint in this session’s ledger; it does not alter the frozen board contract.</p><p><a href="./thegame.01.board.html">Board contract</a> · <a href="./thegame.03.vessel-deck.html">Vessel deck</a></p></section>
+</main>
+<script>
+const names=["Flash","Wonder Woman","Batman","Superman","Samus","Link","Ranni","Apsalar"];
+const symbols=[..."ABCDEFGHIJKLMNOPQRSTUVWXY","[]0"];
+const S={a:0,b:0,log:[],votes:0};
+const qs=id=>document.getElementById(id);
+for(const id of ["aVessel","bVessel"]) names.forEach(n=>qs(id).add(new Option(n,n)));
+function rail(side){const host=qs(side+"Rail");host.innerHTML="";symbols.forEach((x,i)=>{const b=document.createElement("button");b.className="slot "+(i<=S[side]?"claimed-"+side:"");b.textContent=x;b.title=side.toUpperCase()+" "+i;b.onclick=()=>{if(i===25)return note("[]0 carrier is rail-local; the shared center remains pinned.");S[side]=i;note(side.toUpperCase()+" claimed "+x+" ("+i+").");draw()};host.append(b)})}
+function note(x){S.log.unshift(x);qs("ledger").innerHTML=S.log.map(v=>"<li>"+v+"</li>").join("");qs("status").textContent=x}
+function draw(){rail("a");rail("b")}
+qs("aStep").onclick=()=>{S.a=Math.min(25,S.a+2);note(qs("aVessel").value+" advanced A +2 to "+symbols[S.a]+".");draw()};
+qs("bStep").onclick=()=>{S.b=Math.min(25,S.b+2);note(qs("bVessel").value+" advanced B +2 to "+symbols[S.b]+".");draw()};
+qs("vote").onclick=()=>{S.votes=(S.votes+1)%5;const pass=S.votes>=3;note((pass?"✓ CHECKPOINT PASSED — ":"Checkpoint vote ")+S.votes+"/4; "+(pass?"3/4 quorum reached.":"needs 3/4."));if(pass)S.votes=0};
+qs("clear").onclick=()=>{S.a=0;S.b=0;S.log=[];S.votes=0;note("Browser session cleared. Center remains [] 0.");draw()};
+draw();note("Session opened: 53-state board intact; center pinned.");
+</script></body></html>
