@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101019">
+<title>DISTILL · TheGame</title>
+<style>
+:root{color-scheme:dark;--bg:#101019;--card:#191923;--line:#323240;--text:#f4f0e8;--muted:#aaa6b5;--gold:#ffce7e;--violet:#bba5ff;--mint:#9ce4c3;--danger:#ffaaaa;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,sans-serif;color:var(--text);background:radial-gradient(ellipse at 48% 30%,#24202e 0%,var(--bg) 62%);min-height:100vh}button,a{-webkit-tap-highlight-color:transparent}button{border:1px solid var(--line);border-radius:10px;min-height:44px;background:#252430;color:var(--text);padding:9px 14px;font:inherit;cursor:pointer}button:hover:enabled{border-color:var(--violet);background:#302c40}button:disabled{opacity:.4;cursor:default}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}a{color:var(--muted);text-underline-offset:4px}a:hover{color:var(--gold)}main{max-width:1190px;padding:24px 26px 45px;margin:auto}nav{display:flex;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{font-weight:900;font-size:14px;letter-spacing:.16em;text-decoration:none;color:var(--text)}.brand span{color:var(--gold)}.nav-label{font:11px var(--mono);letter-spacing:.08em;color:var(--muted)}.nav-tools{margin-left:auto;display:flex;align-items:center;gap:10px}.small-btn{font-size:12px;min-height:36px;padding:6px 10px;background:transparent}header{padding:25px 0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}h1{font-size:clamp(34px,5vw,56px);font-weight:800;letter-spacing:-.06em;line-height:1;margin:0}header p{margin:9px 0 0;color:var(--muted)}.total-stars{color:var(--gold);border:1px solid #514432;background:#2a231d;border-radius:99px;padding:9px 16px;font:13px var(--mono);white-space:nowrap}.layout{display:grid;grid-template-columns:210px minmax(330px,1fr) 256px;gap:22px;align-items:start}.section-label{color:var(--muted);font:11px var(--mono);letter-spacing:.1em;margin:0 0 12px}.level-list{display:flex;flex-direction:column;gap:9px}.level-btn{text-align:left;display:grid;grid-template-columns:32px 1fr;column-gap:8px;padding:13px 12px;background:var(--card);width:100%;min-height:76px}.level-btn.active{background:#2c263a;border-color:var(--violet);box-shadow:inset 3px 0 var(--violet)}.level-num{font:14px var(--mono);color:var(--muted);align-self:center}.level-name{font-weight:650;font-size:13px}.level-stars{font:13px var(--mono);letter-spacing:3px;color:#6c6575}.level-stars.earned{color:var(--gold)}.level-btn .meta{font:10px var(--mono);color:var(--muted);margin-top:3px}.left-note{color:var(--muted);font-size:12px;margin:15px 0}.stage{background:linear-gradient(#21202b,#191921);border:1px solid #44404e;border-radius:20px;overflow:hidden;box-shadow:0 18px 60px #0004}.stage-head{padding:19px 22px 14px;border-bottom:1px solid var(--line)}.chapter{font:10px var(--mono);letter-spacing:.12em;color:var(--violet)}h2{font-size:23px;letter-spacing:-.035em;margin:4px 0 2px}.stage-head p{color:var(--muted);font-size:12px;margin:5px 0 0;min-height:36px}.hud{display:flex;align-items:center;gap:18px;padding:12px 22px;background:#12121b;border-bottom:1px solid var(--line)}.hud-stat span{display:block;font:10px var(--mono);color:var(--muted);letter-spacing:.07em}.hud-stat b{font:17px var(--mono)}.hud-stat.goal{margin-left:auto;text-align:right}.hud-stat.goal b{color:var(--gold);font-size:24px;letter-spacing:.13em}.pips{display:flex;gap:3px;margin-top:5px;height:6px}.pip{width:10px;height:5px;border-radius:2px;background:var(--violet)}.pip.off{background:#3c3549}.board{padding:15px 28px 8px;position:relative}.group{position:relative;margin-bottom:7px;padding:2px 8px;border:1px solid transparent;border-radius:13px}.group.active{border-color:#564869;background:#29243588}.box{display:grid;grid-template-columns:34px 1fr 1fr;gap:12px;padding:4px 0}.box-id{align-self:center;font:10px var(--mono);color:#8b849a}.box-id b{font-size:12px;font-weight:400;display:block;color:var(--muted)}.tile{position:relative;display:flex;align-items:center;justify-content:center;min-height:53px;height:53px;padding:0 14px;background:linear-gradient(145deg,#3b3545,#292534);border:1px solid #66566e;border-bottom:3px solid #4a3e55;border-radius:10px;color:#e9ddef;font:29px var(--mono);box-shadow:0 4px 0 #0b0b1455}.tile .number{position:absolute;right:8px;bottom:5px;font:9px var(--mono);color:#b9aaca}.tile.selected{background:#66522e;border-color:var(--gold);color:#ffdfaa;box-shadow:0 0 0 2px #ffce7e33}.tile.partner{border-color:var(--mint);background:#264438;color:#c0f0d8}.tile.goal-letter{color:var(--gold)}.tile.hole{background:#11111b;border:1px dashed #383341;color:#47414e;box-shadow:none}.tile.hint{outline:2px solid var(--gold);outline-offset:3px}.x-divider{height:21px;margin-left:46px;display:flex;align-items:center;gap:9px;color:#8b759e;font:11px var(--mono)}.x-divider:before,.x-divider:after{content:"";height:1px;flex:1;background:#3e3549}.actions{padding:13px 20px 15px}.pulse-row{display:flex;align-items:center;gap:9px}.selection{font-size:12px;color:var(--muted);flex:1}.selection strong{font:18px var(--mono);color:var(--gold);display:block}.pulse-btn{font-size:21px;width:54px;min-height:47px}.pulse-btn.hint{outline:2px solid var(--gold)}.utility{display:flex;gap:7px;margin-top:12px}.utility button{flex:1;font-size:12px;padding:8px}.hint-button{color:var(--gold)}.feedback{margin:0;border-top:1px solid var(--line);background:#161820;padding:12px 20px;min-height:63px;font-size:12px;color:var(--mint)}.feedback.error{color:var(--danger);background:#291c23}.feedback.hinting{color:var(--gold)}.finish{margin:0;padding:20px;background:linear-gradient(130deg,#403121,#25212d);border-top:1px solid #78603c;text-align:center}.finish[hidden]{display:none}.finish .big-stars{font-size:29px;color:var(--gold);letter-spacing:.22em}.finish h3{font-size:25px;letter-spacing:-.04em;margin:3px 0}.finish p{margin:4px 0 14px;font-size:12px;color:#dfcba9}.primary{background:var(--gold);border-color:var(--gold);color:#292014;font-weight:750}.primary:hover:enabled{background:#ffdea3;color:#292014;border-color:#ffdea3}.finish .primary{width:100%}.info-card{padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:15px}.info-card h3{font-size:13px;margin:0 0 10px}.info-card p{font-size:12px;color:var(--muted);margin:7px 0}.steps{list-style:none;padding:0;margin:0}.steps li{display:flex;gap:11px;align-items:flex-start;margin:13px 0;font-size:12px;color:var(--muted)}.steps .number{font:11px var(--mono);color:var(--gold);border:1px solid #574735;border-radius:50%;width:23px;height:23px;flex-shrink:0;display:grid;place-items:center}.steps b{color:var(--text);font-weight:600}.score-guide{color:var(--gold)!important;font:11px/1.7 var(--mono)!important}.register-title{display:flex;justify-content:space-between;align-items:center}.register-title span{color:var(--violet);font:11px var(--mono)}.register{list-style:none;padding:0;margin:0;max-height:218px;overflow:auto;font-size:11px}.register li{padding:8px 0;border-top:1px solid var(--line);color:var(--muted)}.register .seq{color:var(--violet);font:10px var(--mono);margin-right:6px}.save-note{font-size:10px!important;color:#898695!important}.export-btn{width:100%;margin-top:10px;font-size:11px;min-height:36px;background:transparent}.map-toggle{display:none}.shortcuts{font-size:11px;color:var(--muted);margin:14px 0 0;text-align:center}kbd{font:10px var(--mono);background:#25222d;border:1px solid #4a4254;border-radius:4px;padding:2px 4px}.error-recovery{margin:12px 0;padding:15px;background:#37242c;border:1px solid var(--danger);border-radius:10px}.error-recovery[hidden]{display:none}footer{margin-top:25px;padding-top:18px;border-top:1px solid var(--line);font-size:11px;display:flex;gap:18px;flex-wrap:wrap;color:var(--muted)}.toast-burst{position:fixed;pointer-events:none;z-index:9;color:var(--gold);font:700 16px var(--mono);transform:translate(-50%,-50%);animation:float 750ms ease-out forwards}@keyframes float{to{opacity:0;transform:translate(-50%,-180%)}}@keyframes appear{from{opacity:.5;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}@keyframes celebration{50%{box-shadow:0 0 35px #ffcf7744}}@media(prefers-reduced-motion:no-preference){.tile{transition:background .12s,border-color .12s,transform .12s}.tile:hover:enabled{transform:translateY(-2px)}.stage.changed .tile:not(.hole){animation:appear .2s ease-out}.finish:not([hidden]){animation:celebration 1s ease-in-out 2}}
+@media(max-width:1010px){.layout{grid-template-columns:170px minmax(310px,1fr) 216px;gap:14px}.board{padding:13px 18px 8px}.info-card{padding:14px}.box{gap:10px}.level-btn{padding:11px 8px;grid-template-columns:26px 1fr}main{padding:22px 18px}}
+@media(max-width:830px){.layout{grid-template-columns:155px minmax(300px,1fr)}.right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}.right .info-card{margin-bottom:0}.right .score-guide{font-size:10px!important}.stage-head p{min-height:0}.nav-label{display:none}header{padding:21px 0}.board{padding:13px 23px 8px}}
+@media(max-width:540px){main{padding:14px 12px 30px}.layout{display:block}.left{margin-bottom:12px}.section-label,.left-note{display:none}.level-list{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.level-btn{display:flex;flex-direction:column;align-items:center;padding:7px 3px;min-height:58px;gap:3px}.level-btn .level-name,.level-btn .meta{display:none}.level-stars{font-size:9px;letter-spacing:1px}.level-num{font-size:13px}.level-btn.active{box-shadow:inset 0 -3px var(--violet)}.right{display:grid;margin-top:16px;grid-template-columns:1fr}.right .info-card:first-child{display:none}.stage-head{padding:15px 18px 10px}h2{font-size:21px}.hud{padding:10px 18px;gap:17px}.board{padding:11px 19px 4px}.tile{height:49px;min-height:49px;font-size:26px}.box{gap:10px;padding:3px 0;grid-template-columns:30px 1fr 1fr}.group{margin-bottom:4px}.x-divider{height:18px;margin-left:40px}.actions{padding:10px 16px 13px}.feedback{padding:11px 16px;min-height:54px}header p{font-size:12px}header{padding:19px 0}h1{font-size:35px}.total-stars{font-size:11px;padding:8px 11px}.nav-tools{gap:5px}nav{gap:8px;padding-bottom:13px}.shortcuts{display:none}.register{max-height:130px}}
+.right .info-card:first-child{display:block}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.toast-burst{display:none}}
+</style></head>
+<body><main>
+<nav><a class="brand" href="./thegame.07.system-index.html">THE<span>GAME</span></a><span class="nav-label">SIX BOXES / ONE COMPOUND</span><div class="nav-tools"><button id="sound" class="small-btn" aria-pressed="false">Sound off</button><a href="./thegame.11.six-box.html" class="small-btn">Sandbox ↗</a></div></nav>
+<header><div><h1>DISTILL<span style="color:var(--gold)">.</span></h1><p>A six-box puzzle campaign. Leave only <strong>gi</strong>.</p></div><div class="total-stars" id="total-stars" aria-label="Campaign stars">☆ 0 / 18</div></header>
+<div class="error-recovery" id="recovery" hidden><p id="recovery-message"></p><button id="separate">Start a separate save</button></div>
+<div class="layout">
+<aside class="left"><p class="section-label">THE SIX STAGES</p><div class="level-list" id="levels" aria-label="Choose level"></div><p class="left-note">Every stage is open. Earn stars by using fewer moves and hints.</p></aside>
+<div><section class="stage" id="stage" aria-label="Puzzle board">
+<div class="stage-head"><span class="chapter" id="chapter"></span><h2 id="level-name"></h2><p id="brief"></p></div>
+<div class="hud"><div class="hud-stat"><span>PULSES</span><b id="pulse-count"></b><div class="pips" id="pips" aria-hidden="true"></div></div><div class="hud-stat"><span>MOVES / PAR</span><b id="move-count"></b></div><div class="hud-stat goal"><span>LEAVE ONLY</span><b>gi</b></div></div>
+<div class="board" id="board"></div>
+<div class="actions"><div class="pulse-row"><div class="selection">Selected <strong id="selection">g · 7</strong></div><button id="minus" class="pulse-btn" aria-label="Use a pulse to subtract one">−1</button><button id="plus" class="pulse-btn" aria-label="Use a pulse to add one">+1</button></div><div class="utility"><button id="undo" title="Undo (Z)">↶ Undo</button><button id="hint" class="hint-button" title="Hint (H)">✧ Hint</button><button id="retry">↻ Retry</button></div></div>
+<p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+<section class="finish" id="finish" hidden aria-label="Level complete"><div class="big-stars" id="win-stars" aria-hidden="true"></div><h3>Compound distilled.</h3><p id="win-detail"></p><button class="primary" id="next">Next stage →</button></section>
+</section><p class="shortcuts"><kbd>↑↓←→</kbd> select · <kbd>+</kbd>/<kbd>−</kbd> pulse · <kbd>Z</kbd> undo · <kbd>H</kbd> hint</p></div>
+<aside class="right"><section class="info-card"><h3>Small board. Consequences.</h3><ol class="steps"><li><span class="number">1</span><div><b>Shape a pair.</b><br>Tap a letter. Use ±1 to change its number.</div></li><li><span class="number">2</span><div><b>Tap equal neighbors.</b><br>Across or down inside one X. Diagonals do not match.</div></li><li><span class="number">3</span><div><b>Read the collapse.</b><br>Vertical ablations compress upward. Horizontal ones leave holes.</div></li></ol><p id="lesson"></p><p class="score-guide">★★★ Par, no hints<br>★★ Within par +2, at most 1 hint<br>★ Reach gi</p><p>Read survivors down the left column, then down the right. a=1 … z=26. Frames alternate eo / oe.</p></section>
+<section class="info-card"><h3 class="register-title">Your register <span id="register-count">0</span></h3><ol class="register" id="register"></ol><button id="export" class="export-btn">Export saved route ↓</button><p class="save-note" id="save-note">Autosaves on this browser.</p></section></aside>
+</div>
+<footer><span>OaSIs · David Lee Wise</span><a href="./thegame.11.six-box.html">Original six-box sandbox</a><a href="./thegame.07.system-index.html">TheGame index</a><a href="https://github.com/DavidWise01/oasis/blob/main/thegame.12.distill.test.cjs">Level checks</a></footer>
+<noscript>This game needs JavaScript for its moves, hints and save register.</noscript>
+</main>
+<script src="./thegame.12.distill.engine.js"></script><script>
+(function(){
+  'use strict';
+  const E=window.Distill, q=id=>document.getElementById(id);
+  if(!E){q('feedback').textContent='The game engine could not load. Reload with the engine file beside this page.';return;}
+  let state=E.initial(), selected=0, hinted=null, busy=false, blocked=false, sound=false, audio=null;
+  let key='thegame.distill.12.save', message='', tone='';
+  const soundPreference='thegame.distill.12.sound';
+  function node(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x;}
+  function load(){
+    let raw;
+    try{
+      const active=localStorage.getItem('thegame.distill.12.active');
+      if(active&&active.startsWith('thegame.distill.12.save.'))key=active;
+      sound=localStorage.getItem(soundPreference)==='on';
+      raw=localStorage.getItem(key);
+    }catch(_){q('save-note').textContent='Storage unavailable. Export your route before leaving.';}
+    if(raw)try{state=E.restore(raw);message='Save replayed. Your board is ready.';}
+    catch(err){blocked=true;q('recovery').hidden=false;q('recovery-message').textContent='This save could not replay. It has been preserved. '+err.message;message='Start a separate save to play.';tone='error';}
+  }
+  function persist(){
+    try{localStorage.setItem(key,E.save(state));q('save-note').textContent='Saved · '+state.register.length+' register entries.';}
+    catch(_){q('save-note').textContent='Save unavailable or full. Export your route before leaving.';}
+  }
+  function chirp(type){
+    if(!sound)return;
+    try{
+      const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;
+      if(!audio)audio=new Audio();
+      const playing=audio.resume();if(playing?.catch)playing.catch(()=>{});
+      const notes=type==='win'?[392,494,587,784]:type==='pair'?[392,587]:[294];
+      notes.forEach((hz,i)=>{const at=audio.currentTime+i*.09,osc=audio.createOscillator(),gain=audio.createGain();osc.type='sine';osc.frequency.value=hz;gain.gain.setValueAtTime(.0001,at);gain.gain.exponentialRampToValueAtTime(.045,at+.012);gain.gain.exponentialRampToValueAtTime(.0001,at+.14);osc.connect(gain);gain.connect(audio.destination);osc.start(at);osc.stop(at+.15);});
+    }catch(_){}
+  }
+  function burst(text,rect){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!rect)return;
+    const b=node('div','toast-burst',text);b.style.left=(rect.left+rect.width/2)+'px';b.style.top=(rect.top+rect.height/2)+'px';b.setAttribute('aria-hidden','true');document.body.append(b);setTimeout(()=>b.remove(),800);
+  }
+  function render(){
+    const level=E.LEVELS[state.level], phase=E.phase(state), playing=phase==='playing'&&!blocked&&!busy;
+    if(!state.cells[selected])selected=state.cells.findIndex(Boolean);
+    q('chapter').textContent=String(state.level+1).padStart(2,'0')+' / '+level.tag;
+    q('level-name').textContent=level.name;q('brief').textContent=level.brief;q('lesson').textContent=level.lesson;
+    q('pulse-count').textContent=E.remaining(state)+' / '+level.budget;q('move-count').textContent=state.moves+' / '+level.par;
+    q('pips').replaceChildren(...Array.from({length:level.budget},(_,i)=>node('span','pip'+(i>=E.remaining(state)?' off':''))));
+    q('total-stars').textContent='★ '+Object.values(state.best).reduce((n,b)=>n+b.stars,0)+' / 18';
+    const map=q('levels');map.replaceChildren();
+    E.LEVELS.forEach((l,i)=>{const score=state.best[i],button=node('button','level-btn'+(i===state.level?' active':''));button.dataset.level=String(i);button.disabled=blocked||busy;button.setAttribute('aria-current',i===state.level?'step':'false');button.setAttribute('aria-label','Level '+(i+1)+', '+l.name+', '+(score?.stars||0)+' stars');button.append(node('span','level-num',String(i+1).padStart(2,'0')));const body=node('span','');body.append(node('span','level-name',l.name),node('div','level-stars'+(score?' earned':''),'★'.repeat(score?.stars||0)+'☆'.repeat(3-(score?.stars||0))),node('div','meta','PAR '+l.par+' · '+l.budget+' PULSES'));button.append(body);button.addEventListener('click',()=>{if(i!==state.level)act({type:'level',level:i});});map.append(button);});
+    const legal=E.pairs(state.cells), partners=new Set(legal.filter(e=>e.a===selected||e.b===selected).map(e=>e.a===selected?e.b:e.a));
+    const highlight=new Set(hinted?(hinted.type==='shift'?[hinted.index]:[hinted.a,hinted.b]):[]);
+    const board=q('board');board.replaceChildren();
+    for(let group=0;group<3;group++){
+      const wrap=node('div','group'+(Math.floor(selected/4)===group?' active':''));wrap.dataset.group=String(group);
+      for(let offset=0;offset<2;offset++){
+        const row=group*2+offset,box=node('div','box');box.dataset.row=String(row);
+        const label=node('div','box-id');label.append(node('b','',String(row+1).padStart(2,'0')),node('span','',row%2?'oe':'eo'));box.append(label);
+        for(let col=0;col<2;col++){
+          const i=row*2+col,value=state.cells[i],btn=node('button','tile'+(!value?' hole':'')+(selected===i?' selected':'')+(partners.has(i)?' partner':'')+(highlight.has(i)?' hint':'')+([7,9].includes(value)?' goal-letter':''));
+          btn.dataset.cell=String(i);btn.disabled=!value||!playing;btn.setAttribute('aria-pressed',String(i===selected));btn.setAttribute('aria-label',value?'Box '+(row+1)+', '+(col?'right':'left')+', '+E.letter(value)+', number '+value: 'Empty box '+(row+1));
+          btn.append(node('span','',E.letter(value)));if(value)btn.append(node('span','number',String(value).padStart(2,'0')));
+          btn.addEventListener('click',()=>tap(i));box.append(btn);
+        }
+        wrap.append(box);if(offset===0)wrap.append(node('div','x-divider','X '+(group+1)));
+      }
+      board.append(wrap);
+    }
+    q('selection').textContent=selected>=0?E.letter(state.cells[selected])+' · '+state.cells[selected]:'_';
+    q('plus').disabled=!playing||!E.remaining(state)||selected<0||state.cells[selected]===26;
+    q('minus').disabled=!playing||!E.remaining(state)||selected<0||state.cells[selected]===1;
+    q('plus').classList.toggle('hint',hinted?.type==='shift'&&hinted.delta===1);
+    q('minus').classList.toggle('hint',hinted?.type==='shift'&&hinted.delta===-1);
+    q('undo').disabled=blocked||busy||!state.history.length;q('retry').disabled=blocked||busy;
+    q('hint').disabled=!playing;q('hint').textContent=busy?'Thinking…':'✧ Hint';q('export').disabled=blocked||busy;
+    q('sound').textContent=sound?'Sound on':'Sound off';q('sound').setAttribute('aria-pressed',String(sound));
+    q('register-count').textContent=String(state.register.length);
+    const list=q('register');list.replaceChildren();
+    if(!state.register.length)list.append(node('li','','Your first move starts the register.'));
+    for(const entry of state.register.slice(-24)){const li=node('li','');li.append(node('span','seq',String(entry.seq).padStart(3,'0')),document.createTextNode(entry.detail));list.append(li);}
+    list.scrollTop=list.scrollHeight;
+    q('finish').hidden=phase!=='solved'||blocked;
+    if(phase==='solved'){
+      const award=E.stars(state);q('win-stars').textContent='★'.repeat(award)+'☆'.repeat(3-award);
+      q('win-detail').textContent=state.moves+' moves · '+state.spent+' pulses · '+state.hints+' hints · '+award+' stars';
+      const complete=Object.keys(state.best).length===E.LEVELS.length;
+      q('next').textContent=complete?'Replay campaign →':state.level<E.LEVELS.length-1?'Next stage →':'Return to unfinished stage →';
+    }
+    let text=message||level.lesson, style=tone;
+    if(!blocked&&phase==='stuck'){text='No move remains within this pulse budget. Undo or retry to find another route.';style='error';}
+    else if(!blocked&&phase==='solved'){text='gi · only the compound remains. Route saved.';style='';}
+    q('feedback').textContent=text;q('feedback').className='feedback'+(style?' '+style:'');
+  }
+  function act(action){
+    if(blocked||busy)return;
+    const oldLevel=state.level;
+    const rect=action.type==='ablate'?document.querySelector('[data-cell="'+action.b+'"]')?.getBoundingClientRect():null;
+    try{
+      state=E.apply(state,action);hinted=null;tone='';
+      message=state.register.at(-1).detail;
+      if(action.type==='level'||action.type==='restart'){selected=0;message=E.LEVELS[state.level].lesson;}
+      else if(action.type==='ablate'){selected=state.cells.findIndex(Boolean);message=state.chain>1?'Chain ×'+state.chain+' · '+message:message;}
+      persist();render();
+      q('stage').classList.remove('changed');void q('stage').offsetWidth;q('stage').classList.add('changed');
+      if(E.phase(state)==='solved'){chirp('win');q('next').focus({preventScroll:true});}
+      else if(action.type==='ablate'){chirp('pair');burst(state.chain>1?'×'+state.chain:'−2',rect);}
+      else if(action.type==='shift')chirp('pulse');
+      if(oldLevel!==state.level&&window.innerWidth<=540)q('stage').scrollIntoView({block:'start',behavior:'instant'});
+    }catch(err){message=err.message;tone='error';render();}
+  }
+  function tap(index){
+    if(blocked||busy||E.phase(state)!=='playing')return;
+    const edge=E.pairs(state.cells).find(e=>(e.a===selected&&e.b===index)||(e.b===selected&&e.a===index));
+    if(edge&&index!==selected){act({type:'ablate',a:edge.a,b:edge.b});return;}
+    selected=index;tone='';
+    message=E.pairs(state.cells).some(e=>e.a===index||e.b===index)?'Equal neighbor lit. Tap it to ablate the pair.':'Use ±1 to make an equal cardinal neighbor.';
+    render();document.querySelector('[data-cell="'+index+'"]')?.focus({preventScroll:true});
+  }
+  async function hint(){
+    if(blocked||busy||E.phase(state)!=='playing')return;
+    busy=true;message='Finding a route from this board…';tone='hinting';render();
+    await new Promise(resolve=>setTimeout(resolve,30));
+    try{
+      const result=E.solve(state);
+      if(result.status==='solved'&&result.actions.length){
+        hinted=result.actions[0];state=E.apply(state,{type:'hint'});persist();
+        selected=hinted.type==='shift'?hinted.index:hinted.a;message=E.hintText(hinted,state);tone='hinting';
+      }else if(result.status==='no-solution'){message='No gi route fits the remaining pulses. Undo a move and try another pair.';tone='error';}
+      else{message='The hint search reached its limit. Undo or try another pair.';tone='error';}
+    }catch(err){message='Hint unavailable: '+err.message;tone='error';}
+    busy=false;render();
+  }
+  q('minus').addEventListener('click',()=>act({type:'shift',index:selected,delta:-1}));
+  q('plus').addEventListener('click',()=>act({type:'shift',index:selected,delta:1}));
+  q('undo').addEventListener('click',()=>act({type:'undo'}));q('retry').addEventListener('click',()=>act({type:'restart'}));q('hint').addEventListener('click',hint);
+  q('next').addEventListener('click',()=>{
+    let level=state.level+1;
+    if(Object.keys(state.best).length===E.LEVELS.length)level=0;
+    else if(level>=E.LEVELS.length)level=E.LEVELS.findIndex((_,i)=>!state.best[i]);
+    act({type:'level',level});
+  });
+  q('sound').addEventListener('click',()=>{sound=!sound;try{localStorage.setItem(soundPreference,sound?'on':'off');}catch(_){}render();if(sound)chirp('pair');});
+  q('export').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([E.save(state)],{type:'application/json'}));const a=node('a','');a.href=url;a.download='distill-register-'+state.register.length+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+  q('separate').addEventListener('click',()=>{key='thegame.distill.12.save.'+Date.now();state=E.initial();blocked=false;selected=0;message='Separate save opened. The earlier register is preserved.';tone='';try{localStorage.setItem('thegame.distill.12.active',key);}catch(_){}q('recovery').hidden=true;persist();render();});
+  document.addEventListener('keydown',event=>{
+    if(event.ctrlKey||event.metaKey||event.altKey||event.target.matches('input,textarea,select'))return;
+    const key=event.key.toLowerCase();
+    if(key==='z'){event.preventDefault();if(!q('undo').disabled)act({type:'undo'});}
+    else if(key==='h'){event.preventDefault();hint();}
+    else if(key==='+'||key==='='||key==='-'){event.preventDefault();if(!(key==='-'?q('minus'):q('plus')).disabled)act({type:'shift',index:selected,delta:key==='-'?-1:1});}
+    else if(['arrowup','arrowdown','arrowleft','arrowright'].includes(key)&&E.phase(state)==='playing'&&!busy&&!blocked){
+      event.preventDefault();let next=selected;
+      for(let tries=0;tries<12;tries++){next=(next+({arrowup:-2,arrowdown:2,arrowleft:-1,arrowright:1}[key])+12)%12;if(state.cells[next])break;}
+      selected=next;render();document.querySelector('[data-cell="'+next+'"]')?.focus({preventScroll:true});
+    }
+  });
+  load();render();
+})();
+</script></body></html>
