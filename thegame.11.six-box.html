@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101411">
+<title>TheGame · Six boxes</title>
+<style>
+:root{color-scheme:dark;--bg:#101411;--panel:#19211c;--line:#33453a;--text:#f1efe5;--muted:#a9b5a8;--mint:#b6f296;--orange:#ffb779;--red:#ff9b93;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,sans-serif}a{color:var(--muted);text-underline-offset:4px}a:hover{color:var(--mint)}button{font:inherit;cursor:pointer;color:inherit;background:#222f26;border:1px solid var(--line);border-radius:9px;padding:10px 14px;min-height:44px}button:hover:enabled{border-color:var(--mint);background:#2c3d30}button:disabled{opacity:.42;cursor:default}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}main{max-width:1110px;margin:auto;padding:24px 24px 60px}nav{display:flex;align-items:center;gap:22px;border-bottom:1px solid var(--line);padding-bottom:20px;font-size:13px}.brand{font-weight:800;letter-spacing:.08em;color:var(--text);text-decoration:none}.nav-right{margin-left:auto}.eyebrow{font:11px var(--mono);letter-spacing:.14em;color:var(--mint);text-transform:uppercase}header{display:flex;justify-content:space-between;gap:24px;align-items:center;margin:30px 0 22px}h1{font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.045em;margin:10px 0}header p{margin:12px 0 0;color:var(--muted);max-width:600px}.goal{border:1px solid var(--line);border-radius:13px;padding:14px 22px;text-align:center;white-space:nowrap}.goal b{display:block;font:44px/1.1 var(--mono);color:var(--mint)}.goal small{color:var(--muted);font:11px var(--mono)}.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(290px,.85fr);gap:22px;align-items:start}.panel{border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden}.panel-top{display:flex;justify-content:space-between;gap:12px;padding:15px 20px;border-bottom:1px solid var(--line);font:12px var(--mono)}.panel-top span{color:var(--muted)}.board-area{padding:15px 26px 20px}.group{position:relative;padding:4px 0 8px;margin:5px 0;border-radius:13px}.group.active{background:#223428;outline:1px solid #639452}.box{display:grid;grid-template-columns:45px 1fr 1fr;gap:10px;padding:5px 13px}.box-label{align-self:center;font:11px/1.5 var(--mono);color:var(--muted)}.box-label strong{color:var(--text);font-size:13px;display:block}.cell{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:52px;padding:6px 14px;background:#101912;border:1px solid #3e5244}.cell .letter{font:29px var(--mono)}.cell .value{font:11px var(--mono);color:var(--muted)}.cell.selected{border-color:var(--orange);box-shadow:inset 0 0 0 1px var(--orange)}.cell.match{background:#2b412c}.cell.hole{border-style:dashed;background:transparent}.cell.hole .letter{color:#607465}.x-line{height:26px;display:flex;align-items:center;justify-content:center;margin-left:53px;position:relative}.x-line:before{content:"";position:absolute;width:72%;height:1px;background:var(--line)}.x-button{position:relative;min-height:28px;height:28px;width:42px;padding:0;background:var(--panel);font:13px var(--mono);z-index:1}.group.active .x-button{color:var(--mint);border-color:#719b60}.editing{padding:16px 20px;border-top:1px solid var(--line);display:flex;gap:9px;align-items:center;flex-wrap:wrap}.editing p{margin:0 auto 0 0;font-size:13px;color:var(--muted)}.editing b{color:var(--orange);font-family:var(--mono)}.primary{background:var(--mint);color:#162214;border-color:var(--mint);font-weight:700}.primary:hover:enabled{background:#cafdb0;color:#142211}.checkpoint{padding:15px 20px;border-top:1px solid var(--line);display:grid;grid-template-columns:148px 1fr;gap:20px;align-items:center}.cardinal{display:grid;grid-template-columns:44px 44px 44px;grid-template-rows:44px 36px 44px;gap:3px;font-family:var(--mono)}.cardinal button{padding:4px;min-height:36px}.north{grid-area:1/2}.west{grid-area:2/1}.east{grid-area:2/3}.south{grid-area:3/2}.cross{grid-area:2/2;display:grid;place-items:center;color:var(--mint)}.controls{display:flex;gap:8px;flex-wrap:wrap}.checkpoint p{color:var(--muted);font-size:12px;margin:8px 0 0}.feedback{margin:0;padding:15px 20px;border-top:1px solid var(--line);background:#14271b;min-height:60px;font-size:13px}.feedback.error{background:#36231e;color:var(--red)}.feedback.solved{color:var(--mint)}.register-list{list-style:none;margin:0;padding:4px 18px;max-height:487px;min-height:275px;overflow:auto}.register-list li{display:grid;grid-template-columns:36px 1fr;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}.register-list .seq{font:11px var(--mono);color:var(--mint)}.register-list .empty{display:block;padding:24px 0;color:var(--muted)}.register-actions{padding:15px 18px;display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line)}.save-status{margin:0;padding:0 18px 16px;color:var(--muted);font-size:12px}.rules{margin-top:18px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;color:var(--muted);font-size:13px}.rules summary{cursor:pointer;color:var(--text)}.rules ul{padding-left:18px}.rules li{margin:7px 0}.rules code{color:var(--orange)}.tiny{font:11px var(--mono);color:var(--muted)}footer{color:var(--muted);font-size:12px;margin-top:25px}#storage-recovery{margin:0 18px 16px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:750px){main{padding:18px 14px 40px}.layout{grid-template-columns:1fr}.goal{padding:10px 14px}.goal b{font-size:34px}.board-area{padding:12px}.register-list{min-height:120px;max-height:320px}nav{gap:14px}.nav-right{display:none}header{gap:12px}.checkpoint{grid-template-columns:138px 1fr;gap:10px}.box{padding:5px 10px}.cell{padding:6px 10px}header p{font-size:13px}}
+@media(prefers-reduced-motion:no-preference){.cell{transition:background .18s,border-color .18s}.goal.complete{animation:glow 1.5s ease-in-out 2}@keyframes glow{50%{box-shadow:0 0 25px #b6f24540}}}
+</style>
+</head>
+<body><main>
+<nav aria-label="TheGame navigation"><a class="brand" href="./thegame.07.system-index.html">THEGAME</a><span class="tiny">/ LOGIC PUZZLE 11</span><a class="nav-right" href="./thegame.06.arena.html">Open arena ↗</a></nav>
+<header><div><div class="eyebrow">eo · oe · eo · oe · eo · oe</div><h1>Six boxes. One register.</h1><p>Move a number by ±1. Match across an X. Ablate, compress, repeat.</p></div><div class="goal" id="goal"><small>TARGET</small><b>gi</b><small>7 · 9</small></div></header>
+<div class="layout">
+<section class="panel" aria-label="Six-box puzzle board">
+<div class="panel-top"><b>2 × 2 × 1 × n</b><span id="board-count">12 letters / 6 boxes</span></div>
+<div class="board-area" id="board"></div>
+<div class="editing"><p>Selected <b id="selected">g · 7</b></p><button id="minus" aria-label="Subtract one from selected letter">−1</button><button id="plus" aria-label="Add one to selected letter">+1</button></div>
+<div class="checkpoint"><div class="cardinal" aria-label="Ablate matching cardinal pair"><button class="north" data-direction="N" aria-label="Ablate north horizontal pair">N</button><button class="west" data-direction="W" aria-label="Ablate west vertical pair">W</button><span class="cross" aria-hidden="true">X</span><button class="east" data-direction="E" aria-label="Ablate east vertical pair">E</button><button class="south" data-direction="S" aria-label="Ablate south horizontal pair">S</button></div><div><div class="controls"><button id="scan">Next X ↓</button><button id="compress" class="primary">Compress _ ↑</button></div><p id="match-status">X 1 · boxes 1 + 2</p><p>N/S check across. W/E check down. Equal numbers light up.</p></div></div>
+<p class="feedback" id="feedback" role="status" aria-live="polite">Select a letter and use ±1 to make a cardinal match.</p>
+</section>
+<aside><section class="panel" aria-label="Move register"><div class="panel-top"><b>REGISTER</b><span id="move-count">000 moves</span></div><ol class="register-list" id="register"></ol><div class="register-actions"><button id="export">Export register ↓</button><button id="restart">New round</button></div><p class="save-status" id="save-status">Saved in this browser after every move.</p><button id="storage-recovery" hidden>Start a separate register</button></section>
+<details class="rules"><summary>Rules on this board</summary><ul><li>Six boxes begin <code>gh / ab / mn / ab / mn / ab</code>. Their frames alternate <code>eo / oe</code>.</li><li>Letters have numbers <code>a=1 … z=26</code>. This version reads <code>+_1</code> as a player-selected <code>+1</code> or <code>−1</code>.</li><li>One X per four slots: boxes 1+2, 3+4, 5+6. Scan from the upper left down, then the right column.</li><li>Equal numbers on the top, bottom, left or right edge ablate together. Diagonal matches do not.</li><li>A vertical ablation removes one above and one below. Press <code>Compress _</code> to close column gaps upward while preserving order; scanning restarts at the top.</li><li>Horizontal ablations leave holes. Read surviving letters down the left column, then down the right.</li><li>The goal is one compound, <code>gi</code>. Two live numbers must actually be <code>7,9</code>. No automatic renaming.</li><li>The register records moves and replays them on reload. New round adds a restart entry. Export keeps a portable copy.</li></ul></details>
+<details class="rules"><summary>A route from this starting stack</summary><p>Keep the first <code>g</code>; move its <code>h</code> up once to <code>i</code>. In each <code>ab</code> box, move <code>a</code> up to <code>b</code>, then ablate that horizontal pair. In each <code>mn</code> box, move <code>n</code> down to <code>m</code>, then ablate. The remaining letters read <code>gi</code>.</p><p>Try vertical matches too: they trigger the compression rule.</p></details>
+</aside></div>
+<footer>OaSIs · David Lee Wise · <a href="./thegame.07.system-index.html">TheGame index</a> · <a href="./thegame.06.arena.html">Arena</a> · <a href="https://github.com/DavidWise01/oasis/blob/main/thegame.11.six-box.test.cjs">Mechanics checks</a></footer>
+<noscript>This puzzle needs JavaScript for moves and the save register.</noscript>
+</main><script src="./thegame.11.six-box.engine.js"></script><script>
+(function () {
+  'use strict';
+  const E = window.SixBox;
+  const q = id => document.getElementById(id);
+  if (!E) { q('feedback').textContent = 'The puzzle engine did not load. Reload this page with its engine file beside it.'; return; }
+  let state = E.initial(), selected = 'b1-0', blocked = false;
+  let storageKey = 'thegame.six-box.11.register';
+  let message = 'Select a letter and use ±1 to make a cardinal match.', error = false;
+  function load() {
+    let saved;
+    try {
+      const active = localStorage.getItem('thegame.six-box.11.active');
+      if (active && active.startsWith('thegame.six-box.11.register.')) storageKey = active;
+      saved = localStorage.getItem(storageKey);
+    }
+    catch (_) { q('save-status').textContent = 'Browser storage is unavailable. Export your register to keep it.'; return; }
+    if (saved) {
+      try { state = E.restore(saved); message = 'Register replayed. Your board is restored.'; }
+      catch (e) {
+        blocked = true; message = 'Saved register could not replay: ' + e.message; error = true;
+        q('save-status').textContent = 'Existing save preserved. Start a separate register to play.';
+        q('storage-recovery').hidden = false;
+      }
+    }
+  }
+  function persist() {
+    try { localStorage.setItem(storageKey, E.save(state)); q('save-status').textContent = 'Saved in this browser · ' + state.register.length + ' moves.'; }
+    catch (_) { q('save-status').textContent = 'Save unavailable or full. Export this register before closing.'; }
+  }
+  function make(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+  function render() {
+    const phase = E.status(state), playing = phase === 'playing' && !blocked;
+    const live = state.cells.flat().filter(Boolean);
+    if (!live.some(t => t.id === selected)) selected = live[0]?.id || null;
+    const token = live.find(t => t.id === selected);
+    const legal = E.matches(state);
+    const positions = new Set(legal.flatMap(m => m.points.map(p => p.join(','))));
+    const board = q('board'); board.replaceChildren();
+    for (const start of [0, 2, 4]) {
+      const group = make('div', 'group' + (state.window === start ? ' active' : ''));
+      group.dataset.group = String(start / 2 + 1);
+      for (const row of [start, start + 1]) {
+        const box = make('div', 'box'); box.dataset.box = String(row + 1);
+        const label = make('div', 'box-label');
+        label.append(make('strong', '', String(row + 1).padStart(2, '0')), make('span', '', E.orientation(row)));
+        box.append(label);
+        state.cells[row].forEach((t, col) => {
+          const btn = make('button', 'cell' + (!t ? ' hole' : '') + (t?.id === selected ? ' selected' : '') + (positions.has(row + ',' + col) ? ' match' : ''));
+          btn.dataset.cell = row + ',' + col;
+          btn.disabled = !t || !playing;
+          btn.setAttribute('aria-label', t ? 'Box ' + (row + 1) + ', ' + (col ? 'right' : 'left') + ', ' + E.letter(t.value) + ', number ' + t.value : 'Empty slot in box ' + (row + 1));
+          btn.setAttribute('aria-pressed', String(Boolean(t && t.id === selected)));
+          btn.append(make('span', 'letter', t ? E.letter(t.value) : '_'), make('span', 'value', t ? String(t.value).padStart(2, '0') : ''));
+          if (t) btn.addEventListener('click', () => { selected = t.id; render(); q('plus').focus(); });
+          box.append(btn);
+        });
+        group.append(box);
+        if (row === start) {
+          const divider = make('div', 'x-line'), x = make('button', 'x-button', 'X');
+          x.setAttribute('aria-label', 'Select X ' + (start / 2 + 1) + ', boxes ' + (start + 1) + ' and ' + (start + 2));
+          x.disabled = !playing || start === state.window;
+          x.addEventListener('click', () => move({type: 'focus', row: start}));
+          divider.append(x); group.append(divider);
+        }
+      }
+      board.append(group);
+    }
+    q('selected').textContent = token ? E.letter(token.value) + ' · ' + token.value : '_';
+    q('plus').disabled = !playing || !token || token.value === 26;
+    q('minus').disabled = !playing || !token || token.value === 1;
+    q('scan').disabled = !playing;
+    q('compress').disabled = phase !== 'compress' || blocked;
+    q('restart').disabled = blocked;
+    q('export').disabled = blocked;
+    document.querySelectorAll('[data-direction]').forEach(button => {
+      const match = legal.find(m => m.direction === button.dataset.direction);
+      button.disabled = !playing || !match;
+      button.title = match ? E.letter(match.value) + ' = ' + E.letter(match.value) + ' · ablate ' + match.axis : 'No equal pair';
+    });
+    q('board-count').textContent = E.count(state) + ' letters / 6 boxes';
+    q('match-status').textContent = 'X ' + (state.window / 2 + 1) + ' · boxes ' + (state.window + 1) + ' + ' + (state.window + 2) + ' · ' + legal.length + ' matches';
+    q('move-count').textContent = String(state.register.length).padStart(3, '0') + ' moves';
+    const register = q('register'); register.replaceChildren();
+    if (!state.register.length) register.append(make('li', 'empty', 'Starting stack loaded. Your first move begins the register.'));
+    for (const entry of state.register) {
+      const li = make('li', '');
+      li.append(make('span', 'seq', String(entry.seq).padStart(3, '0')), make('span', '', entry.detail));
+      register.append(li);
+    }
+    register.scrollTop = register.scrollHeight;
+    q('goal').classList.toggle('complete', phase === 'solved');
+    if (phase === 'solved') message = 'gi · distilled. Two letters, one compound. Your route is saved in the register.';
+    else if (phase === 'compress' && !error) message = 'One above and one below removed. Compress the _ before continuing.';
+    else if (phase === 'empty' && !error) message = 'All letters ablated. This round stops without gi.';
+    else if (phase === 'one' && !error) message = 'One letter remains. This round stops without gi.';
+    q('feedback').textContent = message;
+    q('feedback').className = 'feedback' + (error ? ' error' : '') + (phase === 'solved' ? ' solved' : '');
+  }
+  function move(action) {
+    if (blocked) return;
+    try {
+      state = E.apply(state, action); message = state.register.at(-1).detail; error = false; persist();
+    } catch (e) { message = e.message; error = true; }
+    render();
+  }
+  q('minus').addEventListener('click', () => move({type: 'shift', id: selected, delta: -1}));
+  q('plus').addEventListener('click', () => move({type: 'shift', id: selected, delta: 1}));
+  q('scan').addEventListener('click', () => move({type: 'scan'}));
+  q('compress').addEventListener('click', () => move({type: 'compress'}));
+  q('restart').addEventListener('click', () => move({type: 'restart'}));
+  document.querySelectorAll('[data-direction]').forEach(b => b.addEventListener('click', () => move({type: 'ablate', direction: b.dataset.direction})));
+  q('export').addEventListener('click', () => {
+    const url = URL.createObjectURL(new Blob([E.save(state)], {type: 'application/json'}));
+    const link = make('a', ''); link.href = url; link.download = 'thegame-six-box-register-' + state.register.length + '.json';
+    document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  q('storage-recovery').addEventListener('click', () => {
+    storageKey = 'thegame.six-box.11.register.' + Date.now();
+    state = E.initial(); blocked = false; error = false; selected = 'b1-0';
+    message = 'Separate register opened. The earlier save is preserved.';
+    try { localStorage.setItem('thegame.six-box.11.active', storageKey); } catch (_) {}
+    q('storage-recovery').hidden = true; persist(); render();
+  });
+  load(); render();
+})();
+</script></body></html>
