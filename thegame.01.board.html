@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="David Lee Wise / ROOT0">
+<meta name="description" content="TheGame 53-slot deterministic board">
+<title>TheGame // 53</title>
+<style>
+:root{--void:#06080a;--panel:#0d1514;--line:#29473d;--ink:#e7f1eb;--muted:#9bb1a7;--a:#6fa9ff;--b:#ff6e7d;--c:#f3cf62;--on:#1c392d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#17332a 0,var(--void) 44rem);color:var(--ink);font:15px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+main{max-width:1220px;margin:auto;padding:34px 18px 70px}header{display:flex;justify-content:space-between;gap:20px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:22px}.kicker{color:var(--muted);letter-spacing:.16em;font-size:.78rem}h1{margin:.2rem 0 0;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.1em}.seal{border:1px solid var(--line);padding:.35rem .6rem;color:var(--c);font-size:.8rem}.grid{display:grid;grid-template-columns:1fr 260px;gap:18px;margin-top:22px}.board,.side{border:1px solid var(--line);background:linear-gradient(145deg,#0f1917,#090e0e);padding:20px}.rail{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:7px;margin:10px 0 18px}.slot{aspect-ratio:1;border:1px solid #365549;background:#0b1211;color:var(--muted);font:700 .85rem/1 ui-monospace,monospace;cursor:pointer}.slot:hover{border-color:#a5d6b7;color:#fff}.slot.a{color:var(--a);border-color:#547caf;background:#0d1b2a}.slot.b{color:var(--b);border-color:#9e4755;background:#291216}.slot.carrier{color:var(--c);border-style:dashed}.center{display:grid;place-items:center;width:86px;height:86px;border:2px solid var(--c);border-radius:50%;margin:7px auto 24px;color:var(--c);background:#1c1810;box-shadow:0 0 35px #e5b95020}.center small{color:var(--muted)}button{width:100%;text-align:left;margin:0 0 9px;padding:.75rem;border:1px solid var(--line);background:#101b18;color:var(--ink);font:inherit;cursor:pointer}button:hover{border-color:#79ae8f}.stat{padding:.6rem 0;border-bottom:1px solid #21372f}.stat b{color:var(--c)}.log{height:205px;overflow:auto;background:#050807;border:1px solid #20372d;padding:10px;color:#bdd4c4;font-size:.82rem}.ok{color:#72e5a0}.warn{color:#f3cf62}@media(max-width:760px){header{align-items:start;flex-direction:column}.grid{grid-template-columns:1fr}.rail{gap:4px}.slot{font-size:.67rem}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div><div class="kicker">OaSIs // THEGAME.01 // APPEND-ONLY BOARD</div><h1>53</h1></div>
+<div class="seal">26 + 26 + [0] = 53</div>
+</header>
+<section class="grid">
+<div class="board">
+<div class="kicker">A RAIL · GOOD FORWARD</div><div class="rail" id="aRail"></div>
+<div class="kicker">SHARED GYRO / PINNED CENTER</div><div class="center"><div>[]<br>0<br><small>PIN</small></div></div>
+<div class="kicker">B RAIL · DEVIL MIRROR</div><div class="rail" id="bRail"></div>
+<div class="kicker">Local rule: click a rail slot to cycle <span class="ok">clear</span> → A/B claim → clear. The center never moves.</div>
+</div>
+<aside class="side">
+<div class="kicker">VESSEL SANDBOX</div>
+<div class="stat">Active A: <b id="aCount">0</b></div>
+<div class="stat">Active B: <b id="bCount">0</b></div>
+<div class="stat">Board: <b>52</b> rails + <b>1</b> pin</div>
+<div class="stat">Checkpoint: <b id="quorum">0 / 4</b></div>
+<br>
+<button id="forward">A +2 · forward pair</button>
+<button id="mirror">B +2 · mirror pair</button>
+<button id="checkpoint">2×1×2 · 3/4 checkpoint</button>
+<button id="reset">clear vessel only</button>
+<div class="kicker" style="margin:13px 0 7px">APPEND-ONLY SESSION LEDGER</div>
+<div class="log" id="log"></div>
+</aside>
+</section>
+</main>
+<script>
+const letters=[..."ABCDEFGHIJKLMNOPQRSTUVWXY"];
+const state={a:Array(26).fill(0),b:Array(26).fill(0),aNext:0,bNext:0,ledger:[]};
+const log=(text,kind="")=>{state.ledger.push(text);const el=document.querySelector("#log");el.innerHTML=state.ledger.map(x=>"<div>"+x+"</div>").join("");el.scrollTop=el.scrollHeight;};
+function label(i){return i===25?"[]0":letters[i]}
+function rail(id,side){
+ const host=document.querySelector(id);host.innerHTML="";
+ state[side].forEach((v,i)=>{const b=document.createElement("button");b.className="slot "+(v?(side):"")+(i===25?" carrier":"");b.textContent=label(i);b.onclick=()=>{state[side][i]=v?0:1;log((v?"CLEAR ":"CLAIM ")+side.toUpperCase()+"["+label(i)+"]");render()};host.appendChild(b)});
+}
+function render(){
+ rail("#aRail","a");rail("#bRail","b");
+ document.querySelector("#aCount").textContent=state.a.reduce((x,y)=>x+y,0);
+ document.querySelector("#bCount").textContent=state.b.reduce((x,y)=>x+y,0);
+}
+function pair(side){const a=state[side],p=side+"Next";const i=state[p]%25,j=(i+1)%25;a[i]=1;a[j]=1;state[p]=j+1;log(side.toUpperCase()+" +2: "+label(i)+" → "+label(j),"ok");render()}
+document.querySelector("#forward").onclick=()=>pair("a");
+document.querySelector("#mirror").onclick=()=>pair("b");
+document.querySelector("#checkpoint").onclick=()=>{
+ const votes=[state.a[0]||state.b[0],state.a[1]||state.b[1],state.a[2]||state.b[2],state.a[3]||state.b[3]].filter(Boolean).length;
+ document.querySelector("#quorum").textContent=votes+" / 4";
+ log(votes>=3?"CHECKPOINT PASS: 3/4 local quorum":"CHECKPOINT HOLD: needs 3/4","warn");
+};
+document.querySelector("#reset").onclick=()=>{state.a.fill(0);state.b.fill(0);state.aNext=0;state.bNext=0;log("VESSEL CLEARED · pinned center unchanged");render()};
+log("THEGAME.01 OPEN · 53-slot state space loaded","ok");render();
+</script>
+</body>
+</html>
