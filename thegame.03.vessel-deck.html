@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="David Lee Wise / ROOT0">
+<title>TheGame // Vessel Deck</title>
+<style>
+:root{--bg:#07090d;--card:#10151d;--line:#2a3850;--ink:#ebf1ff;--muted:#93a0b5;--a:#70a7ff;--b:#ff7887;--gold:#f3cc64}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#17243a 0,#07090d 48rem);color:var(--ink);font:15px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}main{width:min(1080px,calc(100% - 32px));margin:auto;padding:42px 0 72px}.k{letter-spacing:.15em;color:var(--muted);font-size:.78rem}h1{font-size:clamp(2.5rem,8vw,6rem);letter-spacing:-.1em;margin:.15rem 0 1.5rem}.shell,.dock{border:1px solid var(--line);background:#0c1119cc;padding:20px}.deck{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.card{min-height:142px;text-align:left;border:1px solid var(--line);background:linear-gradient(145deg,#151c28,#0c1018);padding:14px;color:var(--ink);cursor:pointer}.card:hover,.card.selected{border-color:var(--gold);box-shadow:0 0 25px #f3cc641a}.card b{display:block;font-size:1.05rem}.card span{display:block;color:var(--muted);font-size:.82rem;margin-top:8px}.dock{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}.side{border:1px solid var(--line);padding:16px}.a{color:var(--a)}.b{color:var(--b)}button{border:1px solid var(--line);background:#111925;color:var(--ink);font:inherit;padding:.65rem .8rem;margin:.35rem .25rem 0 0;cursor:pointer}button:hover{border-color:var(--gold)}.log{margin-top:16px;background:#05070a;border:1px solid #28364b;min-height:120px;padding:11px;color:#bdc9dc;font-size:.82rem}@media(max-width:700px){.deck{grid-template-columns:repeat(2,1fr)}.dock{grid-template-columns:1fr}}</style>
+</head>
+<body><main>
+<div class="k">OaSIs // THEGAME.03 // APPEND-ONLY VESSEL DECK</div>
+<h1>PLAYERS</h1>
+<section class="shell">
+<div class="k">SELECT A TOKEN · BIND IT TO A OR B · THEN LAUNCH THE 53-BOARD</div>
+<div class="deck" id="deck"></div>
+</section>
+<section class="dock">
+<div class="side"><div class="k a">A RAIL · GOOD FORWARD</div><h2 id="aName">unbound</h2><button onclick="bind('a')">bind selected to A</button></div>
+<div class="side"><div class="k b">B RAIL · DEVIL MIRROR</div><h2 id="bName">unbound</h2><button onclick="bind('b')">bind selected to B</button></div>
+</section>
+<div class="shell" style="margin-top:16px"><div class="k">PINNED CENTER</div><p>[] 0 remains unowned. Players bind only to vessel rails.</p><a href="./thegame.01.board.html" style="color:var(--gold)">open TheGame.01 board →</a><div class="log" id="log"></div></div>
+</main>
+<script>
+const deck=[
+ ["Flash","speed / forward break"],
+ ["Wonder Woman","truth / witness"],
+ ["Batman","planning / countercheck"],
+ ["Superman","strength / restraint"],
+ ["Samus","hunt / containment"],
+ ["Link","return / restoration"],
+ ["Ranni","moon / inverse path"],
+ ["Apsalar","shadow / precise passage"]
+];
+let pick=null,side={a:null,b:null},ledger=[];
+const out=t=>{ledger.push(t);document.querySelector("#log").innerHTML=ledger.map(x=>"<div>"+x+"</div>").join("")};
+function draw(){const d=document.querySelector("#deck");d.innerHTML="";deck.forEach(([n,r],i)=>{const c=document.createElement("button");c.className="card "+(pick===i?"selected":"");c.innerHTML="<b>"+n+"</b><span>"+r+"</span>";c.onclick=()=>{pick=i;out("SELECT "+n);draw()};d.appendChild(c)});document.querySelector("#aName").textContent=side.a||"unbound";document.querySelector("#bName").textContent=side.b||"unbound"}
+function bind(s){if(pick===null){out("HOLD · select a vessel token first");return}side[s]=deck[pick][0];out("BIND "+side[s]+" → "+s.toUpperCase()+" rail");draw()}
+out("THEGAME.03 OPEN · vessel binding is local to this deck");draw();
+</script></body></html>
