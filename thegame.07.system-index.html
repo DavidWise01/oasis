@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TheGame · System Index 07</title><style>
+:root{--bg:#080d18;--p:#111a2d;--l:#2d4166;--i:#eaf2ff;--m:#9aa9c1;--a:#62b7ff;--b:#ff7893;--x:#f8d568;--ok:#77e3a2}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#1b3060,#080d18 55%);font:16px system-ui;color:var(--i)}main{max-width:980px;margin:auto;padding:30px 18px 50px}h1{margin:0}p{line-height:1.5;color:var(--m)}.contract{display:grid;grid-template-columns:26fr 1fr 26fr;gap:10px;align-items:center;margin:24px 0}.rail{padding:17px;border:1px solid var(--l);border-radius:14px;text-align:center}.ra{border-color:#357bbd}.rb{border-color:#bb3d5b}.center{padding:15px 4px;border:2px solid var(--x);border-radius:50%;text-align:center;color:var(--x);font-weight:700}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{display:block;padding:16px;background:var(--p);border:1px solid var(--l);border-radius:14px;color:var(--i);text-decoration:none}.card:hover{border-color:var(--ok)}.tag{color:var(--ok);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}.card p{margin:8px 0 0;font-size:.9rem}@media(max-width:650px){.grid{grid-template-columns:1fr}.contract{grid-template-columns:1fr}.center{border-radius:12px}}</style></head>
+<body><main><h1>TheGame · System Index 07</h1><p>The append-only handoff for the playable board. Every layer keeps the same root contract: two 26-state rails around one shared, unowned, pinned center.</p>
+<div class="contract"><div class="rail ra"><b>A rail</b><br>26 states<br><small>Good Forward</small></div><div class="center">[] 0</div><div class="rail rb"><b>B rail</b><br>26 states<br><small>Devil Mirror</small></div></div>
+<section class="grid">
+<a class="card" href="./thegame.01.board.html"><div class="tag">01 · frozen</div><b>Board contract</b><p>53 total states: 26 A, 26 B, one pinned center.</p></a>
+<a class="card" href="./thegame.03.vessel-deck.html"><div class="tag">03 · selection</div><b>Vessel deck</b><p>Bind a story vessel to either rail without assigning the center.</p></a>
+<a class="card" href="./thegame.04.play-session.html"><div class="tag">04 · movement</div><b>Play session</b><p>Two +2 rails, local checkpoint, and session state.</p></a>
+<a class="card" href="./thegame.05.turn-ledger.html"><div class="tag">05 · record</div><b>Turn ledger</b><p>Declare, witness, then append accepted turns at 3/4.</p></a>
+<a class="card" href="./thegame.06.arena.html"><div class="tag">06 · unified</div><b>Unified arena</b><p>The active play surface: deck, rails, quorum, and ledger together.</p></a>
+<a class="card" href="https://github.com/DavidWise01/oasis/tree/main/lean"><div class="tag">Lean · proofs</div><b>Formal contracts</b><p>Pinned center and append-only accepted-turn lifecycle.</p></a>
+</section>
+<p><b>Run order:</b> choose vessels → declare A or B +2 → witness locally → pass at 3/4 → append the accepted turn. The center remains <code>[] 0</code>.</p>
+</main></body></html>
