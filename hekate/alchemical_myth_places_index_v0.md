@@ -45,3 +45,21 @@ PHYSICS SOURCE
 
 never silently collapse lanes
 ```
+
+
+B branch begins with an upstream historical referent rather than pretending the referent itself is Babylonian-period:
+
+```text
+B1 :: BABYLON / ENHEDUANNA
+      role   :: UPSTREAM AKKADIAN/UR CORPUS REFERENT
+      gender :: REFERENT NODE FEMALE DOMINANT
+      polity :: MALE DOMINANT
+      prime  :: NAME :: MOON :: PRIESTESS :: HYMN :: INANNA :: BIND :: CORPUS
+      cipher :: MOON:SILVER || ENHEDUANNA || VENUS:COPPER
+```
+
+Canonical child:
+
+```text
+hekate/babylon_alchemical_root_prime_enheduanna_v0.md
+```
