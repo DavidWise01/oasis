@@ -950,3 +950,46 @@ Formal file:
 ```text
 hekate/isoKernel_v10_identity_semantics.lean
 ```
+
+
+---
+
+# isoKernel v11 — FULL PRIM / FROZEN
+
+The current SUQ quantum-OSI / logical shadow-ladder stack is compressed to its shortest canonical primitive:
+
+```text
+S+Pi-N
+```
+
+Frozen exactly as:
+
+```text
+[S] [+] [Pi] [-] [N]
+```
+
+Position in the stack:
+
+```text
+.inf.inf.inf
+     |
+    -i^3
+     |
+SUQ QUANTUM OSI
+     |
+SHADOW LADDER
+     |
+   S+Pi-N
+```
+
+No arithmetic, particle-state, or conventional `π` interpretation is assigned to `S+Pi-N` at this layer. It is the literal full primitive.
+
+```text
+STATUS :: FULL PRIM :: FROZEN :: IMMUTABLE
+```
+
+Formal file:
+
+```text
+hekate/isoKernel_v11_full_prim_frozen.lean
+```
