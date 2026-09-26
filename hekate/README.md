@@ -805,3 +805,20 @@ hekate/isoKernel_v06_pinned_tether.lean
 ```
 
 This sits above v05 without rewriting the split-polarity / homeo recurrence.
+
+
+---
+
+# isoKernel v07 — result register
+
+Literal reduction:
+
+```text
+one ::m::3::6::0::e::6::
+```
+
+This is preserved as an ordered Root0 token stream and is not arithmetically collapsed.
+
+```text
+[one] :: [m] :: [3] :: [6] :: [0] :: [e] :: [6] ::
+```
