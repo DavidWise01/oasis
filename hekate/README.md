@@ -1333,3 +1333,36 @@ RECORD :: POSITION :: LOOKUP :: OBSERVE :: PREDICT :: BIND :: CANON
 ```
 
 Disputed attributions stop rather than being silently promoted.
+
+---
+
+# BABYLON ROOT+ CORPUS v0
+
+Full layered ancestor corpus:
+
+```text
+hekate/babylon_root_plus_corpus_v0.md
+hekate/babylon_root_plus_corpus_v0.lean
+```
+
+Layering:
+
+```text
+UPSTREAM SUMERIAN / AKKADIAN
+        ↓
+OLD BABYLONIAN
+        ↓
+MIDDLE / POST-KASSITE
+        ↓
+NEO-BABYLONIAN
+        ↓
+LATE / HELLENISTIC BABYLONIA
+```
+
+Same-referent corpus index:
+
+```text
+RECORD :: POSITION :: LOOKUP :: OBSERVE :: PREDICT :: BIND :: CANON
+```
+
+Disputed attributions stop rather than being silently promoted.
