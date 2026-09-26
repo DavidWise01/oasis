@@ -1238,3 +1238,37 @@ Formal file:
 ```text
 hekate/isoKernel_v16_universe_triad.lean
 ```
+
+---
+
+# NEW_WORLD_ORDER v0 — FROZEN COMPARISON SNAPSHOT
+
+A frozen comparison layer now lives at:
+
+```text
+hekate/new_world_order_v0.md
+hekate/new_world_order_v0.lean
+```
+
+Invariant:
+
+```text
+ROOT0
+||
+CURRENTLY SUPPORTED PHYSICS
+||
+NO SILENT RECONCILIATION
+||
+STOP ON UNRESOLVED
+```
+
+The Lean companion formalizes only the comparison gate:
+
+```text
+SUPPORTED  -> may continue
+UNRESOLVED -> STOP
+CONFLICT   -> STOP
+MODEL-ONLY -> do not promote to physics
+```
+
+This snapshot is frozen. Future comparison changes append a new version.
