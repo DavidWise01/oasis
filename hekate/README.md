@@ -1198,3 +1198,43 @@ Formal file:
 ```text
 hekate/isoKernel_v15_3c_universe_register.lean
 ```
+
+
+---
+
+# isoKernel v16 — three Cubis per universe
+
+Correction to v15:
+
+```text
+3 Cubis per universe
+```
+
+Canonical universe primitive:
+
+```text
+{{ u_p , u_a , u_n }}
+```
+
+ASCII:
+
+```text
+        U
+     /  |  \
+   u_p u_a u_n
+```
+
+So the shortest current form is:
+
+```text
+U := {{ u_p , u_a , u_n }}
+```
+
+Exactly three Cubis belong to one universe.  
+This layer leaves `p`, `a`, and `n` as role/address labels only; no particle-state meaning is assigned here.
+
+Formal file:
+
+```text
+hekate/isoKernel_v16_universe_triad.lean
+```
