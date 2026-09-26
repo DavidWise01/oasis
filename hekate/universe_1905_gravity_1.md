@@ -330,3 +330,43 @@ image / reveal
 **Root0 mapping:** ANALOGY only
 
 Keep this pass to one principal discovery per person.
+
+
+## Henri Becquerel — radioactivity (1896)
+
+Main contribution for this pass:
+
+```text
+BECQUEREL
+::
+RADIOACTIVITY
+```
+
+Primitive:
+
+```text
+0 :: R
+```
+
+Physical read:
+
+```text
+unstable atomic nuclei
+→ spontaneous emission
+→ matter changes / releases energy without an external trigger
+```
+
+Root0 comparison:
+
+```text
+0
+↓
+internally stored instability
+↓
+spontaneous release
+↓
+state changes without outside command
+```
+
+**Physics status:** SUPPORTED  
+**Root0 mapping:** ANALOGY only
