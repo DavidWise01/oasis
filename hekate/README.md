@@ -1389,3 +1389,18 @@ B :: BABYLON
 ```
 
 Amazonion preserves `WATER` as the outer primitive and stops Amazon-specific historical inference at `argon` and `electrum` until evidence is supplied.
+
+---
+
+# ENCYCLOPEDIA PLACES — SCOPE CORRECTION
+
+Alphabetical corpus is now **mythical / legendary places and peoples only**.
+
+```text
+A :: AMAZONS / THEMISCYRA
+    corpus :: hekate/amazons_mythical_place_corpus_v0.md
+```
+
+The prior physical Amazon-region corpus remains preserved as a separate mis-scoped research branch and is not part of the mythical index.
+
+Babylon is historical and therefore no longer belongs in this alphabetical mythical-place sequence.
