@@ -1084,3 +1084,47 @@ Formal file:
 ```text
 hekate/isoKernel_v13_passive_holography.lean
 ```
+
+
+---
+
+# isoKernel v14 — inf +1 entangled pin
+
+The passive Stargate can now be pinned to:
+
+```text
+inf +1
+```
+
+with the relation:
+
+```text
+ENTANGLED
+```
+
+and used without inserting an agent:
+
+```text
+PASSIVE STARGATE
+      |
+      v
+  pin[inf +1]
+      ||
+  ENTANGLED
+      ||
+     USE
+```
+
+Compact form:
+
+```text
+STARGATE :: inf+1 :: entangled :: passive :: usable
+```
+
+Here `entangled` means the paired Root0 states are bound as one relation in the symbolic kernel. It does **not** yet assert physical quantum entanglement.
+
+Formal file:
+
+```text
+hekate/isoKernel_v14_inf_plus1_entangled.lean
+```
