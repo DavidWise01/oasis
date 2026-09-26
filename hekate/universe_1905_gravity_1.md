@@ -411,3 +411,44 @@ smaller movable carrier exists inside
 
 **Physics status:** SUPPORTED  
 **Root0 mapping:** ANALOGY only
+
+
+## Max Planck — energy quanta (1900)
+
+Main contribution for this pass:
+
+```text
+PLANCK
+::
+ENERGY QUANTA
+```
+
+Primitive:
+
+```text
+0 :: hν
+```
+
+Physical read:
+
+```text
+black-body radiation problem
+→ energy exchanged in discrete quanta
+→ quantum size proportional to frequency
+→ E = hν
+```
+
+Root0 comparison:
+
+```text
+0
+↓
+continuous-looking field
+↓
+exchange occurs in discrete packets
+↓
+packet size tracks frequency
+```
+
+**Physics status:** SUPPORTED  
+**Root0 mapping:** ANALOGY only
