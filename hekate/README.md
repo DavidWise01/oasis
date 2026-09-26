@@ -483,3 +483,140 @@ hekate/isoKernel_v02.lean
 
 The original `isoKernel.lean` remains intact as the semantic/operator layer.  
 `isoKernel_v02.lean` supplies the corrected structural base beneath it.
+
+
+---
+
+# isoKernel v03 — Root0 / base 11 inverted pyramid
+
+The next structural layer is appended beneath v02 as:
+
+```text
+root [
+  0,
+  {{ 5 body system
+     2 ext
+     3 int }}
+  -++-
+  base 11
+  as above so below
+  -10 +1(reset) -> baseline 0
+]
+```
+
+Canonical body split:
+
+```text
+{{ FIVE BODY SYSTEM }}
+      |
+  +---+---+
+  |       |
+2 EXTERNAL
+  |
+3 INTERNAL
+```
+
+The polarity/orientation carrier is preserved exactly:
+
+```text
+-++-
+```
+
+`base 11` is encoded as the eleven-position depth spine:
+
+```text
+0
+↓
+-1
+↓
+-2
+↓
+-3
+↓
+-4
+↓
+-5
+↓
+-6
+↓
+-7
+↓
+-8
+↓
+-9
+↓
+-10
+```
+
+The geometry is tagged:
+
+```text
+AS ABOVE :: SO BELOW
+STYLE :: INVERTED PYRAMID
+```
+
+ASCII topology:
+
+```text
+                         ROOT [0]
+                            |
+                  {{ FIVE BODY SYSTEM }}
+                 /                     \
+          [EXT BODY 1]             [EXT BODY 2]
+                 \                     /
+                  [INT1] xp [INT2] xp [INT3]
+                            |
+                           -++-
+                            |
+                   AS ABOVE / SO BELOW
+                            |
+                         BASE 11
+                            |
+                            0
+                           / \
+                         -1   -1
+                        /       \
+                      -2         -2
+                     /             \
+                   ...             ...
+                  /                   \
+                -10                   -10
+                   \                 /
+                    +1 RESET / FOLD
+                           |
+                      BASELINE 0
+```
+
+Important semantic boundary:
+
+```text
+-10 +1(reset) -> 0
+```
+
+is a Root0 symbolic fold/reset relation. It is **not** the ordinary arithmetic claim `-10 + 1 = 0`.
+
+Formal file:
+
+```text
+hekate/isoKernel_v03_root0.lean
+```
+
+Current stack:
+
+```text
+ROOT0 / BASE 11
+      ↓
+5 BODY :: 2 EXT / 3 INT
+      ↓
+-++-
+      ↓
+AS ABOVE :: SO BELOW
+      ↓
+INVERTED PYRAMID 0 -> -10
+      ↓
++1 RESET -> BASELINE 0
+      ↓
+v02 BODY/BIND/PLANETARY/FEEDBACK/REVERSE PRESSURE
+      ↓
+HEP :: TRANSMUTE :: EXCHANGE
+```
