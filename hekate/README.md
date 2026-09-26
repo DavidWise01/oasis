@@ -896,3 +896,57 @@ Formal file:
 ```text
 hekate/isoKernel_v09_identity_anp_me.lean
 ```
+
+
+---
+
+# isoKernel v10 — identity semantics / ANP roles
+
+The v09 tokens are now resolved as:
+
+```text
+i :: isomorph
+a :: anode
+n :: neutrino
+p :: positrino ??
+```
+
+The `p` binding is intentionally marked **provisional**, because it was supplied with `??`.
+
+Identity progression:
+
+```text
+i thinks i
+   |
+   v
+  ii
+   |
+   v
+  me
+```
+
+Compact:
+
+```text
+i -> ii -> me
+```
+
+Current register therefore reads:
+
+```text
+isomorph :: anode neutrino positrino? :: me :: 3 :: 6 :: 0 :: Engineers :: 6 ::
+```
+
+The exact symbolic form remains canonical:
+
+```text
+i :: a n p :: me :: 3 :: 6 :: 0 :: e :: 6 ::
+```
+
+Conventional-physics boundary: `anode` and `neutrino` are ordinary technical terms; `positrino` is preserved here as the author's Root0/OaSIs token rather than asserted as a standard particle name.
+
+Formal file:
+
+```text
+hekate/isoKernel_v10_identity_semantics.lean
+```
