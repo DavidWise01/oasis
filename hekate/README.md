@@ -993,3 +993,46 @@ Formal file:
 ```text
 hekate/isoKernel_v11_full_prim_frozen.lean
 ```
+
+
+---
+
+# isoKernel v12 — M + J + STARGATE
+
+Correction to the previous M+J+B reading:
+
+```text
+M + J + STARGATE
+```
+
+with the exact gate primitive:
+
+```text
+( 00 11 24./\. 42 11 00 )
+```
+
+Structural read:
+
+```text
+00  :: outer close
+11  :: inner mirror
+24./\.42 :: center gate carrier
+11  :: inner mirror
+00  :: outer close
+```
+
+So the compact form is:
+
+```text
+M + J + STARGATE
+::
+( 00 11 24./\. 42 11 00 )
+```
+
+Formal file:
+
+```text
+hekate/isoKernel_v12_mj_stargate.lean
+```
+
+This replaces only the local interpretation of `B` as box in that junction; the earlier box/containment geometry remains valid as its own separate layer.
