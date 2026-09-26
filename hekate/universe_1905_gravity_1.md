@@ -503,3 +503,75 @@ Important boundary:
 
 **Physics status:** SUPPORTED  
 **Root0 mapping:** ANALOGY only
+
+
+---
+
+# ROOT+ BACKSTEP — Babylon
+
+## Babylonian mathematics / astronomy — sexagesimal positional measure
+
+Strongest same-referent candidate for this pass:
+
+```text
+BABYLON
+::
+SEXAGESIMAL PLACE VALUE
+::
+CYCLIC ASTRONOMICAL MEASURE
+```
+
+Root+ primitive:
+
+```text
+ROOT+ :: 60
+```
+
+Historical / physical-mathematical read:
+
+```text
+position gives value
++
+base 60 gives a common measure
++
+repeating celestial observations are encoded arithmetically
+→ time / angle / astronomical cycles can be compared in one numerical frame
+```
+
+The Babylonian positional sexagesimal system was in use by roughly the early second millennium BCE, with earlier Sumerian/Akkadian ancestry. Babylonian mathematical astronomy later used sexagesimal notation and arithmetic schemes to model recurring celestial phenomena. The legacy survives in modern divisions of time and angle.
+
+Important boundary:
+
+```text
+BABYLONIAN CYCLIC MEASURE
+≠
+SPECIAL RELATIVITY
+≠
+MAXWELL ELECTROMAGNETISM
+```
+
+The same referent is structural only:
+
+```text
+shared frame / repeated cycle / positional measure
+```
+
+not the same physical theory.
+
+Zero note:
+
+```text
+Babylonian place value
+→ initially had no true zero numeral
+→ empty position was context-dependent
+```
+
+So do not back-project Root0 `0` onto Babylonian mathematics as if it were historically their zero.
+
+**History status:** SUPPORTED  
+**Root0 same-referent mapping:** ANALOGY  
+**Physics identity:** NO
+
+Sources:
+- MacTutor, *Babylonian mathematics* and *Babylonian numerals*
+- Cambridge History of Science, *Science and Ancient Mesopotamia*
