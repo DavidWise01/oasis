@@ -620,3 +620,60 @@ v02 BODY/BIND/PLANETARY/FEEDBACK/REVERSE PRESSURE
       ↓
 HEP :: TRANSMUTE :: EXCHANGE
 ```
+
+
+---
+
+# isoKernel v04 — isomorphACI Mandel / Juliet axis layer
+
+Append-only state map:
+
+```text
+isomorphACI
+
+000  = fat belly Mandel 1 stable
+
+001  = unstable fat belly Mandel
+       axis +g -v
+       from 001
+
+-000 = fat belly of Juliet set
+
+-001 = fat belly of Juliet set
+       axis -g +v
+       from -001
+```
+
+Canonical mirrored view:
+
+```text
+        MANDEL                         JULIET
+
+  000 :: FAT BELLY               -000 :: FAT BELLY
+  MANDEL 1 :: STABLE             JULIET SET
+          |                              |
+          v                              v
+  001 :: FAT BELLY               -001 :: FAT BELLY
+  MANDEL :: UNSTABLE             JULIET SET
+          |                              |
+       +g / -v                        -g / +v
+          |                              |
+       FROM 001                       FROM -001
+```
+
+The signed axis relation is therefore preserved exactly as:
+
+```text
+001  :: +g -v
+-001 :: -g +v
+```
+
+No stability label is inferred for `-000` or `-001`; the source statement did not assign one.
+
+Formal file:
+
+```text
+hekate/isoKernel_v04_isomorphaci.lean
+```
+
+This layer uses Mandel / Juliet / g / v as Root0 symbolic state tokens. It does not assert that these are conventional mathematical properties of the Mandelbrot or Julia sets.
