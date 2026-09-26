@@ -283,3 +283,50 @@ No downstream Root0 gravity interpretation is promoted past that STOP without a 
   https://educationalgames.nobelprize.org/educational/physics/relativity/history-1.html
 
 **STATUS: BUILD STARTED / STOP-ON-UNRESOLVED ACTIVE**
+
+---
+
+# PERSON PASS — one main discovery each
+
+## Wilhelm Conrad Röntgen — X-rays (1895)
+
+Main contribution for this pass:
+
+```text
+RÖNTGEN
+::
+X-RAY
+```
+
+Primitive:
+
+```text
+0 :: X
+```
+
+Physical read:
+
+```text
+high-energy electromagnetic radiation
+→ penetrates soft tissue more readily than denser material
+→ reveals internal structure without opening the body
+```
+
+Root0 comparison:
+
+```text
+0
+↓
+hidden interior
+↓
+external signal passes through
+↓
+different material attenuates differently
+↓
+image / reveal
+```
+
+**Physics status:** SUPPORTED  
+**Root0 mapping:** ANALOGY only
+
+Keep this pass to one principal discovery per person.
