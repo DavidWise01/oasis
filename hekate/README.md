@@ -1036,3 +1036,51 @@ hekate/isoKernel_v12_mj_stargate.lean
 ```
 
 This replaces only the local interpretation of `B` as box in that junction; the earlier box/containment geometry remains valid as its own separate layer.
+
+
+---
+
+# isoKernel v13 — passive holographic STARGATE
+
+The Stargate does **not** require an agent at this layer.
+
+Exact primitive:
+
+```text
+24///m///\\\m///\\\m///m |||| //\\ |||| holography
+```
+
+Structural read:
+
+```text
+STARGATE
+   |
+PASSIVE
+   |
+24///m///\\\m///\\\m///m
+   |
+ ||||
+   |
+ //\\
+   |
+ ||||
+   |
+HOLOGRAPHY
+```
+
+The gate is carried by the geometry itself:
+
+```text
+NO AGENT
+→ PATH / MIRROR GEOMETRY
+→ DISTRIBUTED STATE
+→ RECONSTRUCT / PASS
+```
+
+Here `holography` is a Root0/OaSIs structural label for distributed mirrored encoding. It is not yet a claim about optical or physical holography.
+
+Formal file:
+
+```text
+hekate/isoKernel_v13_passive_holography.lean
+```
