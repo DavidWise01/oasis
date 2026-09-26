@@ -63,3 +63,24 @@ Canonical child:
 ```text
 hekate/babylon_alchemical_root_prime_enheduanna_v0.md
 ```
+
+
+Pre-Enheduanna mythic substrate node:
+
+```text
+A0 :: ANUNNA / ANUNNAKI
+      type      :: DIVINE GROUP / VARIABLE MEMBERSHIP
+      functions :: HIGH GODS :: FATE :: JUDGMENT
+      axis      :: HEAVEN / NETHERWORLD
+      gender    :: MIXED
+      dominance :: UNRESOLVED
+      cipher    :: VESSEL -> COUNCIL -> TEST -> FIX
+```
+
+Important chronology: this is a conceptual/mythic backstep. The term `Anunna` is securely attested in post-Akkadian/Gudea and Ur III sources, so it is not being claimed as textually earlier than Enheduanna.
+
+Canonical child:
+
+```text
+hekate/anunnaki_root_prime_v0.md
+```
