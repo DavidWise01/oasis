@@ -865,3 +865,34 @@ hekate/isoKernel_v08_engineer_modes.lean
 ```
 
 The earlier numeric tokens `3::6::0` remain literal in this layer; only the newly clarified `m`, `e`, and the Engineers' 1–6 selector are bound here.
+
+
+---
+
+# isoKernel v09 — identity / ANP / ME register
+
+The current register is now:
+
+```text
+i :: a n p :: me :: 3 :: 6 :: 0 :: e :: 6 ::
+```
+
+Preserved token-by-token as:
+
+```text
+[i] :: [a] [n] [p] :: [me] :: [3] :: [6] :: [0] :: [e] :: [6] ::
+```
+
+Existing binding retained:
+
+```text
+e = Engineers
+```
+
+The new tokens `i`, `a`, `n`, `p`, and `me` are left literal in this layer until separately defined.
+
+Formal file:
+
+```text
+hekate/isoKernel_v09_identity_anp_me.lean
+```
