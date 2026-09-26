@@ -1272,3 +1272,32 @@ MODEL-ONLY -> do not promote to physics
 ```
 
 This snapshot is frozen. Future comparison changes append a new version.
+---
+
+# {{universe_1905_gravity_1}} — historical physics ladder
+
+Append-only child of `NEW_WORLD_ORDER v0`:
+
+```text
+hekate/universe_1905_gravity_1.md
+hekate/universe_1905_gravity_1.lean
+```
+
+Window:
+
+```text
+Babbage/Lovelace computational prelude
+→ thermodynamics
+→ Maxwell
+→ X-rays/radioactivity/electron
+→ Planck
+→ Einstein 1905
+```
+
+Hard boundary:
+
+```text
+Einstein 1905 = special relativity
+Einstein gravity / general relativity = 1915
+STOP gravity mapping at 1905
+```
