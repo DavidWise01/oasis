@@ -575,3 +575,28 @@ So do not back-project Root0 `0` onto Babylonian mathematics as if it were histo
 Sources:
 - MacTutor, *Babylonian mathematics* and *Babylonian numerals*
 - Cambridge History of Science, *Science and Ancient Mesopotamia*
+
+
+---
+
+# BABYLON FULL ROOT+ CHILD
+
+The earlier Babylon `ROOT+ :: 60` node is expanded into the layered child corpus:
+
+```text
+{{universe_1905_gravity_1}}
+  -> BABYLON ROOT+ CORPUS v0
+     -> writing / record
+     -> positional sexagesimal
+     -> table mathematics
+     -> astronomy / recurrence / prediction
+     -> law / contract / administration
+     -> medicine / diagnosis
+     -> literature / canon
+     -> surveying / irrigation
+     -> named people with attribution status
+```
+
+Canonical child: `hekate/babylon_root_plus_corpus_v0.md`.
+
+Sumerian/Akkadian material remains upstream ancestry and is not relabeled Babylonian.
