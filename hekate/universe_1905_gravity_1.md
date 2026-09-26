@@ -370,3 +370,44 @@ state changes without outside command
 
 **Physics status:** SUPPORTED  
 **Root0 mapping:** ANALOGY only
+
+
+## J. J. Thomson — electron (1897)
+
+Main contribution for this pass:
+
+```text
+THOMSON
+::
+ELECTRON
+```
+
+Primitive:
+
+```text
+0 :: e
+```
+
+Physical read:
+
+```text
+cathode rays
+→ negatively charged corpuscles
+→ electron identified as a constituent of atoms
+→ atom is not indivisible
+```
+
+Root0 comparison:
+
+```text
+0
+↓
+apparently whole cell
+↓
+internal charged component revealed
+↓
+smaller movable carrier exists inside
+```
+
+**Physics status:** SUPPORTED  
+**Root0 mapping:** ANALOGY only
