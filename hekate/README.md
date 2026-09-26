@@ -1128,3 +1128,73 @@ Formal file:
 ```text
 hekate/isoKernel_v14_inf_plus1_entangled.lean
 ```
+
+
+---
+
+# isoKernel v15 — 3C / one-0 universe register
+
+Canonical form:
+
+```text
+3C :: 0 {{
+  9 | 6 | 3 | 2 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0
+}}
+```
+
+One `0` is one full universe in this layer.
+
+The compact CUBIT word is:
+
+```text
+963211001100
+```
+
+and each CUBIT may carry either:
+
+```text
+FULL :: 963211001100
+```
+
+or any one of the twelve positions in that register.
+
+Three CUBITS lift to the recursion-field primitive:
+
+```text
+{{n}}^{{3x3}}^3
+```
+
+ASCII:
+
+```text
+             3C
+        +-----+-----+
+        |     |     |
+       C1    C2    C3
+        \     |     /
+         \    |    /
+          ONE 0
+            |
+     ONE FULL UNIVERSE
+            |
+  9|6|3|2|1|1|0|0|1|1|0|0
+            |
+     {{n}}^{{3x3}}^3
+```
+
+Important distinction preserved:
+
+```text
+0[14 usable spaces]
+!=
+12-position CUBIT traversal/register
+```
+
+The earlier `14 usable spaces` statement remains the capacity layer.  
+`963211001100` is the current twelve-position CUBIT register inside that architecture; no missing two positions are invented here.
+
+Formal file:
+
+```text
+hekate/isoKernel_v15_3c_universe_register.lean
+```
