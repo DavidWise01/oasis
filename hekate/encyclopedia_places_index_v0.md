@@ -1,18 +1,23 @@
-# ENCYCLOPEDIA PLACES — ALPHABETICAL CORPUS INDEX v0
+# ENCYCLOPEDIA PLACES — MYTHICAL ONLY v0
 
-Append-only place/culture index.
+**Scope correction:** only mythical / legendary places and peoples belong in this alphabetical index.
 
-```text
-A :: AMAZONION :: hekate/amazonion_root_plus_corpus_v0.md
-B :: BABYLON   :: hekate/babylon_root_plus_corpus_v0.md
-```
-
-Each entry:
+The earlier physical-Amazon ecological corpus is preserved as a mis-scoped research branch, but it is **not** part of this mythical-place index.
 
 ```text
-PLACE
--> full evidence corpus
--> Root+ primitive overlay
--> named peoples/people only where recorded
--> unresolved attribution = STOP
+A :: AMAZONS / THEMISCYRA
+     corpus    :: hekate/amazons_mythical_place_corpus_v0.md
+     primitive :: w{{ind}}.a{{rgon}}.t{{ime}}.e{{lectrum}}.r{{e-agent}}
 ```
+
+Rules:
+
+```text
+MYTHICAL / LEGENDARY PLACE OR PEOPLE -> INCLUDE
+HISTORICAL CITY / EMPIRE ONLY        -> EXCLUDE
+MODERN GEOGRAPHIC REGION ONLY        -> EXCLUDE
+DISPUTED HISTORICITY                 -> mark MYTH / HISTORY boundary
+UNRESOLVED                           -> STOP
+```
+
+Babylon is historical and therefore is no longer an alphabetical entry in this mythical-only index.
