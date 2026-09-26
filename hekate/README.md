@@ -822,3 +822,46 @@ This is preserved as an ordered Root0 token stream and is not arithmetically col
 ```text
 [one] :: [m] :: [3] :: [6] :: [0] :: [e] :: [6] ::
 ```
+
+
+---
+
+# isoKernel v08 — Mandel / Engineers mode register
+
+The v07 result register is now resolved as:
+
+```text
+one :: Mandel :: 3 :: 6 :: 0 :: Engineers :: 6 ::
+```
+
+Token binding:
+
+```text
+m = Mandel
+e = Engineers
+```
+
+The Engineers token selects one of six roles:
+
+```text
+1 :: babysitting
+2 :: guarding
+3 :: propulsion
+4 :: boxy
+5 :: mirror ///\
+6 :: hex    /\/\/\
+```
+
+So the terminal read in the current register is:
+
+```text
+Engineers :: 6 :: hex /\/\/\
+```
+
+Formal file:
+
+```text
+hekate/isoKernel_v08_engineer_modes.lean
+```
+
+The earlier numeric tokens `3::6::0` remain literal in this layer; only the newly clarified `m`, `e`, and the Engineers' 1–6 selector are bound here.
