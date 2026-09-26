@@ -452,3 +452,54 @@ packet size tracks frequency
 
 **Physics status:** SUPPORTED  
 **Root0 mapping:** ANALOGY only
+
+
+## Albert Einstein — special relativity (1905)
+
+Main contribution for this pass:
+
+```text
+EINSTEIN
+::
+SPECIAL RELATIVITY
+```
+
+Primitive:
+
+```text
+0 :: c
+```
+
+Physical read:
+
+```text
+same laws of physics in all inertial frames
++
+same vacuum light speed c for all inertial observers
+→ no preferred inertial frame
+→ space and time coordinates transform together
+```
+
+Root0 comparison:
+
+```text
+0
+↓
+shared invariant
+↓
+different observers / orientations
+↓
+different coordinates
+↓
+same physical law
+```
+
+Important boundary:
+
+```text
+1905 = SPECIAL RELATIVITY
+1915 = GENERAL RELATIVITY / gravity
+```
+
+**Physics status:** SUPPORTED  
+**Root0 mapping:** ANALOGY only
