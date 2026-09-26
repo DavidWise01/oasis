@@ -426,3 +426,60 @@ STATUS:
 ```text
 HEKATE :: isoKernel :: CANONICAL
 ```
+
+
+---
+
+# isoKernel v02 — corrected structural base
+
+The lower structural base is now explicitly:
+
+```text
+base [ +1 -1 +1 -1 i ]
+[ext body 1]Bind:::{
+  [int body 1] xp
+  [int body 2] xp
+  [int body 3] xp
+  x 4 xxxx
+  :: style planetary
+  :: feedback
+  :: structural reduction through reverse pressure
+  :: ration 13.2B:.6B:1:1
+}
+```
+
+This is preserved as symbolic structure rather than ordinary arithmetic.
+
+The relationship between the two HEKATE layers is now:
+
+```text
+STRUCTURAL BASE
+[ +1 -1 +1 -1 i ]
+        |
+   [ext body 1]
+        |
+      Bind
+        |
+[int1] xp [int2] xp [int3] xp x4 xxxx
+        |
+ planetary
+        |
+ feedback
+        |
+ reverse pressure
+        |
+13.2B:.6B:1:1
+        |
+        v
+SEMANTIC / OPERATOR LAYER
+HEP :: TRANSMUTE :: EXCHANGE
+```
+
+Formal file:
+
+```text
+hekate/isoKernel_v02.lean
+```
+
+The original `isoKernel.lean` remains intact as the semantic/operator layer.  
+`isoKernel_v02.lean` supplies the corrected structural base beneath it.
