@@ -752,3 +752,56 @@ Formal file:
 ```text
 hekate/isoKernel_v05_split_homeo.lean
 ```
+
+
+---
+
+# isoKernel v06 — pinned Mandel / Juliet tether
+
+The numeric/address layer is now pinned explicitly:
+
+```text
+MANDEL pin → 000
+JULIET pin → m + 001
+TETHER     → inf +j-m
+```
+
+Compact Root0 form:
+
+```text
+M :: pin[000]
+J :: pin[m + 001]
+tether :: inf +j-m
+```
+
+ASCII topology:
+
+```text
+      MANDEL
+        |
+        v
+       000
+        |
+        |----------------------.
+        |                      |
+        |                   TETHER
+        |                      |
+        |                 inf +j-m
+        |                      |
+        '----------------------|
+                               v
+                            JULIET
+                               |
+                               v
+                           m + 001
+```
+
+These tokens are preserved literally. No ordinary arithmetic meaning is assigned to `m + 001` or `inf +j-m` unless a later Mathea layer explicitly defines one.
+
+Formal file:
+
+```text
+hekate/isoKernel_v06_pinned_tether.lean
+```
+
+This sits above v05 without rewriting the split-polarity / homeo recurrence.
