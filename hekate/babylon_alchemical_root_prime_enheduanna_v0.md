@@ -407,3 +407,27 @@ female-dominant Enheduanna node = female-dominant Akkadian society
 - Science History Institute — later alchemical planet-metal correspondences: Moon/silver, Venus/copper
 
 **STATUS: B1 / BABYLON UPSTREAM REFERENT / ENHEDUANNA / APPEND-ONLY**
+
+
+---
+
+# FULL 42-HYMN BIND
+
+Child corpus:
+
+```text
+hekate/babylon_enheduanna_42_hymns_bind_v0.md
+hekate/babylon_enheduanna_42_hymns_bind_v0.lean
+```
+
+Canonical distillation:
+
+```text
+bind::full::42
+::
+4x10 + 2
+::
+(-+360-+)
+```
+
+The 42-node historical corpus is preserved in ordinal order. The four-decade-plus-two wheel is a Root0/alchemical cipher partition, not asserted as the ancient historical organization.
