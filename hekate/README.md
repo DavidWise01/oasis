@@ -1366,3 +1366,26 @@ RECORD :: POSITION :: LOOKUP :: OBSERVE :: PREDICT :: BIND :: CANON
 ```
 
 Disputed attributions stop rather than being silently promoted.
+
+---
+
+# ENCYCLOPEDIA PLACES — alphabetical corpus
+
+Index:
+
+```text
+hekate/encyclopedia_places_index_v0.md
+```
+
+Current entries:
+
+```text
+A :: AMAZONION
+    primitive :: w{{ind}}.a{{rgon}}.t{{ime}}.e{{lectrum}}.r{{e-agent}}
+    corpus    :: hekate/amazonion_root_plus_corpus_v0.md
+
+B :: BABYLON
+    corpus    :: hekate/babylon_root_plus_corpus_v0.md
+```
+
+Amazonion preserves `WATER` as the outer primitive and stops Amazon-specific historical inference at `argon` and `electrum` until evidence is supplied.
