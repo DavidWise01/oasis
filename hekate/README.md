@@ -1404,3 +1404,42 @@ A :: AMAZONS / THEMISCYRA
 The prior physical Amazon-region corpus remains preserved as a separate mis-scoped research branch and is not part of the mythical index.
 
 Babylon is historical and therefore no longer belongs in this alphabetical mythical-place sequence.
+
+
+---
+
+# _NEW_WORLD_ORDER v0 — ALCHEMICAL CORRIDOR TO ATLANTIS
+
+New append-only comparison child:
+
+```text
+hekate/new_world_order_v0_alchemical_corridor_to_atlantis_v0.md
+hekate/new_world_order_v0_alchemical_corridor_to_atlantis_v0.lean
+hekate/alchemical_myth_places_index_v0.md
+```
+
+Lanes remain distinct:
+
+```text
+ROOT0
+||
+MYTH
+||
+ALCHEMICAL CIPHER
+||
+SUPPORTED HISTORY / PHYSICS
+```
+
+Current mythical root-prime entries:
+
+```text
+A1 :: AMAZONS / THEMISCYRA
+      gender :: FEMALE DOMINANT
+      primitive :: w{{ind}}.a{{rgon}}.t{{ime}}.e{{lectrum}}.r{{e-agent}}
+
+A2 :: ATLANTIS
+      gender :: MALE DOMINANT
+      prime :: CENTER :: RING :: TWIN :: TEN :: KING :: METAL :: WATER :: SINK
+```
+
+Alchemy is used as an interpretive cipher overlay; it is not silently asserted as the historical intent of the myth or as a precursor proof of twentieth-century physics.
