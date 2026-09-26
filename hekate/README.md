@@ -371,3 +371,58 @@ E = Exchange
 
 STATUS: CANONICAL MODEL PRIMITIVE
 ```
+
+
+---
+
+# isoKernel binding
+
+The canonical HEKATE primitive is now bound as an **isoKernel**:
+
+```text
+isoKernel
+=
+HEP :: TRANSMUTE :: EXCHANGE
+```
+
+The kernel shape is:
+
+```text
+[ H ][ E ][ P ] :: [ T ][ E ]
+  constant substrate    operators
+
+3 held
+2 applied
+1 deterministic transition
+```
+
+Lean formalization:
+
+```text
+hekate/isoKernel.lean
+```
+
+The formal object keeps the three constants and the two ordered operators distinct, and proves by reduction that the canonical kernel contains exactly:
+
+```text
+H = Hydrogen
+E = Electrum
+P = Potassium
+
+T = Transmute
+E = Exchange
+```
+
+Core invariant:
+
+```text
+hold three → transmute → exchange
+```
+
+The `isoKernel` name means that the semantic identity of the primitive is preserved while it is transported into a formal kernel representation; it does not assert a physical isomorphism unless a separate Mathea proof is supplied.
+
+STATUS:
+
+```text
+HEKATE :: isoKernel :: CANONICAL
+```
