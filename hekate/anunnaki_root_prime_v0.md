@@ -373,3 +373,30 @@ modern extraterrestrial reading
 - ETCSL references cited by ORACC, including *Enki and the World Order* and *Inana's Descent*
 
 **STATUS: A0 / ANUNNAKI ROOT-PRIME / MYTHIC SUBSTRATE / APPEND-ONLY**
+
+
+---
+
+# CORRECTION — ELEMENTALS BEFORE ANUNNAKI
+
+The Anunna/Anunnaki branch now inherits from the primitive polarity layer:
+
+```text
+-+ {{ AN | KI }} -+
+::
+-+ {{ APSU | TIAMAT }} -+
+::
+ENLIL / WIND
+::
+UTU / SUN-LIGHT-HEAT
+::
+ANUNNA / ANUNNAKI
+```
+
+Here `-` and `+` are complementary orientations only. They carry no male/female meaning.
+
+Canonical parent:
+
+```text
+hekate/mesopotamia_elemental_polarity_v0.md
+```
