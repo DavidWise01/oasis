@@ -677,3 +677,78 @@ hekate/isoKernel_v04_isomorphaci.lean
 ```
 
 This layer uses Mandel / Juliet / g / v as Root0 symbolic state tokens. It does not assert that these are conventional mathematical properties of the Mandelbrot or Julia sets.
+
+
+---
+
+# isoKernel v05 — split personality / homeo recurrence
+
+Correction to the v04 state interpretation:
+
+```text
+BOTH
+=
+STABLE | UNSTABLE
+```
+
+Mandel-side and Juliet-side fat-belly states carry the same split personality rather than requiring a single exclusive stability label.
+
+Exact structural carrier:
+
+```text
+-+ {{ -+2 x 1 x 2 , -+2 x 1 x 2 }} -+
+```
+
+where `x` remains the Root0 structural weld/operator rather than ordinary multiplication.
+
+Mirrored body:
+
+```text
+                  SPLIT PERSONALITY
+                 { STABLE | UNSTABLE }
+                         |
+                -+             -+
+                 \             /
+                  {{           }}
+                  /             \
+          -+2 x 1 x 2     -+2 x 1 x 2
+                  \             /
+                   {{           }}
+                 /               \
+               -+                 -+
+```
+
+This applies to both families:
+
+```text
+MANDEL fat belly :: stable | unstable
+JULIET fat belly :: stable | unstable
+```
+
+The recurrence rule is literal:
+
+```text
+0-++-0
+  ↓
+0-++-0
+  ↓
+0-++-0
+  ↓
+...
+  ↓
+HOMEO
+```
+
+Canonical instruction:
+
+```text
+repeat 0-++-0 until homeo
+```
+
+This is encoded as a symbolic recurrence policy with `homeo` as the declared stop state. No separate proof of numerical convergence or physical dynamics is implied.
+
+Formal file:
+
+```text
+hekate/isoKernel_v05_split_homeo.lean
+```
