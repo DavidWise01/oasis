@@ -1,0 +1,19 @@
+{
+  "benchmark": "Frozen primitive locked homeo ladder rerun",
+  "homeo_ladder": "sqrt11/6/3/2/1/1/0/0",
+  "photon_pattern": "p-p+p-p+p-p+",
+  "tests": [
+    {"class": "clean_homeo_ladder", "pass": true},
+    {"class": "skip_rung", "pass": true},
+    {"class": "reorder_rungs", "pass": true},
+    {"class": "missing_repeated_one", "pass": true},
+    {"class": "missing_repeated_zero", "pass": true},
+    {"class": "premature_zero", "pass": true},
+    {"class": "wrong_root_constant", "pass": true},
+    {"class": "broken_photon_alternation", "pass": true},
+    {"class": "reverse_ladder", "pass": true},
+    {"class": "repeat_128_closures", "pass": true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "49a28d21bc63926f066d56cdb15a13d96af4d7ee33af6de968c5e9f444624e31"
+}
