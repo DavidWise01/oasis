@@ -1,0 +1,23 @@
+{
+  "benchmark": "Frozen primitive concurrent fork / race resolution",
+  "tie_break_rule": "lexicographically smallest valid child hash",
+  "root": "58b7f7abc18da8dd432647cafd9038ace53ecaf010df023ea67f49bf6567ea87",
+  "parent": "813708674fddd9e8ba815d27e7201dcf9675f319f67a352bf462110a264075ac",
+  "race_children": [
+    "7806a9448ef3ef1b7d74acfd44d19bb7986905df7fea76f7c0cf45438fad66d3",
+    "7e0627f43a3685d27f1d6b17ba5e37d29c66d17dc033601e9914ff1e2de43a6b"
+  ],
+  "winner": "7806a9448ef3ef1b7d74acfd44d19bb7986905df7fea76f7c0cf45438fad66d3",
+  "loser": "7e0627f43a3685d27f1d6b17ba5e37d29c66d17dc033601e9914ff1e2de43a6b",
+  "tests": [
+    {"class":"order_independence","pass":true},
+    {"class":"single_canonical_child","pass":true},
+    {"class":"losing_branch_rejected","pass":true},
+    {"class":"winner_continuation_accept","pass":true},
+    {"class":"replay_stability","pass":true},
+    {"class":"late_arrival_stability","pass":true},
+    {"class":"canonical_branch_quorum","canonical_yes":3,"pass":true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "5b4b37f36799e2e289119ef895a4c5fc40dc976a2ed238780afca32ff14bdaea"
+}
