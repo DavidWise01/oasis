@@ -1,0 +1,135 @@
+{
+  "benchmark": "Frozen primitive anchor administration independence test",
+  "canonical_wrapper": "f25e14fb07112891fcd16529ba9c52d4e164d1e3f5adcf90001a6fc6700aa02b",
+  "rule": "anchor quorum counts independent signing/operator/storage/publication domains, not anchor IDs",
+  "tests": [
+    {
+      "class": "fully_independent_dual",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "admin_independent": true,
+        "accepted": true,
+        "independence": {
+          "anchor_ids": 2,
+          "signers": 2,
+          "operators": 2,
+          "storage_backends": 2,
+          "publishers": 2,
+          "full_domains": 2
+        }
+      }
+    },
+    {
+      "class": "shared_signing_key",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "admin_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "signers": 1,
+          "operators": 2,
+          "storage_backends": 2,
+          "publishers": 2,
+          "full_domains": 2
+        }
+      }
+    },
+    {
+      "class": "shared_operator",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "admin_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "signers": 2,
+          "operators": 1,
+          "storage_backends": 2,
+          "publishers": 2,
+          "full_domains": 2
+        }
+      }
+    },
+    {
+      "class": "shared_storage",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "admin_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "signers": 2,
+          "operators": 2,
+          "storage_backends": 1,
+          "publishers": 2,
+          "full_domains": 2
+        }
+      }
+    },
+    {
+      "class": "shared_publication_path",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "admin_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "signers": 2,
+          "operators": 2,
+          "storage_backends": 2,
+          "publishers": 1,
+          "full_domains": 2
+        }
+      }
+    },
+    {
+      "class": "same_admin_domain_different_ids",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "admin_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "signers": 1,
+          "operators": 1,
+          "storage_backends": 1,
+          "publishers": 1,
+          "full_domains": 1
+        }
+      }
+    },
+    {
+      "class": "three_ids_two_domains",
+      "pass": true,
+      "details": {
+        "anchor_ids": 3,
+        "signers": 2,
+        "operators": 2,
+        "storage_backends": 2,
+        "publishers": 2,
+        "full_domains": 2
+      }
+    },
+    {
+      "class": "three_ids_three_domains",
+      "pass": true,
+      "details": {
+        "anchor_ids": 3,
+        "signers": 3,
+        "operators": 3,
+        "storage_backends": 3,
+        "publishers": 3,
+        "full_domains": 3
+      }
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "aff36c1988437974820bdb583e5db95f9e963cfbce8b1680ced6460356e70d7e"
+}
