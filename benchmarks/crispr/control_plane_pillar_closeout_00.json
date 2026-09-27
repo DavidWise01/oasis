@@ -1,0 +1,8 @@
+{
+  "pillar": "control_plane",
+  "status": "0e / CLOSED",
+  "planes_total": 10,
+  "planes_passed": 10,
+  "checkpoint_hash": "21c86475992ddf46e7c3a8ec44b1c518dfdfa27983633467eae724ea68479416",
+  "pillar_hash": "2c8aa048e8c01e7afba490efae9cf3c4368cc7aa72d705e9e1ce4b0221353ea7"
+}
