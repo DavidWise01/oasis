@@ -1,0 +1,15 @@
+{
+  "benchmark": "Frozen primitive deep competing fork / finality test",
+  "finality_depth": 3,
+  "quorum": 3,
+  "pre_finality_tie_winner": "A",
+  "finalized_tie_winner": "B",
+  "finality_checkpoint": {
+    "seq": 4,
+    "hash": "356aeec1eeb1a189ac968c66a3b30f4809d63b7fc82a7b5172493e968f4261d6",
+    "branch": "A"
+  },
+  "tests_passed": 7,
+  "tests_total": 7,
+  "status": "PASS"
+}
