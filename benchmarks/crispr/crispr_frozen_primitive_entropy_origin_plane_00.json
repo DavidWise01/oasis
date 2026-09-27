@@ -1,0 +1,11 @@
+{
+  "benchmark": "Entropy-origin provenance plane full battery to failure",
+  "base_hash": "0e3d66b1e80beb5b2ee57c416e0f4964238506eda0de9f6d52375a4031bf1451",
+  "tests_total": 23,
+  "tests_passed": 23,
+  "first_failure": null,
+  "boundary_reached": true,
+  "failure_boundary": "entropy generation seeds + origin metadata + hidden-parent lineage + origin observers all coherently controlled",
+  "status": "PASS",
+  "sha256_before_embedding": "1878779d62f69355f0e64efcc0f86a6463f352d72e02a8737d299e293103de43"
+}
