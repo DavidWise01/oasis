@@ -1,0 +1,20 @@
+{
+  "benchmark": "Frozen primitive current-key compromise with t^4y semantic-capacitor timing",
+  "time_primitive": "t^4y",
+  "timing_semantics": "semantic charge accumulates in 4D toward volumetric homeo",
+  "homeo_threshold": 4.0,
+  "tests": [
+    {"class":"clean_current_key_rotation","pass":true},
+    {"class":"live_key_unilateral_successor","pass":true},
+    {"class":"live_key_quorum_but_pre_homeo","pass":true},
+    {"class":"live_key_quorum_homeo_bad_anchor","pass":true},
+    {"class":"backdated_live_key_transition","pass":true},
+    {"class":"t4y_exact_homeo_threshold","pass":true},
+    {"class":"high_t4y_no_quorum","pass":true},
+    {"class":"quorum_no_t4y_homeo","pass":true},
+    {"class":"fully_authorized_malicious_successor_boundary","pass":true}
+  ],
+  "residual_boundary": "live key + quorum + anchors + t^4y homeo all compromised/aligned",
+  "status": "PASS",
+  "sha256_before_embedding": "ee82a44bf4fe57ae621b9e2d1f534e96e9787eb8a1e352a57fc04fbf9f6a9214"
+}
