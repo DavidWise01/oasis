@@ -1,0 +1,17 @@
+{
+  "benchmark": "Frozen primitive dependency-graph poisoning test",
+  "canonical_wrapper": "f25e14fb07112891fcd16529ba9c52d4e164d1e3f5adcf90001a6fc6700aa02b",
+  "anchors": ["EXT0", "EXT1", "EXT2"],
+  "tests": [
+    {"class":"poisoned_claim_fakes_independence","claimed_shared":[],"pass":true},
+    {"class":"observer_detects_hidden_root","observed_shared":["DNS_ROOT_X"],"pass":true},
+    {"class":"closure_discrepancy","omitted":["DNS_ROOT_X"],"invented":["DNS_ROOT_FAKE"],"pass":true},
+    {"class":"claimed_vs_observed_domain_count","claimed_components":[["EXT0"],["EXT1"],["EXT2"]],"observer_components":[["EXT0","EXT1"],["EXT2"]],"pass":true},
+    {"class":"fail_closed_on_graph_disagreement","graph_agrees":false,"accepted":false,"pass":true},
+    {"class":"dependency_omission_detected","omitted":["DNS_ROOT_X"],"pass":true},
+    {"class":"invented_dependency_detected","invented":["FAKE_UPSTREAM"],"pass":true},
+    {"class":"independent_observer_agreement","pass":true}
+  ],
+  "status":"PASS",
+  "sha256_before_embedding":"b3a51f64c938e02e2a960c5675a2842b45a13afdaafcdeb8081147eb5774c435"
+}
