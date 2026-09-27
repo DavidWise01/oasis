@@ -1,0 +1,12 @@
+{
+  "benchmark": "Witness-of-witness provenance plane full battery to failure",
+  "base_hash": "1b199c681cbeaaa19035c1f186d4011888a7bf379803ddce3a053735f30ba565",
+  "layers": 3,
+  "tests_total": 26,
+  "tests_passed": 26,
+  "first_failure": null,
+  "boundary_reached": true,
+  "failure_boundary": "finite recursive attestation always retains a topmost trust boundary; coherent rewrite of that layer plus diversity evidence defeats internal recovery",
+  "status": "PASS",
+  "sha256_before_embedding": "2c7e704b7d081bbd51f8752fc07f5ac8aac686136e3b8e7ecdfe3000372da8e5"
+}
