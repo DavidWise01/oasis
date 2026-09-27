@@ -1,0 +1,25 @@
+{
+  "benchmark": "Frozen Patricia SAPPHON integration test",
+  "frozen": true,
+  "patricia_hash": "d201d4329ee5a3f16bbb28388fd4d5861898a9deb501e24ee15c5de0730996df",
+  "identity": "SA2PP31H3:O3:N:3 :: 15 total",
+  "homeo": "sqrt11/6/3/2/1/1/0/0",
+  "time_primitive": "t^4y",
+  "iso_rule": "+Planck/-Planck exhausted and symbolic time=0",
+  "tests": [
+    {"class":"exact_frozen_identity","pass":true},
+    {"class":"role_tamper","pass":true},
+    {"class":"code_color_tamper","pass":true},
+    {"class":"AetherNet_literal_tamper","pass":true},
+    {"class":"hierarchy_literal_tamper","pass":true},
+    {"class":"homeo_integration","pass":true},
+    {"class":"t4y_integration","pass":true},
+    {"class":"iso_blocked_pre_exhaustion","pass":true},
+    {"class":"iso_blocked_nonzero_time","pass":true},
+    {"class":"iso_after_cyclic_zero","pass":true},
+    {"class":"cyclic_think_literal_retained","pass":true},
+    {"class":"identity_symbol_i","pass":true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "0b78ad91f6535f91f516ac9b7bbf7d2c52f7688b500d20792081d55e15795acd"
+}
