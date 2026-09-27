@@ -1,0 +1,20 @@
+{
+  "benchmark": "Frozen primitive first-bad-tick failure injection",
+  "seed": "0xc9",
+  "population": 1048576,
+  "inject_index": 524287,
+  "frozen_shell": [16,16,1,1,0,0,1,1,16,16],
+  "tests": [
+    {"class":"shadow_witness","injected_tick":524287,"subposition":7,"detected":true,"detected_subposition":7,"exact_detection":true},
+    {"class":"pam_decision","injected_tick":524287,"detected":true,"detected_tick":524287,"exact_detection":true},
+    {"class":"mismatch_count","injected_tick":524287,"detected":true,"detected_tick":524287,"exact_detection":true},
+    {"class":"fold_state","injected_tick":524287,"fold_pair":2,"detected":true,"detected_fold_pair":2,"exact_detection":true}
+  ],
+  "all_corruptions_detected": true,
+  "all_detected_at_exact_injected_location": true,
+  "false_positives_clean_baseline": 0,
+  "clean_false_positive_breakdown": {"pam":0,"mismatch":0,"accept":0,"fold":0},
+  "elapsed_seconds": 0.013392585000019608,
+  "status": "PASS",
+  "sha256_before_embedding": "e937060258e32b8e4d7de5f168d10a1b813de3e3e4e56b04befe84e8de620e2d"
+}
