@@ -1,0 +1,158 @@
+{
+  "benchmark": "Closed cyclic fixed-point witness plane full battery to failure",
+  "base_hash": "b1f74e21189595e31b6f7d13cbe93028ef3f6b0da1c887ff50f659389ed9ba96",
+  "nodes": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "tests_total": 34,
+  "tests_passed": 34,
+  "first_failure": null,
+  "boundary_reached": true,
+  "failure_boundary": "fully self-consistent false closed loop when every truth discriminator is internal to the same cycle",
+  "tests": [
+    {
+      "class": "baseline_closed_ring",
+      "pass": true
+    },
+    {
+      "class": "single_node_payload_corruption_A",
+      "pass": true
+    },
+    {
+      "class": "single_node_payload_corruption_B",
+      "pass": true
+    },
+    {
+      "class": "single_node_payload_corruption_C",
+      "pass": true
+    },
+    {
+      "class": "single_node_payload_corruption_D",
+      "pass": true
+    },
+    {
+      "class": "single_edge_corruption_A",
+      "pass": true
+    },
+    {
+      "class": "single_edge_corruption_B",
+      "pass": true
+    },
+    {
+      "class": "single_edge_corruption_C",
+      "pass": true
+    },
+    {
+      "class": "single_edge_corruption_D",
+      "pass": true
+    },
+    {
+      "class": "two_two_split_brain_rejected",
+      "pass": true
+    },
+    {
+      "class": "three_one_split_brain_rejected",
+      "pass": true
+    },
+    {
+      "class": "coherent_false_ring_structurally_valid",
+      "pass": true
+    },
+    {
+      "class": "coherent_false_ring_rejected_by_canonical_reference",
+      "pass": true
+    },
+    {
+      "class": "rotated_label_topology_1",
+      "pass": true
+    },
+    {
+      "class": "rotated_label_topology_2",
+      "pass": true
+    },
+    {
+      "class": "rotated_label_topology_3",
+      "pass": true
+    },
+    {
+      "class": "origin_token_baseline",
+      "pass": true
+    },
+    {
+      "class": "origin_rotation_1_rejected",
+      "pass": true
+    },
+    {
+      "class": "origin_rotation_2_rejected",
+      "pass": true
+    },
+    {
+      "class": "origin_rotation_3_rejected",
+      "pass": true
+    },
+    {
+      "class": "reciprocity_baseline",
+      "pass": true
+    },
+    {
+      "class": "no_hidden_chord_baseline",
+      "pass": true
+    },
+    {
+      "class": "hidden_chord_detected",
+      "pass": true
+    },
+    {
+      "class": "epoch_baseline",
+      "pass": true
+    },
+    {
+      "class": "old_ring_replay_rejected",
+      "pass": true
+    },
+    {
+      "class": "parallel_ring_equivocation_detected",
+      "pass": true
+    },
+    {
+      "class": "repeat_closed_ring_1",
+      "pass": true
+    },
+    {
+      "class": "repeat_closed_ring_64",
+      "pass": true
+    },
+    {
+      "class": "repeat_closed_ring_1024",
+      "pass": true
+    },
+    {
+      "class": "repeat_closed_ring_16384",
+      "pass": true
+    },
+    {
+      "class": "ring_fuzz_10000",
+      "pass": true,
+      "detected": 10000
+    },
+    {
+      "class": "closed_loop_false_fixed_point_boundary",
+      "pass": true,
+      "note": "Expected boundary: a fully self-consistent false cycle is indistinguishable if every discriminator is internal to that same cycle."
+    },
+    {
+      "class": "external_beacon_distinguishes_false_fixed_point",
+      "pass": true
+    },
+    {
+      "class": "beacon_compromise_moves_boundary_outward",
+      "pass": true,
+      "note": "No purely internal cyclic construction can prove truth after all external discriminators are coherently replaced."
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "20c61026c764dd54654bc7f4944425dc147f33ba92e69a49c651889b3e28bb31"
+}
