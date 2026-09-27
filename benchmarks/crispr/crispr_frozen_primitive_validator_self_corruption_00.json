@@ -1,0 +1,16 @@
+{
+  "benchmark": "Frozen primitive validator self-corruption test",
+  "seed": "0xc9",
+  "population": 1048576,
+  "frozen_shell": [16,16,1,1,0,0,1,1,16,16],
+  "tests": [
+    {"class":"validator_logic_flip","injected_tick":600001,"lane":11,"detected":true,"exact":true},
+    {"class":"one_tick_stale_channel","detected":true,"first_detected_tick":524288,"exact_relation":true},
+    {"class":"fold_pair_mapping_corruption","value_check_may_alias":true,"mapping_witness_detected":true,"exact":true},
+    {"class":"validator_reference_state_corruption","detected":true,"exact":true},
+    {"class":"decision_rule_corruption","detected":true,"first_detected_tick":266113,"changed_decisions":1,"exact":true},
+    {"class":"common_mode_validator_corruption","local_light_shadow_agree":true,"immutable_reference_detected":true,"exact":true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "417b4138e6d7d0a2370f172ef16b5c4553535067d2fd73dea2b34938d22cc845"
+}
