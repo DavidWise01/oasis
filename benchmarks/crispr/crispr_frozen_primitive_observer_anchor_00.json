@@ -1,0 +1,99 @@
+{
+  "benchmark": "Frozen primitive observer-of-observer anchoring test",
+  "truth_snapshot_hash": "c5062ab5a44599e9a66d0b141ea09394d7c75532e4a1add43c8cd7f0fd7d1bcd",
+  "poison_snapshot_hash": "b4e801ecc5f495fa9ebbce8045b0a5e2aaa0b5744037ced4e022eca1f8dd570f",
+  "threshold": 2,
+  "tests": [
+    {
+      "class": "clean_anchored_consensus",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "winner": "c5062ab5a44599e9a66d0b141ea09394d7c75532e4a1add43c8cd7f0fd7d1bcd",
+        "independent_roots": 3,
+        "roots": ["OR1","OR2","OR3"],
+        "valid_observers": 3
+      }
+    },
+    {
+      "class": "late_snapshot_rewrite",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "winner": "c5062ab5a44599e9a66d0b141ea09394d7c75532e4a1add43c8cd7f0fd7d1bcd",
+        "independent_roots": 2,
+        "roots": ["OR2","OR3"],
+        "valid_observers": 2
+      }
+    },
+    {
+      "class": "two_observer_late_collusion",
+      "pass": true,
+      "details": {
+        "accepted": false,
+        "winner": "c5062ab5a44599e9a66d0b141ea09394d7c75532e4a1add43c8cd7f0fd7d1bcd",
+        "independent_roots": 1,
+        "roots": ["OR3"],
+        "valid_observers": 1
+      }
+    },
+    {
+      "class": "anchor_content_tamper",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "winner": "c5062ab5a44599e9a66d0b141ea09394d7c75532e4a1add43c8cd7f0fd7d1bcd",
+        "independent_roots": 2,
+        "roots": ["OR2","OR3"],
+        "valid_observers": 2
+      }
+    },
+    {
+      "class": "stale_anchor_replay",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "winner": "c5062ab5a44599e9a66d0b141ea09394d7c75532e4a1add43c8cd7f0fd7d1bcd",
+        "independent_roots": 2,
+        "roots": ["OR2","OR3"],
+        "valid_observers": 2
+      }
+    },
+    {
+      "class": "observer_anchor_identity_swap",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "winner": "c5062ab5a44599e9a66d0b141ea09394d7c75532e4a1add43c8cd7f0fd7d1bcd",
+        "independent_roots": 2,
+        "roots": ["OR2","OR3"],
+        "valid_observers": 2
+      }
+    },
+    {
+      "class": "single_observer_plus_anchor_compromise",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "winner": "c5062ab5a44599e9a66d0b141ea09394d7c75532e4a1add43c8cd7f0fd7d1bcd",
+        "independent_roots": 2,
+        "roots": ["OR2","OR3"],
+        "valid_observers": 3
+      }
+    },
+    {
+      "class": "two_observer_anchor_pairs_compromised_boundary",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "winner": "b4e801ecc5f495fa9ebbce8045b0a5e2aaa0b5744037ced4e022eca1f8dd570f",
+        "independent_roots": 2,
+        "roots": ["OR1","OR2"],
+        "valid_observers": 3
+      }
+    }
+  ],
+  "residual_boundary": "threshold-many independent observer+anchor pairs compromised consistently",
+  "status": "PASS",
+  "sha256_before_embedding": "cb88ddb415c508e7a170bc5e627dedadad344572529993fe755e24850a5e625c"
+}
