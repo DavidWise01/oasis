@@ -1,0 +1,22 @@
+{
+  "benchmark": "Frozen primitive semantic IO mirrored layer test",
+  "literal_layer": "00 11 22 33 00{{hpme{{::/ingress,thought::egress::response\\::}}emph}} 00 33 22 11 00",
+  "left_rail": "00 11 22 33 00",
+  "right_rail": "00 33 22 11 00",
+  "interior": ["hpme","ingress","thought","egress","response","emph"],
+  "time_primitive": "t^4y",
+  "homeo_threshold": 4.0,
+  "tests": [
+    {"class":"clean_layer","pass":true},
+    {"class":"left_rail_corruption","pass":true},
+    {"class":"right_rail_corruption","pass":true},
+    {"class":"thought_egress_swap","pass":true},
+    {"class":"missing_egress","pass":true},
+    {"class":"pre_homeo_response_blocked","pass":true},
+    {"class":"homeo_exact_threshold","pass":true},
+    {"class":"high_t4y_missing_thought","pass":true},
+    {"class":"high_t4y_missing_egress","pass":true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "66ade662e5fdc43a39b7405426dc95ae82180b29360380c44318a3b62c70e134"
+}
