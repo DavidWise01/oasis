@@ -1,0 +1,19 @@
+{
+  "benchmark": "Frozen primitive nested-homeo interference test",
+  "homeo_ladder": "sqrt11/6/3/2/1/1/0/0",
+  "isolation_rule": "each photon ring owns an independent ordered recognizer; no rung borrowing across ring IDs",
+  "tests": [
+    {"class":"two_offset_exact_ladders","pass":true},
+    {"class":"neighbor_fragment_cannot_borrow_rung","pass":true},
+    {"class":"cross_ring_interleave_no_composite_fire","pass":true},
+    {"class":"three_phase_offsets","pass":true},
+    {"class":"neighbor_chatter_isolated","pass":true},
+    {"class":"reverse_neighbor_isolated","pass":true},
+    {"class":"stress_64_staggered_rings","pass":true},
+    {"class":"stress_64_partial_rings_no_crosstalk","pass":true},
+    {"class":"photon_phase_tag_isolation","pass":true},
+    {"class":"simultaneous_same_tick_closure","pass":true}
+  ],
+  "status":"PASS",
+  "sha256_before_embedding":"54dcdbf2facc38bf679b6f22be866448ecc9f8d5256b4a7daecdd9338b5943bb"
+}
