@@ -1,0 +1,13 @@
+{
+  "benchmark": "Frozen primitive correlated quorum failure test",
+  "quorum": "3-of-5",
+  "witnesses": ["light_value","shadow_value","canonical_map","frozen_shell","decision_rule"],
+  "summary": [
+    {"scenario":"independent","independent_sources":5,"min_failed_sources_for_false_pass":3},
+    {"scenario":"light_shadow_shared_source","independent_sources":4,"min_failed_sources_for_false_pass":2},
+    {"scenario":"light_shadow_map_shared_source","independent_sources":3,"min_failed_sources_for_false_pass":1},
+    {"scenario":"map_shell_rule_shared_source","independent_sources":3,"min_failed_sources_for_false_pass":1},
+    {"scenario":"two_pairs_plus_one","independent_sources":3,"min_failed_sources_for_false_pass":2}
+  ],
+  "status": "PASS"
+}
