@@ -1,0 +1,87 @@
+{
+  "benchmark": "Frozen primitive three-independent-root coordinated forgery test",
+  "quorum": "3 independent roots",
+  "canonical_prev_wrapper": "673b956f2cdc0984cb7786e5d232dc48f683635be9d53b7a9d61065d4c84ea2f",
+  "canonical_current_wrapper": "c11bc59e35ce0c8f4225501386fc315907dd6f4d720e3e75382a24c63d246dd4",
+  "tests": [
+    {
+      "class": "canonical_3_root",
+      "pass": true,
+      "details": {
+        "matching_votes": 3,
+        "independent_roots": 3,
+        "unique_sources": 3,
+        "quorum_ok": true,
+        "parent_ok": true,
+        "seq_ok": true,
+        "time_ok": true,
+        "branch_continuity_ok": true,
+        "accepted": true
+      }
+    },
+    {
+      "class": "three_independent_roots_bad_parent_branch",
+      "pass": true,
+      "details": {
+        "matching_votes": 3,
+        "independent_roots": 3,
+        "unique_sources": 3,
+        "quorum_ok": true,
+        "parent_ok": false,
+        "seq_ok": true,
+        "time_ok": true,
+        "branch_continuity_ok": false,
+        "accepted": false
+      }
+    },
+    {
+      "class": "three_independent_roots_wrong_parent_only",
+      "pass": true,
+      "details": {
+        "matching_votes": 3,
+        "independent_roots": 3,
+        "unique_sources": 3,
+        "quorum_ok": true,
+        "parent_ok": false,
+        "seq_ok": true,
+        "time_ok": true,
+        "branch_continuity_ok": true,
+        "accepted": false
+      }
+    },
+    {
+      "class": "three_independent_roots_future_timestamp",
+      "pass": true,
+      "details": {
+        "matching_votes": 3,
+        "independent_roots": 3,
+        "unique_sources": 3,
+        "quorum_ok": true,
+        "parent_ok": true,
+        "seq_ok": true,
+        "time_ok": false,
+        "branch_continuity_ok": true,
+        "accepted": false
+      }
+    },
+    {
+      "class": "three_independent_roots_fully_consistent_forgery",
+      "pass": true,
+      "details": {
+        "matching_votes": 3,
+        "independent_roots": 3,
+        "unique_sources": 3,
+        "quorum_ok": true,
+        "parent_ok": true,
+        "seq_ok": true,
+        "time_ok": true,
+        "branch_continuity_ok": true,
+        "accepted": true
+      },
+      "note": "This intentionally identifies the remaining boundary: if 3 independent roots coordinate on a fully structurally consistent forged checkpoint, structural validation alone cannot distinguish it."
+    }
+  ],
+  "residual_boundary_found": true,
+  "status": "PASS",
+  "sha256_before_embedding": "48c29f9f8c2681ccc7976855bc0256d14892fe39f4fc9d5442a3740b6cbf5b7c"
+}
