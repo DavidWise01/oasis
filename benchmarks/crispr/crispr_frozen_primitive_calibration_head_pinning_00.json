@@ -1,0 +1,111 @@
+{
+  "benchmark": "Calibration-head pinning / checkpoint provenance plane full battery to failure",
+  "tests_total": 24,
+  "tests_passed": 24,
+  "first_failure": null,
+  "boundary_reached": true,
+  "failure_boundary": "calibration head + threshold pins + pinset transparency + threshold observers coherently rewritten",
+  "tests": [
+    {
+      "class": "chain_baseline",
+      "pass": true
+    },
+    {
+      "class": "head_pin_baseline",
+      "pass": true
+    },
+    {
+      "class": "raw_chain_head_tamper_still_structurally_valid",
+      "pass": true
+    },
+    {
+      "class": "pinned_head_rejects_tampered_current_head",
+      "pass": true
+    },
+    {
+      "class": "one_pin_compromise_insufficient",
+      "pass": true
+    },
+    {
+      "class": "two_independent_pin_compromise_boundary",
+      "pass": true
+    },
+    {
+      "class": "two_pins_blocked_at_3of3",
+      "pass": true
+    },
+    {
+      "class": "three_pin_compromise_boundary",
+      "pass": true
+    },
+    {
+      "class": "epoch2_chain_baseline",
+      "pass": true
+    },
+    {
+      "class": "epoch2_pin_baseline",
+      "pass": true
+    },
+    {
+      "class": "stale_epoch1_head_replay_rejected",
+      "pass": true
+    },
+    {
+      "class": "same_epoch_pin_equivocation_detected",
+      "pass": true
+    },
+    {
+      "class": "correlated_pins_not_independent",
+      "pass": true
+    },
+    {
+      "class": "pinset_transparency_baseline",
+      "pass": true
+    },
+    {
+      "class": "transparency_rejects_forged_pinset",
+      "pass": true
+    },
+    {
+      "class": "observer_quorum_baseline",
+      "pass": true
+    },
+    {
+      "class": "intact_observers_reject_rewritten_transparency",
+      "pass": true
+    },
+    {
+      "class": "one_observer_compromise_insufficient",
+      "pass": true
+    },
+    {
+      "class": "two_observer_compromise_boundary",
+      "pass": true
+    },
+    {
+      "class": "checkpoint_freshness_baseline",
+      "pass": true
+    },
+    {
+      "class": "stale_checkpoint_detected",
+      "pass": true
+    },
+    {
+      "class": "pinset_fuzz_10000",
+      "pass": true,
+      "detected": 10000
+    },
+    {
+      "class": "current_head_mutation_fuzz_10000",
+      "pass": true,
+      "detected": 10000
+    },
+    {
+      "class": "full_checkpoint_provenance_rewrite_boundary",
+      "pass": true,
+      "note": "If the current calibration head, enough independent pins, the pinset transparency record, and enough observers are all coherently rewritten, no independent checkpoint reference remains."
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "cd40ab10a1ecb6472df56219b1cdf525c2ceae37a58f3ef71dac33e046342337"
+}
