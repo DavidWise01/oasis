@@ -1,0 +1,54 @@
+{
+  "benchmark": "Frozen primitive cross-epoch observer-anchor continuity test",
+  "rule": "exact +1 epoch; exact predecessor hash; successor observer/key must equal predecessor announcement",
+  "canonical_chain_tip": "b4aeb37560cf957107fe404d506fb5260c0ab692e93c4b402895d748b4ea630d",
+  "tests": [
+    {
+      "class": "clean_rotation_chain",
+      "pass": true,
+      "reason": "ok"
+    },
+    {
+      "class": "key_substitution",
+      "pass": true,
+      "reason": "key_handoff_mismatch@1"
+    },
+    {
+      "class": "observer_substitution",
+      "pass": true,
+      "reason": "observer_handoff_mismatch@1"
+    },
+    {
+      "class": "missing_epoch",
+      "pass": true,
+      "reason": "epoch_gap@1"
+    },
+    {
+      "class": "rollback_old_identity",
+      "pass": true,
+      "reason": "observer_handoff_mismatch@2"
+    },
+    {
+      "class": "duplicate_successor_fork",
+      "pass": true,
+      "candidate_hashes": [
+        "e8c47896c61fa2a1930832c0d3e86cf5945ecc6c6da5c16e46d56c62606748f9",
+        "f723df96ed6fe34b6138a586b935ed0bcbe168328a95b33f488755f6f482f3a7"
+      ]
+    },
+    {
+      "class": "deterministic_successor_selection",
+      "pass": true
+    },
+    {
+      "class": "old_epoch_replay",
+      "pass": true
+    },
+    {
+      "class": "predecessor_announcement_tamper",
+      "pass": true
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "8fa4cb359203d8223ea11c2f5f947390ce809d5fd6ae395ba7cc461a0f3d9186"
+}
