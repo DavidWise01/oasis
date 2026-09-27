@@ -1,0 +1,135 @@
+{
+  "benchmark": "Frozen primitive correlated infrastructure failure test",
+  "canonical_wrapper": "f25e14fb07112891fcd16529ba9c52d4e164d1e3f5adcf90001a6fc6700aa02b",
+  "rule": "anchor quorum counts independent infrastructure domains, not only administrative identities",
+  "tests": [
+    {
+      "class": "fully_independent_infrastructure",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "infra_independent": true,
+        "accepted": true,
+        "independence": {
+          "anchor_ids": 2,
+          "cloud_regions": 2,
+          "network_routes": 2,
+          "clock_sources": 2,
+          "root_cas": 2,
+          "full_infra_domains": 2
+        }
+      }
+    },
+    {
+      "class": "shared_cloud_region",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "infra_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "cloud_regions": 1,
+          "network_routes": 2,
+          "clock_sources": 2,
+          "root_cas": 2,
+          "full_infra_domains": 2
+        }
+      }
+    },
+    {
+      "class": "shared_network_route",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "infra_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "cloud_regions": 2,
+          "network_routes": 1,
+          "clock_sources": 2,
+          "root_cas": 2,
+          "full_infra_domains": 2
+        }
+      }
+    },
+    {
+      "class": "shared_clock_source",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "infra_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "cloud_regions": 2,
+          "network_routes": 2,
+          "clock_sources": 1,
+          "root_cas": 2,
+          "full_infra_domains": 2
+        }
+      }
+    },
+    {
+      "class": "shared_root_ca",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "infra_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "cloud_regions": 2,
+          "network_routes": 2,
+          "clock_sources": 2,
+          "root_cas": 1,
+          "full_infra_domains": 2
+        }
+      }
+    },
+    {
+      "class": "different_admin_same_infra_domain",
+      "pass": true,
+      "details": {
+        "content_ok": true,
+        "infra_independent": false,
+        "accepted": false,
+        "independence": {
+          "anchor_ids": 2,
+          "cloud_regions": 1,
+          "network_routes": 1,
+          "clock_sources": 1,
+          "root_cas": 1,
+          "full_infra_domains": 1
+        }
+      }
+    },
+    {
+      "class": "three_anchor_ids_two_infra_domains",
+      "pass": true,
+      "details": {
+        "anchor_ids": 3,
+        "cloud_regions": 2,
+        "network_routes": 2,
+        "clock_sources": 2,
+        "root_cas": 2,
+        "full_infra_domains": 2
+      }
+    },
+    {
+      "class": "three_anchor_ids_three_infra_domains",
+      "pass": true,
+      "details": {
+        "anchor_ids": 3,
+        "cloud_regions": 3,
+        "network_routes": 3,
+        "clock_sources": 3,
+        "root_cas": 3,
+        "full_infra_domains": 3
+      }
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "f80d1b48d0d4afe6b424782f6b28dc4b9e1f6dd5a760d59f83b12ea73a4ec8b3"
+}
