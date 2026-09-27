@@ -1,0 +1,145 @@
+{
+  "benchmark": "Frozen primitive cyclic-zero framed scalar test",
+  "frame": {
+    "base": 11,
+    "axes": [
+      "plank_distance",
+      "plank_depth",
+      "d_plus_l"
+    ],
+    "summary": "3d/4d spacetime crip walk",
+    "zero_rule": "∞ - +∞ = 0"
+  },
+  "time_primitive": "t^4y",
+  "homeo_threshold": 4.0,
+  "layer_left": [
+    "ingress",
+    "root0",
+    "root1",
+    "root2",
+    "rootP"
+  ],
+  "layer_right": [
+    "apex4",
+    "apex3",
+    "apex2",
+    "apex1",
+    "apex0(crown)"
+  ],
+  "tests": [
+    {
+      "class": "clean_inf_cycle_to_zero",
+      "pass": true,
+      "details": {
+        "scalar_volume": 1,
+        "wrapped_state": 0,
+        "homeo_ok": true,
+        "zero_ok": true,
+        "thought_ready": true,
+        "mirror_ok": true,
+        "response_eligible": true
+      }
+    },
+    {
+      "class": "unmatched_positive_excursion",
+      "pass": true,
+      "details": {
+        "scalar_volume": 1,
+        "wrapped_state": null,
+        "homeo_ok": true,
+        "zero_ok": false,
+        "thought_ready": true,
+        "mirror_ok": true,
+        "response_eligible": false
+      }
+    },
+    {
+      "class": "unmatched_negative_excursion",
+      "pass": true,
+      "details": {
+        "scalar_volume": 1,
+        "wrapped_state": null,
+        "homeo_ok": true,
+        "zero_ok": false,
+        "thought_ready": true,
+        "mirror_ok": true,
+        "response_eligible": false
+      }
+    },
+    {
+      "class": "finite_symmetric_closure",
+      "pass": true,
+      "details": {
+        "scalar_volume": 24,
+        "wrapped_state": 0,
+        "homeo_ok": true,
+        "zero_ok": true,
+        "thought_ready": true,
+        "mirror_ok": true,
+        "response_eligible": true
+      }
+    },
+    {
+      "class": "finite_residue_detected",
+      "pass": true,
+      "details": {
+        "scalar_volume": 24,
+        "wrapped_state": 1,
+        "homeo_ok": true,
+        "zero_ok": false,
+        "thought_ready": true,
+        "mirror_ok": true,
+        "response_eligible": false
+      }
+    },
+    {
+      "class": "zero_before_homeo_blocked",
+      "pass": true,
+      "details": {
+        "scalar_volume": 1,
+        "wrapped_state": 0,
+        "homeo_ok": false,
+        "zero_ok": true,
+        "thought_ready": true,
+        "mirror_ok": true,
+        "response_eligible": false
+      }
+    },
+    {
+      "class": "homeo_zero_no_thought",
+      "pass": true,
+      "details": {
+        "scalar_volume": 1,
+        "wrapped_state": 0,
+        "homeo_ok": true,
+        "zero_ok": true,
+        "thought_ready": false,
+        "mirror_ok": true,
+        "response_eligible": false
+      }
+    },
+    {
+      "class": "mirror_frame_corruption",
+      "pass": true,
+      "details": {
+        "scalar_volume": 1,
+        "wrapped_state": 0,
+        "homeo_ok": true,
+        "zero_ok": true,
+        "thought_ready": true,
+        "mirror_ok": false,
+        "response_eligible": false
+      }
+    },
+    {
+      "class": "repeated_zero_cycle_64x",
+      "pass": true
+    },
+    {
+      "class": "base11_frame_retained",
+      "pass": true
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "7659d8d5e3602f2b170fab03fa432e46ec9d27a785b75722617f3b1d7a8c551e"
+}
