@@ -1,0 +1,74 @@
+{
+  "benchmark": "Frozen primitive reference-corruption quorum test",
+  "witnesses": [
+    "light_value",
+    "shadow_value",
+    "canonical_map",
+    "frozen_shell",
+    "decision_rule"
+  ],
+  "witness_count": 5,
+  "quorum_results": [
+    {
+      "quorum": 3,
+      "minimum_compromised_witnesses": 3,
+      "first_false_pass": {
+        "corrupted_count": 3,
+        "corrupted_witnesses": [
+          "light_value",
+          "shadow_value",
+          "canonical_map"
+        ],
+        "wrong_votes": 3,
+        "false_pass": true
+      }
+    },
+    {
+      "quorum": 4,
+      "minimum_compromised_witnesses": 4,
+      "first_false_pass": {
+        "corrupted_count": 4,
+        "corrupted_witnesses": [
+          "light_value",
+          "shadow_value",
+          "canonical_map",
+          "frozen_shell"
+        ],
+        "wrong_votes": 4,
+        "false_pass": true
+      }
+    },
+    {
+      "quorum": 5,
+      "minimum_compromised_witnesses": 5,
+      "first_false_pass": {
+        "corrupted_count": 5,
+        "corrupted_witnesses": [
+          "light_value",
+          "shadow_value",
+          "canonical_map",
+          "frozen_shell",
+          "decision_rule"
+        ],
+        "wrong_votes": 5,
+        "false_pass": true
+      }
+    }
+  ],
+  "baseline_3_of_5": {
+    "minimum_compromised_witnesses_for_false_pass": 3,
+    "tolerated_compromised_witnesses": 2
+  },
+  "explicit_3_2_1_triplet": {
+    "minimum_compromised_witnesses_for_false_pass": 2,
+    "tolerated_compromised_witnesses": 1,
+    "first_false_pass": {
+      "corrupted_count": 2,
+      "subset": [0,1],
+      "wrong_votes": 2,
+      "false_pass": true
+    }
+  },
+  "status": "PASS",
+  "sha256_before_embedding": "1d67b0c8a03678fc89eeef187f16bcec0e1a8b0004fcf5622d95e90fe5bb4bc4"
+}
