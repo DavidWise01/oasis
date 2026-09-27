@@ -1,0 +1,24 @@
+{
+  "benchmark": "Frozen primitive multi-fault collision test",
+  "seed": "0xc9",
+  "population": 1048576,
+  "frozen_shell": [16,16,1,1,0,0,1,1,16,16],
+  "schedule": [2,4,8,16,64,256,1024,4096],
+  "dense_overlap": {
+    "kind": "dense_overlapping_3channel",
+    "fault_count_per_channel": 4096,
+    "logical_faults_total": 12288,
+    "unique_ticks": 4096,
+    "pam_detected": 4096,
+    "mismatch_detected": 4096,
+    "shadow_detected": 4096,
+    "exact_locations_all_channels": true,
+    "aliasing": false
+  },
+  "all_exact": true,
+  "all_alias_zero": true,
+  "all_false_positive_zero": true,
+  "elapsed_seconds": 0.07182250799996837,
+  "status": "PASS",
+  "sha256_before_embedding": "8bbdaadebd5945e2256a24a30bec382c16102885e849a9bbb08e2ea3156131e6"
+}
