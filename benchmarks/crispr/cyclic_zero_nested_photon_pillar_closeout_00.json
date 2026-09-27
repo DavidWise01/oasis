@@ -1,0 +1,25 @@
+{
+  "pillar": "cyclic_zero_nested_photon",
+  "status": "0e / CLOSED",
+  "planes_total": 10,
+  "planes_passed": 10,
+  "zero_rule": "inf-+inf=0",
+  "photon_slice": ["p-","p+","p-","p+","p-","p+"],
+  "phase": "-+++-Aa+---+Pp-+++-Nn-++-+",
+  "home0": ["sqrt11",6,3,2,1,1,0,0],
+  "shells": ["-uu","+uu","-Uu","+Uu","-uU","+uU","-UU","+UU","-o","+o"],
+  "palindrome": ["|","`","1 1","`","|"],
+  "planes": [
+    {"plane":"cyclic_zero_rule","tests_total":2,"tests_passed":2,"status":"PASS"},
+    {"plane":"nested_photon_slice","tests_total":2,"tests_passed":2,"status":"PASS"},
+    {"plane":"full_phase_witness","tests_total":2,"tests_passed":2,"status":"PASS"},
+    {"plane":"home0_descent","tests_total":4,"tests_passed":4,"status":"PASS"},
+    {"plane":"shell_nesting","tests_total":3,"tests_passed":3,"status":"PASS"},
+    {"plane":"planck_exhaustion_gate","tests_total":6,"tests_passed":6,"status":"PASS"},
+    {"plane":"palindromic_closure","tests_total":3,"tests_passed":3,"status":"PASS"},
+    {"plane":"nested_ring_isolation","tests_total":2,"tests_passed":2,"status":"PASS"},
+    {"plane":"integrated_cycle","tests_total":3,"tests_passed":3,"status":"PASS"},
+    {"plane":"integrated_regression","tests_total":2,"tests_passed":2,"status":"PASS"}
+  ],
+  "pillar_hash": "10dadbc54fd7117380342854c12c5c4f012cd3ccd1bb10e0892e6f89072588fc"
+}
