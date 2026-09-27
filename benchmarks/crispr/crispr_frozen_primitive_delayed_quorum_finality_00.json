@@ -1,0 +1,37 @@
+{
+  "benchmark": "Frozen primitive delayed-quorum finality attack",
+  "quorum": 3,
+  "finality_depth": 3,
+  "finalized_checkpoint": {
+    "branch": "A",
+    "seq": 4,
+    "hash": "356aeec1eeb1a189ac968c66a3b30f4809d63b7fc82a7b5172493e968f4261d6",
+    "finalized_at_tick": 4,
+    "quorum_roots": ["R1","R2","R3"]
+  },
+  "checkpoint_hash": "efb5d0aecb31dc50552e3cac6d1ff8021946b64bf5471024f2b5564b2724f9ce",
+  "late_B_roots": ["R4","R5","R6","R7"],
+  "future_context": {
+    "canonical_parent": "356aeec1eeb1a189ac968c66a3b30f4809d63b7fc82a7b5172493e968f4261d6",
+    "late_B_signal_roots": ["R4","R5","R6","R7"],
+    "effect": "future_only",
+    "next_seq": 5
+  },
+  "fork_record": {
+    "branch": "B",
+    "tip": "84687ba19469e15f672a02260faccb77c2eefd6cfc15653271c477aeb1269263",
+    "status": "noncanonical_after_A_finality",
+    "late_quorum_roots": ["R4","R5","R6","R7"]
+  },
+  "tests": [
+    {"class":"baseline_finality","pass":true},
+    {"class":"late_competing_quorum_no_rewrite","late_B_quorum":true,"checkpoint_unchanged":true,"pass":true},
+    {"class":"late_votes_future_only","pass":true},
+    {"class":"competing_checkpoint_reanchor","pass":true},
+    {"class":"backdated_late_vote","pass":true},
+    {"class":"checkpoint_hash_immutable","before":"efb5d0aecb31dc50552e3cac6d1ff8021946b64bf5471024f2b5564b2724f9ce","after":"efb5d0aecb31dc50552e3cac6d1ff8021946b64bf5471024f2b5564b2724f9ce","pass":true},
+    {"class":"preserve_losing_fork_evidence","pass":true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "7cd759917114857f5d3e5422fdae6d51d9f6d3261b6a53ec9c78f7f257a2c9b3"
+}
