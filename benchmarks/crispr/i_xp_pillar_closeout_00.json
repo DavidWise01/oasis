@@ -1,0 +1,71 @@
+{
+  "pillar": "i:xp",
+  "expansion": "i::d::ent::ity::i::so::morph::x::patrica::",
+  "patricia_hash": "d201d4329ee5a3f16bbb28388fd4d5861898a9deb501e24ee15c5de0730996df",
+  "planes_total": 10,
+  "planes_passed": 10,
+  "status": "0e / CLOSED",
+  "plane_summary": [
+    [
+      "canonical_identity",
+      4,
+      4,
+      "PASS"
+    ],
+    [
+      "palindromic_isomorph",
+      4,
+      4,
+      "PASS"
+    ],
+    [
+      "phase_sync",
+      2,
+      2,
+      "PASS"
+    ],
+    [
+      "shell_nesting",
+      7,
+      7,
+      "PASS"
+    ],
+    [
+      "home0",
+      4,
+      4,
+      "PASS"
+    ],
+    [
+      "t4y_iso_gate",
+      5,
+      5,
+      "PASS"
+    ],
+    [
+      "provenance_anchor",
+      4,
+      4,
+      "PASS"
+    ],
+    [
+      "entropy_origin",
+      4,
+      4,
+      "PASS"
+    ],
+    [
+      "physical_measurement_and_calibration",
+      4,
+      4,
+      "PASS"
+    ],
+    [
+      "integrated_regression",
+      5,
+      5,
+      "PASS"
+    ]
+  ],
+  "pillar_hash": "02d9680dd99f8674a8f2249458f018996ede9cad910e2d9fa89210be009f1498"
+}
