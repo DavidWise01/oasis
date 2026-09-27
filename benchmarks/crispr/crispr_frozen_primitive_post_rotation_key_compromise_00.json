@@ -1,0 +1,24 @@
+{
+  "benchmark": "Frozen primitive post-rotation key compromise test",
+  "canonical_tip": "2f248a41cd7cf61bbc81619f233e9dbf1ec6d46fd066cbe3382911df76dbb7ed",
+  "retired_keys": [
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "current_key": "K4",
+  "rule": "only predecessor-announced observer/key may extend the current finalized tip",
+  "tests": [
+    {"class": "clean_current_key_extension", "pass": true},
+    {"class": "retired_key_future_extension", "pass": true},
+    {"class": "old_key_current_observer_masquerade", "pass": true},
+    {"class": "resurrect_retired_branch", "pass": true},
+    {"class": "backdated_replacement", "pass": true},
+    {"class": "rewrite_finalized_rotation_record", "pass": true},
+    {"class": "stale_structurally_valid_child", "pass": true},
+    {"class": "replay_old_finalized_epoch", "pass": true},
+    {"class": "canonical_tip_immutable", "pass": true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "5fdd9d03630c92cd5e13b42f15233ddbad41c8e776c4665b9d83cf655b623e72"
+}
