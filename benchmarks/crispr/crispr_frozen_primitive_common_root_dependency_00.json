@@ -1,0 +1,37 @@
+{
+  "benchmark": "Frozen primitive common-root dependency discovery test",
+  "canonical_wrapper": "f25e14fb07112891fcd16529ba9c52d4e164d1e3f5adcf90001a6fc6700aa02b",
+  "anchors": ["EXT0","EXT1","EXT2"],
+  "graph": {
+    "EXT0": ["DNS_A","TIME_A","CA_A","TRANSIT_A"],
+    "DNS_A": ["DNS_ROOT_X"],
+    "TIME_A": ["TIME_ROOT_X"],
+    "CA_A": ["CA_ROOT_X"],
+    "TRANSIT_A": ["TRANSIT_ROOT_X"],
+    "EXT1": ["DNS_B","TIME_B","CA_B","TRANSIT_B"],
+    "DNS_B": ["DNS_ROOT_X"],
+    "TIME_B": ["TIME_ROOT_Y"],
+    "CA_B": ["CA_ROOT_Y"],
+    "TRANSIT_B": ["TRANSIT_ROOT_Y"],
+    "EXT2": ["DNS_C","TIME_C","CA_C","TRANSIT_C"],
+    "DNS_C": ["DNS_ROOT_Z"],
+    "TIME_C": ["TIME_ROOT_Z"],
+    "CA_C": ["CA_ROOT_Z"],
+    "TRANSIT_C": ["TRANSIT_ROOT_Z"],
+    "DNS_ROOT_X": ["GLOBAL_DNS_PARENT"],
+    "DNS_ROOT_Y": ["GLOBAL_DNS_PARENT_2"],
+    "DNS_ROOT_Z": ["GLOBAL_DNS_PARENT_3"]
+  },
+  "tests": [
+    {"class":"hidden_shared_dns_root","shared":["DNS_ROOT_X","GLOBAL_DNS_PARENT"],"pass":true},
+    {"class":"transitive_common_parent","shared":["DNS_ROOT_X","GLOBAL_DNS_PARENT"],"pass":true},
+    {"class":"fully_independent_pair","shared":[],"pass":true},
+    {"class":"graph_aware_domain_count","naive_anchor_count":3,"effective_domains":2,"components":[["EXT0","EXT1"],["EXT2"]],"pass":true},
+    {"class":"three_of_three_quorum_rejected","required_domains":3,"effective_domains":2,"pass":true},
+    {"class":"two_domain_quorum_valid","required_domains":2,"effective_domains":2,"pass":true},
+    {"class":"chained_correlation_collapse","components":[["EXT0","EXT1","EXT2"]],"pass":true},
+    {"class":"correlation_evidence_retained","pass":true}
+  ],
+  "status":"PASS",
+  "sha256_before_embedding":"84a81770c02b2ea237875eca4648c3151c15d58a4688fab94ca1d559824d4913"
+}
