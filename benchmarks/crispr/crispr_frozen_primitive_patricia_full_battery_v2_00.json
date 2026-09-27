@@ -1,0 +1,12 @@
+{
+  "benchmark": "Patricia/SAPPHON corrected full battery to failure",
+  "phase_witness": "-+++-Aa+---+Pp-+++-Nn-++-+",
+  "phase_length": 26,
+  "frozen_hash": "d201d4329ee5a3f16bbb28388fd4d5861898a9deb501e24ee15c5de0730996df",
+  "tests_total": 114,
+  "tests_passed": 114,
+  "first_failure": null,
+  "residual_boundary": "candidate + frozen reference coherently replaced",
+  "status": "PASS",
+  "sha256_before_embedding": "ff2546784d08d3735f52ca41df1770d21ba528ab1caa255315d7112ba569a382"
+}
