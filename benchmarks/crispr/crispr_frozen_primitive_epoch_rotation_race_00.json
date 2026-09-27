@@ -1,0 +1,24 @@
+{
+  "benchmark": "Frozen primitive epoch-transition race/fork under key rotation",
+  "parent_epoch_hash": "49368a25911d9945e5bdb1f99a6f2abeab313730aade7ac08814efe94d14752e",
+  "candidate_hashes": [
+    "72c63adbae0c16ece5298d9bb358897218ad18c6259d877775333d6d2153c515",
+    "a15dd3689cb1ccf26a2aafac258a786e56cb77d5b30f71980a3e681b07705c57"
+  ],
+  "winner_hash": "72c63adbae0c16ece5298d9bb358897218ad18c6259d877775333d6d2153c515",
+  "loser_hash": "a15dd3689cb1ccf26a2aafac258a786e56cb77d5b30f71980a3e681b07705c57",
+  "tie_break_rule": "lexicographically smallest valid successor hash",
+  "tests": [
+    {"class": "arrival_order_independence", "pass": true},
+    {"class": "replay_stability", "pass": true},
+    {"class": "single_canonical_rotation", "pass": true},
+    {"class": "winner_continuation", "pass": true},
+    {"class": "loser_continuation_rejected", "pass": true},
+    {"class": "late_rotation_cannot_rewrite_finality", "pass": true},
+    {"class": "tie_break_reproducible", "pass": true},
+    {"class": "handoff_identity_binding", "pass": true},
+    {"class": "preserve_loser_evidence", "pass": true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "a1bc2130b4eb6489294b77ef1661a0ebe860938c30dec0f6584f08c6fac7fa72"
+}
