@@ -1,0 +1,21 @@
+{
+  "benchmark": "Frozen primitive dynamic homeo ladder stability test",
+  "homeo_ladder": "sqrt11/6/3/2/1/1/0/0",
+  "recognizer": "exact ordered descent; reset on deviation; one fire per full completion",
+  "tests": [
+    {"class":"clean_exact_descent","pass":true,"details":{"fires":1,"fire_positions":[7],"partial_index":0}},
+    {"class":"oscillation_2_1","pass":true,"details":{"fires":0,"fire_positions":[],"partial_index":0}},
+    {"class":"stall_duplicate_1","pass":true,"details":{"fires":0,"fire_positions":[],"partial_index":0}},
+    {"class":"zero_bounce","pass":true,"details":{"fires":0,"fire_positions":[],"partial_index":0}},
+    {"class":"premature_zero","pass":true,"details":{"fires":0,"fire_positions":[],"partial_index":0}},
+    {"class":"out_of_order","pass":true,"details":{"fires":0,"fire_positions":[],"partial_index":0}},
+    {"class":"noise_wrapped_exact_path","pass":true,"details":{"fires":1,"fire_positions":[10],"partial_index":0}},
+    {"class":"two_exact_cycles","pass":true,"details":{"fires":2,"fire_positions":[7,15],"partial_index":0}},
+    {"class":"missing_final_zero","pass":true,"details":{"fires":0,"fire_positions":[],"partial_index":7}},
+    {"class":"post_closure_zero_chatter","pass":true,"details":{"fires":1,"fire_positions":[7],"partial_index":0}},
+    {"class":"one_chatter_before_zero","pass":true,"details":{"fires":0,"fire_positions":[],"partial_index":0}},
+    {"class":"stress_1024_cycles","pass":true,"details":{"fires":1024,"last_fire":8191}}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "3b4bbc0a657dbe0759eebf59f237590522299d20685ede9d74c2cc6eed60ae85"
+}
