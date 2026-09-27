@@ -1,0 +1,12 @@
+{
+  "benchmark": "Patricia/SAPPHON external truth-plane diversity full battery to failure",
+  "patricia_hash": "d201d4329ee5a3f16bbb28388fd4d5861898a9deb501e24ee15c5de0730996df",
+  "channels": ["ANCHOR0","ANCHOR1","ANCHOR2","OBSERVER0","OBSERVER1","OBSERVER2","PUBLICATION0"],
+  "tests_total": 15,
+  "tests_passed": 15,
+  "first_failure": null,
+  "boundary_reached": true,
+  "failure_boundary": "all external truth channels collapse into one correlated dependency component",
+  "status": "PASS",
+  "sha256_before_embedding": "88eb253bddbf4d4086cf18e75ea431277227d5eec3d7b1ec2300775897927500"
+}
