@@ -1,0 +1,43 @@
+{
+  "benchmark": "Physical entropy / measurement provenance plane full battery to failure",
+  "base_hash": "0e3d66b1e80beb5b2ee57c416e0f4964238506eda0de9f6d52375a4031bf1451",
+  "tests_total": 27,
+  "tests_passed": 26,
+  "first_failure": {
+    "class": "calibration_tamper_detected",
+    "pass": false
+  },
+  "boundary_reached": true,
+  "failure_boundary": "measurement device + calibration + clock + environment + observers + challenge channel all coherently controlled",
+  "tests": [
+    {"class":"measurement_provenance_baseline","pass":true},
+    {"class":"distinct_measurement_traces","pass":true},
+    {"class":"replayed_sample_detected","pass":true},
+    {"class":"replay_is_identical_and_therefore_flaggeable","pass":true},
+    {"class":"epoch_binding_changes_commit","pass":true},
+    {"class":"clock_monotonic_baseline","pass":true},
+    {"class":"clock_rollback_detected","pass":true},
+    {"class":"calibration_chain_baseline","pass":true},
+    {"class":"calibration_tamper_detected","pass":false},
+    {"class":"lowbit_balance_reasonable","pass":true,"balances":{"M0":0.50390625,"M1":0.49560546875,"M2":0.5048828125}},
+    {"class":"stuck_digitizer_detected","pass":true},
+    {"class":"periodic_synthetic_feed_detected","pass":true},
+    {"class":"shared_feed_detected","pass":true},
+    {"class":"independent_feeds_not_identical","pass":true},
+    {"class":"two_shared_environment_still_not_3way_independent","pass":true},
+    {"class":"shared_clock_collapses_measurement_independence","pass":true},
+    {"class":"shared_digitizer_collapses_measurement_independence","pass":true},
+    {"class":"sample_sequence_baseline","pass":true},
+    {"class":"sample_omission_detected","pass":true},
+    {"class":"live_measurement_attestation_baseline","pass":true},
+    {"class":"one_observer_disagreement_tolerated","pass":true},
+    {"class":"colluding_observers_can_certify_replay","pass":true},
+    {"class":"fresh_challenge_changes_measurement_commit","pass":true},
+    {"class":"challenge_channel_capture_boundary","pass":true},
+    {"class":"one_sensor_control_insufficient_for_full_mix","pass":true},
+    {"class":"measurement_uniqueness_sanity_10000x3","pass":true},
+    {"class":"full_physical_measurement_plane_capture_boundary","pass":true,"note":"If device, calibration, clock, environment, observers, and challenge channel are all coherently controlled, synthetic/replayed measurements can masquerade as independent physical input."}
+  ],
+  "status": "FAIL",
+  "sha256_before_embedding": "96e7ac0f3000c7707490657228a7135c770c946bccca4edc19c757e5ee864d7f"
+}
