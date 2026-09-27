@@ -1,0 +1,24 @@
+{
+  "benchmark": "Frozen primitive finalized checkpoint corruption/recovery",
+  "quorum": "3-of-5",
+  "canonical_checkpoint": {
+    "branch": "A",
+    "seq": 4,
+    "hash": "356aeec1eeb1a189ac968c66a3b30f4809d63b7fc82a7b5172493e968f4261d6",
+    "finalized_at_tick": 4,
+    "quorum_roots": ["R1","R2","R3"]
+  },
+  "canonical_wrapper_hash": "efb5d0aecb31dc50552e3cac6d1ff8021946b64bf5471024f2b5564b2724f9ce",
+  "tests": [
+    {"class":"clean_control","pass":true},
+    {"class":"stored_seq_corruption","stored_bad_hash":"6f03d1faea20706b0af9270926dae7e5789520c11f9ea5d732dd89b360faad9a","recovered_hash":"efb5d0aecb31dc50552e3cac6d1ff8021946b64bf5471024f2b5564b2724f9ce","pass":true},
+    {"class":"stored_checkpoint_hash_corruption","pass":true},
+    {"class":"single_forged_witness","recovery_roots":["R2","R3","R4","R5"],"pass":true},
+    {"class":"two_colluding_forged_witnesses","recovery_roots":["R3","R4","R5"],"pass":true},
+    {"class":"three_colluding_forged_witnesses","false_recovery_possible":true,"pass":true},
+    {"class":"local_loss_plus_two_forged","pass":true},
+    {"class":"exact_reconstruction","pass":true}
+  ],
+  "status":"PASS",
+  "sha256_before_embedding":"f68457963d3d0799ba8b09f367113fcc0d2a16241c07a399c2b521b6740a4e6c"
+}
