@@ -1,0 +1,40 @@
+{
+  "benchmark": "Frozen primitive lineage-chain integrity test",
+  "canonical_head": "28f564aa74fc27394c033a1b2fa2533ea06b92ab96836dad2af3006ce9a384a9",
+  "chain_length": 9,
+  "status": "PASS",
+  "tests": [
+    [
+      "clean_control",
+      "ACCEPT"
+    ],
+    [
+      "fork_ancestry",
+      "DETECT"
+    ],
+    [
+      "rewrite_parent",
+      "DETECT"
+    ],
+    [
+      "truncate_lineage",
+      "DETECT"
+    ],
+    [
+      "replay_old_valid_lineage",
+      "DETECT"
+    ],
+    [
+      "duplicate_record",
+      "DETECT"
+    ],
+    [
+      "time_rollback",
+      "DETECT"
+    ],
+    [
+      "sequence_skip",
+      "DETECT"
+    ]
+  ]
+}
