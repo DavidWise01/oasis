@@ -1,0 +1,93 @@
+{
+  "benchmark": "External beacon / unpredictable challenge plane full battery to failure",
+  "tests_total": 20,
+  "tests_passed": 20,
+  "first_failure": null,
+  "boundary_reached": true,
+  "failure_boundary": "all entropy sources plus freshness/reveal/diversity evidence captured or correlated",
+  "tests": [
+    {
+      "class": "fresh_beacon_distinguishes",
+      "pass": true
+    },
+    {
+      "class": "beacon_replay_old_epoch_rejected",
+      "pass": true
+    },
+    {
+      "class": "delayed_beacon_rejected",
+      "pass": true
+    },
+    {
+      "class": "fresh_beacon_accepted",
+      "pass": true
+    },
+    {
+      "class": "single_beacon_capture_boundary",
+      "pass": true
+    },
+    {
+      "class": "one_of_two_controlled_still_external_uncertainty",
+      "pass": true
+    },
+    {
+      "class": "combined_beacon_epoch_separation",
+      "pass": true
+    },
+    {
+      "class": "three_source_baseline",
+      "pass": true
+    },
+    {
+      "class": "one_source_capture_tolerated",
+      "pass": true
+    },
+    {
+      "class": "two_source_capture_breaks_2of3",
+      "pass": true
+    },
+    {
+      "class": "correlated_sources_do_not_count_independently",
+      "pass": true
+    },
+    {
+      "class": "commit_reveal_baseline",
+      "pass": true
+    },
+    {
+      "class": "bad_reveal_rejected",
+      "pass": true
+    },
+    {
+      "class": "beacon_equivocation_detected",
+      "pass": true
+    },
+    {
+      "class": "grinding_can_bias_if_attacker_selects_after_seeing_options",
+      "pass": true
+    },
+    {
+      "class": "precommit_binds_single_choice",
+      "pass": true
+    },
+    {
+      "class": "withholding_one_of_three_tolerated",
+      "pass": true
+    },
+    {
+      "class": "withholding_two_breaks_threshold",
+      "pass": true
+    },
+    {
+      "class": "fresh_challenge_stress_10000",
+      "pass": true
+    },
+    {
+      "class": "full_beacon_plane_capture_boundary",
+      "pass": true,
+      "note": "If all beacon sources, freshness evidence, reveal policy, and diversity evidence are controlled, the cycle again receives no independent unpredictability."
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "2e2e3485bbc5c23427f67597a2c74c2614f334838fde2892d213e8cbfa8ada1c"
+}
