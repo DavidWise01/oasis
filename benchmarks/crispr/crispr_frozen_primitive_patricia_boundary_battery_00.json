@@ -1,0 +1,31 @@
+{
+  "benchmark": "Patricia/SAPPHON next trust-boundary full battery to failure",
+  "canonical_hash": "d201d4329ee5a3f16bbb28388fd4d5861898a9deb501e24ee15c5de0730996df",
+  "forged_hash": "6263130ee8e92e9a5c5425de1ec3ed1030b42e54efbda72c0990039cbcdad2ca",
+  "tests_total": 18,
+  "tests_passed": 18,
+  "first_failure": null,
+  "residual_boundary": "coherent replacement of the entire external truth domain",
+  "tests": [
+    {"class":"baseline_external_anchor_quorum","pass":true},
+    {"class":"local_reference_replaced_boundary_confirmed","pass":true},
+    {"class":"external_anchor_rejects_coherent_local_replacement","pass":true},
+    {"class":"one_external_anchor_compromised","pass":true},
+    {"class":"two_matching_but_correlated_external_anchors","pass":true},
+    {"class":"two_independent_external_anchor_compromise_boundary","pass":true},
+    {"class":"two_independent_compromises_fail_at_3of3","pass":true},
+    {"class":"three_independent_external_anchor_compromise_boundary","pass":true},
+    {"class":"cross_epoch_prior_commit_rejects_forged_identity","pass":true},
+    {"class":"coherent_history_rewrite_requires_external_anchor","pass":true},
+    {"class":"observer_truth_baseline","pass":true},
+    {"class":"single_observer_poison_rejected","pass":true},
+    {"class":"two_anchor_plus_two_observer_collusion_boundary","pass":true},
+    {"class":"publication_digest_rejects_forgery","pass":true},
+    {"class":"full_external_truth_domain_replacement_boundary","pass":true},
+    {"class":"anchor_domain_fuzz_5000","pass":true},
+    {"class":"phase_still_exact","pass":true},
+    {"class":"homeo_still_exact","pass":true}
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "5a6fa216b38c60e87201b244ca1eafec21e2469e3d96d99860c40ea407ec94db"
+}
