@@ -1,0 +1,103 @@
+{
+  "benchmark": "Frozen primitive anchor split-brain / epoch conflict test",
+  "canonical_wrapper": "f25e14fb07112891fcd16529ba9c52d4e164d1e3f5adcf90001a6fc6700aa02b",
+  "alternate_wrapper": "314f13efb6ce39cfa216ea93f3b6d42f2ed608f0916a0c1478f05551f8d81518",
+  "tests": [
+    {
+      "class": "clean_dual_anchor",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "usable": 2,
+        "total": 2,
+        "same_wrapper": true,
+        "same_epoch": true,
+        "mutually_agree": true
+      }
+    },
+    {
+      "class": "split_brain_same_epoch",
+      "pass": true,
+      "details": {
+        "accepted": false,
+        "usable": 2,
+        "total": 2,
+        "same_wrapper": false,
+        "same_epoch": true,
+        "mutually_agree": false
+      }
+    },
+    {
+      "class": "conflicting_epochs",
+      "pass": true,
+      "details": {
+        "accepted": false,
+        "usable": 2,
+        "total": 2,
+        "same_wrapper": true,
+        "same_epoch": false,
+        "mutually_agree": false
+      }
+    },
+    {
+      "class": "delayed_anchor_publication",
+      "pass": true,
+      "details": {
+        "accepted": false,
+        "usable": 1,
+        "total": 2,
+        "same_wrapper": true,
+        "same_epoch": true,
+        "mutually_agree": true
+      }
+    },
+    {
+      "class": "delayed_anchor_arrives_clean",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "usable": 2,
+        "total": 2,
+        "same_wrapper": true,
+        "same_epoch": true,
+        "mutually_agree": true
+      }
+    },
+    {
+      "class": "stale_anchor_replay",
+      "pass": true,
+      "details": {
+        "accepted": false,
+        "usable": 2,
+        "total": 2,
+        "same_wrapper": true,
+        "same_epoch": false,
+        "mutually_agree": false
+      }
+    },
+    {
+      "class": "joint_anchor_compromise",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "usable": 2,
+        "total": 2,
+        "same_wrapper": true,
+        "same_epoch": true,
+        "mutually_agree": true
+      },
+      "note": "Expected residual boundary: if all required external anchors agree on the same forged wrapper/epoch, anchor-layer validation accepts it."
+    },
+    {
+      "class": "three_anchor_two_of_three",
+      "pass": true,
+      "details": {
+        "accepted": true,
+        "matching": 2,
+        "usable": 3
+      }
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "1d873cb4102f1d404f304a8560ce93524beca34b4fcf1ac91b16b4acfd5bed4b"
+}
