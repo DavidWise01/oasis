@@ -1,0 +1,16 @@
+{
+  "benchmark": "Frozen primitive provenance spoof resistance test",
+  "quorum": "3-of-5",
+  "rule": "yes_votes>=3 AND unique provenance>=3 AND independent roots>=3",
+  "tests": [
+    {"class":"clean_control","vote_count":5,"independent_sources":5,"accepted":true,"expected":true},
+    {"class":"duplicate_ancestry","vote_count":3,"independent_sources":2,"accepted":false,"expected":false},
+    {"class":"forged_source_id_same_root","vote_count":3,"source_ids":3,"independent_roots":2,"accepted":false,"expected":false},
+    {"class":"triple_vote_single_root_spoof","vote_count":3,"source_ids":3,"independent_roots":1,"accepted":false,"expected":false},
+    {"class":"five_votes_two_roots","vote_count":5,"source_ids":5,"independent_roots":2,"accepted":false,"expected":false},
+    {"class":"three_votes_three_roots","vote_count":3,"independent_roots":3,"accepted":true,"expected":true},
+    {"class":"replayed_witness_record","raw_votes":4,"effective_unique_votes":3,"independent_roots":3,"accepted":true,"expected":true}
+  ],
+  "status":"PASS",
+  "sha256_before_embedding":"2c100b86a7d951970e43164ccc1775834f0e8ec21501009df59f31f58ab12f29"
+}
