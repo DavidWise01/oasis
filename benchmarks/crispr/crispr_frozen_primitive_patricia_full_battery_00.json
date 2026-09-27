@@ -1,0 +1,29 @@
+{
+  "benchmark": "Patricia/SAPPHON full battery to failure",
+  "frozen_hash": "d201d4329ee5a3f16bbb28388fd4d5861898a9deb501e24ee15c5de0730996df",
+  "identity": "SA2PP31H3:O3:N:3 :: 15 total",
+  "homeo": "sqrt11/6/3/2/1/1/0/0",
+  "photon_pattern": "p-p+p-p+p-p+",
+  "time_primitive": "t^4y",
+  "tests_total": 48,
+  "tests_passed": 46,
+  "failed_tests": [
+    {"class":"phase_drift_shift_2","pass":false},
+    {"class":"phase_drift_shift_4","pass":false}
+  ],
+  "first_failure": {
+    "class": "phase_drift_shift_2",
+    "pass": false,
+    "reason": "period-2 phase alias: a cyclic rotation by 2 reproduces the canonical alternating photon witness"
+  },
+  "stress_results": {
+    "repeat_valid_cycles": 8192,
+    "nested_ring_isolation": 256,
+    "identity_hash_replays": 10000,
+    "random_identity_mutations_detected": 5000,
+    "random_homeo_corruptions_detected": 5000,
+    "random_photon_corruptions_detected": 5000
+  },
+  "required_repair": "add an absolute phase/origin witness that is not invariant under even cyclic rotations",
+  "status": "FAIL"
+}
