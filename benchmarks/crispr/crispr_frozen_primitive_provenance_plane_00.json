@@ -1,0 +1,12 @@
+{
+  "benchmark": "Patricia/SAPPHON provenance-plane full battery to failure",
+  "canonical_pal_hash": "fc87ed9a60cf013ea81f8a11bf17ddeda9648f1f5dc8f8a58699803afed59faf",
+  "canonical_origin_hash": "83d8476beca03450e1d915546b437ea2a7b517ae4a7089d66179f6b00687fa00",
+  "tests_total": 20,
+  "tests_passed": 20,
+  "first_failure": null,
+  "boundary_reached": true,
+  "failure_boundary": "coherent rewrite of canonical objects, certifiers, transparency history, witness pins, and diversity graph",
+  "status": "PASS",
+  "sha256_before_embedding": "0b7957af9defb45095a87b3b2054988c93878a13a713a873916da31ca669c10f"
+}
