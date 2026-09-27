@@ -1,0 +1,18 @@
+{
+  "benchmark": "Frozen primitive observer poisoning test",
+  "truth_payload_hash": "9f49b37b9ec7b76bc890005064b95d50f6800bc5732454f9275b5422d457cf7d",
+  "poison_payload_hash": "c8381255409178c8f5285d40e7533ec38b00c2903455697db10225606bd3625b",
+  "tests": [
+    {"class":"clean_observer_quorum","pass":true},
+    {"class":"one_truth_one_poison","pass":true},
+    {"class":"two_truth_one_poison","pass":true},
+    {"class":"duplicate_poison_observers_shared_root","pass":true},
+    {"class":"two_independent_poisoned_roots_boundary","pass":true},
+    {"class":"two_poison_two_truth_threshold3","pass":true},
+    {"class":"three_truth_one_poison_threshold3","pass":true},
+    {"class":"resolved_truth_detects_shared_root","shared":["DNS_ROOT_X"],"pass":true}
+  ],
+  "residual_boundary": "observer quorum can be fooled when threshold independent observer roots collude on the same false graph",
+  "status": "PASS",
+  "sha256_before_embedding": "0d8d3ae71529960dc3f32c1a3ed3a627bb8a072ddc141a9b91619cdf9f89607c"
+}
