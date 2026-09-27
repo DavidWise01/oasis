@@ -1,0 +1,36 @@
+{
+  "benchmark": "Frozen primitive checkpoint recovery with provenance spoofing",
+  "quorum": "3 independent roots",
+  "canonical_hash": "f25e14fb07112891fcd16529ba9c52d4e164d1e3f5adcf90001a6fc6700aa02b",
+  "forged_hash": "190f49926c02c402a6e9aa4abfe8cd58af9045620035cdc16fbe3ecd52064558",
+  "tests": [
+    {
+      "class": "clean_three_root_recovery",
+      "pass": true
+    },
+    {
+      "class": "three_forged_one_root",
+      "selected_hash": "f25e14fb07112891fcd16529ba9c52d4e164d1e3f5adcf90001a6fc6700aa02b",
+      "independent_roots": 2,
+      "quorum": false,
+      "pass": true
+    },
+    {
+      "class": "three_forged_two_roots",
+      "independent_roots": 2,
+      "quorum": false,
+      "pass": true
+    },
+    {
+      "class": "local_corruption_plus_shared_forgery",
+      "pass": true
+    },
+    {
+      "class": "three_independent_forged_roots",
+      "false_recovery_possible": true,
+      "pass": true
+    }
+  ],
+  "status": "PASS",
+  "sha256_before_embedding": "a5ad760f38d0232a0d1f2d81b232e0345a57199d9ed626853ff44b9738cb7929"
+}
