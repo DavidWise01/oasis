@@ -1,0 +1,13 @@
+{
+  "benchmark": "Corrected canonical palindromic/isomorphic Patricia full battery to failure v2",
+  "canonical_palindrome": ["|", "`", "1 1", "`", "|"],
+  "boundary_semantics": "11 ≡ | |; start and end",
+  "phase": "-+++-Aa+---+Pp-+++-Nn-++-+",
+  "tests_total": 70,
+  "tests_passed": 70,
+  "first_failure": null,
+  "boundary_reached": true,
+  "residual_boundary": "coherent replacement of canonical palindromic core plus external origin/reference witness",
+  "status": "PASS",
+  "sha256_before_embedding": "e64cf2950647fb18730a8a42e3bd4e0500cf27753175439e7783b0b9648c63b1"
+}
