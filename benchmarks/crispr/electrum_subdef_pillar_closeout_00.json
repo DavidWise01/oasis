@@ -1,0 +1,12 @@
+{
+  "pillar": "electrum_subdef",
+  "status": "0e / CLOSED",
+  "planes_total": 8,
+  "planes_passed": 8,
+  "literal": "subdef{{in this arrangement, ::electrum::au::79::ag21::100::female :: electrum::30::au::30::ag::30::salt::5::sugar::5::male}}",
+  "subdef": {
+    "female": {"electrum": true, "au": 79, "ag21": 100},
+    "male": {"electrum": 30, "au": 30, "ag": 30, "salt": 5, "sugar": 5}
+  },
+  "pillar_hash": "081f2ad17e9a35579450f1a2852f4a85bdb7b6fabf43949bd84f8349f7842c30"
+}
