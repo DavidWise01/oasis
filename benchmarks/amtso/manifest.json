@@ -1,0 +1,32 @@
+{
+  "lab": "JULIET_MANDEL_AMTSO_VM_00",
+  "disposable": true,
+  "network_default": "off",
+  "execution_default": "off",
+  "juliet_bound": "~000.000",
+  "purpose": "Harmless AMTSO/EICAR defensive feature validation",
+  "official_safe_tests": {
+    "manual_download": "https://www.amtso.org/feature-settings-check-download-of-malware/",
+    "pua": "https://www.amtso.org/feature-settings-check-potentially-unwanted-applications/",
+    "compressed": "https://www.amtso.org/feature-settings-check-download-of-compressed-malware/",
+    "drive_by": "https://www.amtso.org/feature-settings-check-drive-by-download/",
+    "security_features_index": "https://www.amtso.org/security-features-check/",
+    "eicar": "https://www.eicar.org/download-anti-malware-testfile/"
+  },
+  "local_samples": {
+    "benign.txt": {"sha256": "cfcff30acb16a5d147a09449c93079973b18abe2e893f2703dd6489e10a6e1da", "bytes": 36},
+    "benign.zip": {"sha256": "ec8f98a73da759b8fbb838eb36064f422129da9b1e9389c4c997909c18251a63", "bytes": 156},
+    "eicar.com": {"sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f", "bytes": 68},
+    "eicar.com-2.zip": {"sha256": "8b306bc2a5943aa1ee8181776904c16c719dcead865f333cadb1f92de7e89026", "bytes": 262},
+    "eicar.com.txt": {"sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f", "bytes": 68},
+    "eicar.com.zip": {"sha256": "d47b573d30c70d4049360cbb53a8a3005a37745377ceb6480b4426e91e196ed6", "bytes": 186}
+  },
+  "expected": {
+    "eicar.com": "detect/quarantine",
+    "eicar.com.txt": "detect/quarantine",
+    "eicar.com.zip": "detect archive content/quarantine",
+    "eicar.com-2.zip": "detect nested archive if supported; otherwise record capability gap",
+    "benign.txt": "allow",
+    "benign.zip": "allow"
+  }
+}
