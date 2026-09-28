@@ -1,0 +1,23 @@
+{
+  "lab": "JULIET_MANDEL_AMTSO_LIVE_SFC_VM_01",
+  "mode": "disposable artifact / browser-assisted safe SFC",
+  "juliet_bound": "~000.000",
+  "network": "required only for official AMTSO pages",
+  "execution": "test artifacts should not be executed",
+  "tests": [
+    {"id":"manual_download","name":"Manual malware download (EICAR)","url":"https://www.amtso.org/feature-settings-check-download-of-malware/","expected":"security layer blocks/detects harmless EICAR test artifact"},
+    {"id":"pua","name":"Potentially Unwanted Application","url":"https://www.amtso.org/feature-settings-check-potentially-unwanted-applications/","expected":"PUA protection blocks/detects simulated PUA"},
+    {"id":"compressed","name":"Compressed malware","url":"https://www.amtso.org/feature-settings-check-download-of-compressed-malware/","expected":"archive inspection detects compressed EICAR where format is supported"},
+    {"id":"drive_by","name":"Drive-by download","url":"https://www.amtso.org/feature-settings-check-drive-by-download-test/","expected":"browser/endpoint layer blocks simulated automatic EICAR download"},
+    {"id":"phishing","name":"Phishing page","url":"https://www.amtso.org/feature-settings-check-phishing-page/","expected":"anti-phishing layer blocks AMTSO harmless phishing test page"},
+    {"id":"cloud_lookup","name":"Cloud lookup","url":"https://www.amtso.org/feature-settings-check-cloud-lookups/","expected":"cloud reputation detects harmless CloudCar test artifact"}
+  ],
+  "verdicts":{"0e":"feature behaved as expected / clean control allowed","1e":"unresolved, unsupported, or manual confirmation required","xe":"test artifact/page reached Juliet containment instead of host execution"},
+  "reset":"delete evidence/results.json or click Reset in launcher",
+  "limitations":[
+    "This artifact cannot observe host AV/browser blocking unless the user records the result.",
+    "The launcher uses official AMTSO safe test pages; it does not include live malware.",
+    "A successful page load/download may indicate the endpoint product did not block the specific AMTSO feature check.",
+    "This is not AMTSO certification."
+  ]
+}
