@@ -1,0 +1,41 @@
+{
+  "name": "ATTACK_ENTERPRISE_JULIET_BENCH_02_REAL",
+  "source_blob_sha": "8b8a9c8cc9e553f96f963b91265f50ee0854636d",
+  "counts": {
+    "techniques": 222,
+    "subtechniques": 475,
+    "total": 697
+  },
+  "tests": {
+    "count_gate": true,
+    "unique_attack_ids": true,
+    "unique_stix_ids": true,
+    "all_have_tactic": true,
+    "quad_ranges": true,
+    "turn_ranges": true,
+    "tactic_ranges": true,
+    "route_invariant": true,
+    "procedures_excluded": true
+  },
+  "tests_passed": 9,
+  "tests_total": 9,
+  "status": "0e / CLOSED",
+  "root_hash": "b185ccaeface6f623e5f9c111262cd1911786500ecf95fdedc5232c39e54b2a0",
+  "tactic_counts": {
+    "command-and-control": 45,
+    "credential-access": 67,
+    "collection": 41,
+    "stealth": 148,
+    "discovery": 49,
+    "exfiltration": 19,
+    "lateral-movement": 23,
+    "persistence": 113,
+    "privilege-escalation": 96,
+    "execution": 64,
+    "initial-access": 22,
+    "defense-impairment": 56,
+    "impact": 33,
+    "resource-development": 50,
+    "reconnaissance": 46
+  }
+}
