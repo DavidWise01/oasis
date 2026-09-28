@@ -1,0 +1,22 @@
+{
+  "pillar": "fit_orientation_control_plane",
+  "status": "0e / CLOSED",
+  "axes": [
+    "shape",
+    "color",
+    "opacity",
+    "vibrancy"
+  ],
+  "branches": [
+    "a",
+    "b",
+    "c",
+    "d"
+  ],
+  "subdiv": 15,
+  "turn_fraction": 0.16666666666666666,
+  "turn_degrees": 60,
+  "planes_total": 10,
+  "planes_passed": 10,
+  "pillar_hash": "80fffe111082028a5f79f0e8695a721ad3a9b32511f2aecda0cdeeb8fdf78120"
+}
