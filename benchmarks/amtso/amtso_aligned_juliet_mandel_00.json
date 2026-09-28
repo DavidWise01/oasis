@@ -1,0 +1,40 @@
+{
+  "pillar": "AMTSO_ALIGNED_JULIET_MANDEL_00",
+  "status": "0e / CLOSED",
+  "planes_total": 9,
+  "planes_passed": 9,
+  "feature_categories": {
+    "manual_download_detection": true,
+    "pua_detection": true,
+    "compressed_threat_detection": true,
+    "drive_by_detection": true,
+    "phishing_detection": true,
+    "cloud_lookup_connected": true
+  },
+  "sandbox_kpis": {
+    "detection_capability": 1,
+    "anti_evasion_behavior": 1,
+    "speed_and_completion": 1,
+    "reporting_accuracy": 1,
+    "containment_integrity": 1
+  },
+  "test_plan": {
+    "scope": "harmless synthetic and AMTSO-style feature checks only",
+    "live_malware": false,
+    "product": "Juliet/Mandel defensive envelope",
+    "platform": "model/simulation",
+    "version": "00",
+    "criteria": {
+      "0e": "allow",
+      "1e": "quarantine/unresolved",
+      "xe": "contain/reject execution"
+    },
+    "limitations": [
+      "not an AMTSO certification",
+      "not a third-party lab test",
+      "no live malware samples used",
+      "software-level simulation only"
+    ]
+  },
+  "pillar_hash": "ac5007366a1d9068054c7eebb8963b9f68c2b7bbb17017caddf71a2ba697f0d4"
+}
