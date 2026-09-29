@@ -1,0 +1,13 @@
+{
+  "schema": "ae.frozen.revision.v105",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "root_witness_record": "root_witness := (revision, retained_snapshot_sha256, cycle_generation, cycle_head_seal)",
+  "candidate_parent_rule": "candidate.parent_cycle_seal == latest_root_witness.cycle_head_seal",
+  "generation_rule": "candidate.generation == latest_root_witness.cycle_generation + 1",
+  "atomic_sequence": [
+    "PREPARE external child head",
+    "COMMIT retained child state",
+    "FINALIZE external root witness head"
+  ],
+  "next_xe": "ROOT HEAD WITNESS UNAVAILABLE AT SOFT-OPEN"
+}
