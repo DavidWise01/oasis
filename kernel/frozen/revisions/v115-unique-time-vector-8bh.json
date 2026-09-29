@@ -1,0 +1,11 @@
+{
+  "schema": "ae.frozen.revision.v115",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "only 1 vector in time satisfies 8 bh :: 0.0.0 plank 0 + t + d",
+  "candidate_space": "8 bh",
+  "predicate": "0.0.0 plank 0 + t + d",
+  "required_satisfiers": 1,
+  "replay_rule": "second distinct satisfier at same anchor REJECT",
+  "bh": "preserved literal / not expanded",
+  "next_xe": "UNIQUE VECTOR SELECTION / WITNESS"
+}
