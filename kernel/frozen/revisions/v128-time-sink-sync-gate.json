@@ -1,0 +1,14 @@
+{
+  "schema": "ae.frozen.revision.v128",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "b{{inv{{+?{{emph{{wait until time sink}}~sync{{t-3{{a+2}} = {{5x5}}^5x{{3x3}}^3",
+  "supersedes_as_redundant": "v127 TYPED COMPOSITE CLOSURE case matrix",
+  "wait": "wait until time sink",
+  "sync": {
+    "t": "t-3",
+    "a": "a+2",
+    "target": "{{5x5}}^5x{{3x3}}^3"
+  },
+  "trigger_literal": "+?",
+  "next_xe": "TIME SINK PREDICATE"
+}
