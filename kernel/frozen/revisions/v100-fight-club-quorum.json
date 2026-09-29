@@ -1,0 +1,13 @@
+{
+  "schema": "ae.frozen.revision.v100",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "fight_club": "private quorum fight club :: fc::|<p - + f > | ::cf :: bulc thgif murouq etavirp",
+  "quorum": "3 witness :: 2 agree :: 1 decision :: 0 winner => `_`",
+  "behavior": {
+    "3_witness": true,
+    "2_agree": "one survivor",
+    "1_decision": "may exit cf to true",
+    "no_2_agree": "return to `_` potential"
+  },
+  "next_xe": "UNIQUE WITNESS IDENTITY / DOUBLE-VOTE REPLAY"
+}
