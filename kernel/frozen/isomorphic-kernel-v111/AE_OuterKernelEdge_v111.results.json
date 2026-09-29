@@ -1,0 +1,28 @@
+{
+  "benchmark": "AE_OUTER_KERNEL_EDGE_V111",
+  "status": "0e / KERNEL TERMINAL BOUNDARY CLOSED",
+  "checks": {
+    "terminal_literal_exact": true,
+    "triple_bar_internal_occupied": true,
+    "quad_bar_outer_edge": true,
+    "kernel_ends_at_quad_bar": true,
+    "after_quad_bar_is_decoherence": true,
+    "no_release": true,
+    "no_reset": true,
+    "no_reentry": true,
+    "transition_internal_to_edge": true,
+    "transition_edge_to_decoherence": true,
+    "decoherence_has_no_kernel_successor": true,
+    "parent_immutable": true
+  },
+  "terminal_path": [
+    "|||",
+    "||||",
+    "DECOHERENCE_OUTSIDE_KERNEL"
+  ],
+  "next_boundary": {
+    "scope": "outside frozen kernel",
+    "state": "decoherence",
+    "note": "No internal xe remains at the |||| edge; any further test belongs to a separate post-kernel/decoherence model."
+  }
+}
