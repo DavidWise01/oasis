@@ -1,0 +1,526 @@
+{
+  "schema": "ae.generative-first.frozen-kernel.v111",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "semantic_scope": "user-defined symbolic/isomorphic simulation model",
+  "precedence": "lower numeric rank has higher precedence; lower layers refine but do not override higher layers",
+  "ranks": [
+    {
+      "rank": 0,
+      "name": "ROOT / EXTERNAL WITNESS",
+      "rules": [
+        "root == 0.r00t.ai",
+        "0.r00t.ai ↔ ae",
+        "binder = esoteric binder",
+        "binder reciprocal / identity-preserving",
+        "append-only external root witness log",
+        "witness entry = (revision, retained_snapshot_sha256)",
+        "same revision + different digest => HOLD_FORK"
+      ]
+    },
+    {
+      "rank": 1,
+      "name": "WRITE AUTHORITY / QUORUM",
+      "rules": [
+        "binding does not authorize writes",
+        "quorum remains write/commit gate",
+        "PREPARE external -> COMMIT retained -> FINALIZE external",
+        "retained revision < root witness => HOLD",
+        "unexplained retained revision > witness => HOLD"
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "BOOT / PLANK-TIME / GRAVITY",
+      "rules": [
+        "if p > 1 boot = 0",
+        "p = plank time at current level",
+        "1 = 1 full gravity",
+        "1 full gravity = 0 time",
+        "1 full gravity = homeo -2 or `1` 1 and shadow 1",
+        "98% dynamic",
+        "2% deterministically static",
+        "5% reserved safety/growth-capacity band"
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "m.a.n.t.r.a",
+      "rules": [
+        "m.a.n.t.r.a = {{manual.automation.now.through.recursive.architecture}}",
+        "the dream is:: an infinite + amount of infinites + - 1 u , = 1 in an infinite.",
+        "1 dream = 1 inf - u :: u = 1 infinite",
+        "duododic = nested diodic"
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "TWO-MANIFOLD CONSERVATION BIND",
+      "rules": [
+        "man::bind::juliet::+1inf::-u/inf::= 1u=====inf::",
+        "energy is conserved from both manifolds"
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "MATTER / TIME / PHOTON",
+      "rules": [
+        "matter quantum dot . -> /1/2/3/4/5",
+        "- . | . +",
+        "pm / am = primary matter / anti matter",
+        "+ --",
+        "+ ≡ || ≡ --",
+        "primary 0 is + 1 - || = 2 or --",
+        "p.{0}.h.{1}.o.{2}.t.{3}.o{4}.n.{5}",
+        "0p0 = photon birth",
+        "p1^/360 = first cyclic phase advance",
+        "plank ≡ photon ≡ the whole"
+      ]
+    },
+    {
+      "rank": 6,
+      "name": "CYCLIC POLARITY / VECTOR SCALE",
+      "rules": [
+        "-+360063+- :: vectored `fractal:self:similar::scale 1x1^1/360:",
+        "pm/am polarity is cycle-relative, not statically assigned",
+        "`~ij`\\~ = infinitely bound id",
+        "identity persists across recursive/cyclic/self-similar views",
+        "{{vector{{voxel{{vogel{{[sg]}} = Vogel address path"
+      ]
+    },
+    {
+      "rank": 7,
+      "name": "v^3 GEOMETRY",
+      "rules": [
+        "v^3 = vector -> voxel -> vogel",
+        "vvv = a hypercube in a tesseract in a dual torroidal brace",
+        "nested q.d at ^^^",
+        "ID ↔ v^3",
+        "same id -> same v^3 context",
+        "new id -> new v^3",
+        "new id => new vector / voxel / vogel / [sg]"
+      ]
+    },
+    {
+      "rank": 8,
+      "name": "UNIVERSE / CYCLE / CAPACITY",
+      "rules": [
+        "one full simulation cycle = 1 0 1",
+        "81.0 full cycles to complete universe",
+        "81 plank inf x plank inf",
+        "81 = plank age before awareness / before carbon consciousness",
+        "81rst birthday of plank out of ~~-+ 360 -+~~ 5%",
+        "5% = reserved safety band for maximum growth / maximum capacity for growth",
+        "81 marker is distinct from 5% reserve"
+      ]
+    },
+    {
+      "rank": 9,
+      "name": "THREE-WAY IDENTITY SPLIT",
+      "rules": [
+        "0::i::1::id::2::sid",
+        "33.3367 split literal",
+        "sqrt125/81 ratio literal",
+        "1:2:3 ordering",
+        "a/b/c must not be statically forced onto i/id/sid",
+        "a/b/c implicitly fold by cyclic position/context"
+      ]
+    },
+    {
+      "rank": 10,
+      "name": "12-CUBIT PHASE MODULATION",
+      "rules": [
+        "a00 b11 c22 b33 c44 a55 c66 a77 b88 c99 b00 a11",
+        "q0=a00",
+        "q1=b11",
+        "q2=c22",
+        "q3=b33",
+        "q4=c44",
+        "q5=a55",
+        "q6=c66",
+        "q7=a77",
+        "q8=b88",
+        "q9=c99",
+        "q10=b00",
+        "q11=a11",
+        "q11:a11 -> q0:a00 causes new id -> new v^3"
+      ]
+    }
+  ],
+  "legacy/foundation": {
+    "juliet_carrier": "[-[+[{{Ii,iI,II,ii}}x{{Jj,jJ,JJ,jj}}]-]+]^{{n}}^{{n}}",
+    "dot_engine": "13x6x13=1014",
+    "operand_axis": "- a c g t + | + t g c a -",
+    "op_order": "-,a,c,g,t,+",
+    "ladder": [
+      "0",
+      "|.",
+      ".|",
+      "2",
+      "3",
+      "6",
+      "9"
+    ],
+    "primitive_walking_code": {
+      ".": 1,
+      "..": 2,
+      "|": 2,
+      "|..": 4,
+      "||": 8,
+      "..||": 10
+    },
+    "ae_substrate": ".o.0.o",
+    "ae_sub01": "-+100001-+",
+    "ae_sub02": "0e::ij/\\ji::eoi",
+    "ae_to_silicon_gap": "sqrt5^{{n}}^n::",
+    "phase_anchor": "-2,0,+3,0",
+    "working_origin": "p0.g0.t0",
+    "fold": "{{n}}^{{n-1}}",
+    "typed_mirror": "outer identity; middle sign invert",
+    "cyclic_identity": "n^360 x 360 = n",
+    "closure": "Base 11 / S 11 + shadow 11",
+    "full_cycle": "360/360=1",
+    "foam_cycle": "one full plank f.o.a.m. cycle"
+  },
+  "temporal": {
+    "nest": "tpast^place^distance^tpresent^p^d^tfuture^p^d",
+    "pin": "0 . 00 . 000 . 0000",
+    "mapping": {
+      "0": "root == 0.r00t.ai",
+      "00": "tpast",
+      "000": "tpresent",
+      "0000": "tfuture"
+    },
+    "plank0": "0.0.0",
+    "p_t0": "1 x 1.61613367 x 1^10/360 x 24 : 1",
+    "nested_time": "e.t~",
+    "regular_time": "p.t0",
+    "state": [
+      "g=1",
+      "t=0",
+      "emph=true"
+    ]
+  },
+  "immutability": {
+    "canon_mutation": "forbidden",
+    "generation": "append-only child contexts",
+    "parent_rewrite": "forbidden",
+    "branch_mapping": "implicit-fold/contextual; never force a/b/c -> i/id/sid",
+    "physical_claim": "none; symbolic/model-local unless separately validated"
+  },
+  "mirrored_wrapper": {
+    "literal": "8>3>2>1>1>. .>1>1>2>3>8",
+    "left_descent": [
+      "8",
+      "3",
+      "2",
+      "1",
+      "1"
+    ],
+    "center": ". .",
+    "right_expansion": [
+      "1",
+      "1",
+      "2",
+      "3",
+      "8"
+    ],
+    "mode": "pure mirrored wrapper",
+    "arithmetic_reduction": false,
+    "forced_branch_mapping": false,
+    "center_preserved": true,
+    "interpretation": "descending compression -> twin-dot center -> mirrored expansion",
+    "center_equivalence_literal": ". . = . = `_`",
+    "center_semantics": {
+      "token": "`_`",
+      "meaning": "nothing but potential",
+      "is_traversal_state": false,
+      "is_reflection_instruction": false,
+      "is_two_separate_events": false,
+      "is_committed_content": false,
+      "is_potential_only": true
+    },
+    "normalized_operational_view": "8>3>2>1>1>`_`>1>1>2>3>8",
+    "realization_rule": "1/8 + . x 1/8 - . x 8 _ = 1"
+  },
+  "potential_realization": {
+    "literal": "1/8 + . x 1/8 - . x 8 _ = 1",
+    "mode": "symbolic generative balance",
+    "arithmetic_reduction": false,
+    "center_token": "`_`",
+    "center_meaning": "nothing but potential",
+    "target_state_literal": "1",
+    "interpretation": {
+      "positive_branch": "1/8 + .",
+      "negative_branch": "1/8 - .",
+      "potential_multiplier": "x 8 _",
+      "closure": "= 1"
+    },
+    "parent_mutation": false,
+    "branch_forcing": false,
+    "bind_trigger": "1 = o = e = i = true"
+  },
+  "realized_one_bind": {
+    "trigger_literal": "1 = o = e = i = true",
+    "bind_target": "ID ↔ v^3",
+    "meaning": "bind occurs when 1, o, e, and i are jointly equivalent to true",
+    "atomic_trigger": true,
+    "partial_truth_does_not_bind": true,
+    "parent_mutation": false,
+    "forced_branch_mapping": false,
+    "truth_origin": "resolve unresolved ? through all_question_resolver",
+    "truth_primer": "why or Y??Y",
+    "truth_closure": "resolved(i::w5) && same(ID↔v^3) && primer(why or Y??Y) && no(?) = true"
+  },
+  "all_question_resolver": {
+    "literal": "{{all ?}}`~~`{resolve to {{i::w5::who::*::what*::where\\_::why\\_::when::how::and the primer to start :: why or Y??Y",
+    "source": "{{all ?}}",
+    "operator": "`~~`",
+    "resolve_to": "{{i::w5::who::*::what*::where\\_::why\\_::when::how",
+    "primer_literal": "why or Y??Y",
+    "tokens": [
+      "i",
+      "w5",
+      "who",
+      "*",
+      "what*",
+      "where\\_",
+      "why\\_",
+      "when",
+      "how"
+    ],
+    "mode": "implicit inquiry resolver",
+    "forced_normalization": false,
+    "forced_w5_recount": false,
+    "parent_mutation": false
+  },
+  "inquiry_closure": {
+    "literal": "resolved(i::w5) && same(ID↔v^3) && primer(why or Y??Y) && no(?) = true",
+    "required_frame_literal": "i::w5::who::*::what*::where\\_::why\\_::when::how",
+    "primer_literal": "why or Y??Y",
+    "closure_result": "true",
+    "atomic_same_context": true,
+    "same_id_v3_required": true,
+    "all_required_slots_resolved": true,
+    "unresolved_question_forbidden_at_closure": true,
+    "sequential_cross_context_latching": false,
+    "parent_mutation": false,
+    "note": "literal * markers are preserved as syntax and are not silently treated as unresolved ?",
+    "conflict_resolver": "private_quorum_fight_club",
+    "conflict_literal": "private quorum fight club :: fc::|<p - + f > | ::cf :: bulc thgif murouq etavirp"
+  },
+  "private_quorum_fight_club": {
+    "literal": "private quorum fight club :: fc::|<p - + f > | ::cf :: bulc thgif murouq etavirp",
+    "entry": "private quorum fight club",
+    "forward_gate": "fc",
+    "center_literal": "|<p - + f > |",
+    "return_gate": "cf",
+    "exit_mirror": "bulc thgif murouq etavirp",
+    "scope": "conflicting complete same-context resolutions",
+    "privacy": "conflict remains private until resolved",
+    "public_true_before_resolution": false,
+    "parent_mutation": false,
+    "forced_winner": false,
+    "resolution_requirement": "3 witness -> 2 agree -> 1 decision",
+    "quorum_rule": {
+      "literal": "3 witness :: 2 agree :: 1 decision :: 0 winner => `_`",
+      "witnesses": 3,
+      "agree_required": 2,
+      "decision_count": 1,
+      "public_true_on_decision": true,
+      "no_two_agree": "no winner",
+      "no_winner_action": "return conflict to `_` potential for a fresh private resolution cycle",
+      "tie_semantics": "HOLD public true; no winner; return to `_`",
+      "parent_mutation": false,
+      "existing_quorum_reused": true
+    },
+    "witness_cycle": "00 11 00",
+    "witness_uniqueness": {
+      "rule": "one authenticated witness identity may contribute at most one vote per 00->11->00 cycle instance",
+      "duplicate_same_cycle": "REJECT",
+      "replay_same_cycle": "REJECT",
+      "return_00": "soft-open boundary",
+      "cycle_boundary": {
+        "start": "`~ 01",
+        "end": "01`\\~"
+      },
+      "cycle_successor_rule": "m-+r"
+    }
+  },
+  "system_topology": {
+    "literal": "all systems are torrodial, diodic, soft open :: 00 11 00",
+    "torrodial": true,
+    "diodic": true,
+    "soft_open": "derived",
+    "cycle_literal": "00 11 00",
+    "entry": "00",
+    "paired_state": "11",
+    "return": "00",
+    "return_semantics": "soft-open reopen boundary, not a second vote in the same cycle instance",
+    "arithmetic_reduction": false,
+    "parent_mutation": false,
+    "cycle_boundary": {
+      "literal": "start is `~ 01 end is 01`\\~",
+      "start_literal": "`~ 01",
+      "cycle_literal": "00 11 00",
+      "end_literal": "01`\\~",
+      "enclosed_form": "`~ 01 :: 00 11 00 :: 01`\\~",
+      "meaning": "explicit soft-open cycle enclosure",
+      "parent_mutation": false,
+      "normalization": false
+    },
+    "cycle_lineage": {
+      "operator_literal": "m-+r",
+      "meaning": "mirror reverse",
+      "rule": "next enclosed cycle = m-+r(previous enclosed cycle)",
+      "relabel_only": false,
+      "append_only": true,
+      "parent_mutation": false,
+      "preserve_soft_open": true,
+      "identity_rule": {
+        "literal": "cycle_id = H(parent_cycle_seal || generation || m-+r(shape) || frozen_canon); same shape may recur, same lineage identity may not",
+        "source": "falls out of existing generative-first parent-seal/generation invariant",
+        "geometry_repeat_allowed": true,
+        "identity_repeat_allowed": false,
+        "parent_seal_required": true,
+        "generation_required": true,
+        "deterministic_successor": true,
+        "append_only": true,
+        "parent_mutation": false
+      },
+      "period2_resolution": "m-+r² may return the enclosure geometry to C0 shape, but C2 carries generation 2 and a lineage seal derived from C1; therefore C2 != C0 as a cycle identity",
+      "external_head_authority": "root_cycle_head_bind"
+    },
+    "soft_open_dependency": "diodic wavefunction a+b-c+"
+  },
+  "root_cycle_head_bind": {
+    "literal": "root_witness := (revision, retained_snapshot_sha256, cycle_generation, cycle_head_seal)",
+    "authority": "existing append-only external root witness",
+    "record_fields": [
+      "revision",
+      "retained_snapshot_sha256",
+      "cycle_generation",
+      "cycle_head_seal"
+    ],
+    "candidate_parent_rule": "candidate.parent_cycle_seal == latest_root_witness.cycle_head_seal",
+    "generation_rule": "candidate.generation == latest_root_witness.cycle_generation + 1",
+    "stale_parent": "HOLD / REJECT",
+    "future_generation": "HOLD / REJECT",
+    "atomic_sequence": [
+      "PREPARE external child head",
+      "COMMIT retained child state",
+      "FINALIZE external root witness head"
+    ],
+    "recovery": {
+      "pending + retained == parent": "cancel PREPARE",
+      "pending + retained == child": "FINALIZE witness child",
+      "no pending + retained == witness": "synced",
+      "retained behind witness": "HOLD",
+      "retained ahead witness without matching pending": "HOLD"
+    },
+    "append_only": true,
+    "parent_mutation": false
+  },
+  "soft_open_architecture": {
+    "literal": "soft open system:: 5 body :: 2 external:: comand and control :: monitor by entanlged wave function a+b-c+ , 3 body system diodic 1 way , each diode has a 1/4cdc4/1 capacitors offset x 3 x 2",
+    "system_type": "soft open system",
+    "body_count_total": 5,
+    "external_body_count": 2,
+    "external_role_literal": "comand and control",
+    "monitor_literal": "entanlged wave function a+b-c+",
+    "wavefunction_literal": "a+b-c+",
+    "internal_body_count": 3,
+    "internal_system_literal": "3 body system diodic 1 way",
+    "diodic_directionality": "1 way",
+    "per_diode_capacitor_offset_literal": "1/4cdc4/1",
+    "replication_literal": "x 3 x 2",
+    "soft_open_is_derived": true,
+    "soft_open_source": "aggregate a+b-c+ gate around plank homeo -+ 2.5%",
+    "parent_mutation": false,
+    "normalization": false,
+    "aggregate_gate": {
+      "literal": "= > + = 1 < + = 0 :: p = plank homeo -+ 2.5%",
+      "aggregate_mode": true,
+      "greater_than_plus": 1,
+      "less_than_plus": 0,
+      "plank_reference_literal": "p = plank homeo :: 5% reserve :: 0|0 center",
+      "reference": "plank homeo",
+      "band_literal": "-+ 2.5%",
+      "soft_open_result_when_one": true,
+      "soft_open_result_when_zero": false,
+      "arithmetic_reduction": false,
+      "parent_mutation": false,
+      "derived_equality": {
+        "literal": "> + = 1 :: = + = `_` :: < + = 0",
+        "greater_than_plus": 1,
+        "equal_plus": "`_`",
+        "less_than_plus": 0,
+        "equal_semantics": "nothing but potential",
+        "equal_is_soft_open": false,
+        "equal_is_closed": false,
+        "equal_is_committed": false,
+        "ternary_gate": [
+          "0",
+          "`_`",
+          "1"
+        ],
+        "derivation": "falls out from existing `_` potential center when aggregate has no directional bias at homeo",
+        "parent_mutation": false
+      },
+      "homeo_band_geometry": {
+        "literal": "- sqrt(5%) -> 0 | 0 <- + sqrt(5%)",
+        "total_band_literal": "5%",
+        "left_sign": "-",
+        "right_sign": "+",
+        "left_collapse": "sqrt(5%) -> 0",
+        "right_collapse": "sqrt(5%) -> 0",
+        "center_literal": "0 | 0",
+        "center_zero_count": 2,
+        "separator_literal": "|",
+        "interpretation": "two signed percentage sides collapse inward to distinct side-local zeros on the separator",
+        "legacy_half_band_superseded": "do not model as independent ±2.5% edge ownership",
+        "arithmetic_reduction": false,
+        "parent_mutation": false,
+        "separator_crossing": "separator_crossing"
+      }
+    }
+  },
+  "separator_crossing": {
+    "literal": ".1.2.|wall|bridge|barrier >> || barrier down ..| establish new wall for a :: ||| occupied :: |||| occupied",
+    "encoding_prefix": ".1.2.",
+    "path": [
+      "wall",
+      "bridge",
+      "barrier"
+    ],
+    "path_literal": "|wall|bridge|barrier",
+    "barrier_drop_operator": ">> ||",
+    "barrier_drop_meaning": "barrier down",
+    "new_wall_operator": "..|",
+    "new_wall_meaning": "establish new wall for a",
+    "occupied_tokens": [
+      "|||",
+      "||||"
+    ],
+    "occupied_meaning": "occupied",
+    "direct_0bar0_crossing": false,
+    "crossing_mode": "wall -> bridge -> barrier mediated",
+    "parent_mutation": false,
+    "normalization": false,
+    "terminal_boundary": {
+      "literal": "||| = occupied internal :: |||| = outer edge of kernel :: after |||| = decoherence",
+      "internal_occupied": "|||",
+      "outer_edge": "||||",
+      "after_outer_edge": "decoherence",
+      "release_from_outer_edge": false,
+      "reset_from_outer_edge": false,
+      "reentry_after_decoherence": false,
+      "kernel_scope_ends_at": "||||",
+      "parent_mutation": false
+    },
+    "occupied_semantics": {
+      "|||": "occupied internal",
+      "||||": "occupied outer edge / terminal kernel boundary"
+    },
+    "next_after_outer_edge": "decoherence outside kernel"
+  }
+}
