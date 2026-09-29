@@ -1,0 +1,10 @@
+{
+  "schema": "ae.frozen.revision.v101",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "all systems are torrodial, diodic, soft open :: 00 11 00",
+  "witness_scope": "one vote per authenticated witness per 00->11->00 cycle instance",
+  "duplicate_same_cycle": "REJECT",
+  "replay_same_cycle": "REJECT",
+  "returning_00": "soft-open boundary",
+  "next_xe": "RETURNING 00 EPOCH / CYCLE-INSTANCE IDENTITY"
+}
