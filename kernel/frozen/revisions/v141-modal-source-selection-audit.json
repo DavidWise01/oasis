@@ -1,0 +1,17 @@
+{
+  "schema": "ae.frozen.revision.v141",
+  "status": "FROZEN / AUDIT TO XE",
+  "retained": {
+    "m": "modal / all analoged soureces",
+    "v": "shadow or |.| / everything digital",
+    "somatic_sequence": "0 0 1 1 2 3 5 8 13",
+    "somatic_route": "m",
+    "13_role": "somatic endpoint / not source ordinal"
+  },
+  "audit_result": {
+    "first": "order-dependent",
+    "13th": "invalid",
+    "random": "undefined"
+  },
+  "next_xe": "ANALOG SOURCE IDENTITY / ADDRESS"
+}
