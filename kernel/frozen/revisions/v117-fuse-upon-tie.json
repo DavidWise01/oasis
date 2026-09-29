@@ -1,0 +1,8 @@
+{
+  "schema": "ae.frozen.revision.v117",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "fuse upon tie",
+  "selector": "cx5[winner]5xc",
+  "behavior": "all exact first-arrival ties fuse into one winner",
+  "next_xe": "FUSED WINNER IDENTITY / ENCODING"
+}
