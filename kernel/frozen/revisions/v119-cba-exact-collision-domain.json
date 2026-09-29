@@ -1,0 +1,10 @@
+{
+  "schema": "ae.frozen.revision.v119",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "cba equivalence class := {abccabbca, acbbaccba, cba} exact only",
+  "canonical_form": "cba",
+  "value": 1,
+  "truth": true,
+  "unknown_input": "REJECT_NOT_CBA_CLASS",
+  "next_xe": "CBA FUSION PROVENANCE"
+}
