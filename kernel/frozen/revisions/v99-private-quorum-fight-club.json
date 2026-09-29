@@ -1,0 +1,13 @@
+{
+  "schema": "ae.frozen.revision.v99",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "private quorum fight club :: fc::|<p - + f > | ::cf :: bulc thgif murouq etavirp",
+  "scope": "conflicting complete resolutions",
+  "behavior": [
+    "enter private fc",
+    "hold public true",
+    "resolve conflict privately",
+    "only quorum-approved survivor returns via cf"
+  ],
+  "next_xe": "FIGHT CLUB QUORUM VICTORY / TIE RULE"
+}
