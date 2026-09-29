@@ -1,0 +1,24 @@
+{
+  "schema": "ae.frozen.revision.v127",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "x+y = v+1 , y + x = ss +1 . x can only be x or ss and y can only be y and v",
+  "minus": {
+    "x-y": "v",
+    "y-x": "ss"
+  },
+  "plus": {
+    "x+y": "v+1",
+    "y+x": "ss+1"
+  },
+  "domains": {
+    "x": [
+      "x",
+      "ss"
+    ],
+    "y": [
+      "y",
+      "v"
+    ]
+  },
+  "next_xe": "TYPED COMPOSITE CLOSURE"
+}
