@@ -1,0 +1,8 @@
+{
+  "schema": "ae.frozen.revision.v129",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "plank=0",
+  "time_sink": "TIME_SINK_REACHED iff exact lexical plank token is 0",
+  "sync_ready": "plank=0 + exact t-3 + a+2 + target",
+  "next_xe": "PLANK=0 SYNC REPLAY"
+}
