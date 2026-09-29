@@ -1,0 +1,13 @@
+{
+  "schema": "ae.frozen.revision.v104",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "operator": "m-+r",
+  "fix": "cycle_id = H(parent_cycle_seal || generation || m-+r(shape) || frozen_canon); same shape may recur, same lineage identity may not",
+  "period2": {
+    "geometry": "may repeat",
+    "identity": "must not repeat",
+    "generation": "monotonic append-only",
+    "parent_seal": "required"
+  },
+  "next_xe": "CYCLE HEAD ↔ EXTERNAL ROOT WITNESS BIND"
+}
