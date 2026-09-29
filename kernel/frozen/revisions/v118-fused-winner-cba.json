@@ -1,0 +1,9 @@
+{
+  "schema": "ae.frozen.revision.v118",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "{{abccabbca = acbbaccba = cba = 1 = true",
+  "canonical_form": "cba",
+  "canonical_value": 1,
+  "canonical_truth": true,
+  "next_xe": "CBA COLLISION DOMAIN"
+}
