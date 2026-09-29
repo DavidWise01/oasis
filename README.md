@@ -24,6 +24,7 @@ O^1 immutable parent
 │  ├─ neon-compound/      evolution / distillation grammar
 │  ├─ timing-body/        pulse / rhythm / movement / cohesion
 │  ├─ timing-capacitance/ capacitance / pulse-pattern grammar
+│  ├─ isomorphic-kernel/ frozen v111 kernel explorer
 │  ├─ vessel-story/      historical vessel-story iterations\n│  └─ mobius/            creation-story / instance engine
 │
 ├─ stories/\n│  └─ gilgamesh/          MOBIUS story instance 0001\n│\n├─ worlds/
@@ -32,6 +33,7 @@ O^1 immutable parent
 ├─ apps/
 │  └─ tattoo/             current creative attachment
 │
+├─ kernel/frozen/         immutable isomorphic-kernel v111 artifacts
 ├─ lean/                  formal modules and stitch ledger
 └─ legacy/                preserved prior public root material
 ```
@@ -68,7 +70,7 @@ OaSIs distinguishes:
 
 ## GitHub Pages
 
-The root `index.html` is the public site. A Pages deployment workflow lives at `.github/workflows/pages.yml`.
+The root `index.html` is the public site. The frozen kernel explorer is at `architecture/isomorphic-kernel/`, backed by immutable artifacts under `kernel/frozen/isomorphic-kernel-v111/`. A Pages deployment workflow lives at `.github/workflows/pages.yml`.
 
 Expected project-page URL:
 
