@@ -1,0 +1,15 @@
+{
+  "schema": "ae.frozen.revision.v98",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "resolver": "{{all ?}}`~~`{resolve to {{i::w5::who::*::what*::where\\_::why\\_::when::how::and the primer to start :: why or Y??Y",
+  "closure": "resolved(i::w5) && same(ID↔v^3) && primer(why or Y??Y) && no(?) = true",
+  "closure_semantics": {
+    "same_ID_v3_context": true,
+    "all_required_interrogatives_resolved": true,
+    "primer_consumed": true,
+    "no_question_mark_remaining": true,
+    "result": "true"
+  },
+  "truth_bind_trigger": "1 = o = e = i = true",
+  "next_xe": "CONFLICTING COMPLETE RESOLUTIONS"
+}
