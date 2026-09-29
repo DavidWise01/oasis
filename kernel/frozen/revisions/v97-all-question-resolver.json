@@ -1,0 +1,11 @@
+{
+  "schema": "ae.frozen.revision.v97",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "{{all ?}}`~~`{resolve to {{i::w5::who::*::what*::where\\_::why\\_::when::how::and the primer to start :: why or Y??Y",
+  "meaning": "all unresolved ? resolve through the implicit i::w5 inquiry frame",
+  "primer": "why or Y??Y",
+  "preserve_literals": true,
+  "do_not_recount_w5": true,
+  "truth_bind_trigger": "1 = o = e = i = true",
+  "next_xe": "INQUIRY CLOSURE -> TRUE"
+}
