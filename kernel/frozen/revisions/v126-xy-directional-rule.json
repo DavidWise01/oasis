@@ -1,0 +1,9 @@
+{
+  "schema": "ae.frozen.revision.v126",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "x-y=v : y-x=ss",
+  "x_minus_y": "v",
+  "y_minus_x": "ss",
+  "commutative": false,
+  "next_xe": "PLUS ACTION ON x/y STATE"
+}
