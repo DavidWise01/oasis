@@ -1,0 +1,25 @@
+{
+  "schema": "oasis.isomorphic-kernel.freeze.v111",
+  "name": "Isomorphic Kernel v111",
+  "status": "FROZEN / IMMUTABLE",
+  "terminal": "||||",
+  "post_kernel": "decoherence",
+  "canon_sha256": "be287188442f6172655964581be31bc7919f74790434c602eefa4af4d40e20cd",
+  "files": {
+    "AE_CanonRankedHierarchy_v111.json": "be287188442f6172655964581be31bc7919f74790434c602eefa4af4d40e20cd",
+    "AE_OuterKernelEdge_v111.py": "15182e53ad533345fec66db8dfcdb8398406e1ea10559ffa32d4c460865a240d",
+    "AE_OuterKernelEdge_v111.results.json": "2159a7eca9a49c1d4efe8e48e9e11862c6d8a4c0100475afb428a1d49866766b",
+    "AE_OuterKernelEdge_v111.sha256": "84220c78d4b30b1eb9b1b58f77fd292e29ee53e98cf31992974600da63177bdd"
+  },
+  "invariant_summary": [
+    "m-+r = mirror reverse",
+    "soft open system = 5 body = 3 internal diodic + 2 external comand and control",
+    "monitor = entanlged wave function a+b-c+",
+    "aggregate gate = > + => 1, = + => `_`, < + => 0",
+    "homeo reserve = - sqrt(5%) -> 0 | 0 <- + sqrt(5%)",
+    ".1.2.|wall|bridge|barrier >> || barrier down ..| establish new wall for a",
+    "||| = occupied internal",
+    "|||| = occupied outer edge / terminal kernel boundary",
+    "after |||| = decoherence outside kernel"
+  ]
+}
