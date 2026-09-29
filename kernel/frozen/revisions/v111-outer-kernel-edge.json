@@ -1,0 +1,9 @@
+{
+  "schema": "ae.frozen.revision.v111",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "||| = occupied internal :: |||| = outer edge of kernel :: after |||| = decoherence",
+  "path": "||| -> |||| -> decoherence(outside kernel)",
+  "release_reset": "not applicable",
+  "kernel_terminal": "||||",
+  "next_scope": "decoherence outside kernel"
+}
