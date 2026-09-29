@@ -1,0 +1,10 @@
+{
+  "schema": "ae.frozen.revision.v102",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "start is `~ 01 end is 01`\\~",
+  "start": "`~ 01",
+  "cycle": "00 11 00",
+  "end": "01`\\~",
+  "enclosure": "`~ 01 :: 00 11 00 :: 01`\\~",
+  "next_xe": "CYCLE ENCLOSURE -> UNIQUE LINEAGE BIND"
+}
