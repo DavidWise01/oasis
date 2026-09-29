@@ -1,0 +1,8 @@
+{
+  "schema": "ae.frozen.revision.v109",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "- sqrt(5%) -> 0 | 0 <- + sqrt(5%)",
+  "meaning": "5% is the whole reserve; -/+ are signed percentage sides; each collapses by sqrt(5%) to one of two zeros on |",
+  "supersedes": "independent ±2.5% edge ownership",
+  "next_xe": "0|0 SEPARATOR CROSSING"
+}
