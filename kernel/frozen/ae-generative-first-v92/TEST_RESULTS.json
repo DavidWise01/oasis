@@ -1,0 +1,8 @@
+{
+  "kernel_exit": 0,
+  "kernel_stdout": "{\n  \"status\": \"0e / FROZEN GENERATIVE KERNEL PASS\",\n  \"version\": \"v92\",\n  \"canon_sha256\": \"8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8\",\n  \"states\": 25,\n  \"generation\": 2,\n  \"q\": 0,\n  \"token\": \"a00\",\n  \"identity\": \"`~ij`\\\\~#69136c9ebb565d00d62a64ad\",\n  \"v3\": {\n    \"vector\": \"vector:7138dd0c2a25733b7e37dcdb\",\n    \"voxel\": \"voxel:40ac40fcfc1f8fcceae0c492\",\n    \"vogel\": \"vogel:682adfbd24a45f10fd3cbb7c\",\n    \"sg\": \"[sg:b97c5b5d4a14ff26]\"\n  },\n  \"lineage_seal\": \"651d0fc15ae2f9d2a179531bf495b5f7b5e94680dff23e76a8913fbf935877f7\"\n}\n",
+  "kernel_stderr": "",
+  "tests_exit": 0,
+  "tests_stdout": "{\n  \"status\": \"0e / 10 INVARIANT GROUPS PASS\",\n  \"canon_sha256\": \"8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8\",\n  \"genesis_id\": \"`~ij`\\\\~#bebd8c611361f2ac3d3adfee\",\n  \"child_id\": \"`~ij`\\\\~#f8c7fe0ac9ed4d769c23ceb3\",\n  \"child_v3\": {\n    \"vector\": \"vector:da36e141ec494c3b232ab6c5\",\n    \"voxel\": \"voxel:8d178d09f2e01f338034a016\",\n    \"vogel\": \"vogel:690839c2e1eed6082210aef3\",\n    \"sg\": \"[sg:cb4c8ecf925bfc30]\"\n  },\n  \"child_lineage_seal\": \"d721726923cbf521de368396fb91f28fabdd839b61091a37f6bf2560b640eeaf\"\n}\n",
+  "tests_stderr": ""
+}
