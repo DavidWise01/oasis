@@ -1,0 +1,8 @@
+{
+  "schema": "ae.frozen.revision.v110",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": ".1.2.|wall|bridge|barrier >> || barrier down ..| establish new wall for a :: ||| occupied :: |||| occupied",
+  "crossing": ".1.2. -> wall -> bridge -> barrier -> >> || -> ..|",
+  "occupied": ["|||", "||||"],
+  "next_xe": "OCCUPIED RELEASE / RESET"
+}
