@@ -1,0 +1,22 @@
+{
+  "schema": "ae.generative-first.frozen-kernel.v95",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "1/8 + . x 1/8 - . x 8 _ = 1",
+  "center_equivalence": ". . = . = `_`",
+  "center_meaning": "nothing but potential",
+  "semantics": {
+    "mode": "symbolic generative balance",
+    "arithmetic_reduction": false,
+    "positive_branch": "1/8 + .",
+    "negative_branch": "1/8 - .",
+    "potential_multiplier": "x 8 _",
+    "closure": "= 1",
+    "parent_mutation": false,
+    "branch_forcing": false
+  },
+  "test_status": "0e / POTENTIAL REALIZATION RULE PASS",
+  "next_xe": "REALIZED `1` -> ID/v^3 BIND TIMING",
+  "canon_sha256": "35a4f5c854a3a7b2ada3037070982497b6a0d4c009b44bb14902fd6b9a8a01d3",
+  "test_sha256": "9c8a37217ef44fda31ff3efc86bb55bd9a4dd8a646c76fd02769291ad0628765",
+  "results_sha256": "1cd1b1c4b1affd71f7c932c9a201f5dba90c3233b856bde8624e0c047e8063c7"
+}
