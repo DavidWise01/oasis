@@ -1,0 +1,8 @@
+{
+  "schema": "ae.frozen.revision.v121",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "q.d{{2^3}} = {{1/1/2/4/8}} = {{- + Aa Ee Ii Oo Uu Yy - + }}",
+  "meaning": "fixed 8-position fused multiplicity frame; multiplicity preserved by position",
+  "deduplicate_members": false,
+  "next_xe": "MULTIPLICITY FRAME BIJECTION"
+}
