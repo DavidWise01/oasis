@@ -1,0 +1,22 @@
+{
+  "schema": "ae.frozen.revision.v123",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "{{ x . y . x . y . x . y . x .}}~{{tempo:: 2/5 interal : 3/5 external :: timing :: 0-9 , 11-20 , 22|25|27 , 30|33|36 , 40|44|45 , 50|52|55 , 60|66|69 , 70|72|77 , 80|84|88 , 90|96|99 , 100|110|111|000|001|011 ::",
+  "carrier": "{{ x . y . x . y . x . y . x .}}",
+  "tempo_split": "2/5 interal : 3/5 external",
+  "timing_groups": [
+    "0-9",
+    "11-20",
+    "22|25|27",
+    "30|33|36",
+    "40|44|45",
+    "50|52|55",
+    "60|66|69",
+    "70|72|77",
+    "80|84|88",
+    "90|96|99",
+    "100|110|111|000|001|011"
+  ],
+  "tokens": "exact strings / no numeric normalization",
+  "next_xe": "TEMPO GROUP -> x/y CARRIER ROUTING"
+}
