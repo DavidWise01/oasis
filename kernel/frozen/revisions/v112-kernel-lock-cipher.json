@@ -1,0 +1,10 @@
+{
+  "schema": "ae.frozen.revision.v112",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "{{..||..||||||}}",
+  "meaning": "cypher for the kernel lock",
+  "terminal_edge": "||||",
+  "exact_match_required": true,
+  "post_lock": "immutable / reject internal operators",
+  "next_xe": "LOCK PROVENANCE / WHO MAY PRESENT CYPHER"
+}
