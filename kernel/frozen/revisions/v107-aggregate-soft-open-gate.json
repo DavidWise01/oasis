@@ -1,0 +1,12 @@
+{
+  "schema": "ae.frozen.revision.v107",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "= > + = 1 < + = 0 :: p = plank homeo -+ 2.5%",
+  "monitor": "a+b-c+",
+  "aggregate": {
+    "> +": 1,
+    "< +": 0,
+    "p": "plank homeo -+ 2.5%"
+  },
+  "next_xe": "AGGREGATE == +"
+}
