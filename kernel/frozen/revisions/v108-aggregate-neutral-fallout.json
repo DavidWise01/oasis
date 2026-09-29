@@ -1,0 +1,8 @@
+{
+  "schema": "ae.frozen.revision.v108",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "derived_rule": "> + = 1 :: = + = `_` :: < + = 0",
+  "reason": "exactly at homeo there is no directional bias, so existing `_` potential state applies",
+  "band": "p = plank homeo -+ 2.5%",
+  "next_xe": "HOME0 ±2.5% BAND EDGE INCLUSIVITY"
+}
