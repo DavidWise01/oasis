@@ -1,0 +1,9 @@
+{
+  "schema": "ae.frozen.revision.v124",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "fib rev fib l-00112355321100+r",
+  "left_sweep": "0011235",
+  "right_sweep": "5321100",
+  "property": "7-step forward + exact 7-step reverse; shared by all 11 tempo groups",
+  "next_xe": "FIB ROUTE DIGIT SEMANTICS"
+}
