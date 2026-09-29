@@ -1,0 +1,10 @@
+{
+  "schema": "ae.frozen.revision.v103",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "operator": "m-+r",
+  "meaning": "mirror reverse",
+  "rule": "next cycle = m-+r(previous cycle)",
+  "cycle_boundary": "`~ 01 :: 00 11 00 :: 01`\\~",
+  "relabel_replay": "REJECT",
+  "next_xe": "m-+r PERIOD-2 LINEAGE ALIAS"
+}
