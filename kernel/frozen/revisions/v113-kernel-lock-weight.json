@@ -1,0 +1,9 @@
+{
+  "schema": "ae.frozen.revision.v113",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "lock": "{{..||..||||||}}",
+  "weight": "plank 0 + td",
+  "rule": "LOCK iff exact cipher AND exact weight literal",
+  "td": "preserved literal / undefined here",
+  "next_xe": "td SOURCE / SEMANTICS"
+}
