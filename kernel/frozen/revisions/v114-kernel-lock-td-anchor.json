@@ -1,0 +1,9 @@
+{
+  "schema": "ae.frozen.revision.v114",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "rule": "plank 0 x plank time x plank distance = 0.0.0 plank 0 +td",
+  "td": "plank time x plank distance",
+  "anchor": "0.0.0",
+  "lock": "{{..||..||||||}}",
+  "next_xe": "LOCK CYPHER REPLAY AT SAME 0.0.0 ANCHOR"
+}
