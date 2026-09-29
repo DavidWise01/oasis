@@ -1,0 +1,36 @@
+{
+  "schema": "ae.frozen.revision.v94",
+  "status": "FROZEN / IMMUTABLE / GENERATIVE-FIRST",
+  "parent": "kernel/frozen/ae-generative-first-v92",
+  "rule": {
+    "wrapper": "8>3>2>1>1>`_`>1>1>2>3>8",
+    "center_equivalence_literal": ". . = . = `_`",
+    "center_token": "`_`",
+    "center_meaning": "nothing but potential",
+    "is_traversal_state": false,
+    "is_reflection_instruction": false,
+    "is_two_separate_events": false,
+    "is_committed_content": false,
+    "is_potential_only": true
+  },
+  "tests": {
+    "wrapper_exact": true,
+    "center_literal_preserved": true,
+    "center_is_potential_only": true,
+    "center_not_committed_content": true,
+    "center_not_traversal_state": true,
+    "center_not_reflection_instruction": true,
+    "center_not_two_events": true,
+    "mirror_still_holds": true
+  },
+  "result": "0e / POTENTIAL CENTER PASS",
+  "next_xe": {
+    "name": "POTENTIAL -> UNIQUE REALIZATION RULE",
+    "missing_invariant": "define the deterministic or contextual realization rule that maps `_` potential to one concrete generated child state without mutating the parent"
+  },
+  "local_artifact_hashes": {
+    "AE_CanonRankedHierarchy_v94.json": "2b6ccb1f18ba3d3081bef44f8c816da8cac718389593758a8a229516a4b0851b",
+    "AE_PotentialCenter_v94.py": "5d5b18f3046aff76cc70b133b1d5bcfed9814250fb7d979026482368804ce373",
+    "AE_PotentialCenter_v94.results.json": "1f258a37cc18e6bf282b36b0063fcf607c4dc1675230027a514fa6f4101928dc"
+  }
+}
