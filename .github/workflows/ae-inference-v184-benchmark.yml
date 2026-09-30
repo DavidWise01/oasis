@@ -1,0 +1,30 @@
+name: OaSIs v184 Benchmark
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "benchmarks/ae-inference-v184/**"
+      - ".github/workflows/ae-inference-v184-benchmark.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run v184 benchmark suite
+        working-directory: benchmarks/ae-inference-v184
+        run: |
+          python benchmark.py | tee benchmark-stdout.json
+      - name: Upload benchmark result
+        uses: actions/upload-artifact@v4
+        with:
+          name: ae-inference-v184-benchmark
+          path: benchmarks/ae-inference-v184/benchmark-result.json
