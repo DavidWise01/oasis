@@ -1,0 +1,29 @@
+name: OaSIs v184 Base-1i Arity Test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "benchmarks/ae-inference-v184-base1i/**"
+      - ".github/workflows/ae-inference-v184-base1i.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  base1i:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test base 1i arity ladder
+        working-directory: benchmarks/ae-inference-v184-base1i
+        run: python test_base1i.py | tee stdout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ae-inference-v184-base1i
+          path: benchmarks/ae-inference-v184-base1i/result.json
