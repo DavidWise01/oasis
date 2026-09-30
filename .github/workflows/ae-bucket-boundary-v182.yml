@@ -1,0 +1,36 @@
+name: AE Bucket Boundaries v182
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kernel/generative/ae-bucket-boundary-v182/**"
+      - ".github/workflows/ae-bucket-boundary-v182.yml"
+  pull_request:
+    paths:
+      - "kernel/generative/ae-bucket-boundary-v182/**"
+      - ".github/workflows/ae-bucket-boundary-v182.yml"
+permissions:
+  contents: read
+jobs:
+  two-boundaries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Exhaust ingress and egress over all 720 parent cells
+        working-directory: kernel/generative/ae-bucket-boundary-v182
+        run: |
+          python kernel.py > /tmp/v182-boundaries.json
+          python test_boundaries.py
+          python - <<'PY'
+          import json
+          r=json.load(open("/tmp/v182-boundaries.json"))
+          assert r["status"] == "0e / v182 TWO BOUNDARIES PASS"
+          assert r["boundaries"]["ingress"]["tests"] == 720
+          assert r["boundaries"]["egress"]["tests"] == 720
+          assert r["total_boundary_transitions_tested"] == 1440
+          assert r["boundaries"]["egress"]["payload_exposed_bytes"] == 0
+          print("0e / v182 TWO BOUNDARIES CI PASS")
+          PY

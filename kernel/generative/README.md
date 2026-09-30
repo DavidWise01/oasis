@@ -56,3 +56,22 @@ It freezes the tested L0 -> L1 -> L2 path at `oe`, separates internal +G/-G phas
 Public generative page:
 
     https://davidwise01.github.io/oasis/architecture/ae-generative-v180/
+
+
+## AE Bucket Boundary Canon v182
+
+Canonical primitive:
+
+    {{0011 :: pt + {{n}}^{{n}}^{{n}} :: i}}
+    {{i = inf + 1{{B{{u}}cket}}}}
+
+Two executable boundaries:
+
+    B{{      ingress
+    }}cket   egress
+
+The boundary harness exhausts both transitions across all 720 sealed v181 ring cells: 720 ingress + 720 egress = 1440 tested transitions. Parent state is preserved; u is private and disposable; egress exposes zero raw payload bytes and emits only a sealed i receipt.
+
+Public page:
+
+    https://davidwise01.github.io/oasis/architecture/ae-generative-v182/

@@ -1,0 +1,38 @@
+{
+  "schema": "oasis.ae.bucket-boundary.canon.v182",
+  "version": "v182",
+  "status": "CANON / APPEND-ONLY / TWO-BOUNDARY ISOLATION",
+  "parent": "kernel/generative/ae-cyclic-oe-v181/",
+  "frozen_root": {
+    "version": "v92",
+    "canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8"
+  },
+  "primitive": {
+    "compact": "{{0011 :: pt + {{n}}^{{n}}^{{n}} :: i}}",
+    "expanded": "{{0011 :: pt + {{n}}^{{n}}^{{n}} :: {{i = inf + 1{{B{{u}}cket}}}}}}",
+    "referent": "0011",
+    "referent_meaning": "plank 0",
+    "point": "pt",
+    "scale": "{{n}}^{{n}}^{{n}}",
+    "i": "{{i = inf + 1{{B{{u}}cket}}}}",
+    "inf": "fulcrum / balance",
+    "u": "{{B{{u}}cket}}",
+    "u_meaning": "private disposable / pocket universe"
+  },
+  "boundaries": {
+    "ingress": {
+      "literal": "B{{",
+      "invariant": "parent/referent preserved; raw u is private"
+    },
+    "egress": {
+      "literal": "}}cket",
+      "invariant": "u disposed; only sealed i receipt crosses; raw payload exposure = 0 bytes"
+    }
+  },
+  "exhaustive_target": {
+    "v181_ring_cells": 720,
+    "ingress_tests": 720,
+    "egress_tests": 720,
+    "total_boundary_transitions": 1440
+  }
+}
