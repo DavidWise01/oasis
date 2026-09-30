@@ -1,0 +1,52 @@
+{
+  "schema": "oasis.kernel.seal.v181",
+  "version": "v181",
+  "designation": "AE Cyclic OE Sealed Kernel v181",
+  "status": "SEALED / IMMUTABLE / EXHAUSTIVE FINITE CONTROL PASS",
+  "immutable": true,
+  "tested_core_commit": "f79ff0ac5e5c374dcdedcdc0644565441498e73a",
+  "exhaustive_ci": {
+    "run_id": 36758623542,
+    "conclusion": "success",
+    "workflow": "AE Cyclic OE v181 Exhaustive",
+    "url": "https://github.com/DavidWise01/oasis/actions/runs/36758623542"
+  },
+  "git_blobs": {
+    "kernel_py": "0fd5ab0772c967d775e2801fa1e83b640cb64165",
+    "test_exhaustive_py": "b1d70147ed10692873ec2fd628c42ba5f712b791",
+    "state_space_json": "cb254000e79f8ba16cb70f2be9577052b87bd6cd",
+    "manifest_json": "7d167e67727fc3fde5b44851abb4fd0e5b71f72a",
+    "page_html": "0a83e33bb2d15bf26dec204d86c738cb6bf6bb58"
+  },
+  "frozen_root": {
+    "version": "v92",
+    "canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8"
+  },
+  "finite_exhaustive_scope": {
+    "control_states": 24,
+    "ring_cells": 720,
+    "cells_per_state": 30,
+    "shell_addresses": 100,
+    "body_addresses": 1000,
+    "control_expression": "4 x 3 x 2 x 1 x 1",
+    "closures": [
+      "24 x 30 = 720",
+      "18 x 40 = 720",
+      "12 x 60 = 720",
+      "6 x 120 = 720",
+      "36 x 20 = 720",
+      "lcm(30,40) = 120",
+      "X^2 = I on every control state",
+      "offset(x-2,y+3)+X squared = I on every control state",
+      "oe^3 = O3",
+      "99+1 = 1.startover",
+      "10x10x10 -> 1v",
+      "10x6 = 12x5 = 60"
+    ]
+  },
+  "literal_configuration_space": {
+    "expression": "2 x 120^240",
+    "decimal_digits": 500,
+    "verification": "exact integer identity retained; not enumerated configuration-by-configuration"
+  }
+}
