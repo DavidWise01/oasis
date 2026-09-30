@@ -1,0 +1,29 @@
+name: OaSIs v184 Cubic Throughput
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "benchmarks/ae-inference-v184-cubic-throughput/**"
+      - ".github/workflows/ae-inference-v184-cubic-throughput.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  throughput:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Benchmark synchronized cubic throughput
+        working-directory: benchmarks/ae-inference-v184-cubic-throughput
+        run: python throughput.py | tee stdout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ae-inference-v184-cubic-throughput
+          path: benchmarks/ae-inference-v184-cubic-throughput/result.json
