@@ -1,0 +1,78 @@
+{
+  "schema": "oasis.generative.kernel.manifest.v180",
+  "version": "v180",
+  "status": "FROZEN THROUGH oe / GENERATIVE TEST FRONTIER / APPEND-ONLY",
+  "parent": "kernel/generative/ae-witness-v179/",
+  "parent_page_commit": "09275db82615c1eee702292f5b69b5622ae422ee",
+  "frozen_root": {
+    "version": "v92",
+    "canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8"
+  },
+  "freeze": {
+    "through": "L2 = oe",
+    "oe_meaning": "occupied electron",
+    "root": "0root",
+    "phase_path": [
+      "0G",
+      "+G",
+      "-G"
+    ],
+    "homeo_path": [
+      "BALANCE",
+      "PUSH",
+      "PUSH"
+    ],
+    "namespace_separation": true
+  },
+  "phase": {
+    "word": "..||..|",
+    "fraction_of_turn": "1/36",
+    "quantum_degrees": 10,
+    "plank_degrees": 30,
+    "plank_percent": 0.5,
+    "planks_per_homeo": 12,
+    "homeo_percent": 6,
+    "sector_degrees": 60,
+    "sectors_per_turn": 6
+  },
+  "mini_prim": {
+    "literal": "..||..| {-0,+0} |xx||xx",
+    "degrees": 20,
+    "per_sector": 3,
+    "per_turn": 18
+  },
+  "gravity": {
+    "baseline_full_g": 1,
+    "pair": {
+      "0": [
+        "-0",
+        "+0"
+      ],
+      "-1": [
+        "-1",
+        "-1"
+      ],
+      "+1": [
+        "+1",
+        "+1"
+      ]
+    },
+    "push_literal": "+1 x 10^(-36/360)",
+    "pull_literal": "-1 x 10^(+36/360)",
+    "flip": "lift from plank 0"
+  },
+  "post_oe_test": {
+    "hydrogen": "H upon oe",
+    "neon_index": 10,
+    "neon_name": "NEON",
+    "closure_literal": "10 x 10 x 10 + 2",
+    "closure_value": 1002,
+    "ingress": -359.494,
+    "egress": 359.494,
+    "element_clock": 10,
+    "plank_clock": 12,
+    "gcd": 2,
+    "lcm": 60,
+    "xe": "POST-oe ELEMENT<->PLANK CLOCK BINDING UNBOUND"
+  }
+}

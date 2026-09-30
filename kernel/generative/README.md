@@ -37,3 +37,22 @@ It does **not** invent the unresolved 10-label -> 10-orbit permutation. Receipts
 Public page:
 
     https://davidwise01.github.io/oasis/architecture/ae-generative-v179/
+
+
+## AE Homeo / oe v180
+
+Append-only descendant:
+
+    ae-homeo-oe-v180/
+
+Status:
+
+    FROZEN THROUGH oe / GENERATIVE TEST FRONTIER / APPEND-ONLY
+
+It freezes the tested L0 -> L1 -> L2 path at `oe`, separates internal +G/-G phase from homeostatic PULL/BALANCE/PUSH, and fail-closes on the first post-oe unit bridge:
+
+    xe / POST-oe ELEMENT<->PLANK CLOCK BINDING UNBOUND
+
+Public generative page:
+
+    https://davidwise01.github.io/oasis/architecture/ae-generative-v180/

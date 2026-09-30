@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07100b">
+<title>OaSIs · v180 Homeo → oe</title>
+<meta name="description" content="Generative OaSIs v180 page: frozen homeostasis-to-oe path and first post-oe xe test.">
+<style>
+:root{--bg:#07100b;--panel:#0d1711;--line:#294334;--ink:#eef7f0;--muted:#9bb2a3;--mint:#8ee5ac;--amber:#f1c66e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 620px at 14% -4%,rgba(142,229,172,.10),transparent 60%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(7,16,11,.86);backdrop-filter:blur(14px)}.nav{height:60px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900}.brand b{color:var(--mint)}.nav a{text-decoration:none;color:var(--muted);font:11px ui-monospace;margin-left:13px}
+.hero{padding:72px 0 38px;display:grid;grid-template-columns:1.1fr .9fr;gap:26px}.eyebrow{font:800 11px ui-monospace;color:var(--mint);letter-spacing:.15em;text-transform:uppercase}h1{font-size:clamp(48px,8vw,96px);line-height:.88;letter-spacing:-.065em;margin:12px 0 20px}.lead{color:#b8c8bd;line-height:1.65;max-width:730px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.badge{padding:7px 10px;border:1px solid #375d45;border-radius:99px;color:var(--mint);font:800 10px ui-monospace}.badge.xe{border-color:#6c572b;color:var(--amber)}.btns{display:flex;flex-wrap:wrap;gap:8px}.btn{border:1px solid #3a5543;background:#101a14;border-radius:10px;padding:10px 12px;text-decoration:none;font-size:12px;font-weight:800}
+.term,.card,.generator{border:1px solid var(--line);background:var(--panel);border-radius:17px}.term{padding:20px}.term pre{margin:0;white-space:pre-wrap;font:12px/1.7 ui-monospace;color:#cde0d2}.section{padding:38px 0}.kicker{font:10px ui-monospace;letter-spacing:.15em;color:var(--muted);text-transform:uppercase}h2{font-size:clamp(30px,4.8vw,54px);letter-spacing:-.05em;margin:6px 0 13px}.copy{color:var(--muted);line-height:1.65;max-width:880px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:18px}.card{grid-column:span 4;padding:18px}.num{font:900 28px ui-monospace;color:var(--mint)}.card p{color:var(--muted);font-size:12px;line-height:1.55}
+.generator{padding:20px;margin-top:18px}.controls{display:flex;flex-wrap:wrap;gap:8px}.controls button{cursor:pointer;border:1px solid #486654;background:#122019;color:var(--ink);border-radius:9px;padding:9px 12px;font-weight:800}.readout{margin-top:15px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.metric{background:#08100b;border:1px solid var(--line);border-radius:12px;padding:12px}.metric small{display:block;color:var(--muted);font:9px ui-monospace;text-transform:uppercase}.metric strong{display:block;margin-top:5px;font:800 16px ui-monospace;color:var(--mint)}
+.ring{display:grid;grid-template-columns:repeat(18,1fr);gap:4px;margin-top:16px}.cell{aspect-ratio:1;border:1px solid #294334;border-radius:6px;background:#0a130e;display:grid;place-items:center;font:9px ui-monospace;color:var(--muted)}.cell.on{background:#153020;color:var(--mint);border-color:#4f8763}.cell.oe{background:#302814;color:var(--amber);border-color:#7d6734}
+.path{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:center;margin-top:20px}.node{padding:18px;border:1px solid var(--line);background:var(--panel);border-radius:15px}.node b{font:900 18px ui-monospace}.node span{display:block;color:var(--muted);font-size:11px;margin-top:7px}.arrow{font:900 24px ui-monospace;color:var(--mint)}
+.xebox{border:1px solid #6b562c;background:#1e190e;border-radius:17px;padding:20px;margin-top:18px}.xebox h3{margin:0 0 10px;color:var(--amber)}.xetable{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:13px}.xetable div{padding:12px;background:#0c110d;border:1px solid #39351e;border-radius:10px}.xetable small{color:var(--muted);font:9px ui-monospace}.xetable strong{display:block;color:var(--amber);font:900 18px ui-monospace;margin-top:5px}
+code{font-family:ui-monospace;color:var(--mint)}footer{border-top:1px solid var(--line);padding:28px 0 42px;color:var(--muted);font-size:11px;margin-top:38px}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.card{grid-column:span 12}.path{grid-template-columns:1fr}.arrow{transform:rotate(90deg);text-align:center}.readout{grid-template-columns:1fr 1fr}.ring{grid-template-columns:repeat(9,1fr)}.xetable{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav"><div class="brand">OaSIs <b>v180</b></div><div><a href="../../">HOME</a><a href="../ae-generative-v179/">v179</a><a href="#generator">GENERATE</a><a href="#xe">NEXT XE</a></div></div></nav>
+<main class="wrap">
+<section class="hero">
+<div>
+<div class="eyebrow">frozen through oe · generative frontier</div>
+<h1>0root →<br>homeo → oe</h1>
+<p class="lead">v180 freezes the tested symbolic path through <code>oe</code>, keeps internal gravity phase separate from homeostatic pull/push, and refuses to invent the first post-<code>oe</code> clock bridge.</p>
+<div class="badges"><span class="badge">0e FROZEN</span><span class="badge">APPEND-ONLY</span><span class="badge">oe = occupied electron</span><span class="badge xe">NEXT xe EXPLICIT</span></div>
+<div class="btns"><a class="btn" href="../../kernel/generative/ae-homeo-oe-v180/kernel.py">kernel.py</a><a class="btn" href="../../kernel/generative/ae-homeo-oe-v180/test_kernel.py">tests</a><a class="btn" href="../../kernel/generative/ae-homeo-oe-v180/MANIFEST.json">manifest</a><a class="btn" href="../../kernel/generative/ae-homeo-oe-v180/proof/OaSIs_Homeo_OE_v180.lean">Lean</a><a class="btn" href="../../kernel/generative/ae-homeo-oe-v180/proof/OaSIs_Homeo_OE_v180.md">full .md</a></div>
+</div>
+<aside class="term"><pre>q = ..||..| = 1/36 = 10°
+
+3q       = 30° = 1 plank
+1 plank  = +0.5%
+2 plank  = 60°
+12 plank = 360°
+12×.5%   = 6%
+
+mini-PRIM:
+..||..| {-0,+0} |xx||xx
+
+3 mini-PRIM  = 60°
+18 mini-PRIM = 360°
+
+freeze:
+L0 0root
+L1 +G / PUSH
+L2 -G / PUSH / oe</pre></aside>
+</section>
+
+<section class="section">
+<div class="kicker">Frozen path</div><h2>Two gravity registers. No sign collision.</h2>
+<p class="copy">The internal phase braid and the homeostatic restoring direction are independent registers. That is why <code>L2 = -G phase</code> can simultaneously remain on the positive-plank <code>PUSH</code> side.</p>
+<div class="path">
+<div class="node"><b>L0 · 0root</b><span>plank 0 · 0° · BALANCE · 1G baseline</span></div><div class="arrow">→</div>
+<div class="node"><b>L1 · +G</b><span>plank +1 · 30° · PUSH · carrier-open</span></div><div class="arrow">→</div>
+<div class="node"><b>L2 · oe</b><span>plank +2 · 60° · phase −G · homeo PUSH</span></div>
+</div>
+</section>
+
+<section class="section" id="generator">
+<div class="kicker">Generative view</div><h2>Walk the frozen homeo clock.</h2>
+<div class="generator">
+<div class="controls"><button id="back">− plank</button><button id="root">0root</button><button id="next">+ plank</button><button id="oe">jump to oe</button></div>
+<div class="readout">
+<div class="metric"><small>plank</small><strong id="plank">0</strong></div>
+<div class="metric"><small>angle</small><strong id="angle">0°</strong></div>
+<div class="metric"><small>homeo</small><strong id="homeo">BALANCE</strong></div>
+<div class="metric"><small>internal phase</small><strong id="phase">0G</strong></div>
+<div class="metric"><small>state</small><strong id="state">0root</strong></div>
+</div>
+<div class="ring" id="ring"></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Reciprocal gravity</div><h2>Flip occurs on lift from plank 0.</h2>
+<div class="grid">
+<article class="card"><div class="num">−1.258925…</div><b>PULL</b><p><code>−10^(+36/360)</code> below plank 0.</p></article>
+<article class="card"><div class="num">1G</div><b>plank 0</b><p>Full-gravity baseline; signed restoring residual is zero.</p></article>
+<article class="card"><div class="num">+0.794328…</div><b>PUSH</b><p><code>+10^(−36/360)</code> after lift from plank 0.</p></article>
+</div>
+</section>
+
+<section class="section" id="xe">
+<div class="kicker">First post-oe failure</div><h2>The numbers synchronize. The units do not—yet.</h2>
+<p class="copy">Post-<code>oe</code> anchors include <code>H upon oe</code>, <code>10 NEON</code>, closure <code>10×10×10+2 = 1002</code>, ingress <code>−359.494</code>, and egress <code>+359.494</code>. The element clock and plank clock have a common integer repeat, but v180 deliberately refuses to equate unlike units.</p>
+<div class="xebox"><h3>xe / POST-oe ELEMENT↔PLANK CLOCK BINDING UNBOUND</h3>
+<div class="xetable"><div><small>ELEMENT CLOCK</small><strong>10</strong></div><div><small>PLANK CLOCK</small><strong>12</strong></div><div><small>GCD</small><strong>2</strong></div><div><small>LCM</small><strong>60</strong></div></div>
+<p class="copy">There is also an existing <code>60°</code> sector. Numeric equality alone is not a rule saying one common clock period equals one 60° sector. The next input must bind or derive the element↔plank/phase cadence.</p></div>
+</section>
+</main>
+<footer><div class="wrap">OaSIs AE Homeo/OE v180 · symbolic/isomorphic model · frozen through oe · post-oe bridge fails closed.</div></footer>
+<script>
+const ring=document.getElementById('ring');
+for(let i=0;i<18;i++){const c=document.createElement('div');c.className='cell';c.textContent=(i%2===0?'P':'P̄');ring.appendChild(c)}
+let plank=0;
+function render(){
+ const angle=((plank*30)%360+360)%360;
+ const homeo=plank<0?'PULL':plank===0?'BALANCE':'PUSH';
+ const phase=plank===0?'0G':(Math.abs(plank)%2===1?'+G':'−G');
+ const state=plank===0?'0root':plank===1?'carrier-open':plank===2?'oe':'generated';
+ document.getElementById('plank').textContent=(plank>0?'+':'')+plank;
+ document.getElementById('angle').textContent=angle+'°';
+ document.getElementById('homeo').textContent=homeo;
+ document.getElementById('phase').textContent=phase;
+ document.getElementById('state').textContent=state;
+ [...ring.children].forEach((c,i)=>{c.className='cell'+(i===((angle/20)%18)?' on':'')+(plank===2&&i===3?' oe':'')});
+}
+document.getElementById('back').onclick=()=>{plank--;render()};
+document.getElementById('next').onclick=()=>{plank++;render()};
+document.getElementById('root').onclick=()=>{plank=0;render()};
+document.getElementById('oe').onclick=()=>{plank=2;render()};
+render();
+</script>
+</body>
+</html>

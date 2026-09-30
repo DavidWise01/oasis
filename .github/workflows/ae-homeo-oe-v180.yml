@@ -1,0 +1,36 @@
+name: AE Homeo-OE v180
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kernel/generative/ae-homeo-oe-v180/**"
+      - "kernel/generative/ae-witness-v179/**"
+      - "kernel/frozen/ae-generative-first-v92/CANON.json"
+      - ".github/workflows/ae-homeo-oe-v180.yml"
+  pull_request:
+    paths:
+      - "kernel/generative/ae-homeo-oe-v180/**"
+      - "kernel/generative/ae-witness-v179/**"
+      - "kernel/frozen/ae-generative-first-v92/CANON.json"
+      - ".github/workflows/ae-homeo-oe-v180.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-slice:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify frozen <=oe slice and next xe
+        working-directory: kernel/generative/ae-homeo-oe-v180
+        run: |
+          python kernel.py --verify > /tmp/v180-frozen.json
+          python kernel.py --next-xe > /tmp/v180-xe.json
+          python test_kernel.py
+          grep -q "FROZEN THROUGH oe PASS" /tmp/v180-frozen.json
+          grep -q "ELEMENT<->PLANK CLOCK BINDING UNBOUND" /tmp/v180-xe.json
