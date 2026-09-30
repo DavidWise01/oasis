@@ -1,0 +1,25 @@
+name: OaSIs v184 Cubic Quick Throughput
+on:
+  push:
+    branches: [main]
+    paths:
+      - "benchmarks/ae-inference-v184-cubic-throughput/quick.py"
+      - ".github/workflows/ae-inference-v184-cubic-quick.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run quick cubic throughput
+        working-directory: benchmarks/ae-inference-v184-cubic-throughput
+        run: python quick.py | tee quick-stdout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ae-inference-v184-cubic-quick
+          path: benchmarks/ae-inference-v184-cubic-throughput/quick-result.json
