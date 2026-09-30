@@ -1,0 +1,33 @@
+name: AE Generative v178
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kernel/generative/ae-hierarchical-v178/**"
+      - "kernel/frozen/ae-generative-first-v92/CANON.json"
+      - ".github/workflows/ae-generative-v178.yml"
+  pull_request:
+    paths:
+      - "kernel/generative/ae-hierarchical-v178/**"
+      - "kernel/frozen/ae-generative-first-v92/CANON.json"
+      - ".github/workflows/ae-generative-v178.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  python-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen canon and run generative kernel tests
+        working-directory: kernel/generative/ae-hierarchical-v178
+        run: |
+          python kernel.py --verify-canon --demo > /tmp/ae-v178-demo.json
+          python test_kernel.py

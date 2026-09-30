@@ -1,0 +1,17 @@
+{
+  "schema": "oasis.generative.kernel.manifest.v178",
+  "status": "GENERATIVE / APPEND-ONLY / SEALED",
+  "frozen_parent": "kernel/frozen/ae-generative-first-v92/",
+  "frozen_canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8",
+  "hierarchy_revision": "v178",
+  "terminal": "/0/0 = STOP",
+  "polarity": "- <-> +",
+  "lane_mapping": "explicit bijection parameter; not invented",
+  "files": {
+    "kernel.py": "a3694fcd5e14aa16aea732aba0102b040dad5880d3d044b23dea38ecafdf51b5",
+    "test_kernel.py": "37b6f0214be1737dfbb2bc26786e0e0ecd1e8dbca4e24a4c74ce93e76b8dbe98",
+    "README.md": "c5caf3336c424d132d1d46ad1c2d2cb34cb47cb8944d8d6d458281a7596e3860",
+    "proof/OaSIs_Hierarchical_Seal_v178.md": "170d50e82b6dd6cce32aad61e7aaae2e5c431777a28ffdb89e793907ba593ecc",
+    "proof/OaSIs_Hierarchical_Seal_v178.lean": "ef34e46249dd9abef6b113e9b28bb22975a319755674e179df09157f7c6e87ac"
+  }
+}
