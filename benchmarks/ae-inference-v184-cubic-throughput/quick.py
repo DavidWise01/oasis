@@ -50,7 +50,7 @@ def main():
         rows.append(samples[2])
     out={
       "definition":"logical token = one predicate or one atom argument; NOT an LLM/BPE token",
-      "per_cycle":{"derived_facts":55,"state_transitions":48,"logical_tokens":268},
+      "per_cycle":{"derived_facts":55,"state_transitions":48,"logical_tokens":322},
       "rows":rows
     }
     print(json.dumps(out,indent=2))

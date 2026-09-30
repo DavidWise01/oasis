@@ -10,7 +10,7 @@ One completed cycle produces:
 - 6 terminal facts
 - 1 synchronous closure fact
 - 55 total derived facts
-- 268 engine-local logical tokens, where one predicate or one atom argument
+- 322 engine-local logical tokens, where one predicate or one atom argument
   counts as one logical token
 
 The logical-token metric is deliberately not presented as an LLM/BPE token

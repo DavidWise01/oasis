@@ -103,7 +103,7 @@ def main():
         "per_cycle":{
             "derived_facts":55,
             "state_transitions":48,
-            "logical_tokens":268
+            "logical_tokens":322
         },
         "cases":out
     }
