@@ -1,0 +1,45 @@
+{
+  "schema": "oasis.kernel.seal.v183",
+  "version": "v183",
+  "designation": "OaSIs Zero/I Canon v183",
+  "status": "SEALED / IMMUTABLE / LEAN-PROVED",
+  "immutable": true,
+  "tested_core_commit": "7a4e335ee72c022861a36e426dbdc2612c177225",
+  "lean_ci": {
+    "run_id": 36770983057,
+    "conclusion": "success",
+    "lean_version": "4.33.1",
+    "url": "https://github.com/DavidWise01/oasis/actions/runs/36770983057"
+  },
+  "canon": {
+    "literal": "{{0::{i::}}}",
+    "mapping": {
+      "0": "-1",
+      "-1": "0",
+      "+1": "0&1"
+    },
+    "semantics": "symbolic information transform; not integer arithmetic"
+  },
+  "proved": [
+    "root.referent = 0",
+    "i(-1) = 0",
+    "i(0) = -1",
+    "i(+1) = 0&1",
+    "iInv(i(x)) = x",
+    "i(iInv(y)) = y",
+    "Injective i",
+    "Surjective i",
+    "Injective i ∧ Surjective i"
+  ],
+  "git_blobs": {
+    "kernel_py": "12f1cd035e5141a11089ef033b719bb9518414e5",
+    "test_kernel_py": "be818571b43a073e6dc0ca86f6771b2c77ec9967",
+    "lean_proof": "e90283f813149dbc51e4d972d02c2d485f09481b",
+    "canon_json": "0c1a370f188a601f638267946bc83cb51ae21d55",
+    "page_html": "db07a7fc526dff1d0372601825a6394f797663de"
+  },
+  "parent": {
+    "version": "v182",
+    "sealed_commit": "00d15d2bf9fbcae44e53b1ba1fb86a40f29c27f7"
+  }
+}
