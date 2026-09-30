@@ -69,7 +69,8 @@ theorem i_surjective : Function.Surjective i := by
   intro y
   exact ⟨iInv y, i_iInv y⟩
 
-theorem i_bijective : Function.Bijective i :=
+theorem i_bijective :
+    Function.Injective i ∧ Function.Surjective i :=
   ⟨i_injective, i_surjective⟩
 
 theorem canon :
