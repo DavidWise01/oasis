@@ -1,0 +1,39 @@
+name: OaSIs Inference v184
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kernel/generative/ae-inference-v184/**"
+      - ".github/workflows/ae-inference-v184.yml"
+  pull_request:
+    paths:
+      - "kernel/generative/ae-inference-v184/**"
+      - ".github/workflows/ae-inference-v184.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Exhaust inference engine
+        working-directory: kernel/generative/ae-inference-v184
+        run: |
+          python engine.py --demo > /tmp/v184-demo.json
+          python test_engine.py > /tmp/v184-tests.json
+          grep -q "INFERENCE DEMO PASS" /tmp/v184-demo.json
+          grep -q "INFERENCE ENGINE TESTS PASS" /tmp/v184-tests.json
+          python - <<'PY'
+          import json
+          r=json.load(open("/tmp/v184-tests.json"))
+          assert r["v183_seed_subsets_exhausted"] == 64
+          assert r["deterministic_order_independence"] == "PASS"
+          assert r["provenance_tamper_rejection"] == "PASS"
+          print("0e / v184 CI PASS")
+          PY

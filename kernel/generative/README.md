@@ -94,3 +94,24 @@ Lean proves the three mappings, inverse round-trips, injectivity, surjectivity a
 Public page:
 
     https://davidwise01.github.io/oasis/architecture/ae-generative-v183/
+
+
+## Inference Engine v184
+
+Append-only inference layer bolted onto sealed v183.
+
+    {{0::{i::}}}
+
+Features:
+
+- deterministic Horn-style forward chaining
+- variable unification with `?name`
+- exact provenance receipts for every axiom and derivation
+- no silent guessing; unsafe rules fail closed
+- cycle-safe monotone fixed-point saturation
+- v183 forward and inverse transform adapter
+- exhaustive 64-subset v183 closure test
+
+Public page:
+
+    https://davidwise01.github.io/oasis/architecture/ae-generative-v184/

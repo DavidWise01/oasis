@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OaSIs v184 · Inference Engine</title>
+<style>
+:root{--bg:#07100b;--p:#0d1711;--line:#294334;--ink:#eef7f0;--muted:#9bb2a3;--mint:#8ee5ac;--amber:#f1c66e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}.w{width:min(1100px,calc(100% - 28px));margin:auto}header{padding:76px 0 38px}.ey{font:11px ui-monospace;color:var(--mint);letter-spacing:.14em}h1{font-size:clamp(48px,8vw,96px);line-height:.9;letter-spacing:-.055em;margin:12px 0}.lead{color:var(--muted);line-height:1.65;max-width:800px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card,pre{background:var(--p);border:1px solid var(--line);border-radius:16px;padding:18px}.card b{display:block;color:var(--mint);font:900 25px ui-monospace}.card p{color:var(--muted);line-height:1.55}pre{overflow:auto;line-height:1.65}code,a{color:var(--mint)}section{padding:26px 0}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style></head><body><main class="w">
+<header><div class="ey">v184 · BOLTED TO SEALED v183</div><h1>Inference,<br>with receipts.</h1>
+<p class="lead">A deterministic Horn-style inference layer for <code>{{0::{i::}}}</code>. It derives only what explicit rules support, records the premises used, and stops at a fixed point.</p></header>
+<section><div class="grid">
+<div class="card"><b>64 / 64</b><p>All v183 seed subsets exhaustively tested.</p></div>
+<div class="card"><b>0 guesses</b><p>Unsafe rules with unbound conclusion variables fail closed.</p></div>
+<div class="card"><b>SHA-256</b><p>Every axiom and derivation receives a provenance receipt.</p></div>
+</div></section>
+<section><h2>v183 adapter</h2><pre>{{0::{i::}}}
+
+ternary(-1)  -> image(0)
+ternary(0)   -> image(-1)
+ternary(+1)  -> image(0&1)
+
+plus the proved inverse rules.</pre></section>
+<section><h2>Generic rule form</h2><pre>parent(?x, ?y)
+parent(?y, ?z)
+----------------
+grandparent(?x, ?z)
+
+forward-chain -> fixed point -> provenance audit</pre></section>
+<section><p><a href="../../kernel/generative/ae-inference-v184/engine.py">engine.py</a> · <a href="../../kernel/generative/ae-inference-v184/test_engine.py">tests</a> · <a href="../../kernel/generative/ae-inference-v184/MANIFEST.json">manifest</a></p></section>
+</main></body></html>
