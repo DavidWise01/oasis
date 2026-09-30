@@ -998,6 +998,7 @@ end OaSIs.V178
 ```
 
 ---
+
 ## 16. Local compile
 
 Your local Lean setup can run the extracted `.lean` file directly:
