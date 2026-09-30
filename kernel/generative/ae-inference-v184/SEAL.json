@@ -1,0 +1,43 @@
+{
+  "schema": "oasis.kernel.seal.v184",
+  "version": "v184",
+  "designation": "OaSIs Deterministic Inference Engine v184",
+  "status": "SEALED / DETERMINISTIC INFERENCE / PROVENANCE-AUDITED",
+  "immutable": true,
+  "tested_core_commit": "9699ce5bdef7d8b1406e1ad671c9eb4ec8ce6f4a",
+  "ci": {
+    "run_id": 36771459762,
+    "conclusion": "success",
+    "url": "https://github.com/DavidWise01/oasis/actions/runs/36771459762"
+  },
+  "parent": {
+    "version": "v183",
+    "sealed_commit": "78492de2c7fbca398a1dc6460a33e1f88f619020",
+    "literal": "{{0::{i::}}}"
+  },
+  "capabilities": [
+    "finite Horn-style forward chaining",
+    "?variable unification",
+    "deterministic fixed-point saturation",
+    "SHA-256 provenance receipts",
+    "safe-rule validation",
+    "cycle-safe duplicate collapse",
+    "v183 forward/inverse adapter"
+  ],
+  "exhaustive_tests": {
+    "v183_core_atoms": 6,
+    "all_seed_subsets": 64,
+    "deterministic_order_independence": "PASS",
+    "generic_variable_rule": "PASS",
+    "fixed_point": "PASS",
+    "unbound_variable_rejection": "PASS",
+    "provenance_tamper_rejection": "PASS"
+  },
+  "git_blobs": {
+    "engine_py": "57cde2cfb8bf17b41cdf4d93c77158b15ddcb60c",
+    "test_engine_py": "907f3fbbf761fc2a6f91168d179416301a27d9bd",
+    "manifest_json": "80b26d460444909d2c8a1e1fba5c3caa06eb2b96",
+    "readme_md": "a5402aae368b07f18bfba2f07c5c9b597f88c379",
+    "page_html": "28c11cb447b461c7dddce1da477397c2613c8914"
+  }
+}
