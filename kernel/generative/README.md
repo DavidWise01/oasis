@@ -22,3 +22,18 @@ The current generator verifies the frozen v92 canon hash, maintains deterministi
 - Peer: `DavidWise01/nom` → `nomcog/runtime/executable`
 
 The tether is reciprocal and identity-bearing; it does not merge repository authority or mutate the frozen v92 parent.
+
+
+## AE Witness-Generative v179
+
+Next append-only descendant:
+
+    ae-witness-v179/
+
+v179 adds deterministic hash-linked witness receipts for generated v178 states and pins the reciprocal NOM/NOMCOG Posi v00.01 witness anchors.
+
+It does **not** invent the unresolved 10-label -> 10-orbit permutation. Receipts remain UNBOUND until a complete validated bijection is explicitly supplied.
+
+Public page:
+
+    https://davidwise01.github.io/oasis/architecture/ae-generative-v179/

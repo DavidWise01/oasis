@@ -1,0 +1,27 @@
+{
+  "schema": "oasis.generative.kernel.manifest.v179",
+  "status": "GENERATIVE / WITNESSED / APPEND-ONLY / SEALED",
+  "parent": "kernel/generative/ae-hierarchical-v178/",
+  "frozen_parent": "kernel/frozen/ae-generative-first-v92/",
+  "frozen_canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8",
+  "oasis_parent_commit": "094bcff5f9ff9dae2fc1baf22ed4597567a3bf28",
+  "nom_tether_commit": "fa166428fba73d34979954296968c5dd00950354",
+  "witness": {
+    "schema": "oasis.ae.witness.receipt.v179",
+    "chain": "previous_receipt_id + previous_receipt_seal",
+    "append_only": true,
+    "lane_binding": "UNBOUND unless explicit validated 10-way bijection",
+    "terminal": "/0/0 = STOP",
+    "polarity": "- <-> +"
+  },
+  "nom_posi": {
+    "designation": "Posi v00.01",
+    "stable_ref": "posi-v00.01",
+    "identity_anchor": 17,
+    "provenance_anchor": 131,
+    "network": "disabled",
+    "sealed_parent_commit": "aac18870dfbc12a20bd7b1e220336286ac887873",
+    "executable_capstone_sha256": "feb8194640e32be06827e42ce755fcd7408af73d4aa592fe9ff632704c3ff427",
+    "manifest_sha256": "ebb5588a22c644f13f674d9c11cf476d16ac8847e8c8196d89f2ff21c108ffd8"
+  }
+}
