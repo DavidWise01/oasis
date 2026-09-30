@@ -1,0 +1,31 @@
+name: OaSIs v184 Cubic Sync-Zero Test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "benchmarks/ae-inference-v184-cubic-sync/**"
+      - ".github/workflows/ae-inference-v184-cubic-sync.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cubic-sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test synchronous zero convergence
+        working-directory: benchmarks/ae-inference-v184-cubic-sync
+        run: |
+          python test_cubic_sync.py | tee stdout.json
+          grep -q "SYNCHRONOUS SIX-BRANCH ZERO CLOSURE PASS" stdout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ae-inference-v184-cubic-sync
+          path: benchmarks/ae-inference-v184-cubic-sync/result.json
