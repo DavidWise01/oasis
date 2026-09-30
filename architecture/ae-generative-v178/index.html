@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070a09">
+<meta name="description" content="OaSIs AE Hierarchical Generative Kernel v178 — executable append-only descendant, 10x10 orbit field, Lean alignment, and NOM/NOMCOG tether.">
+<title>OaSIs · AE Generative v178 · NOM tether</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070a09'/%3E%3Cpath d='M9 32h46M32 9v46' stroke='%238fe0b2' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='8' fill='none' stroke='%23e6c47a' stroke-width='4'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#070a09;--p:#0d1310;--p2:#111a15;--line:#26342d;--ink:#eff6f1;--muted:#8fa096;--mint:#8fe0b2;--amber:#e9c679;--blue:#91c9ea;--red:#ef8d8d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(1000px 620px at 12% -8%,rgba(143,224,178,.09),transparent 60%),radial-gradient(900px 600px at 92% 0%,rgba(145,201,234,.07),transparent 58%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit}.wrap{width:min(1220px,calc(100% - 30px));margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(7,10,9,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:62px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:900;letter-spacing:.03em}.brand span{color:var(--mint)}.navlinks{display:flex;gap:13px;font:11px ui-monospace;color:var(--muted)}.navlinks a{text-decoration:none}.navlinks a:hover{color:var(--ink)}
+.hero{padding:76px 0 40px;display:grid;grid-template-columns:1.12fr .88fr;gap:34px;align-items:end}.eyebrow{font:800 11px ui-monospace;letter-spacing:.17em;text-transform:uppercase;color:var(--mint)}h1{font-size:clamp(50px,8.5vw,106px);line-height:.86;letter-spacing:-.067em;margin:12px 0 20px}.lead{font-size:17px;line-height:1.68;color:#b5c2ba;max-width:760px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.badge{border:1px solid #365044;background:#101a15;border-radius:999px;padding:7px 10px;font:800 10px ui-monospace;color:var(--mint)}.badge.amber{color:var(--amber);border-color:#53472b}.badge.blue{color:var(--blue);border-color:#294453}
+.actions{display:flex;gap:9px;flex-wrap:wrap}.btn{display:inline-flex;text-decoration:none;border:1px solid #405248;border-radius:10px;padding:10px 13px;font-size:12px;font-weight:800;background:#101713}.btn:hover{border-color:var(--mint)}.btn.primary{background:#17241d}
+.terminal{border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#101713,#0a0f0d);padding:22px}.terminal pre,.flow pre{margin:0;white-space:pre-wrap;font:12px/1.75 ui-monospace;color:#cad5ce}
+.section{padding:40px 0}.kicker{font:10px ui-monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}h2{font-size:clamp(30px,4.6vw,54px);letter-spacing:-.05em;margin:7px 0 10px}.copy{color:var(--muted);line-height:1.68;max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:18px}.card{grid-column:span 4;border:1px solid var(--line);border-radius:16px;background:var(--p);padding:18px;min-height:150px}.card.wide{grid-column:span 6}.card b{display:block;margin-bottom:8px}.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}.num{font:900 28px ui-monospace;color:var(--mint);margin-bottom:18px}
+.flow{grid-column:span 12;border:1px solid var(--line);border-radius:18px;background:#0a0f0d;padding:20px;overflow:auto}
+.field-shell{grid-column:span 8;border:1px solid var(--line);border-radius:18px;padding:18px;background:var(--p)}.field{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}.cell{aspect-ratio:1;border:1px solid #304139;border-radius:7px;display:flex;align-items:center;justify-content:center;font:800 10px ui-monospace;background:#0a0f0d;cursor:default}.cell:hover{border-color:var(--mint);transform:translateY(-1px)}.legend{grid-column:span 4;display:grid;gap:8px}.orbit{border:1px solid var(--line);background:var(--p);border-radius:12px;padding:11px;font:11px ui-monospace;color:var(--muted)}.orbit strong{color:var(--ink)}
+.slotrow{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;align-items:center}.slot{border:1px solid var(--line);background:var(--p);border-radius:11px;padding:14px 5px;text-align:center;font:800 12px ui-monospace}.seam{color:var(--amber);text-align:center;font:900 14px ui-monospace}
+.tether{border:1px solid #385342;border-radius:20px;background:linear-gradient(135deg,rgba(143,224,178,.08),rgba(145,201,234,.035));padding:22px}.tetherline{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-top:18px}.node{border:1px solid var(--line);border-radius:16px;background:#0a0f0d;padding:18px}.node small{display:block;color:var(--muted);font:10px ui-monospace}.node strong{display:block;font-size:20px;margin:5px 0}.rope{font:900 23px ui-monospace;color:var(--mint)}code,.hash{font-family:ui-monospace;color:var(--mint)}.hash{font-size:10px;word-break:break-all}
+.status{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.stat{border:1px solid var(--line);border-radius:13px;background:var(--p2);padding:14px}.stat strong{display:block;color:var(--mint);font:900 19px ui-monospace}.stat span{font-size:10px;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:32px;padding:27px 0 44px;color:var(--muted);font-size:11px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.card,.card.wide,.field-shell,.legend{grid-column:span 12}.tetherline{grid-template-columns:1fr}.rope{text-align:center;transform:rotate(90deg)}.status{grid-template-columns:1fr 1fr}.navlinks a:not(.keep){display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav"><div class="brand">OaSIs <span>AE v178</span></div><div class="navlinks"><a href="../../">HOME</a><a href="#field">FIELD</a><a href="#carrier">CARRIER</a><a href="#tether">NOM</a><a class="keep" href="#artifacts">ARTIFACTS</a></div></div></nav>
+<main class="wrap">
+<section class="hero">
+<div>
+<div class="eyebrow">hierarchical generative kernel · append-only descendant</div>
+<h1>Generate.<br>Seal.<br>Tether.</h1>
+<p class="lead">AE Hierarchical Generative Kernel v178 is an executable descendant of the frozen v92 canon. It generates deterministic child states, partitions the 10×10 field into ten invariant lanes, preserves the eight-slot mirror carrier, halts at <code>/0/0</code>, seals <code>- ↔ +</code>, and tethers outward to NOM/NOMCOG without merging their authority boundaries.</p>
+<div class="badges"><span class="badge">GENERATIVE</span><span class="badge">APPEND-ONLY</span><span class="badge">SEALED</span><span class="badge amber">/0/0 = STOP</span><span class="badge blue">NOM TETHER</span></div>
+<div class="actions">
+<a class="btn primary" href="../../kernel/generative/ae-hierarchical-v178/kernel.py">kernel.py</a>
+<a class="btn" href="../../kernel/generative/ae-hierarchical-v178/test_kernel.py">tests</a>
+<a class="btn" href="../../kernel/generative/ae-hierarchical-v178/proof/OaSIs_Hierarchical_Seal_v178.lean">Lean</a>
+<a class="btn" href="../../kernel/generative/ae-hierarchical-v178/proof/OaSIs_Hierarchical_Seal_v178.md">full .md</a>
+</div>
+</div>
+<aside class="terminal"><pre>FROZEN v92
+    │ SHA-256 witness
+    ▼
+0.s0.0
+    │
+    ▼
+10 × 10 :: (-2,+3)
+    │
+    ▼
+2^3 :: |&lt;.&gt;|
+    │
+    ▼
+aa bb cc dd --++ dd cc bb aa
+    │
+    ▼
+10 orbit classes × 10 cells
+    │
+    ▼
+11200/13
+    │
+    ▼
+/0/0 :: STOP
+    │
+    ▼
+- &lt;-&gt; +
+    │
+    └────────────── tether ──► NOM</pre></aside>
+</section>
+
+<section class="section">
+<div class="kicker">Hierarchy</div><h2>Twelve layers. No hidden permutation.</h2>
+<p class="copy">The formal hierarchy keeps the label-to-orbit assignment explicit. The geometry forces ten mathematical orbit classes and the symbolic structure supplies ten labels, but no sealed literal selects one of the <code>10!</code> possible bijections.</p>
+<div class="grid">
+<article class="card"><div class="num">100</div><b>Field cells</b><p>10 lanes × 10 lanes, addressed modulo ten.</p></article>
+<article class="card"><div class="num">10</div><b>Invariant orbits</b><p>Each orbit has ten unique cells under the <code>(−2,+3)</code> walker.</p></article>
+<article class="card"><div class="num">08+02</div><b>Existing labels</b><p>Eight mirrored carrier positions plus plank0 and plank1.</p></article>
+<div class="flow"><pre>L0  scalar root        0.s0.0
+L1  plank phase        0 / 1
+L2  gradient           -1 / 0 / +1 → n / n+1 / n+2
+L3  lane field         10 × 10
+L4  element span       1 → h::{au} ... 255 → u::{ag}
+L5  walker             (-2,+3)
+L6  dot carrier        . = 2^3{{-2,+3}} = |&lt;.&gt;|
+L7  mirror index       aa bb cc dd --++ dd cc bb aa
+L8  orbit decomposition I(x,y) = (3x + 2y) mod 10
+L9  cascade            10!/13/9/6/3/2/1/1 = 11200/13
+L10 terminal           /0/0 = STOP
+L11 seal               - ↔ +</pre></div>
+</div>
+</section>
+
+<section class="section" id="field">
+<div class="kicker">10 × 10 field</div><h2>The walker cuts the box into ten closed lanes.</h2>
+<p class="copy">Every cell below is labeled by the invariant class <code>I(x,y)=(3x+2y) mod 10</code>. The <code>(−2,+3)</code> step preserves that class because <code>3(−2)+2(+3)=0</code>.</p>
+<div class="grid">
+<div class="field-shell"><div class="field" id="fieldGrid" aria-label="10 by 10 invariant orbit field"></div></div>
+<div class="legend" id="orbitLegend"></div>
+</div>
+</section>
+
+<section class="section" id="carrier">
+<div class="kicker">Mirror carrier</div><h2>Eight positions around the seam.</h2>
+<div class="slotrow">
+<div class="slot">aaL<br><small>depth 0</small></div>
+<div class="slot">bbL<br><small>depth 1</small></div>
+<div class="slot">ccL<br><small>depth 2</small></div>
+<div class="slot">ddL<br><small>depth 3</small></div>
+<div class="seam">--++</div>
+<div class="slot">ddR<br><small>depth 3</small></div>
+<div class="slot">ccR<br><small>depth 2</small></div>
+<div class="slot">bbR<br><small>depth 1</small></div>
+<div class="slot">aaR<br><small>depth 0</small></div>
+</div>
+<div class="grid">
+<div class="flow"><pre>{-{.}-}^{-{2^3^{+{}}}} = |)&gt;.&lt;(|
+
+mirror(mirror(slot)) = slot
+depth(mirror(slot))  = depth(slot)
+
+dot multiplicity = 2^3 = 8
+walker step      = (-2,+3)
+
+lane-label set =
+{aaL,bbL,ccL,ddL,ddR,ccR,bbR,aaR,plank0,plank1}
+
+lane label → orbit class:
+EXPLICIT BIJECTION REQUIRED / NOT INVENTED</pre></div>
+</div>
+</section>
+
+<section class="section" id="tether">
+<div class="kicker">Cross-repo tether</div><h2>OaSIs generates. NOM witnesses.</h2>
+<div class="tether">
+<p class="copy">The tether is reciprocal but does not collapse repo boundaries. OaSIs v178 remains the generative implementation; NOM remains its own append-only citation/witness system, with NOMCOG/Posi as the bounded cognitive runtime. The tether records identities, stable public endpoints, and witness commits.</p>
+<div class="tetherline">
+<div class="node"><small>SOURCE</small><strong>OaSIs / AE v178</strong><div class="hash">main witness: e90854af27a8e639bb464c50cb4e2efbd088cb33</div><p><a href="https://github.com/DavidWise01/oasis/tree/main/kernel/generative/ae-hierarchical-v178">source tree ↗</a></p></div>
+<div class="rope">◀══ tether ══▶</div>
+<div class="node"><small>WITNESS / COGNITIVE PEER</small><strong>NOM / NOMCOG</strong><div class="hash">observed main: 4c7bca85b1fad9ba5cd03f85cadbea2ddf91344a</div><p><a href="https://davidwise01.github.io/nom/">nom ↗</a> · <a href="https://davidwise01.github.io/nom/nomcog/">nomcog ↗</a> · <a href="https://github.com/DavidWise01/nom/tree/main/nomcog/runtime/executable">Posi executable ↗</a></p></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="artifacts">
+<div class="kicker">Artifacts</div><h2>Inspect every layer.</h2>
+<div class="status">
+<div class="stat"><strong>v92</strong><span>frozen trust anchor</span></div>
+<div class="stat"><strong>v178</strong><span>generative descendant</span></div>
+<div class="stat"><strong>0e</strong><span>Python structural checks locally</span></div>
+<div class="stat"><strong>STOP</strong><span>/0/0 terminal</span></div>
+</div>
+<div class="grid">
+<article class="card wide"><b>Frozen v92 canon SHA-256</b><p class="hash">8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8</p></article>
+<article class="card wide"><b>Tether record</b><p><a href="NOM_TETHER.json">NOM_TETHER.json</a> · machine-readable cross-repo identity/witness record.</p></article>
+<article class="card wide"><b>Executable</b><p><a href="../../kernel/generative/ae-hierarchical-v178/kernel.py">kernel.py</a> · <a href="../../kernel/generative/ae-hierarchical-v178/test_kernel.py">test_kernel.py</a> · <a href="../../kernel/generative/ae-hierarchical-v178/MANIFEST.json">manifest</a></p></article>
+<article class="card wide"><b>Formal / narrative</b><p><a href="../../kernel/generative/ae-hierarchical-v178/proof/OaSIs_Hierarchical_Seal_v178.lean">Lean source</a> · <a href="../../kernel/generative/ae-hierarchical-v178/proof/OaSIs_Hierarchical_Seal_v178.md">full hierarchical Markdown</a></p></article>
+</div>
+</section>
+</main>
+<footer><div class="wrap">OaSIs · AE Hierarchical Generative Kernel v178 · symbolic/isomorphic software model · append-only tether to NOM/NOMCOG.</div></footer>
+<script>
+const grid=document.getElementById('fieldGrid');
+const legend=document.getElementById('orbitLegend');
+const cells=Array.from({length:10},()=>[]);
+for(let y=0;y<10;y++){
+  for(let x=0;x<10;x++){
+    const k=(3*x+2*y)%10;
+    cells[k].push([x,y]);
+    const el=document.createElement('div');
+    el.className='cell';
+    el.textContent=k;
+    el.title=`(x=${x}, y=${y}) · I=${k}`;
+    el.dataset.orbit=k;
+    grid.appendChild(el);
+  }
+}
+for(let k=0;k<10;k++){
+  const el=document.createElement('div');
+  el.className='orbit';
+  el.innerHTML=`<strong>I=${k}</strong> · ${cells[k].length} cells`;
+  el.onmouseenter=()=>document.querySelectorAll('.cell').forEach(c=>c.style.opacity=c.dataset.orbit==k?'1':'.2');
+  el.onmouseleave=()=>document.querySelectorAll('.cell').forEach(c=>c.style.opacity='1');
+  legend.appendChild(el);
+}
+</script>
+</body>
+</html>
