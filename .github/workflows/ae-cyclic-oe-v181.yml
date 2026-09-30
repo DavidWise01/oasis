@@ -1,0 +1,40 @@
+name: AE Cyclic OE v181 Exhaustive
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kernel/generative/ae-cyclic-oe-v181/**"
+      - ".github/workflows/ae-cyclic-oe-v181.yml"
+  pull_request:
+    paths:
+      - "kernel/generative/ae-cyclic-oe-v181/**"
+      - ".github/workflows/ae-cyclic-oe-v181.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exhaustive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Exhaust every finite v181 register
+        working-directory: kernel/generative/ae-cyclic-oe-v181
+        run: |
+          python kernel.py --exhaustive > /tmp/v181-report.json
+          python test_exhaustive.py
+          grep -q "EXHAUSTIVE FINITE CONTROL PASS" /tmp/v181-report.json
+          python - <<'PY'
+          import json
+          r=json.load(open("/tmp/v181-report.json"))
+          assert r["state_space"]["control_states"] == 24
+          assert r["state_space"]["ring_cells"] == 720
+          assert r["state_space"]["cells_per_control_state"] == 30
+          assert len(r["states"]) == 24
+          assert sum(x["cells"] for x in r["states"]) == 720
+          print("0e / v181 CI EXHAUSTIVE PASS")
+          PY

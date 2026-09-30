@@ -1,0 +1,86 @@
+{
+  "schema": "oasis.generative.kernel.manifest.v181",
+  "version": "v181",
+  "status": "SEALED / CYCLIC OE / EXHAUSTIVE FINITE CONTROL",
+  "parent": "kernel/generative/ae-homeo-oe-v180/",
+  "frozen_root": {
+    "version": "v92",
+    "canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8"
+  },
+  "geometry": {
+    "ring_cells": 720,
+    "cell_turn": "1/720",
+    "cell_degrees": 0.5,
+    "phase": {
+      "count": 36,
+      "cells": 20
+    },
+    "mini_prim": {
+      "count": 18,
+      "cells": 40
+    },
+    "plank": {
+      "count": 12,
+      "cells": 60
+    },
+    "sector": {
+      "count": 6,
+      "cells": 120
+    }
+  },
+  "control": {
+    "literal": "Q4 x T3 x B2 x U1 x U1",
+    "cardinality": 24,
+    "cells_per_state": 30,
+    "q4": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "t3": [
+      -1,
+      0,
+      1
+    ],
+    "b2": [
+      "{-+}",
+      "{+-}"
+    ],
+    "u1": [
+      "x",
+      "y"
+    ],
+    "floating_i": "-+{{i::a::b::c::d::i}}-+",
+    "oe_carrier": "--{{-++-}}++"
+  },
+  "closures": {
+    "fold_ladder": [
+      60,
+      30,
+      24,
+      16,
+      12,
+      9,
+      6,
+      3,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    "terminal_fold": "0x1x0",
+    "shell": "0..99; 99+1 -> 1.startover",
+    "body": "10x10x10 p:n/-e/+e -> 1v",
+    "cubits": "opposite +/-1/720; step360 meet; step720 return then X",
+    "O3": "oeoeoe",
+    "sync": "10x6 = 12x5 = 60"
+  },
+  "literal_configuration": {
+    "expression": "2 x 120^240",
+    "digits": 500,
+    "cardinality": "20161788150601353059929685613414325490255526742306311821936202483017002605331665002609712849861810395935898560755869731155783384685721144155233604993477213591759067842984445681668755452942614234718345250223670153269152177233141944159863411568711746262193405952000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "exhaustive_scope": "all finite control states/cells/shell/body transitions; exact symbolic retention for 2 x 120^240 configuration cardinality"
+}
