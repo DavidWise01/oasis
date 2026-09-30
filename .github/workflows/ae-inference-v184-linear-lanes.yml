@@ -1,0 +1,26 @@
+name: OaSIs v184 Linear Lane Scaling
+on:
+  push:
+    branches: [main]
+    paths:
+      - "benchmarks/ae-inference-v184-linear-lanes/**"
+      - ".github/workflows/ae-inference-v184-linear-lanes.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lanes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Benchmark independent linear lanes
+        working-directory: benchmarks/ae-inference-v184-linear-lanes
+        run: python lanes.py | tee stdout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ae-inference-v184-linear-lanes
+          path: benchmarks/ae-inference-v184-linear-lanes/lane-result.json
