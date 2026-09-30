@@ -1,0 +1,38 @@
+{
+  "schema": "oasis.nom.tether.v179",
+  "status": "RECIPROCAL / WITNESS-RECEIPT / AUTHORITY-SEPARATE",
+  "source": {
+    "repo": "DavidWise01/oasis",
+    "branch": "main",
+    "parent_witness_commit": "2c1c9eabe99a3221fbf8840a51b2f4adbc07120c",
+    "page": "https://davidwise01.github.io/oasis/architecture/ae-generative-v179/",
+    "kernel": "kernel/generative/ae-witness-v179/",
+    "parent_kernel": "kernel/generative/ae-hierarchical-v178/",
+    "frozen_parent": "kernel/frozen/ae-generative-first-v92/",
+    "frozen_canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8"
+  },
+  "target": {
+    "repo": "DavidWise01/nom",
+    "parent_tether_commit": "fa166428fba73d34979954296968c5dd00950354",
+    "posi": "Posi v00.01",
+    "stable_ref": "posi-v00.01",
+    "identity_anchor": 17,
+    "provenance_anchor": 131,
+    "network": "disabled",
+    "executable": "nomcog/runtime/executable"
+  },
+  "receipt": {
+    "schema": "oasis.ae.witness.receipt.v179",
+    "hash_linked": true,
+    "previous_receipt": true,
+    "mapping": "UNBOUND unless explicit validated bijection",
+    "terminal": "/0/0 = STOP",
+    "polarity": "- <-> +"
+  },
+  "authority": {
+    "merge": false,
+    "runtime_network": false,
+    "mutate_v92": false,
+    "mutate_posi_v00_01": false
+  }
+}

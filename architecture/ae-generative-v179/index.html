@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#060908">
+<meta name="description" content="OaSIs AE Witness-Generative Kernel v179 — deterministic state receipts, NOMCOG Posi tether, append-only witness chain.">
+<title>OaSIs · AE Witness v179</title>
+<style>
+:root{--bg:#060908;--p:#0c1210;--p2:#101914;--line:#25332c;--ink:#eff6f1;--muted:#91a198;--mint:#8fe0b2;--amber:#e8c67c;--blue:#8fc8e8;--red:#ef9292}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 580px at 10% -5%,rgba(143,224,178,.09),transparent 60%),radial-gradient(800px 540px at 92% 0%,rgba(143,200,232,.06),transparent 58%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit}.wrap{width:min(1200px,calc(100% - 30px));margin:auto}nav{position:sticky;top:0;z-index:20;background:rgba(6,9,8,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:62px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900}.brand span{color:var(--mint)}.navlinks{display:flex;gap:13px;font:11px ui-monospace;color:var(--muted)}.navlinks a{text-decoration:none}.hero{padding:78px 0 44px;display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:end}.eyebrow{font:800 11px ui-monospace;letter-spacing:.17em;text-transform:uppercase;color:var(--mint)}h1{font-size:clamp(50px,8.5vw,104px);line-height:.86;letter-spacing:-.067em;margin:12px 0 20px}.lead{font-size:17px;line-height:1.68;color:#b6c1ba;max-width:760px}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.btn{display:inline-flex;text-decoration:none;border:1px solid #405248;border-radius:10px;padding:10px 13px;font-size:12px;font-weight:800;background:#101713}.btn:hover{border-color:var(--mint)}.btn.primary{background:#17241d}.terminal,.flow{border:1px solid var(--line);border-radius:18px;background:#0a0f0d;padding:20px;overflow:auto}.terminal pre,.flow pre{margin:0;white-space:pre-wrap;font:12px/1.74 ui-monospace;color:#cad5ce}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.badge{border:1px solid #365044;background:#101a15;border-radius:999px;padding:7px 10px;font:800 10px ui-monospace;color:var(--mint)}.badge.amber{color:var(--amber);border-color:#54472c}.section{padding:40px 0}.kicker{font:10px ui-monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}h2{font-size:clamp(30px,4.6vw,54px);letter-spacing:-.05em;margin:7px 0 10px}.copy{color:var(--muted);line-height:1.68;max-width:850px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:18px}.card{grid-column:span 4;border:1px solid var(--line);border-radius:16px;background:var(--p);padding:18px}.card.wide{grid-column:span 6}.num{font:900 28px ui-monospace;color:var(--mint);margin-bottom:18px}.card p{color:var(--muted);font-size:12px;line-height:1.55}.flow{grid-column:span 12}
+.receipts{display:grid;gap:10px}.receipt{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:14px;background:var(--p);padding:14px}.receipt .g{font:900 12px ui-monospace;color:var(--mint)}.receipt code{font:11px ui-monospace;color:#cbd5cf;word-break:break-all}.status{font:900 10px ui-monospace;border:1px solid #53472d;border-radius:999px;padding:6px 8px;color:var(--amber)}
+.tether{border:1px solid #385342;border-radius:20px;background:linear-gradient(135deg,rgba(143,224,178,.08),rgba(143,200,232,.03));padding:22px}.tetherline{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}.node{border:1px solid var(--line);border-radius:16px;background:#0a0f0d;padding:18px}.node small{color:var(--muted);font:10px ui-monospace}.node strong{display:block;font-size:20px;margin:5px 0}.rope{font:900 22px ui-monospace;color:var(--mint)}code,.hash{font-family:ui-monospace;color:var(--mint)}.hash{font-size:10px;word-break:break-all}
+footer{border-top:1px solid var(--line);margin-top:32px;padding:27px 0 44px;color:var(--muted);font-size:11px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.card,.card.wide{grid-column:span 12}.tetherline{grid-template-columns:1fr}.rope{text-align:center}.receipt{grid-template-columns:1fr}.navlinks a:not(.keep){display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav"><div class="brand">OaSIs <span>AE v179</span></div><div class="navlinks"><a href="../../">HOME</a><a href="../ae-generative-v178/">v178</a><a href="#receipts">RECEIPTS</a><a href="#nom">NOM</a><a class="keep" href="#proof">PROOF</a></div></div></nav>
+<main class="wrap">
+<section class="hero">
+<div>
+<div class="eyebrow">witness-generative descendant · v179</div>
+<h1>State →<br>Receipt →<br>Witness.</h1>
+<p class="lead">v179 evolves the v178 generator by giving every generated state a deterministic, hash-linked witness receipt. NOM/NOMCOG can verify the receipt locally while network access stays disabled and repository authority stays separate.</p>
+<div class="badges"><span class="badge">GENERATIVE</span><span class="badge">HASH-LINKED</span><span class="badge">APPEND-ONLY</span><span class="badge amber">UNBOUND ≠ INVENTED</span></div>
+<div class="actions"><a class="btn primary" href="../../kernel/generative/ae-witness-v179/kernel.py">kernel.py</a><a class="btn" href="../../kernel/generative/ae-witness-v179/test_kernel.py">tests</a><a class="btn" href="../../kernel/generative/ae-witness-v179/proof/OaSIs_Witness_Tether_v179.lean">Lean</a><a class="btn" href="../../kernel/generative/ae-witness-v179/proof/OaSIs_Witness_Tether_v179.md">full .md</a></div>
+</div>
+<aside class="terminal"><pre>v178 STATE
+  │ state_id
+  │ state seal
+  │ orbit class
+  │ lane label
+  │ binding status
+  ▼
+v179 RECEIPT
+  │ receipt_id
+  │ receipt seal
+  │ previous receipt seal
+  │ NOM anchors 17 / 131
+  ▼
+LOCAL VERIFY
+  │
+  ├─ UNBOUND → preserve null map
+  ├─ BOUND   → require orbit agreement
+  └─ /0/0    → STOP receipt</pre></aside>
+</section>
+
+<section class="section">
+<div class="kicker">Evolution</div><h2>The next thing that fell out was provenance.</h2>
+<div class="grid">
+<article class="card"><div class="num">17</div><b>NOM identity anchor</b><p>Carried in every receipt; verifier rejects changes.</p></article>
+<article class="card"><div class="num">131</div><b>NOM provenance anchor</b><p>Carried independently from the identity anchor.</p></article>
+<article class="card"><div class="num">OFF</div><b>Network</b><p>The verifier is local-only. The Git tether establishes provenance, not runtime remote control.</p></article>
+<div class="flow"><pre>source_state_json_sha256
+source_state_id
+source_state_seal
+source_generation
+source_point
+source_orbit_class
+source_lane_label
+source_lane_class_binding
+binding_status
+source_control
+source_halted
+source_polarity
+
++ Posi v00.01 witnesses
++ previous_receipt_id
++ previous_receipt_seal
+
+= deterministic receipt_id
+= deterministic receipt seal</pre></div>
+</div>
+</section>
+
+<section class="section" id="receipts">
+<div class="kicker">Receipt chain</div><h2>Append-only, one witness at a time.</h2>
+<p class="copy">The demo chain begins unbound and remains unbound because no explicit lane bijection is supplied. That is intentional: the math knows the orbit class; the semantic lane permutation is still a separate choice.</p>
+<div class="receipts">
+<div class="receipt"><div class="g">GEN 000000</div><code>0.s0.0 → orbit I=0 → lane plank0</code><div class="status">UNBOUND</div></div>
+<div class="receipt"><div class="g">GEN 000001</div><code>dot: |&lt;.&gt;| → (-2,+3) step → receipt linked to genesis</code><div class="status">UNBOUND</div></div>
+<div class="receipt"><div class="g">GEN 000002</div><code>mirror: |)&gt;.&lt;(| → previous receipt seal retained</code><div class="status">UNBOUND</div></div>
+<div class="receipt"><div class="g">GEN 000003</div><code>slot: cc → mathematical orbit retained</code><div class="status">UNBOUND</div></div>
+<div class="receipt"><div class="g">GEN 000004</div><code>/0/0 → STOP → halted state receives final witness</code><div class="status">STOP</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Binding gate</div><h2>Witnessing is not mapping.</h2>
+<div class="flow"><pre>10 mathematical orbit classes
+             │
+             │ known
+             ▼
+      source_orbit_class
+
+10 symbolic labels
+aaL bbL ccL ddL ddR ccR bbR aaR plank0 plank1
+             │
+             │ known
+             ▼
+       source_lane_label
+
+BUT:
+
+label → orbit class permutation
+             │
+             ├─ absent  → binding_status = UNBOUND
+             │            lane_class_binding = null
+             │
+             └─ explicit validated bijection
+                          ↓
+                    binding_status = BOUND
+                    lane_class_binding == orbit_class</pre></div>
+</section>
+
+<section class="section" id="nom">
+<div class="kicker">NOM peer</div><h2>Reciprocal witness, separate authority.</h2>
+<div class="tether"><div class="tetherline">
+<div class="node"><small>GENERATOR</small><strong>OaSIs / AE v179</strong><div class="hash">parent witness commit: 2c1c9eabe99a3221fbf8840a51b2f4adbc07120c</div></div>
+<div class="rope">◀══ receipt ══▶</div>
+<div class="node"><small>LOCAL VERIFIER</small><strong>NOM / NOMCOG / Posi</strong><div class="hash">tether parent: fa166428fba73d34979954296968c5dd00950354</div><p><a href="https://davidwise01.github.io/nom/nomcog/">NOMCOG ↗</a></p></div>
+</div></div>
+</section>
+
+<section class="section" id="proof">
+<div class="kicker">Proof / source</div><h2>Audit the evolution.</h2>
+<div class="grid">
+<article class="card wide"><b>Python executable</b><p><a href="../../kernel/generative/ae-witness-v179/kernel.py">kernel.py</a> · <a href="../../kernel/generative/ae-witness-v179/test_kernel.py">test_kernel.py</a> · <a href="../../kernel/generative/ae-witness-v179/MANIFEST.json">manifest</a></p></article>
+<article class="card wide"><b>Formal structure</b><p><a href="../../kernel/generative/ae-witness-v179/proof/OaSIs_Witness_Tether_v179.lean">Lean source</a> · <a href="../../kernel/generative/ae-witness-v179/proof/OaSIs_Witness_Tether_v179.md">Markdown</a></p></article>
+<article class="card wide"><b>Machine tether</b><p><a href="NOM_TETHER_v179.json">NOM_TETHER_v179.json</a></p></article>
+<article class="card wide"><b>Frozen root</b><p class="hash">v92 canon SHA-256: 8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8</p></article>
+</div>
+</section>
+</main>
+<footer><div class="wrap">OaSIs AE Witness-Generative Kernel v179 · symbolic/isomorphic software model · network-disabled NOM/Posi witness tether.</div></footer>
+</body>
+</html>
