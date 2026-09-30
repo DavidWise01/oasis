@@ -1,0 +1,44 @@
+{
+  "schema": "oasis.kernel.seal.v182",
+  "version": "v182",
+  "designation": "AE Bucket Boundary Canon v182",
+  "status": "SEALED / CANON / TWO BOUNDARIES PASS",
+  "immutable": true,
+  "tested_core_commit": "73fa6a5ee4fed17ae97fd9426365b017c5e0824b",
+  "boundary_ci": {
+    "run_id": 36766211132,
+    "workflow": "AE Bucket Boundaries v182",
+    "conclusion": "success",
+    "url": "https://github.com/DavidWise01/oasis/actions/runs/36766211132"
+  },
+  "canonical_primitive": {
+    "compact": "{{0011 :: pt + {{n}}^{{n}}^{{n}} :: i}}",
+    "expanded": "{{0011 :: pt + {{n}}^{{n}}^{{n}} :: {{i = inf + 1{{B{{u}}cket}}}}}}",
+    "referent": "0011 = plank 0",
+    "i": "{{i = inf + 1{{B{{u}}cket}}}}",
+    "u": "private disposable / pocket universe"
+  },
+  "two_boundaries": {
+    "ingress": "B{{",
+    "egress": "}}cket",
+    "ingress_tests": 720,
+    "egress_tests": 720,
+    "total_transitions": 1440,
+    "parent_mutations": 0,
+    "raw_payload_exposed_bytes": 0,
+    "disposed_u_reopen": "rejected",
+    "repeat_egress": "rejected",
+    "tampered_receipt": "rejected"
+  },
+  "git_blobs": {
+    "kernel_py": "1ea309e5d1e8598e9683e02aa7c2f4c28570f01c",
+    "test_boundaries_py": "966210886adbb9705e68349d1eb36d567f9f79d9",
+    "canon_json": "d09a188f4c7690aa0c270bd24401bcb4a30ee4f6",
+    "readme_md": "b7d52458f472f493605f1aaf636fcd3a6536431a",
+    "page_html": "e414018472951ca40e927ce52e88f9f1954029e9"
+  },
+  "frozen_parent": {
+    "version": "v181",
+    "seal_commit": "20b915a8867fb4df2691bd6d7ccb5a05d1823b0d"
+  }
+}
