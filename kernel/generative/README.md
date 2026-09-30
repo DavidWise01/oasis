@@ -75,3 +75,22 @@ The boundary harness exhausts both transitions across all 720 sealed v181 ring c
 Public page:
 
     https://davidwise01.github.io/oasis/architecture/ae-generative-v182/
+
+
+## Zero/I Canon v183
+
+Canonical root:
+
+    {{0::{i::}}}
+
+Formal symbolic transform:
+
+    -1 -> 0
+     0 -> -1
+    +1 -> 0&1
+
+Lean proves the three mappings, inverse round-trips, injectivity, surjectivity and bijectivity. This is an information-state transform, not ordinary integer arithmetic.
+
+Public page:
+
+    https://davidwise01.github.io/oasis/architecture/ae-generative-v183/

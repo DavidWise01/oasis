@@ -1,0 +1,28 @@
+{
+  "schema": "oasis.zero-i.canon.v183",
+  "version": "v183",
+  "status": "CANON / ZERO-I ROOT / APPEND-ONLY",
+  "parent": "kernel/generative/ae-bucket-boundary-v182/",
+  "literal": "{{0::{i::}}}",
+  "semantics": {
+    "zero": "universal referent / constructed zero",
+    "i": "full transformative state",
+    "arithmetic_scope": "symbolic information transform; not ordinary integer equality"
+  },
+  "ternary_transform": {
+    "0": "-1",
+    "-1": "0",
+    "+1": "0&1"
+  },
+  "proof_targets": [
+    "root referent = 0",
+    "-1 maps to 0",
+    "0 maps to -1",
+    "+1 maps to 0&1",
+    "iInv(i(x)) = x",
+    "i(iInv(y)) = y",
+    "i is injective",
+    "i is surjective",
+    "i is bijective"
+  ]
+}
