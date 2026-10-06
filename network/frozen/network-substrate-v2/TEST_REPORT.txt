@@ -1,0 +1,21 @@
+exit=0
+
+STDOUT
+PASS frozen validation
+PASS depth 2^3
+PASS canonical chronology
+PASS canonical names
+PASS all frozen rings satisfy convergence
+PASS hardware-only rejected
+PASS software-only rejected
+PASS no population reach rejected
+PASS no new info behavior rejected
+PASS full convergence accepted
+PASS frontier open
+PASS a=b output
+PASS provenance distinct
+PASS bounded infinity
+PASS 14/14
+
+NOTE
+The local artifact runtime emitted an unrelated spreadsheet warmup warning during execution. The network-substrate tests themselves exited 0 and passed 14/14.
