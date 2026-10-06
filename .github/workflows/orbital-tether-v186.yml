@@ -1,0 +1,35 @@
+name: OaSIs Orbital Tether v186
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kernel/generative/orbital-tether-v186/**"
+      - ".github/workflows/orbital-tether-v186.yml"
+  pull_request:
+    paths:
+      - "kernel/generative/orbital-tether-v186/**"
+      - ".github/workflows/orbital-tether-v186.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run orbital executable benchmark
+        working-directory: kernel/generative/orbital-tether-v186
+        run: python kernel.py
+      - name: Install Lean 4.33.1
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compile Lean proof
+        run: |
+          lean --version
+          lean kernel/generative/orbital-tether-v186/proof/OaSIs_Orbital_Tether_v186.lean
