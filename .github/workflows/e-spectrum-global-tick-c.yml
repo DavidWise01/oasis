@@ -1,0 +1,25 @@
+name: OaSIs Global Tick C Benchmark
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kernel/generative/e-spectrum-global-tick-v02/global_tick_bench.c"
+      - ".github/workflows/e-spectrum-global-tick-c.yml"
+  pull_request:
+    paths:
+      - "kernel/generative/e-spectrum-global-tick-v02/global_tick_bench.c"
+      - ".github/workflows/e-spectrum-global-tick-c.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile C benchmark
+        run: gcc -O3 -std=c11 -D_POSIX_C_SOURCE=199309L kernel/generative/e-spectrum-global-tick-v02/global_tick_bench.c -o /tmp/global_tick_bench
+      - name: Run C benchmark
+        run: /tmp/global_tick_bench
