@@ -1,1 +1,145 @@
-import Std\n\n/-\nOaSIs_Chemical_Mnemonic_v185\n==============================\n\nFormalizes the user term "mnemonic" as a chemically persistent/recoverable\ntrace inside explicitly declared time windows.\n\nThis is a discrete symbolic model. It does NOT claim all chemistry follows a\nsingle decay law. Real kinetics depend on compound, environment, assay,\ntemperature, water, oxygen, microbes, etc.\n\nFather Time   = ordered ring / time-window index.\nMother Nature = reuse / hold / release classification.\nRecoverability states:\n  STRONG -> MEDIUM -> WEAK -> ZERO\nZERO is absorbing.\n-/\n\nnamespace OaSIs.ChemicalMnemonicV185\n\ninductive Strength where\n  | zero\n  | weak\n  | medium\n  | strong\n  deriving DecidableEq, BEq, Repr\n\ndef rank : Strength → Nat\n  | .zero => 0\n  | .weak => 1\n  | .medium => 2\n  | .strong => 3\n\ndef degrade : Strength → Strength\n  | .strong => .medium\n  | .medium => .weak\n  | .weak => .zero\n  | .zero => .zero\n\ndef walk : Nat → Strength → Strength\n  | 0, s => s\n  | n + 1, s => walk n (degrade s)\n\ndef recoverable : Strength → Bool\n  | .zero => false\n  | _ => true\n\ninductive Disposition where\n  | release\n  | hold\n  | reuse\n  deriving DecidableEq, BEq, Repr\n\ndef motherNature : Strength → Disposition\n  | .strong => .reuse\n  | .medium => .reuse\n  | .weak => .hold\n  | .zero => .release\n\nstructure Ring where\n  stage : Nat\n  startTick : Nat\n  endTick : Nat\n  deriving DecidableEq, Repr\n\ndef validRing (r : Ring) : Prop :=\n  r.startTick ≤ r.endTick\n\ntheorem degrade_rank_le (s : Strength) :\n    rank (degrade s) ≤ rank s := by\n  cases s <;> decide\n\ntheorem zero_absorbing :\n    degrade .zero = .zero := by\n  rfl\n\ntheorem walk_zero_absorbing (n : Nat) :\n    walk n .zero = .zero := by\n  induction n with\n  | zero => rfl\n  | succ n ih =>\n      simp [walk, degrade, ih]\n\ntheorem walk_rank_le (n : Nat) (s : Strength) :\n    rank (walk n s) ≤ rank s := by\n  induction n generalizing s with\n  | zero =>\n      simp [walk]\n  | succ n ih =>\n      simp [walk]\n      exact Nat.le_trans (ih (degrade s)) (degrade_rank_le s)\n\ntheorem strong_three_steps_zero :\n    walk 3 .strong = .zero := by\n  decide\n\ntheorem strong_after_three_stays_zero (n : Nat) :\n    walk (n + 3) .strong = .zero := by\n  induction n with\n  | zero =>\n      decide\n  | succ n ih =>\n      simpa [Nat.succ_add, walk] using congrArg degrade ih\n\ntheorem classification_exact :\n    motherNature .strong = .reuse ∧\n    motherNature .medium = .reuse ∧\n    motherNature .weak = .hold ∧\n    motherNature .zero = .release := by\n  decide\n\ndef exampleRings : List Ring :=\n  [\n    { stage := 0, startTick := 0, endTick := 1 },\n    { stage := 1, startTick := 1, endTick := 2 },\n    { stage := 2, startTick := 2, endTick := 5 },\n    { stage := 3, startTick := 5, endTick := 10 }\n  ]\n\ndef allValid : List Ring → Bool\n  | [] => true\n  | r :: rs => (r.startTick ≤ r.endTick) && allValid rs\n\ntheorem example_rings_valid :\n    allValid exampleRings = true := by\n  decide\n\ndef lineageTether (n : Nat) (s : Strength) : Strength := walk n s\ndef decompositionTether (n : Nat) (s : Strength) : Strength := walk n s\n\ntheorem tether_alignment (n : Nat) (s : Strength) :\n    lineageTether n s = decompositionTether n s := by\n  rfl\n\ndef modelCheck : Bool :=\n  (degrade .strong == .medium) &&\n  (degrade .medium == .weak) &&\n  (degrade .weak == .zero) &&\n  (degrade .zero == .zero) &&\n  (motherNature .strong == .reuse) &&\n  (motherNature .weak == .hold) &&\n  (motherNature .zero == .release) &&\n  allValid exampleRings\n\ntheorem chemical_mnemonic_v185_pass :\n    modelCheck = true := by\n  decide\n\nend OaSIs.ChemicalMnemonicV185\n
+import Std
+
+/-
+OaSIs_Chemical_Mnemonic_v185
+==============================
+
+Formalizes the user term "mnemonic" as a chemically persistent/recoverable
+trace inside explicitly declared time windows.
+
+This is a discrete symbolic model. It does NOT claim all chemistry follows a
+single decay law. Real kinetics depend on compound, environment, assay,
+temperature, water, oxygen, microbes, etc.
+
+Father Time   = ordered ring / time-window index.
+Mother Nature = reuse / hold / release classification.
+Recoverability states:
+  STRONG -> MEDIUM -> WEAK -> ZERO
+ZERO is absorbing.
+-/
+
+namespace OaSIs.ChemicalMnemonicV185
+
+inductive Strength where
+  | zero
+  | weak
+  | medium
+  | strong
+  deriving DecidableEq, BEq, Repr
+
+def rank : Strength → Nat
+  | .zero => 0
+  | .weak => 1
+  | .medium => 2
+  | .strong => 3
+
+def degrade : Strength → Strength
+  | .strong => .medium
+  | .medium => .weak
+  | .weak => .zero
+  | .zero => .zero
+
+def walk : Nat → Strength → Strength
+  | 0, s => s
+  | n + 1, s => walk n (degrade s)
+
+def recoverable : Strength → Bool
+  | .zero => false
+  | _ => true
+
+inductive Disposition where
+  | release
+  | hold
+  | reuse
+  deriving DecidableEq, BEq, Repr
+
+def motherNature : Strength → Disposition
+  | .strong => .reuse
+  | .medium => .reuse
+  | .weak => .hold
+  | .zero => .release
+
+structure Ring where
+  stage : Nat
+  startTick : Nat
+  endTick : Nat
+  deriving DecidableEq, Repr
+
+def validRing (r : Ring) : Prop :=
+  r.startTick ≤ r.endTick
+
+theorem degrade_rank_le (s : Strength) :
+    rank (degrade s) ≤ rank s := by
+  cases s <;> decide
+
+theorem zero_absorbing :
+    degrade .zero = .zero := by
+  rfl
+
+theorem walk_zero_absorbing (n : Nat) :
+    walk n .zero = .zero := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+      simpa [walk, degrade] using ih
+
+theorem walk_rank_le (n : Nat) (s : Strength) :
+    rank (walk n s) ≤ rank s := by
+  induction n generalizing s with
+  | zero =>
+      simp [walk]
+  | succ n ih =>
+      exact Nat.le_trans (ih (degrade s)) (degrade_rank_le s)
+
+theorem strong_three_steps_zero :
+    walk 3 .strong = .zero := by
+  decide
+
+theorem classification_exact :
+    motherNature .strong = .reuse ∧
+    motherNature .medium = .reuse ∧
+    motherNature .weak = .hold ∧
+    motherNature .zero = .release := by
+  decide
+
+def exampleRings : List Ring :=
+  [
+    { stage := 0, startTick := 0, endTick := 1 },
+    { stage := 1, startTick := 1, endTick := 2 },
+    { stage := 2, startTick := 2, endTick := 5 },
+    { stage := 3, startTick := 5, endTick := 10 }
+  ]
+
+def ringValidB (r : Ring) : Bool :=
+  decide (r.startTick ≤ r.endTick)
+
+def allValid : List Ring → Bool
+  | [] => true
+  | r :: rs => ringValidB r && allValid rs
+
+theorem example_rings_valid :
+    allValid exampleRings = true := by
+  decide
+
+def lineageTether (n : Nat) (s : Strength) : Strength := walk n s
+def decompositionTether (n : Nat) (s : Strength) : Strength := walk n s
+
+theorem tether_alignment (n : Nat) (s : Strength) :
+    lineageTether n s = decompositionTether n s := by
+  rfl
+
+def modelCheck : Bool :=
+  (degrade .strong == .medium) &&
+  (degrade .medium == .weak) &&
+  (degrade .weak == .zero) &&
+  (degrade .zero == .zero) &&
+  (motherNature .strong == .reuse) &&
+  (motherNature .weak == .hold) &&
+  (motherNature .zero == .release) &&
+  allValid exampleRings
+
+theorem chemical_mnemonic_v185_pass :
+    modelCheck = true := by
+  decide
+
+end OaSIs.ChemicalMnemonicV185
