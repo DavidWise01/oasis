@@ -1,0 +1,39 @@
+name: OaSIs E-Spectrum Plank Bubble v01
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "lean/Oasis.ESpectrum.PlankBubbleCycle.01.lean"
+      - "kernel/generative/e-spectrum-plank-cycle-v01/**"
+      - ".github/workflows/e-spectrum-plank-cycle-v01.yml"
+  pull_request:
+    paths:
+      - "lean/Oasis.ESpectrum.PlankBubbleCycle.01.lean"
+      - "kernel/generative/e-spectrum-plank-cycle-v01/**"
+      - ".github/workflows/e-spectrum-plank-cycle-v01.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run deterministic cycle model
+        working-directory: kernel/generative/e-spectrum-plank-cycle-v01
+        run: |
+          python test_plank_cycle.py
+          python plank_cycle.py
+      - name: Install Lean 4.33.1
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compile aligned Lean successor
+        run: |
+          lean --version
+          lean lean/Oasis.ESpectrum.PlankBubbleCycle.01.lean
