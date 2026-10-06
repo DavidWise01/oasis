@@ -1,0 +1,19 @@
+{
+  "validation_errors": [],
+  "walk": [
+    [1995, "WEB", "human requests retained network information"],
+    [2001, "CORPUS", "machine indexes and recovers from expanding public corpora"],
+    [2006, "CLOUD", "storage and compute become callable network services"],
+    [2011, "MOBILE", "network access becomes continuously attached to handheld endpoints"],
+    [2016, "RANK", "machine selects which retained item becomes visible next"],
+    [2019, "PRELOAD", "machine preloads likely next information before explicit request"],
+    [2024, "GENERATE", "machine can generate candidate information/actions before execution"],
+    [null, "NEXT?", "OPEN"]
+  ],
+  "benchmark": [
+    {"steps": 1000, "seconds": 0.0008787140000094951, "events_per_second": 1138026.7071984678, "retained_states": 1000},
+    {"steps": 10000, "seconds": 0.004055405999906725, "events_per_second": 2465844.3569472455, "retained_states": 10000},
+    {"steps": 100000, "seconds": 0.04084911099994315, "events_per_second": 2448033.691605655, "retained_states": 100000},
+    {"steps": 500000, "seconds": 0.19757136600014746, "events_per_second": 2530731.097944764, "retained_states": 500000}
+  ]
+}
