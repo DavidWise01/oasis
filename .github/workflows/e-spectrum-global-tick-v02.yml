@@ -1,0 +1,37 @@
+name: OaSIs Global Tick Cycle v02
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "lean/Oasis.ESpectrum.GlobalTickCycle.02.lean"
+      - "kernel/generative/e-spectrum-global-tick-v02/**"
+      - ".github/workflows/e-spectrum-global-tick-v02.yml"
+  pull_request:
+    paths:
+      - "lean/Oasis.ESpectrum.GlobalTickCycle.02.lean"
+      - "kernel/generative/e-spectrum-global-tick-v02/**"
+      - ".github/workflows/e-spectrum-global-tick-v02.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Benchmark global tick
+        working-directory: kernel/generative/e-spectrum-global-tick-v02
+        run: python global_tick_bench.py
+      - name: Install Lean 4.33.1
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compile global tick alignment proof
+        run: |
+          lean --version
+          lean lean/Oasis.ESpectrum.GlobalTickCycle.02.lean
