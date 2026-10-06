@@ -1,0 +1,37 @@
+name: OaSIs Cell Lattice Hierarchy v03
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "lean/Oasis.ESpectrum.CellLatticeHierarchy.03.lean"
+      - "kernel/generative/e-spectrum-cell-lattice-v03/**"
+      - ".github/workflows/e-spectrum-cell-lattice-v03.yml"
+  pull_request:
+    paths:
+      - "lean/Oasis.ESpectrum.CellLatticeHierarchy.03.lean"
+      - "kernel/generative/e-spectrum-cell-lattice-v03/**"
+      - ".github/workflows/e-spectrum-cell-lattice-v03.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run hierarchy alignment
+        working-directory: kernel/generative/e-spectrum-cell-lattice-v03
+        run: python hierarchy_v03.py
+      - name: Install Lean 4.33.1
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compile hierarchy proof
+        run: |
+          lean --version
+          lean lean/Oasis.ESpectrum.CellLatticeHierarchy.03.lean
