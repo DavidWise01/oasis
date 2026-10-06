@@ -1,0 +1,29 @@
+name: OaSIs Frozen -E+ Spectrum Lean
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "lean/Oasis.ESpectrum.VectorVoxelVogel.00.Frozen.lean"
+      - ".github/workflows/e-spectrum-vector-voxel-vogel.yml"
+  pull_request:
+    paths:
+      - "lean/Oasis.ESpectrum.VectorVoxelVogel.00.Frozen.lean"
+      - ".github/workflows/e-spectrum-vector-voxel-vogel.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean 4.33.1
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compile frozen -E+ spectrum
+        run: |
+          lean --version
+          lean lean/Oasis.ESpectrum.VectorVoxelVogel.00.Frozen.lean
