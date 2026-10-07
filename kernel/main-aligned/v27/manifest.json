@@ -1,0 +1,26 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "git_base_verified": "9e263a7d4a1124ddf7885faf295c7bc477644830",
+  "current_version": "v27",
+  "current_source": "OASIS_Main_Kernel_AtomristorAligned_v27_2026-10-07.lean",
+  "current_source_sha256": "0758b5a5edb5e4a4bf8bf8eb4bbbf213d51116a70163749be43bde6019ea0776",
+  "current_source_gzip_sha256": "22b2d2ede1b08302105a001e81f5942ec8c247433cda1b014f0bd389f36477e1",
+  "report_sha256": "8a38d166f2358d4a85603c52491f3c73120a313c0adf3d7ba5df4cee478b780f",
+  "patch_sha256": "80c6893b658572f357b714c2f094ab9bbbcc6b6b1f1bd4a7ce630dd26e3977af",
+  "standalone_module": "Oasis.Fallout.Atomristor.v27.lean",
+  "standalone_module_sha256": "6885cee8a56c027c123ddc24b319387390e1c79090a6b7672094e8ce331d3193",
+  "lean_compiler_status": "not available in alignment runtime",
+  "tests": {
+    "conductance_ratio": 1000,
+    "pinched_origin": true,
+    "deadband_hold": true,
+    "poweroff_retention": true,
+    "single_set_click_on": false,
+    "single_reset_click_off": false,
+    "set_clicks_to_on": 3,
+    "reset_clicks_to_off": 3,
+    "auto_sweep_steps": 84,
+    "hysteresis_detected": true
+  }
+}
