@@ -1,0 +1,33 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "current_version": "v28",
+  "current_source": "OASIS_Main_Kernel_HeadRolesAligned_v28_2026-10-07.lean",
+  "current_source_sha256": "f5fab306fb8c91fb8e7b29525f1a8dae3ab480b111871d5094e194059e4467a0",
+  "current_source_gzip_sha256": "193f79e4e14cb815a8edd2fd70079a1f4196b2045c63d2a3b0d1455b311a6147",
+  "report_sha256": "2c689dab11f127cfbe46d10f79cc558e5e04f365bf9b31e5c10811130d1c775f",
+  "patch_sha256": "8a99a776e173be16909a378510384821b62d4085fc15844311fd1c2ae864a296",
+  "standalone_module": "Oasis.Fallout.HeadRoles.v28.lean",
+  "standalone_module_sha256": "8066ad7b36649b30c0d42a039870d837d59e8435c1033dfc32ad3fcfb67a165d",
+  "lean_compiler_status": "not available in alignment runtime",
+  "tests": {
+    "all_10_share_identical_RH0_RH1": true,
+    "matrix_shape": [15, 15],
+    "RH0_row_sum_range": [0.9999, 1.0002],
+    "RH1_row_sum_range": [1.0, 1.0003],
+    "sink_fraction_col0": 0.2700668617634707,
+    "positional_dominant_offset": 1,
+    "positional_dominant_mass": 1.4070000000000003,
+    "induction_copy_score": 1.0,
+    "induction_scored_cases": 4,
+    "previous_token_predecessor_rows": 11,
+    "previous_token_row0_sum": 0.1,
+    "previous_token_other_row_sum_range": [1.0, 1.0],
+    "retrieval_distance": 16,
+    "retrieval_vector_sum": 0.998,
+    "name_mover_vector_sum": 0.96,
+    "successor_7_steps_returns_origin": true,
+    "coherence_query6_prior_EN_targets": [0, 1, 3]
+  },
+  "git_base_verified": "cebe3b3c55679d7431b22cd6dc18be342d5cc507"
+}
