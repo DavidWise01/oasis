@@ -1,0 +1,18 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "git_base_verified": "8fc815a22972cd03a432dc5725d74508df689f5e",
+  "current_version": "v25",
+  "current_source": "OASIS_Main_Kernel_FalloutAligned_v25_2026-10-07.lean",
+  "current_source_sha256": "846ff2bd464139506fdc0db1f16f1392d14e22eaf6d7e27c144008732082ab69",
+  "fallout_report_sha256": "f89766f0db1a7419f538949d73fcbf42fa85f2760ed7d3c9eb5bf292fca696da",
+  "fallout_patch_sha256": "789489309f3e8f304b432a28cdb94ba73cf248a6b9d4c4a75e52f2220c268ab6",
+  "standalone_fallout_module": "Oasis.Fallout.AtomicAddress.v25.lean",
+  "standalone_fallout_module_sha256": "6f134ac6d175cfb55b1753403bbe32e718bb9ec05e26e8adfb914e503bd5fd70",
+  "lean_compiler_status": "not available in alignment runtime",
+  "stress": {
+    "address_roundtrips": 5764801,
+    "failures": 0,
+    "result": "PASS"
+  }
+}
