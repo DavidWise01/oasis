@@ -1,0 +1,17 @@
+{
+  "name": "Four-Cortex VM Ladder",
+  "version": "v01",
+  "status": "CANONICAL / SYMBOLIC SYSTEMS MODEL",
+  "boundary": "1x1 {{i}} 1x1",
+  "carrier": "{{i}}",
+  "transform": "JIT/runtime boundary re-expression operator",
+  "cortexes": [
+    ["C1", "IPv4", "classical bounded route state"],
+    ["C2", "IPv6", "expanded classical route state"],
+    ["C3", "quasi-q", "candidate/permutation state"],
+    ["C4", "quantum", "coherent relational state"]
+  ],
+  "rule": "Each cortex may mutate local state; {{i}} must cross unchanged.",
+  "invariant": "I(T(x)) = I(x)",
+  "note": "Symbolic VM abstraction; not a literal claim about protocol or quantum implementation."
+}
