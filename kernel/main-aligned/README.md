@@ -4,48 +4,48 @@ Canonical aligned trunk as of 2026-10-07.
 
 ## Current
 
+Current aligned version: **v28 — attention/head-role family alignment**
+
 Current monolithic source SHA-256:
 
-`846ff2bd464139506fdc0db1f16f1392d14e22eaf6d7e27c144008732082ab69`
+`f5fab306fb8c91fb8e7b29525f1a8dae3ab480b111871d5094e194059e4467a0`
 
-The exact v25 source is stored in this directory as:
+Browseable v28 structural module:
 
-`v25/OASIS_Main_Kernel_FalloutAligned_v25_2026-10-07.lean.gz`
+`lean/Oasis.Fallout.HeadRoles.v28.lean`
 
-Recover it with:
+Detailed report and manifest:
 
-```sh
-gzip -dc v25/OASIS_Main_Kernel_FalloutAligned_v25_2026-10-07.lean.gz > CURRENT.lean
-sha256sum CURRENT.lean
-```
+`kernel/main-aligned/v28/`
 
-Expected SHA-256:
+## v28 fallout
 
-`846ff2bd464139506fdc0db1f16f1392d14e22eaf6d7e27c144008732082ab69`
+Ten historical head instruments collapse into three useful implementation stages:
 
-A small browsable standalone statement of the new v25 structural fallout is also committed under:
+`SELECT / ROUTE -> TRANSFORM / WRITE -> VALIDATE / BRAKE`
 
-`lean/Oasis.Fallout.AtomicAddress.v25.lean`
+GREEN extracted-matrix fixtures:
+- attention sink
+- positional/syntactic
 
-## v25 fallout
+AMBER constructed/conceptual fixtures:
+- induction
+- previous token
+- retrieval
+- copy suppression
+- name mover
+- successor
+- faithfulness
+- coherence
 
-The v24 atomic/address family yields a backend-neutral structural result:
+Recomputed artifact results:
+- shared RH0/RH1 matrix pair across all 10 files
+- head-0 token-0 sink mass: ~27.0067%
+- head-1 dominant relative offset: +1
+- constructed induction copy score: 100%
 
-- LAPORTE-DUST depth 8: `7^8 = 5,764,801`
-- Atom Instrument 7x7 pair-address depth 4: `49^4 = 5,764,801`
-- exhaustive address pairing/unpairing test: 5,764,801 cases, 0 failures
-- active bands nest strictly: `{4..8} ⊂ {3..8} ⊂ {2..8}`
-- per-level 2D branch counts: `25 < 36 < 49`
-- quadrant mirror `ul<->lr`, `ur<->ll` is involutive
-- source/runtime discrepancies remain review evidence, not silently corrected truth
-- append-only witness integrity remains distinct from durable authority
-
-No physical equivalence is inferred from the finite address equality.
-
-## Authority boundary
-
-Historical fixtures may contribute laws, state machines, data formats, tests, provenance, and witnesses. They do not silently override the current Root, durable/finality rules, verified-only truth advancement, or human-gated HOLD/resume controls.
+All v28 roles remain HOLD-only support fixtures. They do not override Root, durable/finality rules, verified-only truth advancement, or human-gated resume authority.
 
 ## Verification status
 
-The extracted runtime/arithmetic/hash tests recorded in the report were executed. The active runtime used for this fold does not have the Lean executable installed, so the combined Lean trunk is structurally checked but not Lean-compiler-certified in this run.
+The extracted routing/matrix tests in the v28 report were executed. Lean was not installed in the alignment runtime, so the combined trunk is structurally checked but not Lean-compiler-certified.
