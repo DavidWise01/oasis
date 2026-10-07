@@ -1,54 +1,26 @@
 # OASIS Main Aligned Kernel
 
-Canonical aligned trunk as of 2026-10-07.
+Current logical alignment: **v33 — Symbiot OS / AVA**.
 
-## Current
+Canonical monolithic v33 source SHA-256:
+`921ad86b842a795a863b63f67a58420c54926f46ab719d4b2130181286aa087b`
 
-Current aligned version: **v32 — AZ1 scientific-civilization alignment**
+Browseable v33 module:
+`lean/Oasis.Fallout.Symbiot.v33.lean`
 
-Canonical monolithic source SHA-256:
+Detailed v33 report/manifest/audit:
+`kernel/main-aligned/v33/`
 
-`df133032c570edefeca29efa48f2e21a21f1c5edf75ae480cbc6e3c89aecefd3`
+Important transport note: this commit records the exact v33 source digest and delta artifacts, but does not replace the existing binary `CURRENT.lean.gz` transport snapshot. Treat that binary as legacy until a later binary-safe promotion. The v33 standalone module/report/manifest are the Git-visible current alignment records.
 
-Browseable structural module:
+v33 findings:
+- real no_std x86_64 Rust source exists in DavidWise01/symbiot-os
+- six-phase cycle SEED→PUSH→TRACE→PRUNE→RETURN→GROUND
+- source wobble is 2..5 before Ground clamp, not README 2..4
+- keyboard G changes phase only; it does not itself clamp
+- 32-bit FNV witness is a tag, not uniqueness/proof
+- current symbiot-os GitHub CI is red against moving nightly
+- uploaded 512-byte boot stubs are legacy BIOS fixtures, separate from Cargo bootimage
+- browser stack model remains toy-model only
 
-`lean/Oasis.Fallout.AZ1Science.v32.lean`
-
-Detailed report and manifest:
-
-`kernel/main-aligned/v32/`
-
-`kernel/main-aligned/CURRENT.lean.gz` is the exact gzip snapshot of v32. Use
-`kernel/main-aligned/extract-current.sh` to materialize `CURRENT.lean` and verify
-the source digest.
-
-## v31 bridge
-
-v31 formalized the corpus A→Z→A round trip as a constructed reversible traversal
-rather than treating the forward corpus list itself as a literal palindrome.
-
-## v32 fallout
-
-AZ1 contributes a real executable state-machine package:
-
-`deterministic research transition -> replayable chronicle -> versioned corpus -> numerical N-body fixture`
-
-Executed results:
-- uploaded `_simulate.py 200`: 9/9 PASS
-- uploaded 86-entry chronicle: exact replay PASS
-- corpus 859 -> 1321: 854 retained, 467 added, 5 removed
-- historical `_physics.py`: STALE against current `_tick.py`
-- long-horizon terminal invariant first fails at harness day 11849
-- fixed-seed velocity-Verlet reference: forward/reverse returns near machine precision
-
-The stale audit and terminal accumulator defect remain visible; they are not
-silently repaired by the alignment layer.
-
-All v32 artifacts remain HOLD-only support. They do not override Root,
-durable/finality law, verified-only truth advancement, or human authority.
-
-## Verification status
-
-Python/state-machine/numerical tests were executed. Lean was not installed in
-the alignment runtime, so the combined trunk is structurally checked but not
-Lean-compiler-certified.
+All aligned support remains HOLD-only.
