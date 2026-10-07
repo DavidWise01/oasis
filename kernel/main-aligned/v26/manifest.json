@@ -1,0 +1,23 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "git_base_verified": "639040215b6cf71149bb88ff37888f5031ddc4ab",
+  "current_version": "v26",
+  "current_source": "OASIS_Main_Kernel_EightSeamAligned_v26_2026-10-07.lean",
+  "current_source_sha256": "192f8d46cfbf6a671461b33e42a12418be8e0a4eff2f165af396a62a4b099b57",
+  "current_source_gzip_sha256": "bfa4c18cf5f2115ad2ae3dd78da8a83662556e0cde2b410e426045c02a7dbebb",
+  "report_sha256": "d7dc19833a22d7fb56a06f94ec01943b7af3a2462e3d5c64069d0d7e88bfd04e",
+  "patch_sha256": "3c7faeee2e6326513d0e2ee95db0e454c6b6099f70b149fad0f58e4122213f07",
+  "standalone_module": "Oasis.Fallout.EightSeam.v26.lean",
+  "standalone_module_sha256": "23f2151ea7c4cd6557fb954b8131993c40b463a2152a58beda1308de9857ccd1",
+  "lean_compiler_status": "not available in alignment runtime",
+  "tests": {
+    "unique_seams": 8,
+    "corner_seams": 4,
+    "edge_mid_seams": 4,
+    "probe_cases": 16,
+    "probe_core_breaches": 0,
+    "palindrome": true,
+    "opposite_seam_involution": true
+  }
+}
