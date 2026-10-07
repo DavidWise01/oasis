@@ -4,48 +4,38 @@ Canonical aligned trunk as of 2026-10-07.
 
 ## Current
 
-Current aligned version: **v28 — attention/head-role family alignment**
+Current aligned version: **v31 — corpus A→Z→A round-trip alignment**
 
 Current monolithic source SHA-256:
 
-`f5fab306fb8c91fb8e7b29525f1a8dae3ab480b111871d5094e194059e4467a0`
+`4404fcedb9b2448f9ae9f8dd8ecc139bf3c4290abe1d3ac447c953b228f1f888`
 
-Browseable v28 structural module:
+Browseable v31 structural module:
 
-`lean/Oasis.Fallout.HeadRoles.v28.lean`
+`lean/Oasis.Fallout.CorpusRoundTrip.v31.lean`
 
 Detailed report and manifest:
 
-`kernel/main-aligned/v28/`
+`kernel/main-aligned/v31/`
 
-## v28 fallout
+## v31 fallout
 
-Ten historical head instruments collapse into three useful implementation stages:
+The uploaded corpus page embeds a deterministic 859-repository snapshot, sorted case-insensitively from `0root-provenance` to `zoolander`.
 
-`SELECT / ROUTE -> TRANSFORM / WRITE -> VALIDATE / BRAKE`
+The exact structural result is the constructed round trip:
 
-GREEN extracted-matrix fixtures:
-- attention sink
-- positional/syntactic
+`roundTrip(xs) = xs ++ reverse(xs)`
 
-AMBER constructed/conceptual fixtures:
-- induction
-- previous token
-- retrieval
-- copy suppression
-- name mover
-- successor
-- faithfulness
-- coherence
+which is palindromic by construction. This does not imply that the forward corpus list is itself a palindrome.
 
-Recomputed artifact results:
-- shared RH0/RH1 matrix pair across all 10 files
-- head-0 token-0 sink mass: ~27.0067%
-- head-1 dominant relative offset: +1
-- constructed induction copy score: 100%
+The page's "live" network request updates only the public repository count; repository names remain the embedded snapshot.
 
-All v28 roles remain HOLD-only support fixtures. They do not override Root, durable/finality rules, verified-only truth advancement, or human-gated resume authority.
+The nested lens renderer is recursive but anisotropic: x scale = 0.32 and y scale = 0.34, so it is not exact Euclidean self-similarity.
+
+Interpretive claims such as "every part reseeds the whole" remain quarantined until an executable reconstruction rule demonstrates them.
+
+All v31 structures remain HOLD-only and do not override Root, durable/finality rules, verified-only truth advancement, or human-gated authority.
 
 ## Verification status
 
-The extracted routing/matrix tests in the v28 report were executed. Lean was not installed in the alignment runtime, so the combined trunk is structurally checked but not Lean-compiler-certified.
+Snapshot ordering, uniqueness, round-trip palindrome, traversal return, and nesting anisotropy were executed in the alignment runtime. Lean was not installed, so the combined trunk is structurally checked but not Lean-compiler-certified.

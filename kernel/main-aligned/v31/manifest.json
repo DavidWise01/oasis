@@ -1,0 +1,29 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "current_version": "v31",
+  "current_source": "OASIS_Main_Kernel_CorpusRoundTripAligned_v31_2026-10-07.lean",
+  "current_source_sha256": "4404fcedb9b2448f9ae9f8dd8ecc139bf3c4290abe1d3ac447c953b228f1f888",
+  "current_source_gzip_sha256": "1c245101c8853211dffb2d3cbc59c20a36d93028924d060f1c09a3edc583ede9",
+  "report_sha256": "b1375dedbdc4985fd992fab1acc4ec15ec331e8aa07e3ed2fc15858432752b31",
+  "patch_sha256": "ee30dcf9b73533c26f435f2ff2bdb1c9ee7b95b8307179b3ec3c653ed885da31",
+  "standalone_module": "Oasis.Fallout.CorpusRoundTrip.v31.lean",
+  "standalone_module_sha256": "698ef8edd7ac0f3450dc15fbea331399b489fd6a7b09a29185dade3d832b244d",
+  "lean_compiler_status": "not available in alignment runtime",
+  "source_sha256": "5b4582afdc04b65a40432c83bed3589bd9c0612ba90edbbc93708ae77fec25ce",
+  "snapshot": {
+    "count": 859,
+    "first": "0root-provenance",
+    "last": "zoolander",
+    "newline_joined_sha256": "19fcc9ce5a3ee8488d2709f794ed9e1edf83c3c8674824343e1e73849001fa6d",
+    "unique": true,
+    "casefold_sorted": true
+  },
+  "tests": {
+    "constructed_roundtrip_palindrome": true,
+    "constructed_roundtrip_length": 1718,
+    "phase_start_equals_return": true,
+    "nested_lens_exact_similarity": false,
+    "nested_lens_aspect_multiplier": 0.9411764705882353
+  }
+}
