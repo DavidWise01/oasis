@@ -1,0 +1,67 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "current_version": "v32",
+  "current_source": "OASIS_Main_Kernel_AZ1Aligned_v32_2026-10-07.lean",
+  "current_source_sha256": "df133032c570edefeca29efa48f2e21a21f1c5edf75ae480cbc6e3c89aecefd3",
+  "current_source_gzip_sha256": "5a0a1ff601c4d4af625962e8f29a3fec61eee2a52218b5827aa3ef40dd347aa5",
+  "report_sha256": "1f124ef5c65b3d6e6022da3088bd672ca72cc28b94dcad8e11bd223a2d5fc5fd",
+  "patch_sha256": "3c5dd07e7f9513e500cb03abddb7a3b1ceb9a22dc089d957173d3be2d36da081",
+  "standalone_module": "Oasis.Fallout.AZ1Science.v32.lean",
+  "standalone_module_sha256": "d0ad0b3db08f948343419f599514052bab60b5d7d86af6706cf919f7292eaa84",
+  "audit_script": "AZ1_Current_Audit_v32.py",
+  "audit_script_sha256": "a761839efaa6b48dc691d959a6dc58778338cd242636c6377d6c49c5b17ba2fb",
+  "audit_exit_code": 1,
+  "lean_compiler_status": "not available in alignment runtime",
+  "tests": {
+    "uploaded_simulate_200_rc": 0,
+    "uploaded_simulate_200_passes": true,
+    "200_event_histogram": {
+      "research": 189,
+      "discovery": 3,
+      "setback": 8
+    },
+    "200_frontier_monotone": true,
+    "200_setbacks_hold_level": true,
+    "200_deterministic": true,
+    "chronicle_entries": 86,
+    "chronicle_replay_mismatch": null,
+    "chronicle_final_state_exact": true,
+    "stale_physics_audit_rc": 1,
+    "stale_physics_audit_last_error": "AttributeError: module '_tick' has no attribute 'CORP'",
+    "old_corpus_count": 859,
+    "current_corpus_count": 1321,
+    "corpus_retained": 854,
+    "corpus_added": 467,
+    "corpus_removed": 5,
+    "corpus_removed_names": [
+      "AI-Audit-Tools",
+      "C-",
+      "Toph_Kernel",
+      "mainflux",
+      "root0"
+    ],
+    "current_corpus_sha256": "809c45d96d368a94c7eded499b8dd825b69181a0415bebec1e78861891772879",
+    "first_terminal_level": [
+      11251,
+      "2057-04-17",
+      0.014,
+      362.19
+    ],
+    "first_research_bound_break": [
+      11849,
+      "2058-12-06",
+      34,
+      12.921,
+      12.899999999999999,
+      "research"
+    ],
+    "nbody_integrated_bodies": 10,
+    "nbody_visual_initial_phase_unseeded": true,
+    "nbody_threejs_runtime_cdn": true,
+    "nbody_reference_6000step_max_rel_energy_error": 2.3832023288150594e-07,
+    "nbody_reference_6000step_max_rel_angmom_error": 2.6645352591003757e-15,
+    "nbody_reference_forward_reverse_max_pos_AU": 2.53333232623661e-13,
+    "nbody_reference_forward_reverse_max_vel_AU_per_yr": 2.5084736205797166e-12
+  }
+}

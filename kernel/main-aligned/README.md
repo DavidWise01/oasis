@@ -4,38 +4,51 @@ Canonical aligned trunk as of 2026-10-07.
 
 ## Current
 
-Current aligned version: **v31 — corpus A→Z→A round-trip alignment**
+Current aligned version: **v32 — AZ1 scientific-civilization alignment**
 
-Current monolithic source SHA-256:
+Canonical monolithic source SHA-256:
 
-`4404fcedb9b2448f9ae9f8dd8ecc139bf3c4290abe1d3ac447c953b228f1f888`
+`df133032c570edefeca29efa48f2e21a21f1c5edf75ae480cbc6e3c89aecefd3`
 
-Browseable v31 structural module:
+Browseable structural module:
 
-`lean/Oasis.Fallout.CorpusRoundTrip.v31.lean`
+`lean/Oasis.Fallout.AZ1Science.v32.lean`
 
 Detailed report and manifest:
 
-`kernel/main-aligned/v31/`
+`kernel/main-aligned/v32/`
 
-## v31 fallout
+`kernel/main-aligned/CURRENT.lean.gz` is the exact gzip snapshot of v32. Use
+`kernel/main-aligned/extract-current.sh` to materialize `CURRENT.lean` and verify
+the source digest.
 
-The uploaded corpus page embeds a deterministic 859-repository snapshot, sorted case-insensitively from `0root-provenance` to `zoolander`.
+## v31 bridge
 
-The exact structural result is the constructed round trip:
+v31 formalized the corpus A→Z→A round trip as a constructed reversible traversal
+rather than treating the forward corpus list itself as a literal palindrome.
 
-`roundTrip(xs) = xs ++ reverse(xs)`
+## v32 fallout
 
-which is palindromic by construction. This does not imply that the forward corpus list is itself a palindrome.
+AZ1 contributes a real executable state-machine package:
 
-The page's "live" network request updates only the public repository count; repository names remain the embedded snapshot.
+`deterministic research transition -> replayable chronicle -> versioned corpus -> numerical N-body fixture`
 
-The nested lens renderer is recursive but anisotropic: x scale = 0.32 and y scale = 0.34, so it is not exact Euclidean self-similarity.
+Executed results:
+- uploaded `_simulate.py 200`: 9/9 PASS
+- uploaded 86-entry chronicle: exact replay PASS
+- corpus 859 -> 1321: 854 retained, 467 added, 5 removed
+- historical `_physics.py`: STALE against current `_tick.py`
+- long-horizon terminal invariant first fails at harness day 11849
+- fixed-seed velocity-Verlet reference: forward/reverse returns near machine precision
 
-Interpretive claims such as "every part reseeds the whole" remain quarantined until an executable reconstruction rule demonstrates them.
+The stale audit and terminal accumulator defect remain visible; they are not
+silently repaired by the alignment layer.
 
-All v31 structures remain HOLD-only and do not override Root, durable/finality rules, verified-only truth advancement, or human-gated authority.
+All v32 artifacts remain HOLD-only support. They do not override Root,
+durable/finality law, verified-only truth advancement, or human authority.
 
 ## Verification status
 
-Snapshot ordering, uniqueness, round-trip palindrome, traversal return, and nesting anisotropy were executed in the alignment runtime. Lean was not installed, so the combined trunk is structurally checked but not Lean-compiler-certified.
+Python/state-machine/numerical tests were executed. Lean was not installed in
+the alignment runtime, so the combined trunk is structurally checked but not
+Lean-compiler-certified.
