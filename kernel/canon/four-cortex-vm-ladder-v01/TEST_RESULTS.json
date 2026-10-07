@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "tests": 11,
+    "passed": 11,
+    "failed": 0,
+    "status": "PASS"
+  },
+  "tests": [
+    {"test":"boundary_shape","pass":true,"detail":"1x1 {{i}} 1x1"},
+    {"test":"four_cortex_order","pass":true,"detail":"C1→C2→C3→C4"},
+    {"test":"identity_preserved_full_ascent","pass":true,"detail":"{{i}} unchanged across all 3 VM boundaries"},
+    {"test":"local_payload_mutates","pass":true,"detail":"5/5 distinct payload states"},
+    {"test":"cortex_isolation","pass":true,"detail":"no local-state keys shared across cortexes"},
+    {"test":"boundary_corruption_detection","pass":true,"detail":"3/3 corrupt carriers rejected"},
+    {"test":"frame_invariant","pass":true,"detail":"all boundaries remain 1x1 | {{i}} | 1x1"},
+    {"test":"round_trip_identity","pass":true,"detail":"C1→C2→C3→C4→C3→C2→C1 preserves {{i}}"},
+    {"test":"stress_100k_identity","pass":true,"detail":"100,000 transforms; identity failures=0"},
+    {"test":"stress_50k_corruption","pass":true,"detail":"50,000 corruptions; undetected=0"},
+    {"test":"deterministic_replay","pass":true,"detail":"same seed reproduces identical trace"}
+  ]
+}
