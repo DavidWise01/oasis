@@ -27,7 +27,7 @@ structure Candidate (α : Type) where
 
 def promote? {α : Type} (live : VerifiedPair α)
     (candidate : Candidate α) : Option (VerifiedPair α) :=
-  if candidate.status == .verified then
+  if candidate.status = .verified then
     some { past := live.current, current := candidate.value }
   else none
 
