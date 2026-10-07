@@ -1,0 +1,33 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "git_base_verified": "07f95a3786ba7bf47d9107487e3b181003b2d15d",
+  "current_version": "v29",
+  "current_source": "OASIS_Main_Kernel_AttentionAuditAligned_v29_2026-10-07.lean",
+  "current_source_sha256": "5adea9923d17eb3aee4fa433007163eca7b0f78a3ce1eab8c32188e334bab540",
+  "current_source_gzip_sha256": "2e7989d0a9ceca6a7aba8e80e2085fbb78908fedb66ccf005e9ec7d936ffa473",
+  "report_sha256": "052337431a38cb4b504c305af76879f253a1fb8e1f9fa00a87b0bd077326c4c3",
+  "patch_sha256": "cb7ff228b2d4c4c7446bd520452fe33f4aef950b4abfed4674d0934d3a9bb252",
+  "standalone_module": "Oasis.Fallout.AttentionAudit.v29.lean",
+  "standalone_module_sha256": "64cd95ecfff6becb9a76528c8313f4f8af7f0b8bda26326b77f1ce065fb64d00",
+  "lean_compiler_status": "not available in alignment runtime",
+  "tests": {
+    "hourglass_softmax_normalized": true,
+    "hourglass_entropy_increases_with_temperature_on_fixture": true,
+    "hourglass_argmax_stable_across_tested_temperatures": true,
+    "mesh_rows": 32,
+    "mesh_max_row_sum_error": 2.220446049250313e-16,
+    "mesh_sink_is_argmax_rows": 32,
+    "tail_rows": 44,
+    "tail_max_row_sum_error": 2.220446049250313e-16,
+    "tail_sink_is_argmax_rows": 44,
+    "tail_query32_sink": 0.5959235129090297,
+    "tail_query32_top5_mass": 0.8478012774530731,
+    "tail_query32_entropy_bits": 2.413346010409337,
+    "tail_query32_effective_support": 2.6647936176072804,
+    "observatory_h0_passes_1p4x_null": false,
+    "observatory_h1_passes_1p4x_null": false,
+    "sink_vs_observatory_max_abs_cell_delta": 5e-05,
+    "sink_receipt_relation": "same matrix pattern, coarser rounding; not independent evidence"
+  }
+}
