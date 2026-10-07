@@ -1,0 +1,32 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "current_version": "v34",
+  "current_source": "OASIS_Main_Kernel_RegisterUnloadAligned_v34_2026-10-07.lean",
+  "current_source_sha256": "822153ca94170a82e34b99905bd94b10bd2065c6f80ac8420b47a3c121353e2c",
+  "current_source_gzip_sha256": "f02b828e395a6c99fe80ad3524b388e4e5ae40a6513c1d0a1cdb44cd9876b8d9",
+  "report_sha256": "03954105dba1dbb626eb490ed52d658d526d936fe2f7e96c83b824e2d68ba2b3",
+  "patch_sha256": "68c7ab293ea18c9b37ff1686f62bf24f9b63458d13a5a6238dfba1148780b216",
+  "standalone_module": "Oasis.Fallout.RegisterUnload.v34.lean",
+  "standalone_module_sha256": "d41cd15d08c6203f912dac087ab4c386985fc3a421e4a7bf896792c8373da6a8",
+  "audit_script": "Register_Unload_Audit_v34.py",
+  "audit_script_sha256": "ac1f81ba59027c06beb5fc27ec8ded4b33304243f0585b90d2079ca7ccbe96cd",
+  "lean_compiler_status": "not available in alignment runtime",
+  "source_repo": {
+    "repo": "DavidWise01/boots-on-unload",
+    "commit": "2fb52b32ee544b80b98c1886e6995fdf36516c05",
+    "index_blob": "13ef93a1f558c1f41233d3d6cc5236fa08f7c4a4",
+    "uploaded_index_matches_repo": true
+  },
+  "tests": {
+    "orthogonality_max_error": 2.220446049250313e-16,
+    "unload_max_error": 1.6653345369377348e-16,
+    "endpoint_norm_error": 0.0,
+    "max_surface_move": 0.8564316234445897,
+    "determinant": 1.0000000000000002,
+    "animation_max_norm_deviation": 0.1157933909022053,
+    "animation_midpoint_norm": 1.3498122859426955,
+    "hundred_thousand_roundtrip_max_error": 7.716050021144838e-15,
+    "source_selftest_5_of_5": true
+  }
+}
