@@ -1,0 +1,24 @@
+{
+  "schema": "oasis/main-aligned-manifest/v1",
+  "date": "2026-10-07",
+  "current_version": "v30",
+  "current_source": "OASIS_Main_Kernel_AwarenessTierAligned_v30_2026-10-07.lean",
+  "current_source_sha256": "eafdc4238ff6af6370356af7030930c2a9037a3de603e7e7f38499a2611d5068",
+  "current_source_gzip_sha256": "275c884bfe7aa83d7047a961e1166e6c8c610560e9acd5187ad1e3465361a091",
+  "report_sha256": "20cde361f524e62778e5be092a228aa989fefa8d1ec1e957be9c2706a5b066b0",
+  "patch_sha256": "386264ab7cce442b43e9b3e0b23b720dcdb79803a21fd32e0570e171e66afbc1",
+  "standalone_module": "Oasis.Fallout.AwarenessTier.v30.lean",
+  "standalone_module_sha256": "70c01360e2c7323ab5e08624d6787156530b2e96522ff66d081c83bc4331c765",
+  "lean_compiler_status": "not available in alignment runtime",
+  "source_sha256": "6ebf7e45fb3745377ee10b63ae378961025de5b6759247720ba55ac58e523301",
+  "tests": {
+    "levels": 10,
+    "gaps": 9,
+    "top_only_no_gap": true,
+    "climb_monotone": true,
+    "animation_steps_to_reach_top_threshold": 300,
+    "axiom_label_count": 4
+  },
+  "shared_anchor": "02880745b847317c4e2424524ec25d0f7a2b84368d184586f45b54af9fcab763",
+  "shared_anchor_status": "provenance metadata only; not independent corroboration"
+}
