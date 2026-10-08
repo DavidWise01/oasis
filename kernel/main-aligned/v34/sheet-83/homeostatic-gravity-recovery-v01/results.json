@@ -1,0 +1,59 @@
+{
+  "schema": "oasis/sheet83/homeostatic-gravity-recovery-v01",
+  "lineage": "SHEET82 -> SHEET83",
+  "seed": 80,
+  "frames": 2250,
+  "frame_dt_seconds": 0.016,
+  "portals": 9,
+  "pairs": 36,
+  "lanes": 120,
+  "comparisons_per_policy": 16065000,
+  "synthetic_nominal_collisions_per_frame": 2,
+  "causal_trailing_window": 64,
+  "threshold": "sqrt(1.25)",
+  "policies": {
+    "fixed": {
+      "collision_events": 2748,
+      "final_squared_speed_proxy": 0.00013847098009011719
+    },
+    "phase": {
+      "collision_events": 2837,
+      "final_squared_speed_proxy": 0.00012409292611329357
+    },
+    "homeo": {
+      "collision_events": 2971,
+      "final_squared_speed_proxy": 0.001266452032061533,
+      "observed_damping_range": [
+        0.93,
+        0.995
+      ],
+      "prior_window_pressure_triggers": 42
+    }
+  },
+  "local_tests": {
+    "passed": 29,
+    "total": 29
+  },
+  "lane_identities_preserved": 120,
+  "wave_ladder": [
+    60,
+    15,
+    3,
+    1,
+    1
+  ],
+  "symbolic_registry": [
+    300,
+    100,
+    16
+  ],
+  "benchmark_sha256": "444bd6499e5e36a5c2959443f332f033d8bb48ff71c73daf98e29f633b58f025",
+  "full_results_sha256": "fa81b0f75c81ab8c16ed891d7679b00d5d2ee4e895f0b56487a45716b47a8fa2",
+  "result_interpretation": "More residual motion but more collision congestion; mixed outcome",
+  "limitations": [
+    "Synthetic gravity phase, no Newtonian force model",
+    "Collision proximity, no physical impacts",
+    "Controller based on prior state, not external energy",
+    "Exact source and complete result in downloadable ZIP, not GitHub"
+  ]
+}
