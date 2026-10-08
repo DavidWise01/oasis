@@ -1,0 +1,19 @@
+{
+  "schema": "oasis/sheet-42/repeated-travel-v02",
+  "cycles": 1024,
+  "nodes_per_cycle": 28,
+  "total_node_updates": 28672,
+  "unique_cycle_boundary_states": 1025,
+  "recurrences": 0,
+  "mean_words_changed_per_cycle": 10,
+  "min_words_changed": 10,
+  "max_words_changed": 10,
+  "full_reverse_exact": true,
+  "final_state_sha256": "cb2541e7875e7db4f9e4b0ed6971d85f0f8944e0aac8fe192a8bc3318fae5ce3",
+  "checks_passed": 12,
+  "checks_failed": 0,
+  "runtime_seconds": 1.270599559999937,
+  "scope": "SHEET 42 local v01 finite-state model, not physical particles",
+  "caution": "New GitHub v02 reimplements reproducible check against committed v01; run it separately before treating exact numerical checksum as cross-environment verified.",
+  "immutable_baseline_changed": false
+}
