@@ -1,0 +1,51 @@
+{
+  "schema": "oasis/sheet80/120-lane-bounce-v01",
+  "provenance": "User's HTML titled SHEET 66 // 120 LANES COLLIDE // BOUNCE; new append-only SHEET80",
+  "portals": 9,
+  "undirected_portal_pairs": 36,
+  "lanes": 120,
+  "unique_pair_visits_per_frame": 7140,
+  "frames": 512,
+  "total_candidate_pair_visits": 3655680,
+  "distance_threshold_pixels": 8,
+  "collision_cooldown_time": 0.15,
+  "speed_transfer": "(si,sj)->(-0.95*sj,-0.95*si)",
+  "deterministic_seed": 80,
+  "collisions": 831,
+  "first_collision": {
+    "frame": 1,
+    "lane_ids": [
+      4,
+      76
+    ],
+    "distance_pixels": 3.2558625037437023
+  },
+  "kinetic_proxy_initial": 0.008842262720929283,
+  "kinetic_proxy_final": 0.002251849268555446,
+  "local_checks": {
+    "passed": 28,
+    "total": 28
+  },
+  "retained_metadata": {
+    "wave_ladder": [
+      60,
+      15,
+      3,
+      1,
+      1
+    ],
+    "registry_bands": [
+      300,
+      100,
+      16
+    ],
+    "homeostatic_threshold": "sqrt(1.25)",
+    "topology": "9/6/1"
+  },
+  "caveats": [
+    "Proximity collisions on canvas, not physical collisions",
+    "No direct gravity-force coupling tested",
+    "GitHub audit summary; exact locally-tested executable available in attached zip",
+    "0.95 damping means dissipative simulated dynamics"
+  ]
+}
