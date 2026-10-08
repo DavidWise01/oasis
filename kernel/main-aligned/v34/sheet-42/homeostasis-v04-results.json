@@ -1,0 +1,23 @@
+{
+  "schema": "oasis/sheet42/homeostasis-v04",
+  "source": "unmodified committed sheet42.py",
+  "traversals": 10000,
+  "node_updates": 280000,
+  "worker_balance_multiplier": 1.25,
+  "persistence_window": 4,
+  "temporary_balance_improvements": 4046,
+  "persistent_balance_windows": 847,
+  "max_consecutive_below_threshold": 29,
+  "exact_steady_state_windows": 0,
+  "distinct_full_register_states": 10001,
+  "full_reverse_exact": true,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "final_register_sha256": "b37c2e70fd946eeba77f5b25c5f0765d761526740fc66fc2bd5214a3e5d24f95",
+  "caveats": [
+    "An improvement lasting four cycles is not proof of full 10-word equilibrium",
+    "Deterministic finite-state simulation, not measured nuclear/atomic dynamics",
+    "v03 and frozen v34/v92 unchanged"
+  ],
+  "source_script": "sheet42-homeostasis-v04.py"
+}
