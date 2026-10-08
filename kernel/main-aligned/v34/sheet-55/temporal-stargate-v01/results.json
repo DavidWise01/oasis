@@ -1,0 +1,52 @@
+{
+  "schema": "oasis/sheet55/temporal-stargate-v01",
+  "lineage": "SHEET54 -> SHEET55",
+  "symbolic_realms": {
+    "HEAVEN": 3,
+    "EARTH": 2,
+    "HELL": 1
+  },
+  "route": [
+    "EARTH",
+    "HELL",
+    "HEAVEN",
+    "EARTH"
+  ],
+  "limits": {
+    "external_sender": 8640,
+    "portal_ingress": 128,
+    "transport_stage": 64,
+    "quarantine": 128
+  },
+  "clean": {
+    "offered": 8640,
+    "accepted": 8640,
+    "delivered": 8640,
+    "three_hop_events": 25920,
+    "duplicate_deliveries": 0,
+    "quarantined": 0,
+    "finish_tick": 4321,
+    "peak_outbox": 8512,
+    "peak_ingress": 126,
+    "peak_first_stage": 62,
+    "exact_reverse": true,
+    "payloads_verified": true,
+    "register_hash": "56f3887ce0515af7dcc2c28e7c95be5e5b283020e84729d30444087d5e89ab76"
+  },
+  "tamper_control": {
+    "delivered_intact": 8639,
+    "quarantined": 1,
+    "ledger_events": 25918,
+    "exact_reverse": true
+  },
+  "checks_passed": 17,
+  "checks_total": 17,
+  "limitations": [
+    "Symbolic clock domains only; no physical portal or real time dilation",
+    "Sender-owned outbox explicitly finite for the offered 8640 tokens",
+    "Corrupted message quarantined, not recovered",
+    "No keyed authentication against an active adversary",
+    "Script executed locally and supplied separately; this commit stores report rather than executable"
+  ],
+  "append_only": true
+}
