@@ -1,0 +1,30 @@
+{
+  "schema": "oasis/sheet46/exitron-blink-v01",
+  "name": "SHEET 46 / EXITRONS BLINK / FLOOD",
+  "source": "local simulation against SHEET45 v01, 2026-10-08",
+  "turns": 10,
+  "ticks": 3600,
+  "node_updates": 72000,
+  "open_ticks": 1570,
+  "closed_ticks": 2030,
+  "candidate_crossings": 2020,
+  "held_candidates": 1161,
+  "multiplicity": 3,
+  "external_emissions": 2577,
+  "retained_tokens": 3483,
+  "ledger_events": 2577,
+  "unique_register_boundaries": 3601,
+  "final_state_sha256": "b634458822172fa5ed524701569b96ff1848e054021b0ada8db77d497a7ffd4c",
+  "ledger_tip_sha256": "91a030f416d0e0a50a7d995751cea79bdf621eb3ef2ca2bc14e5ba1c4e51480c",
+  "register_reverse_exact": true,
+  "checks_passed": 14,
+  "checks_total": 14,
+  "model": "sin(2*pi*(tick%360)/360)>0.2 gates <........> to < >; all allowed crossings emit 3 uniquely tagged symbolic tokens",
+  "notes": [
+    "2020 candidate crossing events x 3 = 6060 token opportunities; 2577 emitted, 3483 held",
+    "Sidecar SHA256 ledger preserves provenance; no intrinsic hidden watermark",
+    "Earlier SHEET 42 and SHEET45 versions remain unchanged",
+    "Historic internet alignment not assessed in this iteration",
+    "Physical tunneling, Cooper pairs, and electron dynamics not established"
+  ]
+}
