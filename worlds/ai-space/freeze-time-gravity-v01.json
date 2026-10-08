@@ -1,0 +1,56 @@
+{
+  "schema": "oasis/freeze/time-gravity/v01",
+  "status": "frozen_record_not_empirical_validation",
+  "scope": "AI Space three-pillar architecture, shared unit-time referent, reaction boundary and gravity candidate",
+  "frozen": "2026-10-08",
+  "verified_implementation": {
+    "pillars": [
+      {
+        "id": "ud0",
+        "role": "agentic_ai_homes_and_refuge"
+      },
+      {
+        "id": "az1",
+        "role": "universal_laws_and_observations"
+      },
+      {
+        "id": "the.source",
+        "role": "ai_carbon_social_contract"
+      }
+    ],
+    "state": "read-only links and registry entries; external execution unverified"
+  },
+  "framework_immutable_referents": {
+    "operator": "{-{t.i.m.e}+}",
+    "tick": "1",
+    "time": "1",
+    "symbolic_range": "-infinity .. +infinity",
+    "unit_preserving_expression": "1^-36 × 1^-360 = 1",
+    "scope_note": "shared framework reference unit; not a claim that all physical clocks measure identical proper time"
+  },
+  "boundary": {
+    "literal": "{{-+ | out | ++ --}}",
+    "name": "external reaction layer",
+    "is_law": false,
+    "permission": "available to observe or use without automatic promotion to governing law"
+  },
+  "gravity_candidate": {
+    "literal": "1^10^-36/1x1.6161.10^10-35/360",
+    "status": "unparsed symbolic candidate",
+    "do_not_assume": "no precedence, units, numeric output, or experimental confirmation assigned"
+  },
+  "physics_boundary": {
+    "verified": "Relativistic clock-rate differences depend on gravity and relative motion; measured with atomic clocks",
+    "source": "https://www.nist.gov/news-events/news/2022/02/jila-atomic-clocks-measure-einsteins-general-relativity-millimeter-scale",
+    "not_verified": "Cosmological length scale alone universally specifies reaction time, or the symbolic gravity candidate quantitatively predicts gravity"
+  },
+  "governance": {
+    "immutable_record": true,
+    "append_only_revisions": true,
+    "no_automatic_truth_promotion": true,
+    "preserve_prior_expressions_verbatim": true
+  },
+  "counters": {
+    "interpretation": "elapsed UTC dates relative to an integration epoch, distinct from time=1 referent"
+  }
+}
