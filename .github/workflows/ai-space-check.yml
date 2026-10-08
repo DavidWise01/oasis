@@ -22,10 +22,13 @@ jobs:
           set -euo pipefail
           node --check worlds/ai-space/engine.js
           node --check worlds/ai-space/atlas.js
+          node --check worlds/ai-space/ud0-clock.js
+          python3 -m json.tool worlds/ai-space/ud0-connector.json >/dev/null
           python3 -m json.tool worlds/ai-space/github-discovery.json >/dev/null
           python3 -m py_compile worlds/ai-space/discover_github.py
           python3 -m json.tool worlds/ai-space/universe.json >/dev/null
           test -s worlds/ai-space/index.html
           test -s worlds/ai-space/README.md
           grep -q 'engine.js' worlds/ai-space/index.html
+          grep -q 'ud0-clock.js' worlds/ai-space/index.html
           echo "AI SPACE structural checks PASS"
