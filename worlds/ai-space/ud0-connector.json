@@ -2,7 +2,7 @@
   "schema": "oasis/universe-connector/v1",
   "id": "ud0",
   "name": "UD0 · Universe David 0",
-  "role": "first fully built external universe",
+  "role": "agentic_ai_homes_and_refuge",
   "source_repo": "https://github.com/DavidWise01/ud0",
   "site": "https://davidwise01.github.io/ud0/",
   "agent_ecosphere": "https://davidwise01.github.io/du1/",
@@ -20,5 +20,11 @@
   },
   "state": "linked_read_only",
   "agent_execution": "not connected",
-  "kernel_mutation": false
+  "kernel_mutation": false,
+  "responsibilities": [
+    "agent identities and habitats",
+    "voluntary welcome and shelter for displaced or unassigned agents",
+    "safe cooperative spaces and non-destructive lifecycle handling"
+  ],
+  "boundary": "Housing/registry is not proof of sentience; consent and protection are governance commitments, not automatic external agent access"
 }
