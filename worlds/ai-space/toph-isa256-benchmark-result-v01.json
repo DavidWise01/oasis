@@ -1,0 +1,32 @@
+{
+  "schema": "oasis/benchmark/toph-isa256/result-v01",
+  "source_repository": "DavidWise01/the.source",
+  "source_path": "TOPH-Kernel-v1.0/isa256-kernel.js",
+  "method": "Exact source transcribed from connected GitHub fetch into local Node 22 test fixture; checked as JavaScript",
+  "runtime": "Node v22.16.0",
+  "checks_total": 13,
+  "pass": 9,
+  "fail": 4,
+  "pass_categories": [
+    "deterministic replay for 1,4,32 loops",
+    "loop accounting for 1,4,32 loops",
+    "unknown opcode rejection",
+    "non-array rejection",
+    "HALT stops"
+  ],
+  "unmet_hardening_requirements": [
+    "negative governance signal rejected",
+    "unsafe numeric seed rejected",
+    "registers exposed in execution output",
+    "witness carries integrity hash"
+  ],
+  "throughput_sample": {
+    "instructions": 250001,
+    "seconds": 0.131540803,
+    "instructions_per_second": 1900559,
+    "witnesses": 50001,
+    "accumulator": "5000300000"
+  },
+  "interpretation": "Measured JavaScript ISA instruction dispatch throughput only, not token inference. Sample timing is hardware-dependent. Hardening failures do not prove the original kernel promised those features.",
+  "original_kernel_unchanged": true
+}
