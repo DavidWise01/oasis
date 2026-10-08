@@ -1,0 +1,30 @@
+{
+  "name": "J{{I}}T Boundary Engine",
+  "version": "v01",
+  "literal": "{{j{{i}}t}}",
+  "roles": {
+    "j": "JIT / transform-side boundary operation",
+    "{{i}}": "invariant carrier",
+    "t": "target / realization-side boundary operation"
+  },
+  "invariant": "I(out) = I(in)",
+  "orchestrator": "Windows laptop / HOME0",
+  "triangulation": [
+    "Git",
+    "Laptop",
+    "0root"
+  ],
+  "agents": [
+    "Windows/local",
+    "cloud",
+    "CLI/desktop"
+  ],
+  "required_runtime": "none beyond the existing host/agent fabric",
+  "optional_harnesses": [
+    "WASM",
+    "Deno",
+    "Rust",
+    "Python"
+  ],
+  "note": "Symbolic/software boundary-engine contract; not literal hardware or quantum equivalence."
+}
