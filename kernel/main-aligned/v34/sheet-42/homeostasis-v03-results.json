@@ -1,0 +1,25 @@
+{
+  "schema": "oasis/sheet42/homeostasis-v03/observed",
+  "run_date": "2026-10-08",
+  "source": "local /mnt/data/sheet42_v03/benchmark_v03.py against exact fetched sheet42.py",
+  "cycles": 10000,
+  "node_updates": 280000,
+  "unique_boundary_states": 10001,
+  "recurrences": 0,
+  "worker_balance_min": 0.000054155942077821094,
+  "worker_balance_min_cycle": 2448,
+  "relative_improvement_events": 4046,
+  "minimum_changed_words_per_cycle": 10,
+  "mean_changed_words_per_cycle": 10,
+  "maximum_changed_words_per_cycle": 10,
+  "reverse_exact": true,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "result_sha256": "b37c2e70fd946eeba77f5b25c5f0765d761526740fc66fc2bd5214a3e5d24f95",
+  "previous_test_issue": "v02 imported INITIAL,NODE_COUNT,rewind and walk(start=...), not provided by committed sheet42.py; v03 uses documented step()/START API",
+  "caveats": [
+    "The 1.25 threshold flags brief decreases in worker imbalance, not true stable homeostasis",
+    "This tests 10,000 cycles only, not full period",
+    "Finite-state computational behavior is not physical nuclear dynamics"
+  ]
+}
