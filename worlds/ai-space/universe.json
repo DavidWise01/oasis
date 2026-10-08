@@ -87,5 +87,15 @@
     "time_zone": "UTC",
     "day_one": true,
     "description": "OaSIs integration day, not UD0 creation date"
-  }
+  },
+  "infrastructure": [
+    {
+      "id": "the.source",
+      "ref": "the-source-connector.json",
+      "kind": "source_hub",
+      "parent": "ud0",
+      "mode": "linked_read_only",
+      "entry": "https://davidwise01.github.io/the.source/"
+    }
+  ]
 }
