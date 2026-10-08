@@ -1,0 +1,24 @@
+{
+  "schema": "oasis/sheet50/natural-schedule-period-v01",
+  "periodic_terms": {
+    "toroidal_amplitude": 360,
+    "lane_router": 8,
+    "cipher_gate": 13,
+    "crossing_selector": 11
+  },
+  "schedule_period_ticks": 51480,
+  "turns": 143,
+  "node_updates": 1029600,
+  "exitron_crossings": 28800,
+  "unique_register_states": 51481,
+  "unique_turn_states": 143,
+  "full_register_return": false,
+  "proper_operator_periods": [],
+  "inverse_exact": true,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "runtime_seconds": 2.846,
+  "sha256": "15575e41462635844c199b29cad68b9679b584d2be8d8671d01a0c817fd093f5",
+  "interpretation": "Schedule period is not full register recurrence and is not calibrated to historical years.",
+  "source": "locally executed script sheet50_natural_period_v01.py using SHEET45 v01"
+}
