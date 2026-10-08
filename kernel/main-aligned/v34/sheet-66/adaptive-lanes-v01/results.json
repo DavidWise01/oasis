@@ -1,0 +1,51 @@
+{
+  "schema": "oasis/sheet66/adaptive-lanes-v01",
+  "lineage": "SHEET65 -> SHEET66",
+  "budget": {
+    "lanes": 120,
+    "portals": 9,
+    "ambassadors": 36,
+    "per_portal_send_and_receive": 16
+  },
+  "tests": {
+    "balanced": {
+      "fixed": {
+        "delivered": 3456,
+        "peak_backlog": 16,
+        "finish_tick": 108,
+        "mean_wait": 0.5
+      },
+      "adaptive": {
+        "delivered": 3456,
+        "peak_backlog": 16,
+        "finish_tick": 108,
+        "mean_wait": 0.5
+      }
+    },
+    "hotspot": {
+      "fixed": {
+        "delivered": 3456,
+        "peak_backlog": 1511,
+        "finish_tick": 192,
+        "mean_wait": 41.945023148148145
+      },
+      "adaptive": {
+        "delivered": 3456,
+        "peak_backlog": 1510,
+        "finish_tick": 191,
+        "mean_wait": 41.983217592592595
+      }
+    }
+  },
+  "identity_preserved": true,
+  "no_loss": true,
+  "local_assertions_passed": 8,
+  "local_assertions_total": 8,
+  "limits": [
+    "Adaptive virtual lane reassignment assumes zero reconfiguration cost.",
+    "Hotspot improvement of one tick is marginal and does not improve mean latency.",
+    "These are transport lane slots, not transformer attention heads.",
+    "GitHub script transcribed separately from executed local script; CI replay outstanding."
+  ],
+  "append_only": true
+}
