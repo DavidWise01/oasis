@@ -1,0 +1,67 @@
+{
+  "schema": "oasis/sheet68/homeostatic-recovery-v01",
+  "lineage": "SHEET67 -> SHEET68",
+  "configuration": {
+    "cells": 9,
+    "relays": 6,
+    "root": 1,
+    "threshold": "sqrt(1.25)",
+    "threshold_value": 1.118033988749895,
+    "total_budget": 36,
+    "fault_window": "40 <= tick < 90",
+    "fault": "relay index 2 offline and root rate 12 -> 3"
+  },
+  "runs": {
+    "static_normal": {
+      "offered": 3456,
+      "delivered": 3456,
+      "remaining": 0,
+      "peak_backlog": 3032,
+      "finish_tick": 865,
+      "mean_wait": 380,
+      "maximum_wait": 758
+    },
+    "static_fault": {
+      "offered": 3456,
+      "delivered": 3456,
+      "remaining": 0,
+      "peak_backlog": 3082,
+      "finish_tick": 878,
+      "mean_wait": 391.6791087962963,
+      "maximum_wait": 771,
+      "fault_ticks": 50,
+      "recovered_tick": 878
+    },
+    "adaptive_normal": {
+      "offered": 3456,
+      "delivered": 3456,
+      "remaining": 0,
+      "peak_backlog": 2759,
+      "finish_tick": 349,
+      "mean_wait": 143.5517939814815,
+      "maximum_wait": 242
+    },
+    "adaptive_fault": {
+      "offered": 3456,
+      "delivered": 3456,
+      "remaining": 0,
+      "peak_backlog": 2883,
+      "finish_tick": 353,
+      "mean_wait": 149.4403935185185,
+      "maximum_wait": 246,
+      "fault_ticks": 50,
+      "recovered_tick": 353
+    }
+  },
+  "passed": 12,
+  "total": 12,
+  "all_checks": true,
+  "identity_set_preserved": true,
+  "limitations": [
+    "Unbounded queues",
+    "Synthetic in-memory provenance",
+    "Static baseline reserves idle processing budget",
+    "Executable generated locally, not yet committed"
+  ],
+  "append_only": true
+}
