@@ -1,0 +1,86 @@
+{
+  "schema": "oasis/sheet91/eight-silo-one-aggregate-v01",
+  "status": "verified_wasm_and_svg_dom_not_browser_paint",
+  "topology": {
+    "box": "8:0:8:0:8:0:8",
+    "physical_silos": 8,
+    "domains": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "aggregate_domain": 8,
+    "logical_domains_total": 9,
+    "toroids_per_silo": 9,
+    "total_toroids": 72,
+    "copper_layers_per_silo": 11,
+    "total_copper_layers": 88,
+    "lanes": 120
+  },
+  "routing": {
+    "via_ticks": 24,
+    "aggregate_commit_ticks": 8,
+    "aggregate_is_physical_floor": false,
+    "commit_gate_for_every_floor_crossing": true,
+    "aggregate_pending_conservation": "ingress = commits + pending",
+    "domain_population_conservation": "sum(entries[d]-exits[d] for d=0..8)=120"
+  },
+  "benchmark": {
+    "ticks": 1800,
+    "orbits": 1164,
+    "completed_vias": 1147,
+    "completed_floor_vias": 343,
+    "aggregate_ingress": 344,
+    "aggregate_commits": 343,
+    "aggregate_pending": 1,
+    "zero_seams": 265,
+    "max_aggregate_pending": 5,
+    "all_floor_ring_addresses_visited": 72,
+    "domain_live": [
+      13,
+      20,
+      12,
+      15,
+      14,
+      12,
+      21,
+      12,
+      1
+    ],
+    "verified_wasm_checks": {
+      "passed": 38,
+      "total": 38
+    },
+    "deterministic_replay": true
+  },
+  "svg_dom": {
+    "frames": 600,
+    "wasm_ticks": 1200,
+    "checks": {
+      "passed": 40,
+      "total": 40
+    },
+    "silo_bands": 8,
+    "toroid_groups": 72,
+    "copper_lines": 88,
+    "packet_markers": 120,
+    "aggregate_strip": true,
+    "actual_browser_paint_test": "not_run"
+  },
+  "package_sha256": "bee77b9b5c8ea3e047031a5ec7892fdb680b2a02e60df675e348365207d6f818",
+  "local_source_sha256": "f5203c691b921eaa9aec9481ae1aee068146ec0a7f53461a12f1ac1acda8023e",
+  "local_wasm_sha256": "c86f262eb08d1449fdc2bc8664c8f11b587a385562fb925baba0a17097fdaa21",
+  "local_html_sha256": "8625fea935f9304fdd399fd1ec234bcbe39b342f556aa9243ddb4101fcd6241a",
+  "limitations": [
+    "D8 is a logical aggregate, not a ninth physical floor",
+    "8-tick aggregate is unbounded (no queue arbitration/backpressure)",
+    "3D electromagnetic/physical collision clearance not simulated",
+    "No actual network delivery ACK or gravitational simulation",
+    "ZIP contains complete C source, WASM binary, tests and hash manifest; GitHub HTML embeds full WASM executable"
+  ]
+}
