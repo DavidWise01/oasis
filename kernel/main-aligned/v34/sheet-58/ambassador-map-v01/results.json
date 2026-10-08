@@ -1,0 +1,32 @@
+{
+  "schema": "oasis/sheet58/ambassador-map-v01",
+  "source_sketch_title": "SHEET 56 // AMBASSADORS PER CELL TO MAP",
+  "lineage": "SHEET57 -> SHEET58",
+  "cells": 9,
+  "ambassadors_per_cell": 4,
+  "total_ambassadors": 36,
+  "route": [
+    "EARTH",
+    "HELL",
+    "HEAVEN",
+    "EARTH"
+  ],
+  "logical_clock_rates": {
+    "EARTH": 2,
+    "HELL": 1,
+    "HEAVEN": 3
+  },
+  "transfer_records": 108,
+  "tests_passed": 14,
+  "tests_total": 14,
+  "uninterrupted_and_restarted_same_payload": true,
+  "uninterrupted_and_restarted_same_ledger": true,
+  "corrupted_checkpoint_rejected": true,
+  "delivery_digest": "a99c753768cd5f11b812c487c6839cdf55faed0712ccdbbb0913336c8e8e0f6c",
+  "limitations": [
+    "Symbolic logical-time model only",
+    "No physical time travel",
+    "SHA256 not keyed authentication"
+  ],
+  "execution": "Local executable /mnt/data/sheet58/benchmark.py, downloadable in original conversation. GitHub commit saves documentation/results."
+}
