@@ -1,0 +1,71 @@
+{
+  "schema": "oasis/sheet86/spatial-julia-routing-v01",
+  "lineage": "SHEETS69-85 -> SHEET86",
+  "seeds": [
+    80,
+    81
+  ],
+  "frames_per_policy": 512,
+  "portals": 9,
+  "portal_pairs": 36,
+  "lanes": 120,
+  "pair_candidates_per_policy": 3655680,
+  "checks": {
+    "passed": 20,
+    "total": 20
+  },
+  "seed80": {
+    "fixed": {
+      "collisions": 835,
+      "raw_proximity_pair_frames": 4908,
+      "lane_laps": 367,
+      "distance_proxy_px": 147856.1,
+      "recycles": 0
+    },
+    "spatial": {
+      "collisions": 359,
+      "raw_proximity_pair_frames": 958,
+      "lane_laps": 439,
+      "distance_proxy_px": 177007.2,
+      "recycles": 1053
+    }
+  },
+  "seed81": {
+    "fixed": {
+      "collisions": 802,
+      "raw_proximity_pair_frames": 4634,
+      "lane_laps": 356,
+      "distance_proxy_px": 147076.4,
+      "recycles": 0
+    },
+    "spatial": {
+      "collisions": 358,
+      "raw_proximity_pair_frames": 1035,
+      "lane_laps": 435,
+      "distance_proxy_px": 176059,
+      "recycles": 1141
+    }
+  },
+  "registry_bands": [
+    300,
+    100,
+    16
+  ],
+  "six_arity_ladder": [
+    60,
+    15,
+    3,
+    1,
+    1
+  ],
+  "homeo_threshold": "sqrt(1.25)",
+  "source_code_sha256": "f02552211ae1ab82f762eddba4b0d57f004e1b2ed12cae43e34180891d60d2c0",
+  "full_result_sha256": "d7cac4461bf88049a7617e575978064be21706c2ed116cb40f37e97b3f8f6a81",
+  "limitations": [
+    "Offset jumps may teleport between positions; physical continuity unverified",
+    "Lane lap not actual acknowledged delivery",
+    "Julia anchors not an exact period-3 orbit",
+    "Not actually integrated with gravitational force law nor 9/6/1 queue scheduler",
+    "Complete executable and audit manifest available in local ZIP; GitHub entry is an audit and result summary"
+  ]
+}
