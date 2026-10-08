@@ -1,0 +1,54 @@
+{
+  "schema": "oasis/sheet56/temporal-collapse-v01",
+  "lineage": "SHEET54 -> SHEET55 -> SHEET56",
+  "domain_clock_multipliers": {
+    "EARTH": 2,
+    "HELL": 1,
+    "HEAVEN": 3
+  },
+  "route": [
+    "EARTH",
+    "HELL",
+    "HEAVEN",
+    "EARTH"
+  ],
+  "messages": 8640,
+  "transfer_records": 25920,
+  "checkpoints": 2,
+  "checkpoint_after_ticks": [
+    699,
+    1419
+  ],
+  "reference": {
+    "delivered": 8640,
+    "duplicates": 0,
+    "quarantined": 0,
+    "ledger_count": 25920,
+    "final_tick": 4321,
+    "payloads_valid": true,
+    "end_state_hash": "da548cdcd99e6050e7549ad4912a1f8cdcc9c85e51428acdb25dcec8d979a022",
+    "inverse_exact": true,
+    "pending": 0
+  },
+  "resumed": {
+    "delivered": 8640,
+    "duplicates": 0,
+    "quarantined": 0,
+    "ledger_count": 25920,
+    "final_tick": 4321,
+    "payloads_valid": true,
+    "end_state_hash": "da548cdcd99e6050e7549ad4912a1f8cdcc9c85e51428acdb25dcec8d979a022",
+    "inverse_exact": true,
+    "pending": 0
+  },
+  "tests_passed": 14,
+  "tests_total": 14,
+  "first_run_issue": "Terminal restart advanced logical clock after completion; corrected by explicit terminal no-op check.",
+  "limitations": [
+    "Serialized state includes sender outbox and the full reversible history; tested as an in-memory local restart rather than true power-failure durability.",
+    "SHA256 detects modification but does not provide keyed actor authentication.",
+    "Realm names are symbolic independent logical clock domains, not a physical or metaphysical portal."
+  ],
+  "published_executable": "Only a verified local artifact this turn; this GitHub commit stores audit and result, not executable",
+  "append_only": true
+}
