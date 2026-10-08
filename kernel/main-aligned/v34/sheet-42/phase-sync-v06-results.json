@@ -1,0 +1,23 @@
+{
+  "schema": "oasis/sheet42/phase-sync-v06",
+  "turns": 10,
+  "ticks": 3600,
+  "node_updates": 100800,
+  "visits_per_ring": [
+    720,
+    720,
+    720,
+    720,
+    720
+  ],
+  "all_ten_toroidal_boundaries_aligned": true,
+  "unique_full_register_states": 3601,
+  "repeated_full_register_states": 0,
+  "reverse_exact": true,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "final_state_sha256": "4084127783bfbee95e43f882ad7d5c9d1d82a08be28515c0caf8a0c1ab93c7c5",
+  "note": "Ring scheduling/address closure every 360; not full state recurrence; symbolic not particle physics",
+  "script": "sheet42-phase-sync-v06.py",
+  "append_only": true
+}
