@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "suites": 11,
+  "results": [
+    [
+      "identity_250k",
+      250000,
+      0
+    ],
+    [
+      "carrier_corruption_100k",
+      100000,
+      0
+    ],
+    [
+      "closure_fault_50k",
+      50000,
+      0
+    ],
+    [
+      "chain_50k",
+      50000,
+      0
+    ],
+    [
+      "local_state_collision_50k",
+      50000,
+      0
+    ],
+    [
+      "grammar_fuzz_100k",
+      100000,
+      0
+    ],
+    [
+      "deterministic_replay_10k",
+      10000,
+      0
+    ],
+    [
+      "operator_separation_25k",
+      25000,
+      0
+    ],
+    [
+      "payload_sensitivity_25k",
+      25000,
+      0
+    ],
+    [
+      "roundtrip_50k",
+      50000,
+      0
+    ],
+    [
+      "mixed_fault_100k",
+      100000,
+      0
+    ]
+  ],
+  "invariant": "{{i}} unchanged across verified boundary traversal"
+}
