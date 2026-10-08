@@ -1,0 +1,56 @@
+{
+  "schema": "oasis/sheet45/internet-watermark-v02",
+  "status": "locally benchmarked",
+  "anchors": [
+    {
+      "year": 1995,
+      "label": "WEB",
+      "crossings": 200
+    },
+    {
+      "year": 2001,
+      "label": "CORPUS",
+      "crossings": 209
+    },
+    {
+      "year": 2006,
+      "label": "CLOUD",
+      "crossings": 191
+    },
+    {
+      "year": 2011,
+      "label": "MOBILE",
+      "crossings": 219
+    },
+    {
+      "year": 2016,
+      "label": "RANK",
+      "crossings": 181
+    },
+    {
+      "year": 2019,
+      "label": "PRELOAD",
+      "crossings": 220
+    },
+    {
+      "year": 2024,
+      "label": "GENERATE",
+      "crossings": 180
+    }
+  ],
+  "ticks": 2520,
+  "node_updates": 50400,
+  "crossing_events": 1400,
+  "reverse_exact": true,
+  "hash_ledger_valid": true,
+  "tamper_detection": true,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "assumptions": [
+    "One 360 tick revolution per anchor",
+    "Internet dates are inputs, not computed predictions",
+    "SHA256 sidecar watermark is not embedded inside the register",
+    "Deterministic software crossing is not evidence of physical tunneling"
+  ],
+  "baseline_unchanged": true
+}
