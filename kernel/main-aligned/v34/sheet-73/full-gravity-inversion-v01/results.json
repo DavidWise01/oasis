@@ -1,0 +1,62 @@
+{
+  "schema": "oasis/sheet73/full-gravity-inversion-v01",
+  "params": {
+    "mu": 1,
+    "lambda": 0.04,
+    "dt": 0.002,
+    "rmin": 2,
+    "rmax": 6
+  },
+  "initial": [
+    4,
+    -0.8,
+    1
+  ],
+  "end_forward": [
+    5.999583372788702,
+    -1.1279981069308271,
+    1
+  ],
+  "events": [
+    {
+      "tick": 1331,
+      "side": "lower",
+      "bit_after": 0
+    },
+    {
+      "tick": 3721,
+      "side": "upper",
+      "bit_after": 1
+    }
+  ],
+  "steps": 3721,
+  "reverse_errors": {
+    "radius": 1.7763568394002505e-15,
+    "velocity": 5.551115123125783e-16
+  },
+  "registry_digest": "ebb0eebb7d4403a74fe05ad1ba0ba46a3b475042bebd175fc712881f8ea874bc",
+  "event_digest": "aa2804d666c3e2d48879a5ee7eab93de64f6cb3ea2100233835cd6ae06866da5",
+  "checks": {
+    "two_actual_wall_events": true,
+    "opposite_boundaries": true,
+    "binary_1_0_1": true,
+    "return_bit_exact": true,
+    "reverse_radius": true,
+    "reverse_velocity": true,
+    "bounds": true,
+    "registry_count": true,
+    "registry_unique": true,
+    "registry_bands": true,
+    "inversion_involution": true,
+    "threshold": true,
+    "finite": true,
+    "ledger_repeatable": true
+  },
+  "passed": 14,
+  "total": 14,
+  "limitations": [
+    "Artificial reflecting lower AND upper walls, not derived from gravitational ODE",
+    "Two encounters demonstrate full logical bit cycle but not closed physical phase-space orbit",
+    "Reverse numeric integration approximate; binary identity exact"
+  ]
+}
