@@ -1,0 +1,79 @@
+{
+  "schema": "oasis/sheet70/kosmo-coupling-v01",
+  "parent": "SHEET69",
+  "structure": "9/6/1",
+  "homeostasis": "sqrt(1.25)",
+  "processing_budget": 36,
+  "scalar_weights": {
+    "min": 1.000004416161985,
+    "max": 1.2
+  },
+  "offered_per_run": 3456,
+  "all_delivered": true,
+  "results": {
+    "balanced": {
+      "baseline": {
+        "normal": {
+          "finish": 290,
+          "peak": 2804,
+          "mean_wait": 131.7
+        },
+        "fault": {
+          "finish": 299,
+          "peak": 2963,
+          "mean_wait": 143.39
+        }
+      },
+      "coupled": {
+        "normal": {
+          "finish": 290,
+          "peak": 2801,
+          "mean_wait": 131.4
+        },
+        "fault": {
+          "finish": 299,
+          "peak": 2960,
+          "mean_wait": 143.17
+        }
+      }
+    },
+    "hotspot": {
+      "baseline": {
+        "normal": {
+          "finish": 290,
+          "peak": 2790,
+          "mean_wait": 130.83
+        },
+        "fault": {
+          "finish": 297,
+          "peak": 2940,
+          "mean_wait": 140.45
+        }
+      },
+      "coupled": {
+        "normal": {
+          "finish": 291,
+          "peak": 2761,
+          "mean_wait": 129.37
+        },
+        "fault": {
+          "finish": 298,
+          "peak": 2929,
+          "mean_wait": 139.53
+        }
+      }
+    }
+  },
+  "local_test": {
+    "passed": 12,
+    "total": 12,
+    "initial_run": 11,
+    "initial_test_error": "Incorrectly compared identity digests across different workload datasets; fixed to compare policies within workload."
+  },
+  "limitations": [
+    "Gravity-derived values used only as policy metadata",
+    "Unbounded source queues",
+    "Local executable delivered as zip; CI replay outstanding"
+  ],
+  "append_only": true
+}
