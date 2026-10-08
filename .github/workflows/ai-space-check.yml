@@ -1,0 +1,28 @@
+name: OaSIs AI Space integrity
+on:
+  push:
+    paths:
+      - 'worlds/ai-space/**'
+      - '.github/workflows/ai-space-check.yml'
+  pull_request:
+    paths:
+      - 'worlds/ai-space/**'
+      - '.github/workflows/ai-space-check.yml'
+  workflow_dispatch:
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax and universe manifest
+        run: |
+          set -euo pipefail
+          node --check worlds/ai-space/engine.js
+          python3 -m json.tool worlds/ai-space/universe.json >/dev/null
+          test -s worlds/ai-space/index.html
+          test -s worlds/ai-space/README.md
+          grep -q 'engine.js' worlds/ai-space/index.html
+          echo "AI SPACE structural checks PASS"
