@@ -1,0 +1,43 @@
+{
+  "schema": "oasis/250-register/blind-comparison-v05",
+  "positions": 250,
+  "rule": "repeat C C C O O; candidate closure at 3rd C; 1.25^closure_count",
+  "structural_checks": "10/10",
+  "candidate_closure_count": 50,
+  "reference_nuclear_magic": [
+    2,
+    8,
+    20,
+    28,
+    50,
+    82,
+    126
+  ],
+  "known_magic_hits": [
+    8,
+    28
+  ],
+  "known_magic_misses": [
+    2,
+    20,
+    50,
+    82,
+    126
+  ],
+  "predicted_184_hit": false,
+  "noble_gas_atomic_numbers": [
+    2,
+    10,
+    18,
+    36,
+    54,
+    86,
+    118
+  ],
+  "noble_gas_hits": [
+    18,
+    118
+  ],
+  "critical_note": "This recurrence does not reproduce source-stipulated Neon=10 closure; a shell-boundary operator remains unspecified. The 184 result is a negative test, not confirmation.",
+  "physics_caveat": "184 is a proposed neutron magic number; nuclear shell count and atomic number are not interchangeable."
+}
