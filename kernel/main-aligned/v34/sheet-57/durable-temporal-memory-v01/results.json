@@ -1,0 +1,32 @@
+{
+  "schema": "oasis/sheet57/durable-temporal-memory-v01",
+  "lineage": "SHEET56 -> SHEET57",
+  "model": "Three symbolic logical time domains",
+  "messages": 8640,
+  "hop_records": 25920,
+  "checkpoint_generations": [
+    1,
+    2
+  ],
+  "damage_test": "truncate generation 2; recover generation 1",
+  "fallback_generation": 1,
+  "checks_passed": 17,
+  "checks_total": 17,
+  "register_inverse_exact": true,
+  "payloads_preserved": true,
+  "duplicate_deliveries": 0,
+  "final_tick": 4321,
+  "final_state_digest": "da548cdcd99e6050e7549ad4912a1f8cdcc9c85e51428acdb25dcec8d979a022",
+  "fault_tests": {
+    "latest_corruption_fallback": true,
+    "both_corrupt_refuse": true,
+    "uncommitted_pending_ignored": true,
+    "metadata_mutation_rejected": true
+  },
+  "limits": [
+    "No real power failure",
+    "No transactional external delivery sink",
+    "Hash only, no keyed identity"
+  ],
+  "append_only": true
+}
