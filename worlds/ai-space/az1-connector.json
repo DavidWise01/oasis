@@ -3,7 +3,7 @@
   "id": "az1",
   "name": "AZ1 · Universe One",
   "parent_universe": "ud0",
-  "role": "second registered universe; native UD0 sphere / Atelier domain",
+  "role": "universal_laws_and_observations",
   "source_repo": "https://github.com/DavidWise01/az1",
   "site": "https://davidwise01.github.io/az1/",
   "source_characterization": {
@@ -18,5 +18,12 @@
   },
   "mode": "linked_read_only",
   "agent_execution": "not connected",
-  "kernel_mutation": false
+  "kernel_mutation": false,
+  "responsibilities": [
+    "universal law register",
+    "observations and provenance",
+    "hypothesis testing and evidence separation",
+    "challenge/revision without rewriting history"
+  ],
+  "boundary": "Proposed laws and model output are not automatically empirical facts; source planetary simulator is preserved"
 }
