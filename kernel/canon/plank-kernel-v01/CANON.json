@@ -1,0 +1,19 @@
+{
+  "name": "Plank Kernel",
+  "version": "v01",
+  "status": "CANONICAL / INTERACTIVE KERNEL INSTRUMENT",
+  "source_file": "Plank-Kernel.html",
+  "source_sha256": "607a2bbb1f745f39066a91eb039f2d8c7fe9fd9aac4caa55e07e32e4563a32bd",
+  "source_bytes": 26746,
+  "source_lines": 370,
+  "poles": ["-e","+e","-p","+p","-n","+n"],
+  "signs": [-1,1,-1,1,-1,1],
+  "net_invariant": 0,
+  "edge_rates": [3,3.21,2.85,3.33,2.73,3.09],
+  "ring_categories": ["weak","med","strong"],
+  "ring_points_each": 4,
+  "bubble_rates": [1,-1],
+  "mutation_receipts": ["edge-cross","ring-reorder","near-harmony"],
+  "fallout": ["shell_shear","ring_split","mutation_flux","field_rms"],
+  "boundary": "Motion uses dimensionless kernel units; source explicitly disclaims a claim about established particle physics."
+}
