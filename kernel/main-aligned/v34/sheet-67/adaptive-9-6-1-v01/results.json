@@ -1,0 +1,65 @@
+{
+  "schema": "oasis/sheet67/adaptive-9-6-1-v01",
+  "lineage": "SHEET66 -> SHEET67",
+  "architecture": {
+    "cell": 9,
+    "regional": 6,
+    "root": 1
+  },
+  "homeostatic_threshold": {
+    "expression": "sqrt(1.25)",
+    "value": 1.118033988749895,
+    "queue_trigger": "queue depth > sqrt(1.25) * (36/16)"
+  },
+  "processing_budget_per_tick": 36,
+  "offered_each_run": 3456,
+  "runs": {
+    "balanced": {
+      "fixed": {
+        "finish_tick": 1729,
+        "peak_backlog": 3244,
+        "mean_wait": 812,
+        "delivered": 3456
+      },
+      "adaptive": {
+        "finish_tick": 290,
+        "peak_backlog": 2804,
+        "mean_wait": 131.703,
+        "delivered": 3456
+      }
+    },
+    "hotspot": {
+      "fixed": {
+        "finish_tick": 1729,
+        "peak_backlog": 3244,
+        "mean_wait": 812,
+        "delivered": 3456
+      },
+      "adaptive": {
+        "finish_tick": 290,
+        "peak_backlog": 2790,
+        "mean_wait": 130.831,
+        "delivered": 3456
+      }
+    }
+  },
+  "local_test": {
+    "passed": 9,
+    "total": 9,
+    "initial_failed_checks": 2,
+    "initial_issue": "Hotspot generator failed to exercise every cell/relay; fixed and rerun"
+  },
+  "preservation": {
+    "identity_digest_unchanged_under_comparison": true,
+    "loss": 0,
+    "all_nine_cells": true,
+    "all_six_relays": true
+  },
+  "limitations": [
+    "9/6/1 interpreted as cell/regional/root hierarchy",
+    "Idle-node capacity waste makes fixed control weak",
+    "GitHub transcription not independently replayed",
+    "No physics or actual attention heads"
+  ],
+  "append_only": true
+}
