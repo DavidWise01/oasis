@@ -1,0 +1,37 @@
+{
+  "schema": "oasis/sheet54/end-to-end-bounded-v01",
+  "lineage": "SHEET52 -> SHEET53 -> SHEET54",
+  "storage_limits": {
+    "source": 128,
+    "center": 64,
+    "quarantine": 128
+  },
+  "offered": 8640,
+  "accepted": 1756,
+  "delivered": 1756,
+  "defer_policy": {
+    "deferred": 6884,
+    "rejected": 0
+  },
+  "reject_policy": {
+    "deferred": 0,
+    "rejected": 6884
+  },
+  "peaks": {
+    "source": 126,
+    "center": 62,
+    "quarantine": 128
+  },
+  "final_drained_tick": 877,
+  "accepted_lost": 0,
+  "exact_reverse": true,
+  "watermark_valid": true,
+  "tamper_rejected": true,
+  "checks_passed": 16,
+  "checks_total": 16,
+  "final_digest": "b94555651e37217725a13c22fe3bac621fec60e1e8c5422327786593b770d5d3",
+  "ledger_tip": "ba244ba0fcf46dc024187990d3c0973d60ab8fd71fd3a25f0c05bb6be5586739",
+  "interpretation": "Deferred means sender retains ownership; not delivered or stored by kernel. No retry mechanism.",
+  "execution": "Tested in local sandbox, GitHub contains audit/results only; executable not yet committed.",
+  "append_only": true
+}
