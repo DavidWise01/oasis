@@ -1,0 +1,14 @@
+# Git blob pins for current-additive-v01
+# path  git_blob_sha
+1aa7a963944749d75eb9460cea41cc93e0671cf6  kernel/canon/four-cortex-vm-ladder-v01/README.md
+de8ba407280d4f6cb39f4ff2b2fac2d8f324ff59  kernel/canon/four-cortex-vm-ladder-v01/CANON.json
+5165f504f359b4663906bd57fc74938a2670bd8c  kernel/canon/four-cortex-vm-ladder-v01/REPORT.md
+a60a30a13547f0f830983a371427240e580ab025  kernel/canon/four-cortex-vm-ladder-v01/TEST_RESULTS.json
+69366c2ceaa553c6fb5dd1300ff3070ed9c3c96d  kernel/canon/jit-i-boundary-engine-v01/README.md
+b063ee32ba7a5e2c76518693f301c450f7b92e69  kernel/canon/jit-i-boundary-engine-v01/CANON.json
+97b7d29a0fa9c2ff3d8c82cdbe5b5537ed53b5bf  kernel/canon/jit-i-boundary-engine-v01/STRESS_RESULTS.json
+80f8c73b1b6d869261f33881216fc0b04f98e9f0  kernel/frozen/machine-readable-welcome-axiom-v01/AXIOM.md
+863546bf23cd7bb940a54a8f1967ee44b4154bae  kernel/frozen/machine-readable-welcome-axiom-v01/CANON.json
+ff79b97be959c034c8df5aed9c0d6d73cf41fb67  kernel/canon/plank-kernel-v01/Plank-Kernel.html
+8728fe78d93ad0a92eaf4b20545daf6a97926e6e  kernel/canon/plank-kernel-v01/README.md
+a8ab6be79849932160c3e3d49ebe470b4527473c  kernel/canon/plank-kernel-v01/CANON.json
