@@ -1,0 +1,22 @@
+{
+  "schema": "oasis/universe-connector/v1",
+  "id": "az1",
+  "name": "AZ1 · Universe One",
+  "parent_universe": "ud0",
+  "role": "second registered universe; native UD0 sphere / Atelier domain",
+  "source_repo": "https://github.com/DavidWise01/az1",
+  "site": "https://davidwise01.github.io/az1/",
+  "source_characterization": {
+    "readme": "Multi-agent procedural idea-evolution: citizens from repository names, proximity communication, hybrid proposals, selection, localStorage",
+    "site": "3D planetary N-body presentation; 9 planets including Pluto",
+    "note": "README and current index describe differing facets; neither is evidence of independently running external AI agents"
+  },
+  "day_counter": {
+    "epoch_utc": "2026-10-07",
+    "epoch_basis": "OaSIs integration tracking epoch, not AZ1 original creation date",
+    "day_one": true
+  },
+  "mode": "linked_read_only",
+  "agent_execution": "not connected",
+  "kernel_mutation": false
+}
