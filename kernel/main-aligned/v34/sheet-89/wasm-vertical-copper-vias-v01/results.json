@@ -1,0 +1,40 @@
+{
+  "sheet": 89,
+  "architecture": "freestanding wasm32 C state-machine embedded in standalone SVG HTML",
+  "copper_layers": [
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "center_bus": "{{-1::0::+1}}",
+  "lanes": 120,
+  "portals": 9,
+  "via_transition_ticks": 24,
+  "compiled_wasm_bytes": 1628,
+  "execution": {
+    "ticks": 1200,
+    "completed_traversals": 785,
+    "via_transfers": 774,
+    "via_phase_samples": 18708,
+    "checks_passed": 15,
+    "checks_total": 15,
+    "deterministic_replay": true,
+    "all_120_lane_ids_preserved": true,
+    "all_11_layers_reached": true
+  },
+  "validation": {
+    "javascript_syntax": "passed",
+    "zip_crc": "passed",
+    "browser_interactive": "not tested",
+    "physical_3d_clearance": "not tested"
+  },
+  "distribution": "Exact standalone viewer, .wasm module, C source, and Node test in conversation downloadable ZIP; GitHub folder presently reports results and audit only."
+}
