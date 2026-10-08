@@ -1,0 +1,44 @@
+{
+  "schema": "oasis/sheet71/gravity-primitive-v01",
+  "source": "user-uploaded React HTML 2026-10-08 gravity primitive",
+  "lineage": "SHEET70 -> SHEET71",
+  "phase_labels": {
+    "-g": "outward radial velocity",
+    "0g": "zero radial velocity",
+    "+g": "inward radial velocity"
+  },
+  "equation": "a''=-GM/a^2+lambda*a",
+  "registry": {
+    "strong": 300,
+    "medium": 100,
+    "weak": 16,
+    "total": 416
+  },
+  "run": {
+    "mu": 1,
+    "lambda": 0.04,
+    "dt": 0.002,
+    "initial_radius": 4,
+    "initial_velocity": 0.8,
+    "steps": 4180,
+    "observed_phases": [
+      "expansion:-g"
+    ],
+    "energy_max_abs_drift": 2.9861473199721544e-7,
+    "inverse_error_radius": 3.2862601528904634e-14,
+    "inverse_error_velocity": 9.103828801926284e-15,
+    "particle_digest": "3590f096f8670e8072665ce19ba9ab6e49c2c6b3f8fb45de82d70a2752a2b260"
+  },
+  "local_checks": {
+    "passed": 16,
+    "total": 16
+  },
+  "negative_control": "radius=4, initial velocity=-0.8 caused r<=0 singularity before completion",
+  "homeostasis": "sqrt(1.25) remains separate dimensionless occupancy threshold",
+  "limitations": [
+    "No cyclic turnaround observed in forward benchmark",
+    "Toy radial ODE not evidence of literal physical stargate or alternate gravity",
+    "Source code local executable ZIP not yet committed / replayed through CI"
+  ],
+  "append_only": true
+}
