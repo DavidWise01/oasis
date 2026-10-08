@@ -1,0 +1,33 @@
+{
+  "schema": "oasis/sheet69/kosmo-scalar-v01",
+  "lineage": "SHEET68 -> SHEET69",
+  "source": "Uploaded 195861-byte compiled React HTML, 2026-10-08",
+  "major_bodies": 13,
+  "census": {
+    "strong": 300,
+    "medium": 100,
+    "weak": 16,
+    "total": 416
+  },
+  "architecture": "9 cells / 6 relays / 1 root, 36 ambassadors",
+  "homeostasis_sqrt_1_25": 1.118033988749895,
+  "field_proxy": "G*M/r^2 (acceleration units, not force newtons; no satellite mass term)",
+  "thresholds_in_source": {
+    "strong": "F > 1e20",
+    "medium": "1e18 <= F <= 1e20",
+    "weak": "F < 1e18"
+  },
+  "local_tests": {
+    "passed": 14,
+    "total": 14,
+    "initial_boundary_test_failed": "1e20+1 rounded to 1e20 in Python binary float; corrected to 1e20*1.00001"
+  },
+  "source_digest_canonical_13_full_records": "08f723cb1eb1cf9252a8ce491212378d94bae24c72690e4ff0baab0a84025ed7",
+  "limitations": [
+    "Census is source-defined toy data not verified observational count",
+    "Field proxy dimensionally mislabeled as newtons in uploaded HTML",
+    "Only metadata and pressure trigger integrated: no physical gravitation-dynamics coupling",
+    "GitHub committed benchmark is a portable 13-body subset using exact stored decimal mass values, separate from local comprehensive 13-field test"
+  ],
+  "append_only": true
+}
