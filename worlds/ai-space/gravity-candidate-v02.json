@@ -1,0 +1,52 @@
+{
+  "schema": "oasis/candidate/gravity-planck-frame/v0.2",
+  "status": "candidate_not_frozen_physical_law",
+  "lineage": "freeze-time-gravity-v01.json",
+  "author_symbolic_originals": {
+    "frame": "Planck 0 + 1",
+    "tick": "1",
+    "time": "1",
+    "gravity_literal": "1^10^-36/1x1.6161.10^10-35/360",
+    "reaction_layer": "{{-+ | out | ++ --}}"
+  },
+  "science_constants_CODATA2022": {
+    "planck_length_m": 1.616255e-35,
+    "planck_time_s": 5.391247e-44,
+    "c_m_s": 299792458,
+    "source": "https://physics.nist.gov/cuu/pdf/all.pdf"
+  },
+  "model": {
+    "reference_frame": "F0 = 0",
+    "next_observation": "F1 = 1",
+    "frame_step": "dimensionless indexing convention, NOT physically universal duration",
+    "proper_time": "Δτ=αΔt",
+    "gravity_rate_stationary_schwarzschild": "α=sqrt(1-2GM/(rc²))",
+    "weak_field_vertical_difference": "Δf/f≈gΔh/c²",
+    "limit": "For stationary clocks outside nonrotating spherical mass or small near-Earth height differences, respectively"
+  },
+  "test_hypothesis": {
+    "hypothesis": "Measured clock-rate ratio varies with specified gravitational potential difference, not scale alone",
+    "null_hypothesis": "Using length/scale without mass, field or motion does not predict a unique proper-time ratio",
+    "test": "Compare predicted Δf/f against atomic clock height differences and GPS clocks; report residuals",
+    "threshold": "To be set before data fitting",
+    "units_required": [
+      "mass kg",
+      "radius m",
+      "height m",
+      "time seconds",
+      "velocity m/s"
+    ]
+  },
+  "provenance": {
+    "science_sources": [
+      "https://physics.nist.gov/cuu/pdf/all.pdf",
+      "https://tf.nist.gov/general/pdf/1168.pdf",
+      "https://live.ocw.mit.edu/courses/8-033-introduction-to-relativity-and-spacetime-physics-fall-2024/mit8_033_f24_lec19.pdf"
+    ]
+  },
+  "governance": {
+    "existing_freeze_unchanged": true,
+    "unparsed_original_preserved": true,
+    "no_automatic_law_promotion": true
+  }
+}
