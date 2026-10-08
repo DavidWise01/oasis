@@ -1,0 +1,23 @@
+{
+  "schema": "oasis/8-vector-2-worker-bees/benchmark-v01",
+  "reference_run": "local /mnt/data/oasis_10vector/oasis_8plus2_bees_v01.py",
+  "checks_passed": 10,
+  "checks_total": 10,
+  "sample_count": 5000,
+  "unique_sampled_sequences": 5000,
+  "unique_output_states": 5000,
+  "reversal_failures": 0,
+  "registers": 8,
+  "worker_bees": 2,
+  "total_words": 10,
+  "word_width_bits": 32,
+  "label_count": 24,
+  "permutations_total": "620448401733239439360000",
+  "notes": [
+    "This benchmark validates sampled order sensitivity and exact reversible modular shears; not exhaustive over 24!",
+    "Worker bees are abstract state registers, not independently threaded workers",
+    "No physical atom creation, nuclear QCD or quantum dynamics tested",
+    "Frozen baseline unchanged"
+  ],
+  "script": "oasis-8vector-2worker-v01.py"
+}
