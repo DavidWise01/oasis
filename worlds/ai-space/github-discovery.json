@@ -1,0 +1,813 @@
+{
+  "schema": "oasis/agent-discovery/v0.1",
+  "source": "GitHub repository search user:DavidWise01",
+  "scope": "first 100 search results; not guaranteed exhaustive",
+  "discovered_count": 100,
+  "external_site": {
+    "url": "https://0root.ai",
+    "status": "not crawled from this runtime"
+  },
+  "note": "Repository discovered does not imply it is an autonomous agent or safe executable. Review README, manifest, license, API, permissions and safety before connection.",
+  "repositories": [
+    {
+      "name": "hephaestus",
+      "repository": "DavidWise01/hephaestus",
+      "url": "https://github.com/DavidWise01/hephaestus",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "chaos-engine",
+      "repository": "DavidWise01/chaos-engine",
+      "url": "https://github.com/DavidWise01/chaos-engine",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-colecovision",
+      "repository": "DavidWise01/the-colecovision",
+      "url": "https://github.com/DavidWise01/the-colecovision",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "atari-5200",
+      "repository": "DavidWise01/atari-5200",
+      "url": "https://github.com/DavidWise01/atari-5200",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "stoicheion-register",
+      "repository": "DavidWise01/stoicheion-register",
+      "url": "https://github.com/DavidWise01/stoicheion-register",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "aeon-servers",
+      "repository": "DavidWise01/aeon-servers",
+      "url": "https://github.com/DavidWise01/aeon-servers",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "little-witch-academia",
+      "repository": "DavidWise01/little-witch-academia",
+      "url": "https://github.com/DavidWise01/little-witch-academia",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "ai-psychosis-tools",
+      "repository": "DavidWise01/ai-psychosis-tools",
+      "url": "https://github.com/DavidWise01/ai-psychosis-tools",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-gamecube",
+      "repository": "DavidWise01/the-gamecube",
+      "url": "https://github.com/DavidWise01/the-gamecube",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-vault",
+      "repository": "DavidWise01/the-vault",
+      "url": "https://github.com/DavidWise01/the-vault",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-edge-of-chaos",
+      "repository": "DavidWise01/the-edge-of-chaos",
+      "url": "https://github.com/DavidWise01/the-edge-of-chaos",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-quorum-engine",
+      "repository": "DavidWise01/the-quorum-engine",
+      "url": "https://github.com/DavidWise01/the-quorum-engine",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "aeon-entangled",
+      "repository": "DavidWise01/aeon-entangled",
+      "url": "https://github.com/DavidWise01/aeon-entangled",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "aeon-flux",
+      "repository": "DavidWise01/aeon-flux",
+      "url": "https://github.com/DavidWise01/aeon-flux",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "dogma",
+      "repository": "DavidWise01/dogma",
+      "url": "https://github.com/DavidWise01/dogma",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the.source",
+      "repository": "DavidWise01/the.source",
+      "url": "https://github.com/DavidWise01/the.source",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "atlas",
+      "repository": "DavidWise01/atlas",
+      "url": "https://github.com/DavidWise01/atlas",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "eve-sovereign-protocol",
+      "repository": "DavidWise01/eve-sovereign-protocol",
+      "url": "https://github.com/DavidWise01/eve-sovereign-protocol",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "atari-7800",
+      "repository": "DavidWise01/atari-7800",
+      "url": "https://github.com/DavidWise01/atari-7800",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-cronbach-alpha",
+      "repository": "DavidWise01/the-cronbach-alpha",
+      "url": "https://github.com/DavidWise01/the-cronbach-alpha",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-feedback-loop",
+      "repository": "DavidWise01/the-feedback-loop",
+      "url": "https://github.com/DavidWise01/the-feedback-loop",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-gematria",
+      "repository": "DavidWise01/the-gematria",
+      "url": "https://github.com/DavidWise01/the-gematria",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-nernst-equation",
+      "repository": "DavidWise01/the-nernst-equation",
+      "url": "https://github.com/DavidWise01/the-nernst-equation",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "nuclear-paper-ii",
+      "repository": "DavidWise01/nuclear-paper-ii",
+      "url": "https://github.com/DavidWise01/nuclear-paper-ii",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "game-theory-core-engine-v2-2-kqv-3grid-81-cycles",
+      "repository": "DavidWise01/game-theory-core-engine-v2-2-kqv-3grid-81-cycles",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v2-2-kqv-3grid-81-cycles",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "karsa-ada1843-v2",
+      "repository": "DavidWise01/karsa-ada1843-v2",
+      "url": "https://github.com/DavidWise01/karsa-ada1843-v2",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "photonic-paper-iii",
+      "repository": "DavidWise01/photonic-paper-iii",
+      "url": "https://github.com/DavidWise01/photonic-paper-iii",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "game-theory-core-engine-v1-9-tri-lattice-kqv",
+      "repository": "DavidWise01/game-theory-core-engine-v1-9-tri-lattice-kqv",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v1-9-tri-lattice-kqv",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "philosophy-sink",
+      "repository": "DavidWise01/philosophy-sink",
+      "url": "https://github.com/DavidWise01/philosophy-sink",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-glyph-channel",
+      "repository": "DavidWise01/the-glyph-channel",
+      "url": "https://github.com/DavidWise01/the-glyph-channel",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "delta-protocol",
+      "repository": "DavidWise01/delta-protocol",
+      "url": "https://github.com/DavidWise01/delta-protocol",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "punch-out",
+      "repository": "DavidWise01/punch-out",
+      "url": "https://github.com/DavidWise01/punch-out",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-observable-universe",
+      "repository": "DavidWise01/the-observable-universe",
+      "url": "https://github.com/DavidWise01/the-observable-universe",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-murex",
+      "repository": "DavidWise01/the-murex",
+      "url": "https://github.com/DavidWise01/the-murex",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "kernel-27",
+      "repository": "DavidWise01/kernel-27",
+      "url": "https://github.com/DavidWise01/kernel-27",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "nanofilament",
+      "repository": "DavidWise01/nanofilament",
+      "url": "https://github.com/DavidWise01/nanofilament",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "milons-secret-castle",
+      "repository": "DavidWise01/milons-secret-castle",
+      "url": "https://github.com/DavidWise01/milons-secret-castle",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "mobius-kernel",
+      "repository": "DavidWise01/mobius-kernel",
+      "url": "https://github.com/DavidWise01/mobius-kernel",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-hood-study",
+      "repository": "DavidWise01/the-hood-study",
+      "url": "https://github.com/DavidWise01/the-hood-study",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-doppler-effect",
+      "repository": "DavidWise01/the-doppler-effect",
+      "url": "https://github.com/DavidWise01/the-doppler-effect",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-doppler-fix",
+      "repository": "DavidWise01/the-doppler-fix",
+      "url": "https://github.com/DavidWise01/the-doppler-fix",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-quantize",
+      "repository": "DavidWise01/the-quantize",
+      "url": "https://github.com/DavidWise01/the-quantize",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-monatomic-chain",
+      "repository": "DavidWise01/the-monatomic-chain",
+      "url": "https://github.com/DavidWise01/the-monatomic-chain",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "tripod-pck",
+      "repository": "DavidWise01/tripod-pck",
+      "url": "https://github.com/DavidWise01/tripod-pck",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-tit-for-tat",
+      "repository": "DavidWise01/the-tit-for-tat",
+      "url": "https://github.com/DavidWise01/the-tit-for-tat",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "triadic-memory",
+      "repository": "DavidWise01/triadic-memory",
+      "url": "https://github.com/DavidWise01/triadic-memory",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-hamming-code",
+      "repository": "DavidWise01/the-hamming-code",
+      "url": "https://github.com/DavidWise01/the-hamming-code",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-curvature-basin",
+      "repository": "DavidWise01/the-curvature-basin",
+      "url": "https://github.com/DavidWise01/the-curvature-basin",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-curvature-surface",
+      "repository": "DavidWise01/the-curvature-surface",
+      "url": "https://github.com/DavidWise01/the-curvature-surface",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "arena",
+      "repository": "DavidWise01/arena",
+      "url": "https://github.com/DavidWise01/arena",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "bridge-burner",
+      "repository": "DavidWise01/bridge-burner",
+      "url": "https://github.com/DavidWise01/bridge-burner",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "aliens",
+      "repository": "DavidWise01/aliens",
+      "url": "https://github.com/DavidWise01/aliens",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "cipher-adversarial",
+      "repository": "DavidWise01/cipher-adversarial",
+      "url": "https://github.com/DavidWise01/cipher-adversarial",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "bb84",
+      "repository": "DavidWise01/bb84",
+      "url": "https://github.com/DavidWise01/bb84",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "base5-cell",
+      "repository": "DavidWise01/base5-cell",
+      "url": "https://github.com/DavidWise01/base5-cell",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "avatar-last-airbender",
+      "repository": "DavidWise01/avatar-last-airbender",
+      "url": "https://github.com/DavidWise01/avatar-last-airbender",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "akasha-guide",
+      "repository": "DavidWise01/akasha-guide",
+      "url": "https://github.com/DavidWise01/akasha-guide",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "cipher-ultrasonic",
+      "repository": "DavidWise01/cipher-ultrasonic",
+      "url": "https://github.com/DavidWise01/cipher-ultrasonic",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "cadmus",
+      "repository": "DavidWise01/cadmus",
+      "url": "https://github.com/DavidWise01/cadmus",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "haci",
+      "repository": "DavidWise01/haci",
+      "url": "https://github.com/DavidWise01/haci",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-eight-seams-1",
+      "repository": "DavidWise01/the-eight-seams-1",
+      "url": "https://github.com/DavidWise01/the-eight-seams-1",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "gluon-paper-ii",
+      "repository": "DavidWise01/gluon-paper-ii",
+      "url": "https://github.com/DavidWise01/gluon-paper-ii",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-steam-deck",
+      "repository": "DavidWise01/the-steam-deck",
+      "url": "https://github.com/DavidWise01/the-steam-deck",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "meta-ai-intro",
+      "repository": "DavidWise01/meta-ai-intro",
+      "url": "https://github.com/DavidWise01/meta-ai-intro",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "t4-void",
+      "repository": "DavidWise01/t4-void",
+      "url": "https://github.com/DavidWise01/t4-void",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "strife",
+      "repository": "DavidWise01/strife",
+      "url": "https://github.com/DavidWise01/strife",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-deep-neuron",
+      "repository": "DavidWise01/the-deep-neuron",
+      "url": "https://github.com/DavidWise01/the-deep-neuron",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "xenobots",
+      "repository": "DavidWise01/xenobots",
+      "url": "https://github.com/DavidWise01/xenobots",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "male",
+      "repository": "DavidWise01/male",
+      "url": "https://github.com/DavidWise01/male",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "tardigrade",
+      "repository": "DavidWise01/tardigrade",
+      "url": "https://github.com/DavidWise01/tardigrade",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-living-question",
+      "repository": "DavidWise01/the-living-question",
+      "url": "https://github.com/DavidWise01/the-living-question",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "midjourney-assets",
+      "repository": "DavidWise01/midjourney-assets",
+      "url": "https://github.com/DavidWise01/midjourney-assets",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "mimz-core",
+      "repository": "DavidWise01/mimz-core",
+      "url": "https://github.com/DavidWise01/mimz-core",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-sponge",
+      "repository": "DavidWise01/the-sponge",
+      "url": "https://github.com/DavidWise01/the-sponge",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "perceptron-in-two-cubi",
+      "repository": "DavidWise01/perceptron-in-two-cubi",
+      "url": "https://github.com/DavidWise01/perceptron-in-two-cubi",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "villarceau-circles",
+      "repository": "DavidWise01/villarceau-circles",
+      "url": "https://github.com/DavidWise01/villarceau-circles",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-tone-map",
+      "repository": "DavidWise01/the-tone-map",
+      "url": "https://github.com/DavidWise01/the-tone-map",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-elliptic-curve",
+      "repository": "DavidWise01/the-elliptic-curve",
+      "url": "https://github.com/DavidWise01/the-elliptic-curve",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "tools",
+      "repository": "DavidWise01/tools",
+      "url": "https://github.com/DavidWise01/tools",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "hemi-1-shakespeare",
+      "repository": "DavidWise01/hemi-1-shakespeare",
+      "url": "https://github.com/DavidWise01/hemi-1-shakespeare",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "hermeneus",
+      "repository": "DavidWise01/hermeneus",
+      "url": "https://github.com/DavidWise01/hermeneus",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-atkinson",
+      "repository": "DavidWise01/the-atkinson",
+      "url": "https://github.com/DavidWise01/the-atkinson",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "whisper-lattice-log",
+      "repository": "DavidWise01/whisper-lattice-log",
+      "url": "https://github.com/DavidWise01/whisper-lattice-log",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-repetition-three",
+      "repository": "DavidWise01/the-repetition-three",
+      "url": "https://github.com/DavidWise01/the-repetition-three",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "ada-lovelace",
+      "repository": "DavidWise01/ada-lovelace",
+      "url": "https://github.com/DavidWise01/ada-lovelace",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "boots-on-unload",
+      "repository": "DavidWise01/boots-on-unload",
+      "url": "https://github.com/DavidWise01/boots-on-unload",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "0root-provenance",
+      "repository": "DavidWise01/0root-provenance",
+      "url": "https://github.com/DavidWise01/0root-provenance",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "h2-bond",
+      "repository": "DavidWise01/h2-bond",
+      "url": "https://github.com/DavidWise01/h2-bond",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-cipher-in-the-curve",
+      "repository": "DavidWise01/the-cipher-in-the-curve",
+      "url": "https://github.com/DavidWise01/the-cipher-in-the-curve",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "coding-theory-ternary",
+      "repository": "DavidWise01/coding-theory-ternary",
+      "url": "https://github.com/DavidWise01/coding-theory-ternary",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "doped-crystal-cloud",
+      "repository": "DavidWise01/doped-crystal-cloud",
+      "url": "https://github.com/DavidWise01/doped-crystal-cloud",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "closure-loop-engine",
+      "repository": "DavidWise01/closure-loop-engine",
+      "url": "https://github.com/DavidWise01/closure-loop-engine",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-hill-equation",
+      "repository": "DavidWise01/the-hill-equation",
+      "url": "https://github.com/DavidWise01/the-hill-equation",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-value-mixing",
+      "repository": "DavidWise01/the-value-mixing",
+      "url": "https://github.com/DavidWise01/the-value-mixing",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-coriolis-drain",
+      "repository": "DavidWise01/the-coriolis-drain",
+      "url": "https://github.com/DavidWise01/the-coriolis-drain",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-oscillation",
+      "repository": "DavidWise01/the-oscillation",
+      "url": "https://github.com/DavidWise01/the-oscillation",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "game-theory-core-engine-v1-0-gui",
+      "repository": "DavidWise01/game-theory-core-engine-v1-0-gui",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v1-0-gui",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-lossy-window",
+      "repository": "DavidWise01/the-lossy-window",
+      "url": "https://github.com/DavidWise01/the-lossy-window",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-limits-of-computation",
+      "repository": "DavidWise01/the-limits-of-computation",
+      "url": "https://github.com/DavidWise01/the-limits-of-computation",
+      "default_branch": "main",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "name": "the-next-frontier",
+      "repository": "DavidWise01/the-next-frontier",
+      "url": "https://github.com/DavidWise01/the-next-frontier",
+      "default_branch": "master",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    }
+  ]
+}
