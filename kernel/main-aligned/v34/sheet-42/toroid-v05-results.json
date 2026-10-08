@@ -1,0 +1,28 @@
+{
+  "schema": "oasis/sheet-42/toroid-v05",
+  "literal": "{{0vwxyz}}^5 x inf - + inf / 1 x 1^10-36 every 1 x 1^-1/360 x 360",
+  "turns": 10,
+  "sectors_per_turn": 360,
+  "node_updates": 100800,
+  "ring_visits": [
+    720,
+    720,
+    720,
+    720,
+    720
+  ],
+  "distinct_sampled_boundary_states": 3601,
+  "repeated_states": 0,
+  "turn_boundary_states_distinct": 11,
+  "reverse_exact": true,
+  "checks_passed": 13,
+  "checks_total": 13,
+  "final_state_sha256": "4084127783bfbee95e43f882ad7d5c9d1d82a08be28515c0caf8a0c1ab93c7c5",
+  "limitations": [
+    "Toroidal address wrap is not a return of full register state",
+    "Original symbolic time expression kept as literal; not physics",
+    "Deterministic finite-state simulator only",
+    "SHEET 42 v01 and frozen OaSIs kernels untouched"
+  ],
+  "script": "sheet42-toroid-v05.py"
+}
