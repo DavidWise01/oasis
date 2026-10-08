@@ -1,0 +1,70 @@
+{
+  "schema": "oasis/ai-space-universe/v0.1",
+  "name": "OaSIs AI Space",
+  "owner_root": "0.r00t.ai",
+  "status": "browser local simulation",
+  "parent_immutable": true,
+  "lane_partition": [
+    {
+      "id": "observe",
+      "glyph": "-+-",
+      "permissions": [
+        "record",
+        "propose"
+      ],
+      "commit": false
+    },
+    {
+      "id": "create",
+      "glyph": "+-+",
+      "permissions": [
+        "propose",
+        "transform-spec"
+      ],
+      "commit": false
+    }
+  ],
+  "authority": "explicit human approval after proposal integrity witness",
+  "worlds": [
+    {
+      "id": "u1-du0",
+      "ref": "../u1-du0/world.json",
+      "channels": [
+        "MYTH",
+        "OBSERVED",
+        "AUTHORITY",
+        "SACRED",
+        "MODEL",
+        "HIDDEN PROVENANCE"
+      ]
+    },
+    {
+      "id": "studio",
+      "ref": "../../apps/tattoo/"
+    },
+    {
+      "id": "sandbox",
+      "ref": null
+    }
+  ],
+  "phase_order": [
+    "BOOT",
+    "LOAD_SPACE",
+    "REGISTER_AGENT",
+    "OBSERVE_OR_CREATE",
+    "HOLD_PROPOSAL",
+    "WITNESS_INTEGRITY",
+    "HUMAN_COMMIT",
+    "APPEND_LOCAL",
+    "NEXT_TICK"
+  ],
+  "connected_models": [],
+  "frozen_canon_modified": false,
+  "known_limitations": [
+    "No real AI inference",
+    "No external agent transport",
+    "Not distributed consensus",
+    "Browser localStorage is not tamperproof",
+    "No Lean proof or full-kernel integration"
+  ]
+}
