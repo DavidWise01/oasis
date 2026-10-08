@@ -34,9 +34,9 @@
     let data;let full=false;
     try{
       const r=await fetch("github-discovery-full.json",{cache:"no-store"});
-      if(r.ok){data=await r.json();full=true;}
+      if(r.ok){const candidate=await r.json();if(candidate && Array.isArray(candidate.repositories) && candidate.repositories.length>0){data=candidate;full=true;}}
     }catch(_){}
-    if(!data){const r=await fetch("github-discovery.json",{cache:"no-store"});if(!r.ok)throw Error("No discovery catalog published");data=await r.json();}
+    if(!data){const r=await fetch("github-discovery.json",{cache:"no-store"});if(!r.ok)throw Error("No discovery catalog published");data=await r.json();if(!Array.isArray(data.repositories))throw Error("Catalog malformed");}
     items=data.repositories||[];scope=full?"Full crawl":"100-result sample";
     $("search").addEventListener("input",render);$("kind").addEventListener("change",render);$("sort").addEventListener("change",render);render();
   }catch(e){$("status").textContent="Catalog unavailable: "+e.message;}
