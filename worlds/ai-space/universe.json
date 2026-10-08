@@ -27,6 +27,14 @@
   "authority": "explicit human approval after proposal integrity witness",
   "worlds": [
     {
+      "id": "ud0",
+      "ref": "ud0-connector.json",
+      "authority": "external sovereign universe",
+      "mode": "linked_read_only",
+      "entry": "https://davidwise01.github.io/ud0/",
+      "agents": "https://davidwise01.github.io/du1/"
+    },
+    {
       "id": "u1-du0",
       "ref": "../u1-du0/world.json",
       "channels": [
@@ -66,5 +74,11 @@
     "Not distributed consensus",
     "Browser localStorage is not tamperproof",
     "No Lean proof or full-kernel integration"
-  ]
+  ],
+  "integration_day": {
+    "epoch": "2026-10-07",
+    "time_zone": "UTC",
+    "day_one": true,
+    "description": "OaSIs integration day, not UD0 creation date"
+  }
 }
