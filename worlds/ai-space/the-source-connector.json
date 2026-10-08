@@ -1,0 +1,29 @@
+{
+  "schema": "oasis/infrastructure-connector/v1",
+  "id": "the.source",
+  "name": "the.source · ECIH v1.0 Central Hub",
+  "kind": "source_hub",
+  "parent_universe": "ud0",
+  "source_repo": "https://github.com/DavidWise01/the.source",
+  "site": "https://davidwise01.github.io/the.source/",
+  "source_claims": [
+    "ECIH emergent consciousness interface hub",
+    "Chronos-Singularity-Akasha",
+    "TOPH Kernel",
+    "STOICHEION",
+    "Fiddler-IDIT",
+    "14D Avan Lattice",
+    "Phoenix Engine"
+  ],
+  "source_hash_lock_claim": "02880745b847317c4e2424524ec25d0f7a2b84368d184586f45b54af9fcab763",
+  "source_status": "README declares live; no runtime execution independently verified",
+  "mode": "linked_read_only",
+  "day_counter": {
+    "epoch_utc": "2026-10-07",
+    "epoch_basis": "OaSIs integration tracking epoch; not the.source creation date",
+    "day_one": true
+  },
+  "agent_execution": "not connected",
+  "replication": "not invoked",
+  "kernel_mutation": false
+}
