@@ -1,0 +1,25 @@
+{
+  "schema": "oasis/8cube-16slots-proton-2workers/v02",
+  "source_note": "Executed locally against unchanged uploaded oasis_8plus2_bees_v01.py",
+  "state_words": 10,
+  "vector_lanes": 8,
+  "workers": 2,
+  "dot_cells": 8,
+  "slots_per_cell": 16,
+  "dot_events": 128,
+  "proton_events": 1,
+  "events_per_pass": 129,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "random_orders": 1000,
+  "distinct_outputs": 1000,
+  "reverse_failures": 0,
+  "proton_noncommutes": true,
+  "event_updates_per_second": 185040,
+  "canonical_output_sha256": "d5f6da7ca2f50915aa5d3cf7dce776dd8e66ef86a3515301b7dd941439755e45",
+  "limitations": [
+    "Toy modular reversible signal model, not physical atomic simulation",
+    "This report logs a local runnable fixture; the corresponding Python source remains downloadable in conversation and was not committed in this action",
+    "All 129! orders were not enumerated"
+  ]
+}
