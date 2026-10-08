@@ -1,0 +1,54 @@
+{
+  "schema": "oasis/sheet65/diamond-120-lanes-v01",
+  "source_sketch": "SHEET 64 // 120 LANES // -<>- DIAMOND // ALL AT ONCE",
+  "lineage": "SHEET64 topology optimum -> SHEET65 lane concurrency",
+  "workload": {
+    "portals": 9,
+    "ambassadors": 36,
+    "unique_deliveries": 3456,
+    "pairs": 36,
+    "rounds": 12
+  },
+  "per_portal_ingress_and_egress_capacity": 16,
+  "one_transfer_per_lane_per_tick": true,
+  "comparisons": [
+    {
+      "lanes": 36,
+      "finish_tick": 113,
+      "peak_queue": 72,
+      "mean_wait": 2.238425925925926
+    },
+    {
+      "lanes": 72,
+      "finish_tick": 109,
+      "peak_queue": 20,
+      "mean_wait": 0.6238425925925926
+    },
+    {
+      "lanes": 120,
+      "finish_tick": 109,
+      "peak_queue": 20,
+      "mean_wait": 0.5868055555555556
+    },
+    {
+      "lanes": 144,
+      "finish_tick": 108,
+      "peak_queue": 16,
+      "mean_wait": 0.5
+    }
+  ],
+  "bottleneck_capacity_2": {
+    "lanes_36_finish_tick": 290,
+    "lanes_120_finish_tick": 273,
+    "lanes_36_peak_queue": 1888,
+    "lanes_120_peak_queue": 1808
+  },
+  "local_checks": {
+    "passed": 12,
+    "total": 12
+  },
+  "initial_failure": "First test asserted equal completion under portal cap 2 (11/12); observed 290 versus 273 due to scheduling/head-of-line effects. The false assumption was replaced; rerun passed 12/12.",
+  "interpretation": "120 physical transport lanes, not actual attention heads. Diminishing returns under fixed portal capacities.",
+  "limit": "No adversarial corruption or crash-durable restore test included",
+  "append_only": true
+}
