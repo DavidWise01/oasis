@@ -1,0 +1,82 @@
+{
+  "schema": "oasis/sheet85/space-minus-i-julia-v01",
+  "status": "spatial_adapter_pass_source_period3_claim_fails",
+  "c": {
+    "re": 0.355,
+    "im": 0.355
+  },
+  "orbit_first_six": [
+    [
+      0,
+      0
+    ],
+    [
+      0.355,
+      0.355
+    ],
+    [
+      0.355,
+      0.60705
+    ],
+    [
+      0.1125152975,
+      0.7860054999999999
+    ],
+    [
+      -0.25014495385873636,
+      0.5318752853382724
+    ],
+    [
+      0.1346811787873206,
+      0.08890816258091117
+    ]
+  ],
+  "three_step_residual_from_zero": 0.7940178450146844,
+  "triplet_residuals": [
+    0.7940178450146844,
+    0.6304643382017634,
+    0.5630376067942301
+  ],
+  "three_anchor_points": [
+    [
+      0,
+      0
+    ],
+    [
+      0.355,
+      0.355
+    ],
+    [
+      0.355,
+      0.60705
+    ]
+  ],
+  "dots": 120,
+  "per_ear": 40,
+  "full_turn_return_roundoff": 1.5700924586837752e-16,
+  "checks": {
+    "passed": 26,
+    "total": 26
+  },
+  "benchmark_sha256": "701babfa158716637c8f0caff1f4ddf928f5c4b7036c7c7648e1f7958f30ec29",
+  "retained_metadata": {
+    "wave_ladder": [
+      60,
+      15,
+      3,
+      1,
+      1
+    ],
+    "registry": [
+      300,
+      100,
+      16
+    ]
+  },
+  "limitations": [
+    "Source three-anchor triangle is not exact period-3 for its c",
+    "120 orbital display dots are not demonstrated routed collision-resolved packets",
+    "New 60 slot adapter requires IDs for injective mapping",
+    "Imaginary conjugation is a reversible mirror, not a physical spatial theory"
+  ]
+}
