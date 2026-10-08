@@ -1,0 +1,30 @@
+{
+  "schema": "oasis/sheet42/relative-phase-v07",
+  "baseline": "sheet42-toroid-v05.py",
+  "sectors": 360,
+  "turns": 10,
+  "node_updates": 100800,
+  "phase_at_sector_zero": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "phase_offsets_constant": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "five_way_exact_locks": 0,
+  "coherence": 0.8523945254791336,
+  "unique_full_states": 3601,
+  "full_state_repeats": 0,
+  "reverse_exact": true,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "interpretation": "The scheduler enforces stable phase spacing. Address synchronization after each 360-sector turn is not mutual phase-locking; no dynamic coupling has been demonstrated.",
+  "append_only": true
+}
