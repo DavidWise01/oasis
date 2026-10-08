@@ -1,0 +1,50 @@
+{
+  "name": "OASIS Current Additive Kernel Freeze",
+  "version": "v01",
+  "status": "FROZEN / IMMUTABLE / ADDITIVE",
+  "frozen_at": "2026-10-07",
+  "snapshot_base_commit": "a83600c2b4545bd2c6f7811ba10c05e3845b9bea",
+  "rule": "Do not edit v01 in place. Any semantic/source change creates a new version.",
+  "components": [
+    {
+      "name": "Four-Cortex VM Ladder",
+      "path": "kernel/canon/four-cortex-vm-ladder-v01",
+      "boundary": "1x1 {{i}} 1x1",
+      "benchmark": "11/11 PASS"
+    },
+    {
+      "name": "J{{I}}T Boundary Engine",
+      "path": "kernel/canon/jit-i-boundary-engine-v01",
+      "primitive": "{{j{{i}}t}}",
+      "invariant": "I(out) = I(in)",
+      "stress": "11/11 PASS"
+    },
+    {
+      "name": "Machine-Readable Welcome Axiom",
+      "path": "kernel/frozen/machine-readable-welcome-axiom-v01",
+      "rule": "notice -> map -> choice -> access"
+    },
+    {
+      "name": "Plank Kernel",
+      "path": "kernel/canon/plank-kernel-v01",
+      "source_sha256": "607a2bbb1f745f39066a91eb039f2d8c7fe9fd9aac4caa55e07e32e4563a32bd",
+      "role": "additive interactive kernel instrument"
+    }
+  ],
+  "blobs": {
+    "kernel/canon/four-cortex-vm-ladder-v01/README.md": "1aa7a963944749d75eb9460cea41cc93e0671cf6",
+    "kernel/canon/four-cortex-vm-ladder-v01/CANON.json": "de8ba407280d4f6cb39f4ff2b2fac2d8f324ff59",
+    "kernel/canon/four-cortex-vm-ladder-v01/REPORT.md": "5165f504f359b4663906bd57fc74938a2670bd8c",
+    "kernel/canon/four-cortex-vm-ladder-v01/TEST_RESULTS.json": "a60a30a13547f0f830983a371427240e580ab025",
+    "kernel/canon/jit-i-boundary-engine-v01/README.md": "69366c2ceaa553c6fb5dd1300ff3070ed9c3c96d",
+    "kernel/canon/jit-i-boundary-engine-v01/CANON.json": "b063ee32ba7a5e2c76518693f301c450f7b92e69",
+    "kernel/canon/jit-i-boundary-engine-v01/STRESS_RESULTS.json": "97b7d29a0fa9c2ff3d8c82cdbe5b5537ed53b5bf",
+    "kernel/frozen/machine-readable-welcome-axiom-v01/AXIOM.md": "80f8c73b1b6d869261f33881216fc0b04f98e9f0",
+    "kernel/frozen/machine-readable-welcome-axiom-v01/CANON.json": "863546bf23cd7bb940a54a8f1967ee44b4154bae",
+    "kernel/canon/plank-kernel-v01/Plank-Kernel.html": "ff79b97be959c034c8df5aed9c0d6d73cf41fb67",
+    "kernel/canon/plank-kernel-v01/README.md": "8728fe78d93ad0a92eaf4b20545daf6a97926e6e",
+    "kernel/canon/plank-kernel-v01/CANON.json": "a8ab6be79849932160c3e3d49ebe470b4527473c"
+  },
+  "supersedes": [],
+  "replaces_existing_frozen_kernel": false
+}
