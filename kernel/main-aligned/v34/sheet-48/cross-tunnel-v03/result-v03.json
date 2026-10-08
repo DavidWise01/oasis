@@ -1,0 +1,38 @@
+{
+  "schema": "oasis/sheet48/cross-tunnel-v03",
+  "arrival_ticks": 720,
+  "arrival_rates": {
+    "W": 4,
+    "N": 2,
+    "E": 1,
+    "S": 3
+  },
+  "capacity_per_tick": 8,
+  "arrivals": {
+    "W": 2880,
+    "N": 1440,
+    "E": 720,
+    "S": 2160
+  },
+  "departures": {
+    "W": 2880,
+    "N": 1440,
+    "E": 720,
+    "S": 2160
+  },
+  "total_tokens": 7200,
+  "peak_queue": 1440,
+  "last_service_tick": 899,
+  "max_wait": 180,
+  "mean_wait": 90,
+  "end_state_sha256": "9a7bf7fea2e90b50264c45a52368da62f502ac55b3207040e66aead052f01352",
+  "ledger_tip": "54cc92bc64debffb7a9c2f5f181e4ad42fdb993073b4882a8e3bf92e23fea6bf",
+  "inverse_exact": true,
+  "checks_passed": 14,
+  "checks_total": 14,
+  "notes": [
+    "Validated locally against existing Cross Tunnel v02",
+    "Source arrivals are synthetic unequal loads; no physics or internet chronology inferred",
+    "Append-only; v02 untouched"
+  ]
+}
