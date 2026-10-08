@@ -1,0 +1,51 @@
+{
+  "schema": "oasis/8cube-16slots-proton-2workers/insertion-v03",
+  "source": "local oasis_quantum_dot_16_proton_v02.py",
+  "positions": 129,
+  "unique_final_states": 129,
+  "reversible": 129,
+  "checks_passed": 10,
+  "checks_total": 10,
+  "adjacent_components_changed": {
+    "min": 3,
+    "mean": 7.3671875,
+    "max": 10
+  },
+  "top_jumps": [
+    [
+      23,
+      24,
+      2144837948,
+      10
+    ],
+    [
+      10,
+      11,
+      2144230524,
+      10
+    ],
+    [
+      25,
+      26,
+      2142976374,
+      10
+    ],
+    [
+      95,
+      96,
+      2141950220,
+      6
+    ],
+    [
+      44,
+      45,
+      2140509787,
+      9
+    ]
+  ],
+  "limitations": [
+    "Numerical reversible register model, not nuclear physics",
+    "GitHub script imports original v02 module; requires module to be placed on PYTHONPATH",
+    "Frozen v34 not modified"
+  ]
+}
