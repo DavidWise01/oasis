@@ -6,6 +6,10 @@
   const render=()=>{
     const target=document.getElementById("ud0Day");
     if(target)target.textContent=String(dayNumber());
+    const sourceDay=document.getElementById("sourceDay");
+    if(sourceDay)sourceDay.textContent=String(dayNumber());
+    const sourceLabel=document.getElementById("sourceClock");
+    if(sourceLabel)sourceLabel.textContent="the.source OaSIs integration day "+dayNumber()+" · UTC epoch 2026-10-07 · not source founding date";
     const az1=document.getElementById("az1Day");
     if(az1)az1.textContent=String(dayNumber());
     const label=document.getElementById("ud0Clock");
@@ -20,6 +24,7 @@
   link("ud0Open","https://davidwise01.github.io/ud0/");
   link("du1Open","https://davidwise01.github.io/du1/");
   link("az1Open","https://davidwise01.github.io/az1/");
+  link("sourceOpen","https://davidwise01.github.io/the.source/");
   render();
   setInterval(render,60000);
 })();
