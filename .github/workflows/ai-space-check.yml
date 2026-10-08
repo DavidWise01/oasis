@@ -21,6 +21,9 @@ jobs:
         run: |
           set -euo pipefail
           node --check worlds/ai-space/engine.js
+          node --check worlds/ai-space/atlas.js
+          python3 -m json.tool worlds/ai-space/github-discovery.json >/dev/null
+          python3 -m py_compile worlds/ai-space/discover_github.py
           python3 -m json.tool worlds/ai-space/universe.json >/dev/null
           test -s worlds/ai-space/index.html
           test -s worlds/ai-space/README.md
