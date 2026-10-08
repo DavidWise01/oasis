@@ -1,0 +1,28 @@
+name: OaSIs canonical monolith verification
+on:
+  push:
+    paths:
+      - 'kernel/main-aligned/v34/**'
+      - 'kernel/main-aligned/verify_canonical_v34.py'
+      - '.github/workflows/lean-canonical-monolith.yml'
+  pull_request:
+    paths:
+      - 'kernel/main-aligned/v34/**'
+      - 'kernel/main-aligned/verify_canonical_v34.py'
+      - '.github/workflows/lean-canonical-monolith.yml'
+  workflow_dispatch:
+
+jobs:
+  canonical-v34:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean 4.33.1
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Verify exact monolith hash and compile
+        run: |
+          set -euo pipefail
+          python3 kernel/main-aligned/verify_canonical_v34.py
