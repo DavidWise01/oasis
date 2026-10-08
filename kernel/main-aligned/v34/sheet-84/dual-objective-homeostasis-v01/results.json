@@ -1,0 +1,71 @@
+{
+  "schema": "oasis/sheet84/dual-objective-homeostasis-v01",
+  "status": "valid_benchmark_failed_optimization",
+  "frames": 2250,
+  "periods": 3,
+  "seeds": [
+    80,
+    81
+  ],
+  "lanes": 120,
+  "portals": 9,
+  "portal_pairs": 36,
+  "comparisons_per_policy_per_seed": 16065000,
+  "causal_controller": {
+    "window_frames": 64,
+    "damping_bounds": [
+      0.9,
+      0.995
+    ],
+    "lookahead": false
+  },
+  "seed80": {
+    "fixed": {
+      "collisions": 2748,
+      "remaining_speed_squared": 0.00013847098009011719
+    },
+    "phase": {
+      "collisions": 2837,
+      "remaining_speed_squared": 0.00012409292611329357
+    },
+    "homeo": {
+      "collisions": 2971,
+      "remaining_speed_squared": 0.001266452032061533
+    },
+    "dual": {
+      "collisions": 3004,
+      "remaining_speed_squared": 0.0011065754949095348
+    }
+  },
+  "seed81": {
+    "fixed": {
+      "collisions": 2759,
+      "remaining_speed_squared_approx": 0.000140838
+    },
+    "phase": {
+      "collisions": 2814,
+      "remaining_speed_squared_approx": 0.000131612
+    },
+    "homeo": {
+      "collisions": 2940,
+      "remaining_speed_squared_approx": 0.001266593
+    },
+    "dual": {
+      "collisions": 3043,
+      "remaining_speed_squared_approx": 0.001142279
+    }
+  },
+  "validation": {
+    "passed": 32,
+    "total": 32
+  },
+  "pareto_dominates_fixed": false,
+  "pareto_dominates_phase": false,
+  "source_benchmark_sha256": "5af5859aa57411239a5b320bdca0233cf9ea1fd7dc2c20489d0823a3cc947482",
+  "limitations": [
+    "No Newtonian gravitational simulation",
+    "Exact tested source is in conversation ZIP, not GitHub",
+    "Metric collision-event count depends on continuous 2D proximity and 0.15s cooldown",
+    "Source phase visual is experiment fixture; does not independently demonstrate 9/6/1 scheduling"
+  ]
+}
