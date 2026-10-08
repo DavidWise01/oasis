@@ -35,6 +35,13 @@
       "agents": "https://davidwise01.github.io/du1/"
     },
     {
+      "id": "az1",
+      "ref": "az1-connector.json",
+      "parent": "ud0",
+      "mode": "linked_read_only",
+      "entry": "https://davidwise01.github.io/az1/"
+    },
+    {
       "id": "u1-du0",
       "ref": "../u1-du0/world.json",
       "channels": [
