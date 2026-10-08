@@ -1,0 +1,88 @@
+{
+  "schema": "oasis/sheet63/hybrid-portal-v01",
+  "capacity_shared_hops_per_tick": 16,
+  "workload": 3456,
+  "results": {
+    "mesh": {
+      "links": 36,
+      "directed": 72,
+      "hops": 3456,
+      "mean_hops": 1,
+      "peak_queue": 1728,
+      "finish_tick": 215,
+      "mean_end_to_end_ticks": 54,
+      "max_edge_load": 96,
+      "delivered": 3456,
+      "arrived": 3456,
+      "delivery_digest": "5ebf5405e327640503ccef4ddc97988b6240d55b018535f0e52f6937cc22ff2e"
+    },
+    "grid": {
+      "links": 12,
+      "directed": 24,
+      "hops": 6912,
+      "mean_hops": 2,
+      "peak_queue": 2764,
+      "finish_tick": 431,
+      "mean_end_to_end_ticks": 193.1825810185185,
+      "max_edge_load": 960,
+      "delivered": 3456,
+      "arrived": 3456,
+      "delivery_digest": "9fea6beea1fb009da61f4abbe69262ea2ae747c6d124dbec755eb69b060500cd"
+    },
+    "ring": {
+      "links": 9,
+      "directed": 18,
+      "hops": 8640,
+      "mean_hops": 2.5,
+      "peak_queue": 2963,
+      "finish_tick": 539,
+      "mean_end_to_end_ticks": 271.4890046296296,
+      "max_edge_load": 960,
+      "delivered": 3456,
+      "arrived": 3456,
+      "delivery_digest": "dc3662dce18c181c756093004d1f748639fcf2af88edc203190c39325faa6cce"
+    },
+    "hub": {
+      "links": 8,
+      "directed": 16,
+      "hops": 6144,
+      "mean_hops": 1.7777777777777777,
+      "peak_queue": 2757,
+      "finish_tick": 383,
+      "mean_end_to_end_ticks": 178.30092592592592,
+      "max_edge_load": 768,
+      "delivered": 3456,
+      "arrived": 3456,
+      "delivery_digest": "bc43a541feacce40ffe57abbbadf199ca768c1a14cc0f2c79626a9f6a3ea0412"
+    },
+    "hybrid": {
+      "links": 16,
+      "directed": 32,
+      "hops": 5376,
+      "mean_hops": 1.5555555555555556,
+      "peak_queue": 2508,
+      "finish_tick": 335,
+      "mean_end_to_end_ticks": 133.8304398148148,
+      "max_edge_load": 576,
+      "delivered": 3456,
+      "arrived": 3456,
+      "delivery_digest": "b0644af79db3bb93b5092cbe2b4dbf9c89772307707a922914081067f31f6263"
+    }
+  },
+  "checks": {
+    "all_delivered": true,
+    "link_savings": true,
+    "hybrid_fewer_hops_grid": true,
+    "hybrid_fewer_hops_ring": true,
+    "mesh_min_hops": true,
+    "all_accounted": true,
+    "all_links_connected": true
+  },
+  "passed": 7,
+  "total": 7,
+  "limitations": [
+    "Single global hop server, not separate edge capacities",
+    "FIFO shared hop queue, synthetic traffic; no physical latency or measured energy",
+    "Delivery hashes depend on completion order; identity set is the same in all models"
+  ]
+}
