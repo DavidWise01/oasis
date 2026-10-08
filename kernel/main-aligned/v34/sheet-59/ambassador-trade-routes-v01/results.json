@@ -1,0 +1,30 @@
+{
+  "schema": "oasis/sheet59/ambassador-trade-routes-v01",
+  "original_sketch": "SHEET 57 // AMBASSADOR TRADE ROUTES",
+  "parent": "SHEET58",
+  "cells": 9,
+  "ambassadors_per_cell": 4,
+  "ambassadors_retained": 36,
+  "active_senders": 12,
+  "completed_cross_cell_routes": 12,
+  "three_hop_records": 36,
+  "route_rule": "source index i=0,3,...33; destination=(i+7)%36",
+  "checks_passed": 15,
+  "checks_total": 15,
+  "parent_baseline_passed": 14,
+  "parent_baseline_total": 14,
+  "byte_preservation": true,
+  "identity_preservation": true,
+  "ledger_integrity": true,
+  "checkpoint_restart_same_delivery": true,
+  "checkpoint_restart_same_ledger": true,
+  "tampered_checkpoint_rejected": true,
+  "limitations": [
+    "Not all 36 ambassadors sent simultaneously",
+    "Simulation uses deterministic rather than randomly chosen route targets",
+    "SHA-256 integrity is not keyed authentication",
+    "Realm time domains are symbolic"
+  ],
+  "executable": "Local benchmark downloadable in the conversation, not yet committed",
+  "append_only": true
+}
