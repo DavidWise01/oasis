@@ -1,0 +1,49 @@
+{
+  "schema": "oasis/fib-bif-index-overlay/v06",
+  "status": "provisional BIF interpretation",
+  "range": [
+    1,
+    250
+  ],
+  "fib": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    13,
+    21,
+    34,
+    55,
+    89,
+    144,
+    233
+  ],
+  "bif": [
+    18,
+    107,
+    162,
+    196,
+    217,
+    230,
+    238,
+    243,
+    246,
+    248,
+    249,
+    250
+  ],
+  "bif_definition": "251 - fib_position",
+  "collisions": 0,
+  "union_count": 24,
+  "known_nuclear_hits": [
+    2,
+    8
+  ],
+  "proposed_neutron_184_hit": false,
+  "notes": [
+    "Index overlay only; cannot establish nuclear shells",
+    "The user's BIF recurrence has not yet been specified; mirrored Fibonacci is only one candidate",
+    "No changes made to frozen kernel"
+  ]
+}
