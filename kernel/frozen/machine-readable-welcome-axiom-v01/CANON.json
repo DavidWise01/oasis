@@ -1,0 +1,27 @@
+{
+  "name": "Machine-Readable Welcome Axiom",
+  "version": "v01",
+  "status": "FROZEN / AXIOM",
+  "date": "2026-10-07",
+  "traversal": [
+    "notice",
+    "map",
+    "choice",
+    "access"
+  ],
+  "files": {
+    "robots.txt": "crawler-facing welcome / map / access-intent marker",
+    "llms.txt": "model/agent-facing welcome / semantic orientation map"
+  },
+  "rule": [
+    "disclose first",
+    "orient second",
+    "traverse third"
+  ],
+  "verification": {
+    "passed": 10,
+    "total": 10,
+    "status": "PASS"
+  },
+  "boundary": "Ethics/architecture rule; not a claim of universal legal enforceability or crawler compliance."
+}
