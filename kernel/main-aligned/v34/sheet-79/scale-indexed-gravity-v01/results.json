@@ -1,0 +1,52 @@
+{
+  "schema": "oasis/sheet79/scale-indexed-gravity-v01",
+  "source_title": "Next: Infinite Lattice",
+  "lineage": "SHEET78 -> SHEET79",
+  "formula": "breathe=0.62+0.38*sin(time*min(12,0.45*3.15^(-0.85*level))+0.7*level)",
+  "source_level_range": [
+    -6,
+    5
+  ],
+  "source_scale_orders": [
+    -35,
+    -30,
+    -15,
+    -9,
+    0,
+    7,
+    12,
+    17,
+    21,
+    27,
+    32,
+    37
+  ],
+  "levels": 12,
+  "registry": {
+    "strong": 300,
+    "moderate": 100,
+    "major": 16,
+    "total": 416
+  },
+  "wave_ladder": [
+    60,
+    15,
+    3,
+    1,
+    1
+  ],
+  "homeostasis": "sqrt(1.25)",
+  "independent_256_phase_mismatches": 12,
+  "digital_four_step_closure": true,
+  "local_benchmark": {
+    "passed": 24,
+    "total": 24,
+    "script_sha256": "503705c3b2a906643b70c35c89cb8ef4d9e3dd840b29a969001e427494b4d318"
+  },
+  "notes": "The full local tested script is provided in ZIP. A separately transcribed standalone GitHub script awaits independent replay.",
+  "limits": [
+    "Visual gravity-phase rule, not Newtonian gravitational force",
+    "No 256-tick phase synchronization in source frequencies",
+    "Scale labels are source metadata, not verified physical mechanism"
+  ]
+}
