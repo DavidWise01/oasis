@@ -1,0 +1,41 @@
+{
+  "schema": "oasis/three-dot-wave-collision/v01",
+  "date": "2026-10-08",
+  "dots": [
+    "-p+",
+    "-n+",
+    "-e+"
+  ],
+  "carriers": {
+    "p": "sin(6*pi*t)",
+    "n": "square(4 cycles/frame)",
+    "e": "six signed excitation levels [-3,-2,-1,1,2,3]"
+  },
+  "sample_phases": [
+    0.125,
+    0.375,
+    0.625,
+    0.875
+  ],
+  "relative_angle_rad": 1.0471975511965976,
+  "vector": "[p(t) + e*n(t)*cos(theta), e*n(t)*sin(theta)]",
+  "addresses": 24,
+  "unique_vectors": 12,
+  "unique_with_phase_tag": 24,
+  "first_test": {
+    "checks_passed": 9,
+    "checks_total": 10,
+    "failed": "unique_vectors_at_midpoints (24 expected, 12 observed)"
+  },
+  "second_test": {
+    "checks_passed": 11,
+    "checks_total": 11,
+    "interpretation": "11 diagnostics include expected collision plus phase-tag uniqueness; not proof of 24 distinct 2D vectors"
+  },
+  "physics_limitations": [
+    "Symbolic signal simulator only, not QCD, proton neutron dynamics or literal quantum dots",
+    "Electrical charge p(+1)+n(0)+e(-1)=0 but no atomic binding or energy conservation established",
+    "No gluons, field dynamics or measured emissions represented"
+  ],
+  "status": "simulated"
+}
