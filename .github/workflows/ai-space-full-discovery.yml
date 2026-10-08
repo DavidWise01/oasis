@@ -1,4 +1,5 @@
 name: Full OaSIs GitHub discovery
+# Trigger requested full discovery run
 on:
   workflow_dispatch:
   push:
