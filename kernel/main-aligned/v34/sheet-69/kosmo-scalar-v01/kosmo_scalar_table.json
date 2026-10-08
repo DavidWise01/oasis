@@ -1,10 +1,10 @@
 {
   "schema": "oasis/sheet69/kosmo-scalar-v01",
-  "note": "Selected fields transcribed from uploaded compiled HTML; massKg stored as decimal string to preserve integer precision",
+  "note": "Selected source fields; exact decimal mass integers encoded as strings (prevents JavaScript precision loss).",
   "bodies": [
     {
       "name": "Mercury",
-      "massKg": "3.3011e+23",
+      "massKg": "330110000000000000000000",
       "hillMkm": 0.22,
       "strong": 0,
       "medium": 0,
@@ -12,7 +12,7 @@
     },
     {
       "name": "Venus",
-      "massKg": "4.8675e+24",
+      "massKg": "4867500000000000000000000",
       "hillMkm": 1,
       "strong": 0,
       "medium": 0,
@@ -20,7 +20,7 @@
     },
     {
       "name": "Earth",
-      "massKg": "5.972e+24",
+      "massKg": "5972000000000000000000000",
       "hillMkm": 1.5,
       "strong": 1,
       "medium": 0,
@@ -28,7 +28,7 @@
     },
     {
       "name": "Mars",
-      "massKg": "6.417e+23",
+      "massKg": "641700000000000000000000",
       "hillMkm": 1.08,
       "strong": 2,
       "medium": 0,
@@ -36,7 +36,7 @@
     },
     {
       "name": "Jupiter",
-      "massKg": "1.898e+27",
+      "massKg": "1898000000000000000000000000",
       "hillMkm": 53.5,
       "strong": 55,
       "medium": 40,
@@ -44,7 +44,7 @@
     },
     {
       "name": "Saturn",
-      "massKg": "5.683e+26",
+      "massKg": "568300000000000000000000000",
       "hillMkm": 65.2,
       "strong": 210,
       "medium": 45,
@@ -52,7 +52,7 @@
     },
     {
       "name": "Uranus",
-      "massKg": "8.681e+25",
+      "massKg": "86810000000000000000000000",
       "hillMkm": 70,
       "strong": 20,
       "medium": 6,
@@ -60,7 +60,7 @@
     },
     {
       "name": "Neptune",
-      "massKg": "1.024e+26",
+      "massKg": "102400000000000000000000000",
       "hillMkm": 115,
       "strong": 2,
       "medium": 7,
@@ -76,7 +76,7 @@
     },
     {
       "name": "Pluto",
-      "massKg": "1.303e+22",
+      "massKg": "13030000000000000000000",
       "hillMkm": 8.2,
       "strong": 5,
       "medium": 1,
@@ -84,7 +84,7 @@
     },
     {
       "name": "Haumea",
-      "massKg": "4.006e+21",
+      "massKg": "4006000000000000000000",
       "hillMkm": 3.1,
       "strong": 2,
       "medium": 0,
@@ -92,7 +92,7 @@
     },
     {
       "name": "Makemake",
-      "massKg": "4.4e+21",
+      "massKg": "4400000000000000000000",
       "hillMkm": 3.4,
       "strong": 1,
       "medium": 0,
@@ -100,7 +100,7 @@
     },
     {
       "name": "Eris",
-      "massKg": "1.66e+22",
+      "massKg": "16600000000000000000000",
       "hillMkm": 10.5,
       "strong": 2,
       "medium": 0,
