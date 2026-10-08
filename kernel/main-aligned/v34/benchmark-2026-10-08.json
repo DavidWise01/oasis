@@ -1,0 +1,21 @@
+{
+  "schema": "oasis/benchmark/main-aligned-v34/v1",
+  "target": "OaSIs v34 8D register-unload audit",
+  "source": "Register_Unload_Audit_v34.py recovered with v34 manifest",
+  "tests": 8,
+  "pass": 8,
+  "fail": 0,
+  "randomized_cases": 600,
+  "roundtrip_cycles": 20000,
+  "max_roundtrip_component_error": 6.821210263296962e-13,
+  "repeated_roundtrip_drift": 7.716050021144838e-15,
+  "approx_transforms_per_second": 139491,
+  "interpolation_norm_deviation": 0.11579339090220553,
+  "notes": [
+    "Actual numerical 8D v34 fixture benchmark; not TOPH",
+    "Not the full OaSIs monolithic Lean kernel",
+    "No Lean compiler run",
+    "Linear interpolation deviates from rotation sphere; endpoint load/unload remains reversible"
+  ],
+  "code_repository_unchanged": true
+}
