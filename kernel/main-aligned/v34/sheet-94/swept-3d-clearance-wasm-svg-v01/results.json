@@ -1,0 +1,83 @@
+{
+  "schema": "oasis/sheet94/swept-3d-clearance-wasm-svg-v01",
+  "parent": "SHEET93",
+  "topology": {
+    "box": "8:0:8:0:8:0:8",
+    "physical_silos": 8,
+    "logical_aggregate": "D8",
+    "toroid_addresses": 72,
+    "copper_subplanes": 88,
+    "lanes": 120,
+    "aggregate_slots": 8
+  },
+  "swept_clearance": {
+    "method": "pairwise segment-segment closest 3D squared distance over every pair of constituent segments, across complete via polylines",
+    "waypoints": 3,
+    "segments_per_via": 2,
+    "units": "synthetic arbitrary coordinate units",
+    "guard_centerline_min_distance": 1.5,
+    "adversarial_neighboring_toroid_min_distance": 0.8,
+    "checks_existing_vias_before_admission": true
+  },
+  "wasm_test": {
+    "checks_passed": 37,
+    "checks_total": 37,
+    "ticks_per_scenario": 2200,
+    "deterministic_replay": true,
+    "identity_preservation": 120
+  },
+  "normal": {
+    "orbits": 933,
+    "completed_vias": 866,
+    "d8_commits": 233,
+    "acks": 233,
+    "deferrals": 2294,
+    "cross_ring_deferrals": 1271,
+    "peak_vias": 27,
+    "active_swept_path_violations": 0,
+    "fifo_pending": 8,
+    "waiting_outside_D8": 45
+  },
+  "stress": {
+    "orbits": 798,
+    "completed_vias": 741,
+    "d8_commits": 271,
+    "acks": 271,
+    "deferrals": 5934,
+    "cross_ring_deferrals": 2010,
+    "peak_vias": 33,
+    "active_swept_path_violations": 0,
+    "fifo_pending": 8,
+    "waiting_outside_D8": 39
+  },
+  "svg_dom_test": {
+    "checks_passed": 64,
+    "checks_total": 64,
+    "frames": 600,
+    "wasm_ticks": 1200,
+    "svg_toroid_groups": 72,
+    "copper_lines": 88,
+    "packets": 120,
+    "aggregate_slots": 8,
+    "bent_via_paths": 120
+  },
+  "real_browser": {
+    "chromium_paint": true,
+    "page_errors": [],
+    "stress_snapshot_after_direct_steps": {
+      "tick": 2274,
+      "acks": 280,
+      "destination_receipts": 280,
+      "active_swept_conflicts": 0,
+      "deferrals": 5969
+    },
+    "browser_viewer_ready": true
+  },
+  "artifact_integrity": {
+    "zip_crc": "passed",
+    "wasm_sha256": "8a9f318cd07f15658e8efa848e2605b2d55b585262b5a995ae53ff57ec2f96ab",
+    "kernel_c_sha256": "6e3dedfedf8a1849e0274b345b38cb72d38af4cefba12d605b3c7b302f298d59",
+    "embedded_html_sha256": "e92e8ff24fb6fff370579ed844c39ec5dc04a121d03cdf20417d1155335a95a5"
+  },
+  "scope": "Simulated 3D centerline clearance for fixed 2-segment paths, NOT PCB 3D physical DRC, solid swept-volume testing, electromagnetism, actual packet ACKs, or measured networking."
+}
