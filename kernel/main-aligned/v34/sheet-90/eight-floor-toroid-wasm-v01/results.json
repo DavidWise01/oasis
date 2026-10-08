@@ -1,0 +1,61 @@
+{
+  "schema": "oasis/sheet90/eight-floor-toroid-wasm-v01",
+  "interpretation": "Provisional: 4 octet banks 8:0:8:0:8:0:8, eight toroidal floors, nine rings per floor, three per axis X/Y/Z²",
+  "topology": {
+    "octet_banks": 4,
+    "cells_per_octet": 8,
+    "zero_seams": 3,
+    "floors": 8,
+    "toroids_per_floor": 9,
+    "total_toroids": 72,
+    "ring_groups_per_floor": {
+      "x": 3,
+      "y": 3,
+      "z_squared": 3
+    },
+    "copper_sublayers_per_floor": 11,
+    "center_register": "{{-1::0::+1}}",
+    "unique_lane_ids": 120
+  },
+  "wasm": {
+    "bytes": 2633,
+    "via_duration_ticks": 24,
+    "benchmark_ticks": 1200,
+    "completed_orbits": 785,
+    "completed_vias": 774,
+    "floor_vias": 215,
+    "copper_vias": 559,
+    "zero_gate_crossings": 169,
+    "all_72_floor_toroid_addresses_occupied": true,
+    "deterministic_reset_replay": true,
+    "executed_core_checks": {
+      "passed": 31,
+      "total": 31
+    }
+  },
+  "svg": {
+    "model": "SVG projected ellipses, not physical 3D torus",
+    "embedded_wasm": true,
+    "toroid_groups": 72,
+    "micro_copper_traces": 88,
+    "packet_circles": 120,
+    "simulated_animation_frames": 600,
+    "dom_checks": {
+      "passed": 30,
+      "total": 30,
+      "scope": "Instrumented mock DOM with actual embedded WASM; not browser paint"
+    }
+  },
+  "build": {
+    "compiler": "clang --target=wasm32 -O2 -fno-builtin -nostdlib",
+    "zip_crc": "passed",
+    "standalone_index_html": "Available in conversation ZIP",
+    "interactive_chromium": "attempted, timed out; unverified"
+  },
+  "limitations": [
+    "z² alone aliases mirrored signed floor coordinates; retain floor ID",
+    "Continuous interpolated orbital/via endpoints but no physical 3D clearance analysis",
+    "Full C source in GitHub; exact tested viewer, WASM and tests in downloadable ZIP",
+    "No genuine electromagnetism, gravity force, 9/6/1 queueing or acknowledged network transport"
+  ]
+}
