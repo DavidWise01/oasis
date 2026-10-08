@@ -1,0 +1,94 @@
+{
+  "schema": "oasis/sheet92/bounded-aggregate-wasm-svg-v01",
+  "parent": "SHEET91",
+  "status": "actual-wasm-executed-and-chromium-browser-validated",
+  "topology": {
+    "box": "8:0:8:0:8:0:8",
+    "physical_silos": 8,
+    "logical_aggregate": "D8",
+    "toroids": 72,
+    "copper_sublayers": 88,
+    "identities": 120,
+    "queue_capacity": 8,
+    "via_ticks": 24,
+    "serial_service_ticks": 8,
+    "admission_policy": "round robin across 8 source silos; oldest waiting request within silo; lane ID tie breaker; FIFO service"
+  },
+  "conservation": [
+    "aggregate_in = aggregate_out + admitted_queue",
+    "sum(d_entries - d_exits) over 9 domains = 120",
+    "count(phase2) = admitted_queue_count",
+    "floor_transfers = aggregate_out",
+    "waiting requests remain source-domain identities until admitted",
+    "queue length never exceeds 8"
+  ],
+  "tests": {
+    "wasm_runtime": {
+      "passed": 27,
+      "total": 27,
+      "ticks_each_run": 1800
+    },
+    "svg_instrumented_dom": {
+      "passed": 52,
+      "total": 52,
+      "frames": 600,
+      "wasm_ticks": 1200
+    },
+    "real_chromium_browser": {
+      "passed": true,
+      "svg_toroids": 72,
+      "svg_aggregate_slots": 8,
+      "svg_packet_markers": 120,
+      "no_page_errors": true,
+      "stress_snapshot": {
+        "tick": 60,
+        "queued": 8,
+        "waiting": 108
+      }
+    },
+    "javascript_syntax": "PASS",
+    "zip_crc": "PASS"
+  },
+  "normal": {
+    "ticks": 1800,
+    "admissions": 191,
+    "committed": 183,
+    "queue": 8,
+    "waiting": 32,
+    "backpressure_ticks": 1451
+  },
+  "stress": {
+    "ticks": 1800,
+    "admissions": 229,
+    "committed": 221,
+    "queue": 8,
+    "waiting": 43,
+    "max_waiting": 119,
+    "full_queue_pressure_ticks": 1769,
+    "service_per_silo": [
+      28,
+      28,
+      28,
+      28,
+      28,
+      27,
+      27,
+      27
+    ],
+    "all_120_initial_burst_requests_completed": true,
+    "queue_remains_busy_from_newly_generated_requests": true
+  },
+  "sha256": {
+    "embedded_svg_html": "096b4608df51ff39d0771d831927bbe3ddf02205632d96fd0fab66328413b559",
+    "exact_tested_C_source": "573466f4941512649baaade6dfd11298b6ee45122b00f72a556537ad6468362b",
+    "wasm_binary": "7ed6cc977cd7a838366b7c4bf99c27bd95a8702d86a3f026a4f606d8c1fae8b9",
+    "full_results": "92e467d82eb1c68ebfd63f8036db32cb39e0133f5e2c4fca0c93ae5a93049cbe"
+  },
+  "artifacts": "Exact source, freestanding compiled WASM, browser HTML, benchmarks, browser preview, hashes in local ZIP. GitHub contains the exact embedded WASM viewer, README, and summary.",
+  "limitations": [
+    "No demonstrated real 3D physical toroid clearance or electromagnetic PCB design rules",
+    "Round-robin fairness under tested finite scenario does not prove unconditional bounded wait",
+    "Cross-floor transfers are symbolic; no real packet acknowledgements",
+    "Aggregate admission bounded to 8, backlog outside D8 is not capacity limited"
+  ]
+}
