@@ -1,0 +1,17 @@
+{
+  "schema": "oasis/neon-closure/v04",
+  "limit": 184,
+  "model_rule": "..|.. represented as 3 close, 2 open repeating windows",
+  "windows": 36,
+  "remainder": 4,
+  "closed": 111,
+  "opened": 73,
+  "checks_passed": 10,
+  "checks_total": 10,
+  "boundary_183": "close",
+  "boundary_184": "open",
+  "limitations": [
+    "Symbolic register test, not nuclear energy gap or experimentally verified magic number",
+    "184 itself is not a completed 5-element window under this interpretation"
+  ]
+}
