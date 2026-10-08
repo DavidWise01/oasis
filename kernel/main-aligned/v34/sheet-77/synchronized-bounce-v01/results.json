@@ -1,0 +1,60 @@
+{
+  "schema": "oasis/sheet77/synchronized-bounce-v01",
+  "master_ticks": 256,
+  "shell_periods": [
+    256,
+    64,
+    16,
+    4
+  ],
+  "binary_bounce_ticks": [
+    64,
+    192
+  ],
+  "first_closures": [
+    256,
+    512
+  ],
+  "wave_closure_frequency": 4,
+  "first_5_wave_closures": [
+    4,
+    8,
+    12,
+    16,
+    20
+  ],
+  "checks": {
+    "six_arity_lineage": true,
+    "wave_length_60": true,
+    "wave_closes_four": true,
+    "wave_not_close_at_one": true,
+    "master_shell_256": true,
+    "four_level_phases": true,
+    "nested_periods": true,
+    "radius_bounded": true,
+    "two_master_turnaround_events": true,
+    "bit_toggles_once_per_bounce": true,
+    "first_full_closure_256": true,
+    "second_full_closure_512": true,
+    "no_early_full_closure": true,
+    "phase_at_end": true,
+    "direction_at_end": true,
+    "bit_at_end": true,
+    "wave_at_end": true,
+    "registry_416": true,
+    "registry_stable": true,
+    "homeostasis_unchanged": true,
+    "radius_near_recurrent": true,
+    "deterministic_replay": true,
+    "state_changes_during_cycle": true,
+    "closure_equal_digest": true
+  },
+  "passed": 24,
+  "total": 24,
+  "state_sha256": "ce57412f98ab7c13ef21d640901abc1ecfc2588ce68ea51404784861812a2517",
+  "limits": [
+    "Synchronization uses an explicitly chosen 256-tick common clock, not physical coupling or a new gravity law.",
+    "The 0/1 latch follows level-0 turning points; inner shells turn many times without toggling the bit.",
+    "Floats represent sampled radius; exact closure pertains to integer phases and binary state."
+  ]
+}
