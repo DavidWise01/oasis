@@ -1,0 +1,26 @@
+{
+  "schema": "oasis/zipper-2028-250/v07",
+  "cipher": "..||..|....|.",
+  "routes": 2028,
+  "positions": 250,
+  "route_mapping": "(7a+5x+3y+11b+2*bar(a)+bar(b)) mod 24",
+  "homeostasis": "candidate where both neighbors' worker imbalance >= 1.25*center",
+  "candidate_count": 50,
+  "established_nuclear_magic_matches": [
+    20,
+    50
+  ],
+  "predicted_neutron_184_candidate": true,
+  "imbalance_at_183_184_185": [
+    1.8390018419013359,
+    0.5588093171827495,
+    1.0601384314941242
+  ],
+  "limitations": [
+    "Exploratory geometric heuristic; 184 target not used in route mapping or score",
+    "Provisional arbitrary route weights, not nuclear many-body model",
+    "50 of 250 candidates; hit at 184 alone not statistically compelling",
+    "Full executable and CSV provided separately in conversation, not part of this commit"
+  ],
+  "frozen_sources_unchanged": true
+}
