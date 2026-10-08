@@ -1,0 +1,37 @@
+{
+  "schema": "oasis/sheet-42/v01",
+  "name": "SHEET 42",
+  "mode": "append_only",
+  "canonical_travel": "-p+ -> -n+ -> -e+",
+  "cipher": "..||..|....|.",
+  "field_boundary": "|.|.|.|.",
+  "nodes": 28,
+  "sheets": [
+    "z=x-2y+3",
+    "z=x+2y-3",
+    "z=-x+y",
+    "z=2x+y-1"
+  ],
+  "registers": 8,
+  "worker_bees": 2,
+  "wave_carriers": {
+    "proton": "sine, three cycles",
+    "neutron": "square, four cycles",
+    "electron": "signed orbital transfer"
+  },
+  "benchmark": {
+    "passed": 14,
+    "total": 14,
+    "phase_samples": 16,
+    "reversible": true,
+    "order_sensitive": true,
+    "hash_chain": true,
+    "final_state_sha256": "6145fea60ecb98287dccc1526799d6e56dc97e98cb10e028200c4a1d95c5d830"
+  },
+  "notes": [
+    "Baseline v34 and v92 remain unchanged",
+    "Physical particle behavior is not implied; finite-state toy model",
+    "Quantization, sheet schedule, amplitude are implementation defaults"
+  ],
+  "source": "sheet42.py"
+}
