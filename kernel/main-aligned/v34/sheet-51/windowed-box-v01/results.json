@@ -1,0 +1,70 @@
+{
+  "schema": "oasis/sheet51/windowed-box-v01",
+  "lineage": "SHEET48 + -> SHEET50 # -> SHEET51 ⊞",
+  "workload": {
+    "ticks": 720,
+    "arrivals": {
+      "W": 2880,
+      "N": 1440,
+      "E": 720,
+      "S": 2160
+    },
+    "total": 7200
+  },
+  "cases": [
+    {
+      "name": "SHEET50 # baseline",
+      "intersections": 4,
+      "total_capacity_per_tick": 8,
+      "peak_backlog": 1440,
+      "max_wait": 180,
+      "finish_tick": 899,
+      "loss": 0,
+      "reverse_exact": true
+    },
+    {
+      "name": "SHEET51 ⊞ equal budget",
+      "panes": 9,
+      "intersections": 4,
+      "total_capacity_per_tick": 8,
+      "peak_backlog": 1440,
+      "max_wait": 180,
+      "finish_tick": 899,
+      "loss": 0,
+      "reverse_exact": true
+    },
+    {
+      "name": "SHEET51 ⊞ expanded budget",
+      "panes": 9,
+      "intersections": 4,
+      "total_capacity_per_tick": 32,
+      "peak_backlog": 0,
+      "max_wait": 0,
+      "finish_tick": 719,
+      "loss": 0,
+      "reverse_exact": true
+    },
+    {
+      "name": "SHEET51 ⊞ limited center",
+      "panes": 9,
+      "intersections": 4,
+      "total_capacity_per_tick": 32,
+      "center_capacity_per_tick": 2,
+      "peak_backlog": 0,
+      "max_wait": 0,
+      "finish_tick": 719,
+      "loss": 0,
+      "reverse_exact": true
+    }
+  ],
+  "local_checks_passed": 14,
+  "local_checks_total": 14,
+  "scientific_caveats": [
+    "No gain under equal total service budget for this arrival pattern.",
+    "Expanded budget gains arise from additional capacity, not automatically from window shape.",
+    "Center cell receives less than its imposed capacity; congestion robustness remains untested.",
+    "Source and result are in different execution contexts; committed script requires separate replay.",
+    "Nine panes are modeled as routing/retention addresses, not independent quantum particle states."
+  ],
+  "append_only": true
+}
