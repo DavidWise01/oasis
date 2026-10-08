@@ -1,0 +1,28 @@
+{
+  "schema": "oasis/sheet61/stable-portals-v01",
+  "lineage": "SHEET60 -> SHEET61",
+  "original_sketch": "SHEET 61 // STABLE PORTALS -~~+ +~~- // LOCKED OPEN",
+  "portals": 9,
+  "open_state": "permanently open",
+  "ambassadors": 36,
+  "ambassadors_per_cell": 4,
+  "directed_links": 72,
+  "rounds": 12,
+  "simulation_ticks": 108,
+  "transmissions": 3456,
+  "checkpoint_tick": 47,
+  "checks_passed": 18,
+  "checks_total": 18,
+  "ledger_tip": "cc46ae510d0f068d77fc57d18bb6b193d775e219e94298c27582281b5f506f30",
+  "payloads_preserved": true,
+  "checkpoint_identical": true,
+  "tamper_detected": true,
+  "duplicate_deliveries": 0,
+  "capacity_control": {
+    "arrival_rate_per_tick": 32,
+    "service_per_tick": 16,
+    "peak_backlog": 1728
+  },
+  "qualification": "Baseline uses instantaneous message recording; finite-capacity calculation is a separate stress control, not a replay of bounded transport. Logical clock domains symbolic.",
+  "append_only": true
+}
