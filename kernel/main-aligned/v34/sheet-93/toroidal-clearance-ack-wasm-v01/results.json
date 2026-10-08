@@ -1,0 +1,106 @@
+{
+  "schema": "oasis/sheet93/toroidal-clearance-ack-wasm-v01",
+  "parent": "SHEET92 bounded aggregate",
+  "box": "8:0:8:0:8:0:8",
+  "topology": {
+    "physical_silos": 8,
+    "logical_aggregate": "D8",
+    "toroid_addresses": 72,
+    "eleven_copper_planes_per_floor": true,
+    "total_copper_traces": 88,
+    "lanes": 120,
+    "aggregate_fifo_capacity": 8
+  },
+  "state_machine": {
+    "ORBIT": 0,
+    "VIA_ACTIVE": 1,
+    "D8_QUEUED": 2,
+    "D8_WAITING": 3,
+    "CLEARANCE_HOLD": 4,
+    "ACK_PENDING": 5
+  },
+  "experimental_rules": {
+    "clearance": "Conservative reservation per (floor,ring); floor vias reserve source and target floors; copper vias reserve source floor, same ring; no concurrent shared-track reservations",
+    "ack": "5 simulated ticks after D8 commit to destination; modeled protocol receipt not external ACK",
+    "scheduling": "D8 deterministic round robin by source silo, oldest waiting within silo; FIFO head serviced for 8 ticks",
+    "via_transition_ticks": 24
+  },
+  "normal": {
+    "ticks": 2200,
+    "orbit_closures": 931,
+    "completed_vias": 868,
+    "d8_commits": 233,
+    "delivery_receipts": 233,
+    "acks": 233,
+    "ack_pending_at_cutoff": 0,
+    "clearance_deferrals": 1581,
+    "clearance_holds_total_ticks": 2511,
+    "peak_active_vias": 27,
+    "peak_held": 5,
+    "aggregate_in": 241,
+    "queue": 8,
+    "d8_waiting": 41,
+    "logical_clearance_conflicts": 0
+  },
+  "stress": {
+    "ticks": 2200,
+    "orbit_closures": 793,
+    "completed_vias": 742,
+    "d8_commits": 271,
+    "delivery_receipts": 271,
+    "acks": 271,
+    "ack_pending_at_cutoff": 0,
+    "clearance_deferrals": 5007,
+    "clearance_holds_total_ticks": 5800,
+    "peak_active_vias": 36,
+    "peak_held": 84,
+    "aggregate_in": 279,
+    "queue": 8,
+    "d8_waiting": 36,
+    "logical_clearance_conflicts": 0
+  },
+  "validation": {
+    "actual_compiled_wasm": {
+      "passed": 29,
+      "total": 29,
+      "normal_ticks": 2200,
+      "stress_ticks": 2200,
+      "full_reset_replay": true
+    },
+    "svg_instrumented_dom": {
+      "passed": 60,
+      "total": 60,
+      "svg_toroids": 72,
+      "copper_lines": 88,
+      "packet_markers": 120,
+      "fifo_slot_rectangles": 8
+    },
+    "chromium_browser": {
+      "passed": true,
+      "page_errors": 0,
+      "stress_queue_visible": true,
+      "ack_test": {
+        "tick": 2274,
+        "delivered": 280,
+        "acked": 280,
+        "pending": 0,
+        "clearance_conflicts": 0,
+        "deferrals": 5081
+      }
+    },
+    "inline_js_syntax": "PASS",
+    "zip_crc": "PASS"
+  },
+  "content_hashes": {
+    "kernel_c_sha256": "addd7048c5b52b2949d10fd1e684e58a845a31e5ea6106142976226da2857bff",
+    "kernel_wasm_sha256": "7a06c86cb3a82023d0adb9a6833c30a942d804d524ce43f66b1734b50ff88234",
+    "index_html_sha256": "b0891f4fdaca651a45ddde59a16a2030edbbb3891016eb5fd131793036223227"
+  },
+  "package": "sheet93_wasm_svg_clearance_ack.zip exact standalone HTML, C source, WASM binary, generators, tests, results, browser screenshots, hash manifest",
+  "limits": [
+    "zero clearance conflicts means no shared logical via anchors, NOT verified continuous 3D swept-volume clearance",
+    "ACK is a synthetic internal acknowledgment, not external network delivery evidence",
+    "No real PCB DRC, electromagnetism, physical toroidal gravity or actual data-plane networking",
+    "Outside-D8 waiting is not capacity bounded"
+  ]
+}
