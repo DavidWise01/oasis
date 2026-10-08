@@ -1,4 +1,5 @@
 name: OaSIs all-current Lean kernel inventory
+# Execution checkpoint requested 2026-10-07
 on:
   push:
     paths:
