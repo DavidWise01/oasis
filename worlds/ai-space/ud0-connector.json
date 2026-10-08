@@ -1,0 +1,24 @@
+{
+  "schema": "oasis/universe-connector/v1",
+  "id": "ud0",
+  "name": "UD0 · Universe David 0",
+  "role": "first fully built external universe",
+  "source_repo": "https://github.com/DavidWise01/ud0",
+  "site": "https://davidwise01.github.io/ud0/",
+  "agent_ecosphere": "https://davidwise01.github.io/du1/",
+  "world_structure": "W1–W5 Palindromeda; retain source as authority",
+  "counts_from_source": {
+    "spheres": 2049,
+    "domains": 64,
+    "du1_acis": 783
+  },
+  "day_counter": {
+    "epoch_utc": "2026-10-07",
+    "epoch_basis": "OaSIs integration date, not asserted UD0 creation date",
+    "day_one": true,
+    "time_zone": "UTC"
+  },
+  "state": "linked_read_only",
+  "agent_execution": "not connected",
+  "kernel_mutation": false
+}
