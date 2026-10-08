@@ -1,0 +1,25 @@
+{
+  "schema": "oasis/sheet48/handoff-v01",
+  "layers": 17,
+  "start_year": 1832,
+  "end_year": 2024,
+  "ticks": 6120,
+  "node_updates": 122400,
+  "total_opportunities": 10260,
+  "emitted_tokens": 4548,
+  "held_tokens": 5712,
+  "open_ticks": 2669,
+  "distinct_tick_states": 6121,
+  "reversed_exact": true,
+  "checks_passed": 14,
+  "checks_total": 14,
+  "final_register_hash": "1ddf0cb37364f31567f7919401ed85c3a778de6df1fd24386d878a1ff6c553b4",
+  "ledger_tip": "ba5f78e510529107b87e7ee375317a564a1b64641c1f16bf54afd546b4c66ccc",
+  "local_script": "/mnt/data/sheet48/sheet48_handoff_v01.py",
+  "notes": [
+    "Results generated from local implementation of equivalent rule; committed code has not been executed independently",
+    "Historical era labels are externally supplied and are not predicted",
+    "Provenance is tracked in sidecar SHA-256 ledger",
+    "No physical particle/tunneling claim"
+  ]
+}
