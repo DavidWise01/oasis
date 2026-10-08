@@ -2,6 +2,8 @@ name: Full OaSIs GitHub discovery
 # Trigger requested full discovery run
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * *'
   push:
     paths:
       - 'worlds/ai-space/discover_github.py'
