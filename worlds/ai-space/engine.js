@@ -2,6 +2,7 @@
 (() => {
   const KEY = "oasis.ai-space.v01";
   const worlds = [
+    {id:"ud0",name:"UD0 / Universe David 0",purpose:"First fully built external universe. Palindromeda five worlds, 64 domains, DU1 agent ecosphere. Linked read-only; no model execution.",url:"https://davidwise01.github.io/ud0/"},
     {id:"u1-du0",name:"U1 / Du0",purpose:"Existing -mObiUs narrative world; six evidence/story channels retained as a world boundary.",url:"../u1-du0/"},
     {id:"studio",name:"Creation Studio",purpose:"Isolated prototypes, design, writing, media and generative experiments.",url:"../../apps/tattoo/"},
     {id:"sandbox",name:"Research Sandbox",purpose:"Candidate hypotheses and verification tasks; no automatic truth promotion.",url:""}
