@@ -1,0 +1,33 @@
+{
+  "schema": "oasis/sheet47/exitron-channel-v01",
+  "channel": "<................>",
+  "wall": "permanently open",
+  "ticks": 3600,
+  "turns": 10,
+  "node_updates": 72000,
+  "crossings": 2020,
+  "unique_tick_states": 3601,
+  "unique_turn_states": 10,
+  "records": 2020,
+  "ledger_tip": "aa12dd6a9165025d9475ea36e8a8bca4fc386fb466d3084f335fe986ea6d98e6",
+  "final_state_sha256": "b634458822172fa5ed524701569b96ff1848e054021b0ada8db77d497a7ffd4c",
+  "exact_reverse": true,
+  "perspective_at_start": {
+    "depth": 0,
+    "height": 340,
+    "scale": 1.05
+  },
+  "perspective_at_end": {
+    "depth": 0.9972222222222222,
+    "height": 18.894444444444446,
+    "scale": 0.1525
+  },
+  "checks_passed": 14,
+  "checks_total": 14,
+  "limitations": [
+    "Visual vanishing point is not loss of register information",
+    "No physical tunneling or literal infinite execution",
+    "Watermark is sidecar provenance, not an intrinsic embedded watermark"
+  ],
+  "append_only": true
+}
