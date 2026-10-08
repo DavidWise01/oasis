@@ -1,0 +1,42 @@
+{
+  "schema": "oasis/sheet81/big-bang-crunch-lane-v01",
+  "source": "User supplied Big Bang / Big Crunch compiled React HTML, not the SHEET80 collisions HTML",
+  "source_phase_states": [
+    "collapsed",
+    "expanding",
+    "expanded",
+    "collapsing"
+  ],
+  "experimental_cycle_seconds": {
+    "expansion": 4.8,
+    "expanded_hold": 1.6,
+    "collapse": 4.8,
+    "collapsed_hold": 0.8
+  },
+  "experimental_feedback": "coefficient = 0.95 + 0.02*(2*extent-1)",
+  "lanes": 120,
+  "portals": 9,
+  "pairs": 36,
+  "frames": 512,
+  "seed": 80,
+  "unique_pair_checks": 3655680,
+  "baseline": {
+    "bounce_events": 835,
+    "final_sum_squared_speed": 0.0022434875223058008
+  },
+  "coupled": {
+    "bounce_events": 825,
+    "final_sum_squared_speed": 0.002609744514317501
+  },
+  "tests": {
+    "passed": 27,
+    "total": 27
+  },
+  "tested_source_sha256": "e4dff5e036aaef1a90acd4bb3a747e786248af3e36b9749057970eec3df3f12a",
+  "limitations": [
+    "Experiment runs only 8.192 seconds; collapsed state not reached during lane run",
+    "Higher residual squared speed under experimental coupling",
+    "Does not execute real gravitational forces or 9/6/1 queue scheduler",
+    "Exact tested source delivered in local ZIP, not currently in GitHub"
+  ]
+}
