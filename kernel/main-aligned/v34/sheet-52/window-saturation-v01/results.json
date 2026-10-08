@@ -1,0 +1,46 @@
+{
+  "schema": "oasis/sheet52/window-saturation-v01",
+  "lineage": "SHEET48 + -> SHEET50 # -> SHEET51 ⊞ -> SHEET52 center saturation",
+  "workload": {
+    "arrivals_per_tick": 12,
+    "ticks": 720,
+    "arrivals": 8640,
+    "pane": "center (4)"
+  },
+  "control": {
+    "capacity": 32,
+    "departures": 8640,
+    "peak_backlog": 0,
+    "mean_wait": 0,
+    "max_wait": 0,
+    "finish_tick": 719,
+    "loss": 0
+  },
+  "saturated": {
+    "capacity": 2,
+    "departures": 8640,
+    "peak_backlog": 7200,
+    "mean_wait": 1800,
+    "max_wait": 3600,
+    "finish_tick": 4319,
+    "loss": 0
+  },
+  "both": {
+    "reverse_exact": true,
+    "ledger_valid": true,
+    "tamper_detected": true,
+    "unique_identifiers": true,
+    "identical_final_sha256": "f47836b0268e09c03e3a8aac063aa64f94f71871aede578a0677e06da5d340de",
+    "identical_ledger_tip": "a7b529cd60d0e66787850cd4ad4ae4ad0ded9ccc063e691c85fc4ec1bc06623f"
+  },
+  "local_test": {
+    "passed": 14,
+    "total": 14
+  },
+  "qualifications": [
+    "Control and saturated versions have intentionally different center capacities.",
+    "No loss occurs because queues are unbounded in this test.",
+    "Published benchmark is separately authored and requires a fresh replay to validate exact equivalence."
+  ],
+  "append_only": true
+}
