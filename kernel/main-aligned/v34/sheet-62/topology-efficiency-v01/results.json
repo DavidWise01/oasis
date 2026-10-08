@@ -1,0 +1,46 @@
+{
+  "schema": "oasis/sheet62/topology-efficiency-v01",
+  "parent": "SHEET61 stable portals",
+  "workload": {
+    "ambassadors": 36,
+    "portals": 9,
+    "rounds": 12,
+    "delivered": 3456
+  },
+  "cases": {
+    "full": {
+      "physical_links": 36,
+      "hops": 3456,
+      "mean_hops": 1,
+      "max_edge_load": 96
+    },
+    "grid": {
+      "physical_links": 12,
+      "hops": 6912,
+      "mean_hops": 2,
+      "max_edge_load": 960
+    },
+    "ring": {
+      "physical_links": 9,
+      "hops": 8640,
+      "mean_hops": 2.5,
+      "max_edge_load": 960
+    },
+    "hub": {
+      "physical_links": 8,
+      "hops": 6144,
+      "mean_hops": 1.777778,
+      "max_edge_load": 768
+    }
+  },
+  "checks_passed": 7,
+  "checks_total": 7,
+  "identical_delivered_set_sha256": "62b42c9c4d3522ff7166e2af844bfe1761fd34957d21fa9d43ff95d0e129af4a",
+  "interpretation": "Full mesh minimizes forwarding hops; hub minimizes links; grid keeps geometric locality while adding hops.",
+  "limits": [
+    "No queuing latency or bandwidth accounted for",
+    "Max edge load sums across all rounds; not maximum queue depth",
+    "This repository executable is a separately transcribed equivalent local benchmark and needs CI replay."
+  ],
+  "append_only": true
+}
