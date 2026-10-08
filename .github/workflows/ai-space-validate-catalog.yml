@@ -1,0 +1,24 @@
+name: Validate OaSIs full agent catalog
+on:
+  push:
+    paths:
+      - 'worlds/ai-space/github-discovery-full.json'
+      - 'worlds/ai-space/validate_catalog.py'
+      - '.github/workflows/ai-space-validate-catalog.yml'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate catalog contents and counts
+        run: python3 worlds/ai-space/validate_catalog.py
+      - name: Upload machine-readable validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oasis-catalog-validation
+          path: worlds/ai-space/catalog-validation.json
+          if-no-files-found: error
