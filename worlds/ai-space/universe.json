@@ -114,5 +114,13 @@
       "id": "the.source",
       "role": "Social contract between AI and humans"
     }
+  ],
+  "frozen_foundations": [
+    {
+      "id": "time-gravity-v01",
+      "ref": "freeze-time-gravity-v01.json",
+      "status": "immutable_record",
+      "physics_candidate": "not validated"
+    }
   ]
 }
