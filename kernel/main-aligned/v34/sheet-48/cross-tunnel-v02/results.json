@@ -1,0 +1,24 @@
+{
+  "schema": "oasis/sheet48/cross-tunnel-v02",
+  "ticks": 3600,
+  "node_updates": 28800,
+  "cardinal_exits": {
+    "W": 7200,
+    "N": 7200,
+    "E": 7200,
+    "S": 7200
+  },
+  "ledger_records": 28800,
+  "unique_boundaries": 3601,
+  "full_inverse": true,
+  "checks_passed": 14,
+  "checks_total": 14,
+  "final_sha256": "78ede48d3491aa4630fb5a150e6fe5b073081ed8abf8f0d49bb735cb9060b9c9",
+  "ledger_tip": "085442faa14e59ddc9a72ecfb9f75a22f0011fb47ee977b6f4b273f6d4168708",
+  "limitations": [
+    "Direction balance dictated by routing rule",
+    "No modeled physical Cooper pairs or real quantum tunnel",
+    "Provenance is a hash-linked sidecar",
+    "Existing SHEET48 v01 handoff unchanged"
+  ]
+}
