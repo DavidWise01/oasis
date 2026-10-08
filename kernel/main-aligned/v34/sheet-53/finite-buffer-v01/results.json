@@ -1,0 +1,45 @@
+{
+  "schema": "oasis/sheet53/finite-buffer-v01",
+  "lineage": "SHEET52 center saturation -> SHEET53 finite-buffer pressure",
+  "input": {
+    "arrival_ticks": 720,
+    "tokens_per_tick": 12,
+    "total": 8640,
+    "service_per_tick": 2
+  },
+  "baseline": {
+    "peak_center": 7200,
+    "finish_tick": 4319,
+    "delivered": 8640
+  },
+  "quarantine": {
+    "buffer_limit": 64,
+    "quarantine_limit": 128,
+    "peak_center": 62,
+    "peak_quarantine": 128,
+    "peak_source": 7010,
+    "spill_count": 8564,
+    "release_count": 8564,
+    "finish_tick": 4319,
+    "delivered": 8640
+  },
+  "backpressure": {
+    "buffer_limit": 64,
+    "peak_center": 62,
+    "peak_source": 7138,
+    "finish_tick": 4319,
+    "delivered": 8640
+  },
+  "checks_passed": 14,
+  "checks_total": 14,
+  "all_modes": {
+    "lost": 0,
+    "reversible": true,
+    "watermark_valid": true,
+    "tamper_detected": true,
+    "identical_final_register_hash": true,
+    "identical_ledger_tip": true
+  },
+  "limitation": "Source queue remains unbounded; the center and quarantine are finite, but the whole system is not.",
+  "replay_note": "Local executable tested. Independently authored GitHub script requires separate replay."
+}
