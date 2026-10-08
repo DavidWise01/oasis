@@ -1,0 +1,24 @@
+{
+  "schema": "oasis/sheet60/loop-circuit-v01",
+  "lineage": "SHEET59 -> SHEET60",
+  "original_sketch_title": "SHEET58 // LOOP CIRCUIT // C1→...→C9→C1",
+  "ambassadors": 36,
+  "active_A1": 9,
+  "other_ambassadors_preserved": 27,
+  "circuits": 100,
+  "hops": 900,
+  "checkpoint_tick": 450,
+  "independent_local_replay": {
+    "checks_passed": 16,
+    "checks_total": 16,
+    "ledger_tip": "828fac69aa2ffd47331955d575df6919e2dc20e60db578d389ce80e9e53b121c",
+    "reversible_record_order": true,
+    "payload_preserved": true,
+    "ambassador_map_preserved": true,
+    "checkpoint_restarted_identically": true,
+    "tamper_rejected": true
+  },
+  "initial_replay_issue": "Tuple clocks serialized into JSON arrays gave 15/16 in independent local harness; changed independent harness to use JSON arrays, then 16/16.",
+  "qualification": "The local replay tests equivalent routing/history rules but is not direct execution of the committed GitHub Python benchmark; CI verification outstanding.",
+  "append_only": true
+}
