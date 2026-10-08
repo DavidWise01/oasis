@@ -1,0 +1,26 @@
+{
+  "schema": "oasis/sheet45/exitron-lanes-v01",
+  "name": "SHEET 45 / EXITRONS",
+  "source_cipher": "..||..|....|.",
+  "exitron_wall": "<........>",
+  "inner_nodes": 5,
+  "cooper_pair_analogues_per_node": 2,
+  "registers": 8,
+  "workers": 2,
+  "turns": 10,
+  "sectors": 360,
+  "ticks": 3600,
+  "node_updates": 72000,
+  "boundary_crossings": 2020,
+  "unique_tick_boundary_states": 3601,
+  "unique_turn_states": 10,
+  "exact_reverse": true,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "end_digest": "7b74e3e2f1440d6bc502ac9b4a729d6e9df01f72f4c5bcc61fe09b3ccda4a558",
+  "notes": [
+    "append-only SHEET 45, original SHEET 42 unchanged",
+    "Crossings are deterministic tagged transitions; exterior state physics not simulated",
+    "No physical Cooper pair or particle discovery implied"
+  ]
+}
