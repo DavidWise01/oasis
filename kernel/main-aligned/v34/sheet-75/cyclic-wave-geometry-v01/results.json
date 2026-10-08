@@ -1,0 +1,43 @@
+{
+  "schema": "oasis/sheet75/cyclic-wave-geometry-v01",
+  "lineage": "SHEET74 -> SHEET75",
+  "geometry": "60-node undirected cycle C60, an explicit provisional geometry",
+  "ladder": [
+    60,
+    15,
+    3,
+    1,
+    1
+  ],
+  "groups": {
+    "packet_size": 4,
+    "packets": 15,
+    "groups": 3,
+    "packets_per_group": 5
+  },
+  "operation": {
+    "rotation_slots": 15,
+    "bit_inversion": "XOR 1"
+  },
+  "cycle_restores_at_steps": {
+    "1": false,
+    "2": false,
+    "3": false,
+    "4": true
+  },
+  "initial_set_bits": 29,
+  "registry": {
+    "strong": 300,
+    "medium": 100,
+    "weak": 16,
+    "total": 416
+  },
+  "checks_passed": 20,
+  "checks_total": 20,
+  "test_mode": "executed locally; runnable GitHub copy should be replayed separately",
+  "limitations": [
+    "C60 is not a verified decoisohedron geometry",
+    "Four-step digital closure does not imply periodic gravitational motion",
+    "Full state retained in root; digest is only integrity metadata"
+  ]
+}
