@@ -1,0 +1,33 @@
+name: OaSIs all-current Lean kernel inventory
+on:
+  push:
+    paths:
+      - 'lean/**'
+      - 'kernel/main-aligned/verify_all_current_lean.py'
+      - '.github/workflows/lean-all-current.yml'
+  pull_request:
+    paths:
+      - 'lean/**'
+      - 'kernel/main-aligned/verify_all_current_lean.py'
+      - '.github/workflows/lean-all-current.yml'
+  workflow_dispatch:
+
+jobs:
+  all-current:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean 4.33.1
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Inventory and compile all active Lean files
+        run: python3 kernel/main-aligned/verify_all_current_lean.py
+      - name: Save full compilation inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-current-lean-inventory
+          path: kernel/main-aligned/lean-inventory-result.json
+          if-no-files-found: warn
