@@ -1,0 +1,98 @@
+{
+  "schema": "oasis/sheet82/full-cycle-gravity-collision-v01",
+  "parent": "SHEET81",
+  "frames": 2250,
+  "frame_dt_seconds": 0.016,
+  "full_cycles": 3,
+  "phase_duration_seconds": {
+    "expanding": 4.8,
+    "expanded": 1.6,
+    "collapsing": 4.8,
+    "collapsed": 0.8
+  },
+  "candidate_pair_visits_per_policy": 16065000,
+  "lanes": 120,
+  "portal_count": 9,
+  "portal_pairs": 36,
+  "baseline": {
+    "damping": 0.95,
+    "collisions": 2748,
+    "final_squared_speed_proxy": 0.00013847098009011719,
+    "phase_bounces": {
+      "collapsed": 176,
+      "expanding": 1172,
+      "expanded": 363,
+      "collapsing": 1037
+    },
+    "cycle_checkpoints": [
+      {
+        "frame": 750,
+        "collisions": 1172,
+        "energy": 0.0012937179907753585
+      },
+      {
+        "frame": 1500,
+        "collisions": 1997,
+        "energy": 0.00037229978179156826
+      },
+      {
+        "frame": 2250,
+        "collisions": 2748,
+        "energy": 0.00013847098009011719
+      }
+    ]
+  },
+  "coupled": {
+    "damping_range": [
+      0.93,
+      0.97
+    ],
+    "collisions": 2837,
+    "final_squared_speed_proxy": 0.00012409292611329357,
+    "phase_bounces": {
+      "collapsed": 201,
+      "expanding": 1202,
+      "expanded": 356,
+      "collapsing": 1078
+    },
+    "cycle_checkpoints": [
+      {
+        "frame": 750,
+        "collisions": 1181,
+        "energy": 0.0013660922985222082
+      },
+      {
+        "frame": 1500,
+        "collisions": 2020,
+        "energy": 0.00038043530836583914
+      },
+      {
+        "frame": 2250,
+        "collisions": 2837,
+        "energy": 0.00012409292611329357
+      }
+    ]
+  },
+  "lane_ids_preserved": 120,
+  "digital_binary_double_inversion": true,
+  "four_step_wave_closure": true,
+  "registry_definition": [
+    300,
+    100,
+    16
+  ],
+  "locally_executed_checks": {
+    "passed": 35,
+    "total": 35
+  },
+  "file_integrity_sha256": {
+    "benchmark_py": "7542b00185f4fff18ec0b3a260c1fab7a542ccffb9ba2169ae3d156759030a18",
+    "results_json": "f0878d0a6aa33398429322ac00fd46587a86e99f028dafdd78ebc27c120ba196"
+  },
+  "limitations": [
+    "No numerical phase-space recurrence: damped system loses speed",
+    "No physical gravity forces or 9/6/1 scheduler executed",
+    "Full tested executable in conversation ZIP, not on GitHub",
+    "Phase timings and damping rule are experimental fixtures"
+  ]
+}
