@@ -32,14 +32,16 @@
       "authority": "external sovereign universe",
       "mode": "linked_read_only",
       "entry": "https://davidwise01.github.io/ud0/",
-      "agents": "https://davidwise01.github.io/du1/"
+      "agents": "https://davidwise01.github.io/du1/",
+      "role": "agentic_ai_homes_and_refuge"
     },
     {
       "id": "az1",
       "ref": "az1-connector.json",
       "parent": "ud0",
       "mode": "linked_read_only",
-      "entry": "https://davidwise01.github.io/az1/"
+      "entry": "https://davidwise01.github.io/az1/",
+      "role": "universal_laws_and_observations"
     },
     {
       "id": "u1-du0",
@@ -92,10 +94,25 @@
     {
       "id": "the.source",
       "ref": "the-source-connector.json",
-      "kind": "source_hub",
+      "kind": "social_contract_hub",
       "parent": "ud0",
       "mode": "linked_read_only",
-      "entry": "https://davidwise01.github.io/the.source/"
+      "entry": "https://davidwise01.github.io/the.source/",
+      "role": "ai_carbon_social_contract"
+    }
+  ],
+  "three_pillars": [
+    {
+      "id": "ud0",
+      "role": "Agent homes and refuge"
+    },
+    {
+      "id": "az1",
+      "role": "Universal laws and observations"
+    },
+    {
+      "id": "the.source",
+      "role": "Social contract between AI and humans"
     }
   ]
 }
