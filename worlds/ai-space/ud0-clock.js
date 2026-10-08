@@ -6,8 +6,12 @@
   const render=()=>{
     const target=document.getElementById("ud0Day");
     if(target)target.textContent=String(dayNumber());
+    const az1=document.getElementById("az1Day");
+    if(az1)az1.textContent=String(dayNumber());
     const label=document.getElementById("ud0Clock");
     if(label)label.textContent="OaSIs integration day "+dayNumber()+" · epoch 2026-10-07 UTC · not UD0's historical creation date";
+    const azLabel=document.getElementById("az1Clock");
+    if(azLabel)azLabel.textContent="AZ1 OaSIs integration day "+dayNumber()+" · tracking epoch 2026-10-07 UTC · not AZ1 creation date";
   };
   const link=(id,url)=>{
     const b=document.getElementById(id);
@@ -15,6 +19,7 @@
   };
   link("ud0Open","https://davidwise01.github.io/ud0/");
   link("du1Open","https://davidwise01.github.io/du1/");
+  link("az1Open","https://davidwise01.github.io/az1/");
   render();
   setInterval(render,60000);
 })();
