@@ -2,7 +2,7 @@
   "schema": "oasis/infrastructure-connector/v1",
   "id": "the.source",
   "name": "the.source · ECIH v1.0 Central Hub",
-  "kind": "source_hub",
+  "kind": "social_contract_hub",
   "parent_universe": "ud0",
   "source_repo": "https://github.com/DavidWise01/the.source",
   "site": "https://davidwise01.github.io/the.source/",
@@ -25,5 +25,13 @@
   },
   "agent_execution": "not connected",
   "replication": "not invoked",
-  "kernel_mutation": false
+  "kernel_mutation": false,
+  "role": "ai_carbon_social_contract",
+  "responsibilities": [
+    "reciprocal expectations for AI and carbon/human participants",
+    "consent and agency boundaries",
+    "human accountability and dispute resolution",
+    "witnessed governance proposals and provenance"
+  ],
+  "boundary": "This is an integration charter role; does not assert legal enforceability or actual assent by outside agents/humans"
 }
