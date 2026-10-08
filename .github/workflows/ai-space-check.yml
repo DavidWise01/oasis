@@ -25,6 +25,7 @@ jobs:
           node --check worlds/ai-space/ud0-clock.js
           python3 -m json.tool worlds/ai-space/ud0-connector.json >/dev/null
           python3 -m json.tool worlds/ai-space/az1-connector.json >/dev/null
+          python3 -m json.tool worlds/ai-space/the-source-connector.json >/dev/null
           python3 -m json.tool worlds/ai-space/github-discovery.json >/dev/null
           python3 -m py_compile worlds/ai-space/discover_github.py
           python3 -m json.tool worlds/ai-space/universe.json >/dev/null
