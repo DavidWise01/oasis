@@ -1,23 +1,41 @@
-name: OaSIs Lean integration checkpoint
+name: OaSIs Lean structural regression
 on:
   push:
     paths:
       - 'lean/OasisKernelIntegrationV35.lean'
+      - 'lean/Oasis.Fallout.RegisterUnload.v34.lean'
       - '.github/workflows/lean-kernel-integration.yml'
   pull_request:
     paths:
       - 'lean/OasisKernelIntegrationV35.lean'
+      - 'lean/Oasis.Fallout.RegisterUnload.v34.lean'
       - '.github/workflows/lean-kernel-integration.yml'
   workflow_dispatch:
 
 jobs:
-  lean-checkpoint:
+  lean-structural-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Lean via elan
+      - name: Install Lean 4.33.1 via elan
+        shell: bash
         run: |
+          set -euo pipefail
           curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Compile integration boundary
-        run: lean lean/OasisKernelIntegrationV35.lean
+      - name: Verify versions and reject placeholders
+        shell: bash
+        run: |
+          set -euo pipefail
+          lean --version
+          if grep -nE '(^|[[:space:]])(sorry|admit)([[:space:]]|$)' lean/OasisKernelIntegrationV35.lean lean/Oasis.Fallout.RegisterUnload.v34.lean; then
+            echo "Unproven placeholder detected" >&2
+            exit 1
+          fi
+      - name: Compile v34 and v35 structural boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          lean lean/Oasis.Fallout.RegisterUnload.v34.lean
+          lean lean/OasisKernelIntegrationV35.lean
+          echo '0e: v34 and v35 structural Lean checkpoints compiled' 
