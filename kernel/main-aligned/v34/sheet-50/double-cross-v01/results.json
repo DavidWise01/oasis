@@ -1,0 +1,42 @@
+{
+  "schema": "oasis/sheet50/double-cross-v01",
+  "lineage": "SHEET48 Cross Tunnel v03 -> SHEET50 Double Cross # v01",
+  "benchmark": "720 ticks W4 N2 E1 S3 = 7200 tokens",
+  "baseline": {
+    "intersections": 1,
+    "capacity": 8,
+    "peak_backlog": 1440,
+    "max_wait": 180,
+    "mean_wait": 90,
+    "finish_tick": 899,
+    "loss": 0,
+    "reverse_exact": true
+  },
+  "equal_budget_grid": {
+    "intersections": 4,
+    "capacity_each": 2,
+    "total_capacity": 8,
+    "peak_backlog": 1440,
+    "max_wait": 180,
+    "mean_wait": 90,
+    "finish_tick": 899,
+    "loss": 0,
+    "reverse_exact": true
+  },
+  "expanded_grid": {
+    "intersections": 4,
+    "capacity_each": 8,
+    "total_capacity": 32,
+    "peak_backlog": 0,
+    "max_wait": 0,
+    "mean_wait": 0,
+    "finish_tick": 719,
+    "loss": 0,
+    "reverse_exact": true
+  },
+  "local_test_checks_passed": 12,
+  "local_test_checks_total": 12,
+  "interpretation": "The same-budget grid has no advantage for balanced deterministic routing. Extra throughput resources remove queuing in this workload. The # center shared cell is not yet simulated.",
+  "append_only": true,
+  "source": "Locally executed /mnt/data/sheet50_double_cross/benchmark.py; GitHub benchmark is separately authored and not yet independently executed."
+}
