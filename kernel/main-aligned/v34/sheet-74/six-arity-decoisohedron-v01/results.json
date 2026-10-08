@@ -1,0 +1,54 @@
+{
+  "schema": "oasis/sheet74/six-arity-decoisohedron-v01",
+  "source_terms": [
+    "uniary",
+    "binary",
+    "trinary",
+    "quarternary",
+    "pectylary",
+    "sexanary"
+  ],
+  "user_ladder": [
+    60,
+    15,
+    3,
+    1,
+    1
+  ],
+  "interpretation": "60 wave slots / 15 groups of 4 / 3 groups of 5 / 1 root / 1 digest; provisional structure, not asserted polyhedron",
+  "wave_digest": "5b4c981689c3c55bd1270b77ab3f6c3e218f9af25093d4ef1552a3730604b547",
+  "encoding_examples": {
+    "1": "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+    "2": "111011",
+    "3": "2012",
+    "4": "323",
+    "5": "214",
+    "6": "135"
+  },
+  "checks": {
+    "six_arities": true,
+    "declared_ladder": true,
+    "all_roundtrips": true,
+    "60_slots": true,
+    "15_packets": true,
+    "3_groups": true,
+    "one_root": true,
+    "one_commitment": true,
+    "unary_is_tally": true,
+    "binary_flip_involution": true,
+    "six_arity_digits": true,
+    "wave_balanced": true,
+    "packet_flatten": true,
+    "group_flatten": true,
+    "stable_digest": true,
+    "registry_preserved": true
+  },
+  "passed": 16,
+  "total": 16,
+  "limitations": [
+    "A base-1 unary notation is tally, not conventional positional radix",
+    "No solid/polyhedron geometry established by these counts alone",
+    "Radix encodings are reversible; the 60->15->3 grouping is reversible only while child data are retained",
+    "No claims of actual gravitational periodicity"
+  ]
+}
