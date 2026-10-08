@@ -1,0 +1,38 @@
+{
+  "schema": "oasis/sheet64/demand-aware-topology-v01",
+  "lineage": "SHEET63 -> SHEET64",
+  "traffic": "Uniform 36 ambassadors, 12 rounds, 3456 messages (each portal pair equally weighted)",
+  "link_budget": 16,
+  "forward_capacity_per_tick": 16,
+  "prior_hybrid": {
+    "links": 16,
+    "hops": 5376,
+    "peak_queue": 2508,
+    "finish_tick": 335,
+    "delivered": 3456
+  },
+  "optimized": {
+    "links": 16,
+    "hops": 5376,
+    "peak_queue": 2504,
+    "finish_tick": 335,
+    "delivered": 3456
+  },
+  "full_mesh": {
+    "links": 36,
+    "hops": 3456,
+    "peak_queue": 1728,
+    "finish_tick": 215,
+    "delivered": 3456
+  },
+  "checks_passed": 10,
+  "checks_total": 10,
+  "math_proof": "9 nodes yield C(9,2)=36 pairs. 16 edges cost 1 hop each, 20 remaining pairs cost >=2 hops: at least (16+40)*2*48=5376 hops. Existing hybrid reaches this bound.",
+  "finding": "No hop improvement under equal link budget and uniformly distributed demands. New search topology only changed queue profile by 4 operations in this shared-hop model.",
+  "limitations": [
+    "No real time portal physics",
+    "No per-edge service capacity or node failure testing",
+    "Locally tested source at sandbox path; GitHub standalone transcription requires its own replay"
+  ],
+  "append_only": true
+}
