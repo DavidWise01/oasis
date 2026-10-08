@@ -1,0 +1,42 @@
+{
+  "schema": "oasis/sheet72/gravity-inversion-v01",
+  "parent": "SHEET71",
+  "notation": "/inf/fni/inf\\",
+  "rule": "bit XOR 1",
+  "phase_inversion": {
+    "0": 1,
+    "1": 0
+  },
+  "integrator": "kick-reflect-kick",
+  "parameters": {
+    "mu": 1,
+    "lambda": 0.04,
+    "dt": 0.002,
+    "r_min": 2,
+    "initial_radius": 4,
+    "initial_velocity": -0.8,
+    "steps": 5000
+  },
+  "measurements": {
+    "wall_events": 1,
+    "event_tick": 1331,
+    "bit_before": 1,
+    "bit_after": 0,
+    "complementary_bit_before": 0,
+    "complementary_bit_after": 1,
+    "reverse_radius_abs_error": 1.2434497875801753e-14,
+    "reverse_velocity_abs_error": 4.3298697960381105e-15,
+    "registry_items": 416
+  },
+  "local_tests": {
+    "passed": 20,
+    "total": 20
+  },
+  "benchmark_sha256": "a8934f36951f40f560ee1c2ed44ebaa46af759b2be8000f1f6cc48de58af69f2",
+  "limitations": [
+    "Only one physical wall hit, no full periodic orbit",
+    "Wall is imposed, not derived",
+    "Numeric reverse approximate, bits exact",
+    "Executable distributed in ZIP; GitHub CI pending"
+  ]
+}
