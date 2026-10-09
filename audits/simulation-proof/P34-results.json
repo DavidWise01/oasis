@@ -1,0 +1,58 @@
+{
+  "gate": "ROOT0-P3.4-electrum-FCC-boundary",
+  "status": "PASS_CONDITIONAL_FCC_PHYSICAL_COUNTERMODELS",
+  "frozenKernelGitBlob": "bf84cfc8746ccaf35c0204050ada8c3980817cb8",
+  "frozenCanonSHA256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8",
+  "composition": "Au79+Ag21=100 full weight",
+  "demonstrationAssumption": "optional 79:21 by mass, not atomic-percent",
+  "fAuAtomic": 0.6732236306267202,
+  "alloySites": {
+    "Au": 2693,
+    "Ag": 1307,
+    "unitCells": 1000,
+    "total": 4000
+  },
+  "lattice": {
+    "neighborsPerSite": 12,
+    "directedBonds": 48000,
+    "uniqueBonds": 24000,
+    "invalidNeighborLinks": 0,
+    "inversionSpeciesMismatches": 1800
+  },
+  "film": {
+    "wavelengthNm": 600,
+    "thicknessNm": 30,
+    "assumedComplexIndex": {
+      "n": 0.5,
+      "kappa": 3
+    },
+    "T": 0.1747882615538272,
+    "R": 0.594308254619312,
+    "A": 0.23090348382686077
+  },
+  "voltageBoundary": {
+    "mV": -211,
+    "gapMicrons": 10,
+    "externalFieldVPerM": -21100,
+    "idealBulkFieldVPerM": 0,
+    "inducedSurfaceElectronsPerSite": 8.407608931105225e-8,
+    "bulkPockelsPhaseRad": 0
+  },
+  "tests": {
+    "opticalFilmTrials": 3200,
+    "maxEnergyBalanceResidual": 1.1102230246251565e-16,
+    "gaugeOffsetTrials": 24000,
+    "localBrowserAssertions": 14,
+    "browserJavascriptErrors": 0,
+    "cipher208Reversible": true
+  },
+  "conditionalSurfaceCountermodelsRad": [
+    0,
+    -0.211
+  ],
+  "complexIndexNotMeasured": true,
+  "root0UniquelyDeterminesOpticalSpectrum": false,
+  "planckTransitionProven": false,
+  "externalUniverseSimulationProven": false,
+  "LeanCompiled": false
+}
