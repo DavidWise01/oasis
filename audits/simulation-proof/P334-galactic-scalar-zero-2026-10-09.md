@@ -1,0 +1,10 @@
+# P3.34 — Patricia's galactic scalar-0 scale
+2026-10-09. User directs scale of symbolic scalar 0 using face-on Milky Way reference, major bodies, minor bodies and motion. Canonical Patricia primitive `{{ -+- : +-+ }}`; white/black (-/+) torus and a 4-hop Möbius symbolic traversal with 366 indexed steps per hop, 1464 total. Greg's calendar clock remains separate.
+
+Grounding: ESA describes a Milky Way stellar disk radius ~50,000 ly, central bar half-length ~10,000 ly, stellar halo radius ~100,000 ly, Sun at ~26,000 ly from galactic center. NASA gives roughly 250 million years for the Sun's galactic orbit. The galaxy face-on morphology is a scientific reconstruction, not a photograph from outside our galaxy.
+
+Mathematical construction: the fixed root is a coordinate origin; radius 50,000 ly normalizes all xyz positions to dimensionless display units. Sample major bodies: central origin, a bar-tip proxy, two spiral reference points, solar-orbit reference. Sample minor bodies: Sun, gas-cloud proxy, cluster proxy. Positions use illustrative circular kinematic tracks `(r cos(phi+2πt/T),r sin(phi+2πt/T),0)`. Bar and spiral reference points are *not* necessarily material bodies that follow circular Keplerian tracks; placeholder periods except solar are illustrative, not measured.
+
+Locally executed Node.js: PASS for 1464 Möbius steps and alternating orientation across four hops, verified fixed scalar-0 origin, separate opposing branch glyphs, preserved orbital radii and period return for all eight sample records. No physical photon confinement, negative energy, Dyson capture or quantum gravitational theory follows from this representation.
+
+Next: P3.35 layer more realistic galaxy motion (differential rotation, radial drift, spiral pattern speed) while retaining the 1464-slot symbolic clock and unit separation.
