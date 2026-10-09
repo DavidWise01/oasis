@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import {mkdtemp,mkdir,rm,readdir,unlink} from 'node:fs/promises';
+import {tmpdir} from 'node:os';import {join} from 'node:path';
+import {keypair} from './p359_witness.mjs';
+import {WatermarkedWitness,InMemoryAuthority} from './p367_watermark.mjs';
+const kp=keypair(),keys=new Map([['w0',kp.publicKey]]),authority=new InMemoryAuthority();
+const cp=(h,epoch=15)=>({context:'oasis/main',epoch,length:1440,head:h.repeat(64)});
+const root=await mkdtemp(join(tmpdir(),'p367-'));let checks=0;const report=[];
+const check=(condition,message)=>{assert.ok(condition,message);checks++};
+try{
+ const primary=join(root,'primary'),anchor=join(root,'anchor');await mkdir(primary);await mkdir(anchor);
+ const worker=()=>new WatermarkedWitness(primary,anchor,keys,authority);
+ check((await worker().vote('w0',cp('a'),kp.privateKey)).ok,'first signing');
+ check((await worker().vote('w0',cp('a'),kp.privateKey)).duplicate,'duplicate recovery');
+ let conflict=await worker().vote('w0',cp('b'),kp.privateKey);check(!conflict.ok&&conflict.reason==='trusted-conflict','reject conflict');
+ const original=(await readdir(primary)).find(x=>x.endsWith('.json'));await unlink(join(primary,original));
+ const same=await worker().vote('w0',cp('a'),kp.privateKey);check(!same.ok&&same.reason==='trusted-quarantine','missing primary quarantined');
+ conflict=await worker().vote('w0',cp('b'),kp.privateKey);check(!conflict.ok,'dual deletion conflict blocked');
+ check((await readdir(anchor)).length===0,'local anchor already absent');
+ check((await worker().vote('w0',cp('c',16),kp.privateKey)).ok,'next epoch allowed');
+ authority.available=false;
+ check((await worker().vote('w0',cp('d',17),kp.privateKey)).reason==='authority-unavailable','fail closed on authority failure');
+ authority.available=true;
+ check((await worker().vote('w0',cp('d',17),kp.privateKey)).ok,'restored authority');
+ check((await worker().vote('w0',cp('e',16),kp.privateKey)).reason==='trusted-conflict','prior epoch conflict');
+ check((await worker().vote('w0',cp('f',14),kp.privateKey)).reason==='epoch-rollback','rollback blocked');
+ const many=await Promise.all(Array.from({length:64},(_,i)=>worker().vote('w0',cp(i%2?'b':'a',18),kp.privateKey)));
+ const issued=many.filter(x=>x.ok&&!x.duplicate);check(issued.length===1,'only one signature under contention');
+ check(!many.some(x=>x.ok&&x.vote?.checkpoint.head!==issued[0].vote.checkpoint.head),'no conflicting signatures');
+ report.push({firstSignaturesAtEpoch18:issued.length,attempts:many.length,dualDeletionBlocked:true,authorityFailureBlocked:true});
+ console.log(JSON.stringify({status:'PASS_CONDITIONAL_TRUST',assertions:checks,report}));
+}finally{await rm(root,{recursive:true,force:true});}
