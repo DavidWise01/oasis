@@ -1,0 +1,155 @@
+{
+  "schema": "ROOT0-P1.8-conditional-predecessor-code",
+  "frozenSourceGitBlob": "49cb50bab98039e5b5c1b45e7e95f20cf76d3abe",
+  "fullCarrierStates": 55296,
+  "physicalWords": 1024,
+  "contexts": 54,
+  "oneStepStateOnlyDistinctImages": 50382,
+  "physicalOutputsWithNoPredecessor": 91,
+  "physicalOutputFibreHistogram": {
+    "0": 91,
+    "1": 847,
+    "2": 81,
+    "3": 5
+  },
+  "physicalMoves": 450,
+  "physicalStutters": 574,
+  "worstCasePredecessorCount": 3,
+  "worstCaseMinimalBits": 2,
+  "globalEdgeOrStutterActionCount": 11,
+  "globalFixedActionBits": 4,
+  "conditionalCodeMeanBitsPerState": 0.1875,
+  "conditionalEntropyUniformPriorBits": 0.18142034913165764,
+  "conditionalPrefixlessWidthBitsTotalForFullCarrier": 10368,
+  "uniqueTaggedPairs": 55296,
+  "oneStepTaggedCollisions": 0,
+  "oneStepRecovered": 55296,
+  "reversePaths": 55296,
+  "stepsPerPath": 20,
+  "reversedStepChecks": 1105920,
+  "invalidRankTestCases": 928,
+  "tripleExample": {
+    "output": [
+      "vacant",
+      "occupied",
+      "vacant",
+      "in",
+      "occupied"
+    ],
+    "predecessors": [
+      [
+        "occupied",
+        "occupied",
+        "vacant",
+        "in",
+        "vacant"
+      ],
+      [
+        "occupied",
+        "vacant",
+        "vacant",
+        "in",
+        "occupied"
+      ],
+      [
+        "vacant",
+        "vacant",
+        "occupied",
+        "in",
+        "occupied"
+      ]
+    ],
+    "actions": [
+      1,
+      0,
+      5
+    ]
+  },
+  "ambiguousExamples": [
+    {
+      "output": [
+        "vacant",
+        "occupied",
+        "vacant",
+        "in",
+        "in"
+      ],
+      "predecessors": [
+        [
+          "occupied",
+          "vacant",
+          "vacant",
+          "in",
+          "in"
+        ],
+        [
+          "vacant",
+          "vacant",
+          "occupied",
+          "in",
+          "in"
+        ]
+      ]
+    },
+    {
+      "output": [
+        "occupied",
+        "vacant",
+        "occupied",
+        "in",
+        "in"
+      ],
+      "predecessors": [
+        [
+          "occupied",
+          "occupied",
+          "vacant",
+          "in",
+          "in"
+        ],
+        [
+          "vacant",
+          "occupied",
+          "occupied",
+          "in",
+          "in"
+        ]
+      ]
+    },
+    {
+      "output": [
+        "vacant",
+        "occupied",
+        "vacant",
+        "out",
+        "in"
+      ],
+      "predecessors": [
+        [
+          "occupied",
+          "vacant",
+          "vacant",
+          "out",
+          "in"
+        ],
+        [
+          "vacant",
+          "vacant",
+          "occupied",
+          "out",
+          "in"
+        ]
+      ]
+    }
+  ],
+  "detectedLimits": {
+    "requiresKnowledgeOfExactScheduler": true,
+    "requiresCorrectOutputAndRank": true,
+    "unauthenticatedRankCanSelectAnotherValidPredecessor": true,
+    "oneStepAverageEntropyDependsOnUniformInitialPrior": true
+  },
+  "leanCompilerAvailable": false,
+  "physicalPredictionWithUnits": false,
+  "simulationTheoryEstablished": false,
+  "status": "PASS_FINITE_INFORMATION_LOSS_BOUND_AND_EXHAUSTIVE_INVERSE"
+}
