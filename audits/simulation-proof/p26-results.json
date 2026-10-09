@@ -15,12 +15,12 @@
   "basis_projection_weights_positive_frequency": [
     0.5,
     0.5,
-    0,
+    0.0,
     0.5,
     0.5,
-    0,
-    0,
-    0
+    0.0,
+    0.0,
+    0.0
   ],
   "coherent_positive_frequency_modes_tested": 2,
   "quarter_rotation_non_basis_register_labels": [
@@ -32,14 +32,14 @@
   "quarter_rotation_max_single_basis_fidelity": [
     0.5000000000000001,
     0.5000000000000001,
-    1,
+    1.0,
     0.5000000000000001,
     0.5000000000000001,
-    1,
-    1,
-    1
+    1.0,
+    1.0,
+    1.0
   ],
-  "maxwell_unitarity_error": 0,
+  "maxwell_unitarity_error": 0.0,
   "order_nine_rotation_orbit_distinct": 9,
   "order_nine_orbit_min_euclidean_separation": 0.6840402866513371,
   "order_nine_orbit_max_distinct_ray_fidelity": 0.8830222215594891,
