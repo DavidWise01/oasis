@@ -1,5 +1,3 @@
-import {gate,complex,abs2} from './wave_kernel.mjs';
-import {encode4,decode4,encodeTensor,decodeTensor,SILO_SIZE,TENSOR_SIZE,ZERO} from './tensor_kernel.mjs';
 /** ROOT0 P3.1 — 208-address cyclic cipher using 16 overlapping, 14-glyph windows.
  * USER facts: literal glyph '..||..|....|||', 1/16 of 208, forward 208 then
  * reverse inverted mirrored upside-down. MODEL POLICY (new): neighboring
@@ -8,6 +6,8 @@ import {encode4,decode4,encodeTensor,decodeTensor,SILO_SIZE,TENSOR_SIZE,ZERO} fr
  * and mirror the silo ports. These choices are explicit, not user-frozen.
  * Not a claim about real photons, quantum amplitudes, or the physical universe.
  */
+import {gate,complex,abs2} from './wave_kernel.mjs';
+import {encode4,decode4,encodeTensor,decodeTensor,SILO_SIZE,TENSOR_SIZE,ZERO} from './tensor_kernel.mjs';
 
 
 export const MOTIF='..||..|....|||';
