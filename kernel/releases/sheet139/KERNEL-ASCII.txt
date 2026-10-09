@@ -1,0 +1,71 @@
+OASIS / O^1 / ROOT0 — SHEET 139
+===========================================
+
+                                    [ IMMUTABLE ANCESTOR / O^1 ]
+                                                 |
+                                  +--------------v--------------+
+                                  |  SHEET 138 MOTHER KERNEL    |
+                                  |  publication ACK persisted  |
+                                  |  anti-replay & mTLS custody |
+                                  +--------------+--------------+
+                                                 |
+                                        [ POLICY P(n) ]
+                                                 |
+                             QUORUM-SIGNED OPERATORS 2/3 (EXISTING RULE)
+                                                 |
+                                     [ FLEET-139 STAGE ]
+                                                 |
+                                    PENDING_FLEET_ACK
+                                                 |
+               +---------------------------------+----------------------------------+
+               |                                 |                                  |
+       +-------v--------+                +-------v--------+                 +-------v--------+
+       |  CUSTODIAN RED |                | CUSTODIAN BLUE |                 | CUSTODIAN GREEN|
+       |  mTLS process  |                |  mTLS process  |                 |  mTLS process  |
+       |  policy ledger |                |  policy ledger |                 |  policy ledger |
+       |  durable write |                |  durable write |                 |  durable write |
+       +-------+--------+                +-------+--------+                 +-------+--------+
+               |                                 |                                  |
+       [Ed25519 ACK RED]                 [Ed25519 ACK BLUE]                 [Ed25519 ACK GREEN]
+               |                                 |                                  |
+               +---------------------------------+----------------------------------+
+                                                 |
+                                   [ALL REQUIRED 3 OF 3]
+                                                 |
+                                +----------------+---------------+
+                                |                                |
+                     [MATCHING seq/hash]               [MISSING / STALE / FORK]
+                                |                                |
+                        SIGNED FLEET RECEIPT                 HOLD / QUARANTINE
+                                |                                |
+                       APPEND-ONLY HEAD                      NO NEXT POLICY
+                                |
+                     OUT-OF-BAND PIN CHECK
+                                |
+                         FLEET_VERIFIED
+                                |
+                    [AUTHORIZATION BRIDGE 139]
+                                |
+                      SHEET 138 authorize()
+                                |
+                  COMMIT + PUBLISH + VERIFY ACK
+                                |
+                        NEXT VERIFIED EPOCH
+
+STATE LATTICE
+-------------
+GENESIS -> PENDING(seq, policyHash, requiredNodes, verifiedAcks)
+PENDING + ack_i -> PENDING  [when some nodes missing]
+PENDING + all acks -> VERIFIED(seq, signed receipt, head hash)
+PENDING + conflicting signed ack -> QUARANTINE  [blocks admission]
+VERIFIED + new policy -> PENDING(seq+1)
+VERIFIED + authorization -> inherited SHEET 138 gate
+
+HARD BOUNDARIES
+---------------
+* All-required policy barrier, not an atomic distributed fleet transaction.
+* Nonresponse => HOLD; fork => QUARANTINE; expired policy => HOLD.
+* Signing keys are generated only in disposable tests. Real remote hosts NOT deployed.
+* Full-disk rollback protection requires independently retained trusted head pin.
+* Local file-lock coordination does not replace distributed fencing/consensus.
+* No production authorization, global fork impossibility, or original SHEET 103 parity claim.

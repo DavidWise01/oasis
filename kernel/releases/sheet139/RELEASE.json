@@ -1,0 +1,13 @@
+{
+  "sheet": 139,
+  "description": "Fleet-wide custody synchronization",
+  "passed": 764,
+  "inherited": 699,
+  "new": 65,
+  "baselinePreserved": 275,
+  "archiveName": "SHEET139-fleet-custody-sync.zip",
+  "archiveSha256": "9b5c33eb9cf88f763c2c5eebfb1d8b8c5fe3f80acb7b8c9ca3656ee2220f4e55",
+  "deployment": "local-three-processes",
+  "productionAuthorization": false,
+  "codeScope": "documentation, SHA256 receipt, interactive demonstration; runnable full source distributed in standalone release ZIP"
+}
