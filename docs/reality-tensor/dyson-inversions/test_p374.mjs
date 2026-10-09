@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {generateKeyPairSync} from 'node:crypto';
+import {mkdtemp,rm,copyFile,writeFile,readFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';import {join} from 'node:path';
+import {SerializedAuthority} from './p372_authority.mjs';
+import {attest,verifyAgainstTrusted} from './p373_anchor.mjs';
+import {MonotonicWitness,verifyWithWitness} from './p374_witness.mjs';
+let assertions=0;const check=(v,m)=>{assert.ok(v,m);assertions++};
+const {privateKey,publicKey}=generateKeyPairSync('ed25519');
+const witness=new MonotonicWitness(publicKey),root=await mkdtemp(join(tmpdir(),'p374-'));
+try{
+ const dbFile=join(root,'live.sqlite'),oldFile=join(root,'old.sqlite'),local=join(root,'local.json');
+ let db=new SerializedAuthority(dbFile);check(db.reserve('w0',1,'a'.repeat(64)).ok);
+ const old=attest(db.status(),1,privateKey);check(witness.publish(old).ok);
+ db.db.exec("VACUUM INTO '"+oldFile.replaceAll("'","''")+"'");db.close();
+ db=new SerializedAuthority(dbFile);check(db.reserve('w0',2,'b'.repeat(64)).ok);
+ const latest=attest(db.status(),2,privateKey);db.close();
+ check(witness.publish(latest).ok);await writeFile(local,JSON.stringify(latest));
+ check(verifyWithWitness(dbFile,latest,witness).ok);
+ check(verifyAgainstTrusted(dbFile,latest,publicKey,witness.latest()).ok);
+ await copyFile(oldFile,dbFile);await writeFile(local,JSON.stringify(old));
+ const rolled=JSON.parse(await readFile(local,'utf8'));
+ check(verifyWithWitness(dbFile,rolled,witness).reason==='local-checkpoint-rollback');
+ check(!verifyAgainstTrusted(dbFile,rolled,publicKey,witness.latest()).ok);
+ check(!witness.publish(old).ok);
+ witness.available=false;check(verifyWithWitness(dbFile,rolled,witness).reason==='trusted-witness-unavailable');
+ witness.available=true;check(witness.latest().head===latest.head);
+ check(witness.publish({...latest,head:'f'.repeat(64)}).reason==='invalid-signature');
+ console.log(JSON.stringify({status:'PASS_CONDITIONAL_INDEPENDENT_WITNESS',assertions,oldCount:old.count,latestCount:latest.count,dualRollbackDetected:true,witnessNotDurableAcrossItsOwnReset:true}));
+}finally{await rm(root,{recursive:true,force:true});}
