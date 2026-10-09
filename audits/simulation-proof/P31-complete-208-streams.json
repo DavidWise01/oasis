@@ -1,0 +1,115 @@
+{
+  "schema": "ROOT0-P3.1-208-complete-forward-mirrored-inverse-streams",
+  "source": "..||..|....|||",
+  "sourceLength": 14,
+  "frameCount": 16,
+  "newPositionsPerFrame": 13,
+  "overlapPerFrame": 1,
+  "fullSize": 208,
+  "dots": 104,
+  "bars": 104,
+  "status": "PASS_EXACT_CYCLIC_OVERLAPS",
+  "forward": "..||..|....||||..||.||||....||..|....||||..||.||||....||..|....||||..||.||||....||..|....||||..||.||||....||..|....||||..||.||||....||..|....||||..||.||||....||..|....||||..||.||||....||..|....||||..||.||||..",
+  "backward": "||....|..||....||||.||..||||....|..||....||||.||..||||....|..||....||||.||..||||....|..||....||||.||..||||....|..||....||||.||..||||....|..||....||||.||..||||....|..||....||||.||..||||....|..||....||||.||..||",
+  "frames": [
+    {
+      "index": 0,
+      "start": 0,
+      "sharedSeamWithNext": 13,
+      "glyphs": "..||..|....|||"
+    },
+    {
+      "index": 1,
+      "start": 13,
+      "sharedSeamWithNext": 26,
+      "glyphs": "||..||.||||..."
+    },
+    {
+      "index": 2,
+      "start": 26,
+      "sharedSeamWithNext": 39,
+      "glyphs": "..||..|....|||"
+    },
+    {
+      "index": 3,
+      "start": 39,
+      "sharedSeamWithNext": 52,
+      "glyphs": "||..||.||||..."
+    },
+    {
+      "index": 4,
+      "start": 52,
+      "sharedSeamWithNext": 65,
+      "glyphs": "..||..|....|||"
+    },
+    {
+      "index": 5,
+      "start": 65,
+      "sharedSeamWithNext": 78,
+      "glyphs": "||..||.||||..."
+    },
+    {
+      "index": 6,
+      "start": 78,
+      "sharedSeamWithNext": 91,
+      "glyphs": "..||..|....|||"
+    },
+    {
+      "index": 7,
+      "start": 91,
+      "sharedSeamWithNext": 104,
+      "glyphs": "||..||.||||..."
+    },
+    {
+      "index": 8,
+      "start": 104,
+      "sharedSeamWithNext": 117,
+      "glyphs": "..||..|....|||"
+    },
+    {
+      "index": 9,
+      "start": 117,
+      "sharedSeamWithNext": 130,
+      "glyphs": "||..||.||||..."
+    },
+    {
+      "index": 10,
+      "start": 130,
+      "sharedSeamWithNext": 143,
+      "glyphs": "..||..|....|||"
+    },
+    {
+      "index": 11,
+      "start": 143,
+      "sharedSeamWithNext": 156,
+      "glyphs": "||..||.||||..."
+    },
+    {
+      "index": 12,
+      "start": 156,
+      "sharedSeamWithNext": 169,
+      "glyphs": "..||..|....|||"
+    },
+    {
+      "index": 13,
+      "start": 169,
+      "sharedSeamWithNext": 182,
+      "glyphs": "||..||.||||..."
+    },
+    {
+      "index": 14,
+      "start": 182,
+      "sharedSeamWithNext": 195,
+      "glyphs": "..||..|....|||"
+    },
+    {
+      "index": 15,
+      "start": 195,
+      "sharedSeamWithNext": 0,
+      "glyphs": "||..||.||||..."
+    }
+  ],
+  "backwardDefinition": "dotbarComplement(reverse(forward)); visual stream only",
+  "trueInverseDefinition": "M U_207^† M^-1 ... M U_0^† M^-1",
+  "interpretativeCaveat": "Alternating glyph polarity and 1-seam overlap are explicitly chosen model conventions; not asserted original cipher axioms."
+}
