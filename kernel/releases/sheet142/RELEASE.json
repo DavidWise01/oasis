@@ -1,0 +1,18 @@
+{
+  "schema": "oasis.sheet142.git-release.v1",
+  "baseline": "sheet141",
+  "baselineInheritedFiles": 321,
+  "tests": {
+    "inherited": 863,
+    "new": 38,
+    "total": 901,
+    "chromiumScenarios": 8,
+    "jsonExport": true
+  },
+  "scope": "local mTLS processes and one shared filesystem; not multi-host/global linearizability",
+  "zipName": "SHEET142-serialized-resource-commit.zip",
+  "zipSHA256": "57688f7d8c6de2060eba06c8dded77d77ebbe64bf668b3c4d58181d86d0f13a9",
+  "sourceCodeInCommit": true,
+  "externalPinIndependent": false,
+  "productionAuthorized": false
+}

@@ -1,0 +1,19 @@
+OASIS / ROOT0 — SHEET 142
+
+SIGNED EXTERNAL PIN
+        |
+SERIAL MEMBERSHIP LOCK (.lock)
+        |
+   M.authorize()  <── membership proposal / accept / finish also acquire lock
+        |
+  [RESOURCE A] [RESOURCE B]
+      |            |
+   DURABLE CONTENT-HASHED RESOURCE RECORDS
+        |
+  RELEASE MEMBERSHIP LOCK
+        |
+  JOINT OLD 3/3 + NEW 3/3
+        |
+  FENCE E1 -> E2; OLD LEASE REJECTED
+
+Boundary: cooperative one-filesystem serialization only; independent host certification remains unverified.
