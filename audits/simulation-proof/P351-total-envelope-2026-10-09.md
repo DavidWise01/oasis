@@ -1,0 +1,4 @@
+# P3.51 — total containment sequence
+2026-10-09. The exact user-provided total is `60/24/12/2/1/1/0/0`. This release treats the six positive entries as mixed radices (capacity 34560) and the two zeros as pinned sentinels, an explicit modeling convention, not a claim that their literal product is 34560. Channel identifiers remain 4 primes ×6 axes ×2 signs =48. Möbius motion remains 4×360=1440, distinct from Greg's 366-slot clock. Exact scaling is the P3.50 `{{1/8 x 1/8}}^{{n}}` rational primitive.
+
+Node local regression executed PASS 34,560 structural round trips plus 69,120 carrier-motion round trips; selected depth tests through 1024. Combining all independent axes, channels and steps would produce much larger Cartesian spaces; do not call their multiplication the user's structural TOTAL. This is a symbolic addressing system, not a verified model of photon physics.
