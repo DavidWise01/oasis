@@ -1,0 +1,20 @@
+name: ROOT0 P3.7 corrected Dyson exponent
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality-tensor/dyson-inversions/**'
+      - '.github/workflows/root0-p37-dyson-exponent.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inverse-scale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate scalar exponent and nested energy-shell inversions
+        run: node docs/reality-tensor/dyson-inversions/smoke.mjs
