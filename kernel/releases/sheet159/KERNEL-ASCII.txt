@@ -1,0 +1,100 @@
+SHEET 159 — BINARY PEAK MERKLE CONSISTENCY / SEGMENT CHECKPOINTS
+================================================================================
+      OASIS / ROOT0 / MOTHER KERNEL                     0e / bounded local test
+                           |
+           SHEET 155 AUTHORITY / FINALITY
+                           |
+                  S156 WITNESS 2 OF 3
+                +----------+----------+
+                |          |          |
+             RED W       BLUE W     GREEN W
+             389 slots    7 slots    389 slots
+                |          |          |
+         certified head   lagging    certified head
+                \          |          /
+                 +----> CHALLENGE <----+
+                        nonce N
+                           |
+            RED signs HEAD+MERKLE(ROOT,FRONTIER)
+            GREEN signs HEAD+MERKLE(ROOT,FRONTIER)
+                           |
+            CHECK: 2 distinct Ed25519 signatures
+            CHECK: nonce + same slot/head/root
+            CHECK: frontier actually bags to root
+                           |
+                 +---------+----------+
+                 |                    |
+            CONSISTENT             CONFLICT
+                 |                    |
+           PERSIST BEGIN           QUARANTINE
+                 |
+           RECOVERY CURSOR=7
+           local HEAD + Merkle Frontier
+                 |
+                LOOP   <= 24 RECORDS PER PAGE
+                 |
+      +----------+---------------------------------+
+      |                  SIGNED PAGE              |
+      | nonce / target / source / cursor / next  |
+      | hash-chain prevHead / endHead            |
+      | M151 EXTENSION BLOCKS (binary peaks)     |
+      | expected fromRoot / toRoot / toFrontier   |
+      | bounded source journal rows              |
+      +--------------------+-----------------------+
+                           |
+                    RECEIVER VERIFY
+             01 certificate witness identity
+             02 exact nonce, offset and target
+             03 canonical hash-linked rows
+             04 M151 Merkle prefix root
+             05 O(log PAGE) extension block witness
+             06 recompute roots from actual row hashes
+             07 pending promise compatibility
+             08 root==certified root on final page
+                           |
+                  PERSIST ATOMIC PAGE
+               cursor + Merkle frontier
+                     + PIN PER 32
+                           |
+                  FSYNC BEFORE RESPONSE
+                           |
+           +---------------+----------------+
+           |               |                |
+        ACK RECEIVED   CRASH AFTER FSYNC   CORRUPTION
+           |               |                |
+        NEXT PAGE      PROCESS RESTART   FAIL CLOSED
+           |               |                |
+           |          SIGNED STATUS       QUARANTINE
+           |          REUSE CURSOR
+           +---------------+
+                           |
+                  CURSOR == TARGET SLOT?
+                     |           |
+                    NO          YES
+                     |           |
+                   LOOP       VERIFY ROOT
+                                |
+                         FINAL ATOMIC INSTALL
+                       history + head + pin
+                                |
+                      SHA-256 / AUDIT WITNESS
+                                |
+                         NEXT VERIFIED SLOT
+
+ADVERSARIAL BRANCHES
+ - forged certificate, replay nonce, duplicate signer -> DENY
+ - shuffled, missing, wrong Merkle leaf -> DENY
+ - altered extension blocks -> DENY
+ - skipped cursor / repeated page -> DENY
+ - conflict with pending signed promise -> DENY
+ - 2 peers unavailable -> FAIL CLOSED
+ - crash before ACK after durable write -> RESUME CURSOR / NO REAPPEND
+
+VERIFICATION BOUNDARY:
+ genuine Merkle extension math is used; transmission of missing records remains
+ O(missing suffix), source currently replays full local journal to build proofs,
+ receiver replays inherited witness state to verify. A segment pin is stored in
+ the witness's atomic JSON state (not independently operated durable hardware).
+ Running as three loopback mTLS processes on one physical host; not proof of
+ production-grade Byzantine consensus or independent-host atomic durability.
+================================================================================

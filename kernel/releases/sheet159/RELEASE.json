@@ -1,0 +1,14 @@
+{
+  "schema": "oasis.sheet159.release.v1",
+  "sheet": 159,
+  "parent": 158,
+  "archive": "SHEET159-merkle-consistency-recovery.zip",
+  "archiveSha256": "0e2cff94a8eeb92304ae7cb64427d61c2bc1434165852e5c1fe80947a77b5ef6",
+  "combinedChecks": 1666,
+  "combinedExit": 0,
+  "newChecks": 48,
+  "previousIntermittentFailure": "SHEET142 concurrency assertion",
+  "inheritedFiles": 632,
+  "chromiumChecks": 9,
+  "limitation": "One host and O(n) history replay remain."
+}
