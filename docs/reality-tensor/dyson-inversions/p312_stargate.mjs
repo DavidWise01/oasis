@@ -6,7 +6,7 @@ range:'inf - +inf',
 stargate:Object.freeze(['00','11','22','33','42','24','33','22','11','00'])
 });
 export function compile(address=CANONICAL.stargate){
- if(!Array.isArray(address)||address.length!==10||address.some(x=>typeof x!=='string'||!/^\\d\\d$/.test(x)))throw new RangeError('Ten two-digit address tokens required');
+ if(!Array.isArray(address)||address.length!==10||address.some(x=>typeof x!=='string'||!/^\d\d$/.test(x)))throw new RangeError('Ten two-digit address tokens required');
  const operations=address.map((token,index)=>Object.freeze({step:index,token,from:token[0],to:token[1],direction:index<5?'ingress':'egress'}));
  return Object.freeze({operations,palindrome:address.every((s,i)=>s===address[address.length-1-i]),conjugatePalindrome:address.every((s,i)=>s===address[address.length-1-i].split('').reverse().join('')),centerPair:[address[4],address[5]]});
 }
