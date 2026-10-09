@@ -1,0 +1,36 @@
+{
+  "schema": "oasis.sheet153.release.v1",
+  "sheet": 153,
+  "title": "Unified Physical Journal and Finality",
+  "inheritedSheet": 152,
+  "tests": {
+    "new": 43,
+    "inherited": 1307,
+    "combined": 1350,
+    "exit": 0,
+    "chromiumScenarios": 8,
+    "jsonExport": true
+  },
+  "physicalJournal": {
+    "records": 261,
+    "seededFixtures": 258,
+    "liveAuthorizedWrites": 3,
+    "segmentSize": 128,
+    "physicalSegments": 3
+  },
+  "baselineFilesBytePreserved": 506,
+  "localProcesses": {
+    "replicas": 3,
+    "resource": 1,
+    "anchor": 1
+  },
+  "archive": "SHEET153-unified-physical-finality.zip",
+  "archiveSHA256": "56ccbeff2399a4fb1eee7c51aa07668044c054fc8d722bff880889e02cf15077",
+  "gitScope": "Release README, SVG and checksum manifest; executable code in separately downloadable complete ZIP",
+  "limitations": [
+    "First 258 records inserted as test fixture, not live grants",
+    "Single-host cooperative filesystem lock, not cross-host atomicity",
+    "Anchor advancement precedes quorum completion",
+    "Inherited SHEET142 intermittent timing test may recur"
+  ]
+}
