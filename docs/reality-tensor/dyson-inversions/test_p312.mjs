@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {CANONICAL,compile,reverse,reconstitute,validate} from './p312_stargate.mjs';
+const c=compile(),v=validate();
+assert.equal(c.operations.length,10);
+assert.equal(v.roundtrip,true);
+assert.equal(v.palindrome,false);
+assert.equal(v.conjugatePalindrome,true);
+assert.deepEqual(v.centerPair,['42','24']);
+assert.deepEqual(reverse(c.operations).map(x=>x.token),[...CANONICAL.stargate].reverse());
+assert.deepEqual(reconstitute(c.operations),c.operations);
+for(const invalid of [[],['00'],Array(10).fill('x'),Array(10).fill(4),Array(10).fill('000')])assert.throws(()=>compile(invalid));
+assert.deepEqual(CANONICAL.dimensions,['-1+','-2+','-3+']);
+console.log('PASS',JSON.stringify(v));
