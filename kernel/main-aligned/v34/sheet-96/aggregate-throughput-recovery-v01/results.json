@@ -1,0 +1,350 @@
+{
+  "schema": "oasis/sheet96/aggregate-throughput-recovery-v01",
+  "status": "verified",
+  "binary_bytes": 13037,
+  "all_checks": {
+    "compiled WebAssembly magic": true,
+    "120 lane identities": true,
+    "8 silos/9 domains": true,
+    "72 toroids": true,
+    "D8 aggregate remains eight slots": true,
+    "each D8 worker takes eight ticks": true,
+    "swept clearance remains 1.5 units": true,
+    "same four adaptive via candidates": true,
+    "serialNormal runtime invariants": true,
+    "serialNormal immutable via shapes": true,
+    "serialNormal zero swept conflicts": true,
+    "serialNormal 72 toroid addresses": true,
+    "serialNormal queue peak <=8": true,
+    "serialNormal all 8 silos serviced": true,
+    "serialNormal modeled ACK receipts conserved": true,
+    "serialStress runtime invariants": true,
+    "serialStress immutable via shapes": true,
+    "serialStress zero swept conflicts": true,
+    "serialStress 72 toroid addresses": true,
+    "serialStress queue peak <=8": true,
+    "serialStress all 8 silos serviced": true,
+    "serialStress modeled ACK receipts conserved": true,
+    "dualNormal runtime invariants": true,
+    "dualNormal immutable via shapes": true,
+    "dualNormal zero swept conflicts": true,
+    "dualNormal 72 toroid addresses": true,
+    "dualNormal queue peak <=8": true,
+    "dualNormal all 8 silos serviced": true,
+    "dualNormal modeled ACK receipts conserved": true,
+    "dualStress runtime invariants": true,
+    "dualStress immutable via shapes": true,
+    "dualStress zero swept conflicts": true,
+    "dualStress 72 toroid addresses": true,
+    "dualStress queue peak <=8": true,
+    "dualStress all 8 silos serviced": true,
+    "dualStress modeled ACK receipts conserved": true,
+    "serial remains single working server": true,
+    "two-server policy uses second channel": true,
+    "serial serves every active source domain": true,
+    "dual serves all silo sources": true,
+    "serial completes initial burst for all 120 lane IDs": true,
+    "dual completes initial burst for all 120 lane IDs": true,
+    "dual improves completed handoffs in normal": true,
+    "dual improves completed handoffs in stress": true,
+    "dual reduces cumulative upstream waiting in stress": true,
+    "normal deterministic replay": true,
+    "stress deterministic replay": true,
+    "D8 channel choice non-destructive to queue size": true
+  },
+  "passed": 48,
+  "total": 48,
+  "serialNormal": {
+    "stress": false,
+    "channels": 1,
+    "ticks": 2200,
+    "errors": 0,
+    "immutableErrors": 0,
+    "maxConflict": 0,
+    "maxQueue": 8,
+    "maxBusy": 1,
+    "addresses": 72,
+    "neverAcked": 0,
+    "stats": {
+      "orbits": 933,
+      "vias": 869,
+      "floor_vias": 233,
+      "aggregate_in": 241,
+      "aggregate_out": 233,
+      "queue": 8,
+      "waiting": 42,
+      "max_wait_ticks": 530,
+      "waiter_ticks": 78678,
+      "deferrals": 974,
+      "cross_ring_deferrals": 14,
+      "alternatives": 81,
+      "delivered": 233,
+      "acks": 233,
+      "ack_pending": 0,
+      "service_by_silo": [
+        29,
+        29,
+        28,
+        29,
+        30,
+        30,
+        29,
+        29
+      ],
+      "service_busy_ticks": 1870,
+      "peak_busy_channels": 1
+    },
+    "milestones": [
+      {
+        "tick": 550,
+        "acks": 26,
+        "queue": 8,
+        "waiting": 45,
+        "active_vias": 9
+      },
+      {
+        "tick": 1100,
+        "acks": 95,
+        "queue": 8,
+        "waiting": 48,
+        "active_vias": 12
+      },
+      {
+        "tick": 1650,
+        "acks": 164,
+        "queue": 8,
+        "waiting": 35,
+        "active_vias": 8
+      },
+      {
+        "tick": 2200,
+        "acks": 233,
+        "queue": 8,
+        "waiting": 42,
+        "active_vias": 13
+      }
+    ],
+    "state_digest": "6f7cc2b7a353228ac94eda138d4fbd5cbf756f702977d3885ba94a803de22a9b"
+  },
+  "serialStress": {
+    "stress": true,
+    "channels": 1,
+    "ticks": 2200,
+    "errors": 0,
+    "immutableErrors": 0,
+    "maxConflict": 0,
+    "maxQueue": 8,
+    "maxBusy": 1,
+    "addresses": 72,
+    "neverAcked": 0,
+    "stats": {
+      "orbits": 795,
+      "vias": 742,
+      "floor_vias": 271,
+      "aggregate_in": 279,
+      "aggregate_out": 271,
+      "queue": 8,
+      "waiting": 35,
+      "max_wait_ticks": 832,
+      "waiter_ticks": 103463,
+      "deferrals": 4769,
+      "cross_ring_deferrals": 710,
+      "alternatives": 74,
+      "delivered": 271,
+      "acks": 271,
+      "ack_pending": 0,
+      "service_by_silo": [
+        30,
+        35,
+        36,
+        35,
+        35,
+        35,
+        35,
+        30
+      ],
+      "service_busy_ticks": 2175,
+      "peak_busy_channels": 1
+    },
+    "milestones": [
+      {
+        "tick": 550,
+        "acks": 65,
+        "queue": 8,
+        "waiting": 47,
+        "active_vias": 3
+      },
+      {
+        "tick": 1100,
+        "acks": 133,
+        "queue": 8,
+        "waiting": 48,
+        "active_vias": 5
+      },
+      {
+        "tick": 1650,
+        "acks": 202,
+        "queue": 8,
+        "waiting": 34,
+        "active_vias": 14
+      },
+      {
+        "tick": 2200,
+        "acks": 271,
+        "queue": 8,
+        "waiting": 35,
+        "active_vias": 10
+      }
+    ],
+    "state_digest": "434ae2130f9a35f110426d1f22fda1fcf425d49f28fc289bc783e39a9a8ac95d"
+  },
+  "dualNormal": {
+    "stress": false,
+    "channels": 2,
+    "ticks": 2200,
+    "errors": 0,
+    "immutableErrors": 0,
+    "maxConflict": 0,
+    "maxQueue": 8,
+    "maxBusy": 2,
+    "addresses": 72,
+    "neverAcked": 0,
+    "stats": {
+      "orbits": 1352,
+      "vias": 1329,
+      "floor_vias": 403,
+      "aggregate_in": 406,
+      "aggregate_out": 403,
+      "queue": 3,
+      "waiting": 0,
+      "max_wait_ticks": 96,
+      "waiter_ticks": 5341,
+      "deferrals": 2336,
+      "cross_ring_deferrals": 127,
+      "alternatives": 134,
+      "delivered": 403,
+      "acks": 401,
+      "ack_pending": 2,
+      "service_by_silo": [
+        42,
+        58,
+        50,
+        50,
+        50,
+        49,
+        60,
+        44
+      ],
+      "service_busy_ticks": 3226,
+      "peak_busy_channels": 2
+    },
+    "milestones": [
+      {
+        "tick": 550,
+        "acks": 52,
+        "queue": 8,
+        "waiting": 18,
+        "active_vias": 12
+      },
+      {
+        "tick": 1100,
+        "acks": 173,
+        "queue": 1,
+        "waiting": 0,
+        "active_vias": 15
+      },
+      {
+        "tick": 1650,
+        "acks": 289,
+        "queue": 7,
+        "waiting": 0,
+        "active_vias": 13
+      },
+      {
+        "tick": 2200,
+        "acks": 401,
+        "queue": 3,
+        "waiting": 0,
+        "active_vias": 19
+      }
+    ],
+    "state_digest": "4e33f0651b81c20a57118a9f8a569b2e865ea9acb9410ef09a1024325768d761"
+  },
+  "dualStress": {
+    "stress": true,
+    "channels": 2,
+    "ticks": 2200,
+    "errors": 0,
+    "immutableErrors": 0,
+    "maxConflict": 0,
+    "maxQueue": 8,
+    "maxBusy": 2,
+    "addresses": 72,
+    "neverAcked": 0,
+    "stats": {
+      "orbits": 1243,
+      "vias": 1223,
+      "floor_vias": 450,
+      "aggregate_in": 451,
+      "aggregate_out": 450,
+      "queue": 1,
+      "waiting": 0,
+      "max_wait_ticks": 385,
+      "waiter_ticks": 26409,
+      "deferrals": 6103,
+      "cross_ring_deferrals": 714,
+      "alternatives": 141,
+      "delivered": 450,
+      "acks": 449,
+      "ack_pending": 1,
+      "service_by_silo": [
+        46,
+        65,
+        55,
+        56,
+        57,
+        55,
+        68,
+        48
+      ],
+      "service_busy_ticks": 3605,
+      "peak_busy_channels": 2
+    },
+    "milestones": [
+      {
+        "tick": 550,
+        "acks": 120,
+        "queue": 0,
+        "waiting": 0,
+        "active_vias": 15
+      },
+      {
+        "tick": 1100,
+        "acks": 224,
+        "queue": 7,
+        "waiting": 0,
+        "active_vias": 15
+      },
+      {
+        "tick": 1650,
+        "acks": 328,
+        "queue": 8,
+        "waiting": 0,
+        "active_vias": 14
+      },
+      {
+        "tick": 2200,
+        "acks": 449,
+        "queue": 1,
+        "waiting": 0,
+        "active_vias": 17
+      }
+    ],
+    "state_digest": "c2847575ecffddff2b8d82e50f18604f74161d09ed859e7df5fde83afb1f5a9b"
+  },
+  "notes": [
+    "Two parallel logical service workers are an explicit capacity upgrade; cannot claim admission-only throughput gains",
+    "Each transaction still takes 8 service ticks and queue capacity remains 8",
+    "All ACKs are internal simulated receipts, not real delivery"
+  ]
+}
