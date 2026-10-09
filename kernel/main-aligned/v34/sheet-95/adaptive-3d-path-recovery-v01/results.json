@@ -1,0 +1,549 @@
+{
+  "schema": "oasis/sheet95/adaptive-3d-recovery-v01",
+  "passed": 48,
+  "total": 48,
+  "checks": {
+    "compiled wasm magic": true,
+    "8 silos": true,
+    "9 logical domains": true,
+    "72 toroidal addresses": true,
+    "11 copper planes": true,
+    "120 lanes": true,
+    "8-slot bounded FIFO": true,
+    "24-tick via": true,
+    "8-tick D8 service": true,
+    "5-tick modeled ACK": true,
+    "true 3d swept radius 1.5 units": true,
+    "adjacent ring pair violates swept clearance without sharing a ring": true,
+    "cross-ring swept blocks normal": true,
+    "swept deferrals observable in stress": true,
+    "swept guard holds 3D conflicts at zero": true,
+    "baseline normal per-tick invariants": true,
+    "baseline stress per-tick invariants": true,
+    "normal per-tick invariants": true,
+    "stress per-tick invariants": true,
+    "normal zero simultaneous co-located vias": true,
+    "stress zero simultaneous co-located vias": true,
+    "normal all 72 addresses reached": true,
+    "stress all 72 addresses reached": true,
+    "clearance grant active": true,
+    "clearance conflict deferrals observable": true,
+    "clearance holds observed": true,
+    "bounded D8 reaches capacity": true,
+    "D8 waiting backpressure observed": true,
+    "modeled delivery receipts generated": true,
+    "modeled ACK generated": true,
+    "pending ack not silently marked complete": true,
+    "all 8 silo sources receive service": true,
+    "cross-ring blocks normal traffic": true,
+    "cross-ring blocks stress traffic": true,
+    "zero observed 3D conflicts in both traces": true,
+    "full six-state operation exercised": true,
+    "fixed baseline never chooses a reroute": true,
+    "adaptive recovery actually grants alternatives": true,
+    "measured proposal count covers all grants": true,
+    "adaptive displacement max 3.6": true,
+    "same aggregate service throughput under normal conditions": true,
+    "same aggregate service throughput under stress": true,
+    "adaptive lowers clearance deferrals in normal": true,
+    "adaptive lowers clearance deferrals in stress": true,
+    "3D waypoint accessor bounded by synthetic domain": true,
+    "deterministic replay byte-equivalent model": true,
+    "deterministic replay counters": true,
+    "deterministic normal replay": true
+  },
+  "wasm_bytes": 12517,
+  "wasm_sha256": "06f08e806fdbc97565ac586941e990486b6ed24a449b390aefabf339d4f21e21",
+  "baselineNormal": {
+    "stress": false,
+    "steps": 2200,
+    "policy": 0,
+    "wrong": 0,
+    "conflictMax": 0,
+    "seenHold": true,
+    "seenAck": true,
+    "seenWaiting": true,
+    "occupancyMax": 8,
+    "floorAddresses": 8,
+    "toroidAddresses": 72,
+    "phaseSeen": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "stats": {
+      "orbits": 933,
+      "vias": 866,
+      "floor_vias": 233,
+      "aggregate_in": 241,
+      "aggregate_out": 233,
+      "queue": 8,
+      "waiting": 45,
+      "clearance_grants": 930,
+      "clearance_deferrals": 2294,
+      "clearance_hold_ticks": 3224,
+      "peak_vias": 27,
+      "peak_holds": 5,
+      "swept_deferrals": 2294,
+      "cross_ring_deferrals": 1271,
+      "swept_conflicts": 0,
+      "delivered": 233,
+      "acked": 233,
+      "ack_pending": 0,
+      "pressure_ticks": 1843,
+      "service_silo": [
+        28,
+        29,
+        28,
+        30,
+        30,
+        30,
+        30,
+        28
+      ],
+      "route_proposals": 3224,
+      "adaptive_grants": 0,
+      "hard_holds": 2294,
+      "route_length_milli": 6978316
+    },
+    "snapshot": [
+      {
+        "tick": 1,
+        "deliveries": 0,
+        "acks": 0,
+        "holds": 0,
+        "queue": 0,
+        "waiting": 0
+      },
+      {
+        "tick": 301,
+        "deliveries": 0,
+        "acks": 0,
+        "holds": 0,
+        "queue": 0,
+        "waiting": 0
+      },
+      {
+        "tick": 601,
+        "deliveries": 33,
+        "acks": 33,
+        "holds": 1,
+        "queue": 8,
+        "waiting": 50
+      },
+      {
+        "tick": 901,
+        "deliveries": 71,
+        "acks": 70,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 56
+      },
+      {
+        "tick": 1201,
+        "deliveries": 108,
+        "acks": 108,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 50
+      },
+      {
+        "tick": 1501,
+        "deliveries": 146,
+        "acks": 145,
+        "holds": 3,
+        "queue": 8,
+        "waiting": 38
+      },
+      {
+        "tick": 1801,
+        "deliveries": 183,
+        "acks": 183,
+        "holds": 1,
+        "queue": 8,
+        "waiting": 33
+      },
+      {
+        "tick": 2101,
+        "deliveries": 221,
+        "acks": 220,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 48
+      }
+    ],
+    "end_digest": "09188088d346c86f4025026d5b90168e231cd9f6874c738d9407233ab4ca13d2"
+  },
+  "baselineStress": {
+    "stress": true,
+    "steps": 2200,
+    "policy": 0,
+    "wrong": 0,
+    "conflictMax": 0,
+    "seenHold": true,
+    "seenAck": true,
+    "seenWaiting": true,
+    "occupancyMax": 8,
+    "floorAddresses": 8,
+    "toroidAddresses": 72,
+    "phaseSeen": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "stats": {
+      "orbits": 798,
+      "vias": 741,
+      "floor_vias": 271,
+      "aggregate_in": 279,
+      "aggregate_out": 271,
+      "queue": 8,
+      "waiting": 39,
+      "clearance_grants": 796,
+      "clearance_deferrals": 5934,
+      "clearance_hold_ticks": 6730,
+      "peak_vias": 33,
+      "peak_holds": 90,
+      "swept_deferrals": 5934,
+      "cross_ring_deferrals": 2010,
+      "swept_conflicts": 0,
+      "delivered": 271,
+      "acked": 271,
+      "ack_pending": 0,
+      "pressure_ticks": 2169,
+      "service_silo": [
+        30,
+        34,
+        36,
+        35,
+        36,
+        35,
+        35,
+        30
+      ],
+      "route_proposals": 6730,
+      "adaptive_grants": 0,
+      "hard_holds": 5934,
+      "route_length_milli": 6560770
+    },
+    "snapshot": [
+      {
+        "tick": 1,
+        "deliveries": 0,
+        "acks": 0,
+        "holds": 90,
+        "queue": 0,
+        "waiting": 0
+      },
+      {
+        "tick": 301,
+        "deliveries": 34,
+        "acks": 33,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 78
+      },
+      {
+        "tick": 601,
+        "deliveries": 72,
+        "acks": 71,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 40
+      },
+      {
+        "tick": 901,
+        "deliveries": 109,
+        "acks": 108,
+        "holds": 1,
+        "queue": 8,
+        "waiting": 45
+      },
+      {
+        "tick": 1201,
+        "deliveries": 147,
+        "acks": 146,
+        "holds": 1,
+        "queue": 8,
+        "waiting": 40
+      },
+      {
+        "tick": 1501,
+        "deliveries": 184,
+        "acks": 183,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 41
+      },
+      {
+        "tick": 1801,
+        "deliveries": 222,
+        "acks": 221,
+        "holds": 2,
+        "queue": 8,
+        "waiting": 43
+      },
+      {
+        "tick": 2101,
+        "deliveries": 259,
+        "acks": 258,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 39
+      }
+    ],
+    "end_digest": "0dcad58af57021c4a1b86caea25c10b9d0069c725d780a8d41a4eb599f6d461c"
+  },
+  "normal": {
+    "stress": false,
+    "steps": 2200,
+    "policy": 1,
+    "wrong": 0,
+    "conflictMax": 0,
+    "seenHold": true,
+    "seenAck": true,
+    "seenWaiting": true,
+    "occupancyMax": 8,
+    "floorAddresses": 8,
+    "toroidAddresses": 72,
+    "phaseSeen": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "stats": {
+      "orbits": 933,
+      "vias": 869,
+      "floor_vias": 233,
+      "aggregate_in": 241,
+      "aggregate_out": 233,
+      "queue": 8,
+      "waiting": 42,
+      "clearance_grants": 932,
+      "clearance_deferrals": 974,
+      "clearance_hold_ticks": 1906,
+      "peak_vias": 27,
+      "peak_holds": 4,
+      "swept_deferrals": 974,
+      "cross_ring_deferrals": 14,
+      "swept_conflicts": 0,
+      "delivered": 233,
+      "acked": 233,
+      "ack_pending": 0,
+      "pressure_ticks": 1851,
+      "service_silo": [
+        29,
+        29,
+        28,
+        29,
+        30,
+        30,
+        29,
+        29
+      ],
+      "route_proposals": 4909,
+      "adaptive_grants": 81,
+      "hard_holds": 974,
+      "route_length_milli": 6610890
+    },
+    "snapshot": [
+      {
+        "tick": 1,
+        "deliveries": 0,
+        "acks": 0,
+        "holds": 0,
+        "queue": 0,
+        "waiting": 0
+      },
+      {
+        "tick": 301,
+        "deliveries": 0,
+        "acks": 0,
+        "holds": 0,
+        "queue": 0,
+        "waiting": 0
+      },
+      {
+        "tick": 601,
+        "deliveries": 33,
+        "acks": 33,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 50
+      },
+      {
+        "tick": 901,
+        "deliveries": 71,
+        "acks": 70,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 56
+      },
+      {
+        "tick": 1201,
+        "deliveries": 108,
+        "acks": 108,
+        "holds": 1,
+        "queue": 8,
+        "waiting": 50
+      },
+      {
+        "tick": 1501,
+        "deliveries": 146,
+        "acks": 145,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 36
+      },
+      {
+        "tick": 1801,
+        "deliveries": 183,
+        "acks": 183,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 32
+      },
+      {
+        "tick": 2101,
+        "deliveries": 221,
+        "acks": 220,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 47
+      }
+    ],
+    "end_digest": "ab6b274c10dcdcecf2ed9f0c42c7a66437de1749ffb2cf8d19728cfdf46a5e86"
+  },
+  "stress": {
+    "stress": true,
+    "steps": 2200,
+    "policy": 1,
+    "wrong": 0,
+    "conflictMax": 0,
+    "seenHold": true,
+    "seenAck": true,
+    "seenWaiting": true,
+    "occupancyMax": 8,
+    "floorAddresses": 8,
+    "toroidAddresses": 72,
+    "phaseSeen": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "stats": {
+      "orbits": 795,
+      "vias": 742,
+      "floor_vias": 271,
+      "aggregate_in": 279,
+      "aggregate_out": 271,
+      "queue": 8,
+      "waiting": 35,
+      "clearance_grants": 795,
+      "clearance_deferrals": 4769,
+      "clearance_hold_ticks": 5564,
+      "peak_vias": 36,
+      "peak_holds": 84,
+      "swept_deferrals": 4769,
+      "cross_ring_deferrals": 710,
+      "swept_conflicts": 0,
+      "delivered": 271,
+      "acked": 271,
+      "ack_pending": 0,
+      "pressure_ticks": 2169,
+      "service_silo": [
+        30,
+        35,
+        36,
+        35,
+        35,
+        35,
+        35,
+        30
+      ],
+      "route_proposals": 19946,
+      "adaptive_grants": 74,
+      "hard_holds": 4769,
+      "route_length_milli": 6323150
+    },
+    "snapshot": [
+      {
+        "tick": 1,
+        "deliveries": 0,
+        "acks": 0,
+        "holds": 84,
+        "queue": 0,
+        "waiting": 0
+      },
+      {
+        "tick": 301,
+        "deliveries": 34,
+        "acks": 33,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 78
+      },
+      {
+        "tick": 601,
+        "deliveries": 72,
+        "acks": 71,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 40
+      },
+      {
+        "tick": 901,
+        "deliveries": 109,
+        "acks": 108,
+        "holds": 3,
+        "queue": 8,
+        "waiting": 54
+      },
+      {
+        "tick": 1201,
+        "deliveries": 147,
+        "acks": 146,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 35
+      },
+      {
+        "tick": 1501,
+        "deliveries": 184,
+        "acks": 183,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 48
+      },
+      {
+        "tick": 1801,
+        "deliveries": 222,
+        "acks": 221,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 42
+      },
+      {
+        "tick": 2101,
+        "deliveries": 259,
+        "acks": 258,
+        "holds": 0,
+        "queue": 8,
+        "waiting": 38
+      }
+    ],
+    "end_digest": "12f200ef53415e5ce96c67b3f695dd961dc98d38e93bf3bfe4fec4d800775b78"
+  }
+}
