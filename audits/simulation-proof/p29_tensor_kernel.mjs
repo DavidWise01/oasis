@@ -97,4 +97,3 @@ export class TensorRuntime {
     this.#ledger.push(event);this.pair=after;this.tick--;return event;
   }
 }
-
