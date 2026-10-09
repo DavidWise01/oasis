@@ -1,0 +1,38 @@
+name: ROOT0 P1.8 Lean proof and exhaustive replay
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "audits/simulation-proof/P18ConditionalRecovery.lean"
+      - "audits/simulation-proof/P18-conditional-predecessor-code.mjs"
+      - "audits/simulation-proof/p13-i13-t2-original-pinned.mjs"
+      - ".github/workflows/root0-p18-lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  executable-model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Reproduce 55,296-state reverse and entropy test
+        run: node audits/simulation-proof/P18-conditional-predecessor-code.mjs
+  formal-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pin Lean 4 toolchain on CI runner
+        run: echo 'leanprover/lean4:v4.33.1' > lean-toolchain
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Typecheck abstract inverse and Boolean pigeonhole
+        run: lean audits/simulation-proof/P18ConditionalRecovery.lean
