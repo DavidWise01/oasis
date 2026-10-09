@@ -1,0 +1,42 @@
+{
+  "schema": "ROOT0-P2.3-eight-state-photon-transport-countermodels-v1",
+  "tested_utc_date": "2026-10-09",
+  "source_git_blob": "bf84cfc8746ccaf35c0204050ada8c3980817cb8",
+  "canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8",
+  "ticks_per_model": 12288,
+  "source_transitions_total": 24576,
+  "core_mismatches": 0,
+  "logical_clock_failures": 0,
+  "parent_seal_failures": 0,
+  "bit_space": 8,
+  "direction_per_step_norm_squared": 3,
+  "direction_state_lawA": "identity",
+  "direction_state_lawB": "(bit+1)%8",
+  "initial_bit": 0,
+  "final_core_generation": 1024,
+  "final_core_phase": 0,
+  "final_signed_component_displacement_A": [
+    12288,
+    12288,
+    12288
+  ],
+  "final_signed_component_displacement_B": [
+    0,
+    0,
+    0
+  ],
+  "external_si_calibration": {
+    "step_m": 1.616255e-35,
+    "tick_s": 5.391246366844893e-44,
+    "total_t_s": 6.624763535579004e-40,
+    "straight_displacement_m": 1.986054144e-31,
+    "rotate8_displacement_m": 0
+  },
+  "all_eight_rotate_orbits_closed": true,
+  "eight_corner_directions_fail_45degree_rotational_closure": true,
+  "lean_machine_checked": false,
+  "physics_prediction_derived_from_kernel": false,
+  "physical_simulation_proven": false,
+  "result": "PASS_CONSTRUCTIVE_TRANSPORT_NONUNIQUENESS",
+  "scope": "Both photon transport choices are externally added; same frozen source core; rotating path is inconsistent with ballistic vacuum photon observation if treated literally."
+}
