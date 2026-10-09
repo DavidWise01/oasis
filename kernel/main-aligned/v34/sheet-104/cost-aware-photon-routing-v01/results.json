@@ -1,0 +1,86 @@
+{
+  "schema": "oasis/sheet104/cost-aware-photon-routing-v01",
+  "topology": {
+    "box": "8:0:8:0:8:0:8",
+    "silos": 8,
+    "aggregate_domain": "D8",
+    "toroids": 72,
+    "copper_planes": 88,
+    "lanes": 120,
+    "photon_states_per_lane": 8,
+    "d8_queue_slots": 8,
+    "workers": 2
+  },
+  "routing_objective": "lowest among admissible 2-segment 3D route estimates, score_milli=route_length_milli+1000*fixed SHEET102 edge toll; parent first-clear is selectable",
+  "comparison_ticks": 2200,
+  "results": {
+    "normal": {
+      "baseline": {
+        "via": 1331,
+        "acks": 403,
+        "edge_toll": 2770,
+        "geometry_milli": 9320982,
+        "clearance_deferrals": 2042
+      },
+      "cost": {
+        "via": 1331,
+        "acks": 403,
+        "edge_toll": 2770,
+        "geometry_milli": 5214000,
+        "clearance_deferrals": 2047,
+        "nonfirst_route_grants": 897
+      }
+    },
+    "synchronized": {
+      "baseline": {
+        "via": 1253,
+        "acks": 458,
+        "edge_toll": 2610,
+        "geometry_milli": 9534488,
+        "clearance_deferrals": 6869
+      },
+      "cost": {
+        "via": 1253,
+        "acks": 458,
+        "edge_toll": 2610,
+        "geometry_milli": 5808600,
+        "clearance_deferrals": 6869,
+        "nonfirst_route_grants": 844
+      }
+    },
+    "uneven": {
+      "baseline": {
+        "via": 1341,
+        "acks": 450,
+        "edge_toll": 2790,
+        "geometry_milli": 9740528,
+        "clearance_deferrals": 4512
+      },
+      "cost": {
+        "via": 1341,
+        "acks": 450,
+        "edge_toll": 2790,
+        "geometry_milli": 5765100,
+        "clearance_deferrals": 4512,
+        "nonfirst_route_grants": 900
+      }
+    }
+  },
+  "integrity": {
+    "wasm_assertions_passed": 494975,
+    "sheet103_baseline_same_state_comparisons_passed": 157197,
+    "real_chromium_browser": true,
+    "chromium_page_errors": 0,
+    "zip_crc": "PASS",
+    "zip_files": 21,
+    "wasm_bytes": 21978,
+    "standalone_viewer_contains_base64_wasm": true,
+    "html_sha256": "bcce5c6ec6fd4e7c9a7867be5487120096a2575a1913492e42a378edd9f876b2"
+  },
+  "limits": [
+    "Reduction pertains to geometric route length only; photon-edge toll identical between policies",
+    "ACKs remain synthetic; no increase in aggregate throughput",
+    "3D centerline clearance simulation, not electromagnetic/PCB DRC",
+    "All 21 executable sources, tests and WASM binary provided in conversation ZIP; GitHub currently commits embedded executable viewer and audit"
+  ]
+}
