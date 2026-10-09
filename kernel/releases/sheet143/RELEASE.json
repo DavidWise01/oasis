@@ -1,0 +1,20 @@
+{
+  "schema": "oasis.sheet143.release.v1",
+  "status": "NEW_GATE_PASS_INHERITED_TIMING_SENSITIVE",
+  "newChecksPassed": 53,
+  "inheritedChecksPassedOnSeparateRerun": 901,
+  "combinedRunFullyStable": false,
+  "inheritedFlakyTest": "SHEET142 simultaneous resource writes share membership lock",
+  "browserControlsPassed": 7,
+  "browserExportPassed": true,
+  "preservedInheritedFiles": 335,
+  "fullArchive": "SHEET143-crash-recoverable-transactions.zip",
+  "sha256": "44a9b7b2e6b07c801bfae86c8236d02f07a32167c5e094316101eb2e4977c39a",
+  "sourcesIncludedInFullArchive": [
+    "txn143.js",
+    "gate143.js",
+    "crash143.js",
+    "run-all.sh"
+  ],
+  "scope": "single shared filesystem and locally signed checkpoint"
+}
