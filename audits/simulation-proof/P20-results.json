@@ -1,0 +1,48 @@
+{
+  "schema": "ROOT0-P2.0-source-linked-conditional-wave-test",
+  "pinned_time_tick_s": 5.391246366844893e-44,
+  "planck_length_m": 1.616255e-35,
+  "c_m_s": 299792458,
+  "baseline_hypothesis": "standard photon propagation speed c independent of energy and orientation",
+  "physical_candidate": "3D finite-difference scalar wave, NEW hypothesis not derived from frozen ROOT0",
+  "naive_planck_cubic": {
+    "a_m": 1.616255e-35,
+    "CFL3D_rhs_max": 3,
+    "stable": false,
+    "nyquist_growth_amplitude_per_tick": 9.898979485566356
+  },
+  "borderline_candidate": {
+    "a_m": 2.7994357779872355e-35,
+    "CFL3D_rhs_max": 1,
+    "strict_stability": false,
+    "axis_delay_30_vs_1GeV_1Gpc_s": 1.5519451400440028e-19,
+    "diagonal_delay_s": 0
+  },
+  "interior_candidate": {
+    "a_m": 3.23251e-35,
+    "CFL3D_rhs_max": 0.75,
+    "strict_stability": true,
+    "axis_delay_30_vs_1GeV_1Gpc_s": 2.3279177100660055e-19,
+    "diagonal_delay_s": 2.5865752334066792e-20
+  },
+  "timing_one_ms_hypothetical": {
+    "required_axis_spatial_pitch_m": 2.247151361214703e-27,
+    "precision_not_actual_Fermi_measurement": true
+  },
+  "limitations": [
+    "Maxwell/QED coupling absent",
+    "not a frozen I13 transition derivation",
+    "cosmological redshift ignored",
+    "preferred orientation unspecified",
+    "source emission offsets unmodeled"
+  ],
+  "evidence_sources": [
+    "https://physics.nist.gov/cuu/pdf/all.pdf",
+    "https://www.nature.com/articles/nature08574",
+    "https://doi.org/10.1103/PhysRevD.87.122001"
+  ],
+  "executed_local_node_test": "PASS conditional equations; FAIL naive lattice stability",
+  "lean_compiled": false,
+  "experimental_test_run": false,
+  "simulation_theory_proven": false
+}
