@@ -1,9 +1,9 @@
-# ROOT0 P3.38 — Three simultaneous symbolic photon carriers
+# ROOT0 P3.38 — Four simultaneous symbolic photon carriers (corrected)
 
-Canonical literal `{{jane::pink::patricia::purple::toph::green::}}`. Jane, Patricia and Toph are distinct concurrent carriers with one pinned scalar-0 reference. Color labels are identity metadata, not measured electromagnetic wavelengths. All carriers share 4 × 360 = 1,440 symbolic positions; separate Möbius sheets alternate by hop. Greg's 366 × 4 calendar cycle is unchanged.
+Canonical literal: `{{jane::pink::patricia::purple::toph::green::icarium::blue::}}`. Jane, Patricia, Toph and Icarium are four concurrent independently named carriers around one pinned scalar-0 reference. Colors are identity labels, not physical wavelengths.
 
-For a deterministic demonstration, offsets 0°,120°,240° are selected for Jane, Patricia, Toph. This equilateral arrangement is a test convention rather than uniquely determined by the literal. The model does not establish three physically trapped photons or their real spin dynamics.
+Patricia's shared 4 × 360 = 1,440 symbolic positions and Möbius orientation are retained; Greg's separate 4 × 366 calendar cycle is unchanged. Offsets 0°,90°,180°,270° are a **new illustrative layout** chosen for four carriers, not a physically determined rule. Prior three-carrier test and 120° layout are superseded without deleting commit history.
 
-The committed test checks all 1,440 indices, 4,320 carrier states, root stability, angular separation and inverse index mapping. Exact committed Node execution and remote CI are currently unverified.
+Test source covers all 1,440 positions and 5,760 per-carrier states with label preservation, index roundtrips, phase-offset consistency and sign alternation. Remote CI remains unverified. This is a symbolic representation, not evidence of four photon orbits around a galactic center.
 
-Next: couple three independent retained complex channels to the variable-sized even/odd Stargate, verify conservation and per-carrier reversibility without merging identities.
+Next: bind four independently retained carrier channels into the reversible gate hierarchy.
