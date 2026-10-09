@@ -1,0 +1,132 @@
+{
+  "schema": "oasis/sheet97/eight-silo-fairness-governor-v01",
+  "parent_sheet": 96,
+  "topology": {
+    "box": "8:0:8:0:8:0:8",
+    "silos": 8,
+    "aggregate_domain": 8,
+    "logical_domains": 9,
+    "toroid_addresses": 72,
+    "copper_layers": 88,
+    "stable_lanes": 120,
+    "d8_fifo_capacity": 8,
+    "d8_workers_for_benchmark": 2,
+    "d8_service_ticks_per_transaction": 8,
+    "modeled_ack_delay_ticks": 5
+  },
+  "controller": {
+    "baseline": "RR source-silo admission with per-source oldest request",
+    "governor": "least-ever-admitted eligible source domain; 96-tick global oldest waiting request override; FIFO order after D8 admission",
+    "causal": true,
+    "age_trigger_not_maximum_wait_guarantee": true,
+    "max_admissions_per_tick": 1,
+    "independent_service_worker_count_unchanged": true
+  },
+  "normal_2200": {
+    "baseline": {
+      "acks": 401,
+      "cumulative_upstream_wait_lane_ticks": 5341,
+      "max_admission_wait_ticks": 96,
+      "clearance_deferrals": 2336,
+      "service_counts": [
+        42,
+        58,
+        50,
+        50,
+        50,
+        49,
+        60,
+        44
+      ]
+    },
+    "governor": {
+      "acks": 403,
+      "cumulative_upstream_wait_lane_ticks": 5370,
+      "max_admission_wait_ticks": 92,
+      "clearance_deferrals": 2361,
+      "service_counts": [
+        43,
+        60,
+        50,
+        50,
+        50,
+        49,
+        59,
+        44
+      ]
+    }
+  },
+  "stress_2200": {
+    "baseline": {
+      "acks": 449,
+      "cumulative_upstream_wait_lane_ticks": 26409,
+      "max_admission_wait_ticks": 385,
+      "clearance_deferrals": 6103,
+      "service_counts": [
+        46,
+        65,
+        55,
+        56,
+        57,
+        55,
+        68,
+        48
+      ],
+      "spread_max_minus_min": 22
+    },
+    "governor": {
+      "acks": 457,
+      "cumulative_upstream_wait_lane_ticks": 23523,
+      "max_admission_wait_ticks": 377,
+      "clearance_deferrals": 6054,
+      "service_counts": [
+        47,
+        68,
+        55,
+        56,
+        58,
+        55,
+        70,
+        49
+      ],
+      "spread_max_minus_min": 23,
+      "age_overrides": 90
+    }
+  },
+  "validation": {
+    "wasm_checks": {
+      "passed": 56,
+      "total": 56
+    },
+    "instrumented_svg_checks": {
+      "passed": 81,
+      "total": 81
+    },
+    "chromium": {
+      "render_passed": true,
+      "page_errors": 0,
+      "real_browser_stress_snapshot": {
+        "ticks": 2266,
+        "acked": 467,
+        "delivered": 467,
+        "ack_pending": 0,
+        "swept_path_conflicts": 0,
+        "age_overrides": 90,
+        "clearance_deferrals": 6135
+      }
+    },
+    "zip_crc": "passed",
+    "zip_file_count": 15,
+    "deterministic_replay": true,
+    "all_120_lane_ids_preserved": true,
+    "all_72_floor_toroid_addresses_visited": true
+  },
+  "outcome": "Reduced aggregate waiting by 2886 lane-ticks (10.9%) and +8 modeled ACKs in stress; slight normal-traffic regression and no equal-per-silo service improvement. The governor is not proven to universally improve fairness or throughput.",
+  "limitations": [
+    "synthetic ACKs",
+    "symbolic synthetic-unit clearance, not solid-volume PCB verification",
+    "96-tick threshold is admission priority, not hard worst-case bound",
+    "source-silo raw service disparity worsened from 22 to 23",
+    "head-to-head simulation not actual networking"
+  ]
+}
