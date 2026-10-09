@@ -1,0 +1,10 @@
+/** P3.27 reproducible streamed vs cached comparisons, using P3.26 source. */
+import {performance} from 'node:perf_hooks';
+import {shape,at,execute,norm} from './p326_stream.mjs';
+const mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];
+function gate(v,g,rev){const o=v.map(z=>z.slice()),a=o[0],b=o[g.port],t=Math.cos(g.theta),r=Math.sin(g.theta),p=[Math.cos(g.phase),Math.sin(g.phase)];if(rev){const x=[t*a[0]+r*b[1],t*a[1]-r*b[0]];o[g.port]=[t*b[0]+r*a[1],t*b[1]-r*a[0]];o[0]=mul(x,[p[0],-p[1]])}else{const x=mul(a,p);o[0]=[t*x[0]-r*b[1],t*x[1]+r*b[0]];o[g.port]=[t*b[0]-r*x[1],t*b[1]+r*x[0]]}return o}
+function cacheRun(s,gs,rev=false){let x=s;for(let i=rev?gs.length-1:0;rev?i>=0:i<gs.length;rev?i--:i++)x=gate(x,gs[i],rev);return x}
+export function compare(even,odd,cacheMax=99999){const geometry=shape(even,odd),input=[[1,0],[0,0],[0,0]];let t=performance.now();const out=execute(input,geometry),back=execute(out,geometry,true),streamMs=performance.now()-t;const recovery=Math.max(...back.flatMap((z,i)=>z.map((v,j)=>Math.abs(v-input[i][j]))));const normError=Math.abs(norm(input)-norm(out));if(recovery>1e-8||normError>1e-8)throw Error('failed streamed inverse');let cachedMs=null,buildMs=null,agreement=null;
+if(geometry.total<=cacheMax){t=performance.now();const gates=Array.from({length:geometry.total},(_,i)=>at(geometry,i+1));buildMs=performance.now()-t;t=performance.now();const alt=cacheRun(input,gates),rest=cacheRun(alt,gates,true);cachedMs=performance.now()-t;agreement=Math.max(...alt.flatMap((z,i)=>z.map((v,j)=>Math.abs(v-out[i][j]))));if(agreement>1e-11||Math.max(...rest.flatMap((z,i)=>z.map((v,j)=>Math.abs(v-input[i][j]))))>1e-8)throw Error('cached mismatch');}
+return {stages:geometry.total,streamMs,buildMs,cachedMs,agreement,normError,recovery};}
+if(process.argv[1]&&import.meta.url===new URL('file://'+process.argv[1]).href){const pairs=[[2,1],[50,49],[500,499],[5000,4999],[50000,49999],[500000,499999]];console.log(JSON.stringify({status:'PASS',runs:pairs.map(([e,o])=>compare(e,o))},null,2));}
