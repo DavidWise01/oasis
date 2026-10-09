@@ -6,4 +6,4 @@
 
 **Critical source distinction:** the 44 paired optical constants are *measured pure Au and pure Ag* (Johnson–Christy 1972), **not measured electrum alloy**. Alloy dielectric mixing and index mixing are independent approximations. The original 208 cipher is unchanged and does not determine a unique physical coupling coefficient or length scale.
 
-**Result:** executable mathematical PASS / physical unique-signature FAIL / real-universe simulation not established. See [audit report](../../audits/simulation-proof/P35-electrum-spectral-report-2026-10-09.md).
+**Result:** executable mathematical PASS / physical unique-signature FAIL / real-universe simulation not established. See [audit report](../../../audits/simulation-proof/P35-electrum-spectral-report-2026-10-09.md).
