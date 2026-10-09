@@ -1,0 +1,33 @@
+{
+  "schema": "oasis.sheet156.release.v1",
+  "sheet": 156,
+  "previousSheet": 155,
+  "title": "Quorum Witness Rollback Floor",
+  "archive": "SHEET156-quorum-witness-rollback-floor.zip",
+  "archiveSha256": "5489a58c2d9f10b8d42f636a4a3fdb5e85beec6ac979d9744d2d803fcf8d8f54",
+  "baselineFilesPreserved": 572,
+  "tests": {
+    "new": 73,
+    "inherited": 1446,
+    "combinedPassed": 1519,
+    "combinedExit": 0,
+    "chromiumScenarios": 11,
+    "chromiumExport": true
+  },
+  "processes": {
+    "witnesses": 3,
+    "authority": 3,
+    "finality": 3,
+    "floorProxy": 1
+  },
+  "quorum": "2/3",
+  "physicalHosts": 1,
+  "fullExecutableSource": "Source in same release directory, original complete lineage in standalone ZIP",
+  "knownLimits": [
+    "Single physical host",
+    "Not a proof of globally atomic cross-host commit",
+    "Witness quorum rollback/compromise not covered",
+    "Automated lagging-witness catchup not implemented",
+    "Inherited raw S147 COMPLETE API and intermittent S142 check remain"
+  ]
+}

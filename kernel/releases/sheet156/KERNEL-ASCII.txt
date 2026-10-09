@@ -1,0 +1,59 @@
+OASIS / ROOT0 / SHEET 156 -- QUORUM WITNESS KERNEL
+====================================================
+  CLIENT TRANSACTION
+         |
+  S147 AUTHORITY 2/3 -- signed BEGIN + leader epoch
+         |
+  S153 PHYSICAL SEGMENTED LOG -- fsync
+         |
+  S151 RECEIPT / MERKLE INCLUSION / CHECKPOINT
+         |
+  S155 FINALITY 2/3 -- PREPARED
+         |
+  S156 ANCHOR GATEWAY
+         |\   verifies fresh 2/3 witness HEAD votes
+         | \  validates nonce, signature, same slot + head
+         |
+  S151 INDEPENDENT ANCHOR
+         |
+  LIVE S147 COMPLETE 2/3
+         |
+  S155 FINALITY 2/3 -- FINAL
+         |
+  S156 FLOOR PROXY (coordination only; not sole trusted source)
+         |
+  VERIFY 2/3 distinct FINAL votes over exact receipt
+         |
+         +-------------+-------------+
+         |             |             |
+     WITNESS RED  WITNESS BLUE   WITNESS GREEN
+     Ed25519+fsync Ed25519+fsync  Ed25519+fsync
+         |             |             |
+         +------- 2/3 DURABLE PREPARE
+                       |
+              2/3 SIGNED COMMIT
+                       |
+              2/3 NONCE-BOUND HEADS
+                       |
+             REPLICA/GATEWAY VERIFY
+                       |
+                   NEXT SLOT
+
+REJECTION MATRIX
+- 1 witness offline: 2-of-3 remains live
+- 2 witnesses offline: fail closed
+- forged witness signatures: reject
+- replayed signed head: reject wrong random nonce
+- conflicting prepare at same slot: reject even after restart
+- tampered local witness journal: isolate the one bad member
+- restored older finality replica: reject below quorum floor
+- S147 quorum partition: no finality progression
+- orphaned pending witness prepare: block conflicting proposal
+
+Verified: 73 new checks + 1446 inherited = 1519, combined exit 0.
+Chromium: 11 interactive scenarios, JSON export + screenshot.
+Preserved baseline: all 572 SHEET 155 files byte-for-byte.
+
+The full numbered 56-stage ASCII process is in the complete ZIP.
+Current tests use independently signed LOCAL processes on ONE host.
+Global linearizability and majority-fault tolerance are not proven.
