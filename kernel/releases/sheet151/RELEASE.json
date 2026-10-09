@@ -1,0 +1,27 @@
+{
+  "schema": "oasis.sheet151.release.v1",
+  "sheet": 151,
+  "name": "Compact Journal Consistency and Independent Checkpoint Anchor",
+  "previousSheet": 150,
+  "archive": "SHEET151-compact-consistency-anchor.zip",
+  "archiveSha256": "4cdc15f30dc90f93e40fa0f963cc67ce37d404688798fee1a10573cc069f7816",
+  "lineage": {
+    "preservedFiles": 461,
+    "allIdentical": true
+  },
+  "tests": {
+    "new": 64,
+    "inherited": 1198,
+    "combinedFinalPassOutput": 1262,
+    "combinedExitCaptured": false,
+    "browserScenarios": 8,
+    "browserExportPassed": true
+  },
+  "scope": {
+    "physicalHosts": 1,
+    "anchorProcess": 1,
+    "productionSafe": false,
+    "integrationIntoReplicaComplete": false
+  },
+  "disclaimer": "Demo uses separate local process via trusted IPC, custom Merkle forest, O(N) local replay. Full executable code and frozen lineage are packaged in ZIP, not in this Git commit."
+}
