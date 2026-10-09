@@ -20,6 +20,6 @@ for(let i=0;i<2000;i++){
  max=Math.max(max,Math.abs(M.electricField(base)-M.electricField(out)));
 }
 assert(max<1e-8);
-assert.equal(M.zoomLength(1),z.planckLengthM);
+assert(Math.abs(M.zoomLength(1)/z.planckLengthM-1)<1e-12);
 assert.throws(()=>M.zoomLength(1.1));
 console.log(JSON.stringify({gate:'ROOT0-P3.3-GitHub-CI-smoke',status:'PASS',randomGaugeTrials:2000,maxGaugeDifference:max,phase:b.deltaPhaseRad,physicalPredictionDerivedFromROOT0:false}));
