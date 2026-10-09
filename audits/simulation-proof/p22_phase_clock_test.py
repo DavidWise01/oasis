@@ -12,7 +12,7 @@ import subprocess
 import sys
 
 HERE=pathlib.Path(__file__).resolve().parent
-FROZEN=HERE if (HERE/'kernel.py').exists() else HERE.parents[2]/'kernel'/'frozen'/'ae-generative-first-v92'
+FROZEN=HERE if (HERE/'kernel.py').exists() else HERE.parents[1]/'kernel'/'frozen'/'ae-generative-first-v92'
 sys.path.insert(0,str(FROZEN))
 import kernel
 
