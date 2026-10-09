@@ -1,0 +1,18 @@
+{
+  "schema": "oasis.sheet144.release-manifest.v1",
+  "sheet": 144,
+  "baseSheet": 143,
+  "testRun": {
+    "new": 56,
+    "inherited": 901,
+    "total": 957,
+    "browserScenarios": 7,
+    "browserJsonExport": true
+  },
+  "inheritedFilesPreserved": 353,
+  "archiveName": "SHEET144-quorum-recovery-kernel.zip",
+  "archiveSha256": "c91f2d0d6131340448bbb9096db5fec2f5e1cdffed4745059a9781819eb49cd6",
+  "baselineTimingCaveat": "SHEET142 inherited concurrency timing assertion previously intermittent",
+  "scope": "Local cooperating filesystem; signed local operator approvals and recovery; no independent-host lock revocation",
+  "githubScope": "Documentation and SVG dashboard and release manifest only. Runnable source distributed in ZIP."
+}
