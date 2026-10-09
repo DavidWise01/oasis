@@ -1,0 +1,25 @@
+{
+  "schema": "oasis.sheet145.release-receipt.v1",
+  "newTests": {
+    "passed": 60,
+    "total": 60
+  },
+  "inherited": {
+    "passedOnRerun": 957,
+    "total": 957,
+    "firstRun": "known SHEET 142 timing-sensitive assertion failed",
+    "consistentPass": false
+  },
+  "successfulRerunTotal": 1017,
+  "browser": {
+    "scenarios": 6,
+    "export": "PASS",
+    "renderMethod": "set_content"
+  },
+  "baselinePreservedFiles": 364,
+  "archive": "SHEET145-recovery-fencing-kernel.zip",
+  "archiveSha256": "0277fc8f8f074b02590fc46fda0e246d075fa0524a7b96a20bc84ed601b7dc93",
+  "scope": "local cooperative filesystem fencing; not independently operated distributed resources",
+  "fullSourceLocation": "Downloadable ZIP in release chat",
+  "productionCertified": false
+}

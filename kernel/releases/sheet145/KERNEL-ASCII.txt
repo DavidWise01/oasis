@@ -1,0 +1,23 @@
+OASIS / ROOT0 / SHEET 145
+SHEET 144 (IMMUTABLE)
+   |
+2/3 signed operator recovery plan
+   |
+FENCE GENERATION 1 -> 2 (durable local register)
+   |
+SIGNED EXTERNAL CHECKPOINT + INDEPENDENTLY RETAINED FLOOR
+   |
+RECOVERY JOURNAL MUST BE RECOVERED
+   |
++----------------------+-------------------------+
+| OLD WRITER TOKEN G1  | NEW WRITER TOKEN G2     |
+| REJECT               | VERIFY AND SERIALIZE    |
++----------------------+-------------------------+
+                          |
+                    RESOURCE SAVE
+                          |
+                 HASH-LINKED RECEIPT
+
+SAFETY: On interrupted pin or pending recovery: HOLD.
+KNOWN: Inherited SHEET 142 simultaneous-request timing-sensitive test.
+SCOPE: cooperating single-filesystem writers only.
