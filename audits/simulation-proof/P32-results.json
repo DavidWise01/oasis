@@ -1,0 +1,31 @@
+{
+  "gate": "ROOT0-P3.2-minus211mV-orange-wave",
+  "status": "PASS",
+  "voltageV": -0.211,
+  "millivolts": -211,
+  "modeledChargePorts": [
+    "-e",
+    "+e"
+  ],
+  "energyEVByPort": [
+    0.211,
+    -0.211
+  ],
+  "dtS": 1e-15,
+  "absoluteVoltagePhasePerGateRad": 0.32056543152718286,
+  "photonEquivalentWavelengthM": 0.000005876028361763045,
+  "logarithmicZoomDecades": 29.560574001916343,
+  "PlanckLengthDisplayEndpointM": 1.616255e-35,
+  "voltagePhysicallyReachesPlanckLength": false,
+  "full208ForwardAnd208ReverseCycles": 1200,
+  "randomizedPhaseGateApplications": 499200,
+  "maxComplexRecoveryResidual": 3.707397181818817e-14,
+  "maxNormDrift": 8.493206138382448e-14,
+  "ChromiumStandaloneControlTests": "PASS",
+  "zeroPinPreserved": true,
+  "frozenV92Modified": false,
+  "LeanCompiled": false,
+  "realUniverseSimulatedProven": false,
+  "copyOfP31SourceByteExact": true,
+  "license": "Symbolic candidate, potential-to-phase postulate and scale zoom independently introduced."
+}
