@@ -1,0 +1,25 @@
+{
+  "schema": "oasis.sheet148.release.v1",
+  "title": "Replicated Authority Protected Resource Integration",
+  "sheet": 148,
+  "previous": 147,
+  "tests": {
+    "new": 46,
+    "inherited": 1068,
+    "combinedPassedLatestRun": 1114,
+    "chromiumScenarios": 8,
+    "exportPassed": true
+  },
+  "inheritedPreservedFiles": 409,
+  "physicalHosts": 1,
+  "replicas": 3,
+  "resources": 1,
+  "gitScope": "Release documentation, interactive demo, source SHA256 manifest; executable source contained in separate ZIP",
+  "zipFilename": "SHEET148-replicated-resource-integration.zip",
+  "zipSha256": "76e2a1d3c043638e00680b8f81d58f2e69cdbff6d1dccbfc8f96b29fac813d4c",
+  "securityLimitations": [
+    "Underlying SHEET147 COMPLETE accepts unsigned resource receipt hash if called outside verifying bridge",
+    "No independently hosted replicas",
+    "SHEET142 intermittent inherited concurrency assertion remains unresolved"
+  ]
+}
