@@ -1,0 +1,189 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROOT0 P3.3 — −211 mV Physics Boundary</title>
+<meta name="description" content="Gauge-invariant vacuum null versus conditional electro-optic response for the ROOT0 -211mV wrapper">
+<style>:root{color-scheme:dark;--bg:#050606;--panel:#0e1010;--edge:#33302c;--muted:#9b9b96;--ink:#f1efe9;--orange:#ff9c2a;--accent:#ffbe66;--teal:#49d1b3;--rust:#402918}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 30% -15%,#292016 0%,#050606 48%);color:var(--ink);font:14px/1.55 system-ui,Segoe UI,Arial,sans-serif}main{max-width:1390px;margin:auto;padding:24px 20px 42px}header{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:18px}header h1{font-size:clamp(32px,4.3vw,54px);margin:2px 0;line-height:1.08;letter-spacing:-1.5px}header h1>span{color:#f7f5ed}header h1>em{color:var(--orange);font-style:normal}header p{margin:6px 0;color:#bbb3a8}.eyebrow{font-size:11px;color:#c5965e;font-weight:750;letter-spacing:1.85px}.pill{background:#132a24;border:1px solid #2e7965;border-radius:20px;padding:11px 15px;letter-spacing:1px;color:#abead9;font-size:10px;white-space:nowrap}.pill b{color:#6ef3c7}.keys{display:flex;flex-wrap:wrap;gap:18px;font-size:11px;color:#aeb4b0;margin-bottom:15px}.keys span{display:flex;align-items:center;gap:7px}.keys i{width:10px;height:10px;display:inline-block;border-radius:3px}.keys .orange{background:var(--orange)}.keys .black{background:#000;box-shadow:0 0 0 1px #aaa}.keys .teal{background:var(--teal)}.card{background:linear-gradient(145deg,#101110,#090b0b);border:1px solid #37342f;border-radius:15px;padding:19px;box-shadow:0 8px 35px #0007}.hero{border-color:#78562d;padding:17px 19px 7px;background:linear-gradient(160deg,#17120c,#080908 65%)}.herohead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}.notation{font-size:12px;color:#a3a39c;letter-spacing:1px;margin-top:4px}.glyph{color:#ffb958;font:16px ui-monospace,Consolas,monospace;letter-spacing:1.3px;margin:7px 0}.scanpill{border:1px solid #7e5124;background:#2a1a0a;padding:8px 10px;font-size:10px;letter-spacing:1px;color:#ffb958;border-radius:7px}.hero canvas{width:100%;height:220px;display:block;max-width:100%;border:1px solid #35261c;border-radius:9px;background:#000}.wavefoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#b7a48c;font-size:11px;padding:9px 1px 3px}.wavefoot b{color:#ffb663}.metrics{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:12px;margin:14px 0}.metric{padding:15px;border:1px solid #303433;background:#0b1010;border-radius:12px}.metric small{display:block;color:#919a95;font-size:10px;letter-spacing:1px}.metric strong{display:block;color:#ffbf77;font-size:clamp(18px,2vw,27px);font-variant-numeric:tabular-nums;letter-spacing:-.5px;margin:5px 0}.metric span{display:block;font-size:11px;color:#8d9691}.columns{display:grid;grid-template-columns:minmax(320px,.9fr) minmax(360px,1.1fr);gap:14px}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}.card h2{font-size:16px;letter-spacing:.2px;margin:0}.caption{color:var(--muted);font-size:12px;margin:0 0 10px}.quiet,button{border-radius:8px;cursor:pointer;background:#201912;border:1px solid #664826;color:#f8d9b1;padding:8px 10px;font-size:12px;font-weight:650}button:hover{background:#402819}.inputrow{margin:11px 0}.inputrow label{display:flex;justify-content:space-between;gap:15px;font-size:12px;color:#c6beb3}.inputrow label b{color:#ffc273;font-variant-numeric:tabular-nums}input[type=range]{display:block;width:100%;margin:10px 0;accent-color:#ff9c2a;cursor:pointer}.preset{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.tag{font-size:10px;color:#a2d8cb;border:1px solid #426459;padding:5px 8px;border-radius:30px}.cases{display:grid;grid-template-columns:1fr 1fr;gap:10px}.case{border-radius:12px;border:1px solid #34413e;padding:14px;background:linear-gradient(150deg,#0b1713,#09110f)}.case.active{border-color:#724821;background:linear-gradient(150deg,#21160b,#120e0a)}.casekind{letter-spacing:1.8px;font-size:10px;color:#72baaa;font-weight:800}.case.active .casekind{color:#ffaa58}.case h3{font-size:14px;margin:5px 0}.casevalue{font-size:30px;line-height:1.3;color:#c0f9e6;font-variant-numeric:tabular-nums;font-weight:700}.casevalue small{font-size:13px}.orangevalue{color:#ffb45a}.case p{color:#aab5b0;font-size:12px;margin:4px 0 11px;min-height:65px}.result{color:#83d9c4;font-size:10px;font-weight:780;letter-spacing:.5px}.result.warn{color:#eead67}.exphead{margin:19px 0 6px;color:#b4bdba;font-weight:750;font-size:10px;letter-spacing:1.3px}.kv{padding:8px 0;display:flex;gap:15px;justify-content:space-between;border-bottom:1px solid #202a25;font-size:12px;color:#a8afa9}.kv strong{color:#ecf6ef;font-variant-numeric:tabular-nums;text-align:right}.proof{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:14px}.proof p{color:#b1aca2;font-size:12px}.proof strong{color:#eee9da}.planck{border:1px solid #4a3523;border-radius:11px;padding:15px;background:#19130c}.planck .level{font-size:24px;color:#ffbb64;margin:5px 0}.small{font-size:11px;color:#a9bfb4;margin-top:8px}footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:15px;font-size:10px;letter-spacing:.5px;color:#9ea4a0;margin-top:18px}footer #status{color:#76e9c4}canvas{image-rendering:auto}@media(max-width:960px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.columns{grid-template-columns:1fr}.proof{grid-template-columns:1fr}}@media(max-width:550px){main{padding:16px 12px}.metrics{gap:8px}.metric strong{font-size:19px}.cases{grid-template-columns:1fr}.case p{min-height:0}.glyph{font-size:13px}}
+</style></head><body><main>
+<header><div><div class="eyebrow">ROOT0 · P3.3 / PHYSICAL BOUNDARY GATE</div><h1><span>−211 mV</span> / <em>orange wave</em></h1><p>Test the signed voltage wrapper against conventional electromagnetic predictions.</p></div><div class="pill">24,000 GAUGE CHECKS <b>PASS</b></div></header>
+<div class="keys"><span><i class="orange"></i> Orange = optical wavelength / amplitude</span><span><i class="black"></i> Black = −211 mV potential wrapper</span><span><i class="teal"></i> Green = conventional gauge-invariant baseline</span></div>
+<section class="hero card"><div class="herohead"><div><div class="eyebrow">REALITY TENSOR · TWO COUNTERMODELS</div><div class="notation">Complex[0]  ·  [||||]  ⊃  [(((((())))))]</div><div class="glyph">{-e{ ..||..|....||| }+e}</div></div><div class="scanpill" id="scenarioPill">PHYSICAL COMPARISON</div></div><canvas id="waveCanvas" width="1280" height="300" aria-label="Orange optical wave through a black electrical potential enclosure"></canvas><div class="wavefoot"><span>−e &nbsp; 0 → 208</span><span>λ₀ <b id="wavelengthTag">600 nm</b> · input intensity = 1</span><span>+e &nbsp; 208 → 0</span></div></section>
+<section class="metrics" aria-label="Calculated output"><article class="metric"><small>ELECTRIC FIELD / E</small><strong id="fieldMetric">−21,100 V/m</strong><span>Only defined across electrode gap</span></article><article class="metric"><small>PHASE SHIFT / Δφ</small><strong id="phaseMetric">+0.352915 rad</strong><span>Electro-optic model, not ROOT0-derived</span></article><article class="metric"><small>INSIDE-MEDIUM Δλ</small><strong id="shiftMetric">−0.418 pm</strong><span>Vacuum wavelength remains unchanged</span></article><article class="metric"><small>INTERFEROMETER ΔI</small><strong id="intensityMetric">−13.83 pp</strong><span>Illustrative fixed bias and visibility</span></article></section>
+<div class="columns"><section class="card controls"><div class="cardhead"><h2>Boundary inputs</h2><button class="quiet" id="resetBtn">Reset −211 mV</button></div><p class="caption">Six independent variables. None are supplied by the 208-symbol cipher.</p>
+<div class="inputrow"><label for="voltage">Voltage difference <b id="voltageValue">−211 mV</b></label><input type="range" id="voltage" min="-500" max="500" step="1" value="-211"></div>
+<div class="inputrow"><label for="gap">Electrode gap <b id="gapValue">10 μm</b></label><input type="range" id="gap" min="2" max="60" step="1" value="10"></div>
+<div class="inputrow"><label for="length">Interaction length <b id="lengthValue">10 mm</b></label><input type="range" id="length" min="1" max="50" step="1" value="10"></div>
+<div class="inputrow"><label for="lambda">Vacuum wavelength <b id="lambdaValue">600 nm</b></label><input type="range" id="lambda" min="400" max="1600" step="10" value="600"></div>
+<div class="inputrow"><label for="r">Pockels coefficient <b id="rValue">30 pm/V</b></label><input type="range" id="r" min="0" max="60" step="1" value="30"></div>
+<div class="inputrow"><label for="overlap">Optical overlap <b id="overlapValue">100%</b></label><input type="range" id="overlap" min="0" max="100" step="1" value="100"></div>
+<div class="preset"><button id="reverseBtn">↔ Reverse voltage</button><button id="nullBtn">⊘ Material null</button><button id="testBtn">✓ Verify formulas</button></div></section>
+<section class="card comparison"><div class="cardhead"><h2>Two compatible physical interpretations</h2><span class="tag">same wrapper · different results</span></div>
+<div class="cases"><div class="case"><div class="casekind">MODEL A</div><h3>Uniform scalar potential</h3><div class="casevalue">0 <small>rad</small></div><p>E = 0; absolute potential is gauge-removable. No photon wavelength or phase change in vacuum.</p><span class="result">CONVENTIONAL VACUUM NULL</span></div><div class="case active"><div class="casekind">MODEL B</div><h3>Electro-optic crystal</h3><div class="casevalue orangevalue"><span id="casePhase">+0.352915</span> <small>rad</small></div><p>ΔV across electrodes creates E. A selected material coefficient converts E into optical phase.</p><span class="result warn">CONDITIONAL MATERIAL MODEL</span></div></div>
+<div class="exphead">EXPLICIT OBSERVABLES</div><div class="kv"><span>Effective Δn</span><strong id="deltaN">+3.370092 × 10⁻⁶</strong></div><div class="kv"><span>Vacuum optical frequency shift</span><strong>0 Hz</strong></div><div class="kv"><span>Gauge-invariant electrode difference</span><strong id="voltageReport">−211 mV</strong></div><div class="kv"><span>Absolute-potential photon phase</span><strong>0 rad</strong></div><div class="kv"><span>Charged-port reference (not photon)</span><strong id="chargedPhase">+0.320565 rad</strong></div></section></div>
+<section class="card proof"><div><h2>What the gate proves—and what it does not</h2><p><strong>Passed:</strong> conventional null, Pockels scaling, reversals, 24,000 gauge transforms, and the existing 208+208 cipher recovery. The probe wavelength and material response remain independent inputs.</p><p><strong>Not established:</strong> voltage-to-Planck-length compression, a unique ROOT0 spectral prediction, quantized photon dynamics or proof that the external universe is simulated.</p></div><div class="planck"><div class="eyebrow">PLANCK REFERENCE · DISPLAY ONLY</div><div class="level">1.616255 × 10⁻³⁵ m</div><p>No physical zoom follows from −211 mV. This is an independent length reference, not an output of the model.</p><button id="zoomBtn" class="quiet">Check coordinate-only scale</button><div id="zoomNote" class="small"></div></div></section>
+<footer><span>ROOT0 P3.3 · SOURCE-PRESERVING ADDENDUM · 2026-10-09</span><span id="status" role="status">PASS · arithmetic and model checks loaded.</span></footer>
+</main><script>const P=(()=>{
+/**
+ * ROOT0 P3.3 physical discrimination gate (SI units).
+ * Model A: gauge-equivalent uniform scalar potential -> zero observable vacuum shift.
+ * Model B: idealized 1D Pockels material with nonzero E from electrode difference.
+ * All r, n, gap, length, overlap, etc. are EXTRA inputs. Not derived from cipher.
+ */
+const CONSTANTS=Object.freeze({
+  voltageV:-0.211,
+  wavelengthVacuumM:600e-9,
+  n:2.2,
+  electroOpticCoeffMPerV:30e-12,
+  gapM:10e-6,
+  interactionLengthM:0.01,
+  overlap:1,
+  visibility:0.8,
+  biasRad:Math.PI/2,
+  planckLengthM:1.616255e-35,
+  hbarEVs:6.582119569e-16,
+  hcEVm:1.2398419843320026e-6
+});
+function finite(v,k){if(typeof v!=='number'||!Number.isFinite(v))throw new RangeError(`${k} must be finite`);return v;}
+function validate(p={}){
+  const z={...CONSTANTS,...p};
+  for(const [k,v] of Object.entries(z))finite(v,k);
+  if(!(z.gapM>0 && z.interactionLengthM>=0 && z.wavelengthVacuumM>0 && z.n>0 &&
+    z.overlap>=0 && z.overlap<=1 && z.visibility>=0 && z.visibility<=1 && z.planckLengthM>0))
+    throw new RangeError('Invalid optical geometry / visibility / scale');
+  return z;
+}
+/** Uniform constant potential: E=B=0, vacuum optical wavelength unchanged.
+ * The absolute scalar potential is not an observable. */
+function uniformPotentialVacuum(p={}){
+ const z=validate(p);
+ return Object.freeze({electricFieldVPerM:0,deltaIndex:0,deltaPhaseRad:0,
+   outputWavelengthVacuumM:z.wavelengthVacuumM,frequencyShiftHz:0,
+   opticalPhaseShiftFromAbsolutePotentialRad:0,model:'gauge-equivalent vacuum null'});
+}
+/** Idealized linearly coupled single polarization/material configuration.
+ * Electric field E=V/gap; d n = -(1/2)n^3 r overlap E;
+ * d phi = 2pi * L * dn / lambda_vacuum. */
+function electroOptic(p={}){
+ const z=validate(p);
+ const E=z.voltageV/z.gapM;
+ const dn=-0.5*z.n**3*z.electroOpticCoeffMPerV*z.overlap*E;
+ const dphase=2*Math.PI*z.interactionLengthM*dn/z.wavelengthVacuumM;
+ const nEff=z.n+dn;
+ if(!(nEff>0))throw new RangeError('Unphysical linear extrapolation: n_eff<=0');
+ const mediumWavelengthBeforeM=z.wavelengthVacuumM/z.n;
+ const mediumWavelengthAfterM=z.wavelengthVacuumM/nEff;
+ const normalizedIntensity=0.5*(1+z.visibility*Math.cos(z.biasRad+dphase));
+ const nullIntensity=0.5*(1+z.visibility*Math.cos(z.biasRad));
+ return Object.freeze({electricFieldVPerM:E,deltaIndex:dn,deltaPhaseRad:dphase,
+   vacuumWavelengthShiftM:0,frequencyShiftHz:0,
+   mediumWavelengthBeforeM,mediumWavelengthAfterM,
+   mediumWavelengthShiftM:mediumWavelengthAfterM-mediumWavelengthBeforeM,
+   normalizedIntensity,nullIntensity,normalizedIntensityContrast:normalizedIntensity-nullIntensity,
+   model:'conditional Pockels material; fixed optical frequency'});
+}
+/** Gauge transformation: φ'=φ-∂tχ; A'=A+∂xχ, χ=u*x*t+v*t+w*x.
+ * Potentials represented by affine derivative coefficients. */
+function gaugeTransform(base,chi){
+ for(const [k,v] of Object.entries({...base,...chi}))finite(v,k);
+ const out={phi0:base.phi0||0,phiX:base.phiX-chi.u,phiT:base.phiT||0,
+  a0:base.a0||0,aT:base.aT+chi.u,aX:base.aX||0,
+  gaugeU:chi.u,gaugeV:chi.v||0,gaugeW:chi.w||0};
+ out.phi0-=chi.v||0;
+ out.a0+=chi.w||0;
+ return out;
+}
+function electricField(base){return -base.phiX-base.aT;}
+/** Gauge-invariant gap voltage: ∫ E dx (with fixed x and negligible fringe). */
+function gaugeInvariantVoltage(base,gapM){
+ finite(gapM,'gapM'); if(gapM<=0)throw new RangeError('gap positive');
+ return electricField(base)*gapM;
+}
+/** Reference φ for hypothetical CHARGED +/-e port only, not neutral photon.
+ * This scalar phase is gauge dependent if no closed coherent reference included. */
+function referenceChargedPhase(p={},dtS=1e-15){const z=validate(p);finite(dtS,'dtS');if(dtS<=0)throw new RangeError('dt positive');return -z.voltageV*dtS/z.hbarEVs;}
+/** A log view coordinate, not a physical voltage -> distance law. */
+function zoomLength(depth,p={}){
+ const z=validate(p);finite(depth,'depth');if(depth<0||depth>1)throw new RangeError('depth in [0,1]');
+ return z.wavelengthVacuumM*Math.exp(depth*Math.log(z.planckLengthM/z.wavelengthVacuumM));
+}
+function prerequisitesMet(p={}){
+ const z=validate(p);return Boolean(z.gapM>0 && z.n>0 && z.electroOpticCoeffMPerV!==0 && z.interactionLengthM>0 && z.overlap>0);
+}
+
+return {CONSTANTS,validate,uniformPotentialVacuum,electroOptic,gaugeTransform,electricField,gaugeInvariantVoltage,referenceChargedPhase,zoomLength,prerequisitesMet};
+})();
+const el=id=>document.getElementById(id);
+const ids=['voltage','gap','length','lambda','r','overlap'];
+let params={...P.CONSTANTS};
+function fmtSigned(x,n=4){return (x>=0?'+':'−')+Math.abs(x).toFixed(n)}
+function formatEngineering(v,suffix,n=3){return fmtSigned(v,n)+' '+suffix}
+function inputs(){return {...P.CONSTANTS,voltageV:Number(el('voltage').value)/1000,
+ gapM:Number(el('gap').value)*1e-6,interactionLengthM:Number(el('length').value)*1e-3,
+ wavelengthVacuumM:Number(el('lambda').value)*1e-9,
+ electroOpticCoeffMPerV:Number(el('r').value)*1e-12,overlap:Number(el('overlap').value)/100};}
+function drawWave(model,p){
+ const canvas=el('waveCanvas'),ctx=canvas.getContext('2d');if(!ctx)return;
+ const w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);
+ ctx.fillStyle='#000000';ctx.fillRect(0,0,w,h);
+ // double black wrapper rim (potential is specified in SI; visual border is just its representation)
+ ctx.strokeStyle='#f49f45';ctx.lineWidth=1.3;ctx.strokeRect(22,18,w-44,h-36);
+ ctx.strokeStyle='#382316';ctx.lineWidth=6;ctx.strokeRect(30,26,w-60,h-52);
+ ctx.font='12px ui-monospace,Consolas,monospace';ctx.fillStyle='#a9906f';
+ ctx.fillText(`BLACK WRAPPER  ${Math.round(p.voltageV*1000)} mV`,52,57);
+ ctx.fillText('−e',52,h-50);ctx.fillText('+e',w-84,h-50);
+ const middle=h/2+8,cycles=11*600/(p.wavelengthVacuumM*1e9);
+ const wave=(phase,color,alpha,lineWidth)=>{
+   ctx.beginPath();ctx.lineWidth=lineWidth;ctx.strokeStyle=color;ctx.globalAlpha=alpha;
+   for(let j=0;j<=1150;j++){
+    const x=60+j,y=middle+61*Math.sin(j/1150*2*Math.PI*cycles+phase);
+    if(j===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+   }
+   ctx.stroke();ctx.globalAlpha=1;
+ };
+ wave(0,'#6be0bc',.36,2);wave(model.deltaPhaseRad,'#ff9f2f',1,3.5);
+ ctx.fillStyle='#ffd5a4';ctx.font='13px ui-monospace,Consolas,monospace';
+ ctx.fillText(`OPTICAL Δφ: ${fmtSigned(model.deltaPhaseRad,5)} rad`,56,h-20);
+}
+function update(){
+ try{
+ params=inputs();const p=params;const m=P.electroOptic(p),u=P.uniformPotentialVacuum(p);
+ el('voltageValue').textContent=Math.round(p.voltageV*1000)+' mV';
+ el('gapValue').textContent=Math.round(p.gapM*1e6)+' μm';
+ el('lengthValue').textContent=Math.round(p.interactionLengthM*1e3)+' mm';
+ el('lambdaValue').textContent=Math.round(p.wavelengthVacuumM*1e9)+' nm';
+ el('rValue').textContent=Math.round(p.electroOpticCoeffMPerV*1e12)+' pm/V';
+ el('overlapValue').textContent=Math.round(p.overlap*100)+'%';
+ el('fieldMetric').textContent=formatEngineering(m.electricFieldVPerM,'V/m',0);
+ el('phaseMetric').textContent=formatEngineering(m.deltaPhaseRad,'rad',6);
+ el('shiftMetric').textContent=formatEngineering(m.mediumWavelengthShiftM*1e12,'pm',3);
+ el('intensityMetric').textContent=formatEngineering(m.normalizedIntensityContrast*100,'pp',2);
+ el('deltaN').textContent=fmtSigned(m.deltaIndex*1e6,6)+' × 10⁻⁶';
+ el('voltageReport').textContent=Math.round(p.voltageV*1000)+' mV';
+ el('casePhase').textContent=fmtSigned(m.deltaPhaseRad,6);
+ el('chargedPhase').textContent=fmtSigned(P.referenceChargedPhase(p),6)+' rad';
+ el('wavelengthTag').textContent=Math.round(p.wavelengthVacuumM*1e9)+' nm';
+ el('scenarioPill').textContent=p.electroOpticCoeffMPerV===0?'MATERIAL NULL / ZERO COUPLING':'EXPERIMENTAL GEOMETRY / VARIABLE';
+ if(u.deltaPhaseRad!==0||m.frequencyShiftHz!==0)throw new Error('Vacuum null violated');
+ drawWave(m,p);el('status').textContent='PASS · values updated. Vacuum null remains 0.';
+ }catch(e){el('status').textContent='FAIL · '+e.message;throw e;}
+}
+ids.forEach(id=>el(id).addEventListener('input',update));
+el('resetBtn').addEventListener('click',()=>{const vals=[-211,10,10,600,30,100];ids.forEach((id,i)=>el(id).value=String(vals[i]));update()});
+el('reverseBtn').addEventListener('click',()=>{el('voltage').value=String(-Number(el('voltage').value));update()});
+el('nullBtn').addEventListener('click',()=>{el('r').value='0';update()});
+el('testBtn').addEventListener('click',()=>{
+ try{
+ let max=0,checks=0;
+ for(let i=0;i<800;i++){
+ const v=.5*Math.sin(i*.23),gap=(2+i%58)*1e-6,length=(1+i%49)*1e-3,r=(i%61)*1e-12;
+ const c={...params,voltageV:v,gapM:gap,interactionLengthM:length,electroOpticCoeffMPerV:r};
+ const e=P.electroOptic(c),g=P.gaugeTransform({phi0:v,phiX:-(v/gap),phiT:0,a0:0,aT:0,aX:0},{u:1e3*Math.sin(i),v:100*Math.cos(i),w:.4});
+ max=Math.max(max,Math.abs(e.deltaPhaseRad+Math.PI*c.n**3*r*c.overlap*(v/gap)*length/c.wavelengthVacuumM),
+  Math.abs(P.gaugeInvariantVoltage(g,gap)-v));
+ checks++;
+ }
+ if(max>1e-10)throw Error('validation residual > 1e-10');
+ el('status').textContent=`PASS · ${checks} gauge + optical formula checks; max residual ${max.toExponential(2)}.`;
+ }catch(e){el('status').textContent='FAIL · '+e.message;}
+});
+el('zoomBtn').addEventListener('click',()=>{const a=P.zoomLength(0,params),b=P.zoomLength(1,params);el('zoomNote').textContent=`Display-only coordinate: ${a.toExponential(3)} m → ${b.toExponential(3)} m; no physical contraction derived.`;});
+update();
+</script></body></html>
