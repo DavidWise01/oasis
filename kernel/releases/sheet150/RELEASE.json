@@ -1,0 +1,31 @@
+{
+  "schema": "oasis.sheet150.release.v1",
+  "title": "Replica-Verified Resource Journal Inclusion",
+  "sheet": 150,
+  "previous": 149,
+  "tests": {
+    "newChecks": 84,
+    "oldInheritedChecksLastExitedZero": 1114,
+    "arithmeticTotal": 1198,
+    "chromiumInteractions": 11,
+    "combinedRunnerExitCaptured": false
+  },
+  "preservedInheritedFiles": 442,
+  "transport": "four local mTLS child processes on one physical host",
+  "archive": "SHEET150-resource-journal-inclusion.zip",
+  "archiveSha256": "aa15d70293a0c1da2226f0e1e649f5981b156911cea986317270e54de9bc9148",
+  "proofLimits": {
+    "maxRecords": 128,
+    "merkleInclusion": "O(log n)",
+    "prefix": "O(n)",
+    "rfc6962Compatible": false
+  },
+  "productionAuthorized": false,
+  "externalAnchor": false,
+  "githubScope": "README, SVG, source hashes and manifest; executable sources distributed in release ZIP",
+  "riskNotes": [
+    "Signatures establish resource-signer assertions, not independent hardware durability",
+    "Inherited SHEET142 concurrency assertion still intermittently timing-sensitive",
+    "Original SHEET103 compatibility not established"
+  ]
+}
