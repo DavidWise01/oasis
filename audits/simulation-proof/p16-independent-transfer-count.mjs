@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+const alphabet=['in','out','vacant','occupied'];
+const M=alphabet.map(a=>alphabet.map(b=>(a==='vacant'&&b==='occupied'||a==='occupied'&&b==='vacant')?0:1));
+const mul=(A,B)=>A.map(row=>B[0].map((_,j)=>row.reduce((sum,a,k)=>sum+a*B[k][j],0)));
+let P=Array.from({length:4},(_,i)=>Array.from({length:4},(_,j)=>+(i===j)));
+for(let t=0;t<5;t++)P=mul(P,M);
+const deadlocks=P.reduce((a,row,i)=>a+row[i],0);
+const total=4**5, movable=total-deadlocks;
+const choose=(n,k)=> k<0||k>n?0:(k===0||k===n?1:choose(n-1,k-1)+choose(n-1,k));
+const moveCounts=[0,1,2,3,4,5].map(k=>k>=1&&k<=4?10*choose(3,k-1)*3**(4-k):0);
+const byTags=[0,1,2,3,4,5].map(t=>t<=3?80*choose(3,t):0);
+assert.equal(deadlocks,574);assert.equal(movable,450);
+assert.deepEqual(moveCounts,[0,270,270,90,10,0]);
+assert.deepEqual(byTags,[80,240,240,80,0,0]);
+console.log(JSON.stringify({matrix:M,traceM5:deadlocks,movableWords:movable,withNoMoveLifted:deadlocks*54,legalMovesByOccupancy:moveCounts,legalMovesByTagCount:byTags,legalMovesExtended:10*4**3*54},null,2));
