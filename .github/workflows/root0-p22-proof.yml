@@ -1,0 +1,39 @@
+name: ROOT0 P2.2 frozen-clock proof gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "audits/simulation-proof/p22_phase_clock_test.py"
+      - "audits/simulation-proof/P22PhaseClockNoGo.lean"
+      - "kernel/frozen/ae-generative-first-v92/kernel.py"
+      - "kernel/frozen/ae-generative-first-v92/CANON.json"
+      - ".github/workflows/root0-p22-proof.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-reachability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Test original frozen source, 12,288 transitions, 1,024 wraps and boundary attacks
+        run: python audits/simulation-proof/p22_phase_clock_test.py
+  lean-theorem:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pin Lean 4
+        run: echo 'leanprover/lean4:v4.33.1' > lean-toolchain
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Check phase-only no-go and clock theorems
+        run: lean audits/simulation-proof/P22PhaseClockNoGo.lean
