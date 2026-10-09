@@ -1,0 +1,18 @@
+{
+  "schema": "oasis.sheet157.release.v1",
+  "sheet": 157,
+  "previous": 156,
+  "previousFilesPreserved": 594,
+  "previousBytesIdentical": true,
+  "newChecks": 41,
+  "newChecksExit": 0,
+  "inheritedChecksLastPriorRelease": 1519,
+  "inheritedCurrentRerun": "timeout, partial log only",
+  "chromiumScenariosPassed": 8,
+  "chromiumExportPassed": true,
+  "zip": "SHEET157-certified-witness-catchup.zip",
+  "sha256": "6382da88df9293ce395926a8bdd4a7cad8f51ff33ada0969c17749fc65b8afc6",
+  "boundedHistoryRecords": 256,
+  "hosts": 1,
+  "notes": "full inherited frozen lineage and logs are in ZIP; older S142 timing-sensitive issue unresolved"
+}
