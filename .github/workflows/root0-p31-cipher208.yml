@@ -1,0 +1,24 @@
+name: ROOT0 P3.1 cyclic cipher 208 + mirror inverse
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality-tensor/cipher208/**'
+      - 'docs/reality-tensor/wave/**'
+      - '.github/workflows/root0-p31-cipher208.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check 208 forward and inverse mirror gates and source seams
+        run: node docs/reality-tensor/cipher208/smoke.mjs
