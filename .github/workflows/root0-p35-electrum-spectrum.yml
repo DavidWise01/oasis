@@ -1,0 +1,22 @@
+name: ROOT0 P3.5 electrum spectral identification
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality-tensor/electrum-spectrum/**'
+      - 'docs/reality-tensor/electrum/electrum_fcc.mjs'
+      - 'docs/reality-tensor/cipher208/cipher208.mjs'
+      - '.github/workflows/root0-p35-electrum-spectrum.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  spectral-countermodels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check 44 pure-metal data, alloy optical alternatives and 208 recovery
+        run: node docs/reality-tensor/electrum-spectrum/smoke.mjs
