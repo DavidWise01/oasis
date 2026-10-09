@@ -1,0 +1,99 @@
+SHEET 154  /  OASIS ROOT0  /  QUORUM-ADMITTED DISTRIBUTED FINALITY
+=====================================================================
+TRUST DOMAINS (six mTLS processes, independent per-process state dirs)
+  ROOT0 client
+      |
+      v
+  EXISTING SHEET153 RESOURCE / SEGMENTED PHYSICAL JOURNAL
+      |                  (each transaction has an immutable txid)
+      +--> RESOURCE RECEIPT [Ed25519, physical-record hash]
+      +--> RESOURCE CHECKPOINT [Ed25519, Merkle root]
+      +--> PHYSICAL INCLUSION PROOF
+      +--> SHEET148 CERTIFIED BEGIN [S147 2/3 signed votes/states]
+      |
+      v
+  NEW SHEET154 FINALITY QUORUM              INNER SHEET151 ANCHOR
+      |                                     [separate signing key]
+      |        RED FINALITY REPLICA  ---\             ^
+      +------> BLUE FINALITY REPLICA ----> QUORUM     |
+      |        GREEN FINALITY REPLICA --/     2/3     |
+      |                |                           |
+      |         PRIVATE JOURNAL EACH                |
+      |           fsync + rename                    |
+      |                |                           |
+      +--> S154 ANCHOR ADMISSION GATEWAY --mTLS----+
+      |    (only process holding anchor-authorized certificate)
+      |                |
+      +---- coordinator can call gateway but NOT inner signer
+
+FULL END-TO-END PROCESS / 42 DETERMINISTIC STAGES
+-------------------------------------------------
+ 01 CLIENT       create txid / digest / epoch
+ 02 AUTHORITY    verify elected leader term
+ 03 AUTHORITY    2/3 sign BEGIN proposal
+ 04 AUTHORITY    persist pending transaction / grant
+ 05 RESOURCE     mTLS verify grant against live authority majority
+ 06 RESOURCE     verify current fencing epoch
+ 07 RESOURCE     append to 128-per-segment PHYSICAL ledger
+ 08 RESOURCE     fsync record / segment head
+ 09 RESOURCE     issue unique Ed25519 receipt
+ 10 RESOURCE     sign segmented checkpoint / Merkle root
+ 11 COORDINATOR  build one typed immutable finality intent
+ 12 INTENT       attach signed S148 BEGIN grant
+ 13 INTENT       attach physical receipt / record / inclusion proof
+ 14 INTENT       attach latest independently signed anchor prior
+ 15 F-REPLICA R verify grant votes and 2 signed S147 states
+ 16 F-REPLICA B verify grant votes and 2 signed S147 states
+ 17 F-REPLICA G verify grant votes and 2 signed S147 states
+ 18 F-REPLICAS  each verify resource signature / checkpoint / proof
+ 19 F-REPLICAS  each fetch current anchor over pinned mTLS
+ 20 F-REPLICAS  reject stale/forked anchor, conflicting txid
+ 21 F-REPLICAS  fsync durable PREPARED, append log hash chain
+ 22 F-REPLICAS  sign S154:PREPARE votes bound to intent digest
+ 23 GATEWAY     receive exact intent + 2/3 signed prepare votes
+ 24 GATEWAY     verify votes, resource receipt, physical inclusion
+ 25 GATEWAY     compare prior with inner anchor's live head
+ 26 GATEWAY     only authenticated gateway may call inner /advance
+ 27 INNER        check append consistency and resource checkpoint
+ 28 INNER        fsync/sign new anchor snapshot
+ 29 GATEWAY     return anchor snapshot (or die: durable head remains)
+ 30 COORDINATOR  query /read / replay exact prepared intent after crash
+ 31 F-REPLICAS  independently verify LIVE anchored snapshot
+ 32 F-REPLICAS  require original 2/3 PREPARE certificate
+ 33 F-REPLICAS  fsync ANCHORED, sign S154:ANCHORED votes
+ 34 AUTHORITY    verify original resource receipt and physical proof
+ 35 AUTHORITY    2/3 sign and commit COMPLETE to own journals
+ 36 COORDINATOR  retrieve 2+ signed S147:JOURNAL completion proofs
+ 37 F-REPLICAS  validate all S147 prepare votes and chained entries
+ 38 F-REPLICAS  require 2+ independent signed COMPLETE journals
+ 39 F-REPLICAS  verify ANCHORED certificate / current anchor again
+ 40 F-REPLICAS  fsync FINAL and issue S154:FINAL signatures
+ 41 ROOT0        retain finality quorum receipt / signed high-water
+ 42 ROOT0        permit next authorized transaction / cutover
+
+FAILURE / ADVERSARY BRANCHES
+----------------------------
+ ! Forged grant / receipt / physical leaf  => PREPARE denied
+ ! 1/3 quorum / unavailable signer         => FAIL CLOSED
+ ! Direct coordinator -> inner signer      => TLS reject
+ ! Signed but stale anchor                 => REJECT
+ ! Conflicting prepared transaction        => REJECT
+ ! Gateway dies after inner fsync           => replay exact intent;
+                                               no duplicate physical append
+ ! Finality replica dies while ANCHORED    => process restart, durable replay
+ ! One forged S147 completion journal      => insufficient finality quorum
+ ! Damaged replica slot                    => hash-chain/slot check rejects
+ ! Two of three finality nodes offline     => no progress
+ ! Local SHEET142 timing-sensitive assert  => unresolved inherited issue
+
+EXPLICIT BOUNDARIES
+-------------------
+ * Test architecture: distinct mTLS processes and state directories on one host.
+ * Signed S147 grant and completion journals in the NEW gate are test fixtures;
+   they are not fetched from running SHEET153 authority services by this gate.
+ * Existing SHEET153 suite exercises live mTLS resource/authority/anchor tests.
+ * One immutable finality slot; automated epoch rotation/compaction absent.
+ * Signed anchor + signed quorum are crash-recoverable but not one atomic
+   distributed commit over independently operated machines.
+ * All participants use common local clock/host filesystem in this demonstration.
+ * Not a production failover, power-loss durability or Byzantine consensus proof.

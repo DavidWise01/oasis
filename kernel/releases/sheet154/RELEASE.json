@@ -1,0 +1,18 @@
+{
+  "schema": "oasis.sheet154.release.v1",
+  "baseline": 153,
+  "baselineFilesPreserved": 528,
+  "newChecks": 40,
+  "inheritedChecks": 1350,
+  "totalChecks": 1390,
+  "combinedExit": 0,
+  "chromiumScenarios": 8,
+  "zip": "SHEET154-quorum-admitted-finality.zip",
+  "zipSha256": "41a1d9940111650e8314496b7dc1fd4fa48f8672647809e70ff1870d4ee4c555",
+  "limits": [
+    "Test processes run on a single host",
+    "Signed S147 grant and COMPLETE journal fixture synthesized in SHEET154 new gate",
+    "One immutable finality slot; not full multi-transaction replicated authority integration",
+    "Not proven atomic over independent physical hosts"
+  ]
+}
