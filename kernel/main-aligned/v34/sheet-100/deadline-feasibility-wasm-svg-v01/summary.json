@@ -1,0 +1,79 @@
+{
+  "schema": "oasis/sheet100/deadline-feasibility-v01",
+  "parent": "SHEET99",
+  "tested_code": "Real compiled freestanding wasm32 C embedded in index.html",
+  "bounds": {
+    "simultaneous_eligible_at_D8": true,
+    "queue_slots": 8,
+    "workers": 2,
+    "service_ticks": 8,
+    "synthetic_ack_ticks": 5,
+    "target_ticks": 96,
+    "burst_demand": 120,
+    "optimistic_admission_ceiling": 32,
+    "optimistic_handoff_ceiling": 24,
+    "optimistic_ack_ceiling": 22,
+    "min_ideal_ack_ticks": 485,
+    "verdict": "PROVEN CAPACITY IMPOSSIBLE for 120 simultaneously D8-ready requests in 96 ticks; passing capacity condition never guarantees SLA"
+  },
+  "executed": {
+    "suite_100": {
+      "passed": 40,
+      "total": 40
+    },
+    "prior_99_regression": {
+      "passed": 67,
+      "total": 67
+    },
+    "real_chromium": {
+      "checks": 21,
+      "page_errors": 0,
+      "passed": true
+    },
+    "geometry": {
+      "toroids": 72,
+      "copper_traces": 88,
+      "stable_lane_ids": 120,
+      "queue_slots": 8
+    },
+    "ticks_each_scenario": 2200,
+    "normal_2w": {
+      "acks": 403,
+      "late_admissions": 0,
+      "worst_silo_p95": 74,
+      "waiting_lane_ticks": 5360
+    },
+    "burst_2w": {
+      "acks": 458,
+      "late_admissions": 88,
+      "worst_silo_p95": 345,
+      "waiting_lane_ticks": 22359
+    },
+    "skew_2w": {
+      "acks": 450,
+      "late_admissions": 35,
+      "worst_silo_p95": 169,
+      "waiting_lane_ticks": 7399
+    },
+    "burst_1w": {
+      "acks": 271,
+      "late_admissions": 259,
+      "worst_silo_p95": 792,
+      "waiting_lane_ticks": 104523
+    },
+    "deterministic_burst_replay": true
+  },
+  "sha256": {
+    "kernel_c": "801013395b8dc0fe983fe369b6dba23eae793b48521c3b6e2e8f045349e17257",
+    "wasm": "85fd7e99c28cd394b69e8fc7254e88685f05688241be79e41a41576e84f08f8b",
+    "viewer": "d45993600e83ba4e05c45f82ed1e891ba55d67330fa1752b0031af9520d5ff8f",
+    "package": "a6bdc4a44c9722d6f2fa8b4d64f6742ec5c866c09646e278fba48c1d5f0598ea"
+  },
+  "packaging": "17-file ZIP in conversation includes exact C source, compiled wasm, tests, browser screenshots, results, rebuild instructions and SHA256 manifest",
+  "limitations": [
+    "Hypothetical simultaneous-D8 eligibility is not the same as simultaneous orbit/via requests",
+    "All bounds are deliberately optimistic necessary conditions; not sufficiency guarantees",
+    "Model ACK is synthetic; geometry not physical PCB clearance",
+    "Previous SHEET99 observed traffic preserved and reproduced"
+  ]
+}
