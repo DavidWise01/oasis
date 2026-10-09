@@ -1,0 +1,110 @@
+{
+  "schema": "ROOT0-I13-P1.6-source-conservative-full-alphabet-closure",
+  "originalT2GitBlob": "49cb50bab98039e5b5c1b45e7e95f20cf76d3abe",
+  "frozenStates": 55296,
+  "fullFourSymbolWords": 1024,
+  "ringDirectedEdges": 10,
+  "supportedSourceMovePatterns": 640,
+  "supportedLiftedMoves": 34560,
+  "mixedAlphabetLiftedMoves": 30240,
+  "moveCasesByTagCount": [
+    80,
+    240,
+    240,
+    80,
+    0,
+    0
+  ],
+  "legalMovesByOccupied": [
+    0,
+    270,
+    270,
+    90,
+    10,
+    0
+  ],
+  "sourceReceiptValid": 640,
+  "conservedAllFourSymbolCounts": 640,
+  "seamLabelMatching": 640,
+  "untouchedOriginalInputs": 34560,
+  "preservedAxes": 34560,
+  "preservedWitness": 34560,
+  "reversibleLifts": 34560,
+  "witnessCommutationForLegalLift": 34560,
+  "totalDeterministicSchedulerStates": 55296,
+  "physicalWordsWithNoLegalMove": 574,
+  "physicalWordsWithLegalMove": 450,
+  "moveEligibleByTagCount": [
+    30,
+    140,
+    200,
+    80,
+    0,
+    0
+  ],
+  "schedulerAppliedMoves": 24300,
+  "schedulerStutters": 30996,
+  "schedulerCommutesWithMark": 55296,
+  "schedulerNoninjectiveImages": 4914,
+  "firstSchedulerCollision": {
+    "fromA": [
+      [
+        "occupied",
+        "vacant",
+        "vacant",
+        "in",
+        "in"
+      ],
+      [
+        "3x3",
+        "3x3",
+        "3x3"
+      ],
+      0
+    ],
+    "fromB": [
+      [
+        "vacant",
+        "vacant",
+        "occupied",
+        "in",
+        "in"
+      ],
+      [
+        "3x3",
+        "3x3",
+        "3x3"
+      ],
+      0
+    ],
+    "sameImage": [
+      [
+        "vacant",
+        "occupied",
+        "vacant",
+        "in",
+        "in"
+      ],
+      [
+        "3x3",
+        "3x3",
+        "3x3"
+      ],
+      0
+    ]
+  },
+  "firstDeadlock": [
+    "in",
+    "in",
+    "in",
+    "in",
+    "in"
+  ],
+  "firstModelMismatch": null,
+  "originalSourceExceptions": 0,
+  "provenance": "Original T2 move allows in/out ONLY as untouched spectators. This model extends its typed domain, not transport semantics for in/out.",
+  "status": "PASS_FINITE_SOURCE_CONSERVATIVE_EXTENSION",
+  "leanCompiled": false,
+  "simulationTheoryProven": false,
+  "physicalObservableDerived": false
+}
