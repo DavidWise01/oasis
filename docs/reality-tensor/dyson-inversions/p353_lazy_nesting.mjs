@@ -1,0 +1,12 @@
+/** P3.53 Exact lazy 64^-n scaling over total, boxy, circle. */
+export const SHAPES=Object.freeze({total:[60,24,12,2,1,1,0,0],boxy:[10,6,8,4,2,1,1,0,0],circle:[11,9,7,5,4,3,2,1,1,0,0]});
+export const PRIMES=Object.freeze(['jane:pink','patricia:purple','toph:green','icarium:blue']);
+export const AXES=Object.freeze(['N/S','E/W','N/E','N/W','S/E','S/W']);
+export const RADIX=64n,STEPS=1440,CHANNELS=48;
+export function shape(name){const sequence=SHAPES[name];if(!sequence)throw new RangeError('shape');const radices=sequence.slice(0,-2);return {sequence:[...sequence],radices,capacity:radices.reduce((a,v)=>a*v,1)};}
+export function depthScale(depth){if(!Number.isSafeInteger(depth)||depth<0||depth>10000)throw new RangeError('depth');return {numerator:1n,denominator:RADIX**BigInt(depth)};}
+export function encodeDigits(name,digits){const s=shape(name);if(!Array.isArray(digits)||digits.length!==s.sequence.length||digits.at(-1)!==0||digits.at(-2)!==0||digits.slice(0,-2).some((v,i)=>!Number.isInteger(v)||v<0||v>=s.radices[i]))throw new RangeError('digits');return digits.slice(0,-2).reduce((a,v,i)=>a*s.radices[i]+v,0);}
+export function decodeDigits(name,index){const s=shape(name);if(!Number.isSafeInteger(index)||index<0||index>=s.capacity)throw new RangeError('index');const digits=Array(s.radices.length);for(let i=digits.length-1;i>=0;i--){digits[i]=index%s.radices[i];index=Math.floor(index/s.radices[i]);}return [...digits,0,0];}
+export function compose({envelope,structure,channel,spinor,depth}){const s=shape(envelope);if(!Number.isInteger(structure)||structure<0||structure>=s.capacity||!Number.isInteger(channel)||channel<0||channel>=CHANNELS||!Number.isInteger(spinor)||spinor<0||spinor>=STEPS)throw new RangeError('index');const sc=depthScale(depth),prime=Math.floor(channel/12),axis=Math.floor(channel/2)%6,sign=channel%2===0?-1:1;return {root:0,envelope,digits:decodeDigits(envelope,structure),channel,prime:PRIMES[prime],axis:AXES[axis],sign,hop:Math.floor(spinor/360),step:spinor%360,sheet:Math.floor(spinor/360)%2===0?-1:1,depth,scale:sc};}
+export function recover(s){return {envelope:s.envelope,structure:encodeDigits(s.envelope,s.digits),channel:s.channel,spinor:s.hop*360+s.step,depth:s.depth};}
+export function* traverse({envelope,structure=0,depth=0,channel=0,start=0,count=STEPS}){if(!Number.isSafeInteger(start)||start<0||!Number.isSafeInteger(count)||count<0||start+count>STEPS)throw new RangeError('window');for(let index=start;index<start+count;index++)yield compose({envelope,structure,depth,channel,spinor:index});}
