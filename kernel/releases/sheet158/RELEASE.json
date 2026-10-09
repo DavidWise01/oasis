@@ -1,0 +1,18 @@
+{
+  "schema": "oasis.sheet158.release.v1",
+  "sheet": 158,
+  "parent": 157,
+  "title": "Paginated Witness Consistency / Crash-Safe Catch-Up",
+  "archive": "SHEET158-paginated-witness-consistency.zip",
+  "archiveSha256": "1551b75a751e8fd544b09c171b008b3269c6b81498b7564e668be340cf7a49d6",
+  "verification": {
+    "new": 58,
+    "combinedKnownChecks": 1618,
+    "fullRunnerExit": 0,
+    "inheritedFilesByteIdentical": 612,
+    "chromiumScenarios": 8,
+    "chromiumJsonExport": true
+  },
+  "sourceFilesIncluded": true,
+  "limits": "Single physical host, bounded 24-row page proofs, total suffix transfer O(n), synthetic 337 record fixture; not Merkle log-size proofs, independent-host consensus unverified"
+}

@@ -1,0 +1,122 @@
+#!/usr/bin/env node
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),cp=require('node:child_process'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const P=require('./baseline157/baseline156/baseline155/baseline154/baseline153/baseline152/baseline151/baseline150/baseline149/baseline148/baseline147/baseline146/protocol146');
+const W=require('./baseline157/baseline156/witness-verify156');const V=require('./page-verify158');const C=require('./catchup158');
+const root=fs.mkdtempSync(path.join(os.tmpdir(),'sheet158-')),f=(...a)=>path.join(root,...a),openssl=(...a)=>cp.execFileSync('openssl',a,{cwd:root,stdio:'pipe'});
+let n=0;const ok=(name,fn)=>{fn();console.log('PASS',++n,name);};const step=async(name,fn)=>{await fn();console.log('PASS',++n,name);};const bad=async(name,fn,regex)=>step(name,async()=>assert.rejects(fn,regex));
+function cert(id){openssl('req','-new','-newkey','rsa:2048','-nodes','-keyout',id+'.key','-out',id+'.csr','-subj','/CN=localhost');fs.writeFileSync(f(id+'.ext'),'subjectAltName=DNS:localhost,IP:127.0.0.1\nkeyUsage=digitalSignature,keyEncipherment\nextendedKeyUsage=clientAuth,serverAuth\n');openssl('x509','-req','-in',id+'.csr','-CA','ca.crt','-CAkey','ca.key','-CAcreateserial','-out',id+'.crt','-days','2','-sha256','-extfile',id+'.ext');return{key:f(id+'.key'),cert:f(id+'.crt'),ca:f('ca.crt'),certPin:new crypto.X509Certificate(fs.readFileSync(f(id+'.crt'))).fingerprint256.replaceAll(':','').toLowerCase()};}
+function keys(id){const pair=crypto.generateKeyPairSync('ed25519'),priv=f(id+'.priv'),pub=f(id+'.pub');fs.writeFileSync(priv,pair.privateKey.export({format:'pem',type:'pkcs8'}));fs.writeFileSync(pub,pair.publicKey.export({format:'pem',type:'spki'}));return{privateKey:pair.privateKey,publicKey:pair.publicKey,priv,pub};}
+const children=[];
+async function spawn(script,cfg,id){const config=f('cfg-'+id+'.json');P.atomic(config,cfg);const proc=cp.fork(path.join(__dirname,script),[],{env:{...process.env,S158_WITNESS_CONFIG:config,S156_FLOOR_CONFIG:config},stdio:['ignore','pipe','pipe','ipc']});let errors='';proc.on('error',()=>{});proc.stderr.on('data',b=>errors+=b);const port=await new Promise((res,rej)=>{const t=setTimeout(()=>rej(Error('START_TIMEOUT '+id+' '+errors)),15000);proc.once('message',m=>{clearTimeout(t);res(m.port);});proc.once('exit',code=>{clearTimeout(t);rej(Error('START_FAILED '+id+' '+code+' '+errors));});});const x={proc,port,id,errors:()=>errors};children.push(x);return x;}
+async function stop(x){if(!x||x.proc.exitCode!==null||x.proc.signalCode!==null)return;await new Promise(done=>{const t=setTimeout(()=>{x.proc.kill('SIGKILL');done();},2000);x.proc.once('exit',()=>{clearTimeout(t);done();});if(x.proc.connected){try{x.proc.send('stop',err=>{if(err){x.proc.kill('SIGKILL');clearTimeout(t);done();}});}catch{ x.proc.kill('SIGKILL');clearTimeout(t);done();}}else{x.proc.kill('SIGKILL');clearTimeout(t);done();}});}
+(async()=>{try{
+ openssl('req','-x509','-new','-newkey','rsa:2048','-nodes','-keyout','ca.key','-out','ca.crt','-days','2','-subj','/CN=S158-TEST');
+ const ids=Object.fromEntries(['proxy','wred','wblue','wgreen','rogue'].map(id=>[id,cert(id)]));
+ const witnessKeys=Object.fromEntries(['wred','wblue','wgreen'].map(id=>[id,keys(id)]));
+ const finalKeys=Object.fromEntries(['red','blue'].map(id=>[id,keys('final-'+id)]));
+ const pubs=Object.fromEntries(Object.entries(witnessKeys).map(([id,k])=>[id,k.publicKey]));
+ const witnessPublicKeys=Object.fromEntries(Object.entries(witnessKeys).map(([id,k])=>[id,k.pub]));
+ const finalPublicKeys=Object.fromEntries(Object.entries(finalKeys).map(([id,k])=>[id,k.pub]));
+ const cfg=Object.fromEntries(Object.keys(witnessKeys).map(id=>[id,{id,...ids[id],signKey:witnessKeys[id].priv,stateFile:f(id,'state.json'),proxyPin:ids.proxy.certPin,witnessPublicKeys,finalityPublicKeys:finalPublicKeys}]));
+ const P=require('./baseline157/baseline156/baseline155/baseline154/baseline153/baseline152/baseline151/baseline150/baseline149/baseline148/baseline147/baseline146/protocol146');
+ const W=require('./baseline157/baseline156/witness-verify156');
+ const record=(slot,prev,tag)=>W.normalize({slot,prev,intentDigest:P.sha('intent'+tag),snapshotDigest:P.sha('snapshot'+tag),receiptHash:P.sha('receipt'+tag)});
+ const history=[];let prev=W.ZERO;for(let i=1;i<=337;i++){let r=record(i,prev,'synthetic-'+i);history.push(r);prev=r.head;}
+ // Fixtures simulate a majority committed prefix; seed on disk before the processes start.
+ for(const id of ['wred','wgreen'])P.atomic(cfg[id].stateFile,{schema:W.SCHEMA,nodeId:id,slot:337,head:prev,history:structuredClone(history),pending:null,challenge:null});
+ P.atomic(cfg.wblue.stateFile,{schema:W.SCHEMA,nodeId:'wblue',slot:3,head:history[2].head,history:history.slice(0,3),pending:history[3],challenge:null});
+ const nodes={};for(const id of Object.keys(cfg))nodes[id]=await spawn('witness158.js',cfg[id],id);
+ const endpoints=()=>Object.fromEntries(Object.keys(nodes).map(id=>[id,{port:nodes[id].port,serverPin:ids[id].certPin}]));
+ const api=()=>C.make({identity:ids.proxy,witnesses:endpoints(),publicKeys:pubs});
+ const rpc=(id,url,b={})=>api().rpc(id,url,b);
+ const read=id=>P.load(cfg[id].stateFile);
+ const votes=r=>['red','blue'].map(id=>{let body={nodeId:id,slot:r.slot,prevPinDigest:r.prev,intentDigest:r.intentDigest,snapshotDigest:r.snapshotDigest,receiptHash:r.receiptHash,phase:'final'};return{body,signature:P.sign(finalKeys[id].privateKey,'S155:FINAL',body)};});
+ const prepare=(id,r)=>rpc(id,'/prepare',{record:r,finalVotes:votes(r)});
+ const commit=(id,r,p)=>rpc(id,'/commit',{record:r,preparedVotes:p});
+ ok('three mTLS witness identities booted',()=>assert.equal(Object.keys(nodes).length,3));
+ ok('seeded majority contains 337 valid slots',()=>assert.equal(read('wred').slot,337));
+ ok('minority retains prepared fourth slot',()=>assert.equal(read('wblue').pending.head,history[3].head));
+ ok('zero head constant retained',()=>assert.equal(W.ZERO.length,64));
+ ok('per-page bound is 24 records',()=>assert.equal(V.MAX_PAGE,24));
+ ok('empty page rejected',()=>assert.throws(()=>V.records([],0,W.ZERO),/W158_PAGE_BOUND/));
+ ok('oversized page rejected',()=>assert.throws(()=>V.records(Array(25).fill(history[0]),0,W.ZERO),/W158_PAGE_BOUND/));
+ ok('incorrect page ordering fails',()=>assert.throws(()=>V.records([history[1]],0,W.ZERO),/W158_PAGE_CHAIN_OR_ORDER/));
+ ok('local prefix proof validates',()=>assert.equal(V.records(history.slice(0,3),0,W.ZERO),history[2].head));
+ const challenge=await rpc('wblue','/challenge',{});const nonce=challenge.body.nonce;
+ const heads=await Promise.all(['wred','wgreen'].map(id=>rpc(id,'/read',{nonce})));
+ const target={slot:337,head:prev};
+ ok('two independent signed target heads certify',()=>assert.equal(V.certify(target,heads,nonce,pubs).length,2));
+ ok('duplicate head signatures refused',()=>assert.throws(()=>V.certify(target,[heads[0],heads[0]],nonce,pubs),/W158_HEAD_CERT_INVALID/));
+ ok('forged head signature refused',()=>assert.throws(()=>V.certify(target,[{...heads[0],signature:'AAAA'},heads[1]],nonce,pubs),/W158_HEAD_CERT_INVALID/));
+ ok('wrong nonce refuses certified head replay',()=>assert.throws(()=>V.certify(target,heads,'b'.repeat(40),pubs),/W158_HEAD_CERT_INVALID/));
+ await bad('missing quorum refuses beginning session',()=>rpc('wblue','/begin158',{nonce,target,heads:[heads[0]]}),/W158_HEAD_QUORUM_MISSING/);
+ await step('signed majority opens persisted session',async()=>assert.equal((await rpc('wblue','/begin158',{nonce,target,heads})).body.cursor,3));
+ await bad('duplicate session refused',()=>rpc('wblue','/begin158',{nonce,target,heads}),/W158_RECOVERY_ALREADY_ACTIVE/);
+ await bad('cannot prepare while staging recovery',()=>prepare('wblue',record(4,history[2].head,'conflict')),/W158_CATCHUP_HOLD/);
+ const p0=await rpc('wred','/page158',{nonce,target,offset:3,limit:7});
+ ok('page data bounded to seven records',()=>assert.equal(p0.body.records.length,7));
+ ok('page starts from minority trusted prefix',()=>assert.equal(p0.body.prevHead,history[2].head));
+ ok('page is signed by authorized exporter',()=>assert(P.verify(pubs.wred,'S158:PAGE',p0.body,p0.signature)));
+ const signedPage=body=>({body,signature:P.sign(witnessKeys.wred.privateKey,'S158:PAGE',body)});
+ await bad('malicious exporter cannot omit one record',()=>rpc('wblue','/apply158',{page:signedPage({...p0.body,records:p0.body.records.slice(1),next:p0.body.next-1,recordsDigest:P.sha(p0.body.records.slice(1))})}),/W158_PAGE_CHAIN_OR_ORDER/);
+ await bad('malicious exporter cannot splice a different predecessor',()=>rpc('wblue','/apply158',{page:signedPage({...p0.body,prevHead:'f'.repeat(64)})}),/W158_PAGE_CONTEXT_OR_GAP/);
+ await bad('malicious exporter cannot reorder signed rows',()=>rpc('wblue','/apply158',{page:signedPage({...p0.body,records:[p0.body.records[1],p0.body.records[0],...p0.body.records.slice(2)],recordsDigest:P.sha([p0.body.records[1],p0.body.records[0],...p0.body.records.slice(2)])})}),/W158_PAGE_CHAIN_OR_ORDER/);
+ await bad('malicious exporter cannot misstate page digest',()=>rpc('wblue','/apply158',{page:signedPage({...p0.body,recordsDigest:'f'.repeat(64)})}),/W158_PAGE_PROOF_MISMATCH/);
+ await bad('malicious exporter cannot cross-bind other target',()=>rpc('wblue','/apply158',{page:signedPage({...p0.body,targetHead:'f'.repeat(64)})}),/W158_PAGE_CONTEXT_OR_GAP/);
+ await bad('malicious exporter cannot extend past certified end',()=>rpc('wblue','/apply158',{page:signedPage({...p0.body,next:338})}),/W158_PAGE_PROOF_MISMATCH/);
+ await bad('page of zero records rejected by source',()=>rpc('wred','/page158',{nonce,target,offset:337,limit:2}),/W158_PAGE_ALREADY_COMPLETE/);
+ await bad('unbounded page request rejected at source',()=>rpc('wred','/page158',{nonce,target,offset:3,limit:100}),/W158_PAGE_REQUEST_INVALID/);
+ await bad('out-of-order page rejected',async()=>rpc('wblue','/apply158',{page:await rpc('wred','/page158',{nonce,target,offset:10,limit:7})}),/W158_PAGE_CONTEXT_OR_GAP/);
+ await bad('forged page signature rejected',()=>rpc('wblue','/apply158',{page:{...p0,signature:'AAAA'}}),/W158_PAGE_SIGNATURE/);
+ await bad('altered page content rejected',()=>rpc('wblue','/apply158',{page:{...p0,body:{...p0.body,records:[{...p0.body.records[0],intentDigest:'f'.repeat(64)},...p0.body.records.slice(1)]}}}),/W158_PAGE_SIGNATURE/);
+ await bad('page cannot be replayed under wrong nonce',()=>rpc('wblue','/apply158',{page:{...p0,body:{...p0.body,nonce:'a'.repeat(40)}}}),/W158_PAGE_SIGNATURE/);
+ await step('first seven-record page saved',async()=>assert.equal((await rpc('wblue','/apply158',{page:p0})).body.cursor,10));
+ await bad('duplicate page refused',()=>rpc('wblue','/apply158',{page:p0}),/W158_PAGE_CONTEXT_OR_GAP/);
+ ok('durable page cursor and digest persisted',()=>assert.equal(read('wblue').recovery.cursor,10));
+ await stop(nodes.wblue);nodes.wblue=await spawn('witness158.js',cfg.wblue,'wblue-restart');
+ await step('restarted witness reports saved progress',async()=>assert.equal((await rpc('wblue','/status158')).body.cursor,10));
+ await bad('missing pages cannot finalize',()=>rpc('wblue','/finish158'),/W158_INCOMPLETE_OR_CHANGED/);
+ const counts=[];
+ await step('resume transfers only missing pages',async()=>{let result=await api().repair('wblue',{pageSize:17,onPage:c=>counts.push(c)});assert.equal(result.body.slot,337);});
+ ok('all 337 records reconstructed exactly',()=>assert.deepEqual(read('wblue').history,history));
+ ok('paginated high-water reaches majority',()=>assert.equal(read('wblue').head,prev));
+ ok('durable recovery progress cleared',()=>assert.equal(read('wblue').recovery,null));
+ ok('page sizes remain bounded',()=>assert(counts.length>10&&counts.every(x=>x<=337)));
+ await step('idempotent majority repair when aligned',async()=>assert.equal((await api().repair('wblue',{pageSize:3})).body.slot,337));
+ await bad('stale page cannot be installed after finalization',()=>rpc('wblue','/apply158',{page:p0}),/W158_NO_ACTIVE_RECOVERY/);
+ await bad('unauthorized client blocked by pinned TLS',()=>P.rpc({...ids.rogue,...endpoints().wred},'/page158',{nonce,target,offset:3,limit:7}),/TLS_PEER_NOT_PINNED/);
+ // Additional majority slot committed with real signed prepare and commit.
+ const r338=record(338,prev,'live-338');let sigs=await Promise.all(['wred','wgreen'].map(id=>prepare(id,r338)));
+ await commit('wred',r338,sigs);await commit('wgreen',r338,sigs);
+ ok('real signed 338th majority vote committed',()=>assert.equal(read('wgreen').slot,338));
+ await step('minority catches new slot without reimporting prefix',async()=>assert.equal((await api().repair('wblue',{pageSize:1})).body.slot,338));
+ ok('new majority head was certified',()=>assert.equal(read('wblue').head,r338.head));
+ // Quarantine cannot overwrite a conflicting pending promise.
+ const r339good=record(339,r338.head,'good'),r339bad=record(339,r338.head,'bad');
+ await prepare('wblue',r339bad);sigs=await Promise.all(['wred','wgreen'].map(id=>prepare(id,r339good)));
+ await commit('wred',r339good,sigs);await commit('wgreen',r339good,sigs);
+ await bad('conflicting pending record is quarantined',()=>api().repair('wblue',{pageSize:4}),/W158_PENDING_FORK_QUARANTINE|W158_PAGE_RECOVERY_STOP/);
+ ok('conflicting pending survives rejection',()=>assert.equal(read('wblue').pending.head,r339bad.head));
+ await stop(nodes.wblue);nodes.wblue=await spawn('witness158.js',cfg.wblue,'wblue-quarantine-restart');
+ await bad('conflicting pending survives restart',()=>api().repair('wblue',{pageSize:4}),/W158_PENDING_FORK_QUARANTINE|W158_RECOVERY_ALREADY_ACTIVE|W158_PAGE_RECOVERY_STOP/);
+ ok('quarantined state cannot overwrite old certified slot',()=>assert.equal(read('wblue').slot,338));
+ // Separate clean witness fixture for crash-after-durable-page window, with majority 339.
+ await stop(nodes.wblue);
+ let reset=read('wblue');reset.pending=null;reset.recovery=null;reset.challenge=null;P.atomic(cfg.wblue.stateFile,reset);
+ cfg.wblue.crashAfterPage=f('crash158.once');nodes.wblue=await spawn('witness158.js',cfg.wblue,'wblue-crash-page');
+ const ch2=await rpc('wblue','/challenge');const n2=ch2.body.nonce;
+ const h2=await Promise.all(['wred','wgreen'].map(id=>rpc(id,'/read',{nonce:n2})));
+ await rpc('wblue','/begin158',{nonce:n2,target:{slot:339,head:r339good.head},heads:h2});
+ const crashPage=await rpc('wred','/page158',{nonce:n2,target:{slot:339,head:r339good.head},offset:338,limit:1});
+ await bad('real child exits after fsync before response',()=>rpc('wblue','/apply158',{page:crashPage}),/socket hang up|ECONNRESET/);
+ ok('page was durably installed before child died',()=>assert.equal(read('wblue').recovery.cursor,339));
+ nodes.wblue=await spawn('witness158.js',cfg.wblue,'wblue-crash-restart');
+ await step('resume after reply-loss finalizes same page',async()=>assert.equal((await api().repair('wblue',{pageSize:1})).body.slot,339));
+ ok('restart did not duplicate journal rows',()=>assert.equal(read('wblue').history.length,339));
+ await stop(nodes.wgreen);
+ await bad('one reachable peer cannot certify new catchup target',()=>api().repair('wblue'),/W158_MAJORITY_UNAVAILABLE/);
+ await step('completed witness remains readable during peer loss',async()=>assert.equal((await rpc('wblue','/read',{nonce:crypto.randomBytes(20).toString('hex')})).body.slot,339));
+ console.log('SHEET158 '+n+'/'+n+' PASS');
+ P.atomic(path.join(__dirname,'new-test-report.json'),{sheet:158,passed:n,failed:0,simulatedFixtureRecords:337,realLiveCommitSlots:[338,339],hosts:1,network:'local mTLS',recoveryPageMax:V.MAX_PAGE,overall:'PASS'});
+} catch(e){console.error('SHEET158 FAIL',e.stack||e);process.exitCode=1;}finally{await Promise.allSettled(children.map(stop));}})();

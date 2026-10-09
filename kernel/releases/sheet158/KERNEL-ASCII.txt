@@ -1,0 +1,101 @@
+OASIS / ROOT0 / SHEET 158 — PAGINATED WITNESS RECOVERY
+=====================================================
+
+       CLIENT / CONTROLLER
+                |
+       ROOT0 MOTHER KERNEL
+                |
+      S155 TRANSACTION FINALITY      <--- durable 2/3 authority + receipt
+                |
+       S156 WITNESS FLOOR
+        /       |       \
+      RED      BLUE     GREEN          independently signed histories
+        \       |       /
+        S157 CATCH-UP POLICY           prefix only / conflicting pending HOLD
+                |
+  +-------------+----------------------+
+  |                                    |
+LAGGING TARGET                    HEALTHY PEERS
+  |                                   / \
+  |                                RED   GREEN
+  |                                 |      |
+  |-- 01. issue 40-hex nonce        |      |
+  |-- 02. persist nonce            |      |
+  |-- 03. read signed HEAD <--------+------+ (mTLS peer pin)
+  |-- 04. verify two distinct ED25519 signatures
+  |-- 05. verify same slot, same digest, same nonce
+  |-- 06. reject rollback / forged quorum / conflicting heads
+  |-- 07. BEGIN158 persisted recovery session atomically
+  |         {nonce,target,signers,cursor,head,staged}
+  |-- 08. prohibit PREPARE / COMMIT during recovery
+  |
+  |        REPEAT WHILE cursor < target.slot
+  |             |
+  |             +--> PAGE request (offset,cursor,pageSize <=24)
+  |             |        |
+  |             |       [PEER A or PEER B]
+  |             |        |
+  |             |      bounded JSON records <=24
+  |             |      prevHead -> local cursor
+  |             |      next cursor / endHead
+  |             |      nonce + target head
+  |             |      digest over records
+  |             |      Ed25519 PAGE SIGNATURE
+  |             |        |
+  |             +--> mTLS target receives signed page
+  |             |        |
+  |             |      verify authorized signer + signed bytes
+  |             |      verify unchanged nonce,target,offset,prevHead
+  |             |      verify each record slot sequential and canonical
+  |             |      verify each prev link and digest
+  |             |      verify pending promise if reached
+  |             |      verify terminal page equals certified head
+  |             |        |
+  |             +--> P.atomic() write combined cursor + staged pages
+  |             |        |   write tmp -> fsync -> rename -> directory fsync
+  |             |        |
+  |             +--> ACK new cursor
+  |             |        |
+  |             +--> reply lost? query signed STATUS after reconnect
+  |             |        |
+  |             +--> peer lost? retry alternate certified exporter
+  |             |        |
+  |             +--> restart? use original nonce+persisted cursor
+  |             +--------------------------------------------^
+  |
+  |-- 32. cursor == target.slot && head == quorum-certified target
+  |-- 33. verify no divergent local pending promise
+  |-- 34. atomically append staged suffix and clear pending
+  |-- 35. save lastRecovery idempotent receipt
+  |-- 36. sign FINISHED(slot,head,nonce,historyDigest)
+  |-- 37. stale/replayed pages cannot be applied after finish
+  |-- 38. next finality floor slot may be admitted per S156 rules
+  |
+  +-- MALICIOUS / FAULT BRANCHES
+       * invalid TLS peer                         => REJECT
+       * same signer twice                       => REJECT
+       * signed head with a different nonce      => REJECT
+       * mismatch between two healthy heads      => REJECT
+       * omitted / reordered / spliced record    => REJECT
+       * forged or rewritten page signature      => REJECT
+       * signer-known but wrong target binding   => REJECT
+       * duplicate/old page offset               => REJECT
+       * omitted page / incomplete suffix        => HOLD
+       * conflicting local prepared vote         => QUARANTINE
+       * target's original prefix differs        => QUARANTINE
+       * crash after durable page                => RESTART / RESUME
+       * one healthy source offline              => NO FRESH MAJORITY
+       * resource rollback of entire state disk  => NOT COVERED: external pin
+
+COMPACTNESS / LIMITS
+  ONE CERTIFICATE: 2 distinct signed HEAD replies, constant count
+  ONE PAGE:       <=24 hash-linked canonical records, one Ed25519 sig
+  TOTAL TRANSFER: O(number of missing records), bounded per message
+  PROOF SIZE:     O(page size), NOT a logarithmic Merkle consistency proof
+  STATE STORAGE:  target retains full history + staged suffix in JSON
+  REPLAY WORK:    currently O(history) per request, prototype not production
+  RECOVERY:       prototype uses three separate mTLS processes on one host
+  DURABILITY:     atomic fsync/rename of local JSON, no cross-host guarantee
+  TEST DATA:      337 seed records as explicit fixtures + live slots 338-339
+
+ROOT0: VERIFIED PAST -> VERIFIED CURRENT -> NEXT DOT
