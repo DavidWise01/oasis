@@ -1,0 +1,20 @@
+name: ROOT0 P3.4 electrum fcc metal boundary
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality-tensor/electrum/**'
+      - '.github/workflows/root0-p34-electrum.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  electrum-fcc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prove FCC neighbour links and optical/gauge countermodels
+        run: node docs/reality-tensor/electrum/smoke.mjs
