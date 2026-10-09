@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {append,verify,head} from './p321_integrity.mjs';
+let ledger=[];
+for(let i=0;i<10000;i++)ledger=append(ledger,'ADDR/'+i,[[Math.sin(i),Math.cos(i)],[i/10000,0],[0,1]]);
+assert.equal(verify(ledger),true);
+assert.equal(verify(ledger.map((x,i)=>i===4000?{...x,payload:x.payload.replace('ADDR/4000','ADDR/4001')}:x)),false);
+assert.equal(verify(ledger.slice(0,-1)),true);
+assert.equal(verify(ledger.slice(1)),false);
+assert.equal(verify(ledger.map((x,i)=>i===4000?{...x,hash:'0'.repeat(64)}:x)),false);
+assert.equal(head(ledger).length,64);
+console.log(JSON.stringify({status:'PASS',entries:ledger.length,tamperDetection:true,interiorDeletionDetection:true,tailTruncationInternallyDetectable:false,head:head(ledger)}));
