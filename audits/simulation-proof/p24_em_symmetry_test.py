@@ -10,13 +10,14 @@ from fractions import Fraction as F
 from pathlib import Path
 
 HERE=Path(__file__).resolve().parent
-sys.path.insert(0,str(HERE))
+SOURCE_DIR=HERE if (HERE/'kernel.py').is_file() else HERE.parents[1]/'kernel'/'frozen'/'ae-generative-first-v92'
+sys.path.insert(0,str(SOURCE_DIR))
 import kernel
 SOURCE_SHA='bf84cfc8746ccaf35c0204050ada8c3980817cb8'
 CANON_SHA='8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8'
-assert subprocess.check_output(['git','hash-object',str(HERE/'kernel.py')],text=True).strip()==SOURCE_SHA
-assert hashlib.sha256((HERE/'CANON.json').read_bytes()).hexdigest()==CANON_SHA
-canon=kernel.load_and_verify_canon(HERE/'CANON.json')
+assert subprocess.check_output(['git','hash-object',str(SOURCE_DIR/'kernel.py')],text=True).strip()==SOURCE_SHA
+assert hashlib.sha256((SOURCE_DIR/'CANON.json').read_bytes()).hexdigest()==CANON_SHA
+canon=kernel.load_and_verify_canon(SOURCE_DIR/'CANON.json')
 assert canon['immutability']['physical_claim']=='none; symbolic/model-local unless separately validated'
 
 # Proposed '2^3' interpretation: cube-corner propagation directions.
