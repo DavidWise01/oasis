@@ -1,0 +1,5 @@
+# P3.61 — Crash-injection witness recovery, 2026-10-09
+
+Extends P3.59 signed checkpoint votes and P3.60 exclusive reservations. Four deterministic exception injection points: reservation durable; vote signed but not persisted; signed temporary file durable; committed record after rename and fsync. Local Node v22.16.0 execution PASS 20 assertions. Restart rejects conflicting same-epoch checkpoint in all four cases; incomplete reservations stay quarantined. A committed vote can be retrieved as a verified duplicate. New epoch still signs normally.
+
+**Limitations:** These are simulated throws, not SIGKILL or real power interruption; no testing of torn writes, fsync semantics on disparate filesystems, malicious key replacement or distributed stores. The fixed .pending pathname intentionally leaves incomplete state for manual reconciliation; clearing it blindly would destroy safety. Crash-after-sign-before-persist may yield an irrecoverable pending slot requiring outside attestation. Avoid calling this production crash-proof.
