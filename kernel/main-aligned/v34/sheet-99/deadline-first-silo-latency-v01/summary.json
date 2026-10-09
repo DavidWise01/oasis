@@ -58,8 +58,9 @@
       ]
     },
     "zip_crc": "PASS",
-    "zip_files": 18,
-    "zip_sha256": "99b7b1300af59a79290be2e90a5ad10810f9d0b4227eb4efada6fdaa06c575d8"
+    "zip_files": 19,
+    "zip_sha256": "4b6bfd3b12041735791e781e4b4784430cec06ff4d7e489f510f68b70e02ef52",
+    "reproducible_build": "PASS; bundled base_sheet98.html; ./build.sh reproduces byte-identical index.html and re-runs tests"
   },
   "comparison_2200_ticks": {
     "normal": {
