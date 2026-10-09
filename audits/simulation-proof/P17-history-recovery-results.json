@@ -1,0 +1,134 @@
+{
+  "name": "ROOT0-I13-P1.7-recoverability",
+  "originalGitBlob": "49cb50bab98039e5b5c1b45e7e95f20cf76d3abe",
+  "fullFrozenStates": 55296,
+  "immediateMoveStates": 24300,
+  "stutters": 30996,
+  "schedulerDistinctImages": 50382,
+  "duplicateInputImages": 4914,
+  "maxFibre": 3,
+  "fibreDistribution": {
+    "1": 45738,
+    "2": 4374,
+    "3": 270
+  },
+  "tripleExample": {
+    "next": [
+      [
+        "vacant",
+        "occupied",
+        "vacant",
+        "in",
+        "occupied"
+      ],
+      [
+        "3x3",
+        "3x3",
+        "3x3"
+      ],
+      0
+    ],
+    "predecessors": [
+      [
+        [
+          "occupied",
+          "occupied",
+          "vacant",
+          "in",
+          "vacant"
+        ],
+        [
+          "3x3",
+          "3x3",
+          "3x3"
+        ],
+        0
+      ],
+      [
+        [
+          "occupied",
+          "vacant",
+          "vacant",
+          "in",
+          "occupied"
+        ],
+        [
+          "3x3",
+          "3x3",
+          "3x3"
+        ],
+        0
+      ],
+      [
+        [
+          "vacant",
+          "vacant",
+          "occupied",
+          "in",
+          "occupied"
+        ],
+        [
+          "3x3",
+          "3x3",
+          "3x3"
+        ],
+        0
+      ]
+    ],
+    "actions": [
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ]
+  },
+  "oneStepActionTaggedInjective": true,
+  "actionTaggedCollisions": 0,
+  "recoverableOneStep": 55296,
+  "informationLowerBoundBitsPerAmbiguousImage": 2,
+  "cycle15": {
+    "length": 15,
+    "physicalStateReturned": true,
+    "originalReceiptRepeat": [
+      "7613fc3d736ce9e5b03e1ae823960bf6fbf7acabd53baaaf4dcecc52c9f258e2",
+      "7613fc3d736ce9e5b03e1ae823960bf6fbf7acabd53baaaf4dcecc52c9f258e2",
+      "7613fc3d736ce9e5b03e1ae823960bf6fbf7acabd53baaaf4dcecc52c9f258e2"
+    ],
+    "distinctEventDigests": 15,
+    "historyRecovered": true
+  },
+  "twentyStepSample": {
+    "tested": 401,
+    "stepsPerTest": 20,
+    "reverseRecoveryPass": 401
+  },
+  "detectedAttacks": {
+    "deleted": true,
+    "reordered": true,
+    "replayed": true,
+    "payloadTampered": true,
+    "digestTampered": true,
+    "operationTampered": true,
+    "wrongAnchor": true
+  },
+  "alternativeOriginsSameFinal": {
+    "differentStarts": true,
+    "fullyValidHistories": true,
+    "differentChainAnchors": true,
+    "otherHistoryFailsWhenCheckedAgainstOriginalAnchor": true,
+    "needsExternalTrustToChooseHistoricallyActual": true
+  },
+  "theorem": "Pair (deterministic next state, chosen directed edge or stutter marker) is injective over frozen carrier.",
+  "physicalTimeDemonstrated": false,
+  "simulationTheoryProven": false,
+  "leanCompiled": false,
+  "classification": "FINITE_MODEL_PROOF_ONLY"
+}
