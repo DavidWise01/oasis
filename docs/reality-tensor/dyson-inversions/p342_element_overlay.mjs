@@ -1,0 +1,7 @@
+/** 184 element-position scaffold. 118 confirmed, 66 hypothetical. */
+export const PRIMES = Object.freeze([['jane','pink'],['patricia','purple'],['toph','green'],['icarium','blue']]);
+export const COUNT=184, CONFIRMED=118, C=299792458;
+export function element(z){if(!Number.isInteger(z)||z<1||z>COUNT)throw new RangeError('atomic number');return Object.freeze({Z:z,status:z<=118?'confirmed':'hypothetical',band:z<=118?'established':z<=172?'extended-model':'frontier',source:'IUPAC confirmed to 118; extrapolated address only for >118'});}
+export function overlay(z,primeIndex,{hz,amplitude=1,phaseRad=0}={}){const e=element(z);if(!Number.isInteger(primeIndex)||primeIndex<0||primeIndex>=4)throw new RangeError('prime');if(!Number.isFinite(hz)||hz<=0||!Number.isFinite(amplitude)||amplitude<0||!Number.isFinite(phaseRad))throw new RangeError('spectrum');const lambda=C/hz;if(!Number.isFinite(lambda)||lambda<=0)throw new RangeError('wavelength');return {element:e,carrier:{name:PRIMES[primeIndex][0],color:PRIMES[primeIndex][1]},spectrum:{hz,wavelengthM:lambda,amplitude,phaseRad},root:0};}
+export function index(z,primeIndex){element(z);if(!Number.isInteger(primeIndex)||primeIndex<0||primeIndex>=4)throw new RangeError('prime');return (z-1)*4+primeIndex;}
+export function inverseIndex(i){if(!Number.isInteger(i)||i<0||i>=736)throw new RangeError('index');return {Z:Math.floor(i/4)+1,primeIndex:i%4};}
