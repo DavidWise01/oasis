@@ -1,0 +1,20 @@
+name: ROOT0 P3.3 electro-optic physical boundary
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality-tensor/physics211/**'
+      - '.github/workflows/root0-p33-physics211.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  electromagnetism-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test conventional vacuum null and electro-optic countermodel
+        run: node docs/reality-tensor/physics211/smoke.mjs
