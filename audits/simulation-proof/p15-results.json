@@ -1,0 +1,48 @@
+{
+  "schema": "ROOT0-P1.5-partial-refinement",
+  "originalGitBlob": "49cb50bab98039e5b5c1b45e7e95f20cf76d3abe",
+  "originalSuite": "PASS",
+  "fullStateCount": 55296,
+  "embeddedBinaryWitnessStates": 1728,
+  "outsideDomain": 53568,
+  "slicePercent": 3.125,
+  "candidateSourceTargetPairs": 1382400,
+  "legalLiftedMoves": 4320,
+  "rejectedLiftedPairs": 1378080,
+  "degreeByOccupancy": [
+    0,
+    540,
+    1620,
+    1620,
+    540,
+    0
+  ],
+  "strictAccepted": 4320,
+  "originalMoveMatches": 4320,
+  "conservedOccupancy": 4320,
+  "retainedAxes": 4320,
+  "retainedWitness": 4320,
+  "reversibleMoves": 4320,
+  "retainedOriginalInput": 4320,
+  "observerCommutationOnDefinedMoves": 4320,
+  "originalSourceMixedAlphabetAccepted": 30240,
+  "firstMixedSource": {
+    "slots": [
+      "occupied",
+      "vacant",
+      "in",
+      "in",
+      "in"
+    ],
+    "from": 0,
+    "to": 1,
+    "operation": "move:0->1"
+  },
+  "naiveProjectionAllVacantPreimages": 243,
+  "refinements": {
+    "finiteEmbeddedSlice": "PASS",
+    "totalFrozenSpace": "FAIL_UNDEFINED_ON_IN_OUT",
+    "physicalExperimentPrediction": "NOT_ESTABLISHED",
+    "leanCompiled": false
+  }
+}
