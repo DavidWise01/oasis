@@ -1,11 +1,11 @@
-import * as C from './cipher208.mjs';
-import * as W from './wave_kernel.mjs';
-import * as T from './tensor_kernel.mjs';
 /**
  * ROOT0 P3.2: black signed -211 mV potential wrapper around orange phase field.
  * This is an appended candidate interaction; the P3.1 source is untouched.
  * Electrical potential alone cannot imply Planck-length access.
  */
+import * as C from './cipher208.mjs';
+import * as W from './wave_kernel.mjs';
+import * as T from './tensor_kernel.mjs';
 
 export const VOLTAGE_V=-0.211;
 export const MILLIVOLTS=-211;
