@@ -1,0 +1,85 @@
+{
+  "schema": "oasis/sheet98/demand-normalized-fairness-v01",
+  "parent": "SHEET97",
+  "actual_wasm_checks": {
+    "passed": 76,
+    "total": 76
+  },
+  "instrumented_svg_checks": {
+    "passed": 89,
+    "total": 89
+  },
+  "chromium": {
+    "checks": 19,
+    "page_errors": 0
+  },
+  "topology": {
+    "physical_silos": 8,
+    "aggregate": "D8",
+    "toroids": 72,
+    "copper_subplanes": 88,
+    "lane_identities": 120,
+    "queue_slots": 8,
+    "d8_workers": 2,
+    "synthetic_swept_clearance_units": 1.5
+  },
+  "policies": {
+    "0": "source RR",
+    "1": "SHEET97 least-issued plus 96 tick age override",
+    "2": "SHEET98 lowest admitted/eligible with 96 tick age override"
+  },
+  "comparison_2200_ticks": {
+    "normal": {
+      "sheet97": {
+        "acks": 403,
+        "upstream_waiter_ticks": 5370,
+        "deferrals": 2361,
+        "worst_silo_p95": 77
+      },
+      "sheet98": {
+        "acks": 403,
+        "upstream_waiter_ticks": 5378,
+        "deferrals": 2423,
+        "worst_silo_p95": 75
+      }
+    },
+    "synchronized_burst": {
+      "sheet97": {
+        "acks": 457,
+        "upstream_waiter_ticks": 23523,
+        "deferrals": 6054,
+        "worst_silo_p95": 345
+      },
+      "sheet98": {
+        "acks": 456,
+        "upstream_waiter_ticks": 23254,
+        "deferrals": 6287,
+        "worst_silo_p95": 345
+      }
+    },
+    "uneven_burst": {
+      "sheet97": {
+        "acks": 448,
+        "upstream_waiter_ticks": 7443,
+        "deferrals": 4815,
+        "worst_silo_p95": 169
+      },
+      "sheet98": {
+        "acks": 449,
+        "upstream_waiter_ticks": 7450,
+        "deferrals": 4627,
+        "worst_silo_p95": 169
+      }
+    }
+  },
+  "snapshots": "See complete conversation ZIP results.json for all per-silo windows, demand and latency histograms",
+  "limitations": [
+    "terminal admissions/eligible = 1 under drained requests and is not proof of equal waiting",
+    "not uniformly better than SHEET97; one fewer ACK and more clearance deferrals in synchronized burst",
+    "synthetic internal ACK, illustrative swept clearance, no external delivery or PCB DRC"
+  ],
+  "distribution": {
+    "github": "runnable standalone SVG HTML with embedded compiled WASM, README, summary",
+    "conversation_zip": "compiled kernel.wasm, freestanding C source, full tests, full results, screenshots, rebuild scripts and hashes"
+  }
+}
