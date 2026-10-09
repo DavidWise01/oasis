@@ -1,0 +1,20 @@
+name: ROOT0 P3.6 Planck bubble symbolic boundary
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality-tensor/planck-bubble/**'
+      - '.github/workflows/root0-p36-planck-bubble.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  symbol-and-physical-no-go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test Planck scale bounds, three-mode unitarity, and reversible 208 cipher
+        run: node docs/reality-tensor/planck-bubble/smoke.mjs
