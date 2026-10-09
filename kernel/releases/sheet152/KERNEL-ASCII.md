@@ -1,0 +1,254 @@
+# SHEET 152 — Full ASCII Pipeline
+
+```text
+OASIS / ROOT0 / SHEET 152 — COMPLETE PIPELINE AND PROCESS CONTRACT
+Version: 152.0 / Scope: local-process prototype / 2026-10-09
+=================================================================================================================
+
+(00) RELEASE NESTING / IMMUTABLE LINEAGE
+
+  ROOT0 > SHEET 152 | current new implementation
+                   |
+                   +-- baseline151/                   [byte-for-byte frozen copy]
+                       +-- baseline150/               [segmented predecessor: 128-record S150 verification]
+                           +-- baseline149/           [signed receipt inside each replica]
+                               +-- baseline148/       [resource/write bridge]
+                                   +-- baseline147/   [leader election, two-of-three replica votes]
+                                       +-- baseline146/ [mTLS transport, durable grants]
+                                           +-- ...    [prior nested frozen kernel]
+
+  LIVE MODULES (SHEET152):
+       resource152.js        (S150 resource reused with updated import paths)
+       bridge152.js          (S147 quorum coordinator + S150 journal + S152 anchor proof)
+       replica152.js         (new S150-derived quorum replica with extra anchor enforcement)
+       anchor-proof152.js    (format-separated cryptographic proof binding)
+       anchor-server152.js   (local independent mTLS checkpoint signer)
+       reconcile152.js      (two-of-three reviewed, one-record torn write repair)
+       gate152.js            (full integration, fault and adversarial test)
+       run-all.sh            (frozen inherited chain first; then S152 new gate)
+
+(01) ROOT TOPOLOGY: SIX PROCESS PARTICIPANTS / ONE PHYSICAL MACHINE
+
+                        [ CLIENT / WRITE INTENT ]
+                                  |
+                          [ LEADER alpha|beta ]
+                                  |
+                     +------------+-------------+
+                     |            |             |
+             [ AUTH RED ]    [ AUTH BLUE ]  [ AUTH GREEN ]
+              replica152      replica152       replica152
+               mTLS|ED       mTLS|ED          mTLS|ED
+                  \             |             /
+                   +-----------(2/3)---------+
+                                |
+                         [CERTIFIED GRANT]
+                                |
+                   [ PROTECTED RESOURCE 152 ]
+                         mTLS / S150 state
+                                |
+                          DURABLE WRITE
+                                |
+               +----------------+------------------+
+               |                                   |
+           [S148] ED25519 receipt             [S150] Merkle tree
+               |                            (legacy <=128 records)
+               +----------------+------------------+
+                                |
+                  EXACT RECEIPT-CHECKPOINT BIND
+                                |
+                    [S151] SEGMENTED LEDGER
+                      128 records per segment
+                                |
+                     COMPACT MERKLE PROOF
+                                |
+              [ SEPARATE ANCHOR152 SIGNER PROCESS ]
+                   mTLS pinned controller/reader
+                                |
+                       SIGNED CURRENT FLOOR
+                                |
+                          [3 REPLICAS]
+                     EACH CHECKS CURRENT FLOOR
+                                |
+                  VERIFIED PREPARE -> 2/3 VOTES
+                                |
+                    VERIFIED COMMIT -> 2/3
+                                |
+                     SIGNED COMPLETION JOURNAL
+                                |
+                        NEXT / VERIFIED
+
+(02) REALIZATION / TIME / MOTION (FRAMEWORK-LOCAL SEMANTICS)
+
+   state       : transaction ID, epoch, resource ID, intended payload digest
+   time        : leader term, quorum sequence, resource journal index, anchor serial
+   motion      : PREPARE -> GRANT -> WRITE -> RECEIPT -> ANCHOR -> COMPLETE -> EPOCH
+   observation : only a verified durable record can produce the next verified receipt
+   storage     : append only; no silent overwrite of previous checkpoint or resource write
+
+   CONTROL:  input -> proof -> 2/3 -> durable write -> proof -> 2/3 -> next
+   GUARD:    no proof -> no completion; no live anchor -> no authority operation
+   ZERO:     a failed transition leaves its pending grant visible and non-completed
+
+(03) FULL SUCCESS PROCESS / ONE TRANSACTION
+
+   01  Client chooses txid, resourceId, operationId, value, current epoch.
+   02  Leader queries /state on RED/BLUE/GREEN using pinned mutual TLS.
+   03  Replica authenticates leader certificate and reads CURRENT anchor /read.
+   04  Replica replay-verifies its append-only certified transaction journal.
+   05  2/3 signed identical states establish the current leader term / epoch / head.
+   06  Leader issues BEGIN proposal (txid, resourceId, SHA-256 request digest).
+   07  Each replica checks epoch and empty pending-grant slot; persists prepare.
+   08  Two distinct replicas sign matching Ed25519 prepare votes.
+   09  Leader obtains quorum votes and commits BEGIN to two replicas.
+   10  Durable grant contains exact quorum certificate and signed state responses.
+   11  Resource checks trusted quorum votes, leader term and membership epoch.
+   12  Resource rechecks live authority majority before the FIRST physical write.
+   13  Resource appends ONE resource record; atomic state fsync/rename.
+   14  Resource signs receipt over txid, digest, epoch, sequence and record hash.
+   15  Resource returns S150 checkpoint proof of that exact record.
+   16  S152 computes binding payload from S148 receipt + S150 checkpoint digest.
+   17  S151 Ledger appends that binding into 128-record rolling segment file.
+   18  S151 signs checkpoint over segmented Merkle root and prior digest.
+   19  Independent anchor checks S151 compact extension proof and signs NEW floor.
+   20  S152 attaches S151 leaf inclusion, segment record, signed checkpoint, signed floor.
+   21  Leader requests COMPLETE with ALL three: receipt, S150 proof, S151 anchor proof.
+   22  Replica checks pinned TLS leader; calls current anchor /read (mTLS).
+   23  Replica compares LIVE anchor to the op's signed anchor: byte-level hash match.
+   24  Replica checks S148 receipt signature and exact BEGIN binding.
+   25  Replica checks S150 Merkle membership + checkpoint + journal prefix.
+   26  Replica checks S151 checkpoint Ed25519 under resource key.
+   27  Replica checks external S151 anchor Ed25519 under separate signer key.
+   28  Replica recomputes cross-format payload and S151 record hash.
+   29  Replica verifies S151 compact Merkle inclusion; checks high-water floor.
+   30  Replica durably votes for COMPLETE and returns signed PREPARE attestation.
+   31  2/3 votes -> proposal certified; each committing replica repeats ALL checks.
+   32  Two durable commit replies -> pending grant cleared; receipt hash retained.
+   33  Authority may now CUTOVER; old epoch cannot begin another new transaction.
+   34  On replica restart: every journal record is replayed and proofs checked.
+   35  On signer restart: external anchor checkpoint survives and stays verifiable.
+
+(04) DUAL FORMAT PROOF CONTRACT / NO IMPLICIT ROOT EQUALITY
+
+  S150 ROOT  = SHA-256 tree over <=128 S150 resource record hashes.
+  S151 ROOT  = domain-separated binary-peak Merkle forest over indexed hashes.
+  THESE ROOTS ARE NOT COMPARABLE AND MUST NOT BE COERCED INTO EACH OTHER.
+
+  S152 BINDING PAYLOAD:
+
+    hash({ schema: "oasis.sheet152.binding.v1",
+           resourceId,
+           txid,
+           receiptHash: SHA256(S148 signed receipt object),
+           recordHash: S148 resource record hash,
+           checkpointDigest: SHA256(S150 signed checkpoint object) })
+
+  S151 LEDGER RECORD:
+    { sequence, prev, payload: S152 binding payload,
+      hash: SHA256({resourceId,sequence,prev,payload}) }
+
+  CHECKPOINT A (S150): signed by protected resource; includes S150 root.
+  CHECKPOINT B (S151): signed by protected resource; includes S151 root.
+  EXTERNAL FLOOR:     signed by different anchor key; references CHECKPOINT B digest.
+
+  REPLICA ACCEPTANCE requires BOTH formats + floor + current online signer read.
+
+(05) FAULT MATRIX / EXPECTED FAIL-CLOSED RESPONSE
+
+  injected fault                                      expected behavior
+  -------------------------------------------------  -----------------------------------------------------------
+  no S151 proof                                       no /prepare or /commit
+  altered resource receipt signature                  reject by resource key
+  forged S150 checkpoint / Merkle leaf                reject journal membership
+  altered S151 receipt binding                         reject exact payload / record hash
+  wrong S151 indexed Merkle sibling                    reject inclusion
+  invalid anchor signature                             reject independent signer key
+  signed but out-of-date anchor snapshot               reject current /read mismatch
+  anchor endpoint down                                 fail closed on ALL replica RPCs
+  bad leader certificate                               reject mTLS peer pin
+  old leader after election                            reject obsolete term
+  resource crash AFTER record fsync, before reply      restart -> same receipt, no second record
+  simultaneous cutover while grant pending             block cutover
+  post-cutover old epoch request                       reject stale epoch
+  torn segment record WITHOUT durable head             quarantine until reviewed
+  forged one-operator recovery                          reject (requires 2 distinct votes)
+  orphan writer lock                                   HOLD; do NOT auto-clear
+  tampered replica journal after commit                replay detects vote/hash mismatch
+  resource history rollback relative to signed pin    reject rollback
+
+(06) REVIEWED TORN-HEAD RECONCILIATION (EXACT SINGLE RECORD)
+
+                       [Torn segment exists]
+                                |
+                      [Read HEAD and last SEG]
+                                |
+                      Is it EXACTLY one extra
+                        correctly linked record?
+                         /                    \
+                       NO                      YES
+                       |                        |
+                   QUARANTINE           [Check S151 anchored floor]
+                                               |
+                                         [Signed plan digest]
+                                               |
+                                      +--------+-------+
+                                      |                |
+                                  Operator A      Operator B
+                                      |                |
+                                      +-------2/3------+
+                                               |
+                                       [Exclusive lock]
+                                               |
+                                   [Persist APPROVED decision]
+                                               |
+                                   [Advance head using original
+                                    persisted record hash ONLY]
+                                               |
+                                   [Persist RECOVERED decision]
+                                               |
+                                         [Do not erase lock]
+
+  NO decision without exact record; NO invented payload;
+  NO silent orphan-lock takeovers; NO unsigned approval;
+  NO backfill of missing physical writes.
+
+(07) DURABLE FILES / CHECKPOINTS
+
+  resource/state.json                 signed-resource record source / hash chain
+  replica-red/state.json              certified proposals + 2/3 votes + anchor pins
+  replica-blue/state.json             same, independent state file
+  replica-green/state.json            same, independent state file
+  segment-journal151/head.json        Merkle frontier / count / resource hash
+  segment-journal151/segments/*.json  immutable-index ordered journal segments
+  anchor-floor/checkpoint.json        separately signed last accepted Merkle root
+  torn/recovery152-decision.json      operator-approved irreversible recovery outcome
+  (each file is fsync + atomic rename; this is not an independent-host guarantee)
+
+(08) TEST ORCHESTRATION
+
+  $ node gate152.js       # fresh mTLS authorities / crash / replay / signature attacks
+  $ bash run-all.sh       # frozen SHEET151 full recursive regression + gate152
+
+  New gate tests: 45 checks (actual exit 0 verified).
+  Inherited: see saved combined-run.log + combined-exit.txt for exact result.
+  Environment: Node 22, OpenSSL, local filesystem, one physical test host.
+
+(09) SAFETY / PRODUCTION BOUNDARIES
+
+  - This is NOT a Raft/Paxos proof or independently deployed multi-host cluster.
+  - S150 resource is STILL bound to <=128 physical records; S151 SEGMENTED shadow
+    journal scales separately. The two storage formats have not been unified.
+  - A stale signed anchor floor could advance between the replica's live check
+    and the durable COMPLETE; no cross-process atomically held anchor lease exists.
+  - Separate mTLS processes on the same host can still share a single failure domain.
+  - A trusted signer can attest false resource history; signatures are not proof
+    of physical disk durability or independent observation.
+  - Reviewed recovery accepts an authenticated supplied floor; full online floor
+    freshness must be checked by a real independent operator before production.
+  - Inherited SHEET142 timing-sensitive assertion remains a known regression risk.
+
+NEXT SHEET153 TARGET:
+   Make old S150 bounded journal + new segmented S151 journal one atomic
+   resource-side append, then add per-resource anchor leases or quorum-held
+   checkpoint generations so signed-anchor movement and COMPLETE serialize.
+=================================================================================================================
+```

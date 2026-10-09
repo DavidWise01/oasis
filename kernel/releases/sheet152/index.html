@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS / ROOT0 — SHEET 152 | Fully Anchored Completion</title>
+<style>
+:root{color-scheme:dark;--bg:#06100c;--fg:#d7ffee;--mint:#3beb96;--muted:#8aafa0;--line:#246346;--red:#ff8f97;--panel:#10231a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 35% -10%,#17442a 0,#07130f 55%,#040c09 100%);color:var(--fg);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;}
+main{max-width:1300px;padding:30px 24px 52px;margin:auto}h1{font-size:clamp(25px,3.5vw,41px);line-height:1.12;letter-spacing:.035em;margin:5px 0 9px}h2{font-size:16px;text-transform:uppercase;letter-spacing:.14em;color:var(--mint);margin:0 0 16px}
+p{color:var(--muted);margin:0 0 18px}.eyebrow{color:var(--mint);font-weight:700;letter-spacing:.2em;font-size:12px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:24px 0}.metric,.panel{border:1px solid #285740;border-radius:13px;background:rgba(9,28,19,.88);padding:16px}.metric strong{display:block;font-size:28px;color:var(--mint);letter-spacing:.02em}.metric span{color:var(--muted);font-size:12px}.layout{display:grid;grid-template-columns:1.28fr 1fr;gap:16px}.panel{min-width:0}.canvas{border:1px solid #204b35;background:#05110c;border-radius:10px;padding:12px}.canvas svg{width:100%;height:auto;display:block}.controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}.controls button{border:1px solid #2e6248;color:#d1fce3;border-radius:8px;background:#142d21;text-align:left;font:inherit;font-size:13px;padding:10px 11px;cursor:pointer;transition:.15s}.controls button:hover,.controls button[aria-pressed=true]{background:#22683f;border-color:#64ffaa;box-shadow:0 0 0 1px #49db87 inset}.detail{margin-top:15px;border:1px solid #356b4f;border-radius:9px;background:#0b1f16;padding:18px}.detail h3{margin:3px 0 9px;font-size:22px}.state{font-size:12px;font-weight:700;letter-spacing:.12em;color:#3bf5a0}.state.denied{color:var(--red)}.steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.step{padding:10px 14px;border-left:2px solid #409966;background:rgba(19,50,32,.5);font-size:12px}.step b{display:block;color:#bdffd8;font-size:13px}.foot{margin-top:20px;font-size:12px;color:#9bbcaa}.export{margin-top:14px;border:1px solid var(--mint);background:#125932;color:var(--fg);padding:10px 15px;border-radius:7px;cursor:pointer;font-weight:700}.export:hover{background:#177a47}.node{fill:#102b1c;stroke:#45b17e;stroke-width:1.4}.node.critical{fill:#13432a;stroke:#70f8a9}.nodeText{font-family:ui-monospace,monospace;font-weight:700;fill:#d4ffe7;font-size:14px}.small{fill:#9dc8b0;font:10px ui-monospace,monospace}.rail{stroke:#65cb96;stroke-width:2;fill:none}.audit{border:1px solid #31593f;padding:12px;margin-top:15px;border-radius:10px;background:#0b1912}.audit pre{white-space:pre-wrap;word-break:break-word;font-size:11px;max-height:210px;overflow-y:auto;color:#b6f4c9}@media(max-width:920px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.controls,.steps{grid-template-columns:1fr}main{padding:20px 12px}}
+</style></head>
+<body><main>
+<div class="eyebrow">ROOT0 // OASIS OSI // VERIFIED EXECUTION</div><h1>SHEET 152 <span style="color:var(--mint)">FULL KERNEL ALIGNMENT</span></h1>
+<p>Full transaction path: quorum-signed grant → durable write → two incompatible journal formats → independent signed anchor → every replica verifies → quorum commit. Local mTLS prototype; not independent-host consensus.</p>
+<div class="metrics"><div class="metric"><strong>1,307</strong><span>FULL CHAIN CHECKS · EXIT 0</span></div><div class="metric"><strong>45/45</strong><span>NEW ATTACK / RECOVERY CHECKS</span></div><div class="metric"><strong>2 of 3</strong><span>AUTHORITY QUORUM + RECOVERY REVIEW</span></div><div class="metric"><strong>260</strong><span>S151 SEGMENTED BINDINGS TESTED</span></div></div>
+<div class="layout">
+<section class="panel"><h2>Execution lattice / complete process</h2><div class="canvas">
+<svg viewBox="0 0 690 840" role="img" aria-label="SHEET 152 complete signed transaction flow from identity to quorum, protected resource, journal proofs, anchor signing, and final completion">
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0L7,3.5L0,7Z" fill="#6be2a1"/></marker></defs>
+<path class="rail" marker-end="url(#arrow)" d="M345 70V102M345 164V205M345 259V289M345 350V390M345 454V486M345 550V584M345 640V677M345 730V760"/>
+<rect class="node" x="165" y="20" width="360" height="50" rx="8"/><text class="nodeText" x="345" y="41" text-anchor="middle">ROOT0 / TX INTENT</text><text class="small" x="345" y="58" text-anchor="middle">txid · digest · epoch · resource</text>
+<rect class="node critical" x="77" y="102" width="536" height="62" rx="8"/><text class="nodeText" x="345" y="125" text-anchor="middle">RED + BLUE + GREEN</text><text class="small" x="345" y="143" text-anchor="middle">mTLS • Ed25519 • signed 2/3 BEGIN quorum</text>
+<rect class="node" x="155" y="205" width="380" height="54" rx="8"/><text class="nodeText" x="345" y="228" text-anchor="middle">PROTECTED RESOURCE</text><text class="small" x="345" y="245" text-anchor="middle">durable one-write commit + signed receipt</text>
+<rect class="node" x="45" y="289" width="285" height="62" rx="8"/><rect class="node" x="360" y="289" width="285" height="62" rx="8"/><text class="nodeText" x="188" y="314" text-anchor="middle">S150 PROOF</text><text class="small" x="188" y="331" text-anchor="middle">bounded resource Merkle</text><text class="nodeText" x="502" y="314" text-anchor="middle">S148 RECEIPT</text><text class="small" x="502" y="331" text-anchor="middle">signed exact mutation</text><path class="rail" d="M345 259V274H188V289 M345 274H502V289 M188 351V370H345 M502 351V370H345V390"/>
+<rect class="node critical" x="125" y="390" width="440" height="64" rx="8"/><text class="nodeText" x="345" y="415" text-anchor="middle">S152 EXACT CROSS-FORMAT BIND</text><text class="small" x="345" y="435" text-anchor="middle">SHA(receipt) + SHA(S150 checkpoint)</text>
+<rect class="node" x="125" y="486" width="440" height="64" rx="8"/><text class="nodeText" x="345" y="510" text-anchor="middle">S151 SEGMENTED JOURNAL</text><text class="small" x="345" y="530" text-anchor="middle">128 / 256 / 260 • compact inclusion proof</text>
+<rect class="node critical" x="160" y="584" width="370" height="56" rx="8"/><text class="nodeText" x="345" y="606" text-anchor="middle">INDEPENDENT ANCHOR</text><text class="small" x="345" y="623" text-anchor="middle">signed durable high-water + live mTLS</text>
+<rect class="node" x="101" y="677" width="488" height="53" rx="8"/><text class="nodeText" x="345" y="698" text-anchor="middle">EACH REPLICA VERIFIES ALL PROOFS</text><text class="small" x="345" y="715" text-anchor="middle">2/3 PREPARE + 2/3 COMMIT</text>
+<rect class="node critical" x="194" y="760" width="302" height="50" rx="8"/><text class="nodeText" x="345" y="783" text-anchor="middle">NEXT VERIFIED EPOCH</text><text class="small" x="345" y="799" text-anchor="middle">append-only high water</text>
+</svg></div>
+<div class="steps"><div class="step"><b>PHASE 1 | Admit</b>Current epoch, matching quorum head, signed grant</div><div class="step"><b>PHASE 2 | Realize</b>Resource commit, hash chain, receipt, S150 Merkle</div><div class="step"><b>PHASE 3 | Anchor</b>S152 digest cross-link, S151 append, signed floor</div><div class="step"><b>PHASE 4 | Complete</b>Live signer head and both proofs at every replica</div></div>
+</section>
+<section class="panel"><h2>Adversarial scenarios / interactive gate</h2><div class="controls" id="controls"></div><div class="detail" aria-live="polite">
+<div class="eyebrow" id="scenario-index">01 / 08</div><div class="state" id="event-state">ACCEPTED / QUORUM CERTIFIED</div><h3 id="event-title">Verified completion</h3><p id="event-description"></p><div id="event-path" class="audit"></div>
+</div>
+<button id="export" class="export" type="button">Export verification snapshot (JSON)</button>
+<div class="audit"><b style="color:#8cffb9">Runtime gates</b><pre id="runtime">resource receipt signature    VERIFIED
+S150 resource inclusion       VERIFIED
+S151 record inclusion        VERIFIED
+independent anchor signature VERIFIED
+live mTLS anchor head        VERIFIED
+2/3 prepare + 2/3 commit   VERIFIED
+leader epoch and tx digest   VERIFIED</pre></div>
+<div class="foot">SHEET152 / 0e / 45 new tests. Source of truth: executable gate152.js and combined-run.log. This visualization is a test-case viewer, not a running consensus cluster. Old S150 physical writer still has its 128-entry bound.</div>
+</section></div>
+</main><script>
+const scenarios=[
+{id:'normal',label:'01 · Valid completion',title:'Verified completion',valid:true,desc:'A signed resource receipt matches the S150 proof and exact S151 binding. Each replica checks the current independent anchor before signing completion.',steps:['2/3 BEGIN certified','resource write persisted exactly once','S150 + S151 inclusions valid','2/3 COMPLETE durable']},
+{id:'leader',label:'02 · Leader handoff',title:'New leader takes over',valid:true,desc:'An elected replacement resumes the pending grant after the protected process restarts; the superseded leader cannot certify the operation.',steps:['resource crash after fsync','replay finds original receipt','new leader term elected','original receipt completed']},
+{id:'rollover',label:'03 · 260-record rollover',title:'Two segment boundaries crossed',valid:true,desc:'The S151 shadow ledger passes the 128 and 256 boundaries; the original S150 physical journal remains bounded.',steps:['S151 segment 000 full','segment 001 full','segment 002 opened','checkpoint inclusion verified']},
+{id:'missing',label:'04 · Missing anchor proof',title:'Unanchored completion',valid:false,desc:'A signed S148 receipt plus a valid S150 Merkle proof is not enough. All replicas refuse a completion lacking S151 anchor evidence.',steps:['resource signature is authentic','S150 inclusion verifies','S151 anchor proof missing','DENIED / pending grant retained']},
+{id:'forged',label:'05 · Forged or swapped proof',title:'Tampered inclusion or signature',valid:false,desc:'Replica rejects a forged external anchor signature, altered receipt binding, or substituted S150 history—even with fabricated prepare votes.',steps:['verify checkpoint signatures','recompute linked binding','verify both inclusion paths','DENIED / no signed completion']},
+{id:'stale',label:'06 · Stale anchor snapshot',title:'Old but valid checkpoint',valid:false,desc:'A prior checkpoint can be correctly signed yet already superseded. Each replica compares the snapshot against the signer’s current live mTLS head.',steps:['old snapshot signature valid','anchor serial advanced','live comparison differs','DENIED / old snapshot refused']},
+{id:'outage',label:'07 · Anchor unreachable',title:'Independent signer outage',valid:false,desc:'Authority services cannot reach the independent current-head endpoint. Operations fail closed instead of relying on stale cached history.',steps:['attempt authenticated anchor read','signer unreachable','quorum operation unavailable','DENIED / no new commit']},
+{id:'recovery',label:'08 · One-vote torn recovery',title:'Insufficient recovery quorum',valid:false,desc:'One persisted record with missing head may be repaired only after two distinct operator signatures over the exact original record and signed floor.',steps:['torn segment retained','record hash is verified','only one operator approved','DENIED / head remains unchanged']}
+];
+const controls=document.getElementById('controls');let active=scenarios[0];
+function select(i){active=scenarios[i];document.querySelectorAll('[data-scenario]').forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));
+ document.getElementById('scenario-index').textContent=String(i+1).padStart(2,'0')+' / 08';
+ const state=document.getElementById('event-state');state.className='state'+(active.valid?'':' denied');state.textContent=active.valid?'ACCEPTED / QUORUM CERTIFIED':'DENIED / FAIL CLOSED';
+ document.getElementById('event-title').textContent=active.title;document.getElementById('event-description').textContent=active.desc;
+ document.getElementById('event-path').innerHTML='<b style="color:#8cffb9">Decision trace</b><pre style="color:#bbefd0;white-space:pre-wrap;font-size:12px">'+active.steps.map((x,j)=>String(j+1).padStart(2,'0')+' > '+x).join('\n')+'</pre>';
+ }
+scenarios.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.dataset.scenario=s.id;b.textContent=s.label;b.addEventListener('click',()=>select(i));controls.appendChild(b);});select(0);
+document.getElementById('export').addEventListener('click',()=>{
+ const data={schema:'oasis.sheet152.visual-audit.v1',sheet:152,scenario:active.id,valid:active.valid,testedChecks:45,fullRegression:1307,scope:'single physical host / TLS processes',steps:active.steps,limitations:['S150 128-resource-record cap remains','single physical host','anchor may move between final check and commit']};
+ window.__lastExport=data;const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='sheet152-'+active.id+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+</script></body></html>
