@@ -8,8 +8,6 @@
  */
 import {gate,complex,abs2} from './wave_kernel.mjs';
 import {encode4,decode4,encodeTensor,decodeTensor,SILO_SIZE,TENSOR_SIZE,ZERO} from './tensor_kernel.mjs';
-
-
 export const MOTIF='..||..|....|||';
 export const FRAME_COUNT=16;
 export const WINDOW_LENGTH=14;
