@@ -1,0 +1,49 @@
+{
+  "gate": "ROOT0-P3.3-Voltage-to-Optics-Identifiability",
+  "status": "PASS_CONDITIONAL_EO_AND_VACUUM_NULL",
+  "userVoltageV": -0.211,
+  "originalWrapper": {
+    "glyph": "{-e{ ..||..|....||| }+e}",
+    "cipherForwardGates": 208,
+    "cipherMirroredInverseGates": 208,
+    "model": "P3.2 source unchanged"
+  },
+  "physicalAssumptions": {
+    "lightVacuumWavelengthNm": 600,
+    "electrodeGapMicrons": 10,
+    "effectiveRefractiveIndex": 2.2,
+    "effectivePockelsPmPerV": 30,
+    "opticalLengthMm": 10,
+    "modeOverlap": 1,
+    "interferometerVisibility": 0.8
+  },
+  "uniformScalarVacuum": {
+    "E_Vm": 0,
+    "phaseShiftRad": 0,
+    "vacuumWavelengthChangeM": 0
+  },
+  "conditionalPockels": {
+    "E_Vm": -21099.999999999996,
+    "deltaIndex": 0.0000033700920000000003,
+    "deltaPhaseRad": 0.3529152089707245,
+    "mediumWavelengthChangePm": -0.41777936002144445,
+    "normalizedInterferenceContrast": -0.13825392571530054,
+    "frequencyShiftHz": 0
+  },
+  "gaugeTrials": 24000,
+  "gaugeResidual": 0,
+  "scalingTests": [
+    "flip voltage sign",
+    "double gap halves response",
+    "double length doubles response",
+    "zero material r is null",
+    "zero overlap is null"
+  ],
+  "priorCipher208AndInverseRecovery": "PASS",
+  "browserChromiumStandalone": "PASS",
+  "noJavascriptErrors": true,
+  "root0UniquePhysicalPrediction": false,
+  "planckDistanceReached": false,
+  "LeanCompiled": false,
+  "simulationTheoryProven": false
+}
