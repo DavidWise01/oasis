@@ -49,7 +49,7 @@ export function zoomLengthM(depth,p=DEFAULTS){
  return basePhotonEquivalentM*Math.exp(depth*Math.log(PLANCK_LENGTH_M/basePhotonEquivalentM));
 }
 export function photonEquivalentEnergyEV(depth,p=DEFAULTS){return HC_EVM/zoomLengthM(depth,p);}
-function noPhysicalPlanckDerivation(){return true;}
+export function noPhysicalPlanckDerivation(){return true;}
 export function normalizedNorm(field){return field.reduce((acc,v)=>acc+W.abs2(v),0);}
 export function forwardGate(field,tick,p=DEFAULTS){
  validate(p);return applyVoltage(C.forwardGate(field,tick,p),p,false);
