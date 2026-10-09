@@ -1,0 +1,25 @@
+{
+  "schema": "oasis.sheet149.release.v1",
+  "sheet": 149,
+  "prior": 148,
+  "title": "Replica-Enforced Resource Receipt Authentication",
+  "newTests": {
+    "checks": 64,
+    "passed": true
+  },
+  "inheritedTests": {
+    "previouslyPassed": 1114,
+    "mostRecentCombinedRun": "TIMED_OUT_NEAR_END",
+    "priorKnownSHEET142IntermittentFailure": true
+  },
+  "chromium": {
+    "scenarios": 9,
+    "pass": true
+  },
+  "baselineFilesPreserved": 426,
+  "networkScope": "Real mTLS processes on one physical host",
+  "archive": "SHEET149-replica-verified-completion.zip",
+  "archiveSha256": "1a74ed79d2b3d87bd0dc1b48b0b969b65f82f2c5c10911c69710ee2c5188d330",
+  "gitContents": "Release README, SVG dashboard, source SHA256 verification metadata, release manifest. Complete executable source and inherited files in ZIP.",
+  "productionCertified": false
+}
