@@ -1,0 +1,30 @@
+{
+  "gate": "ROOT0-P3.6-NESTED-PLANCK-BUBBLE",
+  "status": "PASS_SYMBOLIC_WITH_PHYSICS_NO_GO",
+  "userLiteral": "{-e{gray{+e{white}}",
+  "displayCompleted": "{-e{gray{+e{white}}}}",
+  "regions": [
+    "-e",
+    "gray",
+    "+e",
+    "white"
+  ],
+  "blackWrapperV": -0.211,
+  "targetPlanckLengthM": 1.616255e-35,
+  "PlanckPhotonEquivalentEnergyEV": 7.67107903351886e+28,
+  "voltageEnergyPerElementaryChargeEV": 0.211,
+  "energyRatio": 3.635582480340692e+29,
+  "freeSpaceWavelengthNm": 600,
+  "illustrativeFilmPowerTransmission": 0.13805358429274417,
+  "idealApertureExtrapolatedLog10T": -112.56528185128667,
+  "continuumPhysicalValidityAtPlanck": false,
+  "testedThreeModeUnitaryCycles": 10000,
+  "maxNormResidual": 1.7763568394002505e-15,
+  "maxRecoveredAmplitudeResidual": 3.3306690738754696e-16,
+  "browserChromium": "PASS: 208 forward, mirror, 208 inverse, lambda and Planck-depth controls",
+  "browserJavascriptErrors": 0,
+  "sourceCipherPreserved": true,
+  "unmodifiedFrozenKernel": true,
+  "leanCompiled": false,
+  "simulationTheoryProven": false
+}
