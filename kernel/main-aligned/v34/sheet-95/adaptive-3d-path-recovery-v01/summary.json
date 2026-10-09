@@ -1,0 +1,62 @@
+{
+  "schema": "oasis/sheet95/adaptive-3d-path-recovery-v01",
+  "lineage": "SHEET94 fixed-path swept clearance -> SHEET95 bounded causal alternative paths",
+  "test_counts": {
+    "wasm": {
+      "passed": 48,
+      "total": 48
+    },
+    "svg_dom": {
+      "passed": 70,
+      "total": 70
+    },
+    "chromium": "PASS, no page errors"
+  },
+  "lanes": 120,
+  "floors": 8,
+  "aggregate_domain": 8,
+  "logical_queue_capacity": 8,
+  "synthetic_clearance_units": 1.5,
+  "max_detour_units": 3.6,
+  "route_modes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "fixed_normal": {
+    "deferrals": 2294,
+    "acks": 233,
+    "completed_vias": 866
+  },
+  "adaptive_normal": {
+    "deferrals": 974,
+    "acks": 233,
+    "completed_vias": 869,
+    "fallback_grants": 81
+  },
+  "fixed_stress": {
+    "deferrals": 5934,
+    "acks": 271,
+    "completed_vias": 741
+  },
+  "adaptive_stress": {
+    "deferrals": 4769,
+    "acks": 271,
+    "completed_vias": 742,
+    "fallback_grants": 74
+  },
+  "chromium_stress_extended": {
+    "delivered": 278,
+    "acked": 278,
+    "pending": 0,
+    "conflicts": 0,
+    "deferrals": 4789,
+    "fallbacks": 74,
+    "route_proposals": 20050,
+    "svg_toroids": 72,
+    "queue_slots": 8,
+    "svg_packet_markers": 120
+  },
+  "interpretation": "Clearance holds decrease in tested conditions, but aggregate delivered ACK throughput does not increase; geometry synthetic, not physical PCB clearance."
+}
