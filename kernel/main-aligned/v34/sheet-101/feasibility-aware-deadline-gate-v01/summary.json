@@ -1,0 +1,92 @@
+{
+  "schema": "oasis/sheet101/feasibility-aware-deadline-commitment-v01",
+  "status": "compiled WASM exercised; Chromium rendered",
+  "parent": "SHEET100",
+  "box": "8:0:8:0:8:0:8",
+  "domains": {
+    "silos": 8,
+    "logical_aggregate": "D8",
+    "toroids": 72,
+    "copper_planes": 88,
+    "lane_identifiers": 120
+  },
+  "gate": {
+    "target_ticks": 96,
+    "classification_at": "D8 eligibility after via completion",
+    "non_disruptive": true,
+    "packet_drop": false,
+    "queue_capacity": 8,
+    "workers": 2,
+    "worker_service_ticks": 8,
+    "ack_delay_ticks": 5,
+    "valid_scheduler": "fairness policy 3 / strict oldest-eligible-first",
+    "disabled_or_other_scheduler": "unchecked",
+    "lower_bound": "ceil((8 + sum(8 - service_ticks_already_run_per_queued_entry) + 8*older_waiting_count)/worker_count) + 5",
+    "candidate_label": "not ruled out, never hard guarantee",
+    "infeasible_label": "lower bound exceeds deadline, no contract",
+    "preservation": "All candidates and infeasible items flow into identical physical FIFO"
+  },
+  "checks": {
+    "actual_wasm_passed": 122,
+    "prior_sheet99_regression_passed": 67,
+    "chromium_browser_passed": 21,
+    "chromium_page_errors": 0,
+    "zip_integrity": "passed",
+    "hash_manifest": "passed",
+    "deterministic_replay": true,
+    "active_swept_clearance_conflicts": 0
+  },
+  "scenarios": {
+    "normal": {
+      "acks": 403,
+      "eligible": 406,
+      "possible": 358,
+      "impossible": 48,
+      "possible_acks": 355,
+      "impossible_acks": 48,
+      "late_possible": 1,
+      "late_impossible": 48,
+      "upstream_wait_lane_ticks": 5360
+    },
+    "synchronized": {
+      "acks": 458,
+      "eligible": 459,
+      "possible": 361,
+      "impossible": 98,
+      "possible_acks": 360,
+      "impossible_acks": 98,
+      "late_possible": 0,
+      "late_impossible": 98,
+      "upstream_wait_lane_ticks": 22359
+    },
+    "skew": {
+      "acks": 450,
+      "eligible": 451,
+      "possible": 403,
+      "impossible": 48,
+      "possible_acks": 402,
+      "impossible_acks": 48,
+      "late_possible": 0,
+      "late_impossible": 48,
+      "upstream_wait_lane_ticks": 7399
+    },
+    "single_worker_stress": {
+      "acks": 271,
+      "impossible": 308,
+      "late_impossible": 260
+    }
+  },
+  "sha256": {
+    "kernel_c": "a0db3197784e47feb12845f2e96a6e7c3a0f5aca02dc54f61b1976ed8abf1e09",
+    "kernel_wasm": "6d63fce7884495ada5016ff80d29fc543abc5cf91f242fc6e5dfc748c81e79d2",
+    "index_html": "6bf0756a9174f84ee90d8cd0e80b9e09ac34513678e6d5d0fa694bbd70ba821b",
+    "zip": "9c8e128dad48228ec2271a8b8e6a5c34881d8cb59359ae27cc227e4579869ab9"
+  },
+  "limitations": [
+    "Reduces unsupported deadline commitments, not physical queue waits or actual lateness",
+    "Not a guaranteed SLA: one normal candidate ACK was late",
+    "A gate OFF versus gate ON run has identical physical results",
+    "No real packet ACK, electrical DRC or manufacturing clearance",
+    "C source, rebuild and tests are in local ZIP; GitHub HTML contains exact compiled WASM embedded"
+  ]
+}
