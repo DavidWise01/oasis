@@ -1,0 +1,16 @@
+{
+  "sheet": 140,
+  "status": "0e / PASS",
+  "inheritedChecks": 764,
+  "newChecks": 63,
+  "totalChecks": 827,
+  "browserScenarios": 8,
+  "inheritedFilesPreserved": 293,
+  "archive": "SHEET140-joint-consensus-fencing.zip",
+  "archiveSha256": "6d5b29bf0195604345344e2cbb449ad2e5ab2dad026901fead1d12ead97a7371",
+  "srcArchive": "SHEET140-source-only.zip",
+  "scope": "Synthetic Node.js, local signed joint approval with inherited SHEET139 reference",
+  "gitScope": "documentation/dashboard/release manifest. Runnable release source distributed separately as ZIP.",
+  "productionAuthorization": false,
+  "distributedFencing": false
+}

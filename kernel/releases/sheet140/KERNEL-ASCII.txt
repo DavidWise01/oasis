@@ -1,0 +1,11 @@
+OASIS ROOT0 / SHEET140
+FROZEN 139 verified fleet RED BLUE GREEN (fence 1)
+  -> proposal 2/3 operators + AMBER proof-of-possession
+  -> JOINT_OLD all RED BLUE GREEN
+  -> JOINT_NEW all RED BLUE AMBER
+  -> FINAL_NEW all RED BLUE AMBER
+  -> separately verified SHEET139 3/3 new fleet
+  -> immutable joint transition receipt and fence 2
+  -> old GREEN lease REJECT
+Missing old signer HOLD; new signer HOLD; signed fork QUARANTINE.
+Local cooperating-authority fencing only; cross-host fencing unverified.
