@@ -1,0 +1,61 @@
+{
+  "gate": "ROOT0-P3.5-measured-AuAg-reference-not-electrum",
+  "status": "PASS_COUNTERMODELS_NO_UNIQUE_ROOT0_OPTICAL_PREDICTION",
+  "measuredRowsPerPureElement": 44,
+  "wavelengthVisibleNm": [
+    400,
+    900
+  ],
+  "JohnsonAndChristyGitBlobs": [
+    "cf2f1b2c490d60bea818096920e323da94bbb540",
+    "fcace717cd05616f344cf732784253260d5c3769"
+  ],
+  "massFractionAu": 0.6732236306267202,
+  "atomicFractionAu": 0.79,
+  "mixingMethods": [
+    "dielectric-constant interpolation",
+    "complex-index interpolation"
+  ],
+  "testFilm": {
+    "thicknessNm": 30,
+    "wavelengthNm": 600,
+    "T_Epsilon": 0.13805358429274417,
+    "R_Epsilon": 0.7842103809306413,
+    "A_Epsilon": 0.0777360347766145,
+    "T_Index": 0.14103983882421633,
+    "deltaT": -0.0029862545314721656
+  },
+  "opticalTrials": 5000,
+  "minCalculatedAbsorption": 0.0001879970844832974,
+  "maxEnergyBalanceResidual": 1.1102230246251565e-16,
+  "maxMethodTransmissionDifference": 0.04241780971167386,
+  "gaugeOffsetTrials": 24000,
+  "maxGaugeResidual": 0,
+  "cipher": {
+    "positions": 208,
+    "dominantDFTMode": 24,
+    "normalizedAmplitude": 0.3830068447079039,
+    "zeroDC": true,
+    "ParsevalPower": 0.9999999999999998,
+    "fullForwardInverseCycles": 120
+  },
+  "cipherModel": {
+    "nullCoefficient": 0,
+    "alternativeCoefficientRadPerV": 2,
+    "alternativeAddedPhaseAt600Nm": -0.16162888846673545,
+    "alternativeInterferometerContrast": -0.04393079739511879,
+    "standalonePhotonIntensityUnchanged": true
+  },
+  "missingForPrediction": [
+    "measured AuAg alloy dielectric tensor",
+    "film microstructure and thickness",
+    "electrochemical boundary",
+    "gauge-invariant optical coupling",
+    "cipher pitch and coupling coefficient"
+  ],
+  "sourceFrozenV92Unmodified": true,
+  "quantumElectromagneticPhysicsDerived": false,
+  "PlanckLengthTransitionProven": false,
+  "simulationTheoryProven": false,
+  "leanCompiled": false
+}
