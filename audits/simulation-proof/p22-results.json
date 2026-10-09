@@ -1,0 +1,63 @@
+{
+  "schema": "ROOT0-P2.2-actual-v92-logical-clock-observation-map",
+  "kernel_git_blob": "bf84cfc8746ccaf35c0204050ada8c3980817cb8",
+  "canon_sha256": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8",
+  "frozen_source_unchanged": true,
+  "advance_calls": 12288,
+  "reachable_states_tested": 12289,
+  "wraps": 1024,
+  "lineage_links_tested": 12288,
+  "clock_definition": "tick_index=12*generation+q",
+  "clock_increment_invariants": 12288,
+  "phase_periodicity_checks": 12277,
+  "phase_only_observation_maps": [
+    "q_value",
+    "phase_sign",
+    "sinusoid_not_needed"
+  ],
+  "phase_only_nonzero_uniform_translation_possible": false,
+  "two_external_clock_scales_same_symbolic_trace": true,
+  "two_external_space_scales_same_symbolic_trace": true,
+  "adversarial_invalid_q_cases": [
+    {
+      "q": -2,
+      "logical_clock_delta": 13
+    },
+    {
+      "q": -1,
+      "logical_clock_delta": 13
+    },
+    {
+      "q": 12,
+      "logical_clock_delta": -11
+    },
+    {
+      "q": 13,
+      "logical_clock_delta": -11
+    },
+    {
+      "q": 23,
+      "logical_clock_delta": -11
+    }
+  ],
+  "source_fields_in_advance": [
+    "generation",
+    "identity",
+    "q",
+    "seal",
+    "v3"
+  ],
+  "v3_fields": [
+    "vector",
+    "voxel",
+    "vogel",
+    "sg"
+  ],
+  "physical_distance_m_from_source": null,
+  "physical_duration_s_from_source": null,
+  "photon_wave_operator_from_source": null,
+  "phase_to_photon_falsifiable_observable_derived": false,
+  "lean_machine_checked": false,
+  "simulation_theory_proven": false,
+  "status": "PASS_LOGICAL_CLOCK_AND_PHASE_NO_GO; PHYSICAL_OBSERVABLE_UNDERDETERMINED"
+}
