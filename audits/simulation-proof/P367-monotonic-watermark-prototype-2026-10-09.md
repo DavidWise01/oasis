@@ -1,0 +1,5 @@
+# P3.67 — Trusted monotonic authority prototype
+2026-10-09. A trusted authority reserves witness/context/epoch and checkpoint digest before the local signature is generated. An existing reservation permits retrieval of a committed signed vote but never a replacement signature. If both ordinary local stores are lost, a different checkpoint at the same epoch is rejected and the original is quarantined.
+
+LOCAL Node.js test verified 13 assertions, including 64 concurrent calls at epoch 18 issuing one first signature, deletion of primary with absent anchor, same-epoch conflict, rollback, authority outage and recovery.
+**CRITICAL LIMITATION:** The provided InMemoryAuthority is a process-local mock and does NOT persist across restart or provide independent non-rollbackable trust. The repair is conditional on plugging in a genuinely durable atomic external authority, enforcing key custody and trusted read consistency. Do not call production vulnerability closed. Next test must restart authority and show the limitation, then test a durable externally anchored implementation.
