@@ -1,0 +1,7 @@
+# P3.72 Serialized SQLite witness authority — benchmark, 2026-10-09
+
+The P3.71 stale-checkpoint failure was addressed by moving checkpoint progression inside a serializable SQLite `BEGIN IMMEDIATE` transaction, with WAL, FULL synchronous, 15s busy timeout. This permits multiple different witnesses to commit without supplying an obsolete per-process checkpoint. Same witness/context and epoch has a unique reservation; matching duplicates return the existing decision and conflicting checkpoints are rejected.
+
+**Measured locally, Node.js 22.16.0:** 8 independent processes accepted 8/8, 79.689676 ms, 100.39/s; 32 accepted 32/32, 324.727034 ms, 98.54/s; 64 accepted 64/64, 618.041159 ms, 103.55/s. All zero errors, integrity_check=ok. Separate 64-process conflicting same-epoch batch: 1 first acceptance, 31 duplicates, 32 conflicts, no errors. Exact data recorded in downloadable results.json.
+
+SECURITY LIMIT: This database serves as local serialization and internal checkpoint authority, **not an external nonrollbackable trust anchor**. It is still vulnerable to restoring a historic coherent copy of the entire DB; database corruption, WAL tampering, power loss, malicious key custody and distributed consensus are not addressed. Context binding, signature key enforcement and chain verification must be integrated before production use. Multiwriter measurements include subprocess overhead and are single runs, not statistically stable throughput estimates. Topology `-+5 + 1` remains conceptual.
