@@ -1,0 +1,19 @@
+{
+  "sheet": 147,
+  "title": "Replicated Transaction Authority",
+  "previousSheet": 146,
+  "regression": {
+    "new": 51,
+    "inherited": 1017,
+    "totalLastRun": 1068,
+    "chromiumScenarios": 7
+  },
+  "baselineFilesPreserved": 394,
+  "archive": "SHEET147-replicated-authority.zip",
+  "archiveSha256": "24c1325fb2e15b19f0b33c12e0c4b665a8e89dc5d7116411f4ea6fabdfbd5fd9",
+  "scope": "Three independent mTLS processes on one physical host",
+  "inProduction": false,
+  "resources146WiredToReplicaAuthority": false,
+  "inheritedKnownIssue": "SHEET142 intermittent concurrency assertion",
+  "gitCommitContents": "README, interactive SVG, integrity hashes and manifest; runnable JS sources in attached ZIP, not yet uploaded"
+}
