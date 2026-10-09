@@ -1,0 +1,4 @@
+# P3.48 Six-axis sphere nesting
+Date: 2026-10-09. User specifies multiply the sphere's 183-position shell by six signed internal axes. The six retained labels are N/S, E/W, N/E, N/W, S/E, S/W, each prefixed conceptually by -+. Circle radix 11:9:7:5:4:3:2:1:1:0:0 has 83,160 addressable positions per axis. Six-axis address product is 498,960. 183 × 6 = 1,098 shell-position/axis pairs; 360 × 6 = 2,160 angle-position/axis pairs, not a change in the 360-step torus.
+
+Local Node test executed PASS with 498,960 exact address round trips plus shell/torus coordinate decomposition samples. The six labels are directional traversal channels, not proof of six independent physical spatial dimensions. Root pinned 0. Earlier P3.47 183 proposed length remains independent of the 360 rotation; no physical photon claims.
