@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {CANONICAL,parse,serialize,events,inverseEvents,verify} from './p310_dyson_topology.mjs';
+const tree=parse();const f=events(tree),b=inverseEvents(f);
+assert.equal(serialize(tree),CANONICAL);
+assert.deepEqual(f.filter(e=>e.kind==='domain').map(e=>e.value),[1,2]);
+assert.equal(verify(f,b),true);
+assert.equal(f.filter(e=>e.kind==='enter').length,4);
+assert.equal(f.filter(e=>e.kind==='exit').length,4);
+for (const input of ['{-{d}+{d}-}','{-{d}+{+{d}+}}','{-{d}+{+{d}-}', '{-{d}+{+{d}-}}x','']) assert.throws(()=>parse(input));
+console.log(JSON.stringify({status:'PASS',canonical:CANONICAL,groups:4,domains:2,events:f.length},null,2));
