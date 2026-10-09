@@ -1,0 +1,29 @@
+{
+  "sheet": 141,
+  "version": "v1",
+  "status": "0e / PASS",
+  "regression": {
+    "inherited": 827,
+    "new": 36,
+    "total": 863
+  },
+  "filesPreserved": 308,
+  "commitScope": "README and visualization plus immutable source hashes; full executable tree in conversation ZIP",
+  "sourceHashes": {
+    "fencing141.js": "a4b31c0528a3c5ccdf9f0edb7060e0116b0323ab79400dc504ec04f052d4b842",
+    "authority141.js": "6b6b8f435412535a0486d83c5868f129aa435f70f56fb92e40b30a7b43832611",
+    "resource141.js": "4024cbd26318f73545616ee7727ac17b0dea009a00565e6a6d951d19b91131c0",
+    "gate141.js": "049b01e62344120cfe9f9cd1b3ead9314325f836f473685c2479de515c21a27d",
+    "README.md": "677bdd0e7265122929bab6eb960110e081b6082f0b63e18b7e5d524bef715679",
+    "index.html": "e017e827e65a0c1cf749b28c2cd31af96e226cba265122b34c59f5a23e66d192"
+  },
+  "releaseArchive": {
+    "name": "SHEET141-protected-resource-fencing.zip",
+    "sha256": "770609576023cb92828344dd496e5f075e999f5fe5d5df1254cead1d0b0a623f"
+  },
+  "verification": {
+    "chromium": "headless timed out; unverified",
+    "model": "local mTLS 3-process simulation",
+    "productionAuthorized": false
+  }
+}
