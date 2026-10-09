@@ -1,0 +1,23 @@
+name: ROOT0 P3.0 wavelength-amplitude wave gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality-tensor/wave/**'
+      - '.github/workflows/root0-p30-wave.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reversible-wave:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check P29+P30 wave coupling modules
+        run: node docs/reality-tensor/wave/smoke.mjs
