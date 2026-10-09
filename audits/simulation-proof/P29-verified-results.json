@@ -1,0 +1,46 @@
+{
+  "schema": "ROOT0-P2.9-reality-tensor-verified",
+  "status": "PASS",
+  "matrixShape": [
+    10000,
+    10000
+  ],
+  "totalAddresses": 100000000,
+  "axesPerSilo": [
+    "x",
+    "y",
+    "z",
+    "~"
+  ],
+  "sizePerAxis": 10,
+  "userOuterSymbol": "[||||]",
+  "userInnerSymbol": "[(((((())))))]",
+  "pinnedZeroPair": [
+    0,
+    0
+  ],
+  "encoder": "tensorID = 10000*outerID+innerID",
+  "outerReverseTests": 80000,
+  "innerReverseTests": 30000,
+  "pairedReverseTests": 144000,
+  "totalStreamingRoundTripChecks": 100000000,
+  "streamingChecksum": 4999999950000000,
+  "controlsCount": 24,
+  "zeroPinnedSequenceSteps": 3000,
+  "appendOnlyReverseEventsVerified": 1800,
+  "browserTests": [
+    "forward",
+    "reverse",
+    "12-step",
+    "center pin",
+    "axis edit",
+    "100M streamed scan",
+    "no javascript errors"
+  ],
+  "browserFullTensorAuditPassed": true,
+  "denseTensorArrayAllocated": false,
+  "physicalQuantumAmplitudesDerived": false,
+  "frozenV92Modified": false,
+  "formalLeanCompiled": false,
+  "externalRealitySimulationProven": false
+}
