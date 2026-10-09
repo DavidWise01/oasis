@@ -22,3 +22,9 @@ Finite cyclic state closure shows what the proposed simulator can mathematically
 
 ## Artifacts
 The current-turn packaged executable sources, original frozen file, Lean draft, tests, machine results and README are in \`ROOT0_P14_actual_ring_temporal_proof_20261008.zip\` (shared conversation artifact, not directly in Git). This Git report and its compact smoke-test source provide stable provenance. Package zip SHA256 \`ebb5a730abcc51dc6a8749b16f4bb261d5b42f5c419fb51ac1530ae2dca0c5a0\`, verification \`testzip=None\`.
+
+
+## Combinatorial proof of the 80-transition count
+On the 5-cycle, there are 10 directed adjacent edges (2 choices at each of 5 source nodes). Fix a directed edge i→j. A legal state must have s[i]=1 and s[j]=0; its remaining three bits are unrestricted. Thus exactly 2³=8 legal pre-states exist per directed edge, yielding exactly 10·8=80 distinct legal (state,edge) transitions. At fixed occupied population k, choose k−1 occupied positions from the remaining three, giving M(k)=10·binomial(3,k−1), hence k=0..5 has counts [0,10,30,30,10,0].
+For each move, mass(s′)=mass(s)−1+1=mass(s). Reversing the same edge swaps that same 1/0 pair back, so the move is invertible.
+For the single-token orbit s(t+5)=s(t) with clockwise edge e(t+5)=e(t), any deterministic receipt function r=H(s(t),e(t),s(t+1)) satisfies r(t+5)=r(t), regardless of the selected hash algorithm. This is *identity of hash input*, not cryptographic collision or evidence of real-world cyclic spacetime.
