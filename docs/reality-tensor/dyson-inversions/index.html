@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>ROOT0 · Dyson Sphere Inversions · 10⁻³⁵</title><meta name="description" content="Corrected ROOT0 -211 mV x 10^-35 symbolic Dyson-shell inversion explorer"/><style>
+:root{color-scheme:dark;--bg:#050708;--panel:#121316;--edge:#343334;--text:#f8efe6;--muted:#c1b0a2;--orange:#ff9b34;--gold:#f8bd6e;--gray:#92969f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -30%,#311b10,#0a0b0d 52%,#040506);color:var(--text);font:14px/1.48 system-ui,Segoe UI,Arial,sans-serif}main{max-width:1300px;margin:auto;padding:26px 18px 60px}.eyebrow{letter-spacing:.2em;color:var(--orange);font-weight:700;font-size:11px;text-transform:uppercase}h1{font-size:clamp(30px,4.4vw,54px);letter-spacing:-1.4px;line-height:1.03;margin:10px 0}h1 span{color:var(--orange)}.intro{max-width:1000px;color:var(--muted);line-height:1.65;margin:0 0 18px}.top{display:flex;gap:14px;flex-wrap:wrap}.metric{background:#111216;border:1px solid #4a3730;padding:13px 15px;min-width:190px;border-radius:12px;flex:1}.metric small{display:block;color:#bdada2}.metric strong{font-size:22px;color:#ffd09d;letter-spacing:-.5px}.workspace{display:grid;grid-template-columns:minmax(290px,410px) minmax(0,1fr);gap:16px;margin-top:16px}.panel{background:linear-gradient(155deg,#141518,#0a0b0d);border:1px solid var(--edge);border-radius:16px;padding:18px;min-width:0}h2{font-size:14px;letter-spacing:.04em;color:#ffd5ae;margin:0 0 12px}.control{padding:8px 0;border-bottom:1px solid #25272b}.control label{display:flex;justify-content:space-between;margin-bottom:8px;color:#e8d7c8;font-weight:600;font-size:13px}.control output{color:var(--orange);font-variant-numeric:tabular-nums}input{width:100%;accent-color:var(--orange)}.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}button{border:1px solid #6b4527;border-radius:9px;background:#302015;color:#ffe6cf;padding:12px 9px;font-size:12px;font-weight:700;cursor:pointer}button:hover{background:#58331b}button.primary{background:#ff9b34;color:#17100a}button:disabled{opacity:.4;cursor:default}.status{color:#ecc9a7;border:1px solid #483426;background:#1a1410;padding:11px;border-radius:9px;margin-top:12px;min-height:52px}.plotWrap{background:#060606;border-radius:13px;overflow:hidden;border:1px solid #414043}svg{width:100%;height:auto;display:block;max-height:455px}.bottom{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}#budget{display:flex;gap:3px;height:33px;overflow:hidden;border-radius:8px;background:#262626;border:1px solid #4b4640;margin:10px 0}.segment{height:100%;min-width:1px}.row{display:flex;justify-content:space-between;gap:8px;color:#ccbfaf;padding:7px 0;border-bottom:1px solid #242528;font-variant-numeric:tabular-nums}.row b{color:#fff3e9}code{font-family:ui-monospace,Consolas,monospace;color:#ffbf82;word-break:break-all}.notice{border-left:3px solid var(--orange);padding-left:12px;color:#cdbdab;line-height:1.65}.caption{font-size:11px;color:#ab9c90;margin-top:8px}@media(max-width:860px){.workspace,.bottom{grid-template-columns:1fr}}</style></head><body><main>
+<div class="eyebrow">ROOT0 / P3.7 · scale correction · symbolic mechanics</div>
+<h1>Energy inversion · <span>Dyson spheres</span></h1>
+<p class="intro">The black wrapper is <code>{{−211 mV}} × 10⁻³⁵</code> — not the unscaled −211 mV used in prior calculations. Here the negative branch traverses nested Dyson-like energy collectors, a gray intermediary and a white core. The 10-shell setting is a <strong>demonstration based on the prior height=10</strong>, not a frozen assertion about nature.</p>
+<div class="top"><div class="metric"><small>Input wrapped voltage (literal product)</small><strong>−2.110 × 10⁻³⁶ V</strong></div><div class="metric"><small>Port phase at 1 fs, +e</small><strong>3.20565 × 10⁻³⁶ rad</strong></div><div class="metric"><small>Target marker</small><strong>1.616255 × 10⁻³⁵ m</strong></div></div>
+<div class="workspace"><section class="panel"><h2>Inversion controls</h2>
+<div class="control"><label for="shells">Number of nested collectors <output id="shellVal"></output></label><input id="shells" type="range" min="1" max="10" step="1" value="10"/></div>
+<div class="control"><label for="capture">Illustrative capture per shell <output id="captureVal"></output></label><input id="capture" type="range" min="0" max="1" step="0.01" value="0.15"/></div>
+<div class="control"><label for="depth">Geometric depth marker <output id="depthVal"></output></label><input id="depth" type="range" min="0" max="1" step="0.01" value="1"/></div>
+<div class="control"><label for="lambda">Orange wave display wavelength <output id="lambdaVal"></output></label><input id="lambda" type="range" min="400" max="900" step="5" value="600"/></div>
+<div class="actions"><button id="forward" class="primary">Next Dyson inversion</button><button id="back">Undo one (append event)</button><button id="fullForward">Traverse all shells</button><button id="fullBack">Inverse all shells</button><button id="verify">Run 200 numerical checks</button><button id="reset">Reset branch</button></div>
+<div class="status" role="status" id="status"></div><p class="caption">The capture coefficient is not determined by the 208 cipher. Reverse steps act on retained environmental amplitude channels; they do not reverse real dissipative absorption.</p></section>
+<section class="panel"><h2>Black enclosure · gray inversion shells · white core</h2><div class="plotWrap"><svg viewBox="0 0 680 410" id="spheres" aria-label="nested symbolic Dyson spheres, orange wave and white core"></svg></div>
+<div class="row"><span>Current shell traversal</span><b id="moved"></b></div><div class="row"><span>Orange traveling-wave energy fraction</span><b id="travelling"></b></div><div class="row"><span>Conserved full-system norm</span><b id="norm"></b></div><div class="row"><span>Current display radius</span><b id="radius"></b></div><div class="row"><span>Corrected effective voltage</span><b id="bound"></b></div><div class="row"><span>+e phase for 1 fs</span><b id="phase"></b></div>
+</section></div>
+<div class="bottom"><section class="panel"><h2>Traveling vs captured energy</h2><div id="budget"></div><div id="energyRows"></div><p class="caption">Model-local coherent amplitudes conserve their total norm. A Dyson sphere is traditionally hypothetical stellar-energy-collecting megastructure; here “Dyson inversions” is your symbolic shell name.</p></section>
+<section class="panel"><h2>Scope and invariants</h2><p class="notice">The scalar multiplier is dimensionless and applied <strong>once</strong>: <code>(−211 mV) × 10⁻³⁵</code>. The Planck-length marker is a <strong>separate coordinate</strong> and no conversion from volts to meters is assumed. A real transport mechanism, electrum dielectric response, charge geometry and physically measured amplitudes remain unspecified.</p><div class="row"><span>Original cipher source</span><b>208 forward + 208 inverse</b></div><div class="row"><span>Original motif</span><b><code>..||..|....|||</code></b></div><div class="row"><span>Root</span><b>Complex[0] pinned</b></div><div class="row"><span>Nested regions</span><b>−e → gray → +e → white</b></div><p class="caption">Prior P3.6 and frozen v92 kept byte-unchanged; P3.7 is an append-only correction with independent validation.</p></section></div>
+</main><script>/**
+ * ROOT0 P3.7 correction of P3.2–P3.6 voltage assumption.
+ * USER: negative-energy inversions are Dyson-sphere shells;
+ *       {{-211mv}} x 10^-35 is one scaled wrapper, not -211mV unscaled.
+ * No claim of physical negative-energy matter, real Dyson spheres at Planck
+ * length, or a voltage-to-length law.  The multiport shell maps are an added
+ * norm-conserving scattering hypothesis, not electrodynamics.
+ */
+const LITERAL = '{{-211mv}}x10^-35';
+const SHELL_LAYERS = Object.freeze(['-e', 'gray', '+e', 'white']);
+const CONSTANTS = Object.freeze({
+  baseMillivolts: -211,
+  scaleExponent: -35,
+  scale: 1e-35,
+  scaledVoltageV: (-211 / 1000) * 1e-35,
+  hbarEVs: 6.582119569e-16,
+  planckM: 1.616255e-35,
+  defaultDtS: 1e-15,
+  startRadiusM: 300e-9,
+});
+const finite=x=>typeof x==='number'&&Number.isFinite(x);
+const validCount=n=>Number.isInteger(n)&&n>=1&&n<=10;
+function check(p={}){
+ const a={shells:10,capture:0.15,depth:1,dtS:CONSTANTS.defaultDtS,chargeSign:-1,
+   wavelengthNm:600,startRadiusM:CONSTANTS.startRadiusM,...p};
+ if(!validCount(a.shells)||!finite(a.capture)||a.capture<0||a.capture>1||
+   !finite(a.depth)||a.depth<0||a.depth>1||!finite(a.dtS)||a.dtS<0||
+   ![-1,1].includes(a.chargeSign)||!finite(a.wavelengthNm)||a.wavelengthNm<=0||
+   !finite(a.startRadiusM)||a.startRadiusM<=CONSTANTS.planckM)
+   throw new RangeError('Invalid shell, capture, depth, charge, wavelength or timestep');
+ return a;
+}
+function scaledPotentialV(){return CONSTANTS.scaledVoltageV;}
+function totalPortPhase(p={}){
+ const a=check(p);
+ // qV/ħ with numerical charge sign in elementary-charge units.
+ return -(a.chargeSign*CONSTANTS.scaledVoltageV*a.dtS)/CONSTANTS.hbarEVs;
+}
+function depthRadiusM(p={}){
+ const a=check(p);
+ return Math.exp((1-a.depth)*Math.log(a.startRadiusM)+a.depth*Math.log(CONSTANTS.planckM));
+}
+function shellRadiusM(index,p={}){
+ const a=check(p);
+ if(!Number.isInteger(index)||index<0||index>=a.shells)throw new RangeError('shell index');
+ const depth=a.depth*(index+1)/a.shells;
+ return Math.exp((1-depth)*Math.log(a.startRadiusM)+depth*Math.log(CONSTANTS.planckM));
+}
+const zero=()=>[0,0];
+const amplitude=(re,im=0)=>{
+ if(!finite(re)||!finite(im))throw new RangeError('complex amplitude');
+ return [re,im];
+};
+const clone=s=>s.map(v=>v.slice());
+const mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];
+const expi=x=>[Math.cos(x),Math.sin(x)];
+const norm=s=>s.reduce((v,z)=>v+z[0]*z[0]+z[1]*z[1],0);
+function inputState(p={}){
+ const a=check(p);
+ return [amplitude(1),...Array.from({length:a.shells},zero)];
+}
+function validateState(state,n){
+ if(!Array.isArray(state)||state.length!==n+1||!state.every(z=>Array.isArray(z)&&z.length===2&&z.every(finite)))
+   throw new TypeError('Expected one traveling plus n capture complex channels');
+}
+function beam(a,b,capture,inverse=false){
+ const t=Math.sqrt(1-capture),r=Math.sqrt(capture)*(inverse?-1:1);
+ // U = [[t, i r], [i r, t]] and inverse U†.
+ return [
+  [t*a[0]-r*b[1],t*a[1]+r*b[0]],
+  [t*b[0]-r*a[1],t*b[1]+r*a[0]]
+ ];
+}
+function forwardAt(state,index,p={}){
+ const cfg=check(p);validateState(state,cfg.shells);
+ if(!Number.isInteger(index)||index<0||index>=cfg.shells)throw new RangeError('shell index');
+ const out=clone(state);
+ // Charge potential is applied ONCE per full wrapper, distributed for numerical construction.
+ const phased=mul(out[0],expi(totalPortPhase(cfg)/cfg.shells));
+ const [travel,captured]=beam(phased,out[index+1],cfg.capture);
+ out[0]=travel;out[index+1]=captured;
+ return out;
+}
+function backwardAt(state,index,p={}){
+ const cfg=check(p);validateState(state,cfg.shells);
+ if(!Number.isInteger(index)||index<0||index>=cfg.shells)throw new RangeError('shell index');
+ const out=clone(state);
+ const [travel,captured]=beam(out[0],out[index+1],cfg.capture,true);
+ out[0]=mul(travel,expi(-totalPortPhase(cfg)/cfg.shells));out[index+1]=captured;
+ return out;
+}
+function forwardAll(state,p={}){const cfg=check(p);let cur=clone(state);for(let i=0;i<cfg.shells;i++)cur=forwardAt(cur,i,cfg);return cur;}
+function backwardAll(state,p={}){const cfg=check(p);let cur=clone(state);for(let i=cfg.shells-1;i>=0;i--)cur=backwardAt(cur,i,cfg);return cur;}
+function analyticPowers(p={}){
+ const cfg=check(p),t=1-cfg.capture;
+ return {traveling:t**cfg.shells,captured:Array.from({length:cfg.shells},(_,i)=>cfg.capture*t**i),
+   sum:t**cfg.shells+cfg.capture*Array.from({length:cfg.shells},(_,i)=>t**i).reduce((x,y)=>x+y,0)};
+}
+function physicsBoundary(){return Object.freeze({
+  scaledVoltageIsMeasured:false,relativeScaleFactorIsDimensionless:true,
+  physicalPlanckTransitDerived:false,physicalDysonShellsAsserted:false,
+  inverseIsInformationPreservingMathematicalMap:true,
+  PlanckRadiusIsIndependentDisplayCoordinate:true
+});}
+
+const Kernel={LITERAL,SHELL_LAYERS,CONSTANTS,check,scaledPotentialV,totalPortPhase,depthRadiusM,shellRadiusM,zero,amplitude,norm,inputState,forwardAt,backwardAt,forwardAll,backwardAll,analyticPowers,physicsBoundary};
+
+
+const $=id=>document.getElementById(id);
+let params,state,position=0,eventLog=[];
+const format=(v,d=4)=>Number(v).toFixed(d);
+function current(){return{shells:Number($('shells').value),capture:Number($('capture').value),depth:Number($('depth').value),wavelengthNm:Number($('lambda').value)}}
+function sync(){
+ params=current();state=Kernel.inputState(params);position=0;eventLog=[];update('Initialized with Complex[0] pinned and all captured channels empty.');
+}
+function paint(){
+ const cap=Kernel.analyticPowers(params);
+ const total=Kernel.norm(state),running=state[0][0]**2+state[0][1]**2;
+ $('shellVal').textContent=params.shells+' shells';$('captureVal').textContent=format(params.capture*100,1)+'%';
+ $('depthVal').textContent=format(params.depth*100,1)+'%';$('lambdaVal').textContent=params.wavelengthNm+' nm';
+ $('moved').textContent=position+' / '+params.shells;
+ $('norm').textContent=format(total,12);$('phase').textContent=Kernel.totalPortPhase({...params,chargeSign:1}).toExponential(6)+' rad';
+ $('radius').textContent=Kernel.depthRadiusM(params).toExponential(6)+' m';
+ $('travelling').textContent=(100*running).toFixed(3)+'%';
+ $('bound').textContent=Kernel.scaledPotentialV().toExponential(3)+' V';
+ $('forward').disabled=position>=params.shells;$('back').disabled=position<=0;
+ $('fullForward').disabled=position>=params.shells;$('fullBack').disabled=position<=0;
+ const bars=[running,...state.slice(1).map(z=>z[0]**2+z[1]**2)];
+ $('budget').innerHTML=bars.map((v,i)=>`<div class="segment" title="${i===0?'Traveling wave':'Dyson shell '+i}: ${(100*v).toFixed(5)}%" style="width:${Math.max(0,v)*100}%;background:${i===0?'#ffab4e':i%2?'#626870':'#e4d3bf'}"></div>`).join('');
+ $('energyRows').innerHTML=bars.map((v,i)=>`<div class="row"><span>${i===0?'Orange traveling wave':'Inversion / Dyson shell '+i}</span><b>${(v*100).toFixed(4)}%</b></div>`).join('');
+ // Illustrative nested spherical shells; actual radii are plotted logarithmically in the table only.
+ const svg=$('spheres'),num=params.shells,W=680,H=410,cx=338,cy=204;
+ let rings='';for(let i=0;i<num;i++){
+   const r=187-(i*155/Math.max(1,num));const active=i<position;
+   rings+=`<circle cx="${cx}" cy="${cy}" r="${r.toFixed(2)}" fill="none" stroke="${active?'#ff8d2e':i%2?'#8c8d91':'#ddd0ba'}" stroke-width="${active?'2.8':'1.1'}" opacity="${active?'.85':'.45'}" stroke-dasharray="${i%2?'4 8':'none'}"/>`;
+ }
+ let line='';for(let i=0;i<=360;i++){
+  const x=76+i*1.45;const y=cy+Math.sin(2*Math.PI*i/(params.wavelengthNm/10))*26*Math.sqrt(Math.max(0.02,running));
+  line+=(i===0?'M':' L')+x.toFixed(2)+' '+y.toFixed(2);
+ }
+ const start=Kernel.depthRadiusM(params).toExponential(2);
+ svg.innerHTML=`<defs><radialGradient id="white"><stop stop-color="#ffffff"/><stop offset=".37" stop-color="#d1d0cf"/><stop offset="1" stop-color="#2a2b30"/></radialGradient><filter id="glow"><feGaussianBlur stdDeviation="2.4" /></filter></defs><rect width="680" height="410" fill="#050505"/><circle cx="${cx}" cy="${cy}" r="199" fill="#080808" stroke="#211816" stroke-width="20"/><circle cx="${cx}" cy="${cy}" r="175" fill="#393b40" opacity=".17"/>${rings}<circle cx="${cx}" cy="${cy}" r="22" fill="url(#white)"/><path d="${line}" stroke="#ff860e" stroke-width="7" opacity=".32" fill="none" filter="url(#glow)"/><path d="${line}" stroke="#ff9c32" stroke-width="2.2" fill="none"/><text x="12" y="28" font-size="15" fill="#ffac6e" font-family="monospace">{{−211 mV}} × 10⁻³⁵</text><text x="12" y="385" font-size="14" fill="#c1bcc0" font-family="monospace">gray | Dyson inversions | white</text><text x="664" y="385" text-anchor="end" font-size="13" fill="#ffffff" font-family="monospace">r = ${start} m</text>`;
+}
+function update(message){paint();$('status').textContent=message;}
+function moveForward(){if(position>=params.shells)return;state=Kernel.forwardAt(state,position,params);eventLog.push({type:'forward',shell:position});position++;update('Forward inversion: outward energy fraction transferred into shell '+position+'.');}
+function moveBack(){if(position<=0)return;position--;state=Kernel.backwardAt(state,position,params);eventLog.push({type:'compensating-inverse',shell:position});update('Appended inverse event for Dyson shell '+(position+1)+'.');}
+$('forward').onclick=moveForward;$('back').onclick=moveBack;
+$('fullForward').onclick=()=>{while(position<params.shells)moveForward();update('PASS: all '+params.shells+' Dyson shell inversions applied.');};
+$('fullBack').onclick=()=>{while(position>0)moveBack();const error=Math.max(Math.abs(state[0][0]-1),Math.abs(state[0][1]));update('PASS: reversed the entire nested shell chain. Amplitude deviation '+error.toExponential(3)+'. Events: '+eventLog.length+'.');};
+$('verify').onclick=()=>{
+  let worst=0;for(let i=0;i<200;i++){
+    const cfg={shells:1+i%10,capture:i/201,depth:1};let s=Kernel.inputState(cfg);
+    const f=Kernel.forwardAll(s,cfg);const b=Kernel.backwardAll(f,cfg);
+    worst=Math.max(worst,Math.abs(Kernel.norm(f)-1),Math.abs(b[0][0]-1),Math.abs(b[0][1]));
+  }
+  update(worst<1e-12?'PASS: 200 independent shell inverses, norm conserved, max residual '+worst.toExponential(3):'FAIL: '+worst);
+};
+for(const id of ['shells','capture','depth','lambda'])$(id).oninput=sync;
+$('reset').onclick=sync;
+sync();
+</script></body></html>
