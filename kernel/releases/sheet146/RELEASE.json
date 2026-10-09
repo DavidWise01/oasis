@@ -1,0 +1,20 @@
+{
+  "schema": "oasis.sheet146.release.v1",
+  "sheet": 146,
+  "title": "Remote Resource Fencing",
+  "previousSheet": 145,
+  "inheritedTests": 1017,
+  "newTests": 40,
+  "passingCombinedRerun": 1057,
+  "inheritedFirstRun": "FAILED known SHEET142 timing-sensitive assertion; rerun PASS",
+  "browserScenarios": 8,
+  "baselineFileCount": 378,
+  "signedCrashReceiptReconciliation": true,
+  "localTestProcesses": 3,
+  "externalCustody": false,
+  "multiHostVerified": false,
+  "productionReady": false,
+  "sourceArtifact": "SHEET146-remote-resource-fencing.zip (conversation attachment)",
+  "zipSha256": "db722ac02d2701f12cf9948f89e4c86e78efae498a52ccc3b76d68e6b8dfa43a",
+  "githubContentsScope": "release documentation and source digests (executable bundle attached to conversation)"
+}

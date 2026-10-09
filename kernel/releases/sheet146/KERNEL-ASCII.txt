@@ -1,0 +1,36 @@
+                  OASIS / ROOT0
+                       |
+           SHEET 145 RECOVERY FENCE
+                       |
+              MOTHER AUTHORITY
+           epoch + durable pending
+                /           \
+          signed grant    CUTOVER
+                |            |
+       +--------+--------+   |
+       |                 |   |
+     RED                BLUE |
+ protected             protected
+ resource              resource
+       |                 |   |
+    durable           durable|
+     write             write|
+       |                 |   |
+    Ed25519           Ed25519
+    receipt           receipt
+       +--------+--------+   |
+                |            |
+         VERIFIED COMPLETE   |
+                |            |
+         CLEAR PENDING ------+
+                |
+        NEXT CERTIFIED EPOCH
+
+CRASH: resource persisted -> process killed -> authority holds pending
+     -> cutover blocked -> restarted resource submits original receipt
+     -> no duplicate write -> cutover allowed.
+
+AUTHORITY ROLLBACK: Ed25519-signed separate local floor
+     must match retained journal ancestry; stale restored history rejected.
+
+TEST ENVIRONMENT: three mTLS processes on ONE host, not multi-host.
