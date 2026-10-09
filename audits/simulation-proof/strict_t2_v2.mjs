@@ -14,7 +14,7 @@ export const isSeam = (i,j) => (i===0 && j===4) || (i===4 && j===0);
 export const formatOp = (i,j) => `move:${i}->${j}${isSeam(i,j)?':|||':''}`;
 export const parseOp = s => {
   if(typeof s !== 'string') return null;
-  const m=/^move:([0-4])->([0-4])(:\\|\\|\\|)?$/.exec(s);
+  const m=/^move:([0-4])->([0-4])(:\|\|\|)?$/.exec(s);
   return m ? {from:Number(m[1]),to:Number(m[2]),seam:Boolean(m[3])} : null;
 };
 export function legalMove(before,i,j) {
