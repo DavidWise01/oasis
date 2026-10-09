@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {witness,vote,decide,accept} from './p357_quorum.mjs';
+const ww=Array.from({length:4},(_,i)=>witness('w'+i));const auth=new Map(ww.map(w=>[w.id,w.publicKey]));
+const trusted={epoch:1,length:2,head:'a'.repeat(64)};
+const cp={context:'oasis/main',epoch:2,length:3,head:'b'.repeat(64)};
+const records=[{hash:'0'.repeat(64)},{hash:trusted.head},{hash:cp.head}];
+const votes=ww.map(w=>vote(w,cp));let n=0;
+function check(v){assert.ok(v);n++;}
+check(decide(cp,votes.slice(0,3),auth,trusted).ok);
+check(accept(cp,votes.slice(0,3),auth,trusted,records).ok);
+check(!decide(cp,votes.slice(0,2),auth,trusted).ok);
+check(!decide(cp,[votes[0],votes[0],votes[0]],auth,trusted).ok);
+check(!decide(cp,[...votes.slice(0,2),{...votes[2],signature:'invalid'}],auth,trusted).ok);
+check(!decide({...cp,head:'c'.repeat(64)},votes,auth,trusted).ok);
+check(!decide({...cp,epoch:1},votes,auth,trusted).ok);
+check(!accept(cp,votes,auth,trusted,[records[0],{hash:'c'.repeat(64)},records[2]]).ok);
+check(!accept(cp,votes,auth,trusted,records.slice(0,2)).ok);
+check(decide(cp,[votes[0],votes[1],votes[2]],auth,trusted).votes===3);
+check(decide(cp,votes.slice(1),auth,trusted).ok);
+check(!decide(cp,[votes[0],votes[1]],auth,trusted).ok);
+console.log(JSON.stringify({status:'PASS',assertions:n,witnesses:4,quorum:3}));
