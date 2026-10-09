@@ -1,0 +1,3 @@
+# P3.55 chained SHA-256 audit
+
+Local Node 22 test PASS: 21 assertions over 3 envelopes × 1440 records = 4320. Included uninterrupted vs 137-record chunked recovery, tamper, deletion, reordering, and truncation tests. A trusted length+head checkpoint detects truncated suffixes. Without independent trusted checkpoint, hash chains cannot detect valid suffix truncation; reproduced in test. Record hashing is SHA256 over a canonical JSON serialization with fixed field order. Source imports the P3.54 hardened kernel and does not claim cryptographic signatures or third-party trust. The pinned root and symbolic primitive are model attributes, not experimental photon physics.
