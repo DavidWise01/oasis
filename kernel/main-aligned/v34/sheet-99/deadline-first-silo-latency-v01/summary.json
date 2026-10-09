@@ -1,0 +1,122 @@
+{
+  "schema": "oasis/sheet99/deadline-first-silo-latency-v01",
+  "source": "SHEET98",
+  "configuration": {
+    "floors": 8,
+    "silo_domains": 8,
+    "logical_aggregate": "D8",
+    "toroids_total": 72,
+    "copper_layers_total": 88,
+    "lanes": 120,
+    "queue_capacity": 8,
+    "service_workers": 2,
+    "service_ticks_per_request": 8,
+    "geometry_min_synthetic_units": 1.5,
+    "soft_wait_target_ticks": 96,
+    "policy_3": "oldest eligible request globally; lane ID tie break; no-overturn ordering"
+  },
+  "test_results": {
+    "wasm": {
+      "passed": 67,
+      "total": 67,
+      "ticks_per_case": 2200,
+      "workloads": [
+        "normal",
+        "synchronized burst",
+        "skewed"
+      ],
+      "preserved_policies": [
+        1,
+        2
+      ],
+      "new_policy": 3,
+      "strict_older_first_assertions": true,
+      "deterministic_replay": true
+    },
+    "svg_instrumented_dom": {
+      "passed": 94,
+      "total": 94,
+      "frames": 600,
+      "wasm_ticks": 1200
+    },
+    "real_chromium": {
+      "passed": true,
+      "page_errors": 0,
+      "toroids": 72,
+      "copper": 88,
+      "lanes": 120,
+      "queue_slots": 8,
+      "skew_initial_eligible_by_silo": [
+        15,
+        15,
+        15,
+        15,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "zip_crc": "PASS",
+    "zip_files": 18,
+    "zip_sha256": "99b7b1300af59a79290be2e90a5ad10810f9d0b4227eb4efada6fdaa06c575d8"
+  },
+  "comparison_2200_ticks": {
+    "normal": {
+      "sheet98": {
+        "acks": 403,
+        "worst_silo_p95": 75,
+        "waiter_ticks": 5378,
+        "clearance_deferrals": 2423
+      },
+      "sheet99": {
+        "acks": 403,
+        "worst_silo_p95": 74,
+        "waiter_ticks": 5360,
+        "clearance_deferrals": 2042
+      }
+    },
+    "synchronized_stress": {
+      "sheet98": {
+        "acks": 456,
+        "worst_silo_p95": 345,
+        "waiter_ticks": 23254,
+        "clearance_deferrals": 6287
+      },
+      "sheet99": {
+        "acks": 458,
+        "worst_silo_p95": 345,
+        "waiter_ticks": 22359,
+        "clearance_deferrals": 6869,
+        "late_admissions_beyond_96_ticks": 88
+      }
+    },
+    "skew": {
+      "sheet98": {
+        "acks": 449,
+        "worst_silo_p95": 169,
+        "waiter_ticks": 7450,
+        "clearance_deferrals": 4627
+      },
+      "sheet99": {
+        "acks": 450,
+        "worst_silo_p95": 169,
+        "waiter_ticks": 7399,
+        "clearance_deferrals": 4512
+      }
+    }
+  },
+  "sha256": {
+    "html": "6a4763c2885dd4a33268f193051e1ebe4d015c60f9331f8bd5b8ad1f80b13a30",
+    "source_c": "a818022e013eecea0fe12bc0833658d14a428ba9e29f0bd5ca7a8c144c84670a",
+    "compiled_wasm": "05ae51e477eb32192716cca1f5d06b57f235afe5aaad0b39cdb54f0fbbf13647"
+  },
+  "limitations": [
+    "96 ticks is a scheduling target, not a hard bound: 88 missed this target in synchronized stress",
+    "The worst silo p95 did not improve under burst or skew even as cumulative waiting fell",
+    "Clearance deferrals increased in burst scenario",
+    "Modeled ACKs are not external network delivery ACKs",
+    "Simulated 3D polyline spacing is not PCB clearance/EM certification",
+    "Source C, binary, full executable tests, screenshots and large results.json are in the downloadable ZIP; this GitHub entry contains standalone embedded-WASM HTML, audit and compact summary"
+  ]
+}
