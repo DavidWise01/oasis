@@ -1,0 +1,29 @@
+{
+  "gate": "ROOT0-P3.7-exponent-corrected-Dyson-inversion",
+  "status": "PASS_SYMBOLIC",
+  "literal": "{{-211mv}}x10^-35",
+  "assumedMultiplierIsDimensionless": true,
+  "baseVoltageV": -0.211,
+  "scale": 1e-35,
+  "effectiveVoltageV": -2.11e-36,
+  "chargePhaseAbsRadAt1fs": 3.205654315271829e-36,
+  "shellTopology": "negative inversion as nested energy-collecting Dyson shell; gray and white core",
+  "illustrativeShellRange": [
+    1,
+    10
+  ],
+  "captureCoefficientUndetermined": true,
+  "randomStateNormAndInverseTests": 12000,
+  "maxNormResidual": 7.105427357601002e-15,
+  "maxInverseComponentResidual": 1.3322676295501878e-15,
+  "analyticCaptureTests": 50,
+  "cipherForward": 208,
+  "cipherInverse": 208,
+  "ChromiumUI": "PASS",
+  "browserJSerrors": 0,
+  "physicalPlanckTransit": false,
+  "physicalDysonSpheresEstablished": false,
+  "frozenAEv92Altered": false,
+  "LeanCompiled": false,
+  "simulationTheoryProven": false
+}
