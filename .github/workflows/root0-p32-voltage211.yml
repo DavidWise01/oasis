@@ -1,0 +1,23 @@
+name: ROOT0 P3.2 -211mV voltage wrapper
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality-tensor/voltage211/**'
+      - '.github/workflows/root0-p32-voltage211.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  voltage-phase-recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate signed voltage shell and full 208 inverse recovery
+        run: node docs/reality-tensor/voltage211/smoke.mjs
