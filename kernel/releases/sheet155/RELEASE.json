@@ -1,0 +1,31 @@
+{
+  "schema": "oasis.sheet155.release.v1",
+  "previousSheet": 154,
+  "sheet": 155,
+  "title": "Live Authority Journals & Multi-Slot Finality",
+  "testStatus": "0e / PASS",
+  "testExit": 0,
+  "tests": {
+    "new": 56,
+    "inherited": 1390,
+    "combined": 1446,
+    "chromiumScenarios": 8,
+    "chromiumJsonExport": true
+  },
+  "baselineFilesPreserved": 548,
+  "baselineByteForByte": true,
+  "cyclesFinalized": 3,
+  "physicalWrites": 4,
+  "pendingWritesAfterPartition": 1,
+  "zipFile": "SHEET155-live-journal-multislot-finality.zip",
+  "zipSha256": "22b6c2b2e8eaf1bbf918cdab29a255791ea435abcd53ebf6f5607bdf665bd4f1",
+  "physicalHosts": 1,
+  "scope": "Executable source for current layer committed; nested frozen lineage and full ASCII text in ZIP",
+  "limits": [
+    "All services on one physical host",
+    "External floor is a single signer",
+    "S147 raw COMPLETE accepts hash before higher-layer verification",
+    "Cross-host atomicity not established",
+    "S142 inherited timing sensitivity not proven resolved"
+  ]
+}
