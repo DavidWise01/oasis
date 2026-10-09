@@ -1,0 +1,98 @@
+{
+  "schema": "oasis/sheet103/dot-photon-120-lane-embedded-v01",
+  "parents": [
+    "SHEET101",
+    "SHEET102"
+  ],
+  "status": "real wasm32 executed; headless Chromium rendered; not physical QED",
+  "topology": {
+    "physical_silos": 8,
+    "toroids": 72,
+    "copper_layers": 88,
+    "logical_aggregate": "D8",
+    "aggregate_capacity": 8,
+    "workers": 2,
+    "lanes": 120,
+    "photon_state_dimension": 8
+  },
+  "rule": {
+    "dot": "One completed via transport increments exactly one local photon hop tick",
+    "state": "v[j] = 1 + (j XOR mask[lane]); mask ^= from XOR to",
+    "linear_transform": "Permutation matrix P_delta over 8 components",
+    "state_sum": 36,
+    "state_norm_squared": 204,
+    "edge_cost": "1+((3*min(a,b)+5*max(a,b)) mod 4); edges 8-ring or xor 4",
+    "floor_nodes": "source/target floor D0..D7",
+    "copper_nodes": "copper sublayer modulo 8",
+    "scheduler_tick_not_equal_to_photon_dot_tick": true
+  },
+  "compiled_wasm_checks": {
+    "passed": 251616,
+    "total": 251616,
+    "baseline_wasm": "SHEET101 identical checkpoint traffic",
+    "scenarios": {
+      "normal": {
+        "scheduler_ticks": 2200,
+        "photon_hops": 1331,
+        "total_network_cost": 2770,
+        "modeled_acks": 403,
+        "upstream_wait_lane_ticks": 5360,
+        "clearance_deferrals": 2042
+      },
+      "stress": {
+        "scheduler_ticks": 2200,
+        "photon_hops": 1253,
+        "total_network_cost": 2610,
+        "modeled_acks": 458,
+        "upstream_wait_lane_ticks": 22359,
+        "clearance_deferrals": 6869
+      },
+      "skew": {
+        "scheduler_ticks": 2200,
+        "photon_hops": 1341,
+        "total_network_cost": 2790,
+        "modeled_acks": 450,
+        "upstream_wait_lane_ticks": 7399,
+        "clearance_deferrals": 4512
+      }
+    },
+    "replay": "deterministic exact"
+  },
+  "chromium": {
+    "passed": true,
+    "page_errors": 0,
+    "rendered_toroids": 72,
+    "rendered_packet_markers": 120,
+    "live_lanes": 120,
+    "graph_nodes": 8,
+    "selected_state_components": 8,
+    "controls": [
+      "pause",
+      "reset",
+      "lane selector",
+      "next lane"
+    ],
+    "stress_acks": 458,
+    "stress_dot_hops": 1253,
+    "stress_network_cost": 2610
+  },
+  "build": {
+    "compiler": "clang --target=wasm32 -O2 -fno-builtin -nostdlib",
+    "binary_bytes": 20485,
+    "source_parent_binary_bytes": 19170,
+    "zip_files": 15,
+    "zip_integrity": "passed",
+    "sha256": {
+      "kernel_c": "c52bda96acde72ca0704b4496e294811226e19e8b7520fe9e15f8b8a0c3f1541",
+      "standalone_html": "92ba6509d13314e4fd6cdda30e6119a02b7027b7144077efe1952ae8aa7eb47e",
+      "compiled_wasm": "3c086388a171cfe73c3a5b16bf438294c1f30e9eeee1874e46091703ffad406a"
+    }
+  },
+  "limitations": [
+    "Not physical quantum photon model, no evidence for simulation theory",
+    "Network edge costs accumulated, physical geometry still optimized by SHEET101's four safe routes rather than shortest-cost network routing",
+    "WASM vector permutation lazy XOR; no measured end-to-end performance speedup",
+    "ACK is internal modeled receipt",
+    "Single standalone browser HTML embeds WASM; full reproducible package in conversation ZIP"
+  ]
+}
