@@ -1,0 +1,672 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#080a08"><title>ROOT0 · P3.5 | Electrum Spectral Audit</title><meta name="description" content="A physical identifiability test for an electrum Au/Ag alloy, the -211mV black boundary, orange optical waves and the 208-symbol ROOT0 cipher."><style>
+:root{color-scheme:dark;--bg:#080c0a;--panel:#101a15;--edge:#274c36;--mint:#69ffc0;--gold:#ffbc58;--orange:#ff8f23;--paper:#e1f6eb;--muted:#9ab7a7;--blue:#76c6c7}*{box-sizing:border-box}body{margin:0;color:var(--paper);background:radial-gradient(ellipse at 12% -10%,#1c3320 0%,transparent 36%),radial-gradient(ellipse at 94% 6%,#252017 0%,transparent 33%),var(--bg);font:14px/1.45 system-ui,Segoe UI,Arial,sans-serif}main{max-width:1490px;padding:24px 22px 46px;margin:auto}.mast{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}.eyebrow{font-size:11px;letter-spacing:2.7px;color:#9beaaf;font-weight:760}.mast h1{font-size:clamp(27px,4vw,53px);line-height:1;margin:12px 0 10px;letter-spacing:-1.8px}.mast h1 span{color:var(--gold)}.lede{color:var(--muted);margin:0 0 16px}.stamp{color:#f3c688;border:1px solid #6c5030;background:#251a0c;border-radius:99px;padding:10px 14px;font-size:10px;font-weight:750;letter-spacing:.65px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 15px}.stat,.panel{border:1px solid #294435;background:linear-gradient(145deg,#132018,#0c1510);border-radius:13px}.stat{padding:12px 15px}.stat span{color:var(--muted);font-size:11px;display:block}.stat strong{color:#c1ffe2;font-size:26px;display:block;font-variant-numeric:tabular-nums}.stat small{color:#7e9b8a}.main-grid{display:grid;grid-template-columns:306px minmax(0,1fr);gap:14px}.panel{padding:18px}.controls{align-self:start;position:sticky;top:12px}.controls h2{margin:0 0 18px;color:#d3ffe8;font-size:18px}.controls h3{font-size:12px;color:#fec787;text-transform:uppercase;letter-spacing:.5px;margin:12px 0}.label-row{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:13px 0 4px}.label-row label{font-size:12px;color:#a8c5b0}.label-row output{color:#f8c578;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}.controls input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer}.controls select{width:100%;padding:11px 10px;background:#0a1410;color:#e2ffed;border:1px solid #41654d;border-radius:7px}.line{height:1px;background:#294d38;margin:17px 0}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:19px 0 9px}.actions button{cursor:pointer;background:#203b2a;color:#eaffef;border:1px solid #48664c;border-radius:7px;padding:12px 4px;font-weight:780}.actions button:last-child{background:#c7822a;color:#130d05;border-color:#efb45f}.test-label{color:#a3c6ad;font-size:11px;min-height:27px}.content{display:grid;gap:14px}.panel-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.panel-title h2,.outcome h2{margin:0 0 10px;font-size:16px;color:#e7fff0}.small{font-size:10px;color:#9cbdac;letter-spacing:1px}.black-shell{background:#000;box-shadow:inset 0 0 36px rgba(255,124,14,.07),0 0 0 1px #493723;border:1px solid #ad6822;border-radius:12px;padding:12px 15px;overflow:hidden}.port-label{display:flex;align-items:center;justify-content:space-between;color:#ffae4a;font-family:ui-monospace,Consolas,monospace;font-size:12px}.port-label span:first-child,.port-label span:last-child{border:1px solid #98501f;border-radius:4px;padding:5px 9px}.wave canvas{width:100%;height:145px;display:block}.carrier{color:#ffaf48;text-align:center;font:16px ui-monospace,Consolas,monospace;letter-spacing:1px}.carrier span{display:block;color:#927257;font:10px system-ui;letter-spacing:1px;margin-top:3px}.panel-meta{display:flex;gap:20px;flex-wrap:wrap;color:#849b8e;font-size:11px;margin-top:13px}.panel-meta b{color:#c6ffdd}.spectrum canvas{width:100%;height:300px;display:block}.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:11px}.legend-a{color:#ffb35b}.legend-b{color:#77d0ce}.legend-c{color:#9df4b2}.caption{font-size:11px;color:#b1bcae;margin:13px 0 0}.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.triple{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0 16px}.triple div{background:#09150e;border-radius:8px;padding:10px}.triple span,.minor span{display:block;color:#8eae99;font-size:11px}.triple strong{display:block;color:#ffe1aa;font-size:23px;font-variant-numeric:tabular-nums}.minor{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #243a2e;padding:9px 0;font-size:11px}.minor b{font-variant-numeric:tabular-nums;color:#c5edda;text-align:right}.fail{border-left:3px solid #eaaa52;padding:3px 11px;margin:8px 0 12px;background:#241c10}.fail-title{color:#ffc777;font-size:13px;font-weight:800;letter-spacing:1px}.fail p{font-size:11.5px;line-height:1.6;color:#e4d9c0}.footer-panel{border-top:1px solid #355543;color:#97aa9d;padding:13px 6px 0;font-size:11px}.footer-panel a{color:#f4c179}@media(max-width:920px){.main-grid{grid-template-columns:1fr}.controls{position:static}.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:590px){main{padding:15px}.metrics{grid-template-columns:1fr 1fr}.results-grid{grid-template-columns:1fr}.triple strong{font-size:17px}.panel{padding:12px}.wave canvas{height:115px}.spectrum canvas{height:210px}}
+
+</style></head><body>
+<main><header class="mast"><div><div class="eyebrow">ROOT0 / OASIS / P3.5 · SPECTRAL IDENTIFICATION</div><h1>ELECTRUM <span>SPECTRAL</span> AUDIT</h1><p class="lede">Au / Ag crystal lattice · orange amplitude · black −211 mV enclosure · 208-position cipher</p></div><span class="stamp">EXECUTABLE MODEL · NOT MEASURED ELECTRUM</span></header>
+<section class="metrics"><div class="stat"><span>Reference dataset</span><strong>44 × 2</strong><small>measured pure-metal n, k</small></div><div class="stat"><span>Baseline λ</span><strong id="nmOut">600 nm</strong><small>user-selectable probe</small></div><div class="stat"><span>Au atomic share</span><strong id="fractionOut">67.32%</strong><small>79:21 mass demonstration</small></div><div class="stat"><span>Cipher Fourier peak</span><strong>#24</strong><small>abstract mode; no nm calibration</small></div></section>
+<div class="main-grid"><aside class="panel controls"><h2>Experiment controls</h2><div class="label-row"><label for="lambda">Probe wavelength</label><output id="lambdaValue">600 nm</output></div><input id="lambda" type="range" min="400" max="900" step="5" value="600"><div class="label-row"><label for="thickness">Metal-film thickness</label><output id="thicknessValue">30 nm</output></div><input id="thickness" type="range" min="0" max="90" step="1" value="30"><div class="label-row"><label for="gold">Gold composition (Au)</label><output id="goldValue">79%</output></div><input id="gold" type="range" min="0" max="100" step="1" value="79"><div class="label-row"><label for="basis">Composition meaning</label></div><select id="basis"><option value="mass">mass-fraction example</option><option value="atomic">atomic fraction (alternative)</option></select><div class="label-row"><label for="method">Alloy mixing rule</label></div><select id="method"><option value="epsilon">Mix dielectric constants ε</option><option value="nk">Mix n + ik indices</option></select><div class="line"></div><h3>Black boundary / wave coupling</h3><div class="label-row"><label for="voltage">Potential difference</label><output id="voltageValue">−211 mV</output></div><input id="voltage" type="range" min="-500" max="500" step="1" value="-211"><div class="label-row"><label for="coupling">208-cipher phase coefficient</label><output id="couplingValue">0.00 rad/V</output></div><input id="coupling" type="range" min="0" max="3" step="0.05" value="0"><div class="label-row"><label for="pitch">Assumed carrier pitch</label><output id="pitchValue">500 nm</output></div><input id="pitch" type="range" min="100" max="1000" step="10" value="500"><div class="label-row"><label for="surface">Additional surface response</label><output id="surfaceValue">0.00 rad/V</output></div><input id="surface" type="range" min="-2" max="2" step="0.05" value="0"><div class="actions"><button id="reset" type="button">Reset</button><button id="verify" type="button">Run regression</button></div><div class="test-label" id="verification" role="status">Ready for local verification.</div></aside>
+<div class="content"><section class="panel wave"><div class="panel-title"><h2>−211 mV wrapper / orange carrier</h2><span class="small">P3.1 208 POSITION CIPHER</span></div><div class="black-shell"><div class="port-label"><span>−e</span><span id="carrierLabel">−211 mV · λ 600 nm</span><span>+e</span></div><canvas id="wave" width="1000" height="190" aria-label="Orange wavelength and amplitude wave under black electrical boundary"></canvas><div class="carrier">..||..|....||| <span>× 16 shared-seam frames</span></div></div><div class="panel-meta"><span>Complex[0] <b>pinned</b></span><span>208 forward <b>+ 208 inverse</b></span><span>Photon wavelength shift from DC potential <b>0 nm</b></span></div></section>
+<section class="panel spectrum"><div class="panel-title"><h2>Measured constituents → estimated alloy</h2><span class="small">FREE-STANDING FILM · NORMAL INCIDENCE</span></div><canvas id="spectrum" width="1100" height="390" aria-label="Spectral transmission comparison between two electrum mixing models"></canvas><div class="legend"><span class="legend-a">● Dielectric ε mixture</span><span class="legend-b">● Complex-index mixture</span><span class="legend-c">● Selected λ</span></div><p class="caption">Reference n,k are measured separately for Au and Ag (Johnson & Christy, 1972). Both alloy curves are **predictions from mixing assumptions**, not measured electrum.</p></section>
+<section class="results-grid"><div class="panel outcome"><h2>Optical boundary readout</h2><div class="triple"><div><span>Transmission</span><strong id="transmission">—</strong></div><div><span>Reflection</span><strong id="reflection">—</strong></div><div><span>Absorption</span><strong id="absorption">—</strong></div></div><div class="minor"><span>Index, n + ik</span><b id="index">—</b></div><div class="minor"><span>Mixing-model transmission spread</span><b id="modelDelta">—</b></div><div class="minor"><span>Extra cipher phase</span><b id="cipherPhase">0 rad</b></div><div class="minor"><span>Interferometer differential signal</span><b id="interference">0</b></div></div><div class="panel outcome"><h2>Proof-to-failure status</h2><div class="fail"><div class="fail-title">NO UNIQUE PHYSICAL SIGNATURE</div><p>At coefficient zero, the symbolic 208 sequence produces no additional optical effect. With an externally selected coefficient and pitch, the same sequence can generate a different phase. Both models retain the same source cipher and conserved optical-film power.</p></div><div class="minor"><span>DFT dominant mode</span><b>24 / 208</b></div><div class="minor"><span>Normalized DFT amplitude</span><b>0.38300684</b></div><div class="minor"><span>Bulk Pockels coefficient (ideal averaged FCC)</span><b>0</b></div></div></section>
+<section class="footer-panel"><b>Physical boundary:</b> this is a reversible symbolic cipher coupled to conventional thin-film optics under additional, explicitly adjustable assumptions. It does not prove a Planck-scale transition, photon quantization, or that the external universe is simulated. <a href="https://doi.org/10.1103/PhysRevB.6.4370" target="_blank" rel="noopener">Measured Au/Ag source</a> · <a href="https://doi.org/10.1021/acsphotonics.5b00586" target="_blank" rel="noopener">Measured alloy caveat</a></section></div></div></main><script>
+const T=(()=>{
+
+/* ROOT0 P2.9 | 10K^2 Reality Tensor | pure ECMAScript module
+ * This is a user-defined symbolic tensor, not a physical spacetime simulator.
+ * Outer [||||] = four-axis, 10-position per axis square silo.
+ * Inner [(((((())))))] = 10,000-position abstract cyclic address order.
+ * Complex[0] = permanently anchored tensor address (0,0).
+ * Transport policy is a NEW EXPLICIT implementation choice, not frozen v92.
+ */
+const SIDE=10, SILO_SIZE=10_000, TENSOR_SIZE=100_000_000;
+const AXES=['x','y','z','~'];
+const TERNARY=[-1,0,1];
+const ZERO=Object.freeze({outer:0,inner:0});
+const integer=(v,min,max)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
+function validate4(v){
+  if(!Array.isArray(v)||v.length!==4||!v.every(n=>integer(n,0,9)))
+    throw new RangeError('Expected [x,y,z,~] with each axis integer 0..9');
+  return v;
+}
+function encode4(v){
+  validate4(v); return v[0]*1000+v[1]*100+v[2]*10+v[3];
+}
+function decode4(n){
+  if(!integer(n,0,SILO_SIZE-1))throw new RangeError('Silo address out of range');
+  return [Math.floor(n/1000),Math.floor(n/100)%10,Math.floor(n/10)%10,n%10];
+}
+function validatePair(p){
+  if(!p||!integer(p.outer,0,9999)||!integer(p.inner,0,9999))
+    throw new RangeError('Expected {outer,inner} in 0..9999');
+  return p;
+}
+function encodeTensor(pair){validatePair(pair);return pair.outer*SILO_SIZE+pair.inner;}
+function decodeTensor(n){
+  if(!integer(n,0,TENSOR_SIZE-1))throw new RangeError('Tensor address out of range');
+  return {outer:Math.floor(n/SILO_SIZE),inner:n%SILO_SIZE};
+}
+function isZero(p){validatePair(p);return p.outer===0&&p.inner===0;}
+function validateAction(a){
+  if(!a||!integer(a.axis,0,3)||!integer(a.layer,0,1)||!TERNARY.includes(a.spin))
+    throw new RangeError('Action requires axis 0..3, layer 0..1, spin -1/0/+1');
+  return a;
+}
+/* Brickwork transposition on a bounded axis. Protect 0000 (outer referent):
+ * on the all-zero slice, coordinate 0 is fixed and transpositions start at 1.
+ * Every layer is an involution and hence invertible, even at boundaries. */
+function outerSwap(id,axis=0,layer=0){
+  if(!integer(id,0,9999)||!integer(axis,0,3)||!integer(layer,0,1))throw new RangeError('Invalid square route');
+  const v=decode4(id),c=v[axis],reserved=v.every((u,j)=>j===axis||u===0);
+  let nc=c;
+  if(reserved){
+    if(layer===0){if(c>=1&&c<=8)nc=(c%2===1?c+1:c-1);}
+    else{if(c>=2&&c<=9)nc=(c%2===0?c+1:c-1);}
+  }else if(layer===0){nc=(c%2===0?c+1:c-1);}
+  else if(c>0&&c<9){nc=(c%2===1?c+1:c-1);}
+  v[axis]=nc;
+  return encode4(v);
+}
+/* The circular silo is a LOGICAL directed orbit, not Euclidean distance.
+ * Its 0 address is reserved as a center anchor. Nonzero IDs form one
+ * 9999-element circle. A reversible ±1 rotation changes only its index. */
+function innerRotate(id,spin){
+  if(!integer(id,0,9999)||!TERNARY.includes(spin))throw new RangeError('Invalid circular route');
+  if(id===0||spin===0)return id;
+  return 1+(((id-1+spin)%9999+9999)%9999);
+}
+function step(pair,action){
+  validatePair(pair);validateAction(action);
+  return {outer:outerSwap(pair.outer,action.axis,action.layer),inner:innerRotate(pair.inner,action.spin)};
+}
+function unstep(pair,action){
+  validatePair(pair);validateAction(action);
+  return {outer:outerSwap(pair.outer,action.axis,action.layer),inner:innerRotate(pair.inner,-action.spin)};
+}
+/* Reproducible, explicitly noncanonical policy. Full parity is supplied by tick. */
+function actionAt(tick){
+  if(!Number.isSafeInteger(tick)||tick<0)throw new RangeError('Tick must be >=0');
+  return {axis:tick%4,layer:Math.floor(tick/4)%2,spin:TERNARY[tick%3]};
+}
+function next(pair,tick){return step(pair,actionAt(tick));}
+function previous(pair,tick){return unstep(pair,actionAt(tick));}
+/* Append-only event history, including compensating undo events. The caller
+ * can start a NEW runtime/branch; no event in an existing branch is deleted.
+ * An independent trusted digest anchor is still needed for authenticity. */
+class TensorRuntime {
+  #ledger=[];
+  constructor(pair=ZERO){validatePair(pair);this.origin={...pair};this.pair={...pair};this.tick=0;}
+  get eventCount(){return this.#ledger.length;}
+  get events(){return [...this.#ledger];}
+  forward(){
+    const action=actionAt(this.tick),before={...this.pair},after=step(before,action);
+    const event=Object.freeze({seq:this.eventCount,kind:'forward',tick:this.tick,before:Object.freeze(before),after:Object.freeze(after),action:Object.freeze(action)});
+    this.#ledger.push(event);this.pair=after;this.tick++;return event;
+  }
+  reverse(){
+    if(this.tick===0)return null;
+    const action=actionAt(this.tick-1),before={...this.pair},after=unstep(before,action);
+    if(encodeTensor(step(after,action))!==encodeTensor(before))throw new Error('Inverse mismatch');
+    const event=Object.freeze({seq:this.eventCount,kind:'undo',tick:this.tick-1,before:Object.freeze(before),after:Object.freeze(after),action:Object.freeze(action)});
+    this.#ledger.push(event);this.pair=after;this.tick--;return event;
+  }
+}
+
+return {SIDE, AXES, TERNARY, ZERO, validate4, encode4, decode4, validatePair, encodeTensor, decodeTensor, isZero, validateAction, outerSwap, innerRotate, step, unstep, actionAt, next, previous, TensorRuntime};
+})();
+const W=(()=>{
+const {SILO_SIZE,TENSOR_SIZE,ZERO,encodeTensor,decodeTensor,next,previous,validatePair}=T;
+/* ROOT0 P3.0 — signed wavelength/amplitude interaction candidate.
+ * Carrier {-e{ ..||..|....||| }+e} is immutable as a token pattern.
+ * Dot -> phase advance 2π/λ; bar -> phase kick κ are new modelling choices.
+ * -e / +e mark conjugate port phases, not validated physical charges.
+ * Pair tensor addresses by transpose (o,i) <-> (i,o). The 10,000
+ * diagonal locations, including Complex[0]=(0,0), do not mix.
+ * First apply P2.9 reversible routing; then a 2x2 unitary mix on each
+ * transpose pair. Inverse applies conjugate unitary then inverse routing.
+ * Numerical floating-point reversibility is approximate, not bit exact.
+ */
+
+const GLYPH='{-e{ ..||..|....||| }+e}';
+const MOTIF='..||..|....|||';
+const DOTS=8, BARS=6;
+if(MOTIF.length!==14||[...MOTIF].filter(x=>x==='.').length!==DOTS||[...MOTIF].filter(x=>x==='|').length!==BARS)throw Error('Carrier motif broken');
+const isFiniteNumber=x=>typeof x==='number'&&Number.isFinite(x);
+const paramsCheck=p=>{
+  if(!p||!isFiniteNumber(p.wavelength)||p.wavelength<=0||!isFiniteNumber(p.theta)||!isFiniteNumber(p.barKick)||!isFiniteNumber(p.pruneEpsilon)||p.pruneEpsilon<0)throw new RangeError('Need wavelength>0, finite coupling θ, bar kick κ, pruneEpsilon≥0');
+  return p;
+};
+function parseCarrier(s){
+  if(s!==GLYPH)throw new Error('Carrier must match literal {-e{ ..||..|....||| }+e}');
+  return Object.freeze({signedPorts:['-e','+e'],motif:MOTIF,
+    runs:[{token:'.',count:2},{token:'|',count:2},{token:'.',count:2},{token:'|',count:1},{token:'.',count:4},{token:'|',count:3}],
+    dots:DOTS,bars:BARS,length:MOTIF.length});
+}
+const DEFAULT_PARAMS=Object.freeze({wavelength:8,theta:Math.PI/6,barKick:Math.PI/2,pruneEpsilon:1e-14});
+function phaseAt(sample,wavelength,barKick=Math.PI/2){
+  if(!Number.isSafeInteger(sample)||sample<0||!isFiniteNumber(wavelength)||wavelength<=0||!isFiniteNumber(barKick))throw new RangeError('Invalid phase sample or wavelength');
+  const turns=Math.floor(sample/MOTIF.length),tail=sample%MOTIF.length;
+  let dots=DOTS*turns,bars=BARS*turns;
+  for(let k=0;k<tail;k++)if(MOTIF[k]==='.')dots++;else bars++;
+  return (2*Math.PI/wavelength)*dots+barKick*bars;
+}
+function complex(re=0,im=0){
+  if(!isFiniteNumber(re)||!isFiniteNumber(im))throw new RangeError('Nonfinite complex amplitude');
+  return {re,im};
+}
+function abs2(z){return z.re*z.re+z.im*z.im;}
+const plus=(a,b)=>({re:a.re+b.re,im:a.im+b.im});
+const scale=(a,x)=>({re:a.re*x,im:a.im*x});
+const times=(a,b)=>({re:a.re*b.re-a.im*b.im,im:a.re*b.im+a.im*b.re});
+const ZERO_COMPLEX=Object.freeze({re:0,im:0});
+function gate(a,b,theta,phi){
+  if(!isFiniteNumber(theta)||!isFiniteNumber(phi))throw new RangeError('Nonfinite gate parameters');
+  const c=Math.cos(theta),s=Math.sin(theta),f={re:Math.cos(phi),im:Math.sin(phi)};
+  const iExp={re:-s*f.im,im:s*f.re}; // +i sin(theta) exp(+i phi)
+  const iConj={re:s*f.im,im:s*f.re}; // +i sin(theta) exp(-i phi)
+  return [plus(scale(a,c),times(iExp,b)),plus(times(iConj,a),scale(b,c))];
+}
+const transposeId=id=>{
+  if(!Number.isSafeInteger(id)||id<0||id>=TENSOR_SIZE)throw new RangeError('Tensor id out of range');
+  const o=Math.floor(id/SILO_SIZE),i=id%SILO_SIZE;
+  return i*SILO_SIZE+o;
+};
+function normSquared(field){let sum=0;for(const z of field.values())sum+=abs2(z);return sum;}
+function addSeed(field,pair,re,im=0){
+  validatePair(pair);if(pair.outer===0&&pair.inner===0)throw new Error('Complex[0] cannot carry a changing wave amplitude');
+  const id=encodeTensor(pair);field.set(id,complex(re,im));return id;
+}
+const collectPairs=field=>{
+  const pairs=new Set();
+  for(const id of field.keys()){
+    const t=transposeId(id);
+    if(t!==id)pairs.add(Math.min(id,t));
+  }
+  return [...pairs].sort((x,y)=>x-y);
+};
+function mix(field,tick,params=DEFAULT_PARAMS,inverse=false){
+  if(field.has(0))throw new Error("Complex[0] anchor must not carry a wave amplitude");
+  paramsCheck(params);
+  if(!Number.isSafeInteger(tick)||tick<0)throw new RangeError('Invalid time tick');
+  const out=new Map(field);
+  for(const first of collectPairs(field)){
+    const second=transposeId(first),o=Math.floor(first/SILO_SIZE),i=first%SILO_SIZE;
+    const salt=o%10+i%10;
+    const phi=phaseAt(tick+salt,params.wavelength,params.barKick);
+    const [a,b]=gate(field.get(first)||ZERO_COMPLEX,field.get(second)||ZERO_COMPLEX,inverse?-params.theta:params.theta,phi);
+    for(const [id,z] of [[first,a],[second,b]]){
+      if(Math.hypot(z.re,z.im)<=params.pruneEpsilon)out.delete(id);
+      else out.set(id,z);
+    }
+  }
+  out.delete(0);return out;
+}
+function route(field,tick,inverse=false){
+  if(field.has(0))throw new Error("Complex[0] anchor must not carry a wave amplitude");
+  if(!Number.isSafeInteger(tick)||tick<0)throw new RangeError('Invalid time tick');
+  const out=new Map();
+  for(const [id,z] of field){
+    const p=decodeTensor(id),m=inverse?previous(p,tick):next(p,tick);
+    const nid=encodeTensor(m);
+    if(out.has(nid))throw new Error('Collision in supposedly reversible P2.9 routing');
+    out.set(nid,z);
+  }
+  out.delete(0);return out;
+}
+function waveStep(field,tick,params=DEFAULT_PARAMS){return mix(route(field,tick),tick,params);}
+function waveUnstep(field,tick,params=DEFAULT_PARAMS){return route(mix(field,tick,params,true),tick,true);}
+class WaveTensor {
+  #field=new Map();#ledger=[];
+  constructor(params=DEFAULT_PARAMS){this.params={...paramsCheck(params)};this.tick=0;}
+  get amplitudes(){return new Map(this.#field);}
+  get eventCount(){return this.#ledger.length;}
+  get events(){return [...this.#ledger];}
+  get energyProxy(){return normSquared(this.#field);}
+  get occupied(){return this.#field.size;}
+  seed(pair,amplitude,phase=0){
+    if(this.tick!==0||this.eventCount!==0)throw new Error('Seed only at initial state; create a new branch to reseed');
+    if(!isFiniteNumber(amplitude)||amplitude<0||!isFiniteNumber(phase))throw new RangeError('Invalid amplitude or phase');
+    return addSeed(this.#field,pair,amplitude*Math.cos(phase),amplitude*Math.sin(phase));
+  }
+  forward(){
+    const before=this.energyProxy;
+    const after=waveStep(this.#field,this.tick,this.params);
+    const n=normSquared(after);this.#field=after;
+    const e=Object.freeze({seq:this.#ledger.length,kind:'forward',tick:this.tick,beforeNorm:before,afterNorm:n,active:after.size});
+    this.#ledger.push(e);this.tick++;return e;
+  }
+  reverse(){
+    if(this.tick===0)return null;
+    const before=this.energyProxy,at=this.tick-1;
+    const after=waveUnstep(this.#field,at,this.params);
+    const e=Object.freeze({seq:this.#ledger.length,kind:'compensating-reverse',tick:at,beforeNorm:before,afterNorm:normSquared(after),active:after.size});
+    this.#ledger.push(e);this.#field=after;this.tick--;return e;
+  }
+}
+
+return {GLYPH, MOTIF, DOTS, parseCarrier, DEFAULT_PARAMS, phaseAt, complex, abs2, ZERO_COMPLEX, gate, transposeId, normSquared, addSeed, mix, route, waveStep, waveUnstep, WaveTensor};
+})();
+const Cipher=(()=>{
+const {gate,complex,abs2}=W; const {encode4,decode4,encodeTensor,decodeTensor,SILO_SIZE,TENSOR_SIZE,ZERO}=T;
+/** ROOT0 P3.1 — 208-address cyclic cipher using 16 overlapping, 14-glyph windows.
+ * USER facts: literal glyph '..||..|....|||', 1/16 of 208, forward 208 then
+ * reverse inverted mirrored upside-down. MODEL POLICY (new): neighboring
+ * 14-glyph windows share exactly one seam, alternating glyph polarity, so each
+ * contributes 13 *new* symbols. Reflect z by additive inversion modulo 10,
+ * and mirror the silo ports. These choices are explicit, not user-frozen.
+ * Not a claim about real photons, quantum amplitudes, or the physical universe.
+ */
+
+
+const MOTIF='..||..|....|||';
+const FRAME_COUNT=16;
+const WINDOW_LENGTH=14;
+const ADVANCE=13;
+const FULL_LENGTH=208;
+const PORTS=Object.freeze(['-e','+e']);
+const DEFAULTS=Object.freeze({wavelength:8,theta:Math.PI/6,barKick:Math.PI/2});
+const inverseGlyph=g=>g==='.'?'|':g==='|'?'.':(()=>{throw Error('Unknown glyph')})();
+const invertSymbols=s=>Array.from(s,inverseGlyph).join('');
+const reverseInvert=s=>invertSymbols([...s].reverse().join(''));
+const windows=Object.freeze(Array.from({length:FRAME_COUNT},(_,p)=>p%2?invertSymbols(MOTIF):MOTIF));
+// Each phase contributes its first 13 symbols; its 14th is a shared seam.
+const FORWARD=windows.map(w=>w.slice(0,ADVANCE)).join('');
+const BACKWARD=reverseInvert(FORWARD);
+if(MOTIF.length!==14||FORWARD.length!==FULL_LENGTH||BACKWARD.length!==FULL_LENGTH)throw Error('Cipher length mismatch');
+function validateSeams(){
+  const checked=[];
+  for(let p=0;p<FRAME_COUNT;p++){
+    const start=p*ADVANCE;
+    const expanded=Array.from({length:WINDOW_LENGTH},(_,j)=>FORWARD[(start+j)%FULL_LENGTH]).join('');
+    if(expanded!==windows[p])throw Error('Open seam at frame '+p);
+    checked.push(Object.freeze({frame:p,start,overlapAt:(start+ADVANCE)%FULL_LENGTH,shared:windows[p][13],next:windows[(p+1)%FRAME_COUNT][0]}));
+  }
+  return checked;
+}
+const SEAMS=Object.freeze(validateSeams());
+if(reverseInvert(BACKWARD)!==FORWARD)throw Error('Mirror-inverse glyph not involutive');
+const finite=x=>Number.isFinite(x);
+function checkParameters(p){
+  if(!p||!finite(p.wavelength)||p.wavelength<=0||!finite(p.theta)||!finite(p.barKick))throw RangeError('Need wavelength>0 and finite theta/barKick');
+  return p;
+}
+// Phase at each tick uses 208 unique glyphs and no double-counted seam.
+function phaseAt208(tick,p=DEFAULTS){
+  checkParameters(p);
+  if(!Number.isSafeInteger(tick)||tick<0)throw RangeError('Invalid cipher tick');
+  const cycles=Math.floor(tick/FULL_LENGTH),remaining=tick%FULL_LENGTH;
+  let dots=cycles*COUNT.dot,bars=cycles*COUNT.bar;
+  for(let k=0;k<remaining;k++)FORWARD[k]==='.'?dots++:bars++;
+  return 2*Math.PI*dots/p.wavelength + p.barKick*bars;
+}
+const COUNT=Object.freeze({dot:[...FORWARD].filter(v=>v==='.').length,bar:[...FORWARD].filter(v=>v==='|').length});
+function reflectZ(id){
+  const address=decode4(id);
+  address[2]=(10-address[2])%10; // upside-down axis is relative to pinned 0, mod 10.
+  return encode4(address);
+}
+function mirrorUpsideDown(id){
+  const p=decodeTensor(id);
+  return encodeTensor({outer:reflectZ(p.inner),inner:reflectZ(p.outer)});
+}
+function mirrorPorts(field){
+  if(!Array.isArray(field)||field.length!==2)throw TypeError('Two amplitude ports required');
+  return [field[1],field[0]];
+}
+const clone=z=>complex(z.re,z.im);
+const distance=(a,b)=>Math.hypot(a.re-b.re,a.im-b.im);
+const norm=ab=>abs2(ab[0])+abs2(ab[1]);
+function forwardGate(amplitudes,tick,params=DEFAULTS){
+  if(!Number.isSafeInteger(tick)||tick<0||tick>=FULL_LENGTH)throw RangeError('Forward tick 0..207');
+  return gate(amplitudes[0],amplitudes[1],params.theta,phaseAt208(tick,params));
+}
+function inverseMirroredGate(mirrored,tick,params=DEFAULTS){
+  if(!Number.isSafeInteger(tick)||tick<0||tick>=FULL_LENGTH)throw RangeError('Backward tick 0..207');
+  // M U† M^-1 = U(-theta,-phi) for two ports swapped under the mirror M.
+  return gate(mirrored[0],mirrored[1],-params.theta,-phaseAt208(tick,params));
+}
+class Cipher208 {
+  #journal=[];
+  constructor(options={}){
+    this.params={...checkParameters({...DEFAULTS,...(options.params||{})})};
+    this.seed=options.amplitudes?options.amplitudes.map(clone):[complex(1,0),complex(0,0)];
+    if(this.seed.length!==2)throw TypeError('Need exactly two complex amplitudes');
+    this.amplitudes=this.seed.map(clone);
+    this.origin=options.pairId??encodeTensor({outer:2301,inner:9237});
+    if(this.origin<=0||this.origin>=TENSOR_SIZE||this.origin===mirrorUpsideDown(this.origin))throw RangeError('Select nonzero, distinct mirrored pair');
+    this.address=this.origin;
+    this.tick=0;
+    this.mode='forward';
+    this.initialNorm=norm(this.seed);
+  }
+  get journal(){return [...this.#journal];}
+  get totalEvents(){return this.#journal.length;}
+  get energyProxy(){return norm(this.amplitudes);}
+  get currentGlyph(){return this.mode==='forward'?FORWARD[this.tick]??'DONE':BACKWARD[FULL_LENGTH-this.tick]??'DONE';}
+  forward(){
+    if(this.mode!=='forward'||this.tick===FULL_LENGTH)return null;
+    const prior=this.tick;
+    this.amplitudes=forwardGate(this.amplitudes,prior,this.params);
+    this.tick++;
+    const event=Object.freeze({seq:this.#journal.length,mode:'forward',sourceTick:prior,symbol:FORWARD[prior],energyProxy:this.energyProxy});
+    this.#journal.push(event);return event;
+  }
+  beginMirroredReverse(){
+    if(this.mode!=='forward'||this.tick!==FULL_LENGTH)throw Error('Finish 208 forward steps before mirrored reversal');
+    this.amplitudes=mirrorPorts(this.amplitudes);
+    this.address=mirrorUpsideDown(this.address);
+    this.mode='backward';
+    this.#journal.push(Object.freeze({seq:this.#journal.length,mode:'mirror-and-flip-z',sourceTick:208,energyProxy:this.energyProxy}));
+  }
+  backward(){
+    if(this.mode!=='backward'||this.tick===0)return null;
+    const prior=this.tick-1;
+    this.amplitudes=inverseMirroredGate(this.amplitudes,prior,this.params);
+    this.tick--;
+    const event=Object.freeze({seq:this.#journal.length,mode:'inverse-mirrored-upside-down',sourceTick:prior,
+      symbol:BACKWARD[FULL_LENGTH-1-prior],energyProxy:this.energyProxy});
+    this.#journal.push(event);return event;
+  }
+  // Recovery is a read-only comparison; the mirror-frame end is M(seed).
+  recovered(tolerance=2e-11){
+    return this.mode==='backward'&&this.tick===0&&
+      distance(this.amplitudes[0],this.seed[1])<tolerance&&
+      distance(this.amplitudes[1],this.seed[0])<tolerance&&
+      this.address===mirrorUpsideDown(this.origin);
+  }
+  restart(){
+    this.amplitudes=this.seed.map(clone);this.tick=0;this.mode='forward';this.address=this.origin;
+    this.#journal.push(Object.freeze({seq:this.#journal.length,mode:'new-branch-restart',sourceTick:0,energyProxy:this.energyProxy}));
+  }
+}
+
+return {MOTIF, FRAME_COUNT, WINDOW_LENGTH, ADVANCE, FULL_LENGTH, PORTS, DEFAULTS, inverseGlyph, invertSymbols, reverseInvert, windows, FORWARD, BACKWARD, validateSeams, SEAMS, checkParameters, phaseAt208, COUNT, reflectZ, mirrorUpsideDown, mirrorPorts, distance, norm, forwardGate, inverseMirroredGate, Cipher208};
+})();
+const FCC=(()=>{
+
+/**
+ * ROOT0 P3.4 — Au/Ag electrum fcc 10x10x10 physical candidate.
+ * Lattice geometry is a new test attachment, not frozen ROOT0 v92 dynamics.
+ * Gold/silver 79/21 is a user supplied *weight* mnemonic.
+ * Converting it into physical mass fractions is an EXPLICIT optional assumption.
+ * Optical n+ik and the surface voltage response are free experimental inputs.
+ */
+const FACTS=Object.freeze({
+ userAlloyWeightAu:79,userAlloyWeightAg:21,siteGrid:10,
+ massAu:196.966569,massAg:107.8682,
+ aAuM:4.078e-10,aAgM:4.086e-10,
+ planckLengthM:1.616255e-35,
+ elementaryChargeC:1.602176634e-19,
+ eps0:8.8541878128e-12,
+ originalPotentialV:-0.211,
+ earlierCipher:'..||..|....|||',cipherPositions:208,
+ tensorAddresses:100_000_000
+});
+const DEFAULTS=Object.freeze({
+ voltageV:-0.211,referenceV:0,gapM:10e-6,
+ wavelengthM:600e-9,thicknessM:30e-9,
+ nReal:0.5,kappa:3.0, surfaceResponseRadPerV:0,
+ auWeight:79,agWeight:21,compositionBasis:'mass',
+ gridN:10
+});
+const finite=(v,k)=>{if(typeof v!=='number'||!Number.isFinite(v))throw new RangeError(k+' must be finite');return v;};
+function config(p={}){
+ const z={...DEFAULTS,...p};
+ for(const k of ['voltageV','referenceV','gapM','wavelengthM','thicknessM','nReal','kappa','surfaceResponseRadPerV','auWeight','agWeight'])finite(z[k],k);
+ if(!(z.gapM>0&&z.wavelengthM>0&&z.thicknessM>=0&&z.kappa>=0&&z.nReal>0&&z.auWeight>=0&&z.agWeight>=0&&z.auWeight+z.agWeight>0))throw new RangeError('Invalid material/electrode geometry');
+ if(!Number.isInteger(z.gridN)||z.gridN<1||z.gridN>20)throw new RangeError('Lattice gridN 1..20');
+ if(!['mass','atomic'].includes(z.compositionBasis))throw new RangeError('compositionBasis must be mass or atomic');
+ return z;
+}
+function atomicFractions(p={}){
+ const z=config(p),wAu=z.auWeight/(z.auWeight+z.agWeight),wAg=1-wAu;
+ const nAu=z.compositionBasis==='mass'?wAu/FACTS.massAu:wAu;
+ const nAg=z.compositionBasis==='mass'?wAg/FACTS.massAg:wAg;
+ const fAu=nAu/(nAu+nAg);
+ return {fAu,fAg:1-fAu,recordedWeight:[z.auWeight,z.agWeight],assumedBasis:z.compositionBasis};
+}
+const signed32=(x,y,z)=>{
+ let h=(Math.imul(x+1,73856093)^Math.imul(y+1,19349663)^Math.imul(z+1,83492791)^0x24121979)|0;
+ h=Math.imul(h^(h>>>16),0x7feb352d);h=Math.imul(h^(h>>>15),0x846ca68b);return (h^(h>>>16))>>>0;
+};
+const FCC_BASIS=Object.freeze([[0,0,0],[0,1,1],[1,0,1],[1,1,0]]);
+const NEAREST_FCC=Object.freeze(Array.from({length:3},(_,zero)=>{
+ const axes=[0,1,2].filter(a=>a!==zero);
+ return [-1,1].flatMap(a=>[-1,1].map(b=>{
+  const shift=[0,0,0];shift[axes[0]]=a;shift[axes[1]]=b;return shift;
+ }));
+}).flat());
+function buildFCC(p={}){
+ const z=config(p),size=2*z.gridN,atoms=[];
+ for(let cx=0;cx<z.gridN;cx++)for(let cy=0;cy<z.gridN;cy++)for(let cz=0;cz<z.gridN;cz++){
+  for(const b of FCC_BASIS){const x=2*cx+b[0],y=2*cy+b[1],zz=2*cz+b[2];
+   atoms.push({x,y,z:zz,rank:signed32(x,y,zz),element:'Ag'});
+  }
+ }
+ const nAu=Math.round(atoms.length*atomicFractions(z).fAu);
+ const byRank=[...atoms].sort((a,b)=>(a.rank-b.rank)||(a.x-b.x)||(a.y-b.y)||(a.z-b.z));
+ for(let j=0;j<nAu;j++)byRank[j].element='Au';
+ const byKey=new Map(atoms.map((a,i)=>[a.x+','+a.y+','+a.z,i]));
+ const latticeParameterM=atomicFractions(z).fAu*FACTS.aAuM+atomicFractions(z).fAg*FACTS.aAgM;
+ return {size,sites:atoms,nAu,nAg:atoms.length-nAu,byKey,unitCellCount:z.gridN**3,
+  latticeParameterM,atomicFractions:atomicFractions(z),compositionBasis:z.compositionBasis};
+}
+function nearby(lattice,a){
+ const n=lattice.size;
+ return NEAREST_FCC.map(([dx,dy,dz])=>lattice.byKey.get([((a.x+dx)%n+n)%n,((a.y+dy)%n+n)%n,((a.z+dz)%n+n)%n].join(',')));
+}
+function latticeAudit(lattice){
+ const N=lattice.sites.length;
+ let defects=0,neighbors=0,inversionBrokenSpecies=0,degreeChecksum=0;
+ for(let j=0;j<N;j++){
+  const a=lattice.sites[j],indices=nearby(lattice,a);
+  if(new Set(indices).size!==12||indices.some(x=>x===undefined||x===j))defects++;
+  neighbors+=indices.length;degreeChecksum+=indices.reduce((s,x)=>s+x,0);
+  const neg=[(lattice.size-a.x)%lattice.size,(lattice.size-a.y)%lattice.size,(lattice.size-a.z)%lattice.size].join(',');
+  const opposite=lattice.byKey.get(neg);
+  if(opposite===undefined)defects++;
+  else if(lattice.sites[opposite].element!==a.element)inversionBrokenSpecies++;
+ }
+ return {sites:N,unitCells:lattice.unitCellCount,degree:12,directedBonds:neighbors,
+  undirectedBonds:neighbors/2,neighborDefects:defects,inversionBrokenSpecies,
+  averageGeometricInversion:true,speciesConfigurationCentrosymmetric:inversionBrokenSpecies===0};
+}
+const C=(re,im=0)=>({re,im});
+const add=(a,b)=>C(a.re+b.re,a.im+b.im);
+const sub=(a,b)=>C(a.re-b.re,a.im-b.im);
+const mul=(a,b)=>C(a.re*b.re-a.im*b.im,a.re*b.im+a.im*b.re);
+const div=(a,b)=>{const d=b.re*b.re+b.im*b.im;return C((a.re*b.re+a.im*b.im)/d,(a.im*b.re-a.re*b.im)/d);};
+const abs2=a=>a.re*a.re+a.im*a.im;
+const expi=(real,imag=0)=>C(Math.exp(-imag)*Math.cos(real),Math.exp(-imag)*Math.sin(real));
+function slabOptics(p={}){
+ const z=config(p),N=C(z.nReal,z.kappa),one=C(1),k0=2*Math.PI/z.wavelengthM;
+ const r=div(sub(one,N),add(one,N));
+ const q=expi(2*k0*z.nReal*z.thicknessM,2*k0*z.kappa*z.thicknessM);
+ const phase=expi(k0*z.nReal*z.thicknessM,k0*z.kappa*z.thicknessM);
+ const denom=sub(one,mul(mul(r,r),q));
+ const transmission=div(mul(div(mul(C(4),N),mul(add(one,N),add(one,N))),phase),denom);
+ const reflection=div(mul(r,sub(one,q)),denom);
+ const T=abs2(transmission),R=abs2(reflection),A=1-T-R;
+ // Plane-parallel free-standing film, vacuum on both sides. Multiple reflections included.
+ return {transmission,reflection,T,R,A,energyBalance:T+R+A,
+  opticalIntensityDecayLengthM:z.kappa>0?z.wavelengthM/(4*Math.PI*z.kappa):null,
+  bareExponentialTransmissionProxy:Math.exp(-4*Math.PI*z.kappa*z.thicknessM/z.wavelengthM),
+  model:'ideal free-standing homogeneous complex-index film; interface multiple reflections; not measured electrum constants'};
+}
+function opticalBoundary(p={}){
+ const z=config(p),f=atomicFractions(z),aM=f.fAu*FACTS.aAuM+f.fAg*FACTS.aAgM;
+ const voltageDifferenceV=z.voltageV-z.referenceV,externalFieldVPerM=voltageDifferenceV/z.gapM;
+ // bulk DC conductor: field screened in metal; external electrode gap supports E.
+ const sheetChargeCPerM2=-FACTS.eps0*externalFieldVPerM;
+ const surfaceSiteDensityM2=4/(Math.sqrt(3)*aM*aM);
+ const surfaceElectronsPerAtom=Math.abs(sheetChargeCPerM2)/(FACTS.elementaryChargeC*surfaceSiteDensityM2);
+ const surfacePhaseRad=z.surfaceResponseRadPerV*voltageDifferenceV;
+ const slab=slabOptics(z);
+ return {...slab,atomicFractions:f,aM,nearestNeighborM:aM/Math.sqrt(2),
+  potentialDifferenceV:voltageDifferenceV,externalFieldVPerM,
+  bulkStaticElectricFieldVPerM:0, bulkPockelsPhaseRad:0,
+  surfaceSheetChargeCPerM2:sheetChargeCPerM2,surfaceSiteDensityM2,surfaceElectronsPerAtom,
+  surfacePhaseRad,interfaceResponseDerivedFromCipher:false,
+  latticeSeparationToPlanck:aM/FACTS.planckLengthM,
+  vacuumWavelengthToPlanck:z.wavelengthM/FACTS.planckLengthM,
+  vacuumWavelengthShiftFromDCVoltageM:0,
+  physicallyReachesPlanck:false};
+}
+function requireBulkPockels(p={}){
+ const {pockelsCoefficientMPerV=0,centrosymmetricAverage=true}=p;
+ finite(pockelsCoefficientMPerV,'pockelsCoefficientMPerV');
+ if(centrosymmetricAverage&&pockelsCoefficientMPerV!==0)throw new Error('Invalid: bulk electric-dipole Pockels coefficient assumed nonzero for centrosymmetric average electrum FCC');
+ return pockelsCoefficientMPerV;
+}
+
+return {FACTS, DEFAULTS, config, atomicFractions, FCC_BASIS, NEAREST_FCC, buildFCC, nearby, latticeAudit, slabOptics, opticalBoundary, requireBulkPockels};
+})();
+const Model=(()=>{
+
+/**
+ * ROOT0 P3.5 — wavelength-dependent Au/Ag electrum countermodels.
+ * The Au and Ag datasets are Johnson & Christy (1972), pure-element experimental n,k,
+ * transcribed from refractiveindex.info-database CC0, 44 shared wavelengths.
+ * Source repository: polyanskiy/refractiveindex.info-database
+ * Au: database/data/main/Au/nk/Johnson.yml; git blob cf2f1b2c490d60bea818096920e323da94bbb540
+ * Ag: database/data/main/Ag/nk/Johnson.yml; git blob fcace717cd05616f344cf732784253260d5c3769
+ * They are NOT measured electrum/alloy optical constants. Alloy mixing is explicitly an assumption.
+ */
+
+
+const wavelengthsUm=[.1879,.1916,.1953,.1993,.2033,.2073,.2119,.2164,.2214,.2262,.2313,.2371,.2426,.2490,.2551,.2616,.2689,.2761,.2844,.2924,.3009,.3107,.3204,.3315,.3425,.3542,.3679,.3815,.3974,.4133,.4305,.4509,.4714,.4959,.5209,.5486,.5821,.6168,.6595,.7045,.7560,.8211,.8920,.9840];
+const auN=[1.28,1.32,1.34,1.33,1.33,1.30,1.30,1.30,1.30,1.31,1.30,1.32,1.32,1.33,1.33,1.35,1.38,1.43,1.47,1.49,1.53,1.53,1.54,1.48,1.48,1.50,1.48,1.46,1.47,1.46,1.45,1.38,1.31,1.04,.62,.43,.29,.21,.14,.13,.14,.16,.17,.22];
+const auK=[1.188,1.203,1.226,1.251,1.277,1.304,1.350,1.387,1.427,1.460,1.497,1.536,1.577,1.631,1.688,1.749,1.803,1.847,1.869,1.878,1.889,1.893,1.898,1.883,1.871,1.866,1.895,1.933,1.952,1.958,1.948,1.914,1.849,1.833,2.081,2.455,2.863,3.272,3.697,4.103,4.542,5.083,5.663,6.350];
+const agN=[1.07,1.10,1.12,1.14,1.15,1.18,1.20,1.22,1.25,1.26,1.28,1.28,1.30,1.31,1.33,1.35,1.38,1.41,1.41,1.39,1.34,1.13,.81,.17,.14,.10,.07,.05,.05,.05,.04,.04,.05,.05,.05,.06,.05,.06,.05,.04,.03,.04,.04,.04];
+const agK=[1.212,1.232,1.255,1.277,1.296,1.312,1.325,1.336,1.342,1.344,1.357,1.367,1.378,1.389,1.393,1.387,1.372,1.331,1.264,1.161,.964,.616,.392,.829,1.142,1.419,1.657,1.864,2.070,2.275,2.462,2.657,2.869,3.093,3.324,3.586,3.858,4.152,4.483,4.838,5.242,5.727,6.312,6.992];
+if([auN,auK,agN,agK].some(a=>a.length!==wavelengthsUm.length))throw Error('Broken optical table');
+const RAW=Object.freeze(wavelengthsUm.map((u,i)=>Object.freeze({nm:u*1000,Au:Object.freeze({n:auN[i],k:auK[i]}),Ag:Object.freeze({n:agN[i],k:agK[i]})})));
+const SOURCES=Object.freeze({paper:'P. B. Johnson and R. W. Christy, Physical Review B 6, 4370 (1972)',AuBlob:'cf2f1b2c490d60bea818096920e323da94bbb540',AgBlob:'fcace717cd05616f344cf732784253260d5c3769',pureMetalOnly:true});
+const LIMITS=Object.freeze({minNm:400,maxNm:900});
+const finite=(v,n)=>{if(typeof v!=='number'||!Number.isFinite(v))throw new RangeError(n+' finite required');return v;};
+function measuredElement(name,nm){
+ if(!['Au','Ag'].includes(name))throw new RangeError('Au/Ag required');finite(nm,'wavelength');
+ if(nm<RAW[0].nm||nm>RAW.at(-1).nm)throw new RangeError('Outside measured data; no extrapolation');
+ let hi=RAW.findIndex(x=>x.nm>=nm);if(hi===0)return {...RAW[0][name]};
+ if(hi<0)hi=RAW.length-1;
+ let p=RAW[hi-1],q=RAW[hi],t=(nm-p.nm)/(q.nm-p.nm);
+ return {n:p[name].n+t*(q[name].n-p[name].n),k:p[name].k+t*(q[name].k-p[name].k)};
+}
+function epsilon(n,k){return {re:n*n-k*k,im:2*n*k};}
+function opticalIndexFromEpsilon(z){
+ const mod=Math.hypot(z.re,z.im);return {n:Math.sqrt(Math.max(0,(mod+z.re)/2)),k:Math.sqrt(Math.max(0,(mod-z.re)/2))};
+}
+function compositionAu(p={}){const d=FCC.atomicFractions({auWeight:p.auWeight??79,agWeight:p.agWeight??21,compositionBasis:p.compositionBasis??'mass'});return d.fAu;}
+function alloyIndex(nm,p={}){
+ const x=compositionAu(p),a=measuredElement('Au',nm),b=measuredElement('Ag',nm);
+ const method=p.method??'epsilon';if(!['epsilon','nk'].includes(method))throw new RangeError('method');
+ if(method==='nk')return {n:x*a.n+(1-x)*b.n,k:x*a.k+(1-x)*b.k,xAu:x,method};
+ const ea=epsilon(a.n,a.k),eb=epsilon(b.n,b.k);
+ const e={re:x*ea.re+(1-x)*eb.re,im:x*ea.im+(1-x)*eb.im};
+ return {...opticalIndexFromEpsilon(e),xAu:x,method};
+}
+function opticalFilm(nm,p={}){
+ finite(nm,'nm');const d=finite(p.thicknessNm??30,'thicknessNm');if(d<0)throw new RangeError('thickness');
+ const i=alloyIndex(nm,p);return {...i,...FCC.slabOptics({wavelengthM:nm*1e-9,thicknessM:d*1e-9,nReal:i.n,kappa:i.k}),nm};
+}
+function cipherSpectrum(){
+ const s=Cipher.FORWARD.split('').map(c=>c==='.'?1:-1),N=s.length;
+ const spectrum=Array.from({length:N/2+1},(_,m)=>{
+  let re=0,im=0;for(let j=0;j<N;j++){let t=2*Math.PI*m*j/N;re+=s[j]*Math.cos(t);im-=s[j]*Math.sin(t);}
+  return {mode:m,magnitude:Math.hypot(re,im)/N};
+ });
+ const candidates=spectrum.filter(x=>x.mode>0);
+ const dominant=[...candidates].sort((a,b)=>b.magnitude-a.magnitude||a.mode-b.mode)[0];
+ return {spectrum,dominant,DC:spectrum[0].magnitude};
+}
+const CIPHER_SPECTRUM=cipherSpectrum();
+function cipherPhase(nm,p={}){
+ const gamma=finite(p.cipherRadPerVolt??0,'cipher coefficient'),voltage=finite(p.voltageV??-.211,'voltage')-finite(p.referenceV??0,'reference');
+ const pitch=finite(p.pitchNm??500,'optical pitch');if(pitch<=0||nm<=0)throw new RangeError('lengths >0');
+ // Model-only, not a derived physical coupling. Wavelength conversion requires new pitch parameter.
+ return gamma*voltage*CIPHER_SPECTRUM.dominant.magnitude*Math.cos(2*Math.PI*CIPHER_SPECTRUM.dominant.mode*pitch/nm);
+}
+function spectrumAt(nm,p={}){
+ const film=opticalFilm(nm,p),dv=finite(p.voltageV??-.211,'voltage')-finite(p.referenceV??0,'reference');
+ const surface=finite(p.surfaceRadPerVolt??0,'surface coefficient')*dv;
+ const extra=cipherPhase(nm,p);
+ const phase=surface+extra;
+ const carrierPhi=Math.atan2(film.transmission.im,film.transmission.re);
+ const visibility=finite(p.visibility??.85,'visibility');if(visibility<0||visibility>1)throw new RangeError('visibility');
+ const refPhi=finite(p.referencePhaseRad??Math.PI/2,'reference phase');
+ const signal=.5*(1+visibility*Math.cos(carrierPhi+phase-refPhi));
+ const nullSignal=.5*(1+visibility*Math.cos(carrierPhi-refPhi));
+ return {...film,baselineInterferometer:nullSignal,interferometer:signal,relativeInterferometer:signal-nullSignal,
+  extraPhaseRad:extra,surfacePhaseRad:surface,phaseRad:phase,frequencyShiftHz:0,physicallyDerived:false};
+}
+function calculatedSpectrum(p={},from=400,to=900,step=5){
+ if(!Number.isInteger(step)||step<1||from<RAW[0].nm||to>RAW.at(-1).nm||from>to)throw new RangeError('range');
+ return Array.from({length:Math.floor((to-from)/step)+1},(_,j)=>spectrumAt(from+j*step,p));
+}
+
+return {RAW, SOURCES, LIMITS, measuredElement, epsilon, opticalIndexFromEpsilon, compositionAu, alloyIndex, opticalFilm, cipherSpectrum, CIPHER_SPECTRUM, cipherPhase, spectrumAt, calculatedSpectrum};
+})();
+(function(){
+
+
+const $=id=>document.getElementById(id);
+const current=()=>({auWeight:+$('gold').value,agWeight:100-(+$('gold').value),compositionBasis:$('basis').value,
+ method:$('method').value,thicknessNm:+$('thickness').value,voltageV:(+$('voltage').value)/1000,
+ cipherRadPerVolt:+$('coupling').value,pitchNm:+$('pitch').value,surfaceRadPerVolt:+$('surface').value});
+const chosen=()=>+$('lambda').value;
+const fmt=(v,d=2)=>Number(v).toFixed(d);
+function plotWave(){
+ const canvas=$('wave'),g=canvas.getContext('2d'),{width:w,height:h}=canvas;
+ const lam=chosen(),p=current(),phase=Model.spectrumAt(lam,p).phaseRad;
+ g.clearRect(0,0,w,h);g.fillStyle='#000';g.fillRect(0,0,w,h);
+ for(let j=0;j<2;j++){
+ g.beginPath();g.strokeStyle=j===0?'#ff8627':'#8a4116';g.lineWidth=j===0?4:1.3;
+ for(let x=0;x<w;x+=2){const pos=x/w;const s=Math.sin(2*Math.PI*((w/lam)*pos*1.25)+phase+(j?Math.PI/2:0));const y=h/2+s*(h*.33)*(j?.6:1);
+ if(x===0)g.moveTo(x,y);else g.lineTo(x,y);
+ }g.stroke();}
+ g.strokeStyle='#523018';g.beginPath();g.moveTo(0,h/2);g.lineTo(w,h/2);g.stroke();
+ g.fillStyle='#ffaa4f';g.font='14px monospace';g.fillText('ORANGE λ × AMPLITUDE · BLACK ELECTRICAL POTENTIAL WRAPPER',22,h-14);
+}
+function plotSpectrum(){
+ const canvas=$('spectrum'),g=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
+ g.clearRect(0,0,w,h);g.fillStyle='#08140d';g.fillRect(0,0,w,h);
+ const L=55,R=15,T=18,B=42,maxY=.55;
+ const X=nm=>L+(nm-400)/(900-400)*(w-L-R),Y=t=>h-B-(t/maxY)*(h-T-B);
+ g.strokeStyle='#284631';g.lineWidth=1;g.font='13px system-ui';g.fillStyle='#84a591';
+ for(let y=0;y<=.5+1e-5;y+=.1){const yy=Y(y);g.beginPath();g.moveTo(L,yy);g.lineTo(w-R,yy);g.stroke();g.fillText(Math.round(y*100)+'%',6,yy+4);}
+ for(let nm=400;nm<=900;nm+=100){let xx=X(nm);g.beginPath();g.moveTo(xx,T);g.lineTo(xx,h-B);g.stroke();g.fillText(nm+' nm',xx-20,h-17);}
+ const p=current();const a=Model.calculatedSpectrum({...p,method:'epsilon'}),b=Model.calculatedSpectrum({...p,method:'nk'});
+ function line(data,color){g.beginPath();g.strokeStyle=color;g.lineWidth=3;data.forEach((v,j)=>{const x=X(v.nm),y=Y(v.T);j?g.lineTo(x,y):g.moveTo(x,y)});g.stroke();}
+ line(a,'#f7ad4b');line(b,'#76d2cf');
+ const probe=chosen(),out=Model.spectrumAt(probe,p);g.beginPath();g.strokeStyle='#9cf4b1';g.lineWidth=2;g.setLineDash([8,6]);g.moveTo(X(probe),T);g.lineTo(X(probe),h-B);g.stroke();g.setLineDash([]);
+ g.beginPath();g.fillStyle='#ffaf58';g.arc(X(probe),Y(out.T),6,0,Math.PI*2);g.fill();
+}
+function render(){
+ const p=current(),nm=chosen(),a=Model.spectrumAt(nm,p),b=Model.spectrumAt(nm,{...p,method:p.method==='nk'?'epsilon':'nk'}),x=Model.compositionAu(p);
+ $('lambdaValue').textContent=nm+' nm';$('thicknessValue').textContent=p.thicknessNm+' nm';$('goldValue').textContent=p.auWeight+'%';
+ $('voltageValue').textContent=(p.voltageV*1000).toFixed(0)+' mV';$('couplingValue').textContent=fmt(p.cipherRadPerVolt)+' rad/V';
+ $('pitchValue').textContent=p.pitchNm+' nm';$('surfaceValue').textContent=fmt(p.surfaceRadPerVolt)+' rad/V';
+ $('fractionOut').textContent=fmt(100*x)+'%';$('nmOut').textContent=nm+' nm';
+ $('transmission').textContent=fmt(100*a.T)+'%';$('reflection').textContent=fmt(100*a.R)+'%';$('absorption').textContent=fmt(100*a.A)+'%';
+ $('index').textContent=fmt(a.n,4)+' + '+fmt(a.k,4)+'i';
+ $('modelDelta').textContent=fmt(Math.abs(a.T-b.T)*100,3)+' percentage points';
+ $('cipherPhase').textContent=fmt(a.extraPhaseRad,6)+' rad';
+ $('interference').textContent=fmt(a.relativeInterferometer*100,3)+' pp';
+ $('carrierLabel').textContent=(p.voltageV*1000).toFixed(0)+' mV · λ '+nm+' nm';
+ plotWave();plotSpectrum();
+}
+function verify(){
+ const saved=$('verification');try{
+  if(Model.RAW.length!==44||Model.CIPHER_SPECTRUM.dominant.mode!==24||Cipher.FORWARD.length!==208)throw Error('dataset or cipher changed');
+  let maxError=0;for(let nm=400;nm<=900;nm+=5){let x=Model.spectrumAt(nm,current());let e=Math.abs(x.T+x.R+x.A-1);maxError=Math.max(maxError,e);if(x.A< -1e-8)throw Error('nonpassive film');}
+  const s=new Cipher.Cipher208();for(let i=0;i<208;i++)s.forward();s.beginMirroredReverse();for(let i=0;i<208;i++)s.backward();if(!s.recovered())throw Error('208 recovery');
+  saved.textContent='PASS · 101 spectral points · 416 cipher gates · norm drift '+maxError.toExponential(1);
+  saved.style.color='#99ffc0';
+ }catch(e){saved.textContent='FAIL · '+e.message;saved.style.color='#ff9686'}
+}
+for(const id of ['lambda','thickness','gold','basis','method','voltage','coupling','pitch','surface'])$(id).addEventListener('input',render);
+$('verify').addEventListener('click',verify);
+$('reset').addEventListener('click',()=>{for(const [k,v] of Object.entries({lambda:600,thickness:30,gold:79,basis:'mass',method:'epsilon',voltage:-211,coupling:0,pitch:500,surface:0}))$(k).value=v;render();});
+render();verify();
+
+})();
+</script></body></html>
