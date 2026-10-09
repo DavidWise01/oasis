@@ -1,0 +1,114 @@
+{
+  "schema": "ROOT0-P2.1-source-pinned-physical-bridge-nonidentifiability",
+  "tested_original_kernel_git_blob": "bf84cfc8746ccaf35c0204050ada8c3980817cb8",
+  "canonical_digest_embedded_in_kernel": "8f2be8951098c7e1764c3c0f5bba982fb3fd8c71f094924b79d0172a313a7bf8",
+  "original_canon_bytes_verified_in_this_run": true,
+  "kernel_steps_per_world": 4096,
+  "total_frozen_advance_calls": 8192,
+  "symbolic_trajectories_identical": true,
+  "lineage_seals_identical": true,
+  "wave_rule": "auxiliary centered scalar wave added in P2.0, NOT defined by v92",
+  "physical_worlds": [
+    {
+      "label": "A-two-Planck-lengths",
+      "a_m": 3.23251e-35,
+      "a_over_lp": 2.0,
+      "tau_s": 5.391246366844893e-44,
+      "courant_r": 0.5,
+      "CFL_max_rhs_3r2": 0.75,
+      "tick_run": 4096,
+      "final_q": 4,
+      "final_generation": 341,
+      "final_lineage_seal": "63c5ab7250b055cee818f841ad92f3b2390d0d48fa36a5d2cb15c20ff79ea6a3",
+      "trajectory_sha256": "e8ada3185910f3148b82c2ac85c6cae3a164d78548efa7f63abbdec36b89e7b1",
+      "axis_delay_30vs1_GeV_1Gpc_s": 2.327917710066006e-19,
+      "diagonal_delay_30vs1_GeV_1Gpc_s": 2.5865752334066726e-20
+    },
+    {
+      "label": "B-three-Planck-lengths",
+      "a_m": 4.848765e-35,
+      "a_over_lp": 2.9999999999999996,
+      "tau_s": 5.391246366844893e-44,
+      "courant_r": 0.33333333333333337,
+      "CFL_max_rhs_3r2": 0.33333333333333337,
+      "tick_run": 4096,
+      "final_q": 4,
+      "final_generation": 341,
+      "final_lineage_seal": "63c5ab7250b055cee818f841ad92f3b2390d0d48fa36a5d2cb15c20ff79ea6a3",
+      "trajectory_sha256": "e8ada3185910f3148b82c2ac85c6cae3a164d78548efa7f63abbdec36b89e7b1",
+      "axis_delay_30vs1_GeV_1Gpc_s": 6.207780560176014e-19,
+      "diagonal_delay_30vs1_GeV_1Gpc_s": 1.5519451400440035e-19
+    }
+  ],
+  "axis_delay_ratio_B_over_A": 2.6666666666666656,
+  "diagonal_delay_ratio_B_over_A": 6.0,
+  "dimensional_parameter_scan": [
+    {
+      "a_over_lp": 1.8,
+      "axis_delay_s": 1.7381785568492845e-19,
+      "diagonal_delay_s": 6.207780560176002e-21
+    },
+    {
+      "a_over_lp": 2,
+      "axis_delay_s": 2.327917710066006e-19,
+      "diagonal_delay_s": 2.5865752334066726e-20
+    },
+    {
+      "a_over_lp": 2.5,
+      "axis_delay_s": 4.07385599261551e-19,
+      "diagonal_delay_s": 8.406369508571687e-20
+    },
+    {
+      "a_over_lp": 3,
+      "axis_delay_s": 6.207780560176014e-19,
+      "diagonal_delay_s": 1.5519451400440035e-19
+    },
+    {
+      "a_over_lp": 4,
+      "axis_delay_s": 1.163958855033003e-18,
+      "diagonal_delay_s": 3.362547803428675e-19
+    },
+    {
+      "a_over_lp": 10,
+      "axis_delay_s": 7.682128443217818e-18,
+      "diagonal_delay_s": 2.5089779764044726e-18
+    }
+  ],
+  "transition_ast_names": [
+    "CANON_SHA256",
+    "Context",
+    "INFINITE_ID_LITERAL",
+    "PHASE_SEQUENCE",
+    "PHOTON_BIRTH",
+    "ROOT",
+    "V3",
+    "ValueError",
+    "_",
+    "_derive",
+    "advance",
+    "asdict",
+    "canonical_json",
+    "child_id",
+    "child_v3",
+    "ctx",
+    "generation",
+    "genesis",
+    "identity",
+    "int",
+    "len",
+    "lineage",
+    "nq",
+    "ntoken",
+    "out",
+    "range",
+    "seed",
+    "sha256_bytes",
+    "steps",
+    "v3"
+  ],
+  "nonuniqueness_witness": "two strictly stable, distinct (a/tp) bridges; same exact symbolic states/lineage, different photon delays",
+  "mathematical_result": "NO UNIQUE PHOTON DELAY DERIVABLE FROM IMPLEMENTED V92 TRANSITION AND A PLANCK TICK ALONE",
+  "physical_reality_simulation_proven": false,
+  "lean_compiled": false,
+  "status": "PASS_EXPLICIT_NONUNIQUENESS_COUNTERMODELS"
+}
