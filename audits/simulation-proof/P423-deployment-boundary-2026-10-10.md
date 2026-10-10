@@ -1,0 +1,7 @@
+# ROOT0 P4.23 — deployment trust-boundary gate
+
+Date 2026-10-10. Node v22.16.0 test `node test_p423.mjs`: **16/16 assertions passed**, final timed 19.03 ms. Same-host harness constructs separate controller/witness directories and independent signed checkpoint records. It checks non-overlap of storage paths, controller client-key mode 0600, public-key pin, correct receipt acceptance, forged receipt/signature refusal, witness outage failure, controller-only rollback at epoch 1 while witness retains epoch 3, and database field tamper signature rejection.
+
+The controller/witness paths are **only separate directories on the SAME HOST**, not independently administered hosts. Test key/cert files in the P4.23 boundary checker are placeholders for path/permission validation; no new live TLS handshake or network remote deployment was run. Node SQLite is experimental. Coordinated rollback of both stores and signer-key compromise remain unresolved. The underlying P4.20 live-loopback-mTLS checks occurred in earlier tests, not in this run.
+
+Commit includes `docs/reality-tensor/dyson-inversions/p423_boundary.mjs`; complete locally executed test, dependencies and measured JSON are downloadable in `p423_bundle.zip` SHA256 `72d5af873324c410fc9ad11ec4226931a388c197489db82aea8831d54e60ddf6`. Next milestone: deploy on an actual second trust domain with independently managed keys and storage before claiming production-grade antirollback.
