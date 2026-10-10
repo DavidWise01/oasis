@@ -1,22 +1,17 @@
 {
-  "schema": "oasis.sheet166.release.v1",
+  "schema": "oasis.sheet166.release.v2",
   "sheet": 166,
-  "previous": 165,
-  "title": "Hysteresis, Drift Detection and Signed External Policy Decisions",
+  "parent": 165,
   "archive": "SHEET166-hysteresis-signed-policy.zip",
-  "archiveSha256": "ef6b5795ad78d5c9c847a58a519938c53f4ff77d3b1367916cc6e6a6f6590f3c",
-  "archiveBytes": 20483508,
-  "inheritedFilesVerifiedByteForByte": 804,
-  "checks": {
-    "new": 45,
-    "inherited165IsolatedFault": 15,
-    "chromium": 10,
-    "fullHistorical": "not rerun"
-  },
-  "syntheticObservationWindows": 1000,
-  "simulatedPolicyTransitions": 3,
-  "actualLiveRecoveredRows": 128,
-  "actualLiveRecoverySeconds": 0.54197,
-  "scope": "One physical host, one separately persisted Ed25519 signer and a signed resource status attestation; no independently hosted 2/3 policy consensus",
-  "security": "Cryptographic errors fail closed; performance-only downgrade requires external signed pin"
+  "archiveSha256": "45498e1e2ef0e9a1d08e3afcd0f61dc4cbacce68488ecff942e33c90190953c8",
+  "archiveBytes": 20483675,
+  "predecessorFiles": 804,
+  "newChecks": 45,
+  "isolatedInheritedChecks": 15,
+  "chromiumChecks": 10,
+  "syntheticWindows": 1000,
+  "observedTransitions": 3,
+  "liveRecoveredRows": 128,
+  "fullHistoricalRegression": "not rerun",
+  "scope": "One physical host; single external policy signer; no independent-host consensus; reviewed reconciliation required after torn policy pin."
 }
