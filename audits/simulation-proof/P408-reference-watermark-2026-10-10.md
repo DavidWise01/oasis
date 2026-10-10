@@ -1,0 +1,7 @@
+# P4.08 persistent reference watermark — 2026-10-10
+
+Node v22.16.0 local test: 13/13 assertions PASS, last rerun 16 concurrent Node child processes: 1 new accepted publication, 15 idempotent duplicates, 0 child errors. Total test wall time approximately 339 ms (individual subprocess startup included). SQLite WAL, FULL synchronous and BEGIN IMMEDIATE serialize same-reference commits. Ed25519 signed P4.07 reference format verified; stale sequence replay, fork, incorrect key rejected. Consistent historic database snapshot was rejected when compared to retained new external floor. **Same rollback was accepted when external floor was omitted** (critical trust dependence).
+
+External floor is a caller-provided object, not independently authenticated or non-rollbackable. No real external authority, atomic external publication, power-loss simulation, or hardware time was tested. Node node:sqlite API is experimental. Symbolic ROOT0 timing remains 200 layers/200ms with 1e-36 second exact register, and diatom z=0 and blockade unchanged. Full executed source+tests in P4.08 ZIP.
+
+Next P4.09: authenticate external floor, durable monotonic witness service, and external publication interruption tests.
