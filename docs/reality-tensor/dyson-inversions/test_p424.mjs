@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';import {generateKeyPairSync,sign} from 'node:crypto';import {performance} from 'node:perf_hooks';
+import {evaluateCertification,certificationPayload} from './p424_certification.mjs';
+const started=performance.now();let n=0;function check(cond,label){assert.ok(cond,label);n++;}
+const keys=generateKeyPairSync('ed25519');const base={deployment:'oasis/main',controllerHost:'controller-A',witnessHost:'witness-B',controllerAdmin:'controller-admin',witnessAdmin:'witness-admin',controllerKeyDomain:'ctrl-key-domain',witnessKeyDomain:'wit-key-domain',nonce:'audit-2026-10-10',checkpointEpoch:3,checkpointDigest:'a'.repeat(64),tests:['controller_rollback','witness_outage','forged_receipt','witness_restart'].map((name,i)=>({name,result:'PASS',evidenceHash:String(i+1).repeat(64),simulated:false}))};
+const signed=x=>({...x,signature:sign(null,certificationPayload(x),keys.privateKey).toString('base64')});
+const evalR=x=>evaluateCertification(x,{adminPublicKey:keys.publicKey});
+const good=signed(base);check(evalR(good).certified,'valid signed documentary record accepted');
+check(!evalR({...good,controllerHost:'witness-B'}).certified,'same-host denied');
+check(!evalR(signed({...base,controllerAdmin:base.witnessAdmin})).certified,'shared administrator denied');
+check(!evalR(signed({...base,controllerKeyDomain:base.witnessKeyDomain})).certified,'shared custody denied');
+check(!evalR({...good,checkpointEpoch:1}).certified,'unsigned tampering denied');
+check(!evalR(signed({...base,checkpointEpoch:0})).certified,'insufficient epoch denied');
+check(!evalR(signed({...base,tests:base.tests.slice(1)})).certified,'missing test denied');
+check(!evalR(signed({...base,tests:base.tests.map((t,i)=>i===0?{...t,result:'FAIL'}:t)})).certified,'failed test denied');
+check(!evalR(signed({...base,tests:base.tests.map((t,i)=>i===0?{...t,evidenceHash:'broken'}:t)})).certified,'missing evidence hash denied');
+check(!evalR(signed({...base,tests:base.tests.map((t,i)=>i===0?{...t,simulated:true}:t)})).certified,'simulated external test denied');
+check(!evaluateCertification(good,{adminPublicKey:generateKeyPairSync('ed25519').publicKey}).certified,'wrong signer denied');
+check(!evalR({...good,signature:'bad'}).certified,'corrupt signature denied');
+check(!evalR(signed({...base,tests:[...base.tests,base.tests[0]]})).certified,'ambiguous duplicates denied');
+check(!evalR(signed({...base,checkpointDigest:'a'.repeat(63)})).certified,'invalid digest denied');
+check(!evalR(null).certified,'missing evidence denied');
+const onlySimulation=signed({...base,tests:base.tests.map(t=>({...t,simulated:true}))});check(evaluateCertification(onlySimulation,{adminPublicKey:keys.publicKey,allowSimulated:true}).certified,'simulation explicitly marked lab only');
+check(evalR(onlySimulation).failures.some(x=>x.startsWith('simulated-')),'simulated denied production');
+const localP423=signed({...base,controllerHost:'local',witnessHost:'local'});check(!evalR(localP423).certified,'P423 same-host cannot certify');
+console.log(JSON.stringify({status:'PASS',assertions:n,elapsedMs:Number((performance.now()-started).toFixed(3)),actualExternalCertification:'NOT_PERFORMED',labOnly:true},null,2));
