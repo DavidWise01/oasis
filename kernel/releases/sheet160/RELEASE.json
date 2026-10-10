@@ -1,0 +1,27 @@
+{
+  "schema": "oasis.sheet160.release.v1",
+  "sheet": 160,
+  "parent": 159,
+  "title": "Indexed Merkle Segment Store",
+  "newTests": {
+    "core": 71,
+    "migration": 19,
+    "total": 90
+  },
+  "bench": {
+    "records": 12288,
+    "segments": 48,
+    "appendPerSecond": 619,
+    "meanProofBytes": 1158,
+    "proofsVerified": 259,
+    "historicalHashesReplayed": 0
+  },
+  "chromiumChecks": 10,
+  "previousFilesByteIdentical": 654,
+  "inheritedRerun": "Timed out near SHEET148; no fresh full-chain PASS claimed",
+  "zip": "SHEET160-indexed-merkle-segment-store.zip",
+  "zipSha256": "e2386cf746e4c73568d3d68dc76536427982efa6500ff3265b95a9d95b718d05",
+  "sourceLocation": "Executable sources in full ZIP, not uploaded to GitHub in this commit",
+  "scope": "One-container prototype, not network-integrated with SHEET159 live witness RPCs",
+  "productionReady": false
+}
