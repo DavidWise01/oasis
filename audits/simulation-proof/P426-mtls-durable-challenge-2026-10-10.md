@@ -1,0 +1,11 @@
+# ROOT0 P4.26 — mTLS signed challenge + durable verifier
+
+**Local executable verification:** Node v22.16.0, OpenSSL test CA, 16/16 regression assertions PASS, measured 642.071 ms including certificate generation, TLS server start, SIGKILL and restart.
+
+The controller generates a fresh random 192-bit challenge, signs it with Ed25519, and sends it using TLS 1.3 mTLS to a loopback witness. The witness validates the certificate identity, verifies the request signature, and returns a signed challenge receipt covering deployment, nonce, epoch and head. Controller verifies pinned witness key and consumes the nonce in a SQLite BEGIN IMMEDIATE transaction alongside monotonic epoch/head watermark update. Pending and consumed nonces and high-watermark survive controller restarts. Wrong TLS identity, tampered and wrong-key receipts, nonce reuse, stale epoch, same-epoch fork, service outage rejected. Witness SIGKILL/restart retains its independent local SQLite state.
+
+**Limits and open security gaps:** All processes and private keys remain on the same physical host. Test's witness state is pre-provisioned; a production publication protocol and independently administered witness domain are not integrated. Controller pending-nonce records are not pruned, so resource exhaustion and issuance quotas must be addressed. Both storage files can still be coherently rolled back by host administrator. No physical Planck-scale clock, separate-host test, trusted hardware or production certificate authority deployed. Root0 deployment is NOT CERTIFIED.
+
+Exact tested source (service/client/core/regression and TLS client dependency) and results included in chat P4.26 ZIP, SHA-256 `115e0c24ca9bf13439b26b7b43181f91da5ae9e56a8be2c81d5d74e987f85b1d`. GitHub includes committed `p426_core.mjs` and this audit; the full runnable service/test remain in ZIP.
+
+Next P4.27: enforce bounded outstanding challenge quota/expiry garbage collection, rollout cert/key lifecycle and run independent-host trust evaluation.
