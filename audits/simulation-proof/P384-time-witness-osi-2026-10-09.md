@@ -1,0 +1,5 @@
+# P3.84 — OSI time witness fault test
+
+Local Node v22.16.0 execution: PASS_CONDITIONAL_RETAINED_WITNESS, 3,213 assertions, 3,200 individually verified layer views, eight fault cases, 402.238 ms. Ed25519 signed witness binds sequence, epoch, source event digest, previous entry hash. One retained current witness rejects an old signed snapshot and a coordinated regenerated history. Tampered signature, clock, stale epoch, and unavailable witness fail closed. **Resetting the in-memory witness allows old history to be republished**, so this does not prove independent durable freshness. Also not a real physical photon test. The `-+5 + 1` topology remains symbolic.
+
+Reproducible standalone files are provided in P3.84 ZIP (P3.83 dependencies and test script). Next P3.85: durable independently operated signing watermark, publication atomicity, crash and restart tests. 
