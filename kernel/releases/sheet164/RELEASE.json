@@ -1,0 +1,41 @@
+{
+  "schema": "oasis.sheet164.release.v1",
+  "sheet": 164,
+  "parent": 163,
+  "version": "0e/PASS",
+  "archive": "SHEET164-factorial-tuning.zip",
+  "sha256": "46599dbfb33d190cf447ee213338d550040220ada214c3b3c68e4cefa20ba8ce",
+  "archiveBytes": 19654328,
+  "counts": {
+    "newChecks": 68,
+    "inherited163Checks": 45,
+    "chromiumChecks": 12,
+    "predecessorFilesPreserved": 753,
+    "factorialConfigurations": 8,
+    "factorialReplicates": 2,
+    "holdoutRuns": 1,
+    "crashRuns": 1
+  },
+  "benchmark": {
+    "sourceRecords": 384,
+    "recoveryPerTrial": 128,
+    "medianWinner": {
+      "window": 4,
+      "batch": 8,
+      "reuseTls": true,
+      "rowsPerSecond": 474.35
+    },
+    "holdoutRows": 136,
+    "holdoutRowsPerSecond": 530.1,
+    "syntheticPageDelayMilliseconds": "3 to 14"
+  },
+  "limits": [
+    "Single physical host; loopback mTLS with certificate pinning",
+    "Only two replicates per configuration, with selection bias",
+    "Full historical regression chain not rerun",
+    "Historical SHEET142 intermittent test not proven resolved",
+    "Postcrash elapsed timing excludes precrash work",
+    "No cross-host atomicity or production fault-tolerance claim"
+  ],
+  "scope": "Complete ZIP embeds frozen baseline; GitHub release includes new exact source."
+}
