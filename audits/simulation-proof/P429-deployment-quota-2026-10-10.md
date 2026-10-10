@@ -1,0 +1,5 @@
+# ROOT0 P4.29 verified audit — 2026-10-10
+
+Locally executed Node v22.16.0: **23/23 assertions PASS**, final measured **117.719 ms**. Eight competing processes, 400 requests across two deployments sharing one SQLite database: A accepted 32; B accepted 32; 336 rejected; no worker failures. Deployment-scoped quotas, nonce records and persisted clock floors; receipt verification fails closed on local clock regression and refuses replay after restart.
+
+**Limitations:** One host, no independent trusted time. Coherent SQLite rollback can erase local history. P4.26 legacy tables remain; new P4.29 pending table is scoped to deployment. This commit documents executed evidence only; exact executable implementation and test reside in the downloadable P4.29 ZIP. Next target: fault injection and external monotonic witness.
