@@ -25,7 +25,7 @@ These are rounded modern mean synodic periods observed from Earth; exact alignme
 - Venus / all 5: 3,953,116,440 days, idealized LCM of rounded counts
 - 5 × 584 = 8 × 365 = 2,920 days (idealized Venus / 365-day solar-year correspondence).
 - 65 × 584 = 146 × 260 = 104 × 365 = 37,960 days (Venus, Tzolkin, Haab exact integer-calendar synchronization).
-- 25 × 116 = 5 × 584 = 2,920. This is EXACT only in the rounded-counter abstraction; Mercury actual synodic period ~115.88 days, so not an exact physical return.
+- 25 × 116 = 2,900, whereas 5 × 584 = 2,920: these are NOT equal. For the integer approximations, lcm(116,584) = 16,936 days (146 × 116 = 29 × 584). This is an arithmetic re-alignment of rounded calendar counters, not an exact physical planetary return; Mercury's actual synodic period is ~115.88 days.
 
 ## A.E.O.N. overlay (hypothesis only)
 Register one positive day tick, five modular counters, Earth observer, append-only dated events, retained source provenance. The model can map observed repeat events to State, Space, Time registers and apply a reversible schedule without claiming the ancient astronomers used this operator notation. Four spacetime dimensions are not demonstrated by counting four planets.
