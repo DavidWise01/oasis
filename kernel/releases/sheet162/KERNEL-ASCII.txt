@@ -1,0 +1,110 @@
+SHEET 162 — BATCHED RECOVERY + PERSISTENT MUTUAL TLS
+====================================================
+                       OASIS / ROOT0
+                             |
+                    SHEET 161 WITNESS
+                  (frozen; imported below)
+                             |
+              S161 AUTHORITY CERTIFICATE
+               2 OF 3 ED25519-SIGNED HEADS
+                             |
+                SEPARATELY SIGNED FLOOR
+                sequence + root + count
+                             |
+                     RECOVERY NONCE
+               persisted target and pin
+                             |
+     +-----------------------+------------------------+
+     |                       |                        |
+ S161 SOURCE RED        S161 SOURCE GREEN          RECEIVER BLUE
+ indexed Merkle         indexed Merkle             SHEET 162 NODE
+     |                       |                        |
+     +----------- SIGNED PAGE (<=8 records) ----------+
+                             |
+                   TLS KEEPALIVE AGENT
+             pinned CA / peer cert / server ID
+                             |
+                  VERIFY SIGNED S161 PAGE
+          +------------------+-------------------+
+          |                  |                   |
+       BAD SIGNER         BAD PROOF            VALID
+          |                  |                   |
+        REJECT              REJECT            NEXT
+                                                 |
+                                  VALIDATE MERKLE INCLUSION
+                                  VALIDATE FRONTIER EXTENSION
+                                  VALIDATE RECORD HASH CHAIN
+                                  VALIDATE NONCE + CURSOR + PIN
+                                                 |
+                                          SEGMENT SPLITTER
+                                  (never cross 256 boundary)
+                                                 |
+                              +------------------+------------------+
+                              |                                     |
+                        BATCH <= 8                             BATCH <=8
+                              |                                     |
+                    EXCLUSIVE FILE LOCK                       RELOCK
+                              |                                     |
+                    BUILD SEGMENT NODES                           |
+                              |                                     |
+                    SINGLE TEMP SEGMENT                            |
+                     WRITE + FSYNC                                 |
+                              |                                     |
+                    ATOMIC SEGMENT RENAME                          |
+                              |                                     |
+                    FSYNC SEGMENT DIRECTORY                        |
+                              |                                     |
+                   +----------+----------+                         |
+                   |                     |                         |
+            CRASH / POWER LOSS        CONTINUE                      |
+                   |                     |                         |
+              ORPHAN HOLD              BUILD NEW                    |
+                   |                  MERKLE FRONTIER               |
+            NO AUTO REPAIR                |                         |
+                   |                  SINGLE HEAD                  |
+            2/3 OPERATOR             WRITE + FSYNC                 |
+             SIGNATURES                   |                         |
+                   |                  ATOMIC RENAME                |
+           VERIFY BATCH DIGEST            |                         |
+                   |                FSYNC HEAD DIRECTORY           |
+             RECOVERY HEAD                |                         |
+                   |                +-----+------+                 |
+                   |                |            |                 |
+                   |            ACK LOST       ACK SENT            |
+                   |                |            |                 |
+                   |            RESTART        NEXT PAGE           |
+                   |                |            |                 |
+                   |        READ DURABLE CURSOR |                  |
+                   |                |            |                 |
+                   |           NO DUPLICATE     |                 |
+                   |                |            |                 |
+                   +----------------+------------+-----------------+
+                                                 |
+                                       FINAL MERKLE ROOT
+                                          EQUALS SOURCE
+                                                 |
+                                         SIGNED COMPLETION
+                                                 |
+                                       NEXT VERIFIED EPOCH
+
+FAULT CONDITIONS / TESTED BOUNDARIES
+  F01 Forged record hash -> FAIL BEFORE MUTATION
+  F02 Cross-segment batch -> REFUSE, SPLIT AT COORDINATOR
+  F03 Orphaned segment before head -> FAIL CLOSED
+  F04 Same orphan, only one operator -> REJECT
+  F05 Duplicate or forged operator -> REJECT
+  F06 Two signed operators, matching orphan -> INSTALL HEAD ONCE
+  F07 Crash after head before ACK -> RESTART, RESUME CURSOR
+  F08 Stale old cursor -> REJECT
+  F09 Stale signed high-water -> inherited S161 reject
+  F10 Certificate mismatch -> pinned TLS rejection
+  F11 Successful segment rollover -> exact indexed Merkle root
+  F12 Keep-alive connections -> reuses 3 sockets across 100+ requests
+
+PERFORMANCE MODEL — NO PRODUCTION CLAIM
+  S161 baseline: one segment fsync and one head fsync per record.
+  S162: <=8 records per segment fsync and head fsync, by boundary.
+  Both use S161 full proof verification, quorum and floor enforcement.
+  One physical host; Linux filesystem; synthetic certificates.
+  External floor and network authority are not independent data centers.
+  Legacy full-chain correctness remains separately unverified.

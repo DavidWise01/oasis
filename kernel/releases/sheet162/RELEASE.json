@@ -1,0 +1,28 @@
+{
+  "schema": "oasis.sheet162.release.v1",
+  "sheet": 162,
+  "parent": 161,
+  "description": "Batched physical segment recovery and keep-alive pinned mutual TLS",
+  "archive": "SHEET162-batched-mtls-recovery.zip",
+  "zipSha256": "eed098e80abb2119b031fc30fcf26b0c259bd3d4224822275496362cd14abb0e",
+  "unitChecksPassed": 19,
+  "networkChecksPassed": 24,
+  "inherited161IsolatedPassed": 36,
+  "fullHistoricalChain": "not rerun",
+  "chromiumChecksPassed": 10,
+  "inheritedBaselineFiles": 704,
+  "priorArchiveFileMatches": 703,
+  "runA": {
+    "recovered": 512,
+    "legacyRowsPerSecond": 136.45,
+    "optimizedRowsPerSecond": 228.37,
+    "speedup": 1.674
+  },
+  "runB": {
+    "recovered": 1024,
+    "legacyRowsPerSecond": 128.68,
+    "optimizedRowsPerSecond": 221.96,
+    "speedup": 1.725
+  },
+  "limit": "One physical host; non-randomized sequential benchmark; segment/head fsync are two distinct durable operations"
+}
