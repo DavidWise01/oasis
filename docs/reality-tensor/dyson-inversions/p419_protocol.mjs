@@ -1,0 +1,4 @@
+import {sign,verify,randomBytes} from 'node:crypto';
+export const encode=x=>Buffer.from(JSON.stringify({domain:'ROOT0/P419/anchor-rpc/v1',deployment:x.deployment,action:x.action,epoch:x.epoch,head:x.head,nonce:x.nonce}));
+export function requestSigned(key,deployment,action,{epoch=0,head='',nonce=randomBytes(16).toString('hex')}={}){const p={deployment,action,epoch,head,nonce};return {...p,signature:sign(null,encode(p),key).toString('base64')};}
+export function validRequest(x,key,deployment){try{return x?.deployment===deployment&&['READ','COMMIT','RECOVERY_REVIEW'].includes(x.action)&&Number.isSafeInteger(x.epoch)&&x.epoch>=0&&typeof x.head==='string'&&typeof x.nonce==='string'&&/^[a-f0-9]{32}$/.test(x.nonce)&&typeof x.signature==='string'&&verify(null,encode(x),key,Buffer.from(x.signature,'base64'));}catch{return false}}
