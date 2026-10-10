@@ -1,0 +1,7 @@
+# ROOT0 P4.32 witness-side signed CAS (2026-10-10)
+
+Executed locally on Node v22 with experimental `node:sqlite`: 16/16 assertions passed on final run (52.16 ms). Twenty competing signed intents across two conflicting branch hashes: exactly one newly published; the conflicting branch was rejected. An identical signed intent was idempotent. A child process received and validated the committed intent, then was terminated with an actual `SIGKILL`; on restart the witness retained its epoch and denied the competing intent. A valid consecutive epoch was then accepted. Signed witness receipt and intent are committed in a single SQLite `BEGIN IMMEDIATE` transaction.
+
+Known limitations: the `CasWitness` inherits a separate `publish()` method from P430; production governance must prevent bypassing CAS. Child was killed AFTER an acknowledged commit, not at arbitrary transaction points. Both files and keys are on same host. There is no remote monotonic trust boundary and no physical power loss or hardware clock validation. Complete exact tested package is in chat ZIP SHA256 `c4f49691fc796f1ff174f2f94f565a9b9b86b1e7b869a8a40cf2e48c27c9893e`.
+
+Committed `p432_cas.mjs` in `docs/reality-tensor/dyson-inversions/`. Full test and dependencies remain in ZIP. Next P4.33: block inherited unsafe witness publication paths, kill workers inside DB transaction boundaries and synchronize missing dependencies into GitHub.
