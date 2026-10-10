@@ -1,0 +1,117 @@
+# SHEET 163 — Complete ASCII Execution and Fault Process
+
+```text
+                              OASIS / ROOT0
+                                    |
+                  FROZEN SHEET 162 STORAGE / WITNESSES
+                                    |
+                         SYNCHRONIZATION REQUEST
+                                    |
+                   +----------------+----------------+
+                   |                                 |
+             RESOURCE BLUE                    SOURCE RED + GREEN
+                   |                                 |
+       mTLS CLIENT CERT + SERVER PIN          SIGNED HEAD FETCH
+                   |                                 |
+             LOCAL DURABLE HEAD <---- 2/3 CERTIFIED RESOURCE HEAD
+                   |                                 |
+          VERIFY EXISTING SESSION             ANCHOR FLOOR CHECK
+                   |                                 |
+          PIN EXTERNAL CHECKPOINT              EPOCH / ROOT / COUNT
+                   |                                 |
+          PERSIST NONCE + TARGET <----------- SAME VERIFIED TARGET
+                   |
+             BOUNDED FETCH WINDOW
+                   |
+          +--------+--------+--------+--------+
+          |        |        |        |        |
+        PAGE n   PAGE n+1 PAGE n+2 PAGE n+3  ...
+          |        |        |        |
+        FETCH    FETCH    FETCH    FETCH  (parallel network reads only)
+          |        |        |        |
+          +--------+--------+--------+
+                   |
+           OUT-OF-ORDER ARRIVAL
+                   |
+            ORDERED PAGE BUFFER
+                   |
+             REQUIRE CURSOR n
+                   |
+              VERIFY SIGNER
+                   |
+          VERIFY INCLUSION + EXTENSION
+                   |
+          VERIFY LOCAL PEAK FRONTIER
+                   |
+         CHOOSE ADAPTIVE BATCH 1..8
+                   |
+         LIMIT TO 256-SEGMENT BOUNDARY
+                   |
+          +--------+--------+
+          |                 |
+        NORMAL            INVALID
+          |                 |
+   EXCLUSIVE WRITER LOCK   REJECT / NO WRITE
+          |
+      WRITE SEGMENT
+          |
+      FSYNC SEGMENT
+          |
+     PERSIST MERKLE INDEX
+          |
+        WRITE HEAD
+          |
+       FSYNC HEAD
+          |
+     SIGN DURABLE STATUS
+          |
+          +----------+-----------------+
+          |                            |
+        ACK                         CRASH / LOST ACK
+          |                            |
+   ADVANCE CURSOR               RESTART TARGET
+          |                            |
+      PREFETCH NEXT         READ SIGNED DURABLE CURSOR
+          |                            |
+          |                       COUNT ADVANCED?
+          |                            |
+          |                  +---------+----------+
+          |                  |                    |
+          |                 YES                   NO
+          |                  |                    |
+          |         DISCARD STALE PREFETCH    FAIL CLOSED
+          |                  |
+          +------------------+
+                   |
+            REFETCH FROM CURSOR
+                   |
+           VERIFY FINAL ROOT
+                   |
+             SIGNED FINISH
+                   |
+             NEXT VERIFIED
+```
+
+ADVERSARIAL MATRIX
+  A1  remote pages reordered                 -> ordered commits only
+  A2  malicious/invalid signed pages         -> fail closed in base verifier
+  A3  segment boundary at cursor 253         -> 3-row fragment then full batches
+  A4  crash after 8-row fsync, before ACK    -> restart and no duplicate
+  A5  stale but signed external floor        -> SHEET 161 pin rollback rejection
+  A6  concurrent speculative reads           -> no speculative durable writes
+  A7  server identity substitution           -> mTLS fingerprint pin rejects
+  A8  conflicting recovery session           -> reject mismatched nonce/target
+  A9  segment persisted, head not committed  -> existing SHEET 162 quarantine
+
+STORAGE COSTS
+  BATCH_8   segment fsync + head fsync, once each per 8 records
+  BATCH_4   segment fsync + head fsync, once each per 4 records
+  BOUNDARY  truncate at segment capacity, never mix two physical segments
+
+METRIC TERMS
+  RPS = successfully recovered records / elapsed synchronization seconds
+  MAX_IN_FLIGHT = number of concurrent page fetch promises
+  NETWORK_BYTES = signed HTTP response bytes on mTLS connection
+  SOCKETS = new socket objects, *not* independently measured handshakes
+  DURABLE_COMMITS = count of completed segment and head fsync operations
+```

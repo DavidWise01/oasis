@@ -1,0 +1,30 @@
+{
+  "schema": "oasis.sheet163.release.v1",
+  "sheet": 163,
+  "parent": 162,
+  "archive": "SHEET163-parallel-merkle-ordered-commit.zip",
+  "zipSha256": "194a13b750e579683f52113039e6150a8a5b8bffcedf0807e505c24c04659910",
+  "archiveBytes": 18733345,
+  "priorReleaseInheritedFiles": 729,
+  "tests": {
+    "new": 45,
+    "sheet162Unit": 19,
+    "sheet162Network": 24,
+    "chromium": 11,
+    "fullHistorical": "not rerun"
+  },
+  "benchmarkTrials": [
+    {
+      "serial": 159.62,
+      "parallel": 298.71,
+      "ratio": 1.871
+    },
+    {
+      "serial": 177.57,
+      "parallel": 329.52,
+      "ratio": 1.856,
+      "syntheticDelayMs": 14
+    }
+  ],
+  "limitations": "Two small sequential single-host benchmarks. mTLS pins and fsync exercised locally; no independently hosted consensus proof."
+}
