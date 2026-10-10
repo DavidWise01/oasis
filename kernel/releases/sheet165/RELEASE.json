@@ -1,0 +1,54 @@
+{
+  "schema": "oasis.sheet165.release.v1",
+  "sheet": 165,
+  "parent": 164,
+  "status": "0e / PASS",
+  "archive": "SHEET165-counterbalanced-adaptive-recovery.zip",
+  "sha256": "22a3dc02c93cf990d5e9029b28367c27ff68a3e6ba19290d7b798058eef65924",
+  "archiveBytes": 19865661,
+  "preservedPredecessorFiles": 775,
+  "tests": {
+    "fourIsolatedFactorialBlocks": 4,
+    "completedFactorialTrials": 32,
+    "holdoutTrials": 16,
+    "crashAndFallbackTrials": 2,
+    "newIndividualChecks": 117,
+    "chromiumChecks": 14,
+    "historicalRegression": "NOT RERUN"
+  },
+  "confidence": {
+    "trainingGeometricMean": 2.2456,
+    "trainingCI": [
+      1.7316,
+      2.7887
+    ],
+    "normalHoldoutGeometricMean": 2.4206,
+    "normalHoldoutCI": [
+      2.2895,
+      2.5341
+    ],
+    "highLatencyHoldoutGeometricMean": 4.0367,
+    "highLatencyCI": [
+      2.7741,
+      7.5507
+    ]
+  },
+  "selected": {
+    "window": 4,
+    "batch": 8,
+    "reuseTls": true
+  },
+  "comparator": {
+    "window": 1,
+    "batch": 8,
+    "reuseTls": true
+  },
+  "limits": [
+    "single physical host",
+    "four paired blocks",
+    "synthetic page delay",
+    "historical suite not rerun",
+    "no independent-host consensus guarantee"
+  ],
+  "gitCommitScope": "Exact policy and fallback modules, documentation and manifest; complete harness and frozen baselines in ZIP"
+}
