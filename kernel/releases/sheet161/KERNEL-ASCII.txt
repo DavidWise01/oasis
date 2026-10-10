@@ -1,0 +1,95 @@
+OASIS / ROOT0 — SHEET 161 — LIVE INDEXED WITNESS RECOVERY
+===========================================================
+
+   CLIENT / ORCHESTRATOR (mTLS client cert + server pins)
+        |
+   01. READ target witness signed status
+   02. IF recovering, resume original nonce and target
+   03. ELSE generate cryptographic 160-bit nonce
+        |
+        +------------------+------------------+
+        |                  |                  |
+   INDEXED RED        INDEXED GREEN      LAGGING BLUE
+   S160 PHYSICAL      S160 PHYSICAL      S160 PHYSICAL
+   JOURNAL             JOURNAL            JOURNAL
+   256 RECORDS/SEG     256 RECORDS/SEG    256 RECORDS/SEG
+        |                  |                  |
+   04. SIGN HEAD       05. SIGN HEAD     06. REPORT CURSOR
+        |                  |                  |
+        +-----------+------+                  |
+                    |                         |
+   07. Verify two DISTINCT pinned Ed25519 HEAD signatures
+   08. Match count, root, lastRecordHash, nonce, resource ID
+   09. Check independently signed external checkpoint anchor
+   10. Reject floor rollback (sequence and count monotonic)
+   11. Persist external floor atomically OUTSIDE journal
+   12. Persist session nonce + target + quorum proof
+                    |                         |
+                    +-------------------------+
+                                              |
+                 FOR EACH BOUNDED PAGE (1..8 RECORDS)
+                                              |
+   13. Source fetches indexed subtree hashes from S160 nodes
+   14. Source builds S151 inclusion proof for each actual record
+   15. Source creates bounded S151 Merkle extension witness
+   16. Source signs nonce-bound page over Ed25519
+   17. Transmit via pinned mTLS to recovering witness
+   18. Verify signer belongs to certified source quorum
+   19. Verify page matches cursor and immutable target
+   20. Verify EVERY record's P.sha physical record hash
+   21. Verify chain continuity (prev and sequence)
+   22. Verify EVERY inclusion against certified final root
+   23. Verify Merkle extension from target's durable frontier
+   24. Verify extension equals hashes of actual page leaves
+   25. Check lastRecordHash of page
+   26. Reject gap, duplicate, stale signer, invalid signature
+   27. Acquire exclusive S160 physical-store writer lock
+   28. Append rows one at a time using fsync/rename/dir fsync
+   29. Update 256-record segment index and upper Merkle nodes
+   30. Persist head/frontier and rollback-aware cursor
+   31. Acknowledge signed current count/root/cursor
+   32. Alternate page sources, repeat until certified target
+                                              |
+   33. Verify final count/root/lastRecordHash EXACTLY match
+   34. Complete recovery, remove active session
+   35. Retain external floor pin in separate persistent file
+   36. Next physical slot may be certified and appended
+                                              |
+                      CRASH / ADVERSARIAL BRANCHES
+                                              |
+   A. POST-FSYNC PRE-ACK CRASH --> process killed (exit 81)
+        -> restart -> retain original session + pinned nonce
+        -> source requests only remaining missing suffix
+        -> no duplicate physical append
+   B. REORDERED PAGE ------------> REJECT (cursor mismatch)
+   C. FORGED SOURCE SIGNATURE ---> REJECT
+   D. TAMPERED LEAF / SIBLING --> REJECT
+   E. FORGED MERKLE EXTENSION --> REJECT
+   F. ONE HEAD / WITNESS LOSS --> FAIL CLOSED
+   G. RESTORED OLDER ANCHOR ----> REJECT, regardless valid signature
+   H. UNPINNED TLS CLIENT ------> REJECT
+   I. COMPLETE SESSION REPLAY --> REJECT
+
+NETWORK BENCHMARKS — SINGLE HOST, SYNTHETIC RECORDS
+---------------------------------------------------
+Workload             Small       Medium      Large
+Source records       640         2,048       4,096
+Target prefix        32          1,024       3,072
+Recovered records    608         1,024       1,024
+Pages transferred    76          128         128
+Recovery seconds     4.683       9.386       8.307
+Recovered rows/s     129.84      109.10      123.28
+Ordinary replay      0           0           0
+Medium transfer      1,433,259 JSON page bytes
+Medium target RSS    63.22 MiB
+
+EVIDENCE BOUNDARIES
+-------------------
+- Three processes on one physical host; independently hosted consensus NOT tested.
+- S160 index proof reads avoid full-history scans but can read the indexed segment files.
+- Full verification (verifyFull) intentionally DOES replay rows and is not a hot-path benchmark.
+- Missing suffix transfer and durable row-by-row fsync still cost O(missing_records).
+- Single external anchor signing key remains a trust dependency.
+- SHEET160 71/71 gate and 19/19 migration suite passed independently.
+- SHEET160 12,288-record benchmark rerun timed out around 6,144 records.
+- Full older 159+ chain NOT rerun; no inherited combined-pass claim.
