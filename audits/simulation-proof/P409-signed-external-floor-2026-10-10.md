@@ -1,0 +1,7 @@
+# P4.09 signed external watermark test
+
+Executed locally on Node.js v22.16.0 (experimental node:sqlite). 15 assertions passed, one run 19.80 ms. Ed25519 signed remote watermark persisted in a separate SQLite database with BEGIN IMMEDIATE, WAL and FULL sync. Successful cases included current signed floor, replay/forgery refusal, coherent local rollback quarantine, failure before external transaction commit, and restart with retained state.
+
+Security regression exposed and fixed during this run: a local-ahead record caused by external publication failure initially permitted an additional local advance. The guard now fails closed on local-ahead state and explicitly requires authenticated reconciliation. An empty freshly provisioned external store and reset local store accept a previously consumed historical epoch. Therefore the overall design still lacks a production-grade nonrollbackable authority or a safe automatically re-provisioned genesis. Cross-system publication is not atomic; real power-loss tests not performed. This is a symbolic/security prototype, not hardware clock metrology.
+
+Complete P4.09 executable kernel, dependencies, regression and JSON measurements are available in the conversation ZIP.
