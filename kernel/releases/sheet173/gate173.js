@@ -1,0 +1,25 @@
+'use strict';
+const assert=require('node:assert/strict');
+const M=require('./merkle172'),C=require('./consistency173'),R=require('./registry173');
+let n=0;function test(label,f){f();console.log('PASS',++n,label)}
+const rows=Array.from({length:129},(_,i)=>Buffer.from('root0-row:'+i)),old=M.tree(rows.slice(0,64)).root,root=M.tree(rows).root;
+const state={resource:'root0',rows:64,root:old,generation:1,head:'h1'};
+const req={resource:'root0',generation:2,previous:'h1',fromRows:64,toRows:129,root,records:rows,nextHead:'h2'};
+test('old root recomputation',()=>assert(C.verifyExtension({oldRoot:old,newRoot:root,oldCount:64,newCount:129,records:rows})));
+test('contiguous cursor advancement',()=>assert.equal(C.applyCursor(state,req).rows,129));
+test('replay denied',()=>assert.throws(()=>C.applyCursor(C.applyCursor(state,req),req),/CURSOR_FORK/));
+for(const [label,change] of [['wrong resource',{resource:'evil'}],['generation gap',{generation:4}],['wrong previous',{previous:'fork'}],['cursor gap',{fromRows:63}],['truncation',{toRows:128}],['no progress',{toRows:64}]])test(label,()=>assert.throws(()=>C.applyCursor(state,{...req,...change}),/CURSOR_FORK/));
+test('tampered prefix fails',()=>assert(!C.verifyExtension({oldRoot:old,newRoot:root,oldCount:64,newCount:129,records:[Buffer.from('tamper'),...rows.slice(1)]})));
+test('tampered suffix fails',()=>assert(!C.verifyExtension({oldRoot:old,newRoot:root,oldCount:64,newCount:129,records:[...rows.slice(0,128),Buffer.from('tamper')]})));
+test('wrong old root fails',()=>assert(!C.verifyExtension({oldRoot:'a'.repeat(64),newRoot:root,oldCount:64,newCount:129,records:rows})));
+test('wrong new root fails',()=>assert(!C.verifyExtension({oldRoot:old,newRoot:'b'.repeat(64),oldCount:64,newCount:129,records:rows})));
+test('short record stream fails',()=>assert(!C.verifyExtension({oldRoot:old,newRoot:root,oldCount:64,newCount:129,records:rows.slice(0,128)})));
+test('invalid count fails',()=>assert(!C.verifyExtension({oldRoot:old,newRoot:root,oldCount:-1,newCount:129,records:rows})));
+test('legacy inclusion proof',()=>assert(M.verify(rows[128],128,129,M.proof(M.tree(rows),128),root)));
+test('four daughters',()=>assert.equal(R.daughters.length,4));
+test('four cortex types',()=>assert.equal(R.cortexes.length,4));
+test('16 nonrecursive gen1 routes',()=>assert(R.matrix.length===16&&R.matrix.every(x=>x.generation===1)));
+test('capabilities shared',()=>assert(R.capabilities.length===8));
+test('route addressable',()=>assert.equal(R.route(R.daughters[1],'verify').cortex,'verify'));
+test('unknown route rejected',()=>assert.throws(()=>R.route('rogue','verify'),/UNREGISTERED/));
+console.log('0e / PASS — '+n+'/'+n+' SHEET 173 focused checks');
