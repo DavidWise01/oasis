@@ -9,7 +9,7 @@ export function signableRecovery(r){return canon(r);}
 export async function inspect(registry,authority,operatorKey,deployment){
  let provisioning;try{provisioning=await readFile(join(registry,'PROVISIONED'),'utf8')}catch{return {status:'QUARANTINE',reason:'missing-registry'}};
  if(provisioning!=='ROOT0:P412:ACTIVE\n')return {status:'QUARANTINE',reason:'invalid-registry'};
- let record;try{record=JSON.parse(await readFile(join(registry,key(deployment)+'.json'),'utf8'))}catch{return {status:'UNINITIALIZED',reason:'no-reservation'}};
+ let record;let raw;try{raw=await readFile(join(registry,key(deployment)+'.json'),'utf8')}catch(e){return e.code==='ENOENT'?{status:'UNINITIALIZED',reason:'no-reservation'}:{status:'QUARANTINE',reason:'reservation-unreadable'}};try{record=JSON.parse(raw)}catch{return {status:'QUARANTINE',reason:'malformed-reservation'}};
  if(record.deployment!==deployment||typeof record.grantHash!=='string')return {status:'QUARANTINE',reason:'invalid-reservation'};
  let store;try{await stat(authority);store=new GenesisAuthority(authority,operatorKey,deployment)}catch{return {status:'QUARANTINE',reason:'reserved-without-authority',reservationDigest:sha(JSON.stringify(record))}};
  try{const current=store.status();return current.ok?{status:'ACTIVE',epoch:current.epoch,reservationDigest:sha(JSON.stringify(record))}:{status:'QUARANTINE',reason:'invalid-authority',reservationDigest:sha(JSON.stringify(record))};}finally{store.close()}
