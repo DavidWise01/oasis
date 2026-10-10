@@ -1,0 +1,7 @@
+# ROOT0 P4.31 — Signed publication intent and recovery (2026-10-10)
+
+Local Node v22.16.0 measured **25/25 assertions PASS**, two runs 14.917 ms and 16.653 ms. Ed25519 intent binds deployment, proposed epoch, prior head, next head, and 128-bit nonce. Local SQLite PREPARED intent precedes witness publish. Matching signed witness checkpoint permits finalization; pending intent blocks normal operations. Recreated process objects simulate restart: pending-before-publication remains quarantined; a witnessed commit can be finalized; missing intent cannot roll forward an older local database. Tampered signed intent is rejected.
+
+**Security limits:** No actual SIGKILL or power-loss in this P4.31 test; restarts simulated by closing/reopening databases. Witness and local databases share host and process privileges; coordinated rollback remains unprotected. There is a window between validating remote witness head and writing it, so this prototype is not an atomic distributed transaction or a production concurrency proof. Genuine external-host signed intent, CAS and crash-boundary matrix remain outstanding. P4.29 dependency source and complete P4.31 test are in downloadable ZIP SHA256 `04528759db262071027fde49e30ae0c0412450e7fee82a9f9e455e79a1cecf3a`.
+
+Next P4.32: independent witness `compare-and-swap` signed intent, process-level fault injection and genuine crash recovery tests.
