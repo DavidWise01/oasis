@@ -1,0 +1,9 @@
+# ROOT0 P4.30 — two-deployment signed witness rollback gate
+
+2026-10-10, Node.js v22.16.0 local regression: **16/16 assertions PASS**, final elapsed **11.216 ms**. Two deployments share one local verifier SQLite file and one separate witness SQLite file. Ed25519-signed witness records are checked before issuing or verifying challenges. A coherent old local DB snapshot for deployment A was rejected against the retained witness epoch; B remained unaffected. Restart retained newer witness history. An older witness update was rejected. A test-found bypass that allowed challenge issuance despite the local rollback was fixed before final execution.
+
+**Critical scope limitations:** separate files and signed keys **on the same host**, not an independently controlled remote witness; both files can be restored together. The test's genesis was directly seeded, not an end-to-end authorized production provisioning flow. A time-of-check/time-of-use race between separate databases and absence of an atomic publication protocol remain unresolved. No hardware or physical Planck-scale timing validated.
+
+Executable P4.30 source and two dependency modules, test, results and README in downloadable ZIP. ZIP SHA-256: `80201d550617d0bfff4e969decc02a2fb8c5b346d81e81045d07a25ac4754c7f`. Core P430 guard committed; P429 dependency has not been independently pushed as part of this commit, so GitHub is not yet a fully standalone P430 checkout.
+
+Next P4.31: fix cross-store TOCTOU with signed two-phase intent, test forced process kill between local and external commits, and require external trust separation.
