@@ -1,0 +1,17 @@
+import {DatabaseSync} from 'node:sqlite';
+import {sign,verify} from 'node:crypto';
+import {IsolatedVerifier} from './p429_isolated.mjs';
+const wire=x=>Buffer.from(JSON.stringify({domain:'ROOT0/P430/witness/v1',deployment:x.deployment,epoch:x.epoch,head:x.head}));
+export class ExternalWitness {
+ constructor(path,signKey,verifyKey){this.db=new DatabaseSync(path,{timeout:10000});this.db.exec('PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; CREATE TABLE IF NOT EXISTS p430_witness(deployment TEXT PRIMARY KEY,epoch INTEGER NOT NULL,head TEXT NOT NULL,signature TEXT NOT NULL)');this.signKey=signKey;this.verifyKey=verifyKey;}
+ read(deployment){const s=this.db.prepare('SELECT deployment,epoch,head,signature FROM p430_witness WHERE deployment=?').get(deployment);if(!s)return {ok:false,reason:'witness-missing'};try{if(!verify(null,wire(s),this.verifyKey,Buffer.from(s.signature,'base64')))return {ok:false,reason:'bad-witness-signature'};}catch{return {ok:false,reason:'bad-witness-signature'}}return {ok:true,stamp:s};}
+ publish(deployment,epoch,head){if(!Number.isSafeInteger(epoch)||epoch<0||!(/^[a-f0-9]{64}$/.test(head)))return {ok:false,reason:'invalid'};this.db.exec('BEGIN IMMEDIATE');try{const old=this.db.prepare('SELECT deployment,epoch,head,signature FROM p430_witness WHERE deployment=?').get(deployment);if(old){try{if(!verify(null,wire(old),this.verifyKey,Buffer.from(old.signature,'base64'))){this.db.exec('ROLLBACK');return {ok:false,reason:'bad-witness-signature'};}}catch{this.db.exec('ROLLBACK');return {ok:false,reason:'bad-witness-signature'}}if(epoch<old.epoch||(epoch===old.epoch&&head!==old.head)||(epoch>old.epoch+1)){this.db.exec('ROLLBACK');return {ok:false,reason:'rollback-fork-or-gap'}}if(epoch===old.epoch){this.db.exec('COMMIT');return {ok:true,stamp:old,duplicate:true}}}else if(epoch!==0){this.db.exec('ROLLBACK');return {ok:false,reason:'genesis-required'}}const s={deployment,epoch,head};const signature=sign(null,wire(s),this.signKey).toString('base64');this.db.prepare('INSERT INTO p430_witness VALUES(?,?,?,?) ON CONFLICT(deployment) DO UPDATE SET epoch=excluded.epoch,head=excluded.head,signature=excluded.signature').run(deployment,epoch,head,signature);this.db.exec('COMMIT');return {ok:true,stamp:{...s,signature}};}catch(e){try{this.db.exec('ROLLBACK')}catch{}throw e;}}
+ close(){this.db.close()}
+}
+export class WitnessBoundVerifier extends IsolatedVerifier {
+ constructor(localPath,witnessPath,receiptKey,deployment,witnessPrivateKey,witnessPublicKey,options={}){super(localPath,receiptKey,deployment,options);this.witness=new ExternalWitness(witnessPath,witnessPrivateKey,witnessPublicKey);}
+ gate(){const r=this.witness.read(this.deployment);if(!r.ok)return {ok:false,reason:r.reason};const floor=this.floor();if(!floor)return {ok:false,reason:'local-floor-missing'};if(floor.epoch!==r.stamp.epoch||floor.head!==r.stamp.head)return {ok:false,reason:floor.epoch<r.stamp.epoch?'local-rollback':'local-ahead-or-fork'};return {ok:true,epoch:floor.epoch};}
+ issueAt(now=Date.now()){const gate=this.gate();if(!gate.ok)return gate;return super.issueAt(now);}
+ verifyAt(receipt,now=Date.now()){const gate=this.gate();if(!gate.ok)return gate;return super.verifyAt(receipt,now);}
+ close(){this.witness.close();super.close()}
+}
