@@ -1,0 +1,9 @@
+# ROOT0 P4.19 — Separate-process signed anchor RPC, 2026-10-10
+
+Local Node 22.16.0 result: **16/16 assertions PASS** on rerun in **159.379 ms**, covering launch, outage, Ed25519-authenticated read/commit/recovery-review, signature rejection, nonce replay, twenty competing epoch-one commits (1 winner, 19 rejected), real SIGKILL, two restarts with SQLite replay ledger retained, and stale epoch rejection.
+
+The signed recovery-review request **never modifies checkpoint history**. Server and controller use separate signing identities; admin approval identity is distinct. The P4.18 anchor signs checkpoints with its own private key. On-disk SQLite state holds epoch head, anchor signatures, and replay nonce history. Socket pathname is only reclaimed when a probe returns connection refusal; active/uncertain ownership blocks startup.
+
+**Important scope and limitations:** separate local processes on the same host, not separate hardware/network/admin domains. Coordinated rollback of database and nonce history remains possible. An attacker with access to witness signing keys could forge history; Unix socket access has not been assessed against hostile local administrators. The recovery intent has no separate independent durable approval system. No hardware timing, remote mTLS, power-cut resilience or real-world precision measurement. Exact P4.19 executable service and regression are in the chat ZIP; GitHub at this commit includes RPC protocol and client and this audit, not the service/test themselves.
+
+ZIP SHA-256: `9ffd13171d53d204a16bc81766ce709015ac5aad120c7c6c6cfec65e86b77a53`. Next P4.20: isolated remote trust domain and mTLS, signed per-deployment recovery intents and durable roll-forward protections.
