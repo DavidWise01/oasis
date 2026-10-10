@@ -1,0 +1,88 @@
+OASIS / ROOT0 — SHEET 166 — FULL 65-STAGE EXECUTION PIPE
+=============================================================================
+00  Pin and verify SHEET 165 ZIP SHA-256
+01  Extract frozen predecessor byte-for-byte
+02  Load current policy checkpoint from separate signer
+03  Obtain challenge-signed Ed25519 head over pinned mTLS
+04  Compare external decision floor and local durable head
+05  Reject stale generation or forked decision hash
+06  Verify resource identity and signed target status
+07  Load trusted baseline and holdout-tested candidate configuration
+08  Initialize observation-local asymmetric hysteresis state
+09  Start source quorum verification
+10  Bind source head to independent Merkle anchor
+11  Open current policy client with approved TLS identity
+12  Fetch signed remote pages with selected prefetch window
+13  Reject out-of-order speculative mutations
+14  Verify resource and source Ed25519 signatures
+15  Check Merkle extension and inclusion proof
+16  Protect target 256-record segment boundary
+17  Commit authorized eight-row (or four-row) batch
+18  Fsync physical segment file
+19  Fsync current Merkle head and cursor
+20  Sample only newly committed row progress
+21  Update fast/slow throughput EMAs
+22  Evaluate three consecutive low-rate windows
+23  Evaluate minimum 48-row dwell
+24  Evaluate three-window workload drift alarm
+25  Classify performance-only degradation
+26  Keep all cryptographic and quorum failures fail-closed
+27  Build signed decision request bound to committed rows
+28  Query authoritative target signed resource status
+29  Verify resource status signature and append position
+30  Bind request to resource journal root
+31  Fetch signer head with fresh nonce
+32  Verify signer Ed25519 signature and old mode
+33  Check expected generation and previous head hash
+34  Check authorized client certificate pin
+35  Check trusted resource status signature at signer
+36  Sign monotonic policy generation and measurement digest
+37  Fsync independently retained external floor first
+38  Fsync signer-local decision head second
+39  Refuse use on a pin/head mismatch after interrupted writes
+40  Return challenge-bound signed acknowledgment
+41  Reverify decision generation and root
+42  Close candidate client and speculative RPCs
+43  Reopen known verified baseline client
+44  Authenticate target durable recovery cursor
+45  Resume remaining rows without duplicate append
+46  Verify final target Merkle root equals source
+47  Persist security audit with no invented performance gains
+48  Start cooldown and suppress immediate re-promotion
+49  Require separate verified holdout for later re-promotion
+50  Reject rapid candidate/baseline oscillation
+51  Reject external signer outage (do not downgrade)
+52  Reject stale signatures, keys, replay and wrong resource root
+53  SIGKILL signer after external fsync for fault test
+54  Verify crash leaves a quarantined unequal head and floor
+55  Restart independent service with same key and pinned state
+56  Verify external rollback floor detects older local restore
+57  Repeat 1,000 deterministic synthetic observation windows
+58  Run actual mTLS source-target fault integration
+59  Rerun isolated SHEET 165 fault suite
+60  Confirm frozen predecessor file SHA-256 matches original
+61  Write reproducible signed-policy and benchmark evidence
+62  Package full predecessor, executable source, ASCII process
+63  Hash sealed release and verify ZIP contents
+64  Commit new source to GitHub without overwriting concurrent work
+
+                    FAULT-CONTAINMENT BRANCH
+            ┌────────────────────────────────────┐
+  FROZEN    │ AUTHORIZED  │ FAILED SIGNATURE     │
+  CHECKPOINT│ TRANSITION  │ STALE FLOOR         │
+      │     │      │      │       │             │
+      ▼     │      ▼      │       ▼             │
+  VERIFY ───┼──> SIGNED ──┼──> FAIL CLOSED       │
+            │      │      │                     │
+            │      ▼      │                     │
+            │ BASELINE    │                     │
+            └──────┼───────┴─────────────────────┘
+                   ▼
+           ORDERED MERKLE APPEND
+                   ▼
+           SIGNED FINAL ROOT
+                   ▼
+             NEXT VERIFIED
+
+Critical: the pin is independent of the recovering node, but is a single signer on one physical host.
+Cryptographic failures are never treated as performance-only downgrade conditions.
