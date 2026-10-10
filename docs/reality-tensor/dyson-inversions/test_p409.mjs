@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import {generateKeyPairSync} from 'node:crypto';
+import {mkdtemp,rm,copyFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';import {join} from 'node:path';import {performance} from 'node:perf_hooks';
+import {signReference} from './p407_reference.mjs';import {PersistentReferenceGate} from './p408_watermark.mjs';
+import {ExternalFloor,guardedPublish,reconcileOnly} from './p409_anchor.mjs';
+let assertions=0;const test=(v,m)=>{assert.ok(v,m);assertions++};
+const start=performance.now();const dir=await mkdtemp(join(tmpdir(),'p409-'));const localPath=join(dir,'local.db'),extPath=join(dir,'external.db'),snapshot=join(dir,'old.db');
+const signer=generateKeyPairSync('ed25519'),floorSigner=generateKeyPairSync('ed25519');const ref=(n)=>signReference(signer.privateKey,n,n,Array(7).fill(BigInt(n)));
+try{
+ let local=new PersistentReferenceGate(localPath,signer.publicKey),external=new ExternalFloor(extPath,floorSigner.privateKey,floorSigner.publicKey);
+ let out=guardedPublish(local,external,ref(1));test(out.ok,'first publication');test(ExternalFloor.verify(out.stamp,floorSigner.publicKey),'authentic floor');
+ local.db.exec(`VACUUM INTO '${snapshot.replaceAll("'","''")}'`);
+ out=guardedPublish(local,external,ref(2));test(out.ok,'second publication');test(reconcileOnly(local,external).ok,'stores equal');
+ let old=external.publish({sequence:1,cycle:1,digest:'a'.repeat(64)});test(!old.ok&&old.reason==='rollback','old floor rejected');
+ const tampered={...external.latest(),digest:'a'.repeat(64)};test(!ExternalFloor.verify(tampered,floorSigner.publicKey),'forged floor rejected');
+ out=guardedPublish(local,external,ref(3),{failBeforeExternalCommit:true});test(!out.ok&&out.reason==='external-publication-quarantine','publication failure quarantined');test(reconcileOnly(local,external).reason==='local-ahead-requires-authenticated-intent','local ahead not automatically promoted');
+ out=guardedPublish(local,external,ref(4));test(!out.ok&&out.reason==='local-ahead-requires-authenticated-intent','unreconciled publication fail closed');
+ local.close();external.close();local=new PersistentReferenceGate(localPath,signer.publicKey);external=new ExternalFloor(extPath,floorSigner.privateKey,floorSigner.publicKey);
+ test(reconcileOnly(local,external).reason==='local-ahead-requires-authenticated-intent','recovery retains quarantine');local.close();
+ await copyFile(snapshot,localPath);local=new PersistentReferenceGate(localPath,signer.publicKey);
+ test(reconcileOnly(local,external).reason==='rollback-or-fork','old local caught');test(guardedPublish(local,external,ref(3)).reason==='local-rollback-quarantine','rollback blocked');
+ external.close();external=new ExternalFloor(extPath,floorSigner.privateKey,floorSigner.publicKey);test(external.latest().sequence===2,'external persisted');
+ local.close();external.close();
+ const empty=new ExternalFloor(join(dir,'lost.db'),floorSigner.privateKey,floorSigner.publicKey);
+ test(empty.latest()===null,'entire external trust loss detected as missing');
+ const erased=new ExternalFloor(join(dir,'erased.db'),floorSigner.privateKey,floorSigner.publicKey);
+ const freshLocal=new PersistentReferenceGate(join(dir,'erased-local.db'),signer.publicKey);
+ test(guardedPublish(freshLocal,erased,ref(1)).ok,'coordinated loss reaccepts old epoch: known unresolved vulnerability');
+ freshLocal.close();erased.close();empty.close();
+ console.log(JSON.stringify({status:'PASS_WITH_NONATOMIC_PUBLICATION_LIMIT',assertions,durationMs:performance.now()-start,rollbackWithRetainedFloor:'rejected',interruptedPublication:'quarantined',externalStoreErasure:'unrecoverable_without_other_trust'},null,2));
+}finally{await rm(dir,{recursive:true,force:true});}
