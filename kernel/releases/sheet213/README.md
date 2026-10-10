@@ -1,0 +1,5 @@
+# SHEET 213 — Signed Orphan Reconciliation
+
+**Local focused test:** `python gate213.py` 17/17 PASS. Original S208 Node WAL append, actual SIGKILL after WAL before SQLite binding, quarantine, signed exact-target/floor local fixture authorization, reject forgery/tamper/replay, resume append. Does not truncate WAL. Full exact-tested gate+runtime archived as `SHEET213-signed-orphan-reconciliation.zip`, SHA256 `4e2a985333d1ceece1ad6ae164c180eabec4f74af66dff1d98c959f2e4c1fe69` (52,152 bytes). GitHub Python port corresponds to tested reconciliation logic; exact tested sources and previous history are in ZIP.
+
+**Security limitation:** Both independently generated keys are locally test-controlled; no external target/floor authority, quorum, independently verified committed target receipt, end-to-end mTLS or service UID regression. Same-UID privileged bypass and cross-store crash atomicity remain unresolved. Next S214: externally authenticated authority and independently grounded target receipt.
