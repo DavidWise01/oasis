@@ -1,0 +1,11 @@
+# ROOT0 P4.48 — performance benchmark and capability ranking
+
+Date: 2026-10-10. Executed Node.js v22.16.0 on Linux, in-process P4.43 AtomicWitness with SQLite WAL synchronous FULL and Ed25519. 250 authenticated READ and 250 valid signed CAS operations, signed synthetic intent preparation performed **outside** timed execute calls.
+
+Initial measured result: READ 2808.70 ops/s (mean 0.356 ms, p95 0.492 ms, p99 0.6714 ms), CAS 1839.39 ops/s (mean 0.5437 ms, p95 0.730 ms, p99 0.9659 ms). Followup runs READ 3026.91/3012.73/3063.00 ops/s and CAS 1897.55/1812.73/1804.40 ops/s. These are local microbenchmark throughput estimates, NOT network/socket, 24-hour sustained throughput, hardware fsync metrology, or production SLA. 20 identical epoch intents attempted: one winner, 19 losers; future epoch rejected; signed key revocation persisted after reopen; nonces pruned after signed replay-epoch advancement.
+
+**Engineering capability rankings (qualitative, not independent certification):** A local sequential signed checkpoint; A SQLite atomicity; A- signed request/auth/revocation; B+ SIGKILL recovery; B same-host different OS UIDs; B- supervisor/socket; C hosted CI (not independently verified); D independent-host tamper/rollback resistance (not implemented). Scope is a bounded distributed-history *building block*, not demonstrated distributed consensus or AI inference acceleration.
+
+Added GitHub Actions workflow at `.github/workflows/root0-witness-regression.yml` running P445 cross-UID and P446 socket regression; workflow execution/green status **not verified** at time of audit. P4.48 benchmark executable and JSON are in downloadable ZIP; GitHub audit and workflow committed, benchmark itself not yet committed. Download ZIP SHA256 `aa938e755d7af27361f50ba9ebcbead7c6c728471e5517ed8e5ef726b01bd70e`.
+
+Next P4.49: production-safe signed checkpoint mirroring to independently administered host, with controlled rollback injection, rather than making unsupported performance equivalence claims.
