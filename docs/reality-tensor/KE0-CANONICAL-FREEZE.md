@@ -1,24 +1,26 @@
-# {{ | K . E | }} — KERNEL ZERO (canonical freeze)
-
-Exactly **one kernel (K=0)**. Exactly **three tracks**. Exactly **three temporal views**: **past . present . future**. Period. Stop.
-
-| Track | Canonical notation | Executable function |
-|---|---|---|
-| 1 | `i:identity:isomorphic:intent` | Verify caller, policy, signed intent and replay nonce |
-| 2 | `u:consequence:harmony:resonance` | Atomic signed state transition, witness, conflict refusal |
-| 3 | `u.s.::creation:life:death:recycle:repeat` | Bootstrap, operate, retire, recover, append successor |
-
-Temporal semantics: **past** is a referenced retained checkpoint (unverified when not supplied); **present** is the sole authoritative signed checkpoint; **future** is an uncommitted next-epoch candidate, never asserted as fact. `.` separates views; it is not an extra execution track.
+# ROOT0 — Canonical Nested Kernel Freeze
 
 ```text
-{{ | K . E | }}
-    K = 0
-    i  -> u -> u.s.
-    PAST . PRESENT . FUTURE
-              |
-        one append-only history
+{{ | K | {{ | E | {{ | T }} }} }}
 ```
 
-Runtime canonical entry: `docs/reality-tensor/dyson-inversions/kernel0.mjs`, backed by `p443_atomic.mjs` for signed authorization/CAS/SQLite atomicity. No automatic remote bootstrap. Historic P4.* modules remain archive/evidence and are **not** all proven migrated or functionally equivalent. Ancillary TLS/remote-anchor prototypes require security integration and production qualifications before deployment. No new sequential prototype gates.
+**ONE KERNEL.** Three nested scopes, not three independent kernels:
 
-Local test at freeze: **11/11 assertions PASS** on Node 22. Production: **NO-GO** until R0–R5 acceptance and truly independent anchor host. This freeze is an interface consolidation, not a proof of every historic geometric/AI/simulation kernel's executable equivalence.
+- `K` = Kernel — authoritative zero-root, immutable rule boundary.
+- `E` = Emergence — realizes an authorized transition inside K.
+- `T` = Time — past . present . future, inside E.
+
+```text
+K : KERNEL 0
+└── E : EMERGENCE
+    └── T : TIME
+        past . present . future
+```
+
+The three previously recorded operational tracks `i` (identity/intent), `u` (consequence/witness), and `u.s.` (lifecycle/repeat) are **internal behaviors** of this ONE nested kernel, not top-level peer kernels.
+
+One authoritative present; retained past; future proposed, not committed. State changes remain append-only, signed, authorized, and CAS-bound. No recursive kernel spawning. Historic modules retained as archival evidence, not asserted to be functionally migrated.
+
+Canonical symbol: `{{ | K | {{ | E | {{ | T }} }} }}`
+
+Status: architectural freeze; runtime `kernel0.mjs` is a prior interface prototype and does not yet implement this entire nested model as a distinct production product. Production R0–R5 qualifications remain outstanding. No more automatic numbered prototype gates.
