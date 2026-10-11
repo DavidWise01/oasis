@@ -1,0 +1,7 @@
+# ROOT0 P4.61 — Primary-only versus coordinated rollback fault-domain test
+
+2026-10-10. Node v22.16.0 local executable regression: **10/10 assertions PASS**, 6.407 ms. The test instantiates a primary SQLite state and a separately stored signed P4.49 anchor ledger. Signed epochs 0,1,2 accepted. After the anchor reaches epoch 2, a snapshot restores the primary to epoch 1: anchor rejects with `rollback-detected`. Signed conflicting hash at the same anchored epoch is refused; unsupported future checkpoint also denied. **Critically**, the test then restores both primary and anchor to the saved epoch-1 state: the anchor now reports alignment, demonstrating that coherent rollback of BOTH local databases is NOT detected, and old epoch-2 checkpoint can be accepted again.
+
+Environment check: `unshare -n true` failed with `Operation not permitted`. This container cannot supply a distinct, separately administered host; no independent custody, host compromise defense, or production readiness claim. No remote admin keys or external monotonic authority tested.
+
+Completion tracking: **14/20 = 70%**, unchanged. The missing independent-host milestone is NOT passed. Reproducible local regression and dependencies in ZIP SHA-256 `b3b5b42613f0f84fd838275bda5c155d031a437416abc634402bd4148cf9b07c`. Next P4.62: plan/deploy externally operated anchor endpoint in a real second administrative failure domain and repeat coordinated rollback attempt against primary only while remote anchor retains state.
