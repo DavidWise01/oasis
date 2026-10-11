@@ -1,0 +1,9 @@
+# ROOT0 P4.42 — Signed revocation integrated in live CAS IPC
+
+2026-10-10. Executed locally on Node.js v22.16.0: **21/21 assertions PASS**, measured ~94.9ms final integration run including SIGKILL and restart. P4.41 signed administrator policy enforces active client key set, monotonic policy sequence and replay epoch. Service presents Unix socket to authenticated READ/CAS requests backed by P4.34 StrictCasWitness. Old key rejected following signed revocation while new key works. Replay of consumed nonce rejected after process restart, old epoch barred, signed policy rollback refused. Local bounded replay ledger fails closed at limit.
+
+**Security repair in this run:** Signed request must bind both action and intent via authenticated `payload = JSON.stringify({action,intent})`; mismatched payload rejected before nonce consumption, preventing READ-to-CAS substitution. Forged policy and jump to future witness epoch refused.
+
+Known limits: Local Unix socket and keys share a host and operating-system identity; not external trust. Policy ledger and CAS SQLite files are separate, so nonce consumption may commit even if CAS fails or process dies. Service requires safe independent socket ownership recovery, lacks a durable external antirollback anchor. P4.41 policy source and P4.42 regression are in downloadable ZIP, but the GitHub implementation file alone is not a self-contained checkout.
+
+Committed P4.42 service `docs/reality-tensor/dyson-inversions/p442_service.mjs` and this audit. Complete ZIP SHA256 `70740ef23a9ab37e9bf54271aa886a1eb8e5f05673c487dfa3bd9321e7011561`. Next P4.43: atomically couple policy/nonce and CAS journal, commit remaining dependencies, multi-UID process test and socket custody.
