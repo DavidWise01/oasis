@@ -1,0 +1,7 @@
+# ROOT0 P4.41 — signed revocation and nonce epoch rollover (2026-10-10)
+
+Executed Node v22.16.0: **26/26 assertions PASS**, latest rerun **9.409 ms**. Policy ledger enforces Ed25519-signed consecutive policy sequence and replay epoch in SQLite `BEGIN IMMEDIATE`. It revokes old client signing key, accepts new one, maintains five-nonce cap per active epoch, and rejects old-epoch requests even after nonce rows are deleted. Retained policy and replay refusal survive reopening the SQLite database. Tampered policy, nonconsecutive sequence, forged requester and future epoch rejected.
+
+**Scope:** standalone policy component, not yet integrated into live P4.40 Unix socket witness. Same-host SQLite storage is rollbackable by host administrator; a rollback of all policy history could revive old keys. No independently trusted hardware or remote host was tested. A single signed policy controls both revocation and nonce-rollover, which is necessary for safe pruning but does not establish physical time.
+
+Measured executable source and test in P4.41 ZIP SHA256 `58b1613a1bdbac0090b0d22c0eba2d0556642a6c9ed75b3e26491ec111138246`. This GitHub commit contains audit only; runnable source remains in ZIP. Next P4.42 should integrate policy ledger within actual authenticated IPC processing, test concurrent requests and SIGKILL, and independently anchor the revocation sequence.
