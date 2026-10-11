@@ -1,0 +1,181 @@
+{
+  "schema": "oasis.god-egg.letter-screen.v11.9",
+  "status": "illustrative_historical_names_not_gods",
+  "yearWindow": {
+    "fromCE": 1,
+    "toCE": 2026,
+    "zeroNote": "CE calendar has no year zero"
+  },
+  "roots": 2,
+  "addressExpressionPerRoot": "13*1*13",
+  "computedAddressPathsPerRoot": 169,
+  "computedTotalAddressPaths": 338,
+  "uniqueLetterClasses": 26,
+  "mirrorPairCount": 13,
+  "generationIndex": 5,
+  "iterationIndex": 3,
+  "sideValence": "orientation_only_not_good_or_bad",
+  "assignments": "provisional roots split A..M and Z..N; no god identity assignments",
+  "pairs": [
+    {
+      "pair": 1,
+      "leftLetter": "A",
+      "leftCandidate": "Augustine of Hippo",
+      "leftEra": "4th–5th c.",
+      "rightLetter": "Z",
+      "rightCandidate": "Zora Neale Hurston",
+      "rightEra": "20th c."
+    },
+    {
+      "pair": 2,
+      "leftLetter": "B",
+      "leftCandidate": "Boudica",
+      "leftEra": "1st c.",
+      "rightLetter": "Y",
+      "rightCandidate": "Yuri Gagarin",
+      "rightEra": "20th c."
+    },
+    {
+      "pair": 3,
+      "leftLetter": "C",
+      "leftCandidate": "Charles (Charlemagne)",
+      "leftEra": "8th–9th c.",
+      "rightLetter": "X",
+      "rightCandidate": "Xavier Cugat",
+      "rightEra": "20th c.; public first name"
+    },
+    {
+      "pair": 4,
+      "leftLetter": "D",
+      "leftCandidate": "Dante Alighieri",
+      "leftEra": "13th–14th c.",
+      "rightLetter": "W",
+      "rightCandidate": "William Shakespeare",
+      "rightEra": "16th–17th c."
+    },
+    {
+      "pair": 5,
+      "leftLetter": "E",
+      "leftCandidate": "Eleanor of Aquitaine",
+      "leftEra": "12th c.",
+      "rightLetter": "V",
+      "rightCandidate": "Vincent van Gogh",
+      "rightEra": "19th c."
+    },
+    {
+      "pair": 6,
+      "leftLetter": "F",
+      "leftCandidate": "Florence Nightingale",
+      "leftEra": "19th c.",
+      "rightLetter": "U",
+      "rightCandidate": "Umar ibn al-Khattab",
+      "rightEra": "6th–7th c."
+    },
+    {
+      "pair": 7,
+      "leftLetter": "G",
+      "leftCandidate": "Galileo Galilei",
+      "leftEra": "16th–17th c.",
+      "rightLetter": "T",
+      "rightCandidate": "Teresa of Ávila",
+      "rightEra": "16th c."
+    },
+    {
+      "pair": 8,
+      "leftLetter": "H",
+      "leftCandidate": "Hypatia",
+      "leftEra": "4th–5th c.",
+      "rightLetter": "S",
+      "rightCandidate": "Simone de Beauvoir",
+      "rightEra": "20th c."
+    },
+    {
+      "pair": 9,
+      "leftLetter": "I",
+      "leftCandidate": "Isaac Newton",
+      "leftEra": "17th–18th c.",
+      "rightLetter": "R",
+      "rightCandidate": "Rosa Parks",
+      "rightEra": "20th c."
+    },
+    {
+      "pair": 10,
+      "leftLetter": "J",
+      "leftCandidate": "Jesus of Nazareth",
+      "leftEra": "1st c. CE; birth BCE",
+      "rightLetter": "Q",
+      "rightCandidate": "Quentin Tarantino",
+      "rightEra": "20th–21st c."
+    },
+    {
+      "pair": 11,
+      "leftLetter": "K",
+      "leftCandidate": "Khadija bint Khuwaylid",
+      "leftEra": "6th–7th c.",
+      "rightLetter": "P",
+      "rightCandidate": "Paul of Tarsus",
+      "rightEra": "1st c."
+    },
+    {
+      "pair": 12,
+      "leftLetter": "L",
+      "leftCandidate": "Leonardo da Vinci",
+      "leftEra": "15th–16th c.",
+      "rightLetter": "O",
+      "rightCandidate": "Omar Khayyam",
+      "rightEra": "11th–12th c."
+    },
+    {
+      "pair": 13,
+      "leftLetter": "M",
+      "leftCandidate": "Muhammad",
+      "leftEra": "6th–7th c.",
+      "rightLetter": "N",
+      "rightCandidate": "Nikola Tesla",
+      "rightEra": "19th–20th c."
+    }
+  ],
+  "rejectedNameStringExamples": [
+    {
+      "name": "Cleopatra VII",
+      "reason": "Documented life ended in 30 BCE; no activity in the 1–2026 CE window."
+    },
+    {
+      "name": "Confucius",
+      "reason": "Died in the 5th century BCE; outside the requested CE window."
+    },
+    {
+      "name": "Plato",
+      "reason": "4th century BCE death; outside the CE window."
+    },
+    {
+      "name": "Tesla",
+      "reason": "Family surname of Nikola Tesla, not his first/personal name."
+    },
+    {
+      "name": "Einstein",
+      "reason": "Family surname of Albert Einstein, not his first/personal name."
+    },
+    {
+      "name": "Dalai Lama",
+      "reason": "Religious title rather than a single given first name; 'Tenzin' is the contemporary incumbent's first public personal name."
+    },
+    {
+      "name": "Queen Victoria",
+      "reason": "Queen is a title; first personal name is Victoria, which would be V."
+    },
+    {
+      "name": "Socrates",
+      "reason": "Died in 399 BCE; outside requested CE activity window."
+    }
+  ],
+  "prohibitedInference": [
+    "real person is a god",
+    "real person is immortal",
+    "real person is eliminated from life",
+    "26 letters are 26 verified demigods",
+    "13x1x13 yields 26 beings",
+    "2% geometry tolerances apply to human fate"
+  ],
+  "runtimeModified": false
+}
