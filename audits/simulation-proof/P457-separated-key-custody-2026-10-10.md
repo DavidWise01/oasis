@@ -1,0 +1,6 @@
+# ROOT0 P4.57 — Separate Unix UID private-key custody (2026-10-10)
+Node 22 Linux root container. Re-ran P456 live TLS security regression **29/29 PASS** at 626.337ms. New P457 key-custody regression **12/12 PASS** at 270.313ms. The custody test creates 0700 homes and 0600 *demo key files* for controller UID 33, rotation requester UID 65534, and anchor UID 1000, then uses Linux setpriv to assert that each identity reads only its own key, and that every cross-user read is denied.
+
+Important boundaries: This is genuine separate-UID file permissions on **one shared Linux kernel**, with root able to read all files. Test does NOT run the full TLS anchor service and controller and rotation service each under these three separate accounts. Remote transport and independent administrative control are unverified. P456 runnable implementation is in ZIP, not committed to GitHub. P457 regression committed at be6006cfb2409d86486ad2bb80cddba2e8f34961. Completion stays **14/20=70%**, user-requested 20-milestone roadmap, not objective production readiness.
+
+Bundle SHA256 `743dc02e1a347bd038a0fb58e37c7d8bacce572f407f89668f5842bf68ab3144`. Next P4.58: run full service under distinct OS identities and sign only via isolated IPC, then test a second separately administered host.
