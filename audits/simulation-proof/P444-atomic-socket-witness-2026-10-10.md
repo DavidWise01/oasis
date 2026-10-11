@@ -1,0 +1,9 @@
+# ROOT0 P4.44 — atomic witness Unix-socket service (2026-10-10)
+
+Node.js v22.16.0 local execution: **19/19 assertions PASS**, two runs 108.022 ms and 105.376 ms. New Unix-socket service uses P4.43 AtomicWitness database to keep authorization, nonce consumption and signed checkpoint CAS in one SQLite transaction. Test: installed signed admin policy; rejected unauthorized future epoch; 20 competing signed CAS requests with exactly one accepted new epoch; verified signed read; rejected replay and rogue signing identity; signed policy revoked old client key while retaining new; rejected READ→CAS mutation; actual SIGKILL and witnessed outage fail-closed; restart retained nonce history and revocation and accepted new client's signed READ.
+
+Socket mode 0600, single OS account on one host; this is NOT independent-host or OS-UID boundary testing. P4.43 test bootstrap is trusted test-only provisioning, not production secure genesis. Socket reclamation after SIGKILL was performed explicitly by test harness; production server fails closed on pre-existing socket path. Policy updates are signed, but no separate durable external monotonic authority. Coordinated store rollback and power loss remain unverified.
+
+Complete locally tested files `p443_atomic.mjs`, `p444_service.mjs`, `test_p444.mjs`, `results.json` and README are provided in the conversation ZIP. ZIP SHA-256 `5ace1a63ee18783fbe7309d9c2584ac732406aebdc07b103c5ed44b7d6d8881d`. This GitHub commit is an **audit only**; executable files still need to be synchronized to GitHub.
+
+Next: P4.45 audit two-UID socket peer boundary and system-service recovery, then move witness private key/storage to independent host.
