@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06120b">
+<title>KELVIN — Li / EVE Spinor Return | OASIS</title>
+<style>
+:root{color-scheme:dark;--bg:#06120c;--p:#11221a;--line:#2b5c41;--on:#9ff7be;--text:#eafaf0;--muted:#abc8b5;--violet:#d0afff}
+*{box-sizing:border-box}
+body{font:16px/1.55 system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:radial-gradient(ellipse at 72% 4%,#19402b 0%,transparent 45%),var(--bg);color:var(--text);margin:0}
+main{max-width:1100px;margin:auto;padding:36px 18px 55px}
+header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:18px}
+small.eyebrow{font-size:.71rem;font-weight:800;letter-spacing:.21em;color:var(--on)}
+h1{font-size:clamp(2.8rem,8vw,5rem);letter-spacing:-.07em;line-height:1;margin:8px 0 0}
+h1 span{color:var(--on)}
+.tag{border:1px solid var(--line);border-radius:99px;color:var(--on);padding:7px 13px;font-size:.76rem;font-weight:700}
+.lead{color:var(--muted);max-width:760px;margin:0 0 24px}
+.layout{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+section{border:1px solid var(--line);border-radius:18px;background:linear-gradient(155deg,#10251a,var(--p));padding:22px;min-width:0}
+h2{margin:0 0 14px;font-size:1.08rem}
+.figure{font:clamp(10px,1.55vw,15px)/1.7 ui-monospace,Consolas,monospace;white-space:pre;overflow:auto;color:#c4ffd7;background:#06180d;border:1px solid #345a44;padding:17px;border-radius:12px}
+.big{font:900 clamp(2rem,7vw,4.3rem)/1.2 ui-monospace,Consolas,monospace;letter-spacing:.04em;color:var(--on);margin:8px 0}
+.pair{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 18px}
+.pair span{font-size:.85rem;border-radius:7px;padding:6px 9px;border:1px solid #315b41}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.meta>div{border:1px solid #2c5a3f;border-radius:8px;padding:12px;font-size:.79rem;color:var(--muted)}
+.meta strong{color:var(--text);display:block;font-size:.98rem}
+button{cursor:pointer;border:1px solid var(--on);color:#06120c;background:var(--on);padding:12px 15px;border-radius:10px;font:700 .9rem system-ui,sans-serif}
+button.secondary{background:transparent;color:var(--text);border-color:#517b60}
+button:disabled{opacity:.45;cursor:not-allowed}
+.buttons{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 10px}
+.status{color:var(--on);font-size:.86rem;min-height:1.6em}
+pre.report{max-height:280px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,Consolas,monospace;background:#06180d;color:#cae4d0;padding:16px;border:1px solid var(--line);border-radius:10px}
+.wide{grid-column:1/-1}
+.note{font-size:.84rem;color:var(--muted)}
+a{color:var(--on)}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.wide{grid-column:auto}.meta{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div><small class="eyebrow">OASIS / SAPPHON / FINAL-FORM MAPPING</small><h1>KEL<span>VIN</span></h1><p class="lead">One unary primitive, two signed faces, one 3D field. Spinor-inspired sign return, controlled only by your manual turns.</p></div>
+<div class="tag">v11.3 · MANUAL / LOCAL</div>
+</header>
+<div class="layout">
+<section>
+<h2>One field · two-turn closure</h2>
+<pre class="figure">┌───────────────────────────────────────────┐
+│             ONE REALITY TENSOR            │
+│                    [0]                    │
+│                   [-+]                    │
+│                    |                      │
+│      -++- S   &lt;--------&gt;   +--+ N        │
+│      +Li                  -EVE           │
+│      LILLITH              SHADOW         │
+│         \                  /              │
+│          \    3D | PIN    /               │
+│           (O)──(O)──(O)                   │
+│       MÖBIUS-CONNECTED ONE FIELD          │
+│                                           │
+│      0°   →   360°   →   720°             │
+│       ψ   →    −ψ    →    ψ               │
+└───────────────────────────────────────────┘</pre>
+<div class="meta">
+<div><strong>3 / 2 / 1</strong>Three return tracks · two priorities · one parent tensor</div>
+<div><strong>EO → XE</strong>Prime Evolution → Extended Evolution</div>
+<div><strong>Enheduanna 3D |</strong>Symbolic LILLITH anchor</div>
+<div><strong>No clock imposed</strong>Each step is a manually requested symbolic turn</div>
+</div>
+</section>
+<section>
+<h2>Signed shell currently foregrounded</h2>
+<div id="shell" class="big">−++−</div>
+<div id="labels" class="pair"><span>S pole</span><span>+ LILLITH</span></div>
+<div class="meta">
+<div><strong id="turn">0</strong>Operator-triggered turns</div>
+<div><strong id="angle">0°</strong>Symbolic angle</div>
+<div><strong id="foreground">LILLITH</strong>3D foreground</div>
+<div><strong id="shadow">EVE</strong>Shadow-layer counterpart</div>
+</div>
+<div class="buttons">
+<button type="button" id="advance">Advance 360°</button>
+<button type="button" class="secondary" id="copy">Copy report</button>
+<button type="button" class="secondary" id="export">Export JSON</button>
+</div>
+<div id="status" class="status" role="status" aria-live="polite">Ready at the pinned starting view.</div>
+<p class="note">No timer, background actions, tracking, live measurements, autonomous agent, or physical gravity simulation. S/N are cipher labels, not measured magnetic poles.</p>
+</section>
+<section class="wide">
+<h2>Observation report</h2>
+<pre id="report" class="report" aria-live="polite"></pre>
+<p class="note">A physical spin-½ spinor acquires a minus sign after a 2π rotation and returns after 4π. The two sign strings illustrate this pattern; they do not constitute an SU(2) calculation or a detected gravitational wave. <a href="./KELVIN.md">Read the complete kernel definition</a> · <a href="./index.html">Open Li observer</a>.</p>
+</section>
+</div>
+</main>
+<script type="module">
+import { instantiateKelvin } from "./kelvin.mjs";
+const kelvin=instantiateKelvin();
+const byId=(id)=>document.getElementById(id);
+function render(){
+  const s=kelvin.current();
+  byId("shell").textContent=s.shell;
+  byId("labels").replaceChildren();
+  for(const txt of [s.poleLabel+" pole",s.signedTensorFace+" "+s.threeDForeground]){
+    const item=document.createElement("span");item.textContent=txt;byId("labels").appendChild(item);
+  }
+  byId("turn").textContent=s.turn;
+  byId("angle").textContent=s.symbolicRotationDegrees+"°";
+  byId("foreground").textContent=s.threeDForeground;
+  byId("shadow").textContent=s.shadowLayer;
+  byId("report").textContent=JSON.stringify(kelvin.report(),null,2);
+  byId("advance").disabled=s.turn>=128;
+}
+byId("advance").addEventListener("click",()=>{
+  try {
+    kelvin.advance();
+    render();
+    byId("status").textContent="Recorded manual sign inversion; one 3D world retained.";
+  }catch(e){byId("status").textContent=e.message;}
+});
+byId("copy").addEventListener("click",async()=>{
+  try {await navigator.clipboard.writeText(byId("report").textContent);byId("status").textContent="Report copied."}
+  catch{byId("status").textContent="Clipboard unavailable; select report text to copy."}
+});
+byId("export").addEventListener("click",()=>{
+  const b=new Blob([JSON.stringify(kelvin.ledger(),null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(b),a=document.createElement("a");
+  a.href=url;a.download="KELVIN-manual-steps.json";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  byId("status").textContent="Manual ledger exported locally.";
+});
+render();
+</script>
+</body>
+</html>
