@@ -1,0 +1,7 @@
+# ROOT0 P4.53 — signed credential rotation, bounded nonce epoch (2026-10-10)
+
+Local Node.js 22.16.0: **26/26 assertions PASS**; final packaged rerun **7.949 ms** (initial run 6.687 ms). Standalone `RotationLedger` uses SQLite WAL FULL, administrator-signed monotonic policy sequence/replay epoch, pinned SHA256 fingerprint allowlists (synthetic test identifiers), bounded nonce quota 3, atomic nonce cleanup only when advancing policy epoch. Regression covers initial authorized fingerprint, old+new overlap, old credential revocation, forged policy refusal, policy rollback, nonce capacity, DB reopen and replay/credential denials after restart.
+
+**NOT integrated** with the live P4.52 TLS server. No real X509 peer fingerprint test or separate-host verification in P4.53. Physical power loss and independent antirollback remain out of scope. This commit is audit-only; executable sources are in downloadable `p453_bundle.zip` with SHA256 `79e890a3e7882d6a033ea7ca4b44fe7ea39a72de25f7c2aaa827d00e1d5b1119`.
+
+**User-requested completion tracking:** retain **13/20 = 65%** roadmap milestones; standalone P4.53 policy groundwork does not count as integrated TLS milestone. Next P4.54 integrate certificate fingerprint, signed policy epoch, bounded replay nonce and atomic anchor service; then test TLS certificate revocation and restart.
