@@ -1,0 +1,31 @@
+name: ROOT0 P4.67 reproducible witness gate
+on:
+  push:
+    paths:
+      - 'docs/reality-tensor/dyson-inversions/p443_atomic.mjs'
+      - 'docs/reality-tensor/dyson-inversions/p445_service.mjs'
+      - 'docs/reality-tensor/dyson-inversions/p445_client.mjs'
+      - 'docs/reality-tensor/dyson-inversions/test_p445.mjs'
+      - 'docs/reality-tensor/dyson-inversions/p446_socket.mjs'
+      - 'docs/reality-tensor/dyson-inversions/test_p446.mjs'
+      - 'docs/reality-tensor/dyson-inversions/p467_repo_gate.mjs'
+      - '.github/workflows/root0-p467-regression.yml'
+  workflow_dispatch:
+jobs:
+  local-security:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check required dependencies
+        run: |
+          command -v setpriv
+          command -v node
+          test -f docs/reality-tensor/dyson-inversions/p443_atomic.mjs
+          test -f docs/reality-tensor/dyson-inversions/p445_service.mjs
+          test -f docs/reality-tensor/dyson-inversions/p445_client.mjs
+      - name: Run cross-user security gate
+        run: sudo "$(command -v node)" docs/reality-tensor/dyson-inversions/p467_repo_gate.mjs
