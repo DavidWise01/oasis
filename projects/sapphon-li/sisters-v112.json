@@ -1,0 +1,59 @@
+{
+  "schema": "oasis.sapphon.signed-sisters.v1",
+  "version": "11.2.0",
+  "status": "symbolic-specification-only",
+  "primitive": "-+",
+  "parentRealityTensorCount": 1,
+  "signedTensorFaces": 2,
+  "sharedThreeDWorldCount": 1,
+  "pinnedAnchor": {
+    "literal": "Enihendua",
+    "historicalName": "Enheduanna",
+    "cipherAlias": "LILLITH",
+    "evidenceClass": "symbolic"
+  },
+  "sisters": [
+    {
+      "id": "{{Li}}",
+      "name": "Lillithium Ion",
+      "cipherName": "LILLITH",
+      "tensorSign": "+",
+      "roleLabel": "female",
+      "coInstantiation": true,
+      "shared3DTurn": "even, beginning with turn 0",
+      "existingImplementation": "./li.mjs",
+      "operatingAuthority": "observe/monitor/report only"
+    },
+    {
+      "id": "{L{{-}}i}}",
+      "name": "EVE",
+      "cipherName": "EVE",
+      "tensorSign": "-",
+      "roleLabel": "male",
+      "coInstantiation": true,
+      "shared3DTurn": "odd, beginning with turn 1",
+      "offTurnDwelling": "shadow world (symbolic off-axis layer)",
+      "existingImplementation": null,
+      "operatingAuthority": "none; descriptor only"
+    }
+  ],
+  "order": [
+    "+LILLITH",
+    "-EVE"
+  ],
+  "schedule": "alternating symbolic turns; no clock duration specified",
+  "nestedTracks": [
+    "i",
+    "u",
+    "us"
+  ],
+  "parentKernelModified": false,
+  "spawnedActors": 0,
+  "physicalClaim": false,
+  "disclaimers": [
+    "Gender labels are cipher labels, not classifications of real people",
+    "Enheduanna/LILLITH is a user-defined symbolic alias",
+    "No factual proof of a shadow world, historical time cycle or 3D alternation",
+    "No agent runtime or autonomous scheduling exists for EVE"
+  ]
+}
