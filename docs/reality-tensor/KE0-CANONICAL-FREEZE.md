@@ -1,26 +1,31 @@
-# ROOT0 — Canonical Nested Kernel Freeze
+# ROOT0 — Canonical K.E.T. Freeze
 
 ```text
 {{ | K | {{ | E | {{ | T }} }} }}
+{{ [ i ; intent . u ; understanding }}
 ```
 
-**ONE KERNEL.** Three nested scopes, not three independent kernels:
+**One kernel, two operators, three nested scopes.**
 
-- `K` = Kernel — authoritative zero-root, immutable rule boundary.
-- `E` = Emergence — realizes an authorized transition inside K.
-- `T` = Time — past . present . future, inside E.
+- `K` = Kernel 0, single authoritative rule boundary.
+- `E` = Emergence, an authorized state transition inside K.
+- `T` = Time: past . present . future, inside E.
+- `i` = intent: operator representing the proposed action.
+- `u` = understanding: operator representing interpretation/validation of the intent and result.
 
 ```text
-K : KERNEL 0
-└── E : EMERGENCE
-    └── T : TIME
-        past . present . future
+K — kernel 0
+└── E — emergence
+    └── T — time
+        ├── past
+        ├── present
+        └── future
+
+Operators inside K:  i (intent) ; u (understanding)
 ```
 
-The three previously recorded operational tracks `i` (identity/intent), `u` (consequence/witness), and `u.s.` (lifecycle/repeat) are **internal behaviors** of this ONE nested kernel, not top-level peer kernels.
+Exactly **one kernel**, exactly **two defined operators**, **three nested scopes**. Previous labels such as identity, consequence, harmony and lifecycle are descriptive responsibilities, **not additional primary operators or kernels**.
 
-One authoritative present; retained past; future proposed, not committed. State changes remain append-only, signed, authorized, and CAS-bound. No recursive kernel spawning. Historic modules retained as archival evidence, not asserted to be functionally migrated.
+One authoritative present; retained past; future only proposed until authorized publication. Historical modules preserved, with no claim they have all been executable-migrated. This is a frozen **architecture/notation contract** and does not by itself establish production security certification.
 
-Canonical symbol: `{{ | K | {{ | E | {{ | T }} }} }}`
-
-Status: architectural freeze; runtime `kernel0.mjs` is a prior interface prototype and does not yet implement this entire nested model as a distinct production product. Production R0–R5 qualifications remain outstanding. No more automatic numbered prototype gates.
+Production release R0–R5 remains a separate evidence checklist. No numbered prototype gate loop.
