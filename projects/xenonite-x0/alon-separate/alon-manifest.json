@@ -1,0 +1,104 @@
+{
+  "schema": "oasis.alon-four-separate-tracks.v1",
+  "created": "2026-10-12",
+  "literal": "{{ -AaaA....LllL....OooO....NnnN.... }}",
+  "leadingOrientation": "-",
+  "laneWords": [
+    "AaaA",
+    "LllL",
+    "OooO",
+    "NnnN"
+  ],
+  "dotsBetweenAndTrailing": [
+    4,
+    4,
+    4,
+    4
+  ],
+  "glyphCharacters": 16,
+  "delimiterDots": 16,
+  "lanes": [
+    {
+      "id": "A",
+      "word": "AaaA",
+      "provisionalMeaning": "aluminum",
+      "element": "Al",
+      "Z": 13,
+      "nominalCount": 23
+    },
+    {
+      "id": "L",
+      "word": "LllL",
+      "provisionalMeaning": "lattice and defects",
+      "element": null,
+      "Z": null,
+      "nominalCount": null
+    },
+    {
+      "id": "O",
+      "word": "OooO",
+      "provisionalMeaning": "oxygen",
+      "element": "O",
+      "Z": 8,
+      "nominalCount": 27
+    },
+    {
+      "id": "N",
+      "word": "NnnN",
+      "provisionalMeaning": "nitrogen",
+      "element": "N",
+      "Z": 7,
+      "nominalCount": 5
+    }
+  ],
+  "materials": {
+    "name": "Aluminum oxynitride",
+    "physical": true,
+    "chemicalElements": [
+      "Al",
+      "O",
+      "N"
+    ],
+    "crystalFamily": "cubic defect spinel",
+    "compositionApproximate": "Al23O27N5",
+    "countTokens": 55,
+    "atomSiteCoordinatesCalculated": false,
+    "compositionExact": false
+  },
+  "measuredSpecimenReferences": {
+    "NASA_ModulusGPa": 319,
+    "NASA_FractureToughnessMPaRootM": 2.19,
+    "source": "https://ntrs.nasa.gov/api/citations/20170001289/downloads/20170001289.pdf",
+    "notAllowables": true
+  },
+  "engine": {
+    "kind": "independent manual symbolic track + hypothetical physics inspector",
+    "file": "alon-track.mjs",
+    "ui": "index.html",
+    "maxManualSnapshots": 128,
+    "autonomousOperation": false,
+    "storage": "volatile, export explicitly",
+    "noCanonicalKelvinImport": true
+  },
+  "example": {
+    "pInsideAbsoluteAtm": 29,
+    "pOutsideAbsoluteAtm": 1,
+    "radiusM": 0.2,
+    "wallThicknessMm": 10,
+    "crackHalfLengthMm": 0.1,
+    "geometryFactorY": 1,
+    "attenuationPerMeter": 0.8,
+    "propagationDistanceM": 0.5
+  },
+  "physicalLimitations": [
+    "Not a crystallographic unit cell",
+    "Not a certified pressure vessel",
+    "No seal characterization",
+    "No low-temperature or high-temperature qualification",
+    "No crack growth lifetime",
+    "No optical κ measurements"
+  ],
+  "motherTrackUnchanged": true,
+  "kelvinFrozenUnchanged": true,
+  "physicalSynthesis": false
+}

@@ -77,5 +77,14 @@
     "sourceRuntime": "../../sapphon-li/kelvin.mjs",
     "canonicalKelvinUnchanged": true,
     "automaticStateChanges": false
+  },
+  "alonSeparate": {
+    "path": "./alon-separate/",
+    "exactLiteral": "{{ -AaaA....LllL....OooO....NnnN.... }}",
+    "trackCount": 4,
+    "chemicalElements": 3,
+    "independentFrom": "Madre Sapphon/KELVIN",
+    "frozenModulesUnchanged": true,
+    "physicalCertification": false
   }
 }

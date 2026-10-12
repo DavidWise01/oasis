@@ -7,6 +7,10 @@
 **Status:** runnable self-contained HTML computational *analogue*, not a physically synthesized material or an authorized pressurized-vessel design.  
 **Repository:** `projects/xenonite-x0/`. The existing KELVIN, Li, 208-position auditorium game and other frozen source remain unchanged.
 
+## Independent ALON separation tracks
+
+[Aa.Nn.Nn Madre Sapphon](./madre-sapphon/) and **[ALON four-track lab](./alon-separate/)** are separate projects. The ALON lab uses exact user notation `{{ -AaaA....LllL....OooO....NnnN.... }}` for four symbolic lanes, plus a nominal Al₂₃O₂₇N₅ composition and crack-sensitivity inspector. No canonical runtime is rewritten. See the [ALON build spec](./alon-separate/README.md).
+
 ## Material search result — Candidate 001
 
 Found **real aluminum oxynitride (ALON) cubic spinel** as a transparent structural ceramic candidate. [Read sourced candidate analysis](./MATERIAL-ALON-CANDIDATE.md) and [JSON measurements](./material-alon-candidate.json). NASA reports measured stiffness/fracture toughness and slow crack growth for ALON specimens; no complete Xenonite-like hermetic pressure assembly is established. The interface deliberately leaves the assumed 125 MPa slider unqualified and unchanged.
