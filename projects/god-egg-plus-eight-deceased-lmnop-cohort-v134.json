@@ -1,0 +1,139 @@
+{
+  "schema": "oasis.god-egg.plus-eight-deceased-mnemonic-cohort.v13.4",
+  "asOf": "2026-10-11",
+  "birthYearsInclusive": [
+    1966,
+    1976
+  ],
+  "positiveOrientationModelTag": "+",
+  "allDeceased": true,
+  "initialClassesCovered": [
+    "L",
+    "M",
+    "N",
+    "O",
+    "P"
+  ],
+  "selectedCandidates": 8,
+  "onePerProvisionalDomain": true,
+  "expiryScale": {
+    "userLiteral": "1 x 1.25 ~",
+    "numericScalar": 1.25,
+    "priorSymbolicRole": "generation/life scaling step",
+    "deathRiskBaseline": null,
+    "yearsBaseline": null,
+    "applicabilityToObservedDeaths": "UNVERIFIED"
+  },
+  "publicBiographyEntries": [
+    {
+      "seat": "D1",
+      "domain": "Biology / clinical medicine",
+      "name": "Lorna Breen",
+      "nameInitial": "L",
+      "namePart": "first",
+      "born": "1970-10-09",
+      "died": "2020-04-26",
+      "deathAge": 49,
+      "contribution": "Emergency medicine leader at NewYork-Presbyterian Allen Hospital",
+      "source": "https://www.emergencyphysicians.org/press-releases/2020/4-27-2020-acep-mourns-loss-of-ny-physician-dr.-lorna-breen",
+      "birthAndDeath": "https://en.wikipedia.org/wiki/Lorna_Breen"
+    },
+    {
+      "seat": "D2",
+      "domain": "Information technology / software",
+      "name": "Ian Murdock",
+      "nameInitial": "M",
+      "namePart": "surname",
+      "born": "1973-04-28",
+      "died": "2015-12-28",
+      "deathAge": 42,
+      "contribution": "Founder of the Debian GNU/Linux project and community",
+      "source": "https://bits.debian.org/2015/12/mourning-ian-murdock.html",
+      "birthAndDeath": "https://en.wikipedia.org/wiki/Ian_Murdock"
+    },
+    {
+      "seat": "D3",
+      "domain": "Music",
+      "name": "Ol' Dirty Bastard",
+      "nameInitial": "O",
+      "namePart": "public stage-name first token",
+      "born": "1968-11-15",
+      "died": "2004-11-13",
+      "deathAge": 35,
+      "contribution": "Founding Wu-Tang Clan musician with influential recording work",
+      "source": "https://rockhall.com/inductees/wu-tang-clan/",
+      "birthAndDeath": "https://www.allmusic.com/artist/ol-dirty-bastard-mn0000463803/biography"
+    },
+    {
+      "seat": "D4",
+      "domain": "Literature / cultural writing",
+      "name": "Mark Fisher",
+      "nameInitial": "M",
+      "namePart": "first",
+      "born": "1968-07-11",
+      "died": "2017-01-13",
+      "deathAge": 48,
+      "contribution": "Writer, cultural critic, author of Capitalist Realism",
+      "source": "https://www.frieze.com/article/mark-fisher-1968-2017",
+      "birthAndDeath": "https://lccn.loc.gov/no2011196846"
+    },
+    {
+      "seat": "D5",
+      "domain": "Film / television",
+      "name": "Natalie Desselle-Reid",
+      "nameInitial": "N",
+      "namePart": "first",
+      "birthYear": 1967,
+      "reportedBirthDayConflict": "Television Academy says Apr 12, 1967; IMDb and Wikipedia say Jul 12, 1967",
+      "died": "2020-12-07",
+      "deathAge": 53,
+      "contribution": "Actress and performer known for B.A.P.S. and Cinderella",
+      "source": "https://www.televisionacademy.com/bios/natalie-desselle-reid",
+      "birthAndDeath": "https://www.imdb.com/name/nm0221754/bio/"
+    },
+    {
+      "seat": "D6",
+      "domain": "Sports / football",
+      "name": "Pat Tillman",
+      "nameInitial": "P",
+      "namePart": "public first name (Patrick)",
+      "born": "1976-11-06",
+      "died": "2004-04-22",
+      "deathAge": 27,
+      "contribution": "Professional American football player and later U.S. Army soldier",
+      "source": "https://www.pro-football-reference.com/players/T/TillPa20.htm",
+      "birthAndDeath": "https://home.nps.gov/people/pat-tillman.htm"
+    },
+    {
+      "seat": "D7",
+      "domain": "Business / public relations",
+      "name": "Mark Bingham",
+      "nameInitial": "M",
+      "namePart": "first",
+      "born": "1970-05-22",
+      "died": "2001-09-11",
+      "deathAge": 31,
+      "contribution": "Founder of public relations firm the Bingham Group; remembered as Flight 93 passenger",
+      "source": "https://home.nps.gov/people/markbingham.htm",
+      "birthAndDeath": "https://home.nps.gov/people/markbingham.htm"
+    },
+    {
+      "seat": "D8",
+      "domain": "Visual arts",
+      "name": "Margaret Kilgallen",
+      "nameInitial": "M",
+      "namePart": "first",
+      "born": "1967-10-28",
+      "died": "2001-06-26",
+      "deathAge": 33,
+      "contribution": "Influential painter and muralist of the San Francisco Mission School",
+      "source": "https://whitney.org/artists/7887",
+      "birthAndDeath": "https://whitney.org/artists/7887"
+    }
+  ],
+  "simultaneousGamePlayerCountInferred": null,
+  "existingGameSlotCap": 10,
+  "priorPositiveAliveOrDeceasedRosterSuperseded": "v13.3",
+  "negativeMisconductRoster": "v13.2",
+  "runtimeModified": false
+}
