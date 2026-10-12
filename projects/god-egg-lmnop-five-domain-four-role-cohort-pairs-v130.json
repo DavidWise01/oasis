@@ -1,0 +1,479 @@
+{
+  "schema": "oasis.god-egg.biographical-mnemonic-pairs.v13.0",
+  "generatedAt": "2026-10-11",
+  "nature": "selected public-biography pairs, not biological replicants or spiritual identity transfers",
+  "domains": [
+    "L",
+    "M",
+    "N",
+    "O",
+    "P"
+  ],
+  "roles": [
+    "-m",
+    "+m",
+    "-f",
+    "+f"
+  ],
+  "minusConvention": "public first-name initial",
+  "plusConvention": "public surname initial",
+  "genderRoleNote": "m/f are public-presentation selector roles, not biological or moral determinations",
+  "predecessorBirthYearRange": [
+    1900,
+    1980
+  ],
+  "counterpartBirthYearRange": [
+    1966,
+    1976
+  ],
+  "olderAllDeceased": true,
+  "documentedDeceasedCount": 20,
+  "comparisonCount": 20,
+  "distinctPeople": 40,
+  "chronologicalOverlapCount": 18,
+  "deathBeforeCounterpartBirthCount": 2,
+  "eightEnvironmentalDomainsMapped": false,
+  "runtimeModified": false,
+  "pairs": [
+    {
+      "index": 1,
+      "letterDomain": "L",
+      "role": "-m",
+      "sign": "-",
+      "publicPresentation": "male",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Louis Armstrong",
+        "birth": "1901-08-04",
+        "death": "1971-07-06",
+        "source": "https://www.louisarmstronghouse.org/biography/"
+      },
+      "counterpart": {
+        "name": "Liam Gallagher",
+        "birth": "1972-09-21",
+        "source": "https://en.wikipedia.org/wiki/Liam_Gallagher"
+      },
+      "sharedPublicField": "music",
+      "chronology": "predecessor_died_before_counterpart_birth",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 2,
+      "letterDomain": "L",
+      "role": "+m",
+      "sign": "+",
+      "publicPresentation": "male",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Stan Lee",
+        "birth": "1922-12-28",
+        "death": "2018-11-12",
+        "source": "https://www.comics.org/creator/12304/"
+      },
+      "counterpart": {
+        "name": "Rob Liefeld",
+        "birth": "1967-10-03",
+        "source": "https://www.comics.org/creator/11413/"
+      },
+      "sharedPublicField": "comics",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 3,
+      "letterDomain": "L",
+      "role": "-f",
+      "sign": "-",
+      "publicPresentation": "female",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Lucille Ball",
+        "birth": "1911-08-06",
+        "death": "1989-04-26",
+        "source": "https://en.wikipedia.org/wiki/Lucille_Ball"
+      },
+      "counterpart": {
+        "name": "Laura Dern",
+        "birth": "1967-02-10",
+        "source": "https://en.wikipedia.org/wiki/Laura_Dern"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 4,
+      "letterDomain": "L",
+      "role": "+f",
+      "sign": "+",
+      "publicPresentation": "female",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Janet Leigh",
+        "birth": "1927-07-06",
+        "death": "2004-10-03",
+        "source": "https://www.imdb.com/name/nm0001463/bio/"
+      },
+      "counterpart": {
+        "name": "Jennifer Lopez",
+        "birth": "1969-07-24",
+        "source": "https://en.wikipedia.org/wiki/Jennifer_Lopez"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 5,
+      "letterDomain": "M",
+      "role": "-m",
+      "sign": "-",
+      "publicPresentation": "male",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Michael Jackson",
+        "birth": "1958-08-29",
+        "death": "2009-06-25",
+        "source": "https://www.biography.com/musicians/michael-jackson"
+      },
+      "counterpart": {
+        "name": "Michael Bublé",
+        "birth": "1975-09-09",
+        "source": "https://www.biography.com/musicians/michael-buble"
+      },
+      "sharedPublicField": "music",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 6,
+      "letterDomain": "M",
+      "role": "+m",
+      "sign": "+",
+      "publicPresentation": "male",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Freddie Mercury",
+        "birth": "1946-09-05",
+        "death": "1991-11-24",
+        "source": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+      },
+      "counterpart": {
+        "name": "Ricky Martin",
+        "birth": "1971-12-24",
+        "source": "https://en.wikipedia.org/wiki/Ricky_Martin"
+      },
+      "sharedPublicField": "music",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 7,
+      "letterDomain": "M",
+      "role": "-f",
+      "sign": "-",
+      "publicPresentation": "female",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Marilyn Monroe",
+        "birth": "1926-06-01",
+        "death": "1962-08-04",
+        "source": "https://en.wikipedia.org/wiki/Marilyn_Monroe"
+      },
+      "counterpart": {
+        "name": "Minnie Driver",
+        "birth": "1970-01-31",
+        "source": "https://www.imdb.com/name/nm0000378/bio/"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "predecessor_died_before_counterpart_birth",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 8,
+      "letterDomain": "M",
+      "role": "+f",
+      "sign": "+",
+      "publicPresentation": "female",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Mary Tyler Moore",
+        "birth": "1936-12-29",
+        "death": "2017-01-25",
+        "source": "https://en.wikipedia.org/wiki/Mary_Tyler_Moore"
+      },
+      "counterpart": {
+        "name": "Alyssa Milano",
+        "birth": "1972-12-19",
+        "source": "https://en.wikipedia.org/wiki/Alyssa_Milano"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 9,
+      "letterDomain": "N",
+      "role": "-m",
+      "sign": "-",
+      "publicPresentation": "male",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Nelson Mandela",
+        "birth": "1918-07-18",
+        "death": "2013-12-05",
+        "source": "https://www.nelsonmandela.org/the-life-and-times-of-nelson-mandela"
+      },
+      "counterpart": {
+        "name": "Nick Clegg",
+        "birth": "1967-01-07",
+        "source": "https://en.wikipedia.org/wiki/Nick_Clegg"
+      },
+      "sharedPublicField": "politics",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 10,
+      "letterDomain": "N",
+      "role": "+m",
+      "sign": "+",
+      "publicPresentation": "male",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Paul Newman",
+        "birth": "1925-01-26",
+        "death": "2008-09-26",
+        "source": "https://case.edu/ech/articles/n/newman-paul-leonard"
+      },
+      "counterpart": {
+        "name": "Edward Norton",
+        "birth": "1969-08-18",
+        "source": "https://en.wikipedia.org/wiki/Edward_Norton"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 11,
+      "letterDomain": "N",
+      "role": "-f",
+      "sign": "-",
+      "publicPresentation": "female",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Nina Simone",
+        "birth": "1933-02-21",
+        "death": "2003-04-21",
+        "source": "https://www.womenshistory.org/education-resources/biographies/nina-simone"
+      },
+      "counterpart": {
+        "name": "Natalie Imbruglia",
+        "birth": "1975-02-04",
+        "source": "https://en.wikipedia.org/wiki/Natalie_Imbruglia"
+      },
+      "sharedPublicField": "music",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 12,
+      "letterDomain": "N",
+      "role": "+f",
+      "sign": "+",
+      "publicPresentation": "female",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Olivia Newton-John",
+        "birth": "1948-09-26",
+        "death": "2022-08-08",
+        "source": "https://en.wikipedia.org/wiki/Olivia_Newton-John"
+      },
+      "counterpart": {
+        "name": "Thandiwe Newton",
+        "birth": "1972-11-06",
+        "source": "https://en.wikipedia.org/wiki/Thandiwe_Newton"
+      },
+      "sharedPublicField": "acting/music",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 13,
+      "letterDomain": "O",
+      "role": "-m",
+      "sign": "-",
+      "publicPresentation": "male",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Orson Welles",
+        "birth": "1915-05-06",
+        "death": "1985-10-10",
+        "source": "https://www.biography.com/movies-tv/orson-welles"
+      },
+      "counterpart": {
+        "name": "Owen Wilson",
+        "birth": "1968-11-18",
+        "source": "https://www.biography.com/actors/owen-wilson"
+      },
+      "sharedPublicField": "film",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 14,
+      "letterDomain": "O",
+      "role": "+m",
+      "sign": "+",
+      "publicPresentation": "male",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Peter O'Toole",
+        "birth": "1932-08-02",
+        "death": "2013-12-14",
+        "source": "https://www.cbsnews.com/pictures/peter-otoole-1932-2013/"
+      },
+      "counterpart": {
+        "name": "Timothy Olyphant",
+        "birth": "1968-05-20",
+        "source": "https://en.wikipedia.org/wiki/Timothy_Olyphant"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 15,
+      "letterDomain": "O",
+      "role": "-f",
+      "sign": "-",
+      "publicPresentation": "female",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Olivia de Havilland",
+        "birth": "1916-07-01",
+        "death": "2020-07-26",
+        "source": "https://www.biography.com/actors/olivia-de-havilland"
+      },
+      "counterpart": {
+        "name": "Octavia Spencer",
+        "birth": "1970-05-25",
+        "source": "https://en.wikipedia.org/wiki/Octavia_Spencer"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 16,
+      "letterDomain": "O",
+      "role": "+f",
+      "sign": "+",
+      "publicPresentation": "female",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Susan Oliver",
+        "birth": "1932-02-13",
+        "death": "1990-05-10",
+        "source": "https://en.wikipedia.org/wiki/Susan_Oliver"
+      },
+      "counterpart": {
+        "name": "Sandra Oh",
+        "birth": "1971-07-20",
+        "source": "https://en.wikipedia.org/wiki/Sandra_Oh"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 17,
+      "letterDomain": "P",
+      "role": "-m",
+      "sign": "-",
+      "publicPresentation": "male",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Paul Reubens",
+        "birth": "1952-08-27",
+        "death": "2023-07-30",
+        "source": "https://en.wikipedia.org/wiki/Paul_Reubens"
+      },
+      "counterpart": {
+        "name": "Paul Bettany",
+        "birth": "1971-05-27",
+        "source": "https://en.wikipedia.org/wiki/Paul_Bettany"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 18,
+      "letterDomain": "P",
+      "role": "+m",
+      "sign": "+",
+      "publicPresentation": "male",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Matthew Perry",
+        "birth": "1969-08-19",
+        "death": "2023-10-28",
+        "source": "https://www.biography.com/actors/matthew-perry"
+      },
+      "counterpart": {
+        "name": "Joaquin Phoenix",
+        "birth": "1974-10-28",
+        "source": "https://en.wikipedia.org/wiki/Joaquin_Phoenix"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 19,
+      "letterDomain": "P",
+      "role": "-f",
+      "sign": "-",
+      "publicPresentation": "female",
+      "matchedNamePart": "first",
+      "predecessor": {
+        "name": "Penny Marshall",
+        "birth": "1943-10-15",
+        "death": "2018-12-17",
+        "source": "https://www.legacy.com/legacy/notable-deaths/penny-marshall"
+      },
+      "counterpart": {
+        "name": "Penélope Cruz",
+        "birth": "1974-04-28",
+        "source": "https://en.wikipedia.org/wiki/Pen%C3%A9lope_Cruz"
+      },
+      "sharedPublicField": "acting/film",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    },
+    {
+      "index": 20,
+      "letterDomain": "P",
+      "role": "+f",
+      "sign": "+",
+      "publicPresentation": "female",
+      "matchedNamePart": "last",
+      "predecessor": {
+        "name": "Suzanne Pleshette",
+        "birth": "1937-01-31",
+        "death": "2008-01-19",
+        "source": "https://en.geneastar.org/genealogy/pleshettes/suzanne-pleshette"
+      },
+      "counterpart": {
+        "name": "Sarah Paulson",
+        "birth": "1974-12-17",
+        "source": "https://en.wikipedia.org/wiki/Sarah_Paulson"
+      },
+      "sharedPublicField": "acting",
+      "chronology": "lifespans_overlap",
+      "relation": "mnemonic-name-and-field-match-only"
+    }
+  ]
+}
