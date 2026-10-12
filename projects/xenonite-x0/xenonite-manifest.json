@@ -67,5 +67,15 @@
     "sampleModulus_GPa": 319,
     "sampleFractureToughness_MPaSqrtM": 2.19,
     "doNotUseAsMechanicalAllowable": true
+  },
+  "madreSapphon": {
+    "notation": "Aa.Nn.Nn",
+    "title": "Madre Sapphon",
+    "role": "symbolic enclosing parent",
+    "goldCore": "Au79",
+    "path": "./madre-sapphon/",
+    "sourceRuntime": "../../sapphon-li/kelvin.mjs",
+    "canonicalKelvinUnchanged": true,
+    "automaticStateChanges": false
   }
 }

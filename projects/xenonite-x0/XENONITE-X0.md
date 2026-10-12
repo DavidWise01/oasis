@@ -1,5 +1,8 @@
 # Xenonite-X0 — OASIS/KELVIN boundary material analogue
 
+**Live add-on:** [Aa.Nn.Nn / Madre Sapphon](./madre-sapphon/) is an operator-driven Au79 vessel view that imports frozen KELVIN v11.3 without changes. Use a local static server or GitHub Pages; see [launch notes](./madre-sapphon/README.md).
+
+
 **Created:** 2026-10-12  
 **Status:** runnable self-contained HTML computational *analogue*, not a physically synthesized material or an authorized pressurized-vessel design.  
 **Repository:** `projects/xenonite-x0/`. The existing KELVIN, Li, 208-position auditorium game and other frozen source remain unchanged.
