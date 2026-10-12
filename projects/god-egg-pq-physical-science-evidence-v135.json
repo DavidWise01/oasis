@@ -1,0 +1,177 @@
+{
+  "schema": "oasis.kelvin.scientific-scale-evidence.v13.5",
+  "createdAt": "2026-10-11",
+  "mnemonicRaw": "P → Q → N → A → B",
+  "expandedOrder": [
+    "P",
+    "Q",
+    "N1",
+    "A",
+    "M",
+    "N2",
+    "C",
+    "B"
+  ],
+  "scientificModelsAreDistinct": true,
+  "homeostaticToken": {
+    "source": "1 × 1.25 ~",
+    "arithmetic": 1.25,
+    "interpretation": "model-local homeostatic adjustment",
+    "measuredPhysicalConstant": false,
+    "mortalityRate": false,
+    "controlLawDefined": false
+  },
+  "levels": [
+    {
+      "symbol": "P",
+      "name": "Planck referent",
+      "typicalScale": "1.616255(18)e-35 m Planck length",
+      "status": "derived_reference_scale; quantum_gravity_unverified",
+      "theory": [
+        "general relativity",
+        "quantum mechanics",
+        "hypothetical quantum gravity"
+      ],
+      "known": "Planck length = sqrt(hbar G/c^3); Planck time approximately 5.391247e-44 s. Units are computable from measured constants.",
+      "unknown": "No experimental verification of discrete Planck bubbles, Planck-size vesicles or a microscopic homeostatic compartment; length is not proof of smallest possible distance.",
+      "boundary": "theoretical dimensional scale, no demonstrated physical shell",
+      "sources": [
+        "https://physics.nist.gov/cuu/pdf/all.pdf",
+        "https://home.cern/science/physics/standard-model"
+      ]
+    },
+    {
+      "symbol": "Q",
+      "name": "Quantum / fields",
+      "typicalScale": "No unique length scale",
+      "status": "established_quantum_mechanics_and_QFT",
+      "theory": [
+        "quantum mechanics",
+        "quantum field theory",
+        "particle Standard Model"
+      ],
+      "known": "Quarks and leptons; electroweak force carriers photon,W,Z; strong-force gluons; Higgs boson; superposition, interference, discrete measurement results, interactions.",
+      "unknown": "Gravity is not included in the particle Standard Model; origins of dark matter and neutrino masses need further description beyond its simplest form.",
+      "boundary": "physical states and field interactions, not an isolated membrane",
+      "sources": [
+        "https://home.cern/science/physics/standard-model",
+        "https://www.energy.gov/science/doe-explainsthe-standard-model-particle-physics"
+      ]
+    },
+    {
+      "symbol": "N1",
+      "name": "Nuclear",
+      "typicalScale": "~1e-15 m (femtometer)",
+      "status": "established_subatomic_nuclear",
+      "theory": [
+        "quantum chromodynamics",
+        "nuclear effective theories",
+        "nuclear shell and many-body models"
+      ],
+      "known": "Quarks and gluons bind to form protons/neutrons; residual strong interaction binds nuclei; proton count sets chemical element; nuclei may undergo radioactive decay, fission or fusion.",
+      "unknown": "Many-body nuclear calculations have scale-dependent model uncertainties; nuclear forces are not a distinct membrane.",
+      "boundary": "strongly bound nucleons within an atomic nucleus",
+      "sources": [
+        "https://www.energy.gov/science/doe-explainsthe-strong-force",
+        "https://wwwcompass.cern.ch/compass/wwwsmc/target/fundamentalparticles.html"
+      ]
+    },
+    {
+      "symbol": "A",
+      "name": "Atomic",
+      "typicalScale": "~1e-10 m (0.1 nm)",
+      "status": "established_atomic",
+      "theory": [
+        "quantum mechanics",
+        "quantum electrodynamics",
+        "atomic spectroscopy"
+      ],
+      "known": "Nuclei and electrons form atoms; orbitals, quantized energy levels and electromagnetic interactions determine spectra, ionization and bonding.",
+      "unknown": "No fixed impenetrable physical atomic shell; electron orbitals are probability distributions and atoms have sizes depending on element/state.",
+      "boundary": "electronic distributions and nuclear charge, not literal hard spheres",
+      "sources": [
+        "https://physics.nist.gov/cgi-bin/cuu/Value?eqAbohrrada0=",
+        "https://home.cern/science/physics/standard-model"
+      ]
+    },
+    {
+      "symbol": "M",
+      "name": "Molecular",
+      "typicalScale": "~1e-9 m and variable",
+      "status": "established_chemical",
+      "theory": [
+        "quantum chemistry",
+        "statistical mechanics",
+        "chemical kinetics",
+        "thermodynamics"
+      ],
+      "known": "Atoms share or transfer electrons to form chemical bonds, molecules, chemical reactions, membranes and macromolecules. All biology depends on molecular chemistry.",
+      "unknown": "Molecules do not all share one size or use a single feedback control system.",
+      "boundary": "chemical bonds and molecular organization",
+      "sources": [
+        "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+        "https://www.ncbi.nlm.nih.gov/books/NBK9944/"
+      ]
+    },
+    {
+      "symbol": "N2",
+      "name": "Nucleic (DNA/RNA)",
+      "typicalScale": "DNA diameter ~2e-9 m; length varies",
+      "status": "established_biochemistry",
+      "theory": [
+        "genetics",
+        "molecular biology",
+        "biochemistry"
+      ],
+      "known": "Nucleotide polymers DNA and RNA; DNA records genetic sequence, complementary base pairing allows replication; RNA handles gene expression, translation and regulation; proteins perform many functions.",
+      "unknown": "Nucleic does not mean nuclear (atomic nucleus), not all biology determined by sequence alone; it does not specify a hidden Planck-scale nucleus.",
+      "boundary": "large molecular information carriers, not membrane-enclosed by default",
+      "sources": [
+        "https://www.genome.gov/genetics-glossary",
+        "https://www.ncbi.nlm.nih.gov/books/NBK9944/",
+        "https://medlineplus.gov/genetics/understanding/basics/dna/"
+      ]
+    },
+    {
+      "symbol": "C",
+      "name": "Cellular",
+      "typicalScale": "Prokaryotes ~0.1-5 um, eukaryotes ~10-100 um",
+      "status": "established_cell_biology",
+      "theory": [
+        "cell theory",
+        "membrane biophysics",
+        "cellular metabolism",
+        "systems biology"
+      ],
+      "known": "Selective membranes, vesicles, phagosomes, endocytosis, ion gradients, organelles, metabolism, intracellular signaling, cell reproduction.",
+      "unknown": "A phagosome is a biologically formed membrane vesicle; no verified equivalence to a Planck-sized bubble.",
+      "boundary": "physically measured lipid membrane and selectively regulated transport",
+      "sources": [
+        "https://openstax.org/books/biology-2e/pages/4-2-prokaryotic-cells",
+        "https://openstax.org/books/concepts-biology/pages/3-2-comparing-prokaryotic-and-eukaryotic-cells"
+      ]
+    },
+    {
+      "symbol": "B",
+      "name": "Biological systems / homeostasis",
+      "typicalScale": "Cells to organisms, no fixed upper size",
+      "status": "established_biological_regulation",
+      "theory": [
+        "physiology",
+        "control theory",
+        "ecology",
+        "evolutionary biology"
+      ],
+      "known": "Sensor + reference/set point + control/effector often use negative feedback to maintain acceptable conditions, e.g. temperature and blood glucose; positive feedback supports finite events such as clotting.",
+      "unknown": "Homeostasis is not a universal physical property of every quantum or nuclear state; 1x1.25 is not a known universal biological constant.",
+      "boundary": "dynamic regulated non-equilibrium system requiring energy and material exchange",
+      "sources": [
+        "https://openstax.org/books/biology-2e/pages/33-3-homeostasis",
+        "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-5-homeostasis"
+      ]
+    }
+  ],
+  "physicalPlanckBubbleObserved": false,
+  "sourceMarkdown": "projects/project-god-egg-pq-nuclear-atomic-nucleic-biology-standard-science-v135-2026-10-11.md",
+  "frozenRuntimeEdited": false
+}
