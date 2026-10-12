@@ -133,5 +133,18 @@
     "doesNotAlterKelvin": true,
     "physicsCouplingDefined": false,
     "manualSnapshots": 128
+  },
+  "materialCrystalBuild": {
+    "path": "material-build/",
+    "formula": "Al23O27N5",
+    "spinelScaffoldSites": 56,
+    "occupiedAtomicSites": 55,
+    "aluminumVacancies": 1,
+    "substitutedAnionSitesNitrogen": 5,
+    "outputSpaceGroupForExplicitOrdering": "P1",
+    "nominalDensityGcm3": 3.70993022472576,
+    "seed42ExampleCif": "material-build/examples/ALON-Al23O27N5-seed42.cif",
+    "parentEnginesUnmodified": true,
+    "realPhysicalSynthesis": false
   }
 }

@@ -1,0 +1,53 @@
+{
+  "schema": "oasis.alon.crystal.material-v2.v1",
+  "date": "2026-10-12",
+  "literal": "{{ -AaaA....LllL....OooO....NnnN.... }}",
+  "carrierLiteral": "{{ 1 :: force carrier :: { weak , medium strong }} :: 1 :: - or + :: 1 :: color :: 2 out of 8 :: }}}",
+  "formula": "Al23O27N5",
+  "physicalMaterialExists": true,
+  "actualPhysicalMaterialCreated": false,
+  "scaffold": {
+    "spaceGroup": "Fd-3m parent, origin 2",
+    "occupancySpaceGroup": "P1 (specific symmetry-broken snapshot)",
+    "latticeAngstrom": 7.95,
+    "siteFamilies": {
+      "tetra8a": 8,
+      "octa16d": 16,
+      "anion32e": 32
+    },
+    "Al": 23,
+    "O": 27,
+    "N": 5,
+    "AlVacancies": 1,
+    "sites": 56,
+    "occupied": 55,
+    "oxygenParameterModel": 0.26,
+    "disorderOptimized": false
+  },
+  "outputs": [
+    "CIF (P1)",
+    "XYZ",
+    "JSON"
+  ],
+  "geometryInterface": "SVG projected 3D drag rotation",
+  "sourceFile": "alon-crystal.mjs",
+  "example": {
+    "seed": 42,
+    "vacancySite": 0,
+    "aluminum": 23,
+    "oxygen": 27,
+    "nitrogen": 5,
+    "bonds": 122,
+    "formalCharge": 0,
+    "nominalDensityGcm3": 3.70993022472576
+  },
+  "physicsConstraints": {
+    "unitCellReferenceOnly": true,
+    "noDFTRelaxation": true,
+    "noElectronBandOrOpticalCalculation": true,
+    "noCertifiedPressureRating": true,
+    "noPhysicalForceCoupling": true
+  },
+  "legacySourcesUnmodified": true,
+  "buildStatus": "source committed; structural invariants independently calculated"
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "oasis.alon.material-v2.example.v1",
+  "seed": 42,
+  "aAngstrom": 7.95,
+  "vacancyOctaIndex": 0,
+  "anionParameter": 0.26,
+  "counts": {
+    "Al": 23,
+    "O": 27,
+    "N": 5,
+    "Vac": 1
+  },
+  "formalCharge": 0,
+  "bonds": 122,
+  "minBondAngstrom": 1.8589235292232977,
+  "maxBondAngstrom": 1.9113096295472378,
+  "densityGcm3": 3.70993022472576,
+  "CIFSymmetry": "P1",
+  "parentCrystal": "Fd-3m spinel scaffold",
+  "modelStatus": "representative, not uniquely optimized or measured",
+  "NAnionIndices": [
+    1,
+    2,
+    4,
+    16,
+    28
+  ]
+}

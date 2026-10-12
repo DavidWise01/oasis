@@ -47,6 +47,10 @@ A **new, separately runnable** [force-carrier lab](./force-carrier/) is connecte
 
 For code and scientific caveats see [force-carrier/README.md](./force-carrier/README.md).
 
+## Executable ALON v2 unit-cell construction
+
+[Open the **material crystal builder**](./material-build/) to generate a nominal Al₂₃O₂₇N₅ spinel occupancy model: 8 tetrahedral Al positions, 16 octahedral Al positions (one vacancy), and 32 O/N positions (27 oxygen and 5 nitrogen). The code includes drag rotation, deterministic nitrogen substitution and vacancy selection, nominal mass/density/charge calculations, and actual downloadable **P1 CIF, XYZ, and JSON** coordinate files. It imports the unchanged force palette and the existing ALON engineering example, but never derives new physical forces. [Sources and scope](./material-build/README.md).
+
 ## Run the live inspector
 
 Serve the repository root over HTTP:
