@@ -1,0 +1,82 @@
+{
+  "schema": "oasis.alon.force-carrier.overlay.v1",
+  "date": "2026-10-12",
+  "literal": "{{ 1 :: force carrier :: { weak , medium strong }} :: 1 :: - or + :: 1 :: color :: 2 out of 8 :: }}}",
+  "verbatimDelimiterPreservation": true,
+  "sourceInscription": "{{ -AaaA....LllL....OooO....NnnN.... }}",
+  "activeForceCarrierSlots": 1,
+  "modeChoices": [
+    "weak",
+    "medium",
+    "strong"
+  ],
+  "modeCountActive": 1,
+  "orientationChoices": [
+    "-",
+    "+"
+  ],
+  "orientationCountActive": 1,
+  "colorRegisterSlots": 1,
+  "palette": [
+    {
+      "id": "bk",
+      "name": "black"
+    },
+    {
+      "id": "wt",
+      "name": "white"
+    },
+    {
+      "id": "red",
+      "name": "red"
+    },
+    {
+      "id": "blu",
+      "name": "blue"
+    },
+    {
+      "id": "gree",
+      "name": "green"
+    },
+    {
+      "id": "yell",
+      "name": "yellow"
+    },
+    {
+      "id": "purpl",
+      "name": "purple"
+    },
+    {
+      "id": "orang",
+      "name": "orange"
+    }
+  ],
+  "chosenDistinctColors": 2,
+  "paletteSize": 8,
+  "provisionalColorDefault": [
+    "bk",
+    "orang"
+  ],
+  "unorderedColorPairCount": 28,
+  "totalSelectableOperatorCombinations": 168,
+  "modeStrengthAsSIUnits": false,
+  "forceBosonDiscovered": false,
+  "colorChargeIsVisibleColor": false,
+  "coupledToAlonPhysics": false,
+  "materialReadout": {
+    "source": "../alon-track.mjs",
+    "method": "evaluateAlon",
+    "physicsParametersSeparate": true
+  },
+  "ledger": {
+    "onlyHumanSnapshots": true,
+    "maximumRecords": 128,
+    "storage": "in memory; explicit JSON export"
+  },
+  "unchangedFiles": [
+    "../alon-track.mjs",
+    "../../madre-sapphon/madre-sapphon.mjs",
+    "../../../sapphon-li/kelvin.mjs"
+  ],
+  "noPhysicalManufacture": true
+}

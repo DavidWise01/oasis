@@ -29,6 +29,24 @@ Preserve:
 
 The UI's 55 dots are **count tokens** from the approximate ratio `23 + 27 + 5 = 55` placed in arbitrary 11×5 visual rows. They are **NOT** crystallographic coordinates, a computed unit cell, an elemental periodic table or 55 independent quantum processors.
 
+## Separate single-carrier operator (live companion)
+
+A **new, separately runnable** [force-carrier lab](./force-carrier/) is connected to the original four ALON material lanes. It preserves the user's rule **exactly**, including the extra closing bracket:
+
+```text
+{{ 1 :: force carrier :: { weak , medium strong }} :: 1 :: - or + :: 1 :: color :: 2 out of 8 :: }}}
+```
+
+- **One carrier** register, with **one active weak / medium / strong mode**. These are symbolic intensity tags; established physics does **not** contain a separate "medium nuclear force."
+- **One** sign selected from `-` or `+`, independent of the first minus in the original ALON inscription.
+- **One** color register selecting **two DISTINCT palette entries from eight**: `bk/wt/red/blu/gree/yell/purpl/orang`. Initial black and orange selection is provisional, not user-mandated.
+- One of the four already defined ALON lanes (`AaaA/LllL/OooO/NnnN`) is the active visualization focus, with unchanged real chemistry `Al/O/N`.
+- Selecting colors does not specify optical wavelengths or the technical red/green/blue gauge-color charges of the nuclear strong force. No physical force-carrier coupling to materials is assumed.
+- `C(8,2)=28` unordered color pairs; `3×2×28=168` mathematical possible mode/sign/pair selections. They are **options**, not 168 physical particles or nodes.
+- All current selections change on operator input. Each record is appended only on an **explicit snapshot click**, capped at 128 with manual JSON export. The force overlay imports `evaluateAlon` for the existing illustrative engineering readout; it does not modify `alon-track.mjs` or the KELVIN engine.
+
+For code and scientific caveats see [force-carrier/README.md](./force-carrier/README.md).
+
 ## Run the live inspector
 
 Serve the repository root over HTTP:

@@ -169,7 +169,7 @@ for(const l of ["A","L","O","N"]){
   render();
  });
 }
-for(const id of ["mode","sign","c1","c2",...fields])$(id).addEventListener("change",render);
+for(const id of ["mode","sign","c1","c2",...fields])$(id).addEventListener(id==="mode"||id==="sign"||id==="c1"||id==="c2"?"change":"input",render);
 $("record").addEventListener("click",()=>{
  try{app.append(vals());render();}catch(e){$("warning").textContent=e.message;}
 });
