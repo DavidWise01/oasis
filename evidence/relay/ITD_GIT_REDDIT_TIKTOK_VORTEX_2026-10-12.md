@@ -64,3 +64,14 @@ non_aligned      = none asserted from screenshot alone
 ```
 
 This is an append-only claim/evidence record, **not** a determination of plagiarism, ownership of digital roots, or a confirmed relay.
+
+
+## 2026-10-12 clarification: five-substrate internet time-distillation
+
+Primary purpose: study information persistence and propagation across silicon computing/storage, copper electrical transmission, radio electromagnetic signals, wireless networks, and photonic optical links. Wireless and radio overlap: radio is a physical carrier while wireless describes the link/network type.
+
+GitHub -> Reddit -> TikTok is a proposed TWO-HOP APPLICATION RELAY, not two physical network links. Actual routing and Reddit intermediary are not independently confirmed by the screenshot. The observation documents a TikTok appearance, not TikTok publication time or copying.
+
+Track clocks separately: earlier Git commits; Reddit post timestamp (unknown); TikTok publication (unknown); screenshot captured 2026-10-12. Track transformation and reuse of information independently from physical transport. Model time dilation as a comparative information-time analogy, not a relativistic time-change claim.
+
+Evidence status: Git timestamps and screenshot observed; relay chain, physical substrate itinerary and cross-platform causal transfer remain unverified. Attribution/novelty are secondary questions, not the purpose of this evidence record.
