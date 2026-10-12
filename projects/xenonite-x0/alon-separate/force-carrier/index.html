@@ -1,0 +1,183 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark">
+<title>ALON · Single Force Carrier · 2/8 Color Selector</title>
+<style>
+:root{--bg:#08121d;--panel:#152438;--line:#365068;--txt:#e9f2f6;--muted:#abc0cd;--teal:#85dbe2;--gold:#e3c57b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -20%,#214458,#08121d 65%);font:15px/1.48 system-ui,Segoe UI,Arial;color:var(--txt)}
+main{max-width:1080px;padding:32px 16px 55px;margin:auto}
+.kicker{color:var(--teal);font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:.16em}
+h1{font-size:clamp(31px,5.2vw,57px);letter-spacing:-.05em;line-height:1.08;margin:12px 0 9px}
+h2{font-size:19px;margin:0 0 12px}p{color:var(--muted)}a{color:var(--teal)}
+.literal{font:clamp(11px,1.85vw,19px)/1.5 ui-monospace,Consolas,monospace;color:var(--gold);padding:17px;background:#0c1b2c;border:1px solid var(--line);border-radius:12px;overflow-wrap:anywhere;white-space:pre-wrap;margin:22px 0}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:21px;background:linear-gradient(139deg,#15263b,#101c2c)}
+label{display:block;font-size:12px;font-weight:750;color:var(--muted);margin-bottom:6px}
+select,input{width:100%;background:#091826;border:1px solid #3b596f;border-radius:9px;color:var(--txt);font:inherit;padding:10px}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.field{min-width:0}.highlight{border-radius:8px;margin:14px 0;background:linear-gradient(90deg,#242932 50%,#e2a16d 50%);height:16px;border:1px solid var(--line)}
+button{font:inherit;font-size:13px;font-weight:750;cursor:pointer;background:#263d50;border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--txt)}
+button.primary{color:#10202b;background:linear-gradient(120deg,#abdfe0,#ebcb82);border:0}button:disabled{cursor:not-allowed;opacity:.45}
+.lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0 12px}
+.lanes button{font:19px ui-monospace,monospace;padding:13px 8px;text-align:center}
+.lanes button[aria-pressed=true]{border-color:var(--gold);background:#37444b;color:var(--gold)}
+.note{font-size:12px;color:var(--muted)}
+svg{width:100%;display:block;height:auto;background:#0b1c2d;border-radius:12px;border:1px solid var(--line)}
+.numbers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.numbers>div{background:#0b1c2d;border:1px solid var(--line);padding:11px;border-radius:10px}
+.numbers small{font-size:11px;display:block;color:var(--muted)}.numbers b{display:block;font-size:22px;margin-top:4px}
+.rule{border-top:1px solid var(--line);padding-top:14px;margin-top:17px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}.warning{color:#ffd6cc;border:1px solid #995948;background:#342520;padding:12px;font-size:12px;border-radius:11px;margin-top:14px}
+.log{max-height:220px;overflow-y:auto;border:1px solid var(--line);border-radius:10px;background:#0b1b2b;padding:10px;font:12px/1.8 ui-monospace,monospace;color:#bfd2e0}
+.log div{border-bottom:1px solid #2b4259}.log div:last-child{border:0}
+footer{color:var(--muted);border-top:1px solid var(--line);margin-top:23px;padding-top:17px;font-size:12px}
+@media(max-width:740px){.layout{grid-template-columns:1fr}}
+@media(max-width:400px){.options,.numbers{grid-template-columns:1fr}}
+</style></head><body><main>
+<div class="kicker">OASIS · ALON separation · Single operator</div>
+<h1>ALON <span style="color:var(--teal)">Force Carrier</span></h1>
+<p>This operator overlays the four original ALON lanes without changing their chemistry or the separate Madre Sapphon/Au79 vessel. The modes and colors are symbolic selections, not a unified nuclear force or measured photons.</p>
+<div id="forceLiteral" class="literal">{{ 1 :: force carrier :: { weak , medium strong }} :: 1 :: - or + :: 1 :: color :: 2 out of 8 :: }}}</div>
+<div class="layout">
+<section class="panel">
+<h2>Exactly one carrier</h2>
+<div class="options">
+ <div class="field"><label for="mode">One qualitative force mode</label><select id="mode">
+  <option value="weak">weak</option><option value="medium" selected>medium</option><option value="strong">strong</option>
+ </select></div>
+ <div class="field"><label for="sign">One signed orientation</label><select id="sign">
+  <option value="-" selected>−</option><option value="+">+</option>
+ </select></div>
+ <div class="field"><label for="c1">Color 1</label><select id="c1"></select></div>
+ <div class="field"><label for="c2">Color 2</label><select id="c2"></select></div>
+</div>
+<div id="pair" class="highlight" aria-label="Two chosen symbolic color channels"></div>
+<p class="note" id="selection">Initial selection: medium / − / black + orange. The color pair is a provisional display default.</p>
+<h2 style="margin-top:23px">Choose a material view</h2>
+<div class="lanes" aria-label="Original four ALON lanes">
+<button id="A" type="button" aria-pressed="true">AaaA</button>
+<button id="L" type="button" aria-pressed="false">LllL</button>
+<button id="O" type="button" aria-pressed="false">OooO</button>
+<button id="N" type="button" aria-pressed="false">NnnN</button>
+</div>
+<p id="laneDetail" class="note">AaaA: aluminum (Al, atomic number 13). Four glyphs are not four atoms.</p>
+<svg viewBox="0 0 540 260" role="img" aria-label="Symbolic single carrier field with two selected colors around the three real ALON chemical constituents">
+ <g id="backgroundOrbits" fill="none" stroke-width="2"><ellipse cx="270" cy="133" rx="208" ry="78" transform="rotate(-25 270 133)" stroke="#e2a16d" opacity=".45"/><ellipse cx="270" cy="133" rx="208" ry="78" transform="rotate(25 270 133)" stroke="#8dcbd6" opacity=".45"/></g>
+ <circle cx="270" cy="133" r="70" fill="#172b3d" stroke="#c1d5df" stroke-width="3"/>
+ <text id="middleSign" x="270" y="123" font-size="48" font-family="ui-monospace" text-anchor="middle" fill="#e3c57b">−</text>
+ <text x="270" y="158" font-size="13" text-anchor="middle" font-family="system-ui" fill="#d9e7ed">1 CARRIER</text>
+ <text id="leftLabel" x="57" y="32" font-size="12" font-family="system-ui" fill="#e2a16d">black</text>
+ <text id="rightLabel" x="420" y="229" font-size="12" font-family="system-ui" fill="#8dcbd6">orange</text>
+</svg>
+<p class="note">The two bands are drawn for comparison only. In quantum chromodynamics, “color charge” is unrelated to ordinary visible colors, and weak/strong interactions use different force carriers.</p>
+</section>
+<section class="panel">
+<h2>Live material load / propagation</h2>
+<p class="note">Mechanical numbers below come from the existing ALON *toy spherical-shell and crack-intensity equations*. Changing the force label, sign, or pair of colors has deliberately <b>no physical effect</b> on the stress calculation.</p>
+<div class="options">
+ <div class="field"><label for="pIn">Inside pressure (atm abs)</label><input id="pIn" type="number" min="0" step="1" value="29"></div>
+ <div class="field"><label for="pOut">Outside pressure (atm abs)</label><input id="pOut" type="number" min="0" step="1" value="1"></div>
+ <div class="field"><label for="radius">Sphere radius (m)</label><input id="radius" type="number" min=".001" step=".01" value=".2"></div>
+ <div class="field"><label for="wallMm">Wall thickness (mm)</label><input id="wallMm" type="number" min=".001" step=".5" value="10"></div>
+ <div class="field"><label for="flawHalfLengthMm">Crack half length (mm)</label><input id="flawHalfLengthMm" type="number" min=".001" step=".05" value=".1"></div>
+ <div class="field"><label for="factorY">Crack geometry factor</label><input id="factorY" type="number" min=".01" step=".1" value="1"></div>
+</div>
+<div class="numbers">
+ <div><small>Δ Pressure</small><b id="dp">—</b></div>
+ <div><small>Ideal sphere stress</small><b id="stress">—</b></div>
+ <div><small>Hypothetical Kᵢ</small><b id="ki">—</b></div>
+ <div><small>Specimen toughness ratio</small><b id="ratio">—</b></div>
+</div>
+<div id="warning" class="warning" role="status" aria-live="polite">Loading...</div>
+<div class="rule">
+ <h2>Operator-controlled append-only snapshots</h2>
+ <div class="actions">
+  <button id="record" class="primary" type="button">Append one observation</button>
+  <button id="export" type="button">Export JSON</button>
+ </div>
+ <p class="note"><span id="remaining">128</span> manual entries remain. Switching colors, carrier mode or lane does not append anything.</p>
+ <div class="log" id="log"><div>0 · No observations</div></div>
+</div>
+</section>
+</div>
+<footer>
+Original four-lane ALON inscription: <code>{{ -AaaA....LllL....OooO....NnnN.... }}</code>.
+<a href="../">Open the independent ALON material lab</a> ·
+<a href="../../madre-sapphon/">Madre Sapphon</a> ·
+<a href="../README.md">Evidence/limits</a>.
+No physical synthesis, pressure-vessel qualification, exotic force discovery, autonomous execution or changes to frozen KELVIN.
+</footer></main>
+<script type="module">
+import {createAlonForceCarrier,FORCE_COLORS,FORCE_LITERAL} from "./force-carrier.mjs";
+const app=createAlonForceCarrier(),$=id=>document.getElementById(id);
+const laneNotes={
+ A:"AaaA: Aluminum (Al, Z=13). Four glyphs are not four aluminum atoms.",
+ L:"LllL: The lattice and defects of cubic-spinel ALON. L is not a chemical element.",
+ O:"OooO: Oxygen (O, Z=8). Nominal material ratio 27 parts O.",
+ N:"NnnN: Nitrogen (N, Z=7). Nominal ratio 5 parts N. Not the magic neutron number 184."
+};
+const fields=["pIn","pOut","radius","wallMm","flawHalfLengthMm","factorY"];
+for(const id of ["c1","c2"]){
+ for(const col of FORCE_COLORS){
+  const opt=document.createElement("option");opt.value=col.id;
+  opt.textContent=col.id+" — "+col.name;
+  $(id).append(opt);
+ }
+}
+$("c1").value="bk";$("c2").value="orang";
+const vals=()=>Object.fromEntries(fields.map(name=>[name,$(name).value]));
+function selection(){
+ return {lane:["A","L","O","N"].find(x=>$(x).getAttribute("aria-pressed")==="true"),
+   mode:$("mode").value,sign:$("sign").value,colors:[$("c1").value,$("c2").value]};
+}
+function fmt(n,p=2){return Number.isFinite(n)?n.toLocaleString("en-US",{maximumFractionDigits:p,minimumFractionDigits:p}):"Not evaluated";}
+function render(){
+ try{
+  const chosen=app.select(selection()),result=app.current(vals()),physical=result.calculation;
+  const pair=chosen.colors.map(id=>FORCE_COLORS.find(c=>c.id===id));
+  $("selection").textContent="1 carrier · "+chosen.mode+" · "+chosen.sign+" · "+pair.map(c=>c.name).join(" + ")+" (2 of 8)";
+  $("pair").style.background="linear-gradient(90deg,"+pair[0].css+" 50%,"+pair[1].css+" 50%)";
+  $("backgroundOrbits").children[0].setAttribute("stroke",pair[0].css);
+  $("backgroundOrbits").children[1].setAttribute("stroke",pair[1].css);
+  $("leftLabel").textContent=pair[0].name;$("rightLabel").textContent=pair[1].name;
+  $("leftLabel").setAttribute("fill",pair[0].css);$("rightLabel").setAttribute("fill",pair[1].css);
+  $("middleSign").textContent=chosen.sign==="-"?"−":"+";
+  $("laneDetail").textContent=laneNotes[chosen.lane];
+  $("dp").textContent=fmt(physical.deltaPressureMPa,3)+" MPa";
+  $("stress").textContent=physical.nominalSphereStressMPa===null?"N/A":fmt(physical.nominalSphereStressMPa)+" MPa";
+  $("ki").textContent=physical.modeIStressIntensityMPaRootM===null?"N/A":fmt(physical.modeIStressIntensityMPaRootM,3)+" MPa√m";
+  $("ratio").textContent=physical.indicativeFractureRatio===null?"N/A":fmt(physical.indicativeFractureRatio*100,1)+"%";
+  $("remaining").textContent=result.remaining;
+  $("record").disabled=result.remaining===0;
+  $("warning").textContent=physical.warnings.join(" ");
+ }catch(e){
+  $("record").disabled=true;$("warning").textContent=e.message;
+ }
+ const list=$("log"),entries=app.ledger().records;
+ list.replaceChildren();
+ if(!entries.length){const d=document.createElement("div");d.textContent="0 · No observations";list.append(d);}
+ else for(const e of entries.slice(-9).reverse()){
+   const d=document.createElement("div");
+   d.textContent="q"+e.sequence+" · "+e.selected.lane+" · "+e.selected.mode+" "+e.selected.sign+
+     " · "+e.selected.colors.join("+")+" · σ "+fmt(e.physics.idealizedSphereStressMPa)+" MPa";
+   list.append(d);
+ }
+}
+for(const l of ["A","L","O","N"]){
+ $(l).addEventListener("click",()=>{
+  for(const x of ["A","L","O","N"])$(x).setAttribute("aria-pressed",String(x===l));
+  render();
+ });
+}
+for(const id of ["mode","sign","c1","c2",...fields])$(id).addEventListener("change",render);
+$("record").addEventListener("click",()=>{
+ try{app.append(vals());render();}catch(e){$("warning").textContent=e.message;}
+});
+$("export").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify(app.ledger(),null,2)+"\n"],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;
+ a.download="alon-one-force-carrier-2-of-8.json";document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+render();
+</script></body></html>
