@@ -1,0 +1,72 @@
+{
+  "schema": "oasis.madre-sapphon.live-kelvin.v1",
+  "created": "2026-10-12",
+  "parentFamily": "SAPPHON",
+  "notation": "Aa.Nn.Nn",
+  "title": "Madre Sapphon",
+  "kind": "manual maternal vessel adapter",
+  "generation": 0,
+  "identityClaim": "symbolic; not a biological mother, AI agent or chemical element",
+  "goldCore": {
+    "symbol": "Au",
+    "Z": 79,
+    "stableNaturalIsotope": "Au-197",
+    "position": "pinned 0"
+  },
+  "shell": {
+    "name": "Aa.Nn.Nn",
+    "chemicalFormula": false,
+    "realCandidateSeparate": "ALON ceramic"
+  },
+  "geometry": {
+    "magneticSymbolicSurfaceIDs": [
+      "-5",
+      "-4",
+      "-3",
+      "-2",
+      "-1",
+      "+1",
+      "+2",
+      "+3",
+      "+4",
+      "+5"
+    ],
+    "radialSectors": 8,
+    "comparisonBands": [
+      "weak",
+      "medium",
+      "strong"
+    ],
+    "viewAddresses": 240,
+    "magnetosphericFieldEquationSolved": false
+  },
+  "referenceScales": {
+    "base": "1.6165e-35",
+    "sqrt5Boundary": 3.6146038856284105e-35,
+    "homeo": 1e-26,
+    "adjustment": "1 × 1.25 ~",
+    "coupledToPressure": false
+  },
+  "runtime": {
+    "importsCanonical": "../../sapphon-li/kelvin.mjs",
+    "canonicalVersion": "11.3.0",
+    "manualDegreesPerAdvance": 360,
+    "shellReturnDegrees": 720,
+    "maxTransitions": 128,
+    "autonomousStateChanges": false,
+    "appendOnly": true,
+    "ledgerPersistence": "in-memory until manually exported"
+  },
+  "engineering": {
+    "realMaterialCertified": false,
+    "pressureModel": "thin-wall spherical positive-internal-differential only",
+    "decayModel": "conditional exp(-kappa * distance), coefficient assigned by user not experimentally fitted",
+    "assumedStrengthAsInput": true
+  },
+  "entrypoint": "projects/xenonite-x0/madre-sapphon/index.html",
+  "readme": "projects/xenonite-x0/madre-sapphon/README.md",
+  "webServerRequired": true,
+  "canRunByOpeningFileDirectly": false,
+  "testsRun": false,
+  "parentFrozenRuntimeChanged": false
+}
