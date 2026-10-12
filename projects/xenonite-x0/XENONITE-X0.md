@@ -4,6 +4,10 @@
 **Status:** runnable self-contained HTML computational *analogue*, not a physically synthesized material or an authorized pressurized-vessel design.  
 **Repository:** `projects/xenonite-x0/`. The existing KELVIN, Li, 208-position auditorium game and other frozen source remain unchanged.
 
+## Material search result — Candidate 001
+
+Found **real aluminum oxynitride (ALON) cubic spinel** as a transparent structural ceramic candidate. [Read sourced candidate analysis](./MATERIAL-ALON-CANDIDATE.md) and [JSON measurements](./material-alon-candidate.json). NASA reports measured stiffness/fracture toughness and slow crack growth for ALON specimens; no complete Xenonite-like hermetic pressure assembly is established. The interface deliberately leaves the assumed 125 MPa slider unqualified and unchanged.
+
 ## What "Xenonite" means
 
 The word **Xenonite** refers to Andy Weir's fictional Eridian material in [_Project Hail Mary_](https://www.planetary.org/planetary-radio/book-club-andy-weir). In author interviews, Weir explains that its extraordinary ability to form transparent, extraordinarily strong compartments separating about 29 atmospheres from low-pressure oxygen environments was intentionally not explained by a chemical formula. There is **no real Xenonite synthesis** established by this project.

@@ -58,5 +58,14 @@
     "https://pubmed.ncbi.nlm.nih.gov/27776206/"
   ],
   "frozenOasisKelvinRuntimeModified": false,
-  "physicalPressureTestingPerformed": false
+  "physicalPressureTestingPerformed": false,
+  "candidateUpdate": {
+    "date": "2026-10-12",
+    "candidate": "ALON cubic spinel",
+    "source": "MATERIAL-ALON-CANDIDATE.md",
+    "status": "verified material; proposed pressure application unqualified",
+    "sampleModulus_GPa": 319,
+    "sampleFractureToughness_MPaSqrtM": 2.19,
+    "doNotUseAsMechanicalAllowable": true
+  }
 }
