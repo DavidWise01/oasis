@@ -1,0 +1,130 @@
+{
+  "schema": "oasis.god-egg.v13.1.eight-domain-negative-roster",
+  "asOf": "2026-10-11",
+  "totalModelPositions": 10,
+  "peopleCount": 8,
+  "unfilledSymbolicEndpointSeats": [
+    {
+      "id": "E9",
+      "label": "God",
+      "person": null
+    },
+    {
+      "id": "E10",
+      "label": "Devil",
+      "person": null
+    }
+  ],
+  "overlays": [
+    "Messenger",
+    "Mother Nature/auditorium",
+    "Father Time"
+  ],
+  "positionSign": "-",
+  "signMoralJudgement": false,
+  "birthRange": [
+    1966,
+    2026
+  ],
+  "eligibility": "deceased or older than 45",
+  "people": [
+    {
+      "seat": "D1",
+      "domain": "Biology",
+      "person": "Emmanuelle Charpentier",
+      "born": "1968-12-11",
+      "died": null,
+      "ageOn20261011": 57,
+      "recognition": "CRISPR; 2020 Nobel Chemistry",
+      "source": "https://www.nobelprize.org/prizes/chemistry/2020/charpentier/facts/",
+      "status": "age_over_45",
+      "divineIdentityEstablished": false
+    },
+    {
+      "seat": "D2",
+      "domain": "IT",
+      "person": "Linus Torvalds",
+      "born": "1969-12-28",
+      "died": null,
+      "ageOn20261011": 56,
+      "recognition": "Linux kernel and Git",
+      "source": "https://www.linuxfoundation.org/about/leadership",
+      "status": "age_over_45",
+      "divineIdentityEstablished": false
+    },
+    {
+      "seat": "D3",
+      "domain": "Music",
+      "person": "Kurt Cobain",
+      "born": "1967-02-20",
+      "died": "1994-04-05",
+      "ageOn20261011": null,
+      "recognition": "Nirvana",
+      "source": "https://catalog.rockhall.com/rrhof-ais/Details/archive/110000221",
+      "status": "deceased",
+      "divineIdentityEstablished": false
+    },
+    {
+      "seat": "D4",
+      "domain": "Literature",
+      "person": "Jhumpa Lahiri",
+      "born": "1967-07-11",
+      "died": null,
+      "ageOn20261011": 59,
+      "recognition": "Pulitzer Prize for Fiction",
+      "source": "https://www.pulitzer.org/winners/jhumpa-lahiri",
+      "status": "age_over_45",
+      "divineIdentityEstablished": false
+    },
+    {
+      "seat": "D5",
+      "domain": "Film",
+      "person": "Leonardo DiCaprio",
+      "born": "1974-11-11",
+      "died": null,
+      "ageOn20261011": 51,
+      "recognition": "Actor and producer",
+      "source": "https://www.biography.com/actors/leonardo-dicaprio",
+      "status": "age_over_45",
+      "divineIdentityEstablished": false
+    },
+    {
+      "seat": "D6",
+      "domain": "Sports",
+      "person": "Tiger Woods",
+      "born": "1975-12-30",
+      "died": null,
+      "ageOn20261011": 50,
+      "recognition": "Professional golfer",
+      "source": "https://tigerwoods.com/biography/",
+      "status": "age_over_45",
+      "divineIdentityEstablished": false
+    },
+    {
+      "seat": "D7",
+      "domain": "Mathematics",
+      "person": "Terence Tao",
+      "born": "1975-07-17",
+      "died": null,
+      "ageOn20261011": 51,
+      "recognition": "Fields Medal, UCLA",
+      "source": "https://math.ucla.edu/~tao/preprints/cv.html",
+      "status": "age_over_45",
+      "divineIdentityEstablished": false
+    },
+    {
+      "seat": "D8",
+      "domain": "Visual arts",
+      "person": "Kehinde Wiley",
+      "born": "1977-02-28",
+      "died": null,
+      "ageOn20261011": 49,
+      "recognition": "Portrait painter",
+      "source": "https://nmaahc.si.edu/kehinde-wiley",
+      "status": "age_over_45",
+      "divineIdentityEstablished": false
+    }
+  ],
+  "old20PairTableSupersededAsActiveRoster": true,
+  "frozenRuntimeModified": false
+}
