@@ -4,11 +4,15 @@ Status: user-directed default for future **interactive visual engineering artifa
 
 > "everything should be 3d wasm from now on please. can you commit to git and make a generative io page please"
 
-## Rule 01 — no external boxes on KET (user-declared)
+## Rule 01 — six boundaries plus one hole, no external boxes
 
-**Mandatory first rule:** **NO EXTERNAL BOXES ON KET**. For all next-version 3D WASM scenes, KET remains the domain/geometry root. No externally owned box, cuboid, enclosing shell, bounding cage or extra closed parent mesh may contain KET. Internal toroidal cellular states and non-enclosing attached I/O ports are permitted; browser panels and WASM memory are tooling, not geometric parent structures. New releases must report Rule 01 conformance. See [full Rule 01 contract](KET_RULE_01_NO_EXTERNAL_BOXES_20261013.md).
+The user's exact correction to the first rule is **"if you add 4 to 3 you get 6 + a fucking hole"**. Therefore **4+3=7=6+1** means six symbolic boundary positions and one *retained hole*, **not seven solid faces**. For KET toroidal generative I/O, preserve the actual open central passage. Never fill/cap the hole or add another enclosing model-space cage to make the seventh position solid. A toroidal through-hole must be physically present in the scene mesh; arithmetic alone does not generate topology.
 
-This is a forward-only app/design constraint and does not rewrite the freeze-pinned v2.0 kernel or the historically released v0.2 app.
+This counting rule is independent of the frozen **360+3+3=366** surface/control register. Its six boundary positions are not the six command addresses. Use a real WebGL2/Canvas2D 3D view of an open toroidal mesh driven by WASM; browser rectangular panels are not KET geometric boxes. Future releases must check mesh connectivity/open hole and describe Rule 01 compliance explicitly.
+
+Authoritative corrected contract: [KET Rule 01](KET_RULE_01_NO_EXTERNAL_BOXES_20261013.md).
+
+This is forward-only design guidance. The freeze-pinned v2.0 source and the historical v0.2 application remain unchanged.
 
 ## Forward-build convention
 - **Default:** all future interactive diagrams, engineering sheets, engines, visualizations and Generative I/O pages use **real 3D geometry** with a **WebAssembly execution/computation core**.
