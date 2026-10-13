@@ -8,10 +8,10 @@ T: content-addressable receipts and local append-only hash-chain ledger.
 Scientific limits: v1.4 output is synthetic trap spectroscopy; not real material data.
 """
 from __future__ import annotations
-import argparse, hashlib, json, os, pathlib, shutil, subprocess, sys, tempfile
+import argparse, hashlib, json, os, pathlib, re, shutil, subprocess, sys, tempfile
 
 BASE = pathlib.Path(__file__).resolve().parent
-SCHEMA = "oasis.ket.aion.adapter.v1"
+SCHEMA = "oasis.ket.aion.adapter.v2"
 CANON = {
     "parent": "K.E.T. | Kernel / Emergence / Time",
     "control_tracks": ["i:identity", "u:consequence", "u.s:lifecycle"],
@@ -19,7 +19,8 @@ CANON = {
     "material": "Al23O27N5",
     "material_state": "unrelaxed representative defect-spinel; not experimentally measured",
     "pulse_state": "deterministic synthetic readout; not physical measured ALON/Si",
-    "iodine": "excluded from primary substrate"
+    "iodine": "excluded from primary substrate",
+    "sapphon_state": "first-generation, non-recursive symbolic visualization; not atomic chemistry"
 }
 
 
@@ -64,6 +65,40 @@ def ensure_intact_ledger(path: pathlib.Path) -> list:
     return records
 
 
+def verified_sapphon(view_dir: pathlib.Path, reference: dict) -> list[str]:
+    """Fail closed if the committed viewer diverges from the actual atom/bond reference."""
+    model = json.loads((view_dir / 'model.json').read_text(encoding='utf-8'))
+    assert model['siteCount'] == 56 and model['occupiedCount'] == 55
+    assert model['referenceContacts'] == 122 and model['boundaryContacts'] == 42
+    assert model['lattice'] == reference['options']['latticeAngstrom']
+    assert model['speciesCount'] == {'Al': 23, 'O': 27, 'N': 5}
+    assert len(model['sites']) == len(reference['sites']) == 56
+    assert len(model['bonds']) == len(reference['bonds']) == 122
+    for a, b in zip(model['sites'], reference['sites']):
+        assert a == {'id':b['id'], 'species':b['species'], 'f':b['fractional'],
+                     'family':b['family'], 'occupied':b['occupied']}
+    for a, b in zip(model['bonds'], reference['bonds']):
+        assert a == {'a':b['from'], 'b':b['to'], 'length':b['angstrom'],
+                     'wrap':b['periodicWrap']}
+    for name in ('index.html', 'threejs.html'):
+        html=(view_dir/name).read_text(encoding='utf-8')
+        match=re.search(r'<script\s+type="application/json"\s+id="model-json">(.*?)</script>',
+                        html, re.DOTALL)
+        if not match:
+            raise ValueError(name + ' lacks an embedded atomic reference')
+        if json.loads(match.group(1)) != model:
+            raise ValueError(name + ' atomic reference differs from canonical model')
+        for anchor in ('Jane','Patricia','Toph','Icarium'):
+            if anchor not in html:
+                raise ValueError(name + ' is missing SAPPHON anchor ' + anchor)
+    assert 'three@0.160.1' in (view_dir/'threejs.html').read_text(encoding='utf-8')
+    assert '4800' in (view_dir/'blueprint-017.svg').read_text(encoding='utf-8')
+    return ['sapphon_55_atoms','sapphon_122_bonds','sapphon_42_periodic',
+            'sapphon_canonical_coordinates','sapphon_canonical_bonds',
+            'sapphon_two_embedded_views_match','sapphon_four_anchors_symbolic',
+            'sapphon_blueprint_and_threejs_version']
+
+
 def run(selection: str, out: pathlib.Path) -> dict:
     out=out.resolve()
     if out==BASE or BASE in out.parents:
@@ -71,7 +106,8 @@ def run(selection: str, out: pathlib.Path) -> dict:
         raise ValueError("Select a separate output directory outside the source tree")
     out.mkdir(parents=True,exist_ok=True)
     source_files=[BASE/'ket_aion.py', BASE/'crystal'/'bridge.mjs',
-                  BASE/'crystal'/'alon-reference.json',BASE/'pulse'/'aion_v14.py']
+                  BASE/'crystal'/'alon-reference.json',BASE/'pulse'/'aion_v14.py',
+                  *[BASE/'sapphon'/'v1'/name for name in ('index.html','threejs.html','model.json','blueprint-017.svg')]]
     upstream=BASE.parent/'material-build'/'alon-crystal.mjs'
     actual_crystal_source=upstream if upstream.is_file() else BASE/'crystal'/'alon-crystal.mjs'
     source_files.append(actual_crystal_source)
@@ -86,7 +122,7 @@ def run(selection: str, out: pathlib.Path) -> dict:
             "u":{"state":"pending","modules":{}},"u.s":{"state":"pending"}}
     with tempfile.TemporaryDirectory(prefix="aion-ket-") as sandbox:
         tmp=pathlib.Path(sandbox)
-        if selection in ('crystal','all'):
+        if selection in ('crystal','sapphon','all'):
             node=shutil.which('node')
             if not node:
                 raise RuntimeError('Node.js executable required for crystal module')
@@ -101,13 +137,29 @@ def run(selection: str, out: pathlib.Path) -> dict:
             assert generated['counts']==reference['counts']
             assert summary['occupied']==55 and summary['bonds']==122 and summary['boundary_links']==42
             assert summary['formal_ionic_charge']==0
-            for file in crystal.iterdir():
+            for file in crystal.iterdir() if selection in ('crystal','all') else []:
                 destination=out/file.name
                 shutil.copy2(file,destination)
                 outputs[file.name]=hashfile(destination)
             checks.extend(['crystal_sites_55','crystal_bonds_122','crystal_periodic_42','crystal_charge_0',
                            'crystal_coordinates_match_reference','crystal_bonds_match_reference'])
-            tracks['u']['modules']['crystal']={**summary,'state':'executed','outputs':['alon-cell.json','alon-cell.cif','alon-cell.xyz']}
+            if selection in ('crystal','all'):
+                tracks['u']['modules']['crystal']={**summary,'state':'executed','outputs':['alon-cell.json','alon-cell.cif','alon-cell.xyz']}
+        if selection in ('sapphon','all'):
+            view_dir=BASE/'sapphon'/'v1'
+            checks.extend(verified_sapphon(view_dir,generated))
+            target=out/'sapphon-v1'
+            target.mkdir(parents=True,exist_ok=True)
+            for name in ('index.html','threejs.html','model.json','blueprint-017.svg'):
+                destination=target/name
+                shutil.copy2(view_dir/name,destination)
+                outputs['sapphon-v1/'+name]=hashfile(destination)
+            tracks['u']['modules']['sapphon']={
+                'state':'executed','version':'1.0.0','symbolic_overlay':True,
+                'atoms':55,'bonds':122,'periodic_links':42,
+                'viewer':'sapphon-v1/index.html',
+                'threejs':'sapphon-v1/threejs.html',
+                'blueprint':'sapphon-v1/blueprint-017.svg'}
         if selection in ('pulse','all'):
             pulse=tmp/'pulse';pulse.mkdir()
             shutil.copy2(BASE/'pulse'/'aion_v14.py',pulse/'aion_v14.py')
@@ -162,7 +214,7 @@ def run(selection: str, out: pathlib.Path) -> dict:
 
 def main():
     parser=argparse.ArgumentParser(description='K.E.T.-aligned A.I.O.N. additive adapter')
-    parser.add_argument('--module',choices=['crystal','pulse','all'],default='all')
+    parser.add_argument('--module',choices=['crystal','pulse','sapphon','all'],default='all')
     parser.add_argument('--out',default='./aion-run')
     args=parser.parse_args()
     try:

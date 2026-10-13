@@ -70,3 +70,7 @@ ALON is an insulating ceramic. The pulse engine measures synthetic *normalized r
 
 Open `aion-3d-canvas.html` in a browser for offline, dependency-free 3D visualization of the 55-atom reference or 2×2×2 supercell. The model is embedded from the deterministic unrelaxed ALON reference. Drag to orbit, scroll to zoom, toggle species/periodic edges and save PNG. `aion-3d-blueprint.svg` is the professional vector engineering-sheet companion.
 
+
+## SAPPHON 3D visualization module (additive v1.6)
+
+`--module sapphon` checks the packaged viewer's atomic coordinates and all 122 contacts against the live ALON crystal builder and emits an offline 3D canvas, Three.js canvas and high-resolution SVG blueprint under `sapphon-v1/`. `--module all` now includes crystal, SAPPHON and synthetic pulse spectroscopy in a shared provenance receipt. The SAPPHON overlay is purely symbolic; the ALON lattice remains unmodified. See `sapphon/v1/README.md`.
