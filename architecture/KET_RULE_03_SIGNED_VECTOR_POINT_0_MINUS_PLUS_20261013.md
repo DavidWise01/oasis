@@ -1,3 +1,7 @@
+**SUPERSEDED 2026-10-13:** The user clarified that `---0+++` denotes six signed directions on X/Y/Z plus origin, **not** 27 Cartesian-product positions. See [authoritative Rule 03 correction](KET_RULE_03_SIX_SIGNED_AXES_LINEAR_TIME_20261013.md). The text below preserves the historical v0.4 implementation for provenance, NOT current geometry. Frozen KET v2.0 remains unchanged.
+
+---
+
 # KET Rule 03 — Independent Signed Vector Points `0.-+.`
 
 **Established:** 2026-10-13 · **Authoritative user statement:** “exactly then each torroid can occupy vector point 0.-+.”
