@@ -1,9 +1,0 @@
-ROOT0-DLW-CHAIN-v1
-index : 1347
-slug  : oasis
-seal  : 57b61f47d26c52b78d3a2fe127a5c0c9947f6fb79103247bf65da8135802718f
-prev  : bd577bb205f5893fa9315ee863e603382b7ec65cba2ac25001b4d0ca7abe81f6
-link  : 5090307858710dd77890c3b435bf03341560e24b37ff6f3f22d5b4b9650d629a
-head  : c4d41afeaef76470528856d54d86cf480a0e1c2fc8ebc60fbb9eb8e442585f2b
-
-— the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.

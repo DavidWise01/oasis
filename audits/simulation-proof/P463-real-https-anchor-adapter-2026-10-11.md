@@ -1,7 +1,0 @@
-# ROOT0 P4.63 — Real HTTPS remote-anchor verification adapter (2026-10-11)
-
-Node v22.16.0, OpenSSL local test server: **11/11 assertions PASS**, final 200.132ms. Actual HTTPS TLS CA and hostname checking used, plus client-generated cryptographic nonce, deployment-bound receipt Ed25519 verification and SPKI SHA-256 public key pin, rollback and fork rejection, wrong nonce/signature rejection, TLS untrusted CA rejection, hostname SAN rejection, HTTP rejection and timeout fail-closed.
-
-**Boundaries:** Server runs at localhost in test-only mode, not separately administered. Production preflight rejects loopback. No remote-client authentication/mTLS, request signature, durable client rollback floor or independent host has been demonstrated. The test's local 1-day self-signed certificate is test only. Completion remains **14/20=70%** roadmap.
-
-Runnable code and test in conversation ZIP SHA256 `8ecd8faef5eadebc02ceb1f19ba809cf7b3abac4bdd9e11adeede1d5fba9cd93`. Audit committed; runnable files in ZIP. Next P4.64: bind request authorization to client signing key, persist trusted anchor high-water mark, test authenticated HTTPS RPC and failure recovery; real second host still requires deployment outside this environment.

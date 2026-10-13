@@ -1,9 +1,0 @@
-# ROOT0 P4.43 — Atomic policy authorization, nonce consumption and CAS publication
-
-Date: 2026-10-10. Local Node.js v22.16.0 experimental sqlite run: **31/31 assertions PASS**, repeat **143.292 ms**. New `AtomicWitness` prototype stores signing-key policy, nonce replay ledger and signed checkpoint in one SQLite WAL database. Signed request includes deployment, controller key ID, policy epoch, nonce, action and transaction intent. An authenticated CAS request updates nonce and checkpoint in ONE `BEGIN IMMEDIATE` transaction. Failures and replay do not change checkpoint or consume a nonce. A signed policy rollover revokes old key and removes prior-epoch nonces, with old-epoch requests still denied.
-
-Real SIGKILL at BEGIN, nonce-written, head-written (before COMMIT), and after COMMIT: before commit, **both** nonce and epoch remain unchanged; after commit, both persist. Recovery permits legitimate retry only after aborted transaction, and rejects replay after committed transaction.
-
-**Limits:** local one-database transaction only, same-host key custody and rollbackable SQLite. Policy updates are atomic individually but no production remotely distributed publication protocol is implemented. Bootstrap is a test initializer, not secured production genesis. No live remote witness, separate host, power-loss, HSM/TPM monotonic storage or physical-time measurement. Two coding issues (extra method brace and mismatched worker client key ID) were repaired before passing run.
-
-Executable release, worker, 31-assertion test, results and README are in conversation ZIP `p443_bundle.zip`; SHA-256 `2ea70fc24338eb468e3d98051d3690a0e4af1d3bf8e843511eae3ee0bac95177`. **This audit is the GitHub commit; runnable source not yet pushed.** Next target P4.44: host-independent signed witness trust and integration of P4.43 atomic gate into authenticated service.

@@ -1,9 +1,0 @@
-# ROOT0 P4.54 — integrated live mTLS rotation (2026-10-10)
-
-**PASS 25/25 local assertions**; last run **610.062 ms** Node 22.16.0. P4.52 service integrated signed P4.53 rotation-policy semantics and policy epoch binding into request signatures. Tested two real X.509 certificates from test CA: starting certificate, old+new overlap, revocation of old fingerprint, retired epoch reject even after nonce history cleanup, new credential success. SQLite transaction handles replay nonce + anchor updates; signed monotonic policy sequence and epoch stored in same SQLite database. Restart after SIGKILL retained revocation and current nonce replay refusal. Wrong signer, missing cert, bad CA, rollback and fork still denied.
-
-**Scope:** Same-host loopback, test CA, no independent host custody or physical power cut. ROTATE endpoint authenticates policy administrator signature as well as signed TLS controller request, but certificate fingerprint allowlist is enforced for ordinary READ/OBSERVE/COMPARE operations, not for ROTATE itself. Rotation request nonces are not separately stored and cannot independently limit repeat attempts beyond monotonic policy sequence. This endpoint needs more rigorous controller-role authorization before production use. No remotely anchored store or trusted rollback-resistant monotonic counter.
-
-P4.54 runnable source, test and results are in conversation ZIP SHA256 `c74fd332a077c1f297de00284bfc8688f38ac7ea812ecef8c4a5ec1145596466`. This commit contains audit only; executable source not pushed.
-
-User-requested roadmap percentage **14/20 = 70%** after integrated rotation checks. This is illustrative prototype milestone progression, not global functionality completion or certified maturity. Next P4.55: harden rotation authorization and commit/test runnable modules; independently administered remote anchor remains outstanding.

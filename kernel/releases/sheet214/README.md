@@ -1,7 +1,0 @@
-# SHEET 214 — Live mTLS Signed Orphan Reconciliation
-
-**Verified local integration: 21/21 PASS**, rerun after final source cleanup. Actual S210 original signed Node WAL write, real SIGKILL before SQLite binding, quarantine, two mTLS HTTPS endpoints (target and floor), separately stored target/floor SQLite state, separate Ed25519 signatures, and original S213 exact-match reconciliation. Tests reject missing client TLS certificate, absent committed target row, wrong WAL head, fabricated target signature, target/floor mismatch, stale floor generation, forged recovery signature, and local replay. Valid dual-signature recovery resumes the original writer.
-
-**Exact runnable release** `SHEET214-live-mtls-reconciliation.zip` (57,676 bytes, 43 source/documentation files), SHA-256 `bc10ad5d614cd5a139c534402e0038183c081b7ad0725fc00238744bc9c2452c` with `authority214.py`, `gate214.py`, S213 and predecessor dependencies. Run `python gate214.py` from archive directory. This repository commit documents the artifact; full executable source is in the ZIP.
-
-**Unresolved:** The target commitment is test-seeded (not committed by independently deployed production target); services are separate threads on one host, share test-generated CA and key custody. WAL/target snapshots are not cross-store atomic. No OS UID regression, remote networks, durable lost-ACK replay, production PKI, or physical power-loss test. Next S215 must integrate target-owned commit path and signed floor ACK retry.

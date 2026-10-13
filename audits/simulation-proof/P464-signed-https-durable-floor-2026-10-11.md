@@ -1,7 +1,0 @@
-# ROOT0 P4.64 — Signed HTTPS client and persistent anchor high-water mark
-
-Date 2026-10-11. Node.js v22.16.0 local test **15/15 PASS**; latest measured runtime from results.json. Running local HTTPS server checks Ed25519 query signature before returning nonce/deployment-bound anchor Ed25519 receipt. Client checks TLS CA and hostname, public key SHA256 pin, response signature, nonce, deployment and action. In addition it persists a high-water floor in SQLite WAL synchronous FULL and blocks anchored epoch regression and same-epoch fork even after process restart. Tests cover forged client, forged anchor, wrong nonce, bad CA, missing pin, timeout and refused loopback production config.
-
-**Known limitations:** simulated external host is a local HTTPS server only, not independent administration. Local floor can be coherently rolled back with other local state; no hardware monotonic counter or independent authority validated. Client does not use mTLS; it uses signed application payload over TLS. Node SQLite experimental. Production remote endpoint has not been connected or certified. **Completion remains 14/20 = 70%** (same milestone accounting as prior gates).
-
-Complete runnable source and tests in ZIP with SHA256 `c886f5244f8383a0a03cdf80db3e3ba3074403ec9ab00891d91180c00d426a13`. GitHub audit committed; runnable sources remain in downloadable ZIP. Next P4.65: deploy authenticated anchor to independent administratively managed host and verify rollback when primary host state is reverted.
