@@ -1,0 +1,55 @@
+{
+  "name": "OASIS Obsidian Core checkpoint v1.0",
+  "frozen_floor": "dual5 v0.7",
+  "floor_source_sha256": "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b",
+  "user_instruction": "Next target after obsidian v0.9, keep v0.7 floor frozen",
+  "files": [
+    {
+      "path": "obsidian-checkpoint-v1.0.mjs",
+      "bytes": 9090,
+      "sha256": "02d480151c630a49c203ca0bb829d6f4d28c7e1f1486a78653a624b1176a03b5"
+    },
+    {
+      "path": "obsidian-checkpoint-benchmark.mjs",
+      "bytes": 7734,
+      "sha256": "1c8c68ec2318657b46020370c00eb9c8746a39abecd91e8edcef9feab91a969d"
+    },
+    {
+      "path": "obsidian-checkpoint-threejs.html",
+      "bytes": 29657,
+      "sha256": "1b7327467a6d0cbefbc044df3c472759d64ae7faaca35089a39ea60d8ccdda86"
+    },
+    {
+      "path": "make-demo.mjs",
+      "bytes": 1474,
+      "sha256": "aca1b96ebe7540e6646079de2792cc707a0488c3c8dfac6e1b78167a5cdfc382"
+    },
+    {
+      "path": "checkpoint-demo-receipts.json",
+      "bytes": 6674,
+      "sha256": "61caa3965f84264e8a12643976236ded3b97d7b86fa66dafb894c3d5e71ca224"
+    },
+    {
+      "path": "quantum-dual.mjs",
+      "bytes": 5508,
+      "sha256": "819c877c0117fc68b56fe3629528861b32a9edd4c7605f21e0c3fed8f3b692f4"
+    },
+    {
+      "path": "obsidian-core.mjs",
+      "bytes": 3636,
+      "sha256": "556bed4e57441beb4595dd01b95cc0c796cd58013b871f2e60883cfb5778d40e"
+    },
+    {
+      "path": "OBSIDIAN-CHECKPOINT-v1.0.md",
+      "bytes": 4962,
+      "sha256": "eb03738e7497ff75700630d65f10fbe2a8700bf4e1a0f3cd3e014532b19538ff"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1342,
+      "sha256": "5e643101d2ce7b49ae2acb5bf3443d06332f4f530fd1a3a6705e0d4d0ad2c337"
+    }
+  ],
+  "independent_signer_custody": "NOT PROVIDED",
+  "security_note": "Demo keys ephemeral; rollbacks require independent anchor"
+}
