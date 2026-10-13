@@ -49,7 +49,7 @@ GitHub includes this execution record and its compact independently runnable `sp
 
 ## Existing kernel invariants
 
-Dual GREEN remains distinct A2/A6, Green Chariot literal `123 {{45/|\\54}} 678` remains unchanged, as do seven amplitudes (red green blue orange purple green yellow), three carriers (white black gray), pinned zero, five abstract operators (gravity, expansion, compression, containment, explosion), LEVIATHAN `0root`, nitrogen mnemonic `CATGNO`, and local/parent register counts 366/6006. The previous snapshot-bubble clock, 24! and active-life rules are untouched.
+Dual GREEN remains distinct A2/A6, Green Chariot literal `123 {{45/|\54}} 678` remains unchanged, as do seven amplitudes (red green blue orange purple green yellow), three carriers (white black gray), pinned zero, five abstract operators (gravity, expansion, compression, containment, explosion), LEVIATHAN `0root`, nitrogen mnemonic `CATGNO`, and local/parent register counts 366/6006. The previous snapshot-bubble clock, 24! and active-life rules are untouched.
 
 ### Limits
 
