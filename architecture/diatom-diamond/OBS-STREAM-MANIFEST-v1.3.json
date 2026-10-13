@@ -1,0 +1,43 @@
+{
+  "release": "OBS/stream-v1.3",
+  "frozen_floor_source_sha256": "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b",
+  "mutable_floor": false,
+  "witness_required": false,
+  "files": [
+    {
+      "name": "obs-stream-v1.3.mjs",
+      "bytes": 4909,
+      "sha256": "125c7d0f9666b804f36406d320ec60b2209a64984f3a4aa85b8166e09f80c27f"
+    },
+    {
+      "name": "obs-stream-v1.3.test.mjs",
+      "bytes": 3626,
+      "sha256": "485f94aef74b27f49c015444018060d368d08031ac416b7e061069163c6cb93d"
+    },
+    {
+      "name": "inference-benchmark.mjs",
+      "bytes": 4057,
+      "sha256": "9047820e6f631ed07561c637c23a4b37ac4a7e70fe122c2bce49c4946a8a7431"
+    },
+    {
+      "name": "obs-stream-threejs-v1.3.html",
+      "bytes": 16266,
+      "sha256": "eb3e3c3e2307c685311bf1753cc41b0796190981afa1f82344edb88f715ed7f1"
+    },
+    {
+      "name": "benchmark-results.json",
+      "bytes": 4655,
+      "sha256": "d9fbd7682d4a4adcd95e5510ef110718cf46ff3346348ab46f162fb6a8a51a96"
+    },
+    {
+      "name": "README.md",
+      "bytes": 3743,
+      "sha256": "16b4fb2692c79d8b720ab5860ceab74099e981829b9aca04be613799b0ae639f"
+    },
+    {
+      "name": "browser-smoke.py",
+      "bytes": 2237,
+      "sha256": "dd7d9d59a57dc8c759bf784bc7b90be4050e7e1a0530fd65be937c7e86befbc8"
+    }
+  ]
+}
