@@ -1,0 +1,146 @@
+{
+  "release": "OBS/stream-v1.3",
+  "benchmark": "dual OBS symbolic token routing, NOT neural inference",
+  "node": "v22.16.0",
+  "cpus": 4,
+  "platform": "linux",
+  "clock": "performance.now",
+  "measure": "warmup 1 then 5 sequential runs; median and p95 elapsed",
+  "workload": "alternating 26 canonical letter tokens, 9-20 digit integer tokens, special symbols, and zero; CPU only",
+  "packetSemantics": "v1.2 applies P to whole packet; v1.3 applies same P independently within bounded 32-token frames; outputs both decode to same source",
+  "limits": {
+    "maxFrameTokens": 32,
+    "maxFrameUTF8Bytes": 32768,
+    "maxTokenUTF8Bytes": 4980
+  },
+  "externalInputsRetainedInMemory": true,
+  "streamingMemoryClaim": "Only the v1.3 adapter buffers bounded in-flight frames; benchmark source array is preallocated outside the adapter; peak heap sampling approximate",
+  "results": [
+    {
+      "tokens": 512,
+      "results": {
+        "v1.2_full_packet": {
+          "rounds": 5,
+          "medianElapsedMs": 93.677595,
+          "p95ElapsedMs": 101.37662399999999,
+          "medianTokensPerSec": 5465.554490377342,
+          "medianFramesPerSec": 10.674911114018245,
+          "medianCellsPerSec": 5465.554490377342,
+          "frameCount": 1,
+          "cellCountPerRail": 512,
+          "maxObservedHeapDeltaBytes": 9248848,
+          "individualElapsedMs": [
+            101.377,
+            93.678,
+            87.24,
+            91.176,
+            94.199
+          ]
+        },
+        "v1.3_framed_32": {
+          "rounds": 5,
+          "medianElapsedMs": 90.76534600000002,
+          "p95ElapsedMs": 96.76380999999992,
+          "medianTokensPerSec": 5640.919387890614,
+          "medianFramesPerSec": 176.2787308715817,
+          "medianCellsPerSec": 5640.919387890614,
+          "frameCount": 16,
+          "cellCountPerRail": 512,
+          "maxObservedHeapDeltaBytes": 16264888,
+          "individualElapsedMs": [
+            90.765,
+            94.223,
+            89.135,
+            96.764,
+            90.724
+          ]
+        }
+      },
+      "relativeTokenThroughput": 1.0320854723563768
+    },
+    {
+      "tokens": 2048,
+      "results": {
+        "v1.2_full_packet": {
+          "rounds": 5,
+          "medianElapsedMs": 352.45251199999984,
+          "p95ElapsedMs": 403.80540999999994,
+          "medianTokensPerSec": 5810.711883931759,
+          "medianFramesPerSec": 2.8372616620760542,
+          "medianCellsPerSec": 5810.711883931759,
+          "frameCount": 1,
+          "cellCountPerRail": 2048,
+          "maxObservedHeapDeltaBytes": 12943896,
+          "individualElapsedMs": [
+            356.769,
+            348.257,
+            352.453,
+            350.057,
+            403.805
+          ]
+        },
+        "v1.3_framed_32": {
+          "rounds": 5,
+          "medianElapsedMs": 380.17257599999994,
+          "p95ElapsedMs": 417.90600600000016,
+          "medianTokensPerSec": 5387.027179993121,
+          "medianFramesPerSec": 168.34459937478502,
+          "medianCellsPerSec": 5387.027179993121,
+          "frameCount": 64,
+          "cellCountPerRail": 2048,
+          "maxObservedHeapDeltaBytes": 16511880,
+          "individualElapsedMs": [
+            417.749,
+            417.906,
+            364.96,
+            376.622,
+            380.173
+          ]
+        }
+      },
+      "relativeTokenThroughput": 0.9270855770511967
+    },
+    {
+      "tokens": 8192,
+      "results": {
+        "v1.2_full_packet": {
+          "rounds": 5,
+          "medianElapsedMs": 1466.6563829999996,
+          "p95ElapsedMs": 1523.6811820000003,
+          "medianTokensPerSec": 5585.493708651458,
+          "medianFramesPerSec": 0.6818229624818675,
+          "medianCellsPerSec": 5585.493708651458,
+          "frameCount": 1,
+          "cellCountPerRail": 8192,
+          "maxObservedHeapDeltaBytes": 39865448,
+          "individualElapsedMs": [
+            1523.681,
+            1491.606,
+            1440.07,
+            1440.234,
+            1466.656
+          ]
+        },
+        "v1.3_framed_32": {
+          "rounds": 5,
+          "medianElapsedMs": 1579.528693999997,
+          "p95ElapsedMs": 1621.783064000001,
+          "medianTokensPerSec": 5186.35719067223,
+          "medianFramesPerSec": 162.0736622085072,
+          "medianCellsPerSec": 5186.35719067223,
+          "frameCount": 256,
+          "cellCountPerRail": 8192,
+          "maxObservedHeapDeltaBytes": 16597368,
+          "individualElapsedMs": [
+            1621.783,
+            1527.559,
+            1579.529,
+            1530.874,
+            1611.698
+          ]
+        }
+      },
+      "relativeTokenThroughput": 0.9285405124777064
+    }
+  ]
+}
