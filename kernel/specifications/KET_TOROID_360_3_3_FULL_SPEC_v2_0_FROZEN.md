@@ -151,7 +151,7 @@ FAST = ++-   // aggregate sign +1
 FIRST  = --+ ++- = --+++-
 RETURN = ++- --+ = ++---+
 
-FIRST + RETURN = --++++-++---+  [written as two six-command passes]
+FIRST + RETURN = --+++-++---+  [written as two six-command passes]
 ```
 
 The concatenated **12-character** execution stream is defined by literal concatenation of `FIRST` and `RETURN`. The command words and their order are immutable for this v2.0 case.
