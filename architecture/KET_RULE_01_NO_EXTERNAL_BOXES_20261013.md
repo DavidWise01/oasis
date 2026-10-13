@@ -1,59 +1,84 @@
-# KET Rule 01 — NO EXTERNAL BOXES
+# KET Rule 01 — NO EXTERNAL BOXES; SIX BOUNDARIES + ONE HOLE
 
-**Date:** 2026-10-13
-**Priority:** First user-defined spatial/architectural rule for the KET 3D WASM generative I/O layer.
-**Source:** User instruction: "first rule, no external boxes on ket".
-**Policy:** Additive forward-build rule. Does **not** rewrite or mutate the already frozen KET v2.0 kernel.
+**Issued:** 2026-10-13. **Clarified by user:** 2026-10-13.
+**Status:** Authoritative forward-design rule for future 3D WASM applications; frozen KET v2.0 bytes unchanged.
 
-## Rule
+## Exact source and correction
 
-> **NO EXTERNAL BOXES ON KET.**
+Initial user rule:
 
-KET is the root object of its model. Nothing outside the KET kernel may create, own, contain, wrap, or impose an enclosing 3D box around its root geometry.
+> first rule, no external boxes on ket
 
-This applies equally to scene graphs, cell-generation engines, engineering drawings, and generated diagrams.
+User's correcting explanation:
 
-### What is allowed
+> its means if you add 4 to 3 you get 6 + a fucking hole so
 
-- The fixed KET 360-surface toroidal geometry and its 3+3 control ports (366 distinct addressable positions).
-- **Internal** 3D cellular subdivision and emergent state inside the toroidal model, including symbolic "Planck-point" resolution when configured.
-- Directly attached or read-only external input and output **ports/interfaces** that do not allocate additional kernel addresses or define a containing parent domain.
-- A WebGL2 viewport, a WASM runtime, browser UI forms/panels or a JSON receipt **as application tooling**; these are *not* extra geometric shells belonging to or owning KET.
-- Distinct Green A2/A6 and the exact raw Chariot glyph, without inserting enclosing "boxes" around them.
+**The earlier description reduced the rule to 'KET cannot be enclosed in an external box.' That missed the primary structural arithmetic. This revision supersedes that interpretation.**
 
-### What is forbidden
-
-- Drawing any external cuboid, enclosing simulation boundary box, lattice cage, rectangular halo/casing, Dyson-style outer shell, or extra closed parent surface **around KET**.
-- Making KET a child of an externally owned world/container/root geometry in the scene/domain model.
-- Changing the kernel from 366 logical addresses because a renderer adds bounding planes.
-- Conflating browser layout cards, tool windows or screen framing with new kernel layers.
-- Promoting a derived cell's temporary storage buffer into a newly allocated external kernel box.
-
-### Required 3D scene hierarchy
+### Canonical mnemonic
 
 ```text
-KET  [scene/domain root]
-  ├── TOROID [360 surface addresses]
-  │     └── CELLULAR INTERIOR [derived transient 3D states]
-  ├── CONTROLS [6 positions = --+ / ++-]
-  └── IO PORTS [attached interfaces, never an enclosing volume]
-
-VIEWER / WASM / HTML [tools observing/interacting; NOT KET geometry]
+          4 + 3 = 7
+              |
+          6 + 1
+         /     \
+   SIX BOUNDARIES   ONE HOLE
+        |              |
+  boundary structure   retained opening / void
+         \            /
+            K.E.T.
 ```
 
-**Model acceptance:** the domain-root object is KET; every model-space geometry item is KET-owned and is either the toroid, its internal subdivision, or an allowed attached/non-enclosing port. No outside closed mesh encloses the torus. The scene may still be drawn in a normal rectangular browser viewport—that is not a physical/symbolic KET box.
+- **4 + 3 = 7 = 6 + 1** is the *symbolic count*.
+- Six slots describe the boundary surfaces; the seventh is the **hole**, **not** another face, box, material cell, filled point, carrier, wall, or secondary shell.
+- **No external boxes on KET** means do not add another six-faced cage/outer boundary to make the seventh slot 'solid', do not cap the through-opening, and do not misidentify its hole as a missing object needing an external container.
+- The hole is **part of the definition** of this geometric structure; it is not an error state, a missing boundary, or an extra KET address.
 
-## Enforcement on forward builds
+### Precise geometric caveat
 
-1. Each new 3D WASM application release must document **Rule 01: PASS** or explain its noncompliance.
-2. Review model geometry/scene graph for extra closed enclosing structures and for external ownership.
-3. Confirm the immutable register remains **360 + 3 + 3 = 366**, and that derived cells do not become kernel addresses.
-4. Preserve prior immutable symbols and results: `--+`, `++-`, `123 {{45/|\54}} 678`, seven ordered amplitudes (Green twice), White/Black/Gray carriers, pinned zero, and baseline 360° closure.
-5. Do not misrepresent internal cellular simulation as established Planck-scale physics.
+A cube or ordinary six-faced solid has no through-hole merely because its faces are counted. To draw the user's **toroidal** interpretation, the 3D model must visibly retain a passage through its shape (a genus-one toroidal opening). The seven-slot mnemonic alone does not prove genus one; **mesh connectivity** must realize the hole. Six 'boundaries' here is the user's symbolic accounting, not a literal mathematical statement that a smooth torus has exactly six polygonal faces.
 
-**Scope note:** "no external boxes" is interpreted as a **domain-geometry/ownership restriction**, not a prohibition against every rectangular browser UI element or WebAssembly memory allocation. This clarification is an implementation interpretation; the quoted user rule above remains authoritative.
+### Keep independent counting systems independent
 
-## Immutable reference
-- KET v2.0 freeze commit: [de8f8b80aba3a73dd371811f6b4be39df92e45ce](https://github.com/DavidWise01/oasis/commit/de8f8b80aba3a73dd371811f6b4be39df92e45ce)
-- Application v0.2 remains historical, unchanged; next code revision should be additive v0.3.
+```text
+RULE 01         4+3 = 6 boundaries + 1 HOLE  (symbolic geometry)
+FROZEN REGISTRY 20×18=360 surface ports + 3+3 control ports = 366
+CONTROL WORDS   --+   ++-
+STATE CHANNELS  7 ordered amplitudes + 3 carriers + pinned zero
+```
 
+These counts have different domains. In particular:
+- Six *symbolic faces* are **not** the six speed-control addresses.
+- The structural hole is **not** a new amplitude, carrier, control address, second zero, or additional kernel cubit.
+- Keep dual Greens A2/A6 separate and preserve the exact Green Chariot `123 {{45/|\54}} 678`.
+- Derived cellular subdivisions are inside the toroidal model and do not allocate new frozen addresses.
+- HTML cards, screen rectangles, and WASM linear-memory buffers are **display/execution tooling**, not geometric KET boxes.
+
+### Rule 01 acceptance for future 3D WASM releases
+
+1. The toroid has a visually and topologically **open central passage**; do not fill it with a center cell, lid, cap, cube, outer shell, or parent enclosure.
+2. The 3D geometry, its scene hierarchy, and any blueprint depict **one KET toroidal body** with its opening preserved.
+3. Record the symbolic rule exactly as **4+3=7=6+hole**; do not recast it as seven solid walls.
+4. Preserve the **366-address frozen controller**, exact `--+` / `++-` order, final 360° closure, the other immutable glyphs, and the freeze pin.
+5. Do not claim the symbolic number relation proves a physical universe, mathematical topology without a connected mesh, or Planck-scale physics.
+
+## Model diagram
+
+```text
+               K.E.T.  [one toroidal body]
+                /                   \
+       boundary structure      THROUGH-HOLE
+         six mnemonic slots    seventh mnemonic slot
+                \                   /
+                  [derived cells]
+                         |
+                    [3D WASM I/O]
+```
+
+The application can still contain ordinary interface panels and externally invoked code. **There is no *additional enclosing model-space box*, and the hole remains open.** In the previous Rule 01, the no-external-parent interpretation was useful as a corollary, not the main definition.
+
+## Historical protection
+
+- Freeze-pinned KET v2.0 commit: `de8f8b80aba3a73dd371811f6b4be39df92e45ce`.
+- No changes to frozen v2.0 source files or earlier v0.2 artifacts; this correction is an additive documentation update in the forward application policy.
+- Future geometry changes go into a new versioned 3D WASM application. A browser-side scene can be audited separately from the kernel itself.
