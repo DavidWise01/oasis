@@ -1,0 +1,70 @@
+{
+  "release": "OBS/true-stream-v1.4",
+  "created_utc": "2026-10-13T21:19:06.714876+00:00",
+  "rule": "additive v1.4; frozen v0.7 unchanged",
+  "has_crypto_witnesses": false,
+  "bitcoin_encryption": false,
+  "source_reference_floor_sha256": "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b",
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 5447,
+      "sha256": "1abb92f57d0c4a0d77a82efa396b10c0a36ea42ea2002213a523563c0001b544"
+    },
+    {
+      "name": "true-stream-benchmark.mjs",
+      "bytes": 6235,
+      "sha256": "01deec29a1dc79d6179d3f267851e62161dce162e0cc9a0c6bc84e7734866b9a"
+    },
+    {
+      "name": "true-stream-tests.mjs",
+      "bytes": 2886,
+      "sha256": "2b3800781a9f2a7c605281bf23acff768aec7430d56534c75ebc449f64839ca7"
+    },
+    {
+      "name": "bitcoin-hash.mjs",
+      "bytes": 928,
+      "sha256": "5b747222849223b9cf4d934a2e47f15f38b9e87bbab9b44ce3c4143cf510372b"
+    },
+    {
+      "name": "run-matrix.py",
+      "bytes": 1594,
+      "sha256": "8fc511c876c24db9492b1719c4633544a9488e00548ad9f459a745037dddb2b6"
+    },
+    {
+      "name": "browser-smoke.py",
+      "bytes": 1129,
+      "sha256": "03ef99ff837d55423033ba406795765b5564eb5e57f6875ada9aa2c367b56c1f"
+    },
+    {
+      "name": "true-stream-threejs-v1.4.html",
+      "bytes": 10165,
+      "sha256": "4553361ef5d24322660dd3ba038ab461fbb96d93af3e4855928c82c9686b29f8"
+    },
+    {
+      "name": "true-stream-results.json",
+      "bytes": 13772,
+      "sha256": "1ea02a30a51c103298adb514b395b07f2b2d239176b7d199d2c6ee1b6a293d5c"
+    },
+    {
+      "name": "obs-stream-v1.3.mjs",
+      "bytes": 4909,
+      "sha256": "125c7d0f9666b804f36406d320ec60b2209a64984f3a4aa85b8166e09f80c27f"
+    },
+    {
+      "name": "obs-token-bus-v1.2.mjs",
+      "bytes": 5733,
+      "sha256": "af713db60e4d695b72b70d43c098b541175e34e37cdb563366fa6b8fd8068191"
+    },
+    {
+      "name": "obs-core-v1.1.mjs",
+      "bytes": 3236,
+      "sha256": "2e076f60ce4f68ac48209129de02384851028def2da9dbc8a075e0aea42edbcb"
+    },
+    {
+      "name": "frozen/dual5-floor-v0.7/dual5.mjs",
+      "bytes": 5327,
+      "sha256": "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b"
+    }
+  ]
+}
