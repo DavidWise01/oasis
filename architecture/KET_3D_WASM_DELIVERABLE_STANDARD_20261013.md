@@ -20,6 +20,12 @@ Two KET toroids remain independent KET bodies with their own **4+3=6+one open th
 
 See [Rule 02 — Twin Toroids](KET_RULE_02_TWIN_TOROIDS_OPTIONAL_GAP_IO_20261013.md) and the [actual versioned WASM demo](../apps/ket-generative-io-twin-toroids-3d-wasm-v03/index.html). Its WASM and Chromium tests demonstrate optional messaging only within a symbolic computational model, not a claim that physical fields cease to interact when the gate is OFF.
 
+## Rule 03 — independently placed signed vector points
+
+Follow [Rule 03](KET_RULE_03_SIGNED_VECTOR_POINT_0_MINUS_PLUS_20261013.md). Preserve the user's exact token **`0.-+.`**. For the v0.4 app's **explicit implementation convention**, each toroid has its own 3D `{-1,0,+1}³` signed vector point. Two toroids may share a point without merging identities or automatically exchanging messages; a separate Rule 02 gate controls optional cross-toroid messages. A collision in the picture is not a new enclosing box and does not change either body's 366-address controller. Rule 01's toroidal through-hole remains open.
+
+New source template: [Vector Point 3D WASM v0.4](../apps/ket-generative-io-vectorpoint-3d-wasm-v04/README.md). The compiled standalone offline executable is delivered in a separate release ZIP. This rule is additive and **does not modify frozen v2.0 files**.
+
 ## Forward-build convention
 - **Default:** all future interactive diagrams, engineering sheets, engines, visualizations and Generative I/O pages use **real 3D geometry** with a **WebAssembly execution/computation core**.
 - **Primary renderer:** WebGL2 in an offline-first browser page; use Canvas2D software **projection of the same 3D WASM geometry** when no GPU context exists. The fallback is not a new 2D physical model.
