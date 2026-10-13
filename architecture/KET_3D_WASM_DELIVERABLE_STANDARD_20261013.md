@@ -4,6 +4,12 @@ Status: user-directed default for future **interactive visual engineering artifa
 
 > "everything should be 3d wasm from now on please. can you commit to git and make a generative io page please"
 
+## Rule 01 — no external boxes on KET (user-declared)
+
+**Mandatory first rule:** **NO EXTERNAL BOXES ON KET**. For all next-version 3D WASM scenes, KET remains the domain/geometry root. No externally owned box, cuboid, enclosing shell, bounding cage or extra closed parent mesh may contain KET. Internal toroidal cellular states and non-enclosing attached I/O ports are permitted; browser panels and WASM memory are tooling, not geometric parent structures. New releases must report Rule 01 conformance. See [full Rule 01 contract](KET_RULE_01_NO_EXTERNAL_BOXES_20261013.md).
+
+This is a forward-only app/design constraint and does not rewrite the freeze-pinned v2.0 kernel or the historically released v0.2 app.
+
 ## Forward-build convention
 - **Default:** all future interactive diagrams, engineering sheets, engines, visualizations and Generative I/O pages use **real 3D geometry** with a **WebAssembly execution/computation core**.
 - **Primary renderer:** WebGL2 in an offline-first browser page; use Canvas2D software **projection of the same 3D WASM geometry** when no GPU context exists. The fallback is not a new 2D physical model.
