@@ -28,8 +28,7 @@ test(engine.verify(initial.head).pass, 'verify independently pinned head');
 const priorLiveHash = engine.receipts()[5].hash;
 const second = engine.runCycles(1);
 exact(second.eventCount, 11, 'no duplicate live at boundary');
-exact
-engine.receipts()[6].operation, 'write', 'post-boundary resumes with write');
+exact(engine.receipts()[6].operation, 'write', 'post-boundary resumes with write');
 exact(engine.receipts()[6].prevHash, priorLiveHash, 'continuous lineage');
 exact(second.loop, 1, 'second cycle index');
 test(engine.verify(second.head).pass, 'second complete cycle verifies');
