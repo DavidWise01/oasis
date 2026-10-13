@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · {{i & dd}} · MIRROR 13³</title>
+<meta name="theme-color" content="#071321">
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial;background:#050b16;color:#e8f5ff;color-scheme:dark;--blue:#6cd6f7;--amber:#f6b97a;--purple:#c1a0fa;--line:#25354f;--muted:#8da0ba;--mint:#88e6cc}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 36% 5%,#10243b 0,#050b16 48%)}
+header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 24px;border-bottom:1px solid var(--line)}
+.brand{font-weight:900;letter-spacing:.07em;font-size:15px}.brand em{font-style:normal;color:var(--blue)}.tag{font-size:10px;letter-spacing:.12em;border:1px solid #35617b;color:#9adcf4;border-radius:15px;padding:7px 10px;white-space:nowrap}
+main{display:grid;grid-template-columns:minmax(0,1fr) 360px;min-height:calc(100vh - 67px)}
+.left{position:relative;min-width:0;min-height:640px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#102840 0,#060e1a 55%,#040910 100%)}
+#stage{position:absolute;inset:0;touch-action:none}#stage canvas{display:block;width:100%;height:100%}
+.stagehead{position:absolute;left:25px;top:24px;z-index:3;pointer-events:none}.eyebrow{font-size:10px;letter-spacing:.2em;color:var(--blue);font-weight:850}.stagehead h1{margin:7px 0;font-size:clamp(23px,3vw,38px);letter-spacing:-.05em}.stagehead p{margin:0;font-size:12px;color:var(--muted);line-height:1.55}
+.status{position:absolute;right:22px;top:23px;z-index:3;font:11px ui-monospace,Consolas,monospace;background:#08182ad9;padding:10px 13px;border:1px solid #294563;border-radius:8px;color:var(--mint)}
+.legend{position:absolute;left:20px;bottom:22px;z-index:3;display:flex;gap:16px;flex-wrap:wrap;font:11px ui-monospace,monospace;color:#c8dbed;background:#061421d9;border:1px solid #1d3852;padding:10px 14px;border-radius:8px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:99px;margin-right:6px}.blue{background:var(--blue)}.amber{background:var(--amber)}.purple{background:var(--purple)}.mint{background:var(--mint)}
+aside{min-width:0;border-left:1px solid var(--line);background:#091523;overflow-y:auto;padding:23px 22px 28px}
+h2{font-size:14px;letter-spacing:.1em;color:#fff;margin:0 0 16px}.separator{border-top:1px solid var(--line);margin:20px 0}
+.metricRow{display:grid;grid-template-columns:1fr 1fr;gap:8px}.metric{padding:13px;background:#0d2032;border:1px solid #1f3a53;border-radius:9px}.metric strong{display:block;font:750 22px ui-monospace,monospace;color:#e6f5ff}.metric small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.field{margin-top:13px}.field label{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin:0 0 8px;color:#ccddee}.field b{font-family:ui-monospace,monospace;color:var(--mint);font-size:12px}
+input[type=range]{width:100%;accent-color:#63d3f7;cursor:pointer}select,button{border:1px solid #2c5069;border-radius:7px;background:#10283e;color:#dfedff;padding:9px 10px;font:11px ui-monospace,monospace;cursor:pointer}button:hover{border-color:#86dafa}button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.buttons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:13px 0}.buttons button{padding:10px 5px}
+.output{background:#061522;border:1px solid #2b425e;padding:13px;border-radius:9px;color:#b9d1e8;font:12px/1.85 ui-monospace,monospace;word-break:break-word}.output .v{color:#98eff0;font-weight:750}.output .a{color:var(--amber)}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0;font-size:12px;color:#ccdbea}.switch input{accent-color:#69d5ec;transform:scale(1.12)}
+.micro{font-size:11px;line-height:1.7;color:var(--muted)}.sequence{font:11px/1.65 ui-monospace,monospace;word-break:break-all;color:#cde5f7;border:1px solid #21415a;border-radius:8px;padding:11px;background:#061522}
+.sequence strong{color:var(--purple)}
+.fine{font-size:10px;color:#8da4b9;line-height:1.55}
+@media(max-width:960px){main{display:block}.left{min-height:540px;height:60vh}aside{border-top:1px solid var(--line);border-left:0}header{padding:14px 16px}.legend{right:15px}.stagehead{left:17px;top:16px}.stagehead h1{font-size:25px}.status{right:12px;top:12px}}
+@media(max-width:520px){.left{height:54vh;min-height:430px}.status{top:auto;bottom:82px;right:15px}.metric strong{font-size:20px}.legend{bottom:13px;left:13px;right:13px;gap:9px;font-size:9px}}
+</style>
+</head>
+<body>
+<header><div class="brand">OASIS <em> / KET</em> &nbsp; {{i &amp; dd}}</div><div class="tag">MIRROR-LATTICE / 13³ / v0.5</div></header>
+<main>
+<section class="left" aria-label="Interactive 3D symbolic lattice viewer">
+  <div id="stage"></div>
+  <div class="stagehead"><div class="eyebrow">INTERACTIVE THREE.JS PROCESSOR GEOMETRY</div><h1>Diamond mirror substrate.</h1><p>14 samples · 13 transitions · 13 × 13 letterplane<br>One center seam. Two reciprocal shells.</p></div>
+  <div class="status" id="status">CANVAS PREVIEW · LOADING 3D</div>
+  <div class="legend"><span><i class="dot blue"></i>Forward +</span><span><i class="dot purple"></i>Center 0</span><span><i class="dot amber"></i>Return −</span><span><i class="dot mint"></i>Selected / mirror</span></div>
+</section>
+<aside>
+  <h2>13 / 1 / 13 · LATTICE REGISTER</h2>
+  <div class="metricRow"><div class="metric"><strong>2,197</strong><small>Addressable cells</small></div><div class="metric"><strong>169</strong><small>Center-plane cells</small></div><div class="metric"><strong>1,092</strong><small>Mirror pairs</small></div><div class="metric"><strong>13</strong><small>Self-mirrored sites</small></div></div>
+  <div class="separator"></div>
+  <div class="field"><label for="step">Transition plane <b id="stepVal">06 / 12</b></label><input type="range" id="step" min="0" max="12" value="6" step="1"></div>
+  <div class="field"><label for="left">Left bank <b id="leftVal">d · 3</b></label><input type="range" id="left" min="0" max="12" value="3" step="1"></div>
+  <div class="field"><label for="right">Right bank <b id="rightVal">w · 9</b></label><input type="range" id="right" min="0" max="12" value="9" step="1"></div>
+  <div class="buttons"><button id="mirror">MIRROR ↔</button><button id="reset">RESET VIEW</button><button id="advance">STEP +</button></div>
+  <div class="output" id="output" aria-live="polite"></div>
+  <div class="separator"></div>
+  <h2>SCENE LAYERS</h2>
+  <label class="switch">2197 symbolic lattice cells <input id="showLattice" type="checkbox" checked></label>
+  <label class="switch">14-point mirrored shell <input id="showShell" type="checkbox" checked></label>
+  <label class="switch">Paired 4/3 diamond carriers <input id="showDiamonds" type="checkbox" checked></label>
+  <label class="switch">42 unique {{i}} token anchors <input id="showAnchors" type="checkbox" checked></label>
+  <label class="switch">Auto orbit <input id="autoOrbit" type="checkbox"></label>
+  <div class="separator"></div>
+  <h2>ORIGINAL PALINDROME</h2>
+  <div class="sequence">{-{+{``<br>00 11 23 35 48 51 <strong>55 55</strong><br>51 48 35 23 11 00<br>``}-}+}</div>
+  <p class="micro">13 × 13 × 13 = 2,197 symbolic coordinates<br>1,014 forward + 169 center + 1,014 return<br>Reflection: (e,a,n) ↔ (12−e,n,a)</p>
+  <p class="fine">This lattice is a symbolic classical address space. A one-to-one computational-basis embedding would need at least 12 qubits (2¹² = 4,096 states). No amplitudes, entanglement or quantum advantage are inferred from the address count alone.</p>
+</aside>
+</main>
+<script>
+(()=>{
+ const S=[0,11,23,35,48,51,55,55,51,48,35,23,11,0];
+ const L='abcdefghijklm',R='nopqrstuvwxyz';
+ const ui={step:6,left:3,right:9,lattice:true,shell:true,diamonds:true,anchors:true,autoOrbit:false};
+ const $=id=>document.getElementById(id);const stage=$('stage');
+ const getMirror=()=>({step:12-ui.step,left:ui.right,right:ui.left});
+ const fmt=(e,a,n)=>`E${String(e).padStart(2,'0')}:${L[a]}:${R[n]}`;
+ const phase=e=>e<6?'FORWARD +':e===6?'NEUTRAL 0':'RETURN −';
+ let sceneRefresh=()=>{},cameraReset=()=>{},drawFallback=()=>{};
+ function renderInfo(){
+   const e=ui.step,a=ui.left,b=ui.right,m=getMirror(),d=S[e+1]-S[e];
+   $('stepVal').textContent=String(e).padStart(2,'0')+' / 12';$('leftVal').textContent=L[a]+' · '+a;$('rightVal').textContent=R[b]+' · '+b;
+   $('output').innerHTML=`<div><span class="v">${fmt(e,a,b)}</span> · ${phase(e)}</div>`+
+    `<div>Sample: ${String(S[e]).padStart(2,'0')} → ${String(S[e+1]).padStart(2,'0')} <span class="a"> Δ ${d>=0?'+':''}${d}</span></div>`+
+    `<div>Site index: <span class="v">${(e*169+a*13+b).toString().padStart(4,'0')}</span> / 2196</div>`+
+    `<div>Mirror: <span class="v">${fmt(m.step,m.left,m.right)}</span></div>`+
+    `<div>Mirror class: ${e===6&&a===b?'fixed diagonal':'paired orbit'}</div>`;
+   sceneRefresh();
+ }
+ for(const key of ['step','left','right']) $(key).addEventListener('input',ev=>{ui[key]=Number(ev.target.value);renderInfo()});
+ for(const key of ['lattice','shell','diamonds','anchors','autoOrbit']){
+  $('show'+key[0].toUpperCase()+key.slice(1))?.addEventListener('change',ev=>{ui[key]=ev.target.checked;sceneRefresh()});
+ }
+ $('autoOrbit').addEventListener('change',ev=>ui.autoOrbit=ev.target.checked);
+ $('mirror').addEventListener('click',()=>{const m=getMirror();ui.step=m.step;ui.left=m.left;ui.right=m.right;['step','left','right'].forEach(k=>$(k).value=ui[k]);renderInfo()});
+ $('reset').addEventListener('click',()=>cameraReset());
+ $('advance').addEventListener('click',()=>{ui.step=(ui.step+1)%13;$('step').value=ui.step;renderInfo()});
+ // Offline semantic projection: deliberately identified as Canvas 2D, never as WebGL.
+ const canvas=document.createElement('canvas');stage.appendChild(canvas);let rotation=-.4;
+ function fallback(){
+  if(window.__webglReady)return;
+  const W=stage.clientWidth,H=stage.clientHeight,dpr=Math.min(devicePixelRatio||1,2);
+  canvas.width=Math.max(1,W*dpr);canvas.height=Math.max(1,H*dpr);canvas.style.width=W+'px';canvas.style.height=H+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle='#06101f';ctx.fillRect(0,0,W,H);
+  const cx=W*.5,cy=H*.53,scale=Math.min(W/28,H/25),cs=Math.cos(rotation),sn=Math.sin(rotation);
+  function point(x,y,z){const xx=x*cs+z*sn,zz=-x*sn+z*cs;return [cx+xx*scale*.78,cy+(y*.75+zz*.31)*scale]}
+  if(ui.lattice)for(let e=0;e<13;e++)for(let a=0;a<13;a++)for(let b=0;b<13;b++){
+   if(Math.abs(ui.step-e)>2 && e!==6)continue;
+   const [x,y]=point((a-6)*.9,(b-6)*.9,(e-6)*1.1);
+   ctx.fillStyle=e===ui.step?'#9ed8dc':e<6?'#194767':e===6?'#715391':'#744f38';
+   ctx.fillRect(x-1.3,y-1.3,2.6,2.6);
+  }
+  if(ui.shell){for(let i=0;i<14;i++){
+    const r=(.9+5*S[i]/55)*scale*.75;
+    const [x,y]=point(0,0,(i-6.5)*1.1);
+    ctx.strokeStyle=i<7?'#235c7a':i===7?'#aa8ae0':'#896143';ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(x,y,r,Math.max(8,r*.4),-.2,0,2*Math.PI);ctx.stroke();
+  }}
+  const positions=[[ui.step,ui.left,ui.right],[12-ui.step,ui.right,ui.left]];
+  positions.forEach(([e,a,b],j)=>{const [x,y]=point((a-6)*.9,(b-6)*.9,(e-6)*1.1);ctx.strokeStyle=j?'#f5b17a':'#7ff0ce';ctx.lineWidth=3;ctx.beginPath();ctx.arc(x,y,8,0,2*Math.PI);ctx.stroke()});
+ }
+ drawFallback=fallback;
+ const observer=new ResizeObserver(()=>drawFallback());observer.observe(stage);
+ let down=false,lastX=0;canvas.addEventListener('pointerdown',ev=>{down=true;lastX=ev.clientX;canvas.setPointerCapture(ev.pointerId)});
+ canvas.addEventListener('pointermove',ev=>{if(!down||window.__webglReady)return;rotation+=(ev.clientX-lastX)/190;lastX=ev.clientX;drawFallback()});
+ canvas.addEventListener('pointerup',()=>down=false);
+ sceneRefresh=()=>drawFallback();renderInfo();
+ window.Mirror13UI={ui,S,L,R,stage,canvas,getMirror,renderInfo,setSceneRefresh:f=>sceneRefresh=f,setCameraReset:f=>cameraReset=f,drawFallback};
+ setTimeout(()=>{if(!window.__webglReady){$('status').textContent='CANVAS 2D · OFFLINE PROJECTION';drawFallback()}},2000);
+})();
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const {ui,S,stage,canvas,renderInfo,getMirror,setSceneRefresh,setCameraReset}=window.Mirror13UI;
+const scene=new THREE.Scene();scene.background=new THREE.Color('#06101e');scene.fog=new THREE.FogExp2(0x06101e,.012);
+const camera=new THREE.PerspectiveCamera(48,stage.clientWidth/Math.max(1,stage.clientHeight),.1,130);
+camera.position.set(22,18,27);
+const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.setSize(stage.clientWidth,stage.clientHeight);
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+stage.appendChild(renderer.domElement);canvas.style.display='none';
+window.__webglReady=true;document.getElementById('status').textContent='LIVE 3D · WEBGL + THREE.JS';
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.07;controls.maxDistance=72;controls.minDistance=8;
+scene.add(new THREE.AmbientLight('#bdd5ff',1.25));
+const light=new THREE.DirectionalLight('#a8ddff',2.0);light.position.set(8,12,15);scene.add(light);
+const back=new THREE.PointLight('#ca95ff',55,50);back.position.set(-12,-8,-6);scene.add(back);
+const C={forward:'#35b9e9',seam:'#bba1fa',return:'#eb9963',selected:'#8af9ce',mirror:'#ffce88',dim:'#1a3950'};
+const xyz=(e,a,b)=>new THREE.Vector3((a-6)*.9,(b-6)*.9,(e-6)*1.15);
+const groups={};
+const geo=new THREE.BoxGeometry(.22,.22,.22),dummy=new THREE.Object3D();
+for(const name of ['forward','seam','return']){
+ const num=name==='seam'?169:1014;
+ const material=new THREE.MeshStandardMaterial({roughness:.35,metalness:.32});
+ const mesh=new THREE.InstancedMesh(geo,material,num);mesh.instanceMatrix.setUsage(THREE.StaticDrawUsage);
+ mesh.userData.coords=[];let t=0;
+ for(let e=0;e<13;e++){
+  if((e<6?'forward':e===6?'seam':'return')!==name)continue;
+  for(let a=0;a<13;a++)for(let b=0;b<13;b++){
+   dummy.position.copy(xyz(e,a,b));dummy.scale.setScalar(1);dummy.updateMatrix();mesh.setMatrixAt(t,dummy.matrix);mesh.userData.coords.push([e,a,b]);t++;
+  }
+ }
+ mesh.instanceMatrix.needsUpdate=true;scene.add(mesh);groups[name]=mesh;
+}
+const shell=new THREE.Group();scene.add(shell);
+for(let i=0;i<14;i++){
+ const radius=1+6.0*S[i]/55,pts=[];
+ for(let j=0;j<=96;j++){const theta=j/96*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(theta)*radius,Math.sin(theta)*radius,(i-6.5)*1.15))}
+ const g=new THREE.BufferGeometry().setFromPoints(pts);
+ shell.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:i<7?C.forward:i===7?C.seam:C.return,transparent:true,opacity:i===6||i===7?.8:.33})));
+}
+for(let i=0;i<13;i++)for(let j=0;j<24;j++){
+ const th=j/24*Math.PI*2;
+ const r0=1+6*S[i]/55,r1=1+6*S[i+1]/55;
+ const pts=[new THREE.Vector3(r0*Math.cos(th),r0*Math.sin(th),(i-6.5)*1.15),new THREE.Vector3(r1*Math.cos(th),r1*Math.sin(th),(i+1-6.5)*1.15)];
+ shell.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:i<6?C.forward:i===6?C.seam:C.return,transparent:true,opacity:.13})));
+}
+const carriers=new THREE.Group();scene.add(carriers);
+function diamond(z,color){const vertices=[[0,3.1,z],[3.1,0,z],[0,-3.1,z],[-3.1,0,z]],mat=new THREE.LineBasicMaterial({color,transparent:true,opacity:.9});
+ for(let i=0;i<3;i++)carriers.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...vertices[i]),new THREE.Vector3(...vertices[i+1])]),mat));
+ // Derived closure visualized as gaps, not serialized as a fourth path coupler.
+ const A=new THREE.Vector3(...vertices[3]),B=new THREE.Vector3(...vertices[0]);
+ for(let j=0;j<6;j++){const t=j/7;carriers.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([A.clone().lerp(B,t),A.clone().lerp(B,t+1/13)]),new THREE.LineBasicMaterial({color,transparent:true,opacity:.45})))}
+ for(const v of vertices){const m=new THREE.Mesh(new THREE.SphereGeometry(.14,9,8),new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:.25}));m.position.set(...v);carriers.add(m)}
+}
+diamond(-1.1,C.forward);diamond(1.1,C.return);
+const anchors=new THREE.Group();scene.add(anchors);
+for(let k=0;k<42;k++){
+ const id=(k*53)%2197,e=Math.floor(id/169),a=Math.floor((id%169)/13),b=id%13;
+ const m=new THREE.Mesh(new THREE.SphereGeometry(.13,8,7),new THREE.MeshBasicMaterial({color:'#e3d274'}));m.position.copy(xyz(e,a,b));anchors.add(m);
+}
+const markerG=new THREE.SphereGeometry(.36,20,14);
+function marker(color){const m=new THREE.Mesh(markerG,new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:1.5,roughness:.2}));scene.add(m);return m}
+const primary=marker(C.selected),secondary=marker(C.mirror);
+const ringG=new THREE.TorusGeometry(.53,.025,5,40),r1=new THREE.Mesh(ringG,new THREE.MeshBasicMaterial({color:C.selected})),r2=new THREE.Mesh(ringG,new THREE.MeshBasicMaterial({color:C.mirror}));scene.add(r1,r2);
+function update(){
+ for(const [phase,mesh] of Object.entries(groups)){
+  const clr=new THREE.Color(C[phase]);const faint=new THREE.Color('#223349');const bright=new THREE.Color('#c3f4ff');
+  mesh.userData.coords.forEach(([e],i)=>mesh.setColorAt(i,e===ui.step?bright:e===6?clr.clone().multiplyScalar(.35):e===(12-ui.step)?clr.clone().multiplyScalar(.6):faint));
+  mesh.instanceColor.needsUpdate=true;mesh.visible=ui.lattice;
+ }
+ shell.visible=ui.shell;carriers.visible=ui.diamonds;anchors.visible=ui.anchors;
+ primary.position.copy(xyz(ui.step,ui.left,ui.right));r1.position.copy(primary.position);
+ const m=getMirror();secondary.position.copy(xyz(m.step,m.left,m.right));r2.position.copy(secondary.position);
+ r1.rotation.set(Math.PI/2,0,0);r2.rotation.set(Math.PI/2,0,0);
+}
+setSceneRefresh(update);setCameraReset(()=>{camera.position.set(22,18,27);controls.target.set(0,0,0);controls.update()});update();
+const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
+renderer.domElement.addEventListener('click',ev=>{
+ const r=renderer.domElement.getBoundingClientRect();pointer.x=((ev.clientX-r.left)/r.width)*2-1;pointer.y=-((ev.clientY-r.top)/r.height)*2+1;
+ raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObjects(Object.values(groups),false);
+ if(hits.length&&hits[0].instanceId!==undefined){const cell=hits[0].object.userData.coords[hits[0].instanceId];if(cell){ui.step=cell[0];ui.left=cell[1];ui.right=cell[2];['step','left','right'].forEach(key=>document.getElementById(key).value=ui[key]);renderInfo()}}
+});
+const ro=new ResizeObserver(()=>{const w=stage.clientWidth,h=stage.clientHeight;camera.aspect=w/Math.max(1,h);camera.updateProjectionMatrix();renderer.setSize(w,h)});ro.observe(stage);
+function animate(){requestAnimationFrame(animate);controls.autoRotate=ui.autoOrbit;controls.autoRotateSpeed=.75;controls.update();renderer.render(scene,camera)}animate();
+</script>
+</body></html>
