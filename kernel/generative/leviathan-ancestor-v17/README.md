@@ -33,14 +33,14 @@ This is an ideal Schwarzschild **critical-curve size approximation** compared wi
 
 ## Executed and verifiable deliverables
 
-All files here were actually created and audited in the same conversation:
+The comparison was executed locally, and the repository now includes a compact reproducible audit runner plus an exact input registry. The full HD SVG/rendering pipeline is distributed in the companion ZIP:
 
-- `sgr_a_cipher.py` — single Python executable using standard library with optional CairoSVG preview render. Run in this folder: `python3 sgr_a_cipher.py`.
-- `v16_chariot_registry.json` — identical copy of the actual v1.6 input mnemonic for exact matching.
-- `comparison.json` — observed versus predicted numbers, explicit audit labels and sources.
-- `sgr_a_cipher_blueprint.svg` — **3200×1770 editable technical SVG**, schematic, NOT an EHT image-data reconstruction.
+- `sgr_a_cipher.py` — compact standard-library source for the numerical GR benchmark and mnemonic-input invariant checks; run `python3 sgr_a_cipher.py` in this folder. The longer renderer and full 32-check audit are in the companion ZIP.
+- `v16_chariot_registry.json` — exact v1.6 input mnemonic, reproduced with the original order and annotations.
+- `comparison.json` — detailed results produced in the companion ZIP; the GitHub compact runner prints equivalent core numerical comparison to stdout.
+- `sgr_a_cipher_blueprint.svg` — **3200×1770 editable technical SVG** in the companion ZIP, schematic, NOT an EHT image-data reconstruction.
 
-Local 32/32 structural/data-constant checks passed, deterministic source checked, parseable SVG, zipped release CRC checked. **That is not 32 evidence points for the cipher**. No raw EHT visibility data have yet been fitted, and no direct spectral extraction or MHD simulation performed. A separately downloadable archive includes image preview and checksum manifest.
+Companion ZIP: local 32/32 structural/data-constant checks passed, parseable SVG, ZIP archive CRC checked. GitHub's compact audit checks the core numerical and input invariants. **That is not 32 evidence points for the cipher**. No raw EHT visibility data have yet been fitted, and no direct spectral extraction or MHD simulation performed. A separately downloadable archive includes image preview and checksum manifest.
 
 ### Predictive next gate
 
