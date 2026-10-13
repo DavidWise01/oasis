@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080910">
+<title>OASIS / OBS · Obsidian Core | o · b · s</title>
+<style>
+:root{color-scheme:dark;--bg:#070912;--panel:#0d1220;--panel2:#12192a;--border:#283347;--ink:#f2f4fd;--muted:#96a1b7;--aqua:#7ce6d6;--violet:#b5a4ff;--rose:#ff96bd}
+*{box-sizing:border-box}html,body{padding:0;margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:14px/1.48 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+body{overflow:hidden}.app{display:grid;grid-template-columns:minmax(0,1fr) minmax(315px,370px);height:100vh}.viewport{position:relative;overflow:hidden;min-width:0;background:radial-gradient(circle at 50% 43%,#1d1a34 0,#101122 27%,#080913 64%,#05060b 100%)}
+canvas#scene,canvas#fallback{position:absolute;inset:0;width:100%;height:100%;display:block}.overlay{position:absolute;z-index:3;pointer-events:none}.top{left:28px;top:26px}.kicker{font-weight:800;letter-spacing:.19em;font-size:11px;color:var(--aqua)}h1{font-size:clamp(38px,5vw,70px);letter-spacing:-.068em;line-height:.96;margin:6px 0 9px;font-weight:830}.lede{color:#adb9d2;font-size:13px;max-width:500px}.bottom{left:28px;bottom:22px;max-width:600px}.bottom .hint{border:1px solid #35455d80;border-radius:999px;padding:8px 12px;color:#a5b8d4;background:#09121d9c;font-size:11px;display:inline-block}.status{top:27px;right:23px;border:1px solid #40685c;color:#b5f8df;background:#0c2320a8;border-radius:999px;padding:8px 10px;font-size:10px;letter-spacing:.08em}
+.dots{position:absolute;z-index:2;right:28px;bottom:30px;display:flex;gap:6px}.dots span{width:8px;height:8px;border-radius:50%;background:#7be7da66;box-shadow:0 0 11px #73ffe128}.dots span:nth-child(2){background:#b0a0ff99}.dots span:nth-child(3){background:#ff89bbad}
+.side{height:100%;overflow-y:auto;background:linear-gradient(150deg,#101626,#0b1020 46%,#090e17);border-left:1px solid #26344b;padding:20px 21px 32px;scrollbar-color:#314159 transparent}.hdr{display:flex;align-items:center;justify-content:space-between;gap:10px}.mark{color:#87eddc;letter-spacing:.15em;font-weight:800;font-size:11px}.tag{font-size:10px;padding:5px 8px;border:1px solid #385d57;border-radius:50px;color:#acefcd}.side h2{font-size:24px;letter-spacing:-.035em;line-height:1.1;margin:15px 0 7px}.sub{font-size:12px;color:var(--muted);margin:0 0 20px}.label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#8a99b3;margin:21px 0 9px}.formula{background:#080e19;border:1px solid #26384b;border-radius:12px;padding:12px 11px;font:12px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7e8f5;white-space:pre-wrap;overflow-x:auto}.formula em{font-style:normal;color:#b5a4ff}.layer{border:1px solid #344157;border-radius:12px;padding:10px 11px;margin:8px 0;background:#101b2b;display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;cursor:pointer;text-align:left;color:var(--ink);width:100%}.layer:hover,.layer.active{border-color:#91cfdb;background:#18243b}.orb{display:grid;place-items:center;border-radius:10px;height:36px;width:36px;background:#172232;font-size:19px;font-weight:850}.layer b{display:block;font-size:12px}.layer small{display:block;color:#9eacc1;font-size:10px}.layer .power{font:600 11px/1.1 ui-monospace,monospace;color:#d1e4ff}
+.row{display:flex;gap:8px;align-items:center}.row.wrap{flex-wrap:wrap}.row.space{justify-content:space-between}.switch{display:flex;align-items:center;gap:8px;font-size:12px;color:#b9c3d3;background:#0d1828;border:1px solid #29364a;padding:8px 10px;border-radius:9px;flex:1}.switch input{accent-color:#91dcd9}.btn{background:#152236;border:1px solid #3d526b;border-radius:9px;color:#d9e9f7;padding:9px 12px;cursor:pointer;font-weight:650;font-size:12px}.btn:hover{border-color:#a6d9e9}.btn.active{border-color:#91eddb;background:#193537;color:#c5fff4}.btn:disabled{opacity:.3;cursor:default}input[type=range]{width:100%;accent-color:#75e7d8}.value{font:600 11px ui-monospace,monospace;color:#9fe7db}.tiny{font-size:11px;color:var(--muted)}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{border:1px solid #28384e;background:#0c1524;border-radius:10px;padding:11px}.stat strong{display:block;font-size:16px;color:#e4eafe}.stat span{font-size:10px;color:#8997af}.input-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}label.field{font:700 10px ui-monospace,monospace;color:#a4b1c7;display:block}label.field input{width:100%;margin-top:4px;background:#0b1626;color:#e6f4ff;border:1px solid #35475e;padding:7px;border-radius:7px;font:12px ui-monospace,monospace;outline:none}label.field input:focus{border-color:#8fe7d7}.output{background:#070c17;border:1px solid #27374e;border-radius:9px;padding:10px;font:11px/1.55 ui-monospace,monospace;color:#b5d3e3;overflow-wrap:anywhere;white-space:pre-wrap;min-height:48px}.bad{color:#ffa7b2}.good{color:#94e8ca}.sep{height:1px;background:#25334a;margin:20px 0 0}.note{font-size:11px;color:#91a0b5;margin-top:14px;line-height:1.6}a{color:#a8e3ed}
+@media(max-width:850px){body{overflow:auto}.app{display:block;height:auto}.viewport{height:63vh;min-height:430px}.side{height:auto;overflow:visible}.top{left:17px;top:16px}.bottom{left:16px;bottom:18px}.status{right:13px;top:15px}.dots{display:none}.side h2{font-size:23px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"}}</script>
+</head>
+<body>
+<div class="app">
+<section class="viewport" id="viewport" aria-label="Interactive three-shell obsidian processor visualization">
+  <canvas id="fallback" aria-label="Offline 2D schematic of the three-layer obsidian core"></canvas>
+  <div class="overlay top"><div class="kicker">OASIS / THREE-LAYER CORE</div><h1>OBSIDIAN<br>CORE.</h1><div class="lede">{{ OBS }} · o / b / s nested scale architecture</div></div>
+  <div class="overlay status" id="renderStatus">OFFLINE PROJECTION</div>
+  <div class="overlay bottom"><span class="hint">Drag to rotate · Scroll to zoom · Select a shell · 5-pass dual rails</span></div>
+  <div class="dots"><span></span><span></span><span></span></div>
+</section>
+<aside class="side">
+  <div class="hdr"><div class="mark">{{ i & dd }} / OBS</div><div class="tag">v1.1 · CORE</div></div>
+  <h2>Specs, not witnesses.</h2>
+  <p class="sub">A nested exact-address engine inside the existing frozen dual-rail floor. No checkpoint or signature layer.</p>
+  <div class="label">Canonical structure</div>
+  <div class="formula">{{ specs {{ OBS
+  {{ o 10^10
+    {{ b 100^100
+      {{ s 1000^1000 }}
+    }}
+  }}
+}} }}</div>
+  <div class="label">Core layers · click to focus</div>
+  <button class="layer active" data-layer="o"><span class="orb" style="color:#79eadd">o</span><span><b>Outer shell</b><small>Radix 10 · depth 10</small></span><span class="power">10^10</span></button>
+  <button class="layer" data-layer="b"><span class="orb" style="color:#bd9cff">b</span><span><b>Middle shell</b><small>Radix 100 · depth 100</small></span><span class="power">10^200</span></button>
+  <button class="layer" data-layer="s"><span class="orb" style="color:#ffa3bc">s</span><span><b>Inner obsidian</b><small>Radix 1,000 · depth 1,000</small></span><span class="power">10^3000</span></button>
+  <div class="label">Structural capacity</div>
+  <div class="stats"><div class="stat"><strong>10<sup>3210</sup></strong><span>Product address space</span></div><div class="stat"><strong>3,211</strong><span>Digits in maximum capacity</span></div></div>
+  <div class="label">Geometry</div>
+  <div class="row wrap">
+    <label class="switch"><input type="checkbox" id="show-o" checked> o</label>
+    <label class="switch"><input type="checkbox" id="show-b" checked> b</label>
+    <label class="switch"><input type="checkbox" id="show-s" checked> s</label>
+  </div>
+  <div class="row wrap" style="margin-top:7px">
+    <label class="switch"><input type="checkbox" id="show-plus" checked> d+</label>
+    <label class="switch"><input type="checkbox" id="show-minus" checked> d−</label>
+  </div>
+  <div class="label">Frozen rail pass · UUDDLRLRBASS</div>
+  <div class="row space"><span class="tiny">0 — 60 operations per rail</span><span class="value" id="stepValue">00 / 60</span></div>
+  <input type="range" id="step" min="0" max="60" value="0" step="1" aria-label="Dual rail execution step">
+  <div class="row wrap" style="margin-top:8px"><button class="btn" id="prev">◀</button><button class="btn active" id="play">▶ Play</button><button class="btn" id="next">▶</button><button class="btn" id="resetCamera">Reset camera</button></div>
+  <div class="label">Exact address coordinates</div>
+  <div class="input-grid">
+    <label class="field">o<input id="input-o" inputmode="numeric" spellcheck="false" value="1"></label>
+    <label class="field">b<input id="input-b" inputmode="numeric" spellcheck="false" value="2"></label>
+    <label class="field">s<input id="input-s" inputmode="numeric" spellcheck="false" value="3"></label>
+  </div>
+  <div class="row wrap" style="margin-top:9px"><button id="encode" class="btn active">Encode</button><button id="mirror" class="btn">Mirror dual</button><button id="resetCoords" class="btn">Reset</button></div>
+  <div class="output" id="addressOutput" style="margin-top:9px">Ready</div>
+  <div class="sep"></div>
+  <p class="note">The nested shells are <b>schematic</b> and their radii are not proportional to the powers of ten. The mathematical space is addressable with BigInt but never explicitly allocated. The faceted obsidian appearance is a visualization of volcanic glass, not a claim of a physical crystal lattice or working quantum hardware.</p>
+</aside>
+</div>
+<script>
+(()=>{
+  'use strict';
+  const $=id=>document.getElementById(id);
+  const base={o:10n**10n,b:10n**200n,s:10n**3000n}, max=base.o*base.b*base.s;
+  const colors={o:'#80eddb',b:'#b9a2ff',s:'#ff9fb6'};
+  let active='o',step=0,playing=false,visibility={o:true,b:true,s:true,plus:true,minus:true},angle=.35,zoom=1,drawHandle=0,last=0;
+  let sync3d=()=>{},select3d=()=>{},resize3d=()=>{},threeLive=false;
+  const minify=(v)=>{const x=v.toString();return x.length>44?x.slice(0,16)+'…'+x.slice(-14)+' ('+x.length+' digits)':x};
+  function parseCoord(k){const s=$('input-'+k).value.trim();if(!/^(0|[1-9]\d*)$/.test(s))throw new Error(k+': requires canonical nonnegative integer');const n=BigInt(s);if(n>=base[k])throw new Error(k+': exceeds 10^'+({o:10,b:200,s:3000}[k]));return n;}
+  function output(){try{
+    const o=parseCoord('o'),b=parseCoord('b'),s=parseCoord('s');
+    const code=(o*base.b+b)*base.s+s;const inverse=max-1n-code;
+    $('addressOutput').innerHTML='<span class="good">VALID · EXACT BigInt</span>\nForward: '+minify(code)+'\nMirror: '+minify(inverse)+'\nDual sum = 10^3210 − 1';
+  }catch(e){$('addressOutput').innerHTML='<span class="bad">'+e.message.replace(/[&<>]/g,'')+'</span>';}
+  }
+  function setActive(which){active=which;document.querySelectorAll('.layer').forEach(b=>b.classList.toggle('active',b.dataset.layer===which));select3d(which);draw();}
+  function setStep(n){step=Math.max(0,Math.min(60,Math.round(n)));$('step').value=String(step);$('stepValue').textContent=String(step).padStart(2,'0')+' / 60';sync3d();draw();}
+  function setVisibility(){for(const k of ['o','b','s','plus','minus'])visibility[k]=$('show-'+k).checked;sync3d();draw();}
+  document.querySelectorAll('.layer').forEach(b=>b.addEventListener('click',()=>setActive(b.dataset.layer)));
+  for(const k of ['o','b','s','plus','minus'])$('show-'+k).addEventListener('change',setVisibility);
+  $('step').addEventListener('input',e=>setStep(Number(e.target.value)));
+  $('prev').onclick=()=>setStep(step-1);$('next').onclick=()=>setStep(step+1);
+  $('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'❚❚ Pause':'▶ Play';$('play').classList.toggle('active',playing);};
+  $('encode').onclick=output;
+  $('mirror').onclick=()=>{try{for(const k of ['o','b','s'])$('input-'+k).value=(base[k]-1n-parseCoord(k)).toString();output();}catch(e){output();}};
+  $('resetCoords').onclick=()=>{$('input-o').value='1';$('input-b').value='2';$('input-s').value='3';output();};
+  for(const k of ['o','b','s'])$('input-'+k).addEventListener('change',output);
+  $('resetCamera').onclick=()=>{angle=.35;zoom=1;window.resetOBS3D?.();draw();};
+  const canvas=$('fallback'),ctx=canvas.getContext('2d');let dpi=1,w=0,h=0,px=0;
+  function size(){let r=$('viewport').getBoundingClientRect();dpi=Math.min(devicePixelRatio||1,2);w=r.width;h=r.height;canvas.width=Math.max(1,Math.floor(w*dpi));canvas.height=Math.max(1,Math.floor(h*dpi));canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpi,0,0,dpi,0,0);resize3d();draw();}
+  function orbitPoint(rad,t,reverse=1){return {x:Math.cos(t+angle)*rad*zoom,y:Math.sin(t+angle)*rad*.48*zoom,z:Math.sin(t+angle)*rad*zoom*reverse};}
+  function draw(){if(threeLive)return;
+    ctx.clearRect(0,0,w,h);const cx=w*.5,cy=h*.54,sc=Math.min(w,h)*.092;
+    const g=ctx.createRadialGradient(cx,cy,8,cx,cy,sc*5);g.addColorStop(0,'#262540');g.addColorStop(.5,'#0f1425');g.addColorStop(1,'#070912');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    for(const [k,r,col,facets] of [['o',3.15,'#73e9d9',10],['b',2.3,'#af95f9',9],['s',1.43,'#ff90b5',8]]){
+      if(!visibility[k])continue;
+      ctx.save();ctx.translate(cx,cy);ctx.rotate(angle*.25);ctx.beginPath();
+      for(let i=0;i<=facets;i++){const t=Math.PI*2*i/facets-Math.PI/2;const rr=(i%3===0?1:.94)*r*sc;const x=rr*Math.cos(t),y=rr*Math.sin(t)*.85;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+      const grad=ctx.createLinearGradient(-r*sc,-r*sc,r*sc,r*sc);grad.addColorStop(0,'#2c344d');grad.addColorStop(.43,'#171428');grad.addColorStop(1,'#080b13');ctx.fillStyle=grad;ctx.globalAlpha=k==='o'?.31:k==='b'?.43:.92;ctx.fill();ctx.globalAlpha=1;ctx.lineWidth=k===active?2.4:1.1;ctx.strokeStyle=col;ctx.shadowColor=col;ctx.shadowBlur=k===active?25:10;ctx.stroke();ctx.shadowBlur=0;
+      for(let i=1;i<facets-1;i++){const t1=Math.PI*2*i/facets-Math.PI/2,t2=Math.PI*2*(i+1)/facets-Math.PI/2;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(r*sc*.94*Math.cos(t1),r*sc*.85*Math.sin(t1));ctx.lineTo(r*sc*.94*Math.cos(t2),r*sc*.85*Math.sin(t2));ctx.closePath();ctx.strokeStyle=col+'30';ctx.stroke();}
+      ctx.restore();
+    }
+    for(const [key,col,sign,phase] of [['plus','#7ef5e4',1,0],['minus','#c8a8ff',-1,Math.PI]]){
+      if(!visibility[key])continue;
+      ctx.beginPath();ctx.lineWidth=2.25;ctx.strokeStyle=col;ctx.shadowColor=col;ctx.shadowBlur=12;
+      for(let i=0;i<=600;i++){
+        const theta=phase+sign*5*Math.PI*2*i/600+angle;
+        const y=cy-3*sc+i/600*6*sc;
+        const rad=key==='plus'?4:3.64;
+        const x=cx+Math.sin(theta)*rad*sc*zoom;
+        if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+      }ctx.stroke();ctx.shadowBlur=0;
+      if(step>0){const theta=phase+sign*5*Math.PI*2*step/60+angle,y=cy-3*sc+step/60*6*sc,x=cx+Math.sin(theta)*(key==='plus'?4:3.64)*sc*zoom;ctx.beginPath();ctx.fillStyle='#eaffff';ctx.shadowBlur=30;ctx.shadowColor=col;ctx.arc(x,y,6,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}
+    }
+    ctx.fillStyle='#f5f2fe';ctx.textAlign='center';ctx.font='700 '+Math.max(12,Math.min(17,sc*.27))+'px ui-monospace,monospace';ctx.fillText('{{ OBS }}',cx,cy+4);ctx.font='11px ui-monospace,monospace';ctx.fillStyle='#acb5ca';ctx.fillText('10^10 / 10^200 / 10^3000',cx,cy+24);
+  }
+  let held=false,originX=0;
+  canvas.addEventListener('pointerdown',e=>{held=true;originX=e.clientX;canvas.setPointerCapture(e.pointerId)});
+  canvas.addEventListener('pointermove',e=>{if(held){angle+=(e.clientX-originX)/220;originX=e.clientX;draw()}});
+  canvas.addEventListener('pointerup',()=>held=false);
+  canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.55,Math.min(1.65,zoom-e.deltaY*.001));draw()},{passive:false});
+  window.addEventListener('resize',size);
+  function loop(time){if(playing&&time-last>110){last=time;setStep(step===60?0:step+1);}drawHandle=requestAnimationFrame(loop);}
+  window.__obsScene={get step(){return step;},get visibility(){return visibility;},get active(){return active;},onThreeReady({sync,select,resize,reset,canvas:newCanvas}){threeLive=true;sync3d=sync;select3d=select;resize3d=resize;window.resetOBS3D=reset;canvas.style.display='none';$('renderStatus').textContent='THREE.JS · WEBGL';$('renderStatus').style.color='#abefd8';$('viewport').appendChild(newCanvas);sync3d();select3d(active);resize3d();},setActive};
+  output();size();drawHandle=requestAnimationFrame(loop);
+})();
+</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const root=document.getElementById('viewport'), api=window.__obsScene;
+const scene=new THREE.Scene(); scene.fog=new THREE.FogExp2(0x090b14,.028);
+const camera=new THREE.PerspectiveCamera(44,1,.05,200);camera.position.set(10,6.3,12);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.setClearColor(0x080913,0);renderer.outputColorSpace=THREE.SRGBColorSpace;
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.055;controls.minDistance=6;controls.maxDistance=26;controls.target.set(0,0,0);
+scene.add(new THREE.AmbientLight(0x6d7a9c,2));
+const key=new THREE.PointLight(0x7ff2df,75,25);key.position.set(7,5,6);scene.add(key);
+const fill=new THREE.PointLight(0x9b72ec,60,28);fill.position.set(-7,0,-5);scene.add(fill);
+const warm=new THREE.PointLight(0xff7eaa,32,20);warm.position.set(3,-5,-4);scene.add(warm);
+const layerGroup={},targets=[],particles=[];
+const colors={o:0x7ee5d3,b:0xb4a4f7,s:0xff9bb8};
+for(const [k,r,material] of [
+ ['o',3.2,{color:0x152b35,metalness:.42,roughness:.2,transparent:true,opacity:.21,side:THREE.DoubleSide}],
+ ['b',2.28,{color:0x282039,metalness:.45,roughness:.22,transparent:true,opacity:.32,side:THREE.DoubleSide}],
+ ['s',1.43,{color:0x0c0b19,metalness:.55,roughness:.18,transparent:true,opacity:.95,flatShading:true}]
+]){
+ const group=new THREE.Group();layerGroup[k]=group;scene.add(group);
+ const geom=new THREE.IcosahedronGeometry(r,k==='s'?1:1);const mesh=new THREE.Mesh(geom,new THREE.MeshPhysicalMaterial(material));mesh.userData.layer=k;group.add(mesh);targets.push(mesh);
+ const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geom,5),new THREE.LineBasicMaterial({color:colors[k],transparent:true,opacity:k==='s'?.42:.56}));group.add(edges);
+ const accents=new THREE.Points(new THREE.BufferGeometry().setFromPoints(Array.from({length:160},(_,j)=>{let theta=2.39996*j, z=1-2*(j+.5)/160, rad=Math.sqrt(1-z*z);return new THREE.Vector3(rad*Math.cos(theta),z,rad*Math.sin(theta)).multiplyScalar(r*.994)})),new THREE.PointsMaterial({color:colors[k],size:k==='s'?.022:.016,transparent:true,opacity:.72}));group.add(accents);
+}
+for(const [name,col,turnsign,r,phase] of [['plus',0x77e9db,1,4.05,0],['minus',0xb2a1ff,-1,3.68,Math.PI]]){
+ const g=new THREE.Group();layerGroup[name]=g;scene.add(g);
+ const path=[],balls=[];
+ for(let i=0;i<=240;i++){const a=phase+turnsign*5*2*Math.PI*i/240;path.push(new THREE.Vector3(Math.cos(a)*r,-3.2+i/240*6.4,Math.sin(a)*r));}
+ const curve=new THREE.CatmullRomCurve3(path);const line=new THREE.Mesh(new THREE.TubeGeometry(curve,260,.014,7,false),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.69}));g.add(line);
+ const sphereGeom=new THREE.SphereGeometry(.052,10,8);
+ for(let i=0;i<60;i++){const t=(i+.5)/60,p=curve.getPointAt(t);const b=new THREE.Mesh(sphereGeom,new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:.3,roughness:.34}));b.position.copy(p);g.add(b);balls.push(b);}
+ particles.push({name,balls,curve,col,g});
+}
+const curHalo=new THREE.Mesh(new THREE.SphereGeometry(.12,14,10),new THREE.MeshBasicMaterial({color:0xffffff}));scene.add(curHalo);
+let selected='o';const targetPos=new THREE.Vector3(0,0,0);
+function select(name){selected=name;for(const k of ['o','b','s']){const mesh=layerGroup[k]?.children[0];if(mesh)mesh.material.emissive=new THREE.Color(k===name?colors[k]:0x090b13);if(mesh)mesh.material.emissiveIntensity=k===name ? 0.12 : 0;}}
+function sync(){const v=api.visibility;for(const k of ['o','b','s','plus','minus'])layerGroup[k].visible=v[k];let p=null;for(const part of particles){part.balls.forEach((ball,i)=>{ball.scale.setScalar(i+1===api.step?2.65:1);ball.material.emissiveIntensity=i+1===api.step?2:.26;});if(part.name==='plus'&&api.step>0)p=part.curve.getPointAt((api.step-.5)/60);}curHalo.visible=api.step>0&&v.plus;if(p)curHalo.position.copy(p);}
+function resize(){const width=root.clientWidth,height=root.clientHeight;camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setSize(width,height,false);}
+function reset(){camera.position.set(10,6.3,12);controls.target.set(0,0,0);controls.update();}
+const raycaster=new THREE.Raycaster();const mouse=new THREE.Vector2();renderer.domElement.addEventListener('click',e=>{const rect=renderer.domElement.getBoundingClientRect();mouse.set((e.clientX-rect.left)/rect.width*2-1,-((e.clientY-rect.top)/rect.height*2-1));raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(targets,false);if(hits.length)api.setActive(hits[0].object.userData.layer);});
+let time=0;function frame(){requestAnimationFrame(frame);time+=.008;layerGroup.o.rotation.y+=.0008;layerGroup.b.rotation.y-=.0006;layerGroup.s.rotation.y+=.0012;controls.update();renderer.render(scene,camera);}
+api.onThreeReady({sync,select,resize,reset,canvas:renderer.domElement});frame();
+</script>
+</body>
+</html>
