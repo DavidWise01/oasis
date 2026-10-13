@@ -1,0 +1,61 @@
+{
+  "release": "OASIS/{{i & dd}}/OBS-token-bus-v1.2",
+  "additive": true,
+  "floor_v07_frozen_sha256": "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b",
+  "requirements": {
+    "external_witnesses": false,
+    "signed_checkpoints": false
+  },
+  "files": [
+    {
+      "name": "obs-core-v1.1.mjs",
+      "bytes": 3236,
+      "sha256": "2e076f60ce4f68ac48209129de02384851028def2da9dbc8a075e0aea42edbcb"
+    },
+    {
+      "name": "frozen/dual5-floor-v0.7/dual5.mjs",
+      "bytes": 5327,
+      "sha256": "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b"
+    },
+    {
+      "name": "obs-token-bus-v1.2.mjs",
+      "bytes": 5733,
+      "sha256": "af713db60e4d695b72b70d43c098b541175e34e37cdb563366fa6b8fd8068191"
+    },
+    {
+      "name": "obs-token-bus-v1.2.test.mjs",
+      "bytes": 4656,
+      "sha256": "378411bdeae141f4c553e260b4b3ace29a4f2d93541f6ca470ed55f8aca2f800"
+    },
+    {
+      "name": "obs-token-bus-threejs-v1.2.html",
+      "bytes": 16351,
+      "sha256": "b853639e6439db6a519d294af3998df12247915a7a2531834056c2a48ebeaacd"
+    },
+    {
+      "name": "OBS-TOKEN-BUS-v1.2.md",
+      "bytes": 4764,
+      "sha256": "0651342465fa97690f663e525f95f4223cc32da7705bcc123655105380e7d632"
+    },
+    {
+      "name": "README.md",
+      "bytes": 795,
+      "sha256": "b127db426833307588ac1ab2b0476b9f0c0e2db5b81a7db563f65c05a998b0ad"
+    },
+    {
+      "name": "benchmark-results.json",
+      "bytes": 346,
+      "sha256": "e00259688fb924d581bfcf63246e92abbcf88362a755a590cac63bae28540a43"
+    },
+    {
+      "name": "viewer-preview.png",
+      "bytes": 510850,
+      "sha256": "f207bb43da66839ff8ea76fe6d8b7962daa8f44e2a3aa7203e514de54435b66d"
+    },
+    {
+      "name": "browser-smoke.py",
+      "bytes": 1947,
+      "sha256": "11cd996549dd2ff69c4d161a521b9f9cf4f39ac183c3e458e919359ece34a859"
+    }
+  ]
+}
