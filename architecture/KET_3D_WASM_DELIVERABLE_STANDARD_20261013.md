@@ -26,6 +26,12 @@ Follow [Rule 03](KET_RULE_03_SIGNED_VECTOR_POINT_0_MINUS_PLUS_20261013.md). Pres
 
 New source template: [Vector Point 3D WASM v0.4](../apps/ket-generative-io-vectorpoint-3d-wasm-v04/README.md). The compiled standalone offline executable is delivered in a separate release ZIP. This rule is additive and **does not modify frozen v2.0 files**.
 
+## Rule 03 — six signed X/Y/Z directions; time is a separate tick
+
+**Corrected user requirement:** `---0+++` denotes the six oriented spatial directions `-X,+X,-Y,+Y,-Z,+Z` plus one origin, **seven allowed placements per toroid**, not 27 diagonal/composite coordinate choices. Each twin-toroid pair has **49** ordered placements. In all forward 3D WASM apps, reject mixed-component/diagonal vectors in the execution core, not just the UI. Advancing time increments the simulation clock; time is not a fourth selectable spatial placement axis. This is independent of the frozen 366-address counts and optional inter-toroid communications.
+
+[Authoritative corrected Rule 03](KET_RULE_03_SIX_SIGNED_AXES_LINEAR_TIME_20261013.md) · app v0.5: [Six Signed Axis 3D WASM](../apps/ket-generative-io-six-axis-3d-wasm-v05/README.md).
+
 ## Forward-build convention
 - **Default:** all future interactive diagrams, engineering sheets, engines, visualizations and Generative I/O pages use **real 3D geometry** with a **WebAssembly execution/computation core**.
 - **Primary renderer:** WebGL2 in an offline-first browser page; use Canvas2D software **projection of the same 3D WASM geometry** when no GPU context exists. The fallback is not a new 2D physical model.
