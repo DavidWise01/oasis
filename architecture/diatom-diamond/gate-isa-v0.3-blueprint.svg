@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3840" height="2160" viewBox="0 0 3840 2160" role="img" aria-label="4K blueprint for OASIS isomorphic i and double diamond reversible quantum-inspired gate processor">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2140"/><stop offset="1" stop-color="#041120"/></linearGradient>
+<linearGradient id="diamond" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36E0F9"/><stop offset="1" stop-color="#7B79FF"/></linearGradient>
+<linearGradient id="mirrored" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC383"/><stop offset="1" stop-color="#DC7DBD"/></linearGradient>
+<pattern id="grid" width="45" height="45" patternUnits="userSpaceOnUse"><path d="M 45 0 L 0 0 0 45" fill="none" stroke="#2B5273" stroke-opacity="0.26" stroke-width="1"/></pattern>
+<marker id="arrow" markerWidth="15" markerHeight="15" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L13 7 L1 13" fill="none" stroke="#A4D9EF" stroke-width="2"/></marker>
+</defs>
+<rect width="3840" height="2160" fill="url(#bg)"/>
+<rect width="3840" height="2160" fill="url(#grid)"/>
+<rect x="85" y="64" width="3670" height="185" rx="24" fill="#102C50" fill-opacity="1" stroke="#3F6486" stroke-width="3"/>
+<text x="132" y="123" font-size="27" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#70DCF3" letter-spacing="3">OASIS  /  KET  /  QUANTUM-INSPIRED PROCESSOR</text>
+<text x="132" y="205" font-size="68" text-anchor="start" font-weight="850" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FCFF" letter-spacing="1">{{ i &amp; dd }}   /   REVERSIBLE GATE ISA</text>
+<text x="3700" y="122" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#9BB6CD" letter-spacing="3">ENGINEERING BLUEPRINT  •  SHEET 002</text>
+<text x="3700" y="195" font-size="25" text-anchor="end" font-weight="550" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#9BB6CD">REV 0.3  /  3840 × 2160  /  2026.10.13</text>
+<rect x="85" y="310" width="595" height="1010" rx="23" fill="#0C223E" fill-opacity="1" stroke="#315475" stroke-width="3"/>
+<rect x="111" y="336" width="62" height="62" rx="14" fill="#123953" fill-opacity="1" stroke="#65DDF2" stroke-width="2"/>
+<text x="142" y="378" font-size="30" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#65DDF2">01</text>
+<text x="198" y="371" font-size="39" text-anchor="start" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F3F9FE">SOURCE i</text>
+<text x="200" y="415" font-size="23" text-anchor="start" font-weight="500" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#8EADC4">42 coordinate-distinct token addresses</text>
+<rect x="725" y="310" width="785" height="1010" rx="23" fill="#0C223E" fill-opacity="1" stroke="#315475" stroke-width="3"/>
+<rect x="751" y="336" width="62" height="62" rx="14" fill="#123953" fill-opacity="1" stroke="#8EB0FF" stroke-width="2"/>
+<text x="782" y="378" font-size="30" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#8EB0FF">02</text>
+<text x="838" y="371" font-size="39" text-anchor="start" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F3F9FE">GATE COMPILER</text>
+<text x="840" y="415" font-size="23" text-anchor="start" font-weight="500" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#8EADC4">Deterministic identity-address mapping</text>
+<rect x="1554" y="310" width="1118" height="1010" rx="23" fill="#0C223E" fill-opacity="1" stroke="#315475" stroke-width="3"/>
+<rect x="1580" y="336" width="62" height="62" rx="14" fill="#123953" fill-opacity="1" stroke="#F9BB86" stroke-width="2"/>
+<text x="1611" y="378" font-size="30" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F9BB86">03</text>
+<text x="1667" y="371" font-size="39" text-anchor="start" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F3F9FE">DUAL DIAMOND</text>
+<text x="1669" y="415" font-size="23" text-anchor="start" font-weight="500" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#8EADC4">Two mirrored four-port/three-link rails</text>
+<rect x="2716" y="310" width="1039" height="1010" rx="23" fill="#0C223E" fill-opacity="1" stroke="#315475" stroke-width="3"/>
+<rect x="2742" y="336" width="62" height="62" rx="14" fill="#123953" fill-opacity="1" stroke="#C49DFF" stroke-width="2"/>
+<text x="2773" y="378" font-size="30" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C49DFF">04</text>
+<text x="2829" y="371" font-size="39" text-anchor="start" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F3F9FE">STATEVECTOR</text>
+<text x="2831" y="415" font-size="23" text-anchor="start" font-weight="500" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#8EADC4">Three logical qubits / eight amplitudes</text>
+<line x1="682" y1="817" x2="723" y2="817" stroke="#82CBE4" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<path d="M 704 803 L 723 817 L 704 831" fill="none" stroke="#A4D9EF" stroke-width="4" stroke-opacity="1" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="1512" y1="817" x2="1552" y2="817" stroke="#82CBE4" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<path d="M 1533 803 L 1552 817 L 1533 831" fill="none" stroke="#A4D9EF" stroke-width="4" stroke-opacity="1" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="2674" y1="817" x2="2714" y2="817" stroke="#82CBE4" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<path d="M 2695 803 L 2714 817 L 2695 831" fill="none" stroke="#A4D9EF" stroke-width="4" stroke-opacity="1" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="382" cy="710" r="184" fill="#0B2944" stroke="#2E7792" stroke-width="2" fill-opacity="1"/>
+<circle cx="382.0" cy="526.0" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="409.42" cy="528.06" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="436.23" cy="534.17" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="461.83" cy="544.22" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="485.65" cy="557.97" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="507.15" cy="575.12" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="525.86" cy="595.28" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="541.35" cy="618.0" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="553.28" cy="642.78" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="561.39" cy="669.06" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="565.49" cy="696.25" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="565.49" cy="723.75" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="561.39" cy="750.94" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="553.28" cy="777.22" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="541.35" cy="802.0" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="525.86" cy="824.72" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="507.15" cy="844.88" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="485.65" cy="862.03" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="461.83" cy="875.78" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="436.23" cy="885.83" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="409.42" cy="891.94" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="382.0" cy="894.0" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="354.58" cy="891.94" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="327.77" cy="885.83" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="302.17" cy="875.78" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="278.35" cy="862.03" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="256.85" cy="844.88" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="238.14" cy="824.72" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="222.65" cy="802.0" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="210.72" cy="777.22" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="202.61" cy="750.94" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="198.51" cy="723.75" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="198.51" cy="696.25" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="202.61" cy="669.06" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="210.72" cy="642.78" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="222.65" cy="618.0" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="238.14" cy="595.28" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="256.85" cy="575.12" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="278.35" cy="557.97" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="302.17" cy="544.22" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="327.77" cy="534.17" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<circle cx="354.58" cy="528.06" r="8.5" fill="#56D2EF" stroke="#A3EDFA" stroke-width="0" fill-opacity="1"/>
+<text x="382" y="692" font-size="69" text-anchor="middle" font-weight="850" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EEFAFF">{{ i }}</text>
+<text x="382" y="745" font-size="42" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#80E7FA">42</text>
+<text x="382" y="785" font-size="23" text-anchor="middle" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#9DB8D0" letter-spacing="2">TOKENS</text>
+<rect x="137" y="972" width="491" height="257" rx="15" fill="#0B2E47" fill-opacity="1" stroke="#365F78" stroke-width="2"/>
+<text x="174" y="1024" font-size="25" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#70DCF4" letter-spacing="3">IDENTITY BUS</text>
+<text x="174" y="1078" font-size="31" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EDF8FF">8 source lanes</text>
+<text x="174" y="1125" font-size="29" text-anchor="start" font-weight="550" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#B6D8ED">336 view addresses</text>
+<text x="174" y="1174" font-size="26" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#82CBEC">2,688 directed view pairs</text>
+<text x="774" y="490" font-size="25" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#70DCF4" letter-spacing="3">ADDRESS → OPCODE</text>
+<rect x="765" y="522" width="707" height="98" rx="12" fill="#0D3550" fill-opacity="1" stroke="#407494" stroke-width="2"/>
+<text x="790" y="582" font-size="32" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EDF8FF">ordinal mod 10</text>
+<text x="1440" y="582" font-size="44" text-anchor="end" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#76DDF7">→</text>
+<rect x="770" y="667" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="780" y="676" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="826" y="716" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">X</text>
+<text x="885" y="713" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">PAULI X</text>
+<rect x="1123" y="667" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="1133" y="676" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="1179" y="716" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">H</text>
+<text x="1238" y="713" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">HADAMARD</text>
+<rect x="770" y="763" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="780" y="772" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="826" y="812" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">Z</text>
+<text x="885" y="809" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">PAULI Z</text>
+<rect x="1123" y="763" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="1133" y="772" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="1179" y="812" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">S</text>
+<text x="1238" y="809" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">PHASE +90 deg</text>
+<rect x="770" y="859" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="780" y="868" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="826" y="908" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">Sdg</text>
+<text x="885" y="905" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">PHASE -90 deg</text>
+<rect x="1123" y="859" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="1133" y="868" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="1179" y="908" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">T</text>
+<text x="1238" y="905" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">PHASE +45 deg</text>
+<rect x="770" y="955" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="780" y="964" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="826" y="1004" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">Tdg</text>
+<text x="885" y="1001" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">PHASE -45 deg</text>
+<rect x="1123" y="955" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="1133" y="964" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="1179" y="1004" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">CX</text>
+<text x="1238" y="1001" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">CONTROLLED X</text>
+<rect x="770" y="1051" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="780" y="1060" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="826" y="1100" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">CZ</text>
+<text x="885" y="1097" font-size="19" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">CONTROLLED Z</text>
+<rect x="1123" y="1051" width="324" height="76" rx="12" fill="#0F2A45" fill-opacity="1" stroke="#355C7E" stroke-width="2"/>
+<rect x="1133" y="1060" width="93" height="58" rx="9" fill="#164769" fill-opacity="1" stroke="#499FD5" stroke-width="1"/>
+<text x="1179" y="1100" font-size="30" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D9F9FF">SWAP</text>
+<text x="1238" y="1097" font-size="16" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#BACFDB">QUBIT EXCHANGE</text>
+<line x1="775" y1="1175" x2="1442" y2="1175" stroke="#336485" stroke-width="2" stroke-linecap="round" stroke-opacity="1"/>
+<text x="775" y="1220" font-size="24" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#8FDBF8">View changes do not alter gate semantics</text>
+<polygon points="1909,585 2087,737 1909,889 1731,737" fill="#244665" fill-opacity=".65" stroke="#466986" stroke-width="3"/>
+<line x1="1878" y1="615" x2="1909" y2="585" stroke="#50DDF8" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+<line x1="2056" y1="767" x2="2087" y2="737" stroke="#50DDF8" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+<line x1="1878" y1="919" x2="1909" y2="889" stroke="#50DDF8" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+<line x1="1700" y1="767" x2="1731" y2="737" stroke="#50DDF8" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+<polygon points="1878,615 2056,767 1878,919 1700,767" fill="#112B47" fill-opacity=".95" stroke="#7391AD" stroke-width="2"/>
+<line x1="1878" y1="615" x2="2056" y2="767" stroke="#50DDF8" stroke-width="10" stroke-linecap="round" stroke-opacity="1"/>
+<line x1="2056" y1="767" x2="1878" y2="919" stroke="#50DDF8" stroke-width="10" stroke-linecap="round" stroke-opacity="1"/>
+<line x1="1878" y1="919" x2="1700" y2="767" stroke="#50DDF8" stroke-width="10" stroke-linecap="round" stroke-opacity="1"/>
+<line x1="1700" y1="767" x2="1878" y2="615" stroke="#6D849A" stroke-width="4" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="9 13"/>
+<circle cx="1878" cy="615" r="21" fill="#081B2C" stroke="#50DDF8" stroke-width="5" fill-opacity="1"/>
+<text x="1878" y="624" font-size="23" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FDFF">0</text>
+<circle cx="2056" cy="767" r="21" fill="#081B2C" stroke="#50DDF8" stroke-width="5" fill-opacity="1"/>
+<text x="2056" y="776" font-size="23" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FDFF">1</text>
+<circle cx="1878" cy="919" r="21" fill="#081B2C" stroke="#50DDF8" stroke-width="5" fill-opacity="1"/>
+<text x="1878" y="928" font-size="23" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FDFF">2</text>
+<circle cx="1700" cy="767" r="21" fill="#081B2C" stroke="#50DDF8" stroke-width="5" fill-opacity="1"/>
+<text x="1700" y="776" font-size="23" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FDFF">3</text>
+<text x="1878" y="735" font-size="37" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F7FAFF">d(+)</text>
+<text x="1878" y="785" font-size="24" text-anchor="middle" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#B5D1E1">4 PORTS</text>
+<text x="1878" y="825" font-size="24" text-anchor="middle" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#B5D1E1">3 LINKS</text>
+<text x="1878" y="994" font-size="40" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#50DDF8" letter-spacing="4">|.|.|.|</text>
+<text x="1878" y="1048" font-size="22" text-anchor="middle" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#B9D3E7">FORWARD ORDER</text>
+<polygon points="2399,585 2577,737 2399,889 2221,737" fill="#244665" fill-opacity=".65" stroke="#466986" stroke-width="3"/>
+<line x1="2368" y1="615" x2="2399" y2="585" stroke="#F2AE87" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+<line x1="2546" y1="767" x2="2577" y2="737" stroke="#F2AE87" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+<line x1="2368" y1="919" x2="2399" y2="889" stroke="#F2AE87" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+<line x1="2190" y1="767" x2="2221" y2="737" stroke="#F2AE87" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+<polygon points="2368,615 2546,767 2368,919 2190,767" fill="#112B47" fill-opacity=".95" stroke="#7391AD" stroke-width="2"/>
+<line x1="2368" y1="615" x2="2546" y2="767" stroke="#F2AE87" stroke-width="10" stroke-linecap="round" stroke-opacity="1"/>
+<line x1="2546" y1="767" x2="2368" y2="919" stroke="#F2AE87" stroke-width="10" stroke-linecap="round" stroke-opacity="1"/>
+<line x1="2368" y1="919" x2="2190" y2="767" stroke="#F2AE87" stroke-width="10" stroke-linecap="round" stroke-opacity="1"/>
+<line x1="2190" y1="767" x2="2368" y2="615" stroke="#6D849A" stroke-width="4" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="9 13"/>
+<circle cx="2368" cy="615" r="21" fill="#081B2C" stroke="#F2AE87" stroke-width="5" fill-opacity="1"/>
+<text x="2368" y="624" font-size="23" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FDFF">3</text>
+<circle cx="2546" cy="767" r="21" fill="#081B2C" stroke="#F2AE87" stroke-width="5" fill-opacity="1"/>
+<text x="2546" y="776" font-size="23" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FDFF">2</text>
+<circle cx="2368" cy="919" r="21" fill="#081B2C" stroke="#F2AE87" stroke-width="5" fill-opacity="1"/>
+<text x="2368" y="928" font-size="23" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FDFF">1</text>
+<circle cx="2190" cy="767" r="21" fill="#081B2C" stroke="#F2AE87" stroke-width="5" fill-opacity="1"/>
+<text x="2190" y="776" font-size="23" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F5FDFF">0</text>
+<text x="2368" y="735" font-size="37" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F7FAFF">d(−)</text>
+<text x="2368" y="785" font-size="24" text-anchor="middle" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#B5D1E1">4 PORTS</text>
+<text x="2368" y="825" font-size="24" text-anchor="middle" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#B5D1E1">3 LINKS</text>
+<text x="2368" y="994" font-size="40" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F2AE87" letter-spacing="4">|.|.|.|</text>
+<text x="2368" y="1048" font-size="22" text-anchor="middle" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#B9D3E7">MIRROR REVERSE</text>
+<rect x="1611" y="1134" width="998" height="124" rx="14" fill="#102E49" fill-opacity="1" stroke="#48718E" stroke-width="2"/>
+<text x="2107" y="1190" font-size="28" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#E9FBFF">decode(d+) = reverse(decode(d−)) = i</text>
+<text x="2107" y="1230" font-size="24" text-anchor="middle" font-weight="600" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#96CEE8">Source identity seal unchanged by view projection</text>
+<text x="2770" y="488" font-size="25" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#70DCF4" letter-spacing="3">AMPLITUDE PROBABILITIES</text>
+<text x="2780" y="592" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C8DCF0">|000⟩</text>
+<rect x="2913" y="559" width="604" height="43" rx="9" fill="#0B1C33" fill-opacity="1" stroke="#2C4966" stroke-width="1"/>
+<rect x="2913" y="559" width="32.52" height="43" rx="8" fill="#53DBEF" fill-opacity=".92"/>
+<text x="3675" y="591" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#ECF7FF">1.83%</text>
+<text x="2780" y="668" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C8DCF0">|001⟩</text>
+<rect x="2913" y="635" width="604" height="43" rx="9" fill="#0B1C33" fill-opacity="1" stroke="#2C4966" stroke-width="1"/>
+<rect x="2913" y="635" width="32.52" height="43" rx="8" fill="#53DBEF" fill-opacity=".92"/>
+<text x="3675" y="667" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#ECF7FF">1.83%</text>
+<text x="2780" y="744" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C8DCF0">|010⟩</text>
+<rect x="2913" y="711" width="604" height="43" rx="9" fill="#0B1C33" fill-opacity="1" stroke="#2C4966" stroke-width="1"/>
+<rect x="2913" y="711" width="189.54" height="43" rx="8" fill="#53DBEF" fill-opacity=".92"/>
+<text x="3675" y="743" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#ECF7FF">10.67%</text>
+<text x="2780" y="820" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C8DCF0">|011⟩</text>
+<rect x="2913" y="787" width="604" height="43" rx="9" fill="#0B1C33" fill-opacity="1" stroke="#2C4966" stroke-width="1"/>
+<rect x="2913" y="787" width="189.54" height="43" rx="8" fill="#53DBEF" fill-opacity=".92"/>
+<text x="3675" y="819" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#ECF7FF">10.67%</text>
+<text x="2780" y="896" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C8DCF0">|100⟩</text>
+<rect x="2913" y="863" width="604" height="43" rx="9" fill="#0B1C33" fill-opacity="1" stroke="#2C4966" stroke-width="1"/>
+<rect x="2913" y="863" width="97.56" height="43" rx="8" fill="#B99CFF" fill-opacity=".92"/>
+<text x="3675" y="895" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#ECF7FF">5.49%</text>
+<text x="2780" y="972" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C8DCF0">|101⟩</text>
+<rect x="2913" y="939" width="604" height="43" rx="9" fill="#0B1C33" fill-opacity="1" stroke="#2C4966" stroke-width="1"/>
+<rect x="2913" y="939" width="97.56" height="43" rx="8" fill="#B99CFF" fill-opacity=".92"/>
+<text x="3675" y="971" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#ECF7FF">5.49%</text>
+<text x="2780" y="1048" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C8DCF0">|110⟩</text>
+<rect x="2913" y="1015" width="604" height="43" rx="9" fill="#0B1C33" fill-opacity="1" stroke="#2C4966" stroke-width="1"/>
+<rect x="2913" y="1015" width="568.62" height="43" rx="8" fill="#B99CFF" fill-opacity=".92"/>
+<text x="3675" y="1047" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#ECF7FF">32.01%</text>
+<text x="2780" y="1124" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C8DCF0">|111⟩</text>
+<rect x="2913" y="1091" width="604" height="43" rx="9" fill="#0B1C33" fill-opacity="1" stroke="#2C4966" stroke-width="1"/>
+<rect x="2913" y="1091" width="568.62" height="43" rx="8" fill="#B99CFF" fill-opacity=".92"/>
+<text x="3675" y="1123" font-size="26" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#ECF7FF">32.01%</text>
+<rect x="2770" y="1190" width="922" height="80" rx="12" fill="#11344D" fill-opacity="1" stroke="#406D8C" stroke-width="2"/>
+<text x="2810" y="1241" font-size="29" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#9FEAFB">Σ P(state) = 1.0000   •   3 qubits</text>
+<rect x="85" y="1370" width="2388" height="642" rx="24" fill="#0D2541" fill-opacity="1" stroke="#3B6486" stroke-width="3"/>
+<rect x="2522" y="1370" width="1233" height="642" rx="24" fill="#0D2541" fill-opacity="1" stroke="#3B6486" stroke-width="3"/>
+<text x="139" y="1435" font-size="25" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#70DCF4" letter-spacing="3">05   REVERSIBLE GATE CIRCUIT   /   EXAMPLE GHZ PREPARATION</text>
+<text x="140" y="1488" font-size="31" text-anchor="start" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EAF6FF">|000&gt;  →  H(i_branch)  →  CX(i_branch,d+)  →  CX(i_branch,d−)</text>
+<text x="146" y="1590" font-size="29" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C7E4F2">i_branch</text>
+<line x1="340" y1="1582" x2="2350" y2="1582" stroke="#547F9E" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<text x="146" y="1736" font-size="29" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C7E4F2">d(+)</text>
+<line x1="340" y1="1728" x2="2350" y2="1728" stroke="#547F9E" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<text x="146" y="1882" font-size="29" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#C7E4F2">d(−)</text>
+<line x1="340" y1="1874" x2="2350" y2="1874" stroke="#547F9E" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<rect x="620" y="1544" width="88" height="75" rx="10" fill="#123F60" fill-opacity="1" stroke="#4AD1ED" stroke-width="4"/>
+<text x="664" y="1596" font-size="41" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EAFEFF">H</text>
+<circle cx="1103" cy="1582" r="13" fill="#5ADFF8" stroke="#5ADFF8" stroke-width="1" fill-opacity="1"/>
+<line x1="1103" y1="1582" x2="1103" y2="1728" stroke="#5ADFF8" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<circle cx="1103" cy="1728" r="38" fill="#10253C" stroke="#5ADFF8" stroke-width="5" fill-opacity="1"/>
+<line x1="1078" y1="1728" x2="1128" y2="1728" stroke="#5ADFF8" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<line x1="1103" y1="1703" x2="1103" y2="1753" stroke="#5ADFF8" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<circle cx="1680" cy="1582" r="13" fill="#F5BA8B" stroke="#F5BA8B" stroke-width="1" fill-opacity="1"/>
+<line x1="1680" y1="1582" x2="1680" y2="1874" stroke="#F5BA8B" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<circle cx="1680" cy="1874" r="38" fill="#10253C" stroke="#F5BA8B" stroke-width="5" fill-opacity="1"/>
+<line x1="1655" y1="1874" x2="1705" y2="1874" stroke="#F5BA8B" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<line x1="1680" y1="1849" x2="1680" y2="1899" stroke="#F5BA8B" stroke-width="5" stroke-linecap="round" stroke-opacity="1"/>
+<rect x="1960" y="1549" width="374" height="296" rx="15" fill="#143453" fill-opacity="1" stroke="#426989" stroke-width="2"/>
+<text x="2147" y="1610" font-size="28" text-anchor="middle" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#D5EFFB" letter-spacing="2">GHZ STATE</text>
+<text x="2147" y="1694" font-size="36" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EFFAFF">(|000&gt;+|111&gt;)</text>
+<text x="2147" y="1745" font-size="36" text-anchor="middle" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EFFAFF">/ sqrt(2)</text>
+<text x="2147" y="1800" font-size="23" text-anchor="middle" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#7DDCF1">P = 50% / 50%</text>
+<text x="2574" y="1435" font-size="25" text-anchor="start" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#70DCF4" letter-spacing="3">06   INVERSE / WITNESS / AUDIT</text>
+<rect x="2574" y="1482" width="1126" height="116" rx="12" fill="#123751" fill-opacity="1" stroke="#537A9B" stroke-width="2"/>
+<text x="2610" y="1530" font-size="37" text-anchor="start" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F8FDFF">U^-1 · U |psi&gt; = |psi&gt;</text>
+<text x="2610" y="1572" font-size="25" text-anchor="start" font-weight="600" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#9DC9E4">maximum numerical recovery error</text>
+<text x="3654" y="1567" font-size="31" text-anchor="end" font-weight="800" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#76DBED">7.77 × 10⁻¹⁶</text>
+<line x1="2574" y1="1636" x2="3679" y2="1636" stroke="#365C77" stroke-width="1" stroke-linecap="round" stroke-opacity="1"/>
+<text x="2574" y="1674" font-size="25" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#83BACF">42 ADDRESS GATES</text>
+<text x="3681" y="1674" font-size="25" text-anchor="end" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EEF8FF">X 5 / H 5 / 8 OTHER TYPES × 4</text>
+<line x1="2574" y1="1718" x2="3679" y2="1718" stroke="#365C77" stroke-width="1" stroke-linecap="round" stroke-opacity="1"/>
+<text x="2574" y="1756" font-size="25" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#83BACF">IDENTITY WITNESS</text>
+<text x="3681" y="1756" font-size="25" text-anchor="end" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EEF8FF">SHA-256, view-invariant</text>
+<line x1="2574" y1="1800" x2="3679" y2="1800" stroke="#365C77" stroke-width="1" stroke-linecap="round" stroke-opacity="1"/>
+<text x="2574" y="1838" font-size="25" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#83BACF">RAIL WITNESS</text>
+<text x="3681" y="1838" font-size="25" text-anchor="end" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EEF8FF">SHA-256, projection-sensitive</text>
+<line x1="2574" y1="1882" x2="3679" y2="1882" stroke="#365C77" stroke-width="1" stroke-linecap="round" stroke-opacity="1"/>
+<text x="2574" y="1920" font-size="25" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#83BACF">VALIDATION</text>
+<text x="3681" y="1920" font-size="25" text-anchor="end" font-weight="650" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#EEF8FF">8,299 assertions / all passed</text>
+<line x1="88" y1="2057" x2="3751" y2="2057" stroke="#446E8E" stroke-width="2" stroke-linecap="round" stroke-opacity="1"/>
+<text x="95" y="2110" font-size="24" text-anchor="start" font-weight="700" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#9EBED5" letter-spacing="0.7">i &amp; dd / 42 IDENTITY ADDRESSES / TWO 4:3 CARRIERS / 3 SIMULATED QUBITS / REVERSIBLE CLASSICAL EXECUTION</text>
+<text x="3751" y="2110" font-size="23" text-anchor="end" font-weight="750" font-family="Inter, Segoe UI, Arial, sans-serif" fill="#F2B58E" letter-spacing="1.1">PHYSICAL QUANTUM ENTANGLEMENT NOT CLAIMED</text>
+</svg>
