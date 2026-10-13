@@ -22,7 +22,7 @@ export function isotropicStats(n,p){
  const d=n*n,threshold=n/(n+1);
  const plus=(1-p)/n+p/d,minus=-(1-p)/n+p/d;
  const negativeEigenvalues=n*(n-1)/2;
- const negativity=Math.max(0,-minus)*negativeEigenvalues;
+ const negativity=p>=threshold?0:Math.max(0,-minus)*negativeEigenvalues;
  const logNegativity=Math.log2(2*negativity+1);
  const fidelity=1-p+p/d;
  const jointPurity=(1-p)*(1-p)+(2*p-p*p)/d;
@@ -30,8 +30,8 @@ export function isotropicStats(n,p){
   reducedEntropyBits:Math.log2(n),reducedPurity:1/n,
   fidelity,jointPurity,negativePartialTransposeEigenvalue:minus,
   negativeMultiplicity:negativeEigenvalues,
-  negativity,logNegativity,entangled:negativity>1e-12,
-  separableByIsotropicCriterion:p>=threshold-1e-12};
+  negativity,logNegativity,entangled:p<threshold,
+  separableByIsotropicCriterion:p>=threshold};
 }
 export function buildObsidian(tokens,{noise=0.10,parent='ROOT',generation=0}={}){
  requireNoise(noise);
