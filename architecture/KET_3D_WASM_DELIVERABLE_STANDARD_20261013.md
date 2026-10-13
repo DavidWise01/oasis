@@ -14,6 +14,12 @@ Authoritative corrected contract: [KET Rule 01](KET_RULE_01_NO_EXTERNAL_BOXES_20
 
 This is forward-only design guidance. The freeze-pinned v2.0 source and the historical v0.2 application remain unchanged.
 
+## Rule 02 — independent toroids, optional gap I/O
+
+Two KET toroids remain independent KET bodies with their own **4+3=6+one open through-hole**, **360+3+3=366** local addresses and cellular clocks. A separate interface port may be selected at **any of the 360 surface positions on either torus**. Minimum geometric gap is adjustable and is not the same thing as selected-port distance. A software communication gate is selectable **OFF / A→B / B→A / A↔B**; no cross-state messages when OFF. Connecting two ports must **not** merge their parent meshes, fill their open holes, or allocate additional kernel addresses. Gateway events are explicit, directional, deterministic and independently auditable.
+
+See [Rule 02 — Twin Toroids](KET_RULE_02_TWIN_TOROIDS_OPTIONAL_GAP_IO_20261013.md) and the [actual versioned WASM demo](../apps/ket-generative-io-twin-toroids-3d-wasm-v03/index.html). Its WASM and Chromium tests demonstrate optional messaging only within a symbolic computational model, not a claim that physical fields cease to interact when the gate is OFF.
+
 ## Forward-build convention
 - **Default:** all future interactive diagrams, engineering sheets, engines, visualizations and Generative I/O pages use **real 3D geometry** with a **WebAssembly execution/computation core**.
 - **Primary renderer:** WebGL2 in an offline-first browser page; use Canvas2D software **projection of the same 3D WASM geometry** when no GPU context exists. The fallback is not a new 2D physical model.
