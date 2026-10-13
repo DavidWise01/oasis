@@ -4,9 +4,9 @@
 **Source repo:** DavidWise01/oasis (public)  
 **Live URL once GitHub Pages is enabled:** https://davidwise01.github.io/oasis/  
 **Prepared Pages branch:** [gh-pages](https://github.com/DavidWise01/oasis/tree/gh-pages)  
-**Branch commit:** `9eac5d0c43d45465dc71da2c749ed0f380e4ad97`  
+**Branch commit:** `25f97ffdb8fa90ccb9f17eae84959e1caf0522b1`  
 **Serving file:** `gh-pages:/index.html`  
-**Git blob SHA:** `e47fb4610b69f2c68de8918284b4971a4c4428da`  
+**Git blob SHA:** `f7aa6649db46bdc2007156b0d0067530e09bd725`  
 **Source:** [apps/ket-energy-titan-sapien-six-channel-3d-wasm-v06/index.html](index.html)
 
 ## Published-to-branch vs live-site state
@@ -40,3 +40,7 @@ Frozen KET v2.0 stays untouched, pinned to `de8f8b80aba3a73dd371811f6b4be39df92e
 ## Updating later
 
 For a new additive WASM release, update the source under a *new versioned* app path. Once verified, create a new Pages branch commit with the new self-contained index.html and preserve this deployment record for provenance.
+
+### Byte-exact finalization
+
+The deployed `gh-pages:/index.html` and the source `apps/.../index.html` now share the same Git blob SHA-1 `f7aa6649db46bdc2007156b0d0067530e09bd725`, which equals `git hash-object` of the user's original standalone release including its terminal newline. Latest Pages branch commit: `25f97ffdb8fa90ccb9f17eae84959e1caf0522b1`.
