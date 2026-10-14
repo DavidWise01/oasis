@@ -1,0 +1,31 @@
+name: OASIS FINAL RC1 mutual-TLS acceptance
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/final-six/remote-mtls.mjs'
+      - 'architecture/diatom-diamond/final-six/setup-keys.mjs'
+      - 'architecture/diatom-diamond/final-six/remote-mtls.test.mjs'
+      - 'architecture/diatom-diamond/final-six/FINAL_RELEASE-RC1.md'
+      - '.github/workflows/oasis-final-rc1-mtls.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  final-rc1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify frozen OASIS floor and run focused encrypted-local-link check
+        working-directory: architecture/diatom-diamond
+        run: |
+          echo '47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b  frozen/dual5-floor-v0.7/dual5.mjs' | sha256sum --check
+          node final-six/remote-mtls.test.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oasis-final-rc1-local-tls-results
+          path: architecture/diatom-diamond/final-six/remote-mtls-results.json
