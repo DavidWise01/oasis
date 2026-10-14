@@ -1,0 +1,52 @@
+name: OBS44 C# compile and throughput benchmark
+on:
+  push:
+    paths:
+      - '.github/workflows/obs44-csharp-benchmark.yml'
+      - 'architecture/diatom-diamond/csharp/Obs44Bench/**'
+      - 'architecture/diatom-diamond/csharp/ObsAddress44-v1.6.cs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    name: dotnet10-vs-node22
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout OASIS
+        uses: actions/checkout@v4
+      - name: Install .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Copy existing canonical OBS44 adapter into C# project
+        run: |
+          cp architecture/diatom-diamond/csharp/ObsAddress44-v1.6.cs architecture/diatom-diamond/csharp/Obs44Bench/ObsAddress44.cs
+          dotnet --version
+          node --version
+      - name: Restore and build C# Release (warnings as errors)
+        run: |
+          dotnet restore architecture/diatom-diamond/csharp/Obs44Bench/Obs44Bench.csproj
+          dotnet build architecture/diatom-diamond/csharp/Obs44Bench/Obs44Bench.csproj -c Release --no-restore
+      - name: C# 44-address exactness and throughput
+        run: |
+          mkdir -p bench-artifacts
+          dotnet run --project architecture/diatom-diamond/csharp/Obs44Bench/Obs44Bench.csproj -c Release --no-build -- --bench44 20000 5 | tee bench-artifacts/obs44-csharp.jsonl
+      - name: C# bounded streaming throughput
+        run: |
+          dotnet run --project architecture/diatom-diamond/csharp/Obs44Bench/Obs44Bench.csproj -c Release --no-build -- --stream 20000 0 | tee bench-artifacts/obs44-csharp-stream.jsonl
+      - name: Node.js parity baseline on the same runner
+        run: |
+          node architecture/diatom-diamond/csharp/Obs44Bench/obs44-node-bench.mjs 20000 5 | tee bench-artifacts/obs44-node.jsonl
+      - name: Upload measured results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: obs44-csharp-node-2026
+          path: bench-artifacts/
+          if-no-files-found: ignore
