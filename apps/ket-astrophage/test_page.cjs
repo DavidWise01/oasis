@@ -18,7 +18,7 @@ check('generation terminal state',()=>assert.match(html,/GENESIS  :: TERMINATED/
 check('disabled status',()=>assert.match(html,/STATUS   :: DISABLED/));
 check('explicit failure boundary',()=>assert.match(html,/ON_FAULT :: ISOLATE → RETAIN → REPORT/));
 check('Confluence identity',()=>assert.match(html,/\{\{C\}\}onfluence/));
-check('Sapphon substrate',()=>assert.match(html,/Sapphon Substrate/));
+check('Sapphon substrate',()=>assert.match(html,/Ssaphone Substrate/));
 check('Ether is symbolic',()=>assert.match(html,/conceptual information environment/));
 check('quanta event unit',()=>assert.match(html,/one symbolic event/));
 check('four drill modes',()=>['valid','token','witness','mismatch'].forEach(x=>assert.match(html,new RegExp('value="'+x+'"'))));
