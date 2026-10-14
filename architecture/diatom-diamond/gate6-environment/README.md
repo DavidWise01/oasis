@@ -14,6 +14,8 @@
 | `INSPECT_RECEIVER.ps1`, `FINALIZE_EVIDENCE.ps1` | Produce and reconcile receipt evidence |
 | `.gitignore` | Deny common secrets and runtime state if placed in a Git checkout |
 
+The runner independently refuses key and journal state located inside the Git checkout and verifies the frozen hash before loading the relay.
+
 **Excluded:** private keys, TLS certificates, production tokens, journal contents, live execution receipts, VM images. They must be generated locally. The actual OBF2 transport code stays in `DavidWise01/oasis` and is loaded without modification.
 
 ## Requirements
