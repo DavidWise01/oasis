@@ -1,4 +1,4 @@
-# Confluence — Sapphon Substrate (GitHub Pages v2.0)
+# Confluence — Ssaphone Substrate (GitHub Pages v2.0)
 
 **Location:** `apps/ket-astrophage/` inside `DavidWise01/oasis`  
 **Page:** <https://davidwise01.github.io/oasis/apps/ket-astrophage/>  
@@ -21,7 +21,7 @@ RETURN   :: WITNESS → SAFE STATE
 ## Symbolic vocabulary
 
 - **`{{C}}onfluence`** — identity / meeting point for distinct retained streams.
-- **Sapphon Substrate** — mnemonic name for a bounded information carrier.
+- **Ssaphone Substrate** — mnemonic name for a bounded information carrier.
 - **Ether** — conceptual information environment, *not* a physical luminiferous ether.
 - **Medium** — the implemented information representation and transport: UTF-8, two base-44 address tokens per byte, OSIMODEL 8 × 208, ordered receipts.
 - **`'quanta'`** — a discrete symbolic event or message unit; no claim about real photons or quantum fields.
