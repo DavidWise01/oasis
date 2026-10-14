@@ -1,31 +1,30 @@
-# ASTROPHAGE field — nested `{{ag` namespace address v1
+# Ag field — silver from Venus (corrected interpretation)
 
-## Canonical user-supplied locator (verbatim)
+## Canonical user-supplied notation (verbatim)
 
 ```text
 {{ag{{field{{3x3}}^{{3}}
 ```
 
-This is an **open nested expression/prefix**, not a fully closed grammar record. Preserve the character sequence exactly; do not silently append outer closing braces or substitute punctuation.
+## Correct referent
 
-## Structural interpretation (not new physics or a new kernel)
+**`ag` means Ag (the chemical symbol for silver), NOT an abbreviation for ASTROPHAGE.** The user specifies this field as **"silver from Venus"** in their OASIS symbolic planetary/material mapping.
 
-- `{{ag` — ASTROPHAGE namespace/root label
-- `{{field` — field namespace/container label
-- `{{3x3}}` — literal grouped base containing user-defined multiplication `3×3`
-- `^` — exponentiation operator
-- `{{3}}` — literal grouped exponent 3
+- `ag`: Ag / silver (element 47).
+- `field`: the user's designated silver field.
+- `{{3x3}}^{{3}}`: retain the user's nested original notation and grouping *as part of this field expression*.
+- `Venus`: user-provided provenance/planetary association for this field.
 
-Under ordinary integer arithmetic, the inner expression is `(3×3)^3 = 9^3 = 729`. That **does not** assert 729 physically instantiated cells, biological entities, reactions or any extra operators. The meaning of the unclosed outer nesting is left open by the user's literal spelling.
+Do not replace this field identity with `ASTROPHAGE FIELD -+UUUU | | uuuu -+`. It is a **separate user-defined field**, and the former description that linked `ag` directly to ASTROPHAGE was a misinterpretation, now superseded.
 
-## Existing implementation target
+The internal expression can independently be evaluated as `(3×3)^3 = 729` **if treated as ordinary arithmetic**, but `729` alone does not define the user-intended meaning of the full silver/Venus field. Preserve the outer nesting as authored, including the open prefix; do not invent closing delimiters or additional semantics.
 
-This prefix identifies the *already defined* `ASTROPHAGE FIELD -+UUUU | | uuuu -+` object in `architecture/diatom-diamond/astrophage-field-v2.0.mjs` and its existing OBF2/Rust/WASM transport.
+"Silver from Venus" is recorded as the author's symbolic field designation, **not as independent evidence that silver was physically sourced from the planet Venus**. Do not conflate this user-defined mapping with conventional planetary alchemical correspondences.
 
-It is **an alias/locator for the existing field**, not a command to overwrite the field source, mutate frozen KET/`{{i}}`/`{{d}}`/OBS code, spawn extra processing instances, or reinterpret chemistry labels as physical evidence.
+## Source integrity
 
-Related prior integer notation: `{3x3}^{3}` in `ISO-MORE-PHIC-v1.9a.md` and `iso-graded-chain-v1.9c.mjs`.
+This is a descriptive correction only. No code, existing ASTROPHAGE parser, `{{i}}` identity system, frozen OBS floor, WASM VM, or acceptance test has been modified.
 
-## Freeze scope
+### Provenance
 
-Only this descriptive locator is added. No runtime files or tests are modified. Preserve the original full field and all six acceptance-gate evidence.
+The earlier record in this same path incorrectly read `ag` as ASTROPHAGE. This revision replaces that reading with **Ag = silver, Venus field** after the user's explicit correction.
