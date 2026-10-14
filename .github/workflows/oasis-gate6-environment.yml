@@ -1,0 +1,32 @@
+name: OASIS Gate 6 environment smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'architecture/diatom-diamond/gate6-environment/**'
+      - '.github/workflows/oasis-gate6-environment.yml'
+  pull_request:
+    paths:
+      - 'architecture/diatom-diamond/gate6-environment/**'
+      - '.github/workflows/oasis-gate6-environment.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  local-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse portable field environment
+        run: |
+          node --check architecture/diatom-diamond/gate6-environment/gate6.mjs
+          node --check architecture/diatom-diamond/gate6-environment/local_smoke.mjs
+          node --check architecture/diatom-diamond/gate6-environment/test_evidence.mjs
+      - name: Audit evidence and tamper rejection
+        run: node architecture/diatom-diamond/gate6-environment/test_evidence.mjs
+      - name: mTLS signed OBF2 post-fsync crash/replay (localhost scope ONLY)
+        run: node architecture/diatom-diamond/gate6-environment/local_smoke.mjs --repo .
