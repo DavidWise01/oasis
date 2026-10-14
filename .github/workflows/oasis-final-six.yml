@@ -1,0 +1,39 @@
+name: OASIS FINAL SIX acceptance gates
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/final-six/**'
+      - '.github/workflows/oasis-final-six.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  final-six:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm immutable floor
+        working-directory: architecture/diatom-diamond
+        run: |
+          echo '47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b  frozen/dual5-floor-v0.7/dual5.mjs' | sha256sum --check
+      - name: Build same-source Rust native and WASM OBF2
+        working-directory: architecture/diatom-diamond/obf2-rust-dualtarget-v2.4
+        run: |
+          set -euo pipefail
+          rustup target add wasm32-unknown-unknown
+          rustc --edition=2021 -C opt-level=3 kernel.rs -o kernel_native
+          rustc --edition=2021 --target wasm32-unknown-unknown --crate-type cdylib \
+            -C opt-level=3 -C link-arg=--export-memory \
+            -C link-arg=--max-memory=8388608 kernel.rs -o obf2_rust.wasm
+      - name: Execute only six numbered production gates
+        working-directory: architecture/diatom-diamond
+        run: node final-six/final-six.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oasis-final-six-gate-results
+          path: architecture/diatom-diamond/final-six/final-six-results.json
