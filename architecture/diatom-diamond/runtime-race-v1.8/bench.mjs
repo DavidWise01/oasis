@@ -1,0 +1,6 @@
+import {performance} from 'node:perf_hooks';
+const CODE='UUDDLRLRBASS';
+function op(a,x,inv){const n=32;if(x==='U'||x==='D'||x==='A'){let k=x==='U'?1:x==='D'?-1:2;if(inv)k=-k;k=(k%n+n)%n;const tmp=new Uint8Array(32);for(let i=0;i<n;i++)tmp[(i+k)%n]=a[i];a.set(tmp);}else if(x==='L'||x==='R'){for(let i=x==='L'?0:1;i+1<n;i+=2)[a[i],a[i+1]]=[a[i+1],a[i]];}else if(x==='B'){for(let i=0;i<16;i++)[a[i],a[31-i]]=[a[31-i],a[i]];}}
+function perm(a,inv){for(let p=0;p<5;p++)for(let s=0;s<12;s++)op(a,CODE[inv?11-s:s],inv);}
+function run(n){let ck=2166136261>>>0;for(let first=0;first<n;first+=32){const src=new Uint8Array(32),pos=new Uint8Array(32),neg=new Uint8Array(32);for(let j=0;j<32;j++)src[j]=(first+j)%44;pos.set(src);for(let j=0;j<32;j++)neg[j]=src[31-j];perm(pos,false);perm(neg,true);const left=pos.slice(),right=neg.slice();perm(left,true);perm(right,false);for(let j=0;j<32;j++)if(left[j]!==src[j]||right[31-j]!==src[j])throw Error('mismatch');for(const x of pos)ck=Math.imul(ck^x,16777619)>>>0;for(const x of neg)ck=Math.imul(ck^x,16777619)>>>0;}return ck;}
+const n=Number(process.argv[2]||32768);const t=performance.now();const ck=run(n);console.log(JSON.stringify({runtime:'node',tokens:n,checksum:ck,elapsed_s:(performance.now()-t)/1e3}));
