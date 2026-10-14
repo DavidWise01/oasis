@@ -31,3 +31,43 @@ check('preserved interactive cycle',()=>assert.match(html,/id="cycle-next"/));
 check('preserved interactive codec',()=>assert.match(html,/id="encoder-input"/));
 check('drill result surface',()=>assert.match(html,/id="fault-status"/));
 console.log(`PASS ${passed}/${passed} Confluence page checks`);
+
+// Confluence v3 additive check suite. All mappings are structural analogies;
+// gate fractions are integer ticks of 300, not measured universal phenomena.
+const inventory=JSON.parse(fs.readFileSync(path.join(__dirname,'analogy-stack-v1.json'),'utf8'));
+const match=html.match(/<script type="application\/json" id="analogy-data">([\s\S]*?)<\/script>/);
+check('inline inventory exists',()=>assert.ok(match));
+const embed=JSON.parse(match[1]);
+check('inline inventory equals manifest',()=>assert.deepEqual(embed,inventory));
+check('18 domains',()=>assert.equal(inventory.domains.length,18));
+check('4 groups',()=>assert.deepEqual([...new Set(inventory.domains.map(d=>d.group))],['computing','life','physical','human']));
+check('threshold symbols',()=>assert.deepEqual(inventory.thresholds.map(g=>g.notation),['1/4w','2/3m','3/4s','4/4-+']));
+check('threshold tick ratios',()=>assert.deepEqual(inventory.thresholds.map(g=>g.ticks),[75,200,225,300]));
+check('scale 300',()=>assert.equal(inventory.tickScale,300));
+check('bio caution',()=>assert.match(inventory.domains.find(d=>d.name==='Genetics & epigenetics').boundary,/No proven shortcut/));
+check('nuclear forces not asserted',()=>assert.match(html,/not the weak and strong nuclear forces/));
+check('witness gate',()=>assert.match(html,/stage===4&&witness===true/));
+check('genesis disabled',()=>assert.match(html,/genesis:'DISABLED'/));
+check('slider',()=>assert.match(html,/id="analogy-signal"/));
+check('selector',()=>assert.match(html,/id="analogy-discipline"/));
+check('matrix',()=>assert.match(html,/id="analogy-crosswalk"/));
+check('v3 audit',()=>assert.match(html,/CONFLUENCE_V3_AUDIT/));
+const seen=new Set();
+for(const d of inventory.domains){
+  check('unique '+d.name,()=>{assert.ok(!seen.has(d.name));seen.add(d.name)});
+  check('stages '+d.name,()=>{for(const p of ['weak','medium','strong','close'])assert.ok(d[p].length>=9)});
+  check('caveat '+d.name,()=>assert.ok(d.boundary.length>=25));
+  check('source '+d.name,()=>assert.match(d.source,/^https:\/\//));
+  check('confidence '+d.name,()=>assert.ok(['A','B','C'].includes(d.confidence)));
+}
+function expectedGate(t){return t===300?4:t>=225?3:t>=200?2:t>=75?1:0}
+for(let t=0;t<=300;t++)check('integer tick '+t,()=>{
+  const g=expectedGate(t);
+  assert.ok(g>=0&&g<=4);
+  assert.equal(g>0,t>=75);
+  assert.equal(g>=2,t>=200);
+  assert.equal(g>=3,t>=225);
+  assert.equal(g===4,t===300);
+});
+check('monotonic gate order',()=>assert.ok(inventory.thresholds.every((g,i)=>i===0||g.ticks>inventory.thresholds[i-1].ticks)));
+console.log('PASS '+passed+'/'+passed+' Confluence v3 combined checks');

@@ -1,0 +1,250 @@
+{
+  "version": "1.0",
+  "status": "additive-overlay",
+  "notPhysicalLaw": true,
+  "thresholds": [
+    {
+      "key": "w",
+      "notation": "1/4w",
+      "ticks": 75,
+      "label": "WEAK / DETECT"
+    },
+    {
+      "key": "m",
+      "notation": "2/3m",
+      "ticks": 200,
+      "label": "MEDIUM / COUPLE"
+    },
+    {
+      "key": "s",
+      "notation": "3/4s",
+      "ticks": 225,
+      "label": "STRONG / ACT"
+    },
+    {
+      "key": "c",
+      "notation": "4/4-+",
+      "ticks": 300,
+      "label": "CLOSURE / WITNESS"
+    }
+  ],
+  "tickScale": 300,
+  "domains": [
+    {
+      "group": "computing",
+      "name": "Control engineering",
+      "mechanism": "feedback threshold",
+      "weak": "Sense disturbance",
+      "medium": "Combine error and feedback",
+      "strong": "Actuate under guardrails",
+      "close": "Verify response and reset",
+      "boundary": "Structural analogy: actual controller setpoints are application-specific.",
+      "confidence": "B",
+      "source": "https://www.nist.gov/"
+    },
+    {
+      "group": "computing",
+      "name": "Digital electronics",
+      "mechanism": "comparator / state machine",
+      "weak": "Recognize input voltage",
+      "medium": "Condition and latch a state",
+      "strong": "Switch an output when designed guard fires",
+      "close": "Acknowledge stable output",
+      "boundary": "Strong engineering analogy. No generic 25/66⅔/75/100 voltage thresholds.",
+      "confidence": "B",
+      "source": "https://www.allaboutcircuits.com/textbook/digital/chpt-7/"
+    },
+    {
+      "group": "computing",
+      "name": "Software transactions",
+      "mechanism": "validate → commit → receipt",
+      "weak": "Validate input",
+      "medium": "Resolve dependencies and prepare",
+      "strong": "Commit an authorized transition",
+      "close": "Audit and reconcile receipt",
+      "boundary": "Closest literal software implementation: four explicit stages can be designed.",
+      "confidence": "A",
+      "source": "https://github.com/DavidWise01/oasis/tree/main/architecture/astrophage-full-stack-v1"
+    },
+    {
+      "group": "computing",
+      "name": "Computer networking",
+      "mechanism": "feedback and acknowledgment",
+      "weak": "Detect queue growth",
+      "medium": "Coordinate feedback / ECN marking",
+      "strong": "Change send behavior",
+      "close": "Acknowledge state and measure result",
+      "boundary": "ECN is established; these four fractions are not from the networking standard.",
+      "confidence": "B",
+      "source": "https://www.rfc-editor.org/rfc/rfc3168"
+    },
+    {
+      "group": "computing",
+      "name": "Cybersecurity",
+      "mechanism": "detect → contain → recover",
+      "weak": "Detect anomaly",
+      "medium": "Correlate evidence",
+      "strong": "Isolate or respond",
+      "close": "Verify recovery and retain log",
+      "boundary": "NIST CSF 2.0 has SIX functions, not these four thresholds.",
+      "confidence": "B",
+      "source": "https://www.nist.gov/news-events/news/2024/02/nist-releases-version-20-landmark-cybersecurity-framework"
+    },
+    {
+      "group": "computing",
+      "name": "Information coding",
+      "mechanism": "encode → transport → verify",
+      "weak": "Detect a source symbol",
+      "medium": "Frame and carry a codeword",
+      "strong": "Accept a decoded payload",
+      "close": "Check integrity / receipt",
+      "boundary": "Data integrity can be checked exactly; threshold fractions are optional policy.",
+      "confidence": "A",
+      "source": "https://github.com/DavidWise01/oasis/tree/main/architecture/character-register-44"
+    },
+    {
+      "group": "life",
+      "name": "Neuroscience",
+      "mechanism": "stimulus / integration / spike",
+      "weak": "Detect stimulus",
+      "medium": "Integrate synaptic input",
+      "strong": "Fire action potential at real neural threshold",
+      "close": "Repolarize / refractory return",
+      "boundary": "Action potentials are all-or-none. Strong is not a larger spike and these fractions are not membrane voltages.",
+      "confidence": "B",
+      "source": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-4-the-action-potential"
+    },
+    {
+      "group": "life",
+      "name": "Developmental bioelectricity",
+      "mechanism": "ion gradients → coordinated pattern",
+      "weak": "Sense membrane potential",
+      "medium": "Couple cells by ion and gap-junction pathways",
+      "strong": "Change cell behavior / pattern",
+      "close": "Maintain, repair or remodel organization",
+      "boundary": "Real bioelectric effects exist, but no universal four-gate or generation-skipping law.",
+      "confidence": "B",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/33999994/"
+    },
+    {
+      "group": "life",
+      "name": "Immunology",
+      "mechanism": "recognition / activation / resolution",
+      "weak": "Recognize an antigen",
+      "medium": "Integrate co-stimulation and context",
+      "strong": "Mount context-dependent effector response",
+      "close": "Resolve response / establish memory",
+      "boundary": "Real immune cascades use many nonlinear signals; not four fixed stimulus fractions.",
+      "confidence": "B",
+      "source": "https://www.ncbi.nlm.nih.gov/books/NBK10757/"
+    },
+    {
+      "group": "life",
+      "name": "Genetics & epigenetics",
+      "mechanism": "exposure / regulation / inheritance test",
+      "weak": "Record exposure or signal",
+      "medium": "Integrate developmental / epigenetic regulation",
+      "strong": "Observe phenotype or cell fate",
+      "close": "Check lineage and direct exposure",
+      "boundary": "No proven shortcut that skips human generations. Gestational F0-F2 may be directly exposed; F3 is first unexposed.",
+      "confidence": "B",
+      "source": "https://www.nature.com/articles/s41467-018-05445-5"
+    },
+    {
+      "group": "physical",
+      "name": "Chemistry & materials",
+      "mechanism": "reaction coordinate",
+      "weak": "Detect reagent / condition",
+      "medium": "Couple interactions",
+      "strong": "Cross an energy barrier or phase boundary",
+      "close": "Measure product / equilibrium",
+      "boundary": "Reaction kinetics and phase transitions have real thresholds but no generic gate fractions.",
+      "confidence": "B",
+      "source": "https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps"
+    },
+    {
+      "group": "physical",
+      "name": "Ecology",
+      "mechanism": "pressure / response / regime change",
+      "weak": "Observe early stress",
+      "medium": "Accumulate interaction effects",
+      "strong": "Potential transition in ecosystem state",
+      "close": "Monitor recovery and adaptation",
+      "boundary": "Many environmental tipping points are nonlinear, uncertain, and not fixed at 75%.",
+      "confidence": "B",
+      "source": "https://www.ipcc.ch/report/ar6/wg2/"
+    },
+    {
+      "group": "physical",
+      "name": "Energy systems",
+      "mechanism": "measurement / dispatch / balance",
+      "weak": "Measure demand",
+      "medium": "Coordinate generation and storage",
+      "strong": "Dispatch controlled output",
+      "close": "Reconcile supply, losses and meters",
+      "boundary": "Energy is conserved under physical laws; 4/4 symbolizes audit completeness, not free energy.",
+      "confidence": "B",
+      "source": "https://www.energy.gov/"
+    },
+    {
+      "group": "human",
+      "name": "Learning & education",
+      "mechanism": "notice / integrate / demonstrate",
+      "weak": "Encounter a new concept",
+      "medium": "Practice and connect prior knowledge",
+      "strong": "Demonstrate ability in context",
+      "close": "Assess, reflect, and revise",
+      "boundary": "Pedagogical metaphor. Students do not share a universal 75% activation point.",
+      "confidence": "C",
+      "source": "https://www.nationalacademies.org/our-work/how-people-learn-ii-the-science-and-practice-of-learning"
+    },
+    {
+      "group": "human",
+      "name": "Social interaction",
+      "mechanism": "contact / trust / collaboration",
+      "weak": "Encounter another person",
+      "medium": "Build relationship / coordinate",
+      "strong": "Take joint action",
+      "close": "Review outcomes and obligations",
+      "boundary": "Human contact alters opportunities, not necessarily DNA or heritable epigenetics.",
+      "confidence": "C",
+      "source": "https://www.nature.com/articles/s41467-018-05445-5"
+    },
+    {
+      "group": "human",
+      "name": "Organizations & governance",
+      "mechanism": "signal / quorum / decision / audit",
+      "weak": "Surface an issue",
+      "medium": "Deliberate and assemble evidence",
+      "strong": "Authorize a bounded decision",
+      "close": "Record accountability / remedy",
+      "boundary": "A quorum can use explicit fractions, but 2/3 and 3/4 are chosen rules, not physical constants.",
+      "confidence": "A",
+      "source": "https://www.nist.gov/cyberframework"
+    },
+    {
+      "group": "human",
+      "name": "Economics & markets",
+      "mechanism": "information / coordination / settlement",
+      "weak": "Observe price or demand signal",
+      "medium": "Aggregate participant responses",
+      "strong": "Execute a trade or allocation",
+      "close": "Settle and reconcile obligations",
+      "boundary": "Structural metaphor; markets do not have universal thresholds or closure probabilities.",
+      "confidence": "C",
+      "source": "https://www.bis.org/"
+    },
+    {
+      "group": "human",
+      "name": "Music & rhythm",
+      "mechanism": "pickup / harmony / accent / cadence",
+      "weak": "Begin a phrase",
+      "medium": "Build consonance / tension",
+      "strong": "Accent or resolve a phrase",
+      "close": "Land cadence and continue",
+      "boundary": "Aesthetic timing analogy only; score percentages do not model acoustic forces.",
+      "confidence": "C",
+      "source": "https://www.loc.gov/collections/"
+    }
+  ]
+}

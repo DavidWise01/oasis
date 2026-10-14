@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080e13">
-  <meta name="description" content="Confluence / Ssaphone Substrate — a read-only Genesis witness, symbolic Ether medium, quanta-shaped event records, and a failure-ready KET field showcase.">
-  <title>Confluence · Ssaphone Substrate | KET / OaSIs</title>
+  <meta name="description" content="Confluence / Ssaphone Substrate — cross-discipline four-gate analogy explorer, read-only Genesis witness, symbolic Ether medium, and KET field showcase.">
+  <title>Confluence · Cross-Discipline Stack | KET / OaSIs</title>
   <style>
     :root{color-scheme:dark;--bg:#080e13;--panel:#111a20;--line:#24333d;--line2:#304752;--white:#f6f4e8;--muted:#a0b1b7;--teal:#2ae5d3;--gold:#ffd42a;--blue:#8ba8ff;--soft:#111f25}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6}
@@ -52,12 +52,24 @@
     .substrate-outer{background:radial-gradient(ellipse at 75% 9%,#14433c66,transparent 55%),linear-gradient(180deg,#0a1418,#0e1c20);border-top:1px solid #284345;border-bottom:1px solid #284345}.substrate-path{display:grid;grid-template-columns:minmax(0,1fr) 16px minmax(0,1fr) 16px minmax(0,1fr) 16px minmax(0,1fr);align-items:stretch;gap:12px}.subnode{background:#101e24;border:1px solid #31515a;border-radius:16px;padding:23px 18px 25px;min-width:0;display:flex;flex-direction:column}.subnode-icon{border-radius:12px;border:1px solid #32786f;display:grid;place-items:center;color:#68e7d8;background:#113630;width:40px;height:40px;font:700 19px ui-monospace;margin-bottom:30px}.subnode>span{font:700 10px ui-monospace;color:#94b5b8;letter-spacing:.12em}.subnode strong{font-size:20px;letter-spacing:-.04em;margin:10px 0;line-height:1.25;overflow-wrap:anywhere}.subnode p{color:#9db6bb;font-size:12px;line-height:1.6;margin:0}.subconnector{align-self:center;color:#6bcfc3;font:17px ui-monospace}.medium-band{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:19px;border:1px dashed #4d6c70;background:#0a1b20;border-radius:11px;padding:21px 24px}.medium-band strong{font:600 15px/1.7 ui-monospace;color:#e9f5ec;display:block;margin-top:10px}.medium-band strong span{color:#6ad3c6;padding:0 4px}.medium-band a{flex:none;text-decoration:none;color:#77eed7;font-size:12px;font-weight:750}.substrate-principle{color:#89bbb5;font-size:11px;padding-top:20px;overflow-wrap:anywhere}
     @media(max-width:960px){.protocol-strip{grid-template-columns:repeat(2,1fr)}.proto-cell:nth-child(2){border-right:0}.proto-cell:nth-child(-n+2){border-bottom:1px solid #39434a}.protocol-body{grid-template-columns:1fr}.substrate-path{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.subconnector{display:none}}
     @media(max-width:620px){.protocol-strip{grid-template-columns:1fr}.proto-cell,.proto-cell:nth-child(2){border-right:0;border-bottom:1px solid #39434a}.proto-cell:last-child{border-bottom:0}.substrate-path{grid-template-columns:1fr}.subnode-icon{margin-bottom:16px}.medium-band{align-items:start;flex-direction:column}.medium-band strong{font-size:12px}.protocol-code,.failure-panel{min-height:auto}.hero-state{font-size:9px}}
-  </style>
+  
+/* Confluence v3 additive cross-discipline stack */
+.analogy-section{background:linear-gradient(160deg,#0a171a,#101b23 44%,#0b1119);border-top:1px solid #264249;border-bottom:1px solid #264249}
+.gate-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0}.gate-tile{border:1px solid #395159;border-radius:13px;background:#111f26;padding:15px 14px;min-width:0}.gate-tile b{font:700 23px ui-monospace,monospace;color:#effbf8}.gate-tile span{display:block;font:700 10px ui-monospace;color:#83afb2;margin:7px 0}.gate-tile small{display:block;color:#b8c7c8;font-size:11px}.gate-tile.is-on{background:#18382f;border-color:var(--teal)}
+.analogy-workbench{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.28fr);gap:15px;margin:20px 0}.analogy-control{display:flex;flex-direction:column;gap:17px}.analogy-control label{display:block;font-size:12px;color:#c5d4d5;font-weight:700}.analogy-select,.analogy-range{width:100%;margin-top:9px}.analogy-select{background:#091920;color:#f6f5e9;border:1px solid #35505b;border-radius:9px;padding:13px;font-size:13px}.analogy-range{accent-color:var(--teal);cursor:pointer}
+.analogy-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.analogy-presets button{border:1px solid #35545b;border-radius:9px;color:#d6e9e9;background:#142931;padding:10px 2px;font:700 12px ui-monospace}.analogy-presets button:hover,.analogy-presets button[aria-pressed="true"]{border-color:#2ae5d3;background:#15463b}.analogy-check{display:flex;align-items:start;gap:10px;color:#cbdcda;font-size:12px!important;line-height:1.55}.analogy-check input{margin-top:4px;accent-color:var(--teal)}
+.analogy-value{font:700 35px ui-monospace;color:#e4f8ed;line-height:1.1}.analogy-value small{font-size:12px;color:#92b2b2}.analogy-status{padding:11px 14px;border:1px solid #35535b;background:#0b1d23;border-radius:9px;font:700 11px ui-monospace;color:#bce8e0;line-height:1.65}.analogy-status.is-blocked{border-color:#9e7745;color:#f6cf8e}
+.analogy-detail h3{font-size:25px;margin:8px 0}.analogy-detail .analogy-mechanism{color:#9ddcd0;font:12px ui-monospace}.analogy-detail .analogy-explain{color:#b5c7c8;font-size:12px;margin-top:12px;line-height:1.75}.analogy-gates{margin-top:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.analogy-step{padding:13px;border:1px solid #2b4851;border-radius:10px;background:#0b191f}.analogy-step.is-on{border-color:#2ae5d3;background:#10332e}.analogy-step.is-next{border-color:#bda662}.analogy-step strong{display:block;font:700 10px ui-monospace;color:#88e0d5}.analogy-step p{margin-top:7px;font-size:12px;color:#e2eeee}
+.analogy-key{font:10px ui-monospace;color:#a2b8bc;margin-top:17px}.crosswalk{border:1px solid #2a4049;border-radius:15px;overflow:auto}.crosswalk table{border-collapse:collapse;width:100%;min-width:740px;text-align:left}.crosswalk th,.crosswalk td{padding:12px 13px;border-bottom:1px solid #21343a;vertical-align:top;font-size:12px}.crosswalk th{font:700 10px ui-monospace;color:#a7dacf;background:#15262b;position:sticky;top:0}.crosswalk td{color:#bbc9cc}.crosswalk tr:hover td{background:#172831}.crosswalk td strong{color:#ebf2ee;font-size:12px}.crosswalk tr:last-child td{border-bottom:0}.analogy-tag{font:10px ui-monospace;border:1px solid #46606a;border-radius:5px;padding:3px 5px;color:#aed5ca;white-space:nowrap}.analogy-notes{border-left:2px solid #cfb771;margin-top:19px;padding:10px 16px;background:#3f35152b;font-size:12px;color:#bac9cb;line-height:1.8}
+@media(max-width:850px){.analogy-workbench{grid-template-columns:1fr}.gate-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.analogy-gates{grid-template-columns:1fr}.analogy-presets{grid-template-columns:repeat(2,1fr)}.gate-tile b{font-size:20px}}
+
+</style>
 </head>
 <body>
   <header class="topbar"><nav class="container nav" aria-label="Main navigation">
     <a href="../../" class="brand"><span class="brandmark" aria-hidden="true"></span><span>CONFLUENCE <small>OaSIs · KET / SAPPHON</small></span></a>
-    <div class="navlinks"><a href="#protocol">Protocol</a><a href="#substrate">Substrate</a><a href="#field">Field</a><a href="#cycle">Cycle</a><a href="#codec">Encoder</a><a href="#evidence">Evidence</a><a class="navgit" href="https://github.com/DavidWise01/oasis" rel="noopener noreferrer">GitHub ↗</a></div>
+    <div class="navlinks"><a href="#protocol">Protocol</a><a href="#substrate">Substrate</a><a href="#analogy">Disciplines</a><a href="#field">Field</a><a href="#cycle">Cycle</a><a href="#codec">Encoder</a><a href="#evidence">Evidence</a><a class="navgit" href="https://github.com/DavidWise01/oasis" rel="noopener noreferrer">GitHub ↗</a></div>
   </nav></header>
   <main>
     <section class="container hero" aria-labelledby="hero-title">
@@ -136,6 +148,30 @@ RETURN   :: WITNESS → SAFE STATE</pre>
       <div class="substrate-principle mono">{{ Worker = Engine = Life :: containₙ ⊕ flowₙ :: retain → operate → propagate }}</div>
     </div></section>
 
+
+    <section class="analogy-section" id="analogy" aria-labelledby="analogy-title"><div class="container section">
+      <div class="section-heading"><div><div class="tag">00.2 / Confluence · cross-discipline stack v1</div><h2 id="analogy-title">One gate grammar.<br><span class="accent">Many independent disciplines.</span></h2></div><p class="lede">Explore where detection, coupling, activation, and witnessed return resemble known mechanisms. The fractions are exact <em>Confluence simulation settings</em>, not shared scientific constants.</p></div>
+      <div class="gate-strip" id="analogy-gate-strip" aria-label="Four canonical Confluence gate thresholds">
+        <div class="gate-tile"><b>1/4<em>w</em></b><span>25%</span><small>Weak · detect</small></div>
+        <div class="gate-tile"><b>2/3<em>m</em></b><span>66⅔%</span><small>Medium · couple</small></div>
+        <div class="gate-tile"><b>3/4<em>s</em></b><span>75%</span><small>Strong · act</small></div>
+        <div class="gate-tile"><b>4/4<em>-+</em></b><span>100%</span><small>Closure · witness</small></div>
+      </div>
+      <div class="analogy-workbench">
+        <div class="panel analogy-control">
+          <div><div class="panel-kicker">CHOOSE ONE VIEW / ALL KEEP THEIR OWN LAWS</div><h3>Map the gate.</h3><label for="analogy-discipline">DISCIPLINE<select id="analogy-discipline" class="analogy-select"></select></label></div>
+          <div><label for="analogy-signal">SIMULATED NORMALIZED INPUT / 0 TO 300 TICKS</label><input type="range" id="analogy-signal" class="analogy-range" min="0" max="300" step="1" value="200" aria-describedby="analogy-thresholds"><div class="analogy-value" id="analogy-percent">66⅔% <small>200 / 300 ticks</small></div><div class="analogy-presets" aria-label="Exact gate presets"><button type="button" data-gate-ticks="75">1/4w</button><button type="button" data-gate-ticks="200">2/3m</button><button type="button" data-gate-ticks="225">3/4s</button><button type="button" data-gate-ticks="300">4/4-+</button></div></div>
+          <label class="analogy-check" for="analogy-witness"><input type="checkbox" id="analogy-witness"> Attach a simulated valid witness before allowing closure at 4/4-+</label>
+          <div class="analogy-status" id="analogy-status" aria-live="polite">COUPLED / 2/3m</div>
+          <p id="analogy-thresholds">Exact tick gates: 75 / 200 / 225 / 300 on a synthetic 300-tick scale. Fractions do not imply real-world probabilities, energy strength or biological generation counts.</p>
+        </div>
+        <div class="panel analogy-detail"><div class="panel-kicker">DISCIPLINE MAPPING / ANNOTATED ANALOGY</div><div id="analogy-class">COMPUTING</div><h3 id="analogy-name">—</h3><div class="analogy-mechanism" id="analogy-mechanism">—</div><div class="analogy-gates" id="analogy-gates"></div><p class="analogy-explain" id="analogy-boundary">—</p><div class="analogy-key" id="analogy-evidence">—</div><p class="analogy-explain"><a id="analogy-source" target="_blank" rel="noopener noreferrer" href="../../architecture/astrophage-full-stack-v1/FREEZE.md">Read supporting source ↗</a></p></div>
+      </div>
+      <div class="panel-kicker" style="margin:30px 0 10px">DISCIPLINE CROSSWALK / 18 ANALOGIES</div>
+      <div class="crosswalk" role="region" aria-label="18 disciplines mapped across four symbolic stages" tabindex="0"><table><thead><tr><th>SYSTEM</th><th>1/4w · DETECT</th><th>2/3m · COUPLE</th><th>3/4s · ACT</th><th>4/4-+ · ACCOUNT</th><th>GROUNDEDNESS</th></tr></thead><tbody id="analogy-crosswalk"></tbody></table></div>
+      <div class="analogy-notes"><strong>Boundary of the model.</strong> The stage order is a designed software analogy. Weak/medium/strong are not the weak and strong nuclear forces. “4/4” means normalized closure pending a witness—not energy conservation, experimental certainty, or an automatic authorization. Biology includes ions, molecular chemistry, genetics and mechanics; this page does not establish generation-skipping inheritance or faster-than-light signaling. Categories: <b>A</b> = implementable procedural mapping; <b>B</b> = scientifically documented underlying mechanism with symbolic gate assignments; <b>C</b> = interpretive analogy.</div>
+    </div></section>
+
     <section class="container section" id="field" aria-labelledby="field-title">
       <div class="section-heading"><div><div class="tag">01 / Field</div><h2 id="field-title">One field. Many layers.</h2></div><p class="lede">Two annotated inputs enter a bounded, symbolic hierarchy. Each layer keeps its identity while participating in the same audit path.</p></div>
       <div class="field-grid">
@@ -184,6 +220,7 @@ RETURN   :: WITNESS → SAFE STATE</pre>
     </section>
   </main>
   <footer><div class="container footer-flex"><div><strong>OaSIs / KET</strong> · Confluence / Ssaphone Substrate<br><span style="color:#6e8d91">Genesis: terminated · Execution: disabled · Containₙ ⊕ Flowₙ</span></div><div><a href="../../">OaSIs Home</a> &nbsp;·&nbsp; <a href="../../architecture/astrophage-full-stack-v1/reference_visual.html">Original Astrophage Visualization</a> &nbsp;·&nbsp; <a href="https://github.com/DavidWise01/oasis">Source on GitHub</a></div></div></footer>
+  <script type="application/json" id="analogy-data">{"version":"1.0","status":"additive-overlay","notPhysicalLaw":true,"thresholds":[{"key":"w","notation":"1/4w","ticks":75,"label":"WEAK / DETECT"},{"key":"m","notation":"2/3m","ticks":200,"label":"MEDIUM / COUPLE"},{"key":"s","notation":"3/4s","ticks":225,"label":"STRONG / ACT"},{"key":"c","notation":"4/4-+","ticks":300,"label":"CLOSURE / WITNESS"}],"tickScale":300,"domains":[{"group":"computing","name":"Control engineering","mechanism":"feedback threshold","weak":"Sense disturbance","medium":"Combine error and feedback","strong":"Actuate under guardrails","close":"Verify response and reset","boundary":"Structural analogy: actual controller setpoints are application-specific.","confidence":"B","source":"https://www.nist.gov/"},{"group":"computing","name":"Digital electronics","mechanism":"comparator / state machine","weak":"Recognize input voltage","medium":"Condition and latch a state","strong":"Switch an output when designed guard fires","close":"Acknowledge stable output","boundary":"Strong engineering analogy. No generic 25/66⅔/75/100 voltage thresholds.","confidence":"B","source":"https://www.allaboutcircuits.com/textbook/digital/chpt-7/"},{"group":"computing","name":"Software transactions","mechanism":"validate → commit → receipt","weak":"Validate input","medium":"Resolve dependencies and prepare","strong":"Commit an authorized transition","close":"Audit and reconcile receipt","boundary":"Closest literal software implementation: four explicit stages can be designed.","confidence":"A","source":"https://github.com/DavidWise01/oasis/tree/main/architecture/astrophage-full-stack-v1"},{"group":"computing","name":"Computer networking","mechanism":"feedback and acknowledgment","weak":"Detect queue growth","medium":"Coordinate feedback / ECN marking","strong":"Change send behavior","close":"Acknowledge state and measure result","boundary":"ECN is established; these four fractions are not from the networking standard.","confidence":"B","source":"https://www.rfc-editor.org/rfc/rfc3168"},{"group":"computing","name":"Cybersecurity","mechanism":"detect → contain → recover","weak":"Detect anomaly","medium":"Correlate evidence","strong":"Isolate or respond","close":"Verify recovery and retain log","boundary":"NIST CSF 2.0 has SIX functions, not these four thresholds.","confidence":"B","source":"https://www.nist.gov/news-events/news/2024/02/nist-releases-version-20-landmark-cybersecurity-framework"},{"group":"computing","name":"Information coding","mechanism":"encode → transport → verify","weak":"Detect a source symbol","medium":"Frame and carry a codeword","strong":"Accept a decoded payload","close":"Check integrity / receipt","boundary":"Data integrity can be checked exactly; threshold fractions are optional policy.","confidence":"A","source":"https://github.com/DavidWise01/oasis/tree/main/architecture/character-register-44"},{"group":"life","name":"Neuroscience","mechanism":"stimulus / integration / spike","weak":"Detect stimulus","medium":"Integrate synaptic input","strong":"Fire action potential at real neural threshold","close":"Repolarize / refractory return","boundary":"Action potentials are all-or-none. Strong is not a larger spike and these fractions are not membrane voltages.","confidence":"B","source":"https://openstax.org/books/anatomy-and-physiology-2e/pages/12-4-the-action-potential"},{"group":"life","name":"Developmental bioelectricity","mechanism":"ion gradients → coordinated pattern","weak":"Sense membrane potential","medium":"Couple cells by ion and gap-junction pathways","strong":"Change cell behavior / pattern","close":"Maintain, repair or remodel organization","boundary":"Real bioelectric effects exist, but no universal four-gate or generation-skipping law.","confidence":"B","source":"https://pubmed.ncbi.nlm.nih.gov/33999994/"},{"group":"life","name":"Immunology","mechanism":"recognition / activation / resolution","weak":"Recognize an antigen","medium":"Integrate co-stimulation and context","strong":"Mount context-dependent effector response","close":"Resolve response / establish memory","boundary":"Real immune cascades use many nonlinear signals; not four fixed stimulus fractions.","confidence":"B","source":"https://www.ncbi.nlm.nih.gov/books/NBK10757/"},{"group":"life","name":"Genetics \u0026 epigenetics","mechanism":"exposure / regulation / inheritance test","weak":"Record exposure or signal","medium":"Integrate developmental / epigenetic regulation","strong":"Observe phenotype or cell fate","close":"Check lineage and direct exposure","boundary":"No proven shortcut that skips human generations. Gestational F0-F2 may be directly exposed; F3 is first unexposed.","confidence":"B","source":"https://www.nature.com/articles/s41467-018-05445-5"},{"group":"physical","name":"Chemistry \u0026 materials","mechanism":"reaction coordinate","weak":"Detect reagent / condition","medium":"Couple interactions","strong":"Cross an energy barrier or phase boundary","close":"Measure product / equilibrium","boundary":"Reaction kinetics and phase transitions have real thresholds but no generic gate fractions.","confidence":"B","source":"https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps"},{"group":"physical","name":"Ecology","mechanism":"pressure / response / regime change","weak":"Observe early stress","medium":"Accumulate interaction effects","strong":"Potential transition in ecosystem state","close":"Monitor recovery and adaptation","boundary":"Many environmental tipping points are nonlinear, uncertain, and not fixed at 75%.","confidence":"B","source":"https://www.ipcc.ch/report/ar6/wg2/"},{"group":"physical","name":"Energy systems","mechanism":"measurement / dispatch / balance","weak":"Measure demand","medium":"Coordinate generation and storage","strong":"Dispatch controlled output","close":"Reconcile supply, losses and meters","boundary":"Energy is conserved under physical laws; 4/4 symbolizes audit completeness, not free energy.","confidence":"B","source":"https://www.energy.gov/"},{"group":"human","name":"Learning \u0026 education","mechanism":"notice / integrate / demonstrate","weak":"Encounter a new concept","medium":"Practice and connect prior knowledge","strong":"Demonstrate ability in context","close":"Assess, reflect, and revise","boundary":"Pedagogical metaphor. Students do not share a universal 75% activation point.","confidence":"C","source":"https://www.nationalacademies.org/our-work/how-people-learn-ii-the-science-and-practice-of-learning"},{"group":"human","name":"Social interaction","mechanism":"contact / trust / collaboration","weak":"Encounter another person","medium":"Build relationship / coordinate","strong":"Take joint action","close":"Review outcomes and obligations","boundary":"Human contact alters opportunities, not necessarily DNA or heritable epigenetics.","confidence":"C","source":"https://www.nature.com/articles/s41467-018-05445-5"},{"group":"human","name":"Organizations \u0026 governance","mechanism":"signal / quorum / decision / audit","weak":"Surface an issue","medium":"Deliberate and assemble evidence","strong":"Authorize a bounded decision","close":"Record accountability / remedy","boundary":"A quorum can use explicit fractions, but 2/3 and 3/4 are chosen rules, not physical constants.","confidence":"A","source":"https://www.nist.gov/cyberframework"},{"group":"human","name":"Economics \u0026 markets","mechanism":"information / coordination / settlement","weak":"Observe price or demand signal","medium":"Aggregate participant responses","strong":"Execute a trade or allocation","close":"Settle and reconcile obligations","boundary":"Structural metaphor; markets do not have universal thresholds or closure probabilities.","confidence":"C","source":"https://www.bis.org/"},{"group":"human","name":"Music \u0026 rhythm","mechanism":"pickup / harmony / accent / cadence","weak":"Begin a phrase","medium":"Build consonance / tension","strong":"Accent or resolve a phrase","close":"Land cadence and continue","boundary":"Aesthetic timing analogy only; score percentages do not model acoustic forces.","confidence":"C","source":"https://www.loc.gov/collections/"}]}</script>
   <script>
     'use strict';
     const phases=Object.freeze([
@@ -235,6 +272,67 @@ RETURN   :: WITNESS → SAFE STATE</pre>
     $('fault-run').addEventListener('click',()=>{const result=evaluateDrill($('fault-select').value);drillSequence++;drillTrace.push(String(drillSequence).padStart(3,'0')+' / '+result.reason+' / '+result.decision+' / WITNESS RETAINED');renderDrill(result)});
     $('fault-clear').addEventListener('click',()=>{drillTrace.length=0;drillSequence=0;$('fault-select').value='valid';renderDrill(null)});
     window.CONFLUENCE_V2_AUDIT=Object.freeze({genesis:GENESIS_CONTRACT,baseline:evaluateDrill('valid'),outOfRange:evaluateDrill('token'),missingWitness:evaluateDrill('witness'),mismatch:evaluateDrill('mismatch')});
+
+    // Confluence v3: exact rational gate thresholds as INTEGER ticks on a 300-tick demonstration scale.
+    // These are design policy levels, not universal physical or biological thresholds.
+    const ANALOGY_STACK=Object.freeze(JSON.parse($('analogy-data').textContent));
+    const ANALOGY_GATES=Object.freeze(ANALOGY_STACK.thresholds.map(g=>Object.freeze(g)));
+    function analogyStage(ticks){
+      if(!Number.isInteger(ticks)||ticks<0||ticks>300)throw new RangeError('input must be integer ticks from 0 to 300');
+      return ticks===300?4:ticks>=225?3:ticks>=200?2:ticks>=75?1:0;
+    }
+    function analogyDecision(ticks,witness){
+      const stage=analogyStage(ticks);
+      return Object.freeze({stage,threshold:stage?ANALOGY_GATES[stage-1].notation:'BELOW GATE',closed:stage===4&&witness===true,needsWitness:stage===4&&witness!==true,genesis:'DISABLED'});
+    }
+    const domainSelect=$('analogy-discipline');
+    const groups=Object.freeze({computing:'01 / COMPUTING & CONTROL',life:'02 / LIFE SCIENCES',physical:'03 / PHYSICAL SYSTEMS',human:'04 / HUMAN & CULTURAL SYSTEMS'});
+    for(const [group,label] of Object.entries(groups)){
+      const opt=document.createElement('optgroup');opt.label=label;
+      for(const d of ANALOGY_STACK.domains.filter(x=>x.group===group)){const option=document.createElement('option');option.value=d.name;option.textContent=d.name;opt.appendChild(option)}
+      domainSelect.appendChild(opt);
+    }
+    const body=$('analogy-crosswalk');
+    for(const d of ANALOGY_STACK.domains){
+      const tr=document.createElement('tr');
+      for(const [value,kind] of [[d.name,'name'],[d.weak,'cell'],[d.medium,'cell'],[d.strong,'cell'],[d.close,'cell'],[d.confidence,'evidence']]){
+        const td=document.createElement('td');if(kind==='name'){const b=document.createElement('strong');b.textContent=value;td.appendChild(b);}else if(kind==='evidence'){const mark=document.createElement('span');mark.className='analogy-tag';mark.textContent=value;td.appendChild(mark)}else td.textContent=value;tr.appendChild(td)
+      }
+      body.appendChild(tr);
+    }
+    const domainByName=new Map(ANALOGY_STACK.domains.map(d=>[d.name,d]));
+    function renderAnalogy(){
+      const d=domainByName.get(domainSelect.value)||ANALOGY_STACK.domains[0];
+      const ticks=Number($('analogy-signal').value);
+      const witness=$('analogy-witness').checked;
+      const out=analogyDecision(ticks,witness);
+      const pct=ticks===200?'66⅔':(ticks/3).toFixed(2).replace(/\.00$/,'');
+      $('analogy-percent').replaceChildren(document.createTextNode(pct+'% '));
+      const small=document.createElement('small');small.textContent=ticks+' / 300 ticks';$('analogy-percent').append(small);
+      $('analogy-name').textContent=d.name;
+      $('analogy-class').textContent=groups[d.group];
+      $('analogy-mechanism').textContent=d.mechanism;
+      $('analogy-boundary').textContent=d.boundary;
+      $('analogy-evidence').textContent='MAPPING CLASS '+d.confidence+' / '+(d.confidence==='A'?'IMPLEMENTABLE PROCEDURAL MAPPING':d.confidence==='B'?'DOCUMENTED MECHANISM, SYMBOLIC THRESHOLDS':'INTERPRETIVE METAPHOR');
+      $('analogy-source').href=d.source;
+      const nodes=$('analogy-gates');nodes.replaceChildren();
+      for(let i=0;i<4;i++){
+        const gate=ANALOGY_GATES[i];const step=document.createElement('div');step.className='analogy-step'+(out.stage>=i+1?' is-on':out.stage===i?' is-next':'');
+        const head=document.createElement('strong');head.textContent=gate.notation+' · '+(i<3?['DETECT','COUPLE','ACT'][i]:'WITNESS');
+        const para=document.createElement('p');para.textContent=[d.weak,d.medium,d.strong,d.close][i];step.append(head,para);nodes.appendChild(step)
+      }
+      [...$('analogy-gate-strip').children].forEach((el,i)=>el.classList.toggle('is-on',out.stage>=i+1));
+      document.querySelectorAll('[data-gate-ticks]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.gateTicks)===ticks)));
+      const status=$('analogy-status');status.classList.toggle('is-blocked',out.needsWitness);
+      status.textContent=out.stage===0?'STANDBY / BELOW 1/4w':out.needsWitness?'4/4-+ REACHED / BLOCKED: MISSING WITNESS':out.closed?'4/4-+ / SIMULATED RECEIPT VERIFIED':out.threshold+' / '+['','DETECTED','COUPLED','ACTIVE'][out.stage];
+    }
+    domainSelect.addEventListener('change',renderAnalogy);
+    $('analogy-signal').addEventListener('input',renderAnalogy);
+    $('analogy-witness').addEventListener('change',renderAnalogy);
+    document.querySelectorAll('[data-gate-ticks]').forEach(button=>button.addEventListener('click',()=>{$('analogy-signal').value=button.dataset.gateTicks;renderAnalogy()}));
+    renderAnalogy();
+    window.CONFLUENCE_V3_AUDIT=Object.freeze({domains:ANALOGY_STACK.domains.length,groups:Object.keys(groups).length,gateTicks:ANALOGY_GATES.map(g=>g.ticks),passesExact:analogyStage(74)===0&&analogyStage(75)===1&&analogyStage(199)===1&&analogyStage(200)===2&&analogyStage(224)===2&&analogyStage(225)===3&&analogyStage(299)===3&&analogyStage(300)===4,closedOnlyWithWitness:!analogyDecision(300,false).closed&&analogyDecision(300,true).closed,genesisDisabled:GENESIS_CONTRACT.status==='DISABLED'});
+
   </script>
 </body>
 </html>
