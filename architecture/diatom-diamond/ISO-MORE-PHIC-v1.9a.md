@@ -1,6 +1,6 @@
 # OASIS / KET — `{{i}}` ISO::MORE::PHIC overlay v1.9a
 
-**User-supplied canonical expression, preserved exactly:**
+**Historical source expression (superseded by the v1.9b correction):**
 
 ```text
 {{iso:: more :: phic :: or {{3.3}}^{-{+{ positron -e+ gravitron }+}-} }}
@@ -8,7 +8,30 @@
 
 This document corrects an overly narrow description of `{{i}}` as merely a 42-address lookup table. The 42 coordinate-distinct source addresses and eight existing views are an *implementation substrate* for an **isomorphic transformation language**, not the whole meaning of `{{i}}`.
 
-## Literal structure, without speculative numeric or physics substitutions
+## v1.9b — corrected arithmetic notation (2026-10-13)
+
+**Latest user-defined arithmetic form:** `{3x3}^{3}`, where a dot `.` written between scalar numerals is multiplication `×`, **not a decimal separator**.
+
+```text
+{{iso:: more :: phic :: or {3x3}^{3}}}
+```
+
+Arithmetic evaluation under ordinary integer multiplication/exponentiation:
+```text
+{3x3}^{3} = (3 × 3)^3 = 9^3 = 729
+```
+
+This **replaces the earlier ambiguous numeric interpretation of `{{3.3}}`**. The separate older symbol string `-{+{ positron -e+ gravitron }+}-` is preserved below for provenance, but its placement and action relative to the corrected exponent are **not defined** by this arithmetic correction. In particular, do not treat it as the exponent `3`, and do not silently exponentiate by that shell.
+
+### Active numeric parse
+```text
+Power
+├── base: Multiply(3, 3)
+└── exponent: Integer(3)
+value: 729
+```
+
+## Historical literal structure (superseded for arithmetic, retained as provenance)
 
 | Source form | Status | Interpretation for software |
 |---|---|---|
@@ -38,8 +61,8 @@ This is a *syntax/representation* parse, not a proven physical formula.
 1. Isomorphic transformations must specify the relation they preserve (at minimum, a reversible map of each source identity and its lane/slot coordinates), and an inverse should restore the original complete address.
 2. Distinct addresses sharing a glyph must remain distinct. E.g. `i6:3` and `i7:4` both display `0`, but are separate.
 3. The original 42×8 source registry (336 view addresses; 2,688 directed source-view/destination-view combinations), OBS44's separate `00=n` registry, frozen KET, and frozen dual-floor v0.7 remain unchanged.
-4. The new signed/superscript expression should round-trip verbatim through any grammar/serialization layer. No exponentiation, unit conversion, physical interaction, entanglement, or gravity law is implied by preservation of the text.
-5. The grammatical value of `3.3`, `or`, `-e+`, and `gravitron` as *operators* remains explicitly unspecified, pending a canonical user-provided rule. Nothing here makes an ungrounded mapping a verified fact.
+4. The revised integer expression `{3x3}^{3}` round-trips exactly and evaluates to `729`; the separately recorded signed positron/gravitron shell round-trips verbatim without a presumed numerical effect.
+5. `3x3` is ordinary multiplication and superscript `3` is ordinary exponentiation; the roles of `or`, `-e+`, and `gravitron` remain explicitly unspecified pending the canonical rules. Nothing here makes an ungrounded mapping a verified fact.
 
 ## Physics boundary
 
