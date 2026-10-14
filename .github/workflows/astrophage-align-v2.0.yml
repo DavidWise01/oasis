@@ -1,0 +1,32 @@
+name: ASTROPHAGE Field v2.0 Alignment
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/astrophage-*.mjs'
+      - 'architecture/diatom-diamond/ASTROPHAGE-FIELD-v2.0.md'
+      - 'architecture/diatom-diamond/OBS44-address-table.csv'
+      - '.github/workflows/astrophage-align-v2.0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  symbol-routing-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Frozen OBS token bus regression
+        working-directory: architecture/diatom-diamond
+        run: node obs-token-bus-v1.2.test.mjs
+      - name: Original i graded chain regression
+        working-directory: architecture/diatom-diamond
+        run: node iso-graded-chain-v1.9c.test.mjs
+      - name: ASTROPHAGE 42x8x8 registry and dual-rail tests
+        working-directory: architecture/diatom-diamond
+        run: node astrophage-field-v2.0.test.mjs
+      - name: Local TCP framing recovery tests
+        working-directory: architecture/diatom-diamond
+        run: node astrophage-tcp-v2.0.test.mjs
