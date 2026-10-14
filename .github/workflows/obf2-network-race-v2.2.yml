@@ -1,0 +1,51 @@
+name: OBF2 Rust C++ Node TCP v2.2
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/obf2-tcp-v2.2/**'
+      - '.github/workflows/obf2-network-race-v2.2.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  network-race:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm pinned OBS floor and existing v2.1 compatibility
+        working-directory: architecture/diatom-diamond
+        run: |
+          sha256sum frozen/dual5-floor-v0.7/dual5.mjs
+          echo "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b  frozen/dual5-floor-v0.7/dual5.mjs" | sha256sum --check
+          node astrophage-compact-v2.1.test.mjs
+      - name: Build Rust and C++ (optimized)
+        working-directory: architecture/diatom-diamond/obf2-tcp-v2.2
+        run: |
+          rustc --version
+          g++ --version | head -1
+          rustc --edition=2021 -C opt-level=3 server-rust.rs -o server-rust
+          g++ -std=c++20 -O3 -Wall -Wextra -Werror server-cpp.cpp -o server-cpp
+      - name: Loopback TCP OBF2 interoperability and latency
+        working-directory: architecture/diatom-diamond/obf2-tcp-v2.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./server-cpp 31022 > cpp.log 2>&1 & CPP_PID=$!
+          ./server-rust 31023 > rust.log 2>&1 & RUST_PID=$!
+          node server-node.mjs 31024 > node.log 2>&1 & NODE_PID=$!
+          trap 'kill $CPP_PID $RUST_PID $NODE_PID 2>/dev/null || true' EXIT
+          sleep 2
+          kill -0 $CPP_PID
+          kill -0 $RUST_PID
+          kill -0 $NODE_PID
+          node bench-tcp.mjs '{"cpp":31022,"rust":31023,"node":31024}' network-results.json
+          cat network-results.json
+          ps -o pid,rss,comm -p $CPP_PID,$RUST_PID,$NODE_PID || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: obf2-tcp-v2.2-results
+          path: architecture/diatom-diamond/obf2-tcp-v2.2/network-results.json
