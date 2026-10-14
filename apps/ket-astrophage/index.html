@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080e13">
+  <meta name="description" content="KET Astrophage — a visual field guide to the frozen OaSIs full stack: containment, flow, reversible symbols and six-phase return.">
+  <title>KET · Astrophage Field — Sapphon / Confluence</title>
+  <style>
+    :root{color-scheme:dark;--bg:#080e13;--panel:#111a20;--line:#24333d;--line2:#304752;--white:#f6f4e8;--muted:#a0b1b7;--teal:#2ae5d3;--gold:#ffd42a;--blue:#8ba8ff;--soft:#111f25}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6}
+    body:before{content:"";pointer-events:none;position:fixed;inset:0;background:radial-gradient(700px 500px at 83% 10%,#12423b44,transparent 73%),radial-gradient(500px 620px at 0% 40%,#302b1940,transparent 75%);z-index:-1}
+    a{color:inherit}a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--teal);outline-offset:4px}button{font:inherit;cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}
+    .container{width:min(1180px,calc(100% - 48px));margin:auto}
+    .mono,code,pre,.eyebrow,.tag,.metric-number,.phase-value,.stepnum,.addr{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+    .topbar{position:sticky;z-index:50;top:0;backdrop-filter:blur(20px);background:#080e13dc;border-bottom:1px solid #21313a}
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:15px;letter-spacing:.13em}.brandmark{width:33px;height:33px;border-radius:50%;position:relative;border:1px solid #5ec9bd;display:grid;place-items:center;color:var(--teal);box-shadow:inset 0 0 15px #2ae5d327}.brandmark:before{content:"";width:15px;height:15px;position:absolute;border:1px solid var(--teal);border-radius:50%}.brandmark:after{content:"";width:3px;height:3px;background:var(--gold);border-radius:50%}.brand small{font-size:9px;letter-spacing:.1em;font-weight:600;color:#93a8ac;display:block;line-height:1}
+    .navlinks{display:flex;align-items:center;gap:25px}.navlinks a{text-decoration:none;color:#bdc9ca;font-size:11px;font-weight:750;letter-spacing:.13em;text-transform:uppercase}.navlinks a:hover{color:var(--teal)}.navlinks .navgit{border:1px solid #38505a;padding:10px 13px;border-radius:8px;color:var(--white)}
+    .hero{min-height:590px;display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center;padding:75px 0 65px;border-bottom:1px solid var(--line)}
+    .eyebrow{color:var(--teal);text-transform:uppercase;letter-spacing:.23em;font-size:10px;font-weight:700;display:flex;align-items:center;gap:11px}.eyebrow:before{content:"";width:19px;height:1px;background:var(--teal)}
+    h1,h2,h3,p{margin:0}h1{font-size:clamp(51px,6.2vw,94px);font-weight:700;letter-spacing:-.08em;line-height:1.035;margin:23px 0}.soft{color:#acc0c0}.accent{color:var(--teal)}.hero p{max-width:540px;font-size:16px;line-height:1.8;color:#a8b8bc}
+    .actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:32px}.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:9px;text-decoration:none;background:var(--teal);color:#052623;font-weight:800;font-size:12px;padding:13px 20px;border:1px solid var(--teal);transition:transform .15s,background .15s}.button:hover{transform:translateY(-2px);background:#64f9e8}.button.secondary{background:transparent;color:#e1edec;border-color:#47616b}.button.secondary:hover{background:#14262e}
+    .subline{color:#6e9096;letter-spacing:.1em;font-size:10px;margin-top:28px;display:flex;gap:16px;flex-wrap:wrap}.subline span:before{content:'✦';color:#9db69f;margin-right:8px}
+    .field-card{position:relative;isolation:isolate;aspect-ratio:1 / 1;min-height:350px;border:1px solid #2a3c45;border-radius:25px;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#15322d 0,#0b1920 53%,#0a1318 100%);box-shadow:0 30px 90px #0006}
+    .field-card:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff05 1px,transparent 1px),linear-gradient(90deg,#ffffff05 1px,transparent 1px);background-size:31px 31px;mask-image:radial-gradient(circle,#000 18%,transparent 70%);pointer-events:none}
+    .field-card svg{width:100%;height:100%;position:relative;z-index:2}.orbit{transform-origin:250px 250px;animation:turn 52s linear infinite}.orbit.reverse{animation-direction:reverse;animation-duration:67s}@keyframes turn{to{transform:rotate(360deg)}}
+    .svglabel{font-family:ui-monospace,monospace;letter-spacing:1.5px}.corner{position:absolute;z-index:3;color:#74979c;font:10px ui-monospace,monospace;letter-spacing:.11em}.corner.lt{top:19px;left:19px}.corner.rt{top:19px;right:19px}.corner.lb{bottom:19px;left:19px}.corner.rb{bottom:19px;right:19px}
+    .section{padding:88px 0}.section-heading{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:34px}.tag{font-size:10px;color:var(--teal);letter-spacing:.16em;font-weight:700;text-transform:uppercase}.section h2{font-size:clamp(31px,4.5vw,52px);line-height:1.13;letter-spacing:-.055em;margin:10px 0}.section .lede{max-width:570px;color:#a1b2b6;font-size:14px;line-height:1.8}
+    .metricstrip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:15px;background:#101a20;overflow:hidden;margin-top:-16px}.metric{padding:23px 26px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric-number{font-size:29px;color:#f0f4e6;font-weight:700;line-height:1.2}.metric small{display:block;color:#91a5ac;font-size:11px;margin-top:9px;letter-spacing:.04em}
+    .field-grid{display:grid;grid-template-columns:1fr .85fr;gap:16px}.panel{border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,#111c22,#0d161b);padding:27px;min-width:0}.panel-kicker{font:700 10px ui-monospace,monospace;color:#87a0a5;letter-spacing:.13em}.panel h3{font-size:21px;letter-spacing:-.03em;margin:9px 0 10px}.panel p{color:#9cb0b5;font-size:12px;line-height:1.7}
+    .layers{margin-top:25px;border:1px solid #385258;border-radius:17px;background:#0a151b;padding:22px 26px}.layer{padding:12px 14px;text-align:center;margin:7px auto;border:1px solid #2c4449;border-radius:8px;background:#102126;max-width:100%;font:700 11px ui-monospace,monospace;letter-spacing:.12em}.layer:nth-child(2){width:88%}.layer:nth-child(3){width:73%}.layer:nth-child(4){width:59%;border-color:#29675f;color:#b3fcf1}.layer-arrow{text-align:center;color:#608c8b;line-height:1}.bearrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:19px}.bear{background:#132229;border:1px solid #2b454c;border-radius:10px;padding:13px 6px;text-align:center}.bear b{display:block;color:#d2e8e4;font:700 11px ui-monospace}.bear span{display:block;color:#8da6a9;font:10px ui-monospace;margin-top:5px}
+    .channels{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:23px}.channel{border-radius:12px;padding:20px;border:1px solid var(--line2);background:#101d24}.channel .atom{font-size:35px;font-weight:700;letter-spacing:-.05em}.channel .wavelength{font:11px ui-monospace;color:#8da7ae}.swatch{height:4px;border-radius:5px;margin:16px 0}.channel .chem-note{font-size:11px;color:#a0b6bb;line-height:1.6}.assoc{margin:16px 0;border:1px dashed #587780;border-radius:11px;padding:12px;text-align:center;font-size:13px;color:#d9e9e6}
+    .cycle-section{background:linear-gradient(180deg,#0b141a 0%,#101c20 50%,#0b141a 100%);border-top:1px solid #1e3138;border-bottom:1px solid #1e3138}
+    .cycle-ui{display:grid;grid-template-columns:.66fr 1.34fr;gap:18px}.phase-main{min-height:345px;background:radial-gradient(ellipse at 15% 0,#2ae5d313,transparent 70%),#111d22;display:flex;flex-direction:column;justify-content:space-between}.phase-title{font-size:54px;letter-spacing:-.065em;line-height:1.05;margin:22px 0 9px}.phase-value{font-size:16px;color:var(--teal)}.phase-desc{color:#a5b8b9;font-size:13px;margin:9px 0;line-height:1.7}.cycle-controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:32px}.ctl{border:1px solid #385861;border-radius:7px;background:#182b30;padding:9px 13px;color:#e9f7f4;font-size:11px;font-weight:700}.ctl:hover{background:#23414a}.ctl.primary{background:#237c72;border-color:#2ad1bf;color:#fafffc}.phase-led{font:11px ui-monospace;color:#a6bec0}
+    .timeline{padding:24px}.timeline-list{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:25px}.phase-step{padding:20px 6px 16px;min-width:0;background:#122229;border:1px solid #2a424b;border-radius:10px;text-align:center;transition:background .2s,border .2s,transform .2s}.phase-step.is-active{background:#174239;border-color:#49dfc7;transform:translateY(-3px)}.phase-step:first-child,.phase-step:last-child{border-color:#43705d}.stepnum{font-size:9px;color:#8aa9b0}.stepname{font-weight:800;font-size:10px;margin:9px 0 6px;letter-spacing:.045em}.stepvalue{font:9px ui-monospace;color:#a5bec0}.timeline-arrow{color:#8caaaa;margin-top:25px}.line-equation{padding:16px 18px;margin-top:22px;background:#0a161b;border:1px solid #2f464d;border-radius:10px;font:12px/1.8 ui-monospace;color:#b4dfd6;overflow:auto}
+    .codec-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.editor{display:block;width:100%;min-height:118px;resize:vertical;background:#091319;color:#edf4ef;border:1px solid #304a52;border-radius:11px;padding:15px;font:13px/1.65 ui-monospace,monospace;margin:18px 0;outline:none}.readout{background:#091319;border:1px solid #2b444e;border-radius:10px;padding:17px;min-height:132px;word-break:break-word}.readout code{display:block;color:#b9eee1;letter-spacing:.03em;font-size:12px;line-height:1.85}.sample-encoding{color:#a5b4b6;font-size:11px;margin-top:10px;word-break:break-all}.status{display:inline-flex;align-items:center;gap:7px;font:11px ui-monospace;color:#9cead6}.status:before{content:"";width:7px;height:7px;background:#49e5c7;border-radius:50%}.status.bad{color:#ffafa0}.status.bad:before{background:#ff746b}
+    .mini-metrics{display:flex;gap:25px;margin-top:15px;flex-wrap:wrap}.mini-metrics div{font-size:11px;color:#98abb0}.mini-metrics b{font:700 17px ui-monospace;color:#e5edeb;display:block}
+    .bus{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin-top:20px}.buslane{border-radius:7px;border:1px solid #3a565b;background:#12272a;padding:10px 2px;text-align:center;color:#d3eee9;font:700 14px ui-monospace}.buslane small{display:block;color:#8da6a8;font:9px ui-monospace}.payload{max-height:128px;overflow:auto;font:10px/1.9 ui-monospace;color:#a3cfc9;word-break:break-all;margin:14px 0 0;white-space:pre-wrap}
+    .evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.evidence a{display:block;padding:25px;background:#111b21;border:1px solid var(--line);border-radius:14px;text-decoration:none;transition:border .15s,transform .15s}.evidence a:hover{border-color:#61a9a1;transform:translateY(-3px)}.evidence .e-num{font:11px ui-monospace;color:#86abae}.evidence h3{font-size:17px;letter-spacing:-.03em;margin:22px 0 9px}.evidence p{color:#99afb3;font-size:12px;line-height:1.65}.evidence .more{color:#74dcd0;display:inline-block;margin-top:24px;font:10px ui-monospace}
+    .footnote{border:1px solid #42534e;border-left:3px solid var(--gold);background:#1a211d;padding:17px 20px;margin-top:30px;border-radius:5px;color:#c2c8b7;font-size:12px;line-height:1.7}
+    footer{border-top:1px solid var(--line);padding:35px 0 55px}.footer-flex{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#8da1a5;font-size:11px}.footer-flex strong{color:#e3eeea}.footer-flex a:hover{color:var(--teal)}
+    @media(max-width:960px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:58px}.field-card{max-width:620px;margin:auto;width:100%}.field-grid,.cycle-ui,.codec-grid{grid-template-columns:1fr}.section{padding:65px 0}.section-heading{display:block}.metric{padding:17px}.metric-number{font-size:22px}}
+    @media(max-width:620px){.container{width:min(100% - 26px,1180px)}.nav{height:64px}.navlinks{gap:10px}.navlinks a:not(.navgit){display:none}.hero{padding:40px 0 54px}.field-card{min-height:0}.metricstrip{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.panel{padding:19px}.timeline-list{grid-template-columns:repeat(3,1fr)}.phase-title{font-size:43px}.evidence{grid-template-columns:1fr}.section h2{font-size:35px}.channels{grid-template-columns:1fr 1fr}.channel{padding:14px}.channel .atom{font-size:29px}.subline{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.orbit{animation:none}*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><nav class="container nav" aria-label="Main navigation">
+    <a href="../../" class="brand"><span class="brandmark" aria-hidden="true"></span><span>OaSIs <small>KET · SAPPHON / CONFLUENCE</small></span></a>
+    <div class="navlinks"><a href="#field">Field</a><a href="#cycle">Cycle</a><a href="#codec">Encoder</a><a href="#evidence">Evidence</a><a class="navgit" href="https://github.com/DavidWise01/oasis" rel="noopener noreferrer">GitHub ↗</a></div>
+  </nav></header>
+  <main>
+    <section class="container hero" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow">A frozen system with a living interface</div>
+        <h1 id="hero-title">Every river<br>carries a <span class="accent">witness.</span></h1>
+        <p>From a symbolic field to an auditable software system. One architecture connects containment, flow, interpretation, and return—without changing the frozen KET core.</p>
+        <div class="actions"><a class="button" href="#field">Enter the field <span aria-hidden="true">↘</span></a><a class="button secondary" href="../../architecture/astrophage-full-stack-v1/FREEZE.md">Read the freeze ↗</a></div>
+        <div class="subline mono"><span>K / E / T</span><span>THREE TRACKS</span><span>RELEASE 1.0 / 2026.10.13</span></div>
+      </div>
+      <div class="field-card" role="img" aria-label="Diagram of an abstract circular Astrophage field with sodium and chloride nodes, three bear observers, and a central diatome value of 129">
+        <span class="corner lt">-+ UUUU</span><span class="corner rt">uuuu -+</span><span class="corner lb">CONTAIN ⊕ FLOW</span><span class="corner rb">K · E · T</span>
+        <svg viewBox="0 0 500 500" aria-hidden="true">
+          <defs><radialGradient id="halo"><stop offset="0" stop-color="#2ae5d3" stop-opacity=".27"/><stop offset=".50" stop-color="#2ae5d3" stop-opacity=".05"/><stop offset="1" stop-color="#2ae5d3" stop-opacity="0"/></radialGradient><linearGradient id="ellipse" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#2ae5d3"/><stop offset="1" stop-color="#ffd42a"/></linearGradient></defs>
+          <circle cx="250" cy="250" r="200" fill="url(#halo)"/><circle cx="250" cy="250" r="183" fill="none" stroke="#477a7b" stroke-opacity=".3" stroke-dasharray="2 9"/>
+          <g class="orbit"><ellipse cx="250" cy="250" rx="198" ry="92" fill="none" stroke="#396c70" stroke-width="1.5" transform="rotate(-25 250 250)"/><ellipse cx="250" cy="250" rx="92" ry="198" fill="none" stroke="#52706d" stroke-opacity=".8" transform="rotate(-25 250 250)"/></g>
+          <g class="orbit reverse"><circle cx="250" cy="250" r="124" fill="none" stroke="#2ae5d3" stroke-opacity=".45" stroke-dasharray="3 9"/><circle cx="374" cy="250" r="5" fill="#2ae5d3"/><circle cx="188" cy="357.4" r="5" fill="#2ae5d3"/><circle cx="188" cy="142.6" r="5" fill="#2ae5d3"/></g>
+          <circle cx="250" cy="250" r="82" fill="#0b2125" stroke="#4d8881" stroke-width="1.5"/><circle cx="250" cy="250" r="67" fill="none" stroke="#316660" stroke-width="1" stroke-dasharray="2 5"/>
+          <g text-anchor="middle"><text x="250" y="218" fill="#84b8b1" class="svglabel" font-size="9">DIATOME</text><text x="250" y="270" fill="#f2f5dc" font-family="ui-monospace,monospace" font-size="57" font-weight="700">129</text><text x="250" y="292" fill="#8ad2c8" class="svglabel" font-size="10">10000001₂</text></g>
+          <g><circle cx="104" cy="165" r="25" fill="#382f11" stroke="#c1a63b"/><text x="104" y="168" text-anchor="middle" fill="#ffd42a" font-size="14" font-weight="700">Na⁺</text><text x="104" y="205" text-anchor="middle" fill="#ccb75c" class="svglabel" font-size="9">589 nm</text><circle cx="396" cy="165" r="25" fill="#0d3937" stroke="#2ae5d3"/><text x="396" y="168" text-anchor="middle" fill="#65f8e7" font-size="14" font-weight="700">Cl⁻</text><text x="396" y="205" text-anchor="middle" fill="#86d9ce" class="svglabel" font-size="9">850 nm</text></g>
+          <path d="M125 181 Q175 209 188 237 M375 181 Q327 210 313 235" fill="none" stroke="#6c8f86" stroke-dasharray="4 6" stroke-width="1.5"/>
+          <g class="svglabel" fill="#9abab6" font-size="10" text-anchor="middle"><text x="250" y="85">FIELD / OBSERVE</text><text x="250" y="428">BEAR 0 · BEAR 1 · BEAR 2</text><text x="250" y="448" fill="#4c8c87">0° / 120° / 240°</text></g>
+        </svg>
+      </div>
+    </section>
+
+    <div class="container metricstrip" aria-label="Key architecture figures">
+      <div class="metric"><div class="metric-number">44</div><small>REVERSIBLE SYMBOLS</small></div>
+      <div class="metric"><div class="metric-number">8 × 208</div><small>LOGICAL BUS POSITIONS</small></div>
+      <div class="metric"><div class="metric-number">03</div><small>BEAR OBSERVERS</small></div>
+      <div class="metric"><div class="metric-number">06</div><small>PHASES / ONE RETURN</small></div>
+    </div>
+
+    <section class="container section" id="field" aria-labelledby="field-title">
+      <div class="section-heading"><div><div class="tag">01 / Containment</div><h2 id="field-title">One field. Many layers.</h2></div><p class="lede">Two annotated inputs enter a bounded, symbolic hierarchy. Each layer keeps its identity while participating in the same audit path.</p></div>
+      <div class="field-grid">
+        <div class="panel"><div class="panel-kicker">THE NESTED FIELD</div><h3>From association to observation</h3><p>Logical containment, not a claim that one organism physically lives inside another.</p>
+          <div class="layers">
+            <div class="layer">NaCl <span style="color:var(--muted)">/ ASSOCIATION</span></div><div class="layer-arrow">↓</div>
+            <div class="layer">MYCELIUM</div><div class="layer-arrow">↓</div>
+            <div class="layer">CYCAD</div><div class="layer-arrow">↓</div>
+            <div class="layer">DIATOME / 10000001</div>
+            <div class="bearrow"><div class="bear"><b>BEAR 0</b><span>0°</span></div><div class="bear"><b>BEAR 1</b><span>120°</span></div><div class="bear"><b>BEAR 2</b><span>240°</span></div></div>
+          </div>
+        </div>
+        <div class="panel"><div class="panel-kicker">THE TWO ANNOTATED INPUTS</div><h3>Distinct channels, one field</h3><p>Displayed colors are interface conventions, not measurements of the material's light output.</p>
+          <div class="channels"><div class="channel"><div class="atom">Na⁺</div><div class="wavelength">11 / 589 nm</div><div class="swatch" style="background:#FFD42A"></div><div class="chem-note">589 nm denotes neutral sodium's characteristic emission, not the emission of Na⁺ in salt.</div></div>
+          <div class="channel"><div class="atom">Cl⁻</div><div class="wavelength">17 / 850 nm</div><div class="swatch" style="background:#2AE5D3"></div><div class="chem-note">850 nm is near-infrared. Teal is a visible proxy in this visual system.</div></div></div>
+          <div class="assoc">Na⁺ + Cl⁻ → <strong>NaCl</strong> <span style="color:#99aeb2">(association label)</span></div>
+          <p class="mono" style="color:#8bc6bb;margin-top:23px">FIELD_BOUNDARY<br>-+UUUU | | uuuu -+</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cycle-section" id="cycle" aria-labelledby="cycle-title"><div class="container">
+      <div class="section-heading"><div><div class="tag">02 / Emergence</div><h2 id="cycle-title">The six-phase return.</h2></div><p class="lede">Experience, record, remember, release, recover, return. Adjacent cycles share the LIVE boundary instead of duplicating it.</p></div>
+      <div class="cycle-ui">
+        <div class="panel phase-main"><div><div class="panel-kicker">CURRENT PHASE <span id="phase-counter">01 / 06</span></div><div class="phase-title" id="phase-title" aria-live="polite">LIVE</div><div class="phase-value" id="phase-value">+67.3367</div><p class="phase-desc" id="phase-description">The event is present; it can shape both a record and a future input.</p></div><div><div class="phase-led" id="cycle-events">EVENT 0000 · CYCLE 001</div><div class="cycle-controls"><button class="ctl primary" id="cycle-next" type="button">Next phase →</button><button class="ctl" id="cycle-play" type="button">▶ Auto run</button><button class="ctl" id="cycle-reset" type="button">↺ Reset</button></div></div></div>
+        <div class="panel timeline"><div class="panel-kicker">CANONICAL SEQUENCE / 4-DECIMAL INTEGER ARITHMETIC</div><div class="timeline-list" id="phase-steps" aria-label="Six cycle positions"></div><div class="line-equation">WRITE + FORGET = 0<br>FORGET + LIVE + WRITE = LIVE<br>(LIVE + FORGET) / 2 = <strong style="color:var(--gold)">17</strong><br>17 + 0.5 + 0.5 = <strong style="color:var(--gold)">18</strong></div><div class="timeline-arrow mono" id="cycle-witness">RETURN WITNESS / STANDBY</div></div>
+      </div>
+    </div></section>
+
+    <section class="container section" id="codec" aria-labelledby="codec-title">
+      <div class="section-heading"><div><div class="tag">03 / Translation</div><h2 id="codec-title">Nothing lost in transit.</h2></div><p class="lede">Type a message. Each UTF-8 byte becomes exactly two symbols from the frozen 44-address alphabet, then receives an ordinal route through eight OSIMODEL lanes.</p></div>
+      <div class="codec-grid">
+        <div class="panel"><div class="panel-kicker">INPUT / LIVE DEMO</div><h3>Reversible text encoding</h3><label for="encoder-input" style="font-size:12px;color:#b4c5c7">Plain text, including unsupported native registry characters</label><textarea id="encoder-input" class="editor" spellcheck="false" maxlength="500">honey → Na+ + Cl- / 10000001</textarea><div id="codec-status" class="status" role="status" aria-live="polite">ROUND TRIP VERIFIED</div><div class="mini-metrics"><div><b id="codec-bytes">—</b>UTF-8 BYTES</div><div><b id="codec-tokens">—</b>44-REGISTER TOKENS</div><div><b id="codec-route">—</b>LANES USED</div></div></div>
+        <div class="panel"><div class="panel-kicker">OUTPUT / FROZEN REGISTER</div><h3>Two tokens per byte</h3><div class="readout"><div class="tag" style="margin-bottom:9px;color:#8da6ac">FIRST 32 ADDRESS DIGITS</div><code id="codec-addresses">—</code><div class="sample-encoding" id="codec-symbols">—</div></div><div class="bus" aria-label="Eight OSIMODEL lanes"><div class="buslane">O<small>00</small></div><div class="buslane">S<small>01</small></div><div class="buslane">I<small>02</small></div><div class="buslane">M<small>03</small></div><div class="buslane">O<small>04</small></div><div class="buslane">D<small>05</small></div><div class="buslane">E<small>06</small></div><div class="buslane">L<small>07</small></div></div><pre class="payload" id="codec-packet">—</pre></div>
+      </div>
+    </section>
+
+    <section class="container section" id="evidence" aria-labelledby="evidence-title" style="padding-top:30px">
+      <div class="section-heading"><div><div class="tag">04 / Witness</div><h2 id="evidence-title">Show your work.</h2></div><p class="lede">A frozen release is valuable because its specification, code, and tests can be inspected separately from the imagery.</p></div>
+      <div class="evidence">
+        <a href="../../architecture/astrophage-full-stack-v1/FREEZE.md"><span class="e-num">01 / SPECIFICATION</span><h3>Immutable by convention.</h3><p>What is pinned, what is symbolic, and what this release does not claim.</p><span class="more">READ FREEZE ↗</span></a>
+        <a href="../../architecture/astrophage-full-stack-v1/adapter.mjs"><span class="e-num">02 / EXECUTION</span><h3>The actual adapter.</h3><p>Source for UTF-8↔base-44 conversion, OSIMODEL routing, and event integration.</p><span class="more">READ SOURCE ↗</span></a>
+        <a href="../../architecture/astrophage-full-stack-v1/test_adapter.mjs"><span class="e-num">03 / VERIFICATION</span><h3>Finite acceptance.</h3><p>Runnable deterministic tests, separate from all physical or biological hypotheses.</p><span class="more">READ TESTS ↗</span></a>
+      </div>
+      <div class="footnote"><strong>Engineering boundary.</strong> This is a symbolic field, interactive visualization, and reversible information model—not a simulation of actual chemical reactions, biological life, consciousness, quantum effects, or energy creation. The browser interactions demonstrate the published numerical and encoding contracts; they do not replace the repository's Node.js verification suite.</div>
+    </section>
+  </main>
+  <footer><div class="container footer-flex"><div><strong>OaSIs / KET</strong> · Sapphon / Confluence<br><span style="color:#6e8d91">Containₙ ⊕ Flowₙ · Retain / Operate / Propagate</span></div><div><a href="../../">OaSIs Home</a> &nbsp;·&nbsp; <a href="../../architecture/astrophage-full-stack-v1/reference_visual.html">Original Astrophage Visualization</a> &nbsp;·&nbsp; <a href="https://github.com/DavidWise01/oasis">Source on GitHub</a></div></div></footer>
+  <script>
+    'use strict';
+    const phases=Object.freeze([
+      {name:'LIVE',units:673367,desc:'The event is present; it can shape both a record and a future input.'},
+      {name:'WRITE',units:333367,desc:'Capture a new trace without replacing the original event.'},
+      {name:'REMEMBER',units:0,desc:'Retain an addressable witness of what actually occurred.'},
+      {name:'FORGET',units:-333367,desc:'Release working state without rewriting the historical witness.'},
+      {name:'READ',units:333367,desc:'Recover information and bring it back into the active path.'},
+      {name:'LIVE',units:673367,desc:'Return to the living boundary; it seeds the next traversal.'}
+    ]);
+    const $=id=>document.getElementById(id);
+    const steps=$('phase-steps');
+    phases.forEach((p,i)=>{const d=document.createElement('div');d.className='phase-step';d.innerHTML=`<div class="stepnum">0${i+1}</div><div class="stepname">${p.name}</div><div class="stepvalue">${p.units<0?'−':'+'}${(Math.abs(p.units)/10000).toFixed(4)}</div>`;steps.appendChild(d)});
+    let phase=0,cycles=1,events=0,timer=null;
+    function updateCycle(){const p=phases[phase];$('phase-counter').textContent=String(phase+1).padStart(2,'0')+' / 06';$('phase-title').textContent=p.name;$('phase-value').textContent=(p.units<0?'−':'+')+(Math.abs(p.units)/10000).toFixed(4);$('phase-description').textContent=p.desc;$('cycle-events').textContent='EVENT '+String(events).padStart(4,'0')+' · CYCLE '+String(cycles).padStart(3,'0');[...steps.children].forEach((el,i)=>{el.classList.toggle('is-active',i===phase);if(i===phase)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current')});$('cycle-witness').textContent=phase===5?'RETURN WITNESS / CLOSED · NEXT TRANSITION REUSES LIVE':'RETURN WITNESS / '+(phase===0?'READY':'IN PROGRESS');}
+    function nextCycle(){if(phase===5){phase=1;cycles++;}else phase++;events++;updateCycle()}
+    function stop(){if(timer){clearInterval(timer);timer=null};$('cycle-play').textContent='▶ Auto run'}
+    $('cycle-next').addEventListener('click',nextCycle);
+    $('cycle-reset').addEventListener('click',()=>{stop();phase=0;cycles=1;events=0;updateCycle()});
+    $('cycle-play').addEventListener('click',()=>{if(timer){stop();return}timer=setInterval(nextCycle,850);$('cycle-play').textContent='Ⅱ Pause'});
+    updateCycle();
+    const registry=Object.freeze(['n',...'abcdefghijklm',...'opqrstuvwx','y','z',...'12345678','9','>','|',':','"','^','(','-','+','.0x']);
+    if(registry.length!==44 || new Set(registry).size!==44)throw Error('44-symbol register invariant failed');
+    const lanes=[...'OSIMODEL'];
+    function encode44(text){const bytes=new TextEncoder().encode(text),addresses=[];for(const b of bytes)addresses.push(Math.floor(b/44),b%44);return {bytes,addresses}}
+    function decode44(a){if(a.length%2)throw Error('Odd token count');const bytes=new Uint8Array(a.length/2);for(let i=0;i<a.length;i+=2){const hi=a[i],lo=a[i+1],b=hi*44+lo;if(!Number.isInteger(hi)||!Number.isInteger(lo)||hi<0||hi>5||lo<0||lo>=44||b>255)throw Error('Invalid byte pair');bytes[i/2]=b}return new TextDecoder('utf-8',{fatal:true}).decode(bytes)}
+    function updateCodec(){try{const src=$('encoder-input').value;const {bytes,addresses}=encode44(src);const restored=decode44(addresses);if(restored!==src)throw Error('Round-trip mismatch');$('codec-status').textContent='ROUND TRIP VERIFIED';$('codec-status').className='status';$('codec-bytes').textContent=bytes.length;$('codec-tokens').textContent=addresses.length;$('codec-route').textContent='8 / 8';$('codec-addresses').textContent=addresses.slice(0,32).map(a=>String(a).padStart(2,'0')).join('  ')+(addresses.length>32?'  …':'')||'∅';$('codec-symbols').textContent='SYMBOLS: '+(addresses.slice(0,24).map(a=>registry[a]).join(' · ')||'∅');$('codec-packet').textContent=addresses.slice(0,16).map((state,ordinal)=>`${String(ordinal).padStart(2,'0')} / ${lanes[ordinal%8]}${ordinal%8} / ${String(ordinal%8*208+state).padStart(4,'0')} / token ${registry[state]}`).join('\n')+(addresses.length>16?'\n… additional packets omitted from preview':'');}catch(err){$('codec-status').textContent='ENCODING ERROR: '+err.message;$('codec-status').className='status bad';}}
+    $('encoder-input').addEventListener('input',updateCodec);updateCodec();
+    window.KET_PAGE_AUDIT=Object.freeze({tokens:registry.length,unique:new Set(registry).size===44,anchor:registry[0],terminal:registry[43],lanes:lanes.join(''),busSlots:8*208,phaseCount:phases.length,phaseBalance:phases[1].units+phases[3].units===0,phaseReturn:phases[0].units===phases[5].units,midpoint17:phases[0].units+phases[3].units===340000,allBytesRoundTrip:Array.from({length:256},(_,i)=>i).every(i=>{const pair=[Math.floor(i/44),i%44];return pair[0]*44+pair[1]===i;}),sampleRoundTrip:decode44(encode44('honey → NaCl / 10000001').addresses)==='honey → NaCl / 10000001'});
+  </script>
+</body>
+</html>
