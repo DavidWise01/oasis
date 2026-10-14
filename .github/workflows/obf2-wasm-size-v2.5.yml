@@ -1,0 +1,62 @@
+name: OBF2 Rust WASM distribution size race v2.5
+on:
+  push:
+    paths:
+      - '.github/workflows/obf2-wasm-size-v2.5.yml'
+      - 'architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  wasm-size:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build portable WASM speed and compact variants from v2.4
+        working-directory: architecture/diatom-diamond/obf2-rust-dualtarget-v2.5
+        run: |
+          set -euo pipefail
+          rustup target add wasm32-unknown-unknown
+          rustc --edition=2021 --target wasm32-unknown-unknown --crate-type cdylib \
+            -C opt-level=3 -C link-arg=--export-memory \
+            -C link-arg=--max-memory=8388608 \
+            ../obf2-rust-dualtarget-v2.4/kernel.rs -o speed.wasm
+          rustc --edition=2021 --target wasm32-unknown-unknown --crate-type cdylib \
+            -C opt-level=z -C lto=fat -C codegen-units=1 -C panic=abort -C strip=symbols \
+            -C link-arg=--export-memory -C link-arg=--max-memory=8388608 \
+            ../obf2-rust-dualtarget-v2.4/kernel.rs -o small.wasm
+          wc -c speed.wasm small.wasm
+          cp speed.wasm obf2_rust.wasm
+          node host.mjs bench | tee speed-bench.log
+          mv obf2_rust.wasm speed-backup.wasm
+          cp small.wasm obf2_rust.wasm
+          node host.mjs bench | tee small-bench.log
+      - name: Explain real result and pin original floor
+        working-directory: architecture/diatom-diamond
+        run: |
+          echo "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b  frozen/dual5-floor-v0.7/dual5.mjs" | sha256sum --check
+          node astrophage-compact-v2.1.test.mjs
+      - name: Generate machine-readable build comparison
+        working-directory: architecture/diatom-diamond/obf2-rust-dualtarget-v2.5
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          def get(name):
+              lines=pathlib.Path(name).read_text().splitlines()
+              return [json.loads(s[len('MICRO_RESULT='):]) for s in lines if s.startswith('MICRO_RESULT=')]
+          speed=get('speed-bench.log'); small=get('small-bench.log')
+          r={'status':'PASS','source':'exact frozen v2.4 Rust kernel both variants','speed_bytes':pathlib.Path('speed.wasm').stat().st_size,'small_bytes':pathlib.Path('small.wasm').stat().st_size,'speed_us':{str(x['size']):x['wasmMedianUs'] for x in speed},'small_us':{str(x['size']):x['wasmMedianUs'] for x in small},'speedup_by_size':{str(x['size']):round(x['wasmMedianUs']/y['wasmMedianUs'],3) for x,y in zip(speed,small)},'independent_assertions_each':8030}
+          pathlib.Path('distribution-results.json').write_text(json.dumps(r,indent=2)+'\n')
+          print('WASM_DISTRIBUTION='+json.dumps(r))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: obf2-wasm-speed-compact-v2.5
+          path: |
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/speed.wasm
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/small.wasm
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/distribution-results.json
