@@ -1,0 +1,20 @@
+name: ISO graded chain v1.9c
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/iso-graded-chain-v1.9c.mjs'
+      - 'architecture/diatom-diamond/iso-graded-chain-v1.9c.test.mjs'
+      - 'architecture/diatom-diamond/ISO-GRADED-CHAIN-v1.9c.md'
+      - '.github/workflows/iso-graded-chain-v1.9c.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node architecture/diatom-diamond/iso-graded-chain-v1.9c.test.mjs
