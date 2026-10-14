@@ -3,7 +3,7 @@ const MAX_N:usize=65536;
 fn u32be(a:&[u8])->usize{u32::from_be_bytes(a.try_into().unwrap()) as usize}
 fn crc32(a:&[u8])->u32{let mut c:u32=!0;for b in a{c^=*b as u32;for _ in 0..8{c=(c>>1)^if c&1!=0{0xedb88320}else{0};}}!c}
 fn op(a:&mut Vec<usize>,c:u8,inverse:bool){let n=a.len();if n==0{return;}
- match c{b'U'|b'D'|b'A'=>{let k=if c==b'U'{1}else if c==b'D'{-1}else{2};let k=if inverse{-k}else{k};a.rotate_right(k.rem_euclid(n as isize) as usize);},b'B'=>a.reverse(),b'L'|b'R'=>{let start=if c==b'L'{0}else{1};for i in (start..n-1).step_by(2){a.swap(i,i+1);}},_=>{}}
+ match c{b'U'|b'D'|b'A'=>{let k:isize=if c==b'U'{1}else if c==b'D'{-1}else{2};let k=if inverse{-k}else{k};a.rotate_right(k.rem_euclid(n as isize) as usize);},b'B'=>a.reverse(),b'L'|b'R'=>{let start=if c==b'L'{0}else{1};for i in (start..n-1).step_by(2){a.swap(i,i+1);}},_=>{}}
 }
 static MAPS:OnceLock<Mutex<BTreeMap<usize,(Vec<usize>,Vec<usize>)>>>=OnceLock::new();
 fn maps(n:usize)->(Vec<usize>,Vec<usize>){let cache=MAPS.get_or_init(||Mutex::new(BTreeMap::new()));let mut c=cache.lock().unwrap();if let Some(x)=c.get(&n){return x.clone()}
