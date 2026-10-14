@@ -67,3 +67,12 @@ jobs:
             architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/small.wasm
             architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/leanfast.wasm
             architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/distribution-results.json
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.4/kernel.rs
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.4/host.mjs
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/kernel.rs
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/host.mjs
+            architecture/diatom-diamond/astrophage-compact-v2.1.mjs
+            architecture/diatom-diamond/astrophage-field-v2.0.mjs
+            architecture/diatom-diamond/iso-graded-chain-v1.9c.mjs
+            architecture/diatom-diamond/frozen/dual5-floor-v0.7/dual5.mjs
+            architecture/diatom-diamond/OBF2-RUST-RELEASE-v2.5.md
