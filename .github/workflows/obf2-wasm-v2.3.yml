@@ -1,0 +1,43 @@
+name: OBF2 WASM v2.3 parity and benchmark
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/obf2-wasm-v2.3/**'
+      - '.github/workflows/obf2-wasm-v2.3.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  wasm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile freestanding OBF2 codec to WASM
+        working-directory: architecture/diatom-diamond/obf2-wasm-v2.3
+        run: |
+          clang --version | head -1
+          node --version
+          clang -O3 --target=wasm32 -nostdlib -fno-builtin \
+            -Wl,--no-entry -Wl,--export-memory \
+            -Wl,--initial-memory=2097152 -Wl,--max-memory=2097152 \
+            -Wl,--stack-first -Wl,--strip-all \
+            obf2_wasm.c -o obf2_wasm.wasm
+          file obf2_wasm.wasm
+          ls -lh obf2_wasm.wasm
+      - name: Verify frozen v0.7 floor
+        working-directory: architecture/diatom-diamond
+        run: |
+          echo "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b  frozen/dual5-floor-v0.7/dual5.mjs" | sha256sum --check
+      - name: Cross-parse OBF2 and benchmark WASM against Node
+        working-directory: architecture/diatom-diamond/obf2-wasm-v2.3
+        run: node verify-wasm.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: obf2-wasm-v2.3-binary-and-results
+          path: |
+            architecture/diatom-diamond/obf2-wasm-v2.3/obf2_wasm.wasm
+            architecture/diatom-diamond/obf2-wasm-v2.3/wasm-ci-results.json
