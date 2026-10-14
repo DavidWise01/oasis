@@ -20,6 +20,11 @@ const json = obj => console.log(JSON.stringify(obj,null,2));
 const cfg = fs.existsSync(cfgPath) ? JSON.parse(fs.readFileSync(cfgPath,'utf8')) : {};
 const repo = path.resolve(opt.repo || cfg.repo || path.join(process.cwd(),'oasis'));
 const state = path.resolve(opt.state || cfg.state || path.join(process.cwd(),'gate6-state'));
+// Fail closed: credentials and journal data must not live anywhere under the Git checkout.
+const relState = path.relative(repo,state);
+if (relState === '' || (!relState.startsWith('..' + path.sep) && relState !== '..' && !path.isAbsolute(relState))) {
+  throw Error('Refusing state/keys/journal inside the Git checkout; choose --state outside --repo');
+}
 const source = path.join(repo,'architecture','diatom-diamond');
 const signed = path.join(source,'final-six');
 const requireSource = () => { for(const p of ['remote-mtls.mjs','setup-keys.mjs','secure-relay.mjs']) if(!fs.existsSync(path.join(signed,p)))fail(`Required source missing: ${p} in ${signed}`); };
@@ -41,6 +46,8 @@ const gitSha=()=>git('rev-parse','HEAD')||'UNAVAILABLE';
 const verifyFrozen=()=>{const frozen=path.join(source,'frozen','dual5-floor-v0.7','dual5.mjs'); if(!fs.existsSync(frozen))return {present:false,pass:false};const actual=hashFile(frozen),expected='47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b';return {present:true,pass:actual===expected,actual,expected}};
 const imports=async()=>{
  requireSource();
+ const frozen=verifyFrozen();
+ if(!frozen.pass)fail('Frozen dual5 floor SHA-256 does not match pinned contract');
  const [transport,relay,codec,field]=await Promise.all([
   import(pathToFileURL(path.join(signed,'remote-mtls.mjs')).href),
   import(pathToFileURL(path.join(signed,'secure-relay.mjs')).href),
