@@ -1,0 +1,60 @@
+name: OBS44 Runtime Race v1.8
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/runtime-race-v1.8/**'
+      - '.github/workflows/obs44-runtime-race-v1.8.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rust-csharp-node:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Toolchain versions and compile
+        working-directory: architecture/diatom-diamond/runtime-race-v1.8
+        run: |
+          rustc --version
+          dotnet --version
+          node --version
+          rustc -C opt-level=3 bench.rs -o bench_rust
+          dotnet publish bench.csproj -c Release -o publish
+      - name: Cross-runtime parity and median throughput
+        working-directory: architecture/diatom-diamond/runtime-race-v1.8
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import subprocess,json,statistics,random,platform
+          N=262144
+          EXPECT=1923136285
+          commands={'rust':['./bench_rust'], 'csharp':['dotnet','publish/bench.dll'], 'node':['node','bench.mjs']}
+          rows={r:[] for r in commands}
+          for name,cmd in commands.items():
+              p=subprocess.run(cmd+['32768'],check=True,capture_output=True,text=True)
+              r=json.loads(p.stdout.strip())
+              assert r['checksum']==2566756973, (name,r)
+          for j in range(5):
+              order=list(commands);random.Random(412+j).shuffle(order)
+              for name in order:
+                  p=subprocess.run(commands[name]+[str(N)],check=True,capture_output=True,text=True)
+                  r=json.loads(p.stdout.strip())
+                  assert r['checksum']==EXPECT, (name,r)
+                  rows[name].append(r['elapsed_s'])
+          result={'runner':platform.platform(),'tokens':N,'checksums_match':True,'samples':5,'results':{}}
+          for name,times in rows.items():
+              result['results'][name]={'median_tokens_per_sec':round(statistics.median(N/t for t in times),1),'samples_seconds':times}
+          print('OBS44_CROSS_RUNTIME_RESULTS='+json.dumps(result))
+          with open('cross-runner-results.json','w') as f: json.dump(result,f,indent=2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: obs44-rust-csharp-node
+          path: architecture/diatom-diamond/runtime-race-v1.8/cross-runner-results.json
