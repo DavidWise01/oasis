@@ -1,0 +1,99 @@
+name: OBF2 Rust v2.5 optimized A-B native WASM TCP
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/**'
+      - '.github/workflows/obf2-rust-optimize-v2.5.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  same-source-ab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile unmodified v2.4 baseline and CRC-optimized v2.5
+        working-directory: architecture/diatom-diamond
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustc --version
+          rustup target add wasm32-unknown-unknown
+          for ver in v2.4 v2.5; do
+            folder=obf2-rust-dualtarget-$ver
+            rustc --edition=2021 -C opt-level=3 "$folder/kernel.rs" -o "$folder/kernel_native"
+            rustc --edition=2021 --target wasm32-unknown-unknown --crate-type cdylib \
+              -C opt-level=3 -C link-arg=--export-memory \
+              -C link-arg=--max-memory=8388608 "$folder/kernel.rs" -o "$folder/obf2_rust.wasm"
+            wc -c "$folder/obf2_rust.wasm"
+          done
+      - name: Frozen-floor and original v2.1 verified
+        working-directory: architecture/diatom-diamond
+        run: |
+          echo "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b  frozen/dual5-floor-v0.7/dual5.mjs" | sha256sum --check
+          node astrophage-compact-v2.1.test.mjs
+      - name: A/B same-source tests and native plus WASM microbenchmarks
+        working-directory: architecture/diatom-diamond
+        run: |
+          set -euo pipefail
+          for ver in v2.4 v2.5; do
+            folder=obf2-rust-dualtarget-$ver
+            "./$folder/kernel_native" bench | tee "$folder/native-micro.log"
+            (cd "$folder" && node host.mjs bench | tee wasm-micro.log)
+          done
+      - name: Full 5-host OBF2 TCP interoperability and timing
+        working-directory: architecture/diatom-diamond
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./obf2-rust-dualtarget-v2.4/kernel_native serve 31500 > /tmp/obf2-native24.log 2>&1 & P1=$!
+          ./obf2-rust-dualtarget-v2.5/kernel_native serve 31501 > /tmp/obf2-native25.log 2>&1 & P2=$!
+          node obf2-rust-dualtarget-v2.4/host.mjs serve 31502 > /tmp/obf2-wasm24.log 2>&1 & P3=$!
+          node obf2-rust-dualtarget-v2.5/host.mjs serve 31503 > /tmp/obf2-wasm25.log 2>&1 & P4=$!
+          node obf2-tcp-v2.2/server-node.mjs 31504 > /tmp/obf2-node.log 2>&1 & P5=$!
+          trap 'kill $P1 $P2 $P3 $P4 $P5 2>/dev/null || true' EXIT
+          sleep 2
+          kill -0 $P1; kill -0 $P2; kill -0 $P3; kill -0 $P4; kill -0 $P5
+          node obf2-tcp-v2.2/bench-tcp.mjs \
+            '{"native24":31500,"native25":31501,"wasm24":31502,"wasm25":31503,"node":31504}' \
+            obf2-rust-dualtarget-v2.5/network-ab-results.json
+          ps -o pid,rss,comm -p $P1,$P2,$P3,$P4,$P5 || true
+      - name: Make compact results summary
+        working-directory: architecture/diatom-diamond
+        run: |
+          python3 - <<'PY'
+          import json,re,pathlib
+          root=pathlib.Path('.')
+          base=root/'obf2-rust-dualtarget-v2.4'
+          newer=root/'obf2-rust-dualtarget-v2.5'
+          def parse_native(p):
+              lines=p.read_text().splitlines()
+              return {int(x.group(1)):float(x.group(2)) for l in lines if (x:=re.search(r'NATIVE_BENCH size=(\d+) median_us=([\d.]+)',l))}
+          native0=parse_native(base/'native-micro.log')
+          native1=parse_native(newer/'native-micro.log')
+          host0=json.loads((base/'wasm-micro-results.json').read_text())
+          host1=json.loads((newer/'wasm-micro-results.json').read_text())
+          network=json.loads((newer/'network-ab-results.json').read_text())
+          result={
+            'status':'PASS','method':'one GH runner; same Rust kernel native and wasm32 A/B; old bitwise CRC32 vs compile-time table CRC32',
+            'native_baseline_us':native0,'native_optimized_us':native1,
+            'native_speedups':{str(k):round(native0[k]/native1[k],3) for k in native0},
+            'wasm_baseline':host0,'wasm_optimized':host1,
+            'binary_size_bytes':{'wasm24':(base/'obf2_rust.wasm').stat().st_size,'wasm25':(newer/'obf2_rust.wasm').stat().st_size},
+            'network':network
+          }
+          (newer/'ab-summary.json').write_text(json.dumps(result,indent=2)+'\n')
+          print('AB_SUMMARY='+json.dumps({'native_speedups':result['native_speedups'],'wasm_sizes':result['binary_size_bytes'],'network_nodes':{n:{k:{'median_ms':v['median_ms'],'p99_ms':v['p99_ms']} for k,v in obj['runs'].items()} for n,obj in network['nodes'].items()}}))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: obf2-rust-v2.5-native-wasm-ab
+          path: |
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/ab-summary.json
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/network-ab-results.json
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/wasm-micro-results.json
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/obf2_rust.wasm
