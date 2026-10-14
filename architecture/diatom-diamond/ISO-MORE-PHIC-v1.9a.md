@@ -37,11 +37,11 @@ value: 729
 |---|---|---|
 | `iso:: more :: phic` | canonical user spelling | Names the isomorphic/morphological correspondence layer; do not silently rename or collapse these three operands. |
 | `or` | literal alternative connector | Do not assume Boolean XOR, arithmetic disjunction, or substitution until semantics are specified. |
-| `{{3.3}}` | literal scalar-expression token | Preserve its exact decimal spelling; do not presume (3\times3), a version number, or an empirically measured constant. |
+| `{{3.3}}` | historical, superseded arithmetic shorthand | Corrected user definition: `3.3` represents `3×3`, not the decimal 3.3; the active expression is `{3x3}^{3}`. |
 | `^{-{+{ ... }+}-}` | literal superscript signed enclosure | Treat as an unevaluated operator tree, retaining both outer minus signs and both inner plus signs. |
 | `positron -e+ gravitron` | user-authored symbolic sequence | Retain the exact `-e+` connector and spelling `gravitron`; **no automatic replacement with `graviton`** or numerical charge operation. |
 
-## Explicit symbolic parse
+## Historical symbolic parse (superseded; not active)
 
 ```text
 ISO_MORE_PHIC
