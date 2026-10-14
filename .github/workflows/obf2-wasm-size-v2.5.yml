@@ -29,12 +29,18 @@ jobs:
             -C opt-level=z -C lto=fat -C codegen-units=1 -C panic=abort -C strip=symbols \
             -C link-arg=--export-memory -C link-arg=--max-memory=8388608 \
             ../obf2-rust-dualtarget-v2.4/kernel.rs -o small.wasm
-          wc -c speed.wasm small.wasm
+          rustc --edition=2021 --target wasm32-unknown-unknown --crate-type cdylib \
+            -C opt-level=3 -C lto=fat -C codegen-units=1 -C panic=abort -C strip=symbols \
+            -C link-arg=--export-memory -C link-arg=--max-memory=8388608 \
+            ../obf2-rust-dualtarget-v2.4/kernel.rs -o leanfast.wasm
+          wc -c speed.wasm small.wasm leanfast.wasm
           cp speed.wasm obf2_rust.wasm
           node host.mjs bench | tee speed-bench.log
           mv obf2_rust.wasm speed-backup.wasm
           cp small.wasm obf2_rust.wasm
           node host.mjs bench | tee small-bench.log
+          cp leanfast.wasm obf2_rust.wasm
+          node host.mjs bench | tee leanfast-bench.log
       - name: Explain real result and pin original floor
         working-directory: architecture/diatom-diamond
         run: |
@@ -48,8 +54,8 @@ jobs:
           def get(name):
               lines=pathlib.Path(name).read_text().splitlines()
               return [json.loads(s[len('MICRO_RESULT='):]) for s in lines if s.startswith('MICRO_RESULT=')]
-          speed=get('speed-bench.log'); small=get('small-bench.log')
-          r={'status':'PASS','source':'exact frozen v2.4 Rust kernel both variants','speed_bytes':pathlib.Path('speed.wasm').stat().st_size,'small_bytes':pathlib.Path('small.wasm').stat().st_size,'speed_us':{str(x['size']):x['wasmMedianUs'] for x in speed},'small_us':{str(x['size']):x['wasmMedianUs'] for x in small},'speedup_by_size':{str(x['size']):round(x['wasmMedianUs']/y['wasmMedianUs'],3) for x,y in zip(speed,small)},'independent_assertions_each':8030}
+          speed=get('speed-bench.log'); small=get('small-bench.log'); leanfast=get('leanfast-bench.log')
+          r={'status':'PASS','source':'exact frozen v2.4 Rust kernel both variants','speed_bytes':pathlib.Path('speed.wasm').stat().st_size,'small_bytes':pathlib.Path('small.wasm').stat().st_size,'leanfast_bytes':pathlib.Path('leanfast.wasm').stat().st_size,'speed_us':{str(x['size']):x['wasmMedianUs'] for x in speed},'small_us':{str(x['size']):x['wasmMedianUs'] for x in small},'leanfast_us':{str(x['size']):x['wasmMedianUs'] for x in leanfast},'speedup_by_size':{str(x['size']):round(x['wasmMedianUs']/y['wasmMedianUs'],3) for x,y in zip(speed,small)},'independent_assertions_each':8030,'leanfast_speedup_relative_to_speed':{str(x['size']):round(y['wasmMedianUs']/x['wasmMedianUs'],3) for x,y in zip(leanfast,speed)}}
           pathlib.Path('distribution-results.json').write_text(json.dumps(r,indent=2)+'\n')
           print('WASM_DISTRIBUTION='+json.dumps(r))
           PY
@@ -59,4 +65,5 @@ jobs:
           path: |
             architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/speed.wasm
             architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/small.wasm
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/leanfast.wasm
             architecture/diatom-diamond/obf2-rust-dualtarget-v2.5/distribution-results.json
