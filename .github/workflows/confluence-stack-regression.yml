@@ -1,0 +1,51 @@
+name: Confluence stack regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/ket-astrophage/**"
+      - "architecture/character-register-44/**"
+      - "architecture/regenerative-loop/ket-cycle-v01/**"
+      - "architecture/astrophage-full-stack-v1/**"
+      - ".github/workflows/confluence-stack-regression.yml"
+  pull_request:
+    paths:
+      - "apps/ket-astrophage/**"
+      - "architecture/character-register-44/**"
+      - "architecture/regenerative-loop/ket-cycle-v01/**"
+      - "architecture/astrophage-full-stack-v1/**"
+      - ".github/workflows/confluence-stack-regression.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: confluence-regression-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  audit:
+    name: 44 / cycle / adapter / confluence-v3
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configure Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Static parse
+        run: |
+          node --check apps/ket-astrophage/test_page.cjs
+          node --check architecture/character-register-44/register.mjs
+          node --check architecture/regenerative-loop/ket-cycle-v01/cycle.mjs
+          node --check architecture/astrophage-full-stack-v1/adapter.mjs
+      - name: 44-address registry
+        run: node architecture/character-register-44/test_register.mjs
+      - name: Six-phase cycle and receipts
+        run: node architecture/regenerative-loop/ket-cycle-v01/test_cycle.mjs
+      - name: Astrophage UTF-8/44/208 adapter
+        run: node architecture/astrophage-full-stack-v1/test_adapter.mjs
+      - name: Confluence v3 discipline mapping and witness
+        run: node apps/ket-astrophage/test_page.cjs
+      - name: Assert no source mutation during checks
+        run: test -z "$(git status --porcelain)"
