@@ -1,18 +1,47 @@
-# KET Astrophage Field — Sapphon / Confluence
+# Confluence — Sapphon Substrate (GitHub Pages v2.0)
 
-Static one-page showcase for GitHub Pages. Additive to the OaSIs repository; does not replace the root homepage or edit the frozen KET core.
+**Location:** `apps/ket-astrophage/` inside `DavidWise01/oasis`  
+**Page:** <https://davidwise01.github.io/oasis/apps/ket-astrophage/>  
+**Date:** 2026-10-13 · additive presentation update
 
-- Location: `apps/ket-astrophage/index.html`
-- Expected URL when the existing Pages workflow deploys from `main`: `https://davidwise01.github.io/oasis/apps/ket-astrophage/`
-- Offline-ready single HTML file; no external dependencies or assets.
-- Interactive six-phase return visualizer with the shared LIVE boundary.
-- Browser UTF-8 -> two base-44 tokens/byte -> OSIMODEL 8 x 208 route preview -> exact text reconstruction.
-- Actual upstream code stays in `architecture/astrophage-full-stack-v1/`, `architecture/character-register-44/`, and `architecture/regenerative-loop/ket-cycle-v01/`.
-- The page is an independent presentation, not a browser port of the Node SHA-256 ledger or live coupling to the original WASM field scene.
-- Observer diagrams, chemistry, wavelengths, and biological nesting are interpretive annotations only, not scientific validation.
+## Purpose contract
 
-## Acceptance
+```text
+PURPOSE  :: GENESIS
+GENESIS  :: TERMINATED
+STATUS   :: DISABLED
+ON_FAULT :: ISOLATE → RETAIN → REPORT
+RESTART  :: NOT AUTHORIZED IN THIS PAGE
+VESSEL   :: {{C}}onfluence
+RETURN   :: WITNESS → SAFE STATE
+```
 
-`test_page.cjs` checks the full 256-byte base-44 domain, six-phase equalities, HONEY sample addresses, key links, and built-in browser audit symbols. Browser manual/automated smoke checks should verify responsive layout, phase buttons, encoding live updates, and zero console exceptions.
+`Genesis` is a conceptual origin state in the symbolic architecture. This display does **not** say that GitHub Pages, an external service, actual equipment, or a biological organism has terminated or is imminently failing. "Imminent failure" is interpreted as a fail-safe design priority, not a verified prediction of a disaster. There are no external fault monitors, incident notifications, server mutations, or automatic restart capabilities. The Genesis origin remains disabled; the separate client-side demonstrators are active.
 
-This additive page is versioned; frozen release files and original landing page remain untouched.
+## Symbolic vocabulary
+
+- **`{{C}}onfluence`** — identity / meeting point for distinct retained streams.
+- **Sapphon Substrate** — mnemonic name for a bounded information carrier.
+- **Ether** — conceptual information environment, *not* a physical luminiferous ether.
+- **Medium** — the implemented information representation and transport: UTF-8, two base-44 address tokens per byte, OSIMODEL 8 × 208, ordered receipts.
+- **`'quanta'`** — a discrete symbolic event or message unit; no claim about real photons or quantum fields.
+
+## New page sections
+
+- `#protocol`: four pinned state cards, a text operating contract, a manual fail-safe drill.
+- `#substrate`: identity → vessel → conceptual environment → discrete units; typed medium.
+- Existing `#field`, `#cycle`, `#codec`, and `#evidence` remain available and structurally separate from the v1 frozen KET kernel.
+
+## Failure drill (sandbox)
+
+Select a scenario and click **Run failure drill**. Valid input is accepted; invalid symbol `44`, absent witness, or changed restored value is quarantined and has no simulated propagation. The original expected witness remains intact. The session trace is ephemeral: **Clear local drill** removes only that browser's drill output. It is not an append-only persistent forensic audit and is not cryptographic authentication.
+
+## Verification
+
+Run `node test_page.cjs` for the Node static/deterministic checks. A separate local Chromium check used `page.set_content()` (file navigations were blocked by local environment policy), rendering at desktop and mobile widths with **zero observed page JavaScript exceptions**, valid live encoder, cycle next/reset, all four manual fault scenarios, trace reset, and no horizontal overflow. This is not a verified live Pages deployment status.
+
+## Preservation
+
+- Existing OaSIs root homepage is untouched.
+- No edits to `architecture/astrophage-full-stack-v1` (frozen release), `kernel/`, existing symbol/cycle modules, or P0–P5 production gates.
+- Page v2 is an additive showcase. Future changes should use new versioned commits. Git history retains earlier presentation.
