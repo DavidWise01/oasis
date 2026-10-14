@@ -1,0 +1,48 @@
+{
+  "record": "KET-OBF2-RC1-20261014-OPERATOR",
+  "date": "2026-10-14",
+  "release": "OASIS KET ASTROPHAGE OBF2 RC1",
+  "status": "SOFTWARE_RC_FINALIZED_OPERATOR_FIELD_PASS_EVIDENCE_PENDING",
+  "sourceHeadAtPreparation": "0f1447ece052d0434edad58f57784392116d59d8",
+  "gates": [
+    {
+      "gate": 1,
+      "result": "PASS",
+      "evidence": "prior CI"
+    },
+    {
+      "gate": 2,
+      "result": "PASS",
+      "evidence": "prior CI"
+    },
+    {
+      "gate": 3,
+      "result": "PASS",
+      "evidence": "prior CI"
+    },
+    {
+      "gate": 4,
+      "result": "PASS_IN_TESTED_SCOPE",
+      "evidence": "Ed25519 and local mTLS checks"
+    },
+    {
+      "gate": 5,
+      "result": "PASS_IN_TESTED_SCOPE",
+      "evidence": "fsync, crash and replay checks"
+    },
+    {
+      "gate": 6,
+      "result": "PASS_USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "evidence": "operator declaration 2026-10-14",
+      "physical_two_host_criterion": "OPEN"
+    }
+  ],
+  "scope": "single-writer authenticated reference release on private LAN/VPN only",
+  "deploymentDecision": "PUBLIC_PRODUCTION_HOLD",
+  "secretsStored": false,
+  "originalFreezePreserved": true,
+  "independentCertification": false,
+  "originalFrozenHash": "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b",
+  "ciRun": "https://github.com/DavidWise01/oasis/actions/runs/38590542771",
+  "nextEvidence": "sanitized FINAL_RESULT.json or physical A/B replay journal"
+}
