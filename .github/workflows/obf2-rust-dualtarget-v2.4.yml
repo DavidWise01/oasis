@@ -1,0 +1,61 @@
+name: OBF2 unified Rust native WASM v2.4
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/obf2-rust-dualtarget-v2.4/**'
+      - '.github/workflows/obf2-rust-dualtarget-v2.4.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rust-native-wasm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile the same Rust source for native and WebAssembly
+        working-directory: architecture/diatom-diamond/obf2-rust-dualtarget-v2.4
+        run: |
+          set -euxo pipefail
+          rustc --version
+          rustup target add wasm32-unknown-unknown
+          rustc --edition=2021 -C opt-level=3 kernel.rs -o kernel_native
+          rustc --edition=2021 --target wasm32-unknown-unknown --crate-type cdylib \
+             -C opt-level=3 -C link-arg=--export-memory \
+             -C link-arg=--max-memory=8388608 kernel.rs -o obf2_rust.wasm
+          ls -lh kernel_native obf2_rust.wasm
+      - name: Verify 2,688 isomorphic routes, pinned dual floor, existing v2.1 codec
+        working-directory: architecture/diatom-diamond
+        run: |
+          echo "47d4c89ac8155b9470852e0e23d2c059ad087eedc2b7949632a9431b5792fd4b  frozen/dual5-floor-v0.7/dual5.mjs" | sha256sum --check
+          node astrophage-compact-v2.1.test.mjs
+      - name: Microbenchmark exact same Rust codec native and wasm plus JS
+        working-directory: architecture/diatom-diamond/obf2-rust-dualtarget-v2.4
+        run: |
+          ./kernel_native bench | tee native-micro.log
+          node host.mjs bench | tee wasm-micro.log
+      - name: Real TCP three-runtime parity and latency
+        working-directory: architecture/diatom-diamond/obf2-rust-dualtarget-v2.4
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./kernel_native serve 31221 > native.log 2>&1 & NATIVE_PID=$!
+          node host.mjs serve 31222 > wasm.log 2>&1 & WASM_PID=$!
+          node ../obf2-tcp-v2.2/server-node.mjs 31223 > node.log 2>&1 & NODE_PID=$!
+          trap 'kill $NATIVE_PID $WASM_PID $NODE_PID 2>/dev/null || true' EXIT
+          sleep 2
+          kill -0 $NATIVE_PID; kill -0 $WASM_PID; kill -0 $NODE_PID
+          node ../obf2-tcp-v2.2/bench-tcp.mjs '{"rust-native":31221,"rust-wasm":31222,"node":31223}' network-results.json
+          cat network-results.json
+          ps -o pid,rss,comm -p $NATIVE_PID,$WASM_PID,$NODE_PID || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: obf2-rust-native-wasm-v2.4-benchmark
+          path: |
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.4/obf2_rust.wasm
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.4/wasm-micro-results.json
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.4/network-results.json
+            architecture/diatom-diamond/obf2-rust-dualtarget-v2.4/native-micro.log
