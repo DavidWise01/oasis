@@ -1,0 +1,29 @@
+name: ASTROPHAGE OBF2 Compact v2.1
+on:
+  push:
+    paths:
+      - 'architecture/diatom-diamond/astrophage-compact-v2.1.mjs'
+      - 'architecture/diatom-diamond/astrophage-compact-v2.1.test.mjs'
+      - 'architecture/diatom-diamond/astrophage-compact-v2.1.bench.mjs'
+      - 'architecture/diatom-diamond/ASTROPHAGE-COMPACT-v2.1.md'
+      - '.github/workflows/astrophage-compact-v2.1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  parity-and-loopback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pinned floor and 4633 regression assertions
+        run: node architecture/diatom-diamond/astrophage-compact-v2.1.test.mjs
+      - name: Loopback benchmark old Deflate versus new OBF2
+        run: node architecture/diatom-diamond/astrophage-compact-v2.1.bench.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: astrophage-obf2-v2.1-results
+          path: architecture/diatom-diamond/benchmark-results-v2.1.json
