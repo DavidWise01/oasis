@@ -74,3 +74,50 @@ non_aligned      = claims of physical time dilation, hidden copying, or fully fa
 ## Follow-up evidence
 
 Download the open Zenodo/source figure data and compare benchmark rows across all five configurations, check the arXiv v1-versus-v2 abstract/figures for numerical changes, and compare Reddit comments/headlines for scope corrections. Append future findings; retain the original record unchanged.
+
+
+## 2026-10-16 — Primary-source version comparison (append-only)
+
+**Compared:** arXiv v1 (2025-07-16), arXiv v2 (2026-07-15), *Nature Physics* journal article (2026-10-15), and RIKEN/Phys.org reporting (2026-10-15/16). This is a text-and-figure-description comparison of the publicly accessible source editions; it is **not** an independent numerical reanalysis of the experimental files.
+
+Primary URLs:
+- v1: https://arxiv.org/html/2507.11918v1
+- v2: https://arxiv.org/html/2507.11918v2
+- journal: https://www.nature.com/articles/s41567-026-03466-2
+- RIKEN Japanese press release (dated Oct 15): https://www.riken.jp/press/2026/20261015_2/index.html
+- RIKEN English press release (dated Oct 16): https://www.riken.jp/en/news_pubs/research_news/pr/2026/20261015_2/index.html
+- Phys.org: https://phys.org/news/2026-10-silicon-qubits-surpass-gate-fidelity.html
+
+### Retained findings present already in July 2025
+- Five physical silicon spin qubits controlled by **one shared microwave line**.
+- Individual primitive single-qubit pi/2 gate fidelity **above 99.99%**; some approaching **99.999%**.
+- **Three simultaneous single-qubit operations** above 99.99% after phase/amplitude compensation.
+- **Five-way parallel** operation around/at 99.9%: the technical Figure 5 says **four of five above 99.9%, Q5 approximately 99.9%**.
+- Pairwise phase calibration with the **same signed numerical example in both arXiv versions**:
+  - `Delta_phi_34 = +0.0379(2) rad`
+  - `Delta_phi_43 = -0.0026(1) rad`
+- Reported gate lengths for isolated single-qubit pulse example: **125, 83, 83, 83, 125 ns**, retained.
+- Three-qubit demonstration around 250 ns; five-way tests at 250 ns and 500 ns; the increased drive power/decoherence and idle dephasing tradeoff is retained.
+- Quadratic pairwise calibration count `N(N-1)`, not exponential calibration of all combinations; retained.
+
+### Verified changes of framing/presentation
+1. **Abstract strengthening:** v1 describes the high single-qubit fidelities as *mostly preserved* for up to three qubits and places the >99.99% three-way result in the main text; v2 explicitly calls out >99.99% in the abstract and emphasizes the AC Stark cause and excess MW-power decoherence in the five-qubit case.
+2. **Figure 2 presentation:** v1's Figure 2 directly juxtaposes rectangular-window and Kaiser-window pulses; v2's Figure 2 foregrounds Kaiser-window high-fidelity data in the main figure. This is a changed presentation, **not proof that data was removed or falsified**.
+3. **Calibration explanation:** Both versions quantify pairwise AC Stark shifts; v2 frames them more prominently as the dominant parallel-control error. Both report corrections to z-phase and x-rotation/amplitude effects.
+4. **Journal abstract:** repeats the core 5 / 3 / 1 physical relationship: five qubits, three-way high-fidelity concurrency, one shared control line.
+5. **Numerical nuance:** some public abstracts call five-way performance `at/above 99.9%`; the main paper's figure text specifies **4 of 5 above** and **Q5 approximately 99.9%**. Avoid silently converting `approximately` into `strictly greater than` for all five.
+
+### Publication / observation delays
+- v1 (2025-07-16) -> v2 (2026-07-15): **364 days**
+- v2 -> journal (2026-10-15): **92 days**
+- v1 -> journal: **456 days**
+- journal (Oct 15) -> observer's Reddit date (Oct 16): **one calendar day**; exact elapsed hours and specific Reddit publication timestamp not independently verified.
+- Distinguish RIKEN Japanese press date 2026-10-15 from its English news page dated 2026-10-16; multiple *publicity clocks* do not imply altered physics.
+
+### Distillation interpretation and open checks
+- `5/3/1` is a **user's KET numerical analogy**, not the research authors' named model, priority claim, or claim of quantum/physical time dilation.
+- The title `99.99% while operating three at once` preserves the intended single-qubit-gate scope reasonably well; do not construe it as a three-qubit entangling-gate or complete computation fidelity.
+- Core quantitative claims and example calibration signs **persist**; journal/news summaries compress methodological distinctions. This documents information reframing and publication latency, not plagiarism, deliberate public manipulation, or relativistic time dilation.
+- Raw Zenodo data were **not downloaded** for independent numeric verification. A full figure-by-figure pixel/data diff and original Reddit comment-history comparison remain unperformed.
+
+**Assessment:** `CORE_RESULT_STABLE` + `FRAMING_REVISED` + `DETAILED_FIVE_QUBIT_THRESHOLD_QUALIFIER_PRESERVED` + `SOURCE_DATA_UNAUDITED`.
