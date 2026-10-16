@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>N184 · Gateway Witness v3.9</title><style>body{margin:0;background:#07111d;color:#d8f6f2;font:14px system-ui}main{max-width:1100px;margin:auto;padding:24px}h1{color:#8de0d1}section{border:1px solid #2b5862;border-radius:12px;padding:16px;margin:12px 0;background:#10202f}button{background:#19464e;color:white;border:1px solid #56a7a5;padding:9px 12px;border-radius:8px;cursor:pointer;margin:4px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 monospace;max-height:300px;overflow:auto}iframe{width:100%;height:350px;border:1px solid #406776;border-radius:9px}small{color:#adc1ce}a{color:#80dcda}</style><main><h1>N184 · Gateway Witness v3.9</h1><p>Append-only session witness · White Sun receives versioned state · single gateway · 60 × 40 = 2400 frozen</p><section><h2>White Sun VM</h2><iframe id="vm" title="White Sun React application" src="../white-sun/" sandbox="allow-scripts allow-same-origin allow-forms"></iframe></section><section><h2>Gateway Controller</h2><button id="step">Advance +7.2°</button><button id="scan">Witness A–F</button><button id="replay">Replay previous packet (reject)</button><button id="verify">Audit chain</button><button id="export">Export journal JSONL</button><p id="status">Awaiting VM ready</p><pre id="log"></pre></section><section><h2>Boundary</h2><pre>{{ N184 :: APPEND-ONLY :: v3.9 }}
+OUTER {{3x3}}^3   INNER {{4x4}}^4
+SLOTS 60 x 40 = 2400
+BOTTOM OPEN      TEMPERATURE 184 K (TARGET)
+VM origin restricted to same-origin iframe
+PHASE -> WHITE SUN -> ACK
+ACK -> APPEND HASH CHAIN
+Previous v3.7 / v3.8 pages unchanged</pre><small>Hash-chained browser-session journal, not durable storage or tamper-proof external notarization. Port tests are simulated configuration checks; the existing White Sun React internals are not modified by this page.</small></section></main><script>
+(async function(){
+ const $=x=>document.getElementById(x),frame=$('vm');let phase=0,sequence=0,prev='0'.repeat(64),lastAck=0,events=[],lastPacket=null;const enc=new TextEncoder();const H=async x=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',enc.encode(x)))).map(b=>b.toString(16).padStart(2,'0')).join('');
+ async function append(kind,data){const payload={index:events.length,prev,kind,data};let hash=await H(JSON.stringify(payload));events.push({...payload,hash});prev=hash;$('log').textContent=events.slice(-25).map(x=>JSON.stringify(x)).join('\n');$('status').textContent='EVENTS '+events.length+' | SEQ '+sequence+' | ACK '+lastAck+' | TIP '+hash.slice(0,12)}
+ const ports='ABCDEF'.split('').map((name,i)=>({name,angle_deg:i*60,state:'PASS',checked:true}));
+ async function transmit(replay=false){const packet=replay?lastPacket:{type:'N184_STATE',version:1,seq:++sequence,phase_deg:phase,lattice:{height:60,bands:40,addresses:2400},geometry:{outer:'{{3x3}}^3',inner:'{{4x4}}^4',bottom:'OPEN'},gateway:'SINGLE_IO',ports};
+ if(!replay)lastPacket=packet;
+ await append(replay?'REPLAY_ATTEMPT':'TX', {seq:packet.seq,phase_deg:packet.phase_deg});
+ frame.contentWindow.postMessage(packet,location.origin);
+ }
+ window.addEventListener('message',async ev=>{if(ev.source!==frame.contentWindow||ev.origin!==location.origin)return;const m=ev.data;if(!m||m.type!=='N184_PHASE_REQUEST'||m.version!==1)return;if(!Number.isFinite(m.phase_deg)||m.phase_deg<0||m.phase_deg>360){await append('INVALID_REQUEST',{reason:'phase bounds'});return}phase=Math.round(m.phase_deg/7.2)*7.2;await append('RX_PHASE_REQUEST',{phase_deg:phase});await transmit();});
+ frame.addEventListener('load',()=>transmit());
+ $('step').onclick=async()=>{phase=Math.round(((phase+7.2)%360)*10)/10;await transmit()};
+ $('scan').onclick=async()=>{await append('PORT_SCAN',{ports});await transmit()};
+ $('replay').onclick=async()=>{if(!lastPacket)return;await append('REPLAY_REJECTED',{seq:lastPacket.seq,reason:'duplicate sequence (local guard)'});};
+ $('verify').onclick=async()=>{let p='0'.repeat(64);for(let i=0;i<events.length;i++){let e=events[i],expected=await H(JSON.stringify({index:e.index,prev:e.prev,kind:e.kind,data:e.data}));if(e.index!==i||e.prev!==p||e.hash!==expected){$('status').textContent='FAIL at '+i;return}p=e.hash}$('status').textContent='CHAIN PASS: '+events.length+' events';};
+ $('export').onclick=()=>{const blob=new Blob([events.map(e=>JSON.stringify(e)).join('\n')+'\n'],{type:'application/x-ndjson'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='n184_gateway_v39.jsonl';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+ await append('GENESIS',{version:'v3.9',positions:2400,mode:'append-only'});
+})();
+</script></html>
