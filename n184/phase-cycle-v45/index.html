@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 · v4.5 Toroid Phase Cycle</title><style>*{box-sizing:border-box}body{margin:0;background:#080f1a;color:#ebf6fa;font:14px system-ui}header{padding:17px 23px;border-bottom:1px solid #30495e}h1{font-size:23px;margin:0}main{display:grid;grid-template-columns:minmax(0,1fr) 335px}canvas{width:100%;height:calc(100vh - 75px);min-height:510px;display:block}aside{background:#121e30;border-left:1px solid #30495e;padding:19px}section{border-bottom:1px solid #334a61;padding-bottom:16px;margin-bottom:16px}h2{font-size:13px;color:#8ce6cf;text-transform:uppercase;letter-spacing:.11em}button{color:#fff;background:#224758;border:1px solid #579baf;border-radius:7px;padding:9px;cursor:pointer;margin:3px}input{width:100%}label{display:flex;justify-content:space-between}pre{white-space:pre-wrap;color:#d4d2eb;font:12px/1.65 monospace}.muted{color:#acc1cb}a{color:#80ddcf}@media(max-width:850px){main{grid-template-columns:1fr}canvas{height:55vh;min-height:370px}aside{border-left:0;border-top:1px solid #30495e}}</style><header><h1>N184 · v4.5 Phase-Cycle Transport</h1><span class="muted">One symbolic quantum packet · one in/out gate · closed box · 3 toroids · four-brace core</span></header><main><canvas id="scene"></canvas><aside><section><h2>Cycle controls</h2><button id="play">Play</button><button id="step">Step +1%</button><button id="reset">Reset</button><label>Cycle progress <output id="progressText">0%</output></label><input type="range" id="progress" value="0" min="0" max="100" step="1"><label>Packet amount <output id="amountText">1.00</output></label><input type="range" id="amount" min="1" max="10" value="1" step="1"></section><section><h2>Conservation monitor</h2><pre id="report"></pre><button id="tests">Run 50,000 model tests</button><pre id="testReport">Not yet run</pre></section><section><h2>Canonical parameters</h2><pre>{{{{ N184 :: v4.5 }}}}
+
+BOX  : 2 / 4 / 6
+TORUS: 1 / 3 / 6
+SCALE: (n×n)^n
+STRONG CONVERGENCE
+  2176782336 = 2176782336
+
+X:
+ a=(-2,+3) b=(-3,+2)
+ c=(+2,-3) d=(+3,-2)
+
+{{**--``--**}}
+ONE IN/OUT
+60 × 40 = 2400
+</pre><p class="muted">Deterministic visual transport. Conservation is an explicit model invariant, not a demonstration of particle tunneling, real quantum forces, or physical energy conservation.</p><a href="../dual-geometry-v44/">Previous 3D version</a></section></aside></main><script>
+'use strict';const $=id=>document.getElementById(id),c=$('scene'),g=c.getContext('2d');let playing=false;
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));const smooth=x=>{x=clamp(x,0,1);return x*x*(3-2*x)};
+const legs=[[1.8,0], [.90,.0],[.44,0],[0,0],[.44,0],[.90,0],[1.8,0]];
+// Continuous one-packet model: each stage has a mass fraction, sums identically to A.
+function weights(t){let x=clamp(t,0,1)*6;let k=Math.min(5,Math.floor(x)),u=smooth(x-k),z=[0,0,0,0,0,0,0];z[k]=1-u;z[k+1]=u;return z}
+function state(t,A){let w=weights(t),sum=w.reduce((a,b)=>a+b,0),res=A-A*sum;return {w,total:A,residual:res, stage:Math.min(6,Math.floor(t*6))}}
+function project(p){let ang=-.31,ct=Math.cos(ang),st=Math.sin(ang);const x=p[0]*ct-p[2]*st,z=p[0]*st+p[2]*ct,y=p[1]-.17*z;let k=Math.min(c.width,c.height)*.23;return[c.width/2+x*k,c.height/2-y*k]}
+function edge(a,b,col='#477b89',width=1){let x=project(a),y=project(b);g.strokeStyle=col;g.lineWidth=width;g.beginPath();g.moveTo(...x);g.lineTo(...y);g.stroke()}
+function cube(s,color,open){const v=[];for(const x of [-1,1])for(const y of [-1,1])for(const z of [-1,1])v.push([x*s,y*s,z*s]);for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){let dif=0;for(let k=0;k<3;k++)dif+=v[i][k]!==v[j][k]?1:0;if(dif===1&&!(open&&v[i][1]<0&&v[j][1]<0))edge(v[i],v[j],color,1.4)}}
+function ring(R,r,color){for(let a=0;a<4;a++){const v=a*Math.PI/2,pts=[];for(let i=0;i<=90;i++){let u=i*2*Math.PI/90;pts.push([(R+r*Math.cos(v))*Math.cos(u),r*Math.sin(v),(R+r*Math.cos(v))*Math.sin(u)])}for(let i=0;i<90;i++)edge(pts[i],pts[i+1],color,.7)}}
+function dot(point,color,r){let p=project(point);g.beginPath();g.arc(...p,r,0,Math.PI*2);g.fillStyle=color;g.fill()}
+function draw(){const d=Math.min(2,devicePixelRatio||1),w=Math.round(c.clientWidth*d),h=Math.round(c.clientHeight*d);if(c.width!==w||c.height!==h){c.width=w;c.height=h}g.fillStyle='#080f1a';g.fillRect(0,0,w,h);cube(1.6,'#4f979f',true);cube(1.19,'#c29d75',true);cube(.55,'#b9a9ef',false);ring(.4,.048,'#69c6c4');ring(.72,.054,'#d2ad77');ring(1.01,.06,'#aa98df');let a=[-.28,.42,0],b=[-.42,.28,0],cc=[.28,-.42,0],dd=[.42,-.28,0];edge(a,cc,'#7ce8d6',3);edge(b,dd,'#f5c78c',3);dot([0,0,0],'#efe0ff',7*d);
+let t=Number($('progress').value)/100,A=Number($('amount').value),s=state(t,A);const points=[[-1.8,0,0],[-.9,0,0],[-.44,0,0],[0,0,0],[.44,0,0],[.9,0,0],[1.8,0,0]];let position=[0,0,0];for(let i=0;i<points.length;i++){position[0]+=points[i][0]*s.w[i]}dot(position,'#fff8d1',8*d);edge([-2.05,0,0],[-.55,0,0],'#f4dca1',2.1);
+$('progressText').textContent=Math.round(t*100)+'%';$('amountText').textContent=A.toFixed(2);$('report').textContent='INJECTED: '+A.toFixed(2)+'\nSTAGED: '+(A*s.w.reduce((x,y)=>x+y,0)).toFixed(9)+'\nRESIDUAL: '+s.residual.toExponential(2)+'\nTRANSFER: '+(['GATE → STRONG','STRONG → MED','MED → CORE','CORE → MED','MED → STRONG','STRONG → GATE','EXIT'][s.stage])+'\nGATEWAY: SINGLE\nPORTS: SYMBOLIC ONLY';if(playing){let v=Number($('progress').value)+.25;if(v>=100){v=100;playing=false;$('play').textContent='Play'}$('progress').value=v}requestAnimationFrame(draw)}
+$('play').onclick=()=>{if(Number($('progress').value)>=100)$('progress').value=0;playing=!playing;$('play').textContent=playing?'Pause':'Play'};$('step').onclick=()=>{$('progress').value=Math.min(100,Number($('progress').value)+1)};$('reset').onclick=()=>{playing=false;$('play').textContent='Play';$('progress').value=0};
+$('tests').onclick=()=>{let fail=0,max=0;for(let A=1;A<=10;A++)for(let i=0;i<5000;i++){let t=i/4999,s=state(t,A),res=Math.abs(s.residual);max=Math.max(max,res);if(res>1e-12||s.w.some(x=>x<0||x>1))fail++}let antipodal=([-2,3][0]+[2,-3][0]===0)&&([-3,2][1]+[3,-2][1]===0);$('testReport').textContent='50,000 phase points: '+(fail===0?'PASS':'FAIL')+'\nMax residual: '+max.toExponential(3)+'\nAntipodal offsets: '+(antipodal?'PASS':'FAIL')+'\nPhysical tunneling: NOT TESTED'};requestAnimationFrame(draw);
+</script></html>
