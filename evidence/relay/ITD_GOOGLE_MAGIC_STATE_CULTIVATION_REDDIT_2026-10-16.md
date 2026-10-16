@@ -63,3 +63,17 @@ This records **information-time distillation as an analytical analogy**, without
 ## Next evidence
 
 Retrieve the exact Reddit post's public timestamp/content or user-provided screenshot; compare its numbers and title with the primary papers and Google announcement. Append differences and correction comments as additional observations rather than modifying the original claim retrospectively.
+
+
+## 2026-10-16 observer clarification — quantum-advantage NUMBERS (append-only)
+
+The observer clarified that their proposed comparison is **Google's quantum-advantage benchmark numbers for Sycamore/Willow, and the comparison with Harmony**, not a request to derive their entire 5/3/1 scheme from distance-5/distance-3 code labels. The earlier code-distance overlay above is a separate optional analogy and should **not** be treated as the observer's intended numerical hypothesis.
+
+Distinct metric families (retain measurement scope):
+- **Google Sycamore (2019):** 53 active physical qubits; ~200 s quantum runtime versus Google's contemporary **10,000 classical years** estimate for random-circuit sampling (a disputed and algorithm-dependent classical estimate). Primary https://research.google/pubs/quantum-supremacy-using-a-programmable-superconducting-processor/ ; contemporary IBM objection https://www.ibm.com/quantum/blog/on-quantum-supremacy
+- **Google Willow (2024):** 105 physical qubits; <5 minutes quantum runtime versus Google's estimated **10^25 classical years** for a more difficult random-circuit-sampling benchmark. Primary https://blog.google/innovation-and-ai/technology/research/google-willow-quantum-chip/
+- **Google Willow + Quantum Echoes (2025):** Google's reported **13,000×** classical speed advantage for a verifiable OTOC algorithm; different task from random-circuit sampling. Primary https://research.google/blog/a-verifiable-quantum-advantage/
+- **IonQ Harmony (retired 2024):** **11 physical qubits, #AQ 9**, trapped-ion system; **not a Google chip**, and #AQ is not a quantum-versus-classical speedup ratio. Vendor reports upgrade from #AQ 6 to #AQ 9 as **8× benchmark performance** in its model. Primary https://www.ionq.com/quantum-systems/harmony and https://ionq.com/blog/ionq-achieves-new-performance-milestone-of-29-algorithmic-qubits-aq-on-ionq
+- **Google Willow magic-state cultivation (2026):** roughly **40× lower infidelity**, **99.99% logical T-state fidelity**, and about **8% attempts retained**; also a distinct metric family. Primary https://blog.google/innovation-and-ai/models-and-research/quantum-computing/magic-state-cultivation-quantum-computing/
+
+**Evidence rule:** do not normalize, divide, rank or multiply across these different benchmarks without a declared common task and baseline. Keep 5/3/1 a user symbolic roll pending explicit numerical mapping. Do not infer a physical time-dilation phenomenon from the changing classical-runtime estimates.
