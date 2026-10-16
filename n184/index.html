@@ -8,7 +8,7 @@
 <main><div id="stage"><canvas id="view" aria-label="Rotatable 3D projection of a diatom inspired lattice and triangular enclosure"></canvas><div id="vmStageBar"><button id="vmToggle" aria-pressed="false">Open White Sun VM</button><button id="vmFull">Full-page VM ↗</button></div><iframe id="vmFrame" title="Original White Sun React application within N184 VM" src="./white-sun/" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms" hidden></iframe></div>
 <aside>
 <section><h2>Frozen architecture</h2><div class="stats"><div class="stat"><strong>2,400</strong><small>60 × 40 addresses</small></div><div class="stat"><strong>184 K</strong><small>Target, not measurement</small></div><div class="stat"><strong>5/6</strong><small>Operation clock</small></div><div class="stat"><strong>2/3</strong><small>Family quorum</small></div></div></section>
-<section><h2>White Sun · Center VM</h2><div class="stat"><strong id="sunPhaseLabel">0°</strong><small>50 radial arms · 7.2° separation · symbolic origin plate</small></div><label>Origin phase <output id="phaseOut">0°</output></label><input id="phase" type="range" min="0" max="360" step="7.2" value="0"><p><button id="phaseStep">Advance +7.2°</button> <button id="runPorts">Test all six ports</button></p><canvas id="sunPlate" width="270" height="190" style="width:100%;background:#09121f;border:1px solid #304358;border-radius:10px"></canvas><pre id="portResult">PORT A-F: NOT TESTED</pre><small>Center module adapted from the attached White Sun origin plate. Simulation visualization; no real stellar or quantum hardware.</small></section><section><h2>3D controls</h2><label>Yaw <output id="yo">24°</output></label><input id="yaw" type="range" min="-180" max="180" value="24"><label>Pitch <output id="po">-19°</output></label><input id="pitch" type="range" min="-80" max="80" value="-19"><label>Stack height <output id="ho">60</output></label><input id="height" type="range" min="1" max="60" value="60"><label>Energy band <output id="bo">All 40</output></label><input id="band" type="range" min="0" max="40" value="40"><p><button id="spin">Auto rotate: off</button> <button id="reset">Reset</button></p></section>
+<section><h2>White Sun · Center VM</h2><div class="stat"><strong id="sunPhaseLabel">0°</strong><small>50 radial arms · 7.2° separation · symbolic origin plate</small></div><label>Origin phase <output id="phaseOut">0°</output></label><input id="phase" type="range" min="0" max="360" step="7.2" value="0"><p><button id="phaseStep">Advance +7.2°</button> <button id="runPorts">Test all six ports</button></p><canvas id="sunPlate" width="270" height="190" style="width:100%;background:#09121f;border:1px solid #304358;border-radius:10px"></canvas><pre id="portResult">PORT A-F: NOT TESTED</pre><pre id="gatewayState">GATEWAY READY</pre><small>Center module adapted from the attached White Sun origin plate. Simulation visualization; no real stellar or quantum hardware.</small></section><section><h2>3D controls</h2><label>Yaw <output id="yo">24°</output></label><input id="yaw" type="range" min="-180" max="180" value="24"><label>Pitch <output id="po">-19°</output></label><input id="pitch" type="range" min="-80" max="80" value="-19"><label>Stack height <output id="ho">60</output></label><input id="height" type="range" min="1" max="60" value="60"><label>Energy band <output id="bo">All 40</output></label><input id="band" type="range" min="0" max="40" value="40"><p><button id="spin">Auto rotate: off</button> <button id="reset">Reset</button></p></section>
 <section><h2>Solar Jetman A/B</h2><pre>SOL:A  :: 16 → 8 → 4 → 2×2
 JET:B  :: 8 → 4 → 2×2
 MAN:C / MAN:D :: identity bound i{sjm}
@@ -26,7 +26,41 @@ MOTHER  :: MmmM
 DAUGHTERS :: -1 / +1</pre></section><small>Interactive 3D projection is conceptual. Lattice points are addresses, not literal diatoms or observed quantum states. v3.6 simulations found self-tuning increased activity but did not prove superior survival. Physical nitrogen-184 viability is unestablished.</small>
 </aside></main>
 <script>
-const vmToggle=document.querySelector('#vmToggle'),vmFrame=document.querySelector('#vmFrame');vmToggle.addEventListener('click',()=>{vmFrame.hidden=!vmFrame.hidden;vmToggle.textContent=vmFrame.hidden?'Open White Sun VM':'Close White Sun VM';vmToggle.setAttribute('aria-pressed',String(!vmFrame.hidden));});document.querySelector('#vmFull').addEventListener('click',()=>window.open('./white-sun/','_blank','noopener,noreferrer'));const canvas=document.querySelector('#view'),ctx=canvas.getContext('2d');const $=s=>document.querySelector(s);let yaw=24,pitch=-19,spin=false,drag=false,ox=0,oy=0,scale=1;
+const vmToggle=document.querySelector('#vmToggle'),vmFrame=document.querySelector('#vmFrame');vmToggle.addEventListener('click',()=>{vmFrame.hidden=!vmFrame.hidden;vmToggle.textContent=vmFrame.hidden?'Open White Sun VM':'Close White Sun VM';vmToggle.setAttribute('aria-pressed',String(!vmFrame.hidden));});document.querySelector('#vmFull').addEventListener('click',()=>window.open('./white-sun/','_blank','noopener,noreferrer'));
+// N184 gateway v3.7: parent is the sole authority for phase and port diagnostics.
+// The embedded application receives snapshots only; no access to parent DOM.
+// This is simulated state transport, not a physical port test.
+const N184_GATEWAY_VERSION=1;
+const N184_PORTS=['A','B','C','D','E','F'];
+let gatewaySeq=0, gatewayPhase=0;
+let gatewayLast=null;
+function n184Packet(){
+  const ports=N184_PORTS.map((name,i)=>({name,angle_deg:i*60,
+    state:'PASS',checked:true}));
+  return {type:'N184_STATE',version:N184_GATEWAY_VERSION,
+    seq:++gatewaySeq,phase_deg:gatewayPhase,
+    lattice:{height:60,bands:40,addresses:2400},
+    geometry:{outer:'{{3x3}}^3',inner:'{{4x4}}^4',bottom:'OPEN'},
+    gateway:'SINGLE_IO',ports};
+}
+function sendN184State(){
+ const packet=n184Packet();gatewayLast=packet;
+ const frame=document.querySelector('#vmFrame');
+ if(frame&&frame.contentWindow)frame.contentWindow.postMessage(packet,location.origin);
+ const out=document.querySelector('#gatewayState');
+ if(out)out.textContent='GATEWAY #'+packet.seq+'  PHASE '+packet.phase_deg.toFixed(1)+'°  PORTS '+packet.ports.length+'/6';
+}
+const gatewayFrame=document.querySelector('#vmFrame');
+gatewayFrame.addEventListener('load',sendN184State);
+window.addEventListener('message',event=>{
+ if(event.origin!==location.origin||event.source!==gatewayFrame.contentWindow)return;
+ const m=event.data;
+ if(!m||m.type!=='N184_PHASE_REQUEST'||m.version!==1||!Number.isFinite(m.phase_deg)||m.phase_deg<0||m.phase_deg>360)return;
+ gatewayPhase=Math.round(m.phase_deg/7.2)*7.2;
+ document.querySelector('#phase').value=gatewayPhase;
+ drawSunPlate();sendN184State();
+});
+const canvas=document.querySelector('#view'),ctx=canvas.getContext('2d');const $=s=>document.querySelector(s);let yaw=24,pitch=-19,spin=false,drag=false,ox=0,oy=0,scale=1;
 function point(x,y,z){let a=yaw*Math.PI/180,b=pitch*Math.PI/180;let xx=x*Math.cos(a)+z*Math.sin(a),zz=-x*Math.sin(a)+z*Math.cos(a);let yy=y*Math.cos(b)-zz*Math.sin(b),depth=y*Math.sin(b)+zz*Math.cos(b);let size=Math.min(canvas.width/2.25,canvas.height/2.6)*scale;return [canvas.width/2+xx*size,canvas.height/2-yy*size,depth]}
 function line(a,b,color,width=1,dash=[]){let p=point(...a),q=point(...b);ctx.beginPath();ctx.setLineDash(dash);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();ctx.setLineDash([])}
 function dot(v,col,r=1.5){let p=point(...v);ctx.fillStyle=col;ctx.beginPath();ctx.arc(p[0],p[1],r,0,Math.PI*2);ctx.fill()}
@@ -64,8 +98,8 @@ if($('#family').checked){let m=[0,-.11,0],l=[-.24,-.48,.3],r=[.24,-.48,.3];line(
 ctx.fillStyle='#9db5ca';ctx.font=`${13*dpr}px system-ui`;ctx.fillText('SOLAR JETMAN A / B · ZERO SEAM · BOTTOM OPEN · SYMBOLIC 3D',18*dpr,27*dpr);
 if(spin){yaw=(yaw+.16)%360;$('#yaw').value=Math.round(yaw)>180?Math.round(yaw)-360:Math.round(yaw);$('#yo').textContent=Math.round(yaw)+'°'}requestAnimationFrame(draw)}
 function drawSunPlate(){const c=$('#sunPlate'),x=c.getContext('2d'),w=c.width,h=c.height,phase=Number($('#phase').value),arms=Math.round(phase/7.2);x.clearRect(0,0,w,h);x.fillStyle='#09121f';x.fillRect(0,0,w,h);x.strokeStyle='#355266';x.beginPath();x.arc(w/2,h/2,77,0,Math.PI*2);x.stroke();for(let i=0;i<50;i++){let a=2*Math.PI*i/50-Math.PI/2;let r=38+(i%5)*8;x.beginPath();x.moveTo(w/2,h/2);x.lineTo(w/2+Math.cos(a)*r,h/2+Math.sin(a)*r);x.strokeStyle=i<arms?'#edcd85':'#385369';x.lineWidth=i<arms?1.8:1;x.stroke();}x.fillStyle='#f4e9c0';x.beginPath();x.arc(w/2,h/2,7,0,Math.PI*2);x.fill();x.fillStyle='#a9cad4';x.font='11px monospace';x.fillText(arms+'/50 arms activated',12,h-12);$('#phaseOut').textContent=phase.toFixed(1)+'°';$('#sunPhaseLabel').textContent=phase.toFixed(1)+'°'}
-$('#phase').addEventListener('input',drawSunPlate);$('#phaseStep').addEventListener('click',()=>{$('#phase').value=(Number($('#phase').value)+7.2)%367.2;drawSunPlate()});
-$('#runPorts').addEventListener('click',()=>{const ports='ABCDEF'.split('');const tests=ports.map((name,i)=>({port:name,angle:i*60,ok:((i*60)%360===i*60)&&i<6}));const pass=tests.filter(x=>x.ok).length;$('#portResult').textContent=tests.map(x=>'PORT '+x.port+'  @ '+x.angle+'°  '+(x.ok?'PASS':'FAIL')).join('\\n')+'\\nGATEWAY 1/1 · '+pass+'/6 CONFIGURATION CHECKS PASS';});drawSunPlate();
+$('#phase').addEventListener('input',()=>{gatewayPhase=Number($('#phase').value);drawSunPlate();sendN184State()});$('#phaseStep').addEventListener('click',()=>{$('#phase').value=(Number($('#phase').value)+7.2)%367.2;gatewayPhase=Number($('#phase').value);drawSunPlate();sendN184State()});
+$('#runPorts').addEventListener('click',()=>{const ports='ABCDEF'.split('');const tests=ports.map((name,i)=>({port:name,angle:i*60,ok:((i*60)%360===i*60)&&i<6}));const pass=tests.filter(x=>x.ok).length;$('#portResult').textContent=tests.map(x=>'PORT '+x.port+'  @ '+x.angle+'°  '+(x.ok?'PASS':'FAIL')).join('\\n')+'\\nGATEWAY 1/1 · '+pass+'/6 CONFIGURATION CHECKS PASS';sendN184State();});drawSunPlate();
 for(let id of ['yaw','pitch','height','band'])$('#'+id).addEventListener('input',()=>{yaw=Number($('#yaw').value);pitch=Number($('#pitch').value);$('#yo').textContent=yaw+'°';$('#po').textContent=pitch+'°';$('#ho').textContent=$('#height').value;$('#bo').textContent=$('#band').value==='40'?'All 40':$('#band').value});
 $('#spin').onclick=()=>{spin=!spin;$('#spin').textContent='Auto rotate: '+(spin?'on':'off')};$('#reset').onclick=()=>{yaw=24;pitch=-19;scale=1;$('#yaw').value=24;$('#pitch').value=-19;$('#yo').textContent='24°';$('#po').textContent='-19°'};
 canvas.addEventListener('pointerdown',e=>{drag=true;ox=e.clientX;oy=e.clientY;canvas.setPointerCapture(e.pointerId)});canvas.addEventListener('pointerup',()=>drag=false);canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-ox)*.4;pitch=Math.max(-80,Math.min(80,pitch+(e.clientY-oy)*.3));ox=e.clientX;oy=e.clientY;$('#yo').textContent=Math.round(yaw)+'°';$('#po').textContent=Math.round(pitch)+'°'});canvas.addEventListener('wheel',e=>{e.preventDefault();scale=Math.max(.55,Math.min(2,scale*(e.deltaY>0?.94:1.06)))},{passive:false});requestAnimationFrame(draw);
