@@ -24,5 +24,32 @@ Error generating stack: `+o.message+`
 </script>
   <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script>
+<style>
+#n184-sync{position:fixed;right:12px;bottom:12px;z-index:2147483640;background:#091525ed;border:1px solid #58cdb8;color:#dbf7ed;border-radius:11px;padding:10px 12px;font:12px/1.5 ui-monospace,monospace;box-shadow:0 0 24px #1bb4b430;max-width:260px}
+#n184-sync button{background:#143b43;color:#effcfb;border:1px solid #4ec9c1;border-radius:5px;padding:4px 8px;cursor:pointer;margin-top:6px}
+</style>
+<div id="n184-sync" role="status" aria-live="polite">N184 VM GATEWAY: WAITING<br><span id="n184-status">Parent handshake pending</span><br><button id="n184-request">Request next +7.2°</button></div>
+<script>
+(function(){
+ 'use strict';
+ const status=document.getElementById('n184-status');
+ let lastSeq=0,lastPhase=0,received=0;
+ window.addEventListener('message',function(event){
+  if(event.origin!==location.origin||event.source!==window.parent)return;
+  const packet=event.data;
+  if(!packet||packet.type!=='N184_STATE'||packet.version!==1||!Number.isSafeInteger(packet.seq)||packet.seq<=lastSeq)return;
+  if(!Number.isFinite(packet.phase_deg)||packet.phase_deg<0||packet.phase_deg>360)return;
+  if(!packet.lattice||packet.lattice.addresses!==2400||packet.lattice.height!==60||packet.lattice.bands!==40)return;
+  if(!Array.isArray(packet.ports)||packet.ports.length!==6||packet.ports.some((p,i)=>p.name!=='ABCDEF'[i]||p.angle_deg!==i*60||!p.checked))return;
+  lastSeq=packet.seq;lastPhase=packet.phase_deg;received++;
+  status.textContent='SYNC '+received+' | #'+lastSeq+' | '+lastPhase.toFixed(1)+'° | PORTS 6/6';
+ });
+ document.getElementById('n184-request').addEventListener('click',function(){
+  if(window.parent===window){status.textContent='STANDALONE MODE: no parent gateway';return}
+  let next=Math.round(((lastPhase+7.2)%360)/7.2)*7.2;
+  window.parent.postMessage({type:'N184_PHASE_REQUEST',version:1,phase_deg:next},location.origin);
+ });
+})();
+</script>
 </body>
 </html>
