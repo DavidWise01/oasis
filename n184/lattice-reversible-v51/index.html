@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N184 v5.1 · 2400-address reversible lattice</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#0a111e;color:#eaf4fa;font:14px system-ui}header{padding:17px 24px;border-bottom:1px solid #34485b}h1{font-size:23px;margin:0}.muted{color:#a9bbca}main{display:grid;grid-template-columns:minmax(0,1fr) 370px}canvas{display:block;width:100%;height:calc(100vh - 84px);min-height:500px;cursor:crosshair}aside{background:#121f30;border-left:1px solid #34485b;padding:18px;max-height:calc(100vh - 84px);overflow:auto}section{border-bottom:1px solid #34485b;margin-bottom:16px;padding-bottom:16px}h2{font-size:13px;color:#91e4d3;letter-spacing:.09em;text-transform:uppercase}label{display:flex;justify-content:space-between;margin:9px 0 5px}input[type=range]{width:100%}button{padding:8px 11px;border:1px solid #69b5ab;border-radius:7px;background:#23515a;color:white;cursor:pointer;margin:3px}pre{white-space:pre-wrap;font:12px/1.6 monospace;color:#e2d3fa}a{color:#83e3d4}@media(max-width:860px){main{display:block}canvas{height:55vh;min-height:340px}aside{max-height:none;border-top:1px solid #34485b}}</style>
+<header><h1>N184 · v5.1 Reversible 2,400-Address Lattice</h1><div class="muted">{{{{ X-CORE / BOX / TOROID }}}} · 60 rows × 40 columns · 4-bit identity-preserving packets</div></header>
+<main><canvas id="grid"></canvas><aside>
+<section><h2>Local packet</h2><label>Selected address <output id="addrOut">0</output></label><input id="address" type="range" min="0" max="2399" step="1" value="0">
+<label>Input nibble <output id="bitOut">6</output></label><input id="nibble" type="range" min="0" max="15" step="1" value="6">
+<label>Phase step <output id="stepOut">0 / 2</output></label><input id="step" type="range" min="0" max="2" step="1" value="0">
+<p><button id="next">Next phase</button><button id="reset">Reset</button><button id="tests">Run full exhaustive test</button></p><pre id="monitor"></pre><pre id="result">Tests not run in this browser.</pre></section>
+<section><h2>Frozen rules</h2><pre>{{{{ N184 :: v5.1 }}}}
+
+60 × 40 = 2400 addresses
+a=(-2,+3)  b=(-3,+2)
+c=(+2,-3)  d=(+3,-2)
+
+FORWARD:
+  row' = (row + 7) mod 60
+  col' = (col + 13) mod 40
+  nibble' = swap2(nibble) XOR 9
+
+REVERSE:
+  row = (row' - 7) mod 60
+  col = (col' - 13) mod 40
+  nibble = swap2(nibble' XOR 9)
+
+{{**--&#96;&#96;--**}}</pre>
+<p class="muted">Three phases: input → transformed → reconstructed. Address identity is carried by a reversible index mapping, not overwritten or merged. The entire mapping is symbolic; no quantum tunneling or physical forces are simulated.</p></section>
+<a href="../reversible-cross-v50/">Prior v5.0</a> · <a href="../dual-geometry-v43/README.md">Frozen dual geometry</a>
+</aside></main>
+<script>
+'use strict';
+const ROWS=60,COLS=40,N=ROWS*COLS,el=id=>document.getElementById(id),cv=el('grid'),ctx=cv.getContext('2d');
+const mod=(a,n)=>(a%n+n)%n;
+const pack=(r,c)=>r*COLS+c;
+const unpack=a=>[Math.floor(a/COLS),a%COLS];
+const swap2=x=>((x&3)<<2)|((x>>2)&3);
+const fwdNib=x=>swap2(x)^9;
+const invNib=x=>swap2(x^9);
+function forward(addr,nib){let [r,c]=unpack(addr);return [pack(mod(r+7,ROWS),mod(c+13,COLS)),fwdNib(nib)]}
+function reverse(addr,nib){let [r,c]=unpack(addr);return [pack(mod(r-7,ROWS),mod(c-13,COLS)),invNib(nib)]}
+function current(){let a=+el('address').value,n=+el('nibble').value,step=+el('step').value,out=forward(a,n);return {a,n,step,out,back:reverse(...out),selected:step===1?out:[a,n]}}
+function render(){let d=Math.min(devicePixelRatio||1,2),w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}let {a,n,step,out,back,selected}=current();ctx.fillStyle='#0a111e';ctx.fillRect(0,0,w,h);
+let pad=32*d,cell=Math.min((w-2*pad)/COLS,(h-2*pad)/ROWS),x0=(w-COLS*cell)/2,y0=(h-ROWS*cell)/2;
+for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){const id=pack(r,c),mapped=forward(id,(id%16))[0];ctx.fillStyle=id===selected[0]?'#f7db9a':id===a?'#96e9dc':mapped%16===0?'#34556e':'#172d43';ctx.fillRect(x0+c*cell+.5*d,y0+r*cell+.5*d,Math.max(1,cell-1*d),Math.max(1,cell-1*d))}
+ctx.fillStyle='#c6dbe7';ctx.font=(12*d)+'px monospace';ctx.fillText('60 × 40 · 2400 UNIQUE ADDRESS SLOTS',10*d,19*d);
+el('addrOut').textContent=a;el('bitOut').textContent=n;el('stepOut').textContent=step+' / 2';
+el('monitor').textContent='INPUT       '+a+' : '+n.toString(2).padStart(4,'0')+'\nFORWARD     '+out[0]+' : '+out[1].toString(2).padStart(4,'0')+'\nRETURN      '+back[0]+' : '+back[1].toString(2).padStart(4,'0')+'\nSTATUS      '+(['INPUT','X TRANSFORM','INVERSE COMPLETE'][step])+'\nIDENTITY    '+(a===back[0]&&n===back[1]?'PRESERVED':'FAIL')+'\nONE GATEWAY conceptual';
+}
+for(let k of ['address','nibble','step'])el(k).oninput=render;
+el('next').onclick=()=>{el('step').value=(+el('step').value+1)%3;render()};
+el('reset').onclick=()=>{el('address').value=0;el('nibble').value=6;el('step').value=0;render()};
+cv.addEventListener('click',e=>{const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2),w=cv.width,h=cv.height,pad=32*d,cell=Math.min((w-2*pad)/COLS,(h-2*pad)/ROWS),x0=(w-COLS*cell)/2,y0=(h-ROWS*cell)/2,c=Math.floor(((e.clientX-r.left)*d-x0)/cell),row=Math.floor(((e.clientY-r.top)*d-y0)/cell);if(row>=0&&row<ROWS&&c>=0&&c<COLS){el('address').value=pack(row,c);render()}});
+el('tests').onclick=()=>{const seen=new Set;let checked=0,errors=0;for(let a=0;a<N;a++)for(let n=0;n<16;n++){let [b,v]=forward(a,n),[a2,n2]=reverse(b,v),key=b*16+v;if(seen.has(key)||a2!==a||n2!==n||b<0||b>=N||v<0||v>15)errors++;seen.add(key);checked++}let expected=N*16,coords=[[-2,3],[-3,2],[2,-3],[3,-2]],sum=coords.reduce((p,q)=>[p[0]+q[0],p[1]+q[1]],[0,0]);el('result').textContent=checked.toLocaleString()+' / '+expected.toLocaleString()+' COMPLETE\n'+seen.size.toLocaleString()+' UNIQUE OUTPUTS\nCOLLISIONS: '+(checked-seen.size)+'\nROUND-TRIP FAILURES: '+errors+'\nX ZERO SUM: '+(sum[0]===0&&sum[1]===0?'PASS':'FAIL')+'\nSTRONG PAIR: '+((6*6)**6===2176782336?'PASS':'FAIL')+'\nRESULT: '+(errors===0&&seen.size===expected&&sum[0]===0&&sum[1]===0?'PASS':'FAIL')};
+window.addEventListener('resize',render);render();
+</script></html>
