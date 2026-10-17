@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v4.8 · Dual Phase Coupling</title><style>*{box-sizing:border-box}body{margin:0;background:#080f1d;color:#ebf2fa;font:14px system-ui}header{padding:18px 24px;border-bottom:1px solid #2c435c}h1{font-size:23px;margin:0}main{display:grid;grid-template-columns:minmax(0,1fr) 340px}#stage{height:calc(100vh - 85px);min-height:520px;width:100%;display:block}aside{background:#121e2f;border-left:1px solid #334960;padding:18px}section{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #2c435c}h2{font-size:13px;text-transform:uppercase;color:#8ee0d1}button{border:1px solid #69b8b0;background:#214653;color:#fff;border-radius:8px;padding:9px 12px;cursor:pointer;margin:3px}input{width:100%}label{display:flex;justify-content:space-between;margin-top:10px}pre{font:12px/1.65 monospace;white-space:pre-wrap;color:#d7d0f3}a{color:#89ded7}.muted{color:#a6bbcf}@media(max-width:820px){main{grid-template-columns:1fr}#stage{height:55vh;min-height:360px}aside{border-top:1px solid #334960}}</style><header><h1>N184 · v4.8 Independent-Phase Coupling</h1><div class="muted">{{{{ BOX / TOROID / CORE }}}} · symbolic rotation / one gateway / frozen 2400 addresses</div></header><main><canvas id="stage"></canvas><aside><section><h2>Drive</h2><label>Cycle <output id="co">0°</output></label><input id="cycle" type="range" min="0" max="360" step="1" value="0"><label>Relative toroid offset <output id="oo">90°</output></label><input id="offset" type="range" min="-180" max="180" value="90"><p><button id="play">Play</button><button id="reset">Reset</button><button id="test">Test 72,360 states</button></p><pre id="metrics"></pre><pre id="result">Tests not run</pre></section><section><h2>Fixed model</h2><pre>{{{{ N184 :: v4.8 }}}}
+BOX:
+ weak (2×2)^2 = 16
+ med  (4×4)^4 = 65536
+ str  (6×6)^6 = 2176782336
+
+TOROID:
+ weak (1×1)^1 = 1
+ med  (3×3)^3 = 729
+ str  (6×6)^6 = 2176782336
+
+PHASE:
+ box = θ
+ tor = θ + Δ
+ core coupling = sin²((box-tor)/2)
+
+X: a=(-2,+3) b=(-3,+2)
+   c=(+2,-3) d=(+3,-2)
+{{**--``--**}}</pre><small>Phase angles rotate geometry while an explicit unit-budget partition models exchange. No claim of physically derived tunneling or atom creation.</small></section><a href="../coupled-phase-v47/">v4.7 baseline</a></aside></main><script>
+'use strict';const $=id=>document.getElementById(id),cv=$('stage'),g=cv.getContext('2d');let playing=false;
+const rad=x=>x*Math.PI/180;
+function state(deg,off){const B=rad(deg),T=rad(deg+off),core=Math.sin((B-T)/2)**2;const remain=1-core,box=remain*(.5+.5*Math.cos(B-T)),toroid=remain-box;return {B,T,core,box,toroid,total:core+box+toroid,delta:off}}
+function P(x,y,z){const a=.47,k=Math.min(cv.width,cv.height)*.24;return[cv.width/2+(x*Math.cos(a)+z*Math.sin(a))*k,cv.height/2-(y-.19*(z*Math.cos(a)-x*Math.sin(a)))*k]}
+function line(a,b,c,w=1){const x=P(...a),y=P(...b);g.beginPath();g.strokeStyle=c;g.lineWidth=w;g.moveTo(...x);g.lineTo(...y);g.stroke()}
+function cube(s,c,open){let v=[];for(const x of [-1,1])for(const y of [-1,1])for(const z of [-1,1])v.push([x*s,y*s,z*s]);for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){const d=v[i].reduce((n,z,k)=>n+(z!==v[j][k]),0);if(d===1&&!(open&&v[i][1]<0&&v[j][1]<0))line(v[i],v[j],c,1.5)}}
+function ring(r,color,rot){let prev=null;for(let i=0;i<=120;i++){let a=i*Math.PI/60+rot,p=[r*Math.cos(a),.07*Math.sin(3*a),r*Math.sin(a)];if(prev)line(prev,p,color,1.2);prev=p}}
+function dot(p,color,r){let a=P(...p);g.fillStyle=color;g.beginPath();g.arc(...a,r,0,2*Math.PI);g.fill()}
+function draw(){const d=Math.min(2,devicePixelRatio||1),w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}g.fillStyle='#080f1d';g.fillRect(0,0,w,h);let deg=Number($('cycle').value),off=Number($('offset').value),s=state(deg,off);cube(1.65,'#568c94',true);cube(1.16,'#b59668',true);cube(.54,'#af9dee',false);ring(1.02,'#9f8ce2',s.T);ring(.73,'#dab377',s.T);ring(.40,'#88dfd1',s.T);line([-.32,.48,0],[.32,-.48,0],'#7ce9d7',2.5);line([-.48,.32,0],[.48,-.32,0],'#f5cd94',2.5);
+dot([-.65,0,.13],'#b4a3ef',(4+12*s.box)*d);dot([.65,0,.13],'#83e8d9',(4+12*s.toroid)*d);dot([0,0,0],'#fff3da',(5+13*s.core)*d);
+line([-1.85,0,0],[-.54,0,0],'#efdb9f',2);
+$('co').textContent=deg+'°';$('oo').textContent=off+'°';
+$('metrics').textContent='BOX PHASE      '+deg+'°\nTOROID PHASE   '+(deg+off)+'°\nDIFFERENCE     '+off+'°\nBOX            '+s.box.toFixed(8)+'\nTOROID         '+s.toroid.toFixed(8)+'\nCORE           '+s.core.toFixed(8)+'\nTOTAL          '+s.total.toFixed(12)+'\nGATEWAY        1';
+if(playing){let n=deg+1;if(n>360){n=360;playing=false;$('play').textContent='Play'}$('cycle').value=n}requestAnimationFrame(draw)}
+$('play').onclick=()=>{if(Number($('cycle').value)>=360)$('cycle').value=0;playing=!playing;$('play').textContent=playing?'Pause':'Play'};$('reset').onclick=()=>{playing=false;$('play').textContent='Play';$('cycle').value=0;$('offset').value=90};
+$('test').onclick=()=>{let count=0,fail=0,max=0;for(let deg=0;deg<360;deg++)for(let off=-100;off<=100;off++){let s=state(deg,off),res=Math.abs(s.total-1);count++;max=Math.max(max,res);if(res>1e-12||[s.box,s.toroid,s.core].some(x=>x< -1e-12||x>1+1e-12))fail++}let closure=[-180,-90,0,90,180].every(o=>{let a=state(0,o),b=state(360,o);return Math.abs(a.box-b.box)<1e-12&&Math.abs(a.toroid-b.toroid)<1e-12&&Math.abs(a.core-b.core)<1e-12});$('result').textContent=count+' states: '+(fail?'FAIL':'PASS')+'\nMAX RESIDUAL: '+max.toExponential(2)+'\n360° CLOSURE: '+(closure?'PASS':'FAIL')+'\nPHYSICAL MEASUREMENT: NONE'};
+requestAnimationFrame(draw);
+</script></html>
