@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v5.3 · Deterministic Gateway Scheduler</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#08111d;color:#e8f3fb;font:14px system-ui}header{padding:18px 23px;border-bottom:1px solid #354a61}h1{font-size:23px;margin:0}.sub{color:#a0b7c8}main{display:grid;grid-template-columns:minmax(0,1fr) 360px}canvas{height:calc(100vh - 82px);min-height:530px;width:100%;display:block}aside{padding:17px;background:#111f30;border-left:1px solid #354a61;overflow:auto;max-height:calc(100vh - 82px)}section{border-bottom:1px solid #354a61;padding-bottom:14px;margin-bottom:15px}h2{font-size:13px;color:#8fe6d8;text-transform:uppercase}button{margin:3px;padding:9px;background:#225465;color:white;border:1px solid #69b7b0;border-radius:7px;cursor:pointer}input{width:100%}label{display:flex;justify-content:space-between;margin:10px 0 4px}pre{font:12px/1.65 monospace;white-space:pre-wrap;color:#e1d3f0}a{color:#83e1d4}.muted{color:#a4b9c5}@media(max-width:880px){main{display:block}canvas{height:53vh;min-height:360px}aside{max-height:none;border-left:0;border-top:1px solid #354a61}}</style>
+<header><h1>N184 · v5.3 Deterministic Gateway Scheduler</h1><div class="sub">{{{{ QUEUE :: ONE GATE :: LATTICE :: X :: INVERSE }}}} · 2,400 frozen addresses</div></header>
+<main><canvas id="grid"></canvas><aside>
+<section><h2>Gateway scheduler</h2><label>Packets requested <output id="countLabel">512</output></label><input id="count" type="range" min="1" max="2400" step="1" value="512">
+<label>Gate admissions / tick <output id="rateLabel">16</output></label><input id="rate" type="range" min="1" max="64" value="16">
+<label>Queue limit <output id="limitLabel">512</output></label><input id="limit" type="range" min="1" max="2400" value="512">
+<p><button id="initialize">Initialize</button><button id="tick">Tick +1</button><button id="drain">Drain queue</button><button id="verify">Run scheduler tests</button></p>
+<pre id="metrics"></pre><pre id="testResult">Scheduler tests have not run in this browser.</pre></section>
+<section><h2>Frozen protocol</h2><pre>{{{{ N184 :: v5.3 }}}}
+
+SOURCE (packet ID ascending)
+          |
+       FIFO QUEUE
+          |
+ SINGLE GATE (rate per tick)
+          |
+  60 ROWS × 40 COLUMNS
+     2400 ADDRESSES
+          |
+  REVERSIBLE X OPERATOR
+      {{**--&#96;&#96;--**}}
+          |
+   INVERSE RECOVERY
+
+Forward:
+ (row + 7) mod 60
+ (col + 13) mod 40
+ swap2(nibble) XOR 9
+
+No duplicate source addresses.
+No packets silently discarded.
+Over-limit requests rejected
+BEFORE starting a batch.</pre>
+<p class="muted">The single gateway is a serialized admission resource. After admission, packet transformations are pure and can be computed as a batch. No measured physical transport speed or quantum forces are implied.</p>
+</section><a href="../multipacket-v52/">v5.2 multi-packet baseline</a></aside></main>
+<script>
+'use strict';const $=id=>document.getElementById(id),ROWS=60,COLS=40,N=ROWS*COLS,cv=$('grid'),g=cv.getContext('2d'),mod=(a,n)=>(a%n+n)%n,swap=x=>((x&3)<<2)|((x>>2)&3);
+function forward(addr,nibble){const r=Math.floor(addr/COLS),c=addr%COLS;return [mod(r+7,ROWS)*COLS+mod(c+13,COLS),swap(nibble)^9]}
+function inverse(addr,nibble){const r=Math.floor(addr/COLS),c=addr%COLS;return [mod(r-7,ROWS)*COLS+mod(c-13,COLS),swap(nibble^9)]}
+function packet(id){return {id,addr:(id*1009+37)%N,nibble:(id*5+1)%16}}
+function start(count,limit){if(count>limit)return {rejected:true, reason:'QUEUE_LIMIT',queue:[],admitted:[],tick:0,requested:count};return {rejected:false,queue:Array.from({length:count},(_,i)=>packet(i)),admitted:[],tick:0,requested:count}}
+function advance(job,rate){if(job.rejected||job.queue.length===0)return job;let moved=job.queue.splice(0,Math.min(rate,job.queue.length));for(let p of moved){let [a,n]=forward(p.addr,p.nibble),[a2,n2]=inverse(a,n);job.admitted.push({id:p.id,addr:a,nibble:n,recoveredAddr:a2,recoveredNibble:n2,originalAddr:p.addr,originalNibble:p.nibble,admissionTick:job.tick+1})}job.tick++;return job}
+function verified(job){if(job.rejected)return job.admitted.length===0&&job.queue.length===0;let dst=new Set(job.admitted.map(p=>p.addr)),src=new Set(job.admitted.map(p=>p.originalAddr));return job.queue.length+job.admitted.length===job.requested&&dst.size===job.admitted.length&&src.size===job.admitted.length&&job.admitted.every((p,i)=>p.id===i&&p.originalAddr===p.recoveredAddr&&p.originalNibble===p.recoveredNibble)}
+let job=start(512,512);
+function draw(){const d=Math.min(2,devicePixelRatio||1),w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}g.fillStyle='#08111d';g.fillRect(0,0,w,h);const pad=28*d,cell=Math.min((w-2*pad)/COLS,(h-2*pad)/ROWS),x0=(w-COLS*cell)/2,y0=(h-ROWS*cell)/2,active=new Set(job.admitted.map(p=>p.addr)),waiting=new Set(job.queue.map(p=>p.addr));for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){const a=r*COLS+c;g.fillStyle=active.has(a)?'#f5c387':waiting.has(a)?'#426c85':'#193048';g.fillRect(x0+c*cell+.4*d,y0+r*cell+.4*d,Math.max(1,cell-.8*d),Math.max(1,cell-.8*d))}g.fillStyle='#bdd3dc';g.font=12*d+'px monospace';g.fillText('QUEUE → SINGLE GATE → 60×40 LATTICE',12*d,19*d);
+$('countLabel').textContent=$('count').value;$('rateLabel').textContent=$('rate').value;$('limitLabel').textContent=$('limit').value;
+$('metrics').textContent='REQUESTED   '+job.requested+'\nSTATUS      '+(job.rejected?'REJECTED: '+job.reason:job.queue.length?'QUEUED':'COMPLETE')+'\nQUEUE       '+job.queue.length+'\nADMITTED    '+job.admitted.length+'\nTICKS       '+job.tick+'\nREVERSED    '+job.admitted.filter(p=>p.originalAddr===p.recoveredAddr&&p.originalNibble===p.recoveredNibble).length+'\nINVARIANTS  '+(verified(job)?'PASS':'FAIL')+'\nGATE COUNT  1';
+}
+function initialize(){job=start(+$('count').value,+$('limit').value);draw()}
+$('initialize').onclick=initialize;$('tick').onclick=()=>{advance(job,+$('rate').value);draw()};$('drain').onclick=()=>{while(!job.rejected&&job.queue.length)advance(job,+$('rate').value);draw()};for(const id of ['count','rate','limit'])$(id).oninput=draw;
+$('verify').onclick=()=>{let cases=0,failures=0;for(let n=1;n<=2400;n+=7)for(let rate=1;rate<=64;rate+=7){let j=start(n,2400);while(j.queue.length)advance(j,rate);cases++;if(!verified(j)||j.tick!==Math.ceil(n/rate))failures++}for(let n=1;n<=2400;n+=7){let j=start(n,n-1);cases++;if(!j.rejected||!verified(j))failures++}let all=new Set;for(let a=0;a<N;a++)for(let n=0;n<16;n++){let [b,v]=forward(a,n),[aa,nn]=inverse(b,v);all.add(b*16+v);if(aa!==a||nn!==n)failures++}const ok=all.size===38400&&failures===0;$('testResult').textContent=cases.toLocaleString()+' QUEUE CASES\n38,400 REVERSAL CASES\n'+all.size.toLocaleString()+' DISTINCT OUTPUTS\nFAILURES: '+failures+'\nSTATUS: '+(ok?'PASS':'FAIL')};
+window.addEventListener('resize',draw);draw();
+</script></html>
