@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N184 · v6.1 Frozen · Interactive 3D Technical Blueprint</title>
+<style>
+:root{--bg:#06182b;--panel:#09243b;--line:#2a789a;--cyan:#70dcff;--white:#d8f5ff;--amber:#ffbc63;--green:#65ebae;--blue:#419fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}body:before{position:fixed;inset:0;pointer-events:none;content:"";background:linear-gradient(#1d648314 1px,transparent 1px),linear-gradient(90deg,#1d648314 1px,transparent 1px);background-size:24px 24px}header{position:relative;border-bottom:1px solid #5aa9ca;padding:15px 22px;display:flex;justify-content:space-between;gap:12px;align-items:center}h1{font:700 clamp(22px,2.4vw,36px) Georgia,serif;color:#c6f2ff;margin:0;letter-spacing:.035em}h2{color:var(--cyan);letter-spacing:.12em;font-size:12px;text-transform:uppercase;border-bottom:1px solid #3b8dad;margin:0 0 12px;padding-bottom:7px}.sub{color:#92c6dc}.tag{color:#8ff5ba;border:1px solid #63c69a;padding:5px 9px;white-space:nowrap}main{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 344px;gap:8px;padding:8px}.card{background:#092139eb;border:1px solid #3483a5;padding:12px;min-width:0}.stage{position:relative;min-height:670px}.stage canvas{width:100%;height:620px;display:block;cursor:grab;touch-action:none}.stage canvas:active{cursor:grabbing}.hud{position:absolute;top:47px;left:20px;pointer-events:none;color:#87d4e8;text-shadow:0 1px 3px #000}.hud small{display:block;margin:5px 0}.stage-bottom{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center;border-top:1px solid #2f718d;padding-top:9px}.buttons{display:flex;flex-wrap:wrap;gap:5px}button{font:inherit;background:#10354c;color:#c2edff;border:1px solid #3c9bc0;border-radius:3px;padding:7px 9px;cursor:pointer}button[aria-pressed=true]{background:#266383;color:white}button:focus-visible,input:focus-visible{outline:2px solid #99f1e2}aside{display:grid;gap:8px;align-content:start}label{display:flex;justify-content:space-between;gap:7px;align-items:center;padding:3px 0}input[type=range]{width:100%;accent-color:#55c5e6}input[type=checkbox]{accent-color:#6bdabc}pre{color:#c4e0ed;white-space:pre-wrap;margin:7px 0;font:12px/1.65 ui-monospace,monospace}.value{color:#9bf3c1}.grid-bottom{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.views canvas{height:170px;width:100%;display:block;border:1px solid #285f7f;background:#06172a}.viewlabel{text-align:center;color:#9bcde2}.legend{display:grid;grid-template-columns:1fr 1fr;gap:5px}.swatch{width:26px;display:inline-block;border-top:3px solid;vertical-align:middle;margin-right:6px}.foot{color:#9db8c6}a{color:#8bdef2}@media(max-width:1040px){main{grid-template-columns:1fr}aside{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-bottom{grid-template-columns:1fr 1fr}}@media(max-width:660px){aside,.grid-bottom{grid-template-columns:1fr}.stage{min-height:490px}.stage canvas{height:430px}.views canvas{height:110px}header{display:block}.tag{display:inline-block;margin-top:8px}}
+</style>
+<header><div><h1>N184 v6.1 — Full 3D Technical Blueprint</h1><div class="sub">FROZEN RECOVERY SUBSYSTEM · ISOMETRIC / ORTHOGRAPHIC / EXPLODED ENGINEERING VIEWS</div></div><div class="tag">SCHEMATIC · REV 6.1 · FROZEN</div></header>
+<main>
+<section class="card stage"><h2>05 / Central 3D isometric cutaway — drag to rotate · scroll to zoom</h2><canvas id="main3d" aria-label="Interactive rotating projection of outer tesseract, inner hypercube, protected box, three toroids, X-core, and entry gateway"></canvas><div class="hud"><small>OUTER ] OPEN TESSERACT PROJECTION</small><small>INNER ] OPEN HYPERCUBE FRAME</small><small>CLOSED [ BOX · X-CORE</small><small>ONE IN/OUT GATEWAY</small></div><div class="stage-bottom"><div class="buttons"><button data-camera="iso" aria-pressed="true">ISOMETRIC</button><button data-camera="front">FRONT</button><button data-camera="top">TOP</button><button data-camera="side">SIDE</button><button id="explode" aria-pressed="false">EXPLODE</button><button id="spin" aria-pressed="false">AUTO ROTATE</button><button id="reset">RESET</button></div><span class="foot" id="cameraLabel">VIEW / ISO</span></div></section>
+<aside>
+<section class="card"><h2>01 / Geometry and visibility</h2><label>Outer projected tesseract ] <input type="checkbox" data-layer="outer" checked></label><label>Inner open hypercube ] <input type="checkbox" data-layer="inner" checked></label><label>Closed box [ <input type="checkbox" data-layer="box" checked></label><label>Weak toroid · orange <input type="checkbox" data-layer="weak" checked></label><label>Medium toroid · green <input type="checkbox" data-layer="medium" checked></label><label>Strong toroid · blue <input type="checkbox" data-layer="strong" checked></label><label>X-core / four coordinates <input type="checkbox" data-layer="core" checked></label><label>Single gateway <input type="checkbox" data-layer="gate" checked></label><label>2400 lattice inset <input type="checkbox" data-layer="lattice" checked></label></section>
+<section class="card"><h2>02 / Geometry / symbolic capacities</h2><pre>BOX    W (2×2)^2     <span class="value">16</span>
+       M (4×4)^4     <span class="value">65,536</span>
+       S (6×6)^6     <span class="value">2,176,782,336</span>
+
+TOROID W (1×1)^1     <span class="value">1</span>
+       M (3×3)^3     <span class="value">729</span>
+       S (6×6)^6     <span class="value">2,176,782,336</span></pre><div class="foot">Scales are symbolic counts. Ring sizes are diagrammatic, not proportional to numerical counts.</div></section>
+<section class="card"><h2>03 / Interaction</h2><label>Assembly separation <output id="explabel">0%</output></label><input id="separation" type="range" min="0" max="100" value="0"><label>Ring phase <output id="phaselabel">0°</output></label><input id="phase" type="range" min="0" max="360" value="0"><label>Zoom <output id="zoomlabel">100%</output></label><input id="zoom" type="range" min="60" max="200" value="100"><div class="foot">Only rendering positions change; the frozen kernel remains unchanged.</div></section>
+<section class="card"><h2>06 / X-core & gateway</h2><pre>a = (-2, +3)    b = (-3, +2)
+c = (+2, -3)    d = (+3, -2)
+a+b+c+d = (0, 0)
+{{**--&#96;&#96;--**}}
+
+GATEWAY: 1 logical ingress/egress
+GRID: 60 × 40 = 2,400
+NIBBLES: 16 per address
+MAPPINGS: 38,400 bijective pairs</pre></section>
+</aside>
+<div class="grid-bottom">
+<section class="card"><h2>09 / Orthographic projections</h2><div class="views"><div><canvas id="front"></canvas><div class="viewlabel">FRONT · X/Z</div></div><div><canvas id="top"></canvas><div class="viewlabel">TOP · X/Y</div></div><div><canvas id="side"></canvas><div class="viewlabel">SIDE · Y/Z</div></div></div></section>
+<section class="card"><h2>11 / Lattice + recovery routing</h2><canvas id="addressMap" style="height:176px;width:100%;display:block" aria-label="60 by 40 lattice diagram"></canvas><pre>IN → GATE → 60×40 → X-CORE
+ROW' = (ROW + 7) mod 60
+COL' = (COL + 13) mod 40
+NIB' = swap2(NIB) XOR 9
+INVERSE → RESTORE → ACK</pre></section>
+<section class="card"><h2>12 / Browser software certification</h2><pre>Two-tab CAS contention    <span class="value">PASS</span>
+Stale writer rejection    <span class="value">PASS</span>
+Aborted-write unchanged   <span class="value">PASS</span>
+38,400 reversible pairs  <span class="value">PASS</span>
+Reload persistence        <span class="value">PASS</span>
+
+RECOVERY SUBSYSTEM: <span class="value">FROZEN</span></pre><p class="foot">Operator-reported real browser tests; no claim of power-loss durability, manufactured hardware or physical force-carrier behavior.</p><a href="../certification-v61/FREEZE.md">Frozen acceptance record →</a></section>
+</div>
+<section class="card" style="grid-column:1/-1"><h2>13 / Technical legend</h2><div class="legend"><div><span class="swatch" style="border-color:#70dcff"></span>Outer tesseract · 4D projected envelope</div><div><span class="swatch" style="border-color:#d2efff"></span>Inner open hypercube projection</div><div><span class="swatch" style="border-color:#c0b0ff"></span>Closed box / protected chamber</div><div><span class="swatch" style="border-color:#ffbc63"></span>Weak toroidal shell</div><div><span class="swatch" style="border-color:#65ebae"></span>Medium toroidal shell</div><div><span class="swatch" style="border-color:#419fff"></span>Strong toroidal shell</div><div><span class="swatch" style="border-color:#ffeed0"></span>Single gateway conduit</div><div><span class="swatch" style="border-color:#fff"></span>Four-point X-core</div></div><p class="foot">Blueprint is a conceptual 3D visualization of a symbolic computational architecture. An outer tesseract is itself a 4D hypercube, projected here as a layered 3D wireframe; these named nested frames are the user's visualization convention rather than distinct established physical shapes.</p></section>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);const TAU=Math.PI*2;
+let yaw=.69,pitch=.38,spin=false,zoom=1,phase=0,explode=0,drag=null;
+const show={outer:true,inner:true,box:true,weak:true,medium:true,strong:true,core:true,gate:true,lattice:true};
+const C={outer:'#70dcff',inner:'#d2efff',box:'#c0b0ff',weak:'#ffbc63',medium:'#65ebae',strong:'#419fff',core:'#ffffff',gate:'#ffe4af'};
+function rotate([x,y,z],az,el){let a=x*Math.cos(az)-z*Math.sin(az),b=x*Math.sin(az)+z*Math.cos(az);return[a,y*Math.cos(el)-b*Math.sin(el),y*Math.sin(el)+b*Math.cos(el)]}
+function proj(p,w,h,az,el,scale){let [x,y,z]=rotate(p,az,el);const s=Math.min(w,h)*.235*scale;return[w/2+x*s,h/2-y*s,z]}
+const LINE=(a,b,col,width=1)=>({a,b,col,width});const lines=[];const points=[];
+function add(a,b,col,width){lines.push(LINE(a,b,col,width))}
+function cubeframe(r,col,open=false){const v=[];for(const x of [-1,1])for(const y of [-1,1])for(const z of [-1,1])v.push([x*r,y*r,z*r]);for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){let d=0;for(let k=0;k<3;k++)d+=v[i][k]!==v[j][k];if(d===1&&!(open&&v[i][1]<0&&v[j][1]<0))add(v[i],v[j],col,1.35)}return v}
+function torus(R,r,col,shift=0,spinAngle=0){let major=90,minor=14;const p=(u,v)=>[(R+r*Math.cos(v))*Math.cos(u)+shift,r*Math.sin(v),(R+r*Math.cos(v))*Math.sin(u)];for(let j=0;j<minor;j++){let v=j*TAU/minor;for(let k=0;k<major;k++)add(p(k*TAU/major+spinAngle,v),p((k+1)*TAU/major+spinAngle,v),col,.65)}for(let k=0;k<major;k+=6){let u=k*TAU/major+spinAngle;for(let j=0;j<minor;j++)add(p(u,j*TAU/minor),p(u,(j+1)*TAU/minor),col,.55)}}
+function drawGeometry(){lines.length=0;points.length=0;const e=explode;
+if(show.outer){let a=cubeframe(1.72,C.outer,true),b=cubeframe(1.43,C.outer,true);for(let i=0;i<8;i++)add(a[i],b[i],'#2b7492',.8)} // 3D projection of two offset envelopes, not literal Q4
+if(show.inner)cubeframe(1.22,C.inner,true);
+if(show.box)cubeframe(.42,C.box,false);
+if(show.strong)torus(1.07,.13,C.strong,e*.95,phase*.4);
+if(show.medium)torus(.81,.12,C.medium,e*.5,-phase*.62);
+if(show.weak)torus(.55,.105,C.weak,e*.17,phase);
+if(show.core){let coords=[[-2,3],[-3,2],[2,-3],[3,-2]];add([-.24,.36,0],[.24,-.36,0],'#bffff2',2.8);add([-.36,.24,0],[.36,-.24,0],'#ffd5a1',2.8);coords.forEach((p,i)=>points.push({p:[p[0]*.12,p[1]*.12,0],c:i<2?'#8ff4e3':'#ffd298',name:'abcd'[i]}));points.push({p:[0,0,0],c:'#fff',r:5})}
+if(show.gate){let v=[[-2.35,-.13,-.13],[-2.35,-.13,.13],[-2.35,.13,-.13],[-2.35,.13,.13],[-.43,-.13,-.13],[-.43,-.13,.13],[-.43,.13,-.13],[-.43,.13,.13]];for(let j=0;j<4;j++)add(v[j],v[j+4],C.gate,1.8);for(const base of [0,4]){add(v[base],v[base+1],C.gate);add(v[base],v[base+2],C.gate);add(v[base+3],v[base+1],C.gate);add(v[base+3],v[base+2],C.gate)}add([-2.07,0,0],[-1.55,0,0],'#fff',2);add([-1.6,0,0],[-1.76,.09,0],'#fff',2);add([-1.6,0,0],[-1.76,-.09,0],'#fff',2)}
+}
+function renderCanvas(id,az,el,scale=1){const cv=$(id),d=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(cv.clientWidth*d)),h=Math.max(1,Math.round(cv.clientHeight*d));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}const g=cv.getContext('2d');g.fillStyle='#061729';g.fillRect(0,0,w,h);g.strokeStyle='#194365';g.lineWidth=.45*d;for(let i=0;i<w;i+=24*d){g.beginPath();g.moveTo(i,0);g.lineTo(i,h);g.stroke()}for(let i=0;i<h;i+=24*d){g.beginPath();g.moveTo(0,i);g.lineTo(w,i);g.stroke()}
+const sorted=lines.map(o=>({o,p:proj(o.a,w,h,az,el,scale),q:proj(o.b,w,h,az,el,scale)})).sort((a,b)=>(a.p[2]+a.q[2])-(b.p[2]+b.q[2]));for(const z of sorted){g.beginPath();g.strokeStyle=z.o.col;g.globalAlpha=.72;g.lineWidth=z.o.width*d;g.moveTo(z.p[0],z.p[1]);g.lineTo(z.q[0],z.q[1]);g.stroke()}g.globalAlpha=1;for(const o of points){let p=proj(o.p,w,h,az,el,scale);g.fillStyle=o.c;g.shadowBlur=10*d;g.shadowColor=o.c;g.beginPath();g.arc(p[0],p[1],(o.r||3)*d,0,TAU);g.fill();g.shadowBlur=0;if(o.name&&id==='main3d'){g.font=12*d+'px monospace';g.fillText(o.name,p[0]+6*d,p[1]-6*d)}}
+if(id==='main3d'){g.fillStyle='#82b6d0';g.font=12*d+'px monospace';g.fillText('N184 · X / Y / Z · SCHEMATIC UNITS',18*d,h-20*d)}}
+function addressMap(){let c=$('addressMap'),d=Math.min(devicePixelRatio||1,2),w=Math.round(c.clientWidth*d),h=Math.round(c.clientHeight*d);if(!w||!h)return;c.width=w;c.height=h;let g=c.getContext('2d');g.fillStyle='#061729';g.fillRect(0,0,w,h);let x0=22*d,y0=15*d,x1=w-20*d,y1=h-26*d;g.strokeStyle='#59b0ce';for(let x=0;x<=40;x++){let q=x0+(x1-x0)*x/40;g.beginPath();g.moveTo(q,y0);g.lineTo(q,y1);g.stroke()}for(let y=0;y<=60;y++){let q=y0+(y1-y0)*y/60;g.beginPath();g.moveTo(x0,q);g.lineTo(x1,q);g.stroke()}g.fillStyle='#d2f0ff';g.font=11*d+'px monospace';g.fillText('40 columns →',x0,h-7*d);g.fillText('60 rows',x0,y0+12*d)}
+function draw(){drawGeometry();renderCanvas('main3d',yaw,pitch,zoom);renderCanvas('front',0,0,.91);renderCanvas('top',0,Math.PI/2,.91);renderCanvas('side',Math.PI/2,0,.91);if(show.lattice)addressMap();else{let cv=$('addressMap');cv.getContext('2d').clearRect(0,0,cv.width,cv.height)}if(spin)yaw+=.0034;requestAnimationFrame(draw)}
+document.querySelectorAll('[data-layer]').forEach(input=>input.onchange=()=>show[input.dataset.layer]=input.checked);
+document.querySelectorAll('[data-camera]').forEach(btn=>btn.onclick=()=>{let v=btn.dataset.camera;[yaw,pitch]=({iso:[.69,.38],front:[0,0],top:[0,Math.PI/2],side:[Math.PI/2,0]})[v];document.querySelectorAll('[data-camera]').forEach(b=>b.setAttribute('aria-pressed',b===btn));$('cameraLabel').textContent='VIEW / '+v.toUpperCase()});
+$('explode').onclick=e=>{let b=e.currentTarget,v=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',v);explode=v?1:0;$('separation').value=explode*100;$('explabel').textContent=Math.round(explode*100)+'%'};
+$('spin').onclick=e=>{spin=!spin;e.currentTarget.setAttribute('aria-pressed',spin)};
+$('separation').oninput=e=>{explode=+e.target.value/100;$('explabel').textContent=e.target.value+'%'};
+$('phase').oninput=e=>{phase=+e.target.value*Math.PI/180;$('phaselabel').textContent=e.target.value+'°'};
+$('zoom').oninput=e=>{zoom=+e.target.value/100;$('zoomlabel').textContent=e.target.value+'%'};
+$('reset').onclick=()=>{yaw=.69;pitch=.38;explode=0;phase=0;zoom=1;spin=false;for(const [id,val] of [['separation',0],['phase',0],['zoom',100]])$(id).value=val;$('explabel').textContent='0%';$('phaselabel').textContent='0°';$('zoomlabel').textContent='100%';$('explode').setAttribute('aria-pressed',false);$('spin').setAttribute('aria-pressed',false)};
+let main=$('main3d');main.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];main.setPointerCapture(e.pointerId)});main.addEventListener('pointerup',()=>drag=null);main.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*.008;pitch=Math.max(-1.5,Math.min(1.5,pitch+(e.clientY-drag[1])*.006));drag=[e.clientX,e.clientY]});main.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.6,Math.min(2,zoom-e.deltaY*.001));$('zoom').value=Math.round(zoom*100);$('zoomlabel').textContent=Math.round(zoom*100)+'%'},{passive:false});requestAnimationFrame(draw);
+</script></html>
