@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v4.7 · Coupled Box and Toroid</title><style>:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#080f1c;color:#e8f2fc;font:14px system-ui}header{padding:20px 24px;border-bottom:1px solid #304658}h1{font-size:23px;margin:0}.sub{color:#9eafc6}main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:0}#stage{height:calc(100vh - 84px);min-height:510px;width:100%;display:block}aside{padding:20px;background:#121f30;border-left:1px solid #304658}section{margin-bottom:18px;border-bottom:1px solid #2d4761;padding-bottom:18px}h2{color:#8dd9d3;font-size:13px;text-transform:uppercase}button{background:#224352;color:#e8ffff;border:1px solid #53959c;padding:9px 12px;border-radius:8px;cursor:pointer;margin-right:5px}input[type=range]{width:100%;accent-color:#8be3d4}label{display:flex;justify-content:space-between}pre{white-space:pre-wrap;color:#d7c6ec;font:12px/1.7 monospace}a{color:#80e0d0}@media(max-width:850px){main{grid-template-columns:1fr}#stage{height:55vh;min-height:350px}aside{border-top:1px solid #304658}}</style><header><h1>N184 · v4.7 Coupled Containment / Circulation</h1><div class="sub">Frozen dual geometry · one gateway · off-pillar VM · symbolic phase transition</div></header><main><canvas id="stage" aria-label="3D conceptual box and toroid with phase-cross transfer"></canvas><aside><section><h2>Phase drive</h2><label>Cycle <output id="value">0%</output></label><input type="range" id="phase" min="0" max="100" value="0"><p><button id="play">Play</button><button id="reset">Reset</button><button id="test">Run 60,060 tests</button></p><pre id="monitor"></pre><pre id="testResults">Not tested</pre></section><section><h2>Dual scales</h2><pre>{{{{ N184 :: BOX / TOROID }}}}
+             BOX      TOROID
+WEAK         16            1
+MEDIUM       65536       729
+STRONG  2176782336 2176782336
+
+X: a=(-2,+3) b=(-3,+2)
+   c=(+2,-3) d=(+3,-2)
+{{**--``--**}}</pre><small>Containment and circulation represent symbolic portions of one unit packet. A model coupling changes those fractions without creating or destroying the packet.</small></section><a href="../phase-transform-v46/">v4.6</a> · <a href="../">Main observatory</a></aside></main><script>
+'use strict';const $=s=>document.getElementById(s),cv=$('stage'),ctx=cv.getContext('2d');let run=false;const nodes=['strong','medium','weak','seam','weak','medium','strong'];const scales={strong:[2176782336,2176782336],medium:[65536,729],weak:[16,1],seam:[null,null]};const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+function state(p){let x=clamp(p,0,1)*6,k=Math.min(5,Math.floor(x)),f=x-k,occupancy=Array(7).fill(0);occupancy[k]=1-f;occupancy[k+1]=f;
+// Dynamic partition of ONE packet. The seam concentrates the packet into a protected core component.
+let field=Math.abs(p-.5),core=clamp(1-6*field,0,1);let circulation=(1-core)*(0.25+.5*clamp(2*field,0,1));let containment=1-core-circulation;
+return {k,occupancy,core,circulation,containment,total:core+circulation+containment,from:nodes[k],to:nodes[k+1]}}
+function P(x,y,z){let a=.52,c=Math.cos(a),s=Math.sin(a),k=Math.min(cv.width,cv.height)*.255;return[cv.width/2+(x*c+z*s)*k,cv.height/2-(y-.2*(-x*s+z*c))*k]}
+function line(a,b,c,w=1){let x=P(...a),y=P(...b);ctx.beginPath();ctx.strokeStyle=c;ctx.lineWidth=w;ctx.moveTo(...x);ctx.lineTo(...y);ctx.stroke()}
+function cube(r,col,open){let v=[];for(let x of [-1,1])for(let y of [-1,1])for(let z of [-1,1])v.push([x*r,y*r,z*r]);for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){let n=v[i].reduce((q,z,t)=>q+(z!==v[j][t]),0);if(n===1&&!(open&&v[i][1]<0&&v[j][1]<0))line(v[i],v[j],col,1.5)}}
+function torus(R,r,col,alpha){for(let j=0;j<6;j++){let v=j*Math.PI/3,q=null;for(let i=0;i<=90;i++){let u=i*Math.PI/45+alpha,pt=[(R+r*Math.cos(v))*Math.cos(u),r*Math.sin(v),(R+r*Math.cos(v))*Math.sin(u)];if(q)line(q,pt,col,.8);q=pt}}}
+function dot(p,col,size){let a=P(...p);ctx.fillStyle=col;ctx.beginPath();ctx.arc(...a,size,0,2*Math.PI);ctx.fill()}
+function draw(){let d=Math.min(2,devicePixelRatio||1),w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(w!==cv.width||h!==cv.height){cv.width=w;cv.height=h}ctx.fillStyle='#080f1c';ctx.fillRect(0,0,w,h);let p=Number($('phase').value)/100,s=state(p);cube(1.6,'#518b93',true);cube(1.18,'#b9986e',true);cube(.55,'#c8b0ef',false);torus(.39,.05,'#80e1d6',p*6);torus(.72,.055,'#d8b77f',-p*4);torus(1.01,.06,'#ad9ae0',p*2);
+line([-.34,.5,0],[.34,-.5,0],'#7fe9d6',3);line([-.5,.34,0],[.5,-.34,0],'#f0c88b',3);dot([0,0,0],'#f7e8ff',(5+9*s.core)*d);
+// Separate independent visual indicators of modeled partition, no invented mass transfer.
+dot([-.82,.27,0],'#d7c7ff',(3+12*s.containment)*d);dot([.82,.27,0],'#88eed9',(3+12*s.circulation)*d);
+line([-1.85,0,0],[-.55,0,0],'#f2d99b',2);
+ctx.fillStyle='#aec1d2';ctx.font=12*d+'px monospace';ctx.fillText('BOX ← containment     X ← phase     TOROID ← circulation',12*d,26*d);
+$('monitor').textContent='TRANSITION: '+s.from+' → '+s.to+'\nBOX: '+s.containment.toFixed(6)+'\nTOROID: '+s.circulation.toFixed(6)+'\nCORE: '+s.core.toFixed(6)+'\nTOTAL: '+s.total.toFixed(12)+'\nSTRONG MATCH: '+(scales.strong[0]===scales.strong[1]?'YES':'NO')+'\nGATEWAY: ONE';
+$('value').textContent=Math.round(p*100)+'%';if(run){let n=Number($('phase').value)+.22;if(n>=100){n=100;run=false;$('play').textContent='Play'}$('phase').value=n}requestAnimationFrame(draw)}
+$('play').onclick=()=>{if(Number($('phase').value)>=100)$('phase').value=0;run=!run;$('play').textContent=run?'Pause':'Play'};
+$('reset').onclick=()=>{run=false;$('phase').value=0;$('play').textContent='Play'};
+$('test').onclick=()=>{let n=0,bad=0,worst=0;for(let amount=1;amount<=10;amount++)for(let i=0;i<6006;i++){let p=i/6005,s=state(p),err=Math.abs(amount*s.total-amount);n++;worst=Math.max(worst,err);if(err>1e-11||[s.core,s.containment,s.circulation].some(x=>x<0||x>1))bad++}let coords=[[-2,3],[-3,2],[2,-3],[3,-2]],sum=coords.reduce((a,b)=>[a[0]+b[0],a[1]+b[1]],[0,0]);$('testResults').textContent=n+' SAMPLES: '+(bad?'FAIL':'PASS')+'\nMAX ERROR: '+worst.toExponential(2)+'\nX ZERO-SUM: '+(sum[0]===0&&sum[1]===0?'PASS':'FAIL')+'\nLATTICE: '+(60*40===2400?'PASS':'FAIL')};
+requestAnimationFrame(draw);
+</script></html>
