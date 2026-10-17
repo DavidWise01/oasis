@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v5.7 · Transactional Recovery</title>
+<style>body{margin:0;background:#0a1422;color:#eaf4fa;font:14px system-ui}header,main{max-width:940px;padding:18px;margin:auto}h1{margin:0}section{border:1px solid #38556a;border-radius:10px;margin:14px 0;padding:16px}button{background:#214b5b;color:white;border:1px solid #72b9b0;padding:10px;border-radius:7px;margin:3px;cursor:pointer}pre{white-space:pre-wrap;background:#13273a;padding:15px;color:#daecf5;font:12px/1.6 monospace}input{width:70px;background:#18334b;color:white}a{color:#80dfd1}.muted{color:#b4c5cf}</style>
+<header><h1>N184 v5.7 · Transactional Crash and Concurrent-Tab Recovery</h1><p class="muted">{{{{ ONE GATE :: ATOMIC CHECKPOINT :: REPLAY :: 60×40 }}}}</p></header>
+<main><section><label>Packets <input id="count" type="number" min="1" max="2400" value="128"></label><label> Rate <input id="rate" type="number" min="1" max="64" value="16"></label><label> Window <input id="window" type="number" min="1" max="512" value="32"></label><p><button id="new">New batch</button><button id="admit">Admit</button><button id="commit">Commit (ACK lost)</button><button id="ack">Replay/ACK</button><button id="drain">Drain</button></p><p><button id="abort">Inject aborted write</button><button id="stale">Inject stale revision</button><button id="reload">Reload state</button><button id="tests">Run model tests</button></p><pre id="state">Opening IndexedDB...</pre><pre id="testsOut">Not run.</pre></section>
+<section><h2>Atomic state transition</h2><pre>{{{{ N184 :: v5.7 }}}}
+     ONE logical GATE
+             |
+     READWRITE TRANSACTION
+             |
+     GET current revision
+             |
+     CHECK expected revision
+       /            \
+   MATCH          STALE
+     |               |
+  APPLY ONCE       REJECT
+     |
+  VALIDATE invariants
+     |
+  PUT + COMMIT ATOMICALLY
+     |
+  RELOAD / OTHER TAB READ
+
+ X :: {{**--&#96;&#96;--**}}
+ 60 × 40 = 2400 addresses
+ source ID maps bijectively
+ (row+7)%60, (col+13)%40,
+ swap2(nibble) XOR 9</pre>
+<p class="muted">IndexedDB serializes conflicting readwrite transactions on this store, so stale revisions are rejected. Injected abort cancels an uncommitted transaction. Browser reload reconstruction is implemented, but power-loss durability varies by browser/device; real crash testing and multi-tab testing require an actual browser session. This does not establish physical quantum tunneling.</p><a href="../persistent-recovery-v56/">Prior v5.6</a></section></main>
+<script>
+'use strict';
+const $=x=>document.getElementById(x),DB='n184-v57-transactional',STORE='checkpoints',KEY='main',N=2400,mod=(a,n)=>(a%n+n)%n,swap=x=>((x&3)<<2)|((x>>2)&3);
+const fwd=(a,n)=>[mod(Math.floor(a/40)+7,60)*40+mod(a%40+13,40),swap(n)^9],inv=(a,n)=>[mod(Math.floor(a/40)-7,60)*40+mod(a%40-13,40),swap(n^9)];
+const packet=id=>[(id*1009+37)%N,(id*5+1)%16];
+const isInt=(x,l,h)=>Number.isSafeInteger(x)&&x>=l&&x<=h;
+const fresh=(count,rate,window)=>({schema:1,revision:0,count,rate,window,next:0,committed:0,acked:0});
+function valid(s){return !!s&&s.schema===1&&isInt(s.revision,0,1e9)&&isInt(s.count,1,N)&&isInt(s.rate,1,64)&&isInt(s.window,1,512)&&isInt(s.next,0,s.count)&&isInt(s.committed,0,s.next)&&isInt(s.acked,0,s.committed)&&s.next-s.acked<=s.window}
+const admit=s=>({...s,next:s.next+Math.min(s.rate,s.count-s.next,s.window-(s.next-s.acked))});
+function commit(s){for(let i=s.committed;i<s.next;i++){let p=packet(i),r=inv(...fwd(...p));if(r[0]!==p[0]||r[1]!==p[1])throw Error('inverse check failed')}return {...s,committed:s.next}}
+const ack=s=>({...s,acked:s.committed});
+function openDB(){return new Promise((res,rej)=>{const q=indexedDB.open(DB,1);q.onupgradeneeded=()=>{if(!q.result.objectStoreNames.contains(STORE))q.result.createObjectStore(STORE)};q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})}
+let db,observed=null;
+function transact(expected,mutate,abort=false){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite'),store=tx.objectStore(STORE),get=store.get(KEY);let result;get.onsuccess=()=>{try{let old=get.result??null;if(expected!==null&&(!old||old.revision!==expected))throw Error('STALE_REVISION');let next=mutate(old);if(!valid(next))throw Error('INVALID_STATE');next={...next,revision:(old?.revision??-1)+1};if(abort){tx.abort();return}store.put(next,KEY);result=next}catch(e){try{tx.abort()}catch(_){}reject(e)}};get.onerror=()=>reject(get.error);tx.oncomplete=()=>resolve(result);tx.onabort=()=>reject(tx.error||Error('ABORTED'))})}
+function read(){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly'),r=tx.objectStore(STORE).get(KEY);r.onsuccess=()=>resolve(r.result??null);r.onerror=()=>reject(r.error)})}
+let notice='';
+function display(){const s=observed;$('state').textContent=(s?'REVISION '+s.revision+'\nPENDING '+(s.count-s.next)+'\nIN-FLIGHT '+(s.next-s.acked)+'\nCOMMITTED '+s.committed+'\nACKED '+s.acked+'\nVALID '+valid(s):'NO BATCH')+'\n'+notice}
+async function refresh(){observed=await read();display()}
+async function perform(mutator,abort=false,expected=observed?.revision??null){try{let s=await transact(expected,mutator,abort);notice='TRANSACTION COMMITTED @'+s.revision}catch(e){notice='TRANSACTION REJECTED: '+e.message}await refresh()}
+$('new').onclick=()=>perform(()=>fresh(+$('count').value,+$('rate').value,+$('window').value));
+$('admit').onclick=()=>perform(s=>admit(s));$('commit').onclick=()=>perform(s=>commit(s));$('ack').onclick=()=>perform(s=>ack(commit(s)));
+$('drain').onclick=()=>perform(s=>{let y=s,k=0;while(y.acked<y.count&&k++<=2400){y=ack(commit(admit(y)))}if(y.acked!==y.count)throw Error('drain incomplete');return y});
+$('abort').onclick=()=>perform(s=>admit(s),true);
+$('stale').onclick=()=>perform(s=>admit(s),false,-1);
+$('reload').onclick=async()=>{notice='RELOADED FROM INDEXEDDB';await refresh()};
+$('tests').onclick=()=>{let bad=0,round=0,outputs=new Set;for(let a=0;a<N;a++)for(let n=0;n<16;n++){let b=fwd(a,n),r=inv(...b);outputs.add(b[0]*16+b[1]);round++;if(r[0]!==a||r[1]!==n)bad++}let count=0;for(let n of [1,7,16,32,128,512,2400])for(let rate of [1,7,16,64])for(let window of [1,8,64,512]){let s=fresh(n,rate,window),k=0;while(s.acked<n&&k++<2401){s=ack(commit(admit(s)))}count++;if(s.acked!==n||!valid(s))bad++}let stale=0,rejected=0;let sample=fresh(16,4,4);if(!valid({...sample,next:10}))rejected++;if(sample.revision!==-1)stale++;$('testsOut').textContent=round+' REVERSIBLE CASES\n'+outputs.size+' UNIQUE OUTPUTS\n'+count+' QUEUE DRAIN CASES\nCONSTRAINT REJECTION '+rejected+'\nFAILURES '+bad+'\nRESULT '+(bad===0&&rejected===1&&outputs.size===38400?'PASS':'FAIL')};
+openDB().then(x=>{db=x;notice='DATABASE READY';return refresh()}).catch(e=>{$('state').textContent='IndexedDB unavailable: '+e.message});
+</script></html>
