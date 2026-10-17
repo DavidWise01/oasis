@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v6.0 · Release Readiness</title><style>body{background:#091321;color:#e9f3f7;font:15px system-ui;margin:0}main{max-width:1040px;padding:28px;margin:auto}h1{margin:0;font-size:30px}.muted{color:#adc0ce}.status{color:#f4cd92}section{border-top:1px solid #48617a;margin-top:24px;padding-top:17px}table{border-collapse:collapse;width:100%}td,th{padding:11px;border-bottom:1px solid #344d66;text-align:left}a{color:#84dfd4}pre{background:#12263a;padding:18px;overflow:auto;border-radius:8px;color:#dfd4f4;font:12px/1.7 monospace}button{border:1px solid #7cc9bf;border-radius:7px;padding:10px;background:#205260;color:white;cursor:pointer}#results{white-space:pre-wrap}</style><main><h1>N184 v6.0 — Release Readiness</h1><p class="muted">Additive consolidation / freeze candidate, not production certification.</p><p class="status"><strong>GATE: HOLD — live two-tab certification not recorded.</strong></p><section><h2>Frozen canonical structure</h2><pre>{{{{ N184 :: v6.0 }}}}
+  OPEN TESSERACT ] → OPEN HYPERCUBE ]
+                  |
+           CLOSED BOX [
+                  |
+              X CORE
+           {{**--&#96;&#96;--**}}
+                  |
+            ONE GATEWAY
+                  |
+        60 × 40 = 2400 addresses
+
+ BOX   weak (2×2)^2 = 16
+       med  (4×4)^4 = 65536
+       strong (6×6)^6 = 2176782336
+
+ TOROID weak (1×1)^1 = 1
+        med (3×3)^3 = 729
+        strong (6×6)^6 = 2176782336
+
+ a=(-2,+3) b=(-3,+2)
+ c=(+2,-3) d=(+3,-2)</pre></section><section><h2>Release gates</h2><table><thead><tr><th>Gate</th><th>State</th><th>Evidence</th></tr></thead><tbody><tr><td>Source version lineage</td><td>Confirmed</td><td>GitHub files verified for v4.3, v5.1, v5.6 and v5.9</td></tr><tr><td>Geometry and reversible mapping</td><td>Mathematical checks available</td><td>v5.1 exhaustive browser test</td></tr><tr><td>Queue/backpressure and replay</td><td>Implemented</td><td>v5.3–v5.5 simulation pages</td></tr><tr><td>Storage across reload</td><td>Not certified</td><td>v5.6 and v5.7 browser persistence tests</td></tr><tr><td>Atomic aborted write</td><td>Not certified</td><td>v5.8–v5.9 browser tests</td></tr><tr><td>Separate-tab stale writer</td><td>Not certified</td><td>v5.9 two-tab race</td></tr><tr><td>Sudden power loss durability</td><td>Out of scope</td><td>Requires platform-specific durability study</td></tr><tr><td>Physical quantum/atom behavior</td><td>Not claimed</td><td>Symbolic computational model only</td></tr></tbody></table></section><section><h2>Lineage</h2><p><a href="../dual-geometry-v43/README.md">v4.3 freeze</a> · <a href="../dual-geometry-v44/">v4.4 geometry</a> · <a href="../phase-exchange-v49/">v4.9 dynamic phase</a> · <a href="../reversible-cross-v50/">v5.0 reversible core</a> · <a href="../lattice-reversible-v51/">v5.1 address transform</a> · <a href="../multipacket-v52/">v5.2 batch transport</a> · <a href="../gateway-scheduler-v53/">v5.3 gate scheduler</a> · <a href="../checkpoint-gateway-v54/">v5.4 checkpoints</a> · <a href="../exactly-once-v55/">v5.5 dedup</a> · <a href="../persistent-recovery-v56/">v5.6 local persistence</a> · <a href="../transactional-recovery-v57/">v5.7 IndexedDB</a> · <a href="../browser-validation-v58/">v5.8 validation</a> · <a href="../two-tab-certification-v59/">v5.9 certification console</a></p></section><section><h2>Readiness self-check</h2><p>This checks frozen arithmetic and reversible mapping locally; it does not turn pending browser-certification gates green.</p><button id="run">Run 38,400 mapping checks</button><pre id="results">Not run</pre></section></main><script>
+'use strict';const m=(x,n)=>(x%n+n)%n,sw=x=>((x&3)<<2)|((x>>2)&3),f=(a,n)=>[m(Math.floor(a/40)+7,60)*40+m(a%40+13,40),sw(n)^9],g=(a,n)=>[m(Math.floor(a/40)-7,60)*40+m(a%40-13,40),sw(n^9)];
+document.getElementById('run').onclick=()=>{let seen=new Set,failed=0;for(let a=0;a<2400;a++)for(let n=0;n<16;n++){let [b,v]=f(a,n),[c,w]=g(b,v);if(c!==a||w!==n)failed++;seen.add(b*16+v)}let ok=failed===0&&seen.size===38400&&(6*6)**6===2176782336;document.getElementById('results').textContent='38,400 reversible pairs / '+seen.size+' unique outputs\nFailures: '+failed+'\nResult: '+(ok?'PASS':'FAIL')+'\nBrowser certification: STILL PENDING'};
+</script></html>
