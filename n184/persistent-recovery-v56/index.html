@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v5.6 Persistent Recovery</title><style>body{margin:0;background:#0b1423;color:#e5f2fa;font:14px system-ui}header,main{padding:18px;max-width:950px;margin:auto}h1{margin:0}section{border:1px solid #40556d;border-radius:12px;padding:16px;margin:15px 0}button{background:#275667;border:1px solid #80cdbd;color:white;border-radius:7px;padding:10px;margin:4px;cursor:pointer}input{width:75px;background:#142c40;color:white}label{display:inline-block;margin:10px}pre{white-space:pre-wrap;background:#111f31;padding:14px;border-radius:8px;color:#c7eedf}a{color:#7edccd}.note{color:#a9c0d0}</style><header><h1>N184 v5.6 — Persistent Checkpoint Recovery</h1><p>{{{{ ONE GATEWAY :: FIFO :: COMMIT :: REPLAY :: ACK }}}}</p></header><main><section><label>Packets <input id="count" type="number" min="1" max="2400" value="128"></label><label>Rate <input id="rate" type="number" min="1" max="64" value="16"></label><label>Window <input id="window" type="number" min="1" max="512" value="32"></label><p><button id="start">New</button><button id="admit">Admit</button><button id="commit">Commit / Lose ACK</button><button id="ack">Replay / ACK</button><button id="drain">Drain</button></p><p><button id="save">Save</button><button id="load">Restore</button><button id="clear">Clear</button><button id="test">Run Tests</button></p><pre id="status"></pre><pre id="tests">Tests not run in this browser.</pre></section><section><h2>Immutable N184 geometry</h2><pre>{{{{ N184 :: v5.6 }}}}
+BOX    (2x2)^2 (4x4)^4 (6x6)^6
+TOROID (1x1)^1 (3x3)^3 (6x6)^6
+X a(-2,+3) b(-3,+2) c(+2,-3) d(+3,-2)
+{{**--&#96;&#96;--**}}
+60x40 = 2400 logical addresses
+16 nibble values / address
+
+PENDING → ADMITTED → COMMITTED → ACK
+                       ↳ ACK LOST → REPLAY → ACK
+
+Persist snapshot after every state change.
+Dedup via committed cursor, ACK only committed IDs.
+Invalid checkpoints rejected.</pre><p class="note">Browser localStorage can retain the snapshot across reloads when storage is allowed. It is not an atomic database, a guaranteed power-loss journal, or safe for concurrent-tab writers. Tests below are simulated recovery cases, not proof of browser durability or physical tunneling.</p><a href="../exactly-once-v55/">Previous v5.5</a></section></main><script>
+'use strict';const $=id=>document.getElementById(id),KEY='oasis.n184.v56.checkpoint.v1',N=2400,mod=(a,n)=>(a%n+n)%n,swap=x=>((x&3)<<2)|((x>>2)&3);
+function forward(a,n){return [mod(Math.floor(a/40)+7,60)*40+mod(a%40+13,40),swap(n)^9]}
+function inverse(a,n){return [mod(Math.floor(a/40)-7,60)*40+mod(a%40-13,40),swap(n^9)]}
+function packet(i){return [(i*1009+37)%N,(i*5+1)%16]}
+function fresh(count,rate,window){return {version:1,batch:'n184-v56',count,rate,window,next:0,committed:0,acked:0,tick:0}}
+const int=(x,a,b)=>Number.isSafeInteger(x)&&x>=a&&x<=b;
+function valid(s){return !!s&&s.version===1&&s.batch==='n184-v56'&&int(s.count,1,N)&&int(s.rate,1,64)&&int(s.window,1,512)&&int(s.next,0,s.count)&&int(s.committed,0,s.next)&&int(s.acked,0,s.committed)&&int(s.tick,0,1000000)&&s.next-s.acked<=s.window}
+function admit(s){const n=Math.min(s.rate,s.count-s.next,s.window-(s.next-s.acked));return {...s,next:s.next+n,tick:s.tick+1}}
+function commit(s){for(let i=s.committed;i<s.next;i++){let p=packet(i),q=inverse(...forward(...p));if(q[0]!==p[0]||q[1]!==p[1])throw Error('inverse failure')}return {...s,committed:s.next}}
+function ack(s){return {...s,acked:s.committed}}
+function decode(raw){let s=JSON.parse(raw);if(!valid(s)||JSON.stringify(s)!==raw)throw Error('invalid or corrupt checkpoint');return s}
+let s=null,notice='';
+function render(){$('status').textContent=(s?'PENDING '+(s.count-s.next)+'\nIN FLIGHT '+(s.next-s.acked)+'\nCOMMITTED '+s.committed+'\nACKED '+s.acked+'\nTICKS '+s.tick+'\nVALID '+valid(s):'NO ACTIVE BATCH')+'\n'+notice}
+function persist(next){if(!valid(next))throw Error('state invalid');localStorage.setItem(KEY,JSON.stringify(next));s=next;notice='SNAPSHOT STORED';render()}
+function apply(fn){try{if(!s)throw Error('initialize first');persist(fn(s))}catch(e){notice='UNCHANGED: '+e.message;render()}}
+$('start').onclick=()=>{try{persist(fresh(+$('count').value,+$('rate').value,+$('window').value))}catch(e){notice='REJECTED '+e.message;render()}};
+$('admit').onclick=()=>apply(admit);$('commit').onclick=()=>apply(commit);$('ack').onclick=()=>apply(x=>ack(commit(x)));
+$('drain').onclick=()=>apply(x=>{let y=x,guard=0;while(y.acked<y.count&&guard++<2500){if(y.next===y.acked)y=admit(y);y=ack(commit(y))}if(y.acked!==y.count)throw Error('incomplete');return y});
+$('save').onclick=()=>apply(x=>x);$('load').onclick=()=>{try{let raw=localStorage.getItem(KEY);if(raw===null)throw Error('nothing saved');s=decode(raw);notice='RESTORED';render()}catch(e){notice='RESTORE REJECTED '+e.message;render()}};
+$('clear').onclick=()=>{try{localStorage.removeItem(KEY);s=null;notice='CLEARED'}catch(e){notice=e.message}render()};
+$('test').onclick=()=>{let bad=0,uni=new Set;for(let a=0;a<2400;a++)for(let n=0;n<16;n++){let b=forward(a,n),r=inverse(...b);uni.add(b[0]*16+b[1]);if(r[0]!==a||r[1]!==n)bad++}let trials=0;for(let count of [1,7,16,32,64,128,512,2400])for(let rate of [1,7,16,64])for(let window of [1,7,32,512]){let x=fresh(count,rate,window),guard=0;while(x.acked<count&&guard++<3000){x=decode(JSON.stringify(admit(x)));x=decode(JSON.stringify(commit(x)));x=decode(JSON.stringify(ack(commit(x))))}trials++;if(!valid(x)||x.acked!==count)bad++}let rejected=false;try{decode('{"version":1,"next":9999}')}catch(e){rejected=true}if(!rejected)bad++;$('tests').textContent='ADDRESS/STATE: 38,400\nUNIQUE OUTPUTS: '+uni.size+'\nRECOVERY SCENARIOS: '+trials+'\nCORRUPTION REJECTED: '+rejected+'\nFAILURES: '+bad+'\nRESULT: '+(bad===0&&uni.size===38400?'PASS':'FAIL')};
+try{let raw=localStorage.getItem(KEY);if(raw){s=decode(raw);notice='AUTO RESTORED'}}catch(e){notice='AUTO RESTORE REJECTED: '+e.message}render();
+</script></html>
