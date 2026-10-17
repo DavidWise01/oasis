@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v4.9 · Dynamic Phase Exchange</title><style>*{box-sizing:border-box}body{margin:0;background:#080f1b;color:#e5f3f9;font:14px system-ui}header{padding:18px 24px;border-bottom:1px solid #334960}h1{margin:0;font-size:23px}main{display:grid;grid-template-columns:minmax(0,1fr) 335px}canvas{width:100%;height:calc(100vh - 78px);min-height:480px}aside{background:#111e2c;border-left:1px solid #334960;padding:18px}section{border-bottom:1px solid #304860;padding-bottom:16px;margin-bottom:16px}h2{font-size:13px;text-transform:uppercase;color:#8be0d1}input{width:100%}label{display:flex;justify-content:space-between;margin-top:12px}button{background:#244553;color:#f4ffff;border:1px solid #5ea9a5;border-radius:7px;padding:9px;cursor:pointer;margin:3px}pre{color:#d8cdf2;white-space:pre-wrap;font:12px/1.7 monospace}a{color:#8fdfd4}.muted{color:#9bb6c6}@media(max-width:850px){main{grid-template-columns:1fr}canvas{height:57vh;min-height:350px}aside{border-left:0;border-top:1px solid #334960}}</style><header><h1>N184 · v4.9 Dynamic Relative-Phase Exchange</h1><div class="muted">Four-brace N184 · one cycle / one conceptual gateway · distinct box and toroid phases</div></header><main><canvas id="view"></canvas><aside><section><h2>Drive</h2><label>Master phase <output id="phaseOut">0°</output></label><input id="phase" type="range" min="0" max="360" step="1" value="0"><label>Modulation amplitude <output id="ampOut">90°</output></label><input id="amp" type="range" min="0" max="180" step="1" value="90"><label>Carrier offset <output id="offsetOut">0°</output></label><input id="offset" type="range" min="-180" max="180" step="1" value="0"><p><button id="play">Play</button><button id="reset">Reset</button><button id="tests">Run 180,900 checks</button></p><pre id="metrics"></pre><pre id="testResults">Not run</pre></section><section><h2>Frozen canonical map</h2><pre>{{{{ N184 :: v4.9 }}}}
+BOX theta = master
+TORUS phi = theta + delta
+delta = offset + amplitude × sin(theta)
+
+COUPLING = sin²(delta/2)
+
+BOX / TOROID / CORE:
+ nonnegative
+ sum = 1
+
+WEAK    box 16 / torus 1
+MEDIUM  box 65536 / torus 729
+STRONG  both 2176782336
+
+X: a=(-2,+3), b=(-3,+2)
+   c=(+2,-3), d=(+3,-2)
+{{**--``--**}}</pre><p class="muted">This is a user-defined symbolic phase partition. It is not a quantum-mechanical derivation or measurement of fundamental force carriers.</p><a href="../dual-phase-v48/">Previous version</a></section></aside></main><script>
+'use strict';const $=id=>document.getElementById(id),canvas=$('view'),g=canvas.getContext('2d');let auto=false;
+const rad=x=>x*Math.PI/180,clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+function state(deg,amp,offset){let theta=rad(deg),delta=rad(offset)+rad(amp)*Math.sin(theta),torPhase=theta+delta,core=Math.sin(delta/2)**2,remain=1-core,box=remain*(.5+.5*Math.cos(delta)),torus=remain-box;return{theta,torPhase,delta,box,torus,core,total:box+torus+core}}
+function P(x,y,z){let a=.48,k=Math.min(canvas.width,canvas.height)*.25;return[canvas.width/2+(x*Math.cos(a)+z*Math.sin(a))*k,canvas.height/2-(y-.2*(z*Math.cos(a)-x*Math.sin(a)))*k]}
+function seg(a,b,col,width=1){let x=P(...a),y=P(...b);g.strokeStyle=col;g.lineWidth=width;g.beginPath();g.moveTo(...x);g.lineTo(...y);g.stroke()}
+function cube(s,col,open){let v=[];for(let x of [-1,1])for(let y of [-1,1])for(let z of [-1,1])v.push([x*s,y*s,z*s]);for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){let n=v[i].reduce((q,x,k)=>q+(x!==v[j][k]),0);if(n===1&&!(open&&v[i][1]<0&&v[j][1]<0))seg(v[i],v[j],col,1.35)}}
+function ring(R,r,col,phase){for(let j=0;j<5;j++){let v=j*2*Math.PI/5,prev=null;for(let i=0;i<=96;i++){let a=i*Math.PI/48+phase,p=[(R+r*Math.cos(v))*Math.cos(a),r*Math.sin(v),(R+r*Math.cos(v))*Math.sin(a)];if(prev)seg(prev,p,col,.85);prev=p}}}
+function dot(p,c,r){let v=P(...p);g.fillStyle=c;g.beginPath();g.arc(...v,r,0,2*Math.PI);g.fill()}
+function draw(){let d=Math.min(2,devicePixelRatio||1),w=Math.round(canvas.clientWidth*d),h=Math.round(canvas.clientHeight*d);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h}g.fillStyle='#080f1b';g.fillRect(0,0,w,h);let degree=Number($('phase').value),amplitude=Number($('amp').value),offset=Number($('offset').value),s=state(degree,amplitude,offset);cube(1.6,'#4f999e',true);cube(1.17,'#bd9a75',true);cube(.54,'#af9ce8',false);ring(1.03,.065,'#aa91e2',s.torPhase);ring(.74,.06,'#dab376',s.torPhase);ring(.4,.05,'#77d9c9',s.torPhase);seg([-.31,.46,0],[.31,-.46,0],'#75ddce',3);seg([-.46,.31,0],[.46,-.31,0],'#f1c886',3);dot([-.63,.2,0],'#c2b4ff',(4+11*s.box)*d);dot([.63,.2,0],'#81ecd7',(4+11*s.torus)*d);dot([0,0,0],'#fff8df',(4+13*s.core)*d);seg([-1.85,0,0],[-.54,0,0],'#f9dea4',2.2);
+$('phaseOut').textContent=degree+'°';$('ampOut').textContent=amplitude+'°';$('offsetOut').textContent=offset+'°';$('metrics').textContent='BOX PHASE      '+degree.toFixed(1)+'°\nTOROID PHASE   '+(s.torPhase*180/Math.PI).toFixed(2)+'°\nRELATIVE PHASE '+(s.delta*180/Math.PI).toFixed(2)+'°\nBOX            '+s.box.toFixed(9)+'\nTOROID         '+s.torus.toFixed(9)+'\nCORE           '+s.core.toFixed(9)+'\nSUM            '+s.total.toFixed(12)+'\nSINGLE GATEWAY 1';if(auto){let n=degree+1;if(n>360){n=360;auto=false;$('play').textContent='Play'}$('phase').value=n}requestAnimationFrame(draw)}
+$('play').onclick=()=>{if(Number($('phase').value)>=360)$('phase').value=0;auto=!auto;$('play').textContent=auto?'Pause':'Play'};$('reset').onclick=()=>{auto=false;$('play').textContent='Play';$('phase').value=0;$('amp').value=90;$('offset').value=0};
+$('tests').onclick=()=>{let n=0,failed=0,peak=0;for(let k=0;k<5;k++)for(let angle=0;angle<360;angle++)for(let offset=-100;offset<=100;offset+=2){let s=state(angle,k*45,offset),error=Math.abs(s.total-1);peak=Math.max(peak,error);n++;if(error>1e-12||[s.box,s.torus,s.core].some(v=>v<-1e-12||v>1+1e-12))failed++}let closure=true,dynamic=true;for(let a of [0,30,90,180])for(let o of [-90,0,90]){let s=state(0,a,o),e=state(360,a,o);closure&&=[s.box,s.torus,s.core].every((v,i)=>Math.abs(v-[e.box,e.torus,e.core][i])<1e-12)}let x=state(90,90,0),y=state(270,90,0);dynamic=Math.abs(x.core-y.core)<1e-12&&Math.abs(state(0,90,0).core-x.core)>1e-8;$('testResults').textContent=n+' STATES: '+(failed?'FAIL':'PASS')+'\nMAX RESIDUAL: '+peak.toExponential(3)+'\n360° CLOSURE: '+(closure?'PASS':'FAIL')+'\nDYNAMIC EXCHANGE: '+(dynamic?'PASS':'FAIL')+'\nPHYSICAL TEST: NONE'};
+requestAnimationFrame(draw);
+</script></html>
