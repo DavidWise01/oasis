@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v5.4 · Backpressure and Checkpoint Recovery</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#09111d;color:#e9f4f8;font:14px system-ui}header{padding:18px 22px;border-bottom:1px solid #375064}h1{margin:0;font-size:23px}.muted{color:#abc0cb}main{display:grid;grid-template-columns:minmax(0,1fr) 370px}canvas{width:100%;height:calc(100vh - 85px);min-height:520px}aside{background:#122032;padding:16px;border-left:1px solid #375064;overflow:auto;max-height:calc(100vh - 85px)}section{border-bottom:1px solid #375064;padding-bottom:15px;margin-bottom:15px}h2{font-size:13px;color:#86e2d4;text-transform:uppercase}label{display:flex;justify-content:space-between;margin:9px 0 4px}input[type=range]{width:100%}button{padding:9px 10px;border:1px solid #71b8b1;border-radius:7px;background:#245362;color:white;margin:3px;cursor:pointer}pre{font:12px/1.65 monospace;color:#e0d2f1;white-space:pre-wrap;overflow-wrap:anywhere}a{color:#8ae9d9}@media(max-width:850px){main{display:block}canvas{height:52vh;min-height:340px}aside{max-height:none;border-top:1px solid #375064}}</style>
+<header><h1>N184 · v5.4 Backpressure / Checkpoint Recovery</h1><div class="muted">{{{{ FIFO → SINGLE GATE → 60×40 LATTICE → X → RECOVERY }}}} · simulated transport</div></header>
+<main><canvas id="grid"></canvas><aside>
+<section><h2>Gateway transport</h2><label>Packet count <output id="countOut">512</output></label><input type="range" id="count" min="1" max="2400" value="512">
+<label>Admissions per tick <output id="rateOut">16</output></label><input type="range" id="rate" min="1" max="64" value="16">
+<label>Maximum admitted packets <output id="windowOut">128</output></label><input type="range" id="window" min="1" max="2400" value="128">
+<p><button id="new">New batch</button><button id="tick">Tick +1</button><button id="ack">Acknowledge 64</button><button id="drain">Drain + ACK</button></p><p><button id="pause">Pause</button><button id="save">Save checkpoint</button><button id="restore">Restore checkpoint</button></p><button id="tests">Run recovery tests</button><pre id="metrics"></pre><pre id="result">Tests not run.</pre></section>
+<section><h2>Canonical state</h2><pre>{{{{ N184 :: v5.4 }}}}
+ input ::= 2400 logical addresses
+ payload ::= four-bit nibble
+ gate ::= 1 / bounded per-tick rate
+
+ PENDING → IN-FLIGHT → ACKNOWLEDGED
+             |
+          BACKPRESSURE
+             |
+        CHECKPOINT / RESUME
+
+ X :: {{**--&#96;&#96;--**}}
+ forward / inverse unchanged
+
+ checkpoint = {version,count,next,
+               acked,tick,window,rate}
+ recover = deterministic rebuild
+
+ No duplicate packet IDs.
+ No packet silently discarded.</pre>
+<p class="muted">Save checkpoint uses this browser's local storage. Refresh/reopen the same browser to restore it; storage may be disabled or cleared. Checkpoints are consistency-validated before restoration. This is symbolic packet processing, not actual quantum transport.</p></section>
+<a href="../gateway-scheduler-v53/">v5.3 gateway baseline</a></aside></main>
+<script>
+'use strict';
+const $=x=>document.getElementById(x),ROWS=60,COLS=40,N=2400,KEY='oasis-n184-v54-checkpoint',cv=$('grid'),g=cv.getContext('2d');
+const mod=(a,n)=>(a%n+n)%n,swap=x=>((x&3)<<2)|((x>>2)&3),addr=id=>(id*1009+37)%N,nibble=id=>(id*5+1)%16;
+function forward(a,n){let r=Math.floor(a/COLS),c=a%COLS;return [mod(r+7,ROWS)*COLS+mod(c+13,COLS),swap(n)^9]}
+function inverse(a,n){let r=Math.floor(a/COLS),c=a%COLS;return [mod(r-7,ROWS)*COLS+mod(c-13,COLS),swap(n^9)]}
+function create(count,rate,window){return {version:1,count,rate,window,next:0,acked:0,tick:0,paused:false}}
+function step(s){if(s.paused)return false;let flight=s.next-s.acked,open=Math.min(s.window-flight,s.count-s.next);if(open<=0)return false;s.next+=Math.min(s.rate,open);s.tick++;return true}
+function acknowledge(s,limit){let k=Math.min(limit,s.next-s.acked);s.acked+=k;return k}
+function validate(s){if(!s||s.version!==1)return false;const i=x=>Number.isSafeInteger(x);if(![s.count,s.rate,s.window,s.next,s.acked,s.tick].every(i)||typeof s.paused!=='boolean')return false;if(s.count<1||s.count>N||s.rate<1||s.rate>64||s.window<1||s.window>N||s.acked<0||s.next<s.acked||s.next>s.count||s.next-s.acked>s.window||s.tick<0)return false;return true}
+function recoveredPacket(id){let a=addr(id),n=nibble(id),[b,m]=forward(a,n),[a2,n2]=inverse(b,m);return{id,original:a,transformed:b,reconstructed:a2===a&&n2===n}}
+function correctness(s){if(!validate(s))return false;for(let id=0;id<s.next;id++){if(!recoveredPacket(id).reconstructed)return false}return true}
+let state=create(512,16,128),note='';
+function redraw(){const d=Math.min(2,devicePixelRatio||1),w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}g.fillStyle='#09111d';g.fillRect(0,0,w,h);let pad=30*d,cell=Math.min((w-2*pad)/COLS,(h-2*pad)/ROWS),x0=(w-COLS*cell)/2,y0=(h-ROWS*cell)/2;const inflight=new Set,complete=new Set;for(let id=0;id<state.next;id++){let dest=recoveredPacket(id).transformed;(id<state.acked?complete:inflight).add(dest)}for(let row=0;row<ROWS;row++)for(let col=0;col<COLS;col++){let a=row*COLS+col;g.fillStyle=complete.has(a)?'#6cbfa9':inflight.has(a)?'#f2c481':'#20344d';g.fillRect(x0+col*cell+.35*d,y0+row*cell+.35*d,Math.max(1,cell-.7*d),Math.max(1,cell-.7*d))}g.fillStyle='#afc9d6';g.font=12*d+'px monospace';g.fillText('GREEN ACKED • GOLD IN-FLIGHT • BLUE FREE',12*d,19*d);
+$('countOut').textContent=$('count').value;$('rateOut').textContent=$('rate').value;$('windowOut').textContent=$('window').value;
+$('metrics').textContent='STATUS    '+(state.paused?'PAUSED':state.acked===state.count?'DONE':state.next-state.acked===state.window?'BACKPRESSURE':'READY')+'\nPENDING   '+(state.count-state.next)+'\nIN-FLIGHT '+(state.next-state.acked)+'\nACKED     '+state.acked+'\nTOTAL     '+state.count+'\nTICKS     '+state.tick+'\nGATE RATE '+state.rate+'\nWINDOW    '+state.window+'\nVALID     '+(correctness(state)?'PASS':'FAIL')+'\n'+note;}
+$('new').onclick=()=>{state=create(+$('count').value,+$('rate').value,+$('window').value);note='NEW BATCH';redraw()};
+$('tick').onclick=()=>{note=step(state)?'ADMISSION TICK':'NO CAPACITY / PAUSED';redraw()};
+$('ack').onclick=()=>{note='ACKNOWLEDGED '+acknowledge(state,64);redraw()};
+$('drain').onclick=()=>{let guard=0;while(state.acked<state.count&&guard++<N+1){if(state.paused)break;step(state);acknowledge(state,64)}note=state.acked===state.count?'DRAIN COMPLETE':'PAUSED';redraw()};
+$('pause').onclick=()=>{state.paused=!state.paused;note=state.paused?'PAUSED':'RESUMED';$('pause').textContent=state.paused?'Resume':'Pause';redraw()};
+$('save').onclick=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));note='CHECKPOINT STORED'}catch(e){note='STORAGE UNAVAILABLE: '+e.message}redraw()};
+$('restore').onclick=()=>{try{let data=JSON.parse(localStorage.getItem(KEY));if(!validate(data))throw Error('invalid checkpoint');state=data;$('pause').textContent=state.paused?'Resume':'Pause';note='CHECKPOINT RESTORED'}catch(e){note='RESTORE REJECTED: '+e.message}redraw()};
+$('tests').onclick=()=>{let trials=0,errors=0;for(let count=1;count<=2400;count+=37)for(let rate=1;rate<=64;rate+=9)for(let window of [1,16,128,2400]){let s=create(count,rate,window),ticks=0;while(s.acked<count&&ticks++<5000){step(s);if(ticks%3===0){const saved=JSON.stringify(s);let resumed=JSON.parse(saved);if(!validate(resumed)){errors++;break}s=resumed}acknowledge(s,ticks%2===0?64:7)}trials++;if(!correctness(s)||s.acked!==count||s.next!==count)errors++}
+let distinct=new Set;for(let id=0;id<N;id++)distinct.add(forward(addr(id),nibble(id))[0]);let tampered={...create(12,4,4),next:9,acked:0};let rejected=!validate(tampered);$('result').textContent=trials.toLocaleString()+' INTERRUPT/RESUME TRIALS\n'+distinct.size+' UNIQUE ADDRESSES\nBAD CHECKPOINT REJECTED '+rejected+'\nFAILURES '+errors+'\nRESULT '+(errors===0&&distinct.size===N&&rejected?'PASS':'FAIL')};
+window.addEventListener('resize',redraw);redraw();
+</script></html>
