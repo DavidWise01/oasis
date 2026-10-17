@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v5.8 Browser Recovery Validation</title>
+<style>body{background:#0b1524;color:#eaf3f7;font:15px system-ui;margin:0}main{max-width:900px;margin:auto;padding:25px}section{border:1px solid #4a6477;border-radius:12px;padding:18px;margin:16px 0}button{background:#285668;border:1px solid #84d4cb;color:white;padding:10px;border-radius:8px;cursor:pointer}pre{background:#142a3f;padding:16px;white-space:pre-wrap;color:#c7eede}a{color:#89e0d6}</style>
+<main><h1>N184 v5.8 · Browser Recovery Validation</h1><p>Independent IndexedDB recovery checks isolated to a v5.8 test database. v5.7 is unchanged.</p>
+<section><button id="run">Run two-connection, abort and recovery tests</button> <button id="reload">Reload</button><pre id="log">Awaiting browser tests.</pre></section>
+<section><h2>Recovery constraints</h2><pre>{{{{ N184 :: v5.8 }}}}
+SINGLE GATE / 60 × 40 / 2400
+BOX 2/4/6 :: TOROID 1/3/6
+{{**--&#96;&#96;--**}}
+1 :: Connection restart recovers committed state
+2 :: Aborted transaction leaves state unchanged
+3 :: Two connections reject a stale revision
+4 :: Reopen restores the last committed checkpoint
+5 :: 38,400 reversible lattice address/state pairs
+6 :: 112 deterministic queue-drain scenarios</pre><p>Two IndexedDB connections test contention. Separate browser tabs, abrupt power loss, and actual browser restart are not simulated. Reloading this page can show its prior saved state. Browser durability and storage policy may vary.</p><a href="../transactional-recovery-v57/">v5.7 transactional baseline</a></section></main>
+<script>
+'use strict';const $=x=>document.getElementById(x),DB='n184-v58-browser-validation',STORE='snapshots',KEY='main';
+const mod=(x,n)=>(x%n+n)%n,sw=x=>((x&3)<<2)|((x>>2)&3),forward=(a,n)=>[mod(Math.floor(a/40)+7,60)*40+mod(a%40+13,40),sw(n)^9],inverse=(a,n)=>[mod(Math.floor(a/40)-7,60)*40+mod(a%40-13,40),sw(n^9)];
+function open(){return new Promise((resolve,reject)=>{let q=indexedDB.open(DB,1);q.onupgradeneeded=()=>{if(!q.result.objectStoreNames.contains(STORE))q.result.createObjectStore(STORE)};q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)})}
+function read(db){return new Promise((resolve,reject)=>{let t=db.transaction(STORE,'readonly'),q=t.objectStore(STORE).get(KEY);q.onsuccess=()=>resolve(q.result||null);q.onerror=()=>reject(q.error)})}
+function update(db,expected,delta,abort=false){return new Promise((resolve,reject)=>{let t=db.transaction(STORE,'readwrite'),q=t.objectStore(STORE).get(KEY),result;let settled=false;const rejectOnce=e=>{if(!settled){settled=true;reject(e)}};q.onsuccess=()=>{try{let old=q.result||{rev:0,count:0};if(old.rev!==expected)throw Error('STALE');result={rev:old.rev+1,count:old.count+delta};if(abort){t.abort();return}t.objectStore(STORE).put(result,KEY)}catch(e){t.abort();rejectOnce(e)}};q.onerror=()=>rejectOnce(q.error);t.oncomplete=()=>{if(!settled){settled=true;resolve(result)}};t.onabort=()=>rejectOnce(t.error||Error('ABORTED'))})}
+function reset(db){return new Promise((resolve,reject)=>{let t=db.transaction(STORE,'readwrite');t.objectStore(STORE).put({rev:0,count:0},KEY);t.oncomplete=resolve;t.onerror=()=>reject(t.error)})}
+const line=s=>{$('log').textContent+=s+'\n'};
+async function run(){let a,b,fail=0,pass=0;$('log').textContent='';const check=(name,yes)=>{if(yes){pass++;line('PASS '+name)}else{fail++;line('FAIL '+name)}};try{
+a=await open();b=await open();await reset(a);await update(a,0,1);a.close();a=await open();check('01 connection reopen recovers committed state',(await read(a)).count===1);
+let prior=await read(a);try{await update(a,prior.rev,100,true)}catch(_){}check('02 aborted write leaves state unchanged',(await read(b)).count===prior.count);
+let stale=(await read(a)).rev;await update(b,stale,1);let rejected=false;try{await update(a,stale,1)}catch(e){rejected=e.message==='STALE'}check('03 stale writer rejected',rejected&&(await read(a)).count===2);
+let before=await read(b);b.close();b=await open();check('04 checkpoint survives closing database connection',JSON.stringify(await read(b))===JSON.stringify(before));
+let unique=new Set,good=true;for(let a=0;a<2400;a++)for(let n=0;n<16;n++){let x=forward(a,n),y=inverse(...x);unique.add(x[0]*16+x[1]);if(y[0]!==a||y[1]!==n)good=false}check('05 38,400 reversible address/state combinations',good&&unique.size===38400);
+let cases=0,ok=true;for(let n of [1,7,16,32,128,512,2400])for(let rate of [1,7,16,64])for(let window of [1,8,64,512]){let next=0,acked=0,guard=0;while(acked<n&&guard++<=2400){next+=Math.min(rate,n-next,window-(next-acked));acked=next}cases++;if(acked!==n)ok=false}check('06 '+cases+' queue-drain combinations',ok);
+line('TOTAL '+pass+' PASS / '+fail+' FAIL');}catch(e){fail++;line('UNEXPECTED '+e.message)}finally{if(a)a.close();if(b)b.close()}}
+$('run').onclick=run;$('reload').onclick=()=>location.reload();open().then(async db=>{let x=await read(db);$('log').textContent='RELOAD INSPECTION: '+(x?JSON.stringify(x):'NO CHECKPOINT')+'\nPress Run to execute tests.';db.close()}).catch(e=>$('log').textContent='IndexedDB unavailable: '+e.message);
+</script></html>
