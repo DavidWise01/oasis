@@ -1,0 +1,35 @@
+<!doctype html><html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v5.5 · Replay-safe Recovery</title><style>body{margin:0;background:#0b1422;color:#edf7f8;font:14px system-ui}header,aside{padding:20px}header{border-bottom:1px solid #526275}main{display:grid;grid-template-columns:minmax(0,1fr) 355px}canvas{width:100%;height:75vh;min-height:450px}aside{background:#162438}h1{margin:0}h2{font-size:15px;color:#92e6d6}button{padding:9px;margin:3px;border:1px solid #7ed9ca;border-radius:6px;color:white;background:#265262;cursor:pointer}label{display:block;margin:12px 0}input{width:100%}pre{white-space:pre-wrap;color:#d9d0f4;font:12px/1.6 monospace}a{color:#92e6d6}@media(max-width:800px){main{display:block}canvas{height:50vh;min-height:320px}}</style><header><h1>N184 v5.5 · Exactly-once Effect / Replay-safe Gateway</h1>{{{{ box :: toroid :: X-core :: 60x40 lattice }}}} · symbolic model</header><main><canvas id="grid"></canvas><aside><h2>Failure injection</h2><label>Packets <output id="no">512</output><input id="count" type="range" min="1" max="2400" value="512"></label><label>Rate <output id="ro">16</output><input id="rate" type="range" min="1" max="64" value="16"></label><label>Window <output id="wo">64</output><input id="window" type="range" min="1" max="512" value="64"></label><p><button id="new">New</button><button id="tick">Admit</button><button id="lost">Lose ACK</button><button id="ack">Retry / ACK</button></p><p><button id="crash">Crash / Recover</button><button id="drain">Complete</button><button id="test">Run Tests</button></p><pre id="status"></pre><pre id="results">Browser tests not run.</pre><h2>Immutable geometry</h2><pre>{{{{ N184 :: v5.5 }}}}
+60 × 40 = 2400
+16 nibble states
+Box: 2/4/6
+Toroid: 1/3/6
+a(-2,+3) b(-3,+2)
+c(+2,-3) d(+3,-2)
+{{**--&#96;&#96;--**}}
+
+PENDING → GATE → ATTEMPT
+                |
+         DEDUP PACKET ID
+           /         \
+        FIRST        REPLAY
+         |             |
+    COMMIT ONCE     NO EFFECT
+           \         /
+             ACK/LOST
+                |
+             RECOVER</pre><p>Crash recovery uses a logical checkpoint snapshot in the current page. This prototype does not guarantee durability across browser reloads or real-world exactly-once transport.</p><a href="../checkpoint-gateway-v54/">Prior v5.4</a></aside></main><script>
+'use strict';const $=id=>document.getElementById(id),cv=$('grid'),g=cv.getContext('2d'),N=2400,COL=40,mod=(a,n)=>(a%n+n)%n,swap=x=>((x&3)<<2)|((x>>2)&3);
+function fwd(a,n){return [mod(Math.floor(a/COL)+7,60)*COL+mod(a%COL+13,COL),swap(n)^9]}
+function inv(a,n){return [mod(Math.floor(a/COL)-7,60)*COL+mod(a%COL-13,COL),swap(n^9)]}
+function packet(id){return [((id*1009+37)%N),(id*5+1)%16]}
+function create(n,rate,window){return{n,rate,window,next:0,acked:0,committed:[],inflight:[],attempts:0,dedup:0,ticks:0}}
+function admit(s){let k=Math.min(s.n-s.next,s.rate,s.window-s.inflight.length);for(let j=0;j<k;j++)s.inflight.push(s.next++);s.ticks++;return k}
+function deliver(s,lose){let seen=new Set(s.committed);for(let id of s.inflight){s.attempts++;if(seen.has(id))s.dedup++;else{let [a,n]=packet(id),t=fwd(a,n),r=inv(...t);if(r[0]!==a||r[1]!==n)throw Error('inverse failed');s.committed.push(id);seen.add(id)}}if(!lose){s.inflight=[];s.acked=s.committed.length}}
+function valid(s){return s&&Number.isInteger(s.n)&&s.n>=1&&s.n<=N&&Number.isInteger(s.rate)&&s.rate>=1&&s.rate<=64&&Number.isInteger(s.window)&&s.window>=1&&s.window<=512&&Number.isInteger(s.next)&&s.next<=s.n&&s.next>=0&&Number.isInteger(s.acked)&&s.acked>=0&&s.acked<=s.next&&Array.isArray(s.committed)&&Array.isArray(s.inflight)&&new Set(s.committed).size===s.committed.length&&new Set(s.inflight).size===s.inflight.length&&s.inflight.length<=s.window&&s.committed.every(id=>id>=0&&id<s.next)&&s.inflight.every(id=>id>=0&&id<s.next)&&s.acked===s.committed.filter(id=>!s.inflight.includes(id)).length}
+function finish(s){let guard=0;while(s.acked<s.n&&guard++<10000){if(!s.inflight.length)admit(s);deliver(s,false)}return s.acked===s.n}
+let state=create(512,16,64),message='READY';
+function draw(){let d=Math.min(devicePixelRatio||1,2),w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}g.fillStyle='#0b1422';g.fillRect(0,0,w,h);let sz=Math.min((w-60*d)/40,(h-60*d)/60),ox=(w-sz*40)/2,oy=(h-sz*60)/2,done=new Set(state.committed.map(id=>fwd(...packet(id))[0])),flight=new Set(state.inflight.map(id=>fwd(...packet(id))[0]));for(let r=0;r<60;r++)for(let c=0;c<40;c++){let a=r*40+c;g.fillStyle=flight.has(a)?'#f4c27f':done.has(a)?'#77dfc7':'#254159';g.fillRect(ox+c*sz,oy+r*sz,Math.max(1,sz-1*d),Math.max(1,sz-1*d))}$('no').textContent=$('count').value;$('ro').textContent=$('rate').value;$('wo').textContent=$('window').value;$('status').textContent='STATUS '+message+'\nADMITTED '+state.next+'/'+state.n+'\nIN FLIGHT '+state.inflight.length+'\nCOMMITTED '+state.committed.length+'\nACKED '+state.acked+'\nATTEMPTS '+state.attempts+'\nDEDUP HITS '+state.dedup+'\nCHECKPOINT '+(valid(state)?'VALID':'INVALID')}
+$('new').onclick=()=>{state=create(+$('count').value,+$('rate').value,+$('window').value);message='NEW';draw()};$('tick').onclick=()=>{message='ADMIT '+admit(state);draw()};$('lost').onclick=()=>{deliver(state,true);message='ACK LOST';draw()};$('ack').onclick=()=>{deliver(state,false);message='ACK RECEIVED';draw()};$('crash').onclick=()=>{state=JSON.parse(JSON.stringify(state));message='RESTORED SNAPSHOT';draw()};$('drain').onclick=()=>{message=finish(state)?'COMPLETE':'ERROR';draw()};
+$('test').onclick=()=>{let trials=0,bad=0,hits=0;for(let n of [1,16,64,128,256,512,1024,1600,2400])for(let rate of [1,7,16,64])for(let window of [1,8,64,512]){let s=create(n,rate,window),guard=0;while(s.acked<n&&guard++<10000){admit(s);deliver(s,true);s=JSON.parse(JSON.stringify(s));deliver(s,false)}trials++;hits+=s.dedup;if(!valid(s)||s.acked!==n||s.committed.length!==n||new Set(s.committed).size!==n)bad++}let unique=new Set;for(let a=0;a<N;a++)for(let n=0;n<16;n++){let f=fwd(a,n),b=inv(...f);unique.add(f[0]*16+f[1]);if(a!==b[0]||n!==b[1])bad++}let corrupt=create(10,3,3);corrupt.inflight=[0,0];let reject=!valid(corrupt);$('results').textContent=trials+' CRASH-REPLAY CASES\n38,400 ROUND TRIPS\n'+unique.size+' UNIQUE RESULTS\nDUPLICATE ATTEMPTS '+hits+'\nBAD CHECKPOINT REJECTED '+reject+'\nFAILURES '+bad+'\n'+(bad===0&&unique.size===38400&&reject?'PASS':'FAIL')};
+window.addEventListener('resize',draw);draw();
+</script></html>
