@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 v5.2 · Simultaneous Packet Transport</title><style>*{box-sizing:border-box}body{margin:0;background:#08111d;color:#e8f5fa;font:14px system-ui}header{padding:17px 24px;border-bottom:1px solid #33495c}h1{margin:0;font-size:23px}.muted{color:#a8becb}main{display:grid;grid-template-columns:minmax(0,1fr) 355px}canvas{height:calc(100vh - 82px);min-height:510px;width:100%;display:block}aside{border-left:1px solid #33495c;background:#122132;padding:19px}section{border-bottom:1px solid #344b63;margin-bottom:16px;padding-bottom:16px}h2{font-size:13px;text-transform:uppercase;color:#8de1d4}button{padding:8px 10px;margin:3px;background:#225160;color:#fff;border:1px solid #67b3ad;border-radius:7px;cursor:pointer}input{width:100%}label{display:flex;justify-content:space-between;margin:10px 0 5px}pre{white-space:pre-wrap;font:12px/1.7 monospace;color:#d4c8eb}a{color:#88e6d8}@media(max-width:850px){main{display:block}canvas{height:55vh;min-height:350px}aside{border-top:1px solid #33495c}}</style><header><h1>N184 · v5.2 Simultaneous Transport</h1><span class="muted">{{{{ 60 × 40 / 2400 / single conceptual gateway }}}} · IDs preserved, reversible routing</span></header><main><canvas id="grid"></canvas><aside><section><h2>Batch controls</h2><label>Distinct packets <output id="countLabel">64</output></label><input id="count" type="range" min="1" max="512" value="64" step="1"><label>Batch seed <output id="seedLabel">1</output></label><input id="seed" type="range" min="1" max="100" value="1"><p><button id="dispatch">Dispatch</button><button id="recover">Reverse</button><button id="verify">Exhaustive tests</button></p><pre id="report"></pre><pre id="results">Tests not run in this browser.</pre></section><section><h2>Frozen mapping</h2><pre>{{{{ N184 :: v5.2 }}}}
+
+ADDRESS :: 60 rows × 40 cols
+STATE   :: 16 four-bit symbols
+PACKET  :: identity + address + state
+
+FORWARD
+ row' = (row+7) mod 60
+ col' = (col+13) mod 40
+ nib' = swap2(nib) XOR 9
+
+REVERSE
+ row = (row'-7) mod 60
+ col = (col'-13) mod 40
+ nib = swap2(nib' XOR 9)
+
+RESERVATION
+ one active packet per address
+ unique packet ID retained
+ collisions blocked before dispatch
+
+{{**--&#96;&#96;--**}}</pre><p class="muted">A batch is simultaneously transformed as a pure function. The gateway is conceptual; this does not model its throughput or physical motion. No physical tunneling claimed.</p></section><a href="../lattice-reversible-v51/">v5.1 reversible lattice</a></aside></main><script>
+'use strict';const ROWS=60,COLS=40,N=2400,$=id=>document.getElementById(id),cv=$('grid'),g=cv.getContext('2d');const mod=(a,n)=>(a%n+n)%n;const split=a=>[Math.floor(a/COLS),a%COLS];const swap=x=>((x&3)<<2)|((x>>2)&3);
+function forward(addr,n){let [r,c]=split(addr);return [mod(r+7,ROWS)*COLS+mod(c+13,COLS),swap(n)^9]}
+function reverse(addr,n){let [r,c]=split(addr);return [mod(r-7,ROWS)*COLS+mod(c-13,COLS),swap(n^9)]}
+function generate(count,seed){let packets=[];for(let i=0;i<count;i++){let addr=(i*1009+seed*37)%N;packets.push({id:i,addr,nibble:(i*5+seed)%16})}return packets}
+function transform(list,fn){return list.map(p=>{let [addr,nibble]=fn(p.addr,p.nibble);return {id:p.id,addr,nibble}})}
+function uniqueAddresses(list){return new Set(list.map(p=>p.addr)).size===list.length}
+function equal(a,b){return a.length===b.length&&a.every((p,i)=>p.id===b[i].id&&p.addr===b[i].addr&&p.nibble===b[i].nibble)}
+let source=generate(64,1),active=source,mode='INPUT';
+function render(){let d=Math.min(2,devicePixelRatio||1),w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}g.fillStyle='#08111d';g.fillRect(0,0,w,h);let pad=30*d,size=Math.min((w-2*pad)/COLS,(h-2*pad)/ROWS),x0=(w-COLS*size)/2,y0=(h-ROWS*size)/2;const taken=new Set(active.map(p=>p.addr));for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){let a=r*COLS+c;g.fillStyle=taken.has(a)?(mode==='TRANSFORMED'?'#f8c88c':'#80e5d2'):'#1c354c';g.fillRect(x0+c*size+.35*d,y0+r*size+.35*d,Math.max(1,size-.7*d),Math.max(1,size-.7*d))}g.fillStyle='#b8ccdd';g.font=12*d+'px monospace';g.fillText('N184 60 × 40 — '+mode,12*d,19*d);$('report').textContent='MODE: '+mode+'\nPACKETS: '+active.length+'\nUNIQUE INPUT ADDRESSES: '+uniqueAddresses(source)+'\nUNIQUE ACTIVE ADDRESSES: '+uniqueAddresses(active)+'\nIDENTITIES: '+new Set(active.map(p=>p.id)).size+'\nROUND TRIP: '+equal(source,transform(transform(source,forward),reverse))+'\nSINGLE GATEWAY: conceptual';$('countLabel').textContent=$('count').value;$('seedLabel').textContent=$('seed').value}
+function refresh(){source=generate(+$('count').value,+$('seed').value);active=source;mode='INPUT';render()}
+$('count').oninput=refresh;$('seed').oninput=refresh;$('dispatch').onclick=()=>{if(!uniqueAddresses(source)){mode='REJECTED: COLLISION';active=source}else{active=transform(source,forward);mode='TRANSFORMED'}render()};$('recover').onclick=()=>{if(mode==='TRANSFORMED'){active=transform(active,reverse);mode='RECOVERED'}else{mode='INPUT';active=source}render()};
+$('verify').onclick=()=>{let failures=0,checks=0,uniq=new Set();for(let a=0;a<N;a++)for(let n=0;n<16;n++){let [b,v]=forward(a,n),[x,y]=reverse(b,v);let key=b*16+v;uniq.add(key);checks++;if(a!==x||n!==y)failures++}let batchChecks=0;for(let s=1;s<=20;s++)for(let count=1;count<=512;count++){let p=generate(count,s),f=transform(p,forward),back=transform(f,reverse);batchChecks++;if(!uniqueAddresses(p)||!uniqueAddresses(f)||!equal(p,back)||new Set(f.map(x=>x.id)).size!==count)failures++}const outcome=failures===0&&uniq.size===N*16;$('results').textContent='ADDRESS/STATE CASES: '+checks.toLocaleString()+'\nBATCH CHECKS: '+batchChecks.toLocaleString()+'\nUNIQUE OUTPUTS: '+uniq.size.toLocaleString()+'\nFAILURES: '+failures+'\nRESULT: '+(outcome?'PASS':'FAIL')+'\nCAPACITY MODELED: max 512 concurrent packets';};
+window.addEventListener('resize',render);render();
+</script></html>
