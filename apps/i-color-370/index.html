@@ -23,9 +23,10 @@
 <div class="muted">Three orbit bands: <span class="key">122 + 122 + 126 = 370</span>.<br><span class="key">366→370:</span> seventh shell 74→78, total 366→370.</div>
 <noscript><p class="warn">Enable JavaScript to run the interactive 3D visualization.</p></noscript>
 </aside></div>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"}}</script>
 <script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js';
-import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
 const N=370, counts=[122,122,126], WAKAKU=[2,8,18,32,50,72,74,50,32,18,8,2];
 const positions=[[0,121],[122,243],[244,369]];
