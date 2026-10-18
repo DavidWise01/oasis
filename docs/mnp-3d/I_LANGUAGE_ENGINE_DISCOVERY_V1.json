@@ -1,0 +1,55 @@
+{
+  "schema": "tessy-i-language-engine-discovery-v1",
+  "date": "2026-10-18",
+  "scope": "First source-level mapping to canonical {{i}} witness operator and adjacent I-13 executable language. Neither is asserted interchangeable.",
+  "tracks": [
+    {
+      "id": "I-WITNESS",
+      "repo": "DavidWise01/toph-cortex",
+      "path": "memory/semantic/sapphon-prime-03.md",
+      "canonical": "{{ - {{i}} + }}",
+      "semantics": [
+        "interpret",
+        "deliberate",
+        "verify provenance",
+        "independent corroboration",
+        "append-only"
+      ],
+      "boundary": "One origin RAW; two independent agreeing origins LEARNED within corpus, not objective truth",
+      "status": "documented; implementation not proven from spec alone"
+    },
+    {
+      "id": "I13-LANGUAGE",
+      "repo": "DavidWise01/I13-H1.1",
+      "path": "spec/I13.md",
+      "canonical": "I",
+      "semantics": [
+        "13 named language nodes",
+        "four planes: DESIGNATE/BIND/DECIDE/TRANSFORM",
+        "syntax I x <- 0 and -> x",
+        "4096 active frame maximum"
+      ],
+      "boundary": "Distinct concrete programming language; no evidence same as {{i}} witness operator",
+      "status": "documented language spec; runtime remains to be inventoried"
+    },
+    {
+      "id": "TESSY-PRIOR",
+      "repo": "DavidWise01/oasis",
+      "path": "docs/mnp-3d/index.html",
+      "canonical": "{{i}} 42 coordinate-distinct tokens / 8 lanes (historical project representation)",
+      "boundary": "Prior memory/project prototype; source-level reconciliation with canonical I13 pending",
+      "status": "unverified alignment"
+    }
+  ],
+  "nextFiles": [
+    "DavidWise01/I13-H1.1/src/bin/i13.rs",
+    "DavidWise01/I13-H1.1/reference/I-13-BRIEF.md",
+    "DavidWise01/toph-cortex/bin/recall.py"
+  ],
+  "nonClaims": [
+    "{{i}} is not asserted to be the same grammar as I-13",
+    "Corroboration does not establish external truth",
+    "No full 2144-repository content inventory complete",
+    "Do not alter frozen KET or Prime03 definitions"
+  ]
+}
