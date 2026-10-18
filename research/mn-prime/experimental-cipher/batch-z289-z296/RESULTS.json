@@ -1,0 +1,69 @@
+{
+  "schema": "MN-PRIME-v25-C37",
+  "intent": "highly speculative symbolic cipher testing, not physical discovery",
+  "interval": [
+    289,
+    296
+  ],
+  "checks": {
+    "local_full_source_cases_passed": 200,
+    "local_full_source_total": 200,
+    "batch_passed": 26,
+    "batch_total": 26,
+    "browser_passed": 27,
+    "browser_total": 27,
+    "github_individual_test_files_verified": 8,
+    "github_compact_test_methods_per_file": 26,
+    "github_ci_execution": false
+  },
+  "source_integrity": {
+    "original_366_csv_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+    "original_diatom_v431_sha256": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe",
+    "sources_unchanged": true
+  },
+  "boundary": {
+    "from": {
+      "Z": 292,
+      "window": 8,
+      "view": "BOX",
+      "wave": "11:22"
+    },
+    "to": {
+      "Z": 293,
+      "window": 9,
+      "view": "TOROID",
+      "wave": "11:23"
+    },
+    "band": "Nitrogen",
+    "K_symbolic": 0,
+    "maternal_cycle": 37,
+    "wave_pass": 11,
+    "enclosure": "BOX contains TOROID"
+  },
+  "record_count": 8,
+  "maternal_cycle_terminal_Z": 296,
+  "stitches": [
+    121,
+    122,
+    243,
+    244,
+    365,
+    366
+  ],
+  "lid": 366,
+  "nuclear_comparison": {
+    "assumed_neutrons": 184,
+    "arithmetic_A_start": 473,
+    "arithmetic_A_end": 480,
+    "physical_validation": false
+  },
+  "release": {
+    "local_zip_sha256": "48b9a55071e0e9df2241b086cfade27e336716d3d6fcb945a9cc55170d7c47d5",
+    "zip_file_count": 30
+  },
+  "notes": "GitHub compact per-target tests are distinct from local full-source suites and not verified via CI.",
+  "next_interval": [
+    297,
+    304
+  ]
+}
