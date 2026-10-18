@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ i :: color :: 1-370 :: }} · Three.js</title>
+<meta name="description" content="Interactive 3D symbolic color registry: 370 addresses, 3 rings, RGB orientations, shell progression 366–370.">
+<style>
+:root{color-scheme:dark;font-family:ui-sans-serif,system-ui,Arial;background:#050914;color:#effaff}
+*{box-sizing:border-box}body{margin:0}header{padding:16px 24px;border-bottom:1px solid #243c57;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;background:#0b1422}h1{margin:0;font-size:clamp(17px,2.2vw,27px);letter-spacing:.025em}header small{color:#9bbad0}#layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;min-height:calc(100vh - 73px)}#view{height:calc(100vh - 73px);min-height:540px;position:relative;overflow:hidden;background:radial-gradient(circle,#15293a,#050914 70%)}#view canvas{display:block;touch-action:none}#loading{position:absolute;inset:0;display:grid;place-items:center;color:#9bbad0;pointer-events:none}aside{padding:19px;background:#0b1422;border-left:1px solid #243c57;overflow-y:auto;max-height:calc(100vh - 73px)}label{display:block;margin:13px 0 5px;color:#8fbed4;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}select,input,button{background:#10283a;border:1px solid #31536a;color:white;border-radius:8px;padding:10px 12px;font:inherit}select,input{width:100%}button{cursor:pointer}button:hover{background:#19425b}.group{display:flex;gap:7px;flex-wrap:wrap}.group button{flex:1}.muted{color:#9bb3c9;font-size:13px;line-height:1.5}.value{font-size:19px;font-weight:800}.swatch{height:28px;border-radius:7px;border:1px solid #aac3d3;margin:8px 0}.note{border-top:1px solid #2c445b;margin-top:20px;padding-top:12px}.chip{border:1px solid #446c85;background:#122a3d;padding:5px 8px;border-radius:20px;font-size:12px;display:inline-block}.key{font-family:ui-monospace,Consolas,monospace;color:#7aebff}.shells{display:flex;flex-wrap:wrap;gap:4px}.shells span{padding:5px 7px;border:1px solid #38556e;border-radius:5px;font-size:12px}.warn{color:#ffd78c}#message{padding:8px 0;color:#d2edff}a{color:#82dcff}@media(max-width:850px){#layout{display:block}#view{height:66vh;min-height:390px}aside{max-height:none;border:0}header{padding:14px}}
+</style>
+</head><body>
+<header><div><h1>{{ i :: color :: 1-370 :: }} <span class="chip">Three.js / WebGL</span></h1><small>STOICHEION · Wakaku symbolic color and shell visualization</small></div><div class="muted">Drag to orbit · wheel to zoom · select a segment</div></header>
+<div id="layout"><section id="view"><div id="loading">Initializing Three.js…</div></section><aside>
+<label for="number">Address</label><input id="number" type="number" min="1" max="370" value="370" inputmode="numeric">
+<label for="mode">Color mapping</label><select id="mode"><option value="hue">Continuous 1–370 hue</option><option value="orientation">Six RGB orientations</option></select>
+<label for="scene">3D visualization</label><select id="scene"><option value="wheel">370-address color wheel</option><option value="shell">Wakaku 366–370 shell view</option><option value="p6">p6 orientation gyroscope</option></select>
+<label>Camera and export</label><div class="group"><button id="reset">Reset camera</button><button id="spin">Pause spin</button><button id="csv">CSV</button></div>
+<div id="message" aria-live="polite"></div>
+<label>Selected record</label><div class="value" id="record">Z370</div><div id="swatch" class="swatch"></div><div class="muted" id="color"></div>
+<div class="muted" id="ring"></div><div class="muted" id="orientation"></div>
+<div id="shellpanel"><label>Symbolic shell sequence (366–370)</label><div id="shellstatus" class="muted"></div><div class="shells" id="shells"></div></div>
+<p class="note muted">The 1–370 positions and RGB/HSV colors are <strong>symbolic registry addresses</strong>, not measured wavelengths or experimentally confirmed elements. The 12 shell counts are the supplied Wakaku model, not validated electron configurations. The animated p6 and Sagittarius A* analogies are illustrative, not physical equivalences.</p>
+<div class="muted">Three orbit bands: <span class="key">122 + 122 + 126 = 370</span>.<br><span class="key">366→370:</span> seventh shell 74→78, total 366→370.</div>
+<noscript><p class="warn">Enable JavaScript to run the interactive 3D visualization.</p></noscript>
+</aside></div>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js';
+import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/controls/OrbitControls.js';
+
+const N=370, counts=[122,122,126], WAKAKU=[2,8,18,32,50,72,74,50,32,18,8,2];
+const positions=[[0,121],[122,243],[244,369]];
+const orient=[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]];
+const sixColors=orient.map(v=>'#'+v.map(x=>(x*85).toString(16).padStart(2,'0')).join(''));
+const view=document.getElementById('view'), loading=document.getElementById('loading');
+const number=document.getElementById('number'),mode=document.getElementById('mode'),sceneCtl=document.getElementById('scene');
+const shellDiv=document.getElementById('shells'),shellStatus=document.getElementById('shellstatus');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.setClearColor(0x050914);
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+view.appendChild(renderer.domElement);loading.remove();
+const scene=new THREE.Scene();scene.fog=new THREE.Fog(0x050914,24,55);
+const camera=new THREE.PerspectiveCamera(48,1,.1,150);camera.position.set(0,11,21);
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=7;controls.maxDistance=42;
+const amb=new THREE.AmbientLight(0xffffff,2);scene.add(amb);
+const group=new THREE.Group();scene.add(group);
+const wheel=new THREE.Group(),shell=new THREE.Group(),p6=new THREE.Group();group.add(wheel,shell,p6);
+const colorFor=z=>mode.value==='orientation'?sixColors[(z-1)%6]:'#'+new THREE.Color().setHSL((z-1)/N,.95,.56).getHexString();
+const descriptor=z=>{
+ const rgb=orient[(z-1)%6];
+ const bounds=z<=122?[1,122]:z<=244?[123,244]:[245,370];
+ return {z,hex:colorFor(z),rgb,ring:bounds};
+};
+let selected=370,rotate=true,selectedMesh=null;
+const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2(),wedges=[];
+const neutral=new THREE.MeshBasicMaterial({color:0x0c2233,side:THREE.DoubleSide});
+for(let band=0,offset=0;band<3;band++){
+ const count=counts[band],inner=2.45+band*2.20,outer=inner+1.90;
+ for(let i=0;i<count;i++){
+  const z=offset+i+1,begin=2*Math.PI*i/count-.5*Math.PI,delta=2*Math.PI/count;
+  const geom=new THREE.RingGeometry(inner,outer,1,1,begin+.004,delta-.008);
+  const mat=new THREE.MeshBasicMaterial({color:colorFor(z),side:THREE.DoubleSide});
+  const mesh=new THREE.Mesh(geom,mat);mesh.userData.z=z;mesh.rotation.x=-Math.PI/2;wheel.add(mesh);wedges.push(mesh);
+  const line=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints([
+   new THREE.Vector3(inner*Math.cos(begin),.035,-inner*Math.sin(begin)),
+   new THREE.Vector3(outer*Math.cos(begin),.035,-outer*Math.sin(begin)),
+   new THREE.Vector3(outer*Math.cos(begin+delta),.035,-outer*Math.sin(begin+delta)),
+   new THREE.Vector3(inner*Math.cos(begin+delta),.035,-inner*Math.sin(begin+delta))
+  ]),new THREE.LineBasicMaterial({color:0x10253a,transparent:true,opacity:.25}));wheel.add(line);
+ }
+ offset+=count;
+}
+const rim=new THREE.Mesh(new THREE.TorusGeometry(9.05,.025,8,320),new THREE.MeshBasicMaterial({color:0x8ce9ff,transparent:true,opacity:.5}));rim.rotation.x=Math.PI/2;wheel.add(rim);
+const center=new THREE.Mesh(new THREE.SphereGeometry(.92,30,20),new THREE.MeshPhongMaterial({color:0x132d44,emissive:0x063149,shininess:80}));wheel.add(center);
+const axes=new THREE.AxesHelper(2);p6.add(axes);
+const p6Orbits=[],p6Markers=[];
+for(let i=0;i<3;i++){
+ const m=new THREE.MeshBasicMaterial({color:[0xff5577,0x50ffb0,0x5c91ff][i],transparent:true,opacity:.8});
+ const orb=new THREE.Mesh(new THREE.TorusGeometry(3.6,.045,8,160),m);
+ orb.rotation.set(i===0?Math.PI/2:0,i===1?Math.PI/2:0,i===2?Math.PI/2:0);
+ p6.add(orb);p6Orbits.push(orb);
+ for(let j=0;j<2;j++){
+  const bead=new THREE.Mesh(new THREE.SphereGeometry(.23,16,12),new THREE.MeshPhongMaterial({color:[0xff5577,0x50ffb0,0x5c91ff][i]}));p6.add(bead);p6Markers.push({bead,i,j});
+ }
+}
+const nucleus=new THREE.Mesh(new THREE.SphereGeometry(.75,32,20),new THREE.MeshPhongMaterial({color:0xffffff,emissive:0x204060}));p6.add(nucleus);
+const shellColors=['#ff5577','#ffaa66','#f8dd6b','#6cffa8','#60e0f5','#5c96ff','#b47dff','#ff76ce','#adffcc','#9bc6ff','#ffe190','#f7f8ff'];
+let shellBeads=[];
+function rebuildShell(z){
+ shell.clear();shellBeads=[];const s=WAKAKU.slice();s[6]+=Math.max(0,z-366);
+ for(let i=0;i<12;i++){
+  const r=1.35+i*.50,angleOffset=i*.29;
+  const g=new THREE.RingGeometry(r-.013,r+.013,220);
+  const ring=new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:shellColors[i],side:THREE.DoubleSide,transparent:true,opacity:.55}));
+  ring.rotation.x=-Math.PI/2;shell.add(ring);
+  const dotG=new THREE.SphereGeometry(.055,5,5),dotM=new THREE.MeshBasicMaterial({color:shellColors[i]});
+  const inst=new THREE.InstancedMesh(dotG,dotM,s[i]);const dummy=new THREE.Object3D();
+  for(let j=0;j<s[i];j++){
+   const a=j*2*Math.PI/s[i]+angleOffset;
+   dummy.position.set(r*Math.cos(a),i*.038,r*Math.sin(a));dummy.updateMatrix();inst.setMatrixAt(j,dummy.matrix);
+  }
+  inst.instanceMatrix.needsUpdate=true;shell.add(inst);
+ }
+ const core=new THREE.Mesh(new THREE.SphereGeometry(.35,16,12),new THREE.MeshBasicMaterial({color:0xffffff}));shell.add(core);
+ const sum=s.reduce((a,b)=>a+b,0);shellStatus.textContent='Z'+z+' | model layer 7 = '+s[6]+' | total = '+sum;
+ shellDiv.replaceChildren(...s.map((x,i)=>{const sp=document.createElement('span');sp.textContent=(i+1)+': '+x;sp.style.borderColor=shellColors[i];return sp}));
+}
+function inspect(z){
+ if(!Number.isInteger(z)||z<1||z>N){number.value=String(selected);return}
+ selected=z;number.value=String(z);
+ const r=descriptor(z);document.getElementById('record').textContent='Z'+z+(z>=366?' · Wakaku shell':''),document.getElementById('swatch').style.background=r.hex;
+ document.getElementById('color').textContent=r.hex.toUpperCase()+' · RGB '+new THREE.Color(r.hex).toArray().map(v=>Math.round(THREE.MathUtils.linearToSRGB(v)*255)).join(', ');
+ document.getElementById('ring').textContent='Ring '+(z<=122?1:z<=244?2:3)+' · slots '+r.ring[0]+'–'+r.ring[1];
+ document.getElementById('orientation').textContent='Symbolic orientation '+r.rgb.join(':');
+ shellStatus.textContent=z>=366?'Z'+z+' model shell total '+z:'Select Z366–Z370 to inspect Wakaku shell progression.';
+ if(z>=366)rebuildShell(z);
+ else {shellDiv.replaceChildren();shell.clear()}
+ wedges.forEach(w=>w.material.opacity=w.userData.z===z?1:.80);
+ wedges.forEach(w=>{w.material.transparent=true;w.material.color.set(colorFor(w.userData.z));w.material.opacity=w.userData.z===z?1:.83});
+}
+function visibility(){wheel.visible=sceneCtl.value==='wheel';shell.visible=sceneCtl.value==='shell';p6.visible=sceneCtl.value==='p6'; if(shell.visible&&selected<366)inspect(370)}
+function updateColors(){wedges.forEach(w=>w.material.color.set(colorFor(w.userData.z)));inspect(selected)}
+function resize(){const w=view.clientWidth,h=view.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false)}
+const observer=new ResizeObserver(resize);observer.observe(view);resize();
+number.addEventListener('change',()=>inspect(Number(number.value)));mode.addEventListener('change',updateColors);sceneCtl.addEventListener('change',visibility);
+document.getElementById('reset').onclick=()=>{camera.position.set(0,11,21);controls.target.set(0,0,0);controls.update();group.rotation.set(0,0,0)};
+document.getElementById('spin').onclick=ev=>{rotate=!rotate;ev.target.textContent=rotate?'Pause spin':'Resume spin'};
+function csv(){
+ const header='z,color_hex,orientation,ring,model_shell_7,model_shell_sum,color_basis';
+ const lines=Array.from({length:N},(_,i)=>{const z=i+1,r=descriptor(z),seven=z>=366?74+(z-366):'',sum=z>=366?z:'';return [z,r.hex,r.rgb.join(':'),z<=122?1:z<=244?2:3,seven,sum,'symbolic_not_measured'].join(',')});
+ const blob=new Blob([[header,...lines].join('\n')],{type:'text/csv'}),url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download='i_color_1_370.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)
+}
+document.getElementById('csv').onclick=csv;
+renderer.domElement.addEventListener('click',ev=>{
+ if(sceneCtl.value!=='wheel')return;
+ const rect=renderer.domElement.getBoundingClientRect();
+ pointer.set((ev.clientX-rect.left)/rect.width*2-1,-(ev.clientY-rect.top)/rect.height*2+1);
+ raycaster.setFromCamera(pointer,camera);
+ const hits=raycaster.intersectObjects(wedges,false);if(hits.length)inspect(hits[0].object.userData.z);
+});
+let last=performance.now();function animate(t){requestAnimationFrame(animate);const dt=Math.min((t-last)/1000,.05);last=t;if(rotate){group.rotation.y+=dt*.06;p6.rotation.y+=dt*.12}
+ p6Markers.forEach(({bead,i,j})=>{const angle=t*.0005+(j*Math.PI);const r=3.6;let x=r*Math.cos(angle),y=r*Math.sin(angle);if(i===0)bead.position.set(x,0,y);if(i===1)bead.position.set(0,x,y);if(i===2)bead.position.set(x,y,0)});
+ controls.update();renderer.render(scene,camera)} 
+inspect(370);visibility();requestAnimationFrame(animate);
+</script>
+</body></html>
