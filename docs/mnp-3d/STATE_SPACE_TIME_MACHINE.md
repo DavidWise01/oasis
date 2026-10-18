@@ -224,3 +224,14 @@ The 2,144-entry `ROOT0_MASTER_DISCOVERY_20261018.json` is a **repository metadat
 Execution stages: `CORPUS → OBSERVE → RECORD → ESTIMATE → PREDICT → WITNESS → UPDATE`. Estimates require validated normalized input probabilities; predictions retain observation IDs; witnesses must use a distinct event ID; updates score surprisal without rewriting prior evidence or claiming automatic model training. The pinned `0@[v,w,x,y,z]` and x/y/z meanings are preserved. No quantum advantage or physical quanta mechanism is asserted.
 
 See [QUANTA corpus alignment](./QUANTA_CORPUS_ALIGNMENT_V1.md) and [17 deterministic tests](./test-quanta-corpus-v1.cjs).
+
+
+---
+
+## 16 — Simple cyclic receipt persistence (operations console)
+
+The [Tessy operations console](../tessy/) now hashes every new session receipt as `SHA256(JSON({sequence, kind, record, previous}))`, where `previous` is `GENESIS` for the first record and the preceding receipt hash otherwise. New records are serialized in browser order; `Verify chain` recalculates all hashes. The chain is saved in browser `localStorage` and can be exported to JSON.
+
+**Cycle:** `OBSERVE → PREDICT → WITNESS → UPDATE → HASH → VERIFY → REPEAT`.
+
+**Boundary:** hashes supply tamper evidence relative to a separately retained trusted head, but this locally mutable chain is **not digitally signed, independently timestamped, or durably backed up**. Browser storage may be removed, a replaced whole chain can pass local verification, and NOM remains a read-only external witness. Production certification still requires external persistence and independent live browser/integration testing.
