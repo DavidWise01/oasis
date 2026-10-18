@@ -1,0 +1,41 @@
+{
+  "schema": "MN-PRIME-DIATOM-V431-INTEGRATION",
+  "scope": "Layer 1 simulation and symbolic visual companion",
+  "original_source": "User-uploaded self-contained React V4.31 SUB-QUANTUM EDITION HTML",
+  "original_sha256": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe",
+  "preservation": "Original source not edited, stored in downloadable v20 release. Full source not included in this small GitHub JSON.",
+  "isolation": "Embedded as sandboxed script-only iframe; not allowed to write frozen cipher state",
+  "symbolic_mappings": [
+    [
+      "EVEN=BOX ODD=TOROID",
+      "Even windows BOX, odd windows TOROID"
+    ],
+    [
+      "N R+G+B 245-366",
+      "Nitrogen symbolic band at addresses 245-366; RGB is display technology"
+    ],
+    [
+      "24 HOLD 1",
+      "Independent containment mnemonic, not equivalent to the 27-unit primitive"
+    ],
+    [
+      "60×60+6 RGB",
+      "3606 distinct from 366; do not silently equate"
+    ],
+    [
+      "V/D/S/A/M",
+      "Five user-interface controls, not s/p/d/f/g physical orbital shells"
+    ]
+  ],
+  "source_claims_unvalidated": [
+    "Quantum tunneling of 20-300nm viruses through silica pores",
+    "Photons trapped by gravity inside a diatom frustule or magnetosphere",
+    "TAG oil droplets as quantum memory",
+    "Sub-Planck experimentally accessible states",
+    "Ice IX -113C as universal frustule stability",
+    "AT-cut quartz/obsidian assigned to natural silica frustule"
+  ],
+  "physical_validation": false,
+  "tests": "Local 200/200 source-preserving tests, 14/14 batch invariants, 18/18 Chromium checks",
+  "frozen_base_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04"
+}
