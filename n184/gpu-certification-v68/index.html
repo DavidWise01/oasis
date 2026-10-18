@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N184 GPU Certification v6.8</title><style>body{background:#061727;color:#d8eef7;margin:0;padding:20px;font:13px/1.6 Consolas,monospace}main{max-width:1100px;margin:auto}h1{font-size:26px}section{border:1px solid #397c92;background:#0d293d;padding:15px;margin:12px 0}button{color:#d9faff;background:#17445f;border:1px solid #66b8d0;padding:9px;font:inherit;cursor:pointer}button:disabled{opacity:.5}.views{display:grid;grid-template-columns:1fr 1fr;gap:10px}canvas{width:100%;height:320px;display:block;background:#061727}pre{white-space:pre-wrap}a{color:#a1e0ee}.muted{color:#abc9d7}@media(max-width:650px){.views{grid-template-columns:1fr}}</style>
+<main><h1>N184 · GPU Visual Parity + Stability Gate</h1><p>v6.8 · 3D/4D visualization only · Frozen v6.1 unchanged</p>
+<section><button id="compare">RENDER A/B + ANALYZE PIXELS</button> <button id="stress">RUN 30-SECOND STABILITY</button> <button id="recover">TEST GPU CONTEXT LOSS / RESTORE</button> <button id="copy">COPY REPORT</button><pre id="report">NOT TESTED. WebGL2 stays optional.</pre><p class="muted">Color, line width and anti-aliasing may vary across Canvas2D and WebGL2. Pixel comparison is a diagnostic, not guaranteed bitwise parity. Run on your actual browser/device.</p></section>
+<section class="views"><div><h2>Canvas2D reference</h2><canvas id="canvas"></canvas></div><div><h2>WebGL2 test</h2><canvas id="gpu"></canvas></div></section>
+<p><a href="../blueprint-lab-v63/">Blueprint Lab</a> · <a href="../renderer-suite-v67/">Performance results</a></p></main>
+<script src="../blueprint-lab-v63/geometry.js"></script>
+<script src="./test.js"></script></html>
