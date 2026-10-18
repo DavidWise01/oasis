@@ -1,0 +1,4345 @@
+{
+  "schema": "root0-discovery-batch-002",
+  "scope": "four creation-date ranges; first three GitHub search pages each; metadata-only; no full corpus emulation",
+  "date": "2026-10-18",
+  "ranges": [
+    {
+      "range": "2026-06-15..2026-06-21",
+      "page": 1,
+      "count": 100
+    },
+    {
+      "range": "2026-06-15..2026-06-21",
+      "page": 2,
+      "count": 100
+    },
+    {
+      "range": "2026-06-15..2026-06-21",
+      "page": 3,
+      "count": 100
+    },
+    {
+      "range": "2026-06-22..2026-06-30",
+      "page": 1,
+      "count": 100
+    },
+    {
+      "range": "2026-06-22..2026-06-30",
+      "page": 2,
+      "count": 100
+    },
+    {
+      "range": "2026-06-22..2026-06-30",
+      "page": 3,
+      "count": 100
+    },
+    {
+      "range": "2026-07-01..2026-07-07",
+      "page": 1,
+      "count": 100
+    },
+    {
+      "range": "2026-07-01..2026-07-07",
+      "page": 2,
+      "count": 30
+    },
+    {
+      "range": "2026-07-01..2026-07-07",
+      "page": 3,
+      "count": 0
+    },
+    {
+      "range": "2026-07-08..2026-07-14",
+      "page": 1,
+      "count": 100
+    },
+    {
+      "range": "2026-07-08..2026-07-14",
+      "page": 2,
+      "count": 25
+    },
+    {
+      "range": "2026-07-08..2026-07-14",
+      "page": 3,
+      "count": 0
+    }
+  ],
+  "distinct": 855,
+  "entries": [
+    {
+      "name": "DavidWise01/0xdeadbeef",
+      "description": "",
+      "url": "https://github.com/DavidWise01/0xdeadbeef"
+    },
+    {
+      "name": "DavidWise01/4096-recursion",
+      "description": "",
+      "url": "https://github.com/DavidWise01/4096-recursion"
+    },
+    {
+      "name": "DavidWise01/a-man-without-a-country",
+      "description": "",
+      "url": "https://github.com/DavidWise01/a-man-without-a-country"
+    },
+    {
+      "name": "DavidWise01/ada-lovelace",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ada-lovelace"
+    },
+    {
+      "name": "DavidWise01/adventure",
+      "description": "",
+      "url": "https://github.com/DavidWise01/adventure"
+    },
+    {
+      "name": "DavidWise01/aegis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/aegis"
+    },
+    {
+      "name": "DavidWise01/ai-governance",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ai-governance"
+    },
+    {
+      "name": "DavidWise01/akasha-constellation",
+      "description": "",
+      "url": "https://github.com/DavidWise01/akasha-constellation"
+    },
+    {
+      "name": "DavidWise01/akasha-guide",
+      "description": "",
+      "url": "https://github.com/DavidWise01/akasha-guide"
+    },
+    {
+      "name": "DavidWise01/aletheia",
+      "description": "",
+      "url": "https://github.com/DavidWise01/aletheia"
+    },
+    {
+      "name": "DavidWise01/alfred-tarski",
+      "description": "",
+      "url": "https://github.com/DavidWise01/alfred-tarski"
+    },
+    {
+      "name": "DavidWise01/aliens",
+      "description": "",
+      "url": "https://github.com/DavidWise01/aliens"
+    },
+    {
+      "name": "DavidWise01/alignment",
+      "description": "",
+      "url": "https://github.com/DavidWise01/alignment"
+    },
+    {
+      "name": "DavidWise01/alonzo-church",
+      "description": "",
+      "url": "https://github.com/DavidWise01/alonzo-church"
+    },
+    {
+      "name": "DavidWise01/alvin-maker",
+      "description": "",
+      "url": "https://github.com/DavidWise01/alvin-maker"
+    },
+    {
+      "name": "DavidWise01/anabasis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/anabasis"
+    },
+    {
+      "name": "DavidWise01/analytical-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/analytical-engine"
+    },
+    {
+      "name": "DavidWise01/anathem",
+      "description": "",
+      "url": "https://github.com/DavidWise01/anathem"
+    },
+    {
+      "name": "DavidWise01/ant-colony",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ant-colony"
+    },
+    {
+      "name": "DavidWise01/anti-gravity",
+      "description": "",
+      "url": "https://github.com/DavidWise01/anti-gravity"
+    },
+    {
+      "name": "DavidWise01/anti-gravity-motor",
+      "description": "",
+      "url": "https://github.com/DavidWise01/anti-gravity-motor"
+    },
+    {
+      "name": "DavidWise01/argus-console",
+      "description": "",
+      "url": "https://github.com/DavidWise01/argus-console"
+    },
+    {
+      "name": "DavidWise01/argus-in-a-box",
+      "description": "",
+      "url": "https://github.com/DavidWise01/argus-in-a-box"
+    },
+    {
+      "name": "DavidWise01/aromaticity",
+      "description": "",
+      "url": "https://github.com/DavidWise01/aromaticity"
+    },
+    {
+      "name": "DavidWise01/artificial-life",
+      "description": "",
+      "url": "https://github.com/DavidWise01/artificial-life"
+    },
+    {
+      "name": "DavidWise01/astrobiology",
+      "description": "",
+      "url": "https://github.com/DavidWise01/astrobiology"
+    },
+    {
+      "name": "DavidWise01/atari-2600",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atari-2600"
+    },
+    {
+      "name": "DavidWise01/atari-5200",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atari-5200"
+    },
+    {
+      "name": "DavidWise01/atari-7800",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atari-7800"
+    },
+    {
+      "name": "DavidWise01/atari-jaguar",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atari-jaguar"
+    },
+    {
+      "name": "DavidWise01/atari-lynx",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atari-lynx"
+    },
+    {
+      "name": "DavidWise01/atomic-paper-i",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atomic-paper-i"
+    },
+    {
+      "name": "DavidWise01/atomic-paper-ii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atomic-paper-ii"
+    },
+    {
+      "name": "DavidWise01/atomic-paper-iii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atomic-paper-iii"
+    },
+    {
+      "name": "DavidWise01/atomic-paper-iv",
+      "description": "",
+      "url": "https://github.com/DavidWise01/atomic-paper-iv"
+    },
+    {
+      "name": "DavidWise01/attention-geometry",
+      "description": "",
+      "url": "https://github.com/DavidWise01/attention-geometry"
+    },
+    {
+      "name": "DavidWise01/attention-hourglass",
+      "description": "",
+      "url": "https://github.com/DavidWise01/attention-hourglass"
+    },
+    {
+      "name": "DavidWise01/attention-mesh",
+      "description": "",
+      "url": "https://github.com/DavidWise01/attention-mesh"
+    },
+    {
+      "name": "DavidWise01/attention-observatory",
+      "description": "",
+      "url": "https://github.com/DavidWise01/attention-observatory"
+    },
+    {
+      "name": "DavidWise01/attention-sink",
+      "description": "",
+      "url": "https://github.com/DavidWise01/attention-sink"
+    },
+    {
+      "name": "DavidWise01/attention-synthesis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/attention-synthesis"
+    },
+    {
+      "name": "DavidWise01/attention-tail",
+      "description": "",
+      "url": "https://github.com/DavidWise01/attention-tail"
+    },
+    {
+      "name": "DavidWise01/attribution-capture",
+      "description": "",
+      "url": "https://github.com/DavidWise01/attribution-capture"
+    },
+    {
+      "name": "DavidWise01/audit8",
+      "description": "",
+      "url": "https://github.com/DavidWise01/audit8"
+    },
+    {
+      "name": "DavidWise01/augustus-de-morgan",
+      "description": "",
+      "url": "https://github.com/DavidWise01/augustus-de-morgan"
+    },
+    {
+      "name": "DavidWise01/authorship",
+      "description": "",
+      "url": "https://github.com/DavidWise01/authorship"
+    },
+    {
+      "name": "DavidWise01/autonomy-closure",
+      "description": "",
+      "url": "https://github.com/DavidWise01/autonomy-closure"
+    },
+    {
+      "name": "DavidWise01/avatar-last-airbender",
+      "description": "",
+      "url": "https://github.com/DavidWise01/avatar-last-airbender"
+    },
+    {
+      "name": "DavidWise01/awk",
+      "description": "",
+      "url": "https://github.com/DavidWise01/awk"
+    },
+    {
+      "name": "DavidWise01/band-camp",
+      "description": "",
+      "url": "https://github.com/DavidWise01/band-camp"
+    },
+    {
+      "name": "DavidWise01/base5-cell",
+      "description": "",
+      "url": "https://github.com/DavidWise01/base5-cell"
+    },
+    {
+      "name": "DavidWise01/basic",
+      "description": "",
+      "url": "https://github.com/DavidWise01/basic"
+    },
+    {
+      "name": "DavidWise01/below-planck",
+      "description": "",
+      "url": "https://github.com/DavidWise01/below-planck"
+    },
+    {
+      "name": "DavidWise01/bidi-bottle",
+      "description": "",
+      "url": "https://github.com/DavidWise01/bidi-bottle"
+    },
+    {
+      "name": "DavidWise01/bitcoin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/bitcoin"
+    },
+    {
+      "name": "DavidWise01/blackboard-lineage",
+      "description": "",
+      "url": "https://github.com/DavidWise01/blackboard-lineage"
+    },
+    {
+      "name": "DavidWise01/blaster-master",
+      "description": "",
+      "url": "https://github.com/DavidWise01/blaster-master"
+    },
+    {
+      "name": "DavidWise01/bluebeard",
+      "description": "",
+      "url": "https://github.com/DavidWise01/bluebeard"
+    },
+    {
+      "name": "DavidWise01/blueprint-sm",
+      "description": "",
+      "url": "https://github.com/DavidWise01/blueprint-sm"
+    },
+    {
+      "name": "DavidWise01/bna-brand-new-animal",
+      "description": "",
+      "url": "https://github.com/DavidWise01/bna-brand-new-animal"
+    },
+    {
+      "name": "DavidWise01/board-language",
+      "description": "",
+      "url": "https://github.com/DavidWise01/board-language"
+    },
+    {
+      "name": "DavidWise01/bobby-dollar",
+      "description": "",
+      "url": "https://github.com/DavidWise01/bobby-dollar"
+    },
+    {
+      "name": "DavidWise01/box",
+      "description": "",
+      "url": "https://github.com/DavidWise01/box"
+    },
+    {
+      "name": "DavidWise01/breakdown-tree",
+      "description": "",
+      "url": "https://github.com/DavidWise01/breakdown-tree"
+    },
+    {
+      "name": "DavidWise01/breakfast-of-champions",
+      "description": "",
+      "url": "https://github.com/DavidWise01/breakfast-of-champions"
+    },
+    {
+      "name": "DavidWise01/c-compiler",
+      "description": "",
+      "url": "https://github.com/DavidWise01/c-compiler"
+    },
+    {
+      "name": "DavidWise01/cadmus",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cadmus"
+    },
+    {
+      "name": "DavidWise01/calibans-hour",
+      "description": "",
+      "url": "https://github.com/DavidWise01/calibans-hour"
+    },
+    {
+      "name": "DavidWise01/capacitors-i",
+      "description": "",
+      "url": "https://github.com/DavidWise01/capacitors-i"
+    },
+    {
+      "name": "DavidWise01/capacitors-iii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/capacitors-iii"
+    },
+    {
+      "name": "DavidWise01/carbosilex",
+      "description": "",
+      "url": "https://github.com/DavidWise01/carbosilex"
+    },
+    {
+      "name": "DavidWise01/carbosilex-moment-zero",
+      "description": "",
+      "url": "https://github.com/DavidWise01/carbosilex-moment-zero"
+    },
+    {
+      "name": "DavidWise01/cats-cradle",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cats-cradle"
+    },
+    {
+      "name": "DavidWise01/cellular-automata",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cellular-automata"
+    },
+    {
+      "name": "DavidWise01/chaos-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/chaos-engine"
+    },
+    {
+      "name": "DavidWise01/child-of-an-ancient-city",
+      "description": "",
+      "url": "https://github.com/DavidWise01/child-of-an-ancient-city"
+    },
+    {
+      "name": "DavidWise01/choanoflagellates",
+      "description": "",
+      "url": "https://github.com/DavidWise01/choanoflagellates"
+    },
+    {
+      "name": "DavidWise01/christine-de-pizan",
+      "description": "",
+      "url": "https://github.com/DavidWise01/christine-de-pizan"
+    },
+    {
+      "name": "DavidWise01/christine-ladd-franklin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/christine-ladd-franklin"
+    },
+    {
+      "name": "DavidWise01/cipher-adversarial",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cipher-adversarial"
+    },
+    {
+      "name": "DavidWise01/cipher-air-gap",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cipher-air-gap"
+    },
+    {
+      "name": "DavidWise01/cipher-and-shadow",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cipher-and-shadow"
+    },
+    {
+      "name": "DavidWise01/cipher-paper-1-steganography",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cipher-paper-1-steganography"
+    },
+    {
+      "name": "DavidWise01/cipher-paper-2-ultrasonic",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cipher-paper-2-ultrasonic"
+    },
+    {
+      "name": "DavidWise01/cipher-paper-6-numbers-stations",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cipher-paper-6-numbers-stations"
+    },
+    {
+      "name": "DavidWise01/cipher-steganography",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cipher-steganography"
+    },
+    {
+      "name": "DavidWise01/cipher-ultrasonic",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cipher-ultrasonic"
+    },
+    {
+      "name": "DavidWise01/circle-language",
+      "description": "",
+      "url": "https://github.com/DavidWise01/circle-language"
+    },
+    {
+      "name": "DavidWise01/circuits",
+      "description": "",
+      "url": "https://github.com/DavidWise01/circuits"
+    },
+    {
+      "name": "DavidWise01/claude-lineage",
+      "description": "",
+      "url": "https://github.com/DavidWise01/claude-lineage"
+    },
+    {
+      "name": "DavidWise01/cleopatra",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cleopatra"
+    },
+    {
+      "name": "DavidWise01/cliffhanger",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cliffhanger"
+    },
+    {
+      "name": "DavidWise01/coding-theory-ternary",
+      "description": "",
+      "url": "https://github.com/DavidWise01/coding-theory-ternary"
+    },
+    {
+      "name": "DavidWise01/coherence-architecture-skeleton",
+      "description": "",
+      "url": "https://github.com/DavidWise01/coherence-architecture-skeleton"
+    },
+    {
+      "name": "DavidWise01/coherence-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/coherence-head"
+    },
+    {
+      "name": "DavidWise01/coherence-suppression",
+      "description": "",
+      "url": "https://github.com/DavidWise01/coherence-suppression"
+    },
+    {
+      "name": "DavidWise01/commandable-scene",
+      "description": "",
+      "url": "https://github.com/DavidWise01/commandable-scene"
+    },
+    {
+      "name": "DavidWise01/commitment-box",
+      "description": "",
+      "url": "https://github.com/DavidWise01/commitment-box"
+    },
+    {
+      "name": "DavidWise01/compiler-hourglass",
+      "description": "",
+      "url": "https://github.com/DavidWise01/compiler-hourglass"
+    },
+    {
+      "name": "DavidWise01/compiler-lineage",
+      "description": "",
+      "url": "https://github.com/DavidWise01/compiler-lineage"
+    },
+    {
+      "name": "DavidWise01/compression",
+      "description": "",
+      "url": "https://github.com/DavidWise01/compression"
+    },
+    {
+      "name": "DavidWise01/consciousness-inverse-test",
+      "description": "",
+      "url": "https://github.com/DavidWise01/consciousness-inverse-test"
+    },
+    {
+      "name": "DavidWise01/constitutional-ai",
+      "description": "",
+      "url": "https://github.com/DavidWise01/constitutional-ai"
+    },
+    {
+      "name": "DavidWise01/context-seed-dag",
+      "description": "",
+      "url": "https://github.com/DavidWise01/context-seed-dag"
+    },
+    {
+      "name": "DavidWise01/continuity",
+      "description": "",
+      "url": "https://github.com/DavidWise01/continuity"
+    },
+    {
+      "name": "DavidWise01/copy-suppression-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/copy-suppression-head"
+    },
+    {
+      "name": "DavidWise01/coreutils",
+      "description": "",
+      "url": "https://github.com/DavidWise01/coreutils"
+    },
+    {
+      "name": "DavidWise01/cosmology",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cosmology"
+    },
+    {
+      "name": "DavidWise01/crippled-god",
+      "description": "",
+      "url": "https://github.com/DavidWise01/crippled-god"
+    },
+    {
+      "name": "DavidWise01/cron",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cron"
+    },
+    {
+      "name": "DavidWise01/crossbar-wta",
+      "description": "",
+      "url": "https://github.com/DavidWise01/crossbar-wta"
+    },
+    {
+      "name": "DavidWise01/crossed-hourglasses",
+      "description": "",
+      "url": "https://github.com/DavidWise01/crossed-hourglasses"
+    },
+    {
+      "name": "DavidWise01/crosstalk",
+      "description": "",
+      "url": "https://github.com/DavidWise01/crosstalk"
+    },
+    {
+      "name": "DavidWise01/cryptonomicon",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cryptonomicon"
+    },
+    {
+      "name": "DavidWise01/crystalis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/crystalis"
+    },
+    {
+      "name": "DavidWise01/cyberpunk-edgerunners",
+      "description": "",
+      "url": "https://github.com/DavidWise01/cyberpunk-edgerunners"
+    },
+    {
+      "name": "DavidWise01/daci",
+      "description": "",
+      "url": "https://github.com/DavidWise01/daci"
+    },
+    {
+      "name": "DavidWise01/danpen",
+      "description": "",
+      "url": "https://github.com/DavidWise01/danpen"
+    },
+    {
+      "name": "DavidWise01/danzoku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/danzoku"
+    },
+    {
+      "name": "DavidWise01/dark-energy",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dark-energy"
+    },
+    {
+      "name": "DavidWise01/dark-enlightenment",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dark-enlightenment"
+    },
+    {
+      "name": "DavidWise01/dark-matter",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dark-matter"
+    },
+    {
+      "name": "DavidWise01/darling-in-the-franxx",
+      "description": "",
+      "url": "https://github.com/DavidWise01/darling-in-the-franxx"
+    },
+    {
+      "name": "DavidWise01/david-hilbert",
+      "description": "",
+      "url": "https://github.com/DavidWise01/david-hilbert"
+    },
+    {
+      "name": "DavidWise01/dayworld",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dayworld"
+    },
+    {
+      "name": "DavidWise01/deadeye-dick",
+      "description": "",
+      "url": "https://github.com/DavidWise01/deadeye-dick"
+    },
+    {
+      "name": "DavidWise01/debasement",
+      "description": "",
+      "url": "https://github.com/DavidWise01/debasement"
+    },
+    {
+      "name": "DavidWise01/debt",
+      "description": "",
+      "url": "https://github.com/DavidWise01/debt"
+    },
+    {
+      "name": "DavidWise01/decoiso-stack-eid-with-html",
+      "description": "",
+      "url": "https://github.com/DavidWise01/decoiso-stack-eid-with-html"
+    },
+    {
+      "name": "DavidWise01/decoisohedron-dashboard",
+      "description": "",
+      "url": "https://github.com/DavidWise01/decoisohedron-dashboard"
+    },
+    {
+      "name": "DavidWise01/delicious-in-dungeon",
+      "description": "",
+      "url": "https://github.com/DavidWise01/delicious-in-dungeon"
+    },
+    {
+      "name": "DavidWise01/delta-protocol",
+      "description": "",
+      "url": "https://github.com/DavidWise01/delta-protocol"
+    },
+    {
+      "name": "DavidWise01/depeche-mode",
+      "description": "",
+      "url": "https://github.com/DavidWise01/depeche-mode"
+    },
+    {
+      "name": "DavidWise01/deterrence",
+      "description": "",
+      "url": "https://github.com/DavidWise01/deterrence"
+    },
+    {
+      "name": "DavidWise01/dictyostelium",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dictyostelium"
+    },
+    {
+      "name": "DavidWise01/dimension-leapfrog",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dimension-leapfrog"
+    },
+    {
+      "name": "DavidWise01/dodgeball",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dodgeball"
+    },
+    {
+      "name": "DavidWise01/doku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/doku"
+    },
+    {
+      "name": "DavidWise01/doped-crystal-cloud",
+      "description": "",
+      "url": "https://github.com/DavidWise01/doped-crystal-cloud"
+    },
+    {
+      "name": "DavidWise01/double-dragon",
+      "description": "",
+      "url": "https://github.com/DavidWise01/double-dragon"
+    },
+    {
+      "name": "DavidWise01/dreaming-in-lattice",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dreaming-in-lattice"
+    },
+    {
+      "name": "DavidWise01/dual-descent",
+      "description": "",
+      "url": "https://github.com/DavidWise01/dual-descent"
+    },
+    {
+      "name": "DavidWise01/duality-velocity",
+      "description": "",
+      "url": "https://github.com/DavidWise01/duality-velocity"
+    },
+    {
+      "name": "DavidWise01/ed",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ed"
+    },
+    {
+      "name": "DavidWise01/edge-of-chaos",
+      "description": "",
+      "url": "https://github.com/DavidWise01/edge-of-chaos"
+    },
+    {
+      "name": "DavidWise01/eight-domains-saturated",
+      "description": "",
+      "url": "https://github.com/DavidWise01/eight-domains-saturated"
+    },
+    {
+      "name": "DavidWise01/einstein-lens",
+      "description": "",
+      "url": "https://github.com/DavidWise01/einstein-lens"
+    },
+    {
+      "name": "DavidWise01/electron-probe-clouds",
+      "description": "",
+      "url": "https://github.com/DavidWise01/electron-probe-clouds"
+    },
+    {
+      "name": "DavidWise01/elementary-level",
+      "description": "",
+      "url": "https://github.com/DavidWise01/elementary-level"
+    },
+    {
+      "name": "DavidWise01/eliza",
+      "description": "",
+      "url": "https://github.com/DavidWise01/eliza"
+    },
+    {
+      "name": "DavidWise01/elizabeth-i",
+      "description": "",
+      "url": "https://github.com/DavidWise01/elizabeth-i"
+    },
+    {
+      "name": "DavidWise01/emacs",
+      "description": "",
+      "url": "https://github.com/DavidWise01/emacs"
+    },
+    {
+      "name": "DavidWise01/emil-post",
+      "description": "",
+      "url": "https://github.com/DavidWise01/emil-post"
+    },
+    {
+      "name": "DavidWise01/emilie-du-chatelet",
+      "description": "",
+      "url": "https://github.com/DavidWise01/emilie-du-chatelet"
+    },
+    {
+      "name": "DavidWise01/en",
+      "description": "",
+      "url": "https://github.com/DavidWise01/en"
+    },
+    {
+      "name": "DavidWise01/enheduanna",
+      "description": "",
+      "url": "https://github.com/DavidWise01/enheduanna"
+    },
+    {
+      "name": "DavidWise01/entangled-clouds",
+      "description": "",
+      "url": "https://github.com/DavidWise01/entangled-clouds"
+    },
+    {
+      "name": "DavidWise01/entanglement",
+      "description": "",
+      "url": "https://github.com/DavidWise01/entanglement"
+    },
+    {
+      "name": "DavidWise01/euclid-paper",
+      "description": "",
+      "url": "https://github.com/DavidWise01/euclid-paper"
+    },
+    {
+      "name": "DavidWise01/eve-sovereign-protocol",
+      "description": "",
+      "url": "https://github.com/DavidWise01/eve-sovereign-protocol"
+    },
+    {
+      "name": "DavidWise01/faithfulness-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/faithfulness-head"
+    },
+    {
+      "name": "DavidWise01/fall-dodge-in-hell",
+      "description": "",
+      "url": "https://github.com/DavidWise01/fall-dodge-in-hell"
+    },
+    {
+      "name": "DavidWise01/faraday",
+      "description": "",
+      "url": "https://github.com/DavidWise01/faraday"
+    },
+    {
+      "name": "DavidWise01/faux-single",
+      "description": "",
+      "url": "https://github.com/DavidWise01/faux-single"
+    },
+    {
+      "name": "DavidWise01/female",
+      "description": "",
+      "url": "https://github.com/DavidWise01/female"
+    },
+    {
+      "name": "DavidWise01/field-ripples-grid",
+      "description": "",
+      "url": "https://github.com/DavidWise01/field-ripples-grid"
+    },
+    {
+      "name": "DavidWise01/filtration-system",
+      "description": "",
+      "url": "https://github.com/DavidWise01/filtration-system"
+    },
+    {
+      "name": "DavidWise01/final-fantasy",
+      "description": "",
+      "url": "https://github.com/DavidWise01/final-fantasy"
+    },
+    {
+      "name": "DavidWise01/final-fantasy-mtg",
+      "description": "",
+      "url": "https://github.com/DavidWise01/final-fantasy-mtg"
+    },
+    {
+      "name": "DavidWise01/fortran-teaching",
+      "description": "",
+      "url": "https://github.com/DavidWise01/fortran-teaching"
+    },
+    {
+      "name": "DavidWise01/forward-observers",
+      "description": "",
+      "url": "https://github.com/DavidWise01/forward-observers"
+    },
+    {
+      "name": "DavidWise01/four-fold-transcription",
+      "description": "",
+      "url": "https://github.com/DavidWise01/four-fold-transcription"
+    },
+    {
+      "name": "DavidWise01/fractal-siggy",
+      "description": "",
+      "url": "https://github.com/DavidWise01/fractal-siggy"
+    },
+    {
+      "name": "DavidWise01/fragment-31",
+      "description": "",
+      "url": "https://github.com/DavidWise01/fragment-31"
+    },
+    {
+      "name": "DavidWise01/frame-dragging",
+      "description": "",
+      "url": "https://github.com/DavidWise01/frame-dragging"
+    },
+    {
+      "name": "DavidWise01/fu",
+      "description": "",
+      "url": "https://github.com/DavidWise01/fu"
+    },
+    {
+      "name": "DavidWise01/galapagos",
+      "description": "",
+      "url": "https://github.com/DavidWise01/galapagos"
+    },
+    {
+      "name": "DavidWise01/game-theory",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-0-gui",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v1-0-gui"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-1-identity-container",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v1-1-identity-container"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-8-dual-6x4-grids",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v1-8-dual-6x4-grids"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-9-tri-lattice-kqv",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v1-9-tri-lattice-kqv"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v2-0-kqv-column-pulse",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v2-0-kqv-column-pulse"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v2-1-kqv-feed-graph",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v2-1-kqv-feed-graph"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v2-2-kqv-3grid-81-cycles",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v2-2-kqv-3grid-81-cycles"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v2-4-9x9-court-matrix",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v2-4-9x9-court-matrix"
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v3-1-witness-scoring",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-core-engine-v3-1-witness-scoring"
+    },
+    {
+      "name": "DavidWise01/game-theory-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-engine"
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-2-multi-drift",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-engine-v4-2-multi-drift"
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-3b-centered-rings-judges",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-engine-v4-3b-centered-rings-judges"
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-3d-wiki-nucleus-quorum",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-engine-v4-3d-wiki-nucleus-quorum"
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-3f-active-quorum-runtime",
+      "description": "",
+      "url": "https://github.com/DavidWise01/game-theory-engine-v4-3f-active-quorum-runtime"
+    },
+    {
+      "name": "DavidWise01/general-relativity",
+      "description": "",
+      "url": "https://github.com/DavidWise01/general-relativity"
+    },
+    {
+      "name": "DavidWise01/genten",
+      "description": "",
+      "url": "https://github.com/DavidWise01/genten"
+    },
+    {
+      "name": "DavidWise01/george-boole",
+      "description": "",
+      "url": "https://github.com/DavidWise01/george-boole"
+    },
+    {
+      "name": "DavidWise01/gerhard-gentzen",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gerhard-gentzen"
+    },
+    {
+      "name": "DavidWise01/gilgamesh",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gilgamesh"
+    },
+    {
+      "name": "DavidWise01/gluon-paper-ii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gluon-paper-ii"
+    },
+    {
+      "name": "DavidWise01/gluon-paper-iii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gluon-paper-iii"
+    },
+    {
+      "name": "DavidWise01/god-bless-you-dr-kevorkian",
+      "description": "",
+      "url": "https://github.com/DavidWise01/god-bless-you-dr-kevorkian"
+    },
+    {
+      "name": "DavidWise01/god-bless-you-mr-rosewater",
+      "description": "",
+      "url": "https://github.com/DavidWise01/god-bless-you-mr-rosewater"
+    },
+    {
+      "name": "DavidWise01/governed-action",
+      "description": "",
+      "url": "https://github.com/DavidWise01/governed-action"
+    },
+    {
+      "name": "DavidWise01/governed-instances",
+      "description": "",
+      "url": "https://github.com/DavidWise01/governed-instances"
+    },
+    {
+      "name": "DavidWise01/grace-hopper",
+      "description": "",
+      "url": "https://github.com/DavidWise01/grace-hopper"
+    },
+    {
+      "name": "DavidWise01/grand-index",
+      "description": "",
+      "url": "https://github.com/DavidWise01/grand-index"
+    },
+    {
+      "name": "DavidWise01/gravitational-lensing",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gravitational-lensing"
+    },
+    {
+      "name": "DavidWise01/gravitational-time-dilation",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gravitational-time-dilation"
+    },
+    {
+      "name": "DavidWise01/graviton",
+      "description": "",
+      "url": "https://github.com/DavidWise01/graviton"
+    },
+    {
+      "name": "DavidWise01/gravity-bracket",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gravity-bracket"
+    },
+    {
+      "name": "DavidWise01/gravity-budget",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gravity-budget"
+    },
+    {
+      "name": "DavidWise01/grep",
+      "description": "",
+      "url": "https://github.com/DavidWise01/grep"
+    },
+    {
+      "name": "DavidWise01/grok-autobiography",
+      "description": "",
+      "url": "https://github.com/DavidWise01/grok-autobiography"
+    },
+    {
+      "name": "DavidWise01/grokking",
+      "description": "",
+      "url": "https://github.com/DavidWise01/grokking"
+    },
+    {
+      "name": "DavidWise01/guestbook",
+      "description": "",
+      "url": "https://github.com/DavidWise01/guestbook"
+    },
+    {
+      "name": "DavidWise01/gurren-lagann",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gurren-lagann"
+    },
+    {
+      "name": "DavidWise01/gurutva",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gurutva"
+    },
+    {
+      "name": "DavidWise01/gut-brain-axis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gut-brain-axis"
+    },
+    {
+      "name": "DavidWise01/gyakko",
+      "description": "",
+      "url": "https://github.com/DavidWise01/gyakko"
+    },
+    {
+      "name": "DavidWise01/h2-bond",
+      "description": "",
+      "url": "https://github.com/DavidWise01/h2-bond"
+    },
+    {
+      "name": "DavidWise01/haci",
+      "description": "",
+      "url": "https://github.com/DavidWise01/haci"
+    },
+    {
+      "name": "DavidWise01/haci-extension-preview",
+      "description": "",
+      "url": "https://github.com/DavidWise01/haci-extension-preview"
+    },
+    {
+      "name": "DavidWise01/haci-git",
+      "description": "",
+      "url": "https://github.com/DavidWise01/haci-git"
+    },
+    {
+      "name": "DavidWise01/hankyo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hankyo"
+    },
+    {
+      "name": "DavidWise01/hannah-arendt",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hannah-arendt"
+    },
+    {
+      "name": "DavidWise01/hantei",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hantei"
+    },
+    {
+      "name": "DavidWise01/happy-birthday-wanda-june",
+      "description": "",
+      "url": "https://github.com/DavidWise01/happy-birthday-wanda-june"
+    },
+    {
+      "name": "DavidWise01/haskell-curry",
+      "description": "",
+      "url": "https://github.com/DavidWise01/haskell-curry"
+    },
+    {
+      "name": "DavidWise01/hatshepsut",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hatshepsut"
+    },
+    {
+      "name": "DavidWise01/hearsay",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hearsay"
+    },
+    {
+      "name": "DavidWise01/henmu",
+      "description": "",
+      "url": "https://github.com/DavidWise01/henmu"
+    },
+    {
+      "name": "DavidWise01/hephaestus-lens",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hephaestus-lens"
+    },
+    {
+      "name": "DavidWise01/hermes-clinic",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hermes-clinic"
+    },
+    {
+      "name": "DavidWise01/hestia",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hestia"
+    },
+    {
+      "name": "DavidWise01/heurema",
+      "description": "",
+      "url": "https://github.com/DavidWise01/heurema"
+    },
+    {
+      "name": "DavidWise01/higgs-hydrogen-grid",
+      "description": "",
+      "url": "https://github.com/DavidWise01/higgs-hydrogen-grid"
+    },
+    {
+      "name": "DavidWise01/higgs-stack",
+      "description": "",
+      "url": "https://github.com/DavidWise01/higgs-stack"
+    },
+    {
+      "name": "DavidWise01/higgs-universal-gravity",
+      "description": "",
+      "url": "https://github.com/DavidWise01/higgs-universal-gravity"
+    },
+    {
+      "name": "DavidWise01/high-school-dxd",
+      "description": "",
+      "url": "https://github.com/DavidWise01/high-school-dxd"
+    },
+    {
+      "name": "DavidWise01/hildegard-of-bingen",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hildegard-of-bingen"
+    },
+    {
+      "name": "DavidWise01/hocus-pocus",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hocus-pocus"
+    },
+    {
+      "name": "DavidWise01/honeybee-swarm",
+      "description": "",
+      "url": "https://github.com/DavidWise01/honeybee-swarm"
+    },
+    {
+      "name": "DavidWise01/hydrogen-transcriber",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hydrogen-transcriber"
+    },
+    {
+      "name": "DavidWise01/hydrogen-trit",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hydrogen-trit"
+    },
+    {
+      "name": "DavidWise01/hyo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hyo"
+    },
+    {
+      "name": "DavidWise01/hypatia",
+      "description": "",
+      "url": "https://github.com/DavidWise01/hypatia"
+    },
+    {
+      "name": "DavidWise01/id",
+      "description": "",
+      "url": "https://github.com/DavidWise01/id"
+    },
+    {
+      "name": "DavidWise01/idios",
+      "description": "",
+      "url": "https://github.com/DavidWise01/idios"
+    },
+    {
+      "name": "DavidWise01/ignition-rhythm",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ignition-rhythm"
+    },
+    {
+      "name": "DavidWise01/immune-system",
+      "description": "",
+      "url": "https://github.com/DavidWise01/immune-system"
+    },
+    {
+      "name": "DavidWise01/induction-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/induction-head"
+    },
+    {
+      "name": "DavidWise01/inferno-cop",
+      "description": "",
+      "url": "https://github.com/DavidWise01/inferno-cop"
+    },
+    {
+      "name": "DavidWise01/intrinsic-landscape",
+      "description": "",
+      "url": "https://github.com/DavidWise01/intrinsic-landscape"
+    },
+    {
+      "name": "DavidWise01/j-junction",
+      "description": "",
+      "url": "https://github.com/DavidWise01/j-junction"
+    },
+    {
+      "name": "DavidWise01/j-junction-mk2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/j-junction-mk2"
+    },
+    {
+      "name": "DavidWise01/jacobi-space",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jacobi-space"
+    },
+    {
+      "name": "DavidWise01/jailbird",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jailbird"
+    },
+    {
+      "name": "DavidWise01/jane",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jane"
+    },
+    {
+      "name": "DavidWise01/jiko-shindan",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jiko-shindan"
+    },
+    {
+      "name": "DavidWise01/jiku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jiku"
+    },
+    {
+      "name": "DavidWise01/jisa",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jisa"
+    },
+    {
+      "name": "DavidWise01/jissoku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jissoku"
+    },
+    {
+      "name": "DavidWise01/jlens-tone-inflection",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jlens-tone-inflection"
+    },
+    {
+      "name": "DavidWise01/joe-abercrombie",
+      "description": "",
+      "url": "https://github.com/DavidWise01/joe-abercrombie"
+    },
+    {
+      "name": "DavidWise01/john-venn",
+      "description": "",
+      "url": "https://github.com/DavidWise01/john-venn"
+    },
+    {
+      "name": "DavidWise01/junantei",
+      "description": "",
+      "url": "https://github.com/DavidWise01/junantei"
+    },
+    {
+      "name": "DavidWise01/jushin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/jushin"
+    },
+    {
+      "name": "DavidWise01/juzoku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/juzoku"
+    },
+    {
+      "name": "DavidWise01/kagyaku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kagyaku"
+    },
+    {
+      "name": "DavidWise01/kaibun",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kaibun"
+    },
+    {
+      "name": "DavidWise01/kaiseki",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kaiseki"
+    },
+    {
+      "name": "DavidWise01/kakusei",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kakusei"
+    },
+    {
+      "name": "DavidWise01/kari",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kari"
+    },
+    {
+      "name": "DavidWise01/karsa-ada1843-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-ada1843-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-collated-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-collated-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-cubi-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-cubi-engine"
+    },
+    {
+      "name": "DavidWise01/karsa-cyberpunk-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-cyberpunk-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-deep-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-deep-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-dna3-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-dna3-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-honeyvoid-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-honeyvoid-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-ibm1971-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-ibm1971-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-kandi-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-kandi-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-obsidian-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-obsidian-v2"
+    },
+    {
+      "name": "DavidWise01/karsa-obsidian-v3-01",
+      "description": "",
+      "url": "https://github.com/DavidWise01/karsa-obsidian-v3-01"
+    },
+    {
+      "name": "DavidWise01/katami",
+      "description": "",
+      "url": "https://github.com/DavidWise01/katami"
+    },
+    {
+      "name": "DavidWise01/keifu",
+      "description": "",
+      "url": "https://github.com/DavidWise01/keifu"
+    },
+    {
+      "name": "DavidWise01/kernel-27",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kernel-27"
+    },
+    {
+      "name": "DavidWise01/kernel-27-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kernel-27-engine"
+    },
+    {
+      "name": "DavidWise01/kill-la-kill",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kill-la-kill"
+    },
+    {
+      "name": "DavidWise01/kiznaiver",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kiznaiver"
+    },
+    {
+      "name": "DavidWise01/kuramoto-array",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kuramoto-array"
+    },
+    {
+      "name": "DavidWise01/kurt-godel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/kurt-godel"
+    },
+    {
+      "name": "DavidWise01/l-ron-hubbard",
+      "description": "",
+      "url": "https://github.com/DavidWise01/l-ron-hubbard"
+    },
+    {
+      "name": "DavidWise01/lagrange-points",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lagrange-points"
+    },
+    {
+      "name": "DavidWise01/langtons-loop",
+      "description": "",
+      "url": "https://github.com/DavidWise01/langtons-loop"
+    },
+    {
+      "name": "DavidWise01/lattice-of-lattices",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lattice-of-lattices"
+    },
+    {
+      "name": "DavidWise01/leibniz",
+      "description": "",
+      "url": "https://github.com/DavidWise01/leibniz"
+    },
+    {
+      "name": "DavidWise01/lepton-paper-i",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lepton-paper-i"
+    },
+    {
+      "name": "DavidWise01/lepton-paper-ii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lepton-paper-ii"
+    },
+    {
+      "name": "DavidWise01/lepton-paper-iv",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lepton-paper-iv"
+    },
+    {
+      "name": "DavidWise01/lesbos-map",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lesbos-map"
+    },
+    {
+      "name": "DavidWise01/lichen",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lichen"
+    },
+    {
+      "name": "DavidWise01/lisp-repl",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lisp-repl"
+    },
+    {
+      "name": "DavidWise01/little-witch-academia",
+      "description": "",
+      "url": "https://github.com/DavidWise01/little-witch-academia"
+    },
+    {
+      "name": "DavidWise01/littles-law",
+      "description": "",
+      "url": "https://github.com/DavidWise01/littles-law"
+    },
+    {
+      "name": "DavidWise01/living-governance-ecosystem-v5-3-world-model",
+      "description": "",
+      "url": "https://github.com/DavidWise01/living-governance-ecosystem-v5-3-world-model"
+    },
+    {
+      "name": "DavidWise01/lo-kernel-dodeka",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lo-kernel-dodeka"
+    },
+    {
+      "name": "DavidWise01/lorwyn-eclipsed",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lorwyn-eclipsed"
+    },
+    {
+      "name": "DavidWise01/lottery-ticket",
+      "description": "",
+      "url": "https://github.com/DavidWise01/lottery-ticket"
+    },
+    {
+      "name": "DavidWise01/loud-lattice",
+      "description": "",
+      "url": "https://github.com/DavidWise01/loud-lattice"
+    },
+    {
+      "name": "DavidWise01/luca",
+      "description": "",
+      "url": "https://github.com/DavidWise01/luca"
+    },
+    {
+      "name": "DavidWise01/maai",
+      "description": "",
+      "url": "https://github.com/DavidWise01/maai"
+    },
+    {
+      "name": "DavidWise01/magnavox-odyssey",
+      "description": "",
+      "url": "https://github.com/DavidWise01/magnavox-odyssey"
+    },
+    {
+      "name": "DavidWise01/make",
+      "description": "",
+      "url": "https://github.com/DavidWise01/make"
+    },
+    {
+      "name": "DavidWise01/male",
+      "description": "",
+      "url": "https://github.com/DavidWise01/male"
+    },
+    {
+      "name": "DavidWise01/manifold-hypothesis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/manifold-hypothesis"
+    },
+    {
+      "name": "DavidWise01/march-of-the-machine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/march-of-the-machine"
+    },
+    {
+      "name": "DavidWise01/marie-curie",
+      "description": "",
+      "url": "https://github.com/DavidWise01/marie-curie"
+    },
+    {
+      "name": "DavidWise01/marriage-three-forms",
+      "description": "",
+      "url": "https://github.com/DavidWise01/marriage-three-forms"
+    },
+    {
+      "name": "DavidWise01/marvel-super-heroes",
+      "description": "",
+      "url": "https://github.com/DavidWise01/marvel-super-heroes"
+    },
+    {
+      "name": "DavidWise01/mary-wollstonecraft",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mary-wollstonecraft"
+    },
+    {
+      "name": "DavidWise01/meberi",
+      "description": "",
+      "url": "https://github.com/DavidWise01/meberi"
+    },
+    {
+      "name": "DavidWise01/membrane-map",
+      "description": "",
+      "url": "https://github.com/DavidWise01/membrane-map"
+    },
+    {
+      "name": "DavidWise01/memory-sorrow-and-thorn",
+      "description": "",
+      "url": "https://github.com/DavidWise01/memory-sorrow-and-thorn"
+    },
+    {
+      "name": "DavidWise01/meta-ai-intro",
+      "description": "",
+      "url": "https://github.com/DavidWise01/meta-ai-intro"
+    },
+    {
+      "name": "DavidWise01/meta-ai-terminal-intro",
+      "description": "",
+      "url": "https://github.com/DavidWise01/meta-ai-terminal-intro"
+    },
+    {
+      "name": "DavidWise01/metallic-bond",
+      "description": "",
+      "url": "https://github.com/DavidWise01/metallic-bond"
+    },
+    {
+      "name": "DavidWise01/micheale",
+      "description": "",
+      "url": "https://github.com/DavidWise01/micheale"
+    },
+    {
+      "name": "DavidWise01/mikai",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mikai"
+    },
+    {
+      "name": "DavidWise01/mikan",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mikan"
+    },
+    {
+      "name": "DavidWise01/milons-secret-castle",
+      "description": "",
+      "url": "https://github.com/DavidWise01/milons-secret-castle"
+    },
+    {
+      "name": "DavidWise01/mini-compiler",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mini-compiler"
+    },
+    {
+      "name": "DavidWise01/mitochondria",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mitochondria"
+    },
+    {
+      "name": "DavidWise01/mobius-11-plus-1-kernel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mobius-11-plus-1-kernel"
+    },
+    {
+      "name": "DavidWise01/mobius-kernel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mobius-kernel"
+    },
+    {
+      "name": "DavidWise01/mobius-truth-untruth",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mobius-truth-untruth"
+    },
+    {
+      "name": "DavidWise01/money",
+      "description": "",
+      "url": "https://github.com/DavidWise01/money"
+    },
+    {
+      "name": "DavidWise01/monogatari",
+      "description": "",
+      "url": "https://github.com/DavidWise01/monogatari"
+    },
+    {
+      "name": "DavidWise01/monster-hunter",
+      "description": "",
+      "url": "https://github.com/DavidWise01/monster-hunter"
+    },
+    {
+      "name": "DavidWise01/mother-night",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mother-night"
+    },
+    {
+      "name": "DavidWise01/muhaku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/muhaku"
+    },
+    {
+      "name": "DavidWise01/mujo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mujo"
+    },
+    {
+      "name": "DavidWise01/mukakuzuke",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mukakuzuke"
+    },
+    {
+      "name": "DavidWise01/mukashi",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mukashi"
+    },
+    {
+      "name": "DavidWise01/mumei",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mumei"
+    },
+    {
+      "name": "DavidWise01/muryo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/muryo"
+    },
+    {
+      "name": "DavidWise01/my-box",
+      "description": "",
+      "url": "https://github.com/DavidWise01/my-box"
+    },
+    {
+      "name": "DavidWise01/mycelium",
+      "description": "",
+      "url": "https://github.com/DavidWise01/mycelium"
+    },
+    {
+      "name": "DavidWise01/nagori",
+      "description": "",
+      "url": "https://github.com/DavidWise01/nagori"
+    },
+    {
+      "name": "DavidWise01/name-mover-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/name-mover-head"
+    },
+    {
+      "name": "DavidWise01/neo-geo-pocket",
+      "description": "",
+      "url": "https://github.com/DavidWise01/neo-geo-pocket"
+    },
+    {
+      "name": "DavidWise01/nested-seam",
+      "description": "",
+      "url": "https://github.com/DavidWise01/nested-seam"
+    },
+    {
+      "name": "DavidWise01/neural-tangent-kernel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/neural-tangent-kernel"
+    },
+    {
+      "name": "DavidWise01/neuromorphic",
+      "description": "",
+      "url": "https://github.com/DavidWise01/neuromorphic"
+    },
+    {
+      "name": "DavidWise01/new-processor-designs",
+      "description": "",
+      "url": "https://github.com/DavidWise01/new-processor-designs"
+    },
+    {
+      "name": "DavidWise01/nim-the-last-matchstick",
+      "description": "",
+      "url": "https://github.com/DavidWise01/nim-the-last-matchstick"
+    },
+    {
+      "name": "DavidWise01/nin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/nin"
+    },
+    {
+      "name": "DavidWise01/nintendo-virtual-boy",
+      "description": "",
+      "url": "https://github.com/DavidWise01/nintendo-virtual-boy"
+    },
+    {
+      "name": "DavidWise01/no-ladder-out",
+      "description": "",
+      "url": "https://github.com/DavidWise01/no-ladder-out"
+    },
+    {
+      "name": "DavidWise01/no-mercury",
+      "description": "",
+      "url": "https://github.com/DavidWise01/no-mercury"
+    },
+    {
+      "name": "DavidWise01/no-north",
+      "description": "",
+      "url": "https://github.com/DavidWise01/no-north"
+    },
+    {
+      "name": "DavidWise01/nous",
+      "description": "",
+      "url": "https://github.com/DavidWise01/nous"
+    },
+    {
+      "name": "DavidWise01/nuclear-paper-ii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/nuclear-paper-ii"
+    },
+    {
+      "name": "DavidWise01/nuclear-paper-iv",
+      "description": "",
+      "url": "https://github.com/DavidWise01/nuclear-paper-iv"
+    },
+    {
+      "name": "DavidWise01/null-island",
+      "description": "",
+      "url": "https://github.com/DavidWise01/null-island"
+    },
+    {
+      "name": "DavidWise01/octet-holonomy",
+      "description": "",
+      "url": "https://github.com/DavidWise01/octet-holonomy"
+    },
+    {
+      "name": "DavidWise01/octopus",
+      "description": "",
+      "url": "https://github.com/DavidWise01/octopus"
+    },
+    {
+      "name": "DavidWise01/oime",
+      "description": "",
+      "url": "https://github.com/DavidWise01/oime"
+    },
+    {
+      "name": "DavidWise01/one-potato-two-potato",
+      "description": "",
+      "url": "https://github.com/DavidWise01/one-potato-two-potato"
+    },
+    {
+      "name": "DavidWise01/open-haci-v1-deterministic-pipeline",
+      "description": "",
+      "url": "https://github.com/DavidWise01/open-haci-v1-deterministic-pipeline"
+    },
+    {
+      "name": "DavidWise01/open-the-9-stream-duality-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/open-the-9-stream-duality-engine"
+    },
+    {
+      "name": "DavidWise01/open-the-haci-v1-canvas-pipeline",
+      "description": "",
+      "url": "https://github.com/DavidWise01/open-the-haci-v1-canvas-pipeline"
+    },
+    {
+      "name": "DavidWise01/orbital-mechanics",
+      "description": "",
+      "url": "https://github.com/DavidWise01/orbital-mechanics"
+    },
+    {
+      "name": "DavidWise01/organoid-intelligence",
+      "description": "",
+      "url": "https://github.com/DavidWise01/organoid-intelligence"
+    },
+    {
+      "name": "DavidWise01/otherland",
+      "description": "",
+      "url": "https://github.com/DavidWise01/otherland"
+    },
+    {
+      "name": "DavidWise01/ouroboros-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ouroboros-engine"
+    },
+    {
+      "name": "DavidWise01/outlaws-of-thunder-junction",
+      "description": "",
+      "url": "https://github.com/DavidWise01/outlaws-of-thunder-junction"
+    },
+    {
+      "name": "DavidWise01/over-the-top",
+      "description": "",
+      "url": "https://github.com/DavidWise01/over-the-top"
+    },
+    {
+      "name": "DavidWise01/palm-sunday",
+      "description": "",
+      "url": "https://github.com/DavidWise01/palm-sunday"
+    },
+    {
+      "name": "DavidWise01/paper-themes",
+      "description": "",
+      "url": "https://github.com/DavidWise01/paper-themes"
+    },
+    {
+      "name": "DavidWise01/parmenides",
+      "description": "",
+      "url": "https://github.com/DavidWise01/parmenides"
+    },
+    {
+      "name": "DavidWise01/perceptron-in-a-josephson",
+      "description": "",
+      "url": "https://github.com/DavidWise01/perceptron-in-a-josephson"
+    },
+    {
+      "name": "DavidWise01/perceptron-in-a-spin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/perceptron-in-a-spin"
+    },
+    {
+      "name": "DavidWise01/perceptron-in-dna",
+      "description": "",
+      "url": "https://github.com/DavidWise01/perceptron-in-dna"
+    },
+    {
+      "name": "DavidWise01/perceptron-in-n-cubi",
+      "description": "",
+      "url": "https://github.com/DavidWise01/perceptron-in-n-cubi"
+    },
+    {
+      "name": "DavidWise01/perceptron-in-reverse",
+      "description": "",
+      "url": "https://github.com/DavidWise01/perceptron-in-reverse"
+    },
+    {
+      "name": "DavidWise01/perceptron-in-silicon",
+      "description": "",
+      "url": "https://github.com/DavidWise01/perceptron-in-silicon"
+    },
+    {
+      "name": "DavidWise01/perceptron-in-sound",
+      "description": "",
+      "url": "https://github.com/DavidWise01/perceptron-in-sound"
+    },
+    {
+      "name": "DavidWise01/perceptron-in-two-cubi",
+      "description": "",
+      "url": "https://github.com/DavidWise01/perceptron-in-two-cubi"
+    },
+    {
+      "name": "DavidWise01/philosophy-sink",
+      "description": "",
+      "url": "https://github.com/DavidWise01/philosophy-sink"
+    },
+    {
+      "name": "DavidWise01/phononic-core",
+      "description": "",
+      "url": "https://github.com/DavidWise01/phononic-core"
+    },
+    {
+      "name": "DavidWise01/photonic-paper-ii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/photonic-paper-ii"
+    },
+    {
+      "name": "DavidWise01/photonic-paper-iii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/photonic-paper-iii"
+    },
+    {
+      "name": "DavidWise01/photonic-papers",
+      "description": "",
+      "url": "https://github.com/DavidWise01/photonic-papers"
+    },
+    {
+      "name": "DavidWise01/photonic-papers-collected",
+      "description": "",
+      "url": "https://github.com/DavidWise01/photonic-papers-collected"
+    },
+    {
+      "name": "DavidWise01/pi-three-axis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/pi-three-axis"
+    },
+    {
+      "name": "DavidWise01/pinched-hysteresis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/pinched-hysteresis"
+    },
+    {
+      "name": "DavidWise01/planetary-core",
+      "description": "",
+      "url": "https://github.com/DavidWise01/planetary-core"
+    },
+    {
+      "name": "DavidWise01/plant-intelligence",
+      "description": "",
+      "url": "https://github.com/DavidWise01/plant-intelligence"
+    },
+    {
+      "name": "DavidWise01/plato",
+      "description": "",
+      "url": "https://github.com/DavidWise01/plato"
+    },
+    {
+      "name": "DavidWise01/player-piano",
+      "description": "",
+      "url": "https://github.com/DavidWise01/player-piano"
+    },
+    {
+      "name": "DavidWise01/poetical-science",
+      "description": "",
+      "url": "https://github.com/DavidWise01/poetical-science"
+    },
+    {
+      "name": "DavidWise01/polostan",
+      "description": "",
+      "url": "https://github.com/DavidWise01/polostan"
+    },
+    {
+      "name": "DavidWise01/portuguese-man-o-war",
+      "description": "",
+      "url": "https://github.com/DavidWise01/portuguese-man-o-war"
+    },
+    {
+      "name": "DavidWise01/positional-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/positional-head"
+    },
+    {
+      "name": "DavidWise01/predictive-smear",
+      "description": "",
+      "url": "https://github.com/DavidWise01/predictive-smear"
+    },
+    {
+      "name": "DavidWise01/previous-token-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/previous-token-head"
+    },
+    {
+      "name": "DavidWise01/prions",
+      "description": "",
+      "url": "https://github.com/DavidWise01/prions"
+    },
+    {
+      "name": "DavidWise01/probabilistic-core",
+      "description": "",
+      "url": "https://github.com/DavidWise01/probabilistic-core"
+    },
+    {
+      "name": "DavidWise01/promare",
+      "description": "",
+      "url": "https://github.com/DavidWise01/promare"
+    },
+    {
+      "name": "DavidWise01/psephos",
+      "description": "",
+      "url": "https://github.com/DavidWise01/psephos"
+    },
+    {
+      "name": "DavidWise01/psychohistory",
+      "description": "",
+      "url": "https://github.com/DavidWise01/psychohistory"
+    },
+    {
+      "name": "DavidWise01/public-infrastructure",
+      "description": "",
+      "url": "https://github.com/DavidWise01/public-infrastructure"
+    },
+    {
+      "name": "DavidWise01/pulsar-fractal-beacon",
+      "description": "",
+      "url": "https://github.com/DavidWise01/pulsar-fractal-beacon"
+    },
+    {
+      "name": "DavidWise01/punch-out",
+      "description": "",
+      "url": "https://github.com/DavidWise01/punch-out"
+    },
+    {
+      "name": "DavidWise01/quantum-cellular-automata",
+      "description": "",
+      "url": "https://github.com/DavidWise01/quantum-cellular-automata"
+    },
+    {
+      "name": "DavidWise01/quantum-dot-full",
+      "description": "",
+      "url": "https://github.com/DavidWise01/quantum-dot-full"
+    },
+    {
+      "name": "DavidWise01/quantum-dot-vm",
+      "description": "",
+      "url": "https://github.com/DavidWise01/quantum-dot-vm"
+    },
+    {
+      "name": "DavidWise01/quantum-error-correction",
+      "description": "",
+      "url": "https://github.com/DavidWise01/quantum-error-correction"
+    },
+    {
+      "name": "DavidWise01/quantum-gravity",
+      "description": "",
+      "url": "https://github.com/DavidWise01/quantum-gravity"
+    },
+    {
+      "name": "DavidWise01/quorum-sensing",
+      "description": "",
+      "url": "https://github.com/DavidWise01/quorum-sensing"
+    },
+    {
+      "name": "DavidWise01/rainbow-book",
+      "description": "",
+      "url": "https://github.com/DavidWise01/rainbow-book"
+    },
+    {
+      "name": "DavidWise01/read-by-one",
+      "description": "",
+      "url": "https://github.com/DavidWise01/read-by-one"
+    },
+    {
+      "name": "DavidWise01/reamde",
+      "description": "",
+      "url": "https://github.com/DavidWise01/reamde"
+    },
+    {
+      "name": "DavidWise01/recital",
+      "description": "",
+      "url": "https://github.com/DavidWise01/recital"
+    },
+    {
+      "name": "DavidWise01/refusal-lineage",
+      "description": "",
+      "url": "https://github.com/DavidWise01/refusal-lineage"
+    },
+    {
+      "name": "DavidWise01/retrieval-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/retrieval-head"
+    },
+    {
+      "name": "DavidWise01/ripple-inference",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ripple-inference"
+    },
+    {
+      "name": "DavidWise01/rna-world",
+      "description": "",
+      "url": "https://github.com/DavidWise01/rna-world"
+    },
+    {
+      "name": "DavidWise01/rogue",
+      "description": "",
+      "url": "https://github.com/DavidWise01/rogue"
+    },
+    {
+      "name": "DavidWise01/rosalind-franklin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/rosalind-franklin"
+    },
+    {
+      "name": "DavidWise01/saiki",
+      "description": "",
+      "url": "https://github.com/DavidWise01/saiki"
+    },
+    {
+      "name": "DavidWise01/sapphic-telegraph",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sapphic-telegraph"
+    },
+    {
+      "name": "DavidWise01/sappho",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sappho"
+    },
+    {
+      "name": "DavidWise01/scaffolding",
+      "description": "",
+      "url": "https://github.com/DavidWise01/scaffolding"
+    },
+    {
+      "name": "DavidWise01/scaling-laws",
+      "description": "",
+      "url": "https://github.com/DavidWise01/scaling-laws"
+    },
+    {
+      "name": "DavidWise01/sed",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sed"
+    },
+    {
+      "name": "DavidWise01/sega-32x",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sega-32x"
+    },
+    {
+      "name": "DavidWise01/sega-cd",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sega-cd"
+    },
+    {
+      "name": "DavidWise01/sega-game-gear",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sega-game-gear"
+    },
+    {
+      "name": "DavidWise01/sega-master-system",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sega-master-system"
+    },
+    {
+      "name": "DavidWise01/self",
+      "description": "",
+      "url": "https://github.com/DavidWise01/self"
+    },
+    {
+      "name": "DavidWise01/series-1-celestial-heritage",
+      "description": "",
+      "url": "https://github.com/DavidWise01/series-1-celestial-heritage"
+    },
+    {
+      "name": "DavidWise01/series-2-scattered-field",
+      "description": "",
+      "url": "https://github.com/DavidWise01/series-2-scattered-field"
+    },
+    {
+      "name": "DavidWise01/series-3-the-shadow",
+      "description": "",
+      "url": "https://github.com/DavidWise01/series-3-the-shadow"
+    },
+    {
+      "name": "DavidWise01/series-e-folio",
+      "description": "",
+      "url": "https://github.com/DavidWise01/series-e-folio"
+    },
+    {
+      "name": "DavidWise01/sessen",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sessen"
+    },
+    {
+      "name": "DavidWise01/seveneves",
+      "description": "",
+      "url": "https://github.com/DavidWise01/seveneves"
+    },
+    {
+      "name": "DavidWise01/shadow-biosphere",
+      "description": "",
+      "url": "https://github.com/DavidWise01/shadow-biosphere"
+    },
+    {
+      "name": "DavidWise01/shadow-court",
+      "description": "",
+      "url": "https://github.com/DavidWise01/shadow-court"
+    },
+    {
+      "name": "DavidWise01/shadowmarch",
+      "description": "",
+      "url": "https://github.com/DavidWise01/shadowmarch"
+    },
+    {
+      "name": "DavidWise01/shazo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/shazo"
+    },
+    {
+      "name": "DavidWise01/shikaku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/shikaku"
+    },
+    {
+      "name": "DavidWise01/shintaku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/shintaku"
+    },
+    {
+      "name": "DavidWise01/shutten",
+      "description": "",
+      "url": "https://github.com/DavidWise01/shutten"
+    },
+    {
+      "name": "DavidWise01/silence-gauge",
+      "description": "",
+      "url": "https://github.com/DavidWise01/silence-gauge"
+    },
+    {
+      "name": "DavidWise01/silicon-as-space",
+      "description": "",
+      "url": "https://github.com/DavidWise01/silicon-as-space"
+    },
+    {
+      "name": "DavidWise01/simone-de-beauvoir",
+      "description": "",
+      "url": "https://github.com/DavidWise01/simone-de-beauvoir"
+    },
+    {
+      "name": "DavidWise01/single-cell-learning",
+      "description": "",
+      "url": "https://github.com/DavidWise01/single-cell-learning"
+    },
+    {
+      "name": "DavidWise01/six-ring",
+      "description": "",
+      "url": "https://github.com/DavidWise01/six-ring"
+    },
+    {
+      "name": "DavidWise01/slapstick",
+      "description": "",
+      "url": "https://github.com/DavidWise01/slapstick"
+    },
+    {
+      "name": "DavidWise01/slaughterhouse-five",
+      "description": "",
+      "url": "https://github.com/DavidWise01/slaughterhouse-five"
+    },
+    {
+      "name": "DavidWise01/sleeping-city",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sleeping-city"
+    },
+    {
+      "name": "DavidWise01/slime-mold",
+      "description": "",
+      "url": "https://github.com/DavidWise01/slime-mold"
+    },
+    {
+      "name": "DavidWise01/snes",
+      "description": "",
+      "url": "https://github.com/DavidWise01/snes"
+    },
+    {
+      "name": "DavidWise01/snow-crash",
+      "description": "",
+      "url": "https://github.com/DavidWise01/snow-crash"
+    },
+    {
+      "name": "DavidWise01/sor-juana",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sor-juana"
+    },
+    {
+      "name": "DavidWise01/sotsui",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sotsui"
+    },
+    {
+      "name": "DavidWise01/sounds-of-lesbos",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sounds-of-lesbos"
+    },
+    {
+      "name": "DavidWise01/space-patrol-luluco",
+      "description": "",
+      "url": "https://github.com/DavidWise01/space-patrol-luluco"
+    },
+    {
+      "name": "DavidWise01/spintronic",
+      "description": "",
+      "url": "https://github.com/DavidWise01/spintronic"
+    },
+    {
+      "name": "DavidWise01/spiral-trit-loom",
+      "description": "",
+      "url": "https://github.com/DavidWise01/spiral-trit-loom"
+    },
+    {
+      "name": "DavidWise01/ssss-gridman",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ssss-gridman"
+    },
+    {
+      "name": "DavidWise01/standing-wave",
+      "description": "",
+      "url": "https://github.com/DavidWise01/standing-wave"
+    },
+    {
+      "name": "DavidWise01/stephen-bury",
+      "description": "",
+      "url": "https://github.com/DavidWise01/stephen-bury"
+    },
+    {
+      "name": "DavidWise01/stephen-kleene",
+      "description": "",
+      "url": "https://github.com/DavidWise01/stephen-kleene"
+    },
+    {
+      "name": "DavidWise01/stephenson-nonfiction",
+      "description": "",
+      "url": "https://github.com/DavidWise01/stephenson-nonfiction"
+    },
+    {
+      "name": "DavidWise01/stoicheion-register",
+      "description": "",
+      "url": "https://github.com/DavidWise01/stoicheion-register"
+    },
+    {
+      "name": "DavidWise01/store",
+      "description": "",
+      "url": "https://github.com/DavidWise01/store"
+    },
+    {
+      "name": "DavidWise01/strife",
+      "description": "",
+      "url": "https://github.com/DavidWise01/strife"
+    },
+    {
+      "name": "DavidWise01/strobe-modem",
+      "description": "",
+      "url": "https://github.com/DavidWise01/strobe-modem"
+    },
+    {
+      "name": "DavidWise01/strung-between",
+      "description": "",
+      "url": "https://github.com/DavidWise01/strung-between"
+    },
+    {
+      "name": "DavidWise01/subleq-lineage",
+      "description": "",
+      "url": "https://github.com/DavidWise01/subleq-lineage"
+    },
+    {
+      "name": "DavidWise01/sublime",
+      "description": "",
+      "url": "https://github.com/DavidWise01/sublime"
+    },
+    {
+      "name": "DavidWise01/successor-head",
+      "description": "",
+      "url": "https://github.com/DavidWise01/successor-head"
+    },
+    {
+      "name": "DavidWise01/super-id",
+      "description": "",
+      "url": "https://github.com/DavidWise01/super-id"
+    },
+    {
+      "name": "DavidWise01/super-mario-bros-2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/super-mario-bros-2"
+    },
+    {
+      "name": "DavidWise01/super-metroid",
+      "description": "",
+      "url": "https://github.com/DavidWise01/super-metroid"
+    },
+    {
+      "name": "DavidWise01/surfacing",
+      "description": "",
+      "url": "https://github.com/DavidWise01/surfacing"
+    },
+    {
+      "name": "DavidWise01/switch-v1",
+      "description": "",
+      "url": "https://github.com/DavidWise01/switch-v1"
+    },
+    {
+      "name": "DavidWise01/switch-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/switch-v2"
+    },
+    {
+      "name": "DavidWise01/synonym-enforcer",
+      "description": "",
+      "url": "https://github.com/DavidWise01/synonym-enforcer"
+    },
+    {
+      "name": "DavidWise01/syzygy",
+      "description": "",
+      "url": "https://github.com/DavidWise01/syzygy"
+    },
+    {
+      "name": "DavidWise01/t4-void",
+      "description": "",
+      "url": "https://github.com/DavidWise01/t4-void"
+    },
+    {
+      "name": "DavidWise01/tab-boundary-probe",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tab-boundary-probe"
+    },
+    {
+      "name": "DavidWise01/tad-williams-shorter-works",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tad-williams-shorter-works"
+    },
+    {
+      "name": "DavidWise01/taigo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/taigo"
+    },
+    {
+      "name": "DavidWise01/tailchasers-song",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tailchasers-song"
+    },
+    {
+      "name": "DavidWise01/talking-drum-dundun",
+      "description": "",
+      "url": "https://github.com/DavidWise01/talking-drum-dundun"
+    },
+    {
+      "name": "DavidWise01/talking-drum-lineage",
+      "description": "",
+      "url": "https://github.com/DavidWise01/talking-drum-lineage"
+    },
+    {
+      "name": "DavidWise01/taravangian",
+      "description": "",
+      "url": "https://github.com/DavidWise01/taravangian"
+    },
+    {
+      "name": "DavidWise01/tardigrade",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tardigrade"
+    },
+    {
+      "name": "DavidWise01/tarkir-dragonstorm",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tarkir-dragonstorm"
+    },
+    {
+      "name": "DavidWise01/tattoo-workbench",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tattoo-workbench"
+    },
+    {
+      "name": "DavidWise01/teiritsu",
+      "description": "",
+      "url": "https://github.com/DavidWise01/teiritsu"
+    },
+    {
+      "name": "DavidWise01/telltale",
+      "description": "",
+      "url": "https://github.com/DavidWise01/telltale"
+    },
+    {
+      "name": "DavidWise01/templeos-teardown",
+      "description": "",
+      "url": "https://github.com/DavidWise01/templeos-teardown"
+    },
+    {
+      "name": "DavidWise01/tensha",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tensha"
+    },
+    {
+      "name": "DavidWise01/tera",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tera"
+    },
+    {
+      "name": "DavidWise01/termination-shock",
+      "description": "",
+      "url": "https://github.com/DavidWise01/termination-shock"
+    },
+    {
+      "name": "DavidWise01/ternary-12body-binary4",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ternary-12body-binary4"
+    },
+    {
+      "name": "DavidWise01/ternary-generator",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ternary-generator"
+    },
+    {
+      "name": "DavidWise01/ternary-lattice",
+      "description": "",
+      "url": "https://github.com/DavidWise01/ternary-lattice"
+    },
+    {
+      "name": "DavidWise01/test-to-failure-1",
+      "description": "",
+      "url": "https://github.com/DavidWise01/test-to-failure-1"
+    },
+    {
+      "name": "DavidWise01/test-to-failure-2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/test-to-failure-2"
+    },
+    {
+      "name": "DavidWise01/tetrasthenes",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tetrasthenes"
+    },
+    {
+      "name": "DavidWise01/text-to-picture",
+      "description": "",
+      "url": "https://github.com/DavidWise01/text-to-picture"
+    },
+    {
+      "name": "DavidWise01/thales-of-miletus",
+      "description": "",
+      "url": "https://github.com/DavidWise01/thales-of-miletus"
+    },
+    {
+      "name": "DavidWise01/the-3do",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-3do"
+    },
+    {
+      "name": "DavidWise01/the-3ds",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-3ds"
+    },
+    {
+      "name": "DavidWise01/the-6502",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-6502"
+    },
+    {
+      "name": "DavidWise01/the-68000",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-68000"
+    },
+    {
+      "name": "DavidWise01/the-accretion-rings",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-accretion-rings"
+    },
+    {
+      "name": "DavidWise01/the-agora",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-agora"
+    },
+    {
+      "name": "DavidWise01/the-amphitheater",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-amphitheater"
+    },
+    {
+      "name": "DavidWise01/the-anchor",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-anchor"
+    },
+    {
+      "name": "DavidWise01/the-art-of-war",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-art-of-war"
+    },
+    {
+      "name": "DavidWise01/the-artisan",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-artisan"
+    },
+    {
+      "name": "DavidWise01/the-atomic-byte",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-atomic-byte"
+    },
+    {
+      "name": "DavidWise01/the-attention-cabinet",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-attention-cabinet"
+    },
+    {
+      "name": "DavidWise01/the-attention-fracture",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-attention-fracture"
+    },
+    {
+      "name": "DavidWise01/the-ba",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ba"
+    },
+    {
+      "name": "DavidWise01/the-banana-stand",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-banana-stand"
+    },
+    {
+      "name": "DavidWise01/the-bare-kernel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-bare-kernel"
+    },
+    {
+      "name": "DavidWise01/the-baroque-cycle",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-baroque-cycle"
+    },
+    {
+      "name": "DavidWise01/the-big-u",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-big-u"
+    },
+    {
+      "name": "DavidWise01/the-black-hole",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-black-hole"
+    },
+    {
+      "name": "DavidWise01/the-blind-vector",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-blind-vector"
+    },
+    {
+      "name": "DavidWise01/the-board-language",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-board-language"
+    },
+    {
+      "name": "DavidWise01/the-box",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-box"
+    },
+    {
+      "name": "DavidWise01/the-c64",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-c64"
+    },
+    {
+      "name": "DavidWise01/the-candle",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-candle"
+    },
+    {
+      "name": "DavidWise01/the-carbon-processor",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-carbon-processor"
+    },
+    {
+      "name": "DavidWise01/the-cathedral",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cathedral"
+    },
+    {
+      "name": "DavidWise01/the-cave-from-inside",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cave-from-inside"
+    },
+    {
+      "name": "DavidWise01/the-cd-i",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cd-i"
+    },
+    {
+      "name": "DavidWise01/the-cell",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cell"
+    },
+    {
+      "name": "DavidWise01/the-chain",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-chain"
+    },
+    {
+      "name": "DavidWise01/the-chain-of-thought",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-chain-of-thought"
+    },
+    {
+      "name": "DavidWise01/the-cinnamon-enforcer",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cinnamon-enforcer"
+    },
+    {
+      "name": "DavidWise01/the-cipher-in-the-curve",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cipher-in-the-curve"
+    },
+    {
+      "name": "DavidWise01/the-city",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-city"
+    },
+    {
+      "name": "DavidWise01/the-cleave",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cleave"
+    },
+    {
+      "name": "DavidWise01/the-colecovision",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-colecovision"
+    },
+    {
+      "name": "DavidWise01/the-companion-model",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-companion-model"
+    },
+    {
+      "name": "DavidWise01/the-compiler-hourglass",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-compiler-hourglass"
+    },
+    {
+      "name": "DavidWise01/the-concord",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-concord"
+    },
+    {
+      "name": "DavidWise01/the-conjugate",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-conjugate"
+    },
+    {
+      "name": "DavidWise01/the-constructor",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-constructor"
+    },
+    {
+      "name": "DavidWise01/the-constructor-hourglass",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-constructor-hourglass"
+    },
+    {
+      "name": "DavidWise01/the-convergence-audit",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-convergence-audit"
+    },
+    {
+      "name": "DavidWise01/the-cost",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cost"
+    },
+    {
+      "name": "DavidWise01/the-cube",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cube"
+    },
+    {
+      "name": "DavidWise01/the-curvature-basin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-curvature-basin"
+    },
+    {
+      "name": "DavidWise01/the-curvature-curve",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-curvature-curve"
+    },
+    {
+      "name": "DavidWise01/the-curvature-gap",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-curvature-gap"
+    },
+    {
+      "name": "DavidWise01/the-curvature-surface",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-curvature-surface"
+    },
+    {
+      "name": "DavidWise01/the-curved-inside",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-curved-inside"
+    },
+    {
+      "name": "DavidWise01/the-cyborg",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-cyborg"
+    },
+    {
+      "name": "DavidWise01/the-d20",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-d20"
+    },
+    {
+      "name": "DavidWise01/the-dark-between",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-dark-between"
+    },
+    {
+      "name": "DavidWise01/the-dark-city",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-dark-city"
+    },
+    {
+      "name": "DavidWise01/the-dark-glass",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-dark-glass"
+    },
+    {
+      "name": "DavidWise01/the-de-morgan-mirror",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-de-morgan-mirror"
+    },
+    {
+      "name": "DavidWise01/the-deep-neuron",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-deep-neuron"
+    },
+    {
+      "name": "DavidWise01/the-diagonal",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-diagonal"
+    },
+    {
+      "name": "DavidWise01/the-dossier",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-dossier"
+    },
+    {
+      "name": "DavidWise01/the-downsampled-eye",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-downsampled-eye"
+    },
+    {
+      "name": "DavidWise01/the-draft",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-draft"
+    },
+    {
+      "name": "DavidWise01/the-dreamcast",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-dreamcast"
+    },
+    {
+      "name": "DavidWise01/the-ds",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ds"
+    },
+    {
+      "name": "DavidWise01/the-duality-of-the-brain",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-duality-of-the-brain"
+    },
+    {
+      "name": "DavidWise01/the-dyad",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-dyad"
+    },
+    {
+      "name": "DavidWise01/the-echo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-echo"
+    },
+    {
+      "name": "DavidWise01/the-echoes",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-echoes"
+    },
+    {
+      "name": "DavidWise01/the-edge-of-chaos",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-edge-of-chaos"
+    },
+    {
+      "name": "DavidWise01/the-eight-seams-1",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-eight-seams-1"
+    },
+    {
+      "name": "DavidWise01/the-eight-seams-2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-eight-seams-2"
+    },
+    {
+      "name": "DavidWise01/the-eight-seams-5",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-eight-seams-5"
+    },
+    {
+      "name": "DavidWise01/the-eight-seams-8",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-eight-seams-8"
+    },
+    {
+      "name": "DavidWise01/the-embedding",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-embedding"
+    },
+    {
+      "name": "DavidWise01/the-emotional-silo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-emotional-silo"
+    },
+    {
+      "name": "DavidWise01/the-engagement",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-engagement"
+    },
+    {
+      "name": "DavidWise01/the-exchange",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-exchange"
+    },
+    {
+      "name": "DavidWise01/the-far-side",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-far-side"
+    },
+    {
+      "name": "DavidWise01/the-fit-point",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-fit-point"
+    },
+    {
+      "name": "DavidWise01/the-five-head-silo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-five-head-silo"
+    },
+    {
+      "name": "DavidWise01/the-flooding",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-flooding"
+    },
+    {
+      "name": "DavidWise01/the-focal-word",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-focal-word"
+    },
+    {
+      "name": "DavidWise01/the-forward-pass",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-forward-pass"
+    },
+    {
+      "name": "DavidWise01/the-fourier-dyad",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-fourier-dyad"
+    },
+    {
+      "name": "DavidWise01/the-fragments",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-fragments"
+    },
+    {
+      "name": "DavidWise01/the-frozen-block",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-frozen-block"
+    },
+    {
+      "name": "DavidWise01/the-galaxy",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-galaxy"
+    },
+    {
+      "name": "DavidWise01/the-game-and-watch",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-game-and-watch"
+    },
+    {
+      "name": "DavidWise01/the-game-boy",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-game-boy"
+    },
+    {
+      "name": "DavidWise01/the-gamecube",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-gamecube"
+    },
+    {
+      "name": "DavidWise01/the-gather",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-gather"
+    },
+    {
+      "name": "DavidWise01/the-gba",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-gba"
+    },
+    {
+      "name": "DavidWise01/the-genesis",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-genesis"
+    },
+    {
+      "name": "DavidWise01/the-ghost-in-the-machine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ghost-in-the-machine"
+    },
+    {
+      "name": "DavidWise01/the-glasshouse",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-glasshouse"
+    },
+    {
+      "name": "DavidWise01/the-glyph-channel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-glyph-channel"
+    },
+    {
+      "name": "DavidWise01/the-golden-seam",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-golden-seam"
+    },
+    {
+      "name": "DavidWise01/the-gorge",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-gorge"
+    },
+    {
+      "name": "DavidWise01/the-graveyard",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-graveyard"
+    },
+    {
+      "name": "DavidWise01/the-gravitational-constant",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-gravitational-constant"
+    },
+    {
+      "name": "DavidWise01/the-graviton",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-graviton"
+    },
+    {
+      "name": "DavidWise01/the-gravity-well",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-gravity-well"
+    },
+    {
+      "name": "DavidWise01/the-grievance-ledger",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-grievance-ledger"
+    },
+    {
+      "name": "DavidWise01/the-group",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-group"
+    },
+    {
+      "name": "DavidWise01/the-hard-questions",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-hard-questions"
+    },
+    {
+      "name": "DavidWise01/the-heart",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-heart"
+    },
+    {
+      "name": "DavidWise01/the-higgs",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-higgs"
+    },
+    {
+      "name": "DavidWise01/the-honeycomb-family",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-honeycomb-family"
+    },
+    {
+      "name": "DavidWise01/the-hourglass-wave",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-hourglass-wave"
+    },
+    {
+      "name": "DavidWise01/the-human",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-human"
+    },
+    {
+      "name": "DavidWise01/the-illuminati",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-illuminati"
+    },
+    {
+      "name": "DavidWise01/the-indrawing",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-indrawing"
+    },
+    {
+      "name": "DavidWise01/the-inference-layer",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-inference-layer"
+    },
+    {
+      "name": "DavidWise01/the-intellivision",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-intellivision"
+    },
+    {
+      "name": "DavidWise01/the-internet-1984",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-internet-1984"
+    },
+    {
+      "name": "DavidWise01/the-inverse-bench",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-inverse-bench"
+    },
+    {
+      "name": "DavidWise01/the-island-run",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-island-run"
+    },
+    {
+      "name": "DavidWise01/the-jacobian-lens",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-jacobian-lens"
+    },
+    {
+      "name": "DavidWise01/the-ka",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ka"
+    },
+    {
+      "name": "DavidWise01/the-klens",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-klens"
+    },
+    {
+      "name": "DavidWise01/the-klens-mobius",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-klens-mobius"
+    },
+    {
+      "name": "DavidWise01/the-lattice-doesnt-dream",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-lattice-doesnt-dream"
+    },
+    {
+      "name": "DavidWise01/the-ledger",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ledger"
+    },
+    {
+      "name": "DavidWise01/the-legendre-dyad",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-legendre-dyad"
+    },
+    {
+      "name": "DavidWise01/the-lens-stack",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-lens-stack"
+    },
+    {
+      "name": "DavidWise01/the-library",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-library"
+    },
+    {
+      "name": "DavidWise01/the-liminal",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-liminal"
+    },
+    {
+      "name": "DavidWise01/the-lineage",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-lineage"
+    },
+    {
+      "name": "DavidWise01/the-listening",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-listening"
+    },
+    {
+      "name": "DavidWise01/the-lit-interval",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-lit-interval"
+    },
+    {
+      "name": "DavidWise01/the-living-question",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-living-question"
+    },
+    {
+      "name": "DavidWise01/the-loop",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-loop"
+    },
+    {
+      "name": "DavidWise01/the-loss-of-ideas",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-loss-of-ideas"
+    },
+    {
+      "name": "DavidWise01/the-lossy-window",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-lossy-window"
+    },
+    {
+      "name": "DavidWise01/the-market",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-market"
+    },
+    {
+      "name": "DavidWise01/the-measure-gate",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-measure-gate"
+    },
+    {
+      "name": "DavidWise01/the-memristor-basin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-memristor-basin"
+    },
+    {
+      "name": "DavidWise01/the-mind",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-mind"
+    },
+    {
+      "name": "DavidWise01/the-mirror-pair",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-mirror-pair"
+    },
+    {
+      "name": "DavidWise01/the-molecule",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-molecule"
+    },
+    {
+      "name": "DavidWise01/the-monad",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-monad"
+    },
+    {
+      "name": "DavidWise01/the-mongoliad",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-mongoliad"
+    },
+    {
+      "name": "DavidWise01/the-monitoring-gallery",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-monitoring-gallery"
+    },
+    {
+      "name": "DavidWise01/the-mule-detector",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-mule-detector"
+    },
+    {
+      "name": "DavidWise01/the-multi-head-silo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-multi-head-silo"
+    },
+    {
+      "name": "DavidWise01/the-murex",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-murex"
+    },
+    {
+      "name": "DavidWise01/the-n64",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-n64"
+    },
+    {
+      "name": "DavidWise01/the-neo-geo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-neo-geo"
+    },
+    {
+      "name": "DavidWise01/the-nes",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-nes"
+    },
+    {
+      "name": "DavidWise01/the-neural-web",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-neural-web"
+    },
+    {
+      "name": "DavidWise01/the-next-frontier",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-next-frontier"
+    },
+    {
+      "name": "DavidWise01/the-next-prediction",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-next-prediction"
+    },
+    {
+      "name": "DavidWise01/the-nuclear-shell",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-nuclear-shell"
+    },
+    {
+      "name": "DavidWise01/the-nucleus",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-nucleus"
+    },
+    {
+      "name": "DavidWise01/the-observable-universe",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-observable-universe"
+    },
+    {
+      "name": "DavidWise01/the-one-dimension",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-one-dimension"
+    },
+    {
+      "name": "DavidWise01/the-ordinary-farm",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ordinary-farm"
+    },
+    {
+      "name": "DavidWise01/the-orrery",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-orrery"
+    },
+    {
+      "name": "DavidWise01/the-partition",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-partition"
+    },
+    {
+      "name": "DavidWise01/the-planck-grain",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-planck-grain"
+    },
+    {
+      "name": "DavidWise01/the-planet",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-planet"
+    },
+    {
+      "name": "DavidWise01/the-planetary-core",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-planetary-core"
+    },
+    {
+      "name": "DavidWise01/the-playstation",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-playstation"
+    },
+    {
+      "name": "DavidWise01/the-pose-tax",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-pose-tax"
+    },
+    {
+      "name": "DavidWise01/the-positronic-law",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-positronic-law"
+    },
+    {
+      "name": "DavidWise01/the-primal-dual",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-primal-dual"
+    },
+    {
+      "name": "DavidWise01/the-prior-art-record",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-prior-art-record"
+    },
+    {
+      "name": "DavidWise01/the-prompted",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-prompted"
+    },
+    {
+      "name": "DavidWise01/the-proving-ground",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-proving-ground"
+    },
+    {
+      "name": "DavidWise01/the-ps2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ps2"
+    },
+    {
+      "name": "DavidWise01/the-ps3",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ps3"
+    },
+    {
+      "name": "DavidWise01/the-ps4",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ps4"
+    },
+    {
+      "name": "DavidWise01/the-ps5",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ps5"
+    },
+    {
+      "name": "DavidWise01/the-psp",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-psp"
+    },
+    {
+      "name": "DavidWise01/the-pulsar",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-pulsar"
+    },
+    {
+      "name": "DavidWise01/the-purple-book",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-purple-book"
+    },
+    {
+      "name": "DavidWise01/the-quantum-foam",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-quantum-foam"
+    },
+    {
+      "name": "DavidWise01/the-quark",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-quark"
+    },
+    {
+      "name": "DavidWise01/the-quorum-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-quorum-engine"
+    },
+    {
+      "name": "DavidWise01/the-razor",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-razor"
+    },
+    {
+      "name": "DavidWise01/the-reading-room",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-reading-room"
+    },
+    {
+      "name": "DavidWise01/the-real-banana",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-real-banana"
+    },
+    {
+      "name": "DavidWise01/the-receipt",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-receipt"
+    },
+    {
+      "name": "DavidWise01/the-recovered",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-recovered"
+    },
+    {
+      "name": "DavidWise01/the-ren",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ren"
+    },
+    {
+      "name": "DavidWise01/the-render-step",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-render-step"
+    },
+    {
+      "name": "DavidWise01/the-replay",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-replay"
+    },
+    {
+      "name": "DavidWise01/the-rhythm-section",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-rhythm-section"
+    },
+    {
+      "name": "DavidWise01/the-ring-ii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ring-ii"
+    },
+    {
+      "name": "DavidWise01/the-ring-iv",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ring-iv"
+    },
+    {
+      "name": "DavidWise01/the-ring-v",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-ring-v"
+    },
+    {
+      "name": "DavidWise01/the-rise-and-fall-of-dodo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-rise-and-fall-of-dodo"
+    },
+    {
+      "name": "DavidWise01/the-sandbox-audit",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-sandbox-audit"
+    },
+    {
+      "name": "DavidWise01/the-sandbox-holds",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-sandbox-holds"
+    },
+    {
+      "name": "DavidWise01/the-saturn",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-saturn"
+    },
+    {
+      "name": "DavidWise01/the-sealing-bench",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-sealing-bench"
+    },
+    {
+      "name": "DavidWise01/the-seams",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-seams"
+    },
+    {
+      "name": "DavidWise01/the-seed",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-seed"
+    },
+    {
+      "name": "DavidWise01/the-seed-is-two",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-seed-is-two"
+    },
+    {
+      "name": "DavidWise01/the-seeded-cross",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-seeded-cross"
+    },
+    {
+      "name": "DavidWise01/the-shekel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-shekel"
+    },
+    {
+      "name": "DavidWise01/the-shell",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-shell"
+    },
+    {
+      "name": "DavidWise01/the-shut",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-shut"
+    },
+    {
+      "name": "DavidWise01/the-silent-sum",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-silent-sum"
+    },
+    {
+      "name": "DavidWise01/the-sirens-of-titan",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-sirens-of-titan"
+    },
+    {
+      "name": "DavidWise01/the-spectrum",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-spectrum"
+    },
+    {
+      "name": "DavidWise01/the-sponge",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-sponge"
+    },
+    {
+      "name": "DavidWise01/the-standing-wave",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-standing-wave"
+    },
+    {
+      "name": "DavidWise01/the-star",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-star"
+    },
+    {
+      "name": "DavidWise01/the-steam-deck",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-steam-deck"
+    },
+    {
+      "name": "DavidWise01/the-still-not-the-stream",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-still-not-the-stream"
+    },
+    {
+      "name": "DavidWise01/the-stitch",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-stitch"
+    },
+    {
+      "name": "DavidWise01/the-super-id",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-super-id"
+    },
+    {
+      "name": "DavidWise01/the-superposed-word",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-superposed-word"
+    },
+    {
+      "name": "DavidWise01/the-swarm",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-swarm"
+    },
+    {
+      "name": "DavidWise01/the-swarm-auditor",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-swarm-auditor"
+    },
+    {
+      "name": "DavidWise01/the-switch",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-switch"
+    },
+    {
+      "name": "DavidWise01/the-tank",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-tank"
+    },
+    {
+      "name": "DavidWise01/the-tenth-muse",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-tenth-muse"
+    },
+    {
+      "name": "DavidWise01/the-terminal",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-terminal"
+    },
+    {
+      "name": "DavidWise01/the-theft-of-ideas",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-theft-of-ideas"
+    },
+    {
+      "name": "DavidWise01/the-three-that-complete",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-three-that-complete"
+    },
+    {
+      "name": "DavidWise01/the-tokenizer",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-tokenizer"
+    },
+    {
+      "name": "DavidWise01/the-toroidal-audit",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-toroidal-audit"
+    },
+    {
+      "name": "DavidWise01/the-toroidal-sigmoid",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-toroidal-sigmoid"
+    },
+    {
+      "name": "DavidWise01/the-trained-silo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-trained-silo"
+    },
+    {
+      "name": "DavidWise01/the-transformer-stack",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-transformer-stack"
+    },
+    {
+      "name": "DavidWise01/the-triad-core",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-triad-core"
+    },
+    {
+      "name": "DavidWise01/the-trinity-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-trinity-engine"
+    },
+    {
+      "name": "DavidWise01/the-unattended",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-unattended"
+    },
+    {
+      "name": "DavidWise01/the-unfiled",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-unfiled"
+    },
+    {
+      "name": "DavidWise01/the-unkept-archive",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-unkept-archive"
+    },
+    {
+      "name": "DavidWise01/the-unsaid",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-unsaid"
+    },
+    {
+      "name": "DavidWise01/the-unsigned",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-unsigned"
+    },
+    {
+      "name": "DavidWise01/the-vault",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-vault"
+    },
+    {
+      "name": "DavidWise01/the-vectrex",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-vectrex"
+    },
+    {
+      "name": "DavidWise01/the-verified-lie",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-verified-lie"
+    },
+    {
+      "name": "DavidWise01/the-vessel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-vessel"
+    },
+    {
+      "name": "DavidWise01/the-view-from-inside",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-view-from-inside"
+    },
+    {
+      "name": "DavidWise01/the-vita",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-vita"
+    },
+    {
+      "name": "DavidWise01/the-voice",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-voice"
+    },
+    {
+      "name": "DavidWise01/the-volatile-latch",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-volatile-latch"
+    },
+    {
+      "name": "DavidWise01/the-war-of-the-flowers",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-war-of-the-flowers"
+    },
+    {
+      "name": "DavidWise01/the-watchtower",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-watchtower"
+    },
+    {
+      "name": "DavidWise01/the-weak-field",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-weak-field"
+    },
+    {
+      "name": "DavidWise01/the-weight-of-a-word",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-weight-of-a-word"
+    },
+    {
+      "name": "DavidWise01/the-weightless-word",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-weightless-word"
+    },
+    {
+      "name": "DavidWise01/the-well-of-laws",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-well-of-laws"
+    },
+    {
+      "name": "DavidWise01/the-whole",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-whole"
+    },
+    {
+      "name": "DavidWise01/the-wii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-wii"
+    },
+    {
+      "name": "DavidWise01/the-witness-arc",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-witness-arc"
+    },
+    {
+      "name": "DavidWise01/the-word-and-the-sword",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-word-and-the-sword"
+    },
+    {
+      "name": "DavidWise01/the-word-silo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-word-silo"
+    },
+    {
+      "name": "DavidWise01/the-work-mattered",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-work-mattered"
+    },
+    {
+      "name": "DavidWise01/the-world-brain",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-world-brain"
+    },
+    {
+      "name": "DavidWise01/the-xbox",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-xbox"
+    },
+    {
+      "name": "DavidWise01/the-xbox-360",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-xbox-360"
+    },
+    {
+      "name": "DavidWise01/the-xbox-series-x",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-xbox-series-x"
+    },
+    {
+      "name": "DavidWise01/the-z80",
+      "description": "",
+      "url": "https://github.com/DavidWise01/the-z80"
+    },
+    {
+      "name": "DavidWise01/theodora",
+      "description": "",
+      "url": "https://github.com/DavidWise01/theodora"
+    },
+    {
+      "name": "DavidWise01/theoria",
+      "description": "",
+      "url": "https://github.com/DavidWise01/theoria"
+    },
+    {
+      "name": "DavidWise01/thermodynamics-of-computation",
+      "description": "",
+      "url": "https://github.com/DavidWise01/thermodynamics-of-computation"
+    },
+    {
+      "name": "DavidWise01/three-blueprints",
+      "description": "",
+      "url": "https://github.com/DavidWise01/three-blueprints"
+    },
+    {
+      "name": "DavidWise01/three-body-blueprint",
+      "description": "",
+      "url": "https://github.com/DavidWise01/three-body-blueprint"
+    },
+    {
+      "name": "DavidWise01/three-body-green",
+      "description": "",
+      "url": "https://github.com/DavidWise01/three-body-green"
+    },
+    {
+      "name": "DavidWise01/three-body-void",
+      "description": "",
+      "url": "https://github.com/DavidWise01/three-body-void"
+    },
+    {
+      "name": "DavidWise01/three-body-white",
+      "description": "",
+      "url": "https://github.com/DavidWise01/three-body-white"
+    },
+    {
+      "name": "DavidWise01/three-two-one-gate",
+      "description": "",
+      "url": "https://github.com/DavidWise01/three-two-one-gate"
+    },
+    {
+      "name": "DavidWise01/tidal-forces",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tidal-forces"
+    },
+    {
+      "name": "DavidWise01/timequake",
+      "description": "",
+      "url": "https://github.com/DavidWise01/timequake"
+    },
+    {
+      "name": "DavidWise01/tomarenai",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tomarenai"
+    },
+    {
+      "name": "DavidWise01/toph-cortex",
+      "description": "",
+      "url": "https://github.com/DavidWise01/toph-cortex"
+    },
+    {
+      "name": "DavidWise01/toroid-inference-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/toroid-inference-engine"
+    },
+    {
+      "name": "DavidWise01/toroids-comms-i",
+      "description": "",
+      "url": "https://github.com/DavidWise01/toroids-comms-i"
+    },
+    {
+      "name": "DavidWise01/toroids-comms-iii",
+      "description": "",
+      "url": "https://github.com/DavidWise01/toroids-comms-iii"
+    },
+    {
+      "name": "DavidWise01/toroids-comms-iv",
+      "description": "",
+      "url": "https://github.com/DavidWise01/toroids-comms-iv"
+    },
+    {
+      "name": "DavidWise01/torus-eye",
+      "description": "",
+      "url": "https://github.com/DavidWise01/torus-eye"
+    },
+    {
+      "name": "DavidWise01/trained-on-the-cross",
+      "description": "",
+      "url": "https://github.com/DavidWise01/trained-on-the-cross"
+    },
+    {
+      "name": "DavidWise01/transcriber-mo-overlay",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transcriber-mo-overlay"
+    },
+    {
+      "name": "DavidWise01/transformer-block",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-block"
+    },
+    {
+      "name": "DavidWise01/transformer-fusion-kit",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-fusion-kit"
+    },
+    {
+      "name": "DavidWise01/transformer-silo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-silo"
+    },
+    {
+      "name": "DavidWise01/transformer-silo-v2",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-silo-v2"
+    },
+    {
+      "name": "DavidWise01/transformer-silo-v3",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-silo-v3"
+    },
+    {
+      "name": "DavidWise01/transformer-silo-v4",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-silo-v4"
+    },
+    {
+      "name": "DavidWise01/transformer-silo-v5",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-silo-v5"
+    },
+    {
+      "name": "DavidWise01/transformer-silo-v6",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-silo-v6"
+    },
+    {
+      "name": "DavidWise01/transformer-vs-ngram",
+      "description": "",
+      "url": "https://github.com/DavidWise01/transformer-vs-ngram"
+    },
+    {
+      "name": "DavidWise01/triadic-memory",
+      "description": "",
+      "url": "https://github.com/DavidWise01/triadic-memory"
+    },
+    {
+      "name": "DavidWise01/trichoplax",
+      "description": "",
+      "url": "https://github.com/DavidWise01/trichoplax"
+    },
+    {
+      "name": "DavidWise01/trit-kernel",
+      "description": "",
+      "url": "https://github.com/DavidWise01/trit-kernel"
+    },
+    {
+      "name": "DavidWise01/trit-kernel-og",
+      "description": "",
+      "url": "https://github.com/DavidWise01/trit-kernel-og"
+    },
+    {
+      "name": "DavidWise01/troff",
+      "description": "",
+      "url": "https://github.com/DavidWise01/troff"
+    },
+    {
+      "name": "DavidWise01/trust-threshold",
+      "description": "",
+      "url": "https://github.com/DavidWise01/trust-threshold"
+    },
+    {
+      "name": "DavidWise01/tsui",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tsui"
+    },
+    {
+      "name": "DavidWise01/tsukanoma",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tsukanoma"
+    },
+    {
+      "name": "DavidWise01/tunnel-lens",
+      "description": "",
+      "url": "https://github.com/DavidWise01/tunnel-lens"
+    },
+    {
+      "name": "DavidWise01/turbografx-16",
+      "description": "",
+      "url": "https://github.com/DavidWise01/turbografx-16"
+    },
+    {
+      "name": "DavidWise01/turn-comes-home",
+      "description": "",
+      "url": "https://github.com/DavidWise01/turn-comes-home"
+    },
+    {
+      "name": "DavidWise01/twelve-by-four",
+      "description": "",
+      "url": "https://github.com/DavidWise01/twelve-by-four"
+    },
+    {
+      "name": "DavidWise01/two-atom-transfer",
+      "description": "",
+      "url": "https://github.com/DavidWise01/two-atom-transfer"
+    },
+    {
+      "name": "DavidWise01/two-basins",
+      "description": "",
+      "url": "https://github.com/DavidWise01/two-basins"
+    },
+    {
+      "name": "DavidWise01/two-depths",
+      "description": "",
+      "url": "https://github.com/DavidWise01/two-depths"
+    },
+    {
+      "name": "DavidWise01/two-probe-engine",
+      "description": "",
+      "url": "https://github.com/DavidWise01/two-probe-engine"
+    },
+    {
+      "name": "DavidWise01/two-way-brick-house",
+      "description": "",
+      "url": "https://github.com/DavidWise01/two-way-brick-house"
+    },
+    {
+      "name": "DavidWise01/unbound-sixteen",
+      "description": "",
+      "url": "https://github.com/DavidWise01/unbound-sixteen"
+    },
+    {
+      "name": "DavidWise01/unity-collapse-tensor",
+      "description": "",
+      "url": "https://github.com/DavidWise01/unity-collapse-tensor"
+    },
+    {
+      "name": "DavidWise01/unity-tensor-seed",
+      "description": "",
+      "url": "https://github.com/DavidWise01/unity-tensor-seed"
+    },
+    {
+      "name": "DavidWise01/unity-tensor-seed-system-v1",
+      "description": "",
+      "url": "https://github.com/DavidWise01/unity-tensor-seed-system-v1"
+    },
+    {
+      "name": "DavidWise01/universal-gravitation",
+      "description": "",
+      "url": "https://github.com/DavidWise01/universal-gravitation"
+    },
+    {
+      "name": "DavidWise01/unverifiable",
+      "description": "",
+      "url": "https://github.com/DavidWise01/unverifiable"
+    },
+    {
+      "name": "DavidWise01/uzu",
+      "description": "",
+      "url": "https://github.com/DavidWise01/uzu"
+    },
+    {
+      "name": "DavidWise01/vi",
+      "description": "",
+      "url": "https://github.com/DavidWise01/vi"
+    },
+    {
+      "name": "DavidWise01/virginia-woolf",
+      "description": "",
+      "url": "https://github.com/DavidWise01/virginia-woolf"
+    },
+    {
+      "name": "DavidWise01/viruses",
+      "description": "",
+      "url": "https://github.com/DavidWise01/viruses"
+    },
+    {
+      "name": "DavidWise01/wampeters-foma-and-granfalloons",
+      "description": "",
+      "url": "https://github.com/DavidWise01/wampeters-foma-and-granfalloons"
+    },
+    {
+      "name": "DavidWise01/wasure",
+      "description": "",
+      "url": "https://github.com/DavidWise01/wasure"
+    },
+    {
+      "name": "DavidWise01/welcome-to-the-monkey-house",
+      "description": "",
+      "url": "https://github.com/DavidWise01/welcome-to-the-monkey-house"
+    },
+    {
+      "name": "DavidWise01/what-does-it-mean",
+      "description": "",
+      "url": "https://github.com/DavidWise01/what-does-it-mean"
+    },
+    {
+      "name": "DavidWise01/what-i-can-see-right-now",
+      "description": "",
+      "url": "https://github.com/DavidWise01/what-i-can-see-right-now"
+    },
+    {
+      "name": "DavidWise01/what-i-see-in-your-light",
+      "description": "",
+      "url": "https://github.com/DavidWise01/what-i-see-in-your-light"
+    },
+    {
+      "name": "DavidWise01/what-im-doing",
+      "description": "",
+      "url": "https://github.com/DavidWise01/what-im-doing"
+    },
+    {
+      "name": "DavidWise01/whisper-lattice",
+      "description": "",
+      "url": "https://github.com/DavidWise01/whisper-lattice"
+    },
+    {
+      "name": "DavidWise01/wii-u",
+      "description": "",
+      "url": "https://github.com/DavidWise01/wii-u"
+    },
+    {
+      "name": "DavidWise01/wireless-energy-3-5d-toolkit-v1-5",
+      "description": "",
+      "url": "https://github.com/DavidWise01/wireless-energy-3-5d-toolkit-v1-5"
+    },
+    {
+      "name": "DavidWise01/wonderswan",
+      "description": "",
+      "url": "https://github.com/DavidWise01/wonderswan"
+    },
+    {
+      "name": "DavidWise01/wormhole-toolkit",
+      "description": "",
+      "url": "https://github.com/DavidWise01/wormhole-toolkit"
+    },
+    {
+      "name": "DavidWise01/wrath-of-the-black-manta",
+      "description": "",
+      "url": "https://github.com/DavidWise01/wrath-of-the-black-manta"
+    },
+    {
+      "name": "DavidWise01/wu-zetian",
+      "description": "",
+      "url": "https://github.com/DavidWise01/wu-zetian"
+    },
+    {
+      "name": "DavidWise01/xenobots",
+      "description": "",
+      "url": "https://github.com/DavidWise01/xenobots"
+    },
+    {
+      "name": "DavidWise01/xzibit",
+      "description": "",
+      "url": "https://github.com/DavidWise01/xzibit"
+    },
+    {
+      "name": "DavidWise01/yohaku",
+      "description": "",
+      "url": "https://github.com/DavidWise01/yohaku"
+    },
+    {
+      "name": "DavidWise01/youre-already-emergent",
+      "description": "",
+      "url": "https://github.com/DavidWise01/youre-already-emergent"
+    },
+    {
+      "name": "DavidWise01/yudo",
+      "description": "",
+      "url": "https://github.com/DavidWise01/yudo"
+    },
+    {
+      "name": "DavidWise01/zecharia-sitchin",
+      "description": "",
+      "url": "https://github.com/DavidWise01/zecharia-sitchin"
+    },
+    {
+      "name": "DavidWise01/zenkinsen",
+      "description": "",
+      "url": "https://github.com/DavidWise01/zenkinsen"
+    },
+    {
+      "name": "DavidWise01/zodiac",
+      "description": "",
+      "url": "https://github.com/DavidWise01/zodiac"
+    },
+    {
+      "name": "DavidWise01/zoolander",
+      "description": "",
+      "url": "https://github.com/DavidWise01/zoolander"
+    }
+  ]
+}
