@@ -1,0 +1,37 @@
+{
+  "schema": "MN-PRIME-v25-DIATOM-V431-READONLY",
+  "classification": "Layer 1 creative/symbolic interface only, unverified physics",
+  "original_v431_sha256": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe",
+  "frozen_366_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+  "preserved_original_bytes_in_release": true,
+  "embedding": "sandbox allow-scripts iframe; no mutation of cipher",
+  "mappings": [
+    [
+      "Even BOX / Odd TOROID",
+      "289-292 BOX window 8, 293-296 TOROID window 9"
+    ],
+    [
+      "N R+G+B 245-366",
+      "All 289-296 Nitrogen symbolic 0 K; colors are palette codes"
+    ],
+    [
+      "24 HOLD 1",
+      "Diatom motif 24, independent of MN PRIME wave 27"
+    ],
+    [
+      "60×60+6",
+      "3606 distinct from 366"
+    ],
+    [
+      "V/D/S/A/M",
+      "Original live app UI controls, not experimental orbitals"
+    ]
+  ],
+  "unverified": [
+    "gravitational photon capture by frustule",
+    "virus quantum tunneling",
+    "TAG oil as quantum memory",
+    "sub-Planck experiments"
+  ],
+  "experimental_validation": false
+}
