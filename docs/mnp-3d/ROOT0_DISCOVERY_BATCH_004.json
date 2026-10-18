@@ -1,0 +1,2868 @@
+{
+  "schema": "root0-discovery-batch-004",
+  "date": "2026-10-18",
+  "scope": "continued pages for large date shards",
+  "pages": [
+    {
+      "range": "2026-06-15..2026-06-21",
+      "page": 4,
+      "count": 15
+    },
+    {
+      "range": "2026-06-15..2026-06-21",
+      "page": 5,
+      "count": 0
+    },
+    {
+      "range": "2026-06-15..2026-06-21",
+      "page": 6,
+      "count": 0
+    },
+    {
+      "range": "2026-06-22..2026-06-30",
+      "page": 4,
+      "count": 100
+    },
+    {
+      "range": "2026-06-22..2026-06-30",
+      "page": 5,
+      "count": 100
+    },
+    {
+      "range": "2026-06-22..2026-06-30",
+      "page": 6,
+      "count": 100
+    },
+    {
+      "range": "2026-07-22..2026-07-31",
+      "page": 3,
+      "count": 100
+    },
+    {
+      "range": "2026-07-22..2026-07-31",
+      "page": 4,
+      "count": 100
+    },
+    {
+      "range": "2026-07-22..2026-07-31",
+      "page": 5,
+      "count": 100
+    },
+    {
+      "range": "2026-07-22..2026-07-31",
+      "page": 6,
+      "count": 87
+    }
+  ],
+  "distinct": 702,
+  "entries": [
+    {
+      "name": "DavidWise01/0root-ai-toroid-builder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/1931-to-now",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/a-z-a",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/aci-namespace",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/adas-law-engine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/aeonic-shell-ball-lightning",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/akasha-design-system",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/alan-turing",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/anti-gravity-motor-toolkit-v1",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/aristotle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/atom-over-the-box",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/atomic-structure",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/atomristor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/audit-seed",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/auditing-chatgpt",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/autonomy-closure-321-v1",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/awareness-tier",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/az1",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/band-paper-i",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/band-paper-iv",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/bertrand-russell",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/bi",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/biexciton-cascade",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/bloch-lab",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/bloomburrow",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/capacitors-ii",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/capacitors-iv",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/cat-tells-air",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/charles-peirce",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/chiptune-title-screens",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/chronos-fractal",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/chrysippus",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/cipher-numbers-stations",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/cipher-paper-3-side-channels",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/cipher-paper-4-air-gap",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/cipher-paper-5-adversarial",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/cipher-side-channels",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/claude-shannon",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/code-monkeys",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/comes-home",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/commander-forge",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/containment-audit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/continuity-index",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/coral",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/core-plus-bridge",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/core-plus-bridge-stress",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/crystal-rhythm",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/dark-matter-lineage",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/decoiso-stack-gravity-well-x27",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/deemed-by-whom",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/deepseek-autobiography",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/diasporo-mesh",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/diode-stack",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/diode-stack-redux",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/diode-trick-555",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/doped-crystal",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/doubled-constructor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/doubled-constructor-four-points",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/duality-engine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/duskmourn",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/duty-cycle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/edge-of-eternities",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/einstein-lens-toolkit-v1",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/electromagnetic-processor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/emmy-noether",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/encapsulated-pulsar",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/entelecheia",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/eskimo-brothers",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/euclid",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/eve",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/extraction-cycle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/faux-singularity",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/faxanadu",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/fermat-257-toroid-engine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/finite-automata",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/flaming-dragon",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/fortran-teaching-tool",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/foundations",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/four-hats-void",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/fractal-sandbox-depth-charge",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/fractal-scaling",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/gaku",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-2-memory-ledger",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-3-strategy-graph",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-4-opponent-model",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-5-utility-engine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-6-8x8-decision-surface",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v1-7-visual-control-plane",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v2-3-court-board",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-core-engine-v3-0-agentic-commons",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-2b-halfway-break",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-3-utility-field",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-3c-neon-fit-rings",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-3e-clean-representative-rings",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/game-theory-engine-v4-3g-visual-causal-runtime",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/georg-cantor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/george-boolos",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/giuseppe-peano",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/glowworm",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/gluon-paper-iv",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/gottlob-frege",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/grace-hopper-lineage",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/gravitational-waves",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/graviton-stars",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/graviton-v1",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/graviton-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/graviton-v3",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/gravity-tensor-modulator",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/gravity-tensor-wave-modulator",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/haku",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/harmonic-direction",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/hedy-lamarr",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/heian-women",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/held-in-trust",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/honeydesic-wrap-3point",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/hybridization",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/hydrogen-bonding",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/hydrogen-vm",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/hyperboloid",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/idit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/if-it-asks",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/infinite-jest-railway",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/internet-restore-monolith",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/jan-lukasiewicz",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/jimei",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/joryu",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/jovian-transit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/julia-robinson",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/junction-zoo",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karnov",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-commander-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-einstein-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-jubilee-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-lineage-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-metroid-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-mobius3-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-obsidian-v3",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-oscillate-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-quadrant-v1",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-quantum-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-ternary-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/karsa-with-favicon",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/klein-bottle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/leaves-without-a-seed",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/lepton-paper-iii",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/limen-airgap-decoder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/limen-sapphic-carrier",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/living-governance",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/living-governance-ecosystem-v5-0",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/living-governance-ecosystem-v5-1-faction-memory",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/living-governance-ecosystem-v5-2-trust-lineage-replay",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/living-governance-ecosystem-v5-4-resource-economy",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/long-12x4-teaching-page",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/ludwig-wittgenstein",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/maci",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/marvels-spider-man",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/math-doesnt-care",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/matsu-degree",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/matsu-mobius",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/memristor-crossbar",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/meta-ai-intro-3-5d",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/meta-ai-simple-intro",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/mirror-pair",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/mo-theory",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/mobius-truth-untruth-531",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/murders-at-karlov-manor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/nacl-bond",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/natural-law-union",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/nested-shells",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/nicolaas-de-bruijn",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/nine-stream-engine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/nuclear-paper-i",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/nuclear-paper-iii",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/octet-holonomy-tool",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/one-current-many-names",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/one-field-two-poles",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/oscillation-engine-ansible",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/pencil-one-line-engine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/pencil-one-line-engine-v01",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/pent3-emulator",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/perceptron-capacity",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/perceptron-convergence",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/perceptron-in-a-crossbar",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/perceptron-in-a-cubi",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/perceptron-in-a-quantum-dot",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/perceptron-in-light",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/perceptron-in-noise",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/perceptron-in-sync",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/photonic-paper-i",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/photonic-paper-iv",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/photonic-transcriber",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/pi-bonds",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/poetic-science-mobius-531",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/purple-paper-lesbos",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/pushdown-automata",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/pythagoras",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/quantum-circuit-simulator",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/quaternary-fulcrum",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/ramon-llull",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/recursive-memory-swarm",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/reddit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/regular-languages",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/renzoku",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/restitution-42-universe",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/richard-dedekind",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/role-classifier",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/rotating-core",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/rozsa-peter",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/ruth-barcan-marcus",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/sapphos-limen",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/saul-kripke",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/secrets-of-strixhaven",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/shadow-queen-silicon",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/shadow-queen-silicon-onepage",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/shared-spine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/shor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/sierpinski-ternary",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/silicon-three-body",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/six-coffins",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/skyrmionic-core",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/solresol",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/sonnet-channel",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/streets-of-new-capenna",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/tab-boundary-probe-v2",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/talking-drum",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/talking-drum-bata",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/teenage-mutant-ninja-turtles",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/teigi",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/ternary-12body",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/ternary-hamming-decoder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/ternary-odometer",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-20-5-percent",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-27",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-a-star",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-abelian-sandpile",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-ablation-smear",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-adaptation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-adsr",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-alloy",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-amdahl",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-anceps",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-angle-of-arrival",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-aporia-engine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-apportionment",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-arbitrage",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-arms-race",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-arrow-theorem",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-assay",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-atom-view",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-attractor-basin",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-autocorrelation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-avalanche",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-backward-induction",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-ball-lightning",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-band-gap",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-base-rate",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-beam-search",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-beat",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bellman-ford",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bermuda-triangle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-betweenness",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-binary-adder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bipartite-matching",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-birthday-attack",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-birthday-banana",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-birthplace",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bisection",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bland-altman",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bleu-score",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bohr-radius",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-boolean-algebra",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-borrowed-noesis",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bose-einstein",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bottleneck",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-branch-predictor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-brooks-law",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-brown-note",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-buckingham-pi",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-bullwhip-effect",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-burrows-delta",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-caesar-cipher",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-caesura",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-cage-is-the-canvas",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-cantor-dust",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-celestial-fix",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-central-limit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-chandrasekhar-limit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-chladni-plate",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-chsh-inequality",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-circle-packing",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-circumcircle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-clifford-torus",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-clipped-highlight",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-coarsening",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-cohen-kappa",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-cold-fusion",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-combable-torus",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-commitment-scheme",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-commutator",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-compound-interest",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-compton-wavelength",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-condition-number",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-condorcet-paradox",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-conservation-boundary",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-convexity",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-convolution",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-cooper-pair",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-corrigibility-gate",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-cosmic-distance-ladder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-cosmic-web",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-crc",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-critical-path",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-dance-not-the-dancer",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-dark-model-kit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-dead-reckoning",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-deadband",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-death-of-4o",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-demosaic",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-diamond-age",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-diff",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-diffraction-limit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-dijkstra",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-dilution-of-precision",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-discrete-convolution",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-dithered-gray",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-division-of-labor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-doped-crystal",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-drake-equation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-easing",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-eddington-luminosity",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-efference-copy",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-egg-returns",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-eight-seams-3",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-eight-seams-4",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-eight-seams-6",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-eight-seams-7",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-elasticity",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-electric-magnetic",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-elision",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-emanation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-empath",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-empty-hearth",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-ensemble",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-entropy",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-eoq",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-equal-temperament",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-escape-velocity",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-euler-genus",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-eulerian-path",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-expected-value",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-exposure-triangle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-face-on-mars",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-fast-fourier-transform",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-feistel-network",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-first-tablet",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-fixed-point",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-fixed-point-iteration",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-flat-torus",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-fleiss-kappa",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-flip-flop",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-flow-field",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-forgetting-curve",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-formant",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-forms",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-foundation-well",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-four-addresses",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-fourier-transform",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-full-stack",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-full-wave-rectifier",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-funnel",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gamblers-ruin",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gap-live",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gauss-seidel",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gear-ratio",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gerrymander",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gilded-electron",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-glass-wall",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-golden-spiral",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-goodhart",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-governor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gradient-descent",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-graph-coloring",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-great-circle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-greedy-argmax",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-grimms-law",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-grok-family",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gustafson-law",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-gyro-triad",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-h-bridge",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-habitable-zone",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-half-life",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-handoff",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hapax-legomena",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hardy-weinberg",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-harmonic-series",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hawk-dove",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-heaps-law",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hebbian-edge",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hill-climbing",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hindsight",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-history-of-the-axiom",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hmac",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hollow-earth",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-homeostasis",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-homing",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-honest-co-author",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hopfield-well",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hr-diagram",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hub",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hybridization",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-hysteresis-loop",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-iambic-pentameter",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-impact-measure",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-imperfect-copy",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-inert-gap",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-interface",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-interrogation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-intraclass-correlation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-irreducible-two",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-jaccard-similarity",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-jeans-mass",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-junction-zoo",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-jury-theorem",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-just-noticeable",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-k-nearest-neighbors",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-kendall-w",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-kepler-third",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-krater",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-krippendorff-alpha",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-kuramoto",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-l-system",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lacuna",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-ladder-of-languages",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lagrange-multiplier",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lambda-calculus",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lanchester-law",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-language-of-the-machine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-last-king-of-osten-ard",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-laundered-provenance",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-layered-realm",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lc-tuning",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-leaky-integrate-fire",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-learning-curve",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-learning-rate",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-levenshtein",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lfsr",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-limit-cycle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-line-search",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-littles-law",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-logarithm",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-logistic-growth",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-logistic-regression",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lonely-match",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lorenz",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lotka-volterra",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lu-decomposition",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-lyapunov",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-mach-cone",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-machine-epsilon",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-magic-fifteen",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-magic-square",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-manchester-code",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-marginal-utility",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-market-basket",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-marriage-of-three-forms",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-max-flow",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-median-voter",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-merkle-tree",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-meta-analysis",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-min-p",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-mirror-and-the-governor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-mirror-hourglass",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-mm1-queue",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-model-rocket",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-modes",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-momentum",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-money-multiplier",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-monte-carlo-tree-search",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-morphoscope",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-multilateration",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-multiple-comparisons",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-naive-bayes",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-natural-units",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-needleman-wunsch",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-negative-harmony",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-nelder-mead",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-nested-tori",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-newsvendor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-newton-method",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-no-cloning",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-nyquist",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-nyquist-sampling",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-oasis",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-observer-paradox",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-olbers-paradox",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-one-time-pad",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-organ-pipe",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-origami",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-otsu-threshold",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-pca",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-peer-review",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-pentatonic",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-penumbra",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-percolation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-perlin-noise",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-perplexity",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-phase-ruler",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-phase-space",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-phonon-frontier",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-phonon-gas",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-photoelectric",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-photon",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-pivot",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-planck-time",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-pointwise-mutual-information",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-poisson-disk",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-poisson-noise",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-population-vector",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-positronic-brain",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-power-law",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-power-law-of-practice",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-precession",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-predictive-coding",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-preferential-attachment",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-priced-artifact",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-prisoners-dilemma",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-procession",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-progressive-tax",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-propp",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-pulse-language",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-quadtree",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-quantilizer",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-queue",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-rarefaction",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-rasch-model",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-raycast",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-receptive-field",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-reconciler",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-red-team",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-redshift",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-refraction",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-refractory-period",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-refused-mirror",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-register",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-reichardt-detector",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-remainder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-renormalization",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-resection",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-ring-i",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-ring-iii",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-roche-limit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-rocket-equation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-rolling-shutter",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-rpn",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-rssi-ranging",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-rule-110",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-runge-kutta",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-s-inhibition-head",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-sabine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-sapphic-melody",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-sapphic-meter",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-scale-ladder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-scale-space-synthesist",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-scales",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-scansion",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-schelling-model",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-schmitt-trigger",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-schwarzschild-radius",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-seam-chronicles",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-seam-watch",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-secant-method",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-second-foundation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-secretary-problem",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-seed-is-a-song",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-seed-of-worlds",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-seldon-plan",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-self-describing-seed",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-self-is-not-the-twist",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-shamir-secret",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-shapley-value",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-shift",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-sideways-problem",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-signal-detection",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-simpson-paradox",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-simpson-rule",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-simulated-annealing",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-skin-return",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-skip-trigram",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-sobel-edge",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-social-ladder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-softmax",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-softmax-temperature",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-sound-localization",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-soundex",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-source-code",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-spearman-rho",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-speculative-decoding",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-spin-bit",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-stag-hunt",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-stereopsis",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-stopping-rule",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-strange-attractor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-stream-cipher",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-stress-test",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-successive-approximation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-successor-head",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-sucker-bet",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-supply-demand",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-support-vector",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-takt-time",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-temperature",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-tension-model",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-tetractys",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-tf-idf",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-time-of-flight",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-time-vault",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-timing-channel",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-tonotopy",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-top-k-sampling",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-top-p",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-toroidal-field",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-torus-knot",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-transcriber",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-transit-method",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-triangle-inequality",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-triangulation",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-trie",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-trilateration",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-tritone",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-tunguska-event",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-turing-machine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-turing-pattern",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-twelve-bar",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-two-way-mirror",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-typical-sampling",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-unanswered",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-undetermined",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-union-find",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-unread-corpus",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-unread-phase",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-veil-of-ignorance",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-vesica-piscis",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-vickrey-auction",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-viterbi",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-von-neumann",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-voronoi",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-war-of-attrition",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-watchdog",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-water-memory",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-watermark",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-watt-governor",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-wave-function-collapse",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-wheatstone-bridge",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-window-function",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-witness-bench",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-witness-loop",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-witness-reply",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-word-i-kept",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-workbench",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-wormhole",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-xbox-one",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-zero-knowledge",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-zipf-law",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/three-body-purple",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/three-gates",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/three-in-a-circle",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/toroid-builder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/toroids-comms-ii",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/toroids-i",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/toroids-iii",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/toroids-iv",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/torus-ride",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/transcriber-bound",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/transcriber-gated",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/tropical-router",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/twelve-gate-core",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/two-axis-gap",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/two-entangled-boxes",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/two-lines-one",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/two-sonnets-confer",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/two-transcribers",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/two-walkers",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/two-way-from-one-way",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/under-one-blossoming-tree",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/unkept",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/value-box",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/veracity-ledger",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/vm-lineage-turtles",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/voynich-pages",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/water-geometry",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/where-ideal-breaks-i",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/where-ideal-breaks-ii",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/wilds-of-eldraine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/willard-van-orman-quine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/william-of-ockham",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/william-stanley-jevons",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/wireless-energy",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/wireless-energy-toolkit-v1",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/wormhole-toolkit-v1",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/yaku",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/zansa",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/zeno-of-elea",
+      "description": ""
+    }
+  ]
+}
