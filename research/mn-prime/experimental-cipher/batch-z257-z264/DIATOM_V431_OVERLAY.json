@@ -1,0 +1,40 @@
+{
+  "schema": "mn-prime-v21-diatom-v431-isolated-overlay",
+  "classification": "Layer1 creative/symbolic visual companion, physically unvalidated",
+  "source_name": "User's original Diatom V4.31 SUB-QUANTUM EDITION React HTML",
+  "original_html_sha256": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe",
+  "full_cipher_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+  "original_html_unchanged": true,
+  "companion_implementation": "standalone HTML iframe sandbox='allow-scripts', no interaction with frozen cipher",
+  "symbolic_mappings": [
+    {
+      "cue": "EVEN=BOX ODD=TOROID",
+      "mapping": "Window8 BOX active; TOROID enclosed"
+    },
+    {
+      "cue": "N R+G+B 245–366",
+      "mapping": "Z257–264 Nitrogen symbolic band, K=0; colors are display palette"
+    },
+    {
+      "cue": "24 HOLD 1",
+      "mapping": "independent 24-point symbolic motif, not 27 primitive"
+    },
+    {
+      "cue": "60×60+6",
+      "mapping": "3606, distinct from 366"
+    },
+    {
+      "cue": "V/D/S/A/M",
+      "mapping": "independent UI controls, not electron orbitals"
+    }
+  ],
+  "unverified_physical_claims": [
+    "biological quantum tunneling via diatom pores",
+    "passive gravitational photon capture inside silica",
+    "organic oil storage as quantum memory",
+    "sub-Planck measurement claims"
+  ],
+  "boundary": "256 Window7 TOROID -> 257 Window8 BOX; no band change",
+  "experimentally_verified": false,
+  "github_original_html_location": "downloadable full v21 ZIP; source hash recorded here, original HTML not independently committed"
+}
