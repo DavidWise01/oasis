@@ -213,3 +213,14 @@ OBSERVE → RECORD → ESTIMATE → PREDICT → WITNESS → UPDATE → REPEAT
 7. Color does not silently change probabilities unless a tested statistical relationship supports its predictive use.
 
 **Boundary:** useful probabilistic inference does not itself demonstrate coherent quantum superposition, interference, entanglement, or quantum advantage.
+
+
+---
+
+## 15 — ROOT0 corpus aligned to QUANTA
+
+The 2,144-entry `ROOT0_MASTER_DISCOVERY_20261018.json` is a **repository metadata inventory** only. The separate `quanta-corpus-v1.js` adapter exposes the records as source addresses for the QUANTA observer, explicitly setting `observed=false`, `verified=false` until attributable event-level evidence exists. It does not modify the master inventory or the locked intent grammar.
+
+Execution stages: `CORPUS → OBSERVE → RECORD → ESTIMATE → PREDICT → WITNESS → UPDATE`. Estimates require validated normalized input probabilities; predictions retain observation IDs; witnesses must use a distinct event ID; updates score surprisal without rewriting prior evidence or claiming automatic model training. The pinned `0@[v,w,x,y,z]` and x/y/z meanings are preserved. No quantum advantage or physical quanta mechanism is asserted.
+
+See [QUANTA corpus alignment](./QUANTA_CORPUS_ALIGNMENT_V1.md) and [17 deterministic tests](./test-quanta-corpus-v1.cjs).
