@@ -12,7 +12,20 @@ function analyze(){if(!init())throw Error('WebGL2 unavailable');const image=$('c
 function show(){const result={schema:'n184-gpu-cert-v68',timestamp:new Date().toISOString(),source:'user browser',topology:G.validate(),...report};$('report').textContent=JSON.stringify(result,null,2)}
 $('compare').onclick=()=>{try{prep();const data=points();canvasDraw(data);gpuDraw(data);report.parity=analyze();report.parityStatus='MEASURED — human visual review still required';show()}catch(e){report.parityError=String(e);show()}};
 $('stress').onclick=async()=>{if(running)return;running=true;$('stress').disabled=true;try{prep();if(!init())throw Error('WebGL2 unavailable');const count=1800;let times=[],started=performance.now();for(let i=0;i<count;i++){const t=performance.now(),data=points(.72+i*.002);gpuDraw(data);times.push(performance.now()-t);if(i%30===0)await new Promise(resolve=>requestAnimationFrame(resolve))}const sorted=times.slice().sort((a,b)=>a-b);report.stress={draws:count,elapsedMs:+(performance.now()-started).toFixed(2),medianCpuGpuSyncMs:+sorted[count>>1].toFixed(3),p95CpuGpuSyncMs:+sorted[Math.floor(count*.95)].toFixed(3),contextLost:gl.isContextLost(),note:'1800 GPU draws, NOT necessarily 30 seconds; includes gl.finish synchronization'};show()}catch(e){report.stressError=String(e);show()}finally{running=false;$('stress').disabled=false}};
-$('recover').onclick=async()=>{try{if(!init())throw Error('WebGL2 unavailable');const ext=gl.getExtension('WEBGL_lose_context');if(!ext){report.recovery='UNAVAILABLE: WEBGL_lose_context extension not supported';show();return}ext.loseContext();await new Promise(r=>setTimeout(r,150));const lost=gl.isContextLost();ext.restoreContext();await new Promise(r=>setTimeout(r,300));gl=null;program=null;buf=null;gpuDraw(points());report.recovery={lostObserved:lost,drawAfterRestore:!gl.isContextLost(),status:lost&&!gl.isContextLost()?'PASS':'INCONCLUSIVE'};show()}catch(e){report.recoveryError=String(e);show()}};
+$('recover').onclick=async()=>{if(running)return;running=true;$('recover').disabled=true;delete report.recoveryError;try{
+if(!init())throw Error('WebGL2 unavailable');
+const canvas=$('gpu'),current=gl,ext=current.getExtension('WEBGL_lose_context');
+if(!ext){report.recovery={status:'UNAVAILABLE',reason:'WEBGL_lose_context not supported'};show();return}
+function waitFor(type,timeout=5000){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{canvas.removeEventListener(type,handler);reject(new Error('Timed out waiting for '+type))},timeout);function handler(event){if(type==='webglcontextlost')event.preventDefault();clearTimeout(timer);resolve(event)}canvas.addEventListener(type,handler,{once:true})})}
+const lostEvent=waitFor('webglcontextlost');ext.loseContext();await lostEvent;
+const lostObserved=current.isContextLost();
+const restoredEvent=waitFor('webglcontextrestored');ext.restoreContext();await restoredEvent;
+gl=null;program=null;buf=null;loc=-1;
+if(!init())throw Error('WebGL2 context reinitialization unavailable after restore');
+gpuDraw(points());
+report.recovery={lostObserved,restoredEventObserved:true,drawAfterRestore:!gl.isContextLost(),status:lostObserved&&!gl.isContextLost()?'PASS':'INCONCLUSIVE'};
+show()
+}catch(e){report.recovery={status:'FAIL_OR_INCONCLUSIVE',error:e instanceof Error?(e.message||e.name):String(e)};show()}finally{running=false;$('recover').disabled=false}};
 $('copy').onclick=()=>navigator.clipboard?.writeText($('report').textContent);
 prep();show();
 })();
