@@ -1,10 +1,8 @@
 name: MN PRIME Recovery Acceptance
 on:
-  push:
-    paths:
-      - 'research/mn-prime/experimental-cipher/z3**/**'
-      - '.github/workflows/mn-prime-z338.yml'
   workflow_dispatch:
+  push:
+    branches: [main]
 permissions:
   contents: read
 jobs:
@@ -12,13 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install dependency
+      - name: Install cryptography
         run: python -m pip install cryptography
-      - name: Write source and environment manifest
+      - name: Capture provenance
         shell: bash
         run: |
           set -euo pipefail
@@ -29,16 +29,15 @@ jobs:
           for n in 328 329 330 331 332 333; do
             sha256sum "research/mn-prime/experimental-cipher/z${n}/test_z${n}.py"
           done | tee z341-evidence/source-sha256.txt
-      - name: Execute pinned 115-check regression
+      - name: Run 115 checks
         shell: bash
         run: |
           set -euo pipefail
           python research/mn-prime/experimental-cipher/z337/run_recovery_suite.py 2>&1 | tee z341-evidence/regression.log
-      - name: Publish acceptance evidence
+      - name: Archive evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: mn-prime-recovery-acceptance
           path: z341-evidence/
-          if-no-files-found: error
           retention-days: 90
