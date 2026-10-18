@@ -1,0 +1,31 @@
+{
+  "version": "v24",
+  "range": [
+    281,
+    288
+  ],
+  "mode": "symbolic_cipher_only",
+  "local": {
+    "test_passed": 200,
+    "batch_passed": 20,
+    "browser_passed": 22
+  },
+  "github": {
+    "test_files_verified": 8,
+    "ci_executed": false
+  },
+  "source_sha256": {
+    "cipher": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+    "diatom": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe"
+  },
+  "properties": {
+    "cycle": 36,
+    "wave_pass": 11,
+    "slots": "11-18",
+    "band": "Nitrogen",
+    "symbolic_kelvin": 0,
+    "window": 8,
+    "view": "BOX"
+  },
+  "limits": "No experimental elemental or isotope data claimed"
+}
