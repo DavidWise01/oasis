@@ -140,3 +140,30 @@ Additional verification targets: 370 parseable colors in both modes; six unique 
   -d / -d+ / +d :: PROVENANCE
 {{ SAME GRAMMAR :: DIFFERENT SCALE :: DIFFERENT CONSTRAINTS }}
 ```
+
+
+---
+
+## 13 — Pinned observer and four-corner color ripple
+
+**2026-10-18 addition — literal user coordinates.** Observer **0** is pinned at `v,w,x,y,z`; it is not silently reduced to four coordinates. Four corners are declared as **four-component symbolic registers**:
+
+| Corner | Location | Exact authored components |
+|---|---|---|
+| A | upper left | `[x−8, y−8, 0, 0]` |
+| B | upper right | `[x+8, y+8, 0, 0]` |
+| C | bottom left | `[0, 0, x−8, y−8]` |
+| D | bottom right | `[0, 0, x+8, y+8]` |
+
+The `x8y8` shorthand is rendered as `x+8,y+8` based on the upper/lower symmetry; verify this convention against any later author correction. The projection into a flat 2D box is a **visualization**, not a derived dimensional mapping between those four-component corner registers and the five symbols pinned at the center.
+
+**Color/nm provenance:** The attached 370-address color registry defines indexed color, six RGB permutations, and hue angles. It does **not** supply physical nanometer wavelengths per entry. To animate inward ripples, the demonstration introduces an **explicitly synthetic** address-to-nm visualization formula:
+
+```text
+λ_visual(z) = 380 + (z−1) × 370/369 nm,  1 ≤ z ≤ 370
+hue(z)      = (z−1) × 360/370 degrees
+```
+
+The former is a tunable artistic mapping, not a measurement, not a calibrated wavelength of the HTML registry, and not a claim of superposition or electron dynamics. Color mode and index are retained with every ripple event. Each source can ripple to pinned 0; all four can operate concurrently in the visualization. A pinned observer/view is not, by itself, quantum superposition.
+
+Live demonstration: [Pinned-0 observer ripple](./observer-ripple/).
