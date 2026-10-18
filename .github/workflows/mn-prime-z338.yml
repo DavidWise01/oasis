@@ -1,0 +1,22 @@
+name: MN PRIME Z338 Acceptance
+on:
+  push:
+    paths:
+      - 'research/mn-prime/experimental-cipher/z3**/**'
+      - '.github/workflows/mn-prime-z338.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install cryptography
+      - name: Execute pinned 115-check regression
+        run: python research/mn-prime/experimental-cipher/z337/run_recovery_suite.py
