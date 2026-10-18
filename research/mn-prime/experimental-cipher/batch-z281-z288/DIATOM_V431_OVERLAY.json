@@ -1,0 +1,37 @@
+{
+  "schema": "MN-PRIME-v24-diatom-observer",
+  "classification": "Layer 1 symbolic UI overlay, not established physics",
+  "original_html_sha256": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe",
+  "original_full_366_csv_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+  "originals_unchanged": true,
+  "implementation": "Original Diatom React V4.31 bundled HTML preserved in full local release, embedded in sandboxed allow-scripts iframe in integrated explorer",
+  "mappings": [
+    [
+      "EVEN BOX / ODD TOROID",
+      "Window8 BOX active, TOROID enclosed"
+    ],
+    [
+      "N R+G+B 245-366",
+      "Z281–288 in symbolic Nitrogen band, K=0"
+    ],
+    [
+      "24 HOLD 1",
+      "24-point motif is not 27-wave unit"
+    ],
+    [
+      "60×60+6",
+      "3606 not 366"
+    ],
+    [
+      "V/D/S/A/M controls",
+      "Independent working original UI only"
+    ]
+  ],
+  "physically_unverified": [
+    "gravity photon trapping in silica",
+    "quantum virus tunneling model",
+    "TAG oil quantum memory",
+    "sub-Planck observations"
+  ],
+  "physical_validation": false
+}
