@@ -1,0 +1,33 @@
+'use strict';
+(()=>{
+const $=id=>document.getElementById(id),G=window.N184Geometry,W=640,H=400,build='20261018-isolated-context-v69';
+const S={layers:{outer:true,inner:true,box:true,weak:true,medium:true,strong:true,core:true,gate:true,wiring:true},angles:[0,0,29,0,-21,14],projection:'perspective',distance:5.2,explode:0};
+const geometry=G.makeScene(S).map(x=>({a:x.a.slice(),b:x.b.slice()}));
+let state={schema:'n184-gpu-diagnostic-v69',build,topology:G.validate(),tests:{}},busy=false;
+function publish(){state.timestamp=new Date().toISOString();$('report').textContent=JSON.stringify(state,null,2)}
+function error(e,stage){return {stage,name:e?.name||'UnknownError',message:e?.message||String(e),stack:String(e?.stack||'').slice(0,700)}}
+function makeCanvas(){const c=document.createElement('canvas');c.width=W;c.height=H;return c}
+function shader(gl,type,text){const s=gl.createShader(type);if(!s)throw Error('createShader returned null (context lost or resources exhausted)');gl.shaderSource(s,text);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error('Shader compilation failed: '+(gl.getShaderInfoLog(s)||'(empty driver info)'));return s}
+function setup(){const canvas=makeCanvas(),gl=canvas.getContext('webgl2',{antialias:false,preserveDrawingBuffer:true});if(!gl)throw Error('getContext(webgl2) returned null; check browser GPU/driver settings');if(gl.isContextLost())throw Error('Context already lost on creation');
+const vs=shader(gl,gl.VERTEX_SHADER,'#version 300 es\nin vec2 p;void main(){gl_Position=vec4(p,0.,1.);}');
+const fs=shader(gl,gl.FRAGMENT_SHADER,'#version 300 es\nprecision mediump float;out vec4 c;void main(){c=vec4(.494,.855,1.,1.);}');
+const program=gl.createProgram();if(!program)throw Error('createProgram returned null');
+gl.attachShader(program,vs);gl.attachShader(program,fs);gl.bindAttribLocation(program,0,'p');gl.linkProgram(program);
+if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('Link failed: '+(gl.getProgramInfoLog(program)||'(empty driver info)'));
+gl.deleteShader(vs);gl.deleteShader(fs);gl.useProgram(program);
+const buffer=gl.createBuffer();if(!buffer)throw Error('createBuffer returned null');
+gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);gl.viewport(0,0,W,H);
+return {gl,canvas,program,buffer}
+}
+function positions(t=0){let a=new Float32Array(geometry.length*4),n=0;for(const l of geometry){const p=G.toScreen(l.a,W,H,.72+t,.4,1),q=G.toScreen(l.b,W,H,.72+t,.4,1);a[n++]=p[0];a[n++]=p[1];a[n++]=q[0];a[n++]=q[1]}return a}
+function drawGPU(r,coords){const {gl}=r;if(gl.isContextLost())throw Error('GPU context is lost before draw');const p=new Float32Array(coords.length);for(let i=0;i<coords.length;i+=2){p[i]=2*coords[i]/W-1;p[i+1]=1-2*coords[i+1]/H}gl.useProgram(r.program);gl.bindBuffer(gl.ARRAY_BUFFER,r.buffer);gl.bufferData(gl.ARRAY_BUFFER,p,gl.STREAM_DRAW);gl.clearColor(6/255,23/255,39/255,1);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.LINES,0,p.length/2);gl.finish();const err=gl.getError();if(err!==gl.NO_ERROR)throw Error('WebGL gl.getError(): '+err)}
+function pixelCompare(r,data){const c=makeCanvas(),cx=c.getContext('2d',{willReadFrequently:true});cx.fillStyle='#061727';cx.fillRect(0,0,W,H);cx.beginPath();for(let j=0;j<data.length;j+=4){cx.moveTo(data[j],data[j+1]);cx.lineTo(data[j+2],data[j+3])}cx.strokeStyle='#7edaff';cx.lineWidth=1;cx.stroke();const a=cx.getImageData(0,0,W,H).data,b=new Uint8Array(W*H*4);r.gl.readPixels(0,0,W,H,r.gl.RGBA,r.gl.UNSIGNED_BYTE,b);let bad=0,err=0,both=0,either=0,litA=0,litB=0;for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=4*(y*W+x),j=4*((H-1-y)*W+x),av=(a[i]+a[i+1]+a[i+2])/3,bv=(b[j]+b[j+1]+b[j+2])/3;let aa=av>70,bb=bv>70;if(aa)litA++;if(bb)litB++;if(aa&&bb)both++;if(aa||bb)either++;err+=Math.abs(av-bv);if(Math.abs(av-bv)>25)bad++}return {pixels:W*H,pixelMismatchOver25Pct:+(100*bad/(W*H)).toFixed(2),meanIntensityError:+(err/(W*H)).toFixed(2),litPixelsCanvas2D:litA,litPixelsWebGL2:litB,litPixelIoU:+(both/Math.max(1,either)).toFixed(3)}}
+function waitEvent(target,name,timeout=5000){return new Promise((resolve,reject)=>{let timer=setTimeout(()=>{target.removeEventListener(name,handler);reject(Error('Timeout waiting for '+name))},timeout);function handler(e){if(name==='webglcontextlost')e.preventDefault();clearTimeout(timer);resolve(true)}target.addEventListener(name,handler,{once:true})})}
+async function run(name,fn){if(busy)return;busy=true;state.tests[name]={status:'RUNNING'};publish();try{const x=await fn();state.tests[name]={status:'COMPLETE',...x}}catch(e){state.tests[name]={status:'ERROR',error:error(e,name)}}finally{publish();busy=false}}
+$('probe').onclick=()=>run('probe',async()=>{const r=setup();drawGPU(r,positions());return{supported:true,renderer:String(r.gl.getParameter(r.gl.RENDERER)),glVersion:String(r.gl.getParameter(r.gl.VERSION)),sceneSegments:geometry.length,contextLost:r.gl.isContextLost()}});
+$('compare').onclick=()=>run('parity',async()=>{const r=setup(),p=positions();drawGPU(r,p);return pixelCompare(r,p)});
+$('stress').onclick=()=>run('stress',async()=>{const r=setup(),timings=[],begin=performance.now();for(let i=0;i<1800;i++){const a=performance.now();drawGPU(r,positions(i*.002));timings.push(performance.now()-a);if(i%30===0)await new Promise(ok=>requestAnimationFrame(ok))}timings.sort((a,b)=>a-b);return{draws:1800,elapsedMs:+(performance.now()-begin).toFixed(2),medianMs:+timings[900].toFixed(3),p95Ms:+timings[1710].toFixed(3),contextLost:r.gl.isContextLost()}});
+$('recover').onclick=()=>run('recovery',async()=>{const r=setup(),ext=r.gl.getExtension('WEBGL_lose_context');if(!ext)return {supported:false,reason:'WEBGL_lose_context extension unavailable'};const lost=waitEvent(r.canvas,'webglcontextlost');ext.loseContext();await lost;const observed=r.gl.isContextLost();const restored=waitEvent(r.canvas,'webglcontextrestored');ext.restoreContext();await restored;const gl=r.gl;if(gl.isContextLost())throw Error('Context still lost after webglcontextrestored');/* GPU resources must be recreated after restoration */const fresh=setup();drawGPU(fresh,positions());return{lossObserved:observed,restoreEvent:true,newContextDraw:true,status:'PASS',note:'Recovered event on original context, independent new context draws; in-place resource recreation not yet proved'}});
+$('copy').onclick=()=>navigator.clipboard?.writeText($('report').textContent);
+publish();
+})();
