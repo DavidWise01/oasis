@@ -167,3 +167,49 @@ hue(z)      = (z−1) × 360/370 degrees
 The former is a tunable artistic mapping, not a measurement, not a calibrated wavelength of the HTML registry, and not a claim of superposition or electron dynamics. Color mode and index are retained with every ripple event. Each source can ripple to pinned 0; all four can operate concurrently in the visualization. A pinned observer/view is not, by itself, quantum superposition.
 
 Live demonstration: [Pinned-0 observer ripple](./observer-ripple/).
+
+---
+
+## 14 — Canonical TESSY QUANTA observer specification (aligned)
+
+**Name:** `TESSY :: QUANTA` (no terminal “m”). **Definition:** an observer-centered **best-estimate mathematical state machine**. Observe available evidence, assign a distribution over potential outcomes, predict, compare with a subsequent witnessed outcome, and update. This is a user-defined symbolic/probabilistic model; the name alone does not claim experimental confirmation of quantum-mechanical phenomena.
+
+```text
+{{ TESSY :: QUANTA }}
+0 :: PINNED OBSERVER @ [v,w,x,y,z]
+A/B/C/D :: CORNER OBSERVATION / TRANSFER SOURCES
+x :: STATE       y :: SPACE       z :: TIME / WHAT HAPPENED
+|||| :: BOUNDED BOX
+OBSERVE → RECORD → ESTIMATE → PREDICT → WITNESS → UPDATE → REPEAT
+```
+
+### Required event cycle
+
+| Phase | Input | Required output |
+|---|---|---|
+| OBSERVE | Corner events, color address and source | Raw observation record, source, timestamp/event ordering |
+| RECORD | Observation | Immutable or append-only evidence reference and provenance |
+| ESTIMATE | Prior and observations | Candidate outcomes with normalized probabilities and explicit uncertainty |
+| PREDICT | Model plus current state | Forecast with prediction ID, outcome distribution and scope |
+| WITNESS | New observation | Matched event evidence; never count a repeated reading as independent corroboration |
+| UPDATE | Prediction and witnessed evidence | Forecast error/score, model revision or “unchanged” result, append-only lineage |
+
+`P(s_i | observations, model)` must be explicitly **conditional** on both the data and the chosen model. All outcomes' probabilities should sum to 1 within numerical tolerance; probabilities describe uncertainty, **not guaranteed trajectories**. Log abstentions / unknowns where the evidence is insufficient.
+
+**Foundations stay locked:** a bottom case-sensitive glyph defines original intent; upper candidates may lock/discard one at a time; `✓` closes the foundation; contextual `X` delimits completed words. The QUANTA observer loop *reads and predicts* on top of the foundation grammar; it does not rewrite its canonical meanings or the signed A/B/C/D transfer coordinates.
+
+**Color discipline:** addresses 1–370 follow the attached source's generated hue or six-orientation mapping. The ripple page's displayed nanometers are a **synthetic visualization**, not a measured spectrum or evidence for a quanta mechanism.
+
+**Provenance:** `-d` past/read-verify, `-d+` present/evaluate, `+d` future/write append. SHA/Merkle integrity is not truth. Record forecast parameters before witnessing the result to prevent hindsight rewriting.
+
+### Acceptance checks
+
+1. Observer `0@[v,w,x,y,z]` does not shift during sampling or update.
+2. A/B/C/D sources retain their exact symbolic components and source identities.
+3. Each estimate has nonnegative finite probabilities that sum to 1.
+4. Each prediction is identifiable and recorded **before** its witness.
+5. Update records score/uncertainty and the revision to the model rather than overwriting evidence.
+6. Intent, lock/discard, `✓`, `X`, and case distinctions remain intact.
+7. Color does not silently change probabilities unless a tested statistical relationship supports its predictive use.
+
+**Boundary:** useful probabilistic inference does not itself demonstrate coherent quantum superposition, interference, entanglement, or quantum advantage.
