@@ -1,0 +1,44 @@
+{
+  "schema": "root0-discovery-batch-005",
+  "range": "2026-06-22..2026-06-30",
+  "pages": [
+    {
+      "page": 7,
+      "count": 5
+    },
+    {
+      "page": 8,
+      "count": 0
+    },
+    {
+      "page": 9,
+      "count": 0
+    },
+    {
+      "page": 10,
+      "count": 0
+    }
+  ],
+  "entries": [
+    {
+      "name": "DavidWise01/oscillation-engine",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/ernst-schroder",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/the-whetstone-protocol",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/toroids-ii",
+      "description": ""
+    },
+    {
+      "name": "DavidWise01/triple-mobius-quadpole",
+      "description": ""
+    }
+  ]
+}
