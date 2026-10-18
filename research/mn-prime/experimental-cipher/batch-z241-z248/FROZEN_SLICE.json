@@ -1,0 +1,104 @@
+{
+  "classification": "SPECULATIVE SYMBOLIC CIPHER PATTERN MATCHING, not chemistry",
+  "version": "v19",
+  "frozen_full_366_csv_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+  "stitch_positions": [
+    121,
+    122,
+    243,
+    244,
+    365,
+    366
+  ],
+  "lid_position": 366,
+  "window": 7,
+  "window_geometry": "TOROID",
+  "enclosure": "BOX contains TOROID",
+  "rows": [
+    {
+      "Z": 241,
+      "name": "Biquadunium",
+      "symbol": "Bqu",
+      "hex": "#117594",
+      "band": "Oxygen",
+      "K": 1,
+      "lineage": "C31:1",
+      "stitch": false
+    },
+    {
+      "Z": 242,
+      "name": "Biquadbium",
+      "symbol": "Bqb",
+      "hex": "#0E5B74",
+      "band": "Oxygen",
+      "K": 1,
+      "lineage": "C31:1.1",
+      "stitch": false
+    },
+    {
+      "Z": 243,
+      "name": "Biquadtrium",
+      "symbol": "Bqt",
+      "hex": "#23A7A1",
+      "band": "Oxygen",
+      "K": 1,
+      "lineage": "C31:1.2",
+      "stitch": true
+    },
+    {
+      "Z": 244,
+      "name": "Biquadquadium",
+      "symbol": "Bqq",
+      "hex": "#14B3AF",
+      "band": "Oxygen",
+      "K": 1,
+      "lineage": "C31:1.1.1",
+      "stitch": true
+    },
+    {
+      "Z": 245,
+      "name": "Biquadpentium",
+      "symbol": "Bqp",
+      "hex": "#3A82F6",
+      "band": "Nitrogen",
+      "K": 0,
+      "lineage": "C31:1.1.2",
+      "stitch": false
+    },
+    {
+      "Z": 246,
+      "name": "Biquadhexium",
+      "symbol": "Bqh",
+      "hex": "#5A97F7",
+      "band": "Nitrogen",
+      "K": 0,
+      "lineage": "C31:1.2.1",
+      "stitch": false
+    },
+    {
+      "Z": 247,
+      "name": "Biquadseptium",
+      "symbol": "Bqs",
+      "hex": "#7AABF9",
+      "band": "Nitrogen",
+      "K": 0,
+      "lineage": "C31:1.2.2",
+      "stitch": false
+    },
+    {
+      "Z": 248,
+      "name": "Biquadoctium",
+      "symbol": "Bqo",
+      "hex": "#9ABFFA",
+      "band": "Nitrogen",
+      "K": 0,
+      "lineage": "C31:2 mothers",
+      "stitch": false
+    }
+  ],
+  "physical_verification": false,
+  "electron_configurations_measured": false,
+  "wavelengths_measured": false,
+  "neutron_reference_assumed": 184,
+  "note": "This 8-row source slice is an independently committed excerpt from unchanged frozen 366-row baseline. Its SHA refers to the full local CSV; the full file is included in downloadable ZIP."
+}
