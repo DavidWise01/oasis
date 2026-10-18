@@ -1,0 +1,38 @@
+{
+  "schema": "mn-prime-v22-diatom-v431-read-only-overlay",
+  "scope": "Layer 1 simulated / visual companion only",
+  "source": "user-provided original Diatom V4.31 bundled React HTML (intact in ZIP)",
+  "source_sha256": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe",
+  "full_registry_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+  "embedding": "standalone HTML uses sandboxed allow-scripts iframe with original app bytes verbatim in srcdoc",
+  "source_is_unmodified": true,
+  "mappings": [
+    {
+      "diatom": "EVEN BOX / ODD TOROID",
+      "mn_prime": "Window 8 BOX, TOROID inside; no change across 270→271"
+    },
+    {
+      "diatom": "N R+G+B 245-366",
+      "mn_prime": "Symbolic Nitrogen 0 K band for positions 265-272; not measured light spectrum"
+    },
+    {
+      "diatom": "24 HOLD 1",
+      "mn_prime": "independent 24-point motif, not MN PRIME 27-wave"
+    },
+    {
+      "diatom": "60×60+6",
+      "mn_prime": "3606 is different from registry 366"
+    },
+    {
+      "diatom": "V/D/S/A/M controls",
+      "mn_prime": "remain functional inside iframe; no edit of frozen cipher"
+    }
+  ],
+  "unverified_physics": [
+    "photon trapping by diatom silica solely through gravity",
+    "virus tunneling as a demonstrated quantum mechanism",
+    "stored oil droplets as quantum information",
+    "sub-Planck-scale experiments"
+  ],
+  "physical_verification": false
+}
