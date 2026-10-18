@@ -1,0 +1,37 @@
+{
+  "schema": "mn-prime-v26-original-diatom-v431-readonly",
+  "classification": "Symbolic visual observer; physical hypotheses not validated",
+  "original_html_sha256": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe",
+  "original_366_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+  "preservation": "Original unmodified HTML bytes included in downloadable ZIP, not committed as GitHub blob",
+  "isolation": "sandboxed original React iframe allow-scripts",
+  "mappings": [
+    [
+      "EVEN BOX / ODD TOROID",
+      "Window 9 TOROID throughout rollover"
+    ],
+    [
+      "N R+G+B 245–366",
+      "Z297–304 symbolic Nitrogen 0 K"
+    ],
+    [
+      "24 HOLD 1",
+      "24-point motif independent of 27-wave"
+    ],
+    [
+      "60×60+6",
+      "3606 is distinct from 366"
+    ],
+    [
+      "V/D/S/A/M",
+      "original user-facing controls retained"
+    ]
+  ],
+  "unverified_claims": [
+    "gravity-based photon containment",
+    "oil droplets used as quantum memory",
+    "biological quantum tunneling",
+    "sub-Planck experimental measurements"
+  ],
+  "physical_validation": false
+}
