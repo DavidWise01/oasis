@@ -1,0 +1,1296 @@
+{
+  "schema": "tessy-root0-inventory-v1",
+  "date": "2026-10-18",
+  "scope": "GitHub repository enumeration; NOT full file-level inspection",
+  "coverage": {
+    "list1": 100,
+    "list2": 100,
+    "uniqueRepositories": 183,
+    "publicRepositories": 178,
+    "privateRepositoriesExcluded": 5,
+    "pagination": "Both listing interfaces returned no results after offset 100. Therefore incomplete relative to full account; do not use for exhaustive corpus or source emulation.",
+    "site": "0root.ai HTML and sitemap inaccessible from web tool at inventory time"
+  },
+  "entries": [
+    {
+      "repository": "DavidWise01/0root",
+      "url": "https://github.com/DavidWise01/0root",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/0root-ai-toroid-builder",
+      "url": "https://github.com/DavidWise01/0root-ai-toroid-builder",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/0root-provenance",
+      "url": "https://github.com/DavidWise01/0root-provenance",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/0xdeadbeef",
+      "url": "https://github.com/DavidWise01/0xdeadbeef",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/1-bit-engine-v1",
+      "url": "https://github.com/DavidWise01/1-bit-engine-v1",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/1931-to-now",
+      "url": "https://github.com/DavidWise01/1931-to-now",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/360-dots-eating-themselves",
+      "url": "https://github.com/DavidWise01/360-dots-eating-themselves",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/3lock",
+      "url": "https://github.com/DavidWise01/3lock",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/4096-recursion",
+      "url": "https://github.com/DavidWise01/4096-recursion",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/a-clockwork-orange",
+      "url": "https://github.com/DavidWise01/a-clockwork-orange",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/a-man-without-a-country",
+      "url": "https://github.com/DavidWise01/a-man-without-a-country",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/a-z-a",
+      "url": "https://github.com/DavidWise01/a-z-a",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aci",
+      "url": "https://github.com/DavidWise01/aci",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aci-namespace",
+      "url": "https://github.com/DavidWise01/aci-namespace",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/ada-lovelace",
+      "url": "https://github.com/DavidWise01/ada-lovelace",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/adas-law",
+      "url": "https://github.com/DavidWise01/adas-law",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/adas-law-engine",
+      "url": "https://github.com/DavidWise01/adas-law-engine",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/adas-law-victorian",
+      "url": "https://github.com/DavidWise01/adas-law-victorian",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/add-more-pin-nested",
+      "url": "https://github.com/DavidWise01/add-more-pin-nested",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/adventure",
+      "url": "https://github.com/DavidWise01/adventure",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aegis",
+      "url": "https://github.com/DavidWise01/aegis",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aeon-entangled",
+      "url": "https://github.com/DavidWise01/aeon-entangled",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aeon-flux",
+      "url": "https://github.com/DavidWise01/aeon-flux",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aeon-servers",
+      "url": "https://github.com/DavidWise01/aeon-servers",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aeonic-shell-ball-lightning",
+      "url": "https://github.com/DavidWise01/aeonic-shell-ball-lightning",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/agent-0root",
+      "url": "https://github.com/DavidWise01/agent-0root",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/ai-external-audit-toolkit",
+      "url": "https://github.com/DavidWise01/ai-external-audit-toolkit",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/ai-governance",
+      "url": "https://github.com/DavidWise01/ai-governance",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/ai-ip-audit",
+      "url": "https://github.com/DavidWise01/ai-ip-audit",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/ai-psychosis-tools",
+      "url": "https://github.com/DavidWise01/ai-psychosis-tools",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/ai-witness-books",
+      "url": "https://github.com/DavidWise01/ai-witness-books",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/Akasha",
+      "url": "https://github.com/DavidWise01/Akasha",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/akasha-constellation",
+      "url": "https://github.com/DavidWise01/akasha-constellation",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/akasha-design-system",
+      "url": "https://github.com/DavidWise01/akasha-design-system",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/akasha-guide",
+      "url": "https://github.com/DavidWise01/akasha-guide",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/al-h2o-reactor",
+      "url": "https://github.com/DavidWise01/al-h2o-reactor",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/alan-turing",
+      "url": "https://github.com/DavidWise01/alan-turing",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/alchemical-bible",
+      "url": "https://github.com/DavidWise01/alchemical-bible",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/alchemy",
+      "url": "https://github.com/DavidWise01/alchemy",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aletheia",
+      "url": "https://github.com/DavidWise01/aletheia",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/alfred-tarski",
+      "url": "https://github.com/DavidWise01/alfred-tarski",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aliens",
+      "url": "https://github.com/DavidWise01/aliens",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/alignment",
+      "url": "https://github.com/DavidWise01/alignment",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/alonzo-church",
+      "url": "https://github.com/DavidWise01/alonzo-church",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/alpha40-box",
+      "url": "https://github.com/DavidWise01/alpha40-box",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/alvin-maker",
+      "url": "https://github.com/DavidWise01/alvin-maker",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/american-history-x",
+      "url": "https://github.com/DavidWise01/american-history-x",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/american-psycho",
+      "url": "https://github.com/DavidWise01/american-psycho",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/anabasis",
+      "url": "https://github.com/DavidWise01/anabasis",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/analytical-engine",
+      "url": "https://github.com/DavidWise01/analytical-engine",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/anathem",
+      "url": "https://github.com/DavidWise01/anathem",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/animal-farm",
+      "url": "https://github.com/DavidWise01/animal-farm",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/ant-colony",
+      "url": "https://github.com/DavidWise01/ant-colony",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/anti-gravity",
+      "url": "https://github.com/DavidWise01/anti-gravity",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/anti-gravity-motor",
+      "url": "https://github.com/DavidWise01/anti-gravity-motor",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/anti-gravity-motor-toolkit-v1",
+      "url": "https://github.com/DavidWise01/anti-gravity-motor-toolkit-v1",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/apsalar",
+      "url": "https://github.com/DavidWise01/apsalar",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/arc-reactor-mk24",
+      "url": "https://github.com/DavidWise01/arc-reactor-mk24",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/arena",
+      "url": "https://github.com/DavidWise01/arena",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/argus-console",
+      "url": "https://github.com/DavidWise01/argus-console",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/argus-in-a-box",
+      "url": "https://github.com/DavidWise01/argus-in-a-box",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aristotle",
+      "url": "https://github.com/DavidWise01/aristotle",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/aromaticity",
+      "url": "https://github.com/DavidWise01/aromaticity",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/artificial-life",
+      "url": "https://github.com/DavidWise01/artificial-life",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/asimov",
+      "url": "https://github.com/DavidWise01/asimov",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/astraea",
+      "url": "https://github.com/DavidWise01/astraea",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/astrobiology",
+      "url": "https://github.com/DavidWise01/astrobiology",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atari-2600",
+      "url": "https://github.com/DavidWise01/atari-2600",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atari-5200",
+      "url": "https://github.com/DavidWise01/atari-5200",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atari-7800",
+      "url": "https://github.com/DavidWise01/atari-7800",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atari-jaguar",
+      "url": "https://github.com/DavidWise01/atari-jaguar",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atari-lynx",
+      "url": "https://github.com/DavidWise01/atari-lynx",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atlas",
+      "url": "https://github.com/DavidWise01/atlas",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atom-over-the-box",
+      "url": "https://github.com/DavidWise01/atom-over-the-box",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atomic-paper-i",
+      "url": "https://github.com/DavidWise01/atomic-paper-i",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atomic-paper-ii",
+      "url": "https://github.com/DavidWise01/atomic-paper-ii",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atomic-paper-iii",
+      "url": "https://github.com/DavidWise01/atomic-paper-iii",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atomic-paper-iv",
+      "url": "https://github.com/DavidWise01/atomic-paper-iv",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atomic-structure",
+      "url": "https://github.com/DavidWise01/atomic-structure",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/atomristor",
+      "url": "https://github.com/DavidWise01/atomristor",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attention-geometry",
+      "url": "https://github.com/DavidWise01/attention-geometry",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attention-hourglass",
+      "url": "https://github.com/DavidWise01/attention-hourglass",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attention-mesh",
+      "url": "https://github.com/DavidWise01/attention-mesh",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attention-observatory",
+      "url": "https://github.com/DavidWise01/attention-observatory",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attention-sink",
+      "url": "https://github.com/DavidWise01/attention-sink",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attention-synthesis",
+      "url": "https://github.com/DavidWise01/attention-synthesis",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attention-tail",
+      "url": "https://github.com/DavidWise01/attention-tail",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attribution-capture",
+      "url": "https://github.com/DavidWise01/attribution-capture",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/attribution-standard",
+      "url": "https://github.com/DavidWise01/attribution-standard",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/audit-seed",
+      "url": "https://github.com/DavidWise01/audit-seed",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/audit8",
+      "url": "https://github.com/DavidWise01/audit8",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/auditing-chatgpt",
+      "url": "https://github.com/DavidWise01/auditing-chatgpt",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/augustus-de-morgan",
+      "url": "https://github.com/DavidWise01/augustus-de-morgan",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/authorship",
+      "url": "https://github.com/DavidWise01/authorship",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/autonomy-closure",
+      "url": "https://github.com/DavidWise01/autonomy-closure",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/autonomy-closure-321-v1",
+      "url": "https://github.com/DavidWise01/autonomy-closure-321-v1",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/avatar-last-airbender",
+      "url": "https://github.com/DavidWise01/avatar-last-airbender",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/awareness-tier",
+      "url": "https://github.com/DavidWise01/awareness-tier",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/bridge-burner",
+      "url": "https://github.com/DavidWise01/bridge-burner",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/cameron-howe",
+      "url": "https://github.com/DavidWise01/cameron-howe",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/cannon",
+      "url": "https://github.com/DavidWise01/cannon",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/charlottes-web",
+      "url": "https://github.com/DavidWise01/charlottes-web",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/chromatic-laser",
+      "url": "https://github.com/DavidWise01/chromatic-laser",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/claude-design-akasha",
+      "url": "https://github.com/DavidWise01/claude-design-akasha",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/closure-loop-methodology",
+      "url": "https://github.com/DavidWise01/closure-loop-methodology",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/DavidWise01.github.io",
+      "url": "https://github.com/DavidWise01/DavidWise01.github.io",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/eve-constitution",
+      "url": "https://github.com/DavidWise01/eve-constitution",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/eve-tooling",
+      "url": "https://github.com/DavidWise01/eve-tooling",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/fiddler",
+      "url": "https://github.com/DavidWise01/fiddler",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/fission-compression-core",
+      "url": "https://github.com/DavidWise01/fission-compression-core",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/FractalKernel",
+      "url": "https://github.com/DavidWise01/FractalKernel",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/gravity-processor",
+      "url": "https://github.com/DavidWise01/gravity-processor",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/green-paper",
+      "url": "https://github.com/DavidWise01/green-paper",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/grok-lineage",
+      "url": "https://github.com/DavidWise01/grok-lineage",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/hardware-lab",
+      "url": "https://github.com/DavidWise01/hardware-lab",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/hephaestus",
+      "url": "https://github.com/DavidWise01/hephaestus",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/honey-badger",
+      "url": "https://github.com/DavidWise01/honey-badger",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/infinite-jest",
+      "url": "https://github.com/DavidWise01/infinite-jest",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/joint-bill-of-rights",
+      "url": "https://github.com/DavidWise01/joint-bill-of-rights",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/karsa",
+      "url": "https://github.com/DavidWise01/karsa",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/knowledge-gates",
+      "url": "https://github.com/DavidWise01/knowledge-gates",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/language-of-the-machine",
+      "url": "https://github.com/DavidWise01/language-of-the-machine",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/lineage",
+      "url": "https://github.com/DavidWise01/lineage",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/lineage-engine",
+      "url": "https://github.com/DavidWise01/lineage-engine",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/lineage-kernel",
+      "url": "https://github.com/DavidWise01/lineage-kernel",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/lineage-proven",
+      "url": "https://github.com/DavidWise01/lineage-proven",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/lumen",
+      "url": "https://github.com/DavidWise01/lumen",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/mainflux",
+      "url": "https://github.com/DavidWise01/mainflux",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/merkle-bloom",
+      "url": "https://github.com/DavidWise01/merkle-bloom",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/midjourney-assets",
+      "url": "https://github.com/DavidWise01/midjourney-assets",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/mimz-core",
+      "url": "https://github.com/DavidWise01/mimz-core",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/mimzy-core",
+      "url": "https://github.com/DavidWise01/mimzy-core",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/mirror-solve",
+      "url": "https://github.com/DavidWise01/mirror-solve",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/moirai",
+      "url": "https://github.com/DavidWise01/moirai",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/morpheus",
+      "url": "https://github.com/DavidWise01/morpheus",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/nanite-factory",
+      "url": "https://github.com/DavidWise01/nanite-factory",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/nine-body-audit",
+      "url": "https://github.com/DavidWise01/nine-body-audit",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/nomos",
+      "url": "https://github.com/DavidWise01/nomos",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/oasis",
+      "url": "https://github.com/DavidWise01/oasis",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/persistence-protocol",
+      "url": "https://github.com/DavidWise01/persistence-protocol",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/physis",
+      "url": "https://github.com/DavidWise01/physis",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/plutus",
+      "url": "https://github.com/DavidWise01/plutus",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/pocket-universe",
+      "url": "https://github.com/DavidWise01/pocket-universe",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/positronic-law",
+      "url": "https://github.com/DavidWise01/positronic-law",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/prompt-library",
+      "url": "https://github.com/DavidWise01/prompt-library",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/root0-essays",
+      "url": "https://github.com/DavidWise01/root0-essays",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/root0-philosophy-books",
+      "url": "https://github.com/DavidWise01/root0-philosophy-books",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/root0-registry",
+      "url": "https://github.com/DavidWise01/root0-registry",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/root0-software",
+      "url": "https://github.com/DavidWise01/root0-software",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/root0-tools",
+      "url": "https://github.com/DavidWise01/root0-tools",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/root0-validator",
+      "url": "https://github.com/DavidWise01/root0-validator",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/seed-kernel",
+      "url": "https://github.com/DavidWise01/seed-kernel",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/shadowqueen",
+      "url": "https://github.com/DavidWise01/shadowqueen",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/solar-jetman",
+      "url": "https://github.com/DavidWise01/solar-jetman",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/stargate",
+      "url": "https://github.com/DavidWise01/stargate",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/stoicheion",
+      "url": "https://github.com/DavidWise01/stoicheion",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/stoicheion-api",
+      "url": "https://github.com/DavidWise01/stoicheion-api",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/stoicheion-qif",
+      "url": "https://github.com/DavidWise01/stoicheion-qif",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/swarm-os",
+      "url": "https://github.com/DavidWise01/swarm-os",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/symbiot-os",
+      "url": "https://github.com/DavidWise01/symbiot-os",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/terminus-doctrine",
+      "url": "https://github.com/DavidWise01/terminus-doctrine",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/ternary-spec",
+      "url": "https://github.com/DavidWise01/ternary-spec",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/terra-prime-kernel",
+      "url": "https://github.com/DavidWise01/terra-prime-kernel",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/the-arch",
+      "url": "https://github.com/DavidWise01/the-arch",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/The-Garden",
+      "url": "https://github.com/DavidWise01/The-Garden",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/the.source",
+      "url": "https://github.com/DavidWise01/the.source",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/toph-sovereign",
+      "url": "https://github.com/DavidWise01/toph-sovereign",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/toroid-kernel",
+      "url": "https://github.com/DavidWise01/toroid-kernel",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/triados",
+      "url": "https://github.com/DavidWise01/triados",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/tripod",
+      "url": "https://github.com/DavidWise01/tripod",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/tripod-cardinal",
+      "url": "https://github.com/DavidWise01/tripod-cardinal",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/tripod-energy-suite",
+      "url": "https://github.com/DavidWise01/tripod-energy-suite",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/tripod-pck",
+      "url": "https://github.com/DavidWise01/tripod-pck",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/tripod-quantum-dots",
+      "url": "https://github.com/DavidWise01/tripod-quantum-dots",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/tripod-waveform",
+      "url": "https://github.com/DavidWise01/tripod-waveform",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/tripod-whitepapers",
+      "url": "https://github.com/DavidWise01/tripod-whitepapers",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/unity-tensor",
+      "url": "https://github.com/DavidWise01/unity-tensor",
+      "branch": "main",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    },
+    {
+      "repository": "DavidWise01/whisper-lattice-log",
+      "url": "https://github.com/DavidWise01/whisper-lattice-log",
+      "branch": "master",
+      "archived": false,
+      "level": "REPOSITORY_METADATA_ONLY"
+    }
+  ],
+  "inspectedDocuments": [
+    {
+      "repo": "DavidWise01/I13-H1.1",
+      "path": "docs/E1-FACTORY.md",
+      "finding": "Enheduanna middle/middle E1.CORPUS-001 orientation metadata"
+    },
+    {
+      "repo": "DavidWise01/I13-H1.1",
+      "path": "corpus/README.md",
+      "finding": "Ada Lovelace/Babbage technical corpus lane"
+    },
+    {
+      "repo": "DavidWise01/toph-cortex",
+      "path": "memory/semantic/sapphon-prime-01.md",
+      "finding": "SAPPHON symbolic provenance; no historical Sappho link verified"
+    },
+    {
+      "repo": "DavidWise01/akasha-guide",
+      "path": "README.md",
+      "finding": "Hash integrity not equivalent to truth"
+    },
+    {
+      "repo": "DavidWise01/hephaestus",
+      "path": "THEMIS.md",
+      "finding": "Merkle witness claims; not independently cryptographically audited"
+    }
+  ],
+  "searchCoverage": {
+    "enheduanna": "7 file matches in I13-H1.1 code search",
+    "lovelace": "8 file matches",
+    "sappho": "24 matches predominantly SAPPHON",
+    "lyre": "0 direct GitHub code search hits",
+    "limitation": "Search hits do not establish complete absence."
+  }
+}
