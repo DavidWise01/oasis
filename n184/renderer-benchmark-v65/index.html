@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>N184 · Full Viewport Performance</title>
+<style>body{margin:0;padding:20px;background:#071728;color:#d7eef6;font:14px/1.55 Consolas,monospace}main{max-width:1150px;margin:auto}h1{font-size:26px}section{border:1px solid #38768c;padding:14px;margin:10px 0;background:#0d2538}button,select{font:inherit;padding:8px;background:#183f57;border:1px solid #60acc8;color:#edfaff;cursor:pointer}canvas{display:block;width:100%;height:400px;background:#061524}.muted{color:#abc8d8}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#83e1e2}</style>
+<main><h1>N184 — Full Viewport Benchmark</h1><p>Renderer-only study · 4 views / cached geometry / dirty-frame behavior · v6.1 frozen</p>
+<section><label>Scenario <select id="scenario"><option value="orbit">Camera orbit: redraw continuously</option><option value="idle">Idle: dirty-frame skipping</option><option value="slice">Slicing: rebuild clipped scene</option></select></label> <button id="run">RUN 180-FRAME TEST</button> <button id="copy">COPY RESULT</button><p class="muted">Measurements use Canvas2D with the same projection and cached scene implementation. Does not mutate original N184 page, recovery state, or IndexedDB.</p><pre id="results">Not run</pre></section>
+<section><h2>Live viewport test</h2><canvas id="view"></canvas></section><p><a href="../blueprint-lab-v63/">Blueprint Lab</a> · <a href="../renderer-benchmark-v64/">Canvas2D / WebGL2 A/B</a></p></main>
+<script src="../blueprint-lab-v63/geometry.js"></script><script src="../blueprint-lab-v63/shared-scene.js"></script><script src="../blueprint-lab-v63/dirty-render.js"></script><script>
+'use strict';
+(()=>{const G=window.N184Geometry,C=window.N184SharedScene,D=window.N184DirtyRender,$=id=>document.getElementById(id);
+const layers={outer:true,inner:true,box:true,weak:true,medium:true,strong:true,core:true,gate:true,wiring:true};
+const state={layers,angles:[0,0,29,0,-21,14],projection:'perspective',distance:5.2,explode:0,sliceAxis:'off',slice:0,thick:.2,yaw:.72,pitch:.4,zoom:1,address:0,nibble:6,step:0};
+const canvas=$('view'),ctx=canvas.getContext('2d');
+function render(){const w=canvas.width,h=canvas.height;ctx.fillStyle='#061524';ctx.fillRect(0,0,w,h);let s=C.segments(state);for(const l of s){let a=G.toScreen(l.a,w,h,state.yaw,state.pitch,state.zoom),b=G.toScreen(l.b,w,h,state.yaw,state.pitch,state.zoom);ctx.strokeStyle=l.color;ctx.lineWidth=l.width;ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()}}
+function median(a){let sorted=a.slice().sort((x,y)=>x-y);return sorted[Math.floor(sorted.length/2)]}
+function percentile(a,p){let sorted=a.slice().sort((x,y)=>x-y);return sorted[Math.min(sorted.length-1,Math.floor((sorted.length-1)*p))]}
+let running=false;
+async function test(){if(running)return;running=true;$('run').disabled=true;
+const scenario=$('scenario').value;
+canvas.width=960;canvas.height=540;C.reset();D.invalidate();state.sliceAxis='off';state.slice=0;state.yaw=.72;let times=[],drawn=0,skipped=0,rafDelta=[],last=0;
+for(let i=0;i<180;i++){await new Promise(resolve=>requestAnimationFrame(ts=>{if(last)rafDelta.push(ts-last);last=ts;resolve()}));
+ if(scenario==='orbit')state.yaw+=.006;
+ if(scenario==='slice'){state.sliceAxis='X';state.slice=-1.5+3*i/179;}
+ const start=performance.now(),changed=D.shouldDraw(state,[[canvas.width,canvas.height,1]]);
+ if(changed){render();drawn++}else skipped++;
+ times.push(performance.now()-start);
+}
+const stats={timestamp:new Date().toISOString(),scenario,frames:180,segments:G.makeScene(state).length,drawn,skipped,frameCpuMedianMs:+median(times).toFixed(3),frameCpuP95Ms:+percentile(times,.95).toFixed(3),requestAnimationFrameMedianIntervalMs:+median(rafDelta).toFixed(3),sceneBuilds:C.stats.builds,clipBuilds:C.stats.clips,cacheHits:C.stats.hits,browser:navigator.userAgent,warning:'Timing is local and approximate; no hardware power-loss or GPU timing claims'};
+$('results').textContent=JSON.stringify(stats,null,2);$('run').disabled=false;running=false}
+$('run').onclick=()=>test().catch(e=>{running=false;$('run').disabled=false;$('results').textContent='ERROR: '+e.stack});
+$('copy').onclick=()=>navigator.clipboard?.writeText($('results').textContent);
+})();
+</script></html>
