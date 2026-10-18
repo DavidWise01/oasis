@@ -1,0 +1,37 @@
+{
+  "schema": "MN-PRIME-v27-DIATOM-V431-isolated-observer",
+  "classification": "Layer 1 symbolic visualization; no physical validation",
+  "original_html_sha256": "1dd51e431dc2dc964cd3876201ed41817ac00869dd6b544ea2f5b8de6f64a5fe",
+  "full_cipher_sha256": "e5d688a60ea963f9eb157e0bd7107df355efb7907e2eeb1526e09dc22e984b04",
+  "original_bytes_unchanged": true,
+  "implementation": "original user React V4.31 HTML retained as unedited sandboxed script-only iframe in local explorer and ZIP",
+  "symbolic_mappings": [
+    [
+      "EVEN BOX ODD TOROID",
+      "305-312 window 9 TOROID, regardless of maternal rollover"
+    ],
+    [
+      "N R+G+B 245-366",
+      "305-312 Nitrogen 0 K symbolic; HEX palette is not spectroscopy"
+    ],
+    [
+      "24 HOLD 1",
+      "independent 24-point mnemonic, not MN PRIME 27-step primitive"
+    ],
+    [
+      "60x60+6",
+      "3606 and 366 are distinct counts"
+    ],
+    [
+      "V/D/S/A/M",
+      "five existing user interface controls remain functional"
+    ]
+  ],
+  "physically_unverified": [
+    "gravity photon trapping in diatom silica",
+    "viral quantum tunneling",
+    "oil droplet quantum-memory behavior",
+    "sub-Planck experiments"
+  ],
+  "physical_validation": false
+}
