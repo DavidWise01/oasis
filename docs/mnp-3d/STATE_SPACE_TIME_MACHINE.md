@@ -235,3 +235,10 @@ The [Tessy operations console](../tessy/) now hashes every new session receipt a
 **Cycle:** `OBSERVE → PREDICT → WITNESS → UPDATE → HASH → VERIFY → REPEAT`.
 
 **Boundary:** hashes supply tamper evidence relative to a separately retained trusted head, but this locally mutable chain is **not digitally signed, independently timestamped, or durably backed up**. Browser storage may be removed, a replaced whole chain can pass local verification, and NOM remains a read-only external witness. Production certification still requires external persistence and independent live browser/integration testing.
+
+
+---
+
+## 17 — Frozen canonical closure
+
+The exact ordered nine-register sequence `64:32:16:8:4:2:1:1:0` is preserved in [QUANTA Canonical Nine-Register Closure v1](./QUANTA_64_32_16_8_4_2_1_1_0_CANONICAL_V1.md). The two `1` registers respectively designate integrated perception and the additional view of totality; `0` remains pinned. Ethos, pathos, logos and mythos contribute to perception. Interpretations of the larger registers are annotated but not claimed to be experimentally determined. This addition does not modify previously frozen foundations.
