@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TESSY · MN PRIME · 365+5</title>
+<style>
+:root{color-scheme:dark;font:14px system-ui;background:#070c17;color:#f0f5ff}*{box-sizing:border-box}body{margin:0}header{padding:18px 25px;border-bottom:1px solid #344963;background:#0b1425}h1{margin:0 0 5px;font-size:clamp(23px,3vw,34px)}.sub{color:#b1c3df}main{display:grid;grid-template-columns:minmax(320px,1fr) 360px;gap:16px;padding:16px;max-width:1470px;margin:auto}.panel{border:1px solid #354962;border-radius:16px;background:#101b2c;padding:15px}canvas{width:100%;height:auto;display:block;max-width:820px;margin:auto;cursor:crosshair;touch-action:manipulation}h2{font-size:17px;margin:0 0 10px}.pill{border-radius:8px;background:#1c2b43;padding:8px;color:#d4edff;margin:6px 0}.row{display:flex;gap:8px;flex-wrap:wrap}.chip{min-width:36px;height:30px;border:1px solid #77879d;border-radius:7px}button,input,select{padding:9px;border:1px solid #486787;background:#17263e;color:white;border-radius:7px;font:inherit}button{cursor:pointer}button:hover{background:#284365}input{width:90px}select{max-width:100%}.field{margin:12px 0}label{display:block;font-weight:650;margin:0 0 5px}.metric{font-size:24px;font-weight:750}.small{font-size:12px;color:#b0c5dd;line-height:1.5}#details{white-space:pre-wrap;font:12px ui-monospace,monospace;line-height:1.6}#status{font:12px ui-monospace,monospace;color:#a2e4c2}.legend{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin:10px 0}.legend>div{padding:7px;background:#13263b;border-radius:7px}.sw{display:inline-block;width:15px;height:15px;border:1px solid #bbb;border-radius:3px;vertical-align:middle;margin-right:5px}.muted{color:#a8bfda}.code{font:12px ui-monospace,monospace}footer{margin:2px 16px 20px;color:#9cb1ca;font-size:12px}@media(max-width:850px){main{grid-template-columns:1fr}.panel{padding:12px}}
+</style>
+<header><div class="sub code">OASIS · TESSY · MATHEMATICAL STATE-SPACE VISUALIZATION</div><h1>MN PRIME · 365 + 5 · 370</h1><div class="sub">Three rings 122 + 122 + 126 · eight reference colors · strength overlays · symbolic Sag A enclosure 100^100</div></header>
+<main>
+<section class="panel"><canvas id="wheel" width="900" height="900" aria-label="370-address radial register"></canvas><div class="pill">Click any radial wedge. The final five entries are carrier addresses, not additional physical forces or wavelengths.</div><h2>Eight reference colors (separate from the 370-address palette)</h2><div class="row" id="refs"></div></section>
+<aside class="panel">
+<h2>Registry inspector</h2>
+<div class="field"><label for="position">Address 1–370</label><input type="number" id="position" min="1" max="370" value="366"><button id="back">◀</button><button id="next">▶</button></div>
+<div class="field"><label for="view">Visual color mode</label><select id="view"><option value="hue">Generated hue wheel (source)</option><option value="six">Six RGB permutations (source)</option><option value="carrier" selected>365 + 5 carrier overlay</option></select></div>
+<div class="field"><label for="strength">Strength channel (display weight, not extra addresses)</label><select id="strength"><option value="weak">Weak</option><option value="medium" selected>Medium</option><option value="strong">Strong</option></select></div>
+<div class="pill"><div class="metric" id="heading"></div><div id="details"></div></div>
+<h2>Five reserved addresses</h2><div id="terminal" class="legend"></div>
+<h2>Additional spectrum / perception labels</h2>
+<div class="legend"><div>Gamma · invisible EM band</div><div>X-ray · invisible EM band</div><div><span class="sw" style="background:#008080"></span>Teal · blue-green</div><div><span class="sw" style="background:#ff70b9"></span>Pink · nonspectral</div></div>
+<p class="small">Gamma/X-ray are not visually colored radiation. Teal/pink are color representations. These four labels are kept as an annotation set, rather than assigned to carrier slots without a declared mapping.</p>
+<div class="row"><button id="csv">Export CSV</button><button id="json">Export JSON</button></div>
+<p id="status"></p>
+<h2>Scale and combinatorics</h2><div class="code">STATE SPACE :: 100^100 = 10^200<br>PRIMARY :: 365<br>CARRIERS :: 5<br>370 × 3 strengths = 1110 selectable address-strength labels<br>8 reference colors × 3 = 24 reference labels<br>0@vwxyz :: pinned symbolic center</div>
+<p class="small">365 + 5 is a new interpretation overlaid on the original 370-position wheel. The source keeps the generated hue and six RGB modes; this page doesn't replace or alter it.</p>
+</aside></main><footer>Pure browser Canvas2D · no external dependencies · no claims about measured stellar emissions, chemical elements 119+, or quantum computation.</footer>
+<script>
+(()=>{'use strict';
+const N=370,PRIMARY=365,TAU=Math.PI*2,PI=Math.PI,ctx=document.getElementById('wheel').getContext('2d'),$=id=>document.getElementById(id);
+const RINGS=[{first:1,count:122,r0:300,r1:420},{first:123,count:122,r0:190,r1:290},{first:245,count:126,r0:80,r1:180}];
+const CARRIERS=[{z:366,name:'Weak',color:'White',hex:'#FFFFFF'},{z:367,name:'Electro',color:'Black',hex:'#000000'},{z:368,name:'Magnetic',color:'Gray',hex:'#808080'},{z:369,name:'Nuclear',color:'Teal (green/blue)',hex:'#008080'},{z:370,name:'Quanta · fission/fusion',color:'Ochre (red/orange/blue)',hex:'#CC7722'}];
+const REF=[['Red','#ff0000'],['Blue','#0000ff'],['White','#ffffff'],['Green','#00ff00'],['Purple','#800080'],['Orange','#ff9500'],['Black','#000000'],['Yellow','#ffff00']];
+const ORIENT=[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]];
+function check(z){return Number.isInteger(z)&&z>=1&&z<=N}
+function angle(z){return(z-1)*360/N}
+function hsv(h,s=.78,v=.98){let c=v*s,x=c*(1-Math.abs((h/60)%2-1)),m=v-c;let a=h<60?[c,x,0]:h<120?[x,c,0]:h<180?[0,c,x]:h<240?[0,x,c]:h<300?[x,0,c]:[c,0,x];return'#'+a.map(n=>Math.round((n+m)*255).toString(16).padStart(2,'0')).join('')}
+function six(z){return'#'+ORIENT[((z-343)%6+6)%6].map(n=>(n*85).toString(16).padStart(2,'0')).join('')}
+function ring(z){return RINGS.find(r=>z>=r.first&&z<r.first+r.count)}
+function color(z){let m=$('view').value;if(m==='six')return six(z);if(m==='carrier'&&z>PRIMARY)return CARRIERS[z-366].hex;return hsv(angle(z))}
+function ratio(){return {weak:0.42,medium:0.70,strong:1}[$('strength').value]}
+let chosen=366;
+function draw(){const w=900,center=450;ctx.fillStyle='#08101e';ctx.fillRect(0,0,w,w);ctx.save();ctx.translate(center,center);for(const r of RINGS){for(let i=0;i<r.count;i++){let z=r.first+i,a0=-PI/2+i*TAU/r.count,a1=-PI/2+(i+1)*TAU/r.count;ctx.beginPath();ctx.arc(0,0,r.r1,a0,a1);ctx.arc(0,0,r.r0,a1,a0,true);ctx.closePath();ctx.fillStyle=color(z);ctx.globalAlpha=ratio();ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle=z===chosen?'#ffffff':'#071125';ctx.lineWidth=z===chosen?4:1;ctx.stroke();}}ctx.globalAlpha=1;ctx.beginPath();ctx.arc(0,0,71,0,TAU);ctx.fillStyle='#071727';ctx.fill();ctx.strokeStyle='#6c8dab';ctx.stroke();ctx.textAlign='center';ctx.fillStyle='white';ctx.font='bold 22px system-ui';ctx.fillText('0@vwxyz',0,-14);ctx.font='15px ui-monospace,monospace';ctx.fillText('365 + 5',0,11);ctx.font='13px ui-monospace,monospace';ctx.fillText('10^200',0,32);ctx.restore();}
+function select(z){if(!check(z))return;chosen=z;$('position').value=z;let r=ring(z),c=CARRIERS.find(x=>x.z===z);$('heading').textContent='Z'+z+' · '+(c?c.name:'Primary');$('details').textContent='Ring: '+(RINGS.indexOf(r)+1)+' / '+(z-r.first+1)+' of '+r.count+'\nColor: '+color(z)+'\nHue address: '+angle(z).toFixed(3)+'°\nSix orientation: '+ORIENT[((z-343)%6+6)%6].join(':')+'\nStrength: '+$('strength').value+' (alpha '+ratio()+')'+(c?'\nCarrier color: '+c.color:'\nPrimary palette entry');draw();}
+for(const [name,hex] of REF){let el=document.createElement('button');el.className='chip';el.style.background=hex;el.title=name;el.setAttribute('aria-label',name);$('refs').appendChild(el)}
+for(const c of CARRIERS){const x=document.createElement('div');x.textContent='Z'+c.z+' · '+c.name;let sw=document.createElement('span');sw.className='sw';sw.style.background=c.hex;x.prepend(sw);$('terminal').appendChild(x)}
+$('wheel').addEventListener('click',e=>{let b=e.target.getBoundingClientRect(),x=(e.clientX-b.left)*900/b.width-450,y=(e.clientY-b.top)*900/b.height-450,r=Math.hypot(x,y),theta=((Math.atan2(y,x)+PI/2+TAU)%TAU)/TAU;let ring=RINGS.find(g=>r>=g.r0&&r<=g.r1);if(ring)select(ring.first+Math.min(ring.count-1,Math.floor(theta*ring.count)))});
+$('position').addEventListener('change',e=>select(Math.min(N,Math.max(1,Math.trunc(Number(e.target.value)||chosen)))));
+$('back').onclick=()=>select(Math.max(1,chosen-1));$('next').onclick=()=>select(Math.min(N,chosen+1));
+$('view').onchange=()=>select(chosen);$('strength').onchange=()=>select(chosen);
+function download(filename,body,type){const url=URL.createObjectURL(new Blob([body],{type})),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function record(z){let c=CARRIERS.find(x=>x.z===z);return{address:z,role:z<=365?'primary':'carrier',ring:RINGS.indexOf(ring(z))+1,hueDegrees:angle(z),orientation:ORIENT[((z-343)%6+6)%6],hex:color(z),carrier:c?c.name:null,carrierColor:c?c.color:null,strength:$('strength').value}}
+$('json').onclick=()=>download('tessy-370-register.json',JSON.stringify({model:'TESSY_MN_PRIME',center:'0@vwxyz',stateSpace:'10^200',primary:365,carriers:CARRIERS,strengths:['weak','medium','strong'],entries:Array.from({length:N},(_,i)=>record(i+1))},null,2),'application/json');
+$('csv').onclick=()=>download('tessy-370-register.csv',['address,role,ring,hue_degrees,hex,strength,carrier',...Array.from({length:N},(_,i)=>{let r=record(i+1);return[r.address,r.role,r.ring,r.hueDegrees.toFixed(4),r.hex,r.strength,(r.carrier||'').replaceAll(',',';')].join(',')})].join('\n')+'\n','text/csv');
+const all=RINGS.flatMap(r=>Array.from({length:r.count},(_,i)=>r.first+i));const tests=[all.length===370,new Set(all).size===370,all[0]===1,all.at(-1)===370,CARRIERS.length===5,CARRIERS[0].z===366,CARRIERS.at(-1).z===370,REF.length===8,ORIENT.length===6,365+5===370,370*3===1110,8*3===24,10n**200n===100n**100n,Array.from({length:370},(_,i)=>check(i+1)).every(Boolean)];
+$('status').textContent=tests.every(Boolean)?tests.length+'/'+tests.length+' deterministic alignment checks PASS':'ALIGNMENT CHECK FAILED';select(chosen);
+})();
+</script></html>
