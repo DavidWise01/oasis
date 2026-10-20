@@ -1,27 +1,42 @@
-# FOUR PULSARS — Gothic Ice-Cube Laser
+# FOUR PULSARS · 0-STABLE QUADRATURE (v2)
 
-Standalone, offline, zero-dependency HTML/Canvas2D viewer with an animated ASCII display.
+A standalone, offline **gothic four ice-cube pulsar / dot-box ASCII + Canvas2D simulator**. Open `index.html` in a browser. No libraries, network requests, shaders, hardware laser or external assets.
 
-**Run:** Open `index.html` in Chrome/Edge/Firefox (no server needed).
+## The user-defined quarter-phase proposal
 
-Four fictional space ice-cube pulsars: green (Tb), red (Eu), blue (Nd), purple (Er). Each node has a faceted cube, glowing orbital rings, rotating sweep beam, and packets converging into a recursive four-dot box `[.|.|.|.|]`. The center displays a glowing symbolic laser during FIRE.
+The green, red, blue and purple emitters keep rotating and emit pulses offset by one quarter of a full rotation:
 
-## Controls
+| Source | Initial phase | Turns | Color | Symbol |
+|---|---:|---:|---|---|
+| Terbium / Green | 0° | 0 | green | G |
+| Europium / Red | 90° | ¼ | red | R |
+| Neodymium / Blue | 180° | ½ | blue | B |
+| Erbium / Purple | 270° | ¾ | purple | P |
 
-- PLAY / PAUSE: run continuous pulse cycles.
-- STEP: advance one-sixteenth of a cycle, paused.
-- PULSE: jump to FIRE.
-- RESET: return to t=0 and pause.
-- Four emitter buttons: toggle green/red/blue/purple, represented as a four-bit mask (2^4=16 combinations).
-- SPEED and GLOW sliders: adjust animation time and effects.
-- GRAPHICS / ASCII: switch representations of the same simulation state.
-- PNG / TXT: export Canvas or text frame.
-- Keyboard: space, right arrow, P, A, R.
+Each emitter's angular position is `θᵢ(t) = 2π(t/T + k/4 + δᵢ)`, with `k=0,1,2,3`, `T=6400 ms` at 1× speed, and `δ₃` adjustable on the **PURPLE PHASE SLIP** slider. Rotation, sweeping light beams, ring geometry and traveling pulse packets share this same phase state.
 
-## What it is (and isn't)
+Two separate registers are computed:
 
-This is a **procedural sci-fi art simulation** of four fictional crystal pulsars. Real pulsars are rotating neutron stars; the geometric ice cubes are not actual pulsars and the beams do not model real laser coherence, rare-earth emission wavelengths, or physical RGB mixing.
+- **Center phase-balance vector**: `V(t) = Σ enabledᵢ · (cos θᵢ, sin θᵢ)`. With all emitters enabled at 0/90/180/270°, `V=(0,0)`, so `|V| ≈ 0` throughout the cycle. This is the **0-STABLE** reading.
+- **Nonnegative pulsed emission**: `Iᵢ(t) = enabledᵢ · [1 + cos θᵢ]/2`. All four enabled and locked implies `ΣIᵢ = 2` normalized units at all times. **Zero vector imbalance is not zero light output.** The separate GLOW slider changes visual brightness, not these normalized test values.
 
-The symbolic `. | . | . | . |` focus box preserves the user-defined four-dot grammar. Four independent emitters each have an on/off state, hence 16 masks; that is distinct from the earlier three-bit, eight-state RGB diffusion model.
+These are illustrative equal-amplitude phase-vector / intensity-envelope rules, not a coherent optical-field interference calculation among four differently colored lasers, and not a physical stability guarantee for a real pulsar system.
 
-The entire simulator is in `index.html`. No imports or downloaded assets, no frameworks, no user data sent anywhere.
+## Test the stabilizer
+
+Start with all four emitters enabled, purple phase slip at 0°, and watch the **NET PHASE / CENTER** register remain 0.000 / LOCKED as the cubes spin and emit. Turn off one colored emitter, or move purple phase slip to 45°, to see the **center residual** become nonzero. Click **LOCK FOUR QUARTERS · RESET Δ** to restore all four emitters and their 90° separations. You can also use PLAY / PAUSE, STEP, PULSE, RESET, speed/glow, and GRAPHICS / ASCII controls, then export PNG or TXT.
+
+### Reference outcomes
+
+| Test | Center residual | Total emitted normalized intensity |
+|---|---:|---:|
+| Four emitters, 0° slip | ~0 | 2.000 constant |
+| Purple +45° slip | ~0.765367 | varies over the rotation |
+| Purple +90° slip | ~1.414214 | varies over the rotation |
+| Blue disabled | 1.000000 | varies over the rotation |
+
+**Checks performed:** `test_quadrature.py` verified 63 assertions, including 11 timestamps spanning many complete rotations, center balance, pulsed emission, per-source phases, intentional drift, relocking, disabled emitters, snapshots, old controls, reset, desktop/mobile Chromium behavior and zero page exceptions. Legacy `test_browser.py` was rerun successfully on the v2 viewer.
+
+## Repo and preservation
+
+Hosted alongside the GG-ZERO project at `apps/game-gear-zero/labs/four-pulsars-gothic/index.html`. Original v1 was frozen at branch `freeze/four-pulsars-gothic-v1` before v2 update. This viewer is independent of and does not change the Game Gear emulator, Z80 ROMs or the earlier DOT-BOX diffusion lab.
