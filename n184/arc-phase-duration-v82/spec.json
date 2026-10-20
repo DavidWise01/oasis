@@ -1,0 +1,75 @@
+{
+  "schema": "oasis/n184/arc-phase-duration/v82",
+  "version": "v8.2",
+  "status": "symbolic-length-referenced-phase-duration-with-conditional-light-travel-conversion",
+  "userRuleLiteral": "the duration is 1 plank bubble length",
+  "correctionOf": "v8.1 had no cycle-duration reference; v8.2 sets one full cycle to one user-defined plank bubble length",
+  "assumptions": {
+    "plankBubbleLength": "one complete Plank/Planck-length envelope in this model equals the CODATA Planck length l_P",
+    "arcBubble": "one of six geometric sub-arcs, length l_P/6, distinct from a complete plank bubble",
+    "cycle": "one 360-degree internal phase cycle comprised of 80 equal 1.25 percent steps",
+    "conversion": "For a time reported in seconds, use the explicitly selected null-trajectory light-travel equivalence t=L/c. This is a unit bridge, not a measured duration for a physical bubble."
+  },
+  "duration": {
+    "userDefinedBasis": "one plank bubble length",
+    "dimensionOfBasis": "length",
+    "symbol": "L_bubble",
+    "bubbleLengthMeters": 1.616255e-35,
+    "fullCycleLengthEquivalentMeters": 1.616255e-35,
+    "normalizedCycleFraction": "n/80",
+    "cumulativeLengthFormula": "L_equiv(n)=(n/80)*L_bubble",
+    "lengthEquivalentPerTickMeters": 2.0203187500000003e-37,
+    "conversionRule": "c * T_cycle = L_bubble",
+    "selectedConversionSpeedMetersPerSecond": 299792458,
+    "conversionType": "conditional light travel time; not direct equation of dimensional length with time",
+    "equivalentFullCycleSeconds": 5.391246366844893e-44,
+    "equivalentSecondsPerTick": 6.739057958556115e-46,
+    "elapsedSecondsFormula": "t_equiv(n)=(n/80)*(L_bubble/c)",
+    "separateNistRecommendedPlanckTimeSeconds": 5.391247e-44,
+    "agreementWithRoundedCODATA": true
+  },
+  "phase": {
+    "nMin": 0,
+    "nMax": 80,
+    "nIntegersOnly": true,
+    "fractionPerStep": 0.0125,
+    "percentPerStep": 1.25,
+    "stepsPerCycle": 80,
+    "cycleDegrees": 360,
+    "degreesPerTick": 4.5,
+    "normalizedFormula": "tau(n)=n*0.0125",
+    "endConvention": "n=80 is the completed cycle, at 360deg; next cycle starts at n=0"
+  },
+  "geometry": {
+    "symbolicArcCountPerBubble": 6,
+    "calibratedArcMeters": 2.6937583333333336e-36,
+    "internalArcCycleNominalMeters": 2.697e-36,
+    "displayArcSectorDegrees": 60,
+    "distinction": "The full bubble length is l_P; one arc path in v7.9 is l_P/6; one v8.0 internal nominal arc-cycle length is 2.697e-36 m. These are not interchangeable.",
+    "arcTraversalSpeedNotInferred": true
+  },
+  "references": {
+    "sourceV81": "../arc-phase-time-v81/spec.json",
+    "arcSourceV80": "../arc-cycle-v80/spec.json",
+    "bubbleSourceV79": "../arc-bubble-v79/spec.json",
+    "physicalRegisterV78": "../scale-xyz-v78/spec.json",
+    "constants": "https://physics.nist.gov/cuu/pdf/all.pdf"
+  },
+  "inherited": {
+    "x": "state",
+    "y": "space",
+    "z": "state+time",
+    "top": "star / plank bubble",
+    "middle": "planet / plank foam / Earth",
+    "bottom": "atom / plank",
+    "sameNineSagAInstances": true,
+    "originalSymbolicClock": "13/8B:1:1x10^-35"
+  },
+  "restrictions": [
+    "A length is not itself a time. The user's one-bubble-length duration is a normalized model reference; seconds are derived only through the explicit speed-of-light conversion.",
+    "The statement does not establish a physically measurable Planck-scale cycle or a minimum physical clock tick.",
+    "The 1.25-percent phase-time rule is a user-defined discrete phase convention.",
+    "The geometric per-arc length l_P/6 is distinct from the full bubble length l_P used as the duration reference.",
+    "All previous OASIS v7.x–v8.1 source files remain unchanged."
+  ]
+}
