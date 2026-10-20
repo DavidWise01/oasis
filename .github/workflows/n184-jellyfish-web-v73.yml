@@ -1,0 +1,21 @@
+name: N184 Jellyfish Web v73
+on:
+  push:
+    paths:
+      - 'n184/jellyfish-web-v73/**'
+      - '.github/workflows/n184-jellyfish-web-v73.yml'
+  workflow_dispatch:
+jobs:
+  nine-instance-topology:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify 5 upper 4 lower Sag A topology
+        run: |
+          node --check n184/jellyfish-web-v73/test_web.mjs
+          node n184/jellyfish-web-v73/test_web.mjs
