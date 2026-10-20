@@ -21,6 +21,7 @@ h1 span{color:var(--cyan)}
  background:linear-gradient(142deg,#d4fbff32 0%,#78c6ec19 20%,#0d32537a 52%,#c8edff1c 75%,#d7ffff14 95%);
  border:1.5px solid #b6f8ff99;box-shadow:0 18px 70px #010714da,0 0 55px #8ddcff18,inset 0 0 0 2px #c7f9ff23,inset 6px 6px 32px #c8f9ff36,inset -20px -20px 60px #001126b0;backdrop-filter:blur(17px)}
 .handheld:before{content:"";position:absolute;inset:10px;border:1px solid #c6faff40;border-radius:48px 48px 100px 35px;pointer-events:none}
+.i13Lamp{position:absolute;top:13px;left:35px;z-index:2;border-radius:15px;padding:3px 9px;background:#213746;border:1px solid #a6d9e477;color:#d6f6ff;box-shadow:0 0 4px #8ccfff55;font-weight:800;font-size:11px;letter-spacing:.1em;transition:background .08s,box-shadow .08s}
 .vblankBeacon{position:absolute;right:37px;top:15px;z-index:2;opacity:.23;color:#b9faff;font-size:9px;letter-spacing:.15em;display:flex;align-items:center;gap:6px;transition:opacity .07s}
 .vblankBeacon:before{content:"";width:8px;height:8px;border-radius:50%;background:#bbf8ff;box-shadow:0 0 11px #83c9ff}
 .handheld{transition:box-shadow .045s ease,border-color .045s ease}
@@ -65,7 +66,7 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 <header><div><h1>GG<span>—ZERO</span></h1><div class="sub">THE PROBABILITY LAB · GAME GEAR EMULATOR FROM ZERO</div></div><div class="chip" id="coreStatus">ORIGINAL ENGINE · BOOT READY</div></header>
 <div class="layout">
 <section class="handheld" aria-label="Hollow-glass Game Gear console">
-<div class="vblankBeacon" id="vblankBeacon" title="Driven by real emulated VBlank interrupt receipt">VDP · VBLANK</div><div class="bezel"><div class="screen"><canvas id="lcd" width="160" height="144" aria-label="Real emulated Game Gear LCD framebuffer"></canvas></div><div class="logo"><span>GAME GEAR · ZERO</span><span>160 × 144 · 4096 COLORS</span></div></div>
+<div class="i13Lamp" id="i13Lamp" title="Actual Z80 I-13 verdict drives color">I-13</div><div class="vblankBeacon" id="vblankBeacon" title="Driven by real emulated VBlank interrupt receipt">VDP · VBLANK</div><div class="bezel"><div class="screen"><canvas id="lcd" width="160" height="144" aria-label="Real emulated Game Gear LCD framebuffer"></canvas></div><div class="logo"><span>GAME GEAR · ZERO</span><span>160 × 144 · 4096 COLORS</span></div></div>
 <div class="controller"><div class="dpad">
 <div class="ghost"></div><button class="key" data-key="up" aria-label="Up">▲</button><div class="ghost"></div>
 <button class="key" data-key="left" aria-label="Left">◀</button><div class="key" style="pointer-events:none;opacity:.65">+</div><button class="key" data-key="right" aria-label="Right">▶</button>
@@ -77,7 +78,8 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 <div class="panel">
 <h2>01 · Cartridge &amp; Emulation</h2>
 <div class="field"><label>Load a Game Gear cartridge (.gg)</label><input id="rom" type="file" accept=".gg,.bin,application/octet-stream"></div>
-<div class="buttonrow"><button class="ctl" id="firstlight">PLAY FIRST LIGHT</button><button class="ctl" id="download">DOWNLOAD FIRST LIGHT .GG</button></div>
+<div class="buttonrow"><button class="ctl" id="i13">RUN I-13 ON Z80</button><button class="ctl" id="downloadI13">DOWNLOAD I-13 .GG</button></div>
+<div class="buttonrow" style="margin-top:8px"><button class="ctl" id="firstlight">PLAY FIRST LIGHT</button><button class="ctl" id="download">DOWNLOAD FIRST LIGHT .GG</button></div>
 <div class="buttonrow" style="margin-top:8px"><button class="ctl" id="diagnostic">RUN HARDWARE SELF-TEST</button><button class="ctl" id="reset">RESET</button></div>
 <div class="small" id="gameHelp" style="margin-top:10px;color:#aeeafd">FIRST LIGHT · Original Z80 cartridge. Arrows move the crystal through the maze; 1 and 2 bend its color and emit Game Gear PSG tones.</div>
 <div class="buttonrow" style="margin-top:8px"><button class="ctl" id="pause">PAUSE</button><button class="ctl" id="audio">ENABLE SOUND</button><button class="ctl" id="fullscreen">FULLSCREEN</button></div>
@@ -94,6 +96,19 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 <div class="metric"><small>VIDEO</small><b>MODE 4 / GG CRAM</b></div>
 </div>
 <div class="warning">Controls: <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> · <kbd>Z</kbd> (1) · <kbd>X</kbd> (2) · <kbd>Enter</kbd> (Start). No cartridge is included. ROM bytes remain in your browser.</div>
+</div>
+<div class="panel" id="i13Panel">
+<h2>I-13 · Signed-Trit Z80 Kernel</h2>
+<div class="warning">Verified subset of <a href="https://github.com/DavidWise01/I13-H1.1" target="_blank" rel="noopener noreferrer">I13-H1.1 / E1.TECH-001</a>: <strong>I + 12 semantic words</strong>. Executes the canonical {-1,0,+1} TECH rule on our Z80. The full 15-opcode floating-point VM, Cortex and E1 services are not ported.</div>
+<div class="readouts">
+<div class="metric"><small>EVIDENCE (RAM C100)</small><b id="i13Evidence">—</b></div>
+<div class="metric"><small>QUESTION DEBT (C101)</small><b id="i13Debt">—</b></div>
+<div class="metric"><small>VERDICT (C102)</small><b id="i13Verdict">—</b></div>
+<div class="metric"><small>INPUT GUARD (C103)</small><b id="i13Guard">—</b></div>
+<div class="metric"><small>EVALUATIONS (C105)</small><b id="i13Evaluations">0</b></div>
+<div class="metric"><small>IRQ WITNESSES (C10E)</small><b id="i13IRQ">0</b></div>
+</div>
+<div class="small" style="line-height:1.8;color:#b3daef">I-13 controls: <kbd>←</kbd> HOLD / −1 · <kbd>↑</kbd> FLAY / 0 · <kbd>→</kbd> PROCEED candidate / +1 · <kbd>Z</kbd> add question debt · <kbd>X</kbd> clear debt · <kbd>↓</kbd> reduce debt. CPU computes the verdict; Z80 writes the LCD color through the Game Gear VDP.</div>
 </div>
 <div class="panel">
 <h2>02 · CPU / VDP / PSG Hardware Inspector</h2>
@@ -117,13 +132,14 @@ Choose RUN BUILT-IN TEST ROM to execute Z80 instructions that write the Game Gea
 <script src="core/gg.js"></script>
 <script src="core/selftest.js"></script>
 <script src="games/first-light.js"></script>
+<script src="games/i13-kernel.js"></script>
 <script>
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),machine=new GGMachine(),ctx=$('lcd').getContext('2d',{alpha:false});
 const image=ctx.createImageData(160,144);
 let name='',running=false,paused=false,active=false,raf=0,nextTick=0,audioCtx=null,bufferQueue=[],gain=null;
-let gameMode='NO ROM',seenIRQ=0,beaconTimer=null,gameLogStep=-1,gameLogBlocked=-1,gameLogAbility=-1;
+let gameMode='NO ROM',seenIRQ=0,beaconTimer=null,gameLogStep=-1,gameLogBlocked=-1,gameLogAbility=-1,lastI13='';
 let logs=[];
 const stamp=s=>{logs.unshift(s);logs=logs.slice(0,16);$('eventlog').textContent=logs.join('\n')};
 function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase().padStart(4,'0');
@@ -131,6 +147,17 @@ function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase()
  $('steps').textContent=gameMode==='FIRST LIGHT'?machine.ram[3]+' / '+machine.ram[4]:'0 / 0';
  $('vblank').textContent=machine.ram[10];
  $('ability').textContent=gameMode==='FIRST LIGHT'?(['NONE','1 · CYAN','2 · MAGENTA'][machine.ram[9]]||'—'):'NONE';
+ const isI13=gameMode==='I13 TECH-001',e=machine.ram[0x100],debt=machine.ram[0x101],v=machine.ram[0x102],guard=machine.ram[0x103];
+ const trit=n=>n===255?'−1':String(n),meaning=n=>n===255?'HOLD':n===1?'PROCEED':'FLAY';
+ $('i13Evidence').textContent=isI13?trit(e):'—';
+ $('i13Debt').textContent=isI13?String(debt):'—';
+ $('i13Verdict').textContent=isI13?trit(v)+' · '+meaning(v):'—';
+ $('i13Guard').textContent=isI13?(guard===1?'VALID':guard===255?'INVALID / HOLD':'PENDING'):'—';
+ $('i13Evaluations').textContent=isI13?machine.ram[0x105]:'0';
+ $('i13IRQ').textContent=isI13?machine.ram[0x10e]:'0';
+ const lamp=$('i13Lamp');lamp.style.background=isI13?(v===255?'#943846':v===1?'#216d63':'#937230'):'#213746';
+ lamp.style.boxShadow=isI13?(v===255?'0 0 23px #ff526b':v===1?'0 0 23px #6bf1bf':'0 0 19px #ffd778'):'0 0 4px #8ccfff55';
+ lamp.textContent=isI13?('I-13 '+trit(v)):'I-13';
  const cpu=machine.cpu,s=machine.stats,hex=n=>(n>>>0).toString(16).toUpperCase().padStart(4,'0');
  $('regs').textContent='AF '+hex((cpu.A<<8)|cpu.f)+' / BC '+hex(cpu.pair(0))+'\nDE '+hex(cpu.pair(1))+' / HL '+hex(cpu.HL)+'\nSP '+hex(cpu.sp);
  $('vramwrites').textContent=s.vramWrites+' / '+s.cramWrites;
@@ -140,7 +167,7 @@ function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase()
  $('frames').textContent=machine.frames; $('vdp').textContent=(machine.vdpRegs[1]&64)?'ON / 160×144':'DISPLAY OFF'; $('cartridge').textContent=name||'NO ROM';
  $('coreStatus').textContent=paused?'PAUSED':active?'ORIGINAL CPU + VDP LIVE':'ORIGINAL ENGINE · BOOT READY'}
 function boot(bytes,label){
- try{const meta=machine.load(bytes);name=label;gameMode=(label==='FIRST LIGHT'?'FIRST LIGHT':'DIAGNOSTIC');active=true;running=true;paused=false;nextTick=0;seenIRQ=0;gameLogStep=-1;gameLogBlocked=-1;gameLogAbility=-1;
+ try{const meta=machine.load(bytes);name=label;gameMode=label==='FIRST LIGHT'?'FIRST LIGHT':label==='I13 TECH-001'?'I13 TECH-001':'DIAGNOSTIC';active=true;running=true;paused=false;nextTick=0;seenIRQ=0;gameLogStep=-1;gameLogBlocked=-1;gameLogAbility=-1;lastI13='';
  stamp('CARTRIDGE '+label+' · '+meta.bytes+' bytes · '+meta.banks+' banks');
  $('pause').textContent='PAUSE';update();
  if(!raf)raf=requestAnimationFrame(loop);
@@ -158,13 +185,19 @@ function loop(now){raf=requestAnimationFrame(loop);if(!active||paused)return;
   if(gameMode==='FIRST LIGHT'&&machine.ram[0]===0xa5){
     if(machine.ram[3]!==gameLogStep||machine.ram[4]!==gameLogBlocked||machine.ram[9]!==gameLogAbility){gameLogStep=machine.ram[3];gameLogBlocked=machine.ram[4];gameLogAbility=machine.ram[9];update();}
   }
+  if(gameMode==='I13 TECH-001'&&machine.ram[0x10f]===0xa5){
+   const sig=[machine.ram[0x100],machine.ram[0x101],machine.ram[0x102],machine.ram[0x103]].join('/');
+   if(sig!==lastI13){lastI13=sig;const evidence=machine.ram[0x100],v=machine.ram[0x102];
+    stamp('I-13 Z80 · E='+ (evidence===255?'-1':evidence)+' DEBT='+machine.ram[0x101]+' => '+(v===255?'-1 HOLD':v===1?'+1 PROCEED':'0 FLAY')+' · GUARD '+(machine.ram[0x103]===1?'PASS':'VETO'));
+   }
+  }
   if(machine.frames===2&&name==='BUILT-IN Z80+VDP TEST'){
    const found=machine.ram[0]===0xa5&&machine.vram[0]===0xaa;
    stamp(found?'PASS: CPU OUT -> VDP VRAM -> CRAM -> LCD; RAM success A5':'DIAGNOSTIC PENDING: CPU RAM marker not yet observed');
   }
  }
  if(now-nextTick>80)nextTick=now;
- if(steps&&(machine.frames%10===0||gameMode==='FIRST LIGHT'))update();
+ if(steps&&(machine.frames%10===0||gameMode==='FIRST LIGHT'||gameMode==='I13 TECH-001'))update();
 }
 function pushAudio(stereo){if(!audioCtx||audioCtx.state!=='running')return;
  const rate=machine.psg.rate,frameCount=stereo.length/2;
@@ -198,7 +231,9 @@ document.querySelectorAll('[data-key]').forEach(el=>{
  const up=e=>{press(el.dataset.key,false)};el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);el.addEventListener('lostpointercapture',up);
 });
 ctx.fillStyle='#061423';ctx.fillRect(0,0,160,144);ctx.fillStyle='#9ad6eb';ctx.font='bold 10px monospace';ctx.textAlign='center';ctx.fillText('GG-ZERO / AWAIT ROM',80,72);
-window.GG_ZERO={machine,boot,diagnostic:()=>boot(GGTestROM.create(),'BUILT-IN Z80+VDP TEST'),firstLight:()=>boot(GGFirstLight.create(),'FIRST LIGHT'),status:()=>({gameMode,frames:machine.frames,pc:machine.cpu.pc,success:machine.ram[0]===0xa5,playerX:machine.ram[1],playerY:machine.ram[2],steps:machine.ram[3],blocked:machine.ram[4],interrupts:machine.ram[10],rendered:machine.framebuffer.length})};
+$('i13').addEventListener('click',()=>{boot(GGI13.create(),'I13 TECH-001');stamp('I13 TECH-001: bounded trit kernel executing on Z80 / live RAM and VDP');});
+$('downloadI13').addEventListener('click',()=>{const cart=GGI13.create();const blob=new Blob([cart],{type:'application/octet-stream'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='i13-tech001-z80.gg';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);stamp('EXPORTED i13-tech001-z80.gg · '+cart.length+' original machine bytes');});
+window.GG_ZERO={i13:()=>boot(GGI13.create(),'I13 TECH-001'),i13Status:()=>({running:gameMode==='I13 TECH-001',evidence:machine.ram[0x100],debt:machine.ram[0x101],verdict:machine.ram[0x102],guard:machine.ram[0x103],witnesses:machine.ram[0x105],boot:machine.ram[0x10f]}),machine,boot,diagnostic:()=>boot(GGTestROM.create(),'BUILT-IN Z80+VDP TEST'),firstLight:()=>boot(GGFirstLight.create(),'FIRST LIGHT'),status:()=>({gameMode,frames:machine.frames,pc:machine.cpu.pc,success:machine.ram[0]===0xa5,playerX:machine.ram[1],playerY:machine.ram[2],steps:machine.ram[3],blocked:machine.ram[4],interrupts:machine.ram[10],rendered:machine.framebuffer.length})};
 })();
 </script>
 </body></html>
