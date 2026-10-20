@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · Four-Observer CERN Data Lab v8.4</title>
+<style>
+:root{color-scheme:dark;--bg:#07111d;--panel:#122239;--mid:#1a3148;--line:#38556f;--text:#edf5ff;--muted:#a7bdce;--mint:#93e8d5;--gold:#f3cb87;--purple:#bdabff;--pink:#f49b99}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,Segoe UI,sans-serif}
+header{border-bottom:1px solid var(--line);padding:22px clamp(16px,3vw,34px);background:linear-gradient(110deg,#101e32,#18293a)}
+h1{font-size:clamp(22px,3vw,31px);margin:0}.sub{color:var(--muted);margin:6px 0 0}
+header .kicker{letter-spacing:.15em;font-size:11px;color:var(--mint);font-weight:700}
+main{margin:auto;max-width:1470px;padding:16px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(315px,.85fr);gap:14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px;min-width:0}
+h2{font-size:16px;margin:0 0 12px}h3{font-size:14px;margin:13px 0 6px}
+canvas{width:100%;height:auto;display:block;border:1px solid #37516d;border-radius:9px;background:#071625}
+.visuals{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(195px,.7fr);gap:11px}
+@media(max-width:550px){.visuals{grid-template-columns:1fr}}
+.control{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:13px}
+button,.fileLabel{background:#23465e;border:1px solid #628d99;color:#f4ffff;border-radius:8px;padding:9px 12px;cursor:pointer;display:inline-flex;align-items:center}
+button:hover,.fileLabel:hover{background:#28566d}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #98f1de}
+input[type=file]{display:none}input[type=range]{accent-color:var(--mint);width:min(200px,47vw)}
+select{background:#183149;color:#f4fbff;border:1px solid #52758e;padding:9px;border-radius:8px}
+.metricline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:12px 0}
+.metric{background:var(--mid);border:1px solid #3e6178;border-radius:9px;padding:11px}
+.metric b{display:block;color:var(--mint);font:700 19px ui-monospace,monospace}.metric span{color:var(--muted);font-size:11px}
+.observers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.observer{border-radius:11px;border:1px solid #436178;background:#172b41;padding:12px}
+.observer h3{margin:0 0 3px;font-size:16px}
+.observer p{margin:2px 0 8px;color:var(--muted);font-size:12px}
+.datum{display:flex;justify-content:space-between;gap:10px;font:12px/1.7 ui-monospace,monospace;border-top:1px solid #314b64;padding-top:5px}
+.datum b{color:#e6edfa;font-weight:500;overflow-wrap:anywhere;text-align:right}
+.quality{margin-top:13px;padding:12px;border:1px solid #50716f;background:#19383b;border-radius:9px}
+small,.muted{color:var(--muted)}a{color:#9ce8db}.note{font-size:12px;color:var(--muted)}
+.foot{border-top:1px solid var(--line);padding:13px 20px;color:var(--muted);font-size:12px}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+@media(max-width:600px){.metricline{grid-template-columns:repeat(2,minmax(0,1fr))}.observers{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<div class="kicker">OASIS / N184 / v8.4</div>
+<h1>Four-Observer Collision Data Lab</h1>
+<p class="sub">CERN CMS educational dimuon CSV → four independent software lenses → reproducible measurements → provenance</p>
+</header>
+<main>
+<section class="panel">
+<h2>Ring visualization · symbolic coordinates</h2>
+<div class="visuals">
+<canvas id="ring" width="790" height="580" aria-label="Six-sector ring with eighty phase steps, four analytical observation labels and two muon direction vectors"></canvas>
+<canvas id="hist" width="345" height="580" aria-label="CMS dimuon invariant mass histogram in GeV"></canvas>
+</div>
+<div class="control">
+<label>Phase microtick <output id="tickText">0</output> / 239
+<input id="tick" type="range" min="0" max="239" step="1" value="0"></label>
+<button id="phaseNext">+ microtick</button>
+<button id="phasePlay">Play phase</button>
+</div>
+<p class="note">The 240-microtick phase ring is an <b>OASIS display index</b>. Its six sectors, 80 phase steps, and four cardinal witness positions do not represent actual CERN beam timing, detector coordinates or event timestamps.</p>
+<div class="metricline">
+<div class="metric"><b id="eventCount">—</b><span>records loaded</span></div>
+<div class="metric"><b id="opposite">—</b><span>opposite-charge pairs</span></div>
+<div class="metric"><b id="residual">—</b><span>mean |mass residual| GeV</span></div>
+<div class="metric"><b id="coverage">3 → 12</b><span>computed features: 1 → 4 lenses</span></div>
+</div>
+<div class="quality">
+<b>Interpretation discipline</b>
+<p class="note" style="margin:7px 0 0">The four labels designate <em>software analysis functions on CMS data</em>; they are not actual ALICE/ATLAS/CMS/LHCb detector outputs. The 3 → 12 result is a deliberate feature-coverage comparison, not proof of new particles or automatically greater scientific accuracy.</p>
+</div>
+<p class="note" style="margin-top:17px"><a href="../cern-four-observers-v83/">Four-detector topology correction</a> · <a href="../arc-phase-duration-v82/">Phase-duration register</a> · <a href="../integration-v41/">Confluence gateway</a></p>
+</section>
+<aside class="panel">
+<h2>Dataset · local-first</h2>
+<div class="control">
+<button id="sample">Load CERN example</button>
+<label class="fileLabel" for="csv">Import CSV locally</label>
+<input type="file" id="csv" accept=".csv,text/csv">
+</div>
+<p id="source" class="note">Loading included CERN CMS educational example…</p>
+<p id="status" class="note">Starting…</p>
+<div class="control">
+<label>Event <select id="event"></select></label>
+<button id="prevEvent">◂</button><button id="nextEvent">▸</button>
+</div>
+<p id="identity" class="note"></p>
+<h2 style="margin-top:20px">Four independent software lenses</h2>
+<div id="observers" class="observers"></div>
+<div class="quality">
+<b>Observed features compared</b>
+<div class="control"><label>One observer <select id="single">
+<option>ATLAS</option><option>ALICE</option><option selected>CMS</option><option>LHCb</option>
+</select></label></div>
+<p id="comparison" style="margin:6px 0"></p>
+<small>Feature count measures how many predefined quantities are calculated. It does not estimate Shannon information or whether a particle-physics hypothesis is true.</small>
+</div>
+<h3>Provenance</h3>
+<p class="note">Starter file reproduces four published CMS educational example rows. <a href="https://opendata.web.cern.ch/visualise/histograms/CMS" target="_blank" rel="noopener">CERN original example</a>. Dataset background and citation: <a href="https://opendata.cern.ch/record/303" target="_blank" rel="noopener">CERN Open Data record 303</a> (DOI 10.7483/OPENDATA.CMS.4M97.3SQ9). Research-oriented use requires more complete datasets.</p>
+<p class="note"><b>Privacy:</b> imported CSV stays inside this browser page. No upload and no automatic network call to CERN. The embedded example is fetched from the same GitHub Pages origin. Imported file authenticity is not checked.</p>
+<p class="note"><a href="./observer_core.mjs">Analysis source</a> · <a href="./sample-cms-education.csv">Example CSV</a> · <a href="./README.md">Method notes</a></p>
+</aside>
+</main>
+<footer>OASIS v8.4 · real educational CMS data, CERN-inspired software lenses · software analysis, not an independent CERN collaboration or a discovery claim.</footer>
+<script type="module">
+import {MODES,parseCMSCSV,analyzeEvent,analyzeDataset,phaseAddress,observe,invariantMass} from './observer_core.mjs';
+const $=id=>document.getElementById(id);
+const ctx=$('ring').getContext('2d'),hctx=$('hist').getContext('2d');
+const colors=['#f4ce87','#92e4cb','#b7a6f5','#f39f96'],lensColors={ATLAS:colors[0],ALICE:colors[1],CMS:colors[2],LHCb:colors[3]};
+let records=[],sourceLabel='',eventIdx=0,microtick=0,running=false,elapsed=0,lastFrame=0,loaded=null;
+const numeric=(v,unit='')=>Number.isFinite(v)?(Math.abs(v)<.0001&&v!==0?v.toExponential(3):Number(v.toPrecision(6)).toString())+(unit?' '+unit:''):'n/a';
+const clamp=(x,l,h)=>Math.max(l,Math.min(h,x));
+function getMode(name){return MODES.find(m=>m.id===name)}
+function drawRing(){
+ const w=$('ring').width,h=$('ring').height,cx=w*.5,cy=h*.52,R=181,PI=Math.PI,TAU=PI*2;
+ ctx.fillStyle='#081625';ctx.fillRect(0,0,w,h);
+ for(let i=0;i<6;i++){
+  const a=-PI/2+i*TAU/6;
+  ctx.beginPath();ctx.arc(cx,cy,R+70,a+.04,a+TAU/6-.04);ctx.strokeStyle=['#e8b973','#84d5be','#9e9cf0','#eb9693','#86aedf','#dba37b'][i];ctx.lineWidth=12;ctx.stroke();
+ }
+ for(let i=0;i<80;i++){
+  const a=-PI/2+i*TAU/80,L=i%10===0?R-38:R-24;
+  ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*L,cy+Math.sin(a)*L);
+  ctx.lineTo(cx+Math.cos(a)*(R-4),cy+Math.sin(a)*(R-4));
+  ctx.strokeStyle=i<Math.floor(microtick/3)?'#9be9d3':'#526983';ctx.lineWidth=i%10===0?3:1.4;ctx.stroke();
+ }
+ ctx.beginPath();ctx.arc(cx,cy,R+22,-PI/2,-PI/2+TAU*microtick/240);
+ ctx.strokeStyle='#f1d098';ctx.lineWidth=8;ctx.lineCap='round';ctx.stroke();
+ const names=['ATLAS','ALICE','CMS','LHCb'];
+ for(let i=0;i<4;i++){
+  const a=-PI/2+i*PI/2;
+  const x=cx+Math.cos(a)*(R+111),y=cy+Math.sin(a)*(R+111);
+  ctx.beginPath();ctx.arc(x,y,6,0,TAU);ctx.fillStyle=colors[i];ctx.fill();
+  ctx.textAlign='center';ctx.fillStyle='#e8f4ff';ctx.font='bold 15px system-ui';ctx.fillText(names[i],x,y+(i===0?-18:21));
+ }
+ const r=records[eventIdx];if(r){
+  for(const [index,phi,charge]of [[1,r.phi1,r.Q1],[2,r.phi2,r.Q2]]){
+   const a=phi-PI/2,rr=55+clamp((index===1?r.pt1:r.pt2)*5,24,115);
+   ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr);
+   ctx.strokeStyle=index===1?'#9df0cb':'#fa9ea1';ctx.lineWidth=5;ctx.stroke();
+   ctx.fillStyle=ctx.strokeStyle;ctx.beginPath();ctx.arc(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr,7,0,TAU);ctx.fill();
+   ctx.textAlign='left';ctx.font='14px system-ui';ctx.fillText('μ'+index+' '+(charge>0?'+':'−'),cx+Math.cos(a)*(rr+12),cy+Math.sin(a)*(rr+12));
+  }
+ }
+ ctx.fillStyle='#deefff';ctx.textAlign='center';ctx.font='bold 36px system-ui';ctx.fillText(String(microtick),cx,cy-12);
+ const at=phaseAddress(microtick);
+ ctx.font='13px system-ui';ctx.fillStyle='#b7d2db';ctx.fillText('tick · phase '+at.phaseStep+' / 80',cx,cy+15);
+ ctx.fillText(at.phaseAngleDegrees.toFixed(1)+'°',cx,cy+34);
+ ctx.textAlign='left';ctx.fillStyle='#bbcedf';ctx.font='13px ui-monospace,monospace';
+ ctx.fillText('240 index positions · 6 sectors · 80 steps',19,25);
+ ctx.fillText('Illustrative ports: not detector placement',19,h-18);
+}
+function drawHistogram(){
+ const c=hctx,w=$('hist').width,h=$('hist').height;c.fillStyle='#0a192b';c.fillRect(0,0,w,h);
+ c.fillStyle='#dfebff';c.font='15px system-ui';c.fillText('Dimuon mass (GeV)',15,27);
+ const masses=records.map(r=>r.M).filter(Number.isFinite);
+ if(!masses.length){c.fillStyle='#91a7c4';c.fillText('No events',18,68);return}
+ let mn=Math.max(0,Math.min(...masses)),mx=Math.max(...masses);
+ if(mx-mn<1e-12){mn=Math.max(0,mn-1);mx=mx+1}
+ const k=16,counts=Array(k).fill(0);for(const m of masses){const idx=clamp(Math.floor((m-mn)/(mx-mn)*k),0,k-1);counts[idx]++}
+ const top=Math.max(...counts),left=26,right=w-16,bottom=h-53,plotHeight=h-128;
+ for(let i=0;i<k;i++){
+  const bw=(right-left)/k,x=left+i*bw,y=bottom-counts[i]/top*plotHeight;
+  c.fillStyle='#6d9cce';c.fillRect(x+2,y,bw-4,bottom-y);
+ }
+ if(records[eventIdx]){
+  const v=records[eventIdx].M,x=left+(v-mn)/(mx-mn)*(right-left);
+  c.strokeStyle='#f0cd8d';c.lineWidth=3;c.beginPath();c.moveTo(x,60);c.lineTo(x,bottom+4);c.stroke();
+ }
+ c.fillStyle='#bbcede';c.font='12px system-ui';
+ c.fillText(numeric(mn),left,bottom+22);c.fillText(numeric(mx),right-56,bottom+22);
+ c.fillText('Selected event = gold line',14,h-16);
+}
+function metricCard(mode,values){
+ const card=document.createElement('div');card.className='observer';card.style.borderTop='3px solid '+lensColors[mode.id];
+ const h=document.createElement('h3');h.textContent=mode.id;h.style.color=lensColors[mode.id];card.append(h);
+ const subtitle=document.createElement('p');subtitle.textContent=mode.title;card.append(subtitle);
+ for(let i=0;i<mode.keys.length;i++){
+  const key=mode.keys[i],line=document.createElement('div'),name=document.createElement('span'),val=document.createElement('b');
+  line.className='datum';name.textContent=key;val.textContent=numeric(values[key],mode.units[i]);line.append(name,val);card.append(line);
+ }
+ return card;
+}
+function renderEvent(){
+ if(!records.length)return;
+ const r=records[eventIdx],a=analyzeEvent(r),parent=$('observers');parent.replaceChildren();
+ for(const mode of MODES)parent.append(metricCard(mode,a.observers[mode.id]));
+ $('identity').textContent='CMS Run '+r.Run+' · Event '+r.Event+' · stored M '+numeric(r.M,'GeV')+' · muon types '+r.Type1+'/'+r.Type2;
+ const selected=$('single').value;
+ $('comparison').textContent=selected+' lens: 3 / 12 features (25%). Four lenses: 12 / 12 (100%). Difference: +9 preselected features.';
+ $('event').value=String(eventIdx);
+ drawHistogram();drawRing();
+}
+function setDataset(parsed,label){
+ if(!parsed.records.length)throw Error('No valid CMS events found');
+ records=parsed.records;sourceLabel=label;eventIdx=0;microtick=0;$('tick').value=0;$('tickText').textContent='0';
+ $('event').replaceChildren(...records.map((r,i)=>{const el=document.createElement('option');el.value=String(i);el.textContent=i+1+' · '+r.Run+'/'+r.Event;return el}));
+ const stats=analyzeDataset(records);
+ $('source').textContent=label;
+ $('status').textContent='Accepted '+records.length+' event(s); skipped '+parsed.skipped+(parsed.truncated?'; truncated at '+parsed.limit:'')+(parsed.errors.length?'; first error: '+parsed.errors[0]:'');
+ $('eventCount').textContent=String(stats.count);
+ $('opposite').textContent=stats.oppositeSignFraction===null?'n/a':(stats.oppositeSignFraction*100).toFixed(0)+'%';
+ $('residual').textContent=stats.averageAbsoluteMassResidualGeV===null?'n/a':numeric(stats.averageAbsoluteMassResidualGeV);
+ $('coverage').textContent='3 → 12';
+ renderEvent();
+}
+async function loadExample(){
+ const r=await fetch('./sample-cms-education.csv',{cache:'no-store'});
+ if(!r.ok)throw Error('Example load HTTP '+r.status);
+ setDataset(parseCMSCSV(await r.text()),'CERN-published CMS educational example · 4 CSV records · sourced from open-data histogram documentation');
+}
+$('sample').onclick=async()=>{try{await loadExample()}catch(e){$('status').textContent='Example load problem: '+e.message}};
+$('csv').onchange=async event=>{
+ const f=event.target.files?.[0];if(!f)return;
+ if(f.size>25*1024*1024){$('status').textContent='File over 25 MiB limit; choose a subset';return}
+ try{const p=parseCMSCSV(await f.text(),{maxRows:25000});setDataset(p,'LOCAL USER IMPORT · '+f.name+' · authenticity and origin not verified')}
+ catch(e){$('status').textContent='Import failed: '+e.message}
+ event.target.value='';
+};
+$('event').onchange=e=>{eventIdx=Number(e.target.value);renderEvent()};
+$('prevEvent').onclick=()=>{eventIdx=(eventIdx+records.length-1)%records.length;renderEvent()};
+$('nextEvent').onclick=()=>{eventIdx=(eventIdx+1)%records.length;renderEvent()};
+$('single').onchange=renderEvent;
+$('tick').oninput=e=>{microtick=Number(e.target.value);$('tickText').textContent=String(microtick);running=false;$('phasePlay').textContent='Play phase';drawRing()};
+$('phaseNext').onclick=()=>{microtick=(microtick+1)%240;$('tick').value=microtick;$('tickText').textContent=String(microtick);drawRing()};
+$('phasePlay').onclick=()=>{running=!running;$('phasePlay').textContent=running?'Pause phase':'Play phase'};
+function animate(ms){if(lastFrame&&running){elapsed+=Math.min(ms-lastFrame,80)*.04;if(elapsed>=1){microtick=(microtick+Math.floor(elapsed))%240;elapsed%=1;$('tick').value=microtick;$('tickText').textContent=String(microtick);drawRing()}}lastFrame=ms;requestAnimationFrame(animate)}
+await loadExample().catch(e=>{$('status').textContent='Start failed: '+e.message+'; serve with a local HTTP server (see README)'});
+requestAnimationFrame(animate);
+</script></body></html>
