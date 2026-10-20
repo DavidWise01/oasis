@@ -14,6 +14,16 @@ You can also load a legitimately obtained `.gg` ROM. It is processed locally and
 
 Controls: arrow keys (direction), Z (button 1), X (button 2), Enter (Start). On-screen glass buttons also work. Audio unlocks after clicking **ENABLE SOUND**.
 
+## HELLO WORLD · I-13 RGB diffusion dot
+
+[**Open the GG-ZERO page and choose I-13 HELLO WORLD · . RGB**](https://davidwise01.github.io/oasis/apps/game-gear-zero/) · [Full specification](./I13-HELLO-WORLD.md)
+
+The Game Gear runs an original 16 KiB Z80 cartridge that **renders HELLO WORLD using hardware Mode-4 font tiles**, shows the eight RGB signed-pair combinations from \`. = 2^3\`, and changes a central dot's RGB444 palette through emulated Z80 I/O. **← IN (−)** reverses the color cycle; **→ OUT (+)** advances; **Z** freezes the dot. All three hollow-glass RGB indicators read the actual machine RAM bits.
+
+The [\`.i13\` numerical source](./examples/i13-hello-world.i13) follows I13-H1.1 source conventions, but is **hand-translated into a bounded Z80 cartridge**; this is not a port of the full f64 I13 VM or a physical quantum-dot model.
+
+**Tests:** \`node tests/i13-hello-world.test.js\` — 25/25 passed, including all eight states, REAL VDP characters, IN/OUT wrap and freeze. Page-level integration also passed, including switching back to the two existing working cartridges.
+
 ## I-13 · executable Z80 kernel (GG adapter)
 
 [**Run I-13 on the hollow-glass Game Gear page**](https://davidwise01.github.io/oasis/apps/game-gear-zero/) or read [I13-Z80.md](./I13-Z80.md).
