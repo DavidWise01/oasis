@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N184 · Plank Bubble Phase Duration v8.2</title>
+<style>
+:root{color-scheme:dark;--bg:#080f1c;--panel:#122137;--edge:#38526e;--ink:#eff6ff;--muted:#abc0d3;--teal:#8fe2d1;--gold:#ebc787}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 system-ui,sans-serif}
+header{background:#111f35;border-bottom:1px solid var(--edge);padding:23px clamp(16px,3vw,38px)}
+h1{font-size:clamp(23px,3vw,32px);margin:0}header p{color:var(--muted);margin:4px 0 0}
+main{max-width:1370px;margin:auto;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(310px,.7fr);gap:15px;padding:16px}
+.panel{border:1px solid var(--edge);background:var(--panel);border-radius:13px;padding:17px;min-width:0}
+h2{font-size:17px;margin:0 0 13px}h3{font-size:14px;margin:18px 0 8px}
+canvas{width:100%;height:auto;display:block;border:1px solid #3e5770;border-radius:10px;background:#081624}
+.controls{display:flex;gap:11px;align-items:center;flex-wrap:wrap;margin:13px 0}
+input[type=range]{width:min(270px,55vw);accent-color:var(--teal)}
+button{background:#215166;border:1px solid #74a7ab;color:white;padding:9px 13px;border-radius:8px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid #bcf9e3}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.metric{background:#1c2f47;border:1px solid #4c6680;padding:13px;border-radius:9px}
+.metric b{display:block}.metric strong{display:block;color:#a2f2d9;font:700 clamp(15px,2vw,20px) ui-monospace,monospace;overflow-wrap:anywhere}
+.small,.muted{color:var(--muted)}.small{font-size:12px}
+.fact{border-left:3px solid #b5b7f4;background:#1e2946;padding:12px 14px;border-radius:0 9px 9px 0;margin:13px 0}
+.formula{font:700 16px ui-monospace,monospace;color:#f2d4a1;overflow-wrap:anywhere}
+a{color:#9deddb}footer{border-top:1px solid var(--edge);padding:14px 22px;color:var(--muted);font-size:12px}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+@media(max-width:480px){.metrics{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><h1>One Plank bubble length = one cycle duration reference</h1>
+<p>OASIS v8.2 · 80 × 1.25% phase time · 360° · length reference ℓP · seconds equivalent ℓP/c</p></header>
+<main>
+<section class="panel">
+<h2>80-step bubble clock</h2>
+<canvas id="dial" width="980" height="675" role="img" aria-label="Bubble length clock with 80 internal phase markers and six outer arc segments"></canvas>
+<div class="controls">
+<label>Step <output id="stepLabel">0</output> / 80 <input type="range" id="step" min="0" max="80" step="1" value="0"></label>
+<button id="prev">− 1</button><button id="next">+ 1</button><button id="play">Play</button><button id="reset">Reset</button>
+</div>
+<div class="metrics">
+<div class="metric"><b>Phase time</b><strong id="percent">0%</strong><span class="small">τ(n)=n/80</span></div>
+<div class="metric"><b>Phase angle</b><strong id="angle">0°</strong><span class="small">θ(n)=n×4.5°</span></div>
+<div class="metric"><b>Accumulated bubble length reference</b><strong id="meters">0 m</strong><span class="small">L(n)=(n/80)×ℓP</span></div>
+<div class="metric"><b>Time equivalent via c</b><strong id="seconds">0 s</strong><span class="small">t(n)=L(n)/c</span></div>
+</div>
+<p class="muted">A 360° cycle now corresponds to <b>one whole Plank bubble length</b> for its time basis. Six colored exterior arcs represent length subdivisions of the bubble; they do not change the internal 80-step clock.</p>
+<p><a href="../arc-phase-time-v81/">Prior v8.1 normalized clock</a> · <a href="../arc-bubble-v79/">One-sixth arc subdivision</a> · <a href="../integration-v41/">Confluence</a> · <a href="./spec.json">Canonical register</a></p>
+</section>
+<aside class="panel">
+<h2>Time versus length</h2>
+<div class="fact"><b>User-defined duration basis</b><div class="formula">T_cycle ↔ one Plank bubble length</div>
+<p class="muted small">To report a value in seconds, adopt the explicit equivalence c × T_cycle = ℓP.</p></div>
+<div class="metric"><b>One Plank bubble</b><strong id="oneLength">1.616255 × 10⁻³⁵ m</strong></div>
+<div class="metric" style="margin-top:10px"><b>Full-cycle time equivalent</b><strong id="oneTime">5.3912464 × 10⁻⁴⁴ s</strong></div>
+<div class="metric" style="margin-top:10px"><b>One of six arc-bubble lengths</b><strong id="arcLength">2.6937583 × 10⁻³⁶ m</strong></div>
+<h3>Dimension discipline</h3>
+<p>The light-travel conversion connects lengths to time equivalents. It is not a statement that a dimensional length is literally a duration or that a physical bubble rotates at light speed.</p>
+<h3>Separate previous arc-cycle length</h3>
+<p class="muted">The v8.0 nominal internal arc-path length <code>2.697×10⁻³⁶ m</code> is distinct from the full-bubble length reference <code>1.616255×10⁻³⁵ m</code> used to set the cycle clock.</p>
+<h3>Invariant coordinates</h3>
+<p>X :: state · Y :: space · Z :: state+time</p>
+<p>T :: star · M :: Earth/planet · B :: atom</p>
+<p class="small" id="status">Reading v8.1 and v7.8 source registers…</p>
+</aside></main>
+<footer>N184 v8.2 · additive length-derived time-equivalence overlay, not proof of a physical Planck clock or spacetime quantization.</footer>
+<script type="module">
+const $=id=>document.getElementById(id),canvas=$('dial'),ctx=canvas.getContext('2d');
+let spec=null,n=0,playing=false,last=0,acc=0;
+const colors=['#edd08b','#7bdfc9','#a9b2ef','#ee998d','#9cb9f6','#efba7c'];
+function sci(v,unit){return v===0?'0 '+unit:v.toExponential(7)+' '+unit}
+function paint(){
+const w=canvas.width,h=canvas.height,cx=w*.5,cy=h*.52,TAU=Math.PI*2,r=205;
+const grad=ctx.createRadialGradient(cx,cy,20,cx,cy,540);grad.addColorStop(0,'#172e42');grad.addColorStop(1,'#071526');
+ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
+for(let k=0;k<6;k++){
+const a=-Math.PI/2+k*TAU/6;ctx.beginPath();ctx.arc(cx,cy,r+78,a+.028,a+TAU/6-.028);
+ctx.strokeStyle=colors[k];ctx.lineWidth=13;ctx.stroke();
+const mid=a+TAU/12;ctx.fillStyle='#dbe9fb';ctx.textAlign='center';ctx.font='14px system-ui';
+ctx.fillText(String(k+1),cx+Math.cos(mid)*(r+105),cy+Math.sin(mid)*(r+105)+5);
+}
+for(let i=0;i<80;i++){
+const a=-Math.PI/2+i*TAU/80;
+ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*(i%10===0?r-35:r-22),cy+Math.sin(a)*(i%10===0?r-35:r-22));
+ctx.lineTo(cx+Math.cos(a)*(r-2),cy+Math.sin(a)*(r-2));
+ctx.strokeStyle=i<n?'#9defd6':'#57758b';ctx.lineWidth=i%10===0?3:1.5;ctx.stroke();
+}
+if(n>0){ctx.beginPath();ctx.arc(cx,cy,r+22,-Math.PI/2,-Math.PI/2+TAU*n/80);
+ctx.strokeStyle='#f3d398';ctx.lineWidth=8;ctx.lineCap='round';ctx.stroke()}
+ctx.fillStyle='#e8f7fa';ctx.textAlign='center';ctx.font='bold 70px system-ui';ctx.fillText(String(n),cx,cy+1);
+ctx.font='23px system-ui';ctx.fillStyle='#9ff0d7';ctx.fillText((n*1.25)+'%',cx,cy+39);
+ctx.font='16px system-ui';ctx.fillStyle='#bdc9df';ctx.fillText((n*4.5)+'°',cx,cy+71);
+ctx.textAlign='left';ctx.fillStyle='#d6e8f5';ctx.font='16px ui-monospace,monospace';
+ctx.fillText('80 PHASE-TIME STEPS',28,42);ctx.fillText('6 OUTER ARC SEGMENTS',28,69);
+}
+function update(){
+if(!spec)return;
+$('step').value=n;$('stepLabel').textContent=n;$('percent').textContent=(n*1.25)+'%';
+$('angle').textContent=(n*4.5)+'°';
+$('meters').textContent=sci(spec.duration.bubbleLengthMeters*n/80,'m');
+$('seconds').textContent=sci(spec.duration.equivalentFullCycleSeconds*n/80,'s');
+paint();
+}
+$('step').oninput=e=>{n=Number(e.target.value);playing=false;$('play').textContent='Play';update()};
+$('prev').onclick=()=>{n=Math.max(0,n-1);update()};
+$('next').onclick=()=>{n=Math.min(80,n+1);update()};
+$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'Pause':'Play'};
+$('reset').onclick=()=>{n=0;playing=false;acc=0;$('play').textContent='Play';update()};
+function frame(ms){
+if(playing&&last){acc+=Math.min(ms-last,100)*.017;if(acc>=1){const d=Math.floor(acc);acc-=d;n=(n+d)%81;update()}}
+last=ms;requestAnimationFrame(frame);
+}
+try{
+ const out=await Promise.all([fetch('./spec.json',{cache:'no-store'}),fetch('../arc-phase-time-v81/spec.json',{cache:'no-store'}),fetch('../scale-xyz-v78/spec.json',{cache:'no-store'})]);
+ if(out.some(x=>!x.ok))throw Error('missing source file');
+ const [v82,v81,v78]=await Promise.all(out.map(x=>x.json()));spec=v82;
+ const base=v78.scales.find(x=>x.code==='B');
+ if(spec.duration.bubbleLengthMeters!==base.length.value||spec.duration.selectedConversionSpeedMetersPerSecond!==v78.constants.speedOfLightMetersPerSecond||v81.phaseTime.stepsPerCycle!==spec.phase.stepsPerCycle)throw Error('registry invariants failed');
+ $('oneLength').textContent=sci(spec.duration.bubbleLengthMeters,'m');
+ $('oneTime').textContent=sci(spec.duration.equivalentFullCycleSeconds,'s');
+ $('arcLength').textContent=sci(spec.geometry.calibratedArcMeters,'m');
+ $('status').textContent='v8.1 and v7.8 source invariants verified · L/c conversion explicit';
+ update();requestAnimationFrame(frame);
+}catch(e){$('status').textContent='Source error: '+String(e)}
+</script></body></html>
