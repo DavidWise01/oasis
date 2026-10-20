@@ -1,0 +1,93 @@
+{
+  "schema": "oasis/n184/cern-four-observers/v83",
+  "version": "v8.3",
+  "status": "documented-CERN-topology-plus-symbolic-four-observer-analogy",
+  "sourceModel": "../arc-phase-duration-v82/spec.json",
+  "physicalReference": {
+    "lab": "CERN",
+    "accelerator": "Large Hadron Collider",
+    "majorExperimentalPoints": 4,
+    "experiments": [
+      {
+        "code": "ATLAS",
+        "interactionPoint": "IP1",
+        "physics": "general-purpose particle physics; Higgs and beyond-Standard-Model searches",
+        "magnetSystem": [
+          "central solenoid",
+          "barrel toroid",
+          "end-cap toroids"
+        ],
+        "actualToroid": true
+      },
+      {
+        "code": "ALICE",
+        "interactionPoint": "IP2",
+        "physics": "heavy-ion collisions; quark-gluon plasma",
+        "magnetSystem": [
+          "solenoid",
+          "dipole"
+        ],
+        "actualToroid": false
+      },
+      {
+        "code": "CMS",
+        "interactionPoint": "IP5",
+        "physics": "general-purpose particle physics; independent detector technology",
+        "magnetSystem": [
+          "solenoid"
+        ],
+        "actualToroid": false
+      },
+      {
+        "code": "LHCb",
+        "interactionPoint": "IP8",
+        "physics": "heavy-flavour physics; matter-antimatter asymmetry",
+        "magnetSystem": [
+          "dipole"
+        ],
+        "actualToroid": false
+      }
+    ],
+    "majorNotAllExperiments": true,
+    "ringCirculatesBeams": true,
+    "differentSitesRecordDifferentCollisionEvents": true,
+    "detectorsCauseEmergence": false,
+    "sources": [
+      "https://home.cern/science/experiments/",
+      "https://cds.cern.ch/record/1038089/files/lhc-project-report-1009.pdf",
+      "https://www.atlas.cern/Discover/Detector/Magnet-System",
+      "https://home.web.cern.ch/science/experiments/cms/"
+    ]
+  },
+  "symbolicAnalogy": {
+    "userHypothesis": "four toroids makes emergence",
+    "interpretation": "four independent observation ports around a shared cyclic process can yield richer inferred or reconstructed states",
+    "witnessPortCount": 4,
+    "virtualRingCount": 1,
+    "physicallyIdenticalToroids": false,
+    "witnessesFormQuorum": false,
+    "sourcesAreIndependentExperiments": true,
+    "emergenceMechanism": "underlying interactions/dynamics are source of observed outcomes; observers collect different evidence",
+    "statedAsVerifiedPhysicalLaw": false
+  },
+  "preserved": {
+    "x": "state",
+    "y": "space",
+    "z": "state+time",
+    "phaseSteps": 80,
+    "phaseStepPercent": 1.25,
+    "cycleDegrees": 360,
+    "arcSubdivisions": 6,
+    "sharedGridProposalMicroticks": 240,
+    "fullBubbleMeters": 1.616255e-35,
+    "timeConversionConditional": "l_P/c",
+    "earlierModelUnchanged": true
+  },
+  "boundaries": [
+    "The four major CERN detectors are not four identical toroidal magnets. ATLAS employs toroids; the other major detector magnet configurations differ.",
+    "The four collision points are physically different locations, not four detectors watching the same collision event.",
+    "CERN confirms independent cross-checks, especially among general-purpose detectors; it does not implement OASIS quorum/emergence rules.",
+    "Mapping four witnesses onto a symbolic ring is an engineering analogy, not proof that four toroids physically generate matter or emergence.",
+    "The 240-microtick LCM grid is a mathematical software construction, not the LHC's revolution timing."
+  ]
+}
