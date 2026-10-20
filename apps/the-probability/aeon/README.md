@@ -6,6 +6,25 @@ Browser-playable Gothic NES emulator with a ternary witness controller and a nes
 
 **Open:** https://davidwise01.github.io/oasis/apps/the-probability/aeon/
 
+
+## AEON thought regression · v0.5
+
+The arcade now includes **8 Hall response channels** and **8 bounded digital-pot wipers**. Each delivered input is compared with a before/after state and the last transition. The feedback engine:
+
+- distinguishes \`−1\` no response, \`0\` RAM-only ambiguous, and \`+1\` visible response;
+- detects true \`A → B → A\` regression and damps repeated behavior;
+- modulates software input hold length and candidate preference, rather than inventing analog NES button voltage;
+- persists its observations and wiper values per ROM and profile, and offers JSON export;
+- accepts optional real Hall sensor samples and sends logical digipot values to an authorized serial bridge.
+
+**To swap the new profile**, import [hall-regressive.md](./hall-regressive.md) under SWAP AGENT PROFILE.
+
+**For physical electronics**, read [HALL-DIGIPOT-BRIDGE.md](./HALL-DIGIPOT-BRIDGE.md). A microcontroller and part-specific firmware are required; no actual Hall sensors or digital potentiometers are claimed to be connected.
+
+The **one new cubit visual marker** is a regressive feedback ellipse whose glow follows Hall response estimates. The earlier \`−1 · 0 · +1\` points remain unchanged.
+
+Validation: 11 isolated engine tests and an integrated synthetic-NES backend controller test (8 delivered presses, 8 witness receipts, all eight Hall channels updated). Native NES gameplay and physical circuit operation remain unverified.
+
 ## How to run
 
 1. Open the page, preferably in Chrome or Edge.
