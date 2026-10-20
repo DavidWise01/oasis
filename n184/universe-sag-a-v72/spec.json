@@ -1,0 +1,110 @@
+{
+  "schema": "oasis/n184/universe-sag-a/v72",
+  "revision": "v7.2",
+  "state": "symbolic-universe-visualization",
+  "universe": {
+    "id": "universe-1",
+    "rootAnchor": 1,
+    "label": "Universe :: 1",
+    "geometry": "regular-hexagon"
+  },
+  "center": {
+    "displayName": "Sag A",
+    "referenceName": "Sagittarius A* (Sgr A*)",
+    "type": "black-hole",
+    "observedReference": "Milky Way's central supermassive black hole",
+    "rootAnchor": 1,
+    "role": "central attractor in symbolic universe",
+    "notNdCenter": true
+  },
+  "disks": {
+    "glyph": "-+ honey",
+    "name": "Honey",
+    "count": 2,
+    "forms": [
+      {
+        "id": "minus",
+        "sign": "-",
+        "rotation": "clockwise",
+        "color": "#d5a758"
+      },
+      {
+        "id": "plus",
+        "sign": "+",
+        "rotation": "counterclockwise",
+        "color": "#f2d590"
+      }
+    ],
+    "role": "symbolic dual accretion disks",
+    "isPhysicalAccretionSimulation": false
+  },
+  "ring": [
+    {
+      "slot": 0,
+      "angleDeg": -90,
+      "name": "Xerses",
+      "colorName": "white",
+      "colorHex": "#f6f7fa",
+      "kind": "symbolic-sun"
+    },
+    {
+      "slot": 1,
+      "angleDeg": -30,
+      "name": "Argon",
+      "colorName": "red",
+      "colorHex": "#f06466",
+      "kind": "symbolic-sun"
+    },
+    {
+      "slot": 2,
+      "angleDeg": 30,
+      "name": "Krypton",
+      "colorName": "white",
+      "colorHex": "#f6f7fa",
+      "kind": "symbolic-sun"
+    },
+    {
+      "slot": 3,
+      "angleDeg": 90,
+      "name": "Nemesis",
+      "colorName": "blue",
+      "colorHex": "#70a7ff",
+      "kind": "symbolic-sun"
+    },
+    {
+      "slot": 4,
+      "angleDeg": 150,
+      "name": "He",
+      "colorName": "orange",
+      "colorHex": "#f8a94e",
+      "kind": "symbolic-sun"
+    },
+    {
+      "slot": 5,
+      "angleDeg": 210,
+      "name": "Ne",
+      "colorName": "purple",
+      "colorHex": "#b889f7",
+      "kind": "symbolic-sun"
+    }
+  ],
+  "topology": {
+    "source": "N184 six-vertex scaffold",
+    "closureAddress": 184,
+    "closureRole": "symbolic-geometry-address-not-element",
+    "centerMaterialModel": "previous Nd::60 core preserved in separate v7.1 experiment"
+  },
+  "upstream": {
+    "nobleHex": "../noble-hex-v71/",
+    "fourWave": "../noble-gas-four-wave-v70/",
+    "confluence": "../integration-v41/"
+  },
+  "limits": [
+    "A symbolic astronomical model; no six-star formation or actual stellar colors asserted.",
+    "Xerses and Nemesis are user-assigned symbolic names; Argon, Krypton, He, and Ne are names of actual elements but used here as symbolic sun names.",
+    "Sgr A* is the astronomical black hole, while Sagittarius A refers more broadly to a Galactic Center radio complex; the user-facing label is exactly Sag A.",
+    "Two oppositely rotating disks are a graphic design convention, not a validated model of Sagittarius A*.",
+    "N184 is a symbolic topology target; it is not a detected element nor a neutron-count proof.",
+    "The v7.1 Nd-centered ring and frozen N184 register remain unchanged."
+  ]
+}
