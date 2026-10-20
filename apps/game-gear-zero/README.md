@@ -22,6 +22,18 @@ Controls: arrow keys (direction), Z (button 1), X (button 2), Enter (Start). On-
 
 The committed binary was fetched back from GitHub, checked byte-for-byte against the source generator, and executed on our emulated Z80 through all eight RGB phases, reversal and freeze. Its SHA-256 is `a42fd461d6555f528d70ca54e5277a90f2739bf899352bff8e571baa878f0d6d`. The compiled release is a bounded **hand translation** of the I-13 numeric source, not a general I13-H1.1 compiler.
 
+## RGB DIFFUSION 11 — measured 20×16 field
+
+**[Play RGB Diffusion 11 automatically in the hollow-glass Game Gear](https://davidwise01.github.io/oasis/apps/game-gear-zero/)** · [Compiled 16 KiB `.gg`](./dist/rgb-diffusion-11.gg) · [Source and measurement report](./RGB-DIFFUSION-11.md) · [I-13 numeric notation](./examples/i13-rgb-diffusion-11.i13)
+
+The new default Z80 cartridge expands RGB from 192 to **320 cells**, follows three separate one-bit channels (8 mask states), and records an explicit **11-hop witness**. The four-cardinal-neighbor core is the provisional implementation of `11 {2/2|{4|/2/2}`, not a claimed canonical definition. The three sources continue to propagate to their farthest corners: red/green each reach **32** Manhattan hops, blue reaches **24**.
+
+At hop 11, **319 cells are colored but only 1 is fully white**. By hop 32, all **320 cells are white**. The actual original Z80 ROM matched an independent 34-stage/320-cell mathematical reference in **10,880/10,880 comparisons** with **0 mismatches**. A separate **33/33 regression test** checks controls, extended display, scoring, hop witness, resets and old-game compatibility. The Z80 cycles fresh wavefronts after 34 hops until the user paints.
+
+**New glass cubit indicator:** a real CPU-driven 11-hop measurement rail. The earlier game is still available as **PLAY RGB DIFFUSION ARENA**, and the v0.3 baseline is preserved at `freeze/gg-zero-rgb-diffusion-v0.3`.
+
+Recompile with `node scripts/compile-rgb-diffusion-11.cjs`, validate with `node tests/rgb-diffusion-11.test.js`. The `.i13` file is a source intent specification, while the executable is a bounded Z80 hand translation rather than a full I13 f64 VM. This is classical cellular propagation, **not a physical quantum diffusion experiment**.
+
 ## RGB DIFFUSION ARENA — original playable Z80 game
 
 **[Play immediately in the hollow-glass Game Gear](https://davidwise01.github.io/oasis/apps/game-gear-zero/)** · [Compiled 16 KiB `.gg` cartridge](./dist/rgb-diffusion-arena.gg) · [Game instructions and implementation](./RGB-DIFFUSION.md)
