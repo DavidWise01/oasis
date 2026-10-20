@@ -1,0 +1,21 @@
+name: N184 CERN Four Observer Ports v83
+on:
+  push:
+    paths:
+      - 'n184/cern-four-observers-v83/**'
+      - '.github/workflows/n184-cern-four-observers-v83.yml'
+  workflow_dispatch:
+jobs:
+  cern-four-observer-alignment:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check CERN experiment topology and preserved symbolic ring
+        run: |
+          node --check n184/cern-four-observers-v83/test_cern_overlay.mjs
+          node n184/cern-four-observers-v83/test_cern_overlay.mjs
