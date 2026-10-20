@@ -1,0 +1,21 @@
+name: N184 Planck Time Length v78
+on:
+  push:
+    paths:
+      - 'n184/scale-xyz-v78/**'
+      - '.github/workflows/n184-planck-time-length-v78.yml'
+  workflow_dispatch:
+jobs:
+  dimension-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm Planck time and length units, historical notation, and light-speed relation
+        run: |
+          node --check n184/scale-xyz-v78/test_planck_units.mjs
+          node n184/scale-xyz-v78/test_planck_units.mjs
