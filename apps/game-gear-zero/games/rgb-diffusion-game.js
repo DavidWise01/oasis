@@ -20,12 +20,7 @@ function create(){
  emit(0xf3,0x31,0xf0,0xdf);  // DI, stack DFF0
  imm(8);store(S.x);imm(6);store(S.y);imm(1);store(S.ink);
  emit(0xaf);for(const addr of [S.selectLatch,S.moveTimer,S.tick,S.score,S.irq,S.win,S.startLatch,S.steps,S.playerPaint])store(addr);
- call('CLEAR');
- // Three initial Z80-written pulses ensure diffusion is visible on boot.
- // The player's own Z injection is still required before any point scores.
- imm(1);store(FIELD+38);   // Red at x=2,y=2
- imm(2);store(FIELD+51);   // Green at x=15,y=2
- imm(4);store(FIELD+206);  // Blue at x=8,y=11
+ call('CLEAR');call('SEED');
  reg(0,4);reg(1,0x60);reg(2,14);reg(5,126);reg(6,0);reg(7,0);reg(8,0);reg(9,0);
  copy('PALETTE',0,3,64);
  copy('TILES',0,1,0x400);
@@ -48,7 +43,7 @@ function create(){
  // START is an active-low bit7 on GG port 00, edge-gated: clear board.
  emit(0xdb,0x00,0xcb,0x7f);jnz('START_RELEASE');
  load(S.startLatch);emit(0xb7);jnz('AFTER_START');
- imm(1);store(S.startLatch);call('CLEAR');emit(0xaf);store(S.win);store(S.playerPaint);call('DRAW_FIELD');jp('AFTER_START');
+ imm(1);store(S.startLatch);call('CLEAR');call('SEED');emit(0xaf);store(S.win);store(S.playerPaint);store(S.steps);call('DRAW_FIELD');jp('AFTER_START');
  label('START_RELEASE');emit(0xaf);store(S.startLatch);
  label('AFTER_START');
  // Button1 / Z (bit4) adds selected channel to the field at cursor.
@@ -71,10 +66,19 @@ function create(){
  emit(0xaf);store(S.tick);
  call('SPREAD');call('DRAW_FIELD');call('CHECK_REACTOR');
  load(S.steps);emit(0x3c);store(S.steps);
+ // Attract mode repeats colorful seed waves only until user paints.
+ load(S.playerPaint);emit(0xb7);jnz('TICK_END');
+ load(S.steps);emit(0xfe,20);jc('TICK_END');
+ call('CLEAR');call('SEED');emit(0xaf);store(S.steps);call('DRAW_FIELD');
  label('TICK_END');emit(0xc9);
  label('CLEAR');
  // Clear both zero-bordered 18x14 RGB bitmask buffers.
  emit(0x21);ww(FIELD);emit(0x11);ww(FIELD+1);emit(0xaf,0x77,0x01);ww(511);emit(0xed,0xb0,0xc9);
+ label('SEED');
+ imm(1);store(FIELD+38);
+ imm(2);store(FIELD+51);
+ imm(4);store(FIELD+206);
+ emit(0xc9);
  label('INJECT');
  imm(1);store(S.playerPaint);
  // offset = y * 18 + x; x=[1,16], y=[1,12], padded field stride 18.
