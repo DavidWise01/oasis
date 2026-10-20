@@ -1,0 +1,122 @@
+{
+  "schema": "oasis/n184/time-stack-tmb/v75",
+  "version": "v7.5",
+  "status": "symbolic-alias-and-observation-crosswalk",
+  "inherits": {
+    "prior": "../time-stack-tmb-v74/spec.json",
+    "nineWeb": "../jellyfish-web-v73/spec.json",
+    "sagAUniverse": "../universe-sag-a-v72/spec.json",
+    "evidence": "../../evidence/relay/ITD_HD110067_SIX_PLANET_RESONANCE_REDDIT_2026-10-20.md"
+  },
+  "notation": {
+    "original": "13/8B:1:1x10^-35",
+    "domain": "time",
+    "modelSecondsPerTick": 1e-35,
+    "operator": "13/8B",
+    "operatorStatus": "undefined, preserved literally"
+  },
+  "bands": [
+    {
+      "code": "T",
+      "name": "Top",
+      "strength": "strong",
+      "plankTerm": "plank bubble",
+      "analogy": "star",
+      "instances": 5,
+      "sourceIds": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5"
+      ],
+      "earthReference": false
+    },
+    {
+      "code": "M",
+      "name": "Middle",
+      "strength": "medium",
+      "plankTerm": "plank foam",
+      "analogy": "planet",
+      "reference": "Earth",
+      "instances": 0,
+      "earthReference": true
+    },
+    {
+      "code": "B",
+      "name": "Bottom",
+      "strength": "floor",
+      "plankTerm": "plank",
+      "analogy": "atom",
+      "instances": 4,
+      "sourceIds": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "earthReference": false
+    }
+  ],
+  "vocabularyRules": {
+    "literalSpelling": "plank",
+    "equivalenceType": "user-chosen symbolic aliases, not physical identity",
+    "assertedPlanckPhysics": false,
+    "sourceChainCannotProveTimeDilation": true
+  },
+  "orbitalExample": {
+    "system": "HD 110067",
+    "hostStar": "HD 110067",
+    "evidenceClass": "observed exoplanet orbital period estimates and model-derived resonant pattern",
+    "sourcePaperDate": "2023-11-29",
+    "redditDate": "2026-10-16",
+    "sixPlanets": [
+      {
+        "letter": "b",
+        "periodDays": 9.113678
+      },
+      {
+        "letter": "c",
+        "periodDays": 13.673694
+      },
+      {
+        "letter": "d",
+        "periodDays": 20.519617
+      },
+      {
+        "letter": "e",
+        "periodDays": 30.793091
+      },
+      {
+        "letter": "f",
+        "periodDays": 41.05854
+      },
+      {
+        "letter": "g",
+        "periodDays": 54.76992
+      }
+    ],
+    "adjacentIdealPeriodRatios": [
+      "3:2",
+      "3:2",
+      "3:2",
+      "4:3",
+      "4:3"
+    ],
+    "locationInUserAnalogy": "M :: planet",
+    "notOrbitingSagA": true
+  },
+  "counts": {
+    "upperUniverseClones": 5,
+    "lowerUniverseClones": 4,
+    "planetEarthReference": 1,
+    "clonedSagAUniverses": 9
+  },
+  "warnings": [
+    "This file does not mutate the prior v7.4 clock or v7.3 web.",
+    "The planet system is not evidence for nine parallel universes, quantum foam, or Planck bubble physics.",
+    "A 10^-35-second model time step is not Planck time and has no demonstrated relationship to the measured orbital periods.",
+    "Orbital periods are not relativistic time-dilation factors.",
+    "The six planets orbit HD 110067, not Sagittarius A*."
+  ]
+}
