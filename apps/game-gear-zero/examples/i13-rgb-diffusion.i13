@@ -1,0 +1,25 @@
+// GG-ZERO RGB DIFFUSION ARENA — I-13 numeric semantic source witness
+// Based on canonical I + twelve semantic words (I13-H1.1 / TRUNK.md).
+// This file records numeric intention, not an executable all-opcode compiler output.
+// The working cartridge is hand-assembled to Z80 in games/rgb-diffusion-game.js.
+// 3 paired RGB channels, 2^3 color combinations, IN(-) unlit, OUT(+) lit.
+I RED <- 1
+I GREEN <- 2
+I BLUE <- 4
+I RGB_STATES <- 2 * 2 * 2
+I WIDTH <- 16
+I HEIGHT <- 12
+I GAME_CELLS <- WIDTH * HEIGHT
+I BORDER_STRIDE <- 18
+I REACTOR_X <- 8
+I REACTOR_Y <- 6
+I REACTOR_WHITE <- RED + GREEN + BLUE
+// Operational rule compiled explicitly to Z80:
+// NEXT(x,y) = CURRENT(x,y) OR LEFT OR RIGHT OR NORTH OR SOUTH
+// Color mixing is the binary OR of independent 1-bit channels.
+// Z / Button1: deposit selected bit at the cursor.
+// X / Button2: cycle selected bit 1 -> 2 -> 4 -> 1.
+// Arrow keys: change cursor location. START: reset/seed a new round.
+// Reactor rewards WHITE (7) only after an actual user paint action.
+// This is an illustrative binary cellular automaton, not Fick's law
+// and not hardware quantum diffusion.
