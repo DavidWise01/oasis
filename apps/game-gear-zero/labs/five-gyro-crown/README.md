@@ -1,3 +1,60 @@
+# FIVE GYRO CROWN v2 — RECIPROCAL DOT / SEA-CABLE RETURN
+
+[**Run the live lab**](https://davidwise01.github.io/oasis/apps/game-gear-zero/labs/five-gyro-crown/) · [Executable single-file HTML](./index.html) · [Frozen v1](https://github.com/DavidWise01/oasis/tree/freeze/five-gyro-crown-v1/apps/game-gear-zero/labs/five-gyro-crown)
+
+The exact five-gyro seed is unchanged: `{{ v:0 w:0 x:360 y:360 z:720 }}`. The four-color strength space stays `4^4=256`. The **new part** is a deterministic four-port return circuit coupled into the central dot's residual and flare logic.
+
+## Reciprocal dot
+
+```text
+        Z:720
+          |
+  V:0 --- . --- W:0
+          |
+       X:360 Y:360
+          |
+    [G|R|B|P] → .|.|.|.|
+          |
+  FOUR DELAYED SEA CABLES
+          |
+          .   (SAME CORE)
+```
+
+Each colored port's **signed** complex packet is sampled at the tick when it entered its return line. Time units are `1/64` of a shared model cycle. Its delayed response is:
+
+```text
+packet_j(tick) =
+  0                                                  if tick < delay_j
+  atten * level_j/3 * exp(i*(2π(tick-delay_j)/64+jπ/2)) otherwise
+
+return_vector = Σ packet_j            (j = 0..3, G/R/B/P)
+return_residual = |return_vector|
+returned_light = Σ |packet_j| × (1+sin(packet_phase_j))/2
+combined_dot_residual = hypot(gyro_residual, gain * return_residual)
+containment = 1/(1 + 2 * combined_dot_residual)
+flare = combined_dot_residual > 0.30 && excitation > 0.60
+```
+
+Matched 8-tick cable paths cancel the net return vector while carrying **1.8 normalized returned light units** at full four-petal strength (gain 0.85, attenuation 0.9). If only purple is delayed eight more ticks, the residual return magnitude is approximately **0.6888**, giving a **0.5855** combined center residual and a flare. BYPASS removes the return's contribution to the center without erasing returned light. RELOCK restores matching delays.
+
+The model includes one-cycle traces of emitted light, returned light and combined center stress. The oscilloscope reads the same pure functions as the core renderer. Controls add RETURN COUPLED, DELAY PURPLE +8, RELOCK CABLES, common delay, purple additional delay, return gain, and one 1/64-cycle tick. Existing controls, 256 states, ASCII and PNG/TXT exports remain.
+
+## Tests
+
+```sh
+node tests/sea-cable.test.cjs
+```
+
+Tests check **25,727 deterministic assertions**: 4,097 matched signal points, 224 skew samples, all 256 state addresses, bypass, relock and uneven-strength propagation. The earlier v1 five-gyro regression remains green (7,734 assertions). Chromium desktop and mobile verified lock, cable skew, bypass, relock, strength/gyro controls, ASCII/PNG/TXT and no JavaScript page errors.
+
+## Model boundary
+
+This is **classical symbolic complex-valued delay-line propagation**. The sea-cable return is a modeled information channel, not a real ocean cable current, stellar magnetic loop, photon interaction, or gluon configuration. Its feedback contributes an extra stress term; it is not an active controller that automatically corrects gyro speeds. Zero signed-vector sum is not zero emitted light.
+
+---
+
+## Frozen v1 background (retained below)
+
 # FIVE GYRO CROWN — Zero-Stable Stellar / Aquatic / Atomic Lab
 
 A **standalone single-file HTML + Canvas2D / ASCII** interactive simulation. No npm, server or external assets needed.
