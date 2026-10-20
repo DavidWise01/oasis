@@ -1,0 +1,21 @@
+name: N184 Sag A Universe v72
+on:
+  push:
+    paths:
+      - 'n184/universe-sag-a-v72/**'
+      - '.github/workflows/n184-universe-sag-a-v72.yml'
+  workflow_dispatch:
+jobs:
+  symbolic-universe-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify exact symbolic universe register
+        run: |
+          node --check n184/universe-sag-a-v72/test_universe.mjs
+          node n184/universe-sag-a-v72/test_universe.mjs
