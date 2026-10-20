@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N184 · Nine Sag A Universes · Jellyfish Gravity Web</title>
+<style>
+:root{color-scheme:dark;--bg:#060d19;--panel:#111e31;--line:#304862;--text:#e8f1ff;--muted:#a2bad1;--aqua:#90e9dc;--gold:#f1d49b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{padding:18px clamp(15px,3vw,34px);background:linear-gradient(115deg,#11263a,#121224);border-bottom:1px solid var(--line)}
+h1{margin:0;font-size:clamp(22px,3vw,31px);letter-spacing:-.02em}h2{font-size:15px;margin:0 0 12px}
+.sub,.muted{color:var(--muted)}header p{margin:4px 0 0}
+main{max-width:1500px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;padding:16px}
+.panel{border:1px solid var(--line);background:var(--panel);padding:14px;border-radius:14px;min-width:0}
+canvas{display:block;width:100%;height:auto;background:#060d1c;border:1px solid #2b3e55;border-radius:10px;cursor:crosshair;touch-action:manipulation}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}
+button{border:1px solid #64919e;border-radius:8px;background:#1b4656;color:#f3ffff;padding:9px 13px;cursor:pointer}
+button:hover{background:#266071}button:focus-visible,input:focus-visible{outline:2px solid #a8e8e8;outline-offset:2px}
+input{accent-color:#a5e5de}input[type=range]{width:125px}
+a{color:#99f0e0}a:hover{text-decoration:underline}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:15px}
+.metric{background:#182c41;border:1px solid #35516c;padding:12px;border-radius:10px;text-align:center}
+.metric b{display:block;font-size:23px}.metric small{color:var(--muted)}
+.tiers{display:grid;gap:7px}.tier{background:#1a2b3f;border:1px solid #39516c;border-radius:8px;padding:9px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0}
+.swatch{width:9px;height:9px;display:inline-block;border-radius:50%;margin-right:7px}
+.readout{border-left:3px solid #cba77a;padding-left:12px;color:#d9e4f1;margin:15px 0}
+.small{font-size:12px}pre{color:#d5ecf0;white-space:pre-wrap;font:12px/1.6 ui-monospace,monospace}
+footer{border-top:1px solid var(--line);color:var(--muted);padding:16px 24px;font-size:12px}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+@media(max-width:540px){.controls{gap:8px}input[type=range]{width:90px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Universe web · 5 above / 4 below</h1>
+<p class="sub">Nine identical Sag A universe instances · curved jellyfish mesh · Einstein gravity-well visual analogy · N184 v7.3</p>
+</header>
+<main>
+<section class="panel">
+<canvas id="scene" width="1260" height="840" aria-label="Nine identical Sag A universes: five upper canopy nodes and four lower hanging nodes, joined by a curved web"></canvas>
+<div class="controls">
+<button id="pause">Pause</button>
+<button id="reset">Reset</button>
+<label for="sag">Web sag <output id="sagOut">0.80</output></label>
+<input id="sag" type="range" min="0" max="1.6" step="0.05" value="0.8">
+<label for="tilt">Perspective <output id="tiltOut">20°</output></label>
+<input id="tilt" type="range" min="-45" max="45" step="5" value="20">
+<label><input type="checkbox" id="mesh" checked> Mesh</label>
+</div>
+<p class="sub">Select any of the nine universe nodes to inspect the identical template. The web curves are illustrative, not a numerical solution to Einstein's equations.</p>
+<div class="controls">
+<a href="../universe-sag-a-v72/">Original Sag A universe</a>
+<a href="../integration-v41/">Four-Brace Confluence</a>
+<a href="../noble-hex-v71/">Previous Nd hex</a>
+<a href="./spec.json">Topology register</a>
+</div>
+</section>
+<aside class="panel">
+<h2>Exact arrangement</h2>
+<div class="metrics">
+<div class="metric"><b>5</b><small>upper</small></div>
+<div class="metric"><b>4</b><small>lower</small></div>
+<div class="metric"><b>9</b><small>total</small></div>
+</div>
+<div class="tiers">
+<div class="tier"><b>Canopy</b><div class="sub">U1 · U2 · U3 · U4 · U5</div></div>
+<div class="tier"><b>Hanging below</b><div class="sub">L1 · L2 · L3 · L4</div></div>
+</div>
+<h2 style="margin-top:17px">Shared internal universe</h2>
+<div class="tier">
+<b>Sag A · black hole</b>
+<div class="sub">Dual accretion disks :: <code>-+ honey</code></div>
+<div class="legend" id="suns"></div>
+</div>
+<h2 style="margin-top:17px">Selected instance</h2>
+<div class="readout" id="readout">U3 · canopy · Sag A · six symbolic suns</div>
+<h2>Analogy boundary</h2>
+<p class="muted">The familiar rubber-sheet diagram helps show how mass curves geometry, but general relativity describes curvature of <b>four-dimensional spacetime</b>, not a membrane literally pulled downward.</p>
+<p class="muted">Nine independently drawn copies here are an <b>artistic topology</b>. They aren't evidence for nine physically existing universes, gravitational strings between galaxies, or a discovered black-hole arrangement.</p>
+<p class="small muted" id="status">Loading preserved v7.2 universe template…</p>
+</aside>
+</main>
+<footer>N184 v7.3 · Additive and reversible display layer · source v7.2 and frozen Nd/N184 registries unchanged.</footer>
+<script type="module">
+const $=id=>document.getElementById(id), canvas=$('scene'),g=canvas.getContext('2d');
+const W=canvas.width,H=canvas.height, colors=['#f6f7fa','#f06466','#f6f7fa','#70a7ff','#f8a94e','#b889f7'];
+const TAU=Math.PI*2;
+let spec=null,template=null,paused=false,sag=.8,tilt=20,mesh=true,phase=0,last=0,selected='U3';
+const stars=Array.from({length:175},(_,i)=>{
+ let z=(i*16807+17)%2147483647;
+ return{x:22+(z%1215),y:18+((z*1741)%2147483647)%804,r:z%13===0?1.8:1,a:.13+(z%49)*.007};
+});
+const positions=new Map();
+function drawCircle(x,y,r,c){g.beginPath();g.arc(x,y,r,0,TAU);g.fillStyle=c;g.fill()}
+function bezier(from,to,bend=0,stroke='#78b4ca77',width=1.4){
+ g.beginPath();g.moveTo(from.x,from.y);
+ let dx=(to.x-from.x),dy=to.y-from.y;
+ g.bezierCurveTo(from.x+dx*.2,from.y+dy*.28+bend,to.x-dx*.2,to.y-dy*.28+bend,to.x,to.y);
+ g.strokeStyle=stroke;g.lineWidth=width;g.stroke();
+}
+function project(n){
+ const p=n.position,rad=tilt*Math.PI/180;
+ const sway=Math.sin(phase*.65+(n.order+1)*.8)*(n.tier==='lower'?9:4);
+ return{
+  x:W*.5+p[0]*189*Math.cos(rad)+p[2]*70*Math.sin(rad)+sway,
+  y:405+p[1]*173-p[2]*30+Math.abs(p[0])*13+sag*(n.tier==='lower'?70:18)
+ };
+}
+function render(){
+ if(!spec||!template)return;
+ g.clearRect(0,0,W,H);
+ const bg=g.createRadialGradient(W*.5,370,60,W*.5,H*.7,750);
+ bg.addColorStop(0,'#192746');bg.addColorStop(.56,'#0b1830');bg.addColorStop(1,'#040914');
+ g.fillStyle=bg;g.fillRect(0,0,W,H);
+ for(const s of stars)drawCircle(s.x,s.y,s.r,'rgba(206,223,255,'+s.a+')');
+ positions.clear();for(const n of spec.nodes)positions.set(n.id,project(n));
+ const uppers=spec.nodes.filter(n=>n.tier==='upper'), lowers=spec.nodes.filter(n=>n.tier==='lower');
+ if(mesh){
+  // A draped canopy grid: a metaphor for a curved spacetime embedding diagram.
+  for(let j=0;j<9;j++){
+    const y=135+j*22;
+    g.beginPath();g.moveTo(85,y);
+    for(let x=86;x<=W-85;x+=10){
+      const bell=Math.exp(-Math.pow((x-W*.5)/320,2));
+      const p=y+sag*44*bell+(j/9)*22*Math.sin(x*.006+phase*.2);
+      g.lineTo(x,p);
+    }
+    g.lineWidth=1;g.strokeStyle='rgba(118,190,211,.16)';g.stroke();
+  }
+  for(let k=0;k<15;k++){
+    let x=105+k*75;
+    g.beginPath();g.moveTo(x,145);
+    g.quadraticCurveTo(x+(x-W*.5)*.11,330+sag*75,x,425);
+    g.lineWidth=1;g.strokeStyle='rgba(128,182,212,.12)';g.stroke();
+  }
+  for(let i=0;i<uppers.length-1;i++)bezier(positions.get(uppers[i].id),positions.get(uppers[i+1].id),sag*30,'#9bd5eab0',2);
+  for(const edge of spec.tethers)bezier(positions.get(edge.from),positions.get(edge.to),sag*48,'#a4d3e7a6',2);
+  for(const n of lowers){
+   const p=positions.get(n.id);
+   for(let j=-1;j<=1;j++){
+    const end={x:p.x+j*48+Math.sin(phase*.5+n.order+j)*9,y:Math.min(H-24,p.y+145+Math.abs(j)*17)};
+    bezier(p,end,(j+1)*25,'rgba(140,190,242,.33)',1.7);
+   }
+  }
+ }
+ // Repeat the v7.2 six-sun miniatures for EACH of nine copies.
+ for(const n of spec.nodes){
+  const p=positions.get(n.id),upper=n.tier==='upper',radius=upper?38:34;
+  const glow=g.createRadialGradient(p.x,p.y,5,p.x,p.y,radius+25);
+  glow.addColorStop(0,'#f5c88377');glow.addColorStop(.35,'#dfac7f25');glow.addColorStop(1,'#c6986800');
+  drawCircle(p.x,p.y,radius+25,glow);
+  for(let i=0;i<template.ring.length;i++){
+   const s=template.ring[i],a=s.angleDeg*Math.PI/180+phase*.045;
+   const dx=p.x+Math.cos(a)*radius,dy=p.y+Math.sin(a)*radius*.68;
+   drawCircle(dx,dy,5.2,s.colorHex);
+  }
+  g.beginPath();g.ellipse(p.x,p.y,radius*.73,radius*.28,-.2,0,TAU);
+  g.strokeStyle='#daa85ca0';g.lineWidth=4.2;g.stroke();
+  drawCircle(p.x,p.y,upper?15:13,'#01030a');
+  g.strokeStyle='#f0cb83';g.lineWidth=2.5;g.beginPath();g.arc(p.x,p.y,upper?16:14,0,TAU);g.stroke();
+  if(selected===n.id){
+   g.setLineDash([5,5]);g.strokeStyle='#f8e4b3';g.lineWidth=2;g.beginPath();g.arc(p.x,p.y,radius+12,0,TAU);g.stroke();g.setLineDash([]);
+  }
+  g.textAlign='center';g.fillStyle='#e9f4ff';g.font='bold 15px system-ui';
+  g.fillText(n.id,p.x,p.y-radius-18);
+  g.fillStyle='#adbbd2';g.font='12px system-ui';g.fillText('Sag A',p.x,p.y+radius+27);
+ }
+ g.textAlign='left';g.fillStyle='#d4e8fb';g.font='bold 18px system-ui';g.fillText('UPPER × 5',28,37);
+ g.fillStyle='#95b9d1';g.font='14px system-ui';g.fillText('LOWER × 4 · jellyfish web',28,H-24);
+}
+function selectNode(id){
+ selected=id;const n=spec.nodes.find(x=>x.id===id);
+ if(n)$('readout').textContent=n.id+' · '+(n.tier==='upper'?'canopy':'lower strand')+' · Sag A · -+ honey · 6 colored suns · root 1';
+ render();
+}
+canvas.addEventListener('click',event=>{
+ const b=canvas.getBoundingClientRect(),x=(event.clientX-b.left)/b.width*W,y=(event.clientY-b.top)/b.height*H;
+ let closest=null,d=55;
+ for(const [id,p] of positions){const dist=Math.hypot(p.x-x,p.y-y);if(dist<d){d=dist;closest=id}}
+ if(closest)selectNode(closest);
+});
+function frame(now){if(!paused){phase+=Math.min(45,now-last||0)*.001}last=now;
+ if(!frame.drawAt||now-frame.drawAt>40){render();frame.drawAt=now}
+ requestAnimationFrame(frame);
+}
+$('pause').onclick=()=>{paused=!paused;$('pause').textContent=paused?'Resume':'Pause'};
+$('reset').onclick=()=>{paused=false;sag=.8;tilt=20;mesh=true;phase=0;selected='U3';$('pause').textContent='Pause';$('sag').value='.8';$('sagOut').textContent='.80';$('tilt').value='20';$('tiltOut').textContent='20°';$('mesh').checked=true;selectNode('U3')};
+$('sag').oninput=e=>{sag=Number(e.target.value);$('sagOut').textContent=sag.toFixed(2);render()};
+$('tilt').oninput=e=>{tilt=Number(e.target.value);$('tiltOut').textContent=tilt+'°';render()};
+$('mesh').onchange=e=>{mesh=e.target.checked;render()};
+try{
+ const [sr,tr]=await Promise.all([fetch('./spec.json',{cache:'no-store'}),fetch('../universe-sag-a-v72/spec.json',{cache:'no-store'})]);
+ if(!sr.ok||!tr.ok)throw Error('Source unavailable');
+ spec=await sr.json();template=await tr.json();
+ if(spec.nodes.length!==9||spec.tiers.upper.count!==5||spec.tiers.lower.count!==4||template.center.displayName!=='Sag A'||template.ring.length!==6||template.disks.glyph!=='-+ honey')throw Error('Topology/source mismatch');
+ const sunBox=$('suns');sunBox.replaceChildren(...template.ring.map((s)=>{
+  const div=document.createElement('div');const sw=document.createElement('span');sw.className='swatch';sw.style.background=s.colorHex;div.append(sw,document.createTextNode(s.name+' / '+s.colorName));return div;
+ }));
+ $('status').textContent='Live read of preserved v7.2 template · all nine instances identical';
+ selectNode('U3');requestAnimationFrame(frame);
+}catch(error){$('status').textContent='Template/spec error: '+String(error)}
+</script>
+</body></html>
