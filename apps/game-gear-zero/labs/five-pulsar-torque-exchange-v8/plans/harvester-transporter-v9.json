@@ -1,0 +1,77 @@
+{
+  "schema": "oasis.ket.harvester-transporter.v0.1",
+  "status": "USER_NAMED_SYMBOLIC_ASSEMBLY__NOT_PHYSICALLY_IMPLEMENTED",
+  "name": "Harvester",
+  "userCanonicalTransporter": "gyro1direction3brace6thrust6{{x^2y^2z^2}}6brace3direction1gyro",
+  "normalizedOrderedStack": [
+    "gyro1",
+    "direction3",
+    "brace6",
+    "thrust6",
+    "{{x^2y^2z^2}}",
+    "brace6",
+    "direction3",
+    "gyro1"
+  ],
+  "originalVesselLiteral": "1x3x6xx6x6x3x1",
+  "modules": {
+    "carrier": {
+      "role": "carries clamp toward the vessel",
+      "sixfoldStages": [
+        "brace6",
+        "thrust6"
+      ],
+      "countOfSixfoldStages": 2,
+      "operationalDetails": "unspecified"
+    },
+    "clamp": {
+      "role": "coupling element transported by the carrier and attached to the vessel",
+      "explicitLayerInOrderedStack": false,
+      "geometry": "unresolved",
+      "actuation": "unresolved",
+      "attachmentState": "not implemented"
+    },
+    "vessel": {
+      "role": "receives transported clamp",
+      "symbolicCore": "{{x^2y^2z^2}}",
+      "interpretation": "named core; geometric and physical semantics not established"
+    },
+    "harvester": {
+      "composition": [
+        "carrier",
+        "clamp",
+        "vessel"
+      ],
+      "meaning": "user-named combined assembly, not a claim about physical matter harvesting"
+    }
+  },
+  "downstream": {
+    "stageAfterCore": [
+      "brace6",
+      "direction3",
+      "gyro1"
+    ],
+    "role": "outbound stabilizing stages as named in transporter stack"
+  },
+  "hallRailIntegration": {
+    "railGrammar": "{{-+000+-}}",
+    "manifest": "hall-rails-v9.manifest.json",
+    "existingVirtualRails": 19,
+    "virtualHallPositions": 57,
+    "hardwareHallDevices": 0,
+    "implementation": "design only"
+  },
+  "junction": {
+    "literal": "xx",
+    "structuralLocation": "the original vessel notation's 6xx6 bridge",
+    "semanticMeaning": "not yet specified",
+    "doNotAssume": "that xx defines clamp mechanics, arithmetic multiplication, or physical force"
+  },
+  "invariants": [
+    "Harvester equals carrier plus clamp plus vessel as named by user.",
+    "Two adjacent sixfold transporter stages are brace6 and thrust6, together forming carrier.",
+    "Do not automatically collapse clamp into brace6; clamp is a distinct component.",
+    "Do not replace the normalized transporter core with a new physical equation.",
+    "Leave existing v8 engine and prior Hall manifest unchanged."
+  ]
+}
