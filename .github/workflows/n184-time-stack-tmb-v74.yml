@@ -1,0 +1,21 @@
+name: N184 TMB Time Stack v74
+on:
+  push:
+    paths:
+      - 'n184/time-stack-tmb-v74/**'
+      - '.github/workflows/n184-time-stack-tmb-v74.yml'
+  workflow_dispatch:
+jobs:
+  deterministic-time-register:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: T/M/B Earth and timing register checks
+        run: |
+          node --check n184/time-stack-tmb-v74/test_time_stack.mjs
+          node n184/time-stack-tmb-v74/test_time_stack.mjs
