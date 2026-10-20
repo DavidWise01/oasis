@@ -14,7 +14,7 @@ class Machine {
   this.vaddr=0;this.vcode=0;this.vlatch=null;this.readBuffer=0;this.status=0;this.line=0;this.frames=0;
   this.psg={tone:[0x100,0x100,0x100],vol:[15,15,15,15],noise:0,phase:[0,0,0,0],latchCh:0,latchVol:false,stereo:255,lfsr:0x8000,noiseClock:0,rate:22050};
   this.cpu=new root.GGZ80(this);this.reset();}
- reset(){this.ram.fill(0);this.vram.fill(0);this.cram.fill(0);this.vdpRegs.fill(0);this.banks=[0,1,2];this.mapper=0;this.sramEnabled=false;this.vaddr=0;this.vcode=0;this.vlatch=null;this.readBuffer=0;this.status=0;this.line=0;this.frames=0;this.cpu.reset();this.psg.vol=[15,15,15,15];this.psg.phase=[0,0,0,0];this.psg.lfsr=0x8000;}
+ reset(){this.ram.fill(0);this.vram.fill(0);this.cram.fill(0);this.vdpRegs.fill(0);this.banks=[0,1,2];this.mapper=0;this.sramEnabled=false;this.vaddr=0;this.vcode=0;this.vlatch=null;this.readBuffer=0;this.status=0;this.line=0;this.frames=0;this.cpu.reset();this.stats={vramWrites:0,cramWrites:0,psgWrites:0,portReads:0,irqRequests:0};this.psg.vol=[15,15,15,15];this.psg.phase=[0,0,0,0];this.psg.lfsr=0x8000;}
  load(bytes){const b=bytes instanceof Uint8Array?bytes:new Uint8Array(bytes);if(!b.length)throw Error('Empty Game Gear ROM');
   if(b.length>4*1024*1024)throw Error('ROM exceeds experimental 4 MiB limit');
   this.rom=b;this.reset();return {bytes:b.length,banks:Math.ceil(b.length/16384)};
@@ -35,7 +35,7 @@ class Machine {
   }else if(a>=0x8000&&this.sramEnabled)this.sram[a-0x8000]=v;
  }
  press(name,on){if(name in this.keys)this.keys[name]=!!on;}
- input(port){const p=port&255;
+ input(port){this.stats.portReads++;const p=port&255;
   if(p===0xbe)return this.readData();
   if(p===0xbf)return this.readStatus();
   if(p===0x7e)return this.line&255;
@@ -58,7 +58,7 @@ class Machine {
   this.vaddr=((v&63)<<8)|low;
   if(this.vcode===0){this.readBuffer=this.vram[this.vaddr];this.vaddr=(this.vaddr+1)&0x3fff}
  }
- writeData(v){if(this.vcode===3){this.cram[this.vaddr&63]=v}else{this.vram[this.vaddr&0x3fff]=v}
+ writeData(v){if(this.vcode===3){this.cram[this.vaddr&63]=v;this.stats.cramWrites++}else{this.vram[this.vaddr&0x3fff]=v;this.stats.vramWrites++}
   this.vaddr=(this.vaddr+1)&0x3fff;this.vlatch=null;
  }
  readData(){const old=this.readBuffer;this.readBuffer=this.vram[this.vaddr&0x3fff];this.vaddr=(this.vaddr+1)&0x3fff;this.vlatch=null;return old}
@@ -99,7 +99,7 @@ class Machine {
    const tile=(this.vdpRegs[6]&4?256:0)+(large?(tile0&254):tile0);
    sprites.push({x,y:y>224?y-256:y,tile,size:(large?16:8)*(scale2?2:1),scale2});}return sprites;
  }
- writePSG(byte){const p=this.psg,v=byte&255;
+ writePSG(byte){this.stats.psgWrites++;const p=this.psg,v=byte&255;
   if(v&128){p.latchCh=(v>>5)&3;p.latchVol=!!(v&16);if(p.latchVol)p.vol[p.latchCh]=v&15;else if(p.latchCh===3){p.noise=v&7;p.lfsr=0x8000}else p.tone[p.latchCh]=(p.tone[p.latchCh]&0x3f0)|(v&15)}
   else if(p.latchVol)p.vol[p.latchCh]=v&15;
   else if(p.latchCh!==3)p.tone[p.latchCh]=(p.tone[p.latchCh]&15)|((v&63)<<4);
@@ -118,7 +118,7 @@ class Machine {
   }return out;
  }
  runFrame(){if(!this.rom.length)throw Error('No ROM loaded');
-  for(let y=0;y<FRAME_LINES;y++){this.line=y;if(y===192){this.status|=128;if(this.vdpRegs[1]&32)this.cpu.interrupt()}
+  for(let y=0;y<FRAME_LINES;y++){this.line=y;if(y===192){this.status|=128;if(this.vdpRegs[1]&32){this.cpu.interrupt();this.stats.irqRequests++;}}
    let budget=CYCLES_PER_LINE,guard=0;while(budget>0&&guard++<200){budget-=this.cpu.step();}
   }
   this.frames++;return {frame:this.frames,pixels:this.drawFrame(),audio:this.audioSamples()};
