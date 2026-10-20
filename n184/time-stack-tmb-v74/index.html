@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N184 | T M B Time Stack · Earth at M</title>
+<style>
+:root{color-scheme:dark;--bg:#07101e;--pane:#111f31;--line:#304762;--ink:#eaf4ff;--muted:#a6bcd1;--strong:#dfa978;--medium:#79d6cb;--bottom:#a88bfa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,sans-serif}
+header{background:linear-gradient(135deg,#142435,#15162a);border-bottom:1px solid var(--line);padding:20px clamp(15px,4vw,38px)}
+h1{font-size:clamp(21px,3vw,31px);margin:0}header p{margin:5px 0 0;color:var(--muted)}
+main{max-width:1420px;margin:auto;padding:16px;display:grid;grid-template-columns:minmax(0,1fr) 325px;gap:15px}
+.panel{background:var(--pane);border:1px solid var(--line);border-radius:13px;padding:15px;min-width:0}
+canvas{background:#070f1d;border:1px solid #31465c;width:100%;display:block;height:auto;border-radius:10px}
+.toolbar{display:flex;gap:13px;flex-wrap:wrap;align-items:center;margin:13px 0}
+button{padding:9px 13px;border-radius:8px;background:#1d4659;border:1px solid #58879a;color:#e4f9ff;cursor:pointer}
+button:hover{background:#29637a}button:focus-visible,input:focus-visible{outline:2px solid #ade3ec}
+input[type=range]{accent-color:#8edbd3;width:170px}
+h2{font-size:15px;margin:0 0 11px}.plane{border-radius:9px;border:1px solid #40536c;padding:12px;margin:9px 0;background:#1a2c40}
+.plane strong{display:block;font-size:16px}.sub{color:var(--muted)}.plane strong span{font-weight:400;font-size:12px;color:var(--muted)}
+.clock{background:#1e2339;border:1px solid #77709d;padding:15px;border-radius:12px;margin:16px 0}
+.clock .literal{font:600 clamp(16px,2.3vw,20px) ui-monospace,monospace;overflow-wrap:anywhere;color:#e8d0ff}
+.metric{font-size:23px;font-weight:700;word-break:break-word;font-variant-numeric:tabular-nums;color:#a8f3da}
+.badge{background:#233b4a;padding:4px 8px;border-radius:7px;color:#bedadf;font-size:12px}
+a{color:#9cebe3}pre{white-space:pre-wrap;font:12px/1.6 ui-monospace,monospace;color:#cbdbef}
+footer{border-top:1px solid var(--line);padding:13px 20px;color:var(--muted);font-size:12px}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1>N184 · T / M / B Time Stack</h1>
+<p>Five Sag A universes above · Earth reference at middle · four below · symbolic time unit 10⁻³⁵ seconds</p>
+</header>
+<main>
+<section class="panel">
+<canvas id="scene" width="1240" height="820" aria-label="Three horizontal planes marked T strong, M medium with Earth at center, and B floor. Five miniature Sag A universes above Earth, four below, with jellyfish-style spacetime mesh and time ticks."></canvas>
+<div class="toolbar">
+<button id="play">Play ticks</button>
+<button id="reset">Reset</button>
+<label for="tick">Clock <output id="tickOut">0</output> ticks</label>
+<input type="range" min="0" max="120" step="1" value="0" id="tick">
+<label><input type="checkbox" id="showTethers" checked> Show web</label>
+</div>
+<p class="sub">All nine miniatures are references to the same v7.2 Sag A universe. Earth is the center-plane reference, not a tenth copy. The 10⁻³⁵-second time unit is a defined model tick, not a measured physical quantum.</p>
+<p><a href="../jellyfish-web-v73/">Nine-instance jellyfish source</a> · <a href="../universe-sag-a-v72/">Original Sag A universe</a> · <a href="../integration-v41/">Four-Brace Confluence</a> · <a href="./spec.json">Time-register data</a></p>
+</section>
+<aside class="panel">
+<h2>Three canonical bands</h2>
+<div class="plane" style="border-left:4px solid var(--strong)"><strong>T :: Strong <span>Top</span></strong><div class="sub">U1 · U2 · U3 · U4 · U5</div><span class="badge">5 identical instances</span></div>
+<div class="plane" style="border-left:4px solid var(--medium)"><strong>M :: Medium <span>Earth</span></strong><div class="sub">Pinned observer/reference plane</div><span class="badge">not an extra universe</span></div>
+<div class="plane" style="border-left:4px solid var(--bottom)"><strong>B :: Floor <span>Bottom</span></strong><div class="sub">L1 · L2 · L3 · L4</div><span class="badge">4 identical instances</span></div>
+<h2 style="margin-top:20px">Symbolic time register</h2>
+<div class="clock">
+<div class="literal">13/8B:1:1x10^-35</div>
+<div class="sub">Specified domain: time</div>
+<div style="margin-top:12px">Elapsed time</div>
+<div class="metric" id="elapsed">0 × 10⁻³⁵ s</div>
+<div class="sub">1 tick = 10⁻³⁵ seconds (model convention)</div>
+</div>
+<h2>Notation discipline</h2>
+<p class="sub"><code>13/8B</code> is preserved literally as an unresolved symbolic timing operator. We do not evaluate it as 13÷(8B) or (13÷8)B without a rule for B.</p>
+<p class="sub">The underlying nine-universe jellyfish layout is unchanged; the new layer adds Earth at M and an independent clock coordinate.</p>
+<pre>T :: strong :: 5
+M :: medium :: Earth
+B :: floor  :: 4
+
+time :: 13/8B:1:1x10^-35
+unit :: seconds
+count :: 9 Sag A instances</pre>
+<p class="sub" id="status">Checking source topology…</p>
+</aside>
+</main>
+<footer>OASIS N184 · T/M/B v7.4 · additive symbolic visualization · no physical proof of multiverses, spacetime wells or quantized time · preserved v7.2 / v7.3 frozen reference.</footer>
+<script type="module">
+const $=id=>document.getElementById(id),canvas=$('scene'),g=canvas.getContext('2d'),TAU=Math.PI*2;
+let spec=null,web=null,master=null,tick=0,running=false,showTethers=true,last=0,frac=0;
+const W=canvas.width,H=canvas.height;
+const color={T:'#dfa978',M:'#79d6cb',B:'#a88bfa'};
+const bgStars=Array.from({length:125},(_,i)=>{const z=(i*16807+17)%2147483647;return{x:(z%1190)+20,y:((z*3181)%2147483647)%780+18,r:z%11===0?1.5:.8,a:.13+(z%63)/170}});
+function circle(x,y,r,col){g.beginPath();g.arc(x,y,r,0,TAU);g.fillStyle=col;g.fill()}
+function beam(x1,y1,x2,y2,col,w=1){g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.strokeStyle=col;g.lineWidth=w;g.stroke()}
+function path(x1,y1,x2,y2,col){
+ g.beginPath();g.moveTo(x1,y1);
+ g.bezierCurveTo((2*x1+x2)/3,y1+110,(x1+2*x2)/3,y2-110,x2,y2);
+ g.strokeStyle=col;g.lineWidth=2;g.stroke();
+}
+function mini(x,y,id,r=39){
+ const gradient=g.createRadialGradient(x,y,1,x,y,r+22);
+ gradient.addColorStop(0,'#dfae7e66');gradient.addColorStop(1,'#d9a47800');circle(x,y,r+22,gradient);
+ master.ring.forEach((s,i)=>{
+  const a=s.angleDeg*Math.PI/180+tick*.009;
+  circle(x+Math.cos(a)*r,y+Math.sin(a)*r*.68,5.5,s.colorHex);
+ });
+ g.beginPath();g.ellipse(x,y,r*.85,r*.35,-.22,0,TAU);g.strokeStyle='#dfba77';g.lineWidth=3.5;g.stroke();
+ circle(x,y,15,'#01040d');
+ g.strokeStyle='#f0cc8b';g.lineWidth=2.5;g.beginPath();g.arc(x,y,16.5,0,TAU);g.stroke();
+ g.fillStyle='#e8f3ff';g.textAlign='center';g.font='bold 16px system-ui';g.fillText(id,x,y-r-16);
+ g.font='12px system-ui';g.fillStyle='#b4c5db';g.fillText('Sag A',x,y+r+24);
+}
+function earth(x,y){
+ const r=49;
+ const glow=g.createRadialGradient(x,y,10,x,y,100);
+ glow.addColorStop(0,'#8bedcb55');glow.addColorStop(1,'#79d6cb00');circle(x,y,100,glow);
+ circle(x,y,r,'#2572af');
+ g.save();g.beginPath();g.arc(x,y,r,0,TAU);g.clip();
+ g.fillStyle='#4bb98a';g.beginPath();g.moveTo(x-28,y-32);g.lineTo(x-7,y-36);g.lineTo(x+11,y-22);g.lineTo(x+5,y-7);g.lineTo(x-11,y+3);g.lineTo(x-17,y+31);g.lineTo(x-36,y+5);g.closePath();g.fill();
+ g.beginPath();g.moveTo(x+21,y+3);g.lineTo(x+40,y+12);g.lineTo(x+18,y+39);g.lineTo(x-2,y+27);g.closePath();g.fill();
+ g.restore();
+ g.beginPath();g.arc(x,y,r,0,TAU);g.lineWidth=3;g.strokeStyle='#a1f5ed';g.stroke();
+ g.fillStyle='#d5fcf0';g.textAlign='center';g.font='bold 17px system-ui';g.fillText('EARTH',x,y-66);
+ g.font='13px system-ui';g.fillText('M · medium',x,y+81);
+}
+function plane(y,letter,name,col){
+ beam(60,y,W-60,y,col+'8d',1.8);
+ g.fillStyle=col;g.font='bold 20px system-ui';g.textAlign='left';g.fillText(letter+' :: '+name,50,y-13);
+}
+function draw(){
+ if(!spec||!web||!master)return;
+ const background=g.createRadialGradient(W*.5,H*.48,40,W*.5,H*.54,700);
+ background.addColorStop(0,'#172543');background.addColorStop(1,'#050b18');
+ g.fillStyle=background;g.fillRect(0,0,W,H);
+ bgStars.forEach(s=>circle(s.x,s.y,s.r,'rgba(212,235,255,'+s.a+')'));
+ plane(120,'T','STRONG',color.T);plane(427,'M','MEDIUM · EARTH',color.M);plane(700,'B','FLOOR',color.B);
+ const upper=web.nodes.filter(n=>n.tier==='upper').map((n,i)=>({x:170+i*220,y:240-22*Math.sin(i*Math.PI/4),id:n.id}));
+ const lower=web.nodes.filter(n=>n.tier==='lower').map((n,i)=>({x:285+i*225,y:600+8*Math.sin(i*Math.PI/3),id:n.id}));
+ const map=new Map([...upper,...lower].map(p=>[p.id,p]));
+ if(showTethers){
+   for(const link of web.tethers){
+     const a=map.get(link.from),b=map.get(link.to);
+     path(a.x,a.y+42,b.x,b.y-42,'#78bdd45b');
+   }
+   for(const u of upper){path(u.x,u.y+46,W*.5,380,'#7bd1c03d')}
+   for(const b of lower){path(W*.5,479,b.x,b.y-39,'#9881c83b')}
+ }
+ upper.forEach(p=>mini(p.x,p.y,p.id,38));
+ lower.forEach(p=>mini(p.x,p.y,p.id,36));
+ earth(W*.5,427);
+ g.fillStyle='#d8e6fc';g.font='14px ui-monospace,monospace';g.textAlign='right';
+ g.fillText('clock: '+tick+' × 10^-35 s',W-31,35);
+ g.fillText('13/8B:1:1x10^-35',W-31,58);
+}
+function updateClock(){
+ $('tick').value=tick;$('tickOut').textContent=String(tick);
+ $('elapsed').textContent=tick+' × 10⁻³⁵ s';
+ draw();
+}
+function step(now){
+ if(running){const dt=Math.min((now-last||0)/1000,.1);frac+=dt*10;
+   while(frac>=1){frac-=1;tick=(tick+1)%121;}
+   updateClock();
+ }
+ last=now;requestAnimationFrame(step);
+}
+$('play').onclick=()=>{running=!running;$('play').textContent=running?'Pause ticks':'Play ticks'};
+$('reset').onclick=()=>{running=false;tick=0;frac=0;$('play').textContent='Play ticks';updateClock()};
+$('tick').oninput=e=>{running=false;$('play').textContent='Play ticks';tick=Number(e.target.value);updateClock()};
+$('showTethers').onchange=e=>{showTethers=e.target.checked;draw()};
+try{
+ const r=await Promise.all([fetch('./spec.json',{cache:'no-store'}),fetch('../jellyfish-web-v73/spec.json',{cache:'no-store'}),fetch('../universe-sag-a-v72/spec.json',{cache:'no-store'})]);
+ if(r.some(x=>!x.ok))throw Error('source not accessible');
+ [spec,web,master]=await Promise.all(r.map(x=>x.json()));
+ if(spec.clock.literal!=='13/8B:1:1x10^-35'||spec.clock.secondsPerTick!==1e-35||spec.counts.identicalSagAInstances!==9||web.nodes.length!==9||master.center.displayName!=='Sag A'||master.ring.length!==6)throw Error('register mismatch');
+ $('status').textContent='Source lineage verified in browser · 9 cloned universes + Earth reference at M';
+ draw();requestAnimationFrame(step);
+}catch(e){$('status').textContent='Source lineage error: '+e}
+</script>
+</body></html>
