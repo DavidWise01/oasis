@@ -14,6 +14,14 @@ You can also load a legitimately obtained `.gg` ROM. It is processed locally and
 
 Controls: arrow keys (direction), Z (button 1), X (button 2), Enter (Start). On-screen glass buttons also work. Audio unlocks after clicking **ENABLE SOUND**.
 
+## COMPILED RELEASE — ready-to-load Game Gear ROM
+
+- [**Download the 16 KiB compiled I-13 HELLO WORLD .gg**](./dist/i13-hello-world-rgb.gg)
+- [Reproducible build instructions and SHA-256](./dist/README.md)
+- [No-dependency Node build script](./scripts/compile-i13-hello-world.cjs)
+
+The committed binary was fetched back from GitHub, checked byte-for-byte against the source generator, and executed on our emulated Z80 through all eight RGB phases, reversal and freeze. Its SHA-256 is `a42fd461d6555f528d70ca54e5277a90f2739bf899352bff8e571baa878f0d6d`. The compiled release is a bounded **hand translation** of the I-13 numeric source, not a general I13-H1.1 compiler.
+
 ## HELLO WORLD · I-13 RGB diffusion dot
 
 [**Open the GG-ZERO page and choose I-13 HELLO WORLD · . RGB**](https://davidwise01.github.io/oasis/apps/game-gear-zero/) · [Full specification](./I13-HELLO-WORLD.md)
