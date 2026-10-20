@@ -1,0 +1,21 @@
+name: N184 Plank Bubble Phase Duration v82
+on:
+  push:
+    paths:
+      - 'n184/arc-phase-duration-v82/**'
+      - '.github/workflows/n184-arc-phase-duration-v82.yml'
+  workflow_dispatch:
+jobs:
+  full-bubble-duration:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate one whole Plank bubble length as phase duration reference
+        run: |
+          node --check n184/arc-phase-duration-v82/test_duration.mjs
+          node n184/arc-phase-duration-v82/test_duration.mjs
