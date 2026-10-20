@@ -140,9 +140,9 @@ G2:  +-----------------------+
  function ring(x,y,rx,ry,rot,color,a,lw=2){ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.globalAlpha=a;ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.beginPath();ctx.ellipse(0,0,rx,ry,0,0,Math.PI*2);ctx.stroke();ctx.restore()}
  function cubeGeom(cx,cy,size,angle){const v=[[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
   const a=angle;return v.map(([x,y,z])=>{const c=Math.cos(a),s=Math.sin(a),cx2=x*c-z*s,cz=x*s+z*c;const ty=y*Math.cos(.31)-cz*Math.sin(.31),tz=y*Math.sin(.31)+cz*Math.cos(.31);return [cx+cx2*size*(1+.11*tz),cy+ty*size*(1+.11*tz)]});}
- function prism(x,y,color,t,size=47,alpha=1){const pts=cubeGeom(x,y,size,t*.00038),edges=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+ function prism(x,y,color,t,size=47,alpha=1,rotationOverride=null){const angle=rotationOverride===null?t*.00038:rotationOverride;const pts=cubeGeom(x,y,size,angle),edges=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
   glow(x,y,size*1.85,color,.24*alpha*(.7+.3*Math.sin(t*.006)));polygon([pts[0],pts[1],pts[5],pts[4]],color,.46*alpha,`rgba(${hexToRGB(color).join(',')},.12)`,1.25);polygon([pts[1],pts[2],pts[6],pts[5]],color,.62*alpha,`rgba(${hexToRGB(color).join(',')},.11)`,1.25);polygon([pts[3],pts[2],pts[6],pts[7]],color,.43*alpha,null,1);
-  for(const [a,b] of edges)line([pts[a],pts[b]],color,.56*alpha,1.8);const inner=cubeGeom(x,y,size*.53,-t*.00055);for(const [a,b] of edges)line([inner[a],inner[b]],'#effcff',.31*alpha,.9);
+  for(const [a,b] of edges)line([pts[a],pts[b]],color,.56*alpha,1.8);const inner=cubeGeom(x,y,size*.53,-angle*.75);for(const [a,b] of edges)line([inner[a],inner[b]],'#effcff',.31*alpha,.9);
   for(let i=0;i<4;i++)line([pts[i],inner[i+4]],color,.22*alpha,.7);glow(x,y,size*.58,color,.55*alpha);circle(x,y,3.3,'#ffffff',alpha,1,true);
  }
  function stage(t){const u=((t%duration)+duration)%duration/duration;return{u,charge:clamp(u/.28),converge:clamp((u-.25)/.32),focus:clamp((u-.47)/.17),fire:clamp((u-.61)/.08)*(1-clamp((u-.84)/.13)),phase:u<.26?'CHARGE':u<.48?'CONVERGE':u<.62?'FOCUS':u<.85?'FIRE':'RECYCLE',cycle:Math.floor(t/duration)+1}}
@@ -168,7 +168,7 @@ G2:  +-----------------------+
     glow(n.x+dx*80,n.y+dy*80,22,n.c,.41*pulse*state.intensity);
    }
    // Crystal itself spins at a phase-locked angular offset.
-   prism(n.x,n.y,n.c,t+model.offsets[i]*duration,47,lum);
+   prism(n.x,n.y,n.c,t,47,lum,a);
    label(n.el+' / '+n.name+' / '+Math.round(model.offsets[i]*360)+'°',n.x,n.y+104,enabled?'#ddf3ff':'#72818d',11);
    const center=[500,320];
    if(enabled){
