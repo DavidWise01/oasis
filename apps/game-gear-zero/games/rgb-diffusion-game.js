@@ -6,7 +6,7 @@
 (function(root){'use strict';
 function create(){
  const out=new Uint8Array(16384), labels=new Map(),fixups=[];let pc=0;
- const S={x:0xc100,y:0xc101,ink:0xc102,selectLatch:0xc103,moveTimer:0xc104,tick:0xc105,score:0xc106,boot:0xc107,irq:0xc108,win:0xc109,drawlo:0xc10a,drawhi:0xc10b,keys:0xc10c,startLatch:0xc10d,steps:0xc10e};
+ const S={x:0xc100,y:0xc101,ink:0xc102,selectLatch:0xc103,moveTimer:0xc104,tick:0xc105,score:0xc106,boot:0xc107,irq:0xc108,win:0xc109,drawlo:0xc10a,drawhi:0xc10b,keys:0xc10c,startLatch:0xc10d,steps:0xc10e,playerPaint:0xc10f};
  const FIELD=0xc200,NEXT=0xc300,COUNT=252, W=16,H=12;
  const emit=(...xs)=>{for(const x of xs){if(pc>=0x1000)throw Error('game code exceeds reserved region');out[pc++]=x&255}};
  const ww=n=>emit(n&255,n>>>8),label=k=>{if(labels.has(k))throw Error('duplicate '+k);labels.set(k,pc)},at=n=>pc=n,
@@ -19,8 +19,13 @@ function create(){
  at(0x100);label('BOOT');
  emit(0xf3,0x31,0xf0,0xdf);  // DI, stack DFF0
  imm(8);store(S.x);imm(6);store(S.y);imm(1);store(S.ink);
- emit(0xaf);for(const addr of [S.selectLatch,S.moveTimer,S.tick,S.score,S.irq,S.win,S.startLatch,S.steps])store(addr);
+ emit(0xaf);for(const addr of [S.selectLatch,S.moveTimer,S.tick,S.score,S.irq,S.win,S.startLatch,S.steps,S.playerPaint])store(addr);
  call('CLEAR');
+ // Three initial Z80-written pulses ensure diffusion is visible on boot.
+ // The player's own Z injection is still required before any point scores.
+ imm(1);store(FIELD+38);   // Red at x=2,y=2
+ imm(2);store(FIELD+51);   // Green at x=15,y=2
+ imm(4);store(FIELD+206);  // Blue at x=8,y=11
  reg(0,4);reg(1,0x60);reg(2,14);reg(5,126);reg(6,0);reg(7,0);reg(8,0);reg(9,0);
  copy('PALETTE',0,3,64);
  copy('TILES',0,1,0x400);
@@ -43,7 +48,7 @@ function create(){
  // START is an active-low bit7 on GG port 00, edge-gated: clear board.
  emit(0xdb,0x00,0xcb,0x7f);jnz('START_RELEASE');
  load(S.startLatch);emit(0xb7);jnz('AFTER_START');
- imm(1);store(S.startLatch);call('CLEAR');emit(0xaf);store(S.win);call('DRAW_FIELD');jp('AFTER_START');
+ imm(1);store(S.startLatch);call('CLEAR');emit(0xaf);store(S.win);store(S.playerPaint);call('DRAW_FIELD');jp('AFTER_START');
  label('START_RELEASE');emit(0xaf);store(S.startLatch);
  label('AFTER_START');
  // Button1 / Z (bit4) adds selected channel to the field at cursor.
@@ -71,6 +76,7 @@ function create(){
  // Clear both zero-bordered 18x14 RGB bitmask buffers.
  emit(0x21);ww(FIELD);emit(0x11);ww(FIELD+1);emit(0xaf,0x77,0x01);ww(511);emit(0xed,0xb0,0xc9);
  label('INJECT');
+ imm(1);store(S.playerPaint);
  // offset = y * 18 + x; x=[1,16], y=[1,12], padded field stride 18.
  load(S.y);emit(0x5f,0x16,0,0x6f,0x26,0);
  emit(0x29,0x29,0x29,0x29,0x19,0x19); // 16*y + y + y
@@ -111,6 +117,7 @@ function create(){
  outp(0xbe,8);emit(0xc9);
  label('CHECK_REACTOR');
  // Reactor tile 8,6 / field offset 116. Reaching WHITE (7) scores one mix.
+ load(S.playerPaint);emit(0xb7);jz('REACTOR_DONE');
  load(S.win);emit(0xb7);jnz('REACTOR_DONE');
  load(FIELD+116);emit(0xfe,7);jnz('REACTOR_DONE');
  imm(1);store(S.win);load(S.score);emit(0x3c);store(S.score);
