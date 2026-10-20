@@ -1,0 +1,22 @@
+name: N184 Noble Gas Four-Wave v70
+on:
+  push:
+    paths:
+      - 'n184/noble-gas-four-wave-v70/**'
+      - '.github/workflows/n184-noble-four-wave-v70.yml'
+  workflow_dispatch:
+jobs:
+  deterministic-four-wave:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and deterministic spectrum checks
+        run: |
+          node --check n184/noble-gas-four-wave-v70/four_wave_model.mjs
+          node --check n184/noble-gas-four-wave-v70/test_four_wave.mjs
+          node n184/noble-gas-four-wave-v70/test_four_wave.mjs
