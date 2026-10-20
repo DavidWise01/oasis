@@ -46,10 +46,11 @@ function create(){
  // I13 TECH-001 exact authority: invalid evidence is HOLD with a veto witness;
  // valid -1 HOLD; question_debt>0 FLAY; valid +1 PROCEED; otherwise FLAY.
  label('EVAL');
- get(M.evidence);emit(0xfe,255);jz('NEG');
+ get(M.evidence);emit(0xfe,255);jz('VALID_NEG');
  get(M.evidence);emit(0xfe,0);jz('VALID');
  get(M.evidence);emit(0xfe,1);jz('VALID');
  imm(255);put(M.guard);jp('NEG');
+ label('VALID_NEG');imm(1);put(M.guard);jp('NEG');
  label('VALID');imm(1);put(M.guard);
  get(M.debt);emit(0xb7);jnz('ZERO');
  get(M.evidence);emit(0xfe,1);jz('POS');
