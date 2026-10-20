@@ -1,0 +1,21 @@
+name: N184 Arc Cycle v80
+on:
+  push:
+    paths:
+      - 'n184/arc-cycle-v80/**'
+      - '.github/workflows/n184-arc-cycle-v80.yml'
+  workflow_dispatch:
+jobs:
+  phase-length-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify 360 degree bubble phase and nominal vs calibrated lengths
+        run: |
+          node --check n184/arc-cycle-v80/test_cycle.mjs
+          node n184/arc-cycle-v80/test_cycle.mjs
