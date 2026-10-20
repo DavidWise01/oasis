@@ -1,0 +1,89 @@
+{
+  "schema": "oasis/n184/time-stack-tmb/v74",
+  "version": "v7.4",
+  "status": "symbolic-topology-and-clock-overlay",
+  "source": {
+    "web": "../jellyfish-web-v73/spec.json",
+    "universe": "../universe-sag-a-v72/spec.json"
+  },
+  "rootAnchor": 1,
+  "clock": {
+    "literal": "13/8B:1:1x10^-35",
+    "userDefinition": "units of time",
+    "operator": "13/8B",
+    "operatorInterpretation": "unresolved-symbolic-timing-operator",
+    "ratioAnchor": "1",
+    "tickMagnitude": 1,
+    "tickExponent": -35,
+    "unit": "second",
+    "secondsPerTick": 1e-35,
+    "timeCoordinate": "elapsed_seconds = tick_index * 10^-35",
+    "notAnEmpiricallyConfirmedTimeQuantum": true
+  },
+  "planes": [
+    {
+      "code": "T",
+      "name": "Top",
+      "strength": "strong",
+      "role": "canopy",
+      "instanceCount": 5,
+      "instanceIds": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5"
+      ],
+      "order": 0
+    },
+    {
+      "code": "M",
+      "name": "Middle",
+      "strength": "medium",
+      "role": "Earth reference",
+      "instanceCount": 0,
+      "referenceName": "Earth",
+      "addsUniverse": false,
+      "order": 1
+    },
+    {
+      "code": "B",
+      "name": "Bottom",
+      "strength": "floor",
+      "role": "hanging mesh",
+      "instanceCount": 4,
+      "instanceIds": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "order": 2
+    }
+  ],
+  "counts": {
+    "upper": 5,
+    "lower": 4,
+    "identicalSagAInstances": 9,
+    "middleEarthReference": 1,
+    "totalUniverseInstances": 9
+  },
+  "visual": {
+    "tAxis": "time",
+    "earthIsMiddle": true,
+    "layerColors": {
+      "T": "#dfa978",
+      "M": "#79d6cb",
+      "B": "#a88bfa"
+    },
+    "defaultTick": 0,
+    "maxTick": 120
+  },
+  "restrictions": [
+    "The string 13/8B is retained as a literal and not evaluated numerically because B is not algebraically defined.",
+    "The multiplier 10^-35 seconds is a defined simulation tick and is not the Planck time.",
+    "The Einstein rubber-sheet and jellyfish geometry is an analogy, not a physical general-relativistic solution.",
+    "The Earth marker is a reference point at plane M and does not create a tenth universe.",
+    "The nine Sag A universes remain symbolic cloned instances of v7.2; upstream files remain unchanged."
+  ]
+}
