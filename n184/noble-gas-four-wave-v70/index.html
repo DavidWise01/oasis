@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N184 | Four-wave noble-gas confluence v7.0</title>
+<style>
+:root{color-scheme:dark;--bg:#07101b;--pane:#111f30;--border:#33465d;--ink:#eaf3ff;--quiet:#a5b7cf;--gold:#ddbc73}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{padding:19px clamp(14px,4vw,32px);border-bottom:1px solid var(--border);background:#0e1a28}
+h1{margin:0;font-size:clamp(20px,2.8vw,29px);letter-spacing:-.02em}
+h2{margin:0 0 12px;font-size:15px}p{margin:6px 0 10px}small,.muted{color:var(--quiet)}
+main{padding:17px;max-width:1440px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:15px}
+.panel{background:var(--pane);border:1px solid var(--border);border-radius:12px;padding:16px;min-width:0}
+.stacked{display:grid;gap:15px}.stage{position:relative;background:#071321;border:1px solid #2a3e57;border-radius:10px;overflow:hidden}
+canvas{width:100%;display:block}#field{height:345px;object-fit:fill}#trace{height:200px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.lane{padding:9px;border:1px solid var(--border);border-radius:9px;background:#172638;min-width:0}
+.lane b{display:block;font-size:15px}.lane small{display:block;font-size:12px}
+input,select,button{font:inherit}label{display:block;margin:12px 0 5px;color:#dbe8f8}
+input[type=range]{width:100%;accent-color:#76d9c4}select,button{background:#18354a;color:#eaf7ff;border:1px solid #4d7389;padding:9px;border-radius:8px;cursor:pointer}
+select{width:100%}button:hover{background:#28556a}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #72ddd0;outline-offset:2px}
+.output{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:15px 0}
+.metric{border:1px solid #33465d;background:#17283c;border-radius:10px;padding:11px}
+.metric small{font-size:11px;display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--quiet);font-size:12px;margin-top:7px}
+.swatch{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:5px}
+a{color:#86dfd7}code{color:#ebd6a4}
+.callout{border-left:3px solid #b69254;padding-left:12px;color:#d8e5f3}
+footer{padding:16px 25px;border-top:1px solid var(--border);color:var(--quiet);font-size:12px}
+@media(max-width:850px){main{grid-template-columns:1fr}.lanes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.metrics{grid-template-columns:1fr 1fr}#field{height:250px}#trace{height:165px}}
+</style>
+</head>
+<body>
+<header>
+<div class="row"><h1>N184 · Four-wave noble-gas confluence</h1><a href="../integration-v41/">← N184 integration</a></div>
+<p class="muted">v7.0 additive symbolic experiment · four directed input ports · electrum / Ice IX schematic · no alteration to frozen 60 × 40 lattice</p>
+</header>
+<main>
+<div class="stacked">
+<section class="panel">
+<div class="row"><h2>Phase-cross field · +−{ 0 }+−</h2><span id="modeLabel" class="muted">ENGINEERED INVERSE</span></div>
+<div class="stage"><canvas id="field" width="920" height="410" aria-label="Animated scalar four-wave interference field around a simulated shell and core"></canvas></div>
+<div class="lanes" id="lanes"></div>
+<p class="muted">Colored wave ports show representative gas emission lines. The circular electrum shell and Ice IX core are an illustrative geometry; the field calculations use a uniform toy transmission coefficient, not measured shell optics or ice parameters.</p>
+</section>
+<section class="panel">
+<div class="row"><h2>Center monitor · total field and core oscillator</h2><span id="sampleState" class="muted">768 steps · 12 normalized cycles</span></div>
+<div class="stage"><canvas id="trace" width="920" height="230" aria-label="Oscillating first three channels, fourth compensator, resulting center field, and illustrative core polarization"></canvas></div>
+<div class="legend"><span><i class="swatch" style="background:#ffb75e"></i>He+Ne+Ar</span><span><i class="swatch" style="background:#a799ff"></i>Fourth</span><span><i class="swatch" style="background:#78f6bd"></i>Center sum</span><span><i class="swatch" style="background:#f77db7"></i>Core response</span></div>
+</section>
+</div>
+<aside class="panel">
+<h2>Fourth-port configuration</h2>
+<label for="mode">W4 waveform</label>
+<select id="mode">
+<option value="cancel">Inverse synthesis — center cancellation</option>
+<option value="reinforce">In-phase synthesis — reinforcement</option>
+<option value="krypton">Real Kr I line — fourth noble gas</option>
+</select>
+<label for="phase">Fourth-channel phase offset <output id="phaseOut">0°</output></label>
+<input id="phase" type="range" min="-180" max="180" value="0" step="5">
+<label for="reflectivity">Toy electrum reflection <output id="reflectOut">30%</output></label>
+<input id="reflectivity" type="range" min="0" max="100" value="30" step="5">
+<label for="drive">Drive strength <output id="driveOut">1.00</output></label>
+<input id="drive" type="range" min="0" max="200" value="100" step="5">
+<div class="row" style="margin-top:14px"><button id="toggle">Pause animation</button><button id="reset">Reset</button></div>
+<div class="metrics">
+<div class="metric"><small>Center field RMS</small><div class="output" id="rms">—</div></div>
+<div class="metric"><small>Peak center field</small><div class="output" id="peak">—</div></div>
+<div class="metric"><small>Core response RMS</small><div class="output" id="pol">—</div></div>
+<div class="metric"><small>Center state</small><div class="output" id="centerState">—</div></div>
+</div>
+<p id="interpretation" class="callout"></p>
+<h2>What this means</h2>
+<p class="muted">The engineered inverse is a <b>three-frequency counterwave</b>. One ordinary krypton emission line cannot cancel three differing frequencies at every instant. Cancellation is guaranteed here only at the idealized central point when all amplitudes and phases are matched.</p>
+<p class="muted">The plotted core is a <b>dimensionless damped oscillator</b>, not a simulated Ice IX phase transition, energy storage measurement, gravitational-wave trap, or dark-matter detector.</p>
+<h2>Provenance</h2>
+<p class="muted">Wavelengths are example atomic emission lines from <a href="https://physics.nist.gov/asd" target="_blank" rel="noopener">NIST ASD</a>. He 587.56148 nm; Ne 585.24878 nm; Ar 696.5431 nm; Kr 760.15457 nm. These are optical spectral references; amplitude choices are synthetic.</p>
+<p><a href="../">N184 observatory</a> · <a href="./four_wave_model.mjs">Model source</a> · <a href="./test_four_wave.mjs">Regression checks</a></p>
+</aside>
+</main>
+<footer>OASIS / N184 experimental overlay v7.0 · Four wave ports, scalar field, NIST spectral anchors · frozen upstream baselines untouched · does not claim an element-184 isotope or new physical material.</footer>
+<script type="module">
+import {GASES,fieldAt,monitor,validate,DEFAULTS} from './four_wave_model.mjs';
+const $=s=>document.getElementById(s);
+const canvas=$('field'),c=canvas.getContext('2d'),trace=$('trace'),g=trace.getContext('2d');
+const off=document.createElement('canvas');off.width=230;off.height=102;
+const oc=off.getContext('2d');
+let params={...DEFAULTS},time=0,running=true,last=0,plot=null;
+function numeric(n){return Math.abs(n)<1e-9?'0.000':n.toFixed(3)}
+$('lanes').innerHTML=GASES.map((gas,i)=>'<div class="lane" style="border-top:3px solid '+gas.color+'"><b>'+['W1','W2','W3','W4'][i]+' · '+gas.symbol+'</b><small>Z='+gas.Z+' · '+gas.nm.toFixed(5)+' nm</small></div>').join('');
+function sync(){
+  params=validate({mode:$('mode').value,phaseDeg:+$('phase').value,reflectivity:+$('reflectivity').value/100,drive:+$('drive').value/100});
+  $('phaseOut').textContent=params.phaseDeg+'°';
+  $('reflectOut').textContent=Math.round(100*params.reflectivity)+'%';
+  $('driveOut').textContent=params.drive.toFixed(2);
+  $('modeLabel').textContent=params.mode==='cancel'?'ENGINEERED INVERSE':params.mode==='reinforce'?'ENGINEERED REINFORCEMENT':'FOURTH NOBLE GAS · KRYPTON';
+  plot=monitor(params);
+  $('rms').textContent=numeric(plot.rms);
+  $('peak').textContent=numeric(plot.peak);
+  $('pol').textContent=numeric(plot.polarizationRms);
+  const zero=plot.rms<1e-9;
+  $('centerState').textContent=zero?'NODE':'ACTIVE';
+  $('centerState').style.color=zero?'#78f6bd':'#ffc978';
+  $('interpretation').textContent=params.mode==='krypton'?'Krypton has its own optical frequency. It generally creates a residual oscillating center field; it is not a matching inverse of the other three spectra.':params.mode==='cancel'?'The synthesized fourth port is the exact negative of the three inputs at the center (when phase offset is zero). Move the phase slider to break the node.':'The synthesized fourth port matches the first three at the center. The field doubles in amplitude there relative to three ports alone.';
+  drawTrace();
+}
+function drawTrace(){
+  if(!plot)return;
+  const w=trace.width,h=trace.height;
+  g.clearRect(0,0,w,h);g.fillStyle='#071321';g.fillRect(0,0,w,h);
+  g.lineWidth=1;g.strokeStyle='#294055';
+  for(let k=0;k<=4;k++){let y=20+k*(h-40)/4;g.beginPath();g.moveTo(40,y);g.lineTo(w-15,y);g.stroke();}
+  const items=[['firstThree','#ffb75e'],['fourth','#a799ff'],['total','#78f6bd'],['polarization','#f77db7']];
+  let max=0.6;
+  for(const a of plot.history)for(const [key] of items)max=Math.max(max,Math.abs(a[key]));
+  const scale=(h-46)/(2*max);
+  for(const [key,color] of items){
+    g.beginPath();g.strokeStyle=color;g.lineWidth=1.5;
+    plot.history.forEach((a,i)=>{let x=40+i*(w-55)/(plot.history.length-1),y=h/2-a[key]*scale;if(i===0)g.moveTo(x,y);else g.lineTo(x,y);});
+    g.stroke();
+  }
+  g.fillStyle='#8faac2';g.font='12px system-ui';g.fillText('0',16,h/2+4);g.fillText('time →',w-68,h-7);
+}
+function drawField(){
+  const w=off.width,h=off.height;const pixels=oc.createImageData(w,h);
+  for(let j=0;j<h;j++)for(let i=0;i<w;i++){
+    const x=(i/(w-1)-.5)*1.4,y=(j/(h-1)-.5)*.9;
+    const v=fieldAt(x,y,time,params).total;
+    const signed=Math.tanh(1.3*v);
+    const m=Math.min(1,Math.abs(signed)),idx=(j*w+i)*4;
+    if(signed>=0){pixels.data[idx]=Math.round(9+192*m);pixels.data[idx+1]=Math.round(22+66*m);pixels.data[idx+2]=Math.round(43+44*m);}
+    else{pixels.data[idx]=Math.round(9+33*m);pixels.data[idx+1]=Math.round(22+121*m);pixels.data[idx+2]=Math.round(43+201*m);}
+    pixels.data[idx+3]=255;
+  }
+  oc.putImageData(pixels,0,0);
+  c.clearRect(0,0,canvas.width,canvas.height);c.imageSmoothingEnabled=true;
+  c.drawImage(off,0,0,canvas.width,canvas.height);
+  const cx=canvas.width/2,cy=canvas.height/2;
+  c.strokeStyle='#d5b366';c.lineWidth=9;c.beginPath();c.arc(cx,cy,91,0,Math.PI*2);c.stroke();
+  c.strokeStyle='#cbd8e0';c.lineWidth=3;c.beginPath();c.arc(cx,cy,83,0,Math.PI*2);c.stroke();
+  c.strokeStyle='#8bc4ee';c.lineWidth=1.5;c.setLineDash([5,6]);c.beginPath();c.arc(cx,cy,57,0,Math.PI*2);c.stroke();c.setLineDash([]);
+  c.fillStyle='#dbe9ff';c.font='bold 17px system-ui';c.textAlign='center';c.fillText('ICE IX',cx,cy-9);
+  c.font='12px system-ui';c.fillText('idealized core',cx,cy+13);
+  c.fillStyle='#ffecc5';c.font='12px system-ui';c.fillText('Au / Ag electrum',cx,cy+107);
+  const labels=[['He',cx,23,GASES[0].color],['Ne',canvas.width-30,cy,GASES[1].color],['Ar',cx,canvas.height-19,GASES[2].color],['W4',31,cy,GASES[3].color]];
+  c.font='bold 17px system-ui';for(const [s,x,y,color]of labels){c.textAlign='center';c.fillStyle=color;c.fillText(s,x,y);}
+  c.strokeStyle='#f4f7fa';c.lineWidth=1.5;c.beginPath();c.moveTo(cx,31);c.lineTo(cx,57);c.moveTo(canvas.width-60,cy);c.lineTo(canvas.width-105,cy);c.moveTo(cx,canvas.height-32);c.lineTo(cx,canvas.height-58);c.moveTo(58,cy);c.lineTo(105,cy);c.stroke();
+  const e=fieldAt(0,0,time,params);
+  c.fillStyle='#ecf5ff';c.font='13px ui-monospace,monospace';c.textAlign='left';
+  c.fillText('center E = '+numeric(e.total),20,canvas.height-18);
+}
+function frame(ms){if(running){const dt=Math.min(.06,(ms-last)/1000||0);time+=dt*1.7;}last=ms;if(!frame.lastPaint||ms-frame.lastPaint>42){drawField();frame.lastPaint=ms;}requestAnimationFrame(frame);}
+for(const name of ['mode','phase','reflectivity','drive'])$(name).addEventListener(name==='mode'?'change':'input',sync);
+$('toggle').onclick=()=>{running=!running;$('toggle').textContent=running?'Pause animation':'Resume animation';};
+$('reset').onclick=()=>{$('mode').value='cancel';$('phase').value='0';$('reflectivity').value='30';$('drive').value='100';time=0;sync();};
+sync();requestAnimationFrame(frame);
+</script>
+</body></html>
