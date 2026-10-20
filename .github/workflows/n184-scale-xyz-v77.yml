@@ -1,0 +1,21 @@
+name: N184 XYZ Three Time Anchors v77
+on:
+  push:
+    paths:
+      - 'n184/scale-xyz-v77/**'
+      - '.github/workflows/n184-scale-xyz-v77.yml'
+  workflow_dispatch:
+jobs:
+  time-scale-correspondence:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate 13.8 Gyr 1 year and 1.6161e-35 seconds anchors
+        run: |
+          node --check n184/scale-xyz-v77/test_scale_time.mjs
+          node n184/scale-xyz-v77/test_scale_time.mjs
