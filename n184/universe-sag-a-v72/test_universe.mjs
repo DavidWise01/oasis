@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const parse = p => JSON.parse(fs.readFileSync(new URL(p,import.meta.url),'utf8'));
+const s=parse('./spec.json');
+const checks={};
+function check(name,fn){fn();checks[name]=true}
+check('version and identity',()=>{assert.equal(s.schema,'oasis/n184/universe-sag-a/v72');assert.equal(s.universe.id,'universe-1')});
+check('Sag A label exact',()=>assert.equal(s.center.displayName,'Sag A'));
+check('astronomical reference spelled correctly',()=>assert.equal(s.center.referenceName,'Sagittarius A* (Sgr A*)'));
+check('black hole at center',()=>assert.equal(s.center.type,'black-hole'));
+check('root anchor 1 shared',()=>assert.equal(s.center.rootAnchor,s.universe.rootAnchor));
+check('two disks negative and positive',()=>assert.deepEqual(s.disks.forms.map(x=>x.sign),['-','+']));
+check('honey disk name and count',()=>{assert.equal(s.disks.glyph,'-+ honey');assert.equal(s.disks.count,2);assert.equal(s.disks.forms.length,2)});
+check('opposite symbolic rotation',()=>assert.deepEqual(s.disks.forms.map(x=>x.rotation),['clockwise','counterclockwise']));
+check('six suns exact names and order',()=>assert.deepEqual(s.ring.map(x=>x.name),['Xerses','Argon','Krypton','Nemesis','He','Ne']));
+check('six suns exact colors and order',()=>assert.deepEqual(s.ring.map(x=>x.colorName),['white','red','white','blue','orange','purple']));
+check('unique vertex slots',()=>assert.deepEqual(s.ring.map(x=>x.slot),[0,1,2,3,4,5]));
+check('regular hex 60-degree sequence',()=>{for(let i=0;i<6;i++){const a=s.ring[i].angleDeg,b=s.ring[(i+1)%6].angleDeg;assert.equal((b-a+720)%360,60)}});
+check('all suns symbolic',()=>assert.ok(s.ring.every(x=>x.kind==='symbolic-sun')));
+check('184 remains topology address, not element',()=>{assert.equal(s.topology.closureAddress,184);assert.equal(s.topology.closureRole,'symbolic-geometry-address-not-element')});
+check('existing four-wave and Nd hex preserved as links',()=>assert.deepEqual(s.upstream,{nobleHex:'../noble-hex-v71/',fourWave:'../noble-gas-four-wave-v70/',confluence:'../integration-v41/'}));
+check('original Nd 60 center still in version 7.1',()=>{const prev=parse('../noble-hex-v71/spec.json');assert.equal(prev.center.symbol,'Nd');assert.equal(prev.center.atomicNumber,60);assert.equal(prev.center.rootAnchor,1)});
+check('index renders symbolic objects',()=>{const html=fs.readFileSync(new URL('./index.html',import.meta.url),'utf8');for(const token of ['Sag A','honey','spec.json','six named suns','Sgr A*'])assert.ok(html.toLowerCase().includes(token.toLowerCase()),token)});
+console.log(JSON.stringify({result:'PASS',passed:Object.keys(checks).length,failed:0,checks},null,2));
