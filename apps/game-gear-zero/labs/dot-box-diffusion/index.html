@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="DOT::BOX::DIFFUSION — four dots, one recursive box, an RGB diffusion field and a live ASCII laboratory." />
+<title>DOT::BOX::DIFFUSION — ASCII RGB recursion lab</title>
+<style>
+:root{color-scheme:dark;--bg:#050d17;--panel:#0c1a2b;--panel2:#071525;--line:#244558;--edge:#518297;--txt:#e9f8f4;--sub:#83adb5;--cyan:#70e7d7;--amber:#f4c575;--red:#ff5879;--green:#75f49f;--blue:#7ba7ff}
+*{box-sizing:border-box}html{min-height:100%;scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 7% -8%,#17647c33,transparent 40%),radial-gradient(ellipse at 92% 55%,#4148a11e,transparent 45%),linear-gradient(130deg,#030b13,#0c1a28 55%,#050e18);color:var(--txt);font-family:ui-monospace,SFMono-Regular,Consolas,Monaco,"Liberation Mono",monospace}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1450px;margin:auto;padding:22px clamp(12px,3vw,35px) 42px}
+.mast{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid #67b6c354;padding-bottom:19px;margin-bottom:19px}.eyebrow{font-size:10px;letter-spacing:.24em;color:var(--cyan);margin-bottom:6px}.mast h1{font-size:clamp(25px,3.3vw,43px);letter-spacing:.02em;line-height:1.05;margin:0;font-weight:750}.mast h1 em{color:var(--cyan);font-style:normal}.subtitle{font-size:11px;color:var(--sub);margin-top:10px;max-width:660px}.status{font-size:10px;letter-spacing:.08em;border:1px solid #6ac1c06c;color:#c2f9f0;background:#0b353b8a;padding:8px 12px;border-radius:25px;white-space:nowrap}
+.layout{display:grid;grid-template-columns:minmax(0,1.38fr) minmax(305px,.72fr);gap:17px;align-items:start}.card{border:1px solid #66a2b44c;background:linear-gradient(155deg,#14293dcd,#071622e8);border-radius:17px;box-shadow:inset 0 1px 18px #b1ffff08,0 14px 40px #000a14a9;overflow:hidden}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:13px 15px;border-bottom:1px solid #76bad438;background:#18304730}.cardhead h2{margin:0;font-size:12px;letter-spacing:.11em;color:#cff9ee}.cardhead .detail{font-size:10px;color:#8dbac9}.cardbody{padding:14px}
+.hero{position:relative;min-height:315px;border-radius:12px;overflow:hidden;background:radial-gradient(circle at 45% 38%,#153b4a89,#040d17 74%);border:1px solid #5d9ab75e;display:flex;flex-direction:column;justify-content:space-between}.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0px,transparent 4px,#d7ffff04 5px);opacity:.55}.heroTop{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px;font-size:10px;letter-spacing:.11em;color:#9bdccc;z-index:1}.heroMain{z-index:1;display:flex;flex-direction:column;gap:18px;align-items:center;justify-content:center;padding:16px 10px 8px}.heroMicro{font-size:10px;color:#8bacb8;text-align:center;letter-spacing:.04em}.rootMark{font-size:clamp(43px,7.5vw,80px);line-height:.8;color:#dcffed;text-shadow:0 0 23px #79eaca88}.rootMark .dotStatus{font-size:12px;vertical-align:middle;margin-left:15px;color:var(--cyan);text-shadow:none}.fourFrame{max-width:100%;border:1px solid #b4e4dc87;background:linear-gradient(145deg,#10323e,#091727);padding:18px 18px 15px;border-radius:8px;box-shadow:0 0 30px #63dedc23,inset 0 0 24px #84dfda0b;overflow:auto}.fourCaption{font-size:10px;color:#8ebac7;text-align:center;margin-top:8px}.fourASCII{display:flex;align-items:center;justify-content:center;gap:0;white-space:nowrap;font-size:clamp(21px,3.7vw,37px);letter-spacing:.01em}.port{color:#608992;padding:0 1px}.dotBtn{font-family:inherit;font-size:inherit;color:#8cc0c4;background:none;border:0;border-radius:5px;padding:0 2px;text-shadow:0 0 14px currentColor;line-height:1.1;transition:transform .12s}.dotBtn:hover{transform:translateY(-3px) scale(1.1)}.dotBtn.active{outline:1px solid #e2ffff99;background:#e0ffff12}.collapsed{font-size:11px;color:#b9e5db;letter-spacing:.06em;text-align:center;margin-top:14px}.heroFoot{z-index:1;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:11px 14px;font-size:10px;color:#86b9c3;border-top:1px solid #4276884c}.lineBits{display:flex;gap:14px;flex-wrap:wrap}
+.metricgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}.metric{background:#071522b0;border:1px solid #51869a41;border-radius:10px;padding:10px;min-width:0}.metric small{font-size:9px;color:#83abb7;display:block;text-transform:uppercase;letter-spacing:.04em}.metric b{display:block;font-size:clamp(13px,1.8vw,19px);margin-top:5px;color:#d3fff0;overflow-wrap:anywhere}
+.asciiBox{background:#050e17;border:1px solid #47758766;border-radius:10px;overflow:auto;max-height:460px;min-height:200px;padding:13px;color:#9ad8c7}.asciiInner{min-width:max-content;font-size:12px;line-height:1.75;white-space:pre;letter-spacing:.045em;margin:0}.asciiHead{color:#538ca1}.asciiIndex{color:#7b94a7}.asciiTail{color:#648f9a}.m0{color:#547c8e}.m1{color:#ff6284;text-shadow:0 0 8px #ed456053}.m2{color:#88ef95;text-shadow:0 0 8px #77ec8450}.m3{color:#f8ce68;text-shadow:0 0 8px #f0c86c55}.m4{color:#87a4ff;text-shadow:0 0 8px #6887ff55}.m5{color:#ee8efa;text-shadow:0 0 8px #d77ce954}.m6{color:#6cefea;text-shadow:0 0 8px #64dedb55}.m7{color:#f5faff;text-shadow:0 0 11px #d9fffc99}.gridLegend{display:flex;gap:9px;flex-wrap:wrap;padding-top:12px;font-size:10px;color:#a0bdc5}.legendDot{display:flex;align-items:center;gap:4px}.legendDot b{font-size:14px}
+.panelColumn{display:flex;flex-direction:column;gap:16px}.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.btn{border:1px solid #70bfd080;border-radius:9px;background:#173a4ab9;color:#d9fcf4;padding:9px 12px;font-size:11px;font-weight:700;letter-spacing:.015em}.btn:hover{background:#1d5766}.btn.primary{background:#21645f;color:white;border-color:#84f6cb}.btn.primary:hover{background:#267972}.btn:disabled{opacity:.42;cursor:default}.row .btn{flex:1}.field{margin:0 0 17px}.field:last-child{margin-bottom:0}.fieldline{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:10px;font-size:11px;color:#b0d9e0}.fieldline output{font-size:14px;color:#d1ffec;font-weight:700}input[type=range]{accent-color:#8beac7;width:100%;cursor:pointer}select{background:#092332;border:1px solid #5c9ab5;border-radius:9px;padding:9px;color:#d6fff1;width:100%}.small{color:#94b4bf;font-size:11px;line-height:1.65;margin:0}.minor{font-size:10px;color:#648f9f}.key{font-family:inherit;font-size:10px;border:1px solid #6d9eae75;border-radius:4px;color:#b1e4d6;padding:1px 4px}
+.trace{min-height:134px;max-height:205px;overflow:auto;background:#061622;border:1px solid #37647f69;border-radius:10px;padding:12px;font-size:11px;line-height:1.6;white-space:pre-wrap;color:#b2d8de}.footer{margin-top:17px;font-size:10px;color:#789caa;line-height:1.7;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}.footer a{color:#b9ebe3}.trail{display:flex;align-items:center;flex-wrap:wrap;gap:5px;font-size:10px}.trail button{background:transparent;border:0;color:#8ce5d8;padding:4px 5px;border-radius:5px}.trail button:hover{background:#10433d}.caption{font-size:10px;color:#749fae;margin-top:8px;line-height:1.5}.warning{color:#f1d6ab}.miniBox{border:1px solid #4a7d8f83;border-radius:9px;background:#081c28;padding:9px;font-size:11px;line-height:1.65}.miniBox code{color:#96f0d5;font-size:12px}.boxUniverse{color:#aadfd8;font-size:11px;line-height:1.6;white-space:pre;overflow:auto}.mark{color:var(--amber)}
+@media(max-width:990px){.layout{grid-template-columns:1fr}.metricgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:550px){.wrap{padding:12px 9px}.metricgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cardbody{padding:10px}.hero{min-height:315px}.fourFrame{padding:12px 7px}.fourASCII{font-size:clamp(22px,8.5vw,36px)}.asciiInner{font-size:11px}.btn{padding:9px 8px}.rootMark{font-size:60px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition-duration:0s!important;animation-duration:0s!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="mast"><div><div class="eyebrow">GG-ZERO / EXPERIMENTAL GRAPHICS LAB / ASCII FIRST</div><h1>DOT <em>::</em> BOX <em>::</em> DIFFUSION</h1><div class="subtitle">The dot is the box. The box is the diffusion. Four ordered dots <strong>.|.|.|.|</strong> per unfolding, with three RGB bits per position.</div></div><div class="status" id="status">ENGINE :: DETERMINISTIC / LOCAL</div></header>
+<div class="layout">
+<main class="panelColumn">
+<section class="card"><div class="cardhead"><h2>01 / THE ONE BOX</h2><span class="detail" id="focusLabel">FOCUS / ROOT</span></div><div class="cardbody">
+<div class="hero"><div class="heroTop"><span>0ROOT :: ISOMORPHIC EXPANSION</span><span id="heroHop">HOP 02</span></div><div class="heroMain">
+<div class="heroMicro">COLLAPSED · THE ENTIRE CONTAINED FIELD IS ONE DOT</div>
+<div class="rootMark"><span id="parentDot" class="m7">.</span><span id="rootClass" class="dotStatus">RGB 111</span></div>
+<div class="fourFrame"><div class="fourASCII" id="fourASCII" aria-label="Four ordered dots separated by four rails"><span>.</span><span class="port">|</span><span>.</span><span class="port">|</span><span>.</span><span class="port">|</span><span>.</span><span class="port">|</span></div><div class="fourCaption" id="fourCaption">CLICK ANY DOT TO UNFOLD ITS BOX</div></div>
+<div class="collapsed" id="collapseText">[ .|.|.|.| ] → .</div>
+</div><div class="heroFoot"><span id="heroPath">PATH ROOT / G0</span><span>PORTS: 4 · PAIRS: RGB × 3</span></div></div>
+<div class="metricgrid"><div class="metric"><small>Generation</small><b id="statGeneration">G3</b></div><div class="metric"><small>Terminal dots</small><b id="statDots">64</b></div><div class="metric"><small>Colored / total</small><b id="statLit">—</b></div><div class="metric"><small>RGB white</small><b id="statWhite">—</b></div></div>
+</div></section>
+<section class="card"><div class="cardhead"><h2>02 / FULL ASCII DIFFUSION FIELD</h2><span class="detail" id="snapshotPage">PAGE 1 / 1</span></div><div class="cardbody"><div class="asciiBox" id="asciiBox"><pre class="asciiInner" id="asciiGrid" aria-label="Colorized ASCII field">[.|.|.|.|]</pre></div><div class="row" style="margin-top:10px"><button class="btn" id="prevPage">← PREVIOUS GROUPS</button><button class="btn" id="nextPage">NEXT GROUPS →</button><button class="btn" id="copyAscii">COPY ASCII</button></div><div class="gridLegend" id="legend"><span class="legendDot"><b class="m0">.</b> off</span><span class="legendDot"><b class="m1">R</b> red</span><span class="legendDot"><b class="m2">G</b> green</span><span class="legendDot"><b class="m3">Y</b> yellow</span><span class="legendDot"><b class="m4">B</b> blue</span><span class="legendDot"><b class="m5">M</b> magenta</span><span class="legendDot"><b class="m6">C</b> cyan</span><span class="legendDot"><b class="m7">W</b> white</span></div><p class="caption" id="asciiCaption">Every row is one four-dot box. The entire box folds into one parent dot.</p></div></section>
+</main>
+<aside class="panelColumn">
+<section class="card"><div class="cardhead"><h2>CONTROLS / IN − / OUT +</h2><span class="detail">LIVE, NOT A VIDEO</span></div><div class="cardbody">
+<div class="field"><div class="fieldline"><label for="depth">GENERATION / RECURSIVE UNFOLD</label><output id="depthValue">G3 · 64 DOTS</output></div><input type="range" id="depth" min="0" max="6" value="3" step="1" /></div>
+<div class="row" style="margin-bottom:15px"><button class="btn" id="fold">− FOLD / IN</button><button class="btn primary" id="unfold">+ UNFOLD / OUT</button></div>
+<div class="field"><div class="fieldline"><label for="hop">RGB DIFFUSION / TRANSMISSION HOPS</label><output id="hopValue">2</output></div><input type="range" id="hop" min="0" max="16" value="2" step="1" /></div>
+<div class="row" style="margin-bottom:17px"><button class="btn" id="reset">↺ RESET HOP</button><button class="btn primary" id="play">▶ PLAY</button><button class="btn" id="advance">+1 HOP</button></div>
+<div class="field"><div class="fieldline"><label for="glyphMode">ASCII DISPLAY</label><span id="asciiModeHint" class="minor">RGB / 8 STATES</span></div><select id="glyphMode"><option value="letters">RGB LETTERS · . R G Y B M C W</option><option value="density">DENSITY · . : * #</option><option value="wave">WAVEFRONT · . + o</option><option value="bits">BINARY · 000 … 111</option></select></div>
+<div class="field"><div class="fieldline"><label for="speed">PLAYBACK SPEED</label><span class="minor" id="speedLabel">350 MS / HOP</span></div><select id="speed"><option value="150">FAST · 150ms</option><option value="350" selected>STEADY · 350ms</option><option value="650">SLOW · 650ms</option></select></div>
+<div class="row"><button class="btn" id="downloadText">↓ EXPORT .TXT</button><button class="btn" id="home">⌂ ROOT BOX</button></div>
+</div></section>
+<section class="card"><div class="cardhead"><h2>03 / BOX → DOT → BOX</h2><span class="detail">RECURSION INSPECTOR</span></div><div class="cardbody"><div class="miniBox"><div class="trail" id="breadcrumb"><button>ROOT</button></div><div id="focusInspector" class="boxUniverse" style="margin-top:10px">G0 :: . → [.|.|.|.|]</div></div><div class="row" style="margin-top:11px"><button class="btn" id="back">← PARENT BOX</button><button class="btn" id="firstChild">ENTER DOT 0 →</button></div><p class="caption">Click any of the four dots above. Each child dot can itself become a four-dot box. Folding reads the four children's RGB states as one dot.</p></div></section>
+<section class="card"><div class="cardhead"><h2>04 / DIFFUSION RECEIPTS</h2><span class="detail">OBSERVED STATES</span></div><div class="cardbody"><div id="trace" class="trace" role="status" aria-live="polite">Initial state ready.</div><p class="caption">Propagation is a deterministic graph rule: each dot preserves its RGB mask and receives bits from its parent, children and adjacent siblings. The final <code>|</code> in <code>.|.|.|.|</code> remains the fourth terminal port. This is a symbolic/classical model, not physical quantum diffusion.</p></div></section>
+</aside>
+</div>
+<footer class="footer"><span>.<span class="mark">|</span>.<span class="mark">|</span>.<span class="mark">|</span>.<span class="mark">|</span> &nbsp; · &nbsp; Gₙ = 4ⁿ leaf dots &nbsp; · &nbsp; RGB masks = 2³ &nbsp; · &nbsp; BOX = DOT (at the next level)</span><span>ZERO EXTERNAL LIBRARIES · ALL STATES COMPUTED IN BROWSER</span></footer>
+</div>
+<script id="dot-box-model">
+(function(root){'use strict';
+const SYMBOLS=['.','R','G','Y','B','M','C','W'];
+const popcount=n=>(n&1?1:0)+(n&2?1:0)+(n&4?1:0);
+function makeTree(depth){
+ if(!Number.isInteger(depth)||depth<0||depth>6)throw Error('Generation must be 0..6');
+ const nodes=[],byPath=new Map();
+ function add(path,parent){const id=nodes.length,depthHere=path.length;
+  const node={id,path,parent,depth:depthHere,children:[],neighbors:[]};nodes.push(node);byPath.set(path,id);
+  if(parent>=0){nodes[parent].children.push(id);node.neighbors.push(parent);nodes[parent].neighbors.push(id)}
+  if(depthHere<depth){for(let i=0;i<4;i++)add(path+i,id);
+   for(let i=0;i<3;i++){const a=node.children[i],b=node.children[i+1];nodes[a].neighbors.push(b);nodes[b].neighbors.push(a)}
+  }
+  return id;
+ }
+ add('',-1);
+ const leaves=nodes.filter(n=>n.depth===depth).map(n=>n.id);
+ const seeds=[{path:'0'.repeat(depth),mask:1,name:'RED'},{path:'1'.repeat(depth),mask:2,name:'GREEN'},{path:'3'.repeat(depth),mask:4,name:'BLUE'}];
+ const initial=new Uint8Array(nodes.length);
+ for(const seed of seeds)initial[byPath.get(seed.path)]|=seed.mask;
+ return {depth,nodes,byPath,leaves,seeds,initial};
+}
+function timeline(tree,maxHops=16){const states=[tree.initial];for(let t=1;t<=maxHops;t++){
+ const prior=states[t-1],next=prior.slice();
+ for(const node of tree.nodes){for(const neighbor of node.neighbors)next[node.id]|=prior[neighbor]}
+ states.push(next);
+}return states;}
+function summaries(tree,states){const sums=states.slice();for(let i=tree.nodes.length-1;i>=0;i--){const n=tree.nodes[i];if(n.children.length){let mask=0;for(const child of n.children)mask|=sums[child];sums[i]=mask;}}return sums;}
+function stats(tree,states,previous){let occupied=0,white=0,changed=0,rootState=states[0];for(const id of tree.leaves){const v=states[id];if(v)occupied++;if(v===7)white++;if(previous&&v!==previous[id])changed++}return {terminal:tree.leaves.length,nodes:tree.nodes.length,occupied,white,changed,rootState};}
+function glyph(mask,mode='letters',previousMask=0){if(mode==='density')return '.:*#'[popcount(mask)];if(mode==='wave')return mask!==previousMask?'+':mask?'o':'.';if(mode==='bits')return `${mask&1?'1':'0'}${mask&2?'1':'0'}${mask&4?'1':'0'}`;return SYMBOLS[mask];}
+function focus(tree,path,states){const id=tree.byPath.get(path);if(id===undefined)throw Error('Unknown path');const node=tree.nodes[id];const sum=summaries(tree,states);return {node,collapsed:sum[id],local:states[id],children:node.children.map(n=>({id:n,path:tree.nodes[n].path,local:states[n],collapsed:sum[n]}))};}
+function ascii(tree,states,previous,mode='letters',page=0,perPage=64){const groups=tree.depth===0?['']:tree.nodes.filter(n=>n.depth===tree.depth-1).map(n=>n.path),pages=Math.max(1,Math.ceil(groups.length/perPage));const safePage=Math.max(0,Math.min(pages-1,page));
+ const rows=[];
+ for(let k=safePage*perPage;k<Math.min(groups.length,(safePage+1)*perPage);k++){
+  const path=groups[k],node=tree.nodes[tree.byPath.get(path)];const ids=node.children.length?node.children:[node.id];
+  rows.push({label:path||'ROOT',i:k,masks:ids.map(id=>states[id]),prev:ids.map(id=>previous?previous[id]:0)});
+ }
+ return {rows,pages,page:safePage,totalGroups:groups.length};}
+root.DotBox={makeTree,timeline,summaries,stats,glyph,focus,ascii,SYMBOLS,popcount};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script>
+(function(){'use strict';
+const $=id=>document.getElementById(id);
+let depth=3,hop=2,path='',mode='letters',page=0,playing=false,clock=null,tree,series,log=[];
+const maxHops=16,perPage=64;
+const ESC=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const colorSpan=(mask,s)=>`<span class="m${mask}">${ESC(s)}</span>`;
+const plainGlyph=(mask,previous=0)=>window.DotBox.glyph(mask,mode,previous);
+function pushLog(line){log.unshift('> '+line);log=log.slice(0,11);$('trace').textContent=log.join('\n');}
+function recalc(){tree=window.DotBox.makeTree(depth);series=window.DotBox.timeline(tree,maxHops);path=path.slice(0,Math.max(0,depth-1));page=0;}
+function statusMessage(s){$('status').textContent=s;}
+function setDepth(v){const next=Math.max(0,Math.min(6,Math.round(Number(v)||0)));if(next===depth)return;depth=next;recalc();pushLog('G'+depth+' / '+(4**depth)+' leaf dots / '+tree.nodes.length+' box+dot nodes');render();}
+function setHop(v){const next=Math.max(0,Math.min(maxHops,Math.round(Number(v)||0)));if(next===hop)return;hop=next;page=0;pushLog('HOP '+String(hop).padStart(2,'0')+' / propagation advanced to '+hop);render();}
+function stop(){if(clock!==null){clearInterval(clock);clock=null}playing=false;$('play').textContent='▶ PLAY';}
+function play(){if(playing){stop();statusMessage('PAUSED :: LOCAL');return}playing=true;$('play').textContent='❚❚ PAUSE';statusMessage('RUNNING :: LOCAL DIFFUSION');if(hop===maxHops)hop=0;clock=setInterval(()=>{hop=hop<maxHops?hop+1:0;render();},Number($('speed').value));render();}
+function restartSpeed(){if(playing){stop();play()}}
+function focusChild(i){const n=tree.nodes[tree.byPath.get(path)];if(!n||!n.children[i])return;path=tree.nodes[n.children[i]].path;pushLog('UNFOLD PATH '+path+' · G'+path.length);render();}
+function parent(){if(!path)return;path=path.slice(0,-1);pushLog('FOLD TO '+(path||'ROOT'));render();}
+function coloredGlyph(mask,prev){return colorSpan(mask,plainGlyph(mask,prev));}
+function currentAscii(){const states=series[hop],before=series[Math.max(0,hop-1)];const group=window.DotBox.ascii(tree,states,before,mode,page,perPage);const pad=Math.max(4,String(group.totalGroups-1).length);const count=4**depth;
+ const lines=[`DOT::BOX::DIFFUSION | G${depth} | HOP ${hop.toString().padStart(2,'0')} | ${count} TERMINAL DOTS`, `+${'-'.repeat(56)}+`];
+ if(depth===0){lines.push('| '+'.  [ ROOT: SINGLE DOT / G0 ]'.padEnd(56)+' |');}
+ else group.rows.forEach(row=>{const chars=row.masks.map((mask,i)=>plainGlyph(mask,row.prev[i]));lines.push(String(row.i).padStart(pad,'0')+'  '+row.label.padEnd(depth-1,'·')+'  [ '+chars.join('|')+'| ]');});
+ lines.push(`-- G${depth} / ${group.totalGroups} FOUR-DOT BOXES / PAGE ${group.page+1} OF ${group.pages} --`);
+ return {group,lines,copy:lines.join('\n')};}
+function renderAscii(){const data=currentAscii(),stats=window.DotBox.stats(tree,series[hop],series[Math.max(0,hop-1)]);const header=`<span class="asciiHead">╔══ DOT::BOX / G${depth} / HOP ${hop.toString().padStart(2,'0')} ══ RGB × 3 ══╗</span>\n`;
+ let content=header;
+ if(depth===0){content+=colorSpan(series[hop][0],` ROOT  [ ${plainGlyph(series[hop][0])} ] → .`)}else{
+  for(const row of data.group.rows){let assembled=`<span class="asciiIndex">${String(row.i).padStart(4,'0')}  ${ESC((row.label||'root').padEnd(Math.max(depth-1,4),'·'))}  </span><span class="asciiTail">[ </span>`;
+   row.masks.forEach((mask,i)=>{assembled+=coloredGlyph(mask,row.prev[i])+'<span class="asciiTail">|</span>';});assembled+='<span class="asciiTail"> ]</span>';content+=assembled+'\n';}
+ }
+ content+=`<span class="asciiHead">╚══ ${data.group.totalGroups} BOXES / PAGE ${data.group.page+1} OF ${data.group.pages} / ${stats.occupied} ACTIVE ══╝</span>`;
+ $('asciiGrid').innerHTML=content;
+ $('snapshotPage').textContent=`PAGE ${data.group.page+1} / ${data.group.pages}`;
+ $('prevPage').disabled=data.group.page===0;$('nextPage').disabled=data.group.page>=data.group.pages-1;
+ $('asciiCaption').textContent=`Each line is exactly one ordered four-dot box, including the fourth terminal rail. ${Math.min(data.group.totalGroups,perPage)} or fewer visible groups per page; ${data.group.totalGroups} total.`;
+ return data;
+}
+function renderFocus(){const node=window.DotBox.focus(tree,path,series[hop]),sum=window.DotBox.summaries(tree,series[hop]),before=series[Math.max(0,hop-1)];const summary=node.collapsed;
+ $('rootClass').textContent='RGB '+[!!(summary&1),!!(summary&2),!!(summary&4)].map(v=>v?'1':'0').join('')+' · '+window.DotBox.SYMBOLS[summary];
+ $('parentDot').className='m'+summary;$('focusLabel').textContent='FOCUS / '+(path?'DOT '+path:'ROOT');
+ $('heroPath').textContent='PATH '+(path||'ROOT')+' / G'+node.node.depth;
+ $('heroHop').textContent='HOP '+String(hop).padStart(2,'0');
+ if(node.children.length){const html=node.children.map((c,i)=>`<button type="button" class="dotBtn m${c.collapsed}" data-child="${i}" aria-label="Unfold dot ${i}, subtree ${ESC(c.path)}" title="Dot ${i} · RGB ${window.DotBox.SYMBOLS[c.collapsed]} · enter path ${ESC(c.path)}">.</button><span class="port">|</span>`).join('');$('fourASCII').innerHTML=html;
+  $('fourCaption').textContent='FOUR DOTS · FOUR RAILS · CLICK A DOT TO ENTER ITS BOX';
+  const signs=node.children.map(c=>window.DotBox.SYMBOLS[c.collapsed]);$('collapseText').textContent='[ '+signs.join('|')+'| ]  →  .('+window.DotBox.SYMBOLS[summary]+')';
+ }else{$('fourASCII').innerHTML=colorSpan(node.local,'.');$('fourCaption').textContent='TERMINAL DOT · UNFOLD + TO ADD A NEW GENERATION';$('collapseText').textContent='DOT :: BOX · NO SMALLER BOX AT THIS GENERATION';}
+ $('fourASCII').querySelectorAll('[data-child]').forEach(btn=>btn.addEventListener('click',()=>focusChild(Number(btn.dataset.child))));
+ let breadcrumbs='<button type="button" data-go="">ROOT</button>';
+ for(let i=1;i<=path.length;i++)breadcrumbs+=' <span>›</span> <button type="button" data-go="'+path.slice(0,i)+'">'+path[i-1]+'</button>';
+ $('breadcrumb').innerHTML=breadcrumbs;$('breadcrumb').querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>{path=button.dataset.go;render();}));
+ const childStr=node.children.length?node.children.map((c,i)=>`[${i}]=${window.DotBox.SYMBOLS[c.collapsed]}`).join(' · '):'[ leaf / source dot ]';
+ $('focusInspector').textContent=`DOT ${path||'ROOT'} / G${node.node.depth}\nLOCAL TRANSMITTED: ${window.DotBox.SYMBOLS[node.local]} (${node.local})\nCOLLAPSED SUMMARY: ${window.DotBox.SYMBOLS[summary]} (${summary})\n${childStr}\nBOX ${node.children.length?'= ONE DOT AT PARENT SCALE':'= TERMINAL DOT'}`;
+ $('back').disabled=!path;$('firstChild').disabled=!node.children.length;
+}
+function render(){const states=series[hop],before=series[Math.max(0,hop-1)];const st=window.DotBox.stats(tree,states,before);
+ $('depth').value=String(depth);$('hop').value=String(hop);$('depthValue').textContent=`G${depth} · ${st.terminal.toLocaleString()} DOTS`;$('hopValue').textContent=String(hop).padStart(2,'0');
+ $('statGeneration').textContent='G'+depth;$('statDots').textContent=st.terminal.toLocaleString();$('statLit').textContent=st.occupied+' / '+st.terminal;$('statWhite').textContent=st.white.toLocaleString();
+ $('asciiModeHint').textContent={letters:'RGB / 8 STATES',density:'BIT COUNT / 0..3',wave:'LIVE CHANGE / HOP',bits:'BINARY / 3 CHANNELS'}[mode];$('speedLabel').textContent=$('speed').value+' MS / HOP';
+ statusMessage(playing?'RUNNING :: LOCAL DIFFUSION':'ENGINE :: DETERMINISTIC / LOCAL');
+ renderFocus();renderAscii();
+}
+$('depth').addEventListener('input',e=>setDepth(e.target.value));$('hop').addEventListener('input',e=>{stop();setHop(e.target.value)});
+$('fold').addEventListener('click',()=>setDepth(depth-1));$('unfold').addEventListener('click',()=>setDepth(depth+1));
+$('play').addEventListener('click',play);$('advance').addEventListener('click',()=>{stop();setHop(hop>=maxHops?0:hop+1)});$('reset').addEventListener('click',()=>{stop();setHop(0)});
+$('glyphMode').addEventListener('change',e=>{mode=e.target.value;page=0;render()});$('speed').addEventListener('change',restartSpeed);
+$('prevPage').addEventListener('click',()=>{page--;render()});$('nextPage').addEventListener('click',()=>{page++;render()});
+$('back').addEventListener('click',parent);$('home').addEventListener('click',()=>{path='';render()});$('firstChild').addEventListener('click',()=>focusChild(0));
+function plainText(){return currentAscii().copy+'\n\nDOT = BOX = DIFFUSION (SYMBOLIC MODEL)\n'+log.join('\n')+'\n';}
+$('copyAscii').addEventListener('click',async()=>{const text=plainText();try{await navigator.clipboard.writeText(text);pushLog('ASCII SNAPSHOT COPIED TO CLIPBOARD');}catch{const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();try{document.execCommand('copy');pushLog('ASCII COPIED (LEGACY MODE)')}catch{pushLog('COPY NOT AVAILABLE; USE EXPORT .TXT')}t.remove();}});
+$('downloadText').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([plainText()],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`dot-box-diffusion-G${depth}-hop${hop}.txt`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);pushLog('EXPORTED ASCII / G'+depth+' / HOP '+hop);});
+window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA','BUTTON'].includes(document.activeElement?.tagName))return;if(e.key==='ArrowRight'){e.preventDefault();setHop(hop>=maxHops?0:hop+1)}else if(e.key==='ArrowLeft'){e.preventDefault();setHop(Math.max(0,hop-1))}else if(e.key==='ArrowUp'){e.preventDefault();setDepth(depth+1)}else if(e.key==='ArrowDown'){e.preventDefault();setDepth(depth-1)}else if(e.key===' '){e.preventDefault();play()}});
+recalc();pushLog('ONE DOT . → FOUR-DOT BOX .|.|.|.| → 4ⁿ LEAF DOTS');pushLog('R/G/B SOURCES: TREE PATHS 0… / 1… / 3…');pushLog('RGB = 2³ = 8 STATES · ONE HOP = ONE SYNCHRONOUS OR');render();
+window.DotBoxUI={get:()=>({depth,hop,path,mode,playing}),setDepth,setHop,focusChild,back:parent,render,ascii:()=>currentAscii().copy,model:()=>tree,states:()=>series[hop],snapshot:()=>window.DotBox.stats(tree,series[hop],series[Math.max(0,hop-1)])};
+})();
+</script>
+</body>
+</html>
