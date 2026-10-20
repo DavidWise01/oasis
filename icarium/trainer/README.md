@@ -1,4 +1,18 @@
-# ICARIUM · Training & I/O Console (Rev 041)
+# ICARIUM Training Console · Rev 042 (One-Window Bridge)
+
+**Live:** https://davidwise01.github.io/oasis/icarium/trainer/
+
+Rev 042 embeds the complete Rev 040 NES arcade inside this trainer HTML file using an inherited-origin iframe `srcdoc`. The training monitor now reads the frame's `window.CONFLUENCE` API directly, including when launched as a standalone local HTML document. **No local server or second HTML file is required for the trainer bridge.**
+
+For offline use, download `ICARIUM-TRAINING-LAB-042.zip` from the ChatGPT build artifacts, extract and double-click `ICARIUM-TRAINING-CONSOLE-042-SINGLE-FILE.html`. Load your own legally sourced .nes ROM. The cartridge and training labels are not published to GitHub.
+
+**Tests:** headless Chromium isolated (opaque) parent origin: embedded API connected, original test NES ROM reached 264 frames with nine witnessed events and two ABCD closures at the checkpoint, control changes (risk 65%, quantum 2, fight) propagated into the emulator, observe-only and autonomous switches succeeded, zero page errors. Chrome in this test environment blocks navigating to `file://` entirely, so local disk double-click behavior on Windows has not been directly tested. Browser restart storage behavior remains unverified.
+
+The original Rev 040 arcade remains separately available at https://davidwise01.github.io/oasis/icarium/ and is not modified by the trainer revision. No ROMs are embedded.
+
+---
+## Rev 041 baseline notes
+
 
 **Live training lab:** https://davidwise01.github.io/oasis/icarium/trainer/
 
