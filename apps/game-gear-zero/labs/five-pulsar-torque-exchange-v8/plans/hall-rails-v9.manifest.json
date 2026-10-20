@@ -1,0 +1,309 @@
+{
+  "schema": "oasis.gg-zero.hall-rail.v9.plan",
+  "status": "DRAFT_NOT_INSTALLED",
+  "sourceVersion": "five-pulsar-torque-exchange-v8",
+  "symbol": "{{-+000+-}}",
+  "notes": "Seven signed slots per vector: - + H0 H1 H2 + -. All virtual sensors; no physical Hall field data. Perimeter paths are currently visual, not signal-bearing. Existing dynamics unchanged.",
+  "sampleUnit": "normalized symbolic per model tick, not tesla",
+  "sensorsPerRail": 3,
+  "rails": [
+    {
+      "id": "HR01",
+      "from": "V",
+      "to": "SUN",
+      "group": "pulsar-spoke",
+      "signal": "emission-V",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR02",
+      "from": "Z",
+      "to": "SUN",
+      "group": "pulsar-spoke",
+      "signal": "emission-Z",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR03",
+      "from": "W",
+      "to": "SUN",
+      "group": "pulsar-spoke",
+      "signal": "emission-W",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR04",
+      "from": "Y",
+      "to": "SUN",
+      "group": "pulsar-spoke",
+      "signal": "emission-Y",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR05",
+      "from": "X",
+      "to": "SUN",
+      "group": "pulsar-spoke",
+      "signal": "emission-X",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR06",
+      "from": "V",
+      "to": "RETURN",
+      "group": "colored-cable",
+      "signal": "green-return",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR07",
+      "from": "W",
+      "to": "RETURN",
+      "group": "colored-cable",
+      "signal": "red-return",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR08",
+      "from": "X",
+      "to": "RETURN",
+      "group": "colored-cable",
+      "signal": "blue-return",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR09",
+      "from": "Y",
+      "to": "RETURN",
+      "group": "colored-cable",
+      "signal": "purple-return",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR10",
+      "from": "RETURN",
+      "to": "SUN",
+      "group": "return-feedback",
+      "signal": "combined-return",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR11",
+      "from": "RING",
+      "to": "SUN",
+      "group": "torque-exchange",
+      "signal": "signed-reactive-torque",
+      "bidirectional": true,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR12",
+      "from": "ROTOR_PAIR",
+      "to": "BLACK_HOLE",
+      "group": "momentum-sink",
+      "signal": "ground-reaction",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR13",
+      "from": "RETURN",
+      "to": "BLACK_HOLE",
+      "group": "stress-sink",
+      "signal": "modeled-stress-drain",
+      "bidirectional": false,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR14",
+      "from": "V",
+      "to": "Z",
+      "group": "hex-perimeter",
+      "signal": "geometric-witness",
+      "bidirectional": true,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR15",
+      "from": "Z",
+      "to": "W",
+      "group": "hex-perimeter",
+      "signal": "geometric-witness",
+      "bidirectional": true,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR16",
+      "from": "W",
+      "to": "Y",
+      "group": "hex-perimeter",
+      "signal": "geometric-witness",
+      "bidirectional": true,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR17",
+      "from": "Y",
+      "to": "RETURN",
+      "group": "hex-perimeter",
+      "signal": "geometric-witness",
+      "bidirectional": true,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR18",
+      "from": "RETURN",
+      "to": "X",
+      "group": "hex-perimeter",
+      "signal": "geometric-witness",
+      "bidirectional": true,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    },
+    {
+      "id": "HR19",
+      "from": "X",
+      "to": "V",
+      "group": "hex-perimeter",
+      "signal": "geometric-witness",
+      "bidirectional": true,
+      "pattern": "-+000+-",
+      "hall": [
+        "h0",
+        "h1",
+        "h2"
+      ],
+      "implemented": "planned"
+    }
+  ],
+  "validation": {
+    "expectedRails": 19,
+    "expectedSensorPositions": 57,
+    "groups": {
+      "pulsar-spoke": 5,
+      "colored-cable": 4,
+      "return-feedback": 1,
+      "torque-exchange": 1,
+      "momentum-sink": 1,
+      "stress-sink": 1,
+      "hex-perimeter": 6
+    }
+  }
+}
