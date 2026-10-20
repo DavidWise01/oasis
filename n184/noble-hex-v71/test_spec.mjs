@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const s=JSON.parse(fs.readFileSync(new URL('./spec.json',import.meta.url),'utf8'));
+const checks={};
+const check=(name,fn)=>{fn();checks[name]=true};
+check('schema',()=>assert.equal(s.schema,'oasis/n184/noble-hex/v71'));
+check('center neodymium',()=>assert.deepEqual([s.center.symbol,s.center.atomicNumber,s.center.elementClass],['Nd',60,'lanthanide']));
+check('pinned scalar 1',()=>assert.equal(s.center.rootAnchor,1));
+check('neodymium is not noble',()=>assert.equal(s.center.isNobleGas,false));
+check('exactly six perimeter slots',()=>assert.equal(s.perimeter.length,6));
+check('five noble gases',()=>assert.deepEqual(s.perimeter.slice(0,5).map(x=>[x.symbol,x.atomicNumber]),[['He',2],['Ne',10],['Ar',18],['Kr',36],['Xe',54]]));
+check('no extra noble gas',()=>assert.equal(s.perimeter.filter(x=>x.status==='confirmed-noble').length,5));
+check('sixth is symbolic N184',()=>assert.deepEqual([s.perimeter[5].symbol,s.perimeter[5].address,s.perimeter[5].atomicNumber,s.perimeter[5].status],['N184',184,null,'symbolic-closure']));
+check('slot ordering',()=>assert.deepEqual(s.perimeter.map(x=>x.slot),[0,1,2,3,4,5]));
+check('regular hex angles',()=>{for(let i=0;i<6;i++){const a=s.perimeter[i].angleDeg,b=s.perimeter[(i+1)%6].angleDeg;assert.equal(((b-a)%360+360)%360,60)}});
+check('independent ring addresses',()=>assert.equal(new Set(s.perimeter.slice(0,5).map(x=>x.atomicNumber).concat(s.perimeter[5].address)).size,6));
+check('frozen modules externally referenced',()=>assert.deepEqual(s.links,{existingFourWave:'../noble-gas-four-wave-v70/',confluence:'../integration-v41/'}));
+console.log(JSON.stringify({result:'PASS',passed:Object.keys(checks).length,failed:0,checks},null,2));
