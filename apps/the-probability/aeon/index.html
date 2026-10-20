@@ -364,7 +364,7 @@ let thoughtEnabled=true,thoughtLast=null;
 const thought=window.AEON_THOUGHT?.create({persist:(data)=>{
  try{if(romName)localStorage.setItem('aeon-thought::'+romName+'::'+profileFile,JSON.stringify(data));}catch{}
 }});
-function loadThought(){if(!thought)return;thought.reset();try{const saved=JSON.parse(localStorage.getItem('aeon-thought::'+romName+'::'+profileFile)||'null');if(saved)thought.restore(saved);}catch{}thoughtUI();}
+function loadThought(){if(!thought)return;try{const saved=JSON.parse(localStorage.getItem('aeon-thought::'+romName+'::'+profileFile)||'null');if(saved)thought.restore(saved);else thought.reset();}catch{thought.reset();}thoughtUI();}
 function thoughtUI(){if(!thought)return;const grid=document.getElementById('thoughtGrid');if(!grid)return;
  const snapshot=thought.snapshot();document.getElementById('thoughtMode').textContent=thought.mode()+' · weak : medium : strong : strong : medium : weak = 3:2:1:1:2:3';
  grid.innerHTML=snapshot.channels.map(c=>'<div class="thoughtPort"><div class="lbl"><b>'+c.key+'</b><span>H '+String(c.hall).padStart(3,'0')+' · W '+c.wiper+'</span></div><div class="track"><span style="width:'+(c.wiper/255*100).toFixed(0)+'%"></span></div></div>').join('');
