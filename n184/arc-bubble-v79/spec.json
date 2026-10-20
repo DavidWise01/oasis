@@ -1,0 +1,76 @@
+{
+  "schema": "oasis/n184/arc-bubble/v79",
+  "version": "v7.9",
+  "status": "symbolic-subdivision-of-planck-length",
+  "userRuleLiteral": "one arc bubble is 1/6 plank length",
+  "spelling": {
+    "userTerm": "plank",
+    "scientificTerm": "Planck",
+    "semantics": "preserve original symbolic spelling"
+  },
+  "source": {
+    "planckRegister": "../scale-xyz-v78/spec.json",
+    "coordinateRegister": "../scale-xyz-v76/spec.json",
+    "confluence": "../integration-v41/"
+  },
+  "basis": {
+    "quantity": "Planck length",
+    "symbol": "l_P",
+    "valueMeters": 1.616255e-35,
+    "source": "NIST CODATA 2022 recommended constants",
+    "reference": "https://physics.nist.gov/cuu/pdf/all.pdf",
+    "dimension": "length"
+  },
+  "arcBubble": {
+    "symbolicName": "arc bubble",
+    "partNumerator": 1,
+    "partDenominator": 6,
+    "fractionString": "1/6",
+    "arcLengthMeters": 2.6937583333333336e-36,
+    "arcLengthScientific": "2.693758333333333e-36 m",
+    "dimension": "length",
+    "interpretation": "One-sixth of the Planck length per symbolic arc; not observed sub-Planck geometry",
+    "segmentsPerCompleteLength": 6
+  },
+  "illustrativeRing": {
+    "enabled": true,
+    "chosenRepresentation": "six equal circular arcs placed end-to-end; diagram convention only",
+    "closureCount": 6,
+    "angleDegreesPerArc": 60,
+    "totalArcLengthMeters": 1.616255e-35,
+    "conditionalCircumferenceMeters": 1.616255e-35,
+    "conditionalRadiusMeters": 2.572349725469913e-36,
+    "conditionalChordMeters": 2.572349725469913e-36,
+    "warning": "Treating one Planck length as a ring circumference is an optional graphical convention; one-sixth length alone does not imply a radius, circle, or physical toroidal boundary."
+  },
+  "planckTime": {
+    "symbol": "t_P",
+    "valueSeconds": 5.391247e-44,
+    "unit": "second",
+    "unchangedFromV78": true,
+    "linkedOnlyBy": "l_P = c * t_P",
+    "noInherentArcDuration": true
+  },
+  "sharedAxes": {
+    "x": "state",
+    "y": "space",
+    "z": "state+time"
+  },
+  "scaleMap": {
+    "T": "star / plank bubble",
+    "M": "planet / plank foam / Earth",
+    "B": "atom / plank"
+  },
+  "inherited": {
+    "sagAUniverseCopies": 9,
+    "earthReference": "M",
+    "legacyTimeLiteral": "13/8B:1:1x10^-35"
+  },
+  "classification": [
+    "This is a symbolic mathematical subdivision of a length, not detection or engineering of a sub-Planck arc.",
+    "Planck length is not experimentally established as the shortest divisible length.",
+    "The Planck time is retained separately; specifying arc length does not assign elapsed time to that arc.",
+    "The six-arc ring is one optional drawing choice and does not assert circular geometry in the underlying physics.",
+    "No previous baseline, including v7.8, is modified."
+  ]
+}
