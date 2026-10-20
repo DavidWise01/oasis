@@ -14,6 +14,24 @@ You can also load a legitimately obtained `.gg` ROM. It is processed locally and
 
 Controls: arrow keys (direction), Z (button 1), X (button 2), Enter (Start). On-screen glass buttons also work. Audio unlocks after clicking **ENABLE SOUND**.
 
+## FIRST LIGHT — first original playable cartridge
+
+[**Play First Light on GG-ZERO Pages**](https://davidwise01.github.io/oasis/apps/game-gear-zero/)
+
+The **PLAY FIRST LIGHT** button assembles and boots a 16 KiB Sega Game Gear \`.gg\` ROM made entirely of Z80 instructions and ROM graphics. **DOWNLOAD FIRST LIGHT .GG** exports the same binary for inspection or use in another compatible emulator. No commercial game code, images, sounds or ROMs are included.
+
+**Game:** steer a luminous crystal through a 20 × 18 tile maze. The viewport is rendered by the Game Gear VDP from tiles and sprite registers. The maze lives as a 32 × 24 collision table inside the cartridge ROM. CPU instructions compute the prospective grid location, look up the collision byte and reject wall cells. Input is read from emulated port \`0xDC\`.
+
+**Keyboard:** arrows move one tile per seven serviced frames; **Z / button 1** shifts the palette toward cyan and plays a square-wave tone; **X / button 2** shifts the palette to magenta with a different tone. Releasing both returns the PSG volume to silence. Game Gear Start remains connected to the hardware input port, but this cartridge has no Start-specific game action.
+
+**Game engineering:** \`games/first-light.js\` assembles original machine code, prepares tile graphics and palette data, positions a hardware sprite, and runs a \`EI → HALT → VBlank IRQ → RETI → TICK\` loop. The IRQ routine at ROM vector \`0038h\` increments a RAM witness counter. The shell's **one new graphical change** is a brief glass pulse on each twelfth serviced VBlank interrupt (not an arbitrary CSS timer).
+
+**Hardware inspector:** reads live Z80 \`AF, BC, DE, HL, SP, PC\`, tracks VDP VRAM/CRAM writes, PSG and input-port transactions, IRQ requests and serviced interrupts, plus current player tile, collision count and ability mode.
+
+**Regression evidence:** \`node tests/first-light.test.js\` provides 18 passing CPU/ROM/VDP/PSG/collision/IRQ cases. The existing 17-case base suite remains separate. A page-level instrumented browser simulation also passed actual button delivery, wall blocking, both abilities, scheduled nonzero PSG audio buffers, CPU register telemetry and the VBlank-driven glass marker. **Real device speaker output and a physical Game Gear are not yet verified.** Full commercial ROM compatibility remains outside this milestone.
+
+Previous base release is preserved as Git branch [\`freeze/gg-zero-v0.1-core\`](https://github.com/DavidWise01/oasis/tree/freeze/gg-zero-v0.1-core).
+
 ## Real internals
 
 | Module | Implemented | Missing / limitations |
@@ -27,6 +45,10 @@ Controls: arrow keys (direction), Z (button 1), X (button 2), Enter (Start). On-
 The Game Gear viewport is 160 × 144 pixels, cut from the 256 × 192 Mode-4 background. The 12-bit CRAM converts RGB channels in 0–15 steps to 0–255 display values. Frame timing is approximate (262 lines × 228 Z80 T-states).
 
 ## Repeatable tests
+
+For First Light, additionally run `node tests/first-light.test.js`. That suite has 18 checks for an original cartridge, Z80 interrupts, maze collisions and PSG tones.
+
+
 
 From this folder:
 
