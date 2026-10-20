@@ -1,0 +1,21 @@
+name: N184 Arc Bubble v79
+on:
+  push:
+    paths:
+      - 'n184/arc-bubble-v79/**'
+      - '.github/workflows/n184-arc-bubble-v79.yml'
+  workflow_dispatch:
+jobs:
+  dimensional-subdivision:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check one-sixth Planck length and independent time register
+        run: |
+          node --check n184/arc-bubble-v79/test_arc_bubble.mjs
+          node n184/arc-bubble-v79/test_arc_bubble.mjs
