@@ -281,6 +281,8 @@ function estimateChoice(obs){
     if(known){ s += known.avg * 0.9; s += Math.min(0.25, known.success/Math.max(1,known.count)*0.25); if(known.avg>bestKnown){ bestKnown=known.avg; knownChoice=c.choice; } }
     else s += 0.18; // exploration bonus for unknown action in current state
     if(c.choice==='WAIT' && stateSeen<2) s -= 0.06;
+    // Only the diagnostic sweep should re-test menu buttons during gameplay.
+    if(c.choice==='START' && (ticks>120 || triCompleted)) s -= 3.0;
     if(c.dir){
       const reverse=(lastDirectionKey==='U'&&c.dir==='D')||(lastDirectionKey==='D'&&c.dir==='U')||(lastDirectionKey==='L'&&c.dir==='R')||(lastDirectionKey==='R'&&c.dir==='L');
       if(reverse) s -= 0.28 + 0.08*Math.min(4,reversalStreak);
