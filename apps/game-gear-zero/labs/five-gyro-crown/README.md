@@ -46,7 +46,7 @@ At canonical rates, all strengths 3, and zero Z slip, residual is numerically ze
 ## Test reports
 
 ```
-node test-model.cjs
+node tests/model.test.cjs
 python test-browser.py
 ```
 
