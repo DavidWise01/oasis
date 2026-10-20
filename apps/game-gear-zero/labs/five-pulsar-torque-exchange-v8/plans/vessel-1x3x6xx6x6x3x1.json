@@ -1,0 +1,92 @@
+{
+  "schema": "oasis.gg-zero.v9.vessel-notation.v0.1",
+  "status": "USER_DEFINED_LITERAL__SEMANTIC_MAP_PROVISIONAL",
+  "canonical": "1x3x6xx6x6x3x1",
+  "literalTokens": [
+    "1",
+    "x",
+    "3",
+    "x",
+    "6",
+    "xx",
+    "6",
+    "x",
+    "6",
+    "x",
+    "3",
+    "x",
+    "1"
+  ],
+  "numericStages": [
+    1,
+    3,
+    6,
+    6,
+    6,
+    3,
+    1
+  ],
+  "centralJunction": {
+    "token": "xx",
+    "classification": "unresolved operator",
+    "position": "between first sixfold stage and next sixfold stage",
+    "notYetDefinedAs": [
+      "multiplication",
+      "replication",
+      "reflection",
+      "cross-coupling"
+    ]
+  },
+  "conditionalArithmetic": {
+    "numericFactorsProductIgnoringJunction": 1944,
+    "interpretation": "arithmetic only, not a verified count of rails/sensors/voxels"
+  },
+  "existingSubstrate": {
+    "instrumentationManifest": "hall-rails-v9.manifest.json",
+    "sensorRailGrammar": "{{-+000+-}}",
+    "rails": 19,
+    "sensorPositions": 57,
+    "activeImplementation": false
+  },
+  "candidateOverlay": [
+    {
+      "stage": "1-L",
+      "hypothesis": "origin referent / containing dot"
+    },
+    {
+      "stage": "3-L",
+      "hypothesis": "entry sensing triad H0/H1/H2"
+    },
+    {
+      "stage": "6-L",
+      "hypothesis": "six visible hex ports"
+    },
+    {
+      "stage": "xx",
+      "hypothesis": "unresolved boundary/junction (user to define)"
+    },
+    {
+      "stage": "6-R1",
+      "hypothesis": "sixfold intermediate routing shell"
+    },
+    {
+      "stage": "6-R2",
+      "hypothesis": "sixfold reciprocal return shell"
+    },
+    {
+      "stage": "3-R",
+      "hypothesis": "exit sensing triad H0/H1/H2"
+    },
+    {
+      "stage": "1-R",
+      "hypothesis": "terminal witness / folded dot"
+    }
+  ],
+  "guardrails": [
+    "Preserve the literal doubled x exactly.",
+    "Do not infer that 1944 is a count of physical components.",
+    "Do not silently make xx multiplication or force symmetry.",
+    "Do not change v8 engine or 19-rail v9 plan without explicit instruction.",
+    "Any layer-to-physical meaning shown here is a candidate overlay, not frozen semantics."
+  ]
+}
