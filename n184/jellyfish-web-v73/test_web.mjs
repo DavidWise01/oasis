@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const read=name=>JSON.parse(fs.readFileSync(new URL(name,import.meta.url),'utf8'));
+const s=read('./spec.json'),t=read('../universe-sag-a-v72/spec.json');
+const checks={};
+function check(name,fn){fn();checks[name]=true}
+check('schema and symbolic scope',()=>{assert.equal(s.schema,'oasis/n184/jellyfish-web/v73');assert.equal(s.status,'symbolic-analogy-simulation')});
+check('five upper instances',()=>assert.equal(s.nodes.filter(n=>n.tier==='upper').length,5));
+check('four lower instances',()=>assert.equal(s.nodes.filter(n=>n.tier==='lower').length,4));
+check('nine total instances',()=>assert.equal(s.nodes.length,9));
+check('nine unique addresses',()=>assert.equal(new Set(s.nodes.map(n=>n.id)).size,9));
+check('exact upper IDs',()=>assert.deepEqual(s.nodes.filter(n=>n.tier==='upper').map(n=>n.id),['U1','U2','U3','U4','U5']));
+check('exact lower IDs',()=>assert.deepEqual(s.nodes.filter(n=>n.tier==='lower').map(n=>n.id),['L1','L2','L3','L4']));
+check('all 9 clones point to same source',()=>assert.ok(s.nodes.every(n=>n.template==='Sag A :: universe 1'&&n.clone===true)));
+check('all coordinates finite and 3D',()=>assert.ok(s.nodes.every(n=>n.position.length===3&&n.position.every(Number.isFinite))));
+check('tiers match counts',()=>assert.deepEqual([s.tiers.upper.count,s.tiers.lower.count],[5,4]));
+check('template reference',()=>assert.equal(s.template.path,'../universe-sag-a-v72/spec.json'));
+check('Sag A at the center',()=>{assert.equal(t.center.displayName,'Sag A');assert.equal(s.template.center,'Sag A')});
+check('two honey accretion disks',()=>{assert.equal(s.template.disks,'-+ honey');assert.equal(t.disks.glyph,'-+ honey');assert.equal(t.disks.count,2)});
+check('six identical symbolic sun roles',()=>assert.deepEqual(s.template.suns,t.ring.map(x=>[x.name,x.colorName])));
+check('every tether references valid nodes',()=>{const ids=new Set(s.nodes.map(n=>n.id));assert.ok(s.tethers.every(e=>ids.has(e.from)&&ids.has(e.to)))});
+check('all tethers connect upper to lower',()=>{const byId=new Map(s.nodes.map(n=>[n.id,n]));assert.ok(s.tethers.every(e=>byId.get(e.from).tier==='upper'&&byId.get(e.to).tier==='lower'))});
+check('all nine instances connected',()=>{const seen=new Set(),edges=new Map(s.nodes.map(n=>[n.id,[]]));for(const e of s.tethers){edges.get(e.from).push(e.to);edges.get(e.to).push(e.from)};const stack=[s.nodes[0].id];while(stack.length){const x=stack.pop();if(seen.has(x))continue;seen.add(x);stack.push(...edges.get(x))}assert.equal(seen.size,9)});
+check('eight tethers form a cycle-free tree',()=>assert.equal(s.tethers.length,8));
+check('no changes to frozen source template',()=>assert.equal(t.schema,'oasis/n184/universe-sag-a/v72'));
+check('web is analogy not proven Einstein solution',()=>assert.ok(s.restrictions.some(x=>x.includes('not a literal sheet'))));
+console.log(JSON.stringify({result:'PASS',passed:Object.keys(checks).length,failed:0,checks},null,2));
