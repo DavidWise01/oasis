@@ -186,7 +186,7 @@ function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase()
  $('helloRGB').textContent=isHello?symbol(0)+' / '+symbol(1)+' / '+symbol(2):'− / − / −';
  $('helloDirection').textContent=isHello?(dir===255?'IN −':'OUT +'):'—';
  $('helloSteps').textContent=isHello?machine.ram[0x123]:'0';
- $('helloCRAM').textContent=isHello?('0x'+hex(machine.cram[18]).slice(-2)+' / 0x'+hex(machine.cram[19]).slice(-2)):'—';
+ $('helloCRAM').textContent=isHello?('0x'+machine.cram[18].toString(16).toUpperCase().padStart(2,'0')+' / 0x'+machine.cram[19].toString(16).toUpperCase().padStart(2,'0')):'—';
  $('helloFreeze').textContent=isHello?(frozen?'FROZEN · Z':'RUNNING'):'—';
  [['rgbR',0,'#ff6074'],['rgbG',1,'#71f49f'],['rgbB',2,'#6ab9ff']].forEach(([id,bit,color])=>{
  const point=$(id);point.textContent=['R','G','B'][bit]+' '+(isHello?symbol(bit):'−');
