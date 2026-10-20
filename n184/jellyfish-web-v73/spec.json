@@ -1,0 +1,238 @@
+{
+  "schema": "oasis/n184/jellyfish-web/v73",
+  "version": "v7.3",
+  "status": "symbolic-analogy-simulation",
+  "interpretation": "Five copies of the one Sag A universe template in an upper canopy and four identical copies suspended beneath on a curved web; nine total instances, not five.",
+  "template": {
+    "path": "../universe-sag-a-v72/spec.json",
+    "id": "universe-1",
+    "center": "Sag A",
+    "disks": "-+ honey",
+    "suns": [
+      [
+        "Xerses",
+        "white"
+      ],
+      [
+        "Argon",
+        "red"
+      ],
+      [
+        "Krypton",
+        "white"
+      ],
+      [
+        "Nemesis",
+        "blue"
+      ],
+      [
+        "He",
+        "orange"
+      ],
+      [
+        "Ne",
+        "purple"
+      ]
+    ]
+  },
+  "rootAnchor": 1,
+  "tiers": {
+    "upper": {
+      "count": 5,
+      "names": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5"
+      ],
+      "role": "canopy"
+    },
+    "lower": {
+      "count": 4,
+      "names": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "role": "dangling-tentacles"
+    }
+  },
+  "nodes": [
+    {
+      "id": "U1",
+      "tier": "upper",
+      "order": 0,
+      "position": [
+        -2.3,
+        -1,
+        0.08
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    },
+    {
+      "id": "U2",
+      "tier": "upper",
+      "order": 1,
+      "position": [
+        -1.15,
+        -1.28,
+        0.38
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    },
+    {
+      "id": "U3",
+      "tier": "upper",
+      "order": 2,
+      "position": [
+        0,
+        -1.43,
+        0.56
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    },
+    {
+      "id": "U4",
+      "tier": "upper",
+      "order": 3,
+      "position": [
+        1.15,
+        -1.28,
+        0.38
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    },
+    {
+      "id": "U5",
+      "tier": "upper",
+      "order": 4,
+      "position": [
+        2.3,
+        -1,
+        0.08
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    },
+    {
+      "id": "L1",
+      "tier": "lower",
+      "order": 0,
+      "position": [
+        -1.65,
+        1,
+        -0.2
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    },
+    {
+      "id": "L2",
+      "tier": "lower",
+      "order": 1,
+      "position": [
+        -0.55,
+        1.38,
+        -0.35
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    },
+    {
+      "id": "L3",
+      "tier": "lower",
+      "order": 2,
+      "position": [
+        0.55,
+        1.38,
+        -0.35
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    },
+    {
+      "id": "L4",
+      "tier": "lower",
+      "order": 3,
+      "position": [
+        1.65,
+        1,
+        -0.2
+      ],
+      "template": "Sag A :: universe 1",
+      "clone": true
+    }
+  ],
+  "tethers": [
+    {
+      "id": "T1",
+      "from": "U1",
+      "to": "L1",
+      "kind": "visual-spacetime-mesh"
+    },
+    {
+      "id": "T2",
+      "from": "U2",
+      "to": "L1",
+      "kind": "visual-spacetime-mesh"
+    },
+    {
+      "id": "T3",
+      "from": "U2",
+      "to": "L2",
+      "kind": "visual-spacetime-mesh"
+    },
+    {
+      "id": "T4",
+      "from": "U3",
+      "to": "L2",
+      "kind": "visual-spacetime-mesh"
+    },
+    {
+      "id": "T5",
+      "from": "U3",
+      "to": "L3",
+      "kind": "visual-spacetime-mesh"
+    },
+    {
+      "id": "T6",
+      "from": "U4",
+      "to": "L3",
+      "kind": "visual-spacetime-mesh"
+    },
+    {
+      "id": "T7",
+      "from": "U4",
+      "to": "L4",
+      "kind": "visual-spacetime-mesh"
+    },
+    {
+      "id": "T8",
+      "from": "U5",
+      "to": "L4",
+      "kind": "visual-spacetime-mesh"
+    }
+  ],
+  "presentation": {
+    "visualAnalogy": "Einstein rubber-sheet gravity well + jellyfish canopy / threads",
+    "defaultSag": 0.8,
+    "sagRange": [
+      0,
+      1.6
+    ],
+    "maxMotion": "bounded",
+    "geometry": "two-tier projected web"
+  },
+  "restrictions": [
+    "Not a prediction of nine actual universes.",
+    "The rubber-sheet diagram is a visualization analogy: spacetime curvature is not a literal sheet pulled downward by an external gravitational force.",
+    "All nine nodes are references to exactly the same v7.2 template; no copy changes chemical or astronomical status.",
+    "The earlier N184, Nd hex and Sag A universe layers are preserved unchanged."
+  ]
+}
