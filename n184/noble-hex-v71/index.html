@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N184 · Neodymium-centered noble hex v7.1</title>
+<style>
+:root{color-scheme:dark;--bg:#080f19;--pane:#101d2d;--border:#2b4661;--ink:#eaf4ff;--muted:#afc1d6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{padding:22px clamp(16px,3vw,40px);border-bottom:1px solid var(--border);background:#10192a}
+h1{font-size:clamp(20px,3vw,30px);margin:0}.sub{color:var(--muted)}
+main{margin:auto;max-width:1300px;padding:18px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px}
+section,aside{border:1px solid var(--border);border-radius:12px;padding:15px;background:var(--pane);min-width:0}
+canvas{width:100%;height:auto;display:block;border-radius:8px;background:radial-gradient(circle,#172744,#071019)}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:12px}
+button{border:1px solid #608b9e;background:#173c50;color:white;border-radius:7px;padding:10px 13px;cursor:pointer}
+button:hover{background:#225670}button:focus-visible,input:focus-visible{outline:2px solid #b7ebf9}
+input[type=range]{accent-color:#93dacf;max-width:220px;width:100%}
+h2{font-size:16px;margin:0 0 10px}.register{display:grid;gap:7px;margin-bottom:20px}
+.item{display:flex;align-items:center;justify-content:space-between;gap:9px;border:1px solid #354e69;background:#17283c;padding:9px;border-radius:7px}
+.item .name{display:flex;align-items:center;gap:10px}.dot{border-radius:50%;width:10px;height:10px;flex:none}
+.item em{font-style:normal;color:#b3c9dd;font-variant-numeric:tabular-nums}
+.center{margin:10px 0 18px;border:1px solid #bea1eb;background:#221e3e;border-radius:10px;padding:13px}
+.center b{font-size:22px}.status{color:#c9dfa0;font-size:12px}
+a{color:#92e6d6}p{margin:9px 0}code{color:#eacb92}
+@media(max-width:850px){main{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><h1>N184 · Noble hex around Neodymium</h1>
+<div class="sub">v7.1 additive model · five noble gases + one symbolic N184 perimeter · Nd 60 center · root anchor 1</div></header>
+<main>
+<section>
+<canvas id="hex" width="950" height="720" role="img" aria-label="Six-sided ring of helium, neon, argon, krypton, xenon and symbolic N184 around Neodymium element 60, anchored to scalar one"></canvas>
+<div class="toolbar">
+<button id="spin" type="button">Rotate: off</button>
+<button id="reset" type="button">Reset</button>
+<label for="phase">Center phase <output id="phaseValue">0°</output></label>
+<input id="phase" type="range" min="0" max="360" value="0" step="5">
+</div>
+<p class="sub">The center pulse represents a <b>symbolic oscillator</b>, not measured neodymium response to noble-gas radiation.</p>
+<p><a href="../integration-v41/">Four-Brace Confluence</a> · <a href="../noble-gas-four-wave-v70/">Earlier four-wave experiment</a> · <a href="./spec.json">Canonical v7.1 register</a></p>
+</section>
+<aside>
+<h2>Center · pinned to 1</h2><div class="center"><b id="coreTitle">Nd · 60</b><div>Neodymium · lanthanide</div><div class="sub">Symbolic underlying root: 1</div></div>
+<h2>Six perimeter slots</h2><div class="register" id="register"></div>
+<h2>Interpretation</h2>
+<p>The six perimeter points form a regular geometric hexagon. Five are confirmed noble-gas elements; <code>N184</code> is a symbolic closure address and <b>not a confirmed chemical element</b>.</p>
+<p>Neodymium is a real chemical element, <b>Nd, Z = 60</b>. Centering it does not establish a new compound, nuclear reaction, dark matter source, or physical wave-capture mechanism.</p>
+<p class="sub">The existing frozen N184 kernel and v7.0 four-wave experiment remain unchanged.</p>
+<div id="loadStatus" class="status">Loading register…</div>
+</aside>
+</main>
+<script type="module">
+const canvas=document.getElementById('hex'),g=canvas.getContext('2d');
+const register=document.getElementById('register');
+const colors=['#f4c97e','#ff778d','#91acff','#75e0d4','#c1a3ff','#ddb86c'];
+let spec,phase=0,spin=false,rotation=0,last=0;
+function required(s){
+ if(!s||s.center?.symbol!=='Nd'||s.center.atomicNumber!==60||s.center.rootAnchor!==1||s.perimeter?.length!==6)throw Error('register mismatch');
+ return s;
+}
+function renderRegister(){
+ document.getElementById('coreTitle').textContent=spec.center.symbol+' · '+spec.center.atomicNumber;
+ register.replaceChildren();
+ spec.perimeter.forEach((v,i)=>{
+ const row=document.createElement('div');row.className='item';
+ const name=document.createElement('span');name.className='name';
+ const dot=document.createElement('span');dot.className='dot';dot.style.background=colors[i];
+ const label=document.createElement('span');label.textContent=v.symbol+' · '+v.name;
+ name.append(dot,label);
+ const addr=document.createElement('em');addr.textContent=v.atomicNumber==null?'address '+v.address:'Z = '+v.atomicNumber;
+ row.append(name,addr);register.append(row);
+ });
+ document.getElementById('loadStatus').textContent='Symbolic register loaded · 5 nobles + N184 · Nd center';
+}
+function draw(){
+ if(!spec)return;
+ const w=canvas.width,h=canvas.height,cx=w/2,cy=h/2,r=243;
+ g.clearRect(0,0,w,h);g.fillStyle='#071221';g.fillRect(0,0,w,h);
+ const f=(phase/180)*Math.PI,beat=.5+.5*Math.sin(f),rr=31+7*beat;
+ const points=spec.perimeter.map(v=>{const angle=(v.angleDeg+rotation)*Math.PI/180;return{x:cx+Math.cos(angle)*r,y:cy+Math.sin(angle)*r};});
+ g.beginPath();points.forEach((v,i)=>{if(!i)g.moveTo(v.x,v.y);else g.lineTo(v.x,v.y)});g.closePath();g.fillStyle='#18294077';g.fill();g.strokeStyle='#9fb7c9';g.lineWidth=3;g.stroke();
+ points.forEach((v,i)=>{
+  g.strokeStyle=colors[i]+'8a';g.lineWidth=2;g.beginPath();g.moveTo(v.x,v.y);g.lineTo(cx,cy);g.stroke();
+ });
+ const glow=g.createRadialGradient(cx,cy,8,cx,cy,114+beat*16);glow.addColorStop(0,'#b69bfa88');glow.addColorStop(1,'#8b7ae000');
+ g.fillStyle=glow;g.beginPath();g.arc(cx,cy,122+beat*12,0,2*Math.PI);g.fill();
+ g.beginPath();g.arc(cx,cy,rr+27,0,2*Math.PI);g.strokeStyle='#d7bdfbaa';g.lineWidth=2;g.stroke();
+ g.beginPath();g.arc(cx,cy,rr,0,2*Math.PI);g.fillStyle='#d6c3ff';g.fill();g.strokeStyle='#fff';g.lineWidth=2;g.stroke();
+ g.textAlign='center';g.fillStyle='#1a1a37';g.font='bold 21px system-ui';g.fillText('Nd',cx,cy+7);
+ g.fillStyle='#e9dcff';g.font='bold 17px system-ui';g.fillText('60',cx,cy+76);
+ g.fillStyle='#a4c1db';g.font='13px system-ui';g.fillText('root 1',cx,cy+96);
+ points.forEach((v,i)=>{
+  const p=spec.perimeter[i];g.beginPath();g.arc(v.x,v.y,39,0,Math.PI*2);g.fillStyle=colors[i];g.fill();g.lineWidth=2;g.strokeStyle='#ffffffb9';g.stroke();
+  g.fillStyle='#081323';g.textAlign='center';g.font='bold 17px system-ui';g.fillText(p.symbol,v.x,v.y-2);
+  g.font='12px system-ui';g.fillText(p.atomicNumber??p.address,v.x,v.y+17);
+ });
+ g.fillStyle='#cbd8e8';g.font='15px system-ui';g.textAlign='left';g.fillText('5 noble gases + symbolic N184',24,34);g.fillText('Nd::60 anchored on 1',24,59);
+}
+function tick(t){if(spin){rotation+=(last?Math.min(70,t-last):0)*.013;phase=(phase+2)%360;document.getElementById('phaseValue').textContent=Math.round(phase)+'°';document.getElementById('phase').value=phase;draw()}last=t;requestAnimationFrame(tick)}
+document.getElementById('spin').onclick=()=>{spin=!spin;document.getElementById('spin').textContent='Rotate: '+(spin?'on':'off')};
+document.getElementById('reset').onclick=()=>{spin=false;rotation=0;phase=0;document.getElementById('spin').textContent='Rotate: off';document.getElementById('phase').value='0';document.getElementById('phaseValue').textContent='0°';draw()};
+document.getElementById('phase').oninput=e=>{phase=Number(e.target.value);document.getElementById('phaseValue').textContent=phase+'°';draw()};
+try{const response=await fetch('./spec.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);spec=required(await response.json());renderRegister();draw();requestAnimationFrame(tick)}catch(error){document.getElementById('loadStatus').textContent='Register could not be loaded: '+String(error)}
+</script>
+</body></html>
