@@ -1,0 +1,21 @@
+name: N184 Neodymium Hex v71
+on:
+  push:
+    paths:
+      - 'n184/noble-hex-v71/**'
+      - '.github/workflows/n184-nd-hex-v71.yml'
+  workflow_dispatch:
+jobs:
+  spec-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Nd hex geometry and register checks
+        run: |
+          node --check n184/noble-hex-v71/test_spec.mjs
+          node n184/noble-hex-v71/test_spec.mjs
