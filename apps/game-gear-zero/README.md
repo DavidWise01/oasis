@@ -14,6 +14,17 @@ You can also load a legitimately obtained `.gg` ROM. It is processed locally and
 
 Controls: arrow keys (direction), Z (button 1), X (button 2), Enter (Start). On-screen glass buttons also work. Audio unlocks after clicking **ENABLE SOUND**.
 
+## I-13 · executable Z80 kernel (GG adapter)
+
+[**Run I-13 on the hollow-glass Game Gear page**](https://davidwise01.github.io/oasis/apps/game-gear-zero/) or read [I13-Z80.md](./I13-Z80.md).
+
+**RUN I-13 ON Z80** launches a newly assembled 16 KiB \`.gg\` cartridge that executes a bounded copy of the authoritative I13-H1.1 **E1.TECH-001** trit authority law on our actual emulated Z80: \`−1 HOLD\`, \`0 FLAY\`, \`+1 PROCEED\`. Left/Up/Right choose the evidence trit; button 1 adds question debt, button 2 clears it. Signed trit validation, RAM witnesses, VBlank IRQ and red/amber/green LCD palette writes are performed by Z80 instructions, not by the HTML panel.
+
+**Scope:** executable signed-trit subset of I-13, **not** full I13 f64 VM, 15-opcode bytecode interpreter, Rust/Wasm Cortex or E1 external services. Canonical source in [I13-H1.1](https://github.com/DavidWise01/I13-H1.1) is unchanged. \`p1\` does not bypass a separate host capability gate.
+
+**Checks:** 25 isolated on-emulator truth/guard/VDP/IRQ tests plus an integrated page-level controller test passed. First Light still boots, and its pre-port baseline is frozen as \`freeze/gg-zero-first-light-v0.2\`.
+
+
 ## FIRST LIGHT — first original playable cartridge
 
 [**Play First Light on GG-ZERO Pages**](https://davidwise01.github.io/oasis/apps/game-gear-zero/)
