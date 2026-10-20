@@ -1,5 +1,7 @@
 # V9 vessel envelope — `1x3x6xx6x6x3x1`
 
+> **Semantic update:** The transporter’s paired sixfold stages (brace6 + thrust6) are now named the **carrier**, which carries a separate **clamp** to the **vessel**. The combined assembly is the **Harvester**. See [Harvester specification](./harvester-transporter-v9.md). The older unresolved-symbol discussion below is retained as historical context.
+
 **Status: literal vessel recorded; junction and layer semantics not yet frozen.**
 
 The user defines the 19-rail Hall network as a vessel for the exact expression:
