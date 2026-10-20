@@ -96,7 +96,15 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 <div class="warning">Controls: <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> · <kbd>Z</kbd> (1) · <kbd>X</kbd> (2) · <kbd>Enter</kbd> (Start). No cartridge is included. ROM bytes remain in your browser.</div>
 </div>
 <div class="panel">
-<h2>02 · Actual Machine Witness</h2>
+<h2>02 · CPU / VDP / PSG Hardware Inspector</h2>
+<div class="readouts">
+<div class="metric"><small>CPU REGISTERS</small><b id="regs" style="font-size:11px">AF BC DE HL SP</b></div>
+<div class="metric"><small>VDP VRAM / CRAM WRITES</small><b id="vramwrites">0 / 0</b></div>
+<div class="metric"><small>PSG / INPUT PORT EVENTS</small><b id="portevents">0 / 0</b></div>
+<div class="metric"><small>IRQ REQUESTS / SERVICED</small><b id="irq">0 / 0</b></div>
+</div>
+<div class="small" id="ports" style="margin:5px 0 12px;color:#a8e5f6">PORT DC · INPUT: RELEASED</div>
+<h2 style="margin-top:10px">03 · Actual Machine Witness</h2>
 <div id="eventlog">No program executed yet.
 Choose RUN BUILT-IN TEST ROM to execute Z80 instructions that write the Game Gear VDP and render the LCD.</div>
 <p class="warning">This is an <strong>original experimental emulator core</strong>, not a Genesis Plus GX / EmulatorJS wrapper. The first milestone supports a meaningful Z80 instruction subset, Game Gear ROM bank mapping, Mode-4 background and sprites, and basic PSG audio. Index prefixes, some ED instructions, raster timing and mapper variants are incomplete; commercial game compatibility is not yet established.</p>
@@ -115,18 +123,24 @@ Choose RUN BUILT-IN TEST ROM to execute Z80 instructions that write the Game Gea
 const $=id=>document.getElementById(id),machine=new GGMachine(),ctx=$('lcd').getContext('2d',{alpha:false});
 const image=ctx.createImageData(160,144);
 let name='',running=false,paused=false,active=false,raf=0,nextTick=0,audioCtx=null,bufferQueue=[],gain=null;
-let gameMode='NO ROM',seenIRQ=0,beaconTimer=null,gameLogStep=-1,gameLogBlocked=-1;
+let gameMode='NO ROM',seenIRQ=0,beaconTimer=null,gameLogStep=-1,gameLogBlocked=-1,gameLogAbility=-1;
 let logs=[];
 const stamp=s=>{logs.unshift(s);logs=logs.slice(0,16);$('eventlog').textContent=logs.join('\n')};
 function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase().padStart(4,'0');
  $('player').textContent=gameMode==='FIRST LIGHT'?machine.ram[1]+','+machine.ram[2]+' / '+machine.vram[0x3f80]+','+(machine.vram[0x3f00]+1):'—';
  $('steps').textContent=gameMode==='FIRST LIGHT'?machine.ram[3]+' / '+machine.ram[4]:'0 / 0';
  $('vblank').textContent=machine.ram[10];
- $('ability').textContent=gameMode==='FIRST LIGHT'?['NONE','1 · CYAN','2 · MAGENTA'][machine.ram[9]]||'—':'NONE';
+ $('ability').textContent=gameMode==='FIRST LIGHT'?(['NONE','1 · CYAN','2 · MAGENTA'][machine.ram[9]]||'—'):'NONE';
+ const cpu=machine.cpu,s=machine.stats,hex=n=>(n>>>0).toString(16).toUpperCase().padStart(4,'0');
+ $('regs').textContent='AF '+hex((cpu.A<<8)|cpu.f)+' / BC '+hex(cpu.pair(0))+'\nDE '+hex(cpu.pair(1))+' / HL '+hex(cpu.HL)+'\nSP '+hex(cpu.sp);
+ $('vramwrites').textContent=s.vramWrites+' / '+s.cramWrites;
+ $('portevents').textContent=s.psgWrites+' / '+s.portReads;
+ $('irq').textContent=s.irqRequests+' / '+machine.ram[10];
+ $('ports').textContent='GAME GEAR INPUT · '+Object.entries(machine.keys).filter(([k,on])=>on).map(([k])=>k.toUpperCase()).join(' + ')||'RELEASED';
  $('frames').textContent=machine.frames; $('vdp').textContent=(machine.vdpRegs[1]&64)?'ON / 160×144':'DISPLAY OFF'; $('cartridge').textContent=name||'NO ROM';
  $('coreStatus').textContent=paused?'PAUSED':active?'ORIGINAL CPU + VDP LIVE':'ORIGINAL ENGINE · BOOT READY'}
 function boot(bytes,label){
- try{const meta=machine.load(bytes);name=label;gameMode=(label==='FIRST LIGHT'?'FIRST LIGHT':'DIAGNOSTIC');active=true;running=true;paused=false;nextTick=0;seenIRQ=0;gameLogStep=-1;gameLogBlocked=-1;
+ try{const meta=machine.load(bytes);name=label;gameMode=(label==='FIRST LIGHT'?'FIRST LIGHT':'DIAGNOSTIC');active=true;running=true;paused=false;nextTick=0;seenIRQ=0;gameLogStep=-1;gameLogBlocked=-1;gameLogAbility=-1;
  stamp('CARTRIDGE '+label+' · '+meta.bytes+' bytes · '+meta.banks+' banks');
  $('pause').textContent='PAUSE';update();
  if(!raf)raf=requestAnimationFrame(loop);
@@ -142,7 +156,7 @@ function loop(now){raf=requestAnimationFrame(loop);if(!active||paused)return;
   // Only the CPU interrupt service routine at 0038h may trigger this beacon.
   if(machine.ram[10]!==seenIRQ){seenIRQ=machine.ram[10];const glass=document.querySelector('.handheld');glass.classList.add('irqOn');clearTimeout(beaconTimer);beaconTimer=setTimeout(()=>glass.classList.remove('irqOn'),38);}
   if(gameMode==='FIRST LIGHT'&&machine.ram[0]===0xa5){
-    if(machine.ram[3]!==gameLogStep||machine.ram[4]!==gameLogBlocked){gameLogStep=machine.ram[3];gameLogBlocked=machine.ram[4];update();}
+    if(machine.ram[3]!==gameLogStep||machine.ram[4]!==gameLogBlocked||machine.ram[9]!==gameLogAbility){gameLogStep=machine.ram[3];gameLogBlocked=machine.ram[4];gameLogAbility=machine.ram[9];update();}
   }
   if(machine.frames===2&&name==='BUILT-IN Z80+VDP TEST'){
    const found=machine.ram[0]===0xa5&&machine.vram[0]===0xaa;
@@ -150,7 +164,7 @@ function loop(now){raf=requestAnimationFrame(loop);if(!active||paused)return;
   }
  }
  if(now-nextTick>80)nextTick=now;
- if(machine.frames%30===0&&steps)update();
+ if(steps&&(machine.frames%10===0||gameMode==='FIRST LIGHT'))update();
 }
 function pushAudio(stereo){if(!audioCtx||audioCtx.state!=='running')return;
  const rate=machine.psg.rate,frameCount=stereo.length/2;
