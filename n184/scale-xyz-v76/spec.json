@@ -1,0 +1,93 @@
+{
+  "schema": "oasis/n184/scale-xyz/v76",
+  "version": "v7.6",
+  "status": "symbolic-coordinate-grammar",
+  "correctionOf": "T/M/B is scale selection; top/middle/bottom are not new physical layers, media, or force regimes",
+  "axes": [
+    {
+      "name": "x",
+      "userLabel": "state",
+      "semantic": "state",
+      "dataKind": "symbolic-state"
+    },
+    {
+      "name": "y",
+      "userLabel": "space",
+      "semantic": "space",
+      "dataKind": "symbolic-position"
+    },
+    {
+      "name": "z",
+      "userLabel": "state+time",
+      "semantic": "state-time composite",
+      "dataKind": "composite-pair",
+      "serialization": [
+        "state",
+        "time"
+      ],
+      "arithmeticAddition": false
+    }
+  ],
+  "scales": [
+    {
+      "code": "T",
+      "legacy": "strong",
+      "symbolic": "plank bubble",
+      "analogy": "star",
+      "spatialScope": "upper",
+      "cloneCount": 5
+    },
+    {
+      "code": "M",
+      "legacy": "medium",
+      "symbolic": "plank foam",
+      "analogy": "planet",
+      "spatialScope": "middle",
+      "reference": "Earth",
+      "cloneCount": 0
+    },
+    {
+      "code": "B",
+      "legacy": "floor",
+      "symbolic": "plank",
+      "analogy": "atom",
+      "spatialScope": "lower",
+      "cloneCount": 4
+    }
+  ],
+  "invariants": {
+    "acrossScales": "same x/y/z grammar",
+    "scalesAre": "different observational projections of a single symbolic state-space-time representation",
+    "scaleFactors": "unspecified; no ungrounded star/planet/atom numeric mapping",
+    "rootAnchor": 1,
+    "clonedSagAUniverseCount": 9,
+    "earthAddsUniverse": false,
+    "timeNotation": "13/8B:1:1x10^-35",
+    "secondsPerSymbolicTick": 1e-35,
+    "clockOperator": "13/8B",
+    "clockOperatorDefined": false
+  },
+  "sourcePaths": {
+    "previous": "../time-stack-tmb-v75/spec.json",
+    "clock": "../time-stack-tmb-v74/spec.json",
+    "web": "../jellyfish-web-v73/spec.json",
+    "sagA": "../universe-sag-a-v72/spec.json",
+    "evidence": "../../evidence/relay/ITD_HD110067_SIX_PLANET_RESONANCE_REDDIT_2026-10-20.md"
+  },
+  "representations": {
+    "axisLiteral": "x:state y:space z:state+time",
+    "stateTimeEncoding": "z is conceptual pairing (state,time), not numeric state + seconds",
+    "perScaleSameFrame": [
+      "x:state",
+      "y:space",
+      "z:state+time"
+    ],
+    "earthMiddle": "M is Earth observer/reference, not a tenth universe"
+  },
+  "scientificBoundary": [
+    "Star/planet/atom are scale comparisons, not claims of identical underlying physics or dimensionless conversions.",
+    "HD 110067 orbital resonance is externally measured astronomy; it does not verify symbolic scale equivalence or relativity.",
+    "The model's time tick is a chosen simulation unit, not experimentally observed Planck time.",
+    "All source versions and frozen baselines are unchanged."
+  ]
+}
