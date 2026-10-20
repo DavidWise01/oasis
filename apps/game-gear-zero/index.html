@@ -136,7 +136,7 @@ function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase()
  $('vramwrites').textContent=s.vramWrites+' / '+s.cramWrites;
  $('portevents').textContent=s.psgWrites+' / '+s.portReads;
  $('irq').textContent=s.irqRequests+' / '+machine.ram[10];
- $('ports').textContent='GAME GEAR INPUT · '+Object.entries(machine.keys).filter(([k,on])=>on).map(([k])=>k.toUpperCase()).join(' + ')||'RELEASED';
+ const pressed=Object.entries(machine.keys).filter(([k,on])=>on).map(([k])=>k.toUpperCase()).join(' + ');$('ports').textContent='GAME GEAR INPUT · '+(pressed||'RELEASED');
  $('frames').textContent=machine.frames; $('vdp').textContent=(machine.vdpRegs[1]&64)?'ON / 160×144':'DISPLAY OFF'; $('cartridge').textContent=name||'NO ROM';
  $('coreStatus').textContent=paused?'PAUSED':active?'ORIGINAL CPU + VDP LIVE':'ORIGINAL ENGINE · BOOT READY'}
 function boot(bytes,label){
@@ -154,7 +154,7 @@ function loop(now){raf=requestAnimationFrame(loop);if(!active||paused)return;
  while(now>=nextTick&&steps<2){
   const out=machine.runFrame();paint();pushAudio(out.audio);steps++;nextTick+=1000/60;
   // Only the CPU interrupt service routine at 0038h may trigger this beacon.
-  if(machine.ram[10]!==seenIRQ){seenIRQ=machine.ram[10];const glass=document.querySelector('.handheld');glass.classList.add('irqOn');clearTimeout(beaconTimer);beaconTimer=setTimeout(()=>glass.classList.remove('irqOn'),38);}
+  if(machine.ram[10]!==seenIRQ){seenIRQ=machine.ram[10];if(seenIRQ%12===0){const glass=document.querySelector('.handheld');glass.classList.add('irqOn');clearTimeout(beaconTimer);beaconTimer=setTimeout(()=>glass.classList.remove('irqOn'),52);}}
   if(gameMode==='FIRST LIGHT'&&machine.ram[0]===0xa5){
     if(machine.ram[3]!==gameLogStep||machine.ram[4]!==gameLogBlocked||machine.ram[9]!==gameLogAbility){gameLogStep=machine.ram[3];gameLogBlocked=machine.ram[4];gameLogAbility=machine.ram[9];update();}
   }
