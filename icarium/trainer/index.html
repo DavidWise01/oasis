@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ICARIUM / Training &amp; I/O Console · 041</title>
+<style>
+:root{color-scheme:dark;--bg:#070b0f;--panel:#111820;--line:#34414a;--fg:#f2f4f5;--dim:#9eabb4;--soft:#19232c;--accent:#b5ccd8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:12px/1.45 ui-monospace,Consolas,monospace}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;background:#111820;border-bottom:1px solid var(--line);flex-wrap:wrap}
+header h1{font-size:20px;letter-spacing:.09em;margin:0}small,.muted{color:var(--dim)}a{color:#e3eaf0}
+main{display:grid;grid-template-columns:minmax(380px,49%) minmax(460px,51%);min-height:calc(100vh - 78px)}
+.viewer{position:sticky;top:0;height:calc(100vh - 76px);padding:10px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.viewer iframe{width:100%;flex:1;border:1px solid #5c6a75;background:#0a0a0a;border-radius:8px;min-height:400px}
+.console{padding:10px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel{background:var(--panel);border:1px solid var(--line);padding:12px;border-radius:8px;min-width:0}
+.panel h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin:0 0 10px}
+.line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.spread{justify-content:space-between}
+button,select,input{font:inherit;background:#090e13;color:var(--fg);border:1px solid #586773;padding:8px;border-radius:4px}
+button{cursor:pointer}button:hover{background:#263440}button:disabled{opacity:.45;cursor:not-allowed}
+select{max-width:100%}input[type=range]{accent-color:#d2dbe0;cursor:pointer;padding:2px}
+input[type=file]{max-width:100%}.meter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.meter{padding:9px;border:1px solid var(--line);background:#0a1016;border-radius:5px}
+.meter .value{font-size:20px;font-weight:700;overflow-wrap:anywhere}
+.meter small{display:block;font-size:10px;white-space:nowrap}
+.knobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.knobs label{display:flex;flex-direction:column;gap:6px;min-width:0}
+.knobs input{width:100%}.knobs select{width:100%}
+.data{white-space:pre-wrap;overflow-wrap:anywhere;background:#090e13;border:1px solid #28323b;padding:10px;min-height:46px;border-radius:4px}
+#plot{width:100%;height:160px;display:block;background:#090e13;border:1px solid var(--line);border-radius:4px}
+.tablewrap{overflow:auto;max-height:350px;border:1px solid var(--line)}table{border-collapse:collapse;width:100%;min-width:620px}th,td{padding:7px;border-bottom:1px solid #2d3740;text-align:left;white-space:nowrap}th{color:#acbac4;position:sticky;top:0;background:#17202a}tr:hover td{background:#26303a}
+.tag{padding:2px 5px;border:1px solid var(--line);border-radius:3px;font-size:10px;letter-spacing:.05em}
+label.good{color:#c5e6cb}label.bad{color:#e6bbb7}
+.annotate button{padding:3px 8px;border-radius:0}.annotate button.selected{background:#dce7ed;color:#0d151b;font-weight:800}
+.ranks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.rank{padding:8px;background:#090e13;border:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}
+@media(max-width:1250px){main{display:flex;flex-direction:column}.viewer{position:relative;top:auto;height:620px;border-right:0;border-bottom:1px solid var(--line)}.console{width:100%}}@media(max-width:600px){.viewer{height:490px}.meter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.knobs{grid-template-columns:1fr}header h1{font-size:16px}}
+</style></head>
+<body>
+<header><div><h1>ICARIUM :: TRAINING CONSOLE</h1><small>REV 041 · LIVE INPUT / OUTPUT · SHADOW LEARNING · LOOP WORKSHOP</small></div><div class="line"><span class="tag" id="bridge">CONNECTING</span><span class="tag" id="dataset">LIVE SESSION</span><a href="../" target="_blank" rel="noopener">OPEN ARCADE ↗</a></div></header>
+<main>
+ <section class="viewer"><div class="line spread"><b>01 / LIVE ICARIUM</b><span class="muted">Original Rev 040 arcade embedded without code changes</span></div><iframe id="arcade" src="../" title="ICARIUM Rev 040 arcade" loading="eager" allow="autoplay"></iframe><div class="muted" id="romHint">Load your local NES ROM inside the arcade. Training console never uploads ROM bytes.</div></section>
+ <section class="console">
+ <div class="panel"><div class="line spread"><h2>02 / Controller observatory</h2><div class="line"><button id="pauseCapture">PAUSE CAPTURE</button><button id="clearSession">CLEAR CAPTURE</button><button id="exportCapture">EXPORT SESSION</button></div></div>
+  <div class="meter-grid"><div class="meter"><small>NES FRAME</small><div class="value" id="mFrame">—</div></div><div class="meter"><small>INPUT MASK</small><div class="value" id="mMask">0x00</div></div><div class="meter"><small>WITNESSES</small><div class="value" id="mWitness">0</div></div><div class="meter"><small>ABCD CLOSURES</small><div class="value" id="mClosure">0</div></div></div>
+  <div class="data" id="liveReason">Waiting for the arcade API.</div><canvas id="plot" width="960" height="165"></canvas><div class="muted">Trace: top = controller activity · middle = motion sample · bottom = screen fingerprint changes. Gray bars mark action receipts; they do not indicate success.</div>
+ </div>
+ <div class="panel"><h2>03 / Revise the running loop</h2>
+  <div class="knobs"><label>Exploration risk <span id="riskText">45%</span><input id="risk" type="range" min="0" max="100" value="45"></label><label>Timing quantum <span id="quantumText">3 frames</span><input id="quantum" type="range" min="1" max="8" value="3"></label><label>Strategy<select id="strategy"><option value="general">General</option><option value="fight">Boxing / Action</option><option value="platform">Platformer</option><option value="explore">Maze / Explore</option></select></label></div>
+  <div class="line" style="margin-top:10px"><button id="applyKnobs">APPLY TO LIVE LOOP</button><button id="idle">OBSERVE ONLY</button><button id="auto">RESUME AUTONOMOUS</button><select id="pulseKey" aria-label="manual probe key"><option>START</option><option>A</option><option>B</option><option>U</option><option>D</option><option>L</option><option>R</option><option>SEL</option></select><button id="pulse">QUEUE ONE PROBE</button></div>
+  <div class="muted" id="changeNote" style="margin-top:8px">These are existing Icarium controls: risk, timing and strategy apply live. Learned weights remain proposals, not silent code changes.</div>
+ </div>
+ <div class="panel"><h2>04 / I/O receipts · human feedback</h2><div class="line spread"><div class="muted">Mark witnessed outcomes as + useful, − harmful, or 0 neutral. Your labels are separate from screen changes.</div><div class="line"><button id="importData">IMPORT JSON</button><input id="importFile" type="file" accept=".json" hidden><button id="exportProposal">EXPORT LOOP PROFILE</button></div></div>
+ <div class="tablewrap"><table><thead><tr><th>Frame</th><th>Action</th><th>ABCD</th><th>Baseline / Result</th><th>Before → After</th><th>Your label</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="muted">Run a ROM or import receipts to begin.</td></tr></tbody></table></div>
+ </div>
+ <div class="panel"><h2>05 / Remembrance training · shadow policy</h2><div class="meter-grid"><div class="meter"><small>USER LABELS</small><div class="value" id="mLabels">0</div></div><div class="meter"><small>QUALIFIED SCENE CHANGES</small><div class="value" id="mStable">0</div></div><div class="meter"><small>AMBIENT CHANGES</small><div class="value" id="mAmbient">0</div></div><div class="meter"><small>STALL STREAK</small><div class="value" id="mStall">0</div></div></div><div class="ranks" id="ranks" style="margin-top:10px"></div><div class="data" id="advisor" style="margin-top:9px">Label multiple episodes to generate a candidate action order. No rewards are inferred from animation.</div><div class="muted" style="margin-top:7px">Candidate order is a **shadow policy**, not a trained game model. The live agent's autonomous ranking stays unchanged until you implement/approve a revised policy. Exports are local JSON.</div></div>
+ <div class="panel"><h2>06 / Recovery &amp; provenance</h2><div class="data" id="recovery">Awaiting local emulator.</div><small>The original Obsidian A/B recovery remains inside the arcade. This trainer exports a separate human-labelled evidence file and never reads ROM contents or writes private data to GitHub.</small></div>
+ </section>
+</main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),F=$('arcade');const PORTS=['A','B','SEL','START','U','D','L','R'];
+let recording=true,origin=null,lastFrame=-1,seen=new Set(),receipts=[],samples=[],labels={},lastStatus=null,loadedSource=null;
+let policySnapshot=null,romName='';
+const keyOf=r=>[r.frame,r.kind,r.key||'',r.message||'',r.source||'',r.from||'',r.to||''].join('|');
+const clean=r=>({kind:String(r.kind||''),frame:Number(r.frame)||0,key:r.key||null,message:r.message||'',source:r.source||'',timing:r.timing||null,from:r.from||null,to:r.to||null,observedDelta:r.observedDelta===1?1:r.observedDelta===0?0:null,evidenceClass:r.evidenceClass||'UNKNOWN',sceneBaseline:r.sceneBaseline||'UNKNOWN',causalVerified:false,mask:r.mask||0});
+const api=()=>{try{const w=F.contentWindow;return w?.CONFLUENCE?.stats&&w.location.origin===location.origin?w.CONFLUENCE:null}catch(_){return null}};
+const child=(id)=>{try{return F.contentDocument?.getElementById(id)||null}catch(_){return null}};
+const button=(id,text)=>{const e=$(id);if(e)e.textContent=text};
+const profile=()=>({risk:Number($('risk').value),quantum:Number($('quantum').value),strategy:$('strategy').value});
+const safeDownload=(name,value)=>{const a=document.createElement('a'),blob=new Blob([JSON.stringify(value,null,2)],{type:'application/json'});a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000)};
+function reset(clearLabels=false){receipts=[];samples=[];seen.clear();lastFrame=-1;loadedSource=null;if(clearLabels)labels={};renderTable();renderAdvisor();renderPlot();}
+function appendEvents(entries){if(!Array.isArray(entries))return;for(const r0 of entries){if(!r0||!r0.kind)continue;const r=clean(r0),k=keyOf(r);if(seen.has(k))continue;seen.add(k);receipts.push(r);if(receipts.length>5000)receipts.shift();}if(seen.size>11000)seen=new Set(receipts.map(keyOf))}
+function witness(){return receipts.filter(r=>r.kind==='WITNESS')}
+function asHash(h){return String(h||'—').slice(0,12)}
+function poll(){const p=api();if(!p){$('bridge').textContent='BRIDGE WAIT';$('romHint').textContent='The arcade is loading or cross-origin. Use the /icarium/trainer/ Pages URL so both windows share the same origin.';return;}
+ $('bridge').textContent=p.romLoaded()?'ROM LIVE':'API READY';let st;try{st=p.stats();}catch(e){$('bridge').textContent='API ERROR';return;}
+ $('romHint').textContent=p.romLoaded()?'Live data stays in your browser. Save the session with EXPORT SESSION.':'Load a local NES ROM into the left arcade to begin monitoring.';
+ if(!p.romLoaded()){button('mFrame','—');return;}
+ const rom=st.rom||'ROM';if(rom!==romName||st.frames<lastFrame){reset(true);romName=rom;}
+ if(!recording)return;
+ appendEvents(p.ledger());
+ let t=p.timing(),pol=p.policy(),ob=p.observe(),raw=p.rawInput(),mem=p.remembrance(),temp=p.temporal();
+ policySnapshot=pol;lastStatus={rom,frame:st.frames,stats:st,timing:t,policy:pol,remembrance:{count:mem.count,contexts:mem.contexts,recalls:mem.recalls},temporal:{hits:temp.hits,misses:temp.misses,unknown:temp.unknown},observation:{sig:ob.sig,motion:ob.motion}};
+ button('mFrame',st.frames.toLocaleString());button('mMask','0x'+(raw.mask||0).toString(16).padStart(2,'0').toUpperCase());button('mWitness',witness().length);button('mClosure',t.closures||0);
+ if(st.frames-lastFrame>=6){const prev=samples.at(-1);samples.push({frame:st.frames,mask:raw.mask||0,motion:Math.max(0,Math.min(1,Number(ob.motion)||0)),sig:ob.sig,changed:prev?Number(ob.sig!==prev.sig):0,phase:st.phase});if(samples.length>2000)samples.shift();lastFrame=st.frames;}
+ let recent=witness().slice(-40),qual=recent.filter(r=>r.evidenceClass==='STABLE CHANGE').length,amb=recent.filter(r=>r.evidenceClass==='AMBIENT').length;
+ button('mStable',qual);button('mAmbient',amb);button('mStall',pol.streak||0);button('mLabels',Object.keys(labels).length);
+ button('liveReason',`${st.phase||'WAIT'} · ${pol.mode} / ${pol.lastChoice||'—'}\n${pol.why||'No decision yet'}\nSCENE 0x${(ob.sig>>>0).toString(16)} · REMEMBRANCE ${mem.count||0} episodes / ${mem.recalls||0} recalls · TEMPORAL ${temp.hits||0} hits, ${temp.misses||0} misses, ${temp.unknown||0} unknown`);
+ button('recovery',`ROM: ${rom}\nObsidian: in embedded arcade · no backup state exposed to trainer\nNeutral boundary: ${(p.probe()?.zeroInputFrames)||0} frames · ${t.letter?.toUpperCase()||'A'} ${t.ratio||'?'} · ${t.quantum||'?'}F quantum\nButtons: ${raw.presses||0} down / ${raw.ups||0} up · incidents: ${st.lastFault||'none'}`);
+ renderTable();renderAdvisor();renderPlot();}
+function renderTable(){let w=witness().slice(-36).reverse(),body=$('rows');body.replaceChildren();if(!w.length){let tr=document.createElement('tr');tr.innerHTML='<td colspan="6">No completed witness yet.</td>';body.append(tr);return;}
+ for(const r of w){let tr=document.createElement('tr'),id=keyOf(r),status=r.evidenceClass==='STABLE CHANGE'?'STABLE Δ':r.evidenceClass==='AMBIENT'?'AMBIENT Δ':r.observedDelta===0?'NO Δ':'UNKNOWN Δ';
+ for(const text of [r.frame,r.key||'—',r.timing?`${r.timing.letter} ${r.timing.ratio}`:'—',status,`${asHash(r.from)} → ${asHash(r.to)}`]){let td=document.createElement('td');td.textContent=String(text);tr.append(td)}
+ let cell=document.createElement('td'),g=document.createElement('div');g.className='annotate';for(const [v,label] of [['1','+'],['0','0'],['-1','−']]){let b=document.createElement('button');b.textContent=label;b.title=v==='1'?'Useful/progress':v==='-1'?'Harmful/regression':'Neutral';b.className=labels[id]===Number(v)?'selected':'';b.onclick=()=>{labels[id]=Number(v);renderTable();renderAdvisor()};g.append(b)}cell.append(g);tr.append(cell);body.append(tr)} }
+function advice(){let counts=Object.fromEntries(PORTS.map(k=>[k,{key:k,good:0,bad:0,neutral:0,labeled:0,score:.5}]));for(const r of witness()){let lab=labels[keyOf(r)];if(lab===undefined)continue;const c=counts[r.key];if(!c)continue;c.labeled++;if(lab===1)c.good++;else if(lab===-1)c.bad++;else c.neutral++;}
+ let ranking=Object.values(counts).map(c=>({...c,score:(c.good+1)/(c.good+c.bad+2)})).sort((a,b)=>b.score-a.score||b.labeled-a.labeled||PORTS.indexOf(a.key)-PORTS.indexOf(b.key));let labelled=ranking.reduce((s,r)=>s+r.labeled,0);return {ranking,labelled}}
+function renderAdvisor(){let data=advice();const host=$('ranks');host.replaceChildren();for(const r of data.ranking){let div=document.createElement('div');div.className='rank';let a=document.createElement('span'),b=document.createElement('span');a.textContent=`${r.key}  ${r.good}↑ ${r.bad}↓ ${r.neutral}=`;b.textContent=r.labeled?`${(100*r.score).toFixed(0)}%`:'NO LABELS';div.append(a,b);host.append(div)}
+ $('advisor').textContent=data.labelled<3?'Need at least 3 human-labelled witnesses before proposing an action order. Screen changes alone are not rewards.':`SHADOW PROPOSAL · ${data.labelled} labels · candidate order: ${data.ranking.map(r=>r.key).join(' → ')}. This only ranks user-labelled outcomes; it does not rewrite the running controller.`;button('mLabels',data.labelled)}
+function renderPlot(){const c=$('plot');let ctx=c.getContext('2d'),w=c.width,h=c.height;ctx.clearRect(0,0,w,h);ctx.fillStyle='#090e13';ctx.fillRect(0,0,w,h);for(const yy of [40,95,142]){ctx.strokeStyle='#39434c';ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(w,yy);ctx.stroke()}
+ let n=samples.slice(-240);if(!n.length){ctx.fillStyle='#788995';ctx.fillText('WAITING FOR EMULATOR SAMPLES',15,50);return;}
+ for(let i=0;i<n.length;i++){let x=i/(n.length-1||1)*(w-20)+10,r=n[i];ctx.fillStyle=r.mask?'#e5ecef':'#38444e';if(r.mask)ctx.fillRect(x,8,Math.max(2,w/(n.length||1)-1),24);ctx.fillStyle=r.changed?'#d6dade':'#33414c';ctx.fillRect(x,130,r.changed?22:5,2)}
+ ctx.strokeStyle='#899eaa';ctx.beginPath();n.forEach((r,i)=>{const x=i/(n.length-1||1)*(w-20)+10,y=112-r.motion*61;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke();ctx.fillStyle='#b7c7d0';ctx.fillText('INPUT',10,11);ctx.fillText('MOTION',10,66);ctx.fillText('Δ SCREEN',10,139)}
+function exportSession(){return {schema:'icarium-loop-trainer-v041',createdAt:new Date().toISOString(),rom:romName,source:loadedSource?'imported':'live',profile:profile(),latest:lastStatus,receipts:receipts.slice(-5000),labels,frameSamples:samples.slice(-2000),shadow:advice()}}
+function emitProposal(){const d=advice(),p=profile();return {schema:'icarium-loop-proposal-v041',createdAt:new Date().toISOString(),rom:romName,appVersion:'040',trainingLabels:d.labelled,settings:{...p},suggestedActionOrder:d.labelled>=3?d.ranking.map(x=>x.key):null,estimatedUserLabelScore:d.ranking.map(x=>({key:x.key,labeled:x.labeled,good:x.good,bad:x.bad,neutral:x.neutral,posteriorMean:x.score})),guardrails:{minimumNeutralFrames:3,missingLabelsNotRewards:true,predictionNotVictory:true,romMustMatch:true},note:'Risk, quantum and strategy can be applied live. SuggestedActionOrder is an OFFLINE PROPOSAL only; Rev 040 has no programmable per-action weight API.'}}
+function applyControls(){const p=api();if(!p){button('changeNote','Arcade API not ready.');return false}for(const [id,v] of [['risk',$('risk').value],['horizon',$('quantum').value],['strategy',$('strategy').value]]){let e=child(id);if(!e)throw Error(`Arcade control ${id} not found`);e.value=v;e.dispatchEvent(new Event(id==='strategy'?'change':'input',{bubbles:true}))}button('changeNote',`Applied risk ${$('risk').value}%, timing quantum ${$('quantum').value} frames, strategy ${$('strategy').value} to the running arcade. Next autonomous action uses updated settings.`);return true}
+function setMode(mode){const e=child('controlMode');if(!e){button('changeNote','Load the arcade first.');return}e.value=mode;e.dispatchEvent(new Event('change',{bubbles:true}));button('changeNote','Arcade controller mode → '+mode.toUpperCase())}
+$('risk').addEventListener('input',e=>button('riskText',e.target.value+'%'));$('quantum').addEventListener('input',e=>button('quantumText',e.target.value+' frames'));
+$('applyKnobs').onclick=()=>{try{applyControls()}catch(err){button('changeNote',err.message)}};
+$('idle').onclick=()=>setMode('idle');$('auto').onclick=()=>setMode('confluence');
+$('pulse').onclick=()=>{const p=api(),k=$('pulseKey').value;if(!p?.romLoaded?.())return button('changeNote','Load a ROM first.');const ok=p.queue([k],6);button('changeNote',ok?`Queued manual ${k} probe (6 frames). Results will appear in controller receipts.`:`Failed to queue ${k}.`)};
+$('pauseCapture').onclick=()=>{recording=!recording;if(recording&&loadedSource){reset(true);loadedSource=null;button('dataset','LIVE SESSION')}button('pauseCapture',recording?'PAUSE CAPTURE':'RESUME CAPTURE')};
+$('clearSession').onclick=()=>{if(confirm('Clear captured console session and labels? This does NOT clear emulator or Obsidian memory.'))reset(true)};
+$('exportCapture').onclick=()=>safeDownload('icarium-training-session-v041.json',exportSession());
+$('exportProposal').onclick=()=>safeDownload('icarium-loop-proposal-v041.json',emitProposal());
+$('importData').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{let d=JSON.parse(await f.text()),src=Array.isArray(d.receipts)?d.receipts:Array.isArray(d.agent?.receipts)?d.agent.receipts:null;if(!src)throw Error('Expected receipts or agent.receipts array.');reset(true);romName=d.rom||'IMPORTED RECORD';appendEvents(src);loadedSource=f.name;recording=false;button('pauseCapture','RESUME CAPTURE');if(d.labels&&typeof d.labels==='object')labels=d.labels;button('dataset','IMPORTED '+f.name);button('liveReason',`Imported ${src.length} receipts; historical only. This does not inject rewards or alter the running arcade.`);renderTable();renderAdvisor();renderPlot()}catch(err){alert('Import failed: '+err.message)}e.target.value=''};
+F.addEventListener('load',()=>{origin=null;button('bridge','API CONNECTING');});
+setInterval(poll,220);renderAdvisor();renderPlot();
+window.ICARIUM_TRAINER={session:exportSession,proposal:emitProposal,api,stats:()=>lastStatus,training:()=>advice(),importReceipts:(r,rom='TEST')=>{reset(true);romName=rom;appendEvents(r);loadedSource='api';renderTable();renderAdvisor()},label:(receipt,value)=>{labels[keyOf(clean(receipt))]=value;renderTable();renderAdvisor()},apply:applyControls};
+})();
+</script></body></html>
