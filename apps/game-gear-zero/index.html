@@ -29,6 +29,11 @@ h1 span{color:var(--cyan)}
 .vblankBeacon{position:absolute;right:37px;top:15px;z-index:2;opacity:.23;color:#b9faff;font-size:9px;letter-spacing:.15em;display:flex;align-items:center;gap:6px;transition:opacity .07s}
 .vblankBeacon:before{content:"";width:8px;height:8px;border-radius:50%;background:#bbf8ff;box-shadow:0 0 11px #83c9ff}
 .handheld{transition:box-shadow .045s ease,border-color .045s ease}
+.hop11Rail{margin-top:12px}
+.hop11Track{position:relative;display:block;height:14px;border:1px solid #97c5ed77;border-radius:10px;background:#08213a;overflow:visible}
+#hopProgress{display:block;max-width:100%;height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#ff627e,#62ebad,#73bcff);box-shadow:0 0 18px #b2e9ff66;transition:width .08s}
+.hop11Gate{position:absolute;left:32.35294%;top:-7px;border-left:2px solid #f4fcff;color:#f3feff;height:28px;padding-left:5px;font-size:11px;font-weight:800;text-shadow:0 0 6px #eefaff}
+.hop11Caption{display:block;color:#9bc8d5;font-size:10px;letter-spacing:0;margin-top:16px;line-height:1.5}
 .handheld.rgbWin{box-shadow:0 18px 70px #010714da,0 0 70px #d6ffffb0,inset 0 0 30px #e8ffff55;border-color:#f5ffff}
 .handheld.irqOn{border-color:#e6ffff;box-shadow:0 18px 70px #010714da,0 0 55px #8ddcff88,inset 0 0 0 2px #c7f9ff66,inset 6px 6px 32px #c8f9ff63,inset -20px -20px 60px #001126b0}
 .handheld.irqOn .vblankBeacon{opacity:1}
@@ -86,6 +91,8 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 <div class="panel">
 <h2>01 · Cartridge &amp; Emulation</h2>
 <div class="field"><label>Load a Game Gear cartridge (.gg)</label><input id="rom" type="file" accept=".gg,.bin,application/octet-stream"></div>
+<div class="buttonrow"><button class="ctl" id="rgb11">PLAY RGB DIFFUSION 11</button><button class="ctl" id="rgb11Download">DOWNLOAD 11 .GG</button></div>
+<div class="small" style="color:#bfeeff;margin:5px 0 10px">. → 2³ = 8 RGB states → <strong>11-hop gate</strong> → measure the entire 20×16 field, up to 34 hops.</div>
 <div class="buttonrow"><button class="ctl" id="rgbGame">PLAY RGB DIFFUSION ARENA</button><button class="ctl" id="rgbDownload">DOWNLOAD RGB GAME .GG</button></div>
 <div class="small" style="color:#9fdcff;margin:7px 0 10px">Move <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> · <kbd>Z</kbd> paint · <kbd>X</kbd> change R/G/B · <kbd>Enter</kbd> restart seeded round. Make the reactor white. <a href="dist/rgb-diffusion-arena.gg" download="rgb-diffusion-arena.gg">DOWNLOAD COMPILED .GG</a> · <a href="RGB-DIFFUSION.md">HOW IT WORKS</a></div>
 <div class="buttonrow"><button class="ctl" id="helloWorld">I-13 HELLO WORLD · . RGB</button><button class="ctl" id="downloadHello">DOWNLOAD HELLO .GG</button></div>
@@ -108,6 +115,23 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 <div class="metric"><small>VIDEO</small><b>MODE 4 / GG CRAM</b></div>
 </div>
 <div class="warning">Controls: <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> · <kbd>Z</kbd> (1) · <kbd>X</kbd> (2) · <kbd>Enter</kbd> (Start). No cartridge is included. ROM bytes remain in your browser.</div>
+</div>
+<div class="panel" id="rgb11Panel" style="border-color:#7fd7ff88">
+<h2>DOT → 2³ = 8 → 11 · FOUR-PORT REACH</h2>
+<div class="warning">Provisional interpretation of <code>11 {2/2|{4|/2/2}</code>: two paired directional banks around the four cardinal propagation ports. <strong>11 is a measured hop gate</strong>, not an arithmetic equality to eight. The RGB machine can keep transmitting beyond it.</div>
+<div class="readouts">
+<div class="metric"><small>CURRENT HOP / 34</small><b id="hopNow">0 / 34</b></div>
+<div class="metric"><small>11-HOP WITNESS</small><b id="hopEleven">PENDING</b></div>
+<div class="metric"><small>MAX OBSERVED HOP</small><b id="hopMaximum">0</b></div>
+<div class="metric"><small>WAVE CYCLES</small><b id="hopCycles">0</b></div>
+<div class="metric"><small>RED / GREEN / BLUE REACH</small><b id="hopRGB">0 / 0 / 0</b></div>
+<div class="metric"><small>COLORED / WHITE CELLS</small><b id="hopCoverage">3 / 0 / 320</b></div>
+</div>
+<div class="hop11Rail" aria-label="Measured RGB spreading distance">
+ <span class="hop11Track"><span id="hopProgress"></span><span class="hop11Gate">11</span></span>
+ <span class="hop11Caption">0 — source · 11 — first witness · 24 — blue extent · 32 — full RGB · 34 — recycle</span>
+</div>
+<div id="hopTopology" class="small" style="margin-top:10px;color:#a7e7fa;letter-spacing:.07em">2 / 2 &nbsp; | &nbsp; ← ↑ ↓ → &nbsp; | &nbsp; 2 / 2</div>
 </div>
 <div class="panel" id="rgbGamePanel">
 <h2>RGB DIFFUSION ARENA · 2³ COLOR STATES</h2>
@@ -174,13 +198,14 @@ Choose RUN BUILT-IN TEST ROM to execute Z80 instructions that write the Game Gea
 <script src="games/i13-kernel.js"></script>
 <script src="games/i13-hello-world.js"></script>
 <script src="games/rgb-diffusion-game.js"></script>
+<script src="games/rgb-diffusion-11.js"></script>
 <script>
 (function(){
 'use strict';
 const $=id=>document.getElementById(id),machine=new GGMachine(),ctx=$('lcd').getContext('2d',{alpha:false});
 const image=ctx.createImageData(160,144);
 let name='',running=false,paused=false,active=false,raf=0,nextTick=0,audioCtx=null,bufferQueue=[],gain=null;
-let gameMode='NO ROM',seenIRQ=0,beaconTimer=null,gameLogStep=-1,gameLogBlocked=-1,gameLogAbility=-1,lastI13='',lastHello='',lastRGBScore=-1,lastRGBStep=-1;
+let gameMode='NO ROM',seenIRQ=0,beaconTimer=null,gameLogStep=-1,gameLogBlocked=-1,gameLogAbility=-1,lastI13='',lastHello='',lastRGBScore=-1,lastRGBStep=-1,lastElevenSeen=-1;
 let logs=[];
 const stamp=s=>{logs.unshift(s);logs=logs.slice(0,16);$('eventlog').textContent=logs.join('\n')};
 function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase().padStart(4,'0');
@@ -214,15 +239,21 @@ function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase()
  point.style.boxShadow=lit?'0 0 18px '+color:'none';
  });
  $('dotDirection').textContent=isHello?(dir===255?'IN −':'OUT +'):'OUT +';
- const isArena=gameMode==='RGB DIFFUSION ARENA',ink=machine.ram[0x102],xy=[machine.ram[0x100],machine.ram[0x101]],
- reactor=machine.ram[0x200+116],win=!!machine.ram[0x109];
+ const is11=gameMode==='RGB DIFFUSION 11',isArena=is11||gameMode==='RGB DIFFUSION ARENA',
+ ink=machine.ram[0x102],xy=[machine.ram[0x100],machine.ram[0x101]],
+ reactor=machine.ram[0x200+(is11?186:116)],win=!!machine.ram[0x109];
  const inkInfo={1:['R','RED'],2:['G','GREEN'],4:['B','BLUE']};
  $('rgbInk').textContent=isArena?(inkInfo[ink]||['?','UNKNOWN']).join(' · '):'—';
  $('rgbXY').textContent=isArena?xy.join(','):'—';
  $('rgbReactor').textContent=isArena?[(reactor&1)?'R':'−',(reactor&2)?'G':'−',(reactor&4)?'B':'−'].join('')+' · '+(reactor===7?'WHITE':reactor===0?'DARK':'MIXING'):'—';
  $('rgbScore').textContent=isArena?String(machine.ram[0x106]):'0';
- let colored=0;if(isArena){for(let y=1;y<=12;y++)for(let x=1;x<=16;x++)colored+=Number(machine.ram[0x200+y*18+x]!==0);}
- $('rgbCells').textContent=isArena?colored+' / 192':'—';
+ let colored=0,white=0,radii=[0,0,0];
+ if(isArena){const width=is11?20:16,height=is11?16:12,stride=is11?22:18,seeds=[[2,2],[19,2],[10,15]];
+ for(let y=1;y<=height;y++)for(let x=1;x<=width;x++){
+  const v=machine.ram[0x200+y*stride+x];colored+=Number(v!==0);white+=Number(v===7);
+  if(is11)for(let k=0;k<3;k++)if(v&(1<<k))radii[k]=Math.max(radii[k],Math.abs(x-seeds[k][0])+Math.abs(y-seeds[k][1]));
+ }}
+ $('rgbCells').textContent=isArena?colored+' / '+(is11?'320':'192'):'—';
  $('rgbSteps').textContent=isArena?String(machine.ram[0x10e]):'0';
  $('rgbStatus').textContent=isArena?(win?'REACTOR CHARGED · RGB MIX COMPLETE · START FOR NEW ROUND':(machine.ram[0x10f]?'PAINT REGISTERED · BRING THREE COLORS TO THE REACTOR':'THREE SEEDS PROPAGATING · PRESS Z TO PAINT')):'R + G + B → WHITE / TARGET';
  document.querySelector('.handheld').classList.toggle('rgbWin',isArena&&win);
@@ -236,6 +267,14 @@ function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase()
    }
    $('dotDirection').textContent='PAINT '+(inkInfo[ink]?.[0]||'?');
  }
+ $('hopNow').textContent=is11?machine.ram[0x10e]+' / 34':'—';
+ $('hopEleven').textContent=is11?(machine.ram[0x110]?'11 HOPS WITNESSED':'APPROACHING 11'):'—';
+ $('hopMaximum').textContent=is11?String(machine.ram[0x112]):'—';
+ $('hopCycles').textContent=is11?String(machine.ram[0x111]):'—';
+ $('hopRGB').textContent=is11?radii.join(' / '):'—';
+ $('hopCoverage').textContent=is11?colored+' / '+white+' / 320':'—';
+ $('hopProgress').style.width=is11?((Math.min(34,machine.ram[0x10e])/34)*100).toFixed(1)+'%':'0%';
+ $('hopTopology').textContent=is11?'2/2 | FOUR CARDINAL PORTS | 2/2 · '+(machine.ram[0x110]?'11 WITNESSED':'TRANSMITTING'):'2/2 | 4 | 2/2';
  const cpu=machine.cpu,s=machine.stats,hex=n=>(n>>>0).toString(16).toUpperCase().padStart(4,'0');
  $('regs').textContent='AF '+hex((cpu.A<<8)|cpu.f)+' / BC '+hex(cpu.pair(0))+'\nDE '+hex(cpu.pair(1))+' / HL '+hex(cpu.HL)+'\nSP '+hex(cpu.sp);
  $('vramwrites').textContent=s.vramWrites+' / '+s.cramWrites;
@@ -245,7 +284,7 @@ function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase()
  $('frames').textContent=machine.frames; $('vdp').textContent=(machine.vdpRegs[1]&64)?'ON / 160×144':'DISPLAY OFF'; $('cartridge').textContent=name||'NO ROM';
  $('coreStatus').textContent=paused?'PAUSED':active?'ORIGINAL CPU + VDP LIVE':'ORIGINAL ENGINE · BOOT READY'}
 function boot(bytes,label){
- try{const meta=machine.load(bytes);name=label;gameMode=(label==='RGB DIFFUSION ARENA'||label==='rgb-diffusion-arena.gg')?'RGB DIFFUSION ARENA':label==='FIRST LIGHT'?'FIRST LIGHT':label==='I13 TECH-001'?'I13 TECH-001':(label==='I13 HELLO WORLD'||label==='i13-hello-world-rgb.gg')?'I13 HELLO WORLD':'DIAGNOSTIC';active=true;running=true;paused=false;nextTick=0;seenIRQ=0;gameLogStep=-1;gameLogBlocked=-1;gameLogAbility=-1;lastI13='';lastHello='';lastRGBScore=-1;lastRGBStep=-1;
+ try{const meta=machine.load(bytes);name=label;gameMode=(label==='RGB DIFFUSION 11'||label==='rgb-diffusion-11.gg')?'RGB DIFFUSION 11':(label==='RGB DIFFUSION ARENA'||label==='rgb-diffusion-arena.gg')?'RGB DIFFUSION ARENA':label==='FIRST LIGHT'?'FIRST LIGHT':label==='I13 TECH-001'?'I13 TECH-001':(label==='I13 HELLO WORLD'||label==='i13-hello-world-rgb.gg')?'I13 HELLO WORLD':'DIAGNOSTIC';active=true;running=true;paused=false;nextTick=0;seenIRQ=0;gameLogStep=-1;gameLogBlocked=-1;gameLogAbility=-1;lastI13='';lastHello='';lastRGBScore=-1;lastRGBStep=-1;lastElevenSeen=-1;
  stamp('CARTRIDGE '+label+' · '+meta.bytes+' bytes · '+meta.banks+' banks');
  $('pause').textContent='PAUSE';update();
  if(!raf)raf=requestAnimationFrame(loop);
@@ -263,9 +302,12 @@ function loop(now){raf=requestAnimationFrame(loop);if(!active||paused)return;
   if(gameMode==='FIRST LIGHT'&&machine.ram[0]===0xa5){
     if(machine.ram[3]!==gameLogStep||machine.ram[4]!==gameLogBlocked||machine.ram[9]!==gameLogAbility){gameLogStep=machine.ram[3];gameLogBlocked=machine.ram[4];gameLogAbility=machine.ram[9];update();}
   }
-  if(gameMode==='RGB DIFFUSION ARENA'&&machine.ram[0x107]===0xa5){
+  if((gameMode==='RGB DIFFUSION ARENA'||gameMode==='RGB DIFFUSION 11')&&machine.ram[0x107]===0xa5){
     const score=machine.ram[0x106],steps=machine.ram[0x10e];
     if(score!==lastRGBScore){lastRGBScore=score;if(score)stamp('RGB DIFFUSION / WHITE REACTOR WITNESSED / MIX SCORE='+score);}
+    if(gameMode==='RGB DIFFUSION 11'&&machine.ram[0x110]&&lastElevenSeen!==machine.ram[0x111]){
+      lastElevenSeen=machine.ram[0x111];stamp('11-HOP WITNESS · 2/2 | 4 | 2/2 reached on Z80 field · cycle '+lastElevenSeen);
+    }
     if(steps!==lastRGBStep){lastRGBStep=steps;update();}
   }
   if(gameMode==='I13 HELLO WORLD'&&machine.ram[0x125]===0xa5){
@@ -285,7 +327,7 @@ function loop(now){raf=requestAnimationFrame(loop);if(!active||paused)return;
   }
  }
  if(now-nextTick>80)nextTick=now;
- if(steps&&(machine.frames%10===0||gameMode==='FIRST LIGHT'||gameMode==='I13 TECH-001'||gameMode==='I13 HELLO WORLD'||gameMode==='RGB DIFFUSION ARENA'))update();
+ if(steps&&(machine.frames%10===0||gameMode==='FIRST LIGHT'||gameMode==='I13 TECH-001'||gameMode==='I13 HELLO WORLD'||gameMode==='RGB DIFFUSION ARENA'||gameMode==='RGB DIFFUSION 11'))update();
 }
 function pushAudio(stereo){if(!audioCtx||audioCtx.state!=='running')return;
  const rate=machine.psg.rate,frameCount=stereo.length/2;
@@ -329,13 +371,21 @@ $('rgbDownload').addEventListener('click',()=>{
   const a=document.createElement('a');a.href=url;a.download='rgb-diffusion-arena.gg';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   stamp('EXPORTED original RGB Diffusion Z80 cartridge · '+bytes.length+' bytes');
 });
-window.GG_ZERO={rgbGame:()=>boot(GGRGBDiffusion.create(),'RGB DIFFUSION ARENA'),
+$('rgb11').addEventListener('click',()=>{boot(GGRGBDiffusion11.create(),'RGB DIFFUSION 11');stamp('RGB 11 · Z80 20×16 FOUR PORTS · 11 HOP WITNESS · 34 HOP CYCLE');});
+$('rgb11Download').addEventListener('click',()=>{
+ const bytes=GGRGBDiffusion11.create(),url=URL.createObjectURL(new Blob([bytes],{type:'application/octet-stream'}));
+ const a=document.createElement('a');a.href=url;a.download='rgb-diffusion-11.gg';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ stamp('EXPORTED RGB 11 · '+bytes.length+' executable Z80 bytes');
+});
+window.GG_ZERO={rgb11:()=>boot(GGRGBDiffusion11.create(),'RGB DIFFUSION 11'),
+rgb11Status:()=>({running:gameMode==='RGB DIFFUSION 11',boot:machine.ram[0x107],hop:machine.ram[0x10e],gate11:machine.ram[0x110],maxHop:machine.ram[0x112],cycles:machine.ram[0x111],ink:machine.ram[0x102],x:machine.ram[0x100],y:machine.ram[0x101],score:machine.ram[0x106],win:machine.ram[0x109],painted:machine.ram[0x10f],reactor:machine.ram[0x200+186]}),
+rgbGame:()=>boot(GGRGBDiffusion.create(),'RGB DIFFUSION ARENA'),
 rgbStatus:()=>({running:gameMode==='RGB DIFFUSION ARENA',ink:machine.ram[0x102],x:machine.ram[0x100],y:machine.ram[0x101],reactor:machine.ram[0x200+116],score:machine.ram[0x106],win:machine.ram[0x109],steps:machine.ram[0x10e],painted:machine.ram[0x10f],boot:machine.ram[0x107]}),
 helloWorld:()=>boot(GGHelloWorld.create(),'I13 HELLO WORLD'),helloStatus:()=>({running:gameMode==='I13 HELLO WORLD',phase:machine.ram[0x120],direction:machine.ram[0x121],steps:machine.ram[0x123],freeze:machine.ram[0x127],boot:machine.ram[0x125],RGB:[!!(machine.ram[0x120]&1),!!(machine.ram[0x120]&2),!!(machine.ram[0x120]&4)]}),i13:()=>boot(GGI13.create(),'I13 TECH-001'),i13Status:()=>({running:gameMode==='I13 TECH-001',evidence:machine.ram[0x100],debt:machine.ram[0x101],verdict:machine.ram[0x102],guard:machine.ram[0x103],witnesses:machine.ram[0x105],boot:machine.ram[0x10f]}),machine,boot,diagnostic:()=>boot(GGTestROM.create(),'BUILT-IN Z80+VDP TEST'),firstLight:()=>boot(GGFirstLight.create(),'FIRST LIGHT'),status:()=>({gameMode,frames:machine.frames,pc:machine.cpu.pc,success:machine.ram[0]===0xa5,playerX:machine.ram[1],playerY:machine.ram[2],steps:machine.ram[3],blocked:machine.ram[4],interrupts:machine.ram[10],rendered:machine.framebuffer.length})};
 // Start the original RGB game automatically so the Game Gear LCD is
 // visibly diffusing on load, without uploading any ROM or fetching a core.
-boot(GGRGBDiffusion.create(),'RGB DIFFUSION ARENA');
-stamp('RGB FIELD LIVE · three Z80 seeded diffusion waves · paint with Z');
+boot(GGRGBDiffusion11.create(),'RGB DIFFUSION 11');
+stamp('DOT → 2³ = 8 → 11 HOP GATE / RGB 20×16 · Z80 ORIGINAL CORE');
 })();
 </script>
 </body></html>
