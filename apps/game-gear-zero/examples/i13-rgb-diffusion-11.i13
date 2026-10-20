@@ -1,0 +1,33 @@
+// GG-ZERO RGB DIFFUSION 11 / numerical I-13 source intent.
+// Reference language: DavidWise01/I13-H1.1.
+// These declarations are NOT compiled by the full I13 f64 VM.
+// games/rgb-diffusion-11.js is a hand-assembled Z80 translation.
+//
+// Preserve user syntax: . > 2^3 = 8 = 11 {2/2|{4|/2/2
+// The '=' between 8 and 11 is treated as an ordered relationship
+// between a state-space size and a later witness gate, NOT arithmetic equality.
+// Branch interpretation is provisional: two paired directions on each
+// side of a four-cardinal-port mixing kernel.
+I DOT_STATES <- 2 * 2 * 2
+I RED <- 1
+I GREEN <- 2
+I BLUE <- 4
+I CARDINAL_PORTS <- 4
+I HORIZONTAL_PAIR <- 2
+I VERTICAL_PAIR <- 2
+I FIRST_WITNESS_HOP <- 11
+I MAX_OBSERVED_HOPS <- 34
+I WIDTH <- 20
+I HEIGHT <- 16
+I NUMBER_OF_CELLS <- WIDTH * HEIGHT
+I PADDED_STRIDE <- 22
+I RED_SEED_X <- 2
+I RED_SEED_Y <- 2
+I GREEN_SEED_X <- 19
+I GREEN_SEED_Y <- 2
+I BLUE_SEED_X <- 10
+I BLUE_SEED_Y <- 15
+// Z80 evolution: NEXT = CENTER | NORTH | SOUTH | EAST | WEST
+// A 3-bit cell OR is nonconservative: this is binary propagation, not
+// physical or quantum diffusion. At 11 hops, check channel reach;
+// continue to 34-hops before restarting an unpainted demonstration.
