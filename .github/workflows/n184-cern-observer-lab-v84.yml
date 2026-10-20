@@ -1,0 +1,22 @@
+name: N184 CERN Four-Observer Data Lab v84
+on:
+  push:
+    paths:
+      - 'n184/cern-observer-lab-v84/**'
+      - '.github/workflows/n184-cern-observer-lab-v84.yml'
+  workflow_dispatch:
+jobs:
+  cms-education-four-lenses:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate observer module and regressions
+        run: |
+          node --check n184/cern-observer-lab-v84/observer_core.mjs
+          node --check n184/cern-observer-lab-v84/test_observer_lab.mjs
+          node n184/cern-observer-lab-v84/test_observer_lab.mjs
