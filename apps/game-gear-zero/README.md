@@ -22,6 +22,18 @@ Controls: arrow keys (direction), Z (button 1), X (button 2), Enter (Start). On-
 
 The committed binary was fetched back from GitHub, checked byte-for-byte against the source generator, and executed on our emulated Z80 through all eight RGB phases, reversal and freeze. Its SHA-256 is `a42fd461d6555f528d70ca54e5277a90f2739bf899352bff8e571baa878f0d6d`. The compiled release is a bounded **hand translation** of the I-13 numeric source, not a general I13-H1.1 compiler.
 
+## RGB DIFFUSION ARENA — original playable Z80 game
+
+**[Play immediately in the hollow-glass Game Gear](https://davidwise01.github.io/oasis/apps/game-gear-zero/)** · [Compiled 16 KiB `.gg` cartridge](./dist/rgb-diffusion-arena.gg) · [Game instructions and implementation](./RGB-DIFFUSION.md)
+
+GG-ZERO now boots **RGB Diffusion Arena by default**. Three seeded colors expand through a 16×12 Game Gear tile field. The Z80 computes a synchronous four-neighbor RGB-bitmask propagation step every six frames, sends the resulting tiles through the emulated VDP and waits for the player to paint. **Arrows** move, **Z** paints the current RGB bit, **X** cycles R/G/B, and **Start** restarts the seeded round. Reaching white at the reactor earns a point only after a player paint event. In attract mode the waves repeat automatically, so the game stays visually alive.
+
+This is a **classical binary RGB propagation game**—not a physical diffusion solver or quantum device. The I-13 `.i13` file expresses numeric intent; the actual ROM is a bounded hand-assembled Z80 translation, not an implementation of the complete I13-H1.1 VM.
+
+**Verified:** 27/27 original Z80/VDP/gameplay regression tests, page integration (movement, ink changes, Z80-scored white reactor, glass winner halo, Start and all existing cartridges), and the compiled binary fetched from GitHub matching its source generator byte-for-byte.
+
+Compile locally with `node scripts/compile-rgb-diffusion.cjs`; the ROM is already committed in `dist/`.
+
 ## HELLO WORLD · I-13 RGB diffusion dot
 
 [**Open the GG-ZERO page and choose I-13 HELLO WORLD · . RGB**](https://davidwise01.github.io/oasis/apps/game-gear-zero/) · [Full specification](./I13-HELLO-WORLD.md)
