@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N184 · Phase Time 1.25% · 80-Step Cycle v8.1</title>
+<style>
+:root{color-scheme:dark;--bg:#07101c;--p:#122139;--line:#34516f;--txt:#ecf5ff;--mute:#a8bed2;--mint:#89e4cb;--gold:#f0c784;--purple:#b8a5f4}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.55 system-ui,Segoe UI,sans-serif}
+header{background:#0f1d32;border-bottom:1px solid var(--line);padding:22px clamp(16px,3vw,34px)}
+h1{margin:0;font-size:clamp(23px,3vw,31px)}header p{color:var(--mute);margin:3px 0}
+main{max-width:1370px;padding:15px;margin:auto;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(295px,.82fr);gap:15px}
+.panel{background:var(--p);border:1px solid var(--line);padding:17px;border-radius:14px;min-width:0}
+h2{font-size:17px;margin:0 0 11px}h3{font-size:14px;margin:16px 0 7px}
+canvas{display:block;width:100%;height:auto;background:#0a1929;border:1px solid #31506b;border-radius:10px}
+label{color:var(--mute)}input[type=range]{accent-color:var(--mint);width:min(260px,55vw)}
+input[type=number]{background:#122b3d;border:1px solid #5c7891;border-radius:7px;color:#fff;padding:8px;max-width:145px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0}
+button{border:1px solid #70aaac;color:white;background:#20465c;cursor:pointer;padding:9px 12px;border-radius:9px}
+button:hover{background:#295c72}button:focus-visible,input:focus-visible{outline:2px solid #b0f4df}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.metric{background:#1a3046;border:1px solid #4b6b88;padding:13px;border-radius:11px}
+.metric b{display:block;color:#e2eefc}.metric strong{display:block;font:700 20px ui-monospace,monospace;color:#aef2da;overflow-wrap:anywhere}
+.big{font:700 22px ui-monospace,monospace;color:#d6c8ff}
+.muted{color:var(--mute)}small{color:var(--mute);font-size:12px}
+code{color:#e6cc9d}a{color:#a2e5dc}
+hr{border:0;border-top:1px solid #35506b;margin:17px 0}
+footer{border-top:1px solid var(--line);color:var(--mute);padding:14px 21px;font-size:12px}
+@media(max-width:860px){main{grid-template-columns:1fr}}@media(max-width:450px){.metrics{grid-template-columns:1fr}}
+</style></head><body>
+<header><h1>N184 · Phase Time :: n × 1.25%</h1><p>v8.1 · 80 uniform steps per 360° internal arc-bubble cycle · normalized time, not seconds by default</p></header>
+<main><section class="panel">
+<h2>Phase-time index and arc cycle</h2>
+<canvas id="dial" width="990" height="720" role="img" aria-label="Eighty radial phase ticks, a 360 degree phase-time ring, and six optional outer slots"></canvas>
+<div class="controls">
+<label>Index n = <output id="nval">0</output><input id="n" type="range" min="0" max="80" step="1" value="0"></label>
+<button id="prev">− 1</button><button id="next">+ 1</button><button id="play">Play</button><button id="reset">Reset</button>
+</div>
+<div class="metrics">
+<div class="metric"><b>Normalized phase time</b><strong id="percent">0%</strong><small>P(n)=1.25n %</small></div>
+<div class="metric"><b>Internal angle</b><strong id="angle">0°</strong><small>θ(n)=4.5n°</small></div>
+<div class="metric"><b>Nominal accumulated length</b><strong id="length">0 m</strong><small>L(n)=2.697×10⁻³⁶(n/80) m</small></div>
+<div class="metric"><b>Cycles completed</b><strong id="cycles">0 / 1</strong><small>n=80 is the 360° endpoint</small></div>
+</div>
+<p class="muted">The 80 inner ticks belong to one bubble's complete phase. The six outer color bands are the separate, optional 60° display slots from v7.9. Since 80/6 is not an integer, those markers do not all coincide.</p>
+<p><a href="../arc-cycle-v80/">360° v8.0 source</a> · <a href="../scale-xyz-v78/">Planck time and length</a> · <a href="../integration-v41/">Four-Brace Confluence</a> · <a href="./spec.json">Canonical phase-time spec</a></p>
+</section>
+<aside class="panel">
+<h2>Time rule</h2>
+<div class="big">τ(n) = n × 0.0125</div>
+<p><code>n = 0…80</code> integers, <code>n = 80 → 100%</code>.</p>
+<p><b>One phase step = 1.25% = 4.5°</b> of the internal cycle.</p>
+<hr>
+<h3>Optional duration conversion</h3>
+<p class="muted">A percentage becomes seconds only after choosing a reference full-cycle duration <code>T_cycle</code>.</p>
+<label>Reference cycle duration <input id="seconds" type="number" placeholder="unassigned" min="0" step="any"> seconds</label>
+<p id="absolute" class="muted">Absolute elapsed time: unassigned</p>
+<small>This optional example does not set a canonical duration or automatically equate one phase cycle to Planck time.</small>
+<hr>
+<h3>Preserved separate length and time</h3>
+<p>One nominal 360° bubble length: <code>2.697 × 10⁻³⁶ m</code>.</p>
+<p>Planck time: <code>5.391247 × 10⁻⁴⁴ s</code>, independently recorded.</p>
+<h3>Scale axes</h3>
+<p>X :: state · Y :: space · Z :: state+time</p>
+<p>T :: star · M :: Earth/planet · B :: atom</p>
+<small id="status">Reading v8.0 parent…</small>
+</aside></main>
+<footer>OASIS v8.1 · symbolic 1.25%-per-index cycle, with unassigned absolute duration · frozen v8.0 and older artifacts unchanged.</footer>
+<script type="module">
+const $=id=>document.getElementById(id),canvas=$('dial'),ctx=canvas.getContext('2d'),C=[495,362],TAU=Math.PI*2;
+let spec=null,parent=null,n=0,playing=false,last=0,carry=0;
+const color=['#efc888','#7edbcc','#acb0f4','#ee9b8b','#81a8ef','#e8af6e'];
+function fmt(x){return x===0?'0 m':x.toExponential(7)+' m'}
+function draw(){
+const [cx,cy]=C;ctx.fillStyle='#071726';ctx.fillRect(0,0,canvas.width,canvas.height);
+for(let i=0;i<6;i++){
+const a=-Math.PI/2+i*TAU/6;
+ctx.beginPath();ctx.arc(cx,cy,265,a+.035,a+TAU/6-.035);ctx.lineWidth=15;ctx.strokeStyle=color[i];ctx.stroke();
+}
+for(let i=0;i<80;i++){
+const a=-Math.PI/2+i*TAU/80,r1=i%10===0?170:181,r2=200;
+ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*r1,cy+Math.sin(a)*r1);
+ctx.lineTo(cx+Math.cos(a)*r2,cy+Math.sin(a)*r2);
+ctx.strokeStyle=i<n?'#96edcf':'#46647d';ctx.lineWidth=i%10===0?3:1.7;ctx.stroke();
+}
+ctx.beginPath();ctx.arc(cx,cy,221,-Math.PI/2,-Math.PI/2+TAU*n/80);
+ctx.strokeStyle='#edce8c';ctx.lineWidth=10;ctx.lineCap='round';if(n>0)ctx.stroke();
+ctx.beginPath();ctx.arc(cx,cy,145,0,TAU);ctx.fillStyle='#142b40';ctx.fill();
+ctx.textAlign='center';ctx.fillStyle='#e7f6ff';ctx.font='bold 66px system-ui';ctx.fillText(String(n),cx,cy-11);
+ctx.fillStyle='#a8d8d2';ctx.font='23px system-ui';ctx.fillText(n*1.25+'% cycle',cx,cy+32);
+ctx.fillStyle='#bbcee4';ctx.font='17px system-ui';ctx.fillText((n*4.5)+'°',cx,cy+61);
+ctx.font='16px ui-monospace,monospace';ctx.fillStyle='#bacde1';ctx.textAlign='left';
+ctx.fillText('80 PHASE STEPS',26,40);ctx.fillText('6 OUTER DISPLAY SLOTS',26,67);
+}
+function render(){
+if(!spec)return;
+$('n').value=n;$('nval').textContent=n;$('percent').textContent=(n*1.25).toFixed(2).replace(/\.00$/,'')+'%';
+$('angle').textContent=(n*4.5).toFixed(1).replace(/\.0$/,'')+'°';
+$('length').textContent=fmt(spec.lengthMapping.nominalFullCycleMeters*n/80);
+$('cycles').textContent=n===80?'1 / 1':'0 / 1';
+const input=$('seconds').value.trim(),T=Number(input);
+$('absolute').textContent=input!==''&&Number.isFinite(T)&&T>0?'Absolute elapsed time: '+(T*n/80).toExponential(7)+' s':'Absolute elapsed time: unassigned';
+draw();
+}
+$('n').oninput=e=>{n=Number(e.target.value);playing=false;$('play').textContent='Play';render()};
+$('prev').onclick=()=>{n=Math.max(0,n-1);render()};
+$('next').onclick=()=>{n=Math.min(80,n+1);render()};
+$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'Pause':'Play'};
+$('reset').onclick=()=>{n=0;playing=false;carry=0;$('play').textContent='Play';render()};
+$('seconds').oninput=render;
+function animate(ms){const dt=last?Math.min(80,ms-last):0;last=ms;
+if(playing){carry+=dt*.015;if(carry>=1){const jump=Math.floor(carry);carry-=jump;n=(n+jump)%81;render()}}
+requestAnimationFrame(animate)}
+try{
+const responses=await Promise.all([fetch('./spec.json',{cache:'no-store'}),fetch('../arc-cycle-v80/spec.json',{cache:'no-store'})]);
+if(responses.some(x=>!x.ok))throw Error('source unavailable');
+[spec,parent]=await Promise.all(responses.map(x=>x.json()));
+if(spec.phaseTime.stepsPerCycle!==80||spec.phaseTime.referenceDurationSeconds!==null||
+spec.angleMapping.cycleDegrees!==parent.nominal.phaseCycleDegrees||spec.lengthMapping.nominalFullCycleMeters!==parent.nominal.userLengthMeters)throw Error('source mismatch');
+$('status').textContent='v8.0 parent verified · phase n×1.25% normalized · absolute T_cycle unassigned';
+render();requestAnimationFrame(animate);
+}catch(e){$('status').textContent='Register load error: '+String(e)}
+</script></body></html>
