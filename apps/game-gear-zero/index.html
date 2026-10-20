@@ -86,6 +86,7 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 <h2>01 · Cartridge &amp; Emulation</h2>
 <div class="field"><label>Load a Game Gear cartridge (.gg)</label><input id="rom" type="file" accept=".gg,.bin,application/octet-stream"></div>
 <div class="buttonrow"><button class="ctl" id="helloWorld">I-13 HELLO WORLD · . RGB</button><button class="ctl" id="downloadHello">DOWNLOAD HELLO .GG</button></div>
+<div class="small" style="margin:5px 0 9px;color:#b7dced">COMPILED BINARY: <a href="dist/i13-hello-world-rgb.gg" download="i13-hello-world-rgb.gg">DOWNLOAD VERIFIED 16 KiB .GG</a> · <a href="dist/README.md">BUILD / SHA-256</a></div>
 <div class="buttonrow" style="margin-top:8px"><button class="ctl" id="i13">RUN I-13 ON Z80</button><button class="ctl" id="downloadI13">DOWNLOAD I-13 .GG</button></div>
 <div class="buttonrow" style="margin-top:8px"><button class="ctl" id="firstlight">PLAY FIRST LIGHT</button><button class="ctl" id="download">DOWNLOAD FIRST LIGHT .GG</button></div>
 <div class="buttonrow" style="margin-top:8px"><button class="ctl" id="diagnostic">RUN HARDWARE SELF-TEST</button><button class="ctl" id="reset">RESET</button></div>
@@ -204,7 +205,7 @@ function update(){ $('pc').textContent=machine.cpu.pc.toString(16).toUpperCase()
  $('frames').textContent=machine.frames; $('vdp').textContent=(machine.vdpRegs[1]&64)?'ON / 160×144':'DISPLAY OFF'; $('cartridge').textContent=name||'NO ROM';
  $('coreStatus').textContent=paused?'PAUSED':active?'ORIGINAL CPU + VDP LIVE':'ORIGINAL ENGINE · BOOT READY'}
 function boot(bytes,label){
- try{const meta=machine.load(bytes);name=label;gameMode=label==='FIRST LIGHT'?'FIRST LIGHT':label==='I13 TECH-001'?'I13 TECH-001':label==='I13 HELLO WORLD'?'I13 HELLO WORLD':'DIAGNOSTIC';active=true;running=true;paused=false;nextTick=0;seenIRQ=0;gameLogStep=-1;gameLogBlocked=-1;gameLogAbility=-1;lastI13='';lastHello='';
+ try{const meta=machine.load(bytes);name=label;gameMode=label==='FIRST LIGHT'?'FIRST LIGHT':label==='I13 TECH-001'?'I13 TECH-001':(label==='I13 HELLO WORLD'||label==='i13-hello-world-rgb.gg')?'I13 HELLO WORLD':'DIAGNOSTIC';active=true;running=true;paused=false;nextTick=0;seenIRQ=0;gameLogStep=-1;gameLogBlocked=-1;gameLogAbility=-1;lastI13='';lastHello='';
  stamp('CARTRIDGE '+label+' · '+meta.bytes+' bytes · '+meta.banks+' banks');
  $('pause').textContent='PAUSE';update();
  if(!raf)raf=requestAnimationFrame(loop);
