@@ -1,0 +1,21 @@
+name: N184 XYZ Scale Correction v76
+on:
+  push:
+    paths:
+      - 'n184/scale-xyz-v76/**'
+      - '.github/workflows/n184-scale-xyz-v76.yml'
+  workflow_dispatch:
+jobs:
+  common-scale-grammar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify same XYZ axes at star planet atom scales
+        run: |
+          node --check n184/scale-xyz-v76/test_xyz.mjs
+          node n184/scale-xyz-v76/test_xyz.mjs
