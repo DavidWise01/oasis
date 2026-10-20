@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#080c14" />
-<title>FOUR PULSARS · Gothic Ice-Cube Laser · DOT-BOX LAB</title>
+<title>FOUR PULSARS · 0-STABLE QUADRATURE · DOT-BOX LAB</title>
 <style>
 :root{color-scheme:dark;--bg:#070b11;--panel:#0c1320;--panel2:#101b29;--gold:#d7b677;--muted:#8ea3b5;--line:#344457;--text:#eaf4ff;--green:#50f9a3;--red:#ff596d;--blue:#53aaff;--purple:#b77aff}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text)}body{font:14px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;background:radial-gradient(ellipse at 50% -8%,#263047 0,#0a1421 39%,#050910 80%);overflow-x:hidden}
@@ -14,7 +14,8 @@ button.active{border-color:#8de5cf;box-shadow:inset 0 0 16px #36e9c225,0 0 12px 
 header{max-width:1480px;margin:auto;padding:26px 26px 12px}header .eyebrow{color:#ba9b68;letter-spacing:.34em;font-size:11px}h1{margin:4px 0 3px;font-size:clamp(23px,4vw,39px);font-family:Georgia,'Times New Roman',serif;letter-spacing:.12em;text-shadow:0 0 30px #c99a7955;font-weight:500}h1 span{color:#e5c994}header p{margin:2px 0;color:#9bafc5;font-size:12px}.divider{height:2px;background:linear-gradient(90deg,transparent,#93764d 18%,#ffe6ac 50%,#93764d 82%,transparent);margin:10px 0 16px}
 main{max-width:1480px;margin:auto;padding:0 22px 28px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}.stage{min-width:0;border:1px solid #5d5260;box-shadow:0 17px 50px #0009,inset 0 0 16px #27394844;border-radius:12px;overflow:hidden;background:#030711;position:relative}.stage:before,.stage:after{content:"✦";position:absolute;top:7px;font-size:15px;color:#bca06a;z-index:2;pointer-events:none}.stage:before{left:14px}.stage:after{right:14px}canvas{width:100%;aspect-ratio:1000/640;height:auto;display:block;background:radial-gradient(ellipse at center,#172136,#050915 75%)}
 .stageFooter{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:11px 14px;border-top:1px solid #55485c;background:linear-gradient(90deg,#121b2b,#0d1626);color:#a5bacb;font-size:11px}.stageFooter strong{color:#fff1c9}#asciiScreen{display:none;overflow:auto;margin:0;min-height:390px;height:auto;aspect-ratio:1000/640;max-height:760px;padding:24px;background:radial-gradient(ellipse at center,#081e24,#061018 70%);color:#92e8c8;white-space:pre;font-size:clamp(9px,1.07vw,15px);line-height:1.33;text-shadow:0 0 5px #40f9bf35}#asciiScreen.show{display:block}canvas.hide{display:none}
-.panel{padding:17px;border:1px solid #39495b;border-radius:12px;background:linear-gradient(160deg,#122134ef,#0c121ef5);box-shadow:0 12px 36px #0007;min-width:0}.side{display:flex;flex-direction:column;gap:14px}.side h2,.below h2{color:#dcc597;font:500 17px Georgia,serif;letter-spacing:.12em;margin:0 0 12px}.legend{display:grid;grid-template-columns:1fr 1fr;gap:7px}.legend button{border-left-width:4px;white-space:nowrap}.status{display:grid;grid-template-columns:1fr 1fr;gap:8px}.metric{border:1px solid #30485a;background:#07121e;padding:9px;border-radius:7px}.metric small{color:#869da9;display:block;font-size:10px;letter-spacing:.06em}.metric b{font-size:17px;color:#f7eed7}.metric.meterfull{grid-column:span 2}.bar{height:8px;border:1px solid #395367;border-radius:20px;overflow:hidden;background:#060b16;margin-top:6px}.bar>div{background:linear-gradient(90deg,#43b9ff,#f6e4bd);height:100%;width:0%;transition:width .05s}
+.panel{padding:17px;border:1px solid #39495b;border-radius:12px;background:linear-gradient(160deg,#122134ef,#0c121ef5);box-shadow:0 12px 36px #0007;min-width:0}.side{display:flex;flex-direction:column;gap:14px}.side h2,.below h2{color:#dcc597;font:500 17px Georgia,serif;letter-spacing:.12em;margin:0 0 12px}.legend{display:grid;grid-template-columns:1fr 1fr;gap:7px}.legend button{border-left-width:4px;white-space:nowrap}.metric.stable b{color:#82ffdb;text-shadow:0 0 12px #43eeb564}.metric.unstable b{color:#ff8c99;text-shadow:0 0 12px #e45e735e}
+.status{display:grid;grid-template-columns:1fr 1fr;gap:8px}.metric{border:1px solid #30485a;background:#07121e;padding:9px;border-radius:7px}.metric small{color:#869da9;display:block;font-size:10px;letter-spacing:.06em}.metric b{font-size:17px;color:#f7eed7}.metric.meterfull{grid-column:span 2}.bar{height:8px;border:1px solid #395367;border-radius:20px;overflow:hidden;background:#060b16;margin-top:6px}.bar>div{background:linear-gradient(90deg,#43b9ff,#f6e4bd);height:100%;width:0%;transition:width .05s}
 .side .muted{font-size:11px;color:#9aabbc}.controls{display:flex;flex-wrap:wrap;gap:8px}.controls button{flex:1}.sliderLine{display:flex;align-items:center;justify-content:space-between;gap:10px}.sliderLine label{color:#bec9ce}.sliderLine output{color:#f2dba4}input[type=range]{width:100%;accent-color:#ddbd86;margin:9px 0}.switches{display:flex;gap:7px;flex-wrap:wrap}.switches button{font-size:12px;padding:8px 10px;flex:1}.mono{font-family:ui-monospace,monospace}
 .below{max-width:1480px;margin:0 auto 34px;padding:0 22px;display:grid;grid-template-columns:1fr 1fr;gap:16px}.glyph{font:13px/1.4 ui-monospace,Consolas,monospace;white-space:pre;overflow:auto;color:#cce6dc;margin:0}.copy{color:#a9b7c1;font-size:12px;margin:9px 0 0}.foot{max-width:1480px;margin:0 auto;padding:0 22px 26px;color:#798ea5;font-size:11px}kbd{border:1px solid #536173;padding:1px 5px;border-radius:4px;background:#192537;color:#fff}
 @media(max-width:1060px){main{grid-template-columns:minmax(0,1fr)}.side{display:grid;grid-template-columns:1fr 1fr}.stage{grid-column:auto}#asciiScreen{font-size:clamp(8px,1.4vw,15px)}}@media(max-width:650px){header{padding:16px 13px 8px}main,.below{padding:0 10px 16px;grid-template-columns:1fr}.side{display:flex}.panel{padding:12px}#asciiScreen{font-size:9px;aspect-ratio:auto;min-height:330px}.stageFooter{font-size:10px}header .eyebrow{font-size:9px;letter-spacing:.16em}}
@@ -24,15 +25,15 @@ main{max-width:1480px;margin:auto;padding:0 22px 28px;display:grid;grid-template
 <body>
 <header>
  <div class="eyebrow">CONFLUENCE / DOT BOX / CRYSTAL OBSERVATORY</div>
- <h1>FOUR <span>PULSARS</span> · ICE / RGB</h1>
- <p>Gothic crystal-array simulator · GREEN | RED | BLUE | PURPLE · .|.|.|.| → four-port focus → symbolic laser</p>
+ <h1>FOUR <span>PULSARS</span> · 0-STABLE</h1>
+ <p>Gothic quadrature observatory · GREEN | RED | BLUE | PURPLE · spin continuously, emit ¼-cycle apart, keep NET 0 stable</p>
  <div class="divider"></div>
 </header>
 <main>
  <section class="stage" aria-label="Animated four-crystal pulsar observatory">
   <canvas id="space" width="1000" height="640" aria-label="Four glowing ice cubes emit colored pulses into a central dot-box laser"></canvas>
   <pre id="asciiScreen" aria-label="ASCII view of pulsar laser"></pre>
-  <div class="stageFooter"><span id="stageLabel"><strong>✦ PULSE ONLINE</strong> · CHARGE</span><span>FOUR NODES <strong>[.|.|.|.|]</strong> · 2⁴ = 16 MASKS</span><span id="fps">SIMULATED LIGHT FIELD</span></div>
+  <div class="stageFooter"><span id="stageLabel"><strong>✦ PULSE ONLINE</strong> · CHARGE</span><span>FOUR NODES <strong>[.|.|.|.|]</strong> · 2⁴ = 16 MASKS · PHASE Δ¼</span><span id="fps">SIMULATED LIGHT FIELD</span></div>
  </section>
  <aside class="side">
   <section class="panel">
@@ -51,6 +52,9 @@ main{max-width:1480px;margin:auto;padding:0 22px 28px;display:grid;grid-template
     <div class="metric"><small>PHASE</small><b id="phase">CHARGE</b></div>
     <div class="metric"><small>FOUR-BIT MASK</small><b id="mask">1111</b></div>
     <div class="metric"><small>FOCUS</small><b id="focus">0%</b></div>
+    <div class="metric"><small>NET PHASE / CENTER</small><b id="balance">0.000 · LOCKED</b></div>
+    <div class="metric"><small>EMITTED INTENSITY</small><b id="emission">2.000</b></div>
+    <div class="metric meterfull"><small>EMISSION PHASES · G / R / B / P</small><b id="phaseAngles">0° · 90° · 180° · 270°</b></div>
     <div class="metric"><small>GENERATION</small><b id="generation">G2 · 16</b></div>
     <div class="metric meterfull"><small>PULSE / TRANSFER</small><b id="cycle">CYCLE 001</b><div class="bar"><div id="progress"></div></div></div>
    </div>
@@ -60,9 +64,12 @@ main{max-width:1480px;margin:auto;padding:0 22px 28px;display:grid;grid-template
    <div class="controls"><button class="primary" type="button" id="play">PAUSE</button><button type="button" id="step">STEP</button><button type="button" id="pulse">PULSE</button><button type="button" id="reset">RESET</button></div>
    <div class="sliderLine" style="margin-top:13px"><label for="speed">PULSE SPEED</label><output id="speedOut">1.00×</output></div><input type="range" id="speed" min="0.25" max="3" step="0.05" value="1" />
    <div class="sliderLine"><label for="intensity">GLOW INTENSITY</label><output id="powerOut">75%</output></div><input type="range" id="intensity" min="0" max="100" step="1" value="75" />
+   <div class="sliderLine" style="margin-top:15px"><label for="slip">PURPLE PHASE SLIP</label><output id="slipOut">0° · LOCKED</output></div>
+   <input type="range" id="slip" min="0" max="90" step="1" value="0" aria-label="Perturb the purple pulsar phase from zero to ninety degrees" />
+   <div class="controls"><button type="button" id="phaseLock">LOCK FOUR QUARTERS · RESET Δ</button></div>
    <h2 style="margin-top:12px">DISPLAY</h2>
    <div class="switches"><button id="viewVisual" class="active" type="button">GRAPHICS</button><button id="viewAscii" type="button">ASCII</button><button id="savePng" type="button">PNG</button><button id="saveTxt" type="button">TXT</button></div>
-   <p class="muted">Space = play/pause · → = step · P = pulse · A = ASCII · R = reset. Click a crystal channel to disable or restore its contribution.</p>
+   <p class="muted">G=0°, R=90°, B=180°, P=270°. Emission is a smooth pulsed envelope; the four phases rotate together. The signed phase vectors sum to 0 when balanced, while combined light emission stays nonzero. Click a gem OFF or introduce purple phase slip to observe an unstable center; lock to restore 0. Space play/pause · → step · P pulse · A ASCII · R reset.</p>
   </section>
  </aside>
 </main>
@@ -79,14 +86,14 @@ G2:  +-----------------------+
      +-----------------------+
 
        4² = 16 leaf cells</pre></section>
- <section class="panel"><h2>GRAPHICS / SYMBOLIC OPTICS</h2><pre class="glyph">   green    red
+ <section class="panel"><h2>QUARTER-PHASE / 0-STABLE CENTER</h2><pre class="glyph">   green    red
        \    /
         \  /
        [. | .]
        [. | .]=====&gt; WHITE*
         /  \
        /    \
-    blue   purple</pre><p class="copy">*White is a rendered combination cue. This software model does not simulate laser gain media, stellar pulsars, coherent-wave interference, or real ice under pressure.</p></section>
+    blue   purple</pre><p class="copy">Vector balance: 1 + i − 1 − i = 0 with G/R/B/P at 0°/90°/180°/270°. Total illustrative pulse envelope = 2, not zero. The phase vectors are equal-amplitude abstract contributions, not the electric fields of differently colored lasers. The graphics do not simulate real pulsar neutron stars or coherent optical interference.</p></section>
 </div>
 <footer class="foot">DOT-BOX LASER · Single-file offline Canvas2D + ASCII viewer · All elements are procedurally drawn, no external assets or dependencies.</footer>
 <script>
@@ -94,7 +101,24 @@ G2:  +-----------------------+
  const canvas=document.getElementById('space'),ctx=canvas.getContext('2d',{alpha:false}),ascii=document.getElementById('asciiScreen');
  const q=s=>document.querySelector(s);const W=1000,H=640,C={gold:'#dfbd81',green:'#50f9a3',red:'#ff596d',blue:'#53aaff',purple:'#b77aff',white:'#f2faff'};
  const nodes=[{name:'GREEN',el:'Tb',c:C.green,x:245,y:170,port:[435,285]},{name:'RED',el:'Eu',c:C.red,x:755,y:170,port:[565,285]},{name:'BLUE',el:'Nd',c:C.blue,x:245,y:467,port:[435,358]},{name:'PURPLE',el:'Er',c:C.purple,x:755,y:467,port:[565,358]}];
- const duration=6400,state={time:0,playing:true,speed:1,intensity:.75,enabled:[true,true,true,true],ascii:false,last:null,frames:0};
+ const duration=6400,QUARTERS=[0,.25,.5,.75],TAU=Math.PI*2;
+ const state={time:0,playing:true,speed:1,intensity:.75,enabled:[true,true,true,true],phaseSlip:0,ascii:false,last:null,frames:0};
+ // Model semantics: equal-amplitude unit phasors are a signed QUADRATURE
+ // bookkeeping channel; optical intensity is a separate nonnegative channel.
+ // Continuous 1/4-cycle emission envelopes add to 2 when all four are locked.
+ function phaseModel(t){
+  const turn=((t%duration)+duration)%duration/duration;
+  const offsets=QUARTERS.map((o,i)=>o+(i===3?state.phaseSlip:0));
+  const phases=offsets.map(o=>(turn+o)%1);
+  const envelopes=phases.map((p,i)=>state.enabled[i]?(.5+.5*Math.cos(TAU*p)):0);
+  let real=0,imag=0,total=0;
+  for(let i=0;i<4;i++)if(state.enabled[i]){
+   real+=Math.cos(TAU*phases[i]);imag+=Math.sin(TAU*phases[i]);
+   total+=envelopes[i];
+  }
+  const residual=Math.hypot(real,imag);
+  return{phases,offsets,envelopes,real,imag,residual,total,locked:state.enabled.every(Boolean)&&residual<1e-9};
+ }
  let seed=0xBEEFBAD;function rnd(){seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296}
  const stars=Array.from({length:210},()=>({x:rnd()*W,y:rnd()*H,r:rnd()*1.7+.25,p:rnd()*Math.PI*2,layer:.4+rnd()}));
  const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));const lerp=(a,b,t)=>a+(b-a)*t;
@@ -122,32 +146,60 @@ G2:  +-----------------------+
   for(let i=0;i<4;i++)line([pts[i],inner[i+4]],color,.22*alpha,.7);glow(x,y,size*.58,color,.55*alpha);circle(x,y,3.3,'#ffffff',alpha,1,true);
  }
  function stage(t){const u=((t%duration)+duration)%duration/duration;return{u,charge:clamp(u/.28),converge:clamp((u-.25)/.32),focus:clamp((u-.47)/.17),fire:clamp((u-.61)/.08)*(1-clamp((u-.84)/.13)),phase:u<.26?'CHARGE':u<.48?'CONVERGE':u<.62?'FOCUS':u<.85?'FIRE':'RECYCLE',cycle:Math.floor(t/duration)+1}}
- function channels(s,t){let count=state.enabled.filter(Boolean).length;for(let i=0;i<nodes.length;i++){const n=nodes[i],enabled=state.enabled[i],osc=Math.sin(t*.009+i*1.4),lum=enabled?(1+.22*osc)*state.intensity:.13;
-  ring(n.x,n.y,75,19,t*.00024+i*.31,n.c,.34*lum,2.8);ring(n.x,n.y,64,28,-t*.00032+i*.19,n.c,.23*lum,1.2);ring(n.x,n.y,55,75,t*.00018+i,n.c,.11*lum,1.1);
-  for(let j=0;j<6;j++){const a=j*Math.PI/3+t*.0008*(i%2?1:-1),px=n.x+Math.cos(a)*75,py=n.y+Math.sin(a)*19;circle(px,py,2.2,n.c,.4*lum,1,true)}
-  if(enabled&&state.intensity){const ang=t*.0013+i*.6;const dx=Math.cos(ang),dy=Math.sin(ang);line([[n.x-dx*102,n.y-dy*102],[n.x+dx*102,n.y+dy*102]],n.c,.11*lum,6);line([[n.x-dx*115,n.y-dy*115],[n.x+dx*115,n.y+dy*115]],n.c,.34*lum,1.3)}
-  prism(n.x,n.y,n.c,t+i*1000,47,lum);
-  label(n.el+' / '+n.name,n.x,n.y+103,enabled?'#ddf3ff':'#72818d',12);
-  const center=[500,320];if(enabled){const a=.20+.47*s.converge;line([[n.x,n.y],n.port,center],n.c,a*lum,1.6+s.converge*3);if(s.converge>0){for(let j=0;j<4;j++){const q=(s.converge*(1.16)+j*.21)%1,p=q<.5?[lerp(n.x,n.port[0],q*2),lerp(n.y,n.port[1],q*2)]:[lerp(n.port[0],center[0],(q-.5)*2),lerp(n.port[1],center[1],(q-.5)*2)];glow(...p,14,n.c,.30*lum);circle(...p,2.9,n.c,.84*lum,1,true)}}}else{line([[n.x,n.y],n.port,center],n.c,.07,1)}
+ function channels(s,t,model){
+  let count=state.enabled.filter(Boolean).length;
+  for(let i=0;i<nodes.length;i++){
+   const n=nodes[i],enabled=state.enabled[i],turn=model.phases[i],a=turn*TAU;
+   const pulse=model.envelopes[i];
+   const lum=enabled?(0.26+1.18*pulse)*state.intensity:.13;
+   // The geometric lighthouse sweep, rings, and packet train all reference
+   // the same quarter-shifted phase, not unrelated time multipliers.
+   ring(n.x,n.y,75,19,a,n.c,.35*lum,2.8);
+   ring(n.x,n.y,64,28,-a*.73,n.c,.25*lum,1.2);
+   ring(n.x,n.y,55,75,a*.43,n.c,.14*lum,1.1);
+   for(let j=0;j<6;j++){
+    const ang=j*Math.PI/3+a;
+    circle(n.x+Math.cos(ang)*75,n.y+Math.sin(ang)*19,2.2,n.c,.42*lum,1,true);
+   }
+   if(enabled&&state.intensity){
+    const dx=Math.cos(a),dy=Math.sin(a);
+    line([[n.x-dx*102,n.y-dy*102],[n.x+dx*102,n.y+dy*102]],n.c,.11*lum,6);
+    line([[n.x-dx*115,n.y-dy*115],[n.x+dx*115,n.y+dy*115]],n.c,.45*lum,1.6);
+    glow(n.x+dx*80,n.y+dy*80,22,n.c,.41*pulse*state.intensity);
+   }
+   // Crystal itself spins at a phase-locked angular offset.
+   prism(n.x,n.y,n.c,t+model.offsets[i]*duration,47,lum);
+   label(n.el+' / '+n.name+' / '+Math.round(model.offsets[i]*360)+'°',n.x,n.y+104,enabled?'#ddf3ff':'#72818d',11);
+   const center=[500,320];
+   if(enabled){
+    const strength=.13+.69*pulse;
+    line([[n.x,n.y],n.port,center],n.c,strength*lum,1.6+pulse*3.8);
+    for(let j=0;j<4;j++){
+     const q=(turn+j*.25)%1;
+     const p=q<.5?[lerp(n.x,n.port[0],q*2),lerp(n.y,n.port[1],q*2)]:[lerp(n.port[0],center[0],(q-.5)*2),lerp(n.port[1],center[1],(q-.5)*2)];
+     glow(...p,13,n.c,.31*lum);circle(...p,2.7,n.c,.84*lum,1,true);
+    }
+   }else line([[n.x,n.y],n.port,center],n.c,.06,1);
+  }
+  return count;
  }
- return count}
- function focusCore(s,t,count){const core=500,cy=320,intensity=state.intensity;glow(core,cy,117,C.gold,.09+.19*s.focus*intensity);ring(core,cy,114,48,t*.0002,C.gold,.22,1.4);ring(core,cy,72,72,-t*.0003,C.gold,.23,1.2);
+ function focusCore(s,t,count,model){const core=500,cy=320,intensity=state.intensity;glow(core,cy,117,C.gold,.09+.19*s.focus*intensity);ring(core,cy,114,48,t*.0002,C.gold,.22,1.4);ring(core,cy,72,72,-t*.0003,C.gold,.23,1.2);
   ctx.save();ctx.translate(core,cy);ctx.rotate(Math.PI/4);for(let i=0;i<3;i++){const size=38+i*20;ctx.strokeStyle=C.gold;ctx.lineWidth=1.8;ctx.globalAlpha=.30+.11*s.focus;ctx.strokeRect(-size,-size,size*2,size*2)}ctx.restore();
   line([[core-80,cy],[core+80,cy]],C.gold,.43,1);line([[core,cy-80],[core,cy+80]],C.gold,.43,1);
   const fourth=['G','R','B','P'].map((v,i)=>state.enabled[i]?v:'.');const positions=[[-29,-25],[29,-25],[-29,25],[29,25]];
   fourth.forEach((l,i)=>{const p=positions[i];glow(core+p[0],cy+p[1],14,nodes[i].c,state.enabled[i]?.25:0);circle(core+p[0],cy+p[1],5,nodes[i].c,state.enabled[i]?.8:.2,1,true);label(l,core+p[0],cy+p[1]-10,state.enabled[i]?nodes[i].c:'#607388',10)});
-  prism(core,cy,C.gold,t*.6,18,(.3+.7*s.focus)*(count?1:.2));glow(core,cy,40,'#ffffff',s.focus*count/4*.40*intensity);
-  label('[ . | . | . | . | ]',core,cy+103,'#f4d49c',12);label('FOUR PORT / ONE DOT-BOX',core,cy-108,'#cfba8e',11);
+  prism(core,cy,C.gold,t*.6,18,(.3+.7*s.focus)*(count?1:.2));glow(core,cy,40,'#ffffff',(.12+.30*s.focus)*model.total/2*intensity);
+  label('[ . | . | . | . | ]',core,cy+103,'#f4d49c',12);label(model.locked?'NET 0 · STABLE':'NET '+model.residual.toFixed(3)+' · DRIFT',core,cy-109,model.locked?'#80f6d5':'#ff9ba6',13);label(model.locked?'0':'+',core,cy+9,model.locked?'#d4ffee':'#ffc5cf',14);
  }
- function laser(s,t,count){const scale=count/4;if(!scale||!state.intensity)return;const power=s.fire*scale*state.intensity;if(power<=.007)return;
+ function laser(s,t,count,model){const scale=count/4;if(!scale||!state.intensity)return;const power=s.fire*scale*state.intensity*model.total/2;if(power<=.007)return;
   const y=320,origin=555,extent=lerp(origin,965,clamp(s.fire*1.6));glow(lerp(origin,extent,.52),y,130,'#f6faff',power*.15);
   ctx.save();ctx.lineCap='round';for(const [width,alpha,color] of [[30,power*.08,'#deacff'],[17,power*.19,'#aee5ff'],[8,power*.72,'#f2faff'],[2,power,'#ffffff']]){line([[origin,y],[extent,y]],color,alpha,width)}
   const n=Math.ceil((extent-origin)/17);for(let i=0;i<n;i++){const x=origin+i*17+t*.003%17;const yy=y+Math.sin(i*.7+t*.009)*17*power;line([[x,yy-3],[x+15,y],[x,yy+3]],i%2?'#9ee1ff':'#e4c2fc',power*.24,1.5)}ctx.restore();
   for(let i=0;i<6;i++){const x=origin+((t*.12+i*71)%(Math.max(1,extent-origin))),z=Math.sin(t*.016+i*4)*13*power;glow(x,y+z,14,'#ffffff',power*.48)}
   if(extent>940)polygon([[963,y],[945,y-11],[945,y+11]],'#f6faff',power,'#fff7ed',1);
  }
- function draw(){const t=state.time,s=stage(t);backdrop(t);const count=channels(s,t);focusCore(s,t,count);laser(s,t,count);updateDOM(s,count);if(state.ascii)ascii.textContent=asciiText(s,count)}
- function asciiText(s,count){const active=state.enabled.map((x,i)=>x?['G','R','B','P'][i]:'.');const a=s.converge>.07?'=':'.',core=s.focus>.85?'W':s.focus>.3?'*':'.';const t=s.fire>.02?'='+('=').repeat(Math.floor(31*s.fire))+'>' : '........';
+ function draw(){const t=state.time,s=stage(t),model=phaseModel(t);backdrop(t);const count=channels(s,t,model);focusCore(s,t,count,model);laser(s,t,count,model);updateDOM(s,count,model);if(state.ascii)ascii.textContent=asciiText(s,count,model)}
+ function asciiText(s,count,model=phaseModel(state.time)){const active=state.enabled.map((x,i)=>x?['G','R','B','P'][i]:'.');const a=s.converge>.07?'=':'.',core=s.focus>.85?'W':s.focus>.3?'*':'.';const t=s.fire>.02?'='+('=').repeat(Math.floor(31*s.fire))+'>' : '........';
   const mini=(letter,on)=>` /----------\\\n |  ${on?letter:'·'}  ${on?letter:'·'}  |\n | [ ICE ]  |\n \\----------/`;
   const art=[
   '      *       GOTHIC ICE-CUBE PULSAR ARRAY       *',
@@ -181,14 +233,18 @@ G2:  +-----------------------+
   '',
   `       PHASE ${s.phase.padEnd(8)} CYCLE ${String(s.cycle).padStart(3,'0')}  MASK ${state.enabled.map(x=>x?'1':'0').join('')}`,
   '         4 CHANNELS = 2^4 = 16 BITMASK STATES',
+  '         G 0°       R 90°      B 180°     P '+String(Math.round(model.offsets[3]*360))+'°',
+  '         EMISSION G '+model.envelopes[0].toFixed(2)+' / R '+model.envelopes[1].toFixed(2)+' / B '+model.envelopes[2].toFixed(2)+' / P '+model.envelopes[3].toFixed(2),
+  '         NET CENTER '+(model.locked?'0.000 · STABLE':model.residual.toFixed(3)+' · DRIFT')+'  | TOTAL LIGHT '+model.total.toFixed(3),
   ];return art.join('\n')}
- function updateDOM(s,count){const vals={phase:s.phase,mask:state.enabled.map(x=>x?'1':'0').join(''),focus:Math.round(s.focus*count/4*100)+'%',generation:'G2 · 16',cycle:'CYCLE '+String(s.cycle).padStart(3,'0')};for(const [id,value]of Object.entries(vals)){const el=q('#'+id);if(el)el.textContent=value}q('#progress').style.width=(100*s.u).toFixed(1)+'%';q('#stageLabel').innerHTML='<strong>✦ '+s.phase+'</strong> · '+count+' ACTIVE ICE-CUBE PULSARS';q('#fps').textContent=state.ascii?'ASCII / LIVE': 'CANVAS2D / LIVE';q('#speedOut').textContent=state.speed.toFixed(2)+'×';q('#powerOut').textContent=Math.round(state.intensity*100)+'%';q('#play').textContent=state.playing?'PAUSE':'PLAY';for(const b of document.querySelectorAll('[data-emitter]'))b.setAttribute('aria-pressed',String(state.enabled[+b.dataset.emitter]))}
+ function updateDOM(s,count,model){const vals={phase:s.phase,mask:state.enabled.map(x=>x?'1':'0').join(''),focus:Math.round(s.focus*count/4*100)+'%',generation:'G2 · 16',cycle:'CYCLE '+String(s.cycle).padStart(3,'0'),balance:(model.locked?'0.000 · LOCKED':model.residual.toFixed(3)+' · DRIFT'),emission:model.total.toFixed(3),phaseAngles:model.offsets.map(o=>Math.round(o*360)+'°').join(' · ')};for(const [id,value]of Object.entries(vals)){const el=q('#'+id);if(el)el.textContent=value}q('#progress').style.width=(100*s.u).toFixed(1)+'%';q('#stageLabel').innerHTML='<strong>✦ '+s.phase+'</strong> · '+count+' ACTIVE ICE-CUBE PULSARS';q('#fps').textContent=state.ascii?'ASCII / LIVE': 'CANVAS2D / LIVE';q('#slipOut').textContent=Math.round(state.phaseSlip*360)+'°'+(state.phaseSlip===0?' · LOCKED':' · OFFSET');q('#balance').parentElement.classList.toggle('stable',model.locked);q('#balance').parentElement.classList.toggle('unstable',!model.locked);q('#speedOut').textContent=state.speed.toFixed(2)+'×';q('#powerOut').textContent=Math.round(state.intensity*100)+'%';q('#play').textContent=state.playing?'PAUSE':'PLAY';for(const b of document.querySelectorAll('[data-emitter]'))b.setAttribute('aria-pressed',String(state.enabled[+b.dataset.emitter]))}
  function frame(timestamp){if(state.last!==null&&state.playing)state.time+=Math.min(70,Math.max(0,timestamp-state.last))*state.speed;state.last=timestamp;state.frames++;draw();requestAnimationFrame(frame)}
  const redraw=()=>{draw()};function setMode(isAscii){state.ascii=!!isAscii;canvas.classList.toggle('hide',state.ascii);ascii.classList.toggle('show',state.ascii);q('#viewVisual').classList.toggle('active',!state.ascii);q('#viewAscii').classList.toggle('active',state.ascii);draw()}
  function pauseToggle(){state.playing=!state.playing;state.last=null;draw()}
- function reset(){state.time=0;state.last=null;state.playing=false;draw()}
+ function reset(){state.time=0;state.last=null;state.playing=false;state.phaseSlip=0;state.enabled=[true,true,true,true];q('#slip').value='0';draw()}
  const download=(data,name,type)=>{const blob=data instanceof Blob?data:new Blob([data],{type});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)};
  q('#play').addEventListener('click',pauseToggle);q('#step').addEventListener('click',()=>{state.playing=false;state.time+=duration/16;draw()});q('#pulse').addEventListener('click',()=>{state.time=Math.floor(state.time/duration+1)*duration+duration*.68;draw()});q('#reset').addEventListener('click',reset);
+ q('#slip').addEventListener('input',e=>{state.phaseSlip=Number(e.target.value)/360;redraw()});q('#phaseLock').addEventListener('click',()=>{state.phaseSlip=0;q('#slip').value='0';state.enabled=[true,true,true,true];redraw()});
  q('#speed').addEventListener('input',e=>{state.speed=Number(e.target.value);redraw()});q('#intensity').addEventListener('input',e=>{state.intensity=Number(e.target.value)/100;redraw()});
  q('#viewVisual').addEventListener('click',()=>setMode(false));q('#viewAscii').addEventListener('click',()=>setMode(true));
  q('#savePng').addEventListener('click',()=>canvas.toBlob(blob=>{if(blob)download(blob,'four-pulsars-gothic.png','image/png')},'image/png'));
@@ -196,7 +252,7 @@ G2:  +-----------------------+
  for(const b of document.querySelectorAll('[data-emitter]'))b.addEventListener('click',()=>{const i=Number(b.dataset.emitter);state.enabled[i]=!state.enabled[i];redraw()});
  document.addEventListener('keydown',e=>{if(['INPUT','BUTTON','SELECT','TEXTAREA'].includes(document.activeElement?.tagName))return;switch(e.key.toLowerCase()){case ' ':e.preventDefault();pauseToggle();break;case 'arrowright':e.preventDefault();state.playing=false;state.time+=duration/16;redraw();break;case 'p':state.time=Math.floor(state.time/duration+1)*duration+duration*.68;redraw();break;case 'a':setMode(!state.ascii);break;case 'r':reset();break;}});
  // Deterministic inspection API for tests; values are read-only snapshots.
- window.PulsarLab={getState:()=>({time:state.time,playing:state.playing,mask:state.enabled.map(x=>+x).join(''),phase:stage(state.time).phase,cycle:stage(state.time).cycle,focus:stage(state.time).focus,ascii:state.ascii,speed:state.speed,intensity:state.intensity,frames:state.frames}),getAscii:()=>asciiText(stage(state.time),state.enabled.filter(Boolean).length),setTime:(ms)=>{state.time=Math.max(0,Number(ms)||0);state.playing=false;draw()},version:'1.0'};
+ window.PulsarLab={getState:()=>({time:state.time,playing:state.playing,mask:state.enabled.map(x=>+x).join(''),phase:stage(state.time).phase,cycle:stage(state.time).cycle,focus:stage(state.time).focus,ascii:state.ascii,speed:state.speed,intensity:state.intensity,phaseOffsets:phaseModel(state.time).offsets,emissions:phaseModel(state.time).envelopes,centerResidual:phaseModel(state.time).residual,totalEmission:phaseModel(state.time).total,centerStable:phaseModel(state.time).locked,phaseSlip:state.phaseSlip,frames:state.frames}),getAscii:()=>asciiText(stage(state.time),state.enabled.filter(Boolean).length),setTime:(ms)=>{state.time=Math.max(0,Number(ms)||0);state.playing=false;draw()},version:'2.0-quadrature'};
  draw();requestAnimationFrame(frame);
 })();
 </script>
