@@ -87,7 +87,7 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 <h2>01 · Cartridge &amp; Emulation</h2>
 <div class="field"><label>Load a Game Gear cartridge (.gg)</label><input id="rom" type="file" accept=".gg,.bin,application/octet-stream"></div>
 <div class="buttonrow"><button class="ctl" id="rgbGame">PLAY RGB DIFFUSION ARENA</button><button class="ctl" id="rgbDownload">DOWNLOAD RGB GAME .GG</button></div>
-<div class="small" style="color:#9fdcff;margin:7px 0 10px">Move <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> · <kbd>Z</kbd> paint · <kbd>X</kbd> change R/G/B · <kbd>Enter</kbd> clear field. Make the reactor white.</div>
+<div class="small" style="color:#9fdcff;margin:7px 0 10px">Move <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> · <kbd>Z</kbd> paint · <kbd>X</kbd> change R/G/B · <kbd>Enter</kbd> restart seeded round. Make the reactor white. <a href="dist/rgb-diffusion-arena.gg" download="rgb-diffusion-arena.gg">DOWNLOAD COMPILED .GG</a> · <a href="RGB-DIFFUSION.md">HOW IT WORKS</a></div>
 <div class="buttonrow"><button class="ctl" id="helloWorld">I-13 HELLO WORLD · . RGB</button><button class="ctl" id="downloadHello">DOWNLOAD HELLO .GG</button></div>
 <div class="small" style="margin:5px 0 9px;color:#b7dced">COMPILED BINARY: <a href="dist/i13-hello-world-rgb.gg" download="i13-hello-world-rgb.gg">DOWNLOAD VERIFIED 16 KiB .GG</a> · <a href="dist/README.md">BUILD / SHA-256</a></div>
 <div class="buttonrow" style="margin-top:8px"><button class="ctl" id="i13">RUN I-13 ON Z80</button><button class="ctl" id="downloadI13">DOWNLOAD I-13 .GG</button></div>
@@ -111,7 +111,7 @@ footer{color:#91aabd;font-size:11px;margin-top:20px}
 </div>
 <div class="panel" id="rgbGamePanel">
 <h2>RGB DIFFUSION ARENA · 2³ COLOR STATES</h2>
-<div class="warning">Three colored pulses start spreading across an emulated <strong>16×12 Game Gear tile field</strong>. Move the crystal, switch its ink between red / green / blue, and paint. Each Z80 step combines the four neighboring RGB bits. Mix all three at the <strong>reactor tile (8,6)</strong> for one point. This is a binary propagation game inspired by diffusion, not a physical diffusion solver.</div>
+<div class="warning">Three colored pulses repeatedly spread in attract mode until you paint, across an emulated <strong>16×12 Game Gear tile field</strong>. Move the crystal, switch its ink between red / green / blue, and paint. Each Z80 step combines the four neighboring RGB bits. Mix all three at the <strong>reactor tile (8,6)</strong> for one point. This is a binary propagation game inspired by diffusion, not a physical diffusion solver.</div>
 <div class="readouts">
 <div class="metric"><small>SELECTED RGB INK</small><b id="rgbInk">R · RED</b></div>
 <div class="metric"><small>CRYSTAL XY</small><b id="rgbXY">8,6</b></div>
