@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N184 v7.6 · One XYZ Frame, Three Scales</title>
+<style>
+:root{color-scheme:dark;--bg:#080f1c;--panel:#111e30;--border:#38516a;--txt:#ebf3ff;--muted:#a9bdce}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{padding:22px 3vw;border-bottom:1px solid var(--border);background:#102035}
+h1{font-size:clamp(21px,3vw,31px);margin:0}p{margin:8px 0}.muted{color:var(--muted)}
+main{max-width:1280px;margin:auto;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(310px,.7fr);gap:15px;padding:16px}
+.panel{background:var(--panel);border-radius:13px;border:1px solid var(--border);padding:17px;min-width:0}
+canvas{width:100%;height:auto;display:block;border:1px solid #2d445d;border-radius:10px;background:#070f1d}
+h2{font-size:16px;margin:0 0 10px}h3{font-size:14px;margin:14px 0 7px}
+.buttons{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
+button{cursor:pointer;border:1px solid #638e9f;border-radius:8px;background:#193a4b;color:var(--txt);padding:10px 15px}
+button.selected{background:#356677;border-color:#b5f3e5;font-weight:bold}
+button:focus-visible{outline:2px solid #afeada;outline-offset:3px}
+.detail{border-left:3px solid #8dd7c9;padding:10px;background:#152a3e;margin:12px 0;border-radius:0 8px 8px 0}
+.axis{display:flex;justify-content:space-between;padding:9px 11px;background:#172b3f;border:1px solid #34516d;border-radius:8px;margin-top:8px;gap:10px}
+.axis b{font-size:18px;color:#9ae3d4}code{color:#e5c78d}
+a{color:#9cebdd}.small{font-size:12px}.tags{display:flex;gap:9px;flex-wrap:wrap}.tag{color:#d0e4ec;border:1px solid #4b6274;padding:5px 9px;border-radius:7px}
+footer{padding:16px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+@media(max-width:850px){main{grid-template-columns:1fr}}
+</style></head><body>
+<header><h1>N184 · One Frame, Three Scales</h1>
+<p class="muted">v7.6 · corrected axis grammar · x:state · y:space · z:state+time</p></header>
+<main>
+<section class="panel">
+<h2>The coordinate frame is unchanged. Only the view scale switches.</h2>
+<canvas id="axes" width="970" height="630" role="img" aria-label="Three symbolic coordinate axes X state, Y space, Z state plus time, with a selected star planet or atom scale"></canvas>
+<div class="buttons" id="controls"></div>
+<div class="detail" id="detail">Scale M · Planet · Earth reference</div>
+<div class="tags"><span class="tag">T: strong / star / plank bubble</span><span class="tag">M: medium / planet / plank foam</span><span class="tag">B: floor / atom / plank</span></div>
+<p class="muted">The three scales are observation labels. They do not introduce three unrelated physical coordinate systems. The nine symbolic Sag A instances (5 above, 4 below) remain in the historical topology; Earth remains the middle reference.</p>
+<p><a href="../time-stack-tmb-v75/">Earlier HD 110067 resonance evidence</a> · <a href="../jellyfish-web-v73/">Jellyfish web</a> · <a href="../integration-v41/">Confluence</a> · <a href="./spec.json">Canonical JSON</a></p>
+</section>
+<aside class="panel">
+<h2>Coordinates</h2>
+<div class="axis"><b>X</b><span>state</span></div>
+<div class="axis"><b>Y</b><span>space</span></div>
+<div class="axis"><b>Z</b><span>state + time</span></div>
+<p class="muted small">Z is a combined state-time label (conceptually a pair), not arithmetic addition between a state and seconds.</p>
+<h3>Preserved symbolic clock</h3><div class="detail"><code>13/8B:1:1x10^-35</code><div class="small muted">Time-domain model tick: 10⁻³⁵ seconds. The operator 13/8B is undefined.</div></div>
+<h3>Scale map</h3>
+<div id="map"></div>
+<h3>External evidence</h3>
+<p class="muted">HD 110067's six planets exhibit a near-resonant orbital chain. This is observational evidence for orbital timing, not for identical star/planet/atom physics or a physical time-dilation mechanism.</p>
+<p class="muted small" id="status">Loading source register…</p>
+</aside>
+</main>
+<footer>Additive user-defined symbolic scale correction · prior OASIS artifacts and astronomy evidence unchanged.</footer>
+<script type="module">
+const $=id=>document.getElementById(id),canvas=$('axes'),ctx=canvas.getContext('2d');
+let spec=null,selected='M';
+const palette={T:'#f0ba86',M:'#82e0d0',B:'#b9a1fb'};
+function line(a,b,color,width=3){ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke()}
+function label(s,x,y,color='#eff5ff',size=19){ctx.fillStyle=color;ctx.font=size+'px system-ui';ctx.fillText(s,x,y)}
+function render(){
+ if(!spec)return;
+ const w=canvas.width,h=canvas.height,cx=w*.49,cy=h*.55;ctx.clearRect(0,0,w,h);ctx.fillStyle='#081322';ctx.fillRect(0,0,w,h);
+ const guides=[[cx-255,cy+95],[cx+260,cy+95],[cx+0,cy-250]];
+ ctx.strokeStyle='#405570';ctx.lineWidth=1;for(let i=-8;i<=8;i++){line([30,cy+95+i*18],[w-30,cy+95+i*18],'#29415660',1)}
+ const xEnd=[cx+235,cy+110],yEnd=[cx+175,cy-100],zEnd=[cx-5,cy-250];
+ line([cx,cy],xEnd,'#f1b680',5);line([cx,cy],yEnd,'#72d7c6',5);line([cx,cy],zEnd,'#ad9aff',5);
+ label('X · state',xEnd[0]-35,xEnd[1]+29,'#f1b680',21);
+ label('Y · space',yEnd[0]+10,yEnd[1]-8,'#72d7c6',21);
+ label('Z · state + time',zEnd[0]-80,zEnd[1]-16,'#ad9aff',21);
+ ctx.textAlign='center';
+ ctx.beginPath();ctx.arc(cx,cy,83,0,Math.PI*2);ctx.strokeStyle=palette[selected];ctx.lineWidth=4;ctx.stroke();
+ ctx.fillStyle=palette[selected];ctx.font='bold 55px system-ui';ctx.fillText(selected,cx,cy+18);
+ const b=spec.scales.find(s=>s.code===selected);
+ ctx.font='19px system-ui';ctx.fillText(b.analogy.toUpperCase(),cx,cy+111);
+ ctx.font='16px system-ui';ctx.fillStyle='#d4e5f5';ctx.fillText(b.symbolic,cx,cy+135);
+ ctx.textAlign='left';
+ label('SAME X / Y / Z AT EVERY SCALE',37,40,'#c4e6db',20);
+ label('Scale selection ≠ new physics',37,65,'#91b4ce',15);
+}
+function update(){const b=spec.scales.find(x=>x.code===selected);$('detail').textContent=b.code+' :: '+b.legacy+' :: '+b.analogy+' :: '+b.symbolic+(b.code==='M'?' :: Earth reference':(' :: '+b.cloneCount+' Sag A clones'));for(const btn of $('controls').children)btn.classList.toggle('selected',btn.dataset.code===selected);render()}
+try{
+ const response=await fetch('./spec.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);spec=await response.json();
+ if(spec.axes.map(x=>x.userLabel).join('|')!=='state|space|state+time'||spec.scales.length!==3)throw Error('schema mismatch');
+ for(const scale of spec.scales){
+  const button=document.createElement('button');button.dataset.code=scale.code;button.textContent=scale.code+' · '+scale.analogy;button.onclick=()=>{selected=scale.code;update()};$('controls').append(button);
+  const item=document.createElement('p');item.textContent=scale.code+': '+scale.symbolic+' ↔ '+scale.analogy;$('map').append(item);
+ }
+ $('status').textContent='Coordinate grammar loaded from canonical JSON. Frozen earlier sources preserved.';
+ update();
+}catch(error){$('status').textContent='Source load error: '+String(error)}
+</script></body></html>
