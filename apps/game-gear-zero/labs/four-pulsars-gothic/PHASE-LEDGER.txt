@@ -1,0 +1,26 @@
+FOUR PULSARS :: SPIN + EMIT :: NET 0
+===================================
+          GREEN / 0.00 turns
+                  ↑
+                  |
+ PURPLE / 0.75 --[ 0 ]-- RED / 0.25
+                  |
+                  ↓
+           BLUE / 0.50 turns
+
+        [ G | R | B | P ]
+            .|.|.|.|
+
+  t/T      G      R      B      P    SUM
+  0.00    1.00   0.50   0.00   0.50   2.00
+  0.25    0.50   0.00   0.50   1.00   2.00
+  0.50    0.00   0.50   1.00   0.50   2.00
+  0.75    0.50   1.00   0.50   0.00   2.00
+
+NET VECTOR : 1 + i - 1 - i = 0
+TOTAL LIGHT: 2 normalized emission units
+
+Turn off an emitter or slip purple by 45 degrees:
+center imbalance appears; four-quarter lock restores 0.
+Zero signed phase-vector balance IS NOT zero photons
+or physical coherent interference across colors.
