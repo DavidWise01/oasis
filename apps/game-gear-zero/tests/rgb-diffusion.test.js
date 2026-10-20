@@ -45,8 +45,10 @@ assert("23 reactor reaches white and awards point",m.ram[0x200+116]===7&&m.ram[0
 const score=m.ram[0x106];run(m,15);
 assert("24 reactor completion is one-time receipt",m.ram[0x106]===score);
 key(m,"start",3);
-assert("25 START clears board but keeps score",m.ram[0x109]===0&&m.ram[0x10f]===0&&m.ram[0x106]===score&&hist()[0]===192);
+assert("25 START restarts seeded round but keeps score",m.ram[0x109]===0&&m.ram[0x10f]===0&&m.ram[0x106]===score&&m.ram[0x200+38]===1&&m.ram[0x10e]<=2);
 assert("26 VRAM continues rendering after reset",m.stats.vramWrites>3200);
+const attract=spawn();run(attract,150);
+assert("27 attract mode loops the RGB wave and avoids phantom score",attract.ram[0x10f]===0&&attract.ram[0x106]===0&&attract.ram[0x10e]<10);
 return {count:cases.length,cases,frame:m.frames,final:{score:m.ram[0x106],rect:m.ram[0x200+116],ink:m.ram[0x102]},hist:bins,bytes:cart.length};
 })(window.GGMachine,window.GGRGBDiffusion);
 report.cases.forEach(x=>console.log('PASS',x));
