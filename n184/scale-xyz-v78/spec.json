@@ -1,0 +1,96 @@
+{
+  "schema": "oasis/n184/scale-xyz/v78",
+  "version": "v7.8",
+  "classification": "corrected-planck-time-length-dimensional-register",
+  "correction": "The bottom time anchor uses NIST CODATA Planck time in seconds; the Planck length is recorded separately in meters.",
+  "precedent": {
+    "source": "../scale-xyz-v77/spec.json",
+    "originalUserLiteral": "13.8byears = 1 year = 1x1.6161^10-35seconds",
+    "v77Interpretation": "1.6161e-35 seconds treated as user-defined bottom symbolic time anchor",
+    "supersededForPhysicalPlanckTime": true,
+    "frozenPriorSourceUnchanged": true
+  },
+  "coordinates": {
+    "x": "state",
+    "y": "space",
+    "z": "state+time",
+    "zComposite": "conceptual state-time pairing, not numeric addition"
+  },
+  "scales": [
+    {
+      "code": "T",
+      "analogy": "star",
+      "symbolic": "plank bubble",
+      "strength": "strong",
+      "time": {
+        "value": 13800000000,
+        "unit": "year",
+        "seconds": 435494880000000000
+      },
+      "reference": "rounded age of universe"
+    },
+    {
+      "code": "M",
+      "analogy": "planet",
+      "symbolic": "plank foam",
+      "strength": "medium",
+      "time": {
+        "value": 1,
+        "unit": "year",
+        "seconds": 31557600
+      },
+      "reference": "Earth"
+    },
+    {
+      "code": "B",
+      "analogy": "atom",
+      "symbolic": "plank",
+      "strength": "floor",
+      "time": {
+        "value": 5.391247e-44,
+        "unit": "second",
+        "physicalSymbol": "t_P",
+        "uncertaintyNotation": "5.391 247(60) × 10^-44 s"
+      },
+      "length": {
+        "value": 1.616255e-35,
+        "unit": "meter",
+        "physicalSymbol": "l_P",
+        "uncertaintyNotation": "1.616 255(18) × 10^-35 m"
+      },
+      "reference": "CODATA Planck units"
+    }
+  ],
+  "constants": {
+    "source": "NIST CODATA 2022 recommended constants",
+    "url": "https://physics.nist.gov/cuu/pdf/all.pdf",
+    "speedOfLightMetersPerSecond": 299792458,
+    "relation": "l_P = c * t_P",
+    "note": "Decimal values are rounded and l_P=c*t_P should agree within rounding of the reported coefficients; both have nonzero uncertainties originating in G.",
+    "physicalDefinitions": {
+      "time": "sqrt(hbar*G/c^5)",
+      "length": "sqrt(hbar*G/c^3)"
+    }
+  },
+  "model": {
+    "equalityOperator": "cross-scale symbolic correspondence, not literal equality of measured durations",
+    "sharedAxisRule": "same x/y/z coordinate grammar for all three scale labels",
+    "oneYearConventionSeconds": 31557600,
+    "earthAt": "M",
+    "ninePriorSymbolicSagAInstances": 9,
+    "earlierSymbolicClock": "13/8B:1:1x10^-35",
+    "earlierClockSecondsPerTick": 1e-35,
+    "earlierClockStatus": "archival and independent; not CODATA Planck time",
+    "BTimeIsPhysicalPlanckTime": true,
+    "BLengthIsPhysicalPlanckLength": true,
+    "clockOperator": "13/8B",
+    "clockOperatorStillUndefined": true
+  },
+  "boundaries": [
+    "NIST values are recommended physical constants, not an experimentally verified minimum duration or minimum distance.",
+    "T, M, B are symbolic scale views; assigning Planck units to B does not imply atomic diameters or times equal Planck dimensions.",
+    "Star/planet/atom scale correspondence is not a derivation of physical time dilation.",
+    "The user's spelling 'plank' is retained as a label, distinct from the scientific name 'Planck'.",
+    "Old v7.7 and v7.4 data are preserved in their original files."
+  ]
+}
