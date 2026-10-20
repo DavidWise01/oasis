@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N184 · XYZ Three-scale time correspondence v7.7</title>
+<style>
+:root{color-scheme:dark;--ink:#edf4ff;--mute:#adc0d5;--bg:#070e1b;--panel:#131f31;--edge:#324963;--top:#f3be86;--mid:#81e0ce;--bot:#b69cff}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);margin:0;font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{border-bottom:1px solid var(--edge);background:#101c31;padding:21px clamp(16px,3vw,35px)}
+header h1{font-size:clamp(22px,3vw,30px);margin:0}header p{margin:4px 0 0;color:var(--mute)}
+main{max-width:1260px;margin:auto;padding:17px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(310px,.75fr);gap:15px}
+section,aside{background:var(--panel);border:1px solid var(--edge);border-radius:13px;padding:17px;min-width:0}
+h2{font-size:16px;margin:0 0 11px}h3{font-size:14px;margin:17px 0 8px}
+canvas{display:block;width:100%;height:auto;border:1px solid #365069;border-radius:11px;background:#091320}
+.control{margin:14px 0;display:grid;gap:7px}.control label{font-weight:650}input{width:100%;accent-color:#86e1d2}
+.anchors{display:grid;gap:10px}.anchor{padding:13px 15px;border:1px solid #47607e;border-radius:10px;background:#182a3f;cursor:pointer;text-align:left;color:var(--ink);display:flex;gap:12px;justify-content:space-between;align-items:center}
+.anchor:hover,.anchor.active{border-color:#a1e2d4;background:#213a50}.anchor b{font-size:18px}.anchor small{display:block;color:var(--mute)}
+.readout{background:#182d3d;border:1px solid #527b80;border-radius:12px;padding:15px;margin:13px 0}.readout .big{font-size:clamp(19px,2.2vw,26px);font-weight:700;font-variant-numeric:tabular-nums;color:#b9f3e8}
+.labs{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.lab{border:1px solid #445e79;padding:6px 10px;border-radius:7px;color:#bad6ef}
+.muted{color:var(--mute)}.fine{font-size:12px;color:var(--mute)}a{color:#9be8dc}
+code{color:#f2d5aa}footer{padding:14px 20px;border-top:1px solid var(--edge);color:var(--mute);font-size:12px}
+@media(max-width:850px){main{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><h1>N184 · Three scales, one XYZ frame</h1>
+<p>v7.7 · 13.8 billion years ↔ 1 year ↔ 1.6161 × 10⁻³⁵ seconds · symbolic scale correspondence</p></header>
+<main>
+<section>
+<h2>Time-scale zoom</h2>
+<canvas id="diagram" width="1020" height="510" role="img" aria-label="Three scale anchors: star 13.8 billion years, Earth planet one year, atom 1.6161 times ten to minus thirty-five seconds"></canvas>
+<div class="control">
+<label for="zoom">Select position along the scale correspondence <output id="zoomLabel">M :: Earth</output></label>
+<input type="range" min="0" max="2" step=".01" value="1" id="zoom">
+</div>
+<div class="readout"><div class="muted">Corresponding duration (piecewise log interpolation)</div><div class="big" id="seconds">31,557,600 seconds</div><div class="fine" id="scale">1 Julian reference year · Earth middle</div></div>
+<div id="anchors" class="anchors"></div>
+<div class="labs"><span class="lab">X = state</span><span class="lab">Y = space</span><span class="lab">Z = state+time</span></div>
+<p class="muted">Only the <b>scale anchor</b> changes. The XYZ interpretation stays the same at all three levels. The clock zoom interpolates logarithmically between your chosen values; it does not calculate physical time dilation.</p>
+<p><a href="../scale-xyz-v76/">Previous XYZ scale frame</a> · <a href="../time-stack-tmb-v75/">Six-planet resonance evidence</a> · <a href="../integration-v41/">Confluence</a> · <a href="./spec.json">Canonical JSON</a></p>
+</section>
+<aside>
+<h2>Notation as supplied</h2><p><code>13.8byears = 1 year = 1x1.6161^10-35seconds</code></p>
+<p class="muted">Read as a <b>scale mapping</b>, not a literal physical equality. The last term is provisionally parsed as scientific notation: <b>1.6161 × 10⁻³⁵ s</b>.</p>
+<h3>Scale labels</h3>
+<p><b>T</b> · strong · star / plank bubble</p>
+<p><b>M</b> · medium · planet / plank foam · Earth reference</p>
+<p><b>B</b> · floor · atom / plank</p>
+<h3>Dimensional check</h3>
+<p>The coefficient <b>1.6161 × 10⁻³⁵</b> closely matches the <em>Planck length</em> expressed in <b>meters</b>. Standard Planck <em>time</em> is about <b>5.391247 × 10⁻⁴⁴ seconds</b>. The proposed B value here is a separate, defined symbolic time anchor.</p>
+<p class="muted fine"><a href="https://physics.nist.gov/cuu/pdf/all.pdf" target="_blank" rel="noopener">NIST CODATA constants</a> · <a href="https://science.nasa.gov/exoplanets/what-is-the-universe/" target="_blank" rel="noopener">NASA: approximate age of universe</a></p>
+<h3>Prior clock retained</h3>
+<p><code>13/8B:1:1x10^-35</code> remains in the earlier register as an unevaluated operator and earlier provisional tick; this v7.7 view applies the updated B anchor without overwriting it.</p>
+<p class="fine" id="status">Loading canonical anchors…</p>
+</aside>
+</main>
+<footer>OASIS v7.7 · scale/correspondence, not equality · frozen Sag A/N184 models and previous registers are unchanged.</footer>
+<script type="module">
+const $=x=>document.getElementById(x),can=$('diagram'),c=can.getContext('2d'),W=can.width,H=can.height;
+let spec=null,z=1;const palette=['#f3be86','#81e0ce','#b69cff'];
+function dot(x,y,r,color){c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fillStyle=color;c.fill()}
+function secAt(u){const index=Math.min(1,Math.floor(u)),frac=u-index;const a=spec.anchors[index].seconds,b=spec.anchors[index+1].seconds;return Math.exp(Math.log(a)*(1-frac)+Math.log(b)*frac)}
+function sci(n){return n.toExponential(5).replace('e+',' × 10^').replace('e-',' × 10^-')+' s'}
+function draw(){
+ if(!spec)return;
+ c.fillStyle='#071426';c.fillRect(0,0,W,H);
+ for(let j=0;j<32;j++){const x=(j*163+19)%W,y=(j*239+47)%H;dot(x,y,j%5===0?1.6:.8,'#708da577')}
+ const a=[{x:185,y:258},{x:W/2,y:258},{x:W-185,y:258}];
+ c.lineWidth=3;c.strokeStyle='#769caa';c.beginPath();c.moveTo(a[0].x,a[0].y);c.lineTo(a[2].x,a[2].y);c.stroke();
+ for(let i=0;i<3;i++){
+  const p=a[i],b=spec.anchors[i];
+  const halo=c.createRadialGradient(p.x,p.y,8,p.x,p.y,78);halo.addColorStop(0,palette[i]+'90');halo.addColorStop(1,palette[i]+'00');
+  dot(p.x,p.y,78,halo);dot(p.x,p.y,30,palette[i]);dot(p.x,p.y,14,'#0b1628');
+  c.textAlign='center';c.fillStyle='#ebf4ff';c.font='bold 26px system-ui';c.fillText(b.code,p.x,p.y+8);
+  c.fillStyle=palette[i];c.font='bold 18px system-ui';c.fillText(b.analogy.toUpperCase(),p.x,p.y+81);
+  c.font='14px system-ui';c.fillText(b.symbolic,p.x,p.y+103);
+  c.fillStyle='#c5d5e5';c.font='15px system-ui';c.fillText(b.literal,p.x,p.y-75);
+ }
+ const x=a[0].x+(a[1].x-a[0].x)*Math.min(z,1)+(a[2].x-a[1].x)*Math.max(z-1,0);
+ dot(x,258,40,'#e1efea18');c.strokeStyle='#eefff4';c.lineWidth=4;c.beginPath();c.arc(x,258,44,0,Math.PI*2);c.stroke();
+ c.textAlign='left';c.fillStyle='#bfd5e7';c.font='16px ui-monospace,monospace';c.fillText('X: state     Y: space     Z: state+time',28,44);
+ c.fillStyle='#e7d2a9';c.fillText('correspondence ≠ physical equality',28,H-29);
+}
+function render(){
+ if(!spec)return;
+ const value=secAt(z),anchor=Math.round(z),atAnchor=Math.abs(z-anchor)<1e-8;
+ $('seconds').textContent=atAnchor?(anchor===0?'4.3549488 × 10¹⁷ s':anchor===1?'31,557,600 s':'1.6161 × 10⁻³⁵ s'):sci(value);
+ $('zoomLabel').textContent=atAnchor?spec.anchors[anchor].code+' :: '+spec.anchors[anchor].analogy : 'Between '+spec.anchors[Math.floor(z)].code+' and '+spec.anchors[Math.floor(z)+1].code;
+ $('scale').textContent=atAnchor?spec.anchors[anchor].literal:'logarithmic correspondence zoom; no physical dynamics inferred';
+ for(const b of $('anchors').children)b.classList.toggle('active',Math.abs(Number(b.dataset.index)-z)<.005);
+ draw();
+}
+try{
+ const response=await fetch('./spec.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);
+ spec=await response.json();
+ if(spec.anchors.length!==3||spec.grammar.x!=='state'||spec.grammar.y!=='space'||spec.grammar.z!=='state+time')throw Error('source invariant failed');
+ for(let i=0;i<3;i++){
+  const a=spec.anchors[i],b=document.createElement('button');b.className='anchor';b.dataset.index=i;
+  const left=document.createElement('span'),name=document.createElement('b'),desc=document.createElement('small');
+  name.textContent=a.code+' · '+a.analogy;desc.textContent=a.symbolic;left.append(name,desc);
+  const value=document.createElement('span');value.textContent=a.literal;b.append(left,value);
+  b.onclick=()=>{z=i;$('zoom').value=String(z);render()};$('anchors').append(b);
+ }
+ $('zoom').oninput=e=>{z=Number(e.target.value);render()};
+ $('status').textContent='v7.7 anchors loaded; all XYZ axes preserved from v7.6.';render();
+}catch(error){$('status').textContent='Scale source error: '+String(error)}
+</script></body></html>
