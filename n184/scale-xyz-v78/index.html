@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS N184 v7.8 · Planck Time and Length</title>
+<style>
+:root{color-scheme:dark;--bg:#09101e;--panel:#132139;--line:#334e6a;--txt:#ebf4ff;--muted:#afc6da;--coral:#f3c48d;--teal:#84e1cd;--purple:#c5a0ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{background:linear-gradient(120deg,#1b2941,#111a2d);padding:22px clamp(17px,4vw,38px);border-bottom:1px solid var(--line)}
+header h1{font-size:clamp(23px,3.5vw,32px);margin:0}header p{color:var(--muted);margin:5px 0}
+main{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(290px,.6fr);gap:17px;max-width:1350px;padding:17px;margin:auto}
+section,aside{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px;min-width:0}
+h2{font-size:17px;margin:0 0 13px}h3{font-size:14px;margin:19px 0 7px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.anchor{background:#1b2d46;border:1px solid #405b76;padding:13px;border-radius:10px;text-align:left;min-width:0;cursor:pointer;color:var(--txt)}
+.anchor b{font-size:19px;display:block}.anchor span{color:var(--muted);display:block;font-size:12px}
+.anchor em{font-style:normal;font-weight:650;font-size:15px;display:block;overflow-wrap:anywhere}
+.anchor.active{border-color:#a5f0db;box-shadow:0 0 0 2px #82c8b42e;background:#24435a}
+.readout{background:#101f34;border-radius:12px;padding:15px;border:1px solid #526d88;margin:17px 0}
+.big{font:700 clamp(20px,2.6vw,26px) ui-monospace,monospace;color:#c0e6fc;overflow-wrap:anywhere}
+.label{color:var(--muted);font-size:12px}
+.planck{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.fact{padding:14px;border-radius:10px;background:#212641;border:1px solid #736792}
+.fact strong{display:block;font-size:16px;color:#dbccff}.fact .number{font:700 17px ui-monospace,monospace;margin-top:10px;overflow-wrap:anywhere}
+.fact small{display:block;color:#c3c1d7;margin-top:6px}
+.truth{border-left:3px solid var(--teal);padding:10px 13px;background:#183541;border-radius:0 9px 9px 0}
+.note{color:var(--muted)}a{color:#9fede4}a:hover{text-decoration:none}
+code{color:#f4d4ad;overflow-wrap:anywhere}
+.refs{display:grid;gap:10px;margin:12px 0}
+.refs a{background:#182c44;border:1px solid #425c77;border-radius:8px;padding:9px;display:block}
+p{margin:10px 0}.dim{color:#c0d0e3}button:focus-visible{outline:2px solid #b3f3df;outline-offset:2px}
+footer{border-top:1px solid var(--line);padding:13px 20px;color:var(--muted);font-size:12px}
+@media(max-width:850px){main{grid-template-columns:1fr}}@media(max-width:520px){.grid{grid-template-columns:1fr}.planck{grid-template-columns:1fr}}
+</style></head><body>
+<header><h1>N184 · Planck time + Planck length</h1>
+<p>v7.8 dimensional correction · Same XYZ grammar · T = star · M = Earth/planet · B = atom-scale label</p></header>
+<main>
+<section>
+<h2>Three symbolic scale correspondences</h2>
+<div id="anchors" class="grid"></div>
+<div class="readout"><div class="label">Selected scale — time quantity</div>
+<div class="big" id="time">Loading…</div><div id="selected" class="label"></div></div>
+<h2>Bottom B :: scientific Planck unit pair</h2>
+<div class="planck">
+<div class="fact"><strong>Planck time · t<sub>P</sub></strong><div class="number" id="planckTime">5.391247 × 10⁻⁴⁴ s</div><small>TIME · seconds</small></div>
+<div class="fact"><strong>Planck length · ℓ<sub>P</sub></strong><div class="number" id="planckLength">1.616255 × 10⁻³⁵ m</div><small>LENGTH · meters</small></div>
+</div>
+<div class="truth"><strong>Physical relationship:</strong> <code>ℓP = c × tP</code> <span class="dim">(c = 299,792,458 m/s).</span> The two measured/derived reference quantities have different dimensions; neither is a universal proven minimum interval.</div>
+<h3>Same frame at each scale</h3>
+<p><code>X :: state</code> &nbsp; <code>Y :: space</code> &nbsp; <code>Z :: state+time</code></p>
+<p class="note">Z is a combined symbolic state–time coordinate, not ordinary addition of state and seconds. The T/M/B comparison is conceptual; it does not make 13.8 billion years equal one year or Planck time.</p>
+<h3>Original notation preserved as provenance</h3>
+<p class="dim"><code>13.8byears = 1 year = 1x1.6161^10-35seconds</code></p>
+<p class="note">v7.7 stored the final term as a symbolic <em>seconds</em> anchor. v7.8 corrects the physical references by recording Planck time in seconds and Planck length in meters, retaining the older entry unchanged.</p>
+</section>
+<aside>
+<h2>Canonical scale register</h2>
+<div id="scaleInfo"></div>
+<h3>Source and uncertainty</h3>
+<p>NIST CODATA 2022 recommended values:</p>
+<p class="dim">ℓ<sub>P</sub> = 1.616 255(18) × 10⁻³⁵ m</p>
+<p class="dim">t<sub>P</sub> = 5.391 247(60) × 10⁻⁴⁴ s</p>
+<p class="note">Digits in parentheses indicate standard uncertainty in the corresponding last digits.</p>
+<h3>What stays frozen</h3>
+<p class="note">Sag A, nine symbolic universe instances, Earth pinned at M, the previous 13/8B time register, and the HD 110067 evidence record remain intact.</p>
+<div class="refs">
+<a href="../scale-xyz-v77/">Previous v7.7 time-scale view</a>
+<a href="../integration-v41/">Confluence gateway</a>
+<a href="./spec.json">Canonical v7.8 JSON</a>
+<a href="https://physics.nist.gov/cuu/pdf/all.pdf" target="_blank" rel="noopener">NIST fundamental constants (PDF)</a>
+</div>
+<p class="note" id="status">Reading canonical register…</p>
+</aside>
+</main>
+<footer>OASIS N184 v7.8 · additive dimensional correction, not proof of Planck-scale physical foam or new time dilation</footer>
+<script type="module">
+const $=x=>document.getElementById(x);
+let spec=null,active='B';
+function sci(n,unit){
+ if(n===5.391247e-44)return '5.391247 × 10⁻⁴⁴ '+unit;
+ if(n===1.616255e-35)return '1.616255 × 10⁻³⁵ '+unit;
+ if(n===31557600)return '31,557,600 '+unit;
+ if(n===435494880000000000)return '4.3549488 × 10¹⁷ '+unit;
+ return n.toExponential(6)+' '+unit;
+}
+function render(){
+ const band=spec.scales.find(s=>s.code===active);
+ $('time').textContent=sci(band.time.seconds,'s');
+ $('selected').textContent=band.code+' · '+band.analogy+' · '+band.symbolic+
+  (band.code==='M'?' · Earth reference':band.code==='B'?' · CODATA Planck time':' · rounded cosmological age');
+ for(const b of $('anchors').children)b.classList.toggle('active',b.dataset.code===active);
+}
+function mount(){
+ $('anchors').replaceChildren();
+ for(const x of spec.scales){
+  const b=document.createElement('button');b.className='anchor';b.dataset.code=x.code;
+  const title=document.createElement('b');title.textContent=x.code+' · '+x.analogy;
+  const subtitle=document.createElement('span');subtitle.textContent=x.symbolic+' · '+x.strength;
+  const time=document.createElement('em');time.textContent=x.code==='T'?'13.8 billion years':x.code==='M'?'1 year':'Planck time';
+  b.append(title,subtitle,time);b.onclick=()=>{active=x.code;render()};$('anchors').append(b);
+ }
+ $('planckTime').textContent=sci(spec.scales[2].time.value,'s');
+ $('planckLength').textContent=sci(spec.scales[2].length.value,'m');
+ $('scaleInfo').replaceChildren(...spec.scales.map(x=>{
+  const p=document.createElement('p');p.textContent=x.code+' :: '+x.strength+' :: '+x.analogy+' / '+x.symbolic;return p;
+ }));
+ $('status').textContent='v7.8 loaded · CODATA 2022 time & length recorded separately · v7.7 untouched';
+ render();
+}
+try{
+ const r=await fetch('./spec.json',{cache:'no-store'});
+ if(!r.ok)throw Error('HTTP '+r.status);
+ spec=await r.json();
+ if(spec.coordinates.x!=='state'||spec.coordinates.y!=='space'||spec.coordinates.z!=='state+time'
+   ||spec.scales[2].time.unit!=='second'||spec.scales[2].length.unit!=='meter')throw Error('schema mismatch');
+ mount();
+}catch(e){$('status').textContent='Registry error: '+String(e)}
+</script></body></html>
