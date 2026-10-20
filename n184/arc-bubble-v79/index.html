@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N184 Arc Bubble v7.9</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#080f1e;color:#e8f5ff;font:15px system-ui}header{padding:26px;background:#122339;border-bottom:1px solid #375674}
+main{max-width:1150px;margin:auto;padding:20px;display:grid;grid-template-columns:1fr 320px;gap:15px}
+article,aside{background:#132035;border:1px solid #37506b;border-radius:14px;padding:18px;min-width:0}
+h1{margin:0;font-size:29px}h2{font-size:18px;margin:0 0 15px}p{line-height:1.55;color:#bbccdd}a{color:#94e4d5}
+canvas{display:block;width:100%;height:auto;background:#091624;border-radius:10px;border:1px solid #3a5270}
+.controls{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+button{background:#225567;border:1px solid #71c0bf;color:#fff;padding:10px;border-radius:9px;cursor:pointer}
+input{accent-color:#95e6d5}#result{font:700 23px ui-monospace,monospace;color:#a3f0d5}
+.fact{background:#192d44;border:1px solid #39536f;border-radius:9px;padding:14px;margin:10px 0}
+.fact b{display:block}.fact span{font:16px ui-monospace,monospace;color:#e5cfaa}
+small{color:#b2c7d9}@media(max-width:850px){main{grid-template-columns:1fr}}
+</style></head><body>
+<header><h1>Arc Bubble · 1/6 Planck Length</h1><p>N184 v7.9 · six symbolic equal-length arcs; time is recorded independently</p></header>
+<main><article>
+<h2>Choose how many arc bubbles to accumulate</h2>
+<canvas id="drawing" width="800" height="630" aria-label="Six symbolic arc bubbles arranged on a circular loop"></canvas>
+<div class="controls">
+<label>Arc bubbles <output id="number">1</output> / 6 <input id="n" type="range" min="1" max="6" value="1"></label>
+<button id="reset">Reset</button>
+</div>
+<div class="fact"><b>Accumulated arc length</b><div id="result">2.693758333e-36 m</div></div>
+<p>Each highlighted arc represents 1/6 of the Planck length. Making six arcs into a circular ring is a diagram choice, not a physical claim about Planck-scale spacetime.</p>
+<p><a href="../scale-xyz-v78/">Planck time and length register</a> · <a href="../integration-v41/">Confluence</a> · <a href="./spec.json">Canonical arc data</a></p>
+</article><aside>
+<h2>Separate dimensions</h2>
+<div class="fact"><b>Planck length ℓP</b><span id="length">1.616255e-35 m</span></div>
+<div class="fact"><b>Planck time tP</b><span id="time">5.391247e-44 s</span></div>
+<div class="fact"><b>One arc bubble · ℓP / 6</b><span id="arc">2.693758333e-36 m</span></div>
+<p>X :: state · Y :: space · Z :: state+time</p>
+<p>T :: star / plank bubble</p><p>M :: planet / plank foam / Earth</p><p>B :: atom / plank</p>
+<small>Planck length is not an experimentally established indivisible minimum. No inherent time duration is assigned to an arc bubble.</small>
+<p><small id="status">Loading source registers…</small></p>
+</aside></main>
+<script type="module">
+const $=id=>document.getElementById(id),canvas=$('drawing'),ctx=canvas.getContext('2d');
+let spec,source,n=1;const palette=['#eed18c','#93dec8','#bba8ff','#e89b92','#96baff','#eebd84'];
+function sci(x){return x.toExponential(9)}
+function render(){
+const w=canvas.width,h=canvas.height,cx=w/2,cy=h/2,r=190;
+ctx.fillStyle='#081827';ctx.fillRect(0,0,w,h);
+for(let i=0;i<6;i++){
+const a=-Math.PI/2+i*Math.PI/3,b=a+Math.PI/3;
+ctx.beginPath();ctx.arc(cx,cy,r,a+.036,b-.036);ctx.strokeStyle=i<n?palette[i]:'#42516a';
+ctx.lineWidth=i<n?40:28;ctx.lineCap='round';ctx.stroke();
+const theta=(a+b)/2;ctx.textAlign='center';ctx.font='bold 20px system-ui';ctx.fillStyle='#f4f6ff';
+ctx.fillText(String(i+1),cx+Math.cos(theta)*(r+62),cy+Math.sin(theta)*(r+62)+7);
+}
+ctx.textAlign='center';ctx.font='bold 60px system-ui';ctx.fillStyle='#e1e6ff';ctx.fillText(n+'/6',cx,cy+6);
+ctx.font='18px system-ui';ctx.fillText('Planck length',cx,cy+46);
+$('number').textContent=n;$('result').textContent=sci(n*spec.arcBubble.arcLengthMeters)+' m';
+}
+$('n').oninput=e=>{n=Number(e.target.value);render()};
+$('reset').onclick=()=>{n=1;$('n').value='1';render()};
+try{
+const responses=await Promise.all([fetch('./spec.json'),fetch('../scale-xyz-v78/spec.json')]);
+if(responses.some(r=>!r.ok))throw Error('missing source');
+[spec,source]=await Promise.all(responses.map(r=>r.json()));
+const base=source.scales.find(x=>x.code==='B');
+if(spec.arcBubble.partDenominator!==6||Math.abs(spec.arcBubble.arcLengthMeters*6/base.length.value-1)>1e-12)throw Error('length mismatch');
+$('length').textContent=sci(base.length.value)+' m';$('time').textContent=sci(base.time.value)+' s';$('arc').textContent=sci(spec.arcBubble.arcLengthMeters)+' m';
+$('status').textContent='Parent Planck register verified; six arcs = one Planck length';render();
+}catch(e){$('status').textContent='Source issue: '+e}
+</script></body></html>
