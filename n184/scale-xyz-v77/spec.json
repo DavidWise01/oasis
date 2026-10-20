@@ -1,0 +1,98 @@
+{
+  "schema": "oasis/n184/scale-xyz/v77",
+  "version": "v7.7",
+  "classification": "user-defined-scale-correspondence-not-physical-time-identity",
+  "source": "../scale-xyz-v76/spec.json",
+  "userLiteral": "13.8byears = 1 year = 1x1.6161^10-35seconds",
+  "parsedReading": "13.8 billion years ↔ 1 year ↔ 1 × 1.6161 × 10^-35 seconds",
+  "parseAssumption": "The user's ^10-35 suffix is read as scientific notation ×10^-35, not exponentiation of 1.6161 to the power (10 - 35). Original raw literal is retained.",
+  "equalitySemantics": "scale-correspondence; not equality of physical durations",
+  "grammar": {
+    "x": "state",
+    "y": "space",
+    "z": "state+time",
+    "zForm": "conceptual state-time composite; not arithmetic of incompatible units"
+  },
+  "units": {
+    "yearConvention": "Julian year 365.25 days exactly for reference conversions",
+    "secondsPerYear": 31557600,
+    "billion": 1000000000,
+    "standardPlanckTimeSeconds": 5.391247e-44,
+    "standardPlanckLengthMeters": 1.616255e-35
+  },
+  "anchors": [
+    {
+      "code": "T",
+      "legacy": "strong",
+      "symbolic": "plank bubble",
+      "analogy": "star",
+      "literal": "13.8 billion years",
+      "durationYears": 13800000000,
+      "seconds": 435494880000000000,
+      "index": 0
+    },
+    {
+      "code": "M",
+      "legacy": "medium",
+      "symbolic": "plank foam",
+      "analogy": "planet",
+      "reference": "Earth",
+      "literal": "1 year",
+      "durationYears": 1,
+      "seconds": 31557600,
+      "index": 1
+    },
+    {
+      "code": "B",
+      "legacy": "floor",
+      "symbolic": "plank",
+      "analogy": "atom",
+      "literal": "1 × 1.6161 × 10^-35 seconds",
+      "seconds": 1.6161e-35,
+      "index": 2
+    }
+  ],
+  "transitions": [
+    {
+      "from": "T",
+      "to": "M",
+      "form": "time normalization",
+      "ratio": 13800000000,
+      "dimension": "seconds/seconds",
+      "interpretation": "separate scale ratio"
+    },
+    {
+      "from": "M",
+      "to": "B",
+      "form": "time normalization",
+      "ratio": 1.952700946723594e+42,
+      "dimension": "seconds/seconds",
+      "interpretation": "separate scale ratio"
+    }
+  ],
+  "browserInterpolation": "piecewise geometric interpolation between adjacent anchors in seconds, not a dynamical cosmology model",
+  "priorClock": {
+    "literal": "13/8B:1:1x10^-35",
+    "secondsPerTick": 1e-35,
+    "status": "retained as earlier v7.4-v7.6 design; overridden by B anchor here only; 13/8B still undefined"
+  },
+  "evidence": {
+    "cosmicAge": "https://science.nasa.gov/exoplanets/what-is-the-universe/",
+    "codata2022": "https://physics.nist.gov/cuu/pdf/all.pdf",
+    "ageStatus": "rounded published estimate",
+    "planckStatus": "well-defined physical constants, not evidence of proposed scale identity"
+  },
+  "retainedTopology": {
+    "upper": 5,
+    "middle": "Earth reference",
+    "lower": 4,
+    "identicalSymbolicSagAUniverses": 9
+  },
+  "scientificBoundary": [
+    "The scales do not represent equal elapsed time. The arrows are model correspondences.",
+    "The coefficient 1.6161 × 10^-35 resembles the physical Planck length in meters but, when explicitly attached to seconds, is not Planck time.",
+    "Planck time is about 5.391247 × 10^-44 s, not 1.6161 × 10^-35 s.",
+    "No uniform multiplicative ratio spans all three specified time anchors.",
+    "No star-planet-atom spacetime isomorphism, physical time dilation, or nine-universe topology has been experimentally established."
+  ]
+}
