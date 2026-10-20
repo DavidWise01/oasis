@@ -65,7 +65,9 @@ function create(){
  load(S.tick);emit(0x3c);store(S.tick);emit(0xfe,6);jc('TICK_END');
  emit(0xaf);store(S.tick);
  call('SPREAD');call('DRAW_FIELD');call('CHECK_REACTOR');
- load(S.steps);emit(0x3c);store(S.steps);
+ load(S.steps);emit(0xfe,34);jnc('HOP_CAP');
+ emit(0x3c);store(S.steps);
+ label('HOP_CAP');
  load(S.steps);emit(0xfe,11);jnz('NO_11');imm(1);store(S.hop11);
  label('NO_11');
  load(S.steps);emit(0x47);load(S.maxHop);emit(0xb8);jnc('KEEP_MAX');
