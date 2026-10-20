@@ -1,0 +1,21 @@
+name: N184 Arc Phase Time v81
+on:
+  push:
+    paths:
+      - 'n184/arc-phase-time-v81/**'
+      - '.github/workflows/n184-arc-phase-time-v81.yml'
+  workflow_dispatch:
+jobs:
+  eighty-tick-clock:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify n times 1.25 percent in 360 degree arc phase clock
+        run: |
+          node --check n184/arc-phase-time-v81/test_phase_time.mjs
+          node n184/arc-phase-time-v81/test_phase_time.mjs
