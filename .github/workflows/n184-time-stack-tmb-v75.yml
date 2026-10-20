@@ -1,0 +1,22 @@
+name: N184 TMB Plank Aliases HD110067 v75
+on:
+  push:
+    paths:
+      - 'n184/time-stack-tmb-v75/**'
+      - 'evidence/relay/ITD_HD110067_SIX_PLANET_RESONANCE_REDDIT_2026-10-20.md'
+      - '.github/workflows/n184-time-stack-tmb-v75.yml'
+  workflow_dispatch:
+jobs:
+  time-distillation-crosswalk:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate symbolic T M B scales and orbital resonance evidence
+        run: |
+          node --check n184/time-stack-tmb-v75/test_crosswalk.mjs
+          node n184/time-stack-tmb-v75/test_crosswalk.mjs
