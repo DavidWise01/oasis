@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b13">
+<title>FIVE GYRO CROWN · Stellar | Aquatic | Atomic</title>
+<style>
+:root{color-scheme:dark;--bg:#050a12;--card:#0b1725;--card2:#0a1421;--edge:#324d61;--text:#e4f4fa;--muted:#8daeba;--gold:#f7cf82;--green:#67fbb0;--red:#ff7480;--blue:#6fbaff;--purple:#b68bff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -5%,#223a4c,#0a1221 39%,#040910 88%);color:var(--text);font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}
+.wrap{max-width:1560px;margin:auto;padding:20px 18px 28px}header{margin:0 0 15px}h1{margin:1px 0 3px;font:500 clamp(24px,3vw,37px) Georgia,serif;letter-spacing:.11em;color:#fff1d1;text-shadow:0 0 32px #ffcc8850}header p{margin:0;color:#9ab8c6}.eyebrow{color:var(--gold);font-size:10px;letter-spacing:.22em}main{display:grid;grid-template-columns:minmax(0,1fr) 385px;gap:14px;align-items:start}.box{border:1px solid var(--edge);border-radius:13px;background:linear-gradient(150deg,#102037dd,#090e19f5);box-shadow:0 22px 60px #0008;min-width:0;overflow:hidden}.visual{padding:13px}.visual canvas{width:100%;height:auto;aspect-ratio:1200/770;display:block;border:1px solid #49687b;border-radius:10px;background:#060e1c}.ctrlbar{display:flex;gap:7px;flex-wrap:wrap;padding:11px 0 5px}.ctrlbar button,.ctrlbar select{flex:0 0 auto}button,select,input{font:inherit}button,select{background:linear-gradient(#213549,#122236);border:1px solid #4d7084;border-radius:8px;padding:8px 10px;color:#e7f7ff;cursor:pointer}button:hover{background:#2a4559}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #caffbd;outline-offset:2px}button.special{background:linear-gradient(#6a4b2b,#372a1d);border-color:#d0aa70;color:#fff4df}.panel{padding:14px}.panel+.panel{border-top:1px solid #33475a}.sidebar .box{margin-bottom:13px}.h{font:500 16px Georgia,serif;letter-spacing:.06em;color:#f6d9a1;margin:0 0 9px}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.metric{padding:8px;background:#071421;border:1px solid #304b59;border-radius:8px;min-width:0}.metric small{display:block;color:#8eabb8;font-size:10px}.metric b{font-size:18px;color:#e8f7ff;display:block}.metric.status b{font-size:14px;color:#f6dc9e}.metric strong{font-weight:400;color:#9db4c0;font-size:10px}.sliderline{display:grid;grid-template-columns:34px 1fr 68px;gap:9px;align-items:center;margin:7px 0}.sliderline label{font-weight:700;text-align:center;border-radius:5px;padding:4px;color:#071321}.sliderline input{width:100%;accent-color:var(--gold)}.sliderline output{text-align:right;color:#f9e2b6}.tag{border-radius:5px;background:#213447;border:1px solid #42607b;padding:3px 6px;font-size:11px;color:#cae8f0;white-space:nowrap}.small{font-size:11px;color:var(--muted)}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.swatches{display:flex;gap:5px;flex-wrap:wrap}.swatches span{padding:3px 7px;border-radius:6px;border:1px solid #31495e}.readout{margin-top:11px;padding:11px 12px;background:#07141d;border:1px solid #2f5564;border-radius:9px}pre{font:12px/1.27 ui-monospace,Consolas,monospace;white-space:pre;overflow:auto;margin:0;color:#bfeadd}#asciiFrame{max-width:100%}.footer{display:flex;gap:10px;flex-wrap:wrap;padding:11px 13px;background:#09131d;border-top:1px solid #304959;font-size:10px;color:#96bbce}p.note{font-size:11px;color:#a1b2bb;margin:7px 0 0}.progress{height:8px;background:#142436;border:1px solid #3e5b70;border-radius:6px;overflow:hidden;margin-top:10px}.progress>div{width:0%;height:100%;background:linear-gradient(90deg,#83cfff,#8ef6bd,#eac899)}.toolbar-extra{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.toolbar-extra button{flex:1 1 auto}.sublabel{color:#9eb7c4;letter-spacing:.09em;font-size:10px;margin-top:12px}.source{border:1px solid #33586d;border-radius:8px;padding:8px;color:#e1c994;background:#111f29;margin:8px 0}.pill{padding:2px 6px;border:1px solid #3b5e76;border-radius:12px;color:#d9faff}#artWrap{position:relative}.veil{position:absolute;top:12px;left:12px;background:#07141ab8;border:1px solid #59768888;border-radius:6px;padding:5px 9px;color:#c9e8f8;font-size:10px;letter-spacing:.1em;pointer-events:none}#altPanel{display:none;background:#03131d;min-height:520px;padding:20px;border:1px solid #35556c;border-radius:10px}#altPanel.show{display:block}#artWrap.hide{display:none}.shimmer{color:#edce94}#viewLabel{color:#f4d7a4}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+@media(max-width:1100px){main{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.sidebar .box{margin:0}}
+@media(max-width:650px){.wrap{padding:12px 8px}h1{letter-spacing:.04em}.visual{padding:7px}.sidebar{display:block}.sidebar .box{margin-bottom:11px}.panel{padding:12px}.metric b{font-size:16px}pre{font-size:10px}#altPanel{padding:9px;min-height:420px}.ctrlbar button,.ctrlbar select{padding:7px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body><div class="wrap">
+<header><div class="eyebrow">CONFLUENCE / DOT BOX / FIVE GYRO CROWN</div><h1>THE FIVE GYROS · ZERO CROWN</h1><p>As above: stellar · as below: aquatic sea cable · stars ↔ atomic clover · one shared symbolic engine</p></header>
+<main>
+<section class="box"><div class="visual">
+  <div id="artWrap"><div class="veil" id="viewLabel">STELLAR / AQUATIC · ACTIVE CROWN</div><canvas id="stage" width="1200" height="770" aria-label="Five gyros spinning around a central sun with colored clover petals, stellar skies, and sea cable currents"></canvas></div>
+  <div id="altPanel"><pre id="asciiFrame"></pre></div>
+  <div class="ctrlbar">
+    <button id="play">PAUSE</button><button id="step">STEP</button><button class="special" id="lock">RESTORE 0 LOCK</button><button id="drift">PERTURB Z +45°</button><button id="weak">WEAKEN PURPLE</button><button id="sweep">NEXT 4⁴ STATE</button>
+    <select id="mode" aria-label="Rendering theme"><option value="hybrid">AS ABOVE / AS BELOW</option><option value="stellar">STELLAR SUN</option><option value="aquatic">AQUATIC CABLE</option><option value="atomic">ATOMIC CLOVER</option></select>
+    <button id="view">ASCII</button><button id="saveTXT">TXT</button><button id="savePNG">PNG</button>
+  </div>
+  <div class="footer"><span>G0 . → G1 [.|.|.|.|] → G2 4⁴ = 256 BRACE STATES</span><span id="cycleText">PERIOD 1 · FOUR ROTOR TURNS</span><span>FIVE GYROS: 0 / 0 / 360 / 360 / 720</span></div>
+  <div class="progress"><div id="cycleProgress"></div></div>
+</div></section>
+<aside class="sidebar">
+ <div class="box"><div class="panel">
+  <h2 class="h">ZERO STABILITY · WITNESS</h2><div class="source">{{ v:0 &nbsp; w:0 &nbsp; x:360 &nbsp; y:360 &nbsp; z:720 }}</div>
+  <div class="metrics">
+   <div class="metric"><small>CENTER RESIDUAL</small><b id="residual">0.0000</b><strong>zero = ideal symbolic lock</strong></div>
+   <div class="metric"><small>CONTAINMENT</small><b id="containment">1.000</b><strong>1 / (1 + 2R)</strong></div>
+   <div class="metric"><small>LIGHT EMISSION</small><b id="emission">2.000</b><strong>nonzero when centered</strong></div>
+   <div class="metric"><small>4⁴ STRENGTH STATE</small><b id="mask">255 / 255</b><strong>base-4 {G,R,B,P}</strong></div>
+   <div class="metric"><small>XY / Z MISMATCH</small><b id="coupling">0 / 0</b><strong>phase difference not torque</strong></div>
+   <div class="metric status"><small>CORE EVENT</small><b id="event">0 · LOCKED</b><strong id="eventDetail">balanced but emitting</strong></div>
+  </div></div></div>
+ <div class="box"><div class="panel">
+  <div class="panelhead"><h2 class="h">FIVE GYRO RATES</h2><span class="tag">DEG / CYCLE</span></div>
+  <div class="small">V and W are engaged zero-turn witnesses. X/Y each make one turn. Z makes two. Y is half a turn opposite X to cancel their phase vectors.</div>
+  <div id="rateRows"></div>
+  <div class="sublabel">FIFTH GYRO CROWN / PHASE OFFSET</div><div class="sliderline"><label style="background:#f9d798">Zφ</label><input type="range" id="zSlip" min="-90" max="90" step="1" value="0"><output id="zSlipOut">0°</output></div>
+  <div class="small">If Z breaks its 2 × X relation, the crown precesses and the center can flare. This is a controllable visualization, not stellar mechanics.</div>
+ </div></div>
+ <div class="box"><div class="panel">
+  <div class="panelhead"><h2 class="h">FOUR COLOR PETALS</h2><span class="tag">4 × 4 × 4 × 4</span></div>
+  <div class="small">Each of G/R/B/P carries level 0–3. The fifth gyro Z watches the paired rotating system rather than introducing a fifth color level.</div>
+  <div id="colorRows"></div>
+  <div class="sublabel">COMPLETE STATE ADDRESS</div><input type="range" id="address" min="0" max="255" step="1" value="255" style="width:100%;accent-color:var(--gold)"><div class="small">Drag to scan all 256 combinations without changing rotor rates.</div>
+ </div></div>
+ <div class="box"><div class="panel"><h2 class="h">ASCII · FIVE-GYRO LEDGER</h2><pre id="ledger"></pre>
+  <p class="note">The astronomical and atomic views are analogies. Actual solar flares arise from solar magnetic dynamics; real gluons mediate strong interactions between color-charged quarks, not a four-gluon brace around an electron.</p>
+ </div></div>
+</aside></main></div>
+<script id="gyro-engine">
+/* Deterministic, unit-tested symbolic model. No DOM access in this block. */
+(function(root){'use strict';
+const TAU=2*Math.PI, NAMES=['v','w','x','y','z'], COLORS=['G','R','B','P'];
+const DEFAULT_RATES=Object.freeze({v:0,w:0,x:360,y:360,z:720});
+const wrap=x=>Math.atan2(Math.sin(x),Math.cos(x));
+const clip=(x,a,b)=>Math.max(a,Math.min(b,x));
+const phasor=(a)=>[Math.cos(a),Math.sin(a)];
+const stateId=(levels)=>((levels.G*4+levels.R)*4+levels.B)*4+levels.P;
+const fromId=id=>{let n=clip(Math.round(id),0,255);return {P:n%4,B:Math.floor(n/4)%4,R:Math.floor(n/16)%4,G:Math.floor(n/64)%4};};
+function model(input,cycles){
+ const r=input.rates, l=input.levels, off=(input.zSlip||0)*Math.PI/180,theta=cycles*TAU;
+ const phiX=theta*r.x/360, phiY=theta*r.y/360+Math.PI,phiZ=theta*r.z/360+off;
+ const vx=phasor(phiX),vy=phasor(phiY);
+ const xy=Math.hypot(vx[0]+vy[0],vx[1]+vy[1])/2; // x and y cancel at equal frequency with a half-turn phase offset
+ const crown=Math.abs(Math.sin(wrap(phiZ-2*phiX)/2));
+ const anchors=(Math.abs(r.v)+Math.abs(r.w))/180; // deviations from zero-turn witness references
+ const petals=Math.hypot(l.G-l.B,l.R-l.P)/(3*Math.SQRT2);
+ const residual=Math.hypot(xy,0.85*crown,0.6*anchors,0.9*petals);
+ const excitation=(l.G+l.R+l.B+l.P)/12;
+ const emission=COLORS.reduce((acc,k,i)=>acc+(l[k]/3)*(0.5+0.5*Math.sin(theta+i*Math.PI/2)),0);
+ const containment=1/(1+2*residual);
+ const flare=residual>0.30&&excitation>0.60;
+ const event=flare?'FLARE':residual<1e-7?'0 · LOCKED':residual<0.20?'PRECESSING':'STRAIN';
+ return {residual,containment,emission,excitation,flare,event,xy,crown,anchors,petals,phiX,phiY,phiZ,angles:{v:0,w:0,x:phiX,y:phiY,z:phiZ},id:stateId(l),cycle:cycles,turnBudget:NAMES.reduce((sum,k)=>sum+r[k],0)};
+}
+root.GyroMath={TAU,NAMES,COLORS,DEFAULT_RATES,wrap,clip,phasor,stateId,fromId,model};
+})(window);
+</script>
+<script>
+(()=>{'use strict';
+const M=window.GyroMath,PI=Math.PI,TAU=M.TAU,$=id=>document.getElementById(id),cv=$('stage'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+const palette={G:'#67fbb0',R:'#ff7480',B:'#6fbaff',P:'#b68bff',z:'#ffd38a',v:'#67fbb0',w:'#ff7480',x:'#6fbaff',y:'#b68bff'};
+const defaults=()=>({rates:{...M.DEFAULT_RATES},levels:{G:3,R:3,B:3,P:3},zSlip:0,cycles:0,playing:true,mode:'hybrid',ascii:false});
+let S=defaults(),last=null,lastModel=null,frameCount=0;
+const coords={v:[260,182],w:[940,182],x:[260,583],y:[940,583],z:[600,110],core:[600,365]};
+const clamp=M.clip;function rgba(hex,a){const v=parseInt(hex.substring(1),16);return `rgba(${(v>>16)&255},${(v>>8)&255},${v&255},${clamp(a,0,1)})`}
+function path(points,color='#d3e7f2',width=1,alpha=1){ctx.save();ctx.strokeStyle=rgba(color,alpha);ctx.lineWidth=width;ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.stroke();ctx.restore()}
+function dot(x,y,r,color,alpha=1){ctx.fillStyle=rgba(color,alpha);ctx.beginPath();ctx.arc(x,y,Math.max(r,0),0,TAU);ctx.fill()}
+function halo(x,y,r,color,alpha=.3){const v=parseInt(color.slice(1),16),cr=(v>>16)&255,cg=(v>>8)&255,cb=v&255;const grad=ctx.createRadialGradient(x,y,1,x,y,r);grad.addColorStop(0,`rgba(${cr},${cg},${cb},${alpha})`);grad.addColorStop(.3,`rgba(${cr},${cg},${cb},${alpha*.4})`);grad.addColorStop(1,`rgba(${cr},${cg},${cb},0)`);ctx.fillStyle=grad;ctx.fillRect(x-r,y-r,2*r,2*r)}
+function text(message,x,y,size=12,color='#b8d0dc',align='center'){ctx.fillStyle=color;ctx.textAlign=align;ctx.font=`${size}px ui-monospace,Consolas,monospace`;ctx.fillText(message,x,y)}
+function bg(m){ctx.fillStyle='#040a13';ctx.fillRect(0,0,W,H);const g=ctx.createLinearGradient(0,0,0,H);if(S.mode==='aquatic'){g.addColorStop(0,'#082034');g.addColorStop(1,'#03141a')}else if(S.mode==='atomic'){g.addColorStop(0,'#140f2b');g.addColorStop(1,'#050814')}else{g.addColorStop(0,'#071125');g.addColorStop(.6,'#101f2b');g.addColorStop(1,'#031923')}ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+ if(S.mode!=='aquatic'){for(let i=0;i<210;i++){const x=(i*197.369+31)%W,y=(i*113.167+13)%H;dot(x,y,(i%8===0?1.45:.7),'#cfeaff',.12+.38*(.5+.5*Math.sin(i*2.3+m.cycle*3)))}}
+ if(S.mode!=='stellar'){ctx.save();for(let i=0;i<12;i++){const y=530+i*19;ctx.beginPath();ctx.lineWidth=1;ctx.strokeStyle=rgba('#68ddff',S.mode==='aquatic'?.24:.10);for(let x=0;x<=W;x+=12){let wave=y+11*Math.sin(x/67+m.cycle*TAU+i*.54);if(x===0)ctx.moveTo(x,wave);else ctx.lineTo(x,wave)}ctx.stroke()}ctx.restore();for(let i=0;i<12;i++){const x=64+i*100;path([[x,525],[x+18,615],[x,740]],'#6ac8e9',1,.10)}}
+ ctx.save();ctx.strokeStyle=rgba('#e0bc7c',.25);ctx.lineWidth=2;for(let j=0;j<3;j++){const xL=15+j*13,xR=W-xL;ctx.beginPath();ctx.moveTo(xL,665);ctx.bezierCurveTo(xL,70,390+j*30,25,600,40+j*16);ctx.bezierCurveTo(810-j*30,25,xR,70,xR,665);ctx.stroke()}ctx.restore();
+ text('STELLULAR · AQUATIC · ATOMIC CROWN',600,37,13,'#dec99b');text('V:0    W:0    X:360    Y:360    Z:720',600,744,13,'#dfd0a8');
+}
+function cube(x,y,size,theta,color,kind){ctx.save();ctx.translate(x,y);const c=Math.cos(theta),s=Math.sin(theta);const p=[];for(const [vx,vy,vz] of [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]]){let rx=vx*c-vz*s,rz=vx*s+vz*c;let yy=vy*.88-rz*.43;let zz=vy*.43+rz*.88;p.push([rx*size*(1+.10*zz),yy*size*(1+.10*zz)])}
+ const edges=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+ halo(0,0,size*2,color,.25);ctx.save();ctx.fillStyle=rgba(color,.11);ctx.beginPath();for(const j of [0,1,5,4])ctx.lineTo(...p[j]);ctx.closePath();ctx.fill();ctx.restore();for(const [a,b] of edges)path([p[a],p[b]],color,1.6,.75);dot(0,0,3,'#ffffff',.95);ctx.restore();}
+function gyro(name,m){const [x,y]=coords[name],color=palette[name],a=m.angles[name],turn=S.rates[name];const anchored=name==='v'||name==='w';const R=anchored?69:name==='z'?80:75;
+ halo(x,y,R*1.6,color,anchored?.13:.22);ctx.save();ctx.translate(x,y);ctx.rotate(a);ctx.strokeStyle=rgba(color,.40);ctx.lineWidth=2.3;ctx.beginPath();ctx.ellipse(0,0,R,R*.4,0,0,TAU);ctx.stroke();ctx.rotate(Math.PI/3);ctx.beginPath();ctx.ellipse(0,0,R*.9,R*.35,0,0,TAU);ctx.stroke();ctx.restore();
+ cube(x,y,name==='z'?49:43,a*.52,color,name);for(let j=0;j<4;j++){const q=a+j*Math.PI/2;dot(x+R*Math.cos(q),y+R*.4*Math.sin(q),2.6,color,.85)}
+ text(name.toUpperCase()+' · '+turn+'°/CYCLE',x,y+R+20,12,color);text(anchored?'PINNED WITNESS':name==='z'?'DOUBLE AXIAL GYRO':'ACTIVE ROTOR',x,y+R+35,10,'#a9bdce');}
+function links(m){const center=coords.core;for(const name of M.NAMES){const [x,y]=coords[name],color=palette[name];let c=name==='z'?[620,245]:[600,365];path([[x,y],[.55*x+.45*c[0],.55*y+.45*c[1]],c],color,name==='z'?4:2.5,.25+Math.min(.6,m.emission*.17));const orbit=m.cycle*TAU*(name==='z'?2:1)+M.NAMES.indexOf(name);const k=(Math.sin(orbit)+1)/2,mid=[x+(c[0]-x)*k,y+(c[1]-y)*k];halo(...mid,25,color,.15);dot(...mid,3,color,.85)}}
+function sun(m){let [x,y]=coords.core;const bloom=70+m.excitation*42;halo(x,y,240,'#ffb95c',.18+m.excitation*.13);const l=S.levels;const petals=[['G',0,-1],['R',1,0],['B',0,1],['P',-1,0]];
+ for(const [k,dx,dy] of petals){const strength=l[k]/3,t=m.cycle*TAU+(['G','R','B','P'].indexOf(k)*Math.PI/2),pulse=.5+.5*Math.sin(t),rr=21+36*strength+7*pulse,cx=x+dx*(69+30*strength),cy=y+dy*(69+30*strength);halo(cx,cy,rr*2.1,palette[k],.18*strength);ctx.save();ctx.translate(cx,cy);ctx.rotate(Math.atan2(dy,dx));ctx.fillStyle=rgba(palette[k],.14+.16*strength);ctx.strokeStyle=rgba(palette[k],.32+.55*strength);ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(0,0,rr,rr*.75,0,0,TAU);ctx.fill();ctx.stroke();ctx.restore()}
+ const g=ctx.createRadialGradient(x-19,y-23,2,x,y,bloom);g.addColorStop(0,'#ffffff');g.addColorStop(.16,'#fff4b6');g.addColorStop(.52,'#ffbd56');g.addColorStop(.82,'#ba5b35');g.addColorStop(1,rgba('#f97c39',0));ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,bloom,0,TAU);ctx.fill();ctx.strokeStyle=rgba('#ffeeaa',.48);ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,bloom*.78,0,TAU);ctx.stroke();
+ ctx.strokeStyle=rgba('#fff0c0',.45);ctx.lineWidth=1;ctx.strokeRect(x-31,y-31,62,62);text('[ .|.|.|.| ]',x,y+6,13,'#1b2a35');
+ if(m.flare){const phi=Math.atan2(Math.sin(m.phiZ-2*m.phiX)+.08,Math.cos(m.phiZ-2*m.phiX));ctx.save();ctx.translate(x,y);ctx.rotate(phi);for(let i=0;i<6;i++){ctx.strokeStyle=rgba('#ffd18a',.42-i*.045);ctx.lineWidth=10-i;ctx.beginPath();ctx.moveTo(bloom*.75,0);ctx.bezierCurveTo(bloom+60,-20+8*i,bloom+115,20-6*i,bloom+230+12*i,6*i-10);ctx.stroke()}ctx.restore();}
+ text(m.flare?'SOLAR FLARE / DISCHARGE':m.event==='0 · LOCKED'?'0 · CROWN CONTAINED':'GYRO PRECESSION',x,y+182,15,m.flare?'#ffb47e':'#f7d793');}
+function render(){const m=M.model(S,S.cycles);lastModel=m;bg(m);links(m);sun(m);for(const name of M.NAMES)gyro(name,m);
+ $('residual').textContent=m.residual.toFixed(4);$('containment').textContent=m.containment.toFixed(3);$('emission').textContent=m.emission.toFixed(3);$('coupling').textContent=m.xy.toFixed(3)+' / '+m.crown.toFixed(3);$('mask').textContent=m.id+' / 255';$('event').textContent=m.event;$('eventDetail').textContent=m.flare?'excitation + imbalance → flare':m.residual<1e-7?'four-color light still emitting':'phase / brace imbalance detected';$('cycleText').textContent='ROTATION CYCLE '+(Math.floor(S.cycles)+1)+' · Σ '+m.turnBudget+'°';$('cycleProgress').style.width=((S.cycles%1)*100).toFixed(2)+'%';$('viewLabel').textContent=S.mode.toUpperCase()+' · FIVE GYROS / CROWN';
+ for(const key of M.NAMES){$('rate'+key).value=S.rates[key];$('out'+key).textContent=S.rates[key]+'°'}for(const key of M.COLORS){$('color'+key).value=S.levels[key];$('strength'+key).textContent=S.levels[key]}$('zSlip').value=S.zSlip;$('zSlipOut').textContent=(S.zSlip>=0?'+':'')+S.zSlip+'°';$('address').value=m.id;$('mode').value=S.mode;$('play').textContent=S.playing?'PAUSE':'PLAY';$('view').textContent=S.ascii?'GRAPHICS':'ASCII';$('artWrap').classList.toggle('hide',S.ascii);$('altPanel').classList.toggle('show',S.ascii);
+ const l=S.levels,fmt=n=>String(n).padStart(3,' '),ascii=[
+ '        .     FIVE-GYRO CROWN     .',
+ '              [ z : '+fmt(S.rates.z)+' ]',
+ '                   ||',
+ ' [v:'+fmt(S.rates.v)+'] ---+  ☼  +--- [w:'+fmt(S.rates.w)+']',
+ '                /     \\',
+ '        [x:'+fmt(S.rates.x)+'] [y:'+fmt(S.rates.y)+']',
+ '',
+ '          [ G | R | B | P ]',
+ '          [ '+l.G+' | '+l.R+' | '+l.B+' | '+l.P+' ]',
+ '            .|.|.|.|',
+ '',
+ '   X/Y counterphase : '+m.xy.toFixed(4),
+ '   Z / 2X mismatch  : '+m.crown.toFixed(4),
+ '   Anchors V/W      : '+m.anchors.toFixed(4),
+ '   Clover imbalance : '+m.petals.toFixed(4),
+ '   CENTER RESIDUAL  : '+m.residual.toFixed(4),
+ '   EMISSION         : '+m.emission.toFixed(4),
+ '   CORE EVENT       : '+m.event,
+ '   4⁴ / '+m.id+' of 255   Σ = '+m.turnBudget+'°',
+ '',
+ '   STELLAR  ↔  AQUATIC  ↔  ATOMIC',
+ '   zero is phase balance, not no emission'
+ ].join('\n');$('ledger').textContent=ascii;$('asciiFrame').textContent=ascii;
+}
+function setRates(key,value){S.rates[key]=Number(value);render()};function setLevel(key,value){S.levels[key]=Math.max(0,Math.min(3,Number(value)));render()};function restore(){S=defaults();S.cycles=0;S.playing=false;last=null;render()};
+for(const name of M.NAMES){let max=name==='z'?840:name==='x'||name==='y'?480:90,min=name==='z'?600:name==='x'||name==='y'?240:-90,def=M.DEFAULT_RATES[name];let row=document.createElement('div');row.className='sliderline';let label=document.createElement('label');label.textContent=name.toUpperCase();label.style.background=palette[name];let slider=document.createElement('input');slider.type='range';slider.id='rate'+name;slider.min=min;slider.max=max;slider.step=1;slider.value=def;slider.setAttribute('aria-label',name+' degrees per cycle');let out=document.createElement('output');out.id='out'+name;out.textContent=def+'°';slider.addEventListener('input',()=>setRates(name,slider.value));row.append(label,slider,out);$('rateRows').append(row)}
+for(const name of M.COLORS){let row=document.createElement('div');row.className='sliderline';let label=document.createElement('label');label.textContent=name;label.style.background=palette[name];let slider=document.createElement('input');slider.type='range';slider.id='color'+name;slider.min=0;slider.max=3;slider.step=1;slider.value=3;slider.setAttribute('aria-label',name+' brace strength');let out=document.createElement('output');out.id='strength'+name;out.textContent='3';slider.addEventListener('input',()=>setLevel(name,slider.value));row.append(label,slider,out);$('colorRows').append(row)}
+$('play').addEventListener('click',()=>{S.playing=!S.playing;last=null;render()});$('step').addEventListener('click',()=>{S.playing=false;S.cycles+=.03125;render()});$('lock').addEventListener('click',restore);$('drift').addEventListener('click',()=>{S.zSlip=45;render()});$('weak').addEventListener('click',()=>{S.levels.P=1;render()});$('sweep').addEventListener('click',()=>{S.levels=M.fromId((M.stateId(S.levels)+1)%256);render()});$('mode').addEventListener('change',e=>{S.mode=e.target.value;render()});$('view').addEventListener('click',()=>{S.ascii=!S.ascii;render()});$('zSlip').addEventListener('input',e=>{S.zSlip=+e.target.value;render()});$('address').addEventListener('input',e=>{S.levels=M.fromId(+e.target.value);render()});
+function download(text,filename,mime){const blob=new Blob([text],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('saveTXT').addEventListener('click',()=>download($('ledger').textContent,'five-gyro-crown.txt','text/plain'));$('savePNG').addEventListener('click',()=>cv.toBlob(b=>{if(!b)return;const url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download='five-gyro-crown.png';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png'));
+function frame(ts){if(last!==null&&S.playing)S.cycles+=Math.min(90,Math.max(0,ts-last))/6200;last=ts;frameCount++;render();requestAnimationFrame(frame)}
+window.FiveGyro={state:()=>JSON.parse(JSON.stringify(S)),metrics:()=>({...lastModel}),setRates,setLevel,setSlip:deg=>{S.zSlip=+deg;render()},setCycles:n=>{S.cycles=+n;S.playing=false;render()},restore,setTheme:name=>{S.mode=name;render()},version:'1.0'};
+render();requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
