@@ -1,0 +1,41 @@
+// I-13 HELLO WORLD / RGB-DOT : numerical source specification
+// Canonical reference: DavidWise01/I13-H1.1 / TRUNK.md
+// "I" is the declaration keyword; <- binds numeric expressions.
+// This file is source-level intent. The GG adapter hand-assembles its
+// bounded semantics into Z80 code; there is NO full I13 compiler on the Game Gear.
+//
+// . = 2^3 software color states from RGB {-1,+1} pairs.
+// bit 0 = R, bit 1 = G, bit 2 = B.
+// - = bit 0 (IN / attenuated); + = bit 1 (OUT / emitted).
+// All pairs remain symbolic/classical, not physical quantum computation.
+
+I RED <- 0
+I GREEN <- 0
+I BLUE <- 0
+I COLOR_STATES <- 2 * 2 * 2
+I DOT <- RED + 2 * GREEN + 4 * BLUE
+I IN <- -1
+I OUT <- 1
+I DIRECTION <- OUT
+
+// Text is encoded as 8x8 Game Gear tile bitmaps in the cartridge generator.
+// The current I13 surface has numeric f64 constants, not a guaranteed
+// byte-string print primitive. Numeric ASCII witnesses for "HELLO WORLD":
+I H <- 72
+I E <- 69
+I L <- 76
+I O <- 79
+I SPACE <- 32
+I W <- 87
+I R <- 82
+I D <- 68
+
+// Z80 mapper:
+//   I COLOR_STATES = 8                         -> 8 palette swatches
+//   I DOT = 0                                  -> RAM C120 (0..7)
+//   I DIRECTION = 1                           -> RAM C121 (OUT)
+//   LEFT IN => (DOT - 1) modulo 8
+//   RIGHT OUT => (DOT + 1) modulo 8
+//   Input button 1 => freeze (no state mutation)
+//   dot palette = LUT[DOT] through VDP CRAM index 9
+//   HELLO WORLD glyphs -> VDP Mode 4 nametable
