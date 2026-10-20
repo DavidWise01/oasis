@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b13">
+<title>FIVE PULSARS v8 · TORQUE EXCHANGE / COAXIAL SUN</title>
+<style>
+:root{color-scheme:dark;--bg:#050a12;--card:#0b1725;--card2:#0a1421;--edge:#324d61;--text:#e4f4fa;--muted:#8daeba;--gold:#f7cf82;--green:#67fbb0;--red:#ff7480;--blue:#6fbaff;--purple:#b68bff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -5%,#223a4c,#0a1221 39%,#040910 88%);color:var(--text);font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}
+.wrap{max-width:1560px;margin:auto;padding:20px 18px 28px}header{margin:0 0 15px}h1{margin:1px 0 3px;font:500 clamp(24px,3vw,37px) Georgia,serif;letter-spacing:.11em;color:#fff1d1;text-shadow:0 0 32px #ffcc8850}header p{margin:0;color:#9ab8c6}.eyebrow{color:var(--gold);font-size:10px;letter-spacing:.22em}main{display:grid;grid-template-columns:minmax(0,1fr) 385px;gap:14px;align-items:start}.box{border:1px solid var(--edge);border-radius:13px;background:linear-gradient(150deg,#102037dd,#090e19f5);box-shadow:0 22px 60px #0008;min-width:0;overflow:hidden}.visual{padding:13px}.visual canvas{width:100%;height:auto;aspect-ratio:1200/770;display:block;border:1px solid #49687b;border-radius:10px;background:#060e1c}.ctrlbar{display:flex;gap:7px;flex-wrap:wrap;padding:11px 0 5px}.ctrlbar button,.ctrlbar select{flex:0 0 auto}button,select,input{font:inherit}button,select{background:linear-gradient(#213549,#122236);border:1px solid #4d7084;border-radius:8px;padding:8px 10px;color:#e7f7ff;cursor:pointer}button:hover{background:#2a4559}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #caffbd;outline-offset:2px}button.special{background:linear-gradient(#6a4b2b,#372a1d);border-color:#d0aa70;color:#fff4df}.panel{padding:14px}.panel+.panel{border-top:1px solid #33475a}.sidebar .box{margin-bottom:13px}.h{font:500 16px Georgia,serif;letter-spacing:.06em;color:#f6d9a1;margin:0 0 9px}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.metric{padding:8px;background:#071421;border:1px solid #304b59;border-radius:8px;min-width:0}.metric small{display:block;color:#8eabb8;font-size:10px}.metric b{font-size:18px;color:#e8f7ff;display:block}.metric.status b{font-size:14px;color:#f6dc9e}.metric strong{font-weight:400;color:#9db4c0;font-size:10px}.sliderline{display:grid;grid-template-columns:34px 1fr 68px;gap:9px;align-items:center;margin:7px 0}.sliderline label{font-weight:700;text-align:center;border-radius:5px;padding:4px;color:#071321}.sliderline input{width:100%;accent-color:var(--gold)}.sliderline output{text-align:right;color:#f9e2b6}.tag{border-radius:5px;background:#213447;border:1px solid #42607b;padding:3px 6px;font-size:11px;color:#cae8f0;white-space:nowrap}.small{font-size:11px;color:var(--muted)}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.swatches{display:flex;gap:5px;flex-wrap:wrap}.swatches span{padding:3px 7px;border-radius:6px;border:1px solid #31495e}.readout{margin-top:11px;padding:11px 12px;background:#07141d;border:1px solid #2f5564;border-radius:9px}pre{font:12px/1.27 ui-monospace,Consolas,monospace;white-space:pre;overflow:auto;margin:0;color:#bfeadd}#asciiFrame{max-width:100%}.footer{display:flex;gap:10px;flex-wrap:wrap;padding:11px 13px;background:#09131d;border-top:1px solid #304959;font-size:10px;color:#96bbce}p.note{font-size:11px;color:#a1b2bb;margin:7px 0 0}.progress{height:8px;background:#142436;border:1px solid #3e5b70;border-radius:6px;overflow:hidden;margin-top:10px}.progress>div{width:0%;height:100%;background:linear-gradient(90deg,#83cfff,#8ef6bd,#eac899)}.toolbar-extra{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.toolbar-extra button{flex:1 1 auto}.sublabel{color:#9eb7c4;letter-spacing:.09em;font-size:10px;margin-top:12px}.source{border:1px solid #33586d;border-radius:8px;padding:8px;color:#e1c994;background:#111f29;margin:8px 0}.pill{padding:2px 6px;border:1px solid #3b5e76;border-radius:12px;color:#d9faff}#artWrap{position:relative}.veil{position:absolute;top:12px;left:12px;background:#07141ab8;border:1px solid #59768888;border-radius:6px;padding:5px 9px;color:#c9e8f8;font-size:10px;letter-spacing:.1em;pointer-events:none}#altPanel{display:none;background:#03131d;min-height:520px;padding:20px;border:1px solid #35556c;border-radius:10px}.waveScope{padding:15px;margin-top:13px;border:1px solid #335269;border-radius:11px;background:linear-gradient(140deg,#0b1a28,#071322)}.waveScope canvas{aspect-ratio:1200/280;height:auto;width:100%;border:1px solid #294759;display:block;background:#050e17}.waveScope h2{color:#f0d69f;font:500 19px Georgia,serif;margin:0 0 8px}.waveScope .small{margin-top:7px}.scopeKey{display:flex;gap:13px;flex-wrap:wrap;margin:7px 0;color:#aec9d7;font-size:11px}.scopeKey b{font-weight:normal}.scopeDot{color:#7ff6cd}.scopeEmit{color:#ffd78b}.scopeReturn{color:#71baff}.scopeError{color:#ff8f9d}#altPanel.show{display:block}#artWrap.hide{display:none}.grounded{color:#9cf2da}.groundFault{color:#ffae8f}.shimmer{color:#edce94}#viewLabel{color:#f4d7a4}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+@media(max-width:1100px){main{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.sidebar .box{margin:0}}
+@media(max-width:650px){.wrap{padding:12px 8px}h1{letter-spacing:.04em}.visual{padding:7px}.sidebar{display:block}.sidebar .box{margin-bottom:11px}.panel{padding:12px}.metric b{font-size:16px}pre{font-size:10px}#altPanel{padding:9px;min-height:420px}.ctrlbar button,.ctrlbar select{padding:7px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body><div class="wrap">
+<header><div class="eyebrow">CONFLUENCE / DOT BOX / FIVE GYRO CROWN</div><h1>FIVE PULSARS · TORQUE-COUPLED SUN</h1><p>Five `[-!+]` emitting pulsars surround the sun · the sixth hex port returns through sea cables · a black-hole ground drains modeled excess stress</p></header>
+<main>
+<section class="box"><div class="visual">
+  <div id="artWrap"><div class="veil" id="viewLabel">STELLAR / AQUATIC · PLANETARY GEAR</div><canvas id="stage" width="1200" height="770" aria-label="Five gyros spinning around a central sun with colored clover petals, stellar skies, and sea cable currents"></canvas></div>
+  <div id="altPanel"><pre id="asciiFrame"></pre></div>
+  <div class="ctrlbar">
+    <button id="play">PAUSE</button><button id="step">STEP</button><button id="pulseReturn">+ ONE CABLE TICK</button><button class="special" id="lock">RESTORE 0 LOCK</button><button id="drift">PERTURB Z +45°</button><button id="weak">WEAKEN PURPLE</button><button id="sweep">NEXT 4⁴ STATE</button>
+    <select id="mode" aria-label="Rendering theme"><option value="hybrid">AS ABOVE / AS BELOW</option><option value="stellar">STELLAR SUN</option><option value="aquatic">AQUATIC CABLE</option><option value="atomic">ATOMIC CLOVER</option></select>
+    <button id="view">ASCII</button><button id="saveTXT">TXT</button><button id="savePNG">PNG</button>
+  </div>
+  <div class="footer"><span>G0 SUN . → FIVE [-!+] PULSARS → 4⁴ = 256 COLORS → BLACK-HOLE GROUND</span><span id="cycleText">PERIOD 1 · FOUR ROTOR TURNS</span><span>HEX: PULSARS CCW · SUN / BEARING COUNTERSPIN · BLACK HOLE BELOW</span></div>
+  <div class="progress"><div id="cycleProgress"></div></div>
+  <div class="waveScope">
+   <h2>SUN / BEARING · TORQUE / WORK / GROUND RESPONSE</h2>
+   <div class="scopeKey"><b class="scopeEmit">━ FIVE-PULSAR EMISSION</b><b class="scopeReturn">━ SEA RETURN LIGHT</b><b class="scopeError">━ SUN STRESS (GROUNDED)</b><b class="scopeDot">● ZERO REFERENCE</b></div>
+   <canvas id="scope" width="1200" height="280" aria-label="Real five gyro output, delayed return emission, and combined center stress over a cycle"></canvas>
+   <h2 style="margin-top:18px">COAXIAL TORQUE / ROTOR VELOCITIES</h2>
+   <div class="scopeKey"><b style="color:#9ee9ff">━ RING RATE</b><b style="color:#ffd78b">━ SUN RATE</b><b style="color:#ff91a7">━ COMMON DRIFT</b><b style="color:#9bf1c2">━ COUNTERSPIN ERROR</b></div>
+   <canvas id="torqueScope" width="1200" height="250" aria-label="Modeled time history of ring and sun rates with common drift and counterspin error"></canvas>
+   <div class="small">This ledger shows powered active torque and separately modeled damping; equal-and-opposite internal torque conserves the two-rotor angular momentum until the ground receives it.</div>
+   <div class="small">A sampled one-cycle trace of the actual model, not decorative audio. A zero return vector and nonzero emission can coexist. A disabled or undersized ground reveals return-channel flare stress; relocking also restores balance.</div>
+  </div>
+</div></section>
+<aside class="sidebar">
+ <div class="box"><div class="panel">
+  <h2 class="h">ZERO STABILITY · WITNESS</h2><div class="source">{{ v:0 &nbsp; w:0 &nbsp; x:360 &nbsp; y:360 &nbsp; z:720 }}</div>
+  <div class="metrics">
+   <div class="metric"><small>CENTER RESIDUAL</small><b id="residual">0.0000</b><strong>zero = ideal symbolic lock</strong></div>
+   <div class="metric"><small>CONTAINMENT</small><b id="containment">1.000</b><strong>1 / (1 + 2R)</strong></div>
+   <div class="metric"><small>LIGHT EMISSION</small><b id="emission">2.000</b><strong>nonzero when centered</strong></div>
+   <div class="metric"><small>4⁴ STRENGTH STATE</small><b id="mask">255 / 255</b><strong>base-4 {G,R,B,P}</strong></div>
+   <div class="metric"><small>XY / Z MISMATCH</small><b id="coupling">0 / 0</b><strong>phase difference not torque</strong></div>
+   <div class="metric status"><small>CORE EVENT</small><b id="event">0 · LOCKED</b><strong id="eventDetail">balanced but emitting</strong></div>
+  </div></div></div>
+ <div class="box"><div class="panel">
+  <div class="panelhead"><h2 class="h">AQUATIC · RETURN FIELD</h2><span class="tag">4 DELAYED PORTS → DOT</span></div>
+  <div class="small">A second, measured circuit. Four emitted complex signals enter a matched sea-cable delay line and return to the core. The two opposed pairs cancel only when their amplitudes and travel times match.</div>
+  <div class="metrics" style="margin-top:10px">
+   <div class="metric"><small>DELAYED RETURN RESIDUAL</small><b id="returnResidual">0.000</b><strong>signed vector, not light level</strong></div>
+   <div class="metric"><small>RETURNED EMISSION</small><b id="returnEnergy">0.000</b><strong>nonnegative output</strong></div>
+   <div class="metric"><small>SUN RESIDUAL AFTER GROUND</small><b id="combinedResidual">0.000</b><strong>after capacity-limited sink</strong></div>
+   <div class="metric status"><small>SEA-CABLE STATUS</small><b id="cableEvent">CALIBRATING</b><strong id="cableWitness">round-trip ticks</strong></div>
+  </div>
+  <div class="toolbar-extra" style="margin-top:9px"><button id="toggleCoupling">RETURN COUPLED</button><button id="breakCable">DELAY PURPLE +8</button><button id="lockCable">RELOCK CABLES</button></div>
+  <div class="sublabel">ALL FOUR CABLES / COMMON DELAY (TICKS)</div><div class="sliderline"><label style="background:#74c8de">4→</label><input type="range" id="delayAll" min="1" max="16" step="1" value="8"><output id="delayAllOut">8 t</output></div>
+  <div class="sublabel">PURPLE CABLE / EXTRA DELAY</div><div class="sliderline"><label style="background:var(--purple)">P↻</label><input type="range" id="delayPurple" min="0" max="16" step="1" value="0"><output id="delayPurpleOut">0 t</output></div>
+  <div class="sublabel">RETURN COUPLING GAIN</div><div class="sliderline"><label style="background:#d9b575">K</label><input type="range" id="returnGain" min="0" max="1" step="0.05" value="0.85"><output id="returnGainOut">0.85</output></div>
+  <div class="small">Default: same 8-tick delay, gain 0.85, attenuation 0.90. A mismatch in only the purple cable produces an actual delayed return residual, which participates in the flare threshold. Changes are deterministic, not random.</div>
+ </div></div>
+ <div class="box"><div class="panel" id="bearingPanel">
+  <div class="panelhead"><h2 class="h">SUN / CW RING · REACTION TORQUE</h2><span class="tag">ACTIVE DRIVE + GROUND RESPONSE</span></div>
+  <div class="small">Five pulsars + hex carrier spin CCW. The ring rotates CW around the sun, while the sun's own rotor turns CCW. The ring and sun exchange equal-and-opposite modeled torque. The powered actuator supplies or recovers work; the ground removes shared drift. Neither rotation generates gravity.</div>
+  <div class="metrics" style="margin-top:10px">
+   <div class="metric"><small>1g-EQUIVALENT BALANCE</small><b id="gEquivalent">1.000 g*</b><strong>*dimensionless lock proxy</strong></div>
+   <div class="metric status"><small>BEARING STATUS</small><b id="bearingStatus">1g* LOCKED</b><strong>ring + carrier cancel in model</strong></div>
+   <div class="metric"><small>CARRIER · CCW</small><b id="carrierSpeed">+1.000</b><strong>29.75 km/s label; normalized spin</strong></div>
+   <div class="metric"><small>CENTER RING · CW</small><b id="ringSpeed">−1.000</b><strong>negative = clockwise in physics convention</strong></div>
+   <div class="metric"><small>SUN ROTOR · CCW</small><b id="sunSpeed">+1.000</b><strong>positive = counterclockwise</strong></div>
+   <div class="metric"><small>COUNTERSPIN ERROR</small><b id="bearingError">0.000</b><strong>|sun − ring − 2| + 2|common drift|</strong></div>
+  </div>
+  <div class="toolbar-extra" style="margin-top:10px">
+   <button id="bearingRelease">START FROM REST</button>
+   <button id="bearingKick">KICK RING (+0.68)</button>
+   <button id="bearingLock">RELOCK TORQUE PAIR</button>
+  </div>
+  <div class="sublabel">POWERED INTERNAL TORQUE GAIN / PER CYCLE</div>
+  <div class="sliderline"><label style="background:#8bcfff">K</label><input id="bearingTau" type="range" min="0" max="5" step="0.1" value="2.5"><output id="bearingTauOut">2.5</output></div>
+  <div class="sublabel">GROUND LOAD / COMMON-DRIFT DAMPING</div>
+  <div class="sliderline"><label style="background:#83ebd8">G</label><input id="bearingGround" type="range" min="0" max="5" step="0.1" value="1.7"><output id="bearingGroundOut">1.7</output></div>
+  <div class="metrics" style="margin-top:10px">
+   <div class="metric"><small>RING ↔ SUN TORQUE</small><b id="motorTorque">0.000</b><strong>equal and opposite</strong></div>
+   <div class="metric"><small>COMMON ROTOR DRIFT</small><b id="meanDrift">0.000</b><strong>ground unloads mean rate</strong></div>
+   <div class="metric"><small>MOTOR WORK · SIGNED</small><b id="driveWork">0.000</b><strong>active energy supplied/recovered</strong></div>
+   <div class="metric"><small>GROUND DISSIPATION</small><b id="groundHeat">0.000</b><strong>modeled kinetic-energy loss</strong></div>
+   <div class="metric"><small>GROUND REACTION</small><b id="groundMomentum">0.000</b><strong>momentum transfer to reference</strong></div>
+   <div class="metric"><small>LEDGER CLOSURE</small><b id="energyClosure">0.000</b><strong>energy / momentum residual</strong></div>
+  </div>
+  <div class="small">Two equal-inertia normalized rotors exchange opposite torque. Their relative spin can recover using powered torque, but a ring-only kick leaves common angular momentum until the ground is connected. Motor work, kinetic energy and ground dissipation are accounted separately. <strong>1g*</strong> remains a dimensionless lock score, not measured gravity.</div>
+ </div></div>
+ <div class="box"><div class="panel" id="groundPanel">
+  <div class="panelhead"><h2 class="h">BLACK HOLE · MODEL GROUND</h2><span class="tag">SUN → RETURN → SINK</span></div>
+  <div class="small">The five pulsars still ride a CCW carrier labeled <strong>29.75 km/s</strong>. The old free-floating CW satellite has been replaced by a <strong>CW bearing ring around the central sun</strong>. A separate sun rotor turns CCW against that ring. The bearing responds toward signed counterspin instead of holding a hard-coded extra satellite. The <strong>1g-equivalent</strong> reading is a dimensionless balance indicator, not actual gravitational acceleration.</div>
+  <div class="metrics" style="margin-top:10px">
+   <div class="metric"><small>FIVE-PULSAR LIGHT</small><b id="pulseEmission">0.000</b><strong>pulses continue at zero</strong></div>
+   <div class="metric"><small>PULSE DEVIATION</small><b id="pulseError">0.000</b><strong>versus locked reference</strong></div>
+   <div class="metric"><small>RAW SUN STRESS</small><b id="rawStress">0.000</b><strong>before ground</strong></div>
+   <div class="metric"><small>BLACK HOLE DRAIN</small><b id="groundDrain">0.000</b><strong>absorbed normalized stress</strong></div>
+   <div class="metric"><small>GROUND-ADJUSTED SUN</small><b id="sunStress">0.000</b><strong>raw less drain</strong></div>
+   <div class="metric status"><small>GROUND STATE</small><b id="groundStatus">GROUNDED</b><strong>capacity-limited</strong></div>
+  </div>
+  <div class="toolbar-extra" style="margin-top:9px"><button id="toggleGround">GROUND CONNECTED</button><button id="demoGround">DELAY P / COMPARE</button><button id="resetGround">RELOCK + GROUND</button></div>
+  <div class="sublabel">BLACK-HOLE ABSORPTION CAPACITY</div><div class="sliderline"><label style="background:#8fe7d5">BH</label><input id="groundCapacity" type="range" min="0" max="1.2" step="0.05" value="0.45"><output id="groundCapacityOut">0.45</output></div>
+  <div class="small">A matched-return, five-pulsar zero still emits light. Disconnect ground after adding purple delay +8 to reveal the stress the sink had drained. The underlying sea-cable math and five-gyro rates remain unchanged.</div>
+ </div></div>
+ <div class="box"><div class="panel">
+  <div class="panelhead"><h2 class="h">FIVE PULSAR ROTOR RATES</h2><span class="tag">DEG / CYCLE</span></div>
+  <div class="small">V and W are engaged zero-turn witnesses. X/Y each make one turn. Z makes two. Y is half a turn opposite X to cancel their phase vectors.</div>
+  <div id="rateRows"></div>
+  <div class="sublabel">FIFTH GYRO CROWN / PHASE OFFSET</div><div class="sliderline"><label style="background:#f9d798">Zφ</label><input type="range" id="zSlip" min="-90" max="90" step="1" value="0"><output id="zSlipOut">0°</output></div>
+  <div class="small">If Z breaks its 2 × X relation, the crown precesses and the center can flare. This is a controllable visualization, not stellar mechanics.</div>
+ </div></div>
+ <div class="box"><div class="panel">
+  <div class="panelhead"><h2 class="h">FOUR COLOR PETALS</h2><span class="tag">4 × 4 × 4 × 4</span></div>
+  <div class="small">Each of G/R/B/P carries level 0–3. The fifth gyro Z watches the paired rotating system rather than introducing a fifth color level.</div>
+  <div id="colorRows"></div>
+  <div class="sublabel">COMPLETE STATE ADDRESS</div><input type="range" id="address" min="0" max="255" step="1" value="255" style="width:100%;accent-color:var(--gold)"><div class="small">Drag to scan all 256 combinations without changing rotor rates.</div>
+ </div></div>
+ <div class="box"><div class="panel"><h2 class="h">ASCII · FIVE-GYRO LEDGER</h2><pre id="ledger"></pre>
+  <p class="note">Symbolic control analogy only: actual pulsars are neutron stars, solar flares arise from magnetic reconnection, and black holes are gravitational objects rather than electrical grounds. No physical confinement mechanism is asserted.</p>
+ </div></div>
+</aside></main></div>
+<script id="gyro-engine">
+/* Deterministic, unit-tested symbolic model. No DOM access in this block. */
+(function(root){'use strict';
+const TAU=2*Math.PI, NAMES=['v','w','x','y','z'], COLORS=['G','R','B','P'];
+const DEFAULT_RATES=Object.freeze({v:0,w:0,x:360,y:360,z:720});
+const wrap=x=>Math.atan2(Math.sin(x),Math.cos(x));
+const clip=(x,a,b)=>Math.max(a,Math.min(b,x));
+const phasor=(a)=>[Math.cos(a),Math.sin(a)];
+const stateId=(levels)=>((levels.G*4+levels.R)*4+levels.B)*4+levels.P;
+const fromId=id=>{let n=clip(Math.round(id),0,255);return {P:n%4,B:Math.floor(n/4)%4,R:Math.floor(n/16)%4,G:Math.floor(n/64)%4};};
+function model(input,cycles){
+ const r=input.rates, l=input.levels, off=(input.zSlip||0)*Math.PI/180,theta=cycles*TAU;
+ const phiX=theta*r.x/360, phiY=theta*r.y/360+Math.PI,phiZ=theta*r.z/360+off;
+ const vx=phasor(phiX),vy=phasor(phiY);
+ const xy=Math.hypot(vx[0]+vy[0],vx[1]+vy[1])/2; // x and y cancel at equal frequency with a half-turn phase offset
+ const crown=Math.abs(Math.sin(wrap(phiZ-2*phiX)/2));
+ const anchors=(Math.abs(r.v)+Math.abs(r.w))/180; // deviations from zero-turn witness references
+ const petals=Math.hypot(l.G-l.B,l.R-l.P)/(3*Math.SQRT2);
+ const residual=Math.hypot(xy,0.85*crown,0.6*anchors,0.9*petals);
+ const excitation=(l.G+l.R+l.B+l.P)/12;
+ const emission=COLORS.reduce((acc,k,i)=>acc+(l[k]/3)*(0.5+0.5*Math.sin(theta+i*Math.PI/2)),0);
+ const containment=1/(1+2*residual);
+ const flare=residual>0.30&&excitation>0.60;
+ const event=flare?'FLARE':residual<1e-7?'0 · LOCKED':residual<0.20?'PRECESSING':'STRAIN';
+ return {residual,containment,emission,excitation,flare,event,xy,crown,anchors,petals,phiX,phiY,phiZ,angles:{v:0,w:0,x:phiX,y:phiY,z:phiZ},id:stateId(l),cycle:cycles,turnBudget:NAMES.reduce((sum,k)=>sum+r[k],0)};
+}
+root.GyroMath={TAU,NAMES,COLORS,DEFAULT_RATES,wrap,clip,phasor,stateId,fromId,model};
+})(window);
+</script>
+<script id="sea-cable-engine">
+/* Second independent model: four signed channels, four return paths.
+   'Sea cable' is a discrete delay-line analogy, not a real underwater network. */
+(function(root){'use strict';
+ const TAU=Math.PI*2, ORDER=['G','R','B','P'];
+ const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+ const defaults=()=>({coupled:true,delay:8,purpleExtra:0,gain:0.85,attenuation:0.90});
+ const delays=c=>({G:c.delay,R:c.delay,B:c.delay,P:c.delay+c.purpleExtra});
+ function sample(input,cycle,config){
+  const c=config||defaults(), r=input.rates,l=input.levels, gyro=root.GyroMath.model(input,cycle);
+  const tick=Math.max(0,Math.floor(cycle*64+1e-9)), d=delays(c);
+  let re=0,im=0,returned=0;const portReturns={};
+  for(let i=0;i<ORDER.length;i++){
+   const k=ORDER[i], delay=d[k],prior=tick-delay,open=prior>=0;
+   // Channels are sampled at the time they ENTERED the delay line;
+   // no channel can return before its full round trip.
+   const theta=TAU*(prior/64)+i*Math.PI/2;
+   const mag=open?(l[k]/3)*c.attenuation:0;
+   const x=mag*Math.cos(theta),y=mag*Math.sin(theta);
+   re+=x;im+=y;
+   const light=mag*(.5+.5*Math.sin(theta));returned+=light;
+   portReturns[k]={x,y,light,delay,inFlight:!open,sourceTick:prior};
+  }
+  const returnResidual=Math.hypot(re,im),contribution=c.coupled?c.gain*returnResidual:0;
+  const combinedResidual=Math.hypot(gyro.residual,contribution);
+  const containment=1/(1+2*combinedResidual);
+  const flare=combinedResidual>0.30&&gyro.excitation>0.60;
+  const stable=combinedResidual<1e-7;
+  const event=flare?'FLARE':stable?'0 · LOCKED':combinedResidual<0.20?'PRECESSING':'STRAIN';
+  return {tick,gyro,portReturns,returned,returnResidual,re,im,contribution,combinedResidual,containment,flare,event,config:{...c},delays:d,ready:tick>=Math.max(...Object.values(d))};
+ }
+ root.SeaCableMath={ORDER,TAU,clamp,defaults,delays,sample};
+})(window);
+</script>
+<script id="pulsar-ground-engine">
+/* Five pulsing emitters + ideal-reference deviation + capacity-limited ground.
+ * Five angular-rate registers are UNMODIFIED: v=w=0, x=y=360, z=720.
+ * Reference pulsars have a separate modulation clock even if angular rate=0.
+ * No literal astrophysical force or gravitational ground is asserted. */
+(function(root){'use strict';
+ const ORDER=['v','z','w','y','x'], GLYPHS=['-','!','+'],TAU=Math.PI*2;
+ const defaults=()=>({connected:true,capacity:0.45,pulseGain:0.25});
+ const baseRates={v:0,w:0,x:360,y:360,z:720};
+ const amplitude=(input,name)=>name==='z'?(input.levels.G+input.levels.R+input.levels.B+input.levels.P)/12:
+   input.levels[({v:'G',w:'R',x:'B',y:'P'})[name]]/3;
+ function pulses(input,cycle){
+  let re=0,im=0,refRe=0,refIm=0,emission=0;
+  const nodes={};
+  for(let i=0;i<ORDER.length;i++){
+   const name=ORDER[i],rate=input.rates[name],base=baseRates[name],level=amplitude(input,name);
+   // Independent emission modulation; 0-degree witnesses still pulse.
+   const turn=cycle*(1+Math.abs(rate)/360)+i/5;
+   const refTurn=cycle*(1+Math.abs(base)/360)+i/5;
+   const theta=TAU*turn,ref=TAU*refTurn;
+   const f=((turn%1)+1)%1,slot=Math.min(2,Math.floor(f*3));
+   const light=level*(0.5+0.5*Math.sin(theta));
+   emission+=light;
+   re+=level*Math.cos(theta);im+=level*Math.sin(theta);
+   refRe+=Math.cos(ref);refIm+=Math.sin(ref);
+   nodes[name]={symbol:GLYPHS[slot],signed:slot-1,light,phase:f,rate,level};
+  }
+  return {nodes,emission,phaseDeviation:Math.hypot(re-refRe,im-refIm)/5,signals:[re,im]};
+ }
+ function sample(input,cycle,cables,ground){
+  const C=cables||root.SeaCableMath.defaults(), B=ground||defaults();
+  const cable=root.SeaCableMath.sample(input,cycle,C),ps=pulses(input,cycle);
+  const pulseStress=B.pulseGain*ps.phaseDeviation;
+  const rawStress=Math.hypot(cable.gyro.residual,cable.contribution,pulseStress);
+  const absorbed=B.connected?Math.min(Math.max(0,B.capacity),rawStress):0;
+  const sunResidual=Math.max(0,rawStress-absorbed);
+  const flare=sunResidual>0.30&&cable.gyro.excitation>0.60;
+  const event=flare?'SOLAR FLARE':sunResidual<1e-8?'0 · GROUNDED':sunResidual<0.2?'CONTAINED':'PRECESSING';
+  return {pulsars:ps,cable,rawStress,absorbed,sunResidual,flare,event,
+   containment:1/(1+2*sunResidual),ground:{...B}};
+ }
+ root.PulsarGroundMath={ORDER,GLYPHS,defaults,baseRates,pulses,sample};
+})(window);
+</script>
+<script id="bearing-engine">
+/* Coaxial powered torque-pair; equal normalized inertias. Closed-form integration.
+   Uses a regulated internal actuator (not passive gravity), plus an optional
+   momentum sink. Rates are signed turns/model-cycle. No actual g inferred. */
+(function(root){'use strict';
+ const TAU=2*Math.PI, CARRIER=1;
+ const defaults=()=>({epoch:0,ringRate0:-1,sunRate0:1,ringAngle0:0,sunAngle0:0,
+   gain:2.5,groundGain:1.7,groundConnected:true,
+   historyWork:0,historyHeat:0,historyGroundMomentum:0,historyImpulse:0,
+   historyEnergy0:1,historyAngular0:0});
+ function sample(time,config,stress=0){
+  const c=config||defaults(),dt=Math.max(0,time-c.epoch);
+  const k=Math.max(0,Number(c.gain)||0), g=c.groundConnected?Math.max(0,Number(c.groundGain)||0):0;
+  const d0=c.sunRate0-c.ringRate0,m0=(c.sunRate0+c.ringRate0)/2;
+  const eD=Math.exp(-2*k*dt),eM=Math.exp(-g*dt);
+  const d=2+(d0-2)*eD,m=m0*eM;
+  const ringRate=m-d/2,sunRate=m+d/2;
+  const di=2*dt+(k>0?(d0-2)*(-Math.expm1(-2*k*dt))/(2*k):(d0-2)*dt);
+  const mi=g>0?m0*(-Math.expm1(-g*dt))/g:m0*dt;
+  const ringAngle=c.ringAngle0+TAU*(mi-di/2);
+  const sunAngle=c.sunAngle0+TAU*(mi+di/2);
+  const torque=k*(d-2),groundTorque=-g*m;
+  const driveWork=(c.historyWork||0)+(d*d-d0*d0)/4;
+  const groundHeat=(c.historyHeat||0)+m0*m0*(1-eM*eM);
+  const groundMomentum=(c.historyGroundMomentum||0)+2*(m0-m);
+  const exchangeImpulse=(c.historyImpulse||0)+(d0-d)/2;
+  const kinetic=m*m+d*d/4;
+  const startEnergy=c.historyEnergy0??(m0*m0+d0*d0/4);
+  const startAngular=c.historyAngular0??(2*m0);
+  const energyResidual=kinetic+groundHeat-startEnergy-driveWork;
+  const momentumResidual=ringRate+sunRate+groundMomentum-startAngular;
+  const counterspinError=Math.abs(d-2),commonDrift=m;
+  const error=counterspinError+2*Math.abs(commonDrift);
+  const totalError=error+.75*Math.max(0,stress);
+  const gEquivalent=1/(1+totalError);
+  return {carrierRate:CARRIER,ringRate,sunRate,ringAngle,sunAngle,torque,groundTorque,
+   kinetic,driveWork,groundHeat,groundMomentum,exchangeImpulse,energyResidual,momentumResidual,
+   counterspinError,commonDrift,error,stress,totalError,gEquivalent,
+   locked:gEquivalent>=.98,gain:k,groundGain:g,groundConnected:!!c.groundConnected,dt};
+ }
+ function anchor(previous,time,next={}){
+  const old=sample(time,previous);
+  const ringRate0=next.ringRate0??old.ringRate,sunRate0=next.sunRate0??old.sunRate;
+  const m=(ringRate0+sunRate0)/2,d=sunRate0-ringRate0;
+  const isJump=('ringRate0' in next)||('sunRate0' in next);
+  const work0=isJump?0:old.driveWork,heat0=isJump?0:old.groundHeat;
+  // A manual kick introduces external impulse/energy; reset accounting
+  // to the new event state rather than assigning kick energy to the motor.
+  return {...previous,...next,epoch:time,ringAngle0:old.ringAngle,sunAngle0:old.sunAngle,
+   ringRate0,sunRate0,historyWork:work0,historyHeat:heat0,
+   historyGroundMomentum:isJump?0:old.groundMomentum,
+   historyImpulse:isJump?0:old.exchangeImpulse,
+   historyEnergy0:isJump?(m*m+d*d/4):(old.kinetic+old.groundHeat-old.driveWork),
+   historyAngular0:isJump?(2*m):(old.ringRate+old.sunRate+old.groundMomentum)};
+ }
+ root.CenterBearingMath={defaults,sample,anchor};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script>
+(()=>{'use strict';
+const M=window.GyroMath,SEA=window.SeaCableMath,PG=window.PulsarGroundMath,BEAR=window.CenterBearingMath,PI=Math.PI,TAU=M.TAU,$=id=>document.getElementById(id),cv=$('stage'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+const scope=$('scope'),sctx=scope.getContext('2d'),torqueScope=$('torqueScope'),tctx=torqueScope.getContext('2d');
+const palette={G:'#67fbb0',R:'#ff7480',B:'#6fbaff',P:'#b68bff',z:'#ffd38a',v:'#67fbb0',w:'#ff7480',x:'#6fbaff',y:'#b68bff',ret:'#7af3e0'};
+const defaults=()=>({rates:{...M.DEFAULT_RATES},levels:{G:3,R:3,B:3,P:3},zSlip:0,cycles:0,playing:true,mode:'hybrid',ascii:false});
+let S=defaults(),C=SEA.defaults(),BH=PG.defaults(),BC=BEAR.defaults(),last=null,lastModel=null,lastCable=null,lastGround=null,lastBearing=null,frameCount=0;
+const PLANETARY_SPEED_KMS=29.75, PLANET_CENTER=[600,331], PLANET_RADIUS=279;
+const coords={v:[360,192],z:[600,117],w:[840,192],y:[840,448],ret:[600,565],x:[360,448],core:[600,331],bh:[600,689]};
+const planetaryAngle=()=>-(S.cycles%1)*TAU;
+
+function withPlanetaryRotation(draw){ctx.save();ctx.translate(PLANET_CENTER[0],PLANET_CENTER[1]);ctx.rotate(planetaryAngle());ctx.translate(-PLANET_CENTER[0],-PLANET_CENTER[1]);draw();ctx.restore()}
+const clamp=M.clip;function rgba(hex,a){const v=parseInt(hex.substring(1),16);return `rgba(${(v>>16)&255},${(v>>8)&255},${v&255},${clamp(a,0,1)})`}
+function path(points,color='#d3e7f2',width=1,alpha=1){ctx.save();ctx.strokeStyle=rgba(color,alpha);ctx.lineWidth=width;ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.stroke();ctx.restore()}
+function dot(x,y,r,color,alpha=1){ctx.fillStyle=rgba(color,alpha);ctx.beginPath();ctx.arc(x,y,Math.max(r,0),0,TAU);ctx.fill()}
+function halo(x,y,r,color,alpha=.3){const v=parseInt(color.slice(1),16),cr=(v>>16)&255,cg=(v>>8)&255,cb=v&255;const grad=ctx.createRadialGradient(x,y,1,x,y,r);grad.addColorStop(0,`rgba(${cr},${cg},${cb},${alpha})`);grad.addColorStop(.3,`rgba(${cr},${cg},${cb},${alpha*.4})`);grad.addColorStop(1,`rgba(${cr},${cg},${cb},0)`);ctx.fillStyle=grad;ctx.fillRect(x-r,y-r,2*r,2*r)}
+function text(message,x,y,size=12,color='#b8d0dc',align='center'){ctx.fillStyle=color;ctx.textAlign=align;ctx.font=`${size}px ui-monospace,Consolas,monospace`;ctx.fillText(message,x,y)}
+function bg(m){ctx.fillStyle='#040a13';ctx.fillRect(0,0,W,H);const g=ctx.createLinearGradient(0,0,0,H);if(S.mode==='aquatic'){g.addColorStop(0,'#082034');g.addColorStop(1,'#03141a')}else if(S.mode==='atomic'){g.addColorStop(0,'#140f2b');g.addColorStop(1,'#050814')}else{g.addColorStop(0,'#071125');g.addColorStop(.6,'#101f2b');g.addColorStop(1,'#031923')}ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+ if(S.mode!=='aquatic'){for(let i=0;i<210;i++){const x=(i*197.369+31)%W,y=(i*113.167+13)%H;dot(x,y,(i%8===0?1.45:.7),'#cfeaff',.12+.38*(.5+.5*Math.sin(i*2.3+m.cycle*3)))}}
+ if(S.mode!=='stellar'){ctx.save();for(let i=0;i<12;i++){const y=530+i*19;ctx.beginPath();ctx.lineWidth=1;ctx.strokeStyle=rgba('#68ddff',S.mode==='aquatic'?.24:.10);for(let x=0;x<=W;x+=12){let wave=y+11*Math.sin(x/67+m.cycle*TAU+i*.54);if(x===0)ctx.moveTo(x,wave);else ctx.lineTo(x,wave)}ctx.stroke()}ctx.restore();for(let i=0;i<12;i++){const x=64+i*100;path([[x,525],[x+18,615],[x,740]],'#6ac8e9',1,.10)}}
+ ctx.save();ctx.strokeStyle=rgba('#e0bc7c',.25);ctx.lineWidth=2;for(let j=0;j<3;j++){const xL=15+j*13,xR=W-xL;ctx.beginPath();ctx.moveTo(xL,665);ctx.bezierCurveTo(xL,70,390+j*30,25,600,40+j*16);ctx.bezierCurveTo(810-j*30,25,xR,70,xR,665);ctx.stroke()}ctx.restore();
+ text('STELLULAR · AQUATIC · ATOMIC PLANETARY GEAR',600,37,13,'#dec99b');text('CCW PLANETARY CARRIER  ·  CW CENTRAL RING  ·  CCW SUN ROTOR',600,744,13,'#dfd0a8');
+ ctx.save();ctx.strokeStyle=rgba('#f0d8a2',.12);ctx.setLineDash([10,10]);ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(PLANET_CENTER[0],PLANET_CENTER[1],PLANET_RADIUS,0,TAU);ctx.stroke();ctx.setLineDash([]);text('OUTER CARRIER CCW · 29.75 km/s',PLANET_CENTER[0],PLANET_CENTER[1]-PLANET_RADIUS-11,12,'#edd4a1');ctx.restore();
+}
+function cube(x,y,size,theta,color,kind){ctx.save();ctx.translate(x,y);const c=Math.cos(theta),s=Math.sin(theta);const p=[];for(const [vx,vy,vz] of [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]]){let rx=vx*c-vz*s,rz=vx*s+vz*c;let yy=vy*.88-rz*.43;let zz=vy*.43+rz*.88;p.push([rx*size*(1+.10*zz),yy*size*(1+.10*zz)])}
+ const edges=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+ halo(0,0,size*2,color,.25);ctx.save();ctx.fillStyle=rgba(color,.11);ctx.beginPath();for(const j of [0,1,5,4])ctx.lineTo(...p[j]);ctx.closePath();ctx.fill();ctx.restore();for(const [a,b] of edges)path([p[a],p[b]],color,1.6,.75);dot(0,0,3,'#ffffff',.95);ctx.restore();}
+function pulsar(name,m,p){const [x,y]=coords[name],color=palette[name],a=m.angles[name],turn=S.rates[name],w=p.nodes[name];
+ const R=name==='z'?65:56,haloLevel=.09+w.light*.28;
+ halo(x,y,R*1.8,color,haloLevel);
+ ctx.save();ctx.translate(x,y);ctx.rotate(a);
+ ctx.strokeStyle=rgba(color,.25+.45*w.light);ctx.lineWidth=2.0;
+ ctx.beginPath();ctx.ellipse(0,0,R,R*.42,0,0,TAU);ctx.stroke();
+ ctx.rotate(PI/3);ctx.beginPath();ctx.ellipse(0,0,R*.86,R*.33,0,0,TAU);ctx.stroke();ctx.restore();
+ // Beam sweeping and emitted pulse are separate from the zero-rate witness rotor.
+ const sweep=TAU*w.phase;
+ path([[x,y],[x+Math.cos(sweep)*(R+20),y+Math.sin(sweep)*(R+20)]],color,1.6+3.3*w.light,.25+.75*w.light);
+ cube(x,y,name==='z'?39:34,a*.52,color,name);
+ halo(x,y,28,color,.15+.45*w.light);
+ text(name.toUpperCase()+'  [-!+] → '+w.symbol+'  '+turn+'°',x,y+R+16,12,color);
+ text(name==='z'?'CROWN / DOUBLE RATE':turn===0?'0-TURN / ACTIVE EMITTER':'ROTATING PULSAR',x,y+R+29,10,'#a9bdce');
+}
+
+function drawHexLattice(m,net){
+ const ring=['v','z','w','y','ret','x'];
+ const pts=ring.map(k=>coords[k]);
+ ctx.save();
+ ctx.strokeStyle=rgba('#9fe6d8',.22);ctx.lineWidth=2.1;ctx.beginPath();
+ pts.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.stroke();
+ ctx.setLineDash([7,7]);ctx.strokeStyle=rgba('#cbeee7',.12);ctx.lineWidth=1.2;
+ for(const k of ring){ctx.beginPath();ctx.moveTo(...coords.core);ctx.lineTo(...coords[k]);ctx.stroke();}
+ ctx.setLineDash([]);
+ // moving packet on the hex ring
+ const edges=[]; for(let i=0;i<pts.length;i++) edges.push([pts[i],pts[(i+1)%pts.length]]);
+ const t=(S.cycles%1)*edges.length; const i=Math.floor(t)%edges.length; const frac=t-i;
+ const a=edges[i][0], b=edges[i][1]; const px=a[0]+(b[0]-a[0])*frac, py=a[1]+(b[1]-a[1])*frac;
+ halo(px,py,20,'#9fe6d8',.28); dot(px,py,3.5,'#9fe6d8',.9);
+ ctx.restore();
+ text('FIVE PULSARS · SIXTH RETURN · SUN',600,90,12,'#b8ddd2');text('PLANETARY CARRIER',600,106,10,'#8fb8b1');
+}
+function drawReturnNode(net){
+ const [x,y]=coords.ret, color=palette.ret; const a=net.tick/10;
+ halo(x,y,105,color,.18); ctx.save(); ctx.translate(x,y); ctx.rotate(a);
+ ctx.strokeStyle=rgba(color,.48); ctx.lineWidth=2.5; ctx.beginPath();
+ for(let i=0;i<6;i++){ const q=-Math.PI/2+i*Math.PI/3; const px=Math.cos(q)*52, py=Math.sin(q)*52; if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);} ctx.closePath(); ctx.stroke();
+ ctx.rotate(-a*1.6); ctx.strokeStyle=rgba('#d7fff8',.25); ctx.beginPath(); ctx.arc(0,0,30,0,TAU); ctx.stroke(); ctx.restore();
+ dot(x,y,5,'#ffffff',.95); text('RETURN / AQUATIC NODE',x,y+78,12,color); text(C.coupled?'COUPLED':'BYPASS',x,y+94,10,'#a9bdce');
+}
+function blackHole(s){
+ const [x,y]=coords.bh,active=BH.connected,c=active?'#90e9d8':'#d26e75';
+ // Live drop from return station into sink. Drained stress controls brightness.
+ path([[coords.ret[0],coords.ret[1]+28],[x,y-43]],c,2+8*s.absorbed,.26+Math.min(.7,s.absorbed));
+ halo(x,y,75,c,active?.09+.30*Math.min(1,s.absorbed):.10);
+ ctx.save();ctx.translate(x,y);ctx.rotate(S.cycles*TAU*.7);
+ ctx.strokeStyle=rgba(c,.55+.35*Math.min(1,s.absorbed));ctx.lineWidth=2.5+4*s.absorbed;
+ ctx.beginPath();ctx.ellipse(0,0,51,20,-.22,0,TAU);ctx.stroke();
+ ctx.beginPath();ctx.ellipse(0,0,34,34,0,0,TAU);ctx.stroke();
+ ctx.restore();
+ const core=ctx.createRadialGradient(x-7,y-8,2,x,y,35);core.addColorStop(0,'#020304');core.addColorStop(.68,'#020509');core.addColorStop(1,'#295263');
+ ctx.beginPath();ctx.arc(x,y,32,0,TAU);ctx.fillStyle=core;ctx.fill();
+ text('BLACK HOLE  '+(active?'GROUND':'ISOLATED'),750,695,12,c,'left');
+ text('DRAIN '+s.absorbed.toFixed(3),750,712,11,'#c0e2e4','left');
+}
+function cableWires(m,net){
+ if(S.mode==='stellar')return;
+ const gain=C.coupled?1:.25,cy=coords.ret[1];
+ const targets={G:[coords.v[0]-32,coords.ret[1]-8],R:[coords.w[0]+32,coords.ret[1]-8],B:[coords.x[0]+24,coords.ret[1]+6],P:[coords.y[0]-24,coords.ret[1]+6]};
+ for(const k of SEA.ORDER){const [x,y]=targets[k],p=net.portReturns[k],src=coords[({G:'v',R:'w',B:'x',P:'y'})[k]];
+  const light=Math.min(1,p.light+.16),col=palette[k];
+  // Outgoing cable / return path: different from the decorative ocean lines.
+  path([[src[0],src[1]],[x,y-32],[x,y],[coords.ret[0],coords.ret[1]]],col,1.5+.9*light,.2+gain*.34);
+  const walk=(net.tick%(2*Math.max(1,p.delay)))/(2*Math.max(1,p.delay));
+  const mx=x+(600-x)*walk,my=cy-6*Math.sin(Math.PI*walk);
+  halo(mx,my,21,col,light*.4);dot(mx,my,3.4,col,.6+light*.35);
+  text(k+'  '+p.delay+'t',x,cy+28,11,col);
+ }
+ path([[coords.ret[0],coords.ret[1]],[coords.ret[0],520],[coords.core[0],coords.core[1]+95]],'#8ff1e9',3,.35+gain*.4);
+ const go=net.returnResidual;halo(coords.ret[0],coords.ret[1],35,'#8ff1e9',.11+.3*Math.min(go,1));
+ text(C.coupled?'RETURN → CENTER':'RETURN (DECOUPLED)',coords.ret[0],cy-18,12,'#a4e9e3');
+}
+function links(m){const center=coords.core;for(const name of M.NAMES){const [x,y]=coords[name],color=palette[name];const c=center;path([[x,y],[.55*x+.45*c[0],.55*y+.45*c[1]],c],color,name==='z'?4:2.5,.25+Math.min(.6,m.emission*.17));const orbit=m.cycle*TAU*(name==='z'?2:1)+M.NAMES.indexOf(name);const k=(Math.sin(orbit)+1)/2,mid=[x+(c[0]-x)*k,y+(c[1]-y)*k];halo(...mid,25,color,.15);dot(...mid,3,color,.85)}}
+function sun(m){let [x,y]=coords.core;const bloom=70+m.excitation*42;halo(x,y,240,'#ffb95c',.18+m.excitation*.13);const l=S.levels;const petals=[['G',0,-1],['R',1,0],['B',0,1],['P',-1,0]];
+ for(const [k,dx,dy] of petals){const strength=l[k]/3,t=m.cycle*TAU+(['G','R','B','P'].indexOf(k)*Math.PI/2),pulse=.5+.5*Math.sin(t),rr=21+36*strength+7*pulse,cx=x+dx*(69+30*strength),cy=y+dy*(69+30*strength);halo(cx,cy,rr*2.1,palette[k],.18*strength);ctx.save();ctx.translate(cx,cy);ctx.rotate(Math.atan2(dy,dx));ctx.fillStyle=rgba(palette[k],.14+.16*strength);ctx.strokeStyle=rgba(palette[k],.32+.55*strength);ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(0,0,rr,rr*.75,0,0,TAU);ctx.fill();ctx.stroke();ctx.restore()}
+ const g=ctx.createRadialGradient(x-19,y-23,2,x,y,bloom);g.addColorStop(0,'#ffffff');g.addColorStop(.16,'#fff4b6');g.addColorStop(.52,'#ffbd56');g.addColorStop(.82,'#ba5b35');g.addColorStop(1,rgba('#f97c39',0));ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,bloom,0,TAU);ctx.fill();ctx.strokeStyle=rgba('#ffeeaa',.48);ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,bloom*.78,0,TAU);ctx.stroke();
+ ctx.strokeStyle=rgba('#fff0c0',.45);ctx.lineWidth=1;ctx.strokeRect(x-31,y-31,62,62);text('[ .|.|.|.| ]',x,y+6,13,'#1b2a35');
+ if(m.flare){const phi=m.cableDominant?m.returnAngle:Math.atan2(Math.sin(m.phiZ-2*m.phiX)+.08,Math.cos(m.phiZ-2*m.phiX));ctx.save();ctx.translate(x,y);ctx.rotate(phi);for(let i=0;i<6;i++){ctx.strokeStyle=rgba('#ffd18a',.42-i*.045);ctx.lineWidth=10-i;ctx.beginPath();ctx.moveTo(bloom*.75,0);ctx.bezierCurveTo(bloom+60,-20+8*i,bloom+115,20-6*i,bloom+230+12*i,6*i-10);ctx.stroke()}ctx.restore();}
+ text(m.flare?'SOLAR FLARE / DISCHARGE':m.residual<1e-7?'0 · SUN GROUNDED':'SUN RESIDUAL / CONTAINMENT',x,y+173,15,m.flare?'#ffb47e':'#f7d793');}
+function drawScope(m,n){
+ const c=sctx,w=scope.width,h=scope.height,left=56,right=w-21,top=20,bottom=h-35;
+ c.fillStyle='#050e17';c.fillRect(0,0,w,h);
+ c.font='14px ui-monospace,Consolas,monospace';c.textAlign='left';
+ for(let i=0;i<=4;i++){const val=i*.5,yy=bottom-(val/2.25)*(bottom-top);
+  c.strokeStyle=i===0?'#9dc9ac55':'#2a4b60';c.lineWidth=1;
+  c.beginPath();c.moveTo(left,yy);c.lineTo(right,yy);c.stroke();
+  c.fillStyle='#9cb1bf';c.fillText(val.toFixed(1),10,yy+4)}
+ let start=Math.max(0,S.cycles-1);let samples=[];
+ for(let i=0;i<=128;i++){let t=start+i/128,s=PG.sample(S,t,C,BH);samples.push({t,emit:s.pulsars.emission,return:s.cable.returned,error:s.sunResidual})}
+ const datasets=[['emit','#ffd78b'],['return','#71baff'],['error','#ff8f9d']];
+ for(const [key,color] of datasets){c.beginPath();c.strokeStyle=color;c.lineWidth=2.8;c.shadowColor=color;c.shadowBlur=5;
+  samples.forEach((p,i)=>{let xx=left+(right-left)*i/128,yy=bottom-M.clip(p[key]/2.25,0,1)*(bottom-top);i?c.lineTo(xx,yy):c.moveTo(xx,yy)});
+  c.stroke();c.shadowBlur=0}
+ c.fillStyle='#a9c8cd';c.fillText('T - 1 cycle',left,bottom+21);c.fillText('NOW →',right-70,bottom+21);
+}
+
+function drawTorqueScope(){
+ const c=tctx,w=torqueScope.width,h=torqueScope.height,left=58,right=w-22,top=23,bottom=h-38;
+ c.fillStyle='#050e17';c.fillRect(0,0,w,h);
+ for(let j=-2;j<=2;j++){
+  const yy=top+(2-j)*(bottom-top)/4;
+  c.strokeStyle=j===0?'#6c9aaa':'#263e50';c.lineWidth=1;
+  c.beginPath();c.moveTo(left,yy);c.lineTo(right,yy);c.stroke();
+  c.fillStyle='#8fb3c4';c.textAlign='left';c.font='13px ui-monospace,monospace';c.fillText(String(j),18,yy+4);
+ }
+ const start=Math.max(0,S.cycles-1),sampleCount=128;
+ for(const [key,color] of [['ringRate','#9ee9ff'],['sunRate','#ffd78b'],['commonDrift','#ff91a7'],['counterspinError','#9bf1c2']]){
+  c.beginPath();c.strokeStyle=color;c.lineWidth=2.5;
+  for(let i=0;i<=sampleCount;i++){
+   const b=BEAR.sample(start+i/sampleCount,BC);
+   const y=top+((2-M.clip(b[key],-2,2))/4)*(bottom-top);
+   const x=left+i*(right-left)/sampleCount;
+   if(!i)c.moveTo(x,y);else c.lineTo(x,y);
+  }c.stroke();
+ }
+ c.fillStyle='#99c0c7';c.textAlign='left';c.fillText('ONE MODEL CYCLE →',left,bottom+25);
+}
+function drawCentralBearing(b){
+ const [x,y]=coords.core;
+ // Two coaxial nested gimbal rims, rotating clockwise against the hex carrier.
+ halo(x,y,183,'#86dfff',.13);
+ ctx.save();ctx.translate(x,y);ctx.rotate(-b.ringAngle);
+ for(const [radius,width,opacity] of [[153,7,.8],[126,3,.55]]){
+  ctx.beginPath();ctx.arc(0,0,radius,0,TAU);
+  ctx.strokeStyle=rgba('#8ccfff',opacity);ctx.lineWidth=width;ctx.shadowColor='#68caff';ctx.shadowBlur=15;ctx.stroke();ctx.shadowBlur=0;
+ }
+ for(let i=0;i<16;i++){
+  const angle=i*TAU/16,a=136,bb=153;
+  ctx.beginPath();ctx.moveTo(Math.cos(angle)*a,Math.sin(angle)*a);
+  ctx.lineTo(Math.cos(angle)*bb,Math.sin(angle)*bb);
+  ctx.lineWidth=i%4===0?4:2;ctx.strokeStyle=rgba(i%4===0?'#fff0b3':'#b7edff',.82);ctx.stroke();
+ }
+ ctx.restore();
+ // Sun spins CCW inside the ring; its pointer is not another outside satellite.
+ ctx.save();ctx.translate(x,y);ctx.rotate(-b.sunAngle);
+ ctx.strokeStyle=rgba('#fff3ce',.84);ctx.lineWidth=3;
+ for(let i=0;i<4;i++){
+  const a=i*TAU/4;ctx.beginPath();ctx.moveTo(Math.cos(a)*37,Math.sin(a)*37);
+  ctx.lineTo(Math.cos(a)*67,Math.sin(a)*67);ctx.stroke();
+ }
+ ctx.restore();
+ text('CW RING / CCW SUN',x,y+205,14,'#c6ebfc');
+ text('1g* = '+b.gEquivalent.toFixed(3)+'  ·  '+(b.locked?'BALANCED':'ADJUSTING'),x,y+222,12,b.locked?'#a6f8cb':'#ffca93');
+}
+
+function render(){const g=PG.sample(S,S.cycles,C,BH),m=g.cable.gyro,n=g.cable,bearing=BEAR.sample(S.cycles,BC,g.sunResidual),effective={...m,residual:g.sunResidual,containment:g.containment,flare:g.flare,event:g.event,cableDominant:n.contribution>m.residual,returnAngle:Math.atan2(n.im,n.re)};lastModel=m;lastCable=n;lastGround=g;lastBearing=bearing;drawScope(m,n);drawTorqueScope();bg(m);withPlanetaryRotation(()=>{drawHexLattice(m,n);cableWires(m,n);links(m);drawReturnNode(n);for(const name of M.NAMES)pulsar(name,m,g.pulsars);});sun(effective);drawCentralBearing(bearing);blackHole(g);
+ $('residual').textContent=m.residual.toFixed(4);$('containment').textContent=g.containment.toFixed(3);$('emission').textContent=g.pulsars.emission.toFixed(3);$('coupling').textContent=m.xy.toFixed(3)+' / '+m.crown.toFixed(3);$('mask').textContent=m.id+' / 255';$('event').textContent=g.event;$('eventDetail').textContent=g.flare?'sun stress exceeds ground capacity':g.sunResidual<1e-7?'five pulsars active; sun balanced':'sun retains stress after ground';$('cycleText').textContent='ROTATION CYCLE '+(Math.floor(S.cycles)+1)+' · CARRIER CCW 29.75 km/s · RING CW · SUN CCW · 1g* '+bearing.gEquivalent.toFixed(3);$('cycleProgress').style.width=((S.cycles%1)*100).toFixed(2)+'%';$('viewLabel').textContent=S.mode.toUpperCase()+' · OUTER CCW / CENTRAL RING CW / SUN CCW';
+ for(const key of M.NAMES){$('rate'+key).value=S.rates[key];$('out'+key).textContent=S.rates[key]+'°'}for(const key of M.COLORS){$('color'+key).value=S.levels[key];$('strength'+key).textContent=S.levels[key]}$('zSlip').value=S.zSlip;$('zSlipOut').textContent=(S.zSlip>=0?'+':'')+S.zSlip+'°';$('address').value=m.id;$('mode').value=S.mode;$('play').textContent=S.playing?'PAUSE':'PLAY';$('view').textContent=S.ascii?'GRAPHICS':'ASCII';$('artWrap').classList.toggle('hide',S.ascii);$('altPanel').classList.toggle('show',S.ascii);
+ const l=S.levels,fmt=n=>String(n).padStart(3,' '),ascii=[
+ '        .  FIVE PULSARS / PLANETARY GEAR  .',
+ '              [ z : '+fmt(S.rates.z)+' ]',
+ '       [v:'+fmt(S.rates.v)+']   / \\   [w:'+fmt(S.rates.w)+']',
+ '                \\  |  //',
+ '                 \\ ☼ //',
+ '         [x:'+fmt(S.rates.x)+'] [ret] [y:'+fmt(S.rates.y)+']',
+ '',
+ '          [ G | R | B | P ]',
+ '          [ '+l.G+' | '+l.R+' | '+l.B+' | '+l.P+' ]',
+ '            .|.|.|.|',
+ '',
+ '   X/Y counterphase : '+m.xy.toFixed(4),
+ '   Z / 2X mismatch  : '+m.crown.toFixed(4),
+ '   Anchors V/W      : '+m.anchors.toFixed(4),
+ '   Clover imbalance : '+m.petals.toFixed(4),
+ '   CENTER RESIDUAL  : '+g.sunResidual.toFixed(4),
+ '   EMISSION         : '+m.emission.toFixed(4),
+ '   CORE EVENT       : '+g.event,
+ '   4⁴ / '+m.id+' of 255   Σ = '+m.turnBudget+'°',
+ '',
+ '   STELLAR  ↔  AQUATIC  ↔  ATOMIC',
+ '   zero is phase balance, not no emission'
+ ].join('\n');const netLines=[
+ '','     AQUATIC RECEPTION / FOUR CABLES + HEX RETURN',
+ '  G/R/B/P: '+SEA.ORDER.map(k=>n.delays[k]+'t').join(' / '),
+ '  RETURN FLUX  : '+n.returned.toFixed(4),
+ '  RETURN ERROR : '+n.returnResidual.toFixed(4),
+ '  NET DOT ERROR: '+n.combinedResidual.toFixed(4),
+ '  SEA STATUS   : '+(n.ready?'RESPONSE LIVE':'IN FLIGHT')+(C.coupled?' / COUPLED':' / DECOUPLED'),
+ '  '+(n.flare?'!! RETURN STRESS / FLARE':'.. .|.|.|.| RETURN STABLE'),
+ ].join('\n');
+ const extras=['','   FIVE PULSARS  [-!+] :: '+PG.ORDER.map(k=>k.toUpperCase()+g.pulsars.nodes[k].symbol).join('  '),
+ '   PULSAR LIGHT : '+g.pulsars.emission.toFixed(4),
+ '   PULSE DRIFT  : '+g.pulsars.phaseDeviation.toFixed(4),
+ '   RAW SUN LOAD : '+g.rawStress.toFixed(4),
+ '   BLACK HOLE   : '+(BH.connected?'CONNECTED':'ISOLATED')+' / DRAIN '+g.absorbed.toFixed(4),
+ '   SUN STRESS   : '+g.sunResidual.toFixed(4)+' / '+g.event,
+ '   HEX: V - Z - W - Y - RETURN - X - V',
+ '   BELOW: BLACK HOLE GROUND',
+ '   CARRIER: CCW '+PLANETARY_SPEED_KMS.toFixed(2)+' km/s',
+ '   ORBIT   : '+(((-planetaryAngle())/TAU)*360).toFixed(1)+'°',
+ '   INNER RING CW : '+bearing.ringRate.toFixed(4)+' turns/cycle',
+ '   SUN SPIN CCW  : '+bearing.sunRate.toFixed(4)+' turns/cycle',
+ '   1g* BALANCE   : '+bearing.gEquivalent.toFixed(4)+' (proxy)',
+ '   BEARING ERROR : '+bearing.error.toFixed(4), '   REACTION TORQUE: '+bearing.torque.toFixed(4)+' / '+(-bearing.torque).toFixed(4), '   COMMON DRIFT   : '+bearing.commonDrift.toFixed(4), '   MOTOR WORK     : '+bearing.driveWork.toFixed(4), '   GROUND HEAT    : '+bearing.groundHeat.toFixed(4), '   GROUND MOMENTUM: '+bearing.groundMomentum.toFixed(4), '   LEDGER CLOSURE : '+bearing.energyResidual.toExponential(1)+' / '+bearing.momentumResidual.toExponential(1)];
+ $('ledger').textContent=ascii+netLines+'\n'+extras.join('\n');$('asciiFrame').textContent=$('ledger').textContent;
+ $('returnResidual').textContent=n.returnResidual.toFixed(4);$('returnEnergy').textContent=n.returned.toFixed(4);
+ $('combinedResidual').textContent=g.sunResidual.toFixed(4);
+ $('cableEvent').textContent=g.flare?'SUN FLARE':n.ready?'SIGNAL RETURNED':'IN FLIGHT';
+ $('cableWitness').textContent='tick '+n.tick+' · '+(C.coupled?'coupled':'bypassed');
+ $('delayAll').value=C.delay;$('delayAllOut').textContent=C.delay+' t';
+ $('delayPurple').value=C.purpleExtra;$('delayPurpleOut').textContent=C.purpleExtra+' t';
+ $('returnGain').value=C.gain;$('returnGainOut').textContent=C.gain.toFixed(2);
+ $('toggleCoupling').textContent=C.coupled?'RETURN COUPLED':'RETURN BYPASSED';
+ $('pulseEmission').textContent=g.pulsars.emission.toFixed(3);$('pulseError').textContent=g.pulsars.phaseDeviation.toFixed(3);
+ $('rawStress').textContent=g.rawStress.toFixed(3);$('groundDrain').textContent=g.absorbed.toFixed(3);
+ $('sunStress').textContent=g.sunResidual.toFixed(3);$('groundStatus').textContent=BH.connected?'CONNECTED':'DISCONNECTED';
+ $('groundStatus').className=BH.connected?'grounded':'groundFault';$('toggleGround').textContent=BH.connected?'GROUND CONNECTED':'GROUND DISCONNECTED';
+ $('groundCapacity').value=BH.capacity;$('groundCapacityOut').textContent=BH.capacity.toFixed(2);
+ $('gEquivalent').textContent=bearing.gEquivalent.toFixed(3)+' g*';
+ $('bearingStatus').textContent=bearing.locked?'1g* LOCKED':bearing.gain===0?'DRIVE OFF':'EXCHANGING TORQUE';
+ $('carrierSpeed').textContent='+'+bearing.carrierRate.toFixed(3);
+ $('ringSpeed').textContent=bearing.ringRate.toFixed(3);
+ $('sunSpeed').textContent=(bearing.sunRate>=0?'+':'')+bearing.sunRate.toFixed(3);
+ $('bearingError').textContent=bearing.error.toFixed(4);
+ $('bearingTau').value=BC.gain;$('bearingTauOut').textContent=BC.gain.toFixed(1);$('bearingGround').value=BC.groundGain;$('bearingGroundOut').textContent=BC.groundGain.toFixed(1);$('motorTorque').textContent=bearing.torque.toFixed(3);$('meanDrift').textContent=bearing.commonDrift.toFixed(4);$('driveWork').textContent=bearing.driveWork.toFixed(4);$('groundHeat').textContent=bearing.groundHeat.toFixed(4);$('groundMomentum').textContent=bearing.groundMomentum.toFixed(4);$('energyClosure').textContent=Math.max(Math.abs(bearing.energyResidual),Math.abs(bearing.momentumResidual)).toExponential(1);
+
+}
+function setRates(key,value){S.rates[key]=Number(value);render()};function setLevel(key,value){S.levels[key]=Math.max(0,Math.min(3,Number(value)));render()};function restore(){S=defaults();C=SEA.defaults();BH=PG.defaults();BC=BEAR.defaults();S.cycles=0;S.playing=false;last=null;render()};
+for(const name of M.NAMES){let max=name==='z'?840:name==='x'||name==='y'?480:90,min=name==='z'?600:name==='x'||name==='y'?240:-90,def=M.DEFAULT_RATES[name];let row=document.createElement('div');row.className='sliderline';let label=document.createElement('label');label.textContent=name.toUpperCase();label.style.background=palette[name];let slider=document.createElement('input');slider.type='range';slider.id='rate'+name;slider.min=min;slider.max=max;slider.step=1;slider.value=def;slider.setAttribute('aria-label',name+' degrees per cycle');let out=document.createElement('output');out.id='out'+name;out.textContent=def+'°';slider.addEventListener('input',()=>setRates(name,slider.value));row.append(label,slider,out);$('rateRows').append(row)}
+for(const name of M.COLORS){let row=document.createElement('div');row.className='sliderline';let label=document.createElement('label');label.textContent=name;label.style.background=palette[name];let slider=document.createElement('input');slider.type='range';slider.id='color'+name;slider.min=0;slider.max=3;slider.step=1;slider.value=3;slider.setAttribute('aria-label',name+' brace strength');let out=document.createElement('output');out.id='strength'+name;out.textContent='3';slider.addEventListener('input',()=>setLevel(name,slider.value));row.append(label,slider,out);$('colorRows').append(row)}
+$('toggleGround').addEventListener('click',()=>{BC=BEAR.anchor(BC,S.cycles,{groundConnected:!BH.connected});BH.connected=!BH.connected;render()});
+$('groundCapacity').addEventListener('input',e=>{BH.capacity=Number(e.target.value);render()});
+$('bearingRelease').addEventListener('click',()=>{BC=BEAR.anchor(BC,S.cycles,{ringRate0:0,sunRate0:0});render()});
+$('bearingKick').addEventListener('click',()=>{const b=BEAR.sample(S.cycles,BC);BC=BEAR.anchor(BC,S.cycles,{ringRate0:b.ringRate+.68,sunRate0:b.sunRate-.28});render()});
+$('bearingLock').addEventListener('click',()=>{BC=BEAR.anchor(BC,S.cycles,{ringRate0:-1,sunRate0:1});render()});
+$('bearingTau').addEventListener('input',e=>{BC=BEAR.anchor(BC,S.cycles,{gain:Number(e.target.value)});render()});$('bearingGround').addEventListener('input',e=>{BC=BEAR.anchor(BC,S.cycles,{groundGain:Number(e.target.value)});render()});
+
+$('demoGround').addEventListener('click',()=>{S.playing=false;S.cycles=Math.max(S.cycles,1.25);C.purpleExtra=8;render()});
+$('resetGround').addEventListener('click',()=>{C.purpleExtra=0;BC=BEAR.anchor(BC,S.cycles,{groundConnected:true});BH.connected=true;BH.capacity=0.45;S.zSlip=0;render()});
+$('toggleCoupling').addEventListener('click',()=>{C.coupled=!C.coupled;render()});
+$('breakCable').addEventListener('click',()=>{C.purpleExtra=8;S.playing=false;S.cycles=Math.max(S.cycles,1.25);render()});
+$('lockCable').addEventListener('click',()=>{C.purpleExtra=0;render()});
+$('delayAll').addEventListener('input',e=>{C.delay=+e.target.value;render()});
+$('delayPurple').addEventListener('input',e=>{C.purpleExtra=+e.target.value;render()});
+$('returnGain').addEventListener('input',e=>{C.gain=+e.target.value;render()});
+$('pulseReturn').addEventListener('click',()=>{S.playing=false;S.cycles+=1/64;render()});
+$('play').addEventListener('click',()=>{S.playing=!S.playing;last=null;render()});$('step').addEventListener('click',()=>{S.playing=false;S.cycles+=.03125;render()});$('lock').addEventListener('click',restore);$('drift').addEventListener('click',()=>{S.zSlip=45;render()});$('weak').addEventListener('click',()=>{S.levels.P=1;render()});$('sweep').addEventListener('click',()=>{S.levels=M.fromId((M.stateId(S.levels)+1)%256);render()});$('mode').addEventListener('change',e=>{S.mode=e.target.value;render()});$('view').addEventListener('click',()=>{S.ascii=!S.ascii;render()});$('zSlip').addEventListener('input',e=>{S.zSlip=+e.target.value;render()});$('address').addEventListener('input',e=>{S.levels=M.fromId(+e.target.value);render()});
+function download(text,filename,mime){const blob=new Blob([text],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('saveTXT').addEventListener('click',()=>download($('ledger').textContent,'five-gyro-crown.txt','text/plain'));$('savePNG').addEventListener('click',()=>cv.toBlob(b=>{if(!b)return;const url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download='five-gyro-crown.png';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png'));
+function frame(ts){if(last!==null&&S.playing)S.cycles+=Math.min(90,Math.max(0,ts-last))/6200;last=ts;frameCount++;render();requestAnimationFrame(frame)}
+window.FiveGyro={state:()=>JSON.parse(JSON.stringify(S)),cable:()=>JSON.parse(JSON.stringify(C)),cableMetrics:()=>({...lastCable}),groundMetrics:()=>({...lastGround}),pulsars:()=>({...lastGround?.pulsars}),metrics:()=>({...lastModel}),setRates,setLevel,setSlip:deg=>{S.zSlip=+deg;render()},setCycles:n=>{S.cycles=+n;S.playing=false;render()},restore,setTheme:name=>{S.mode=name;render()},setCable:values=>{Object.assign(C,values);render()},setGround:values=>{Object.assign(BH,values);render()},bearing:()=>({...lastBearing}),setBearing:values=>{BC=BEAR.anchor(BC,S.cycles,values);render()},version:'8.0-torque-exchange-active-rotors-ground-ledger'};
+render();requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
