@@ -1,0 +1,40 @@
+DOT :: BOX :: DIFFUSION / ASCII GENERATIONS
+=========================================
+
+The box is the dot. The dot is the box. The unfolding is the diffusion.
+
+G0 / one dot
+    .
+
+G1 / one box is four ordered dots
+    +-------------+
+    | .|.|.|.|     |
+    +-------------+
+
+G2 / four boxes inside a higher-order dot
+    +----------------------------------------------------------+
+    | +-----------+ +-----------+ +-----------+ +-----------+ |
+    | | .|.|.|.|   | | .|.|.|.|   | | .|.|.|.|   | | .|.|.|.|   | |
+    | +-----------+ +-----------+ +-----------+ +-----------+ |
+    +----------------------------------------------------------+
+
+G3 / 16 four-dot boxes, 64 leaf dots
+    00  [.|.|.|.|] [.|.|.|.|] [.|.|.|.|] [.|.|.|.|]
+    01  [.|.|.|.|] [.|.|.|.|] [.|.|.|.|] [.|.|.|.|]
+    02  [.|.|.|.|] [.|.|.|.|] [.|.|.|.|] [.|.|.|.|]
+    03  [.|.|.|.|] [.|.|.|.|] [.|.|.|.|] [.|.|.|.|]
+
+G4: 64 boxes = 256 terminal dots
+G5: 256 boxes = 1024 terminal dots
+G6: 1024 boxes = 4096 terminal dots
+
+R=1 G=2 B=4   2^3 = 8 states
+. = 000  R = 100  G = 010  Y = 110  B = 001  M = 101  C = 011  W = 111
+
+Example: [ R|G|.|B| ]  folds into  .(W) because 1 | 2 | 0 | 4 = 7
+
+Propagation: each dot keeps its RGB state and ORs input from
+parent, children and adjacent siblings every synchronous hop.
+The last | remains the fourth terminal port, not a ring closure.
+
+This is symbolic/classical graph diffusion, not quantum hardware.
