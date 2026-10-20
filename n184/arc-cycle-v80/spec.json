@@ -1,0 +1,62 @@
+{
+  "schema": "oasis/n184/arc-cycle/v80",
+  "version": "v8.0",
+  "status": "symbolic-360-degree-arc-bubble-phase-cycle",
+  "userRuleLiteral": "one cycle is 2.697x10^-36/360 x 360",
+  "interpretation": "One complete 360-degree phase cycle corresponds to one nominal arc-bubble length; the 360 divisions are internal phase increments.",
+  "dimensions": {
+    "phase": "degree",
+    "arcBubble": "meter",
+    "time": "second"
+  },
+  "nominal": {
+    "userLengthMeters": 2.697e-36,
+    "phaseCycleDegrees": 360,
+    "perDegreeMeters": 7.491666666666667e-39,
+    "fullCycleMeters": 2.697e-36,
+    "formula": "L_nominal(theta)=2.697e-36 m * (theta_deg / 360), for 0<=theta_deg<=360",
+    "label": "user-defined nominal cycle length, not precise Planck-length sixth"
+  },
+  "calibrated": {
+    "origin": "../arc-bubble-v79/spec.json",
+    "planckLengthMeters": 1.616255e-35,
+    "arcBubbleLengthMeters": 2.6937583333333336e-36,
+    "perDegreeMeters": 7.482662037037037e-39,
+    "cyclesPerPlanckLength": 6,
+    "formula": "L_calibrated(theta)=(l_P/6)*(theta_deg/360)",
+    "nominalRelativeDifferencePercent": 0.12033992160889184,
+    "nominalSixCyclesMeters": 1.6182e-35,
+    "nominalSixCyclesDifferenceMeters": 1.9449999999999915e-38,
+    "normalization": "choose calibrated value for exact closure to reference Planck length"
+  },
+  "phaseVsGeometry": {
+    "singleCyclePhaseDegrees": 360,
+    "sixArcDisplaySlots": 6,
+    "displaySlotDegrees": 60,
+    "distinction": "360 degrees is a single bubble's internal phase cycle; 60 degrees is the optional external six-position drawing's slot angle. They are not the same angle.",
+    "ringModelOptional": true
+  },
+  "planckTime": {
+    "from": "../scale-xyz-v78/spec.json",
+    "valueSeconds": 5.391247e-44,
+    "unchanged": true,
+    "phaseCycleDurationSeconds": null,
+    "durationStatus": "unassigned; a spatial cycle parameter does not by itself define elapsed time"
+  },
+  "inherited": {
+    "x": "state",
+    "y": "space",
+    "z": "state+time",
+    "T": "star / plank bubble",
+    "M": "planet / plank foam / Earth",
+    "B": "atom / plank",
+    "sagAClones": 9
+  },
+  "boundaries": [
+    "The nominal 2.697e-36 m differs from the Planck-length/6 calibration by about 0.12034%; it is not an exact rounding of that value to the same significant figures.",
+    "The 360-degree phase rule parameterizes symbolic arc length, not a measured physical 360-degree trajectory or cycle period.",
+    "Six exact calibrated arc bubbles equal one Planck length; six nominal arc bubbles do not equal the CODATA value exactly.",
+    "Planck time remains independent; no rotation speed or seconds per cycle has been supplied.",
+    "Prior v7.9 and physical constants registers remain unchanged."
+  ]
+}
