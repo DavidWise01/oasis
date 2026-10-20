@@ -1,0 +1,75 @@
+{
+  "schema": "oasis/n184/noble-hex/v71",
+  "status": "symbolic-geometric-model",
+  "center": {
+    "symbol": "Nd",
+    "name": "Neodymium",
+    "atomicNumber": 60,
+    "elementClass": "lanthanide",
+    "rootAnchor": 1,
+    "role": "central material / conceptual oscillator",
+    "isNobleGas": false
+  },
+  "perimeter": [
+    {
+      "slot": 0,
+      "angleDeg": -90,
+      "symbol": "He",
+      "name": "Helium",
+      "atomicNumber": 2,
+      "status": "confirmed-noble"
+    },
+    {
+      "slot": 1,
+      "angleDeg": -30,
+      "symbol": "Ne",
+      "name": "Neon",
+      "atomicNumber": 10,
+      "status": "confirmed-noble"
+    },
+    {
+      "slot": 2,
+      "angleDeg": 30,
+      "symbol": "Ar",
+      "name": "Argon",
+      "atomicNumber": 18,
+      "status": "confirmed-noble"
+    },
+    {
+      "slot": 3,
+      "angleDeg": 90,
+      "symbol": "Kr",
+      "name": "Krypton",
+      "atomicNumber": 36,
+      "status": "confirmed-noble"
+    },
+    {
+      "slot": 4,
+      "angleDeg": 150,
+      "symbol": "Xe",
+      "name": "Xenon",
+      "atomicNumber": 54,
+      "status": "confirmed-noble"
+    },
+    {
+      "slot": 5,
+      "angleDeg": 210,
+      "symbol": "N184",
+      "name": "N184 symbolic closure",
+      "atomicNumber": null,
+      "address": 184,
+      "status": "symbolic-closure"
+    }
+  ],
+  "links": {
+    "existingFourWave": "../noble-gas-four-wave-v70/",
+    "confluence": "../integration-v41/"
+  },
+  "notes": [
+    "Six perimeter vertices form the regular hexagon around an Nd center; the scalar root remains 1.",
+    "Five confirmed noble gases remain on the ring; Nd is a real rare-earth element, not a noble gas.",
+    "N184 means a symbolic address/closure, not a confirmed element or an experimentally established nuclear shell structure.",
+    "Geometry and center response are a visualization hypothesis, not a validated Ice IX/electrum/neodymium composite or dark matter mechanism.",
+    "The previous four-wave cross remains unchanged."
+  ]
+}
