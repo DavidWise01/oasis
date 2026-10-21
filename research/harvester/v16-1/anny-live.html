@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Anny — Harvester journal observer</title><style>body{font:16px system-ui;background:#0c1120;color:#eef4ff;max-width:1050px;margin:30px auto;padding:20px}input,button{font:inherit;padding:10px;border-radius:8px}input{background:#1a2439;color:white;border:1px solid #647797}button{cursor:pointer;background:#273551;color:white;border:1px solid #8699b7}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:20px 0}.band{background:#172139;border:1px solid #5d6982;border-top:5px solid var(--color);border-radius:10px;padding:12px}.slot{padding:9px;margin:6px 0;border-radius:6px;background:#26344f}small{color:#afbed8;display:block;overflow-wrap:anywhere}strong{display:block;overflow-wrap:anywhere}.absent,.missing,.pending,.incomplete{opacity:.65}code{overflow-wrap:anywhere}</style><h1>Anny · Harvester Observer</h1><p>Read-only observation; no transfer, ACK, commit, or release controls.</p><code>{|12|}{|3456|}{|78|}{|910|}{|1112131415||}{|1617|}{|18|}</code><p><label>Transfer ID <input id="id" autocomplete="off" placeholder="transfer ID"/></label> <button id="refresh">Read journal</button></p><p id="status" role="status">Enter a transfer ID and read the browser's IndexedDB journal.</p><main class="grid" id="bands"></main><p><small>Storage: IndexedDBJournalStore('harvester-journal-v16-1'). This page must be served from the same origin as the Harvester using that database. It does not initiate a transfer. This is an observer, not a validator.</small></p><script type="module">
+import {CommitJournal,IndexedDBJournalStore} from './journal.mjs';
+import {ReceiverLedger} from './receiver.mjs';
+import {ANNY_BANDS,readAnny} from './anny-observer.mjs';
+const journal=new CommitJournal(new IndexedDBJournalStore());
+const receiver=new ReceiverLedger(new IndexedDBJournalStore());
+const host=document.getElementById('bands'),status=document.getElementById('status');
+function render(snapshot){
+ host.replaceChildren();
+ for(const band of ANNY_BANDS){const box=document.createElement('section');box.className='band';box.style.setProperty('--color',band.color);
+ const title=document.createElement('h2');title.textContent=band.name+(band.doubleClosure?' · double closure':'');box.append(title);
+ for(const index of band.slots){const data=snapshot.slots[index-1];const el=document.createElement('div');el.className='slot '+data.status;const name=document.createElement('small');name.textContent=index+' · '+data.name;const value=document.createElement('strong');value.textContent=data.value;el.append(name,value);box.append(el)}host.append(box)}
+ status.textContent='Read-only snapshot: '+snapshot.phase;
+}
+document.getElementById('refresh').addEventListener('click',async()=>{
+ const id=document.getElementById('id').value.trim();
+ if(!id){status.textContent='Transfer ID required';return}
+ status.textContent='Reading journal and receiver ledger…';
+ try{render(await readAnny(journal,receiver,id))}catch(e){status.textContent='Read failed: '+e.message}
+});
+</script></html>
