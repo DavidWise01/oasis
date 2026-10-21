@@ -1,0 +1,144 @@
+{
+  "schema": "oasis/n184/hon-boundary-transfer/v95",
+  "version": "v9.5",
+  "objective": "Exercise all five inherited HON color operants at two adjacent root boundaries and enforce an irreversible terminal lid at 366 while preserving canonical 18-site analytical cubit and source registry",
+  "canonicalAddressRange": [
+    1,
+    366
+  ],
+  "roots": [
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "start": 1,
+      "end": 122,
+      "physicalClaim": false
+    },
+    {
+      "symbol": "O",
+      "atomicNumber": 8,
+      "start": 123,
+      "end": 244,
+      "physicalClaim": false
+    },
+    {
+      "symbol": "N",
+      "atomicNumber": 7,
+      "start": 245,
+      "end": 366,
+      "physicalClaim": false
+    }
+  ],
+  "gates": [
+    {
+      "name": "Hydrogen → Oxygen",
+      "from": 122,
+      "to": 123,
+      "source": "H",
+      "target": "O",
+      "cubitFrom": 6,
+      "cubitTo": 7,
+      "type": "transfer"
+    },
+    {
+      "name": "Oxygen → Nitrogen",
+      "from": 244,
+      "to": 245,
+      "source": "O",
+      "target": "N",
+      "cubitFrom": 12,
+      "cubitTo": 13,
+      "type": "transfer"
+    },
+    {
+      "name": "Nitrogen terminal lid",
+      "from": 366,
+      "to": null,
+      "source": "N",
+      "target": null,
+      "cubitFrom": 18,
+      "cubitTo": null,
+      "type": "closed"
+    }
+  ],
+  "operants": [
+    "gravity",
+    "expansion",
+    "compression",
+    "containment",
+    "explosion"
+  ],
+  "transferProtocol": {
+    "ticketIdentity": "from root+address and strength + ordered operator program; immutable while crossing",
+    "liveTransfer": "At real root boundaries only: from address +1, no jumps or wrap. Preserve strength and ordered operants. Rebase target display by evaluating the same operant program against the target's native HSV root seed.",
+    "colorBoundary": "Record outgoing/incoming HSV and hex, wrapped hue discontinuity and RGB Euclidean distance; no claim of optical/physical conservation",
+    "sourceProof": "Require the complete original root color, chosen symbolic strength, unmodified source address, target native root and deterministic operator outputs",
+    "closure": "At 366 every program including zero operators returns closed/no target; do not extend to 367–370 or 1",
+    "forbidden": "No cross-root transfer at interior addresses; no fallback into the 370-source tail; no mutation of existing 366 register",
+    "fidelity": "W/M/S brightness tier retained as an identity label even when explosion increases rendered HSV value"
+  },
+  "programs": {
+    "control": [],
+    "fiveSingleActions": [
+      "gravity",
+      "expansion",
+      "compression",
+      "containment",
+      "explosion"
+    ],
+    "allFive": [
+      "gravity",
+      "expansion",
+      "compression",
+      "containment",
+      "explosion"
+    ],
+    "orderMatters": true
+  },
+  "expected": {
+    "standaloneCases": "3 gates × 3 strengths × 6 programs (identity + five single operants) = 54",
+    "openCases": 36,
+    "closedCases": 18,
+    "stress": "Additional full five-program and reversed-chain cases for all gates and strengths",
+    "cubitPacketSizeSequence": [
+      2,
+      4,
+      2,
+      2,
+      5,
+      2,
+      1
+    ],
+    "doubleSeamAfterSite": 15,
+    "lidSite": 18,
+    "legacySource370Tail": [
+      367,
+      368,
+      369,
+      370
+    ]
+  },
+  "invariants": {
+    "parentCode": "../elemental-hon-color-operants-v94/hon_core.mjs",
+    "canonicalCubit": "{|12|}{|3456|}{|78|}{|910|}{|1112131415||}{|1617|}{|18|}",
+    "previous370AddressesImmutable": true,
+    "quadRealToroidCount": {
+      "A": 0,
+      "B": 3,
+      "C": 0,
+      "D": 0
+    },
+    "historicAdaStart": 1832,
+    "historicToroidalStart": 1970,
+    "symbolicRingArcs": 6,
+    "phaseSteps": 80,
+    "microticks": 240
+  },
+  "limits": [
+    "These are simulated display-color root transitions, not transitions between actual elements, isotopes, particle states or independently measured spectra.",
+    "The five operant display transforms are user-model abstractions; do not identify their HSV functions with real gravitational or nuclear forces.",
+    "Rebasing a source token to the target seed conserves its identity/provenance and strength label, not optical hue, photons, mass or energy.",
+    "The 7 cubit packets and 3 HON roots are separate coordinate systems. The position-15 double pipe is NOT a H/O/N root boundary.",
+    "Address 366 closes the elemental carrier; addresses 367–370 belong only to the prior 370-color index."
+  ]
+}
