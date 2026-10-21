@@ -45,3 +45,14 @@ test('outer operators cannot be mistaken for wavelength bands or flipped polarit
  assert.equal(validateSapphonOuterAnchors([{...voidAnchor,polarity:['+','-']},gravityAnchor]),false);
  assert.equal(validateSapphonOuterAnchors([gravityAnchor,voidAnchor]),false);
 });
+
+test('eighteen distinct Greek epithets across spectral, white and framing registries',()=>{
+ const spectral=SAPPHON_SPECTRUM.flatMap(x=>[x.minus.word,x.plus.word]);
+ const broadband=[SAPPHON_BROADBAND.minus.word,SAPPHON_BROADBAND.plus.word];
+ const anchors=SAPPHON_OUTER_ANCHORS.map(x=>x.greek);
+ const names=[...spectral,...broadband,...anchors];
+ assert.equal(names.length,18);
+ assert.equal(new Set(names).size,18);
+ // The epithets are NOT the 18 transport evidence slots.
+ assert.equal(SAPPHON_SPECTRUM.flatMap(x=>x.slots).length,18);
+});
