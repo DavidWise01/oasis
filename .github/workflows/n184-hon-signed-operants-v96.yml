@@ -1,0 +1,22 @@
+name: N184 HON Signed Operants v96
+on:
+  push:
+    paths:
+      - 'n184/hon-signed-operants-v96/**'
+      - '.github/workflows/n184-hon-signed-operants-v96.yml'
+  workflow_dispatch:
+jobs:
+  seven-operant-transfer-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify five HSV actions plus - debit and + credit, atomic ledger, anti-replay and sealed N366
+        run: |
+          node --check n184/hon-signed-operants-v96/signed_core.mjs
+          node --check n184/hon-signed-operants-v96/test_signed.mjs
+          node n184/hon-signed-operants-v96/test_signed.mjs
