@@ -158,3 +158,11 @@ export function validateSapphonSpectrum(bands = SAPPHON_SPECTRUM) {
   && bands[0].high===750 && bands[6].low===380
   && new Set(labels).size===14;
 }
+
+// White is a broadband mixture, not one monochromatic spectral interval.
+// Retained as the existing Sapphon companion; it does not consume a cubit slot.
+export const SAPPHON_BROADBAND = Object.freeze({
+ color: "White", accent: "#e9f4ff", rangeLabel: "Broadband · no single wavelength",
+ minus: {word:"Λευκός",latin:"Leukos",meaning:"white"},
+ plus: {word:"Σελήνη",latin:"Selene",meaning:"moon"}
+});
