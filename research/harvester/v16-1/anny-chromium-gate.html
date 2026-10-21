@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Harvester Anny — Chromium persistence gate</title>
+<style>body{font:15px system-ui;background:#101827;color:#ecf4ff;margin:2rem auto;max-width:860px;padding:1rem}pre{white-space:pre-wrap;background:#202c40;padding:1rem;border-radius:8px}button{padding:.7rem 1rem} .pass{color:#7befad}.fail{color:#ff8c8c}</style>
+<h1>Harvester v16.1 — Chromium IndexedDB gate</h1>
+<p>Run over localhost or HTTPS in an actual Chromium profile. This harness uses a new isolated database name; it does not modify the production journal.</p>
+<button id="run">Run checks</button><pre id="result" role="status">Not executed</pre>
+<script type="module">
+import {CommitJournal,IndexedDBJournalStore} from './journal.mjs';
+import {ReceiverLedger} from './receiver.mjs';
+import {readAnny} from './anny-observer.mjs';
+const output=document.getElementById('result');const log=[];const assert=(value,msg)=>{if(!value)throw Error(msg)};
+async function check(label,fn){try{await fn();log.push({label,status:'PASS'})}catch(e){log.push({label,status:'FAIL',error:String(e)})}}
+async function main(){
+ document.getElementById('run').disabled=true;log.length=0;
+ const db='harvester-anny-gate-'+crypto.randomUUID(); const s1=new IndexedDBJournalStore(db),s2=new IndexedDBJournalStore(db);
+ const journal=new CommitJournal(s1),otherJournal=new CommitJournal(s2),receiver=new ReceiverLedger(s2);
+ const transferId='chromium-gate',epoch=1,bytes=[1,2,3,4,5],acks=['A','B'].flatMap(path=>bytes.map((byte,position)=>({transferId,epoch,path,position,byte})));
+ await check('Transaction PREPARED is visible to a second IDB connection',async()=>{await journal.prepare({transferId,epoch,bytes,acks});assert((await otherJournal.read(transferId)).state==='PREPARED','not visible')});
+ await check('Concurrent competing COMMIT operations converge to one state',async()=>{
+  const results=await Promise.allSettled([journal.commit(transferId,epoch),otherJournal.commit(transferId,epoch)]);
+  assert(results.every(r=>r.status==='fulfilled'),'commit contender failed');assert((await journal.read(transferId)).state==='COMMITTED','not committed');
+ });
+ await check('Receiver duplicate requests converge to one effect',async()=>{
+  await journal.pending(transferId,epoch);const row=await journal.read(transferId);
+  const results=await Promise.allSettled(Array.from({length:5},()=>receiver.deliver({transferId,deliveryKey:row.deliveryKey,digest:row.digest,sourceHex:row.sourceHex})));
+  assert(results.every(r=>r.status==='fulfilled'),'delivery contender failed');
+  assert((await receiver.effectCount(row.deliveryKey))===1,'duplicate effect');
+  const receipt=results[0].value;await journal.confirm(transferId,epoch,receipt);
+ });
+ await check('Independent browser connection reads Anny VERIFIED evidence',async()=>{
+  const freshJournal=new CommitJournal(new IndexedDBJournalStore(db)),freshReceiver=new ReceiverLedger(new IndexedDBJournalStore(db));
+  const snap=await readAnny(freshJournal,freshReceiver,transferId);
+  assert(snap.slots[17].status==='observed'&&snap.slots[17].value==='VERIFIED','agreement missing');
+ });
+ await check('Absent receiver evidence cannot produce violet VERIFIED',async()=>{
+  const fakeReceiver={reconcile:async()=>null};
+  const snap=await readAnny(journal,fakeReceiver,transferId);
+  assert(snap.slots[17].status==='mismatch'&&snap.slots[17].value==='AGREEMENT FAILED','did not fail closed');
+ });
+ output.textContent=JSON.stringify({environment:'Chromium runtime (must be verified by operator)',database:db,passed:log.filter(x=>x.status==='PASS').length,total:log.length,checks:log},null,2);
+ output.className=log.every(x=>x.status==='PASS')?'pass':'fail';document.getElementById('run').disabled=false;
+}
+document.getElementById('run').addEventListener('click',()=>main().catch(e=>{output.textContent='HARNESS ERROR: '+e.stack;document.getElementById('run').disabled=false}));
+</script>
