@@ -68,7 +68,7 @@ export function evaluate(records,{maxRows=100000}={}){
  const cases=Object.fromEntries(CASES.map(k=>[k,createCounter()]));
  const overall=createCounter();
  let reserved=0,held=0,cleanMassInvalid=0;
- const examples=[];
+ const examples=[],missedFaultExamples=[],invalidRepairedExamples=[],falseAlarmExamples=[];
  function mark(bucket,entry){
   bucket.n++;
   if(entry.obs.alarm){
@@ -101,6 +101,14 @@ export function evaluate(records,{maxRows=100000}={}){
   if(!Number.isFinite(cleanMass))cleanMassInvalid++;
   const e={kind,row,obs,baseline,repairedMass,cleanMass};
   mark(cases[kind],e);mark(overall,e);
+  const diagnostic={run:row.Run,event:row.Event,case:kind,originalPz1GeV:row.pz1,
+   faultedPz1GeV:fault.pz1,expectedPz1GeV:obs.expectedPz,
+   residualPz1GeV:obs.residual,alarmThresholdGeV:obs.threshold,
+   detectionAlarm:obs.alarm,repairApplied:obs.modified,
+   cleanMassGeV:cleanMass,recoveredMassGeV:repairedMass,naiveMassGeV:baseline};
+  if(kind!=='clean'&&!obs.alarm&&missedFaultExamples.length<12)missedFaultExamples.push(diagnostic);
+  if(kind==='clean'&&obs.alarm&&falseAlarmExamples.length<12)falseAlarmExamples.push(diagnostic);
+  if(!Number.isFinite(repairedMass)&&invalidRepairedExamples.length<12)invalidRepairedExamples.push(diagnostic);
   if(examples.length<18)examples.push({run:row.Run,event:row.Event,case:kind,
    originalPz1GeV:row.pz1,faultedPz1GeV:fault.pz1,estimatedPz1GeV:obs.expectedPz,
    detected:obs.alarm,recovered:obs.modified,storedMassGeV:row.M,
@@ -120,7 +128,7 @@ export function evaluate(records,{maxRows=100000}={}){
    scenarios:CASES,driftGeV:5,threshold:'0.05+0.005*abs(pt1*sinh(eta1)) GeV'},
   overall:finalize(overall),
   scenarios:Object.fromEntries(CASES.map(k=>[k,finalize(cases[k])])),
-  examples,
+  examples,missedFaultExamples,falseAlarmExamples,invalidRepairedExamples,
   caution:'Internal track-coordinate redundancy under injected single-field faults. Neither actual detector failure nor independent ALICE/ATLAS/CMS/LHCb measurements.'};
 }
 export function runCSV(text,opts={}){
