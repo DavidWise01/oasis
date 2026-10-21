@@ -166,3 +166,30 @@ export const SAPPHON_BROADBAND = Object.freeze({
  minus: {word:"Λευκός",latin:"Leukos",meaning:"white"},
  plus: {word:"Σελήνη",latin:"Selene",meaning:"moon"}
 });
+
+// Two non-spectral boundary operators of the symbolic Sapphon frame.
+// Neither represents electromagnetic wavelength, a physical vacuum spectrum,
+// an actual gravitational-wave band, nor any additional 18-cubit position.
+// No numerical wavelength is assigned or inferred.
+export const SAPPHON_OUTER_ANCHORS = Object.freeze([
+ Object.freeze({
+  operator:"--", label:"VOID", greek:"Κενόν", latin:"Kenon",
+  meaning:"void / emptiness", accent:"#59627f", kind:"symbolic-boundary",
+  polarity:["−","−"], wavelengthNm:null, position:"frame-start"
+ }),
+ Object.freeze({
+  operator:"++", label:"GRAVITY", greek:"Βαρύτητα", latin:"Varytita",
+  meaning:"gravity", accent:"#ffc77a", kind:"symbolic-boundary",
+  polarity:["+","+"], wavelengthNm:null, position:"frame-end"
+ })
+]);
+export function validateSapphonOuterAnchors(anchors=SAPPHON_OUTER_ANCHORS){
+ return Array.isArray(anchors) && anchors.length===2
+  && anchors[0].operator==="--" && anchors[1].operator==="++"
+  && anchors[0].position==="frame-start" && anchors[1].position==="frame-end"
+  && anchors.every(a=>a.kind==="symbolic-boundary" && a.wavelengthNm===null
+    && typeof a.greek==="string" && a.greek.length>0)
+  && anchors[0].polarity.join("")==="−−"
+  && anchors[1].polarity.join("")==="++"
+  && new Set(anchors.map(a=>a.greek)).size===2;
+}
