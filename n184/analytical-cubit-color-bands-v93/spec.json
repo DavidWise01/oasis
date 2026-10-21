@@ -1,0 +1,214 @@
+{
+  "schema": "oasis/n184/analytical-cubit-color-bands/v93",
+  "version": "v9.3",
+  "status": "additive deterministic symbolic seven-band eighteen-site analytical-cubit overlay",
+  "canonical": "{|12|}{|3456|}{|78|}{|910|}{|1112131415||}{|1617|}{|18|}",
+  "grammar": {
+    "packet": "{| concatenated ascending position labels |} with optional second trailing | for the declared dual seam",
+    "packetCount": 7,
+    "positionCount": 18,
+    "positionRange": [
+      1,
+      18
+    ],
+    "packetLengths": [
+      2,
+      4,
+      2,
+      2,
+      5,
+      2,
+      1
+    ],
+    "packetBoundaryPipeCounts": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "dualClosure": {
+      "packet": 5,
+      "lastPosition": 15,
+      "marker": "||",
+      "semantics": "two-port symbolic seam / bind boundary; NOT two extra numbered sites"
+    },
+    "terminal": {
+      "packet": 7,
+      "position": 18,
+      "marker": "|}",
+      "semantics": "one final closing packet"
+    },
+    "exactStringRequired": true,
+    "parseWithoutSeparators": "Decode number runs against expected monotonic 1..18 labels; never reinterpret '910' as 910"
+  },
+  "bandConvention": "Seven named, non-equidistant mnemonic ROYGBIV-like RGB/HSV display bands. Approximate hue selections; NOT a wavelength/spectral-power distribution or a chemical/force measurement.",
+  "bands": [
+    {
+      "id": "A",
+      "name": "Red",
+      "positions": [
+        1,
+        2
+      ],
+      "gen": 0,
+      "index": 0,
+      "hueDegrees": 0,
+      "hexStrong": "#FF0000",
+      "segmentRole": "input / red reference"
+    },
+    {
+      "id": "B",
+      "name": "Orange",
+      "positions": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "gen": 2,
+      "index": 0,
+      "hueDegrees": 30,
+      "hexStrong": "#FF8000",
+      "segmentRole": "four-slot expansion"
+    },
+    {
+      "id": "C",
+      "name": "Yellow",
+      "positions": [
+        7,
+        8
+      ],
+      "gen": 1,
+      "index": 0,
+      "hueDegrees": 60,
+      "hexStrong": "#FFFF00",
+      "segmentRole": "two-slot relay"
+    },
+    {
+      "id": "D",
+      "name": "Green",
+      "positions": [
+        9,
+        10
+      ],
+      "gen": 0,
+      "index": 1,
+      "hueDegrees": 120,
+      "hexStrong": "#00FF00",
+      "segmentRole": "two-slot balance"
+    },
+    {
+      "id": "E",
+      "name": "Blue",
+      "positions": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "gen": 0,
+      "index": 2,
+      "hueDegrees": 240,
+      "hexStrong": "#0000FF",
+      "segmentRole": "five-slot core; declared double || exit seam"
+    },
+    {
+      "id": "F",
+      "name": "Indigo",
+      "positions": [
+        16,
+        17
+      ],
+      "gen": 3,
+      "index": 8,
+      "hueDegrees": 255,
+      "hexStrong": "#4000FF",
+      "segmentRole": "two-slot output transition"
+    },
+    {
+      "id": "G",
+      "name": "Violet",
+      "positions": [
+        18
+      ],
+      "gen": 2,
+      "index": 4,
+      "hueDegrees": 270,
+      "hexStrong": "#8000FF",
+      "segmentRole": "single terminal closure"
+    }
+  ],
+  "slotStrengthRule": {
+    "formula": "position n: n%3=1 -> W; n%3=2 -> M; n%3=0 -> S",
+    "amplitudes": {
+      "W": "1/3 HSV Value",
+      "M": "2/3 HSV Value",
+      "S": "1 HSV Value"
+    },
+    "levels": [
+      "W",
+      "M",
+      "S"
+    ],
+    "totalByLevel": {
+      "W": 6,
+      "M": 6,
+      "S": 6
+    },
+    "strengthMeaning": "display brightness only; not weak/medium/strong fundamental particle interactions"
+  },
+  "witnessBridge": {
+    "source": "../quad-spectral-witness-v92/witness_core.mjs",
+    "perPosition": "Create exact Gen g, index i, W|M|S record, attach ordinal position and packet id, then run all four source-derived software quad projections",
+    "witnessNames": [
+      "A:ALICE hue/phase",
+      "B:ATLAS RGB",
+      "C:CMS WMS",
+      "D:LHCb source address"
+    ],
+    "validWitnessesPerPosition": 4,
+    "expectedRecords": 18,
+    "expectedWitnessReports": 72,
+    "acceptance": "3/4 software report quorum; no claim of instrument independence",
+    "canonicalSlotKey": "n<1..18>|g<gen>|i<index>|s<W|M|S>",
+    "sourceIdentityProtected": "The source swatch and canonical cubit structure cannot be changed by simulated report faults."
+  },
+  "preserved": {
+    "initialColorWheel": "../generational-color-lattice-v91/spec.json",
+    "sourceColorRegistrySize": 370,
+    "sourceOrbitLengths": [
+      122,
+      122,
+      126
+    ],
+    "cernHardwareMagnetTorusCount": {
+      "A": 0,
+      "B": 3,
+      "C": 0,
+      "D": 0
+    },
+    "historicEpochs": {
+      "Ada": 1832,
+      "ToroidalModel": 1970
+    },
+    "motherNatureOffsetYears": 0,
+    "symbolicRing": {
+      "arcs": 6,
+      "phaseSteps": 80,
+      "microticks": 240
+    },
+    "notAPlanckOrCERNPhysicsAssertion": true
+  },
+  "guardrails": [
+    "ROYGBIV is used as a seven-band visual mnemonic; each hex/Hue selection is display-only and does not specify a spectral wavelength.",
+    "Bracket grammar, pipe boundary, port-count and labels are symbolic software constructs, not physical analytical qubit states or a measured 18-particle chain.",
+    "The doubled closing pipes after position 15 are retained verbatim and do not create positions 19 or 20.",
+    "The seven color bands are NOT the four CERN detector quads. Four observers inspect each of 18 slots as independent software functions of one source, not independent detector readings.",
+    "Weak Medium Strong are symbolic display intensities and do not denote three actual fundamental forces.",
+    "The previous Gen0/Gen1 historical start dates and 370-color source register remain unchanged."
+  ]
+}
