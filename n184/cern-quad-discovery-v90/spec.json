@@ -1,0 +1,200 @@
+{
+  "schema": "oasis/n184/cern-quad-discovery/v90",
+  "version": "v9.0",
+  "title": "LHC Four Logical Quadrants — Actual Toroid Inventory and Particle Discoveries",
+  "classification": "fact-checked CERN magnet count plus symbolic quad labels",
+  "created": "2026-10-21",
+  "quadInterpretation": "Four A/B/C/D logical detector-centered sections; not four equal-length physical 90-degree arcs.",
+  "realLayout": {
+    "acceleratorRingsInSite": 1,
+    "counterCirculatingBeamPaths": 2,
+    "acceleratorInteractionPoints": 8,
+    "selectedMajorExperimentPoints": 4,
+    "physicalSectorCount": 8,
+    "modelLogicalQuadCount": 4,
+    "ipToPolarDegreesForDiagram": {
+      "IP1": 0,
+      "IP2": 45,
+      "IP5": 180,
+      "IP8": 315
+    },
+    "note": "Angles represent conventional octant placement in ring schematic and do not match compass bearing or map scale; real major detector points are not evenly separated."
+  },
+  "quadruple": [
+    {
+      "quad": "A",
+      "experiment": "ALICE",
+      "ip": 2,
+      "physicalToroidSystems": 0,
+      "physicalToroidCoils": 0,
+      "magnets": [
+        "L3 solenoid",
+        "muon spectrometer dipole"
+      ],
+      "discoveries": [
+        {
+          "name": "Antihyperhelium-4",
+          "year": 2024,
+          "status": "first evidence; 3.5 sigma (not 5-sigma discovery)",
+          "type": "antimatter hypernucleus",
+          "source": "https://home.cern/alice-finds-first-ever-evidence-antimatter-partner-hyperhelium-4/"
+        },
+        {
+          "name": "Quark–gluon plasma",
+          "year": null,
+          "status": "studied/characterized, not a newly discovered elementary particle",
+          "type": "state of strongly interacting matter",
+          "source": "https://home.cern/science/experiments/Alice/"
+        }
+      ],
+      "source": "https://cds.cern.ch/record/1038089/files/lhc-project-report-1009.pdf"
+    },
+    {
+      "quad": "B",
+      "experiment": "ATLAS",
+      "ip": 1,
+      "physicalToroidSystems": 3,
+      "physicalToroidCoils": 24,
+      "toroidBreakdown": [
+        {
+          "name": "barrel",
+          "count": 1,
+          "coilsPerMagnet": 8
+        },
+        {
+          "name": "end-cap",
+          "count": 2,
+          "coilsPerMagnet": 8
+        }
+      ],
+      "otherMagnets": [
+        "central solenoid"
+      ],
+      "discoveries": [
+        {
+          "name": "Higgs boson",
+          "year": 2012,
+          "status": "joint ATLAS + CMS discovery",
+          "type": "elementary scalar boson",
+          "source": "https://home.cern/science/physics/higgs-boson/how/"
+        },
+        {
+          "name": "B_c*+ meson",
+          "year": 2026,
+          "status": "first observation",
+          "type": "excited composite meson",
+          "source": "https://home.cern/atlas-observes-new-composite-particle/"
+        }
+      ],
+      "source": "https://atlas.cern/Discover/Detector/Magnet-System"
+    },
+    {
+      "quad": "C",
+      "experiment": "CMS",
+      "ip": 5,
+      "physicalToroidSystems": 0,
+      "physicalToroidCoils": 0,
+      "magnets": [
+        "large central superconducting solenoid"
+      ],
+      "discoveries": [
+        {
+          "name": "Higgs boson",
+          "year": 2012,
+          "status": "joint ATLAS + CMS discovery",
+          "type": "elementary scalar boson",
+          "source": "https://home.cern/science/physics/higgs-boson/how/"
+        },
+        {
+          "name": "Xi_b*0 baryon",
+          "year": 2012,
+          "status": "first observation by CMS",
+          "type": "beauty-strange baryon",
+          "source": "https://home.cern/lhcb-experiment-observes-two-new-baryon-particles-never-seen-before/"
+        }
+      ],
+      "source": "https://home.cern/science/experiments/cms"
+    },
+    {
+      "quad": "D",
+      "experiment": "LHCb",
+      "ip": 8,
+      "physicalToroidSystems": 0,
+      "physicalToroidCoils": 0,
+      "magnets": [
+        "spectrometer dipole"
+      ],
+      "discoveries": [
+        {
+          "name": "Pentaquark states Pc(4380)+ and Pc(4450)+",
+          "year": 2015,
+          "status": "new exotic hadron observations",
+          "type": "five-quark composites",
+          "source": "https://home.cern/cerns-lhcb-experiment-reports-observation-of-exotic-pentaquark-particles/"
+        },
+        {
+          "name": "Xi_cc++ baryon",
+          "year": 2017,
+          "status": "first observation",
+          "type": "doubly charmed baryon, ccu",
+          "source": "https://home.cern/the-lhcb-experiment-is-charmed-to-announce-observation-of-a-new-particle-with-two-heavy-quarks/"
+        },
+        {
+          "name": "All-charm tetraquark candidate",
+          "year": 2020,
+          "status": "new four-charm exotic particle observed",
+          "type": "tetraquark, c c c-bar c-bar",
+          "source": "https://home.cern/lhcb-discovers-new-type-tetraquark-cern/"
+        },
+        {
+          "name": "Xi_cc+ baryon (ccd)",
+          "year": 2026,
+          "status": "first discovery reported 17 March 2026",
+          "type": "doubly charmed baryon",
+          "source": "https://home.cern/news/news/physics/lhcb-collaboration-discovers-new-proton-particle"
+        },
+        {
+          "name": "Omega_cc+ baryon (ccs)",
+          "year": 2026,
+          "status": "first observation announced 18 June 2026",
+          "type": "doubly charmed strange baryon",
+          "source": "https://home.cern/lhcb-discovers-the-final-missing-member-of-a-doubly-charmed-particle-family/"
+        }
+      ],
+      "source": "https://cds.cern.ch/record/1038089/files/lhc-project-report-1009.pdf"
+    }
+  ],
+  "toroidCountMeaning": "Only complete toroid magnet systems in main detector magnets, not individual coils or the circular LHC beam trajectory; B includes barrel + two endcaps.",
+  "toroidTotals": {
+    "physicalToroidSystems": 3,
+    "physicalToroidCoils": 24
+  },
+  "userSymbolicOverlay": {
+    "carbonLayer": 3,
+    "carbonAtomicNumber": 6,
+    "outerArcs": 6,
+    "phaseSteps": 80,
+    "microticks": 240,
+    "historicalGen0": 1832,
+    "historicalGen1": 1970,
+    "motherNatureOffsetYears": 0
+  },
+  "claimLimits": [
+    "Four labels A-D designate a conceptual quad partition only and are NOT equal geographical or accelerator octants.",
+    "CERN LHC itself has 8 technical sectors and 8 main interaction points; only four house the major experiments.",
+    "ATLAS is the only one of these four with a named toroidal detector magnet system; CMS and ALICE solenoids are not toroidal magnets in the same sense.",
+    "A shared circular accelerator track must not be counted as four independent physical toroid magnets.",
+    "ALICE 3.5-sigma antihyperhelium-4 evidence is not a discovery-level finding, and quark-gluon plasma is a phase of matter not a newly discovered particle.",
+    "Higgs discovery in 2012 was joint ATLAS and CMS; do not count it as two separate particle species.",
+    "The listed discoveries are illustrative verified examples, not an exhaustive count of all CERN hadron discoveries.",
+    "No causal relation between ATLAS toroid count and discovery count is established."
+  ],
+  "sourceList": [
+    "https://atlas.cern/Discover/Detector/Magnet-System",
+    "https://cds.cern.ch/record/1038089/files/lhc-project-report-1009.pdf",
+    "https://home.cern/science/physics/higgs-boson/how/",
+    "https://home.cern/alice-finds-first-ever-evidence-antimatter-partner-hyperhelium-4/",
+    "https://home.cern/atlas-observes-new-composite-particle/",
+    "https://home.cern/lhcb-discovers-the-final-missing-member-of-a-doubly-charmed-particle-family/"
+  ]
+}
