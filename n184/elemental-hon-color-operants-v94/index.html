@@ -1,0 +1,177 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · Periodic HON Color Roots and Five Operants v9.4</title>
+<style>
+:root{color-scheme:dark;--bg:#07111d;--panel:#14273b;--panel2:#1b3449;--line:#3e5c73;--ink:#eef7ff;--muted:#aec2d0;--mint:#91e8ce;--gold:#eec98e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1a3047,#07111d 75%);color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{padding:24px clamp(16px,3vw,36px);border-bottom:1px solid var(--line);background:#102134e6}
+h1{font-size:clamp(22px,3.2vw,34px);margin:2px 0}header p{margin:6px 0;color:var(--muted)}
+main{max-width:1510px;margin:auto;padding:15px;display:grid;grid-template-columns:minmax(0,1.14fr) minmax(360px,.86fr);gap:15px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;min-width:0}
+h2{font-size:16px;margin:0 0 11px}h3{font-size:14px;margin:15px 0 8px}
+canvas{width:100%;height:auto;display:block;border-radius:9px;background:#081827;border:1px solid #47637c}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}
+select,button{background:#255267;color:#fff;border:1px solid #6598a8;border-radius:8px;padding:9px 12px;cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #a7f4e0}
+button.active{background:#345f59;border-color:#adf2dd}
+input[type=range]{accent-color:var(--mint);width:min(220px,48vw)}
+.rootCards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.rootCard{background:var(--panel2);border:1px solid #526981;border-top:4px solid var(--accent);border-radius:10px;padding:12px;cursor:pointer;text-align:left}
+.rootCard.active{box-shadow:0 0 0 2px #f2e8c4}
+.rootCard strong{font-size:23px;color:var(--accent)}.rootCard span{display:block;font-size:12px;color:#c6d5e1}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
+.metric{background:#1b3348;border:1px solid #46667d;border-radius:9px;padding:11px}
+.metric b{font:700 clamp(19px,2.1vw,24px) ui-monospace,monospace;display:block;color:var(--mint)}
+.metric span{font-size:11px;color:var(--muted)}
+.operators{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.operators button{padding:10px 4px;font-size:12px;min-height:65px}.operators button span{display:block;font-size:10px;color:#d2e0e7}
+.cubit{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:5px}
+.cubit button{border:2px solid transparent;padding:5px 3px;height:63px;min-width:0;display:flex;justify-content:space-between;flex-direction:column;align-items:center}
+.cubit button.selected{border-color:white}.cubit span{font:11px ui-monospace,monospace;background:#071522ac;padding:2px 3px;border-radius:3px}
+.code{background:#0a1b2a;border:1px solid #3b5670;padding:12px;border-radius:9px;font:12px/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.colors{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.colorbox{height:67px;border-radius:9px;border:1px solid #ccd8e46e;display:flex;align-items:end;padding:6px}
+.colorbox span{background:#071621d9;color:white;border-radius:4px;padding:3px 7px;font:12px ui-monospace,monospace}
+.note{border-left:3px solid var(--gold);padding:10px 13px;background:#282d41;border-radius:0 8px 8px 0;margin:13px 0;font-size:12px}
+a{color:#a1ebdd}.muted,small{color:var(--muted)}
+footer{padding:15px 25px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+@media(max-width:950px){main{grid-template-columns:1fr}}@media(max-width:560px){.rootCards,.metrics{grid-template-columns:1fr}.operators{grid-template-columns:repeat(2,minmax(0,1fr))}.cubit{grid-template-columns:repeat(6,minmax(0,1fr))}}
+</style></head><body>
+<header><small style="letter-spacing:.13em;color:#9bdfcd">OASIS · PERIODIC ROOTS · SYMBOLIC COLOR ENGINE · v9.4</small>
+<h1>Hydrogen · Oxygen · Nitrogen / 366 Color Addresses</h1>
+<p>122 H + 122 O + 122 N · five non-element operants · seven-band analytical cubit intact · position 366 is Nitrogen's lid</p></header>
+<main>
+<section class="panel">
+<h2>Three periodic-element mnemonic roots</h2><div id="rootCards" class="rootCards"></div>
+<div class="metrics">
+<div class="metric"><b>366</b><span>Root carrier addresses</span></div>
+<div class="metric"><b>5</b><span>Separate operants, no extra addresses</span></div>
+<div class="metric"><b>370</b><span>Unchanged legacy Wakaku color addresses</span></div>
+</div>
+<h2>All 366 root-address hues · live preview</h2>
+<canvas id="bands" width="1040" height="378" role="img" aria-label="Three strips of 122 address colors for Hydrogen, Oxygen and Nitrogen. Interactive operants update display hues without changing addresses."></canvas>
+<div class="controls">
+<label>Selected address <input id="address" type="range" min="1" max="366" value="366"><output id="addrText">366</output></label>
+<label>Strength <select id="strength"><option value="W">Weak · 1/3</option><option value="M">Medium · 2/3</option><option value="S" selected>Strong · 1</option></select></label>
+<button id="reset">Reset operants</button>
+</div>
+<h3>Five retained KET operants · ordered actions</h3>
+<div id="operators" class="operators"></div>
+<p class="muted" id="sequence">No operants applied. Click the operator buttons in the order you want them evaluated (up to five).</p>
+<div class="note"><b>Periodic-table distinction:</b> H has atomic number 1, O is 8, and N is 7. The addresses 1–366 are symbolic registry positions, not atomic numbers or 366 experimentally established elements. These five actions are software color transformations, not nuclear or gravitational interactions.</div>
+<h3>Existing seven-packet analytical cubit · new root bridge</h3>
+<div id="grammar" class="code"></div>
+<div id="cubit" class="cubit" style="margin:10px 0"></div>
+<p class="muted">Six analytical-cubit sites are sampled from each 122-address root. Their original seven rainbow-style bands, W/M/S states, and the doubled seam after position 15 remain unchanged.</p>
+<p><a href="../analytical-cubit-color-bands-v93/">Original seven color bands</a> · <a href="../generational-color-lattice-v91/">Gen 0–8 palette</a> · <a href="../integration-v41/">Confluence</a></p>
+</section>
+<aside class="panel">
+<h2 id="detailTitle">N · position 366 / lid</h2>
+<div class="colors">
+<div><small>Original root display</small><div id="before" class="colorbox"><span id="hexBefore">—</span></div></div>
+<div><small>After operants</small><div id="after" class="colorbox"><span id="hexAfter">—</span></div></div>
+</div>
+<div class="metrics">
+<div class="metric"><b id="atomic">7</b><span>Actual atomic number Z</span></div>
+<div class="metric"><b id="local">122</b><span>One-based root position</span></div>
+<div class="metric"><b id="intensity">S</b><span>Weak / Medium / Strong</span></div>
+</div>
+<pre id="detail" class="code">Loading model state…</pre>
+<h3>Slot-to-root comparison</h3>
+<div id="slot" class="code"></div>
+<div class="note"><b>Frozen source address 367–370:</b> four additional hypothetical symbolic slots in the earlier 370-color Wakaku registry remain untouched. None belongs to the 366-position H/O/N carrier model. There is no 371st element or color address introduced here.</div>
+<h3>Operator provenance</h3>
+<p class="muted">Names retained from the existing KET frozen specification: Gravity, Expansion, Compression, Containment and Explosion. The exact color math on this page is a newly declared visualization rule—separate from those operators' historical abstract definitions.</p>
+<p><a href="./spec.json">Source and boundaries</a> · <a href="./README.md">Mapping details and tests</a> · <a href="https://iupac.org/what-we-do/periodic-table-of-elements/">IUPAC periodic table</a></p>
+<p class="muted" id="status">Calculating…</p>
+</aside></main>
+<footer>OASIS N184 v9.4 · periodic-table element identities kept distinct from 366 symbolic carrier addresses; all previous models remain unchanged.</footer>
+<script type="module">
+import {ROOTS,OPERANTS,ROOT_CAPACITY,SOURCE_TAIL,addressColor,operateColor,cubitToHON,cubitHONCatalog} from './hon_core.mjs';
+const $=id=>document.getElementById(id);const ctx=$('bands').getContext('2d');
+let address=366,strength='S',ops=[],selectedPosition=18;
+const audit=cubitHONCatalog();
+$('grammar').textContent=audit.sourceCubit;
+function choose(a){address=a;$('address').value=a;paint()}
+$('rootCards').replaceChildren(...ROOTS.map((r,i)=>{
+const b=document.createElement('button');b.className='rootCard';b.style.setProperty('--accent',r.hex);
+const h=document.createElement('strong');h.textContent=r.symbol+' · Z='+r.atomicNumber;
+const a=document.createElement('span');a.textContent=r.name+'  '+r.start+'–'+r.end;
+const c=document.createElement('span');c.textContent='122 carrier positions';b.append(h,a,c);
+b.onclick=()=>choose(r.start);return b;
+}));
+$('operators').replaceChildren(...OPERANTS.map(op=>{
+ const b=document.createElement('button'),name=document.createElement('b'),m=document.createElement('span');
+ name.textContent=op.name;m.textContent=op.meaning;b.append(name,m);
+ b.onclick=()=>{if(ops.length>=5){$('status').textContent='Five operants maximum; reset before adding more.';return}ops.push(op.id);paint()};
+ return b;
+}));
+$('cubit').replaceChildren(...audit.slots.map(s=>{
+ const b=document.createElement('button');b.style.background=s.originalPacketHex;const p=document.createElement('span'),n=document.createElement('span');
+ p.textContent=s.position+(s.doublePipeSeam?' ||':'');n.textContent=s.strength+' '+s.elementalRoot;
+ b.append(p,n);b.title='Site '+s.position+' · '+s.elementalRoot+' at root address '+s.elementalAddress;
+ b.onclick=()=>{selectedPosition=s.position;choose(s.elementalAddress)};return b;
+}));
+function gradient(){
+ const g=ctx,c=g.canvas,W=c.width;g.clearRect(0,0,W,c.height);g.fillStyle='#081827';g.fillRect(0,0,W,c.height);
+ for(let k=0;k<3;k++){
+ const root=ROOTS[k],y=55+k*108,x0=138,xEnd=W-25,width=(xEnd-x0)/122;
+ g.fillStyle='#d8e8f7';g.font='bold 23px system-ui';g.fillText(root.symbol+' · '+root.atomicNumber,19,y+24);
+ g.font='13px ui-monospace,monospace';g.fillStyle='#afc6d9';g.fillText(root.start+'..'+root.end,20,y+44);
+ for(let i=0;i<122;i++){
+ const src=addressColor(root.start+i,strength),dst=operateColor(src,ops);
+ g.fillStyle=dst.hex;g.fillRect(x0+i*width,y,width+1,48);
+ }
+ g.fillStyle='#afc9da';g.font='12px ui-monospace,monospace';
+ g.fillText(root.name+' · 122 positions',x0,y-14);
+ if(address>=root.start&&address<=root.end){
+ const mid=x0+(address-root.start+.5)*width;
+ g.strokeStyle='#fff7df';g.lineWidth=3;g.strokeRect(mid-4,y-5,8,58);
+ }
+ }
+}
+function paint(){
+const source=addressColor(address,strength),after=operateColor(source,ops);
+const r=ROOTS.find(x=>x.symbol===source.rootSymbol);
+$('addrText').textContent=address;
+$('detailTitle').textContent=r.name+' · symbolic address '+address+(source.lid?' · LID':'');
+$('atomic').textContent=source.atomicNumber;$('local').textContent=source.localIndex+1;$('intensity').textContent=strength;
+$('before').style.background=source.hex;$('after').style.background=after.hex;
+$('hexBefore').textContent=source.hex;$('hexAfter').textContent=after.hex;
+$('sequence').textContent=ops.length?'Applied in order: '+ops.map(x=>OPERANTS.find(o=>o.id===x).name).join(' → '):'No operants applied.';
+$('detail').textContent='Element root: '+source.rootName+' ('+source.rootSymbol+', Z='+source.atomicNumber+')'+
+'\nRegistry address: '+address+' / 366'+
+'\nLocal position: '+(source.localIndex+1)+' / 122'+
+'\nOriginal hue: '+source.hue.toFixed(3)+'°'+
+'\nOperant hue: '+after.hue.toFixed(3)+'°'+
+'\nSaturation: '+after.saturation.toFixed(3)+
+'\nDisplay value: '+after.value.toFixed(3)+
+'\nW/M/S tier: '+strength+
+'\nIdentity unchanged: '+(source.identityKey===after.identityKey)+
+'\n366 lid: '+(source.lid?'CLOSED / NITROGEN':'no')+
+'\n370 registry tail: '+SOURCE_TAIL.join(', ')+' (separate)';
+const site=audit.slots.find(x=>x.position===selectedPosition);
+$('slot').textContent='CUBIT SITE '+site.position+
+'\nLegacy 7-band packet '+site.originalPacket+' · '+site.originalPacketColor+' / '+site.originalPacketHex+
+'\nHON address '+site.elementalAddress+' · '+site.elementalRoot+' / '+site.elementalColor.hex+
+'\nLegacy 370 address '+site.originalSource370Address+' (unchanged)'+
+'\nStrength '+site.strength+
+'\nDoubled seam after slot 15: '+site.doublePipeSeam+
+'\nTerminal lid at slot 18 / address 366: '+site.closedLid;
+[...$('rootCards').children].forEach((b,i)=>b.classList.toggle('active',r===ROOTS[i]));
+[...$('cubit').children].forEach((b,i)=>b.classList.toggle('selected',selectedPosition===i+1));
+$('status').textContent='Element carrier '+source.rootSymbol+' / original location preserved / '+ops.length+' applied operators.';
+gradient();
+}
+$('address').oninput=e=>choose(Number(e.target.value));
+$('strength').onchange=e=>{strength=e.target.value;paint()};
+$('reset').onclick=()=>{ops=[];paint()};
+const canvas=$('bands');
+canvas.onclick=e=>{
+ const rect=canvas.getBoundingClientRect(),x=(e.clientX-rect.left)*canvas.width/rect.width,y=(e.clientY-rect.top)*canvas.height/rect.height;
+ const rix=Math.floor((y-55+30)/108);const starts=[55,163,271],rootIndex=starts.findIndex(t=>y>=t&&y<=t+48);
+ if(rootIndex<0||x<138||x>canvas.width-25)return;
+ const index=Math.min(121,Math.max(0,Math.floor((x-138)/(canvas.width-25-138)*122)));
+ choose(ROOTS[rootIndex].start+index);
+};
+paint();
+</script></body></html>
