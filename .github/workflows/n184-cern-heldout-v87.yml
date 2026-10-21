@@ -1,0 +1,69 @@
+name: N184 CERN 100K Heldout Benchmark v87
+on:
+  push:
+    paths:
+      - 'n184/cern-heldout-v87/**'
+      - '.github/workflows/n184-cern-heldout-v87.yml'
+  workflow_dispatch:
+jobs:
+  source-controlled-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run deterministic 4-event controls and input leakage checks
+        run: |
+          node --check n184/cern-heldout-v87/benchmark.mjs
+          node --check n184/cern-heldout-v87/test_benchmark.mjs
+          node n184/cern-heldout-v87/test_benchmark.mjs
+  cern-csv-holdout:
+    runs-on: ubuntu-latest
+    needs: source-controlled-tests
+    permissions:
+      contents: read
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch CERN ROOT-tutorial CMS dimuon 100K public CSV
+        run: |
+          mkdir -p /tmp/oasis-cern-v87
+          curl --fail --location --silent --show-error --retry 3 --max-time 300 \
+            'https://root.cern.ch/files/tutorials/df014_CsvDataSource_MuRun2010B.csv' \
+            --output /tmp/oasis-cern-v87/MuRun2010B.csv
+          echo "Fetched bytes: $(wc -c </tmp/oasis-cern-v87/MuRun2010B.csv)"
+          head -n 1 /tmp/oasis-cern-v87/MuRun2010B.csv
+      - name: Run heldout benchmark and save provenance and metrics
+        run: |
+          node n184/cern-heldout-v87/benchmark.mjs \
+            /tmp/oasis-cern-v87/MuRun2010B.csv \
+            /tmp/oasis-cern-v87/benchmark-report.json \
+            100000 | tee /tmp/oasis-cern-v87/output.log
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            const r=JSON.parse(fs.readFileSync('/tmp/oasis-cern-v87/benchmark-report.json','utf8'));
+            if(r.input.accepted<10000||r.analysis.heldOutCount<1000)
+              throw Error('Insufficient real data for the large-sample benchmark');
+            if(r.analysis.metrics.angular.n!==r.analysis.metrics.fourPort.n)
+              throw Error('Observer redundancy metrics incomparable');
+            console.log('CERN 2010 real rows:',r.input.accepted);
+            console.log('Holdout rows:',r.analysis.heldOutCount);
+            console.log('Transverse MAE GeV:',r.analysis.metrics.transverse.maeGeV);
+            console.log('Angular MAE GeV:',r.analysis.metrics.angular.maeGeV);
+            console.log('Four-vector MAE GeV:',r.analysis.metrics.fourVector.maeGeV);
+            console.log('Four-port incremental gain GeV:',r.analysis.comparisons.fourPortVsAngularMAEGeV);
+            console.log('Source SHA256:',r.provenance.sha256);
+          "
+      - name: Store report without redistributing source events
+        uses: actions/upload-artifact@v4
+        with:
+          name: cern-heldout-v87-repro-report
+          path: /tmp/oasis-cern-v87/benchmark-report.json
+          if-no-files-found: error
+          retention-days: 90
