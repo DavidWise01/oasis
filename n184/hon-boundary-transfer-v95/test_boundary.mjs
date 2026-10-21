@@ -1,0 +1,134 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {ROOTS,OPERANTS,ROOT_CAPACITY,SOURCE_TAIL,addressColor,operateColor} from '../elemental-hon-color-operants-v94/hon_core.mjs';
+import {cubitToHON} from '../elemental-hon-color-operants-v94/hon_core.mjs';
+import {compileCubit} from '../analytical-cubit-color-bands-v93/cubit_core.mjs';
+import {GATES,TIERS,PROGRAMS,gateAt,validateProgram,colorDiscontinuity,transferAt,surveyAllBoundaries,cubitGateAudit} from './boundary_core.mjs';
+const spec=JSON.parse(fs.readFileSync(new URL('./spec.json',import.meta.url),'utf8'));
+const yes={};function check(name,fn){fn();yes[name]=true}
+const close=(a,b,e=1e-9)=>assert.ok(Number.isFinite(a)&&Math.abs(a-b)<=e,a+' ≠ '+b);
+const HO=transferAt(122),ON=transferAt(244),LID=transferAt(366);
+check('schema v95',()=>assert.equal(spec.schema,'oasis/n184/hon-boundary-transfer/v95'));
+check('three gates declared',()=>assert.equal(GATES.length,3));
+check('exact gate addresses',()=>assert.deepEqual(GATES.map(x=>[x.from,x.to]),[[122,123],[244,245],[366,null]]));
+check('three gate names exist',()=>assert.deepEqual(GATES.map(x=>x.id),['H-O','O-N','N-LID']));
+check('HO native roots correct',()=>assert.deepEqual([HO.origin.rootSymbol,HO.targetBase.rootSymbol],['H','O']));
+check('ON native roots correct',()=>assert.deepEqual([ON.origin.rootSymbol,ON.targetBase.rootSymbol],['O','N']));
+check('lid N root',()=>assert.equal(LID.origin.rootSymbol,'N'));
+check('H actual Z=1',()=>assert.equal(HO.origin.atomicNumber,1));
+check('O actual Z=8',()=>assert.equal(HO.targetBase.atomicNumber,8));
+check('N actual Z=7',()=>assert.equal(ON.targetBase.atomicNumber,7));
+check('source N root Z=7 on lid',()=>assert.equal(LID.origin.atomicNumber,7));
+check('H ends at 122',()=>assert.equal(ROOTS[0].end,122));
+check('O spans 123-244',()=>assert.deepEqual([ROOTS[1].start,ROOTS[1].end],[123,244]));
+check('N ends at 366',()=>assert.equal(ROOTS[2].end,366));
+check('366 total HON root positions',()=>assert.equal(ROOT_CAPACITY,366));
+check('four legacy nonroot tail addresses',()=>assert.deepEqual(SOURCE_TAIL,[367,368,369,370]));
+check('no 371 invented',()=>assert.throws(()=>gateAt(371)));
+check('interior 121 cannot cross',()=>assert.throws(()=>gateAt(121)));
+check('interior 123 cannot jump',()=>assert.throws(()=>gateAt(123)));
+check('interior 243 cannot cross',()=>assert.throws(()=>gateAt(243)));
+check('interior 245 cannot jump',()=>assert.throws(()=>gateAt(245)));
+check('address 365 cannot auto close',()=>assert.throws(()=>gateAt(365)));
+check('legacy tail 367 cannot serve as HON gate',()=>assert.throws(()=>gateAt(367)));
+check('address 1 cannot wrap',()=>assert.throws(()=>gateAt(1)));
+check('fractional gate invalid',()=>assert.throws(()=>gateAt(122.5)));
+check('gate source identities stay frozen',()=>assert.equal(Object.isFrozen(HO.origin),true));
+check('transfer object frozen',()=>assert.equal(Object.isFrozen(HO),true));
+check('ticket frozen',()=>assert.equal(Object.isFrozen(HO.ticket),true));
+check('program array frozen',()=>assert.equal(Object.isFrozen(HO.ticket.operatorProgram),true));
+check('input arrays cloned',()=>{const ops=['gravity'];const x=validateProgram(ops);ops.push('explosion');assert.deepEqual(x,['gravity'])});
+check('reject unknown operator',()=>assert.throws(()=>transferAt(122,'S',['not-an-operant'])));
+check('reject six-operator sequence',()=>assert.throws(()=>transferAt(122,'S',['gravity','gravity','gravity','gravity','gravity','gravity'])));
+check('reject string not program',()=>assert.throws(()=>validateProgram('gravity')));
+check('reject unrecognized tier',()=>assert.throws(()=>transferAt(122,'X',[])));
+check('W/M/S exact',()=>assert.deepEqual(TIERS,['W','M','S']));
+check('program set baseline plus five singletons',()=>assert.equal(PROGRAMS.length,6));
+check('five names in source fixed order',()=>assert.deepEqual(OPERANTS.map(x=>x.name),['Gravity','Expansion','Compression','Containment','Explosion']));
+check('singletons follow source order',()=>assert.deepEqual(PROGRAMS.slice(1).map(p=>p.actions[0]),OPERANTS.map(o=>o.id)));
+check('native target starts exact 123',()=>assert.equal(HO.targetBase.address,123));
+check('native target starts exact 245',()=>assert.equal(ON.targetBase.address,245));
+check('H→O is active transfer',()=>assert.equal(HO.state,'TRANSFERRED'));
+check('O→N is active transfer',()=>assert.equal(ON.state,'TRANSFERRED'));
+check('N366 terminal is CLOSED',()=>assert.equal(LID.state,'CLOSED'));
+check('N366 has no target address',()=>assert.equal(LID.to,null));
+check('N366 has no target swatch',()=>assert.equal(LID.targetBase,null));
+check('N366 has no incoming transformed swatch',()=>assert.equal(LID.incoming,null));
+check('N366 has no display jump',()=>assert.equal(LID.displayJump,null));
+check('N366 outbound identity preserved',()=>assert.equal(LID.ticket.sourceAddress,366));
+check('N366 source closes by lid flag',()=>assert.equal(LID.origin.lid,true));
+check('N366 with five ops stays CLOSED',()=>assert.equal(transferAt(366,'W',OPERANTS.map(o=>o.id)).state,'CLOSED'));
+check('N366 cannot point to first root via wrap',()=>assert.notEqual(LID.to,1));
+check('N366 cannot point to 367 tail',()=>assert.notEqual(LID.to,367));
+check('zero-op HO plain source strong H orange hue30',()=>close(HO.origin.hue,30));
+check('zero-op HO destination native oxygen green hue120',()=>close(HO.targetBase.hue,120));
+check('zero-op ON plain source oxygen hue180',()=>close(ON.origin.hue,180));
+check('zero-op ON destination nitrogen blue hue240',()=>close(ON.targetBase.hue,240));
+check('HO 90° displayed hue discontinuity',()=>close(HO.displayJump.absoluteWrappedHueDeltaDegrees,90));
+check('ON 60° displayed hue discontinuity',()=>close(ON.displayJump.absoluteWrappedHueDeltaDegrees,60));
+check('zero-op all identity swatches preserved',()=>assert.deepEqual([HO.outgoing.hex,HO.incoming.hex],[HO.origin.hex,HO.targetBase.hex]));
+check('RGB distance positive at H/O',()=>assert.ok(HO.displayJump.rgbEuclideanDistance>0));
+check('RGB distance positive at O/N',()=>assert.ok(ON.displayJump.rgbEuclideanDistance>0));
+check('RGB difference three finite channels',()=>assert.ok(HO.displayJump.rgbChannelDelta.every(Number.isFinite)));
+check('W preserves source and native target strength labels',()=>assert.deepEqual([transferAt(122,'W').origin.strength,transferAt(122,'W').targetBase.strength],['W','W']));
+check('M preserves source and target strength',()=>assert.deepEqual([transferAt(244,'M').origin.strength,transferAt(244,'M').targetBase.strength],['M','M']));
+check('S strength both ends',()=>assert.deepEqual([HO.origin.strength,HO.targetBase.strength],['S','S']));
+check('W amplitude preserved in non-explosion baseline',()=>close(transferAt(122,'W').incoming.value,1/3));
+check('M amplitude preserved in non-explosion baseline',()=>close(transferAt(244,'M').incoming.value,2/3));
+check('explosion brightness can change numeric value but preserves W identity',()=>{const x=transferAt(122,'W',['explosion']);assert.equal(x.targetBase.strength,'W');assert.ok(x.incoming.value>x.targetBase.value)});
+check('gravity operates both sides with their own anchors',()=>{const x=transferAt(122,'M',['gravity']);close(x.outgoing.hue,operateColor(addressColor(122,'M'),['gravity']).hue);close(x.incoming.hue,operateColor(addressColor(123,'M'),['gravity']).hue)});
+check('expansion operates both sides with their own anchors',()=>{const x=transferAt(244,'M',['expansion']);close(x.outgoing.hue,operateColor(addressColor(244,'M'),['expansion']).hue);close(x.incoming.hue,operateColor(addressColor(245,'M'),['expansion']).hue)});
+check('compression preserves source/target identities',()=>{const x=transferAt(122,'S',['compression']);assert.equal(x.ticket.sourceIdentity,'rootH:a122:sS');assert.equal(x.incoming.rootSymbol,'O')});
+check('containment constrains both outgoing and destination hue',()=>{const x=transferAt(122,'S',['explosion','containment']);assert.ok(x.outgoing.hue<=30);assert.ok(x.incoming.hue<=180)});
+check('explosion hue drift is retained as display discontinuity',()=>assert.ok(transferAt(244,'S',['explosion']).displayJump.rgbEuclideanDistance>0));
+check('reversed operator order can change display outcome',()=>assert.notEqual(transferAt(122,'S',['explosion','containment']).outgoing.hex,transferAt(122,'S',['containment','explosion']).outgoing.hex));
+check('source SHA-like ticket includes exact ordered program string',()=>assert.ok(transferAt(122,'M',['gravity','compression']).ticket.checksum.includes('gravity>compression')));
+check('operator action identifiers never counted as addresses',()=>assert.equal(transferAt(122,'S',OPERANTS.map(x=>x.id)).ticket.destinationAddress,123));
+check('source HON address unmodified for five-operator chain',()=>assert.equal(transferAt(244,'S',OPERANTS.map(x=>x.id)).origin.address,244));
+check('source root H unmodified for five ops',()=>assert.equal(transferAt(122,'S',OPERANTS.map(x=>x.id)).outgoing.rootSymbol,'H'));
+check('destination root O native for five ops',()=>assert.equal(transferAt(122,'S',OPERANTS.map(x=>x.id)).incoming.rootSymbol,'O'));
+check('full chain accepted at H/O',()=>assert.equal(transferAt(122,'S',OPERANTS.map(x=>x.id)).ticket.operatorProgram.length,5));
+check('full chain accepted at O/N',()=>assert.equal(transferAt(244,'S',OPERANTS.map(x=>x.id)).ticket.operatorProgram.length,5));
+check('all transitions preserve provenance invariants',()=>{
+ for(const source of [122,244,366])for(const tier of TIERS)for(const p of PROGRAMS)
+  assert.equal(transferAt(source,tier,p.actions).valid,true)
+});
+check('source no 370 tail entered by any program',()=>{
+ for(const source of [122,244,366])for(const tier of TIERS)for(const p of PROGRAMS)
+  assert.equal(transferAt(source,tier,p.actions).provenance.no370TailEntry,true)
+});
+check('survey 54 cases',()=>assert.equal(surveyAllBoundaries().cases,54));
+check('survey 36 active transfers',()=>assert.equal(surveyAllBoundaries().transfers,36));
+check('survey 18 closed lid outcomes',()=>assert.equal(surveyAllBoundaries().closures,18));
+check('survey no invalid cases',()=>assert.deepEqual(surveyAllBoundaries().invalid,[]));
+check('survey each gate gets 18 cases',()=>assert.deepEqual(surveyAllBoundaries().perGate.map(x=>x.cases),[18,18,18]));
+check('surveys independent of previous frozen files',()=>assert.equal(spec.invariants.previous370AddressesImmutable,true));
+const bridge=cubitGateAudit();
+check('18-slot cubit literal unchanged',()=>assert.equal(bridge.cubit,compileCubit().canonical));
+check('seven cubit packet sizes unchanged',()=>assert.deepEqual([...compileCubit().packetLengths],[2,4,2,2,5,2,1]));
+check('HO corresponding cubit slots 6 to 7',()=>assert.deepEqual([bridge.links[0].fromSite,bridge.links[0].toSite],[6,7]));
+check('ON corresponding cubit slots 12 to 13',()=>assert.deepEqual([bridge.links[1].fromSite,bridge.links[1].toSite],[12,13]));
+check('lid on cubit site 18, no followup site',()=>assert.deepEqual([bridge.links[2].fromSite,bridge.links[2].toSite],[18,null]));
+check('HN seam not moved to cubit site 15',()=>assert.equal(bridge.fifthPacketSeam.position,15));
+check('cubit position15 N293 not cross-root gate',()=>assert.equal(bridge.fifthPacketSeam.address,293));
+check('cubit site15 retains dual pipe',()=>assert.equal(cubitToHON(15).doublePipeSeam,true));
+check('cubit lid N366 unchanged',()=>assert.deepEqual([bridge.terminal.position,bridge.terminal.address,bridge.terminal.state],[18,366,'CLOSED']));
+check('H/O bridge source H at 122',()=>assert.deepEqual([cubitToHON(6).elementalRoot,cubitToHON(6).elementalAddress],['H',122]));
+check('H/O bridge target O at123',()=>assert.deepEqual([cubitToHON(7).elementalRoot,cubitToHON(7).elementalAddress],['O',123]));
+check('O/N bridge source O at244',()=>assert.deepEqual([cubitToHON(12).elementalRoot,cubitToHON(12).elementalAddress],['O',244]));
+check('O/N bridge target N at245',()=>assert.deepEqual([cubitToHON(13).elementalRoot,cubitToHON(13).elementalAddress],['N',245]));
+check('source 370 tail preserved',()=>assert.deepEqual(spec.expected.legacySource370Tail,[367,368,369,370]));
+check('H O N atomic number unaffected',()=>assert.deepEqual(ROOTS.map(r=>r.atomicNumber),[1,8,7]));
+check('all five operants remain software-only',()=>assert.equal(spec.limits.some(x=>x.includes('software')||x.includes('simulated')),true));
+check('historical 1832 1970 unmodified',()=>assert.deepEqual([spec.invariants.historicAdaStart,spec.invariants.historicToroidalStart],[1832,1970]));
+check('original 6/80/240 ring intact',()=>assert.deepEqual([spec.invariants.symbolicRingArcs,spec.invariants.phaseSteps,spec.invariants.microticks],[6,80,240]));
+check('CERN physical toroid counts preserved',()=>assert.deepEqual(spec.invariants.quadRealToroidCount,{A:0,B:3,C:0,D:0}));
+check('viewer has declared controls and source module',()=>{
+const h=fs.readFileSync(new URL('./index.html',import.meta.url),'utf8');
+for(const v of ['boundary_core.mjs','Hydrogen','Oxygen','Nitrogen','Containment','N366','SOURCE_TAIL'])
+ assert.ok(h.includes(v),v);
+});
+console.log(JSON.stringify({result:'PASS',passed:Object.keys(yes).length,failed:0,
+ gates:GATES.map(g=>({source:g.from,target:g.to})),
+ survey:{cases:54,transfers:36,closures:18},
+ discontinuity:{HO_degrees:HO.displayJump.absoluteWrappedHueDeltaDegrees,ON_degrees:ON.displayJump.absoluteWrappedHueDeltaDegrees}},null,2));
