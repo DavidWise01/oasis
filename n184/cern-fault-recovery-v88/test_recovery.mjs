@@ -66,4 +66,15 @@ test('CSV wrapper consistent holdout',()=>assert.equal(runCSV(text).analysis.hel
 test('invalid maxRows fails',()=>assert.throws(()=>evaluate(events,{maxRows:100001})));
 test('invalid event list fails',()=>assert.throws(()=>evaluate('not an array')));
 test('baseline old 100k results intact',()=>assert.ok(fs.existsSync(new URL('../cern-heldout-v87/results.json',import.meta.url))));
+const saved=JSON.parse(fs.readFileSync(new URL('./results.json',import.meta.url),'utf8'));
+test('saved 100k CERN source accepted',()=>assert.equal(saved.input.accepted,100000));
+test('saved holdout exactly 19993',()=>assert.equal(saved.analysis.heldout,19993));
+test('saved source SHA256 preserved',()=>assert.equal(saved.provenance.sourceSha256,SOURCE_SHA256));
+test('saved experiment reports zero clean false alarms',()=>assert.equal(saved.analysis.scenarios.clean.falseAlarms,0));
+test('saved one missed injected bias',()=>assert.equal(saved.analysis.scenarios.biased_pz1_plus5.missedFaults,1));
+test('saved recovered coverage 19992 of 19993',()=>assert.equal(saved.analysis.overall.repairedValid,19992));
+test('saved miss is large-pz tolerance corner case',()=>{const m=saved.analysis.missedFaultExamples[0];assert.equal(m.event,147609488);assert.ok(m.originalPz1GeV>3000);assert.ok(m.alarmThresholdGeV>Math.abs(m.residualPz1GeV))});
+test('saved invalid output preserves same missed event',()=>assert.equal(saved.analysis.invalidRepairedExamples[0].event,147609488));
+test('saved 3 clean metrics untouched',()=>assert.equal(saved.analysis.scenarios.clean.recoveredVsClean.maeGeV,0));
+test('saved reproducible source workflow link',()=>assert.ok(saved.verifiedWorkflowUrl.endsWith('/39540715071')));
 console.log(JSON.stringify({result:'PASS',passed:Object.keys(checks).length,failed:0,fixture:{rows:events.length,heldout:evaluate(events).heldout},checks},null,2));
