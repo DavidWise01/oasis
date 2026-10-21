@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANNY · Abrupt-Stop Harvester Boundary</title>
+<meta name="description" content="Isolated synthetic transfer crash gate: SIGKILL browser certification with independent receiver reconciliation">
+<style>
+:root{color-scheme:dark;font:15px system-ui,Segoe UI,sans-serif;color:#e3f4ff;--panel:#0c1731;--edge:#3b6db6}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0,#2f236b 0,transparent 45%),linear-gradient(155deg,#050814,#080d20 65%,#10152d)}
+main{max-width:1080px;margin:auto;padding:22px}
+nav{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}
+a{color:#9addff}small{color:#a5b9d5}
+h1{text-align:center;font-size:clamp(27px,4.2vw,54px);margin:25px 0 8px;background:linear-gradient(90deg,#fff,#b488ff,#6bdafa);color:transparent;background-clip:text}
+.lead{text-align:center;color:#b3c5e4;max-width:720px;margin:8px auto 25px}
+.frame{border:1px solid #5b6cd5;border-radius:21px;background:linear-gradient(155deg,#112444dd,#090f20ed);box-shadow:inset 0 0 28px #5363e822,0 0 25px #5b52be2e;padding:19px}
+.rails{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.rail{border:1px solid #5980b3;background:#101f3b;border-radius:12px;text-align:center;padding:11px 5px;min-width:0}
+.rail span{display:block;font-size:11px;overflow-wrap:anywhere;color:#b0dbff}
+.rail strong{display:block;color:#a78eff;font-size:21px;margin:4px}
+.arrows{text-align:center;color:#b3ddff;font-size:22px;padding:11px}
+.anchors{text-align:center;letter-spacing:.05em;border:1px solid #3b6bc5;padding:13px;border-radius:12px;margin-bottom:18px;background:#081022}
+.anchors b:first-child{color:#8d9cbf}.anchors b:last-child{color:#ffcf79}
+.controls{display:grid;grid-template-columns:1fr auto;gap:12px;margin:15px 0}
+select{background:#142647;color:#dff7ff;border:1px solid #5a8acf;border-radius:9px;padding:11px}
+button{cursor:pointer;border-radius:9px;padding:11px 13px;background:#1b3154;color:#e1faff;border:1px solid #58c9ff;font-weight:650}
+button:hover{filter:brightness(1.25)}
+.buttons{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}
+.badge{border:1px solid #9b68ff;border-radius:7px;color:#ddbeff;padding:5px 10px;display:inline-block}
+.output{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;padding:19px;border:1px solid #5279c3;border-radius:13px;background:#070c1b;color:#b6eaff;font:12px/1.55 ui-monospace,Consolas,monospace}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:17px 0}
+.legend article{background:#101b35;border:1px solid #3c6295;border-radius:12px;padding:13px}
+.legend strong{color:#b9abff}
+.legend p{font-size:12px;color:#abbdce}
+footer{color:#a8b7d3;font-size:12px;margin:26px 0}
+@media(max-width:650px){.rails{grid-template-columns:repeat(2,minmax(0,1fr))}.controls,.legend{grid-template-columns:1fr}}
+</style></head>
+<body><main>
+<nav><b>◈ ANNY · ISOLATED ABRUPT-STOP LAB</b><a href="./">← Back to Sapphon spectrum</a></nav>
+<h1>Harvester · Kill &amp; Reconcile</h1>
+<p class="lead">Diatomic Sapphon observer simulation with an independent journal/receiver test ledger.
+Five atomic checkpoints. No automatic release upon restart.</p>
+<div class="frame">
+ <div class="anchors"><b>-- VOID</b> · SYNTHETIC FIVE-BYTE SOURCE · <b>++ GRAVITY</b></div>
+ <div class="rails">
+ <div class="rail"><strong>1</strong><span>PREPARED</span></div>
+ <div class="rail"><strong>2</strong><span>COMMITTED</span></div>
+ <div class="rail"><strong>3</strong><span>RELEASE_PENDING</span></div>
+ <div class="rail"><strong>4</strong><span>RECEIVER_RECORDED</span></div>
+ <div class="rail"><strong>5</strong><span>CONFIRMED</span></div>
+ </div>
+ <div class="arrows">− · 40 bits · A 5/5 + B 5/5 · +</div>
+ <div class="controls"><select id="stage" aria-label="Choose abrupt-stop checkpoint">
+ <option>PREPARED</option><option>COMMITTED</option><option>RELEASE_PENDING</option>
+ <option>RECEIVER_RECORDED</option><option>CONFIRMED</option></select><span class="badge" id="status">INITIALIZING</span></div>
+ <div class="buttons">
+ <button id="arm">Arm this checkpoint</button>
+ <button id="read">Independently reconcile (read-only)</button>
+ <button id="resume">Explicitly continue / hold</button>
+ <button id="dupes">Five duplicate deliveries</button>
+ <button id="forged">Forged receipt observer</button>
+ </div>
+ <p id="note" style="color:#b8c8de;font-size:12px">The external Chromium test driver sends SIGKILL to its own dedicated browser process group. This webpage does not kill Chromium.</p>
+ <pre id="log" class="output" aria-live="polite">Initializing independent IndexedDB test namespace.</pre>
+</div>
+<div class="legend">
+<article><strong>PRECOMMIT</strong><p>PREPARED or COMMITTED: no receiver effect, Violet HELD, no replay authorization.</p></article>
+<article><strong>PENDING</strong><p>RELEASE_PENDING: independent ledger is queried first. Explicit test continuation only.</p></article>
+<article><strong>CONFIRMED</strong><p>Violet VERIFIED requires matching journal and independently stored receiver receipts.</p></article>
+</div>
+<footer>Lab uses dedicated `anny-abrupt-boundary-v16-1-*` IndexedDB namespaces. Does not modify the normal GitHub Pages Harvester transfer. SIGKILL after a committed transaction does not certify sudden power-loss or unresolved mid-transaction durability. The `− / +` labels are symbolic, not physical particle charge.</footer>
+<script type="module">
+import {annyCrashLab} from "./crash-lab.mjs";
+const $=id=>document.getElementById(id),stage=$("stage"),status=$("status"),log=$("log"),note=$("note");
+async function action(method){
+ const selected=stage.value;
+ status.textContent="RUNNING";
+ try{
+  const result=await annyCrashLab[method](selected, ...(method==="duplicate"?[5]:[]));
+  log.textContent=JSON.stringify(result,null,2);
+  status.textContent=method==="arm"?"ARMED":method==="resume"?"CONTINUED":"OBSERVED";
+ }catch(err){
+  log.textContent=String(err.stack||err);
+  status.textContent="HELD / ERROR";
+ }
+}
+for(const [id,method] of [["arm","arm"],["read","reconcile"],["resume","resume"],
+ ["dupes","duplicate"],["forged","forged"]]){
+ $(id).addEventListener("click",()=>action(method));
+}
+stage.addEventListener("change",()=>action("snapshot"));
+await action("snapshot");
+</script></main></body></html>
