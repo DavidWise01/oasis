@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · Four-Quad Spectral Witness v9.2</title>
+<style>
+:root{color-scheme:dark;--bg:#07121e;--pane:#12243a;--tile:#1c3349;--line:#395872;--ink:#f0f7ff;--muted:#b0c5d6;--mint:#8ce6d2;--gold:#f3cb8e;--violet:#c4b1f2;--rose:#f1a09d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{border-bottom:1px solid var(--line);background:linear-gradient(120deg,#101e31,#213b4a);padding:22px clamp(18px,3vw,35px)}
+header h1{font-size:clamp(22px,3.2vw,33px);margin:0;line-height:1.17}header p{margin:6px 0;color:var(--muted)}
+main{padding:16px;max-width:1470px;margin:auto;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(340px,.94fr);gap:14px}
+.panel{background:var(--pane);border:1px solid var(--line);border-radius:13px;padding:17px;min-width:0}
+h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:14px 0 8px}
+canvas{width:100%;height:auto;border:1px solid #365673;background:#081b2b;border-radius:10px;display:block}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}
+button,select{background:#23556a;border:1px solid #6393a0;color:#f6ffff;padding:9px 12px;border-radius:8px}
+button{cursor:pointer}button.active{background:#316b62;border-color:#a2efdd}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #b9f9e5}
+input[type=range]{width:min(220px,50vw);accent-color:var(--mint)}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
+.metric{background:var(--tile);border:1px solid #496783;border-radius:9px;padding:11px}
+.metric b{display:block;font:bold clamp(18px,2.2vw,25px) ui-monospace,monospace;color:#8ce6d2}
+.metric span{color:var(--muted);font-size:11px}
+.quadgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.quad{background:#1a3046;border:1px solid #45637c;border-top:3px solid var(--qcolor);border-radius:10px;padding:12px;min-width:0}
+.quad h3{font-size:16px;margin:0 0 2px;color:var(--qcolor)}
+.quad small{color:var(--muted)}
+.quad .state{margin:8px 0;font:700 13px ui-monospace,monospace;color:#a8edca}
+.kv{border-top:1px solid #324b61;padding-top:6px;margin-top:5px;font:12px/1.6 ui-monospace,monospace;display:flex;justify-content:space-between;gap:10px}
+.kv b{font-weight:500;word-break:break-word;text-align:right}
+.fault{background:#322e44;border-left:3px solid #e9bb80;padding:11px;border-radius:0 9px 9px 0;margin:12px 0}
+.wms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:8px 0}
+.wms .cell{border:1px solid #6b7f90;border-radius:7px;padding:10px;min-height:70px;display:flex;flex-direction:column;justify-content:space-between}
+.wms span{background:#101c28c9;width:fit-content;padding:2px 5px;border-radius:3px;font-size:12px;color:#fff}
+small,.muted{color:var(--muted)}a{color:#a1e7dc}
+pre{font:12px/1.5 ui-monospace,monospace;background:#0b1d2c;border:1px solid #3a546b;border-radius:9px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:15px 20px;color:var(--muted);font-size:12px}
+@media(max-width:980px){main{grid-template-columns:1fr}}@media(max-width:560px){.metrics,.quadgrid{grid-template-columns:1fr}}
+</style></head><body>
+<header><small style="color:#a0e6d6;letter-spacing:.13em">OASIS / N184 / QUAD SPECTRAL WITNESS / v9.2</small>
+<h1>Gen 0–8 · Weak / Medium / Strong · Four Quad Views</h1>
+<p>One frozen color record, four software projections, and a visible 3-of-4 agreement test. CERN experiment names identify logical ports, not actual optical measurements.</p></header>
+<main>
+<section class="panel">
+<h2>One source hue · all four quads</h2>
+<canvas id="ring" width="900" height="610" role="img" aria-label="Quad-partitioned ring with one shared immutable hue and independent software observation labels"></canvas>
+<div class="controls">
+<label>Generation <select id="gen"></select></label>
+<label>Hue <select id="hue"></select></label>
+</div>
+<div class="controls"><span>Strength</span>
+<button id="W">Weak · ⅓</button><button id="M">Medium · ⅔</button><button id="S">Strong · 3/3</button>
+</div>
+<h3>One hue, three reserved strength lanes</h3>
+<div id="tiers" class="wms"></div>
+<div class="metrics">
+<div class="metric"><b id="record">—</b><span>Immutable swatch identity</span></div>
+<div class="metric"><b id="addr">—</b><span>Nearest original 370 address</span></div>
+<div class="metric"><b id="votes">—</b><span>Distinct valid software votes</span></div>
+</div>
+<div class="fault">
+<b>Witness fault simulation</b>
+<div class="controls">
+<label>Alter reports <select id="fault">
+<option value="none">None · all agree</option>
+<option value="one">One · A altered</option>
+<option value="two">Two · A and B altered</option>
+<option value="all-coherent">Four · same coherent lie</option>
+</select></label>
+</div>
+<p id="decision" style="margin:4px 0 0"></p>
+<small>This changes the software reports only. Source color identity and all recorded generation colors remain unchanged. Four matching fake votes can agree without being true.</small>
+</div>
+<p><a href="../generational-color-lattice-v91/">Gen 0–8 spectrum source</a> · <a href="../cern-quad-discovery-v90/">Real CERN quad magnet inventory</a> · <a href="./spec.json">Model contract</a></p>
+</section>
+<aside class="panel">
+<h2>Four distinct analysis functions</h2>
+<div id="quads" class="quadgrid"></div>
+<h3>Source / witness separation</h3>
+<pre id="source">Loading source record…</pre>
+<div class="metrics">
+<div class="metric"><b id="passed">—</b><span>Swatches checked in current generation</span></div>
+<div class="metric"><b id="failed">—</b><span>Software validation failures</span></div>
+<div class="metric"><b id="collisions">—</b><span>370-address collisions through generation</span></div>
+</div>
+<div class="fault">
+<b>Physical boundary</b><p style="margin:5px 0 0">All four software views derive from the <em>same</em> synthetic RGB record. Their agreement is useful for detecting some software inconsistencies, but does not constitute four independent CERN detector witnesses. Actual toroidal detector magnets remain A=0, B=3, C=0, D=0.</p>
+</div>
+<p class="muted" id="status">Loading model…</p>
+<p><a href="./README.md">Read full methods</a> · <a href="../integration-v41/">OASIS Confluence</a></p>
+</aside></main>
+<footer>OASIS v9.2 · 6 arcs / 80 phase steps / 240 microticks preserved · 370 color-address registry remains read-only.</footer>
+<script type="module">
+import {STR,MAX_GENERATION,hueCount,swatch,generation} from '../generational-color-lattice-v91/color_core.mjs';
+import {QUADS,createColorRecord,observeAll,injectReportFaults,evaluateQuorum,surveyGeneration} from './witness_core.mjs';
+const $=id=>document.getElementById(id),cv=$('ring'),ctx=cv.getContext('2d');
+let gen=2,index=0,strength='S',fault='none',frame=null,reports=[],decision=null,summary=null;
+const quadColors=['#90e6ca','#efc58b','#b9aafa','#f4a0a1'];
+function draw(){
+if(!frame)return;
+const c=ctx,w=cv.width,h=cv.height,x=w/2,y=h/2,R=190,T=Math.PI*2;
+c.fillStyle='#081b2b';c.fillRect(0,0,w,h);
+for(let i=0;i<4;i++){
+ const a=-Math.PI/2+i*T/4;c.beginPath();c.arc(x,y,R+44,a+.045,a+T/4-.045);
+ c.strokeStyle=quadColors[i];c.lineWidth=16;c.stroke();
+ const mid=a+T/8,rr=R+115;
+ c.fillStyle=quadColors[i];c.textAlign='center';c.font='bold 17px system-ui';
+ c.fillText(QUADS[i].id+' · '+QUADS[i].name,x+Math.cos(mid)*rr,y+Math.sin(mid)*rr);
+}
+for(let j=0;j<80;j++){
+ const a=-Math.PI/2+j*T/80,p1=R-25,p2=R-(j%10===0?47:36);
+ c.beginPath();c.moveTo(x+Math.cos(a)*p1,y+Math.sin(a)*p1);
+ c.lineTo(x+Math.cos(a)*p2,y+Math.sin(a)*p2);
+ c.strokeStyle=j%10===0?'#9fb1ca':'#526b85';c.lineWidth=j%10===0?2.5:1.1;c.stroke();
+}
+const a=-Math.PI/2+frame.value.hueDegrees*T/360;
+c.beginPath();c.arc(x+Math.cos(a)*R,y+Math.sin(a)*R,13,0,T);c.fillStyle=frame.value.displayHex;c.fill();c.lineWidth=2;c.strokeStyle='#ffffff';c.stroke();
+const box=160;c.fillStyle=frame.value.displayHex;c.fillRect(x-box/2,y-120,box,70);c.lineWidth=2;c.strokeStyle='#ffffff70';c.strokeRect(x-box/2,y-120,box,70);
+c.textAlign='center';c.fillStyle='#edf7ff';c.font='bold 37px system-ui';c.fillText('GEN '+gen,x,y+6);
+c.font='bold 23px system-ui';c.fillText(frame.value.displayName,x,y+38);
+c.fillStyle='#bed3df';c.font='15px ui-monospace,monospace';
+c.fillText(frame.value.hueDegrees+'° · '+strength+' · '+frame.value.displayHex,x,y+65);
+c.fillText('QUORUM '+decision.winnerVotes+'/4 · '+(decision.consensus?'ACCEPT':'HOLD'),x,y+91);
+c.textAlign='left';c.font='15px ui-monospace,monospace';c.fillStyle='#a9c3d5';
+c.fillText('ONE SOURCE · FOUR PROJECTIONS',22,31);
+c.fillText('3/4 rule is software consensus, not physics',22,h-22);
+}
+function displayAttrs(feature){
+const list=Object.entries(feature);return list.slice(0,5).map(([k,v])=>{
+ const row=document.createElement('div');row.className='kv';
+ const key=document.createElement('span');key.textContent=k;
+ const val=document.createElement('b');val.textContent=Array.isArray(v)?v.join(', '):String(v);row.append(key,val);
+ return row;
+});
+}
+function refresh(){
+frame=createColorRecord(gen,index,strength);
+const baseline=observeAll(frame),altered=injectReportFaults(baseline,fault),verdict=evaluateQuorum(altered);
+reports=altered;decision=verdict;
+$('record').textContent=frame.identityKey;
+$('addr').textContent='#'+frame.value.registryAddress;
+$('votes').textContent=String(verdict.winnerVotes)+'/4';
+$('decision').textContent=(verdict.consensus?'ACCEPT':'HOLD')+' · '+verdict.winnerVotes+'/4 agreeing · altered reports: '+(verdict.dissentingQuads.join(', ')||'none')+
+ (fault==='all-coherent'?' · WARNING: coherent false agreement can pass.':'');
+$('source').textContent='Canonical identity: '+frame.identityKey+'\nHue: '+frame.value.hueDegrees+
+ '°\nHex: '+frame.value.displayHex+'\nStrength: '+frame.value.strengthName+
+ '\nRegistry: '+frame.value.registryMode+'@'+frame.value.registryAddress+
+ ' (orbit '+frame.value.registryOrbit+')\nPhysical experiment color readings: none';
+const panel=$('quads');panel.replaceChildren(...reports.map((r,i)=>{
+ const div=document.createElement('div');div.className='quad';div.style.setProperty('--qcolor',quadColors[i]);
+ const heading=document.createElement('h3');heading.textContent=r.quad+' · '+r.experiment;
+ const subtitle=document.createElement('small');subtitle.textContent=r.view+' · IP'+r.ip;
+ const state=document.createElement('div');state.className='state';
+ state.textContent=(r.valid?'LOCAL CHECK OK':'LOCAL CHECK FAILED')+(r.identityKey===frame.identityKey?' · identity agrees':' · identity altered');
+ div.append(heading,subtitle,state,...displayAttrs(r.features));return div;
+}));
+const tiers=$('tiers');tiers.replaceChildren(...STR.map(x=>{
+ const c=swatch(gen,index,x.key),cell=document.createElement('div');cell.className='cell';cell.style.background=c.displayHex;
+ const tag=document.createElement('span');tag.textContent=x.name;const hex=document.createElement('span');hex.textContent=c.displayHex;
+ cell.append(tag,hex);return cell;
+}));
+for(const x of STR)$ (x.key).classList.toggle('active',strength===x.key);
+draw();
+}
+function genSelected(){
+const g=generation(gen);$('hue').replaceChildren(...g.colors.map((color,i)=>{
+const o=document.createElement('option');o.value=String(i);o.textContent=(i+1)+' · '+color.name+' · '+color.hue+'°';return o;
+}));$('hue').value=String(index);
+summary=surveyGeneration(gen);
+$('passed').textContent=summary.passed.toLocaleString();
+$('failed').textContent=summary.failed;
+$('collisions').textContent=summary.registryProjection.addressCollisions;
+$('status').textContent='Generation '+gen+' · '+summary.swatches+
+ ' swatches × 4 software analyses = '+(summary.swatches*4).toLocaleString()+
+ ' witness outputs checked; parent color records unchanged.';
+refresh();
+}
+$('gen').replaceChildren(...Array.from({length:MAX_GENERATION+1},(_,i)=>{
+const o=document.createElement('option');o.value=i;o.textContent='Gen '+i+' · '+hueCount(i)+' hues';return o;
+}));
+$('gen').value=String(gen);
+$('gen').onchange=e=>{gen=Number(e.target.value);index=0;genSelected()};
+$('hue').onchange=e=>{index=Number(e.target.value);refresh()};
+for(const x of STR)$(x.key).onclick=()=>{strength=x.key;refresh()};
+$('fault').onchange=e=>{fault=e.target.value;refresh()};
+genSelected();
+</script></body></html>
