@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · CERN Carbon Layer 3D v8.6</title>
+<style>
+:root{color-scheme:dark;--bg:#08101b;--pane:#122238;--border:#3a536d;--ink:#edf7ff;--muted:#acbfcd;--mint:#90e5cc;--gold:#efc77f;--rose:#f3a09e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{padding:21px clamp(17px,3vw,32px);border-bottom:1px solid var(--border);background:linear-gradient(110deg,#111d31,#152e3b)}
+h1{margin:2px 0;font-size:clamp(23px,3vw,32px)}header p{color:var(--muted);margin:3px 0}
+main{max-width:1440px;margin:auto;padding:16px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(310px,.85fr);gap:14px}
+.panel{min-width:0;background:var(--pane);padding:16px;border-radius:13px;border:1px solid var(--border)}
+h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:14px 0 6px}
+canvas{display:block;width:100%;height:auto;background:#071725;border:1px solid #3b5670;border-radius:12px}
+button{border:1px solid #69979c;background:#24536a;color:#f5ffff;cursor:pointer;padding:9px 12px;border-radius:8px}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #abf4db}
+.controls{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:14px 0}
+input[type=range]{accent-color:var(--mint);width:min(220px,48vw)}
+select{background:#1d3548;border:1px solid #668aa3;color:white;border-radius:8px;padding:8px;max-width:95%}
+input[type=file]{display:none}.fileButton{background:#24536a;border:1px solid #69979c;border-radius:8px;padding:9px 12px;cursor:pointer}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:13px 0}
+.metric{border:1px solid #496581;background:#192e46;padding:12px;border-radius:11px}
+.metric strong{display:block;color:#9eeaca;font:bold clamp(16px,2vw,21px) ui-monospace,monospace;overflow-wrap:anywhere}
+.metric span{font-size:12px;color:var(--muted)}
+.note{border-left:3px solid #d4ba8a;padding:9px 12px;background:#25283e;border-radius:0 8px 8px 0;color:#ccd9e9}
+.tab{width:100%;border-collapse:collapse;font:12px/1.5 ui-monospace,monospace}
+.tab td,.tab th{border-bottom:1px solid #344d64;padding:8px;text-align:right}
+.tab td:first-child,.tab th:first-child{text-align:left}
+.good{color:#90e5cc}.bad{color:#efb68c}
+pre{background:#0b1c2b;border:1px solid #34506b;border-radius:9px;padding:12px;white-space:pre-wrap;font:12px/1.5 ui-monospace,monospace}
+a{color:#99e8d8}footer{padding:14px 20px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+@media(max-width:930px){main{grid-template-columns:1fr}}@media(max-width:460px){.metrics{grid-template-columns:1fr}}
+</style></head><body>
+<header><small style="color:var(--mint)">OASIS N184 · GEN 1 · SYMBOLIC CARBON LAYER 3D</small>
+<h1>CERN × Carbon-6 × 3D Momentum</h1>
+<p>Four CMS educational events · actual 3D mass consistency vs deliberately flattened XY-only baseline</p></header>
+<main>
+<section class="panel">
+<h2>Carbon-layer ring · projected 3D momentum vectors</h2>
+<canvas id="space" width="940" height="640" role="img" aria-label="A stylized six-sector carbon ring with x, y, z axes and two muon momentum vectors projected into Canvas2D"></canvas>
+<div class="controls">
+<label>Perspective <input id="rotate" type="range" min="-180" max="180" value="30" step="1"></label>
+<label>Ring tick <output id="micro">0</output> <input id="tick" type="range" min="0" max="239" value="0"></label>
+<button id="animate">Play orbit</button><button id="home">Reset</button>
+</div>
+<p style="color:var(--muted)">The sixfold carbon motif and orbit are an OASIS graphical convention. The x/y/z arrows show real reported CMS momentum components. The ring is not the actual CMS detector, a carbon crystal, or a physical particle trajectory.</p>
+<div class="metrics">
+<div class="metric"><span>Mean absolute error — full 3D</span><strong id="mae3">—</strong></div>
+<div class="metric"><span>Mean absolute error — XY-only</span><strong id="mae2">—</strong></div>
+<div class="metric"><span>Events with smaller 3D residual</span><strong id="better">—</strong></div>
+<div class="metric"><span>Observable axes</span><strong>x · y · z</strong></div>
+</div>
+<h3>Mathematics</h3>
+<pre>m³ᴰ² = (E₁ + E₂)² − (Σpₓ)² − (Σpᵧ)² − (Σp_z)²
+mˣʸ² = (E₁ + E₂)² − (Σpₓ)² − (Σpᵧ)²
+
+Carbon → 6 display sectors
+Phase  → 80 × 1.25%
+Clock  → 240 shared microticks</pre>
+<p><a href="../cern-observer-lab-v84/">Previous four-observer lab</a> · <a href="../ada-cern-genesis-v85/">Ada → CERN thesis</a> · <a href="./results.json">Raw benchmark results</a></p>
+</section>
+<aside class="panel">
+<h2>Experimental inputs</h2>
+<div class="controls">
+<button id="sample">Load verified example</button>
+<label class="fileButton" for="upload">Import local CMS CSV</label>
+<input id="upload" type="file" accept=".csv,text/csv">
+</div>
+<p id="status" style="color:var(--muted)">Loading CERN educational records…</p>
+<div class="controls"><label>CMS event <select id="events"></select></label><button id="prev">◂</button><button id="next">▸</button></div>
+<h3>Selected event · consistency comparison</h3>
+<table class="tab">
+<tr><th>Quantity</th><th>GeV</th></tr>
+<tr><td>Stored CMS mass M</td><td id="recorded">—</td></tr>
+<tr><td>XY-only mass</td><td id="xy">—</td></tr>
+<tr><td>Full 3D mass</td><td id="xyz">—</td></tr>
+<tr><td class="bad">|XY − M|</td><td class="bad" id="error2">—</td></tr>
+<tr><td class="good">|3D − M|</td><td class="good" id="error3">—</td></tr>
+<tr><td>Combined pz</td><td id="pz">—</td></tr>
+</table>
+<h3>Results from all loaded events</h3>
+<table class="tab">
+<tr><th>Event</th><th>XY mass</th><th>3D mass</th></tr>
+<tbody id="rows"></tbody></table>
+<div class="note" style="margin-top:16px">
+<b>What this run actually establishes</b>
+<p>Including <code>p_z</code> reproduces the recorded invariant mass to its published precision. It does <b>not</b> show independent predictive accuracy: the stored mass was itself derived from related kinematics. XY-only is intentionally incomplete, so its poor result is mathematically expected.</p>
+</div>
+<p style="color:var(--muted);font-size:12px">CERN CMS educational dimuon example; see <a href="https://opendata.cern.ch/visualise/histograms/CMS">original table</a> and <a href="https://opendata.cern.ch/record/700">source data record</a>. Imported CSV remains local. Files up to 25 MiB; 25,000 valid events maximum.</p>
+<p style="color:var(--muted);font-size:12px"><b>Historical anchor:</b> Gen 0 1832 Ada → Gen 1 1970 toroidal model. Mother Nature offset 0 unless explicitly changed; historical dates are not changed.</p>
+<p><a href="./README.md">Methods and laptop runbook</a> · <a href="./spec.json">Model register</a></p>
+</aside></main>
+<footer>OASIS v8.6 · CERN is a research organization; Carbon Layer 3D is a symbolic model mapping only. No affiliation or endorsement.</footer>
+<script type="module">
+import {parseCMSCSV} from '../cern-observer-lab-v84/observer_core.mjs';
+import {analyzeCarbon3D,massesForEvent,carbonPhaseIndex,projection3DTo2D} from './carbon3d_core.mjs';
+const $=id=>document.getElementById(id);
+let records=[],idx=0,phase=0,rotate=30,running=false,last=0,acc=0;
+const fmt=v=>Number.isFinite(v)?Number(v.toPrecision(8)).toString():'invalid';
+function paint(){
+const canvas=$('space'),g=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
+const cx=w*.5,cy=h*.52,S=Math.PI*2,R=164;
+g.fillStyle='#091a2a';g.fillRect(0,0,w,h);
+const p=(x,y,z)=>{const v=projection3DTo2D(x,y,z,{azimuth:rotate*Math.PI/180,tilt:.48,scale:1});return {x:cx+v.x,y:cy-v.y,depth:v.depth}};
+const c=['#e8bb7a','#9cdfc4','#b9a2ed','#eb9d98','#91b8eb','#e9bf86'];
+for(let i=0;i<6;i++){const a=-Math.PI/2+i*S/6,b=a+S/6;
+g.beginPath();for(let j=0;j<=30;j++){const t=a+(b-a)*j/30,v=p(Math.cos(t)*R,Math.sin(t)*R,0);if(j===0)g.moveTo(v.x,v.y);else g.lineTo(v.x,v.y)}
+g.lineWidth=11;g.strokeStyle=c[i];g.stroke()}
+for(const [name,v,col] of [['x',[1,0,0],'#efb987'],['y',[0,1,0],'#a5d4e9'],['z',[0,0,1],'#9be7cb']]){
+const end=p(v[0]*130,v[1]*130,v[2]*130);
+g.beginPath();g.moveTo(cx,cy);g.lineTo(end.x,end.y);g.lineWidth=3;g.strokeStyle=col;g.stroke();
+g.fillStyle=col;g.font='bold 18px system-ui';g.fillText(name,end.x+9,end.y-6);
+}
+const hit=carbonPhaseIndex(phase);
+for(let k=0;k<80;k++){const a=-Math.PI/2+k*S/80,start=p(Math.cos(a)*185,Math.sin(a)*185,0),end=p(Math.cos(a)*195,Math.sin(a)*195,0);g.beginPath();g.moveTo(start.x,start.y);g.lineTo(end.x,end.y);g.strokeStyle=k<hit.phaseStep?'#a6f2d9':'#527188';g.lineWidth=k%10===0?2.5:1;g.stroke()}
+const a=-Math.PI/2+hit.angleDegrees*Math.PI/180,tip=p(Math.cos(a)*R,Math.sin(a)*R,0);
+g.beginPath();g.arc(tip.x,tip.y,9,0,S);g.fillStyle='#fff1d1';g.fill();
+const r=records[idx];if(r){
+const vectors=[[r.px1,r.py1,r.pz1,'#f6cb8a','μ₁'],[r.px2,r.py2,r.pz2,'#fa9e9e','μ₂']];
+for(const [x,y,z,col,label] of vectors){
+const len=Math.hypot(x,y,z),k= len>0?130/len:0,end=p(x*k,y*k,z*k);
+g.beginPath();g.moveTo(cx,cy);g.lineTo(end.x,end.y);g.lineWidth=6;g.strokeStyle=col;g.stroke();
+g.beginPath();g.arc(end.x,end.y,7,0,S);g.fillStyle=col;g.fill();
+g.fillStyle=col;g.font='bold 17px system-ui';g.fillText(label,end.x+9,end.y-6);
+}}
+g.fillStyle='#eff4ff';g.textAlign='center';g.font='bold 39px system-ui';g.fillText(String(phase),cx,cy+7);
+g.fillStyle='#b4cbdb';g.font='14px system-ui';g.fillText(hit.phaseStep+'/80 phase · sector '+hit.sector+'/6',cx,cy+29);
+g.textAlign='left';g.font='14px ui-monospace,monospace';g.fillText('C :: LAYER 3D · sixfold display',22,30);
+g.fillText('CMS 2010 dimensional momentum · GeV',22,56);
+g.fillText('Perspective rotates a drawing, not measured 4-vectors',22,h-20);
+}
+function render(){
+ if(!records.length)return;const r=records[idx],m=massesForEvent(r);
+ $('events').value=String(idx);
+ for(const [id,v] of [['recorded',m.massRecorded],['xy',m.massXY],['xyz',m.mass3D],['error2',Math.abs(m.errorXY)],['error3',Math.abs(m.error3D)],['pz',m.totalMomentum.z]])$(id).textContent=fmt(v);
+ const a=analyzeCarbon3D(records,{detailLimit:100});
+ $('mae3').textContent=fmt(a.full3D.mae)+' GeV';$('mae2').textContent=fmt(a.baseline2D.mae)+' GeV';
+ $('better').textContent=a.improvedCount+' / '+a.inputRecords;
+ $('rows').replaceChildren(...a.detailRows.slice(0,12).map(x=>{
+ const tr=document.createElement('tr');
+ for(const text of [String(x.event),fmt(x.massXY),fmt(x.mass3D)]){const td=document.createElement('td');td.textContent=text;tr.append(td)}
+ return tr;
+ }));
+ paint();
+}
+function loadData(source,label){
+ const parsed=parseCMSCSV(source,{maxRows:25000});if(!parsed.records.length)throw Error('No valid dimuon records');
+ records=parsed.records;idx=0;phase=0;$('tick').value=0;$('micro').textContent='0';
+ $('events').replaceChildren(...records.map((r,i)=>{const el=document.createElement('option');el.value=String(i);el.textContent=String(i+1)+' · '+String(r.Event);return el}));
+ $('status').textContent=label+' · '+parsed.records.length+' accepted; '+parsed.skipped+' skipped'+(parsed.truncated?'; dataset truncated':'');
+ render();
+}
+async function sample(){const r=await fetch('../cern-observer-lab-v84/sample-cms-education.csv',{cache:'no-store'});if(!r.ok)throw Error('Could not fetch example');loadData(await r.text(),'CERN educational example')}
+$('sample').onclick=()=>sample().catch(e=>$('status').textContent=e.message);
+$('upload').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;
+ try{if(f.size>25*1024*1024)throw Error('File larger than 25MiB');loadData(await f.text(),'Local import '+f.name+' (source not independently verified)')}catch(err){$('status').textContent=err.message}e.target.value=''};
+$('events').onchange=e=>{idx=Number(e.target.value);render()};
+$('prev').onclick=()=>{idx=(idx-1+records.length)%records.length;render()};
+$('next').onclick=()=>{idx=(idx+1)%records.length;render()};
+$('rotate').oninput=e=>{rotate=Number(e.target.value);paint()};
+$('tick').oninput=e=>{phase=Number(e.target.value);$('micro').textContent=phase;paint()};
+$('animate').onclick=()=>{running=!running;$('animate').textContent=running?'Pause orbit':'Play orbit'};
+$('home').onclick=()=>{running=false;phase=0;rotate=30;$('tick').value=0;$('rotate').value=30;$('micro').textContent='0';$('animate').textContent='Play orbit';paint()};
+function frame(ms){if(last&&running){acc+=Math.min(80,ms-last)*.027;if(acc>=1){phase=(phase+Math.floor(acc))%240;acc%=1;$('tick').value=phase;$('micro').textContent=phase;paint()}}last=ms;requestAnimationFrame(frame)}
+sample().catch(e=>$('status').textContent='Load error: '+e.message);
+requestAnimationFrame(frame);
+</script></body></html>
