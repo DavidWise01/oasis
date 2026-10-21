@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · CERN Fault-Recovery v8.8</title>
+<style>
+:root{color-scheme:dark;--bg:#07121e;--panel:#11243a;--line:#3a556e;--ink:#edf7ff;--mute:#a5bfd0;--mint:#8ae4c8;--gold:#f3c780;--rose:#f4a29e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.48 system-ui,Segoe UI,sans-serif}
+header{padding:22px clamp(16px,3vw,38px);border-bottom:1px solid var(--line);background:linear-gradient(120deg,#102037,#193645)}
+h1{font-size:clamp(22px,3vw,32px);margin:0}header p{margin:5px 0;color:var(--mute)}
+main{max-width:1450px;margin:auto;padding:16px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(310px,.9fr);gap:14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+h2{font-size:17px;margin:0 0 11px}h3{font-size:14px;margin:15px 0 8px}
+canvas{width:100%;height:auto;display:block;background:#0a1929;border:1px solid #375671;border-radius:10px}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:13px 0}
+.metric{background:#1b3347;border:1px solid #486780;padding:12px;border-radius:10px}
+.metric strong{display:block;font:bold clamp(18px,2.3vw,23px) ui-monospace,monospace;color:#9cefd7;overflow-wrap:anywhere}
+.metric small{display:block;color:var(--mute);font-size:11px}
+.controls{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin:13px 0}
+input[type=range]{accent-color:var(--mint);width:min(220px,49vw)}
+select{padding:9px;border-radius:7px;border:1px solid #6285a0;background:#18394d;color:white}
+button{background:#255569;border:1px solid #6f9caa;color:#fff;border-radius:8px;padding:9px 12px;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #b8f7df}
+.stat{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #314b60}
+.stat b{font:13px ui-monospace,monospace;text-align:right;overflow-wrap:anywhere}
+.note{border-left:3px solid #d5bf91;background:#292e44;padding:10px 13px;border-radius:0 8px 8px 0;margin:12px 0}
+small,.muted{color:var(--mute)}a{color:#9ee8df}
+pre{background:#0c1b2b;border:1px solid #354f66;border-radius:8px;padding:11px;white-space:pre-wrap;font:12px/1.6 ui-monospace,monospace;overflow-wrap:anywhere}
+footer{padding:15px 23px;border-top:1px solid var(--line);color:var(--mute);font-size:12px}
+@media(max-width:900px){main{grid-template-columns:1fr}}@media(max-width:520px){.metrics{grid-template-columns:1fr}}
+</style></head>
+<body><header><small style="color:var(--mint)">OASIS / N184 / CERN :: CARBON :: LAYER 3D</small>
+<h1>Four-Port Fault Witness · v8.8</h1>
+<p>100,000 authentic CMS educational rows · 19,993 held out · synthetic missing & +5 GeV corrupted longitudinal momentum</p></header>
+<main>
+<section class="panel">
+<h2>Symbolic 240-microtick witness ring</h2>
+<canvas id="ring" width="920" height="560" role="img" aria-label="Six-sector symbolic ring with four conceptual observer roles, and one traveling inspection marker"></canvas>
+<div class="controls">
+<label>Microtick <output id="stepOut">0</output> <input id="step" type="range" min="0" max="239" step="1" value="0"></label>
+<button id="play">Play</button><button id="reset">Reset</button>
+<label>Fault case <select id="scenario">
+<option value="clean">Healthy</option>
+<option value="missing_pz1">Missing pz1</option>
+<option value="biased_pz1_plus5">Drift +5 GeV</option>
+</select></label>
+</div>
+<div class="metrics">
+<div class="metric"><strong id="total">—</strong><small>Total holdout events</small></div>
+<div class="metric"><strong id="coverage">—</strong><small>Valid after repair</small></div>
+<div class="metric"><strong id="alarms">—</strong><small>Flags on selected case</small></div>
+</div>
+<h2>Mean absolute mass error vs the clean input</h2>
+<canvas id="chart" width="920" height="330" role="img" aria-label="Naive versus recovered reconstructed mass error shown on a logarithmic comparison scale"></canvas>
+<div class="note"><b>Scientific boundary</b><p style="margin:5px 0 0">The source events are real; their faults are intentionally injected. The redundancy <code>pz = pt × sinh(eta)</code> comes from different representations of the same reconstructed muon track—not four independently instrumented CERN detectors. The results test one-field software recovery, not physical emergence.</p></div>
+<p><a href="./results.json">Auditable benchmark output</a> · <a href="./README.md">Methodology</a> · <a href="../cern-heldout-v87/">100k mass-ablation baseline</a> · <a href="../integration-v41/">Confluence</a></p>
+</section>
+<aside class="panel">
+<h2>Selected scenario</h2>
+<div class="stat"><span>Records</span><b id="n">—</b></div>
+<div class="stat"><span>Detections</span><b id="detect">—</b></div>
+<div class="stat"><span>False alarms</span><b id="false">—</b></div>
+<div class="stat"><span>Missed faults</span><b id="missed">—</b></div>
+<div class="stat"><span>Naive valid outputs</span><b id="baselineCoverage">—</b></div>
+<div class="stat"><span>Recovered valid outputs</span><b id="fixedCoverage">—</b></div>
+<div class="stat"><span>Naive error vs clean mass</span><b id="errorNaive">—</b></div>
+<div class="stat"><span>Recovered error vs clean mass</span><b id="errorRepair">—</b></div>
+<div class="stat"><span>Paired better / worse / tied</span><b id="paired">—</b></div>
+<h3>Preserved failure diagnostics</h3>
+<pre id="diag">Loading fault witness records…</pre>
+<h3>Reference event protocol</h3>
+<pre>Reported pz1: possibly faulty
+Estimate pz1: pt1 × sinh(eta1)
+Alarm if missing, or
+ |reported - estimate| > 
+ 0.05 + 0.005|estimate| GeV
+
+If alarm: replace with estimate
+Reconstruct mass using E,px,py,pz</pre>
+<div class="note"><b>Important:</b> Errors and coverage have different denominators when one calculation is invalid. The bar chart compares MAE **only over each method's valid outputs**; read coverage alongside it.</div>
+<h3>Source provenance</h3>
+<p class="muted">CERN CMS Run2010B educational dimuon CSV: <a href="https://opendata.cern.ch/record/700">record 700</a>, DOI <a href="https://doi.org/10.7483/OPENDATA.CMS.CB8H.MFFA">10.7483/OPENDATA.CMS.CB8H.MFFA</a>.</p>
+<small id="sha">Source checksum loading…</small>
+<p><a href="https://github.com/DavidWise01/oasis/actions/runs/39540543778">Initial authentic-data benchmark</a> · <a href="./spec.json">Preregistered rule</a></p>
+<p class="muted" id="status">Loading results…</p>
+</aside>
+</main><footer>OASIS v8.8 · synthetic single-field faults on public CERN events · missed faults and negative outcomes preserved; no CERN endorsement.</footer>
+<script type="module">
+const $=id=>document.getElementById(id);const cv=$('ring'),g=cv.getContext('2d'),cg=$('chart').getContext('2d');
+const rgba=['#e9b876','#8cddc9','#bcaaf3','#e99794','#89b8ef','#e6b17b'];
+let R=null,tick=0,playing=false,last=0,carry=0,scenario='clean';
+function num(x,d=6){return Number.isFinite(x)?Number(x.toPrecision(d)).toString():'n/a'}
+function phase(){
+const w=cv.width,h=cv.height,x=w*.5,y=h*.5,R0=171,TAU=Math.PI*2;
+g.fillStyle='#0a1929';g.fillRect(0,0,w,h);
+for(let i=0;i<6;i++){const a=-Math.PI/2+i*TAU/6;g.beginPath();g.arc(x,y,R0+40,a+.035,a+TAU/6-.035);g.lineWidth=12;g.strokeStyle=rgba[i];g.stroke()}
+for(let i=0;i<80;i++){const a=-Math.PI/2+i*TAU/80,l=i%10===0?R0-39:R0-26;g.beginPath();g.moveTo(x+Math.cos(a)*l,y+Math.sin(a)*l);g.lineTo(x+Math.cos(a)*(R0-5),y+Math.sin(a)*(R0-5));g.strokeStyle=i<tick/3?'#9af4d7':'#54768a';g.lineWidth=i%10===0?2.7:1.5;g.stroke()}
+const a=-Math.PI/2+tick*TAU/240;g.beginPath();g.arc(x+Math.cos(a)*R0,y+Math.sin(a)*R0,9,0,TAU);g.fillStyle='#f8eac0';g.fill();
+const p=['ENERGY','ANGLE','TRANSVERSE','pz WITNESS'];
+for(let i=0;i<4;i++){const a=-Math.PI/2+i*TAU/4,z=R0+79;g.fillStyle=['#f1ca83','#92dcd0','#b0a7f1','#f39b9a'][i];g.textAlign='center';g.font='bold 13px system-ui';g.fillText(p[i],x+Math.cos(a)*z,y+Math.sin(a)*z)}
+g.fillStyle='#ecf9ff';g.textAlign='center';g.font='bold 43px system-ui';g.fillText(String(tick),x,y-9);
+g.font='15px system-ui';g.fillStyle='#bed0e3';g.fillText('phase '+Math.floor(tick/3)+'/80',x,y+20);
+g.fillText('arc '+Math.floor(tick/40)+'/6',x,y+42);
+g.textAlign='left';g.font='15px ui-monospace,monospace';g.fillText('FOUR SOFTWARE PORTS · NOT FOUR DETECTORS',24,31);
+g.fillText('Synthetic fault policy: '+scenario,24,h-21);
+}
+function barChart(s){
+const c=cg,w=920,h=330;
+c.fillStyle='#0a1929';c.fillRect(0,0,w,h);
+const items=[{name:'Naive',v:s.naiveVsClean.maeGeV,col:'#eeae89'},{name:'Recovered',v:s.recoveredVsClean.maeGeV,col:'#88dfbd'}];
+const min=1e-7,max=1e3,left=195,right=w-170;
+c.fillStyle='#b8cfe0';c.font='14px system-ui';c.fillText('Logarithmic scale (GeV) · read output coverage separately',20,27);
+for(let i=0;i<=10;i+=2){const v=10**(i-7),x=left+(i/10)*(right-left);c.strokeStyle='#2a4b61';c.beginPath();c.moveTo(x,55);c.lineTo(x,265);c.stroke();c.fillStyle='#9fb9cb';c.font='12px monospace';c.fillText(v.toExponential(0),x-14,292)}
+for(let i=0;i<2;i++){const d=items[i],y=88+i*107;
+ c.fillStyle='#e7f3ff';c.font='bold 17px system-ui';c.fillText(d.name,23,y+24);
+ const v=Number.isFinite(d.v)?Math.max(min,d.v):min,span=Math.min(1,Math.max(0,(Math.log10(v)+7)/10))*(right-left);
+ c.fillStyle=d.col;c.fillRect(left,y,span,37);
+ c.fillStyle='#f1f8ff';c.font='14px monospace';c.fillText(d.v===0?'0 GeV':num(d.v,7)+' GeV',Math.min(left+span+9,w-172),y+24)
+}}
+function render(){
+if(!R)return;const s=R.analysis.scenarios[scenario];
+$('total').textContent=R.analysis.heldout.toLocaleString();
+$('coverage').textContent=R.analysis.overall.recoveredValid.toLocaleString()+' / '+R.analysis.heldout.toLocaleString();
+$('alarms').textContent=String(s.alarms);
+$('n').textContent=String(s.n);
+$('detect').textContent=String(s.trueAlarms);
+$('false').textContent=String(s.falseAlarms);
+$('missed').textContent=String(s.missedFaults);
+$('baselineCoverage').textContent=(s.naiveCoverage*100).toFixed(3)+'%';
+$('fixedCoverage').textContent=(s.recoveredCoverage*100).toFixed(3)+'%';
+$('errorNaive').textContent=num(s.naiveVsClean.maeGeV,9)+' GeV';
+$('errorRepair').textContent=num(s.recoveredVsClean.maeGeV,9)+' GeV';
+const p=s.onPairedComparison;$('paired').textContent=[p.better,p.worse,p.tied].join(' / ');
+const failed=R.analysis.missedFaultExamples||[];
+$('diag').textContent=failed.length?failed.map(e=>'Missed drift: Run '+e.run+' Event '+e.event+'\nReported pz1 '+num(e.faultedPz1GeV)+' GeV\nExpected pz1 '+num(e.expectedPz1GeV)+' GeV\nTolerance '+num(e.alarmThresholdGeV)+' GeV\nMass result '+num(e.recoveredMassGeV)+' GeV').join('\n\n'):'No missed fault details in saved report.';
+barChart(s);phase();
+}
+$('scenario').onchange=e=>{scenario=e.target.value;render()};
+$('step').oninput=e=>{tick=Number(e.target.value);$('stepOut').textContent=tick;phase()};
+$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'Pause':'Play'};
+$('reset').onclick=()=>{tick=0;playing=false;$('step').value=0;$('stepOut').textContent=0;$('play').textContent='Play';phase()};
+function animate(t){const d=last?Math.min(t-last,90):0;last=t;if(playing){carry+=d*.028;if(carry>=1){tick=(tick+Math.floor(carry))%240;carry%=1;$('step').value=tick;$('stepOut').textContent=tick;phase()}}requestAnimationFrame(animate)}
+async function load(){
+const response=await fetch('./results.json',{cache:'no-store'});if(!response.ok)throw Error('Results unavailable');
+const r=await response.json();if(r.analysis.schema!=='oasis/n184/cern-fault-recovery-result/v88'||r.analysis.heldout!==19993||r.input.accepted!==100000)throw Error('Benchmark register mismatch');
+R=r;$('sha').textContent='SHA-256 '+r.provenance.sourceSha256;
+$('status').textContent='Results verified against v8.8 schema · original source identity '+(r.provenance.matchesRegisteredSource?'matched':'not matched');
+render();
+}
+load().catch(e=>$('status').textContent=String(e));
+requestAnimationFrame(animate);phase();
+</script></body></html>
