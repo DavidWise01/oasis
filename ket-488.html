@@ -2,9 +2,37 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KET · 488 Registry</title>
 <style>
 :root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,sans-serif;background:#060813;color:#e6eaff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 55% 0%,#292044 0,transparent 45%),#060813;min-height:100vh}main{max-width:1240px;margin:auto;padding:34px 24px 90px}.eyebrow{color:#b6a9ff;letter-spacing:.25em;text-transform:uppercase;font-size:12px}h1{font-size:clamp(42px,7vw,92px);line-height:1;margin:16px 0 8px;letter-spacing:-.07em}.sub{color:#9aa7c6;max-width:720px;line-height:1.6}header{margin-bottom:30px}.dash{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}.panel{border:1px solid #343657;background:#11152acc;border-radius:17px;padding:20px}.metric{font-size:32px;font-weight:800}.small{color:#95a0be;font-size:12px;letter-spacing:.12em;text-transform:uppercase}.roots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.root{cursor:pointer;text-align:left;border:1px solid #3b3d59;border-top:4px solid var(--accent);background:#11172a;border-radius:15px;padding:16px;color:inherit;transition:transform .15s}.root:hover,.root.active{transform:translateY(-3px);box-shadow:0 0 35px color-mix(in srgb,var(--accent),transparent 70%)}.root strong{font-size:28px}.root span{display:block;color:#9aa6c0;font-size:13px;margin-top:8px}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:22px 0}.controls input{padding:13px 15px;background:#141c32;color:#fff;border:1px solid #444a70;border-radius:11px;font:inherit;width:min(100%,270px)}.controls button,.utility{cursor:pointer;background:#252d52;color:#fff;border:1px solid #535b92;padding:12px 18px;border-radius:11px;font:inherit}.controls button:hover,.utility:hover{background:#374277}.readout{display:flex;gap:25px;flex-wrap:wrap;align-items:center;margin:22px 0 12px}.readout .big{font-size:clamp(34px,5vw,65px);font-weight:850;color:#e0cbff}.readout .details{line-height:1.9;color:#a9b6d0}.cubit{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:4px;margin:22px 0 7px}.cell{height:67px;border-radius:7px;display:flex;align-items:center;justify-content:center;border:1px solid #ffffff33;color:white;font-size:clamp(9px,1.3vw,15px);font-weight:700;background:var(--c);box-shadow:0 0 12px color-mix(in srgb,var(--c),transparent 60%)}.groups{display:flex;gap:6px;flex-wrap:wrap;color:#95a2c0;font:12px ui-monospace,monospace;margin-bottom:18px}.note{color:#8190b0;font-size:13px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(94px,1fr));gap:8px;margin-top:18px}.tile{background:#111a2b;border:1px solid #2b3650;color:#d6dfff;padding:10px 8px;border-radius:10px;text-align:left;cursor:pointer}.tile:hover,.tile.on{border-color:var(--accent);box-shadow:0 0 20px color-mix(in srgb,var(--accent),transparent 80%)}.tile b{display:block;font-size:19px}.tile small{color:#9eabc1}code{color:#d7bbff;word-break:break-word}footer{margin-top:40px;color:#808cad;font-size:13px}.pair{display:flex;gap:12px;flex-wrap:wrap}.pair span{border:1px solid #394363;padding:7px 14px;border-radius:50px;color:#a8b3d7}@media(max-width:650px){.dash,.roots{grid-template-columns:repeat(2,1fr)}.panel{padding:13px}.cubit{gap:2px}.cell{height:43px;border-radius:3px;font-size:9px}main{padding:20px 12px 60px}}
+
+.torus-wrap{margin:22px 0;padding:24px;border:1px solid #4e3c78;background:radial-gradient(circle at center,#1a2040,#090d1c 70%);border-radius:20px}
+.torus-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.mode{padding:10px 16px;background:#171f3b;border:1px solid #6472aa;color:#dce6ff;border-radius:10px;cursor:pointer}.mode.active{background:#403b83}
+#torus{display:block;width:100%;max-width:760px;margin:8px auto 0;overflow:visible}
+.quad-text{font-size:14px;font-weight:800;fill:#f4f5ff;text-anchor:middle;pointer-events:none}
+.quad-hit{cursor:pointer;stroke-width:18;fill:none;opacity:.06}
+.quad-hit:hover{opacity:.3}.torus-info{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:15px 0}.torus-info button{cursor:pointer;color:#d9e0fa;background:#101b30;border:1px solid #303e65;border-top:3px solid var(--accent);border-radius:12px;padding:11px 7px}.torus-info button.on{box-shadow:0 0 20px color-mix(in srgb,var(--accent),transparent 60%)}
+.equations{color:#afbbdc;font:13px/1.9 ui-monospace,monospace;overflow-wrap:anywhere}
+@media(max-width:650px){.torus-info{grid-template-columns:repeat(2,1fr)}.torus-wrap{padding:13px}.quad-text{font-size:12px}}
 </style></head><body><main>
 <header><div class="eyebrow">KET / SAPPHON · SYMBOLIC REGISTRY</div><h1>488<span style="color:#a88cff">.</span></h1><div class="sub">Four roots · 122 positions each · one invariant 18-position analytical cubit. Exact address mapping; no speculative physical measurements.</div></header>
 <section class="dash" aria-label="registry metrics"><div class="panel"><div class="small">Entries</div><div class="metric">488</div></div><div class="panel"><div class="small">Roots</div><div class="metric">4</div></div><div class="panel"><div class="small">Per root</div><div class="metric">122</div></div><div class="panel"><div class="small">Cubit slots</div><div class="metric">18</div></div></section>
+
+<section class="torus-wrap" aria-label="toroidal four quadrant vessel">
+<div class="torus-head"><div><div class="eyebrow">Toroidal vessel · four quadrants</div><div class="sub">Each quadrant carries one 122-entry root. Switch between 3D vector and 4D hypercube projections.</div></div><div><button class="mode active" id="m3">3D · 12</button> <button class="mode" id="m4">4D · 16</button></div></div>
+<svg id="torus" viewBox="0 0 760 390" role="img" aria-label="Four neon toroidal segments surrounding a central void">
+<defs><filter id="glow"><feGaussianBlur stdDeviation="7"/></filter><linearGradient id="ring" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#5ad6ff"/><stop offset=".5" stop-color="#ab75ff"/><stop offset="1" stop-color="#ff6878"/></linearGradient></defs>
+<g transform="translate(380 190)">
+<ellipse rx="285" ry="140" fill="none" stroke="url(#ring)" stroke-width="74" opacity=".25" filter="url(#glow)"/>
+<ellipse rx="285" ry="140" fill="none" stroke="#171a39" stroke-width="78"/>
+<g id="arcs"></g>
+<ellipse rx="174" ry="80" fill="#080b1b" stroke="#a2b0ff" stroke-opacity=".3" stroke-width="2"/>
+<text x="0" y="-10" text-anchor="middle" fill="#e8e4ff" font-size="44" font-weight="850">488</text>
+<text x="0" y="14" text-anchor="middle" fill="#a1b0d3" font-size="13">18-SLOT CUBIT</text>
+<text x="0" y="38" text-anchor="middle" fill="#c8b5ff" font-size="12" id="dlabel">4 × 3D → 12</text>
+</g></svg>
+<div class="torus-info" id="quadrants"></div>
+<div class="equations" id="torus-equation"></div>
+<p class="note">Symbolic projection: “12” counts 4 × 3 vector components; “16” counts 4 × 4D components. These are not the numeric values of the exponent expressions. The 488 registry remains 4 × 122.</p>
+</section>
 <section class="roots" id="roots"></section>
 <section class="panel" style="margin-top:20px"><div class="small">Registry explorer</div><div class="controls"><input type="number" min="1" max="488" id="number" value="488" aria-label="Element index 1 to 488"><button id="prev">− Previous</button><button id="next">Next +</button><button id="random">Random</button></div><div class="readout"><div class="big" id="address">488 :: +N122</div><div class="details" id="detail"></div></div><div class="cubit" id="cubit" aria-label="18 cubit positions"></div><div class="groups">{|12|} {|3456|} {|78|} {|910|} {|1112131415||} {|1617|} {|18|}</div><div class="pair"><span>−− VOID</span><span>−+ DIATOMIC</span><span>++ GRAVITY</span></div><p class="note">Cubic positions are visualization slots, not proton orbitals or claimed nuclear shells. Color is assigned by position group, not measured wavelength.</p></section>
 <section class="panel" style="margin-top:20px"><div class="small">122 entries in selected root</div><div class="grid" id="grid"></div></section>
@@ -29,5 +57,33 @@ num.addEventListener('change',()=>set(Number(num.value)));
 document.getElementById('prev').onclick=()=>set(Math.max(1,selected-1));
 document.getElementById('next').onclick=()=>set(Math.min(488,selected+1));
 document.getElementById('random').onclick=()=>set(1+Math.floor(Math.random()*488));
+
+let dim=3;
+function drawTorus(){
+document.getElementById('m3').classList.toggle('active',dim===3);
+document.getElementById('m4').classList.toggle('active',dim===4);
+document.getElementById('dlabel').textContent=dim===3?'4 × 3D → 12':'4 × 4D → 16';
+document.getElementById('torus-equation').textContent=dim===3?'3D quad: ((3×3)^3) = 729 formal configurations; four quads: 729^4. Components: 4×3 = 12.':'4D quad: ((4×4)^4) = 65,536 formal configurations; four quads: 65,536^4. Components: 4×4 = 16.';
+const arcs=document.getElementById('arcs');arcs.innerHTML='';
+const count=4,colors=ROOTS.map(r=>r.color);
+for(let i=0;i<count;i++){
+const start=(-90+i*90+4)*Math.PI/180,end=(-90+(i+1)*90-4)*Math.PI/180;
+const point=t=>[285*Math.cos(t),140*Math.sin(t)];
+const a=point(start),b=point(end);
+const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+path.setAttribute('d','M '+a.join(' ')+' A 285 140 0 0 1 '+b.join(' '));
+path.setAttribute('stroke',colors[i]);path.setAttribute('stroke-width','65');path.setAttribute('fill','none');path.setAttribute('stroke-linecap','round');
+path.setAttribute('opacity',Math.floor((selected-1)/122)===i?'1':'.68');arcs.append(path);
+const hit=path.cloneNode();hit.setAttribute('stroke-width','72');hit.setAttribute('class','quad-hit');hit.onclick=()=>set(i*122+1);arcs.append(hit);
+const mid=point((-90+(i+.5)*90)*Math.PI/180),txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+txt.setAttribute('x',mid[0]);txt.setAttribute('y',mid[1]+5);txt.setAttribute('class','quad-text');txt.textContent=ROOTS[i].name;arcs.append(txt);
+}
+const q=document.getElementById('quadrants');q.innerHTML='';
+ROOTS.forEach((r,i)=>{let b=document.createElement('button');b.style.setProperty('--accent',r.color);b.className=Math.floor((selected-1)/122)===i?'on':'';b.textContent='Q'+(i+1)+' · '+r.name+' · '+(i*122+1)+'–'+(i*122+122);b.onclick=()=>set(i*122+1);q.append(b)});
+}
+const oldRender=render;
+render=function(){oldRender();drawTorus()};
+document.getElementById('m3').onclick=()=>{dim=3;drawTorus()};
+document.getElementById('m4').onclick=()=>{dim=4;drawTorus()};
 render();
 </script></body></html>
