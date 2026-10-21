@@ -60,3 +60,12 @@ The browser certification workflow is still committed and must run on a permitte
 ### External witness correction
 
 The gate saves the transfer ID in the independent Python driver *before* SIGKILL. After restart, it re-reads IndexedDB using that ID, not by trusting browser `localStorage`. LocalStorage pointer survival is reported as an observation, not a prerequisite. The manual Pages lab includes an explicit optional transfer-ID field for the same purpose. This prevents an absent UI pointer from being mistaken for loss of the durable ledger record.
+
+## 2026-10-21 aggregate registry audit
+
+The current committed source of `sapphon-spectrum`, `radiation-overlay`,
+`sapphon-geometry`, and `crash-lab`, together with all four corresponding
+Node-compatible test files, was evaluated in an isolated V8 test harness:
+**30/30 synchronous model tests passed, zero failures**. This checks model
+invariants, classification, and fail-closed receipt rules. It does **not** prove
+that the unexecuted Python/Chromium SIGKILL scenarios pass on a CI runner.
