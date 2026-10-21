@@ -38,7 +38,7 @@ check('nature offset is NOT a physical constant',()=>assert.equal(s.motherNature
 check('nature offset does not claim time dilation',()=>assert.equal(s.motherNature.physicalTimeDilationClaim,false));
 check('hypothesis testable',()=>assert.ok(s.thesis.nullHypothesis.includes('need not improve')));
 check('explicit falsifiability',()=>assert.ok(s.thesis.falsifiability.includes('reject')));
-check('1970 Unix not confused with CERN origin',()=>assert.ok(s.guardrails.some(x=>x.includes('Unix epoch'))));
+check('1970 Unix epoch explicitly classified historical',()=>{assert.equal(byId('unix').year,1970);assert.equal(byId('unix').category,'history');assert.ok(s.guardrails.some(x=>x.includes('1970 does not date the first CERN')))});
 check('historical collaboration not asserted',()=>assert.ok(s.guardrails.some(x=>x.includes('direct historical collaboration'))));
 check('six sectors unchanged',()=>assert.equal(s.machine.canonicalLayout.ringSectors,parent.geometry.symbolicArcCountPerBubble));
 check('80 steps unchanged',()=>assert.equal(s.machine.canonicalLayout.phaseSteps,parent.phase.stepsPerCycle));
@@ -53,7 +53,7 @@ check('prior Planck bubble preserved',()=>assert.equal(s.machine.timeBasis.planc
 check('prior light equivalent preserved',()=>assert.equal(s.machine.timeBasis.lightTravelEquivalenceSeconds,parent.duration.equivalentFullCycleSeconds));
 check('Planck clock not asserted physical',()=>assert.equal(s.machine.timeBasis.notPhysicalBubblePeriod,true));
 check('old four observer lab link exists',()=>assert.ok(fs.existsSync(new URL(s.machine.existingLab+'index.html',new URL('./',import.meta.url)))));
-check('full standalone thesis available',()=>{const m=fs.readFileSync(new URL('./THESIS.md',import.meta.url),'utf8');for(const word of ['Abstract','1832','1970','Einstein','Oppenheimer','CERN','Mother Nature','null','1980']){/* 1980 is not required */ assert.ok(word==='1980'||word==='null'||m.includes(word),word)}});
+check('full standalone thesis available',()=>{const m=fs.readFileSync(new URL('./THESIS.md',import.meta.url),'utf8');for(const word of ['Abstract','1832','1970','Einstein','Oppenheimer','CERN','Mother Nature','falsifiable'])assert.ok(m.toLowerCase().includes(word.toLowerCase()),word)});
 check('live viewer loads canonical spec',()=>{const h=fs.readFileSync(new URL('./index.html',import.meta.url),'utf8');for(const x of ['fetch(\'./spec.json\'','gen0','gen1','offset','natureYear','selectedSource','ring'])assert.ok(h.includes(x),x)});
 check('live viewer keeps fixed history source links',()=>{const h=fs.readFileSync(new URL('./index.html',import.meta.url),'utf8');assert.ok(h.includes('e.source'));assert.ok(h.includes('natureYear'))});
 console.log(JSON.stringify({result:'PASS',passed:Object.keys(tests).length,failed:0,checks:tests},null,2));
