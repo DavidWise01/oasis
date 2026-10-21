@@ -1,0 +1,55 @@
+name: ANNY Midflight IndexedDB Atomicity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/anny-neon/**'
+      - '.github/workflows/anny-midflight-atomicity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pending-idb:
+    name: Chromium SIGKILL during receiver and journal write transactions
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout Pages source
+        uses: actions/checkout@v4
+      - name: Node.js test runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run fail-closed pure model tests
+        run: |
+          node --test \
+            apps/anny-neon/sapphon-spectrum.test.mjs \
+            apps/anny-neon/radiation-overlay.test.mjs \
+            apps/anny-neon/sapphon-geometry.test.mjs \
+            apps/anny-neon/crash-lab.test.mjs \
+            apps/anny-neon/midflight-lab.test.mjs
+      - name: Python browser driver runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Playwright Chromium
+        run: |
+          python -m pip install 'playwright==1.57.0'
+          python -m playwright install --with-deps chromium
+      - name: Check Python syntax
+        run: python -m py_compile apps/anny-neon/tests/midflight_gate.py
+      - name: Interrupt unresolved IndexedDB transactions
+        env:
+          ANNY_BROWSER_ARTIFACTS: ${{ runner.temp }}/anny-midflight-evidence
+        run: python apps/anny-neon/tests/midflight_gate.py
+      - name: Preserve failure/pass evidence and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: anny-midflight-idb-evidence
+          path: ${{ runner.temp }}/anny-midflight-evidence/
+          if-no-files-found: warn
+          retention-days: 30
