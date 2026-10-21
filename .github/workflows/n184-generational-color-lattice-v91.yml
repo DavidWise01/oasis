@@ -1,0 +1,22 @@
+name: N184 Generational Color Lattice v91
+on:
+  push:
+    paths:
+      - 'n184/generational-color-lattice-v91/**'
+      - '.github/workflows/n184-generational-color-lattice-v91.yml'
+  workflow_dispatch:
+jobs:
+  color-generation-invariants:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check deterministic generational RGB palette and 370-address source
+        run: |
+          node --check n184/generational-color-lattice-v91/color_core.mjs
+          node --check n184/generational-color-lattice-v91/test_colors.mjs
+          node n184/generational-color-lattice-v91/test_colors.mjs
