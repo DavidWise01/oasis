@@ -1,0 +1,31 @@
+/* ANNY radiation layer — independent of the Sapphon wavelength register. */
+.radiation-overlay{position:relative;isolation:isolate;overflow:hidden;margin:25px 0 28px;padding:22px;border:1px solid #699cf688;border-radius:20px;background:radial-gradient(circle at 12% 9%,#2352a94d,transparent 40%),radial-gradient(circle at 88% 86%,#7d329d33,transparent 42%),#081222;box-shadow:inset 0 0 40px #258bde1e,0 0 21px #2052a335}
+.radiation-overlay:before{content:"";position:absolute;pointer-events:none;inset:0;background:linear-gradient(90deg,transparent 0,#8acbff19 48%,transparent 52%);transform:translateX(-100%);animation:radiation-sweep 12s linear infinite;z-index:-1}
+.radiation-overlay .radiation-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.radiation-overlay h3{font-size:clamp(16px,2.5vw,23px);margin:0;letter-spacing:.15em;color:#f1f8ff}
+.radiation-overlay .radiation-subtitle{margin:5px 0 11px;color:#aec7e0;font-size:12px}
+.radiation-overlay .radiation-controls{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:13px 0 18px}
+.radiation-overlay .radiation-toggles{display:flex;gap:8px;flex-wrap:wrap}
+.radiation-overlay .radiation-toggle{--radiation-tone:#91d9ff;background:color-mix(in srgb,var(--radiation-tone) 19%,#09142b);border:1px solid var(--radiation-tone);border-radius:100px;color:var(--radiation-tone);padding:8px 15px;box-shadow:0 0 13px color-mix(in srgb,var(--radiation-tone) 16%,transparent)}
+.radiation-overlay .radiation-toggle[aria-pressed="false"]{opacity:.45;filter:grayscale(.7);box-shadow:none}
+.radiation-overlay #radiation-reset{border:1px solid #587693;border-radius:9px;color:#bfdcf1;background:#162743;padding:9px 14px}
+.radiation-overlay #radiation-tally{font:11px ui-monospace,monospace;color:#94d5ff}
+.radiation-overlay .radiation-tracks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.radiation-overlay .radiation-track{background:#0c1a2bc9;border:1px solid #5470a059;border-radius:14px;padding:14px;min-width:0}
+.radiation-overlay .radiation-track-title{margin:0;color:#b4eaff;letter-spacing:.15em;font-size:13px}
+.radiation-overlay .radiation-track-description{color:#98b6d1;font-size:11px;min-height:33px}
+.radiation-overlay .radiation-card-grid{display:grid;gap:10px}
+.radiation-overlay .radiation-card{--radiation-tone:#a6cafa;position:relative;overflow:hidden;padding:13px;border:1px solid var(--radiation-tone);border-radius:11px;background:linear-gradient(135deg,color-mix(in srgb,var(--radiation-tone) 12%,#081225),#081125);box-shadow:inset 0 0 17px color-mix(in srgb,var(--radiation-tone) 9%,transparent),0 0 13px color-mix(in srgb,var(--radiation-tone) 16%,transparent)}
+.radiation-overlay .radiation-card:before{content:"";position:absolute;width:130px;height:130px;right:-66px;top:-66px;border-radius:50%;border:2px solid color-mix(in srgb,var(--radiation-tone) 38%,transparent);box-shadow:0 0 23px color-mix(in srgb,var(--radiation-tone) 27%,transparent)}
+.radiation-overlay .radiation-card-head{display:flex;align-items:center;gap:13px}
+.radiation-overlay .radiation-symbol{display:grid;place-items:center;border:1px solid var(--radiation-tone);border-radius:11px;min-width:52px;height:52px;color:var(--radiation-tone);background:color-mix(in srgb,var(--radiation-tone) 12%,#04091a);font:700 32px ui-monospace,monospace;text-shadow:0 0 12px var(--radiation-tone);box-shadow:0 0 12px color-mix(in srgb,var(--radiation-tone) 20%,transparent)}
+.radiation-overlay .radiation-card-name{font-size:18px;color:#f1f7ff}
+.radiation-overlay .radiation-tag{display:block;font:10px ui-monospace,monospace;letter-spacing:.12em;color:var(--radiation-tone);margin:11px 0 3px}
+.radiation-overlay .radiation-description{font-size:12px;color:#d3e0f3;margin:7px 0}
+.radiation-overlay .radiation-relation{font-size:11px;color:#97b2cf;margin:8px 0 2px}
+.radiation-overlay .radiation-empty{padding:16px;color:#93b0c8;font-size:13px;text-align:center}
+.radiation-overlay .radiation-context{margin:17px 0 0;padding:12px 13px;border-left:3px solid #9db8eb;background:#111c33d9;color:#b9cbe3;font-size:12px}
+.radiation-overlay .radiation-context code{color:#aedcff}
+@keyframes radiation-sweep{to{transform:translateX(100%)}}
+@media(max-width:750px){.radiation-overlay .radiation-tracks{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.radiation-overlay:before{animation:none}}
