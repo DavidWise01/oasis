@@ -1,0 +1,121 @@
+{
+  "schema": "ket-rose-weak-coupling-v3",
+  "status": "PASS",
+  "checks": 7,
+  "windows": [
+    [
+      122,
+      125
+    ],
+    [
+      140,
+      145
+    ],
+    [
+      360,
+      366
+    ]
+  ],
+  "window_slots": 17,
+  "links": 14,
+  "cross_band_links": [
+    [
+      122,
+      123
+    ]
+  ],
+  "origin": "0vwxyz",
+  "identities": 24,
+  "phase_bins": 60,
+  "initial_balance": "36600",
+  "final_balance": "36600",
+  "transfer_rate": "0.025",
+  "shadow": "unresolved",
+  "ledger": [
+    {
+      "source": 122,
+      "destination": 123,
+      "debit": -2.5,
+      "credit": 2.5
+    },
+    {
+      "source": 123,
+      "destination": 124,
+      "debit": -2.5625,
+      "credit": 2.5625
+    },
+    {
+      "source": 124,
+      "destination": 125,
+      "debit": -2.5640625000000004,
+      "credit": 2.5640625000000004
+    },
+    {
+      "source": 140,
+      "destination": 141,
+      "debit": -2.5,
+      "credit": 2.5
+    },
+    {
+      "source": 141,
+      "destination": 142,
+      "debit": -2.5625,
+      "credit": 2.5625
+    },
+    {
+      "source": 142,
+      "destination": 143,
+      "debit": -2.5640625000000004,
+      "credit": 2.5640625000000004
+    },
+    {
+      "source": 143,
+      "destination": 144,
+      "debit": -2.5641015625000003,
+      "credit": 2.5641015625000003
+    },
+    {
+      "source": 144,
+      "destination": 145,
+      "debit": -2.5641025390625,
+      "credit": 2.5641025390625
+    },
+    {
+      "source": 360,
+      "destination": 361,
+      "debit": -2.5,
+      "credit": 2.5
+    },
+    {
+      "source": 361,
+      "destination": 362,
+      "debit": -2.5625,
+      "credit": 2.5625
+    },
+    {
+      "source": 362,
+      "destination": 363,
+      "debit": -2.5640625000000004,
+      "credit": 2.5640625000000004
+    },
+    {
+      "source": 363,
+      "destination": 364,
+      "debit": -2.5641015625000003,
+      "credit": 2.5641015625000003
+    },
+    {
+      "source": 364,
+      "destination": 365,
+      "debit": -2.5641025390625,
+      "credit": 2.5641025390625
+    },
+    {
+      "source": 365,
+      "destination": 366,
+      "debit": -2.564102563476563,
+      "credit": 2.564102563476563
+    }
+  ],
+  "scope": "symbolic only; physical weak-force and quantum claims untested"
+}
