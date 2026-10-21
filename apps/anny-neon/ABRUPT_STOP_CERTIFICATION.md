@@ -50,3 +50,13 @@ The new lab uses `anny-abrupt-boundary-v16-1-*` IndexedDB namespaces and does NO
 ## Static model evidence at commit time
 
 The pure classifier in `crash-lab.test.mjs` was executed separately in V8 and passed **9/9** on committed source. This is NOT a browser process-restart result. Full Chromium SIGKILL results must come from a GitHub Actions run or local invocation of the Python driver. The repository workflow and browser lab have been committed; remote runner success must be verified independently.
+
+## 2026-10-21 local runtime execution note
+
+A browser-process launch and raw CDP handshake were exercised successfully with the installed local Chromium. A follow-up real-browser localhost navigation in the tool's isolated runtime returned **`net::ERR_BLOCKED_BY_ADMINISTRATOR`** even against a minimal local HTML fixture. The attempted local end-to-end IndexedDB recovery test therefore **did not execute**.
+
+The browser certification workflow is still committed and must run on a permitted GitHub Actions runner or user machine. The outcome for all five real process-stop scenarios remains **UNVERIFIED** until those JSON reports exist.
+
+### External witness correction
+
+The gate saves the transfer ID in the independent Python driver *before* SIGKILL. After restart, it re-reads IndexedDB using that ID, not by trusting browser `localStorage`. LocalStorage pointer survival is reported as an observation, not a prerequisite. The manual Pages lab includes an explicit optional transfer-ID field for the same purpose. This prevents an absent UI pointer from being mistaken for loss of the durable ledger record.
