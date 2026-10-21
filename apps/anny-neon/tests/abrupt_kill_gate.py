@@ -181,7 +181,15 @@ def test_stage(playwright, url, stage):
                 active_file.unlink()
             proc, browser = start_chromium(playwright, profile)
             page, errs = open_lab(browser, url)
-            after = invoke(page, "reconcile", stage)
+            # localStorage is a UI pointer, not the recovery authority.
+            # Report its survival separately; always query the ledger with
+            # the transfer ID held by this outside-browser Python driver.
+            pointer = page.evaluate(
+                "(stage) => localStorage.getItem('anny-abrupt-boundary-transfer-'+stage.toLowerCase())",
+                stage,
+            )
+            report["localStorage_pointer_survived"] = (pointer == before["transferId"])
+            after = invoke(page, "reconcile", stage, before["transferId"])
             check_snapshot(after, stage, report, "after new Chromium process")
             check(after["transferId"] == before["transferId"]
                   and after["record"]["digest"] == before["record"]["digest"],
@@ -191,7 +199,7 @@ def test_stage(playwright, url, stage):
                                "effectCount": after["effectCount"]}
 
             # The page only *reads* on reopen. Progress requires explicit resume.
-            resumed = invoke(page, "resume", stage)
+            resumed = invoke(page, "resume", stage, before["transferId"])
             expected_status = ("HOLD_PRECOMMIT" if stage in ("PREPARED", "COMMITTED")
                                else "ALREADY_CONFIRMED" if stage == "CONFIRMED"
                                else "RECONCILED")
@@ -201,7 +209,7 @@ def test_stage(playwright, url, stage):
             expect_replay = stage == "RELEASE_PENDING"
             check(resumed["replayed"] == expect_replay,
                   "Independent receipt-first replay rule", report, resumed["replayed"])
-            final = invoke(page, "snapshot", stage)
+            final = invoke(page, "snapshot", stage, before["transferId"])
             if stage in ("PREPARED", "COMMITTED"):
                 check(final["decision"] == "HOLD_PRECOMMIT" and final["effectCount"] == 0,
                       "No unauthorized release before durable commit", report)
@@ -209,10 +217,10 @@ def test_stage(playwright, url, stage):
                 check(final["decision"] == "CONFIRMED_VERIFIED"
                       and final["effectCount"] == 1 and final["violet"] == "VERIFIED",
                       "Reconciliation finishes with matching receipts", report)
-                forged = invoke(page, "forged", stage)
+                forged = invoke(page, "forged", stage, before["transferId"])
                 check(forged["violet"] == "AGREEMENT FAILED",
                       "Wrong independent receipt never verifies slot 18", report)
-                duplicate = invoke(page, "duplicate", stage, 5)
+                duplicate = invoke(page, "duplicate", stage, 5, before["transferId"])
                 check(duplicate["allFulfilled"]
                       and duplicate["effectCount"] == 1
                       and duplicate["decision"] == "CONFIRMED_VERIFIED",
