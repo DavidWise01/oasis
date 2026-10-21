@@ -1,0 +1,62 @@
+name: N184 CERN Fault Recovery v88
+on:
+  push:
+    paths:
+      - 'n184/cern-fault-recovery-v88/**'
+      - '.github/workflows/n184-cern-fault-recovery-v88.yml'
+  workflow_dispatch:
+jobs:
+  deterministic-validation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate synthetic single-fault recovery and inherited model
+        run: |
+          node --check n184/cern-fault-recovery-v88/recovery.mjs
+          node --check n184/cern-fault-recovery-v88/test_recovery.mjs
+          node n184/cern-fault-recovery-v88/test_recovery.mjs
+  real-data-fault-campaign:
+    needs: deterministic-validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch official CERN CMS 100k public CSV
+        run: |
+          mkdir -p /tmp/cern88
+          curl --fail --location --silent --show-error --retry 3 --max-time 300 \
+            'https://root.cern.ch/files/tutorials/df014_CsvDataSource_MuRun2010B.csv' \
+            --output /tmp/cern88/input.csv
+          echo "CSV bytes: $(wc -c </tmp/cern88/input.csv)"
+      - name: Run seeded clean / missing / +5 GeV drift tests and report
+        run: |
+          node n184/cern-fault-recovery-v88/recovery.mjs /tmp/cern88/input.csv /tmp/cern88/report.json 100000
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            const r=JSON.parse(fs.readFileSync('/tmp/cern88/report.json','utf8'));
+            if(!r.provenance.matchesRegisteredSource||r.input.accepted!==100000||r.analysis.heldout!==19993)
+              throw Error('Data provenance or heldout event count unexpectedly changed');
+            if(r.analysis.scenarios.missing_pz1.n===0||r.analysis.scenarios.biased_pz1_plus5.n===0)
+              throw Error('No synthetic failure cases');
+            console.log('SCENARIOS '+JSON.stringify(r.analysis.scenarios));
+            console.log('OVERALL '+JSON.stringify(r.analysis.overall));
+            console.log('SOURCE_SHA256 '+r.provenance.sourceSha256);
+            console.log('RESULT_PASS: 100000 records, 19993 holdout, original CERN hash retained');
+          "
+      - name: Upload reproducible metrics, not full raw data
+        uses: actions/upload-artifact@v4
+        with:
+          name: cern-100k-fault-recovery-v88-report
+          path: /tmp/cern88/report.json
+          retention-days: 90
+          if-no-files-found: error
