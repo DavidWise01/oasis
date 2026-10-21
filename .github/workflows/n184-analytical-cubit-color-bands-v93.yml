@@ -1,0 +1,22 @@
+name: N184 Analytical Cubit Seven Color Bands v93
+on:
+  push:
+    paths:
+      - 'n184/analytical-cubit-color-bands-v93/**'
+      - '.github/workflows/n184-analytical-cubit-color-bands-v93.yml'
+  workflow_dispatch:
+jobs:
+  analytical-cubit-band-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify exact grammar, 18 slots, 7 spectrum bands, WMS balance and 72 witnesses
+        run: |
+          node --check n184/analytical-cubit-color-bands-v93/cubit_core.mjs
+          node --check n184/analytical-cubit-color-bands-v93/test_cubit.mjs
+          node n184/analytical-cubit-color-bands-v93/test_cubit.mjs
