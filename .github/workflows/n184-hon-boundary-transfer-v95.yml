@@ -1,0 +1,22 @@
+name: N184 HON Boundary Transfer v95
+on:
+  push:
+    paths:
+      - 'n184/hon-boundary-transfer-v95/**'
+      - '.github/workflows/n184-hon-boundary-transfer-v95.yml'
+  workflow_dispatch:
+jobs:
+  hon-root-gates:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check H122→O123 O244→N245 transfers and sealed N366
+        run: |
+          node --check n184/hon-boundary-transfer-v95/boundary_core.mjs
+          node --check n184/hon-boundary-transfer-v95/test_boundary.mjs
+          node n184/hon-boundary-transfer-v95/test_boundary.mjs
