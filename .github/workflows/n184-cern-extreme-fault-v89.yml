@@ -65,6 +65,30 @@ jobs:
                   valid:p.methods[k][scenario].valid,
                   quarantined:p.methods[k][scenario].quarantined
                 }]))));
+            const compact={
+              schema:r.experiment.schema,
+              source:r.source,
+              ingest:r.ingest,
+              rowsProcessed:r.experiment.rowsProcessed,
+              note:r.experiment.note,
+              shards:Object.fromEntries(Object.entries(r.experiment.shards).map(([shard,b])=>[shard,{
+                hashBucket:b.hashBucket,
+                events:b.events,
+                methods:Object.fromEntries(Object.entries(b.methods).map(([method,cases])=>[method,
+                  Object.fromEntries(Object.entries(cases).map(([name,m])=>[name,{
+                    count:m.count,alarm:m.alarm,detectedFault:m.detectedFault,
+                    missedFault:m.missedFault,falseAlarm:m.falseAlarm,
+                    quarantined:m.quarantined,repairs:m.repairs,valid:m.valid,
+                    invalid:m.invalid,outputCoverage:m.outputCoverage,recall:m.recall,
+                    cleanFalseAlarmRate:m.cleanFalseAlarmRate,
+                    versusClean:m.versusClean,versusCMS:m.versusCMS,
+                    missedExample:m.missedExamples?.[0]||null,
+                    falseAlarmExample:m.falseAlarmExamples?.[0]||null,
+                    invalidExample:m.invalidFaultExamples?.[0]||null
+                  }]))]))}]))};
+            console.log('MACHINE_SUMMARY_START');
+            console.log(JSON.stringify(compact));
+            console.log('MACHINE_SUMMARY_END');
             console.log('RESULT_PASS: 100000 CERN source-matched rows and unused prospective shard tested');
             console.log('SOURCE_SHA256: '+r.source.sha256);
           "
