@@ -2,7 +2,8 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {ANNY_GLYPH,ANNY_BANDS,observeAnny,readAnny} from './anny-observer.mjs';
 const bytes=[1,2,3,4,5];
 const record={transferId:'t-01',epoch:3,sourceHex:'0102030405',digest:'a'.repeat(64),deliveryKey:'t-01:'+('a'.repeat(64)),state:'CONFIRMED',acks:['A','B'].flatMap(path=>bytes.map((byte,position)=>({transferId:'t-01',epoch:3,path,position,byte})))};
-const receipt={accepted:true,deliveryKey:record.deliveryKey,digest:record.digest};
+const receipt={accepted:true,transferId:record.transferId,deliveryKey:record.deliveryKey,digest:record.digest};
+record.receipt=structuredClone(receipt);
 test('exact cubit 7 braces and 18 positions with double closure',()=>{
  assert.equal(ANNY_GLYPH,'{|12|}{|3456|}{|78|}{|910|}{|1112131415||}{|1617|}{|18|}');
  assert.deepEqual(ANNY_BANDS.flatMap(x=>x.slots),Array.from({length:18},(_,i)=>i+1));
@@ -12,7 +13,7 @@ test('journal and receiver evidence populate 18 read-only slots',()=>{
  const s=observeAnny(record,receipt);assert.equal(s.slots.length,18);
  assert.equal(s.slots[2].value,'01');assert.equal(s.slots[6].value,'05');
  assert.equal(s.slots[10].value,'A/B');assert.equal(s.slots[14].value,'A/B');
- assert.equal(s.slots[16].status,'observed');assert.equal(s.slots[17].value,'CONFIRMED');
+ assert.equal(s.slots[16].status,'observed');assert.equal(s.slots[17].value,'VERIFIED');
  assert.equal(record.state,'CONFIRMED');
 });
 test('missing and stale witnesses cannot appear complete',()=>{
