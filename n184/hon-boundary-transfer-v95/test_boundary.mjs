@@ -125,7 +125,7 @@ check('original 6/80/240 ring intact',()=>assert.deepEqual([spec.invariants.symb
 check('CERN physical toroid counts preserved',()=>assert.deepEqual(spec.invariants.quadRealToroidCount,{A:0,B:3,C:0,D:0}));
 check('viewer has declared controls and source module',()=>{
 const h=fs.readFileSync(new URL('./index.html',import.meta.url),'utf8');
-for(const v of ['boundary_core.mjs','Hydrogen','Oxygen','Nitrogen','Containment','N366','SOURCE_TAIL'])
+for(const v of ['boundary_core.mjs','Hydrogen','Oxygen','Nitrogen','OPERANTS','N366','SOURCE_TAIL'])
  assert.ok(h.includes(v),v);
 });
 console.log(JSON.stringify({result:'PASS',passed:Object.keys(yes).length,failed:0,
