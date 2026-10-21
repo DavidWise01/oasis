@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+'use strict';
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const src=fs.readFileSync(path.resolve(__dirname,'../index.html'),'utf8');
+const engine=src.match(/<script id="vessel-pipe-engine">([\s\S]*?)<\/script>/)?.[1];
+assert.ok(engine,'embedded pipe engine');const ctx={window:{}};vm.runInNewContext(engine,ctx);
+const P=ctx.window.HarvesterVesselPipeV12;let n=0;
+const ok=(v,msg)=>{assert.ok(v,msg);n++;};
+const ready={phase:'SECURED',clampAttached:true,interlocksReady:true,docked:true,fault:false},bad={...ready,interlocksReady:false};
+ok(P.LITERAL==='{{lv > . . . . . > 40 bits > . . . . 2^3 > 1 1 2 4 > 1 in , 1 , out > {{ix2}} , r1,g1,b1,bk1 }}','exact notation');
+for(let i=0;i<4096;i++){const hex=i.toString(16).padStart(10,'0'),p=P.encode(hex);
+ ok(p.bitString.length===40,'40-bit source');
+ ok(p.states.length===4&&p.states.every(x=>x>=0&&x<=7),'four 3-bit states');
+ ok(p.weightedChecksum===p.states[0]+p.states[1]+2*p.states[2]+4*p.states[3],'1 1 2 4');
+ ok(p.lanes.length===4,'4 one-bit color witnesses');
+}
+const step=(s,action,t,w=ready,seed)=>P.transition(s,action,{tick:t,witness:w,seed:seed??s.seed});
+let s=step(P.defaults(),'LOAD',1,ready,'01337AB4FF');
+ok(s.phase==='LOADED','loaded');
+s=step(s,'IN',2,bad);ok(s.phase==='LOADED'&&s.ingress===0,'no bad ingress');
+s=step(s,'IN',3);ok(s.phase==='IN_FLIGHT'&&s.ingress===1,'one ingress');
+s=step(s,'IN',4);ok(s.ingress===1,'no duplicate ingress');
+s=step(s,'MONITOR',5,bad);ok(s.phase==='HELD'&&s.inFlight,'fault latches HOLD');
+s=step(s,'OUT',6,bad);ok(s.egress===0,'no invalid output');
+s=step(s,'RESUME',7,bad);ok(s.phase==='HELD','still held');
+s=step(s,'RESUME',8);ok(s.phase==='IN_FLIGHT','resume with sensors');
+s=step(s,'OUT',9);ok(s.phase==='COMPLETE'&&s.ingress===s.egress&&s.egress===1,'verified output');
+s=step(s,'OUT',10);ok(s.egress===1,'no duplicate output');
+s=step(s,'CLEAR',11);ok(s.phase==='EMPTY'&&s.egress===1,'clear retains counts');
+s=step(s,'LOAD',12,ready,'NOTHEX');ok(s.phase==='EMPTY','invalid hex blocked');
+s=step(s,'LOAD',13);s=step(s,'IN',14);s=step(s,'ABORT',15);
+ok(s.phase==='ABORTED'&&s.ingress===2&&s.egress===1,'abort no fabricated egress');
+ok(s.receipts.every(r=>/^[0-9a-f]{8}$/.test(r.hash)),'deterministic receipt format (not crypto)');
+console.log('PASS '+n+' deterministic vessel-pipe assertions');
