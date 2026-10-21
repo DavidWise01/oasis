@@ -3,7 +3,7 @@
 // Two independent scenarios mirror the receiver ledger write and the journal CONFIRMED write.
 import {CommitJournal,IndexedDBJournalStore} from "./journal.mjs";
 import {ReceiverLedger} from "./receiver.mjs";
-import {readAnny} from "./anny-observer.mjs";
+import {readAnny,observeAnny} from "./anny-observer.mjs";
 
 export const MIDFLIGHT_MODES=Object.freeze(["RECEIVER_WRITE","JOURNAL_CONFIRM"]);
 const PREFIX="anny-midflight-v16-1-";
@@ -155,9 +155,55 @@ export async function reconcileMidflight(mode,token){
  // Read only: deliberately NEVER calls receiver.deliver or journal.confirm.
  return inspectMidflight(mode,token);
 }
+export async function continueMidflight(mode,token){
+ const before=await inspectMidflight(mode,token);
+ if(before.classification==="CONFIRMED_VERIFIED")
+  return {status:"ALREADY_CONFIRMED",replayed:false,before,after:before};
+ if(before.classification!=="PENDING_NO_EFFECT"&&
+    before.classification!=="PENDING_RECEIVER_ACCEPTED")
+  throw Error("MIDFLIGHT_FAIL_CLOSED:"+before.classification);
+ if(mode==="JOURNAL_CONFIRM"&&before.classification!=="PENDING_RECEIVER_ACCEPTED")
+  throw Error("MIDFLIGHT_JOURNAL_RECEIVER_MISSING");
+ const {journal,receiver}=getContext(mode,token);
+ let receipt=await receiver.reconcile(before.row.deliveryKey);
+ let replayed=false;
+ if(!receipt){
+  if(mode!=="RECEIVER_WRITE")throw Error("MIDFLIGHT_UNEXPECTED_REPLAY");
+  receipt=await receiver.deliver(payload(before.row));
+  replayed=true;
+ }
+ if(!receiptAgrees(before.row,receipt))throw Error("MIDFLIGHT_RECEIPT_INVALID");
+ if(await receiver.effectCount(before.row.deliveryKey)!==1)
+   throw Error("MIDFLIGHT_EFFECT_COUNT_INVALID");
+ await journal.confirm(token,before.row.epoch,receipt);
+ const after=await inspectMidflight(mode,token);
+ if(after.classification!=="CONFIRMED_VERIFIED")
+   throw Error("MIDFLIGHT_CONFIRMATION_FAILED");
+ return {status:"RECONCILED",replayed,before,after};
+}
+export async function duplicateMidflight(mode,token,n=5){
+ if(!Number.isInteger(n)||n<1||n>10)throw Error("MIDFLIGHT_DUPLICATE_COUNT");
+ const before=await inspectMidflight(mode,token);
+ if(before.classification!=="CONFIRMED_VERIFIED")
+  throw Error("MIDFLIGHT_NOT_CONFIRMED");
+ const {receiver}=getContext(mode,token);
+ const results=await Promise.allSettled(
+  Array.from({length:n},()=>receiver.deliver(payload(before.row))));
+ const after=await inspectMidflight(mode,token);
+ return {attempts:n,allFulfilled:results.every(x=>x.status==="fulfilled"),
+  effectCount:after.effectCount,classification:after.classification};
+}
+export async function forgedMidflight(mode,token){
+ const s=await inspectMidflight(mode,token);
+ if(!s.row||!s.receipt)return {status:"NO_RECEIPT",violet:"HELD"};
+ const corrupted={...s.receipt,digest:"0".repeat(64)};
+ const view=observeAnny(s.row,corrupted);
+ return {status:"FORGED_RECEIPT",violet:view.slots[17].value};
+}
 export const annyMidflightLab=Object.freeze({
  modes:MIDFLIGHT_MODES,initialize:initializeMidflight,arm:armMidflight,
  progress:midflightProgress,inspect:inspectMidflight,reconcile:reconcileMidflight,
- abort:abortMidflight
+ abort:abortMidflight,continue:continueMidflight,
+ duplicate:duplicateMidflight,forged:forgedMidflight
 });
 if(typeof window!=="undefined")window.annyMidflightLab=annyMidflightLab;
