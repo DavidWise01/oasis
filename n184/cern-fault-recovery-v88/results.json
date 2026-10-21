@@ -1,0 +1,512 @@
+{
+  "provenance": {
+    "sourceURL": "https://root.cern.ch/files/tutorials/df014_CsvDataSource_MuRun2010B.csv",
+    "doi": "10.7483/OPENDATA.CMS.CB8H.MFFA",
+    "sourceSha256": "373f0f56120998d4dad626abb1229ceef91523c262e154fb1e1e541bbb8be3a5",
+    "byteCount": 15164516,
+    "matchesRegisteredSource": true
+  },
+  "input": {
+    "accepted": 100000,
+    "skipped": 0,
+    "truncated": false,
+    "errors": []
+  },
+  "analysis": {
+    "schema": "oasis/n184/cern-fault-recovery-result/v88",
+    "processed": 100000,
+    "heldout": 19993,
+    "reserved": 80007,
+    "cleanMassInvalid": 0,
+    "faultPolicy": {
+      "split": "existing v8.7 FNV-1a holdout",
+      "injection": "FNV-1a(\"fault:\"+Run+\":\"+Event)%3",
+      "scenarios": [
+        "clean",
+        "missing_pz1",
+        "biased_pz1_plus5"
+      ],
+      "driftGeV": 5,
+      "threshold": "0.05+0.005*abs(pt1*sinh(eta1)) GeV"
+    },
+    "overall": {
+      "n": 19993,
+      "alarms": 13248,
+      "trueAlarms": 13248,
+      "falseAlarms": 0,
+      "missedFaults": 1,
+      "naiveValid": 17785,
+      "repairedValid": 19992,
+      "naiveCoverage": 0.889561346471265,
+      "recoveredCoverage": 0.9999499824938729,
+      "recoveryWithin0p01GeV": 19955,
+      "onPairedComparison": {
+        "count": 17785,
+        "better": 11041,
+        "worse": 0,
+        "tied": 6744
+      },
+      "naiveVsClean": {
+        "valid": 17785,
+        "maeGeV": 6.251833673412537,
+        "rmseGeV": 15.161626159050838,
+        "medianAbsGeV": 1.3439392862543187,
+        "p95AbsGeV": 27.513446210849533
+      },
+      "recoveredVsClean": {
+        "valid": 19992,
+        "maeGeV": 0.00024709324913951353,
+        "rmseGeV": 0.002924578758907251,
+        "medianAbsGeV": 0.000004064359845123988,
+        "p95AbsGeV": 0.0010554907564066518
+      },
+      "naiveVsRecordedMass": {
+        "valid": 17785,
+        "maeGeV": 6.25190100070138,
+        "rmseGeV": 15.160793454591937,
+        "medianAbsGeV": 1.3439450335091792,
+        "p95AbsGeV": 27.51366954742599
+      },
+      "recoveredVsRecordedMass": {
+        "valid": 19992,
+        "maeGeV": 0.00033041934083122564,
+        "rmseGeV": 0.0020213207863519034,
+        "medianAbsGeV": 0.000059811305931134484,
+        "p95AbsGeV": 0.0012590747704583904
+      }
+    },
+    "scenarios": {
+      "clean": {
+        "n": 6744,
+        "alarms": 0,
+        "trueAlarms": 0,
+        "falseAlarms": 0,
+        "missedFaults": 0,
+        "naiveValid": 6744,
+        "repairedValid": 6744,
+        "naiveCoverage": 1,
+        "recoveredCoverage": 1,
+        "recoveryWithin0p01GeV": 6744,
+        "onPairedComparison": {
+          "count": 6744,
+          "better": 0,
+          "worse": 0,
+          "tied": 6744
+        },
+        "naiveVsClean": {
+          "valid": 6744,
+          "maeGeV": 0,
+          "rmseGeV": 0,
+          "medianAbsGeV": 0,
+          "p95AbsGeV": 0
+        },
+        "recoveredVsClean": {
+          "valid": 6744,
+          "maeGeV": 0,
+          "rmseGeV": 0,
+          "medianAbsGeV": 0,
+          "p95AbsGeV": 0
+        },
+        "naiveVsRecordedMass": {
+          "valid": 6744,
+          "maeGeV": 0.00021084734330258868,
+          "rmseGeV": 0.001912658565874247,
+          "medianAbsGeV": 0.00005057524134066682,
+          "p95AbsGeV": 0.0007264271769780173
+        },
+        "recoveredVsRecordedMass": {
+          "valid": 6744,
+          "maeGeV": 0.00021084734330258868,
+          "rmseGeV": 0.001912658565874247,
+          "medianAbsGeV": 0.00005057524134066682,
+          "p95AbsGeV": 0.0007264271769780173
+        }
+      },
+      "missing_pz1": {
+        "n": 6655,
+        "alarms": 6655,
+        "trueAlarms": 6655,
+        "falseAlarms": 0,
+        "missedFaults": 0,
+        "naiveValid": 6655,
+        "repairedValid": 6655,
+        "naiveCoverage": 1,
+        "recoveredCoverage": 1,
+        "recoveryWithin0p01GeV": 6640,
+        "onPairedComparison": {
+          "count": 6655,
+          "better": 6655,
+          "worse": 0,
+          "tied": 0
+        },
+        "naiveVsClean": {
+          "valid": 6655,
+          "maeGeV": 12.710310455412825,
+          "rmseGeV": 23.873417824839002,
+          "medianAbsGeV": 7.398427864957533,
+          "p95AbsGeV": 42.18052538695814
+        },
+        "recoveredVsClean": {
+          "valid": 6655,
+          "maeGeV": 0.00038330654809930686,
+          "rmseGeV": 0.004863093244260506,
+          "medianAbsGeV": 0.00003511928104416029,
+          "p95AbsGeV": 0.0015096364081408353
+        },
+        "naiveVsRecordedMass": {
+          "valid": 6655,
+          "maeGeV": 12.710271546512033,
+          "rmseGeV": 23.871995369422834,
+          "medianAbsGeV": 7.398360301175465,
+          "p95AbsGeV": 42.178939847837256
+        },
+        "recoveredVsRecordedMass": {
+          "valid": 6655,
+          "maeGeV": 0.0003820417890768435,
+          "rmseGeV": 0.0024851042296193974,
+          "medianAbsGeV": 0.00006398182517841633,
+          "p95AbsGeV": 0.00159456664883173
+        }
+      },
+      "biased_pz1_plus5": {
+        "n": 6594,
+        "alarms": 6593,
+        "trueAlarms": 6593,
+        "falseAlarms": 0,
+        "missedFaults": 1,
+        "naiveValid": 4386,
+        "repairedValid": 6593,
+        "naiveCoverage": 0.6651501364877161,
+        "recoveredCoverage": 0.9998483469821049,
+        "recoveryWithin0p01GeV": 6571,
+        "onPairedComparison": {
+          "count": 4386,
+          "better": 4386,
+          "worse": 0,
+          "tied": 0
+        },
+        "naiveVsClean": {
+          "valid": 4386,
+          "maeGeV": 6.065149521402157,
+          "rmseGeV": 8.206383850203071,
+          "medianAbsGeV": 4.479026034461665,
+          "p95AbsGeV": 16.976977386940774
+        },
+        "recoveredVsClean": {
+          "valid": 6593,
+          "maeGeV": 0.0003623514574846456,
+          "rmseGeV": 0.001436570308754675,
+          "medianAbsGeV": 0.0000344126119466992,
+          "p95AbsGeV": 0.0016332457108494403
+        },
+        "naiveVsRecordedMass": {
+          "valid": 4386,
+          "maeGeV": 6.065157364558424,
+          "rmseGeV": 8.206423997558195,
+          "medianAbsGeV": 4.479307407645142,
+          "p95AbsGeV": 16.977621901791586
+        },
+        "recoveredVsRecordedMass": {
+          "valid": 6593,
+          "maeGeV": 0.00040062200399799904,
+          "rmseGeV": 0.0015534939992984244,
+          "medianAbsGeV": 0.00006582011993216952,
+          "p95AbsGeV": 0.001713948862206216
+        }
+      }
+    },
+    "examples": [
+      {
+        "run": 146436,
+        "event": 90678594,
+        "case": "missing_pz1",
+        "originalPz1GeV": 17.4811,
+        "faultedPz1GeV": null,
+        "estimatedPz1GeV": 17.481068441537847,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 7.74702,
+        "cleanMassGeV": 7.7470455408607775,
+        "naiveMassGeV": 25.640585022736335,
+        "repairedMassGeV": 7.747150754284624
+      },
+      {
+        "run": 146436,
+        "event": 90749620,
+        "case": "missing_pz1",
+        "originalPz1GeV": 15.5057,
+        "faultedPz1GeV": null,
+        "estimatedPz1GeV": 15.505656323030369,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 4.14828,
+        "cleanMassGeV": 4.148004862460986,
+        "naiveMassGeV": 21.861863454037945,
+        "repairedMassGeV": 4.14824292840495
+      },
+      {
+        "run": 146436,
+        "event": 90733245,
+        "case": "biased_pz1_plus5",
+        "originalPz1GeV": 5.6259,
+        "faultedPz1GeV": 10.6259,
+        "estimatedPz1GeV": 5.625877887761931,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 8.47813,
+        "cleanMassGeV": 8.47812829444778,
+        "naiveMassGeV": null,
+        "repairedMassGeV": 8.478145939819514
+      },
+      {
+        "run": 146436,
+        "event": 90779622,
+        "case": "missing_pz1",
+        "originalPz1GeV": 17.9586,
+        "faultedPz1GeV": null,
+        "estimatedPz1GeV": 17.95860977467348,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 6.79063,
+        "cleanMassGeV": 6.790806932375548,
+        "naiveMassGeV": 24.845259006595196,
+        "repairedMassGeV": 6.790771117520088
+      },
+      {
+        "run": 146436,
+        "event": 90916331,
+        "case": "clean",
+        "originalPz1GeV": 2.57256,
+        "faultedPz1GeV": 2.57256,
+        "estimatedPz1GeV": 2.57256519373738,
+        "detected": false,
+        "recovered": false,
+        "storedMassGeV": 11.2902,
+        "cleanMassGeV": 11.290179049558958,
+        "naiveMassGeV": 11.290179049558958,
+        "repairedMassGeV": 11.290179049558958
+      },
+      {
+        "run": 146436,
+        "event": 91255034,
+        "case": "missing_pz1",
+        "originalPz1GeV": -11.9457,
+        "faultedPz1GeV": null,
+        "estimatedPz1GeV": -11.945749428160024,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 4.51843,
+        "cleanMassGeV": 4.518371346340522,
+        "naiveMassGeV": 20.530138437756115,
+        "repairedMassGeV": 4.518122357933444
+      },
+      {
+        "run": 146436,
+        "event": 91320748,
+        "case": "missing_pz1",
+        "originalPz1GeV": -36.24,
+        "faultedPz1GeV": null,
+        "estimatedPz1GeV": -36.239843384506244,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 3.22257,
+        "cleanMassGeV": 3.2231753942192025,
+        "naiveMassGeV": 43.81347714598672,
+        "repairedMassGeV": 3.2253350704885393
+      },
+      {
+        "run": 146436,
+        "event": 91348868,
+        "case": "missing_pz1",
+        "originalPz1GeV": -9.94473,
+        "faultedPz1GeV": null,
+        "estimatedPz1GeV": -9.944753606456363,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 7.2092,
+        "cleanMassGeV": 7.2091575112976995,
+        "naiveMassGeV": 13.31372086706793,
+        "repairedMassGeV": 7.209120603052154
+      },
+      {
+        "run": 146436,
+        "event": 91339013,
+        "case": "biased_pz1_plus5",
+        "originalPz1GeV": -4.00856,
+        "faultedPz1GeV": 0.9914399999999999,
+        "estimatedPz1GeV": -4.008558507715274,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 4.88183,
+        "cleanMassGeV": 4.881843020946491,
+        "naiveMassGeV": 8.17832447883819,
+        "repairedMassGeV": 4.881845101181811
+      },
+      {
+        "run": 146436,
+        "event": 91602896,
+        "case": "clean",
+        "originalPz1GeV": 6.27366,
+        "faultedPz1GeV": 6.27366,
+        "estimatedPz1GeV": 6.2736538052867745,
+        "detected": false,
+        "recovered": false,
+        "storedMassGeV": 85.5334,
+        "cleanMassGeV": 85.53337400447852,
+        "naiveMassGeV": 85.53337400447852,
+        "repairedMassGeV": 85.53337400447852
+      },
+      {
+        "run": 146436,
+        "event": 91613976,
+        "case": "clean",
+        "originalPz1GeV": 13.9425,
+        "faultedPz1GeV": 13.9425,
+        "estimatedPz1GeV": 13.942457781414745,
+        "detected": false,
+        "recovered": false,
+        "storedMassGeV": 9.12724,
+        "cleanMassGeV": 9.127365343224735,
+        "naiveMassGeV": 9.127365343224735,
+        "repairedMassGeV": 9.127365343224735
+      },
+      {
+        "run": 146436,
+        "event": 91594171,
+        "case": "missing_pz1",
+        "originalPz1GeV": -45.601,
+        "faultedPz1GeV": null,
+        "estimatedPz1GeV": -45.600878829269654,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 2.25377,
+        "cleanMassGeV": 2.2547716277706726,
+        "naiveMassGeV": 62.24857570493802,
+        "repairedMassGeV": 2.258274429723519
+      },
+      {
+        "run": 146436,
+        "event": 91581303,
+        "case": "biased_pz1_plus5",
+        "originalPz1GeV": 2.06183,
+        "faultedPz1GeV": 7.0618300000000005,
+        "estimatedPz1GeV": 2.0618323726457324,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 7.01044,
+        "cleanMassGeV": 7.010444560422612,
+        "naiveMassGeV": null,
+        "repairedMassGeV": 7.0104426511183044
+      },
+      {
+        "run": 146436,
+        "event": 91854689,
+        "case": "clean",
+        "originalPz1GeV": 4.97099,
+        "faultedPz1GeV": 4.97099,
+        "estimatedPz1GeV": 4.970989449016023,
+        "detected": false,
+        "recovered": false,
+        "storedMassGeV": 2.26747,
+        "cleanMassGeV": 2.267462752103116,
+        "naiveMassGeV": 2.267462752103116,
+        "repairedMassGeV": 2.267462752103116
+      },
+      {
+        "run": 146436,
+        "event": 91967643,
+        "case": "biased_pz1_plus5",
+        "originalPz1GeV": -26.1847,
+        "faultedPz1GeV": -21.1847,
+        "estimatedPz1GeV": -26.184852370835355,
+        "detected": true,
+        "recovered": true,
+        "storedMassGeV": 10.9494,
+        "cleanMassGeV": 10.949536394313698,
+        "naiveMassGeV": 19.770501947355818,
+        "repairedMassGeV": 10.949124507056434
+      },
+      {
+        "run": 146436,
+        "event": 91922316,
+        "case": "clean",
+        "originalPz1GeV": -6.86703,
+        "faultedPz1GeV": -6.86703,
+        "estimatedPz1GeV": -6.8670711774331545,
+        "detected": false,
+        "recovered": false,
+        "storedMassGeV": 6.1981,
+        "cleanMassGeV": 6.198114471890869,
+        "naiveMassGeV": 6.198114471890869,
+        "repairedMassGeV": 6.198114471890869
+      },
+      {
+        "run": 146436,
+        "event": 91773917,
+        "case": "clean",
+        "originalPz1GeV": 10.5497,
+        "faultedPz1GeV": 10.5497,
+        "estimatedPz1GeV": 10.549733526408115,
+        "detected": false,
+        "recovered": false,
+        "storedMassGeV": 2.09277,
+        "cleanMassGeV": 2.0931860026505116,
+        "naiveMassGeV": 2.0931860026505116,
+        "repairedMassGeV": 2.0931860026505116
+      },
+      {
+        "run": 146436,
+        "event": 92055456,
+        "case": "clean",
+        "originalPz1GeV": 21.2138,
+        "faultedPz1GeV": 21.2138,
+        "estimatedPz1GeV": 21.213842451728446,
+        "detected": false,
+        "recovered": false,
+        "storedMassGeV": 13.913,
+        "cleanMassGeV": 13.913100267682967,
+        "naiveMassGeV": 13.913100267682967,
+        "repairedMassGeV": 13.913100267682967
+      }
+    ],
+    "missedFaultExamples": [
+      {
+        "run": 146514,
+        "event": 147609488,
+        "case": "biased_pz1_plus5",
+        "originalPz1GeV": 3309.59,
+        "faultedPz1GeV": 3314.59,
+        "expectedPz1GeV": 3309.607068277171,
+        "residualPz1GeV": 4.9829317228291075,
+        "alarmThresholdGeV": 16.598035341385856,
+        "detectionAlarm": false,
+        "repairApplied": false,
+        "cleanMassGeV": 13.616845854816644,
+        "recoveredMassGeV": null,
+        "naiveMassGeV": null
+      }
+    ],
+    "falseAlarmExamples": [],
+    "invalidRepairedExamples": [
+      {
+        "run": 146514,
+        "event": 147609488,
+        "case": "biased_pz1_plus5",
+        "originalPz1GeV": 3309.59,
+        "faultedPz1GeV": 3314.59,
+        "expectedPz1GeV": 3309.607068277171,
+        "residualPz1GeV": 4.9829317228291075,
+        "alarmThresholdGeV": 16.598035341385856,
+        "detectionAlarm": false,
+        "repairApplied": false,
+        "cleanMassGeV": 13.616845854816644,
+        "recoveredMassGeV": null,
+        "naiveMassGeV": null
+      }
+    ],
+    "caution": "Internal track-coordinate redundancy under injected single-field faults. Neither actual detector failure nor independent ALICE/ATLAS/CMS/LHCb measurements."
+  },
+  "verifiedWorkflowUrl": "https://github.com/DavidWise01/oasis/actions/runs/39540715071",
+  "completedOn": "2026-10-20",
+  "scope": "CERN educational input, synthetic pz1 failures, no new physical result"
+}
