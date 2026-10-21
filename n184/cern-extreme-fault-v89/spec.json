@@ -1,0 +1,121 @@
+{
+  "schema": "oasis/n184/cern-extreme-fault/v89",
+  "version": "v8.9",
+  "status": "preregistered prospective-shard fault simulation",
+  "title": "Carbon 3D · High-Momentum Tolerance and Correlated-Fault Stress",
+  "parent": "../cern-fault-recovery-v88/",
+  "source": {
+    "record": "https://opendata.cern.ch/record/700",
+    "doi": "10.7483/OPENDATA.CMS.CB8H.MFFA",
+    "url": "https://root.cern.ch/files/tutorials/df014_CsvDataSource_MuRun2010B.csv",
+    "expectedSha256": "373f0f56120998d4dad626abb1229ceef91523c262e154fb1e1e541bbb8be3a5",
+    "rows": 100000
+  },
+  "partition": {
+    "hash": "fnv1a32(Run+':'+Event)%5",
+    "retrospective": 0,
+    "prospective": 1,
+    "reserved": [
+      2,
+      3,
+      4
+    ],
+    "reusedKnownFailure": "run 146514, event 147609488, pz1 3309.59 GeV; legacy tolerance 16.598 GeV",
+    "sameDataset": true,
+    "notIndependentDataset": true
+  },
+  "injection": {
+    "selector": "fnv1a32('v89-fault:'+Run+':'+Event)%4",
+    "biasGeV": 5,
+    "cases": [
+      {
+        "id": "clean",
+        "faultedFields": []
+      },
+      {
+        "id": "isolated_pz",
+        "faultedFields": [
+          "pz1"
+        ],
+        "rule": "pz1+=5 GeV"
+      },
+      {
+        "id": "correlated_pz_eta",
+        "faultedFields": [
+          "pz1",
+          "eta1"
+        ],
+        "rule": "pz1+=5; eta1=asinh(pz1/pt1); makes angular consistency tautologically pass"
+      },
+      {
+        "id": "coherent_pz_eta_E",
+        "faultedFields": [
+          "pz1",
+          "eta1",
+          "E1"
+        ],
+        "rule": "as correlated case, then E1=sqrt(px1²+py1²+pz1²+m_mu²); can defeat both redundant consistency checks"
+      }
+    ]
+  },
+  "methods": [
+    {
+      "id": "legacy",
+      "threshold": "0.05+0.005*abs(pt1*sinh(eta1))",
+      "guard": "angle consistency only",
+      "onAlarm": "replace pz1 by pt1*sinh(eta1)"
+    },
+    {
+      "id": "capped",
+      "threshold": "min(2.0,0.05+0.005*abs(pt1*sinh(eta1))) GeV",
+      "guard": "angle consistency only",
+      "onAlarm": "replace pz1 by pt1*sinh(eta1)"
+    },
+    {
+      "id": "guarded",
+      "threshold": "same capped angular threshold; energy witness |E1-sqrt(px1²+py1²+pz1²+m_mu²)|>0.5+0.001*abs(E1) GeV; negative combined mass² invalid",
+      "guard": "angle mismatch OR energy-shell residual OR mass invalid",
+      "onAlarm": "repair pz using eta only on angular mismatch and successful physical consistency; otherwise quarantine (no automatic guess)"
+    }
+  ],
+  "constants": {
+    "muonMassGeV": 0.1056583755,
+    "angCapGeV": 2,
+    "energyThresholdFixedGeV": 0.5,
+    "energyThresholdFraction": 0.001
+  },
+  "scoring": {
+    "strictCleanMassReference": "original unmodified full 4-vector mass",
+    "storedMassReference": "CMS M (consistency)",
+    "indices": "retrospective and prospective separately; primary prospective hash bucket 1",
+    "unit": "GeV",
+    "metrics": [
+      "detection recall and false-alarm rate",
+      "quarantine rate",
+      "valid output coverage",
+      "mass MAE over valid cases",
+      "undetected corruptions producing finite outputs",
+      "missed alarms where outputs invalid",
+      "paired performance"
+    ],
+    "abstention": "quarantine is not a valid repaired measurement"
+  },
+  "preserved": {
+    "carbonAtomicNumber": 6,
+    "layer": 3,
+    "arcs": 6,
+    "phaseSteps": 80,
+    "microticks": 240,
+    "gen0": 1832,
+    "gen1": 1970,
+    "motherNatureOffsetYears": 0
+  },
+  "limitations": [
+    "Even the prospective hash bucket comes from the same CERN 2010 educational CSV, not an independent experiment.",
+    "All artificial faults are injected on genuine records; there are no claims of actual faulty CERN detectors.",
+    "pt, eta, pz, E, px, py all derive from reconstructed track information and are not independently instrumented ALICE/ATLAS/CMS/LHCb measurements.",
+    "Coherent edits that preserve all available redundant relations can be undetectable from these fields; abstain rather than fabricate original state.",
+    "Predeclared thresholds may harm clean coverage and will be reported without posthoc tuning.",
+    "Stored M and clean mass are derived from the same physical kinematics; measured gains only demonstrate software error recovery."
+  ]
+}
