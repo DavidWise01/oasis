@@ -1,0 +1,41 @@
+/* Sapphon signed-pair geometry bridge, purely observational. */
+.sapphon-geometry{position:relative;isolation:isolate;margin:22px 0 29px;padding:22px;border:1px solid #799ae577;border-radius:21px;overflow:hidden;background:radial-gradient(ellipse at 48% 10%,#37316b77,transparent 57%),linear-gradient(150deg,#071225,#0b1127);box-shadow:inset 0 0 45px #2343ad23,0 0 28px #2d6de122}
+.sapphon-geometry:before{content:"";position:absolute;pointer-events:none;inset:0;background:linear-gradient(90deg,transparent,#81c2ff0a,transparent);background-size:33% 100%;opacity:.8;z-index:-1}
+.sapphon-geometry .geometry-heading{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px}
+.sapphon-geometry h3{font-size:clamp(17px,2.4vw,23px);color:#e9ebff;margin:0;letter-spacing:.13em}
+.sapphon-geometry .geometry-state{font:11px ui-monospace,monospace;color:#a6daf4}
+.sapphon-geometry .geometry-intro{color:#a3b9d9;font-size:12px;margin:10px 0 18px}
+.sapphon-geometry .geometry-topology{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr);gap:10px;align-items:stretch}
+.sapphon-geometry .geometry-plane{border:1px solid #55749b7d;background:#0b1930b5;border-radius:14px;padding:15px;min-width:0}
+.sapphon-geometry .geometry-plane.photon{border-color:#6586e288}
+.sapphon-geometry .geometry-plane.particle{border-color:#5e9e8b88}
+.sapphon-geometry h4{font-size:12px;color:#b4dcff;margin:0 0 6px;letter-spacing:.15em}
+.sapphon-geometry .geometry-plane p{font-size:11px;color:#9fb7d4;line-height:1.5;margin:4px 0 12px}
+.sapphon-geometry .geometry-tokens{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:60px}
+.sapphon-geometry .geometry-radiation-token{--ray-tone:#7ecfff;display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--ray-tone);border-radius:10px;box-shadow:inset 0 0 13px color-mix(in srgb,var(--ray-tone) 17%,transparent),0 0 14px color-mix(in srgb,var(--ray-tone) 22%,transparent);background:color-mix(in srgb,var(--ray-tone) 10%,#080f23)}
+.sapphon-geometry .token-symbol{font:700 25px ui-monospace,monospace;color:var(--ray-tone);text-shadow:0 0 12px var(--ray-tone)}
+.sapphon-geometry .token-label{font-size:12px;color:#eff5ff}
+.sapphon-geometry .token-charge{font:10px ui-monospace,monospace;color:#b1d8e9;white-space:nowrap}
+.sapphon-geometry .geometry-muted{color:#819bbd;font-size:12px;font-style:italic}
+.sapphon-geometry .geometry-separator{position:relative;display:grid;align-items:center;justify-items:center;gap:7px;min-width:0;color:#91a7c9;font:12px ui-monospace,monospace}
+.sapphon-geometry .geometry-separator:before{content:"";height:75%;position:absolute;left:50%;top:12%;border-left:1px dashed #6389af85}
+.sapphon-geometry .geometry-separator span{position:relative;z-index:1;border-radius:30px;padding:6px;background:#101f3b;border:1px solid #5f7fba85}
+.sapphon-geometry .geometry-map-title{margin:19px 0 12px;text-align:center;font:12px ui-monospace,monospace;letter-spacing:.1em;color:#b9b9ff}
+.sapphon-geometry .geometry-visible-axis{display:flex;align-items:center;gap:8px}
+.sapphon-geometry .geometry-axis-edge{flex:0 0 auto;color:#95d9fb;font:11px ui-monospace,monospace;text-align:center}
+.sapphon-geometry .geometry-pairs{flex:1;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;min-width:0}
+.sapphon-geometry .geometry-pair{--pair-tone:#a695ff;min-width:0;display:grid;gap:3px;justify-items:center;text-align:center;padding:12px 3px 9px;border:1px solid var(--pair-tone);border-radius:10px;background:color-mix(in srgb,var(--pair-tone) 10%,#0c1330);box-shadow:inset 0 0 15px color-mix(in srgb,var(--pair-tone) 13%,transparent);color:#e7ebff;cursor:pointer}
+.sapphon-geometry .geometry-pair:hover,.sapphon-geometry .geometry-pair.selected{box-shadow:0 0 17px color-mix(in srgb,var(--pair-tone) 42%,transparent),inset 0 0 17px color-mix(in srgb,var(--pair-tone) 16%,transparent)}
+.sapphon-geometry .geometry-pair.selected{outline:2px solid var(--pair-tone);outline-offset:2px}
+.sapphon-geometry .pair-color{font-size:11px;color:var(--pair-tone)}
+.sapphon-geometry .pair-ports{font:16px ui-monospace,monospace;color:#edf6ff;white-space:nowrap}
+.sapphon-geometry .pair-wave{font:10px ui-monospace,monospace;color:#b2c1df}
+.sapphon-geometry .geometry-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:14px;margin-top:17px}
+.sapphon-geometry .geometry-focus{display:grid;gap:6px;padding:14px;border:1px solid #766eba88;background:#141532aa;border-radius:13px;font-size:12px;color:#d6d7fa}
+.sapphon-geometry .geometry-focus strong{font-size:15px;color:#dfbcff}
+.sapphon-geometry .geometry-focus small{color:#9caed0}
+.sapphon-geometry .geometry-contract{padding:13px 14px;border-left:3px solid #8bd0e9;background:#102038aa;border-radius:0 11px 11px 0;font-size:12px;color:#c1cee4}
+.sapphon-geometry .geometry-contract strong{color:#b0f5e9}
+.sapphon-geometry .geometry-contract code{color:#e2ddff}
+@media(max-width:950px){.sapphon-geometry .geometry-visible-axis{flex-direction:column}.sapphon-geometry .geometry-pairs{width:100%;grid-template-columns:repeat(4,minmax(0,1fr))}.sapphon-geometry .geometry-axis-edge{width:100%}}
+@media(max-width:670px){.sapphon-geometry{padding:13px}.sapphon-geometry .geometry-topology{grid-template-columns:1fr}.sapphon-geometry .geometry-separator{display:none}.sapphon-geometry .geometry-bottom{grid-template-columns:1fr}.sapphon-geometry .geometry-pairs{grid-template-columns:repeat(2,minmax(0,1fr))}}
