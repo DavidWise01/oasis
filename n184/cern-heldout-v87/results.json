@@ -1,0 +1,169 @@
+{
+  "provenance": {
+    "sourceFileName": "MuRun2010B.csv",
+    "sourceURL": "https://root.cern.ch/files/tutorials/df014_CsvDataSource_MuRun2010B.csv",
+    "doi": "10.7483/OPENDATA.CMS.CB8H.MFFA",
+    "sizeBytes": 15164516,
+    "sha256": "373f0f56120998d4dad626abb1229ceef91523c262e154fb1e1e541bbb8be3a5",
+    "repositorySample": false
+  },
+  "input": {
+    "accepted": 100000,
+    "skipped": 0,
+    "truncated": false,
+    "header": [
+      "Run",
+      "Event",
+      "Type1",
+      "E1",
+      "px1",
+      "py1",
+      "pz1",
+      "pt1",
+      "eta1",
+      "phi1",
+      "Q1",
+      "Type2",
+      "E2",
+      "px2",
+      "py2",
+      "pz2",
+      "pt2",
+      "eta2",
+      "phi2",
+      "Q2",
+      "M"
+    ],
+    "errors": []
+  },
+  "analysis": {
+    "schema": "oasis/n184/cern-heldout-result/v87",
+    "rowsProcessed": 100000,
+    "heldOutCount": 19993,
+    "reservedCount": 80007,
+    "holdoutRule": "fnv1a32(Run+\":\"+Event)%5===0",
+    "nonfinitePredictions": 0,
+    "oppositeSignHoldoutCount": 12710,
+    "metrics": {
+      "transverse": {
+        "n": 19993,
+        "maeGeV": 3.770572375231502,
+        "rmseGeV": 7.05377439089118,
+        "medianAbsGeV": 1.1954352549237859,
+        "p95AbsGeV": 16.1612961747623
+      },
+      "angular": {
+        "n": 19993,
+        "maeGeV": 0.0060057634200047045,
+        "rmseGeV": 0.008704073777199792,
+        "medianAbsGeV": 0.0033600149855743666,
+        "p95AbsGeV": 0.018365106136146725
+      },
+      "fourPort": {
+        "n": 19993,
+        "maeGeV": 0.0060057634200047045,
+        "rmseGeV": 0.008704073777199792,
+        "medianAbsGeV": 0.0033600149855743666,
+        "p95AbsGeV": 0.018365106136146725
+      },
+      "fourVector": {
+        "n": 19993,
+        "maeGeV": 0.0003241157411469614,
+        "rmseGeV": 0.016325637057069322,
+        "medianAbsGeV": 0.00005049315799610099,
+        "p95AbsGeV": 0.0007299057060499159
+      }
+    },
+    "comparisons": {
+      "angularVsTransverseMAEGeV": 3.7645666118114973,
+      "fourPortVsAngularMAEGeV": 0,
+      "fourVectorVsAngularMAEGeV": 0.005681647678857743
+    },
+    "sampleOfHoldout": [
+      {
+        "run": 146436,
+        "event": 90678594,
+        "referenceMGeV": 7.74702,
+        "transverseGeV": 6.78694488259598,
+        "angularGeV": 7.7438271258391165,
+        "fourVectorGeV": 7.7470455408607775
+      },
+      {
+        "run": 146436,
+        "event": 90749620,
+        "referenceMGeV": 4.14828,
+        "transverseGeV": 3.540408984195711,
+        "angularGeV": 4.1421542451011675,
+        "fourVectorGeV": 4.148004862460986
+      },
+      {
+        "run": 146436,
+        "event": 90733245,
+        "referenceMGeV": 8.47813,
+        "transverseGeV": 6.305111341895373,
+        "angularGeV": 8.475488709021556,
+        "fourVectorGeV": 8.47812829444778
+      },
+      {
+        "run": 146436,
+        "event": 90779622,
+        "referenceMGeV": 6.79063,
+        "transverseGeV": 5.44119957231888,
+        "angularGeV": 6.786750012157898,
+        "fourVectorGeV": 6.790806932375548
+      },
+      {
+        "run": 146436,
+        "event": 90916331,
+        "referenceMGeV": 11.2902,
+        "transverseGeV": 10.795788253561284,
+        "angularGeV": 11.28792936104856,
+        "fourVectorGeV": 11.290179049558958
+      },
+      {
+        "run": 146436,
+        "event": 91255034,
+        "referenceMGeV": 4.51843,
+        "transverseGeV": 3.206236863892654,
+        "angularGeV": 4.513480728781918,
+        "fourVectorGeV": 4.518371346340522
+      },
+      {
+        "run": 146436,
+        "event": 91320748,
+        "referenceMGeV": 3.22257,
+        "transverseGeV": 3.21015962545748,
+        "angularGeV": 3.2110681213569716,
+        "fourVectorGeV": 3.2231753942192025
+      },
+      {
+        "run": 146436,
+        "event": 91348868,
+        "referenceMGeV": 7.2092,
+        "transverseGeV": 0.659996791159313,
+        "angularGeV": 7.205843305127549,
+        "fourVectorGeV": 7.2091575112976995
+      },
+      {
+        "run": 146436,
+        "event": 91339013,
+        "referenceMGeV": 4.88183,
+        "transverseGeV": 4.824342403641121,
+        "angularGeV": 4.876877878451382,
+        "fourVectorGeV": 4.881843020946491
+      },
+      {
+        "run": 146436,
+        "event": 91602896,
+        "referenceMGeV": 85.5334,
+        "transverseGeV": 84.58524948857726,
+        "angularGeV": 85.53308729122507,
+        "fourVectorGeV": 85.53337400447852
+      }
+    ],
+    "interpretation": "Reference label M is withheld until per-row evaluation, but M originates from the same underlying reconstructed kinematics. Extra four-port fields do not alter angular estimator. This tests formula ablation, not emergence or generalization beyond CMS."
+  },
+  "validatedWorkflowRun": "https://github.com/DavidWise01/oasis/actions/runs/39537168241",
+  "documentation": "https://opendata.cern.ch/record/700",
+  "scientificScope": "100k educational events, 19993 FNV heldout; massless formula ablation, not particle discovery"
+}
