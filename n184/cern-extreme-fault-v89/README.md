@@ -38,6 +38,32 @@ Muon mass used: **0.1056583755 GeV**. Report alarm detection, clean false alarms
 
 **Guardrails:** clean four-vector mass is a kinematic reference calculated from the same underlying event, not independent physical truth. Real detector accuracy and independence remain untested. No threshold is tuned after the dataset results and retroactively characterized as preregistered.
 
+## Verified 100,000-event run — results
+
+**[Successful GitHub Actions run 39542863258](https://github.com/DavidWise01/oasis/actions/runs/39542863258)** fetched the exact 15,164,516-byte CERN CSV with matching SHA-256. All 100,000 parsed without error. The new prospective hash shard contains **20,066 records**; the separately reported old retrospective shard contains **19,993**. The complete method/scenario numerical register, including actual missed-fault examples, is preserved in [results.json](./results.json).
+
+### New 20,066-event shard
+
+| Injected case | Number | Legacy detected | Capped detected | Guarded detected | Guarded quarantines |
+|---|---:|---:|---:|---:|---:|
+| Healthy | 5,051 | 0 false alarms | 0 false alarms | 0 false alarms | 0 |
+| Isolated pz +5 GeV | 4,959 | 4,959 | 4,959 | 4,959 | 0 |
+| Correlated pz+eta | 4,981 | 0 | 0 | 4,849 | 4,849 |
+| Coherent pz+eta+E | 5,075 | 0 | 0 | 0 | 0 |
+
+**Results and limitations:**
+
+- **Capping at 2 GeV produced no extra detection benefit in the new shard**: the original threshold already caught all 4,959 one-field faults there. The historical v8.8 missed fault remains recorded in v8.8, rather than being rewritten here.
+- The guarded shell check detected **4,849 / 4,981 = 97.35%** of two-field correlated faults but could not uniquely identify the damaged source field, so it **quarantined** all those cases instead of asserting a recovered correct mass. A further **132 correlated faults were missed**.
+- The coordinated `pz+eta+E` alteration was **undetected in all 5,075 cases**. Every altered event remained numerically reconstructable, but the reconstructed mass was not guaranteed to be the original. This is a fundamental *internal-consistency* limitation: several mutually consistent corrupted fields do not become trustworthy because multiple formulas agree.
+- Clean input generated **0 false alarms in 5,051 events** under all three policies, as measured for this selected dataset. It is not a universal guarantee of a zero false-positive rate.
+
+**Outcome tradeoff, all fault types combined:** legacy/capped produced valid masses for **18398 / 20,066 (91.69%)**; the guarded policy deliberately quarantined 4,849 uncertain cases, leaving **15217 / 20,066 (75.83%)** valid. Guarded MAE over these fewer outputs is not directly comparable to the other methods' MAE unless coverage and event selection are controlled. The correct claim is *improved detection at a coverage cost*, not recovered true mass in all scenarios.
+
+**Recorded missed-correlated case:** Run 148058, Event 49769785. Its corrupted pz and eta agreed exactly; its energy residual was approximately **0.3476 GeV**, below the predeclared energy threshold **0.5077 GeV**. The computed mass remained finite but differed from the original.
+
+This is software fault-injection testing using redundant representations of one CMS track, not a discovery about actual CERN detector corruption or a new theory of carbon/Planck-scale geometry.
+
 ## Local reproduction
 
 ```powershell
