@@ -1,0 +1,65 @@
+{
+  "schema": "oasis/n184/carbon3d-observed-report/v86",
+  "provenance": {
+    "sourceDataset": "CERN CMS educational 2010 dimuon example rows, four examples cited in CERN histogram documentation",
+    "sourceURL": "https://opendata.cern.ch/visualise/histograms/CMS",
+    "sourceRecord": "https://opendata.cern.ch/record/700",
+    "doi": "10.7483/OPENDATA.CMS.CB8H.MFFA",
+    "sampleSource": "../cern-observer-lab-v84/sample-cms-education.csv",
+    "newMeasurement": false
+  },
+  "symbolicMapping": "CERN::CARBON::LAYER3D only user-model designation; no physical carbon claim",
+  "primaryFormula": "m3D²=(E1+E2)²-(Σpx)²-(Σpy)²-(Σpz)²",
+  "flattenedControlFormula": "mXY²=(E1+E2)²-(Σpx)²-(Σpy)²",
+  "n": 4,
+  "metrics": {
+    "MAE_3D_GeV": 0.0001455249809086956,
+    "MAE_XY_GeV": 14.356590043336846,
+    "RMSE_3D_GeV": 0.00018739920918422264,
+    "countWithSmaller3DResidual": 4,
+    "RMSE_XY_GeV": 15.959135512324837
+  },
+  "rows": [
+    {
+      "run": 146436,
+      "event": 90830792,
+      "referenceMassGeV": 2.73205,
+      "combinedPzGeV": -21.215790000000002,
+      "xyMassGeV": 21.39101265110551,
+      "threeDMassGeV": 2.7323390923631488,
+      "absXYResidualGeV": 18.658962651105508,
+      "abs3DResidualGeV": 0.0002890923631486686
+    },
+    {
+      "run": 146436,
+      "event": 90862225,
+      "referenceMassGeV": 3.10256,
+      "combinedPzGeV": -20.06164,
+      "xyMassGeV": 20.30009409793462,
+      "threeDMassGeV": 3.102325078936749,
+      "absXYResidualGeV": 17.197534097934618,
+      "abs3DResidualGeV": 0.00023492106325084805
+    },
+    {
+      "run": 146436,
+      "event": 90644850,
+      "referenceMassGeV": 9.41149,
+      "combinedPzGeV": 7.056921000000001,
+      "xyMassGeV": 11.763318639547945,
+      "threeDMassGeV": 9.411457454363543,
+      "absXYResidualGeV": 2.3518286395479446,
+      "abs3DResidualGeV": 0.00003254563645782582
+    },
+    {
+      "run": 146436,
+      "event": 90678594,
+      "referenceMassGeV": 7.74702,
+      "combinedPzGeV": 25.82823,
+      "xyMassGeV": 26.96505478475931,
+      "threeDMassGeV": 7.7470455408607775,
+      "absXYResidualGeV": 19.21803478475931,
+      "abs3DResidualGeV": 0.00002554086077743989
+    }
+  ],
+  "limitation": "Stored M is calculated from same physical input: this is validation of proper dimensioned reconstruction rather than independent generalization or evidence for emergence. XY deliberately drops momentum component."
+}
