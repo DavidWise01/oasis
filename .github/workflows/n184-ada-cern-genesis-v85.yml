@@ -1,0 +1,21 @@
+name: N184 Ada CERN Genesis Thesis v85
+on:
+  push:
+    paths:
+      - 'n184/ada-cern-genesis-v85/**'
+      - '.github/workflows/n184-ada-cern-genesis-v85.yml'
+  workflow_dispatch:
+jobs:
+  thesis-chronology-and-rings:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Ada Gen0, CERN Gen1 and offset / ring invariants
+        run: |
+          node --check n184/ada-cern-genesis-v85/test_genesis.mjs
+          node n184/ada-cern-genesis-v85/test_genesis.mjs
