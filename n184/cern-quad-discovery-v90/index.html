@@ -1,0 +1,124 @@
+<!doctype html><html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · CERN Four Quads v9.0</title>
+<style>
+:root{color-scheme:dark;--bg:#081321;--panel:#11273d;--edge:#36556e;--ink:#edf7ff;--muted:#acc5d4}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{background:linear-gradient(130deg,#102237,#173448);border-bottom:1px solid var(--edge);padding:22px clamp(17px,3vw,38px)}
+h1{font-size:clamp(22px,3.1vw,32px);margin:0}header p{color:var(--muted);margin:5px 0}
+main{max-width:1450px;margin:auto;padding:17px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(310px,.9fr);gap:14px}
+.panel{padding:17px;background:var(--panel);border:1px solid var(--edge);border-radius:13px;min-width:0}h2{font-size:17px;margin:0 0 10px}
+canvas{width:100%;height:auto;display:block;border:1px solid #48637b;background:#091a29;border-radius:12px}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}button{border:1px solid #658ea1;border-radius:8px;padding:8px 11px;cursor:pointer;background:#204659;color:white}button.active{border-color:#a5ebd2;background:#285a61}button:focus-visible,select:focus-visible{outline:2px solid #baf5dc}select{background:#1b3b4e;color:white;border:1px solid #61849a;padding:8px;border-radius:8px}
+.chips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:11px 0}
+.chip{padding:12px 8px;border:1px solid #52697f;background:#1c344b;border-radius:10px;cursor:pointer;text-align:center;font:13px system-ui;color:#e8f6ff}
+.chip strong{display:block;font:bold 23px ui-monospace,monospace}.chip.active{border-color:#9ff5d8;background:#294b51}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
+.metric{padding:12px;background:#1a3249;border:1px solid #456780;border-radius:9px}
+.metric b{display:block;font:bold clamp(16px,2vw,23px) ui-monospace,monospace;color:#9be8d0}
+.metric span{font-size:12px;color:var(--muted)}
+.discovery{background:#1c3247;border:1px solid #405c75;border-radius:9px;padding:11px;margin:9px 0}
+.discovery b{display:block}.discovery p{margin:4px 0;color:#b7ccdb;font-size:12px}
+.note{padding:11px 12px;border-left:3px solid #eac78f;background:#292d43;border-radius:0 9px 9px 0;margin:12px 0;color:#dfdfeb}
+a{color:#98ecda}small,.muted{color:var(--muted)}footer{padding:15px 24px;border-top:1px solid var(--edge);color:var(--muted)}
+@media(max-width:930px){main{grid-template-columns:1fr}}@media(max-width:560px){.chips{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr}}
+</style></head><body>
+<header><small style="color:#a5e6d6">OASIS N184 · v9.0 · QUAD A / B / C / D</small>
+<h1>CERN Ring · Four Detector Quads · Particle Discoveries</h1>
+<p>One LHC accelerator complex · two circulating beams · four major detector sites · three ATLAS toroidal magnets</p></header>
+<main>
+<section class="panel"><h2>Choose conceptual quads or physical interaction-point layout</h2>
+<div class="controls"><button id="logical" class="active">A–D logical quads</button><button id="physical">Actual IP1 / IP2 / IP5 / IP8</button></div>
+<canvas id="dial" width="940" height="640" aria-label="Four colored conceptual detector sectors or eight physical interaction points showing actual toroid magnet count" role="img"></canvas>
+<div class="chips" id="chips"></div>
+<div class="metrics">
+<div class="metric"><b>3</b><span>Total complete ATLAS toroidal magnets</span></div>
+<div class="metric"><b>24</b><span>ATLAS superconducting toroid coils</span></div>
+<div class="metric"><b>1 + 2</b><span>Barrel + end-cap toroid magnets</span></div>
+</div>
+<div class="note"><b>Counting rule:</b> The LHC's one closed circular accelerator is not four toroid magnets. Its two counter-rotating beam paths are not detector toroids. A/B/C/D is a <b>symbolic partition</b>; the actual LHC has eight technical sections with major detectors at IP1, IP2, IP5 and IP8.</div>
+<p><a href="../cern-extreme-fault-v89/">Previous CERN data stress benchmark</a> · <a href="../integration-v41/">OASIS Confluence</a> · <a href="./spec.json">Cited source registry</a></p>
+</section>
+<aside class="panel">
+<h2 id="selected">Quad A · ALICE</h2><p id="ip" class="muted"></p>
+<div class="metrics" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+<div class="metric"><b id="toroids">—</b><span>Complete physical toroid magnets</span></div>
+<div class="metric"><b id="coils">—</b><span>Coils in physical toroidal magnets</span></div></div>
+<h3>Actual detector magnets</h3><p id="magnet" class="muted"></p>
+<h3>Discoveries and evidence</h3><div id="discoveries"></div>
+<div class="note"><b>Evidence threshold:</b> First evidence of an antihypernucleus at 3.5σ is <b>not</b> a discovery-level claim. The Higgs boson is <b>one particle jointly discovered</b> by ATLAS and CMS, not two separate particles.</div>
+<p class="muted" style="font-size:12px">This is a selection of source-documented examples, not an exhaustive census of CERN particle findings. Toroid magnet count and discovery count have no established causal relationship.</p>
+<p id="status" class="muted">Loading verified CERN sources…</p>
+</aside></main>
+<footer>OASIS · Carbon Layer 3D remains a symbolic software mapping; CERN's detector hardware and physics results are described independently.</footer>
+<script type="module">
+const $=id=>document.getElementById(id);
+const cv=$('dial'),ctx=cv.getContext('2d');let s=null,selected=0,view='logical';
+const palette=['#89dacc','#e9bc83','#b2a5ef','#f09c9d'];
+const dial=(cx,cy,r,a)=>[cx+Math.cos(a)*r,cy+Math.sin(a)*r];
+function draw(){
+if(!s)return;const g=ctx,W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=183,two=Math.PI*2;g.fillStyle='#091a29';g.fillRect(0,0,W,H);
+const entries=s.quadruple;
+if(view==='logical'){
+ for(let i=0;i<4;i++){
+  const a=-Math.PI/2+i*two/4;
+  g.beginPath();g.arc(cx,cy,R+28,a+.045,a+two/4-.045);
+  g.strokeStyle=palette[i];g.lineWidth=i===selected?23:16;g.stroke();
+  const mid=a+Math.PI/4,[x,y]=dial(cx,cy,R+91,mid);
+  g.font='bold 22px system-ui';g.textAlign='center';g.fillStyle=palette[i];g.fillText(entries[i].quad+' · '+entries[i].experiment,x,y);
+ }
+}else{
+ for(let i=0;i<8;i++){
+  const a=-Math.PI/2+i*two/8;g.beginPath();g.arc(cx,cy,R+25,a+.035,a+two/8-.035);
+  g.strokeStyle='#3b5a74';g.lineWidth=13;g.stroke();
+  const [x,y]=dial(cx,cy,R+74,a);g.textAlign='center';g.fillStyle='#829fb5';g.font='13px ui-monospace,monospace';g.fillText('IP'+(i+1),x,y);
+ }
+ for(let i=0;i<4;i++){
+  const e=entries[i],a=-Math.PI/2+(e.ip-1)*two/8,[x,y]=dial(cx,cy,R+25,a);
+  g.beginPath();g.arc(x,y,i===selected?17:12,0,two);g.fillStyle=palette[i];g.fill();
+  const [tx,ty]=dial(cx,cy,R+126,a);
+  g.fillStyle=palette[i];g.font='bold 18px system-ui';g.textAlign='center';g.fillText(e.quad+' '+e.experiment,tx,ty)
+ }
+}
+for(let j=0;j<80;j++){
+ const a=-Math.PI/2+j*two/80,[x,y]=dial(cx,cy,R-5,a),[u,v]=dial(cx,cy,R-(j%10===0?31:18),a);
+ g.beginPath();g.moveTo(x,y);g.lineTo(u,v);g.strokeStyle=j%10===0?'#85dabd':'#46647a';g.lineWidth=j%10===0?2.2:1.2;g.stroke();
+}
+const center=entries[selected];
+g.textAlign='center';g.fillStyle=palette[selected];g.font='bold 58px system-ui';g.fillText(center.quad,cx,cy-14);
+g.fillStyle='#eefaff';g.font='bold 24px system-ui';g.fillText(center.experiment,cx,cy+22);
+g.font='17px system-ui';g.fillStyle='#b8d5e5';g.fillText(center.physicalToroidSystems+' real toroidal magnets',cx,cy+55);
+g.font='14px ui-monospace,monospace';g.textAlign='left';g.fillStyle='#bad1e2';
+g.fillText(view==='logical'?'SYMBOLIC 4×90° · NOT REAL PHYSICAL SEGMENTS':'REAL INTERACTION-POINT INDEX · 8 TECHNICAL OCTANTS',22,28);
+g.fillText('OASIS ring 6 arcs / 80 phases / 240 microticks unchanged',22,H-23);
+}
+function render(){
+ if(!s)return;const e=s.quadruple[selected];
+ $('selected').textContent='Quad '+e.quad+' · '+e.experiment;
+ $('ip').textContent='LHC interaction point '+e.ip;
+ $('toroids').textContent=e.physicalToroidSystems;
+ $('coils').textContent=e.physicalToroidCoils;
+ $('magnet').textContent=(e.magnets||e.otherMagnets||[]).join(' · ')+(e.toroidBreakdown?' · barrel toroid and two end-cap toroids':'');
+ const parent=$('discoveries');parent.replaceChildren();
+ for(const d of e.discoveries){
+  const div=document.createElement('div');div.className='discovery';
+  const b=document.createElement('b');b.textContent=d.name+(d.year?' ('+d.year+')':'');
+  const p=document.createElement('p');p.textContent=d.status+' · '+d.type;
+  const a=document.createElement('a');a.textContent='CERN source ↗';a.href=d.source;a.target='_blank';a.rel='noopener noreferrer';
+  div.append(b,p,a);parent.appendChild(div);
+ }
+ for(const [i,chip]of [...$('chips').children].entries())chip.classList.toggle('active',i===selected);
+ draw();
+}
+function setView(v){view=v;$('logical').classList.toggle('active',v==='logical');$('physical').classList.toggle('active',v==='physical');draw()}
+$('logical').onclick=()=>setView('logical');$('physical').onclick=()=>setView('physical');
+fetch('./spec.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Spec unavailable');return r.json()}).then(data=>{
+ if(data.schema!=='oasis/n184/cern-quad-discovery/v90'||data.quadruple.length!==4)throw Error('Invalid quad registry');
+ s=data;const chips=$('chips');chips.replaceChildren(...data.quadruple.map((e,i)=>{
+ const b=document.createElement('button');b.className='chip';const title=document.createElement('strong');title.textContent=e.quad;
+ b.append(title,e.experiment+' · '+e.physicalToroidSystems+' toroid(s)');b.onclick=()=>{selected=i;render()};return b
+ }));
+ $('status').textContent='Official CERN / ATLAS references loaded; quad letters are our logical labels.';
+ render();
+}).catch(e=>$('status').textContent='Unable to load register: '+String(e));
+</script></body></html>
