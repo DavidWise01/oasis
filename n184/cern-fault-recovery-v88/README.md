@@ -59,6 +59,29 @@ Fault → disagreement between redundant columns → witness → correction → 
 
 Actual ATLAS, ALICE, CMS and LHCb are distinct experiments at different LHC interaction points. **This script does not have their independent measurements.** The names are software conventions.
 
+## Completed 100,000-event benchmark (verified)
+
+Original production run: [GitHub Actions 39540715071](https://github.com/DavidWise01/oasis/actions/runs/39540715071). The full numeric report is preserved in [results.json](./results.json) alongside the initial successful [source-matched run 39540543778](https://github.com/DavidWise01/oasis/actions/runs/39540543778).
+
+- **100,000** genuine CERN educational records accepted; **0** parsing errors; source CSV SHA-256 matches v8.7.
+- **19,993** deterministic held-out records, **80,007** untouched reserved records.
+- **6,744 healthy**, **6,655 missing-pz1**, and **6,594 drift+5GeV** fault scenarios.
+- **Healthy:** zero false alarms, all masses unchanged.
+- **Missing:** **6,655/6,655 detected** and repaired; every result finite.
+- **Drift:** **6,593/6,594 detected**, **one missed**; **6,593/6,594** finite recovered outputs.
+- **Overall:** Naive outputs finite on **17,785/19,993 (88.96%)**; recovered outputs finite on **19,992/19,993 (99.995%)**.
+
+| Scenario | Naive mass MAE vs original clean mass, valid rows (GeV) | Repaired MAE vs original clean mass, valid rows (GeV) |
+|---|---:|---:|
+| Healthy | 0 | 0 |
+| Missing pz1 | 12.710310455 | 0.000383307 |
+| +5 GeV drift | 6.065149521 (4,386 valid only) | 0.000362351 (6,593 valid) |
+| Overall | 6.251833673 (17,785 valid) | 0.000247093 (19,992 valid) |
+
+**Known failure, retained rather than tuned away:** event `Run 146514 / Event 147609488` had `pz1=3309.59 GeV`; the +5-GeV-corrupted value was `3314.59 GeV` while redundant `pt1*sinh(eta1)` predicted `3309.607068 GeV`. Their difference was only **4.982932 GeV**, below the predeclared **16.598035 GeV** tolerance, so no alarm was issued. The resulting mass-squared became negative, and the recovered output remained invalid. This is a failure mode of a relative tolerance at very high momentum. Do **not** retrofit the threshold based on this outcome and then reclassify the present result as a clean pass.
+
+The recovery result is an important software demonstration, but the redundant coordinates come from the same original track, so one should **not** treat the difference as independent four-detector corroboration. Scores for naive and repaired outputs have **different valid denominators**; both coverage and errors must be reported.
+
 ## Evidence standard
 
 The primary reference is the **unmodified clean event's computed full four-vector mass**; the provided CMS `M` column is a second arithmetic-consistency reference. Neither is a truly independent hidden physical quantity.
