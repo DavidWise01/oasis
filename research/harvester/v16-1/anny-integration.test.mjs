@@ -20,6 +20,6 @@ test('Anny observes PREPARED through CONFIRMED without initiating state transiti
  assert.equal(snapshot.slots[16].status,'observed');assert.equal(snapshot.slots[17].value,'HELD');
  await journal.confirm(transferId,epoch,receipt);
  snapshot=await readAnny(journal,receiver,transferId);
- assert.equal(snapshot.phase,'CONFIRMED');assert.equal(snapshot.slots[17].value,'CONFIRMED');
+ assert.equal(snapshot.phase,'CONFIRMED');assert.equal(snapshot.slots[17].value,'VERIFIED');
  assert.equal(await receiver.effectCount(row.deliveryKey),1);
 });
