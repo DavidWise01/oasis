@@ -27,6 +27,31 @@ Both formulas 1 and 2 use the massless-muon approximation; formula 3 uses the or
 
 Metrics on held-out records: mean absolute error (MAE), RMSE, median absolute error, 95th-percentile absolute error, valid prediction count, invalid count, charged-pair composition. Preserve SHA-256 and file bytes for source identity. Sample summaries are not astrophysics or Planck-time observations.
 
+## Completed real-data run — verified GitHub Actions
+
+**Run:** <https://github.com/DavidWise01/oasis/actions/runs/39537168241>. Both the 48-check unit job and the external-source 100,000-event evaluation completed successfully. This report is preserved at [results.json](./results.json) and presented in [index.html](./index.html).
+
+- Source CSV: 15,164,516 bytes; SHA-256 `373f0f56120998d4dad626abb1229ceef91523c262e154fb1e1e541bbb8be3a5`.
+- Records accepted: **100,000**, rows skipped: **0**, rows truncated: **0**.
+- FNV hash holdout: **19,993**, unused/reserved: **80,007**.
+- Predictions nonfinite: **0**.
+- Opposite-charge pairs within holdout: **12,710**.
+
+| Mass calculation | Holdout MAE (GeV) | RMSE (GeV) | 95th percentile absolute residual (GeV) |
+|---|---:|---:|---:|
+| Transverse-only | 3.770572375 | 7.053774391 | 16.16129617 |
+| Angular formula (adds η) | 0.00600576342 | 0.00870407378 | 0.01836510614 |
+| Four software ports (same angular predictor) | 0.00600576342 | 0.00870407378 | 0.01836510614 |
+| Full measured four-vector control | 0.000324115741 | 0.01632563706 | 0.000729905706 |
+
+**Positive control:** angular estimator better than transverse-only by **3.764566612 GeV MAE**, as expected from the known massless two-particle kinematics relation.
+
+**Null result:** four-port mass prediction minus angular-only prediction = **exactly 0 GeV MAE improvement**. The extra fields were not used to change the mass estimator; one cannot infer that four observation channels physically cause emergence.
+
+**Caution about full four-vector tails:** Its MAE is small but RMSE is higher than the angular estimator RMSE, indicating sensitivity to a minority of inconsistent/rounded records. Do not flatten the error distributions into a single "best" claim without inspecting the outliers.
+
+Neither the hidden-label scoring nor the huge improvement proves independent particle discovery: `M` is itself reconstructed from the same event kinematics. The reserved 80,007 events were not used to fit any model; "holdout" here means evaluation selection, not ML training/validation generalization.
+
 ## How to run locally
 
 Windows PowerShell:
