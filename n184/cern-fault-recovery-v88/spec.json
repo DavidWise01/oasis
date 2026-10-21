@@ -1,0 +1,101 @@
+{
+  "schema": "oasis/n184/cern-fault-recovery/v88",
+  "version": "v8.8",
+  "title": "Four-Port Fault Witness — Longitudinal Momentum Recovery",
+  "status": "predeclared fault-injection ablation; real-data validation required",
+  "precedent": "../cern-heldout-v87/results.json",
+  "data": {
+    "source": "https://root.cern.ch/files/tutorials/df014_CsvDataSource_MuRun2010B.csv",
+    "doi": "10.7483/OPENDATA.CMS.CB8H.MFFA",
+    "referenceSha256": "373f0f56120998d4dad626abb1229ceef91523c262e154fb1e1e541bbb8be3a5",
+    "records": 100000,
+    "holdoutRule": "fnv1a32(Run:Event)%5===0"
+  },
+  "faultProtocol": {
+    "selection": "fnv1a32('fault:'+Run+':'+Event)%3 on v8.7 holdout records",
+    "cases": [
+      "clean",
+      "missing_pz1",
+      "biased_pz1_plus5"
+    ],
+    "injectedBiasGeV": 5,
+    "targetedField": "pz1",
+    "cleanInputUntouched": true,
+    "missingValue": null,
+    "corruptValueFormula": "pz1_fault = pz1_original + 5 GeV",
+    "noReferenceMassForDetection": true,
+    "note": "Injected faults are artificial and not claims of actual CERN detector failure."
+  },
+  "ports": [
+    {
+      "label": "ATLAS",
+      "softwareFunction": "energy E1 and E2 and invariant-mass control"
+    },
+    {
+      "label": "ALICE",
+      "softwareFunction": "longitudinal angle eta1"
+    },
+    {
+      "label": "CMS",
+      "softwareFunction": "transverse momentum pt1"
+    },
+    {
+      "label": "LHCb",
+      "softwareFunction": "reported longitudinal momentum pz1, potentially dropped or corrupted"
+    }
+  ],
+  "detection": {
+    "redundantEstimate": "pz1_recovered = pt1 * sinh(eta1)",
+    "discrepancy": "abs(pz1_reported - pz1_recovered)",
+    "toleranceGeV": "0.05 + 0.005*abs(pz1_recovered)",
+    "missingDataAlwaysFlags": true,
+    "absoluteAndRelativeThresholdsPredeclared": true
+  },
+  "reconstruction": {
+    "formula": "m²=(E1+E2)²-(px1+px2)²-(py1+py2)²-(pz1+pz2)²",
+    "naiveMissingPolicy": "fill missing pz1 with zero; for finite corrupted value, trust corrupted pz1",
+    "witnessPolicy": "if pz1 missing or |pz1 - pt1*sinh(eta1)| > threshold, use pt1*sinh(eta1); otherwise preserve original pz1",
+    "negativeMassSquared": "return invalid NaN; do not clamp",
+    "operationalGoal": "recover known clean four-vector mass calculation under one-field failures, not independent hidden physics"
+  },
+  "evaluation": {
+    "split": "same deterministic heldout event subset as v8.7",
+    "scoreTargets": [
+      "clean four-vector mass (internal computational reference)",
+      "stored CMS mass M (second consistency reference)"
+    ],
+    "statistics": [
+      "coverage naive/recovered",
+      "error wrt clean mass on finite",
+      "error wrt M on finite",
+      "paired error where both finite",
+      "fault detection recall",
+      "clean false-alarm rate",
+      "missed injection count",
+      "per-scenario results"
+    ],
+    "expectedControls": [
+      "clean cases should be preserved",
+      "missing case should be detected",
+      "bias case should be detected when discrepancy above threshold"
+    ],
+    "noTraining": true
+  },
+  "invariants": {
+    "gen0": 1832,
+    "gen1": 1970,
+    "carbonLayer": 3,
+    "carbonReferenceAtomicNumber": 6,
+    "sectors": 6,
+    "phaseSteps": 80,
+    "microticks": 240,
+    "motherNatureOffset": 0
+  },
+  "limits": [
+    "The fields pt, eta and pz are alternative calculations from the same reconstructed CMS track; they are not independently instrumented detectors.",
+    "This test exercises internal data redundancy and synthetic fault repair, not cross-detector recovery or physical particle emergence.",
+    "Reference mass M and clean source 4-vector are derived from the same event; scores demonstrate arithmetic consistency, not discovery.",
+    "Bias and tolerance are fixed model choices; detection can fail for correlated faults, errors below threshold, or multiple simultaneous faults.",
+    "CERN educational data is not suitable for a complete physics analysis."
+  ]
+}
