@@ -104,5 +104,5 @@ check('historical Ada 1832 preserved',()=>assert.equal(config.invariant.historic
 check('historical Toroid 1970 preserved',()=>assert.equal(config.invariant.historicalToroidalGen1,1970));
 check('six arcs 80 phases 240 microticks preserved',()=>assert.deepEqual([config.invariant.symbolicArcs,config.invariant.symbolicPhaseSteps,config.invariant.symbolicMicroticks],[6,80,240]));
 check('CERN real toroid inventory preserved',()=>assert.deepEqual(config.invariant.cernQuadTorusMagnetCount,{A:0,B:3,C:0,D:0}));
-check('viewer can import and display 366 roots',()=>{const h=fs.readFileSync(new URL('./index.html',import.meta.url),'utf8');for(const n of ['hon_core.mjs','Gravity','Explosion','366','source370'])assert.ok(h.includes(n),n)});
+check('viewer can import and display 366 roots',()=>{const h=fs.readFileSync(new URL('./index.html',import.meta.url),'utf8');for(const n of ['hon_core.mjs','Gravity','Explosion','366','SOURCE_TAIL'])assert.ok(h.includes(n),n)});
 console.log(JSON.stringify({result:'PASS',passed:passed.length,failed:0,summary:{roots:ROOTS.map(r=>r.symbol+':'+r.start+'-'+r.end),totalAddresses:366,lid:366,operants:OPERANTS.map(o=>o.name),cubitSlots:18,source370Tail:[367,368,369,370]}},null,2));
