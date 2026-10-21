@@ -1,0 +1,167 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · Carbon 3D Extreme Fault Witness v8.9</title>
+<style>
+:root{color-scheme:dark;--bg:#080f1b;--p:#15253a;--line:#385575;--ink:#edf9ff;--mute:#b1c7d9;--green:#8ce2d0;--gold:#f7ca89;--purple:#bda7ee;--rose:#ec9998}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{padding:24px clamp(16px,3vw,37px);background:linear-gradient(120deg,#112036,#192e44);border-bottom:1px solid var(--line)}
+h1{font-size:clamp(23px,3vw,31px);margin:0}header p{color:var(--mute);margin:7px 0 0}
+main{max-width:1480px;margin:0 auto;padding:17px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(315px,.9fr);gap:15px}
+.panel{padding:17px;border:1px solid var(--line);border-radius:12px;background:var(--p);min-width:0}
+h2{font-size:16px;margin:0 0 12px}h3{font-size:14px;margin:16px 0 8px}
+canvas{display:block;width:100%;height:auto;border:1px solid #3a6078;border-radius:12px;background:#091c2d}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0}
+select,button{border:1px solid #659bad;background:#23536a;color:#f9ffff;padding:9px 12px;border-radius:8px}
+button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #acf9df}
+input[type=range]{accent-color:var(--green);width:min(190px,42vw)}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
+.metric{padding:13px 11px;border:1px solid #526b88;background:#1b334a;border-radius:9px}
+.metric strong{display:block;font:700 clamp(17px,2vw,24px) ui-monospace,monospace;color:var(--green);overflow-wrap:anywhere}
+.metric span{font-size:11px;color:var(--mute)}
+.table{width:100%;border-collapse:collapse;font:12px/1.45 ui-monospace,monospace}
+.table td,.table th{border-bottom:1px solid #36546c;padding:8px 4px;text-align:right}
+.table td:first-child,.table th:first-child{text-align:left}
+hr{border:0;border-top:1px solid var(--line);margin:17px 0}
+.note{background:#282c43;border-left:3px solid var(--gold);border-radius:0 9px 9px 0;padding:11px 13px;font-size:12px}
+pre{background:#081829;border-radius:9px;border:1px solid #35536a;padding:12px;white-space:pre-wrap;word-break:break-word;font:12px/1.5 ui-monospace,monospace}
+a{color:#9ce5d9}small,.muted{color:var(--mute)}footer{padding:16px 24px;border-top:1px solid var(--line);color:var(--mute);font-size:12px}
+@media(max-width:920px){main{grid-template-columns:1fr}}@media(max-width:560px){.metrics{grid-template-columns:1fr}}
+</style></head><body>
+<header><small style="color:#99e3cd;letter-spacing:.17em">OASIS · N184 · CERN::CARBON::3D</small>
+<h1>Extreme Momentum · Correlated Faults · v8.9</h1>
+<p>Authentic CMS educational events | 2 disjoint sample shards | 4 synthetic fault scenarios | 3 fixed verification policies</p>
+</header>
+<main>
+<section class="panel">
+<h2>Sixfold witness ring · symbolic 240-microtick clock</h2>
+<canvas id="ring" width="940" height="525" aria-label="Symbolic carbon six-sector ring, four witness ports and a phase traveler" role="img"></canvas>
+<div class="controls">
+<label>Microtick <output id="tickLabel">0</output> <input id="tick" type="range" min="0" max="239" value="0"></label>
+<button id="play">Play</button>
+<label>Evaluation shard <select id="shard">
+<option value="prospective">Prospective (new)</option><option value="retrospective">Retrospective (old)</option></select></label>
+</div>
+<div class="metrics">
+<div class="metric"><strong id="n">—</strong><span>Events in selected shard</span></div>
+<div class="metric"><strong id="detect">—</strong><span>Guarded detection recall</span></div>
+<div class="metric"><strong id="valid">—</strong><span>Guarded valid-output coverage</span></div>
+</div>
+<h2>How the three policies compare</h2>
+<canvas id="chart" width="940" height="395" aria-label="Bar comparison of fault-detection and output-validity percentages for legacy, capped and guarded policies" role="img"></canvas>
+<div class="note" style="margin-top:14px"><b>Interpretation:</b> Fault detection and valid-output reconstruction are separate goals. Flagging a correlated fault and refusing to fabricate a corrected mass is a useful safety behavior, but it also lowers valid-output coverage. A coordinated edit to enough related fields may be mathematically indistinguishable using these columns alone.</div>
+</section>
+<aside class="panel">
+<h2>Compare under a fixed fault scenario</h2>
+<div class="controls">
+<label>Fault <select id="case">
+<option value="all">All scenarios</option>
+<option value="clean">Healthy</option>
+<option value="isolated_pz">One-field +5 GeV</option>
+<option value="correlated_pz_eta">Correlated pz+η</option>
+<option value="coherent_pz_eta_E">Coherent pz+η+E</option>
+</select></label>
+</div>
+<div class="metrics">
+<div class="metric"><strong id="scenarioN">—</strong><span>Scenario records</span></div>
+<div class="metric"><strong id="fp">—</strong><span>Guarded false alarms</span></div>
+<div class="metric"><strong id="fn">—</strong><span>Guarded missed faults</span></div>
+</div>
+<table class="table">
+<thead><tr><th>Policy</th><th>Detected</th><th>Valid</th><th>Quarantine</th></tr></thead>
+<tbody id="tableRows"></tbody>
+</table>
+<h3>Mass error vs original clean mass</h3>
+<div id="mae" class="muted">Loading…</div>
+<h3>One stored counterexample</h3>
+<pre id="example">Loading fault diagnostics…</pre>
+<hr/>
+<h3>Predeclared integrity checks</h3>
+<pre>Angle estimate:
+  pz = pt × sinh(η)
+
+Legacy tolerance:
+  0.05 + 0.005 × |pzEstimate| GeV
+
+Capped tolerance:
+  min(2, legacy) GeV
+
+Guarded energy check:
+  |E - sqrt(px²+py²+pz²+mμ²)|
+  > 0.5 + 0.001 × |E| GeV
+
+On unresolvable conflict:
+  QUARANTINE; do not guess</pre>
+<p class="muted" style="font-size:12px">All injected errors are artificial. The measured inputs come from one CMS track representation—not four independently instrumented CERN experiments. No new carbon/toroidal physics is inferred.</p>
+<p><a href="./results.json">Committed numerical report</a> · <a href="./README.md">Benchmark method and caveats</a> · <a href="../cern-fault-recovery-v88/">Previous v8.8 baseline</a> · <a href="../integration-v41/">Confluence</a></p>
+<p class="muted" id="source">Loading source SHA-256…</p>
+</aside></main>
+<footer>OASIS v8.9 · Gen0 Ada 1832 / Gen1 Toroidal Model 1970 · Carbon Layer 3D is a symbolic mapping, not CERN's material structure.</footer>
+<script type="module">
+const $=id=>document.getElementById(id);
+const rc=$('ring'),r=rc.getContext('2d'),c=$('chart').getContext('2d');
+let report=null,shard='prospective',scenario='all',tick=0,playing=false,stamp=0,carry=0;
+const methods=['legacy','capped','guarded'],colors=['#e6b875','#b1a0e9','#85e3cb'];
+const fmt=(n,d=6)=>Number.isFinite(n)?Number(n.toPrecision(d)).toString():'N/A';
+const pct=n=>Number.isFinite(n)?(100*n).toFixed(2)+'%':'N/A';
+function drawRing(){
+const W=rc.width,H=rc.height,x=W/2,y=H/2,R=154,T=Math.PI*2,cs=['#ecc082','#83d7c4','#b4a2e7','#e79598','#8cb5e2','#ddb080'];
+r.fillStyle='#091b2d';r.fillRect(0,0,W,H);
+for(let i=0;i<6;i++){const a=-Math.PI/2+i*T/6;r.beginPath();r.arc(x,y,R+39,a+.035,a+T/6-.035);r.strokeStyle=cs[i];r.lineWidth=12;r.stroke()}
+for(let i=0;i<80;i++){const a=-Math.PI/2+i*T/80,rad=i%10===0?R-39:R-27;r.beginPath();r.moveTo(x+Math.cos(a)*rad,y+Math.sin(a)*rad);r.lineTo(x+Math.cos(a)*(R-5),y+Math.sin(a)*(R-5));r.strokeStyle=i<tick/3?'#85eed0':'#486681';r.lineWidth=i%10===0?2.8:1.35;r.stroke()}
+const a=-Math.PI/2+tick*T/240;r.fillStyle='#fff7da';r.beginPath();r.arc(x+R*Math.cos(a),y+R*Math.sin(a),9,0,T);r.fill();
+for(let i=0;i<4;i++){const a=-Math.PI/2+i*T/4;const port=['ENERGY','ANGLE','TRANSVERSE','pZ'][i];r.textAlign='center';r.fillStyle=['#eac58a','#9de3c6','#c5b8ed','#ef9c9b'][i];r.font='bold 16px system-ui';r.fillText(port,x+Math.cos(a)*257,y+Math.sin(a)*235)}
+r.textAlign='center';r.fillStyle='#f5faff';r.font='bold 43px system-ui';r.fillText(String(tick),x,y-6);
+r.fillStyle='#a9c8d9';r.font='15px system-ui';r.fillText('80 phase / 6 arc / 240 ticks',x,y+25);
+r.fillText('fault checks ≠ detector readings',x,y+45);
+r.textAlign='left';r.fillStyle='#cadbeb';r.font='14px ui-monospace,monospace';r.fillText('CERN | CARBON | 3D — SYMBOLIC',20,30);
+r.fillText(shard+' validation',20,H-19);
+}
+function drawChart(){
+const W=940,H=395;c.fillStyle='#091b2d';c.fillRect(0,0,W,H);
+if(!report)return;
+const arr=methods.map(m=>report.experiment.shards[shard].methods[m][scenario]),left=195,maxW=675,baseline=130;
+c.font='14px system-ui';c.fillStyle='#bed4e5';c.fillText('Detection recall (upper bar) and finite-output coverage (lower bar)',18,28);
+methods.forEach((m,i)=>{const a=arr[i],y=72+i*103;
+ c.font='bold 16px system-ui';c.fillStyle=colors[i];c.fillText(m.toUpperCase(),18,y+28);
+ const fault= a.detectedFault+a.missedFault,recall=fault?a.detectedFault/fault:0;
+ c.fillStyle='#2e495f';c.fillRect(left,y,maxW,27);
+ c.fillStyle=colors[i];c.fillRect(left,y,maxW*recall,27);
+ c.fillStyle='#ddedfa';c.font='12px ui-monospace,monospace';c.fillText('detected '+fmt(recall*100,5)+'%',left+8,y+18);
+ c.fillStyle='#2e495f';c.fillRect(left,y+33,maxW,26);
+ c.fillStyle='#78aec4';c.fillRect(left,y+33,maxW*(a.outputCoverage??0),26);
+ c.fillStyle='#eff7fd';c.fillText('valid '+pct(a.outputCoverage),left+8,y+51)
+});
+c.fillStyle='#a2bdce';c.font='13px system-ui';c.fillText('An undetected coherent fault may produce a finite but wrong mass.',18,H-13);
+}
+function render(){
+if(!report)return;
+const b=report.experiment.shards[shard],d=b.methods.guarded[scenario];
+$('n').textContent=b.events.toLocaleString();
+const g=b.methods.guarded.all,tot=g.detectedFault+g.missedFault;
+$('detect').textContent=tot?pct(g.detectedFault/tot):'N/A';
+$('valid').textContent=pct(g.outputCoverage);
+$('scenarioN').textContent=d.count.toLocaleString();
+$('fp').textContent=d.falseAlarm.toLocaleString();
+$('fn').textContent=d.missedFault.toLocaleString();
+$('tableRows').replaceChildren(...methods.map((m,i)=>{
+ const s=b.methods[m][scenario],tr=document.createElement('tr');
+ const vals=[m,String(s.detectedFault),s.valid.toLocaleString(),String(s.quarantined)];
+ vals.forEach((v,j)=>{const td=document.createElement('td');td.textContent=v;if(j===0)td.style.color=colors[i];tr.appendChild(td)});return tr;
+}));
+$('mae').textContent=methods.map(m=>m+': '+fmt(b.methods[m][scenario].versusClean.maeGeV,8)+' GeV (valid rows)').join(' | ');
+const candidates=[d.missedExample,d.invalidExample,d.falseAlarmExample].filter(Boolean);
+const sample=candidates[0]||b.methods.guarded.correlated_pz_eta.missedExample||b.methods.guarded.coherent_pz_eta_E.missedExample;
+$('example').textContent=sample?JSON.stringify(sample,null,2):'No counterexample retained in this view.';
+drawChart();drawRing();
+}
+$('shard').onchange=e=>{shard=e.target.value;render()};
+$('case').onchange=e=>{scenario=e.target.value;render()};
+$('tick').oninput=e=>{tick=Number(e.target.value);$('tickLabel').textContent=tick;drawRing()};
+$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'Pause':'Play'};
+function animate(t){if(stamp&&playing){carry+=Math.min(t-stamp,90)*.032;if(carry>=1){tick=(tick+Math.floor(carry))%240;carry%=1;$('tick').value=tick;$('tickLabel').textContent=tick;drawRing()}}stamp=t;requestAnimationFrame(animate)}
+requestAnimationFrame(animate);drawRing();
+fetch('./results.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('No report');return r.json()}).then(data=>{
+ if(data.experiment.schema!=='oasis/n184/cern-extreme-fault-result/v89'||data.ingest.accepted!==100000)throw Error('Report data mismatch');
+ report=data;$('source').textContent='CERN source SHA256: '+data.source.sha256+' · prospective bucket '+data.experiment.shards.prospective.hashBucket;
+ render();
+}).catch(e=>{$('source').textContent='Report loading issue: '+String(e)});
+</script></body></html>
