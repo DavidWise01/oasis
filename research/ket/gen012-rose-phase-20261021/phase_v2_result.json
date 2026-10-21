@@ -1,0 +1,14 @@
+{
+  "schema": "ket-gen012-phase-v2",
+  "result": "PASS",
+  "checks": 5,
+  "paths": 8,
+  "bands": 3,
+  "identities": 24,
+  "phase_bins": 60,
+  "phase_states": 1440,
+  "origin": "0vwxyz",
+  "shadow": "unresolved",
+  "phase_rule": "(phase_bin + ticks) mod 60",
+  "physics_status": "symbolic only"
+}
