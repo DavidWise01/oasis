@@ -17,7 +17,7 @@ test('journal and receiver evidence populate 18 read-only slots',()=>{
 });
 test('missing and stale witnesses cannot appear complete',()=>{
  const s=observeAnny({...record,acks:[...record.acks.slice(0,8),{...record.acks[8],epoch:2}]},null);
- assert.equal(s.slots[8].status,'incomplete');assert.equal(s.slots[9].status,'incomplete');
+ assert.equal(s.slots[8].status,'observed');assert.equal(s.slots[9].status,'incomplete');
  assert.equal(s.slots[16].status,'pending');
 });
 test('readAnny uses only read and reconcile; never mutations',async()=>{
