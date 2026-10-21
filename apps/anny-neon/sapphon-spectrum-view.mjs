@@ -1,14 +1,16 @@
-import { SAPPHON_SPECTRUM, SAPPHON_BROADBAND, SAPPHON_SPECTRUM_GLYPH, validateSapphonSpectrum } from "./sapphon-spectrum.mjs";
+import { SAPPHON_SPECTRUM, SAPPHON_BROADBAND, SAPPHON_SPECTRUM_GLYPH, validateSapphonSpectrum, SAPPHON_OUTER_ANCHORS, validateSapphonOuterAnchors } from "./sapphon-spectrum.mjs";
 
 const expected = "{|12|}{|3456|}{|78|}{|910|}{|1112131415||}{|1617|}{|18|}";
-if (!validateSapphonSpectrum() || expected !== SAPPHON_SPECTRUM_GLYPH) {
+if (!validateSapphonSpectrum() || !validateSapphonOuterAnchors() || expected !== SAPPHON_SPECTRUM_GLYPH) {
   throw new Error("SAPPHON_SPECTRUM_INVARIANT_FAILED");
 }
 
 const spectralHost = document.getElementById("spectrum-pairs");
 const whiteHost = document.getElementById("white-sapphon-pair");
 const direction = document.getElementById("spectrum-direction");
-if (!spectralHost || !whiteHost || !direction) throw new Error("SAPPHON_RENDER_MOUNT_MISSING");
+const voidHost = document.getElementById("sapphon-void-anchor");
+const gravityHost = document.getElementById("sapphon-gravity-anchor");
+if (!spectralHost || !whiteHost || !direction || !voidHost || !gravityHost) throw new Error("SAPPHON_RENDER_MOUNT_MISSING");
 
 function make(tag, className, content) {
   const el = document.createElement(tag);
@@ -66,4 +68,26 @@ function render() {
 }
 direction.addEventListener("click", () => { longToShort = !longToShort; render(); });
 whiteHost.replaceChildren(card(SAPPHON_BROADBAND, true));
+
+function anchorCard(anchor) {
+  const panel=make("article","outer-anchor");
+  panel.dataset.operator=anchor.operator;
+  panel.dataset.kind=anchor.kind;
+  panel.style.setProperty("--tone",anchor.accent);
+  panel.append(make("h3","outer-title",anchor.operator+" "+anchor.label));
+  const word=make("div","outer-greek",anchor.greek);
+  panel.append(word,make("div","outer-transliteration",anchor.latin+" · "+anchor.meaning));
+  const geometry=make("div","outer-atoms");
+  geometry.setAttribute("role","img");
+  geometry.setAttribute("aria-label",anchor.label+" symbolic "+anchor.operator+" twin-polarity boundary");
+  for (const sign of anchor.polarity) {
+    const atom=make("span","outer-atom");
+    atom.append(make("strong","outer-charge",sign));
+    geometry.append(atom);
+  }
+  panel.append(geometry,make("div","outer-note","SYMBOLIC FRAME ANCHOR · NO WAVELENGTH"));
+  return panel;
+}
+voidHost.replaceChildren(anchorCard(SAPPHON_OUTER_ANCHORS[0]));
+gravityHost.replaceChildren(anchorCard(SAPPHON_OUTER_ANCHORS[1]));
 render();
