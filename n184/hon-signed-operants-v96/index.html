@@ -1,0 +1,174 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OASIS · 5+2 Signed Operants v9.6</title>
+<style>
+:root{color-scheme:dark;--bg:#091521;--pane:#17293b;--edge:#49697a;--ink:#f2f9ff;--muted:#afc7d6;--mint:#93e6d2;--gold:#e9c78d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1b3448,#081421 65%);color:var(--ink);font:14px/1.45 system-ui,Segoe UI,sans-serif}
+header{padding:22px clamp(17px,3vw,36px);border-bottom:1px solid var(--edge);background:#183247}
+h1{font-size:clamp(24px,3.2vw,34px);margin:0}header p{margin:6px 0;color:var(--muted)}
+main{max-width:1470px;margin:auto;padding:16px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:14px}
+section{background:var(--pane);border-radius:13px;border:1px solid var(--edge);padding:16px;min-width:0}
+h2{font-size:16px;margin:0 0 12px}h3{font-size:14px;margin:14px 0 8px}
+canvas{display:block;width:100%;height:auto;background:#0b1b2d;border:1px solid #52768a;border-radius:10px}
+.row{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:11px 0}
+button,select{color:#f2ffff;background:#285368;border:1px solid #739cab;border-radius:8px;padding:10px;cursor:pointer}
+button.active{background:#32675f;border-color:#ade9d8}
+button:focus-visible,select:focus-visible{outline:2px solid #d5ffe9}
+button:disabled{opacity:.4;cursor:not-allowed}.gates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.gates button{text-align:left;min-height:62px}.gates button b{display:block;font-size:16px}
+.program{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.program button{padding:10px 4px;font-size:11px;min-height:50px}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0}
+.metric{padding:12px 9px;border:1px solid #4d7080;background:#233d4e;border-radius:9px}
+.metric b{font:bold clamp(17px,2vw,23px) ui-monospace,monospace;color:#a2efda;display:block}
+.metric small{font-size:11px;color:var(--muted)}
+.ledger{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.ledger div{border-radius:10px;padding:14px;text-align:center;background:#1c3b4e;border-top:4px solid var(--band)}
+.ledger strong{font:bold 30px ui-monospace,monospace;display:block;color:var(--band)}
+.ledger b{font:24px ui-monospace,monospace;display:block}
+pre{background:#0c2031;border:1px solid #4b677e;padding:13px;border-radius:9px;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.7 ui-monospace,monospace}
+.note{padding:12px;border-left:3px solid var(--gold);border-radius:0 9px 9px 0;background:#303047;color:#e2e7f0;font-size:12px;margin:13px 0}
+a{color:#a3e4d9}.muted,small{color:var(--muted)}footer{border-top:1px solid var(--edge);color:var(--muted);padding:14px 23px}
+@media(max-width:950px){main{grid-template-columns:1fr}}@media(max-width:530px){.gates{grid-template-columns:1fr}.program{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<header><small style="color:#a7efdd;letter-spacing:.15em">OASIS / N184 / 5 + 2 / v9.6</small>
+<h1>Five Color Operants + Two Signed Operants: −+</h1>
+<p>Hydrogen → Oxygen → Nitrogen · one source debit (−1) and one destination credit (+1) per completed boundary transfer</p></header>
+<main><section>
+<h2>Signed rail over three periodic-element root carriers</h2>
+<canvas id="rail" width="960" height="420" role="img" aria-label="H, O, N color root carriers with minus source debit, plus destination credit and sealed position 366"></canvas>
+<div class="gates" id="gates"></div>
+<div class="row">Strength: <button id="W">Weak</button><button id="M">Medium</button><button id="S">Strong</button></div>
+<h3>Five inherited color operants</h3><div class="program" id="programButtons"></div>
+<div class="row"><button id="clearProgram">Clear color program</button><button id="allFive">All five</button><small id="order">Identity program</small></div>
+<h3>Two signed transfer operants</h3>
+<div class="row"><select id="damage" aria-label="Receipt fault injection">
+<option value="valid">−+ ordered pair (valid)</option>
+<option value="missing-debit">Missing − debit</option>
+<option value="missing-credit">Missing + credit</option>
+<option value="reverse">Reversed +−</option>
+<option value="duplicate-debit">Duplicate −−+</option>
+<option value="duplicate-credit">Duplicate −++</option>
+<option value="wrong-source">Wrong source address</option>
+<option value="wrong-destination">Wrong destination address</option>
+<option value="wrong-root">Wrong destination root</option>
+<option value="wrong-attempt">Mismatched attempt ID</option>
+<option value="wrong-tier">Changed W/M/S class</option>
+<option value="change-program">Changed color program</option>
+<option value="bad-key">Corrupt transfer key</option>
+<option value="lid-forgery">Forge transfer through N366 lid</option>
+</select></div>
+<div class="row"><button id="submit">Submit signed transfer</button><button id="replay">Replay last frame</button><button id="reset">Reset ledger</button></div>
+<div class="metrics">
+<div class="metric"><b id="count">0</b><small>Accepted transfer receipts</small></div>
+<div class="metric"><b id="net">0</b><small>Global net debit+credit</small></div>
+<div class="metric"><b id="cases">54</b><small>Fixed 3-gate audit cases</small></div>
+</div>
+<div class="note"><b>Atomic rule:</b> Only a complete ordered <code>−+</code> pair at H122→O123 or O244→N245 changes balances. Failed, partial and replayed attempts leave the ledger unchanged. N366 has no output port.</div>
+<p><a href="../hon-boundary-transfer-v95/">v9.5 root-color gates</a> · <a href="../elemental-hon-color-operants-v94/">v9.4 five color operants</a> · <a href="../integration-v41/">Confluence</a></p>
+</section>
+<section>
+<h2>Immutable root balances</h2>
+<div id="balances" class="ledger"></div>
+<div class="metrics">
+<div class="metric"><b id="state">READY</b><small>Last attempt</small></div>
+<div class="metric"><b id="marks">−+</b><small>Receipt glyph order</small></div>
+<div class="metric"><b id="attempt">—</b><small>Attempt ID</small></div>
+</div>
+<h3>Current source and sink</h3><pre id="routing"></pre>
+<h3>Last transfer result</h3><pre id="receipt">No transfer submitted.</pre>
+<h3>Mutation and replay behavior</h3><pre id="trace">Source unchanged. Awaiting receipt.</pre>
+<div class="note"><b>Scientific and security boundary:</b> The pair <code>−1+1=0</code> conserves only a bookkeeping unit, not energy, particles, hue or wavelength. A forged but fully valid new transaction remains possible because <code>−+</code> are not cryptographic signatures and the viewer has no independent authentication.</div>
+<p><a href="./README.md">Methods, security limits, test cases</a> · <a href="./spec.json">Pinned operator contract</a> · <a href="https://github.com/DavidWise01/oasis/tree/main/n184/hon-signed-operants-v96/">GitHub source</a></p>
+</section></main>
+<footer>OASIS v9.6 · 7 total operants = 5 display transforms + 2 receipt signs · no element #367 · original 370-color register and 18-site cubit preserved.</footer>
+<script type="module">
+import {ROOTS,OPERANTS} from '../elemental-hon-color-operants-v94/hon_core.mjs';
+import {GATES} from '../hon-boundary-transfer-v95/boundary_core.mjs';
+import {createLedger,buildSignedFrame,mutateFrame,submitFrame,surveySigned} from './signed_core.mjs';
+const $=id=>document.getElementById(id);
+const colors=['#f39f87','#94ddb0','#a1a8f8'];
+let address=122,tier='S',program=[],ledger=createLedger(),nextAttempt=1,lastFrame=null,lastResult=null;
+const buttons=GATES.map(g=>{
+ const el=document.createElement('button');const b=document.createElement('b');b.textContent=g.fromRoot+' → '+(g.toRoot||'SEALED');
+ const c=document.createElement('span');c.textContent=' '+g.from+' → '+(g.to??'CLOSED');
+ el.append(b,c);el.onclick=()=>{address=g.from;paint()};return el;
+});
+$('gates').append(...buttons);
+const opButtons=OPERANTS.map(op=>{
+ const b=document.createElement('button');b.textContent=op.name;
+ b.onclick=()=>{if(program.length<5){program.push(op.id);paint()}};return b;
+});$('programButtons').append(...opButtons);
+const balances=ROOTS.map((r,i)=>{
+ const e=document.createElement('div');e.style.setProperty('--band',colors[i]);
+ const h=document.createElement('strong');h.textContent=r.symbol;
+ const value=document.createElement('b');value.textContent='0';e.append(h,value);
+ $('balances').append(e);return value;
+});
+function diagram(){
+ const g=$('rail').getContext('2d');g.fillStyle='#0b1c2c';g.fillRect(0,0,960,420);
+ g.fillStyle='#b8d5df';g.font='16px monospace';g.fillText('ONE SIGNED RECEIPT: −1(source) +1(destination) = 0',25,32);
+ ROOTS.forEach((r,i)=>{
+ const x=32+i*317,y=91;g.fillStyle=colors[i];g.fillRect(x,y,278,149);
+ g.fillStyle='#11273a';g.font='bold 40px system-ui';g.fillText(r.symbol+' · Z'+r.atomicNumber,x+14,y+54);
+ g.font='19px monospace';g.fillText(r.start+'–'+r.end,x+14,y+98);
+ g.font='14px system-ui';g.fillText(r.name,x+14,y+128);
+ if(i<2){g.fillStyle='#f0d5a5';g.font='bold 29px system-ui';g.fillText('−+',x+279,y+85)}
+ });
+ g.fillStyle='#fff8bf';g.font='bold 19px ui-monospace,monospace';
+ g.fillText(address===122?'− H122    + O123':address===244?'− O244    + N245':'N366 ⊣ NO PORT',43,293);
+ const ending=lastResult?.status||'READY';
+ g.fillStyle='#e7f9f3';g.font='bold 27px system-ui';g.fillText('STATUS: '+ending,43,341);
+ g.fillStyle='#bed5e1';g.font='15px monospace';g.fillText('Seven operants / 366 addresses / 370-color source untouched',43,385);
+}
+function paint(){
+ const survey=surveySigned();
+ const prev=lastResult;
+ buttons.forEach((b,i)=>b.classList.toggle('active',GATES[i].from===address));
+ for(const t of ['W','M','S'])$(t).classList.toggle('active',tier===t);
+ opButtons.forEach(b=>b.disabled=program.length===5);
+ $('order').textContent=program.length?program.map((x,i)=>(i+1)+'. '+x).join(' → '):'Color identity program (0 operators)';
+ $('cases').textContent=survey.cases;
+ $('count').textContent=ledger.receipts.length;
+ $('net').textContent=ledger.totalNet;
+ balances.forEach((e,i)=>e.textContent=String(ledger.balances[ROOTS[i].symbol]));
+ $('state').textContent=prev?.status??'READY';
+ $('marks').textContent=lastFrame?.marks.map(m=>m.symbol).join('')??'-+';
+ $('attempt').textContent=lastFrame?.attemptId??'—';
+ const g=GATES.find(x=>x.from===address);
+ $('routing').textContent='Gate: '+g.id+'\nSource: '+g.from+' ('+g.fromRoot+')'+
+  '\nTarget: '+(g.to?g.to+' ('+g.toRoot+')':'SEALED / NO DESTINATION')+
+  '\nTier: '+tier+'\nNext attempt: tx-'+String(nextAttempt).padStart(4,'0')+
+  '\nColor program: '+(program.join(' > ')||'none');
+ $('receipt').textContent=prev?JSON.stringify({status:prev.status,balanced:prev.balanced??false,
+  sourceIdentity:prev.receipt?.sourceIdentity??null,gate:prev.gate??null,
+  debit:prev.receipt?.debit??null,credit:prev.receipt?.credit??null,
+  rootBalances:ledger.balances},null,2):'No submission yet.';
+ diagram();
+}
+$('submit').onclick=()=>{
+ const id='tx-'+String(nextAttempt++).padStart(4,'0');
+ const f=buildSignedFrame(address,tier,program,id);
+ lastFrame=mutateFrame(f,$('damage').value);
+ lastResult=submitFrame(ledger,lastFrame);
+ if(lastResult.accepted)ledger=lastResult.ledger;
+ $('trace').textContent='Attempt '+id+' / '+$('damage').value+
+  '\nEvents: '+JSON.stringify(lastFrame.marks.map(e=>({sign:e.symbol,address:e.address,role:e.role})))+
+  '\nDecision: '+lastResult.status+
+  '\nLedger changed: '+lastResult.accepted+
+  '\nREJECT_REPLAY = previously committed attempt ID cannot be used again';
+ paint();
+};
+$('replay').onclick=()=>{
+ if(!lastFrame){$('trace').textContent='No frame to replay';return}
+ lastResult=submitFrame(ledger,lastFrame);
+ $('trace').textContent='Replay '+lastFrame.attemptId+
+  '\nStatus: '+lastResult.status+
+  '\nLedger changed: '+lastResult.accepted+
+  '\nREJECT_REPLAY indicates a consumed signed pair';
+ paint();
+};
+$('reset').onclick=()=>{ledger=createLedger();nextAttempt=1;lastFrame=null;lastResult=null;$('trace').textContent='Ledger reset, all root balances 0.';paint()};
+$('clearProgram').onclick=()=>{program=[];paint()};
+$('allFive').onclick=()=>{program=OPERANTS.map(x=>x.id);paint()};
+for(const t of ['W','M','S'])$(t).onclick=()=>{tier=t;paint()};
+paint();
+</script></body></html>
