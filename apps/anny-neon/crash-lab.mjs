@@ -68,8 +68,14 @@ function idFor(stage){
  if(!validCrashStage(stage))throw Error("UNKNOWN_ABRUPT_STAGE");
  return localStorage.getItem(KEY_PREFIX+stage.toLowerCase());
 }
-export async function snapshotAbrupt(stage){
- const id=idFor(stage);
+export async function snapshotAbrupt(stage,providedId=null){
+ if(!validCrashStage(stage))throw Error("UNKNOWN_ABRUPT_STAGE");
+ if(providedId!==null && (typeof providedId!=="string" ||
+    !providedId.startsWith("abr-"+stage.toLowerCase()+"-") ||
+    providedId.length>256))throw Error("INVALID_EXTERNAL_TRANSFER_LOOKUP");
+ // External witness ID survives outside a killed browser. Never rely on
+ // localStorage durability as a prerequisite for reading IndexedDB evidence.
+ const id=providedId ?? idFor(stage);
  if(!id)return {stage,transferId:null,record:null,receipt:null,
    effectCount:0,phase:"NO_TRANSFER",violet:"HELD",decision:"NO_RECORD"};
  const {journal,receiver}=stores(stage);
@@ -104,18 +110,18 @@ export async function armAbrupt(stage){
  await journal.confirm(id,epoch,receipt);
  return snapshotAbrupt(stage);
 }
-export async function reconcileAbrupt(stage){
+export async function reconcileAbrupt(stage,providedId=null){
  // READ ONLY: does not retry delivery or authorize a release.
- return snapshotAbrupt(stage);
+ return snapshotAbrupt(stage,providedId);
 }
-export async function resumeAbrupt(stage){
- const before=await snapshotAbrupt(stage);
+export async function resumeAbrupt(stage,providedId=null){
+ const before=await snapshotAbrupt(stage,providedId);
  const row=before.record;
  if(!row)throw Error("ABRUPT_RECORD_MISSING");
  const {journal,receiver}=stores(stage);
  const decision=classifyAbruptEvidence(before);
  if(decision==="HOLD_PRECOMMIT")return {
-  status:"HOLD_PRECOMMIT", before,after:await snapshotAbrupt(stage),replayed:false
+  status:"HOLD_PRECOMMIT", before,after:await snapshotAbrupt(stage,providedId),replayed:false
  };
  if(decision==="CONFIRMED_VERIFIED")return {
   status:"ALREADY_CONFIRMED",before,after:await snapshotAbrupt(stage),replayed:false
@@ -134,25 +140,25 @@ export async function resumeAbrupt(stage){
  if(await receiver.effectCount(row.deliveryKey)!==1)
    throw Error("ABRUPT_LEDGER_EFFECT_COUNT");
  await journal.confirm(row.transferId,row.epoch,receipt);
- const after=await snapshotAbrupt(stage);
+ const after=await snapshotAbrupt(stage,providedId);
  if(after.decision!=="CONFIRMED_VERIFIED")throw Error("ABRUPT_RESUME_NOT_VERIFIED");
  return {status:"RECONCILED",before,after,replayed};
 }
-export async function duplicateAbrupt(stage,n=5){
+export async function duplicateAbrupt(stage,n=5,providedId=null){
  if(!Number.isInteger(n)||n<1||n>10)throw Error("ABRUPT_DUPLICATE_COUNT");
- const before=await snapshotAbrupt(stage);
+ const before=await snapshotAbrupt(stage,providedId);
  if(before.decision!=="CONFIRMED_VERIFIED")throw Error("ABRUPT_NOT_CONFIRMED");
  const {receiver}=stores(stage);
  const replies=await Promise.allSettled(
    Array.from({length:n},()=>receiver.deliver(payload(before.record))));
- const after=await snapshotAbrupt(stage);
+ const after=await snapshotAbrupt(stage,providedId);
  return {
   attempts:n,allFulfilled:replies.every(r=>r.status==="fulfilled"),
   effectCount:after.effectCount,decision:after.decision
  };
 }
-export async function forgedObserverAbrupt(stage){
- const before=await snapshotAbrupt(stage);
+export async function forgedObserverAbrupt(stage,providedId=null){
+ const before=await snapshotAbrupt(stage,providedId);
  if(!before.record||!before.receipt)return {status:"NO_RECEIPT"};
  const forged={...before.receipt,digest:"0".repeat(64)};
  const result=observeAnny(before.record,forged);
