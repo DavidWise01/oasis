@@ -32,8 +32,17 @@ export function observeAnny(transfer,receipt) {
    set(11+i,'Byte '+(i+1)+' dual ACKs',a&&b?'observed':'incomplete',(a?'A':'–')+'/'+(b?'B':'–'));
  }
  set(16,'Commit state',transfer.state==='COMMITTED'||transfer.state==='RELEASE_PENDING'||transfer.state==='CONFIRMED'?'observed':'pending',transfer.state);
- set(17,'Receiver receipt',receipt?.accepted && receipt.deliveryKey===transfer.deliveryKey && receipt.digest===transfer.digest?'observed':'pending',receipt?.accepted?'receipt present':'awaiting receipt');
- set(18,'Final confirmation',transfer.state==='CONFIRMED'?'observed':'pending',transfer.state==='CONFIRMED'?'CONFIRMED':'HELD');
+ const matchingReceipt=receipt?.accepted===true && receipt.transferId===transfer.transferId
+   && receipt.deliveryKey===transfer.deliveryKey && receipt.digest===transfer.digest;
+ const matchingJournalReceipt=transfer.receipt?.accepted===true
+   && transfer.receipt.transferId===transfer.transferId
+   && transfer.receipt.deliveryKey===transfer.deliveryKey && transfer.receipt.digest===transfer.digest;
+ const agreement=matchingReceipt && matchingJournalReceipt;
+ set(17,'Receiver receipt',matchingReceipt?'observed':receipt?'mismatch':'pending',
+   matchingReceipt?'receipt matched':receipt?'RECEIPT MISMATCH':'awaiting receipt');
+ const complete=transfer.state==='CONFIRMED' && agreement;
+ set(18,'Final confirmation',complete?'observed':transfer.state==='CONFIRMED'?'mismatch':'pending',
+   complete?'VERIFIED':transfer.state==='CONFIRMED'?'AGREEMENT FAILED':'HELD');
  return {glyph:ANNY_GLYPH,bands:ANNY_BANDS,slots,phase:transfer.state};
 }
 export async function readAnny(journal,receiver,transferId){
