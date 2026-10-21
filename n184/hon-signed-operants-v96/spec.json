@@ -1,0 +1,184 @@
+{
+  "schema": "oasis/n184/hon-signed-operants/v96",
+  "version": "v9.6",
+  "date": "2026-10-21",
+  "directive": "Two additional operants - and + supplement five existing color operants; total 7. Model signed paired root transfer, do not add any color/element address.",
+  "signModel": {
+    "pair": "-+",
+    "source": "-",
+    "destination": "+",
+    "semantics": [
+      {
+        "glyph": "-",
+        "id": "debit",
+        "role": "source",
+        "delta": -1,
+        "description": "Release one symbolic receipt unit from source root at a valid gate"
+      },
+      {
+        "glyph": "+",
+        "id": "credit",
+        "role": "destination",
+        "delta": 1,
+        "description": "Accept one symbolic receipt unit at the immediately adjacent destination root"
+      }
+    ],
+    "requiredOrder": [
+      "-",
+      "+"
+    ],
+    "requiredLength": 2,
+    "requiredSum": 0,
+    "conservationScope": "Only the integer bookkeeping unit -1+1=0; not conservation of physical energy, mass, particles, light, hue, or chemistry",
+    "withinRoot": "No +/- transfers inside a 122-address root; only H122→O123 and O244→N245",
+    "lid": "At N366, no debit and no credit may occur; the only legitimate result is CLOSED with no signed marks",
+    "signedVsCryptographic": "The +/- glyphs are ledger bookkeeping signs, not signatures or authentication; all inputs originate from the same simulator."
+  },
+  "operands": {
+    "existingFive": [
+      {
+        "id": "gravity",
+        "name": "Gravity"
+      },
+      {
+        "id": "expansion",
+        "name": "Expansion"
+      },
+      {
+        "id": "compression",
+        "name": "Compression"
+      },
+      {
+        "id": "containment",
+        "name": "Containment"
+      },
+      {
+        "id": "explosion",
+        "name": "Explosion"
+      }
+    ],
+    "addedTwo": [
+      {
+        "glyph": "-",
+        "id": "debit"
+      },
+      {
+        "glyph": "+",
+        "id": "credit"
+      }
+    ],
+    "totalOperants": 7,
+    "operatorsDifferentKinds": "Five existing actions transform HSV display; the two added signed actions balance transfer receipts. This is NOT seven commutative HSV adjustments.",
+    "orderedDisplayProgramMax": 5
+  },
+  "allowedGates": [
+    {
+      "from": 122,
+      "to": 123,
+      "roots": "H→O"
+    },
+    {
+      "from": 244,
+      "to": 245,
+      "roots": "O→N"
+    },
+    {
+      "from": 366,
+      "to": null,
+      "roots": "N terminal"
+    }
+  ],
+  "antiReplay": {
+    "attemptId": "per-transfer caller-supplied opaque identifier; uniqueness required within a local immutable ledger",
+    "transferKey": "canonical attempt + from + to + strength + ordered program + source identity and gate identifier",
+    "ledger": "immutable snapshots; reject duplicate attempt ID regardless of changed gate/strength/program",
+    "atomicity": "A complete and ordered valid -+ pair is required before ledger totals update; partial or corrupted transfer changes no ledger state",
+    "checks": [
+      "missing -",
+      "missing +",
+      "reverse +-",
+      "duplicate debit",
+      "duplicate credit",
+      "wrong source",
+      "wrong destination",
+      "wrong W/M/S",
+      "changed operator order",
+      "wrong attempt ID",
+      "replay",
+      "lid bypass",
+      "direct tail address"
+    ],
+    "threatModel": "Deterministic schema integrity and anti-replay only; a fully forged internally consistent fresh input remains possible without independent cryptographic trust anchors."
+  },
+  "plannedCampaign": {
+    "base": "3 gates × 3 tiers × (no-color-op + 5 singleton color programs) = 54",
+    "expectedValidPaired": 36,
+    "expectedClosed": 18,
+    "tampering": "Reusable corruptions injected into signed receipt event list; each rejected without mutation",
+    "retainedPriorBehavior": "v9.5 native destination color rebasing and hue-jump reporting unchanged"
+  },
+  "inherited": {
+    "boundaryCore": "../hon-boundary-transfer-v95/boundary_core.mjs",
+    "honCore": "../elemental-hon-color-operants-v94/hon_core.mjs",
+    "canonicalCubit": "{|12|}{|3456|}{|78|}{|910|}{|1112131415||}{|1617|}{|18|}",
+    "sevenPacketLengths": [
+      2,
+      4,
+      2,
+      2,
+      5,
+      2,
+      1
+    ],
+    "doublePipeSeamSite": 15,
+    "terminalCubitSite": 18,
+    "HONRoots": [
+      [
+        "H",
+        1,
+        122,
+        1
+      ],
+      [
+        "O",
+        123,
+        244,
+        8
+      ],
+      [
+        "N",
+        245,
+        366,
+        7
+      ]
+    ],
+    "unchangedSource370Tail": [
+      367,
+      368,
+      369,
+      370
+    ],
+    "historicalYears": [
+      1832,
+      1970
+    ],
+    "ring": [
+      6,
+      80,
+      240
+    ],
+    "cemRealTorusCounts": {
+      "A": 0,
+      "B": 3,
+      "C": 0,
+      "D": 0
+    }
+  },
+  "caveats": [
+    "H, O, N and their atomic numbers are real; the 122-address blocks are symbolic registry ranges.",
+    "The sign pair implements balanced integer accounting for a software transfer; it is not physical conservation and does not transform chemical elements.",
+    "Signed glyphs are not digital signatures, cryptographic authorization or independent witnesses.",
+    "A fresh well-formed forged frame cannot be authenticated without external signatures, protected hardware, or a trusted witness.",
+    "Existing five color operant definitions and v9.5 source remain frozen; use additive v9.6 only."
+  ]
+}
