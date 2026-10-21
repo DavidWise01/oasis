@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OASIS · HON Boundary Lab v9.5</title>
+<style>
+:root{color-scheme:dark;--bg:#091622;--pane:#182b3d;--edge:#49667b;--ink:#effaff;--muted:#afc8d6;--mint:#a4ebd8}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);font:14px/1.48 system-ui,Segoe UI,sans-serif;margin:0}header{padding:24px clamp(16px,3vw,36px);background:#193247;border-bottom:1px solid var(--edge)}
+h1{margin:0;font-size:clamp(23px,3vw,32px)}p{color:var(--muted)}main{max-width:1410px;margin:auto;padding:16px;display:grid;grid-template-columns:1.1fr .9fr;gap:15px}
+section{background:var(--pane);border:1px solid var(--edge);border-radius:13px;padding:17px;min-width:0}h2{font-size:16px;margin:0 0 13px}h3{font-size:14px;margin:15px 0 8px}
+button,select{background:#2b5465;border:1px solid #7a9da4;color:#fff;border-radius:8px;cursor:pointer;padding:9px}button.active{background:#377266;border-color:#a4ebd8}
+button:focus-visible,select:focus-visible{outline:2px solid #e4fff1}
+.gates{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.gates button{text-align:left;min-height:80px;padding:12px}.gates strong{display:block;font-size:16px}.gates span{color:#c0d8df}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}.operators{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.operators button{min-height:55px;font-size:12px}.operators button:disabled{opacity:.4}.operators button b{display:block}
+canvas{display:block;width:100%;height:auto;background:#0b1f30;border:1px solid var(--edge);border-radius:10px;margin:14px 0}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:11px 0}.metric{background:#213c51;border:1px solid #496a7c;border-radius:9px;padding:12px}
+.metric b{font:bold 23px ui-monospace,monospace;display:block;color:var(--mint)}.metric small,.muted{color:var(--muted)}
+.swatches{display:grid;grid-template-columns:1fr 35px 1fr;gap:8px;align-items:center}.swatches div{min-width:0}.swatch{min-height:85px;border:1px solid #c2e7e0;border-radius:9px;display:flex;align-items:end;padding:7px}.swatch span{background:#061523dc;border-radius:4px;padding:3px 6px;font:12px ui-monospace,monospace}
+.arrow{text-align:center;font-size:24px;color:#ffdb9b}pre{background:#0c2032;padding:13px;border:1px solid var(--edge);border-radius:9px;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.7 ui-monospace,monospace}
+.note{padding:13px;background:#303044;border-left:3px solid #eccf9f;border-radius:0 8px 8px 0;color:#edf2f5;font-size:12px;margin:13px 0}a{color:#9ce8d5}footer{border-top:1px solid var(--edge);padding:15px;color:var(--muted)}
+@media(max-width:880px){main{grid-template-columns:1fr}}@media(max-width:530px){.gates{grid-template-columns:1fr}.operators{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<header><small style="color:#a0e9d2">OASIS / N184 / BOUNDARY TRANSFER / v9.5</small><h1>Hydrogen → Oxygen → Nitrogen · Sealed N366</h1><p>366 symbolic color addresses · 5 inherited operants · 3 root gates · Weak/Medium/Strong conserved as labels</p></header>
+<main><section>
+<h2>Select a root boundary</h2><div class="gates" id="gates"></div>
+<canvas id="diagram" width="960" height="425" role="img" aria-label="H 1-122, O 123-244 and N 245-366 carrier sections with two authorized transfers and one terminal seal"></canvas>
+<div class="controls">Strength: <button id="W">Weak · ⅓</button><button id="M">Medium · ⅔</button><button id="S">Strong · 1</button></div>
+<h3>Apply ordered symbolic color operants</h3><div class="operators" id="ops"></div>
+<div class="controls"><button id="undo">Undo last</button><button id="reset">Reset</button><button id="all">Apply all five</button></div><p id="program"></p>
+<div class="metrics"><div class="metric"><b id="nCases">54</b><small>Fixed audit cases</small></div><div class="metric"><b id="nTransfer">36</b><small>Transfers</small></div><div class="metric"><b id="nClosed">18</b><small>Sealed outcomes</small></div></div>
+<div class="note"><b>Transfer rule:</b> preserve source identity, W/M/S class and operator order. Rebase the displayed color to the destination root's native hue. Record the jump, but do not invent conservation of wavelength or energy. Position N366 is terminal: never 367–370 or H1.</div>
+<h3>Seven-packet cubit bridge</h3><pre id="bridge"></pre>
+<p><a href="../elemental-hon-color-operants-v94/">v9.4 HON carrier</a> · <a href="../analytical-cubit-color-bands-v93/">18-site cubit</a> · <a href="../integration-v41/">Confluence</a></p>
+</section><section>
+<h2 id="title">H122 → O123</h2>
+<div class="swatches"><div><small>Outgoing color</small><div class="swatch" id="out"><span id="outhex"></span></div></div><div class="arrow" id="arrow">→</div><div><small>Incoming color (native)</small><div class="swatch" id="inside"><span id="inhex"></span></div></div></div>
+<div class="metrics"><div class="metric"><b id="decision">—</b><small>Gate state</small></div><div class="metric"><b id="jump">—</b><small>Hue jump</small></div><div class="metric"><b id="distance">—</b><small>RGB distance</small></div></div>
+<h3>Source identity and transfer ticket</h3><pre id="ticket"></pre><h3>Per-gate provenance checks</h3><pre id="provenance"></pre>
+<div class="note"><b>Model-only:</b> H=atomic number 1, O=8, N=7 are real elements, but the 122-symbol addresses, brightness tiers and gravity/expansion/compression/containment/explosion color calculations are software conventions, not nuclear or chemical experiments.</div>
+<p><a href="./spec.json">Contract</a> · <a href="./README.md">Method / test report</a> · <a href="https://iupac.org/what-we-do/periodic-table-of-elements/">IUPAC elements</a></p>
+</section></main>
+<footer>OASIS v9.5 · N366 CLOSED · legacy source370 addresses 367–370 excluded · position 15 || seam preserved · historic Ada1832 / Toroidal1970 unchanged</footer>
+<script type="module">
+import {ROOTS,OPERANTS,SOURCE_TAIL} from '../elemental-hon-color-operants-v94/hon_core.mjs';
+import {GATES,transferAt,surveyAllBoundaries,cubitGateAudit} from './boundary_core.mjs';
+const $=id=>document.getElementById(id);let address=122,tier='S',program=[];
+const gateButtons=GATES.map(g=>{
+ const b=document.createElement('button');const t=document.createElement('strong');t.textContent=g.fromRoot+' → '+(g.toRoot||'SEALED');
+ const d=document.createElement('span');d.textContent='address '+g.from+' → '+(g.to??'STOP');b.append(t,d);
+ b.onclick=()=>{address=g.from;render()};return b;
+});$('gates').append(...gateButtons);
+const opButtons=OPERANTS.map(op=>{
+ const b=document.createElement('button'),t=document.createElement('b');t.textContent=op.name;b.append(t);
+ b.onclick=()=>{if(program.length<5){program.push(op.id);render()}};return b;
+});$('ops').append(...opButtons);
+function draw(result){
+ const c=$('diagram'),g=c.getContext('2d'),w=c.width,h=c.height;
+ g.fillStyle='#0b1f30';g.fillRect(0,0,w,h);
+ g.font='15px monospace';g.fillStyle='#a7cedc';g.fillText('3 × 122 ELEMENT-NAMED SYMBOLIC COLOR ADDRESSES',25,34);
+ const colors=['#f29b7c','#83d79e','#9197f0'];
+ ROOTS.forEach((root,i)=>{
+  const x=34+i*315,y=94;
+  g.fillStyle=colors[i];g.fillRect(x,y,278,142);
+  g.fillStyle='#08202e';g.font='bold 37px system-ui';g.fillText(root.symbol+' · Z'+root.atomicNumber,x+17,y+56);
+  g.font='19px monospace';g.fillText(root.start+'–'+root.end,x+17,y+98);
+  g.font='14px system-ui';g.fillText(root.name,x+17,y+127);
+  if(i<2){g.font='bold 26px system-ui';g.fillStyle='#f9e3b4';g.fillText('→',x+281,y+78)}
+ });
+ GATES.forEach((gate,i)=>{
+  const x=[296,610,929][i],selected=gate.from===address;
+  g.beginPath();g.arc(x,265,selected?11:7,0,Math.PI*2);g.fillStyle=selected?'#fff':'#e9c99f';g.fill();
+  g.font='bold 15px ui-monospace,monospace';g.fillStyle='#e9f3ff';g.fillText(gate.from+(gate.to?'→'+gate.to:'⊣'),x-38,294);
+ });
+ g.font='bold 25px system-ui';g.fillStyle='#eaf8ff';g.fillText(result.state==='CLOSED'?'N366 — SEALED; NO TARGET':'ACTIVE TRANSFER · NEW NATIVE ROOT HUE',28,350);
+ g.font='15px monospace';g.fillStyle='#b1cfd9';g.fillText('STATUS: '+result.state+' · '+tier+' · '+program.length+' OPERANTS · '+(result.valid?'PASS':'FAILED'),28,386);
+}
+function render(){
+ const r=transferAt(address,tier,program),audit=surveyAllBoundaries(),bridge=cubitGateAudit();
+ $('title').textContent=r.gate.name+' · '+address;
+ $('out').style.background=r.outgoing.hex;$('outhex').textContent=r.outgoing.hex;
+ $('inside').style.background=r.incoming?.hex||'#1d2e3b';$('inhex').textContent=r.incoming?.hex||'SEALED';
+ $('arrow').textContent=r.to?'→':'⊣';$('decision').textContent=r.state==='CLOSED'?'SEALED':'TRANSFER';
+ $('jump').textContent=r.displayJump?r.displayJump.absoluteWrappedHueDeltaDegrees.toFixed(2)+'°':'N/A';
+ $('distance').textContent=r.displayJump?r.displayJump.rgbEuclideanDistance.toFixed(2):'N/A';
+ $('ticket').textContent='Source identity: '+r.ticket.sourceIdentity+
+ '\nSource: '+r.from+' '+r.origin.rootSymbol+' (Z='+r.origin.atomicNumber+')'+
+ '\nDestination: '+(r.to? r.to+' '+r.targetBase.rootSymbol+' (Z='+r.targetBase.atomicNumber+')':'SEALED')+
+ '\nStrength: '+tier+'\nOperator order: '+(program.join(' > ')||'none')+
+ '\nImmutable provenance: '+r.ticket.checksum+
+ '\nHue physically conserved: NO';
+ $('provenance').textContent=Object.entries(r.provenance).map(([k,v])=>(v?'PASS':'FAIL')+' '+k).join('\n')+
+ '\nLegacy SOURCE_TAIL: '+SOURCE_TAIL.join(', ')+' (not writable)';
+ $('program').textContent=program.length?'Program: '+program.map((id,i)=>(i+1)+'. '+OPERANTS.find(o=>o.id===id).name).join(' → '):'Program: identity (no operations)';
+ gateButtons.forEach((el,i)=>el.classList.toggle('active',GATES[i].from===address));
+ opButtons.forEach(b=>b.disabled=program.length===5);
+ for(const z of ['W','M','S'])$(z).classList.toggle('active',z===tier);
+ $('nCases').textContent=audit.cases;$('nTransfer').textContent=audit.transfers;$('nClosed').textContent=audit.closures;
+ $('bridge').textContent='H122 → O123: cubit '+bridge.links[0].fromSite+' → '+bridge.links[0].toSite+
+ '\nO244 → N245: cubit '+bridge.links[1].fromSite+' → '+bridge.links[1].toSite+
+ '\nN366: cubit '+bridge.links[2].fromSite+' → CLOSED'+
+ '\nDouble || seam: cubit '+bridge.fifthPacketSeam.position+' / N'+bridge.fifthPacketSeam.address+' (NOT a root gate)'+
+ '\nSeven original packet lengths: 2/4/2/2/5/2/1'+
+ '\nAll '+audit.cases+' predeclared cases: '+(audit.invalid.length?'FAIL':'PASS');
+ draw(r);
+}
+for(const z of ['W','M','S'])$(z).onclick=()=>{tier=z;render()};
+$('undo').onclick=()=>{program.pop();render()};
+$('reset').onclick=()=>{program=[];render()};
+$('all').onclick=()=>{program=OPERANTS.map(x=>x.id);render()};
+render();
+</script></body></html>
