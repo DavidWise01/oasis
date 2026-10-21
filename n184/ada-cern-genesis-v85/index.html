@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OASIS · Ada to CERN · Genesis Thesis v8.5</title>
+<style>
+:root{color-scheme:dark;--bg:#080c17;--p:#111d32;--q:#18293f;--line:#374c66;--fg:#f0f4fa;--muted:#adbcd0;--gold:#f1c787;--teal:#8be6d4;--purple:#bda9f1;--pink:#f49da1}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#18253c,#080c17 67%);color:var(--fg);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+header{padding:24px clamp(17px,4vw,43px);border-bottom:1px solid var(--line);background:#0d1729b9}
+h1{font-size:clamp(24px,3.6vw,37px);line-height:1.12;letter-spacing:-.035em;margin:5px 0}
+.muted,.sub{color:var(--muted)}.eyebrow{font-weight:700;font-size:11px;letter-spacing:.17em;color:var(--teal);text-transform:uppercase}
+p{margin:9px 0}a{color:#9ee9dc}a:hover{color:#cffaf1}
+main{margin:auto;max-width:1510px;padding:17px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(315px,.76fr);gap:14px}
+.panel{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:17px;min-width:0;box-shadow:0 8px 30px #00000016}
+h2{font-size:17px;margin:0 0 13px}h3{font-size:14px;margin:12px 0 8px}
+.genRow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-bottom:14px}
+.gen{background:#1a2a44;border:1px solid #4e6380;padding:15px;border-radius:11px;color:var(--fg);text-align:left;cursor:pointer}
+.gen strong{display:block;font-size:22px}.gen span{display:block;color:var(--muted);font-size:12px}.gen.active{border-color:var(--teal);background:#203a4e;box-shadow:0 0 0 1px var(--teal)}
+button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #a9f4dc;outline-offset:2px}
+canvas{display:block;width:100%;height:auto;border:1px solid #3c5575;border-radius:11px;background:#091829}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:13px 0}
+input[type=range]{accent-color:var(--teal);width:min(240px,48vw)}
+.secondary{border:1px solid #5f8293;background:#224457;color:#f1f8fd;padding:9px 11px;border-radius:8px}
+.readout{border:1px solid #536d85;background:#192c44;border-radius:10px;padding:13px;margin:12px 0}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.value{display:block;font:700 clamp(22px,2vw,29px) ui-monospace,monospace;color:#ebd19b}
+.legend{display:flex;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+.legend span::before{content:'●';color:var(--gold);margin-right:5px}.legend span:nth-child(2)::before{color:var(--teal)}.legend span:nth-child(3)::before{color:var(--pink)}
+.eventList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ev{display:block;background:#17283c;color:var(--fg);border:1px solid #374f68;border-radius:9px;padding:10px;text-align:left;min-width:0}
+.ev em{display:block;font-style:normal;color:var(--gold);font:700 15px ui-monospace,monospace}
+.ev span{font-size:12px}.ev.active{background:#244258;border-color:#8be6d4}
+.kicker{color:var(--teal);letter-spacing:.12em;font-size:11px;text-transform:uppercase;font-weight:700}
+.rail{padding:12px;border-left:3px solid #9e8cec;background:#1c2540;border-radius:0 9px 9px 0;margin:13px 0}
+.historical{padding:10px 12px;border-radius:10px;background:#122b32;border:1px solid #3a6b65}
+code{color:#f3cf90;overflow-wrap:anywhere}ul{padding-left:21px}li{margin:7px 0}
+.linkCards{display:grid;gap:7px;margin-top:15px}
+.linkCards a{display:block;border:1px solid #3e5c73;padding:9px 12px;border-radius:8px;background:#182a40}
+.small{font-size:12px}
+footer{border-top:1px solid var(--line);padding:13px 21px;color:var(--muted);font-size:12px}
+@media(max-width:975px){main{grid-template-columns:1fr}}@media(max-width:580px){.genRow,.row2,.eventList{grid-template-columns:1fr}}
+</style></head><body>
+<header>
+<div class="eyebrow">OASIS / Kernel Emergence Time / Thesis v8.5</div>
+<h1>1832 Ada → 1970 Toroidal Space Magic</h1>
+<p class="sub">Generation zero to one · Einstein + Oppenheimer + CERN · Mother Nature offset as an independent symbolic overlay</p>
+</header>
+<main>
+<section class="panel">
+<h2>Two historical anchors · one observable timeline</h2>
+<div class="genRow">
+<button class="gen active" id="gen0"><strong>Gen 0 · 1832</strong>Ada Lovelace<span>Selected origin · symbolic programmability</span></button>
+<button class="gen" id="gen1"><strong>Gen 1 · 1970</strong>Toroidal Space Magic<span>Selected model transition · cyclic observers</span></button>
+</div>
+<canvas id="timeline" width="1120" height="390" role="img" aria-label="Historical timeline showing Ada, Einstein, Oppenheimer, CERN, user-selected generations and adjustable nature-offset marker"></canvas>
+<div class="legend"><span>Verified historical reference</span><span>Selected generation anchor</span><span>Symbolic Mother Nature overlay</span></div>
+<div class="controls">
+<label>Mother Nature offset δMN <output id="offLabel">0 years</output>
+<input id="offset" type="range" min="-240" max="240" step="1" value="0"></label>
+<button class="secondary" id="zero">Return to zero offset</button>
+</div>
+<div class="row2">
+<div class="readout"><span class="muted small">Fixed Gen0 → Gen1 difference</span><strong class="value" id="delta">138 yr</strong><span class="small muted">Gregorian year labels; not a physical dilation</span></div>
+<div class="readout"><span class="muted small">Display-only nature coordinate</span><strong class="value" id="natureYear">1970</strong><span class="small muted">1970 + δMN; physical offset not calibrated</span></div>
+</div>
+<div class="readout">
+<strong id="selectedTitle">Gen 0 · Ada Lovelace · 1832</strong>
+<p id="selectedDesc" class="muted small">Loading selected event…</p>
+<a id="selectedSource" href="./THESIS.md">Read sourced historical context</a>
+</div>
+<h3>Historical points — select for provenance</h3>
+<div id="events" class="eventList"></div>
+<p class="muted small">Only the pink nature overlay moves. The evidence markers and documented dates stay fixed. Gen 0 and Gen 1 are chosen epochs, not historical claims of invented technologies on those dates.</p>
+</section>
+<aside class="panel">
+<h2>Thesis assertion</h2>
+<div class="rail">Can explicit symbolic operations, dimensioned scientific constraints and independent observer functions be combined into a reproducible cyclic reconstruction engine?</div>
+<p>Historical reference chain:</p>
+<ul>
+<li><b>Ada</b> — programmable symbolic procedures; documented Babbage meeting 1833, notes 1843.</li>
+<li><b>Einstein</b> — relativity (1905) and spacetime geometry (1915).</li>
+<li><b>Oppenheimer</b> — Los Alamos theory-to-engineering leadership and consequences (1942–45).</li>
+<li><b>CERN</b> — experimental instrumentation, founded 1954; first ISR proton collisions 1971.</li>
+</ul>
+<div class="historical"><b>1970 does not mean the CERN collider was already colliding.</b><p class="small">1970 is your Gen 1 epoch and the familiar Unix timestamp epoch. The CERN ISR milestone followed in 1971.</p></div>
+<h3>Phase model preserved</h3>
+<div class="row2">
+<div class="readout"><span class="muted small">Discrete phase</span><strong class="value">80</strong><span class="small muted">1.25% each · 360°</span></div>
+<div class="readout"><span class="muted small">Common geometry</span><strong class="value">240</strong><span class="small muted">lcm(6,80) microticks</span></div>
+</div>
+<canvas id="ring" width="640" height="295" role="img" aria-label="Six-part cyclic ring with four observer ports and a 240-microtick state address"></canvas>
+<div class="controls"><label>Microtick <output id="tickLabel">0</output> <input id="tick" type="range" min="0" max="239" step="1" value="0"></label></div>
+<p id="phaseRead" class="small muted">Step 0 of 80 · sector 0</p>
+<p class="small muted">Four software observer names are inspired by CERN's ALICE, ATLAS, CMS and LHCb. They do not represent four identical physical toroids or four independent observations of one collision.</p>
+<div class="linkCards">
+<a href="./THESIS.md">Read full historical / scientific thesis</a>
+<a href="./spec.json">Canonical generation and evidence JSON</a>
+<a href="../cern-observer-lab-v84/">Launch real CMS educational-data lab</a>
+<a href="../arc-phase-duration-v82/">Inspect Planck length/time model</a>
+<a href="../integration-v41/">Return to Confluence</a>
+</div>
+<p class="small muted" id="status">Loading sourced timeline and testing chronology…</p>
+</aside></main>
+<footer>OASIS v8.5 · date evidence fixed / nature offset symbolic / hypothesis testable in software; no CERN affiliation or proven Planck-scale emergence implied.</footer>
+<script type="module">
+const $=x=>document.getElementById(x);
+let model=null,year=1832,chosen='ada-anchor',gen=0,offset=0,tick=0,nodes=[];
+const colors={history:'#efc783',model_epoch:'#8de8d3'};
+function paintTimeline(){
+if(!model)return;
+const canvas=$('timeline'),g=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
+const moveYear=1970+offset,low=Math.min(1826,moveYear-12),high=Math.max(2020,moveYear+12);
+const X=y=>62+(y-low)/(high-low)*(w-122);
+g.fillStyle='#09192a';g.fillRect(0,0,w,h);
+g.strokeStyle='#42607a';g.lineWidth=2;g.beginPath();g.moveTo(X(low),212);g.lineTo(X(high),212);g.stroke();
+for(let y=Math.ceil(low/20)*20;y<=high;y+=20){
+const x=X(y);g.strokeStyle='#264156';g.beginPath();g.moveTo(x,80);g.lineTo(x,315);g.stroke();
+g.fillStyle='#98b1c7';g.font='13px ui-monospace,monospace';g.textAlign='center';g.fillText(String(y),x,341);
+}
+g.textAlign='left';g.fillStyle='#d4e4f3';g.font='15px system-ui';g.fillText('HISTORICAL YEAR (UNCHANGED)',25,39);
+g.fillStyle='#f19cab';g.fillText('NATURE OFFSET / SYMBOLIC',25,67);
+let lookup=[];
+const evs=model.timeline;
+const clustered={};
+for(const ev of evs){
+const x=X(ev.year);clustered[ev.year]=(clustered[ev.year]||0)+1;const overlapIndex=clustered[ev.year]-1;
+const isActive=ev.id===chosen,category=ev.category;
+const r=isActive?10:category==='model_epoch'?8:5;
+const y=212+(overlapIndex?31:0);
+g.beginPath();g.arc(x,y,r,0,Math.PI*2);g.fillStyle=colors[category]||'#efc783';g.fill();
+if(isActive){g.lineWidth=3;g.strokeStyle='#f7fafa';g.stroke()}
+if(category==='model_epoch'){
+g.beginPath();g.moveTo(x,104);g.lineTo(x,202);g.strokeStyle='#80bdb8';g.setLineDash([4,6]);g.stroke();g.setLineDash([]);
+g.fillStyle='#c5f6e7';g.font='bold 15px system-ui';g.textAlign='center';g.fillText('GEN '+(ev.year===1832?'0':'1'),x,98);
+}
+lookup.push({x,y,id:ev.id});
+}
+let xNat=X(moveYear);g.strokeStyle='#f19cab';g.lineWidth=2;g.setLineDash([5,6]);
+g.beginPath();g.moveTo(xNat,110);g.lineTo(xNat,298);g.stroke();g.setLineDash([]);
+g.beginPath();g.arc(xNat,120,7,0,Math.PI*2);g.fillStyle='#f19cab';g.fill();
+g.fillStyle='#ffc6d1';g.font='bold 14px system-ui';g.textAlign='center';g.fillText('δMN @ '+moveYear,xNat,105);
+g.fillStyle='#9dc5bc';g.font='12px ui-monospace,monospace';g.fillText('1970 – 1832 = 138',w/2,372);
+nodes=lookup;
+}
+function drawRing(){
+const cv=$('ring'),c=cv.getContext('2d'),w=cv.width,h=cv.height,cx=w/2,cy=h/2+5,R=88,T=Math.PI*2;
+c.fillStyle='#081626';c.fillRect(0,0,w,h);
+const palette=['#f2ca83','#87dbca','#c5a9f9','#ed9c9b','#84b5e6','#dfac74'];
+for(let i=0;i<6;i++){let a=-Math.PI/2+i*T/6;c.beginPath();c.arc(cx,cy,R,a+.03,a+T/6-.03);c.lineWidth=13;c.strokeStyle=palette[i];c.stroke()}
+for(let i=0;i<80;i++){const a=-Math.PI/2+i*T/80;c.beginPath();c.moveTo(cx+Math.cos(a)*67,cy+Math.sin(a)*67);c.lineTo(cx+Math.cos(a)*74,cy+Math.sin(a)*74);c.strokeStyle=i<tick/3?'#8be6d4':'#536f88';c.lineWidth=i%10===0?2.5:1;c.stroke()}
+const a=-Math.PI/2+tick*T/240;
+c.beginPath();c.arc(cx+Math.cos(a)*R,cy+Math.sin(a)*R,8,0,T);c.fillStyle='#fff7eb';c.fill();
+c.fillStyle='#ebf6ff';c.textAlign='center';c.font='bold 36px system-ui';c.fillText(String(tick),cx,cy+9);
+const lbl=['ATLAS','ALICE','CMS','LHCb'];
+for(let i=0;i<4;i++){
+const angle=-Math.PI/2+i*Math.PI/2,x=cx+Math.cos(angle)*155,y=cy+Math.sin(angle)*112;
+c.fillStyle='#bcd7ee';c.font='bold 13px system-ui';c.fillText(lbl[i],x,y+4);
+}
+$('phaseRead').textContent='Microtick '+tick+' / 239 · phase '+Math.floor(tick/3)+'/80 · sector '+Math.floor(tick/40)+'/6 · '+(tick*1.5).toFixed(1)+'°';
+}
+function selectEvent(id){
+if(!model)return;const e=model.timeline.find(x=>x.id===id);if(!e)return;
+chosen=id;year=e.year;
+$('selectedTitle').textContent=e.label+' · '+e.year;
+$('selectedDesc').textContent=e.details;
+$('selectedSource').href=e.source||'./THESIS.md';
+$('selectedSource').textContent=e.source?'Read historical source':'Read thesis classification';
+for(const el of $('events').children)el.classList.toggle('active',el.dataset.event===id);
+paintTimeline();
+}
+function paintGen(){
+$('gen0').classList.toggle('active',gen===0);$('gen1').classList.toggle('active',gen===1);
+selectEvent(gen===0?'ada-anchor':'gen1');
+}
+$('gen0').onclick=()=>{gen=0;paintGen()};
+$('gen1').onclick=()=>{gen=1;paintGen()};
+$('offset').oninput=e=>{offset=Number(e.target.value);$('offLabel').textContent=offset+' years';$('natureYear').textContent=1970+offset;paintTimeline()};
+$('zero').onclick=()=>{$('offset').value='0';offset=0;$('offLabel').textContent='0 years';$('natureYear').textContent='1970';paintTimeline()};
+$('tick').oninput=e=>{tick=Number(e.target.value);$('tickLabel').textContent=tick;drawRing()};
+$('timeline').onclick=e=>{
+const cv=$('timeline'),rect=cv.getBoundingClientRect(),x=(e.clientX-rect.left)*cv.width/rect.width,y=(e.clientY-rect.top)*cv.height/rect.height;
+let nearest=null,dist=1e9;for(const hit of nodes){const d=Math.hypot(x-hit.x,y-hit.y);if(d<dist){dist=d;nearest=hit.id}}
+if(dist<24&&nearest){selectEvent(nearest)}
+};
+try{
+const res=await fetch('./spec.json',{cache:'no-store'});if(!res.ok)throw Error('JSON HTTP '+res.status);
+model=await res.json();
+if(model.historicalOffsetYears!==138||model.anchors[0].year!==1832||model.anchors[1].year!==1970||model.motherNature.defaultOffsetYears!==0)throw Error('Epoch mismatch');
+$('events').replaceChildren(...model.timeline.map(e=>{
+const b=document.createElement('button');b.className='ev';b.dataset.event=e.id;
+const yy=document.createElement('em');yy.textContent=e.year;
+const lbl=document.createElement('span');lbl.textContent=e.label;
+b.append(yy,lbl);b.onclick=()=>{if(e.id==='ada-anchor'){gen=0;$('gen0').classList.add('active');$('gen1').classList.remove('active')}else if(e.id==='gen1'){gen=1;$('gen1').classList.add('active');$('gen0').classList.remove('active')}selectEvent(e.id)};
+return b;
+}));
+$('delta').textContent=model.historicalOffsetYears+' yr';$('status').textContent='Gen 0 / Gen 1 historical anchors checked · Mother Nature offset stays symbolic';
+paintGen();drawRing();
+}catch(e){$('status').textContent='Thesis data issue: '+String(e)}
+</script></body></html>
