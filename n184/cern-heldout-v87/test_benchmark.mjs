@@ -55,6 +55,13 @@ test('historical nature offset zero',()=>assert.equal(spec.preserved.natureOffse
 test('dataset educational-only disclaimer',()=>assert.ok(spec.guardrails.some(t=>t.includes('Education/outreach'))));
 test('reference label leakage formally barred',()=>assert.ok(spec.split.leakageRule.includes('M is read only')));
 test('no old files overwritten',()=>assert.ok(fs.existsSync(new URL('../carbon-3d-cern-v86/spec.json',import.meta.url))));
+const saved=JSON.parse(fs.readFileSync(new URL('./results.json',import.meta.url),'utf8'));
+test('saved 100k CERN report source',()=>assert.equal(saved.input.accepted,100000));
+test('saved holdout 19993 events',()=>assert.equal(saved.analysis.heldOutCount,19993));
+test('saved CSV SHA256 established in full run',()=>assert.equal(saved.provenance.sha256,'373f0f56120998d4dad626abb1229ceef91523c262e154fb1e1e541bbb8be3a5'));
+test('saved four-port gain exactly zero',()=>assert.equal(saved.analysis.comparisons.fourPortVsAngularMAEGeV,0));
+test('saved angular MAE less than transverse MAE',()=>assert.ok(saved.analysis.metrics.angular.maeGeV<saved.analysis.metrics.transverse.maeGeV));
+test('saved real-data provenance anchored to verified workflow',()=>assert.ok(saved.validatedWorkflowRun.includes('/39537168241')));
 console.log(JSON.stringify({result:'PASS',passed:Object.keys(checks).length,failed:0,
  sample:{records:rs.length,holdout:result.heldOutCount,metrics:result.metrics},
  checks},null,2));
