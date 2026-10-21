@@ -1,0 +1,22 @@
+name: N184 Four Quad Spectral Witness v92
+on:
+  push:
+    paths:
+      - 'n184/quad-spectral-witness-v92/**'
+      - '.github/workflows/n184-quad-spectral-witness-v92.yml'
+  workflow_dispatch:
+jobs:
+  deterministic-quad-votes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check 2,304 immutable color records x four quad projections and fault quorum controls
+        run: |
+          node --check n184/quad-spectral-witness-v92/witness_core.mjs
+          node --check n184/quad-spectral-witness-v92/test_witness.mjs
+          node n184/quad-spectral-witness-v92/test_witness.mjs
