@@ -1,0 +1,13 @@
+{
+  "schema": "ket-rose-recovery-v5",
+  "status": "PASS",
+  "fault_scenarios": 42,
+  "links": 14,
+  "balance_total": "36600",
+  "origin": "0vwxyz",
+  "identities": 24,
+  "phase_bins": 60,
+  "shadow": "unresolved",
+  "final_digest": "d104d95cc8ef441a855c3d0310d3ddf18868de257f754ea94520c9c225b707a8",
+  "scope": "symbolic atomic in-memory simulation"
+}
