@@ -1,0 +1,6 @@
+{
+  "slug": "the-return",
+  "seal": "aeb58a5f467fda6f689beae6fdfd328afe6893fcce249afe2d4d6b3faa282b75",
+  "rule": "sha256(name|slug|blurb)",
+  "write": "if-missing"
+}

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Return · OaSIs spheres</title>
+<style>:root{--bg:#f4e7d2;--ink:#2a1c10;--muted:#6a5340;--line:#e2cdb0;--sage:#3d5c45;--gold:#8a6a2e}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Palatino,'Palatino Linotype',Georgia,serif}
+body{overflow-x:hidden}
+main{width:min(920px,calc(100% - 28px));margin:0 auto;padding:28px 0 64px}
+a{color:var(--sage)}
+.ey{font:600 11px ui-monospace,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
+h1{font-size:clamp(36px,7vw,64px);line-height:.95;letter-spacing:-.03em;margin:8px 0 6px;font-weight:600}
+.kicker{margin:0 0 16px;color:var(--muted);font-style:italic}
+#v3{height:520px;border-radius:8px;overflow:hidden;background:#14110e;box-shadow:0 16px 36px rgba(42,28,16,.16)}
+.claim{line-height:1.5;max-width:68ch}
+.t{display:inline-block;padding:0 7px;border-radius:999px;font:700 11px ui-monospace,Consolas,monospace;letter-spacing:.04em;color:#1a140c}
+.lit{background:#8fd39a}.amber{background:#e2b15a}.model{background:#c7b0e4}
+#proof{font:14px/1.45 ui-monospace,Consolas,monospace;padding:10px 12px;border-left:3px solid var(--sage);background:rgba(255,255,255,.45)}
+#proof.fail{border-color:#a33;background:#f8d8d4}
+code{font:12px ui-monospace,Consolas,monospace;word-break:break-all}
+.nav{font:13px ui-monospace,Consolas,monospace}
+@media (max-width:420px){#v3{height:360px}main{width:min(920px,calc(100% - 20px))}}</style>
+</head>
+<body>
+<main>
+<p class="ey">OaSIs · spheres</p>
+<h1>The Return</h1>
+<p class="kicker">out through the box, back on the ring</p>
+<div id="v3"></div>
+<p class="claim"><span class="t lit">LIT</span> Six bytes enter a box of capacity eight, each is shifted by one and shifted back, and the witness of the return matches the payload. A ninth byte is refused.</p>
+<p class="claim"><span class="t amber">AMBER</span> <a href="../architecture/box-toroid.md">box-toroid</a> is the architectural analogy: Alice, a bounded channel, Bob, and a witness that returns. It is not a claim that a network is a torus.</p>
+<p class="claim"><span class="t model">MODEL</span> The cube is the box. The pearl walks the return ring.</p>
+<p id="proof">proving…</p>
+<p>Seal sha256(name|slug|blurb): <code id="seal">aeb58a5f467fda6f689beae6fdfd328afe6893fcce249afe2d4d6b3faa282b75</code></p>
+<p class="nav"><a href="o3-twenty.html">← previous</a> · <a href="index.html">spheres</a> · <a href="six-channels.html">next →</a> · <a href="../">OaSIs</a></p>
+</main>
+<script src="facts.js"></script>
+<script>
+const NAME="The Return",SLUG="the-return",BLURB="A payload that fits in the box comes back with a witness, and that witness matches the payload.",SEAL="aeb58a5f467fda6f689beae6fdfd328afe6893fcce249afe2d4d6b3faa282b75";
+let PROOF_FAIL=null;
+function paintProof(msg, failed){
+  const p=document.getElementById('proof');
+  if(!p) return;
+  if(failed) PROOF_FAIL=msg;
+  p.textContent=PROOF_FAIL||msg;
+  p.className=PROOF_FAIL?'fail':'';
+}
+async function sha(t){
+  const b=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+async function shaBytes(bytes){
+  const b=await crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+async function check(){ return factReturn(); }
+(async()=>{
+  try{
+    const h=await sha(NAME+'|'+SLUG+'|'+BLURB);
+    if(h!==SEAL) throw Error('seal mismatch');
+    const r=await check();
+    paintProof('LIT '+r, false);
+  }catch(e){
+    paintProof('FAIL '+e.message, true);
+    throw e;
+  }
+})();
+</script>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const box=document.getElementById('v3');
+const W=box.clientWidth||800, H=box.clientHeight||520;
+const R=new THREE.WebGLRenderer({antialias:true});
+R.setPixelRatio(Math.min(devicePixelRatio||1, 2));
+R.setSize(W, H);
+box.appendChild(R.domElement);
+const S=new THREE.Scene();
+S.background=new THREE.Color(0x1a140e);
+S.fog=new THREE.Fog(0x1a140e, 8, 22);
+const C=new THREE.PerspectiveCamera(46, W/Math.max(H,1), .1, 80);
+const O=new OrbitControls(C, R.domElement);
+O.enableDamping=true; O.autoRotate=!reduce; O.autoRotateSpeed=.35;
+C.position.set(0.6, 2.5, 6.6); C.lookAt(0, 0.15, 0); O.target.set(0, 0.15, 0);
+S.add(new THREE.AmbientLight(0xffffff, .55));
+function hero(THREE, S){
+  const g=new THREE.Group(); S.add(g);
+  const box=new THREE.Mesh(new THREE.BoxGeometry(1.25,1.25,1.25), new THREE.MeshStandardMaterial({color:0x4a3422,roughness:.38,metalness:.48,emissive:0x1a1008,emissiveIntensity:.25}));
+  g.add(box);
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(2.15,.05,16,90), new THREE.MeshStandardMaterial({color:0xd8c48f,roughness:.3,metalness:.62,emissive:0x8a5a18,emissiveIntensity:.45}));
+  ring.rotation.x=Math.PI/2; g.add(ring);
+  const pearl=new THREE.Mesh(new THREE.SphereGeometry(.16,24,18), new THREE.MeshStandardMaterial({color:0xf7f1e6,roughness:.18,metalness:.12,emissive:0xffe2a8,emissiveIntensity:.7}));
+  g.add(pearl);
+  const floor=new THREE.Mesh(new THREE.CircleGeometry(5,64), new THREE.MeshStandardMaterial({color:0x24180f,roughness:.9}));
+  floor.rotation.x=-Math.PI/2; floor.position.y=-0.85; g.add(floor);
+  const lamp=new THREE.PointLight(0xffe0b0,36,16); lamp.position.set(2.2,3.1,2.4); g.add(lamp);
+  if(ring.geometry.parameters.tubularSegments<80) throw Error('ring');
+  g.userData.tick=(t,reduce)=>{
+    const a=reduce?0.8:t*0.65;
+    pearl.position.set(Math.cos(a)*2.15, 0, Math.sin(a)*2.15);
+  };
+  return g;
+}
+let HERO=null;
+try{ HERO=hero(THREE, S); }
+catch(e){ if(typeof paintProof==='function') paintProof('FAIL '+e.message, true); throw e; }
+function tick(){
+  requestAnimationFrame(tick);
+  if(HERO&&HERO.userData.tick) HERO.userData.tick(performance.now()/1000, reduce);
+  O.update(); R.render(S, C);
+}
+tick();
+</script>
+</body>
+</html>

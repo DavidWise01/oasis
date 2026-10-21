@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OaSIs spheres</title>
+<style>
+:root{--bg:#e7efe4;--ink:#1c241c;--muted:#4d5c4a;--line:#c5d4bc}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Palatino,'Palatino Linotype',Georgia,serif}
+body{overflow-x:hidden}
+main{width:min(920px,calc(100% - 28px));margin:0 auto;padding:28px 0 64px}
+a{color:#3d5c45}
+.ey{font:600 11px ui-monospace,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase;color:#3d5c45}
+h1{font-size:clamp(40px,8vw,72px);line-height:.92;margin:8px 0 10px;font-weight:600}
+.lead{max-width:66ch;line-height:1.5;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}
+a.card{display:block;text-decoration:none;color:inherit;background:#f7fbf4;border:1px solid var(--line);border-radius:16px;padding:16px 16px 18px}
+a.card b{display:block;font-size:22px;margin-bottom:6px}
+a.card span{color:var(--muted);font-style:italic}
+#proof{font:14px/1.45 ui-monospace,Consolas,monospace;padding:10px 12px;border-left:3px solid #3d5c45;background:rgba(255,255,255,.45)}
+#proof.fail{border-color:#a33;background:#f8d8d4}
+code{font:12px ui-monospace,Consolas,monospace;word-break:break-all}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<p class="ey">OaSIs · append-only</p>
+<h1>Spheres</h1>
+<p class="lead">Four instruments. Each one recomputes a count this repository already states. Frozen files stay untouched. A green line is a check this page ran. An amber line is a citation. A picture is a picture.</p>
+<div class="grid">
+<a class="card" href="o3-twenty.html"><b>The Twenty Checks</b><span>one parent, two outputs, twenty checks</span></a>
+<a class="card" href="the-return.html"><b>The Return</b><span>out through the box, back on the ring</span></a>
+<a class="card" href="six-channels.html"><b>Six Channels</b><span>six names, each once</span></a>
+<a class="card" href="kana-anchors.html"><b>KANA Anchors</b><span>two anchors, one center</span></a>
+</div>
+<p id="proof">proving…</p>
+<p>Seal sha256(name|slug|blurb): <code id="seal">f2455438a818e46443a6327071eec0e77be78553b4ad3fbb4ce99b1b0b0ebb7b</code></p>
+<p><a href="../">← OaSIs</a></p>
+</main>
+<script>
+const NAME="OaSIs Spheres",SLUG="spheres",BLURB="Four instruments under OaSIs. Each one recomputes a count this repository already states.",SEAL="f2455438a818e46443a6327071eec0e77be78553b4ad3fbb4ce99b1b0b0ebb7b";
+function check(){
+  const hrefs=[...document.querySelectorAll('a.card')].map(a=>a.getAttribute('href'));
+  const want=['o3-twenty.html','the-return.html','six-channels.html','kana-anchors.html'];
+  if(hrefs.length!==4) throw Error('spheres '+hrefs.length);
+  if(hrefs.join(',')!==want.join(',')) throw Error('order');
+  return '4 spheres';
+}
+async function sha(t){
+  const b=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+(async()=>{
+  const p=document.getElementById('proof');
+  try{
+    const h=await sha(NAME+'|'+SLUG+'|'+BLURB);
+    if(h!==SEAL) throw Error('seal mismatch');
+    p.textContent='LIT '+check();
+  }catch(e){
+    p.textContent='FAIL '+e.message;
+    p.className='fail';
+    throw e;
+  }
+})();
+</script>
+</body>
+</html>

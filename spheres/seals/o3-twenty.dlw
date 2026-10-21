@@ -1,0 +1,6 @@
+{
+  "slug": "o3-twenty",
+  "seal": "464c8a424418a79c8310f9bc8feceb2a3368f124e8125256b1aadc3ecaa3ff1c",
+  "rule": "sha256(name|slug|blurb)",
+  "write": "if-missing"
+}

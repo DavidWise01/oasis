@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Twenty Checks · OaSIs spheres</title>
+<style>:root{--bg:#e7f0df;--ink:#1c241c;--muted:#4d5c4a;--line:#c5d4bc;--sage:#3d5c45;--gold:#8a6a2e}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Palatino,'Palatino Linotype',Georgia,serif}
+body{overflow-x:hidden}
+main{width:min(920px,calc(100% - 28px));margin:0 auto;padding:28px 0 64px}
+a{color:var(--sage)}
+.ey{font:600 11px ui-monospace,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
+h1{font-size:clamp(36px,7vw,64px);line-height:.95;letter-spacing:-.03em;margin:8px 0 6px;font-weight:600}
+.kicker{margin:0 0 16px;color:var(--muted);font-style:italic}
+#v3{height:520px;border-radius:28px 28px 6px 6px;overflow:hidden;background:#14110e;box-shadow:0 18px 40px rgba(28,36,28,.16)}
+.claim{line-height:1.5;max-width:68ch}
+.t{display:inline-block;padding:0 7px;border-radius:999px;font:700 11px ui-monospace,Consolas,monospace;letter-spacing:.04em;color:#1a140c}
+.lit{background:#8fd39a}.amber{background:#e2b15a}.model{background:#c7b0e4}
+#proof{font:14px/1.45 ui-monospace,Consolas,monospace;padding:10px 12px;border-left:3px solid var(--sage);background:rgba(255,255,255,.45)}
+#proof.fail{border-color:#a33;background:#f8d8d4}
+code{font:12px ui-monospace,Consolas,monospace;word-break:break-all}
+.nav{font:13px ui-monospace,Consolas,monospace}
+@media (max-width:420px){#v3{height:360px}main{width:min(920px,calc(100% - 20px))}}</style>
+</head>
+<body>
+<main>
+<p class="ey">OaSIs · spheres</p>
+<h1>The Twenty Checks</h1>
+<p class="kicker">one parent, two outputs, twenty checks</p>
+<div id="v3"></div>
+<p class="claim"><span class="t lit">LIT</span> This page recomputes 1 + 2 = 3 and 3 × 6 + 2 = 20, then hashes <a href="../lean/O3.lean">lean/O3.lean</a> after removing carriage returns. The witness must be the published blob hash. The Lean file is not rewritten.</p>
+<p class="claim"><span class="t amber">AMBER</span> The frozen checkpoint note is in <a href="../architecture/o3/">architecture/o3</a>. This page does not re-run Lean.</p>
+<p class="claim"><span class="t model">MODEL</span> The gold sphere is the parent. The two sage spheres are the outputs. Twenty beads are the verification envelope.</p>
+<p id="proof">proving…</p>
+<p>Seal sha256(name|slug|blurb): <code id="seal">464c8a424418a79c8310f9bc8feceb2a3368f124e8125256b1aadc3ecaa3ff1c</code></p>
+<p class="nav"><a href="kana-anchors.html">← previous</a> · <a href="index.html">spheres</a> · <a href="the-return.html">next →</a> · <a href="../">OaSIs</a></p>
+</main>
+<script src="facts.js"></script>
+<script>
+const NAME="The Twenty Checks",SLUG="o3-twenty",BLURB="One parent and two outputs make three nodes, and three times six plus two verifications is twenty.",SEAL="464c8a424418a79c8310f9bc8feceb2a3368f124e8125256b1aadc3ecaa3ff1c";
+let PROOF_FAIL=null;
+function paintProof(msg, failed){
+  const p=document.getElementById('proof');
+  if(!p) return;
+  if(failed) PROOF_FAIL=msg;
+  p.textContent=PROOF_FAIL||msg;
+  p.className=PROOF_FAIL?'fail':'';
+}
+async function sha(t){
+  const b=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+async function shaBytes(bytes){
+  const b=await crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+async function check(){
+  const words=factO3();
+  const res=await fetch('../lean/O3.lean');
+  if(!res.ok) throw Error('lean '+res.status);
+  const raw=new Uint8Array(await res.arrayBuffer());
+  const lf=Uint8Array.from(raw.filter(b=>b!==13));
+  const h=await shaBytes(lf);
+  if(h!==O3HASH) throw Error('lean hash');
+  return words+'; lean witness matches';
+}
+(async()=>{
+  try{
+    const h=await sha(NAME+'|'+SLUG+'|'+BLURB);
+    if(h!==SEAL) throw Error('seal mismatch');
+    const r=await check();
+    paintProof('LIT '+r, false);
+  }catch(e){
+    paintProof('FAIL '+e.message, true);
+    throw e;
+  }
+})();
+</script>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const box=document.getElementById('v3');
+const W=box.clientWidth||800, H=box.clientHeight||520;
+const R=new THREE.WebGLRenderer({antialias:true});
+R.setPixelRatio(Math.min(devicePixelRatio||1, 2));
+R.setSize(W, H);
+box.appendChild(R.domElement);
+const S=new THREE.Scene();
+S.background=new THREE.Color(0x142016);
+S.fog=new THREE.Fog(0x142016, 8, 22);
+const C=new THREE.PerspectiveCamera(46, W/Math.max(H,1), .1, 80);
+const O=new OrbitControls(C, R.domElement);
+O.enableDamping=true; O.autoRotate=!reduce; O.autoRotateSpeed=.35;
+C.position.set(0, 2.4, 7.4); C.lookAt(0, 0.25, 0); O.target.set(0, 0.25, 0);
+S.add(new THREE.AmbientLight(0xffffff, .55));
+function hero(THREE, S){
+  const g=new THREE.Group(); S.add(g);
+  const gold=new THREE.MeshStandardMaterial({color:0xd8c48f,roughness:.32,metalness:.42,emissive:0x6a5420,emissiveIntensity:.35});
+  const sage=new THREE.MeshStandardMaterial({color:0xb5c6a5,roughness:.4,metalness:.18,emissive:0x243024,emissiveIntensity:.28});
+  const parent=new THREE.Mesh(new THREE.SphereGeometry(.62,36,28), gold);
+  parent.position.set(0,1.45,0); g.add(parent);
+  const kids=[];
+  [-1.25,1.25].forEach(x=>{
+    const m=new THREE.Mesh(new THREE.SphereGeometry(.4,32,24), sage);
+    m.position.set(x,-0.15,0); g.add(m); kids.push(m);
+    const a=parent.position.clone(), b=m.position.clone(), dir=b.clone().sub(a);
+    const len=dir.length();
+    const rod=new THREE.Mesh(new THREE.CylinderGeometry(.018,.018,len,8), new THREE.MeshStandardMaterial({color:0xd8c48f,roughness:.45,metalness:.3}));
+    rod.position.copy(a).add(b).multiplyScalar(.5);
+    rod.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), dir.clone().normalize());
+    g.add(rod);
+  });
+  const beads=[];
+  for(let i=0;i<20;i++){
+    const a=i/20*Math.PI*2;
+    const bead=new THREE.Mesh(new THREE.SphereGeometry(.055,12,10), gold);
+    bead.position.set(Math.cos(a)*2.35,-1.02,Math.sin(a)*2.35);
+    g.add(bead); beads.push(bead);
+  }
+  const floor=new THREE.Mesh(new THREE.CircleGeometry(5.2,64), new THREE.MeshStandardMaterial({color:0x1c2a20,roughness:.92}));
+  floor.rotation.x=-Math.PI/2; floor.position.y=-1.2; g.add(floor);
+  const lamp=new THREE.PointLight(0xfff1c9,40,18); lamp.position.set(-1.2,3.4,2.6); g.add(lamp);
+  if(kids.length!==2||beads.length!==20) throw Error('count');
+  g.userData.tick=(t,reduce)=>{ g.rotation.y=reduce?0.35:t*0.12; };
+  return g;
+}
+let HERO=null;
+try{ HERO=hero(THREE, S); }
+catch(e){ if(typeof paintProof==='function') paintProof('FAIL '+e.message, true); throw e; }
+function tick(){
+  requestAnimationFrame(tick);
+  if(HERO&&HERO.userData.tick) HERO.userData.tick(performance.now()/1000, reduce);
+  O.update(); R.render(S, C);
+}
+tick();
+</script>
+</body>
+</html>

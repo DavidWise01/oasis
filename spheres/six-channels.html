@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Six Channels · OaSIs spheres</title>
+<style>:root{--bg:#e6e9f4;--ink:#1a2030;--muted:#525a70;--line:#c9d0e4;--sage:#3d5c45;--gold:#8a6a2e}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Palatino,'Palatino Linotype',Georgia,serif}
+body{overflow-x:hidden}
+main{width:min(920px,calc(100% - 28px));margin:0 auto;padding:28px 0 64px}
+a{color:var(--sage)}
+.ey{font:600 11px ui-monospace,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
+h1{font-size:clamp(36px,7vw,64px);line-height:.95;letter-spacing:-.03em;margin:8px 0 6px;font-weight:600}
+.kicker{margin:0 0 16px;color:var(--muted);font-style:italic}
+#v3{height:520px;border-radius:18px;overflow:hidden;background:#14110e;box-shadow:0 16px 36px rgba(26,32,48,.14)}
+.claim{line-height:1.5;max-width:68ch}
+.t{display:inline-block;padding:0 7px;border-radius:999px;font:700 11px ui-monospace,Consolas,monospace;letter-spacing:.04em;color:#1a140c}
+.lit{background:#8fd39a}.amber{background:#e2b15a}.model{background:#c7b0e4}
+#proof{font:14px/1.45 ui-monospace,Consolas,monospace;padding:10px 12px;border-left:3px solid var(--sage);background:rgba(255,255,255,.45)}
+#proof.fail{border-color:#a33;background:#f8d8d4}
+code{font:12px ui-monospace,Consolas,monospace;word-break:break-all}
+.nav{font:13px ui-monospace,Consolas,monospace}
+@media (max-width:420px){#v3{height:360px}main{width:min(920px,calc(100% - 20px))}}</style>
+</head>
+<body>
+<main>
+<p class="ey">OaSIs · spheres</p>
+<h1>Six Channels</h1>
+<p class="kicker">six names, each once</p>
+<div id="v3"></div>
+<ol class="claim">
+<li>MYTH</li>
+<li>OBSERVED</li>
+<li>AUTHORITY</li>
+<li>SACRED / INTERPRETED</li>
+<li>MODEL / WORKING SCIENCE</li>
+<li>HIDDEN PROVENANCE</li>
+</ol>
+<p class="claim"><span class="t lit">LIT</span> This page reads <a href="../worlds/u1-du0/world.json">worlds/u1-du0/world.json</a> and throws unless <code>six_channels</code> is these six names, in this order, each once.</p>
+<p class="claim"><span class="t amber">AMBER</span> U1 / Du0 is a fictional world model. The count is a manifest check, not a finding about history.</p>
+<p class="claim"><span class="t model">MODEL</span> Six spheres, one hue each.</p>
+<p id="proof">proving…</p>
+<p>Seal sha256(name|slug|blurb): <code id="seal">6863f118164956da6defb168e239f159cc28be47f03578b2881d73b1f2bd9caa</code></p>
+<p class="nav"><a href="the-return.html">← previous</a> · <a href="index.html">spheres</a> · <a href="kana-anchors.html">next →</a> · <a href="../">OaSIs</a></p>
+</main>
+<script src="facts.js"></script>
+<script>
+const NAME="Six Channels",SLUG="six-channels",BLURB="The world manifest names exactly six channels, and each name appears once.",SEAL="6863f118164956da6defb168e239f159cc28be47f03578b2881d73b1f2bd9caa";
+let PROOF_FAIL=null;
+function paintProof(msg, failed){
+  const p=document.getElementById('proof');
+  if(!p) return;
+  if(failed) PROOF_FAIL=msg;
+  p.textContent=PROOF_FAIL||msg;
+  p.className=PROOF_FAIL?'fail':'';
+}
+async function sha(t){
+  const b=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+async function shaBytes(bytes){
+  const b=await crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+async function check(){
+  const res=await fetch('../worlds/u1-du0/world.json');
+  if(!res.ok) throw Error('world '+res.status);
+  const j=await res.json();
+  const names=(j.six_channels||[]).map(c=>c.name);
+  return factChannels(names);
+}
+(async()=>{
+  try{
+    const h=await sha(NAME+'|'+SLUG+'|'+BLURB);
+    if(h!==SEAL) throw Error('seal mismatch');
+    const r=await check();
+    paintProof('LIT '+r, false);
+  }catch(e){
+    paintProof('FAIL '+e.message, true);
+    throw e;
+  }
+})();
+</script>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const box=document.getElementById('v3');
+const W=box.clientWidth||800, H=box.clientHeight||520;
+const R=new THREE.WebGLRenderer({antialias:true});
+R.setPixelRatio(Math.min(devicePixelRatio||1, 2));
+R.setSize(W, H);
+box.appendChild(R.domElement);
+const S=new THREE.Scene();
+S.background=new THREE.Color(0x121722);
+S.fog=new THREE.Fog(0x121722, 8, 22);
+const C=new THREE.PerspectiveCamera(46, W/Math.max(H,1), .1, 80);
+const O=new OrbitControls(C, R.domElement);
+O.enableDamping=true; O.autoRotate=!reduce; O.autoRotateSpeed=.35;
+C.position.set(0, 2.8, 10.6); C.lookAt(0, 0.35, 0); O.target.set(0, 0.35, 0);
+S.add(new THREE.AmbientLight(0xffffff, .55));
+function hero(THREE, S){
+  const g=new THREE.Group(); S.add(g);
+  const colors=[0xc45b5b,0xd8c48f,0x7fbf9a,0x8aa4d8,0xc49ad4,0xe7e2d4];
+  const meshes=[];
+  colors.forEach((c,i)=>{
+    const m=new THREE.Mesh(new THREE.SphereGeometry(.42,32,24), new THREE.MeshStandardMaterial({color:c,roughness:.38,metalness:.22,emissive:c,emissiveIntensity:.18}));
+    m.position.set((i-2.5)*1.15, 0.42, 0);
+    g.add(m); meshes.push(m);
+  });
+  const floor=new THREE.Mesh(new THREE.CircleGeometry(6.2,64), new THREE.MeshStandardMaterial({color:0x1a2030,roughness:.92}));
+  floor.rotation.x=-Math.PI/2; floor.position.y=0; g.add(floor);
+  const lamp=new THREE.PointLight(0xf2f4ff,46,22); lamp.position.set(0,4.2,3.2); g.add(lamp);
+  if(meshes.length!==6||new Set(colors).size!==6) throw Error('lanes');
+  g.userData.tick=(t,reduce)=>{
+    meshes.forEach((m,i)=>{ m.position.y=0.42+(reduce?0:Math.sin(t*1.2+i)*0.06); });
+  };
+  return g;
+}
+let HERO=null;
+try{ HERO=hero(THREE, S); }
+catch(e){ if(typeof paintProof==='function') paintProof('FAIL '+e.message, true); throw e; }
+function tick(){
+  requestAnimationFrame(tick);
+  if(HERO&&HERO.userData.tick) HERO.userData.tick(performance.now()/1000, reduce);
+  O.update(); R.render(S, C);
+}
+tick();
+</script>
+</body>
+</html>

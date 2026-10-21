@@ -419,6 +419,8 @@ Fresh Lean descendant: `lean/Oasis.MoreGarbage.01.lean` (pending user `0e`).
 
 The public `-mObiUs` world package lives at `worlds/u1-du0/`.
 
+Four recomputing instruments live at `spheres/`. They read counts this repo already states. Frozen files stay untouched.
+
 ```text
 dust wanted life
 → life wanted why
