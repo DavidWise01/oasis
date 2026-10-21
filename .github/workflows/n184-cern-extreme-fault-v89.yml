@@ -1,0 +1,76 @@
+name: N184 CERN Extreme and Correlated Faults v89
+on:
+  push:
+    paths:
+      - 'n184/cern-extreme-fault-v89/**'
+      - '.github/workflows/n184-cern-extreme-fault-v89.yml'
+  workflow_dispatch:
+jobs:
+  local-physics-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify preregistered stress model and synthetic known physics
+        run: |
+          node --check n184/cern-extreme-fault-v89/stress.mjs
+          node --check n184/cern-extreme-fault-v89/test_stress.mjs
+          node n184/cern-extreme-fault-v89/test_stress.mjs
+  cern-prospective-shard:
+    runs-on: ubuntu-latest
+    needs: local-physics-regression
+    permissions:
+      contents: read
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch original unchanged 100k CMS educational data
+        run: |
+          mkdir -p /tmp/cern89
+          curl --fail --location --silent --show-error --retry 3 --max-time 300 \
+            'https://root.cern.ch/files/tutorials/df014_CsvDataSource_MuRun2010B.csv' \
+            --output /tmp/cern89/official.csv
+      - name: Evaluate disjoint 20% prospective and previously used 20% retrospective shards
+        run: |
+          node n184/cern-extreme-fault-v89/stress.mjs /tmp/cern89/official.csv /tmp/cern89/report.json 100000 > /tmp/cern89/output.log
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            const r=JSON.parse(fs.readFileSync('/tmp/cern89/report.json','utf8'));
+            const p=r.experiment.shards.prospective,h=r.experiment.shards.retrospective;
+            if(!r.source.matchedV87||r.ingest.accepted!==100000)throw Error('Source bytes mismatch');
+            if(p.events<10000||h.events<10000||p.events+h.events>100000)throw Error('Prospective cohorts invalid');
+            for(const method of ['legacy','capped','guarded']){
+              const a=p.methods[method].all;
+              if(a.count!==p.events)throw Error('Wrong prospective denominator');
+              console.log(method+' PROSPECTIVE '+JSON.stringify({
+                n:a.count,alarm:a.alarm,fp:a.falseAlarm,fn:a.missedFault,
+                quarantine:a.quarantined,coverage:a.outputCoverage,
+                MAE:a.versusClean.maeGeV
+              }));
+            }
+            for(const scenario of ['clean','isolated_pz','correlated_pz_eta','coherent_pz_eta_E'])
+              console.log('SCENARIO '+scenario+' '+JSON.stringify(Object.fromEntries(
+                ['legacy','capped','guarded'].map(k=>[k,{
+                  n:p.methods[k][scenario].count,
+                  tp:p.methods[k][scenario].detectedFault,
+                  fp:p.methods[k][scenario].falseAlarm,
+                  fn:p.methods[k][scenario].missedFault,
+                  valid:p.methods[k][scenario].valid,
+                  quarantined:p.methods[k][scenario].quarantined
+                }]))));
+            console.log('RESULT_PASS: 100000 CERN source-matched rows and unused prospective shard tested');
+            console.log('SOURCE_SHA256: '+r.source.sha256);
+          "
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cern-v89-extreme-coherent-fault-report
+          path: /tmp/cern89/report.json
+          retention-days: 90
+          if-no-files-found: error
