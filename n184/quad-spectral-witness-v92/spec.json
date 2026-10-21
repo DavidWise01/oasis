@@ -1,0 +1,138 @@
+{
+  "schema": "oasis/n184/quad-spectral-witness/v92",
+  "version": "v9.2",
+  "classification": "symbolic-color-four-software-witnesses-and-quorum-demo",
+  "created": "2026-10-21",
+  "userIntent": "Continue natural development by mapping one immutable Gen0-8 Weak/Medium/Strong RGB swatch to four logical CERN quads A/B/C/D, each reporting a different view.",
+  "inputs": {
+    "parentPalette": "../generational-color-lattice-v91/color_core.mjs",
+    "parentPaletteSpec": "../generational-color-lattice-v91/spec.json",
+    "parentDetectorQuadSpec": "../cern-quad-discovery-v90/spec.json",
+    "sourceRegistry": "Wakaku virtual 370 hue addresses, mode=hue, 3 fixed orbits"
+  },
+  "quadViews": [
+    {
+      "quad": "A",
+      "label": "ALICE",
+      "ip": 2,
+      "view": "Phase & sector",
+      "fields": [
+        "hueDegrees",
+        "sector0to5",
+        "microtick0to239",
+        "phaseStep0to79"
+      ],
+      "validation": "Hue recomputed from frozen generation/index; original hue must match"
+    },
+    {
+      "quad": "B",
+      "label": "ATLAS",
+      "ip": 1,
+      "view": "RGB channels",
+      "fields": [
+        "r",
+        "g",
+        "b",
+        "displayHex",
+        "maximumChannel"
+      ],
+      "validation": "RGB hex recomputed from hue and intensity by additive HSV conversion; no detector data"
+    },
+    {
+      "quad": "C",
+      "label": "CMS",
+      "ip": 5,
+      "view": "Three strength lanes",
+      "fields": [
+        "weakHex",
+        "mediumHex",
+        "strongHex",
+        "tier"
+      ],
+      "validation": "Selected amplitude and peer strengths agree with generation and index"
+    },
+    {
+      "quad": "D",
+      "label": "LHCb",
+      "ip": 8,
+      "view": "370-address lineage",
+      "fields": [
+        "address",
+        "orbit",
+        "registryHueDegrees",
+        "registryPreviewHex"
+      ],
+      "validation": "Nearest fixed Wakaku hue address and orbit independently recomputed"
+    }
+  ],
+  "quorum": {
+    "required": 3,
+    "total": 4,
+    "rule": "At least 3 distinct named quad reports must declare the same identity key and pass their own local consistency checks.",
+    "simulation": "Inject 0,1,2 or 4 altered software reports without modifying the canonical swatch.",
+    "oneBad": "3/4 reports can still agree and accept, while showing disagreement.",
+    "twoBad": "2/4 clean reports insufficient to accept.",
+    "fourCoherentlyBad": "Shared coordinated corruption can still agree, illustrating lack of independent physical sources.",
+    "scope": "Quorum of derived software representations is not a cryptographic signature, independent detector witness, proof of source truth or new particle evidence."
+  },
+  "invariant": {
+    "colorGenerators": {
+      "genRange": [
+        0,
+        8
+      ],
+      "gen0": 3,
+      "gen1": 3,
+      "gen2": 6,
+      "throughGen8": 768
+    },
+    "strengths": [
+      "W",
+      "M",
+      "S"
+    ],
+    "sourceRegistryCount": 370,
+    "sourceOrbits": [
+      [
+        1,
+        122
+      ],
+      [
+        123,
+        244
+      ],
+      [
+        245,
+        370
+      ]
+    ],
+    "legacyCernToroidMagnets": {
+      "A": 0,
+      "B": 3,
+      "C": 0,
+      "D": 0
+    },
+    "carbonSymbolicLayer": 3,
+    "ringArcs": 6,
+    "phaseSteps": 80,
+    "microticks": 240,
+    "historyEpochs": {
+      "adaGen0": 1832,
+      "toroidalGen1": 1970
+    },
+    "motherNatureOffsetYears": 0
+  },
+  "limitations": [
+    "Every software quad inspects the same generated color swatch. Their projections are algorithmically distinct but NOT statistically independent measurements.",
+    "Quad labels reference ALICE, ATLAS, CMS, LHCb by logical mnemonic only; no CERN experiment provided optical color data, and only ATLAS has three toroidal detector magnets.",
+    "Strength W/M/S corresponds to 1/3,2/3,1 HSV value; NOT electroweak, intermediate, or strong nuclear interaction strength.",
+    "The 370 existing source color addresses and all earlier frozen module artifacts are read-only.",
+    "Agreement among mutually derived projections does not establish physical truth; coordinated fake reports can pass quorum."
+  ],
+  "output": {
+    "module": "./witness_core.mjs",
+    "viewer": "./index.html",
+    "tests": "./test_witness.mjs",
+    "readme": "./README.md"
+  }
+}
