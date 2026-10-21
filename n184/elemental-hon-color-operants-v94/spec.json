@@ -1,0 +1,178 @@
+{
+  "schema": "oasis/n184/elemental-hon-color-operants/v94",
+  "version": "v9.4",
+  "purpose": "Add periodic-element H/O/N roots to 366-position N184 analytical-cubit color overlay and retain five prior-named symbolic operators as color-state transformations",
+  "canonicalElementalAddressSpace": {
+    "first": 1,
+    "last": 366,
+    "size": 366,
+    "bodyStages": 365,
+    "lid": 366,
+    "physicalElementCountClaim": false
+  },
+  "roots": [
+    {
+      "symbol": "H",
+      "name": "Hydrogen",
+      "atomicNumber": 1,
+      "start": 1,
+      "end": 122,
+      "length": 122,
+      "modelColorRangeDegrees": [
+        0,
+        30
+      ],
+      "mnColorBand": "red→orange",
+      "modelTemperatureMnemonic": "2 K symbolic"
+    },
+    {
+      "symbol": "O",
+      "name": "Oxygen",
+      "atomicNumber": 8,
+      "start": 123,
+      "end": 244,
+      "length": 122,
+      "modelColorRangeDegrees": [
+        120,
+        180
+      ],
+      "mnColorBand": "green→teal",
+      "modelTemperatureMnemonic": "1 K symbolic"
+    },
+    {
+      "symbol": "N",
+      "name": "Nitrogen",
+      "atomicNumber": 7,
+      "start": 245,
+      "end": 366,
+      "length": 122,
+      "modelColorRangeDegrees": [
+        240,
+        290
+      ],
+      "mnColorBand": "blue→violet",
+      "modelTemperatureMnemonic": "0 K symbolic"
+    }
+  ],
+  "atomicNumberVsAddress": "Periodic table atomic numbers H=1, O=8, N=7 are NOT range indexes; 122-member blocks are symbolic carrier addresses, not 122 discovered isotopes/elements.",
+  "elementSources": {
+    "iupac": "https://iupac.org/what-we-do/periodic-table-of-elements/",
+    "maxOfficiallyRecognizedAtomicNumber": 118
+  },
+  "priorFrozenContract": {
+    "mnExplorer": "MN_PRIME_366_EXPLORER.html has 365 stages+lid and 3×122 root positions",
+    "operatorSource": "KET_TOROID_360_3_3_FULL_SPEC_v2_0_FROZEN.md section 7",
+    "operatorNamesInFrozenOrder": [
+      "Gravity",
+      "Expansion",
+      "Compression",
+      "Containment",
+      "Explosion"
+    ],
+    "physicalMeaningIsNotAsserted": true,
+    "sourceColor370": "i_color_370_wakaku_complete.html prior virtual addresses 1–370 with 367–370 hypothetical symbolic placeholders",
+    "avoidInvented371stSlot": true,
+    "preservePrevious370OrbitRanges": [
+      [
+        1,
+        122
+      ],
+      [
+        123,
+        244
+      ],
+      [
+        245,
+        370
+      ]
+    ],
+    "root366OverlayMayDisagreeWithLegacy370ThirdOrbit": "Root N ends exactly at 366; 367–370 source-only tail is NOT assigned to any of the three 122-position roots."
+  },
+  "operations": [
+    {
+      "id": "gravity",
+      "name": "Gravity",
+      "priorAbstraction": "Inward attraction",
+      "displayTransformation": "Hue offset from root anchor halved; saturation, value unchanged"
+    },
+    {
+      "id": "expansion",
+      "name": "Expansion",
+      "priorAbstraction": "Outward growth",
+      "displayTransformation": "Hue offset from root anchor multiplied by 1.25; saturation, value unchanged"
+    },
+    {
+      "id": "compression",
+      "name": "Compression",
+      "priorAbstraction": "Inward contraction",
+      "displayTransformation": "HSV saturation multiplied by 0.5; hue and value unchanged"
+    },
+    {
+      "id": "containment",
+      "name": "Containment",
+      "priorAbstraction": "Restorative boundary operation",
+      "displayTransformation": "Hue clamped into designated H/O/N root display interval; saturation capped at 0.8; value unchanged"
+    },
+    {
+      "id": "explosion",
+      "name": "Explosion",
+      "priorAbstraction": "Impulsive outward disturbance",
+      "displayTransformation": "Hue advanced 45 degrees; saturation restored to 1; value raised 0.2 (capped at 1)"
+    }
+  ],
+  "operationsAreProposedDisplayImplementations": true,
+  "rootHueFormula": "hue = range[0] + (address-start)/121*(range[1]-range[0])",
+  "strengthModel": {
+    "W": 0.3333333333333333,
+    "M": 0.6666666666666666,
+    "S": 1,
+    "source": "../generational-color-lattice-v91/color_core.mjs",
+    "semantics": "HSV display brightness; not weak/strong nuclear interaction force"
+  },
+  "cubitBridge": {
+    "source": "../analytical-cubit-color-bands-v93/cubit_core.mjs",
+    "canonical": "{|12|}{|3456|}{|78|}{|910|}{|1112131415||}{|1617|}{|18|}",
+    "association": "18 numbered cubit positions grouped six each for root H, O and N, while preserving seven original color packets as independent overlay",
+    "addressRule": "for slot position n, rootOrdinal=floor((n-1)/6); local=(n-1)%6; address=root.start+round(local*121/5)",
+    "terminal": {
+      "slot": 18,
+      "root": "N",
+      "address": 366,
+      "lid": true
+    },
+    "doubledSeam": {
+      "slot": 15,
+      "root": "N",
+      "address": 293,
+      "originalSeam": "||"
+    },
+    "strengthsPerRoot": {
+      "W": 2,
+      "M": 2,
+      "S": 2
+    }
+  },
+  "invariant": {
+    "source370Untouched": true,
+    "colorGenerationsUntouched": true,
+    "cernQuadTorusMagnetCount": {
+      "A": 0,
+      "B": 3,
+      "C": 0,
+      "D": 0
+    },
+    "historicalAdaGen0": 1832,
+    "historicalToroidalGen1": 1970,
+    "symbolicArcs": 6,
+    "symbolicPhaseSteps": 80,
+    "symbolicMicroticks": 240
+  },
+  "limitations": [
+    "Element names are periodic-table referents; this registry is symbolic, not a proposal that elements 119..366 have been verified.",
+    "Operants reuse the five names from the frozen prior model but have newly declared, optional deterministic RGB/HSV display algorithms; no claim of physical forces or chemical transformations.",
+    "Temperature labels 2K/1K/0K are symbolic only, not measured elemental temperatures.",
+    "The 18-to-366 map samples six addresses per root rather than enumerating all 122 within each cubit slot. The full root registry remains 366 positions.",
+    "The seven-band cubit display and three H/O/N gradient overlay are simultaneous different coordinate systems; neither overwrites the other.",
+    "The original 370 source palette remains defined with four non-root tail addresses; do not silently append a fifth address or overwrite the third orbit."
+  ]
+}
