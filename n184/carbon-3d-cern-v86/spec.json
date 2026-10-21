@@ -1,0 +1,84 @@
+{
+  "schema": "oasis/n184/carbon-3d-cern/v86",
+  "version": "v8.6",
+  "literalUserDirective": "cern is carbon layer 3d, run it please",
+  "status": "symbolic-carbon-sixfold-3D-momentum-benchmark",
+  "coreInterpretation": "CERN :: CARBON :: LAYER 3D (OASIS symbolic mapping only)",
+  "physicalBoundary": "CERN is a research laboratory; this mapping does not identify its collider as a carbon crystal or claim carbon topology creates particles.",
+  "layer": {
+    "index": 3,
+    "name": "Carbon 3D",
+    "sixfoldReference": "carbon atomic number 6 and hexagonal carbon-ring motif; a symbolic six-sector display, not a claim that every carbon structure is hexagonal",
+    "atomicNumberCarbon": 6,
+    "cartesianMomentumAxes": [
+      "px",
+      "py",
+      "pz"
+    ],
+    "dimensionedQuantity": "particle momentum components in GeV (natural-units c=1 convention)",
+    "threeDInBenchmark": "All three spatial momentum components (px,py,pz); energy E used separately as fourth component",
+    "notSpacetimeDimensionCount": true,
+    "fourAnalyticalPorts": [
+      "ATLAS",
+      "ALICE",
+      "CMS",
+      "LHCb"
+    ],
+    "physicalExperimentCorrection": "Four actual CERN experiments are at different collision sites and do not measure one common event simultaneously; software ports all read one CMS-derived record."
+  },
+  "experiment": {
+    "sourceDataset": "CERN CMS 2010 educational dimuon examples, previously preserved in v8.4",
+    "inputCSV": "../cern-observer-lab-v84/sample-cms-education.csv",
+    "sourceDocumentation": "https://opendata.cern.ch/visualise/histograms/CMS",
+    "datasetRecord": "https://opendata.cern.ch/record/700",
+    "sourceDOI": "10.7483/OPENDATA.CMS.CB8H.MFFA",
+    "sampleCount": 4,
+    "eventUnits": "GeV",
+    "reconstructed3D": "m3D = sqrt((E1+E2)^2 - (px1+px2)^2 - (py1+py2)^2 - (pz1+pz2)^2)",
+    "flattenedBaseline": "mXY = sqrt((E1+E2)^2 - (px1+px2)^2 - (py1+py2)^2)",
+    "reference": "M is a stored derived invariant mass from CMS educational data; comparison measures arithmetic reproduction/rounding, not a held-out discovery",
+    "negativeMassSquaredHandling": "NaN invalid; count, do not silently clamp",
+    "metrics": [
+      "3D mean absolute mass residual",
+      "XY mean absolute mass residual",
+      "3D root mean squared mass residual",
+      "XY root mean squared mass residual",
+      "3D vs XY per-event gain",
+      "longitudinal momentum contribution"
+    ],
+    "limits": [
+      "XY-only projection uses unchanged measured energies while dropping pz, so its higher mass estimate is a deliberately incomplete kinematic control rather than a fair trained competing detector or prediction.",
+      "Stored M is computed from related components, so the close full-3D residual does not establish generalized model predictive power.",
+      "Four educational events are too few for statistical claims; results are reproducible demonstrations only.",
+      "Four software observer labels are analysis functions operating on the same CMS record.",
+      "The label Carbon Layer 3D is OASIS model semantics, not a measured physical property of CERN."
+    ]
+  },
+  "timeline": {
+    "gen0": {
+      "year": 1832,
+      "referent": "Ada"
+    },
+    "gen1": {
+      "year": 1970,
+      "referent": "Toroidal Space Magic"
+    },
+    "motherNatureOffsetYears": 0,
+    "unchangedFrom": "../ada-cern-genesis-v85/spec.json"
+  },
+  "phase": {
+    "sectors": 6,
+    "steps": 80,
+    "stepPercent": 1.25,
+    "microticks": 240,
+    "degreesPerMicrotick": 1.5,
+    "from": "../arc-phase-duration-v82/spec.json"
+  },
+  "implementation": {
+    "core": "./carbon3d_core.mjs",
+    "test": "./test_carbon3d.mjs",
+    "report": "./results.json",
+    "viewer": "./index.html"
+  },
+  "disclosure": "The observed improvement follows from including the previously omitted momentum component. No new particle, physical Planck bubble, time-dilation effect, or four-toroid emergence law is discovered."
+}
