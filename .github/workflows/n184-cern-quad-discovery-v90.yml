@@ -1,0 +1,21 @@
+name: N184 CERN Four Quads and Discoveries v90
+on:
+  push:
+    paths:
+      - 'n184/cern-quad-discovery-v90/**'
+      - '.github/workflows/n184-cern-quad-discovery-v90.yml'
+  workflow_dispatch:
+jobs:
+  detector-quad-inventory:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate CERN physical 3-toroid inventory and 4 logical source-backed quads
+        run: |
+          node --check n184/cern-quad-discovery-v90/test_quads.mjs
+          node n184/cern-quad-discovery-v90/test_quads.mjs
