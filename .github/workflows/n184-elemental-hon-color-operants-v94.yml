@@ -1,0 +1,22 @@
+name: N184 Periodic HON Color Roots and Operants v94
+on:
+  push:
+    paths:
+      - 'n184/elemental-hon-color-operants-v94/**'
+      - '.github/workflows/n184-elemental-hon-color-operants-v94.yml'
+  workflow_dispatch:
+jobs:
+  hon-elements-and-color-operators:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate 3x122 roots, actual atomic numbers, 366 lid and five software color operants
+        run: |
+          node --check n184/elemental-hon-color-operants-v94/hon_core.mjs
+          node --check n184/elemental-hon-color-operants-v94/test_hon.mjs
+          node n184/elemental-hon-color-operants-v94/test_hon.mjs
