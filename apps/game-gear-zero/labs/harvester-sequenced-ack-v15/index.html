@@ -1,0 +1,1395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b13">
+<title>HARVESTER v15 · ACKNOWLEDGED 40-BIT TRANSPORT / ANTI-REPLAY</title>
+<style>
+.dualBoard{margin:14px 0;padding:15px;border:1px solid #64a1aa;border-radius:12px;background:linear-gradient(143deg,#051b28,#111226 85%)}
+.dualBoard h3{font:500 18px Georgia,serif;color:#d2f7ed;margin:0 0 7px}
+.dualLanes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.dualLane{border:1px solid #476878;border-radius:8px;padding:10px;background:#06121f;min-width:0}
+.dualLane b{color:#d7f1fb}.dualLane small{color:#9db4c4}
+.dualLane label{display:block;color:#a7ced7;font-size:10px;margin:7px 0 3px}
+.dualLane select,.dualLane input{max-width:100%;width:100%;padding:7px 8px;background:#172c3b;color:#ecf9ff;border:1px solid #597489;border-radius:6px}
+.dualPackets{display:flex;gap:5px;flex-wrap:wrap;margin:10px 0}
+.dualPackets span{font-size:10px;text-align:center;flex:1;min-width:36px;border:1px solid #356476;border-radius:5px;padding:8px 4px;color:#9eabb5}
+.dualPackets .received{border-color:#40c6a9;background:#10392e;color:#b2ffe9}
+.dualPackets .pending{border-color:#719ab8;background:#142539;color:#c7e6ff}
+.dualPackets .missing{border-color:#da8963;background:#402622;color:#ffd5a1}
+.dualPackets .bad{border-color:#e66e8c;background:#472335;color:#ffc0d2}.dualPackets .acknowledged{border-color:#89efa5;background:#16422e;color:#ebffe7}.dualPackets .waitingAck{border-color:#f1b773;background:#433223;color:#fff0d0}
+.dualActions{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0}
+.dualActions button{flex:1 1 130px}
+.dualMetrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:10px 0}
+.dualMetrics>div{padding:8px;border:1px solid #345869;border-radius:7px;background:#051525}
+.dualMetrics small{display:block;color:#9cb8bf;font-size:10px}.dualMetrics b{font-size:13px;color:#d0f6e5}
+.dualAudit{max-height:160px;overflow:auto;background:#03111a;border:1px solid #244457;border-radius:6px;padding:9px;font:10px/1.45 Consolas,monospace;color:#b3dece;white-space:pre-wrap;word-break:break-word}
+@media(max-width:650px){.dualLanes{grid-template-columns:1fr}.dualBoard{padding:10px}.dualMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.integrity{margin:13px 0;padding:14px;border:1px solid #547791;border-radius:11px;background:linear-gradient(135deg,#071b2a,#100f21)}
+.integrityTop{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.integrity h3{font:500 16px Georgia,serif;color:#a6eeff;letter-spacing:.07em;margin:0 0 9px}
+.integrityMetrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:11px 0}
+.integrityMetrics>div{border:1px solid #36647d;background:#081827;border-radius:8px;padding:10px;min-width:0}
+.integrityMetrics small{color:#98bcd0;font-size:10px;display:block}
+.integrityMetrics b{color:#d1fce9;font-size:15px;display:block;overflow-wrap:anywhere}
+.bitRows{display:grid;gap:5px;font:12px/1.55 ui-monospace,monospace;background:#04101b;padding:11px;border:1px solid #38566c;border-radius:7px;overflow-x:auto}
+.bitRow{display:flex;gap:12px;align-items:center;white-space:pre;min-width:max-content}
+.bitRow b{width:68px;color:#9be8ff;flex:0 0 68px}.bitRow span{letter-spacing:1.05px;color:#b9e8d4}
+.bitRow .bad{background:#b94a53;color:white;border-radius:3px}
+.integrity input[type=number]{max-width:100px}
+@media(max-width:600px){.integrityMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}.integrity{padding:9px}}
+
+:root{color-scheme:dark;--bg:#050a12;--card:#0b1725;--card2:#0a1421;--edge:#324d61;--text:#e4f4fa;--muted:#8daeba;--gold:#f7cf82;--green:#67fbb0;--red:#ff7480;--blue:#6fbaff;--purple:#b68bff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -5%,#223a4c,#0a1221 39%,#040910 88%);color:var(--text);font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}
+.wrap{max-width:1560px;margin:auto;padding:20px 18px 28px}header{margin:0 0 15px}h1{margin:1px 0 3px;font:500 clamp(24px,3vw,37px) Georgia,serif;letter-spacing:.11em;color:#fff1d1;text-shadow:0 0 32px #ffcc8850}header p{margin:0;color:#9ab8c6}.eyebrow{color:var(--gold);font-size:10px;letter-spacing:.22em}main{display:grid;grid-template-columns:minmax(0,1fr) 385px;gap:14px;align-items:start}.box{border:1px solid var(--edge);border-radius:13px;background:linear-gradient(150deg,#102037dd,#090e19f5);box-shadow:0 22px 60px #0008;min-width:0;overflow:hidden}.visual{padding:13px}.visual canvas{width:100%;height:auto;aspect-ratio:1200/770;display:block;border:1px solid #49687b;border-radius:10px;background:#060e1c}.ctrlbar{display:flex;gap:7px;flex-wrap:wrap;padding:11px 0 5px}.ctrlbar button,.ctrlbar select{flex:0 0 auto}button,select,input{font:inherit}button,select{background:linear-gradient(#213549,#122236);border:1px solid #4d7084;border-radius:8px;padding:8px 10px;color:#e7f7ff;cursor:pointer}button:hover{background:#2a4559}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #caffbd;outline-offset:2px}button.special{background:linear-gradient(#6a4b2b,#372a1d);border-color:#d0aa70;color:#fff4df}.panel{padding:14px}.panel+.panel{border-top:1px solid #33475a}.sidebar .box{margin-bottom:13px}.h{font:500 16px Georgia,serif;letter-spacing:.06em;color:#f6d9a1;margin:0 0 9px}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.metric{padding:8px;background:#071421;border:1px solid #304b59;border-radius:8px;min-width:0}.metric small{display:block;color:#8eabb8;font-size:10px}.metric b{font-size:18px;color:#e8f7ff;display:block}.metric.status b{font-size:14px;color:#f6dc9e}.metric strong{font-weight:400;color:#9db4c0;font-size:10px}.sliderline{display:grid;grid-template-columns:34px 1fr 68px;gap:9px;align-items:center;margin:7px 0}.sliderline label{font-weight:700;text-align:center;border-radius:5px;padding:4px;color:#071321}.sliderline input{width:100%;accent-color:var(--gold)}.sliderline output{text-align:right;color:#f9e2b6}.tag{border-radius:5px;background:#213447;border:1px solid #42607b;padding:3px 6px;font-size:11px;color:#cae8f0;white-space:nowrap}.small{font-size:11px;color:var(--muted)}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.swatches{display:flex;gap:5px;flex-wrap:wrap}.swatches span{padding:3px 7px;border-radius:6px;border:1px solid #31495e}.readout{margin-top:11px;padding:11px 12px;background:#07141d;border:1px solid #2f5564;border-radius:9px}pre{font:12px/1.27 ui-monospace,Consolas,monospace;white-space:pre;overflow:auto;margin:0;color:#bfeadd}#asciiFrame{max-width:100%}.footer{display:flex;gap:10px;flex-wrap:wrap;padding:11px 13px;background:#09131d;border-top:1px solid #304959;font-size:10px;color:#96bbce}p.note{font-size:11px;color:#a1b2bb;margin:7px 0 0}.progress{height:8px;background:#142436;border:1px solid #3e5b70;border-radius:6px;overflow:hidden;margin-top:10px}.progress>div{width:0%;height:100%;background:linear-gradient(90deg,#83cfff,#8ef6bd,#eac899)}.toolbar-extra{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.toolbar-extra button{flex:1 1 auto}.sublabel{color:#9eb7c4;letter-spacing:.09em;font-size:10px;margin-top:12px}.source{border:1px solid #33586d;border-radius:8px;padding:8px;color:#e1c994;background:#111f29;margin:8px 0}.pill{padding:2px 6px;border:1px solid #3b5e76;border-radius:12px;color:#d9faff}#artWrap{position:relative}.veil{position:absolute;top:12px;left:12px;background:#07141ab8;border:1px solid #59768888;border-radius:6px;padding:5px 9px;color:#c9e8f8;font-size:10px;letter-spacing:.1em;pointer-events:none}#altPanel{display:none;background:#03131d;min-height:520px;padding:20px;border:1px solid #35556c;border-radius:10px}.waveScope{padding:15px;margin-top:13px;border:1px solid #335269;border-radius:11px;background:linear-gradient(140deg,#0b1a28,#071322)}.waveScope canvas{aspect-ratio:1200/280;height:auto;width:100%;border:1px solid #294759;display:block;background:#050e17}.waveScope h2{color:#f0d69f;font:500 19px Georgia,serif;margin:0 0 8px}.waveScope .small{margin-top:7px}.scopeKey{display:flex;gap:13px;flex-wrap:wrap;margin:7px 0;color:#aec9d7;font-size:11px}.scopeKey b{font-weight:normal}.scopeDot{color:#7ff6cd}.scopeEmit{color:#ffd78b}.scopeReturn{color:#71baff}.scopeError{color:#ff8f9d}#altPanel.show{display:block}#artWrap.hide{display:none}.grounded{color:#9cf2da}.groundFault{color:#ffae8f}.shimmer{color:#edce94}#viewLabel{color:#f4d7a4}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+@media(max-width:1100px){main{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.sidebar .box{margin:0}}
+@media(max-width:650px){.wrap{padding:12px 8px}h1{letter-spacing:.04em}.visual{padding:7px}.sidebar{display:block}.sidebar .box{margin-bottom:11px}.panel{padding:12px}.metric b{font-size:16px}pre{font-size:10px}#altPanel{padding:9px;min-height:420px}.ctrlbar button,.ctrlbar select{padding:7px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+
+.harvframe{border:1px solid #355c70;background:linear-gradient(155deg,#10273a,#081520);border-radius:12px;padding:16px;margin-top:15px}
+.harvframe h2{font:500 20px Georgia,serif;color:#ffe2aa;margin:0 0 5px}
+.harvflow{display:flex;gap:5px;align-items:stretch;margin:13px 0;flex-wrap:wrap}
+.harvunit{border:1px solid #4a7180;background:#091b2c;border-radius:7px;padding:7px 9px;min-width:78px;text-align:center;flex:1 1 auto}
+.harvunit strong{display:block;color:#e5faff;font:600 12px/1.3 ui-monospace,monospace}
+.harvunit small{color:#a9cad7;font-size:10px}
+.harvunit.carrier{border-color:#c1a15a;background:#2b2524}.harvunit.clamp{border-color:#96eccc;background:#12322f}.harvunit.vessel{border-color:#d6a5fa;background:#29223a}
+.harvactions{display:flex;gap:7px;flex-wrap:wrap;padding:7px 0}.harvactions button{flex:1 1 118px}
+.harvmetrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:12px 0}.harvmetric{background:#05111f;border:1px solid #345569;border-radius:7px;padding:8px}.harvmetric small{display:block;color:#93b0ba}.harvmetric b{color:#f8e0ae;font-size:14px}
+.hallgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:12px}.hallrail{background:#071827;border:1px solid #2f485a;border-radius:7px;padding:6px 8px;min-width:0;display:grid;grid-template-columns:1fr auto;column-gap:9px;row-gap:3px;align-items:center}.halltitle{font-size:10px;color:#c5dce8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hallcells{display:flex;gap:2px}.hallcells span{width:18px;height:20px;border:1px solid #47677c;border-radius:3px;text-align:center;line-height:18px;font-size:11px;font-weight:bold;background:#0e3040}.hallcells .neg{color:#9dd8ff}.hallcells .pos{color:#ffe5a7}.hallcells .sample{color:#bcffd4}.hallcells .inactive{color:#587484;background:#122232}
+.hallvalue{grid-column:1/-1;font-size:9px;color:#9fbac8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hallrail.open{border-color:#ff8c8c}.hallrail.visual{opacity:.55}
+.harvnotice{font-size:11px;color:#a8bfc9;margin:8px 0}.harvreadout{max-height:150px;overflow:auto;background:#06111d;padding:8px;border:1px solid #29485c;border-radius:7px;font-size:10px;white-space:pre-wrap;word-break:break-word}
+@media(max-width:760px){.hallgrid{grid-template-columns:1fr}.harvmetrics{grid-template-columns:repeat(2,minmax(0,1fr))}.harvflow{flex-wrap:wrap}.harvunit{flex-basis:29%}}
+
+.motionbox{margin:11px 0;border:1px solid #53758d;border-radius:10px;padding:12px;background:linear-gradient(130deg,#102537,#061525)}
+.motionbox h3{font:500 17px Georgia,serif;color:#ffe1ae;margin:0 0 5px}
+.motiontrack{width:100%;height:auto;display:block;max-height:165px;background:#071521;border:1px solid #36546b;border-radius:9px}
+.motiongrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:10px 0}
+.motionstat{border:1px solid #33586b;background:#071624;border-radius:6px;padding:8px;min-width:0}
+.motionstat small{display:block;color:#9abbc8;font-size:10px}.motionstat b{display:block;color:#f8e5b7;font-size:15px}
+.motiontools{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.motiontools button{flex:1 1 150px}
+.motionsettings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0}
+.motionsettings label{display:grid;grid-template-columns:minmax(60px,1fr) 1.5fr 44px;gap:6px;align-items:center;font-size:11px;color:#b9d9e3}
+.motionsettings input{width:100%;accent-color:#f9c880}
+@media(max-width:650px){.motiongrid{grid-template-columns:repeat(2,minmax(0,1fr))}.motionsettings{grid-template-columns:1fr}}
+
+.pipeframe{border:1px solid #4e7790;background:linear-gradient(140deg,#0c2535,#091524);border-radius:12px;padding:14px;margin:15px 0}
+.pipeframe h3{font:500 22px Georgia,serif;color:#f6dda3;margin:0 0 5px}
+.pipeliteral{font:12px/1.8 ui-monospace,monospace;color:#e4d8fd;overflow-wrap:anywhere;background:#070f20;border:1px solid #52637d;padding:9px;border-radius:8px}
+.pipeflow{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;margin:14px 0}.pipestage{border:1px solid #37596c;border-radius:8px;text-align:center;padding:9px 4px;background:#0b1c2b;font-size:10px;color:#b9d5e4;min-width:0}.pipestage strong{display:block;color:#fbd78d;font-size:12px}.pipestage.active{border-color:#8ef9cc;background:#113228}.pipestage.opaque{border-color:#9b78d6}
+.piperow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:9px 0}.piperow label{color:#d3dce9}.piperow input{flex:1 1 140px;min-width:120px;max-width:300px;letter-spacing:.16em;border-radius:6px;padding:8px;background:#08121f;border:1px solid #547189;color:#c3eeff;font-size:15px;text-transform:uppercase}
+.pipebuttons{display:flex;flex-wrap:wrap;gap:6px}.pipebuttons button{flex:1 1 130px}.pipebytes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:8px}.pipebyte{background:#0c1c2a;border:1px solid #3f5c71;border-radius:8px;padding:7px;text-align:center;font-size:12px;color:#a9e5fd;word-break:break-all}.pipebyte strong{display:block;font-size:16px;color:#fff0c6}.piperesults{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:10px 0}.piperesults>div{border:1px solid #385d70;border-radius:7px;padding:8px;background:#091522;min-width:0}.piperesults small{display:block;color:#93b7c9}.piperesults b{color:#d9faf2;font-size:16px;overflow-wrap:anywhere}.pipecolors{display:flex;gap:9px;flex-wrap:wrap;margin:9px 0}.pipecolor{border-radius:6px;padding:6px 10px;border:1px solid #4c7288;color:#fff}.pipereceipts{font:11px/1.55 ui-monospace,monospace;max-height:170px;overflow:auto;background:#040e19;border:1px solid #325064;padding:10px;border-radius:8px;white-space:pre-wrap;word-break:break-all}
+@media(max-width:950px){.pipeflow{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:530px){.piperesults{grid-template-columns:repeat(2,minmax(0,1fr))}.pipebyte{font-size:9px;padding:5px 2px}.pipebyte strong{font-size:13px}}
+</style>
+</head>
+<body><div class="wrap">
+<header><div class="eyebrow">CONFLUENCE / HARVESTER / DUAL VECTOR / HALL RAIL</div><h1>HARVESTER v15 · SEQUENCED + ACKNOWLEDGED 40-BIT TRANSPORT</h1><p>Transporter vessel: GYRO1 → DIRECTION3 → BRACE6 + THRUST6 (CARRIER) → CLAMP → {{x²y²z²}} VESSEL → BRACE6 → DIRECTION3 → GYRO1</p></header>
+<main>
+<section class="box"><div class="visual">
+  <div id="artWrap"><div class="veil" id="viewLabel">STELLAR / AQUATIC · PLANETARY GEAR</div><canvas id="stage" width="1200" height="770" aria-label="Five gyros spinning around a central sun with colored clover petals, stellar skies, and sea cable currents"></canvas></div>
+  <div id="altPanel"><pre id="asciiFrame"></pre></div>
+  <div class="ctrlbar">
+    <button id="play">PAUSE</button><button id="step">STEP</button><button id="pulseReturn">+ ONE CABLE TICK</button><button class="special" id="lock">RESTORE 0 LOCK</button><button id="drift">PERTURB Z +45°</button><button id="weak">WEAKEN PURPLE</button><button id="sweep">NEXT 4⁴ STATE</button>
+    <select id="mode" aria-label="Rendering theme"><option value="hybrid">AS ABOVE / AS BELOW</option><option value="stellar">STELLAR SUN</option><option value="aquatic">AQUATIC CABLE</option><option value="atomic">ATOMIC CLOVER</option></select>
+    <button id="view">ASCII</button><button id="saveTXT">TXT</button><button id="savePNG">PNG</button>
+  </div>
+  <div class="footer"><span>G0 SUN . → FIVE [-!+] PULSARS → 4⁴ = 256 COLORS → BLACK-HOLE GROUND</span><span id="cycleText">PERIOD 1 · FOUR ROTOR TURNS</span><span>HEX: PULSARS CCW · SUN / BEARING COUNTERSPIN · BLACK HOLE BELOW</span></div>
+  <div class="progress"><div id="cycleProgress"></div></div>
+  <div class="waveScope">
+   <h2>SUN / BEARING · TORQUE / WORK / GROUND RESPONSE</h2>
+   <div class="scopeKey"><b class="scopeEmit">━ FIVE-PULSAR EMISSION</b><b class="scopeReturn">━ SEA RETURN LIGHT</b><b class="scopeError">━ SUN STRESS (GROUNDED)</b><b class="scopeDot">● ZERO REFERENCE</b></div>
+   <canvas id="scope" width="1200" height="280" aria-label="Real five gyro output, delayed return emission, and combined center stress over a cycle"></canvas>
+   <h2 style="margin-top:18px">COAXIAL TORQUE / ROTOR VELOCITIES</h2>
+   <div class="scopeKey"><b style="color:#9ee9ff">━ RING RATE</b><b style="color:#ffd78b">━ SUN RATE</b><b style="color:#ff91a7">━ COMMON DRIFT</b><b style="color:#9bf1c2">━ COUNTERSPIN ERROR</b></div>
+   <canvas id="torqueScope" width="1200" height="250" aria-label="Modeled time history of ring and sun rates with common drift and counterspin error"></canvas>
+   <div class="small">This ledger shows powered active torque and separately modeled damping; equal-and-opposite internal torque conserves the two-rotor angular momentum until the ground receives it.</div>
+   <div class="small">A sampled one-cycle trace of the actual model, not decorative audio. A zero return vector and nonzero emission can coexist. A disabled or undersized ground reveals return-channel flare stress; relocking also restores balance.</div>
+  </div>
+
+ <div class="harvframe" id="harvesterBoard">
+ <h2>HARVESTER · CARRIER / CLAMP / VESSEL</h2>
+ <div class="small">The BRACE6 + THRUST6 carrier now travels on a modeled finite stroke toward {{x²y²z²}}. Actual position, speed and force-margin gates must pass before attachment. Forces, position and energy are normalized simulation units; the Hall samples remain virtual.</div>
+ <div class="harvflow" aria-label="Harvester transporter stages">
+  <div class="harvunit"><strong>GYRO1</strong><small>INBOUND</small></div><div class="harvunit"><strong>DIRECTION3</strong><small>ALIGN</small></div>
+  <div class="harvunit carrier"><strong>BRACE6</strong><small>CARRIER</small></div><div class="harvunit carrier"><strong>THRUST6</strong><small>CARRIER</small></div>
+  <div class="harvunit clamp"><strong>CLAMP</strong><small id="clampBadge">OPEN</small></div><div class="harvunit vessel"><strong>{{x²y²z²}}</strong><small>VESSEL</small></div>
+  <div class="harvunit"><strong>BRACE6</strong><small>OUTBOUND</small></div><div class="harvunit"><strong>DIRECTION3</strong><small>OUTBOUND</small></div><div class="harvunit"><strong>GYRO1</strong><small>WITNESS</small></div>
+ </div>
+ <div class="harvactions"><button id="hNext" class="special">NEXT CLAMP STEP</button><button id="hRelease">RELEASE</button><button id="hReset">RESET CLAMP</button><button id="hAbort">SAFE ABORT</button><button id="hOpen">OPEN HR11</button><button id="hMisalign">MISALIGN</button><button id="hTick">+ 1 WITNESS TICK</button><button id="hExport">EXPORT RECEIPTS</button></div>
+ <div class="harvmetrics"><div class="harvmetric"><small>CLAMP STAGE</small><b id="hStage">IDLE</b></div><div class="harvmetric"><small>INTERLOCKS</small><b id="hInterlocks">—</b></div><div class="harvmetric"><small>HALL RAILS</small><b id="hRails">13/19</b></div><div class="harvmetric"><small>VERIFICATION</small><b id="hVerify">0/2</b></div></div>
+
+ <section class="motionbox" aria-label="Carrier motor and attachment force budget">
+  <h3>V11 · CARRIER STROKE / FORCE BUDGET</h3>
+  <div class="small">Powered servo • normalized model stroke 0 → 1 • motor force against payload bias, viscosity and contact stop. No claim of real thrust or magnetic clamping.</div>
+  <canvas id="motionTrack" class="motiontrack" width="1060" height="164" aria-label="Live finite stroke track from carrier station to vessel docking stop"></canvas>
+  <div class="motiongrid">
+   <div class="motionstat"><small>CARRIER POSITION</small><b id="mPos">0.000</b></div>
+   <div class="motionstat"><small>TRAVEL VELOCITY</small><b id="mVel">0.000</b></div>
+   <div class="motionstat"><small>HOLD FORCE MARGIN</small><b id="mMargin">—</b></div>
+   <div class="motionstat"><small>DOCK / HOLD STATUS</small><b id="mStatus">UNDOCKED</b></div>
+   <div class="motionstat"><small>MOTOR NET WORK</small><b id="mWork">0.000</b></div>
+   <div class="motionstat"><small>VISCOUS / STOP LOSS</small><b id="mHeat">0.000</b></div>
+   <div class="motionstat"><small>WORK LEDGER CLOSURE</small><b id="mLedger">0.0e+0</b></div>
+   <div class="motionstat"><small>DRIVE FORCE / LIMIT</small><b id="mDrive">0.00</b></div>
+  </div>
+  <div class="motiontools">
+   <button id="mAdvance16" class="special">DRIVE +16 TICKS</button>
+   <button id="mAdvance128">DRIVE +128 / DOCK</button>
+   <button id="mRetract16">RETRACT 16</button>
+   <button id="mRetract128">RETRACT 128</button>
+   <button id="mStall">STALL MOTOR</button>
+   <button id="mRestore">RESTORE POWER</button>
+   <button id="mOverload">OVERLOAD CLAMP</button>
+   <button id="mClear">CLEAR OVERLOAD</button>
+  </div>
+  <div class="motionsettings">
+   <label>THRUST <input id="mThrust" type="range" min="0" max="5" step="0.05" value="3.0"/><output id="mThrustVal">3.00</output></label>
+   <label>PAYLOAD <input id="mLoad" type="range" min="0" max="2" step="0.05" value="0.3"/><output id="mLoadVal">0.30</output></label>
+   <label>HOLD CAP <input id="mCapacity" type="range" min="0" max="3" step="0.05" value="1.25"/><output id="mCapacityVal">1.25</output></label>
+   <label>DRAG <input id="mDamping" type="range" min="0" max="3" step="0.05" value="0.7"/><output id="mDampingVal">0.70</output></label>
+  </div>
+  <div id="mReason" class="small">Carrier must arrive and settle before the clamp may engage.</div>
+ </section>
+ <section class="pipeframe" id="vesselPipeBoard" aria-label="Harvester v13 40-bit vessel pipe">
+  <h3>V15 · VESSEL PIPE / TRANSFER-ID + ACKNOWLEDGEMENTS</h3>
+  <div class="pipeliteral" id="pipeLiteral">{{lv &gt; . . . . . &gt; 40 bits &gt; . . . . 2^3 &gt; 1 1 2 4 &gt; 1 in , 1 , out &gt; {{ix2}} , r1,g1,b1,bk1 }}</div>
+  <div class="small">Experimental transport encoding: five input bytes = 40 bits; four three-bit sensor states = 12 projected bits; weight vector [1,1,2,4]. Projection is lossy. Original 40 bits remain in each receipt. The symbols lv and {{ix2}} are intentionally not assigned physical meanings.</div>
+  <div class="pipeflow" id="pipeFlow" aria-label="Eight vessel pipe stages"></div>
+  <div class="piperow"><label for="pipeHex">40-BIT REGISTER · 10 HEX</label><input id="pipeHex" value="01337AB4FF" maxlength="10" spellcheck="false" pattern="[0-9a-fA-F]{10}" aria-label="40-bit vessel input hex"/><span class="tag">5 × 8 = 40</span></div>
+  <div class="pipebytes" id="pipeBytes"></div>
+  <div class="pipebuttons"><button id="pipeLoad" class="special">LOAD 40 BITS</button><button id="pipeIn">1 IN / SEND</button><button id="pipeOut">1 OUT / VERIFY</button><button id="pipeResume">RESUME HELD</button><button id="pipeAbort">ABORT PIPE</button><button id="pipeClear">CLEAR REGISTER</button><button id="pipeExport">EXPORT PIPE JSON</button></div>
+  <div class="piperesults"><div><small>PIPE STATE</small><b id="pipePhase">EMPTY</b></div><div><small>INGRESS / EGRESS</small><b id="pipeCounts">0 / 0</b></div><div><small>1 1 2 4 WEIGHT</small><b id="pipeWeight">—</b></div><div><small>LAST REGISTER DIGEST</small><b id="pipeDigest">—</b></div></div>
+  <div class="pipecolors" id="pipeColors" aria-label="Four one-bit symbolic color lanes"></div>
+  <section class="dualBoard" id="dualBoard" aria-label="Two independent simulated packet pathways">
+  <h3>V15 · TWO ACKNOWLEDGED PATHS / STALE + REPLAY REJECTION</h3>
+  <div class="small">Five independently sequenced byte packets per path, tagged by transfer ID, lane, attempt and byte index. Each receiver sends a delayed acknowledgement. Output requires all ten ACKs plus exact 40-bit readback; replayed or stale packets are rejected. All signals are software simulated.</div>
+  <div class="dualLanes">
+   <div class="dualLane"><b>PATH A · CYAN</b> <small id="dualStatusA">EMPTY</small>
+    <label for="dualDelayA">DELIVERY DELAY (TICKS)</label><input type="number" id="dualDelayA" min="1" max="32" step="1" value="2"/>
+    <label for="dualModeA">NEXT SEND FAULT</label><select id="dualModeA"><option value="NORMAL">CLEAN</option><option value="DROP">DROP ONE BYTE</option><option value="FLIP">CORRUPT ONE BIT</option></select>
+    <label for="dualBitA">FAULT BIT INDEX (0–39)</label><input id="dualBitA" type="number" min="0" max="39" value="17"/>
+    <label for="dualAckModeA">NEXT SEND ACK FAULT</label><select id="dualAckModeA"><option value="NORMAL">ALL ACKS DELIVERED</option><option value="DROP_ONE">LOSE ACK #2</option></select><div class="dualPackets" id="dualPacketsA"></div><button id="dualRetryA">RETRANSMIT PATH A</button>
+   </div>
+   <div class="dualLane"><b>PATH B · PURPLE</b> <small id="dualStatusB">EMPTY</small>
+    <label for="dualDelayB">DELIVERY DELAY (TICKS)</label><input type="number" id="dualDelayB" min="1" max="32" step="1" value="6"/>
+    <label for="dualModeB">NEXT SEND FAULT</label><select id="dualModeB"><option value="NORMAL">CLEAN</option><option value="DROP">DROP ONE BYTE</option><option value="FLIP">CORRUPT ONE BIT</option></select>
+    <label for="dualBitB">FAULT BIT INDEX (0–39)</label><input id="dualBitB" type="number" min="0" max="39" value="29"/>
+    <label for="dualAckModeB">NEXT SEND ACK FAULT</label><select id="dualAckModeB"><option value="NORMAL">ALL ACKS DELIVERED</option><option value="DROP_ONE">LOSE ACK #2</option></select><div class="dualPackets" id="dualPacketsB"></div><button id="dualRetryB">RETRANSMIT PATH B</button>
+   </div>
+  </div>
+  <div class="dualActions"><button id="dualTick">ADVANCE +1 TICK</button><button id="dualTicks16" class="special">DELIVER +16 TICKS</button><button id="dualReplayA">INJECT DUPLICATE A</button><button id="dualReplayB">INJECT DUPLICATE B</button><button id="dualSourceDiscard">DISCARD SENDER COPY</button><button id="dualDemoFault">SET B TO DROP A BYTE</button></div>
+  <div class="dualMetrics">
+   <div><small>PATH A / COMPLETE BYTES</small><b id="dualCountA">0/5</b></div>
+   <div><small>PATH B / COMPLETE BYTES</small><b id="dualCountB">0/5</b></div>
+   <div><small>DELIVERY TICK</small><b id="dualTickValue">—</b></div>
+   <div><small>SENDER AVAILABLE</small><b id="dualSource">—</b></div>
+   <div><small>DUAL EXACT CHECK</small><b id="dualVerdict">AWAIT IN</b></div>
+   <div><small>OUTPUT ACK</small><b id="dualAck">NONE</b></div><div><small>TRANSFER ID</small><b id="dualTxId">—</b></div><div><small>PATH A / ACKS</small><b id="dualAckA">0/5</b></div><div><small>PATH B / ACKS</small><b id="dualAckB">0/5</b></div><div><small>STALE / REPLAY BLOCKS</small><b id="dualRejectCount">0</b></div>
+  </div>
+  <div id="dualReason" class="small">Press 1 IN once the clamp is secured. The receiver must acknowledge each byte separately; late old-attempt packets cannot satisfy the current transfer.</div>
+  <pre id="dualAudit" class="dualAudit">No transmissions recorded.</pre>
+  <div class="small">{{ix2}} remains an undefined symbolic operator. Two software routes are a testable hypothesis, not a definition of ix2.</div>
+ </section>
+  <section class="integrity" id="integrityBoard" aria-label="Forty-bit receiver integrity checker">
+  <div class="integrityTop"><h3>V15 · ACK-GATED BYTE-PACKET READBACK</h3><span class="tag">{{ix2}} UNASSIGNED</span></div>
+  <p class="small">A/B receive independently scheduled and tagged byte packets. Each path must receive all five bytes, return all five acknowledgements for the current attempt, and match the original register. A duplicate or stale acknowledgement cannot close the gate.</p>
+  <div class="integrityMetrics"><div><small>RECEIVED / EXPECTED</small><b id="readScore">— / 40</b></div><div><small>WITNESS A ERRORS</small><b id="readErrA">—</b></div><div><small>WITNESS B ERRORS</small><b id="readErrB">—</b></div><div><small>EXIT VERDICT</small><b id="readVerdict">AWAIT IN</b></div></div>
+  <div id="readRows" class="bitRows" aria-label="Source and two receiver bit strings">No payload entered the pipe.</div>
+  <div class="piperow"><label for="faultBit">BIT INDEX 0–39</label><input id="faultBit" type="number" min="0" max="39" step="1" value="17" aria-label="Bit position to flip"/></div>
+  <div class="pipebuttons"><button id="flipReadA">FLIP A BIT</button><button id="flipReadB">FLIP B BIT</button><button class="special" id="repairRead">RETRANSMIT BOTH PATHS</button></div>
+  <div class="small" id="readReason">A payload is eligible for output only when both independently delivered software registers contain all 40 source bits exactly.</div>
+  <div class="small" style="margin-top:8px">RECEIVER AUDIT · EXACT HEX IN/OUT · TEST CHECKSUMS ARE NOT CRYPTOGRAPHIC SIGNATURES</div><pre class="pipereceipts" id="readAudit">No receiver receipts.</pre>
+ </section>
+ <div class="small" id="pipeReason">Load a valid register. Both 1 IN and 1 OUT require SECURED clamp, Hall witnesses, and docked force margin.</div>
+  <div class="small" style="margin:12px 0 5px">SIGNED PIPE RECEIPTS · PREV-HASH CHAIN · MAX 96</div><pre class="pipereceipts" id="pipeReceiptLog">No pipe transactions.</pre>
+ </section>
+ <div class="small" id="hReason">READY TO SAMPLE</div>
+ <div class="hallgrid" id="hallGrid" aria-label="Nineteen simulated seven-slot Hall rails"></div>
+ <p class="harvnotice">Each line = {{-+000+-}}: two signed polarity pairs and H0/H1/H2. 13 modeled paths = 39 projected samples; 6 perimeter rails = 18 reserved visual-only positions. 57 declared positions, no physical sensor data. Loss of a required witness during attachment locks the clamp in SAFE_HOLD.</p>
+ <div class="small" style="margin-bottom:5px">APPEND-ONLY CLAMP RECEIPTS (bounded 96)</div><pre class="harvreadout" id="hReceiptLog">No receipts.</pre>
+ </div>
+</div></section>
+<aside class="sidebar">
+ <div class="box"><div class="panel">
+  <h2 class="h">ZERO STABILITY · WITNESS</h2><div class="source">{{ v:0 &nbsp; w:0 &nbsp; x:360 &nbsp; y:360 &nbsp; z:720 }}</div>
+  <div class="metrics">
+   <div class="metric"><small>CENTER RESIDUAL</small><b id="residual">0.0000</b><strong>zero = ideal symbolic lock</strong></div>
+   <div class="metric"><small>CONTAINMENT</small><b id="containment">1.000</b><strong>1 / (1 + 2R)</strong></div>
+   <div class="metric"><small>LIGHT EMISSION</small><b id="emission">2.000</b><strong>nonzero when centered</strong></div>
+   <div class="metric"><small>4⁴ STRENGTH STATE</small><b id="mask">255 / 255</b><strong>base-4 {G,R,B,P}</strong></div>
+   <div class="metric"><small>XY / Z MISMATCH</small><b id="coupling">0 / 0</b><strong>phase difference not torque</strong></div>
+   <div class="metric status"><small>CORE EVENT</small><b id="event">0 · LOCKED</b><strong id="eventDetail">balanced but emitting</strong></div>
+  </div></div></div>
+ <div class="box"><div class="panel">
+  <div class="panelhead"><h2 class="h">AQUATIC · RETURN FIELD</h2><span class="tag">4 DELAYED PORTS → DOT</span></div>
+  <div class="small">A second, measured circuit. Four emitted complex signals enter a matched sea-cable delay line and return to the core. The two opposed pairs cancel only when their amplitudes and travel times match.</div>
+  <div class="metrics" style="margin-top:10px">
+   <div class="metric"><small>DELAYED RETURN RESIDUAL</small><b id="returnResidual">0.000</b><strong>signed vector, not light level</strong></div>
+   <div class="metric"><small>RETURNED EMISSION</small><b id="returnEnergy">0.000</b><strong>nonnegative output</strong></div>
+   <div class="metric"><small>SUN RESIDUAL AFTER GROUND</small><b id="combinedResidual">0.000</b><strong>after capacity-limited sink</strong></div>
+   <div class="metric status"><small>SEA-CABLE STATUS</small><b id="cableEvent">CALIBRATING</b><strong id="cableWitness">round-trip ticks</strong></div>
+  </div>
+  <div class="toolbar-extra" style="margin-top:9px"><button id="toggleCoupling">RETURN COUPLED</button><button id="breakCable">DELAY PURPLE +8</button><button id="lockCable">RELOCK CABLES</button></div>
+  <div class="sublabel">ALL FOUR CABLES / COMMON DELAY (TICKS)</div><div class="sliderline"><label style="background:#74c8de">4→</label><input type="range" id="delayAll" min="1" max="16" step="1" value="8"><output id="delayAllOut">8 t</output></div>
+  <div class="sublabel">PURPLE CABLE / EXTRA DELAY</div><div class="sliderline"><label style="background:var(--purple)">P↻</label><input type="range" id="delayPurple" min="0" max="16" step="1" value="0"><output id="delayPurpleOut">0 t</output></div>
+  <div class="sublabel">RETURN COUPLING GAIN</div><div class="sliderline"><label style="background:#d9b575">K</label><input type="range" id="returnGain" min="0" max="1" step="0.05" value="0.85"><output id="returnGainOut">0.85</output></div>
+  <div class="small">Default: same 8-tick delay, gain 0.85, attenuation 0.90. A mismatch in only the purple cable produces an actual delayed return residual, which participates in the flare threshold. Changes are deterministic, not random.</div>
+ </div></div>
+ <div class="box"><div class="panel" id="bearingPanel">
+  <div class="panelhead"><h2 class="h">SUN / CW RING · REACTION TORQUE</h2><span class="tag">ACTIVE DRIVE + GROUND RESPONSE</span></div>
+  <div class="small">Five pulsars + hex carrier spin CCW. The ring rotates CW around the sun, while the sun's own rotor turns CCW. The ring and sun exchange equal-and-opposite modeled torque. The powered actuator supplies or recovers work; the ground removes shared drift. Neither rotation generates gravity.</div>
+  <div class="metrics" style="margin-top:10px">
+   <div class="metric"><small>1g-EQUIVALENT BALANCE</small><b id="gEquivalent">1.000 g*</b><strong>*dimensionless lock proxy</strong></div>
+   <div class="metric status"><small>BEARING STATUS</small><b id="bearingStatus">1g* LOCKED</b><strong>ring + carrier cancel in model</strong></div>
+   <div class="metric"><small>CARRIER · CCW</small><b id="carrierSpeed">+1.000</b><strong>29.75 km/s label; normalized spin</strong></div>
+   <div class="metric"><small>CENTER RING · CW</small><b id="ringSpeed">−1.000</b><strong>negative = clockwise in physics convention</strong></div>
+   <div class="metric"><small>SUN ROTOR · CCW</small><b id="sunSpeed">+1.000</b><strong>positive = counterclockwise</strong></div>
+   <div class="metric"><small>COUNTERSPIN ERROR</small><b id="bearingError">0.000</b><strong>|sun − ring − 2| + 2|common drift|</strong></div>
+  </div>
+  <div class="toolbar-extra" style="margin-top:10px">
+   <button id="bearingRelease">START FROM REST</button>
+   <button id="bearingKick">KICK RING (+0.68)</button>
+   <button id="bearingLock">RELOCK TORQUE PAIR</button>
+  </div>
+  <div class="sublabel">POWERED INTERNAL TORQUE GAIN / PER CYCLE</div>
+  <div class="sliderline"><label style="background:#8bcfff">K</label><input id="bearingTau" type="range" min="0" max="5" step="0.1" value="2.5"><output id="bearingTauOut">2.5</output></div>
+  <div class="sublabel">GROUND LOAD / COMMON-DRIFT DAMPING</div>
+  <div class="sliderline"><label style="background:#83ebd8">G</label><input id="bearingGround" type="range" min="0" max="5" step="0.1" value="1.7"><output id="bearingGroundOut">1.7</output></div>
+  <div class="metrics" style="margin-top:10px">
+   <div class="metric"><small>RING ↔ SUN TORQUE</small><b id="motorTorque">0.000</b><strong>equal and opposite</strong></div>
+   <div class="metric"><small>COMMON ROTOR DRIFT</small><b id="meanDrift">0.000</b><strong>ground unloads mean rate</strong></div>
+   <div class="metric"><small>MOTOR WORK · SIGNED</small><b id="driveWork">0.000</b><strong>active energy supplied/recovered</strong></div>
+   <div class="metric"><small>GROUND DISSIPATION</small><b id="groundHeat">0.000</b><strong>modeled kinetic-energy loss</strong></div>
+   <div class="metric"><small>GROUND REACTION</small><b id="groundMomentum">0.000</b><strong>momentum transfer to reference</strong></div>
+   <div class="metric"><small>LEDGER CLOSURE</small><b id="energyClosure">0.000</b><strong>energy / momentum residual</strong></div>
+  </div>
+  <div class="small">Two equal-inertia normalized rotors exchange opposite torque. Their relative spin can recover using powered torque, but a ring-only kick leaves common angular momentum until the ground is connected. Motor work, kinetic energy and ground dissipation are accounted separately. <strong>1g*</strong> remains a dimensionless lock score, not measured gravity.</div>
+ </div></div>
+ <div class="box"><div class="panel" id="groundPanel">
+  <div class="panelhead"><h2 class="h">BLACK HOLE · MODEL GROUND</h2><span class="tag">SUN → RETURN → SINK</span></div>
+  <div class="small">The five pulsars still ride a CCW carrier labeled <strong>29.75 km/s</strong>. The old free-floating CW satellite has been replaced by a <strong>CW bearing ring around the central sun</strong>. A separate sun rotor turns CCW against that ring. The bearing responds toward signed counterspin instead of holding a hard-coded extra satellite. The <strong>1g-equivalent</strong> reading is a dimensionless balance indicator, not actual gravitational acceleration.</div>
+  <div class="metrics" style="margin-top:10px">
+   <div class="metric"><small>FIVE-PULSAR LIGHT</small><b id="pulseEmission">0.000</b><strong>pulses continue at zero</strong></div>
+   <div class="metric"><small>PULSE DEVIATION</small><b id="pulseError">0.000</b><strong>versus locked reference</strong></div>
+   <div class="metric"><small>RAW SUN STRESS</small><b id="rawStress">0.000</b><strong>before ground</strong></div>
+   <div class="metric"><small>BLACK HOLE DRAIN</small><b id="groundDrain">0.000</b><strong>absorbed normalized stress</strong></div>
+   <div class="metric"><small>GROUND-ADJUSTED SUN</small><b id="sunStress">0.000</b><strong>raw less drain</strong></div>
+   <div class="metric status"><small>GROUND STATE</small><b id="groundStatus">GROUNDED</b><strong>capacity-limited</strong></div>
+  </div>
+  <div class="toolbar-extra" style="margin-top:9px"><button id="toggleGround">GROUND CONNECTED</button><button id="demoGround">DELAY P / COMPARE</button><button id="resetGround">RELOCK + GROUND</button></div>
+  <div class="sublabel">BLACK-HOLE ABSORPTION CAPACITY</div><div class="sliderline"><label style="background:#8fe7d5">BH</label><input id="groundCapacity" type="range" min="0" max="1.2" step="0.05" value="0.45"><output id="groundCapacityOut">0.45</output></div>
+  <div class="small">A matched-return, five-pulsar zero still emits light. Disconnect ground after adding purple delay +8 to reveal the stress the sink had drained. The underlying sea-cable math and five-gyro rates remain unchanged.</div>
+ </div></div>
+ <div class="box"><div class="panel">
+  <div class="panelhead"><h2 class="h">FIVE PULSAR ROTOR RATES</h2><span class="tag">DEG / CYCLE</span></div>
+  <div class="small">V and W are engaged zero-turn witnesses. X/Y each make one turn. Z makes two. Y is half a turn opposite X to cancel their phase vectors.</div>
+  <div id="rateRows"></div>
+  <div class="sublabel">FIFTH GYRO CROWN / PHASE OFFSET</div><div class="sliderline"><label style="background:#f9d798">Zφ</label><input type="range" id="zSlip" min="-90" max="90" step="1" value="0"><output id="zSlipOut">0°</output></div>
+  <div class="small">If Z breaks its 2 × X relation, the crown precesses and the center can flare. This is a controllable visualization, not stellar mechanics.</div>
+ </div></div>
+ <div class="box"><div class="panel">
+  <div class="panelhead"><h2 class="h">FOUR COLOR PETALS</h2><span class="tag">4 × 4 × 4 × 4</span></div>
+  <div class="small">Each of G/R/B/P carries level 0–3. The fifth gyro Z watches the paired rotating system rather than introducing a fifth color level.</div>
+  <div id="colorRows"></div>
+  <div class="sublabel">COMPLETE STATE ADDRESS</div><input type="range" id="address" min="0" max="255" step="1" value="255" style="width:100%;accent-color:var(--gold)"><div class="small">Drag to scan all 256 combinations without changing rotor rates.</div>
+ </div></div>
+ <div class="box"><div class="panel"><h2 class="h">ASCII · FIVE-GYRO LEDGER</h2><pre id="ledger"></pre>
+  <p class="note">Symbolic control analogy only: actual pulsars are neutron stars, solar flares arise from magnetic reconnection, and black holes are gravitational objects rather than electrical grounds. No physical confinement mechanism is asserted.</p>
+ </div></div>
+</aside></main></div>
+<script id="gyro-engine">
+/* Deterministic, unit-tested symbolic model. No DOM access in this block. */
+(function(root){'use strict';
+const TAU=2*Math.PI, NAMES=['v','w','x','y','z'], COLORS=['G','R','B','P'];
+const DEFAULT_RATES=Object.freeze({v:0,w:0,x:360,y:360,z:720});
+const wrap=x=>Math.atan2(Math.sin(x),Math.cos(x));
+const clip=(x,a,b)=>Math.max(a,Math.min(b,x));
+const phasor=(a)=>[Math.cos(a),Math.sin(a)];
+const stateId=(levels)=>((levels.G*4+levels.R)*4+levels.B)*4+levels.P;
+const fromId=id=>{let n=clip(Math.round(id),0,255);return {P:n%4,B:Math.floor(n/4)%4,R:Math.floor(n/16)%4,G:Math.floor(n/64)%4};};
+function model(input,cycles){
+ const r=input.rates, l=input.levels, off=(input.zSlip||0)*Math.PI/180,theta=cycles*TAU;
+ const phiX=theta*r.x/360, phiY=theta*r.y/360+Math.PI,phiZ=theta*r.z/360+off;
+ const vx=phasor(phiX),vy=phasor(phiY);
+ const xy=Math.hypot(vx[0]+vy[0],vx[1]+vy[1])/2; // x and y cancel at equal frequency with a half-turn phase offset
+ const crown=Math.abs(Math.sin(wrap(phiZ-2*phiX)/2));
+ const anchors=(Math.abs(r.v)+Math.abs(r.w))/180; // deviations from zero-turn witness references
+ const petals=Math.hypot(l.G-l.B,l.R-l.P)/(3*Math.SQRT2);
+ const residual=Math.hypot(xy,0.85*crown,0.6*anchors,0.9*petals);
+ const excitation=(l.G+l.R+l.B+l.P)/12;
+ const emission=COLORS.reduce((acc,k,i)=>acc+(l[k]/3)*(0.5+0.5*Math.sin(theta+i*Math.PI/2)),0);
+ const containment=1/(1+2*residual);
+ const flare=residual>0.30&&excitation>0.60;
+ const event=flare?'FLARE':residual<1e-7?'0 · LOCKED':residual<0.20?'PRECESSING':'STRAIN';
+ return {residual,containment,emission,excitation,flare,event,xy,crown,anchors,petals,phiX,phiY,phiZ,angles:{v:0,w:0,x:phiX,y:phiY,z:phiZ},id:stateId(l),cycle:cycles,turnBudget:NAMES.reduce((sum,k)=>sum+r[k],0)};
+}
+root.GyroMath={TAU,NAMES,COLORS,DEFAULT_RATES,wrap,clip,phasor,stateId,fromId,model};
+})(window);
+</script>
+<script id="sea-cable-engine">
+/* Second independent model: four signed channels, four return paths.
+   'Sea cable' is a discrete delay-line analogy, not a real underwater network. */
+(function(root){'use strict';
+ const TAU=Math.PI*2, ORDER=['G','R','B','P'];
+ const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+ const defaults=()=>({coupled:true,delay:8,purpleExtra:0,gain:0.85,attenuation:0.90});
+ const delays=c=>({G:c.delay,R:c.delay,B:c.delay,P:c.delay+c.purpleExtra});
+ function sample(input,cycle,config){
+  const c=config||defaults(), r=input.rates,l=input.levels, gyro=root.GyroMath.model(input,cycle);
+  const tick=Math.max(0,Math.floor(cycle*64+1e-9)), d=delays(c);
+  let re=0,im=0,returned=0;const portReturns={};
+  for(let i=0;i<ORDER.length;i++){
+   const k=ORDER[i], delay=d[k],prior=tick-delay,open=prior>=0;
+   // Channels are sampled at the time they ENTERED the delay line;
+   // no channel can return before its full round trip.
+   const theta=TAU*(prior/64)+i*Math.PI/2;
+   const mag=open?(l[k]/3)*c.attenuation:0;
+   const x=mag*Math.cos(theta),y=mag*Math.sin(theta);
+   re+=x;im+=y;
+   const light=mag*(.5+.5*Math.sin(theta));returned+=light;
+   portReturns[k]={x,y,light,delay,inFlight:!open,sourceTick:prior};
+  }
+  const returnResidual=Math.hypot(re,im),contribution=c.coupled?c.gain*returnResidual:0;
+  const combinedResidual=Math.hypot(gyro.residual,contribution);
+  const containment=1/(1+2*combinedResidual);
+  const flare=combinedResidual>0.30&&gyro.excitation>0.60;
+  const stable=combinedResidual<1e-7;
+  const event=flare?'FLARE':stable?'0 · LOCKED':combinedResidual<0.20?'PRECESSING':'STRAIN';
+  return {tick,gyro,portReturns,returned,returnResidual,re,im,contribution,combinedResidual,containment,flare,event,config:{...c},delays:d,ready:tick>=Math.max(...Object.values(d))};
+ }
+ root.SeaCableMath={ORDER,TAU,clamp,defaults,delays,sample};
+})(window);
+</script>
+<script id="pulsar-ground-engine">
+/* Five pulsing emitters + ideal-reference deviation + capacity-limited ground.
+ * Five angular-rate registers are UNMODIFIED: v=w=0, x=y=360, z=720.
+ * Reference pulsars have a separate modulation clock even if angular rate=0.
+ * No literal astrophysical force or gravitational ground is asserted. */
+(function(root){'use strict';
+ const ORDER=['v','z','w','y','x'], GLYPHS=['-','!','+'],TAU=Math.PI*2;
+ const defaults=()=>({connected:true,capacity:0.45,pulseGain:0.25});
+ const baseRates={v:0,w:0,x:360,y:360,z:720};
+ const amplitude=(input,name)=>name==='z'?(input.levels.G+input.levels.R+input.levels.B+input.levels.P)/12:
+   input.levels[({v:'G',w:'R',x:'B',y:'P'})[name]]/3;
+ function pulses(input,cycle){
+  let re=0,im=0,refRe=0,refIm=0,emission=0;
+  const nodes={};
+  for(let i=0;i<ORDER.length;i++){
+   const name=ORDER[i],rate=input.rates[name],base=baseRates[name],level=amplitude(input,name);
+   // Independent emission modulation; 0-degree witnesses still pulse.
+   const turn=cycle*(1+Math.abs(rate)/360)+i/5;
+   const refTurn=cycle*(1+Math.abs(base)/360)+i/5;
+   const theta=TAU*turn,ref=TAU*refTurn;
+   const f=((turn%1)+1)%1,slot=Math.min(2,Math.floor(f*3));
+   const light=level*(0.5+0.5*Math.sin(theta));
+   emission+=light;
+   re+=level*Math.cos(theta);im+=level*Math.sin(theta);
+   refRe+=Math.cos(ref);refIm+=Math.sin(ref);
+   nodes[name]={symbol:GLYPHS[slot],signed:slot-1,light,phase:f,rate,level};
+  }
+  return {nodes,emission,phaseDeviation:Math.hypot(re-refRe,im-refIm)/5,signals:[re,im]};
+ }
+ function sample(input,cycle,cables,ground){
+  const C=cables||root.SeaCableMath.defaults(), B=ground||defaults();
+  const cable=root.SeaCableMath.sample(input,cycle,C),ps=pulses(input,cycle);
+  const pulseStress=B.pulseGain*ps.phaseDeviation;
+  const rawStress=Math.hypot(cable.gyro.residual,cable.contribution,pulseStress);
+  const absorbed=B.connected?Math.min(Math.max(0,B.capacity),rawStress):0;
+  const sunResidual=Math.max(0,rawStress-absorbed);
+  const flare=sunResidual>0.30&&cable.gyro.excitation>0.60;
+  const event=flare?'SOLAR FLARE':sunResidual<1e-8?'0 · GROUNDED':sunResidual<0.2?'CONTAINED':'PRECESSING';
+  return {pulsars:ps,cable,rawStress,absorbed,sunResidual,flare,event,
+   containment:1/(1+2*sunResidual),ground:{...B}};
+ }
+ root.PulsarGroundMath={ORDER,GLYPHS,defaults,baseRates,pulses,sample};
+})(window);
+</script>
+<script id="bearing-engine">
+/* Coaxial powered torque-pair; equal normalized inertias. Closed-form integration.
+   Uses a regulated internal actuator (not passive gravity), plus an optional
+   momentum sink. Rates are signed turns/model-cycle. No actual g inferred. */
+(function(root){'use strict';
+ const TAU=2*Math.PI, CARRIER=1;
+ const defaults=()=>({epoch:0,ringRate0:-1,sunRate0:1,ringAngle0:0,sunAngle0:0,
+   gain:2.5,groundGain:1.7,groundConnected:true,
+   historyWork:0,historyHeat:0,historyGroundMomentum:0,historyImpulse:0,
+   historyEnergy0:1,historyAngular0:0});
+ function sample(time,config,stress=0){
+  const c=config||defaults(),dt=Math.max(0,time-c.epoch);
+  const k=Math.max(0,Number(c.gain)||0), g=c.groundConnected?Math.max(0,Number(c.groundGain)||0):0;
+  const d0=c.sunRate0-c.ringRate0,m0=(c.sunRate0+c.ringRate0)/2;
+  const eD=Math.exp(-2*k*dt),eM=Math.exp(-g*dt);
+  const d=2+(d0-2)*eD,m=m0*eM;
+  const ringRate=m-d/2,sunRate=m+d/2;
+  const di=2*dt+(k>0?(d0-2)*(-Math.expm1(-2*k*dt))/(2*k):(d0-2)*dt);
+  const mi=g>0?m0*(-Math.expm1(-g*dt))/g:m0*dt;
+  const ringAngle=c.ringAngle0+TAU*(mi-di/2);
+  const sunAngle=c.sunAngle0+TAU*(mi+di/2);
+  const torque=k*(d-2),groundTorque=-g*m;
+  const driveWork=(c.historyWork||0)+(d*d-d0*d0)/4;
+  const groundHeat=(c.historyHeat||0)+m0*m0*(1-eM*eM);
+  const groundMomentum=(c.historyGroundMomentum||0)+2*(m0-m);
+  const exchangeImpulse=(c.historyImpulse||0)+(d0-d)/2;
+  const kinetic=m*m+d*d/4;
+  const startEnergy=c.historyEnergy0??(m0*m0+d0*d0/4);
+  const startAngular=c.historyAngular0??(2*m0);
+  const energyResidual=kinetic+groundHeat-startEnergy-driveWork;
+  const momentumResidual=ringRate+sunRate+groundMomentum-startAngular;
+  const counterspinError=Math.abs(d-2),commonDrift=m;
+  const error=counterspinError+2*Math.abs(commonDrift);
+  const totalError=error+.75*Math.max(0,stress);
+  const gEquivalent=1/(1+totalError);
+  return {carrierRate:CARRIER,ringRate,sunRate,ringAngle,sunAngle,torque,groundTorque,
+   kinetic,driveWork,groundHeat,groundMomentum,exchangeImpulse,energyResidual,momentumResidual,
+   counterspinError,commonDrift,error,stress,totalError,gEquivalent,
+   locked:gEquivalent>=.98,gain:k,groundGain:g,groundConnected:!!c.groundConnected,dt};
+ }
+ function anchor(previous,time,next={}){
+  const old=sample(time,previous);
+  const ringRate0=next.ringRate0??old.ringRate,sunRate0=next.sunRate0??old.sunRate;
+  const m=(ringRate0+sunRate0)/2,d=sunRate0-ringRate0;
+  const isJump=('ringRate0' in next)||('sunRate0' in next);
+  const work0=isJump?0:old.driveWork,heat0=isJump?0:old.groundHeat;
+  // A manual kick introduces external impulse/energy; reset accounting
+  // to the new event state rather than assigning kick energy to the motor.
+  return {...previous,...next,epoch:time,ringAngle0:old.ringAngle,sunAngle0:old.sunAngle,
+   ringRate0,sunRate0,historyWork:work0,historyHeat:heat0,
+   historyGroundMomentum:isJump?0:old.groundMomentum,
+   historyImpulse:isJump?0:old.exchangeImpulse,
+   historyEnergy0:isJump?(m*m+d*d/4):(old.kinetic+old.groundHeat-old.driveWork),
+   historyAngular0:isJump?(2*m):(old.ringRate+old.sunRate+old.groundMomentum)};
+ }
+ root.CenterBearingMath={defaults,sample,anchor};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script id="harvester-engine">
+/* H10 immutable witness/command state engine, purely symbolic. No real fields or harvesting. */
+(function(root){'use strict';
+ const PATTERN='-+000+-', EPS=1e-10;
+ const connections=[
+  ['V','SUN','spoke','v'],['Z','SUN','spoke','z'],['W','SUN','spoke','w'],['Y','SUN','spoke','y'],['X','SUN','spoke','x'],
+  ['V','RETURN','cable','G'],['W','RETURN','cable','R'],['X','RETURN','cable','B'],['Y','RETURN','cable','P'],
+  ['RETURN','SUN','feedback',''],['RING','SUN','torque',''],['PAIR','GROUND','ground-momentum',''],['RETURN','GROUND','ground-stress',''],
+  ['V','Z','perimeter',''],['Z','W','perimeter',''],['W','Y','perimeter',''],['Y','RETURN','perimeter',''],['RETURN','X','perimeter',''],['X','V','perimeter','']
+ ];
+ const rails=Object.freeze(connections.map((t,i)=>Object.freeze({id:'HR'+String(i+1).padStart(2,'0'),from:t[0],to:t[1],kind:t[2],key:t[3],pattern:PATTERN,slots:7,virtualHallPositions:3,visualOnly:i>=13})));
+ const defaults=()=>({phase:'IDLE',count:0,verifyLastTick:-1,reason:'',seq:0,receipts:[],faultRail:'',misalignment:false,clampAttached:false});
+ const snap=(input,t,opts={})=>{
+  const p=input.g.pulsars,n=input.g.cable,b=input.b;
+  const r=rails.map((rail,i)=>{
+   if(rail.visualOnly)return {...rail,status:'VISUAL_ONLY',h0:null,h1:null,h2:null,gradient:null,centerDeviation:null,value:null};
+   let value=0;
+   if(i<5){const u=p.nodes[rail.key];value=u.light*u.signed;}
+   else if(i<9){const u=n.portReturns[rail.key];value=u.x;}
+   else if(i===9)value=n.contribution;
+   else if(i===10)value=b.torque;
+   else if(i===11)value=b.groundTorque;
+   else if(i===12)value=input.g.absorbed;
+   const interrupted=rail.id===(opts.faultRail||'');
+   const h0=interrupted?null:value,h1=interrupted?null:value*.97,h2=interrupted?null:value*.94;
+   return {...rail,status:interrupted?'OPEN':'SIMULATED',value:interrupted?null:value,
+    h0,h1,h2,gradient:interrupted?null:h2-h0,centerDeviation:interrupted?null:h1-(h0+h2)/2};
+  });
+  const hall11=r[10],hall10=r[9];
+  const ticks=Number.isFinite(t)?Math.floor(Math.max(0,t)*64+1e-9):0;
+  const checks={
+   sensors:r.slice(0,13).every(q=>q.status==='SIMULATED')&&hall10.h1!==null&&hall11.h1!==null,
+   carrier:p.phaseDeviation<.10 && n.gyro.residual<.08,
+   counterspin:b.gEquivalent>=.98 && b.ringRate<0 && b.sunRate>0,
+   cable:n.ready&&!!input.c.coupled&&n.returnResidual<.12,
+   grounding:!!input.bh.connected && !!b.groundConnected && input.g.sunResidual<.04,
+   alignment:!opts.misalignment
+  };
+  const failures=Object.keys(checks).filter(k=>!checks[k]);
+  const witnessDigest=hash(r.map(rail=>[rail.id,rail.status,...['h0','h1','h2'].map(k=>rail[k]===null?'?':rail[k].toFixed(8))].join(':')).join('|')+'::'+failures.join(','));
+  return {rails:r,tick:ticks,checks,failures,ready:failures.length===0,
+   virtualPositions:rails.length*3,simulatedPositions:13*3,visualOnlyPositions:6*3,
+   activeRails:r.filter(x=>x.status==='SIMULATED').length,
+   openedRails:r.filter(x=>x.status==='OPEN').length,
+   colorAddress:n.gyro.id,score:b.gEquivalent,torque:b.torque,witnessDigest};
+ };
+ function hash(str){let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(16).padStart(8,'0')}
+ function receipt(state,kind,w,reason,phase){
+  const seq=state.seq+1, prev=state.receipts.length?state.receipts[state.receipts.length-1].hash:'00000000';
+  const raw=[prev,seq,kind,w.tick,phase,reason,w.colorAddress,w.score.toFixed(6),w.torque.toFixed(6),w.witnessDigest].join('|');
+  const entry={seq,kind,tick:w.tick,phase,reason,colorAddress:w.colorAddress,witnessDigest:w.witnessDigest,prev,hash:hash(raw)};
+  return {seq,receipts:state.receipts.concat([entry]).slice(-96)};
+ }
+ // The only state change method. All automatic monitor changes must occur at explicit sampling points.
+ function step(state,action,w){
+  if(!w||!Array.isArray(w.rails))throw Error('fresh Hall witness required');
+  const current=state||defaults();
+  let phase=current.phase,count=current.count,verifyLastTick=current.verifyLastTick,reason='';
+  if(action==='RESET'){
+    if(current.clampAttached)return {...current,...receipt(current,'DENIED',w,'RETRACT_BEFORE_RESET',phase),reason:'RETRACT_BEFORE_RESET'};
+    return {...defaults(),...receipt(current,'RESET',w,'reset','IDLE'),faultRail:current.faultRail,misalignment:current.misalignment};
+  }
+  if(action==='ABORT'){
+    phase='SAFE_HOLD';reason='OPERATOR_ABORT';count=0;
+  }else if(action==='RELEASE'){
+    if(current.phase!=='SECURED'&&!(current.phase==='SAFE_HOLD'&&current.clampAttached))return {...current,...receipt(current,'DENIED',w,'release requires secured/attached safe hold',phase),reason:'release requires secured/attached safe hold'};
+    phase='RELEASE';reason=current.phase==='SAFE_HOLD'?'EMERGENCY_RETRACT':'NORMAL_RELEASE';
+  }else if(action==='MONITOR'){
+    if(['ALIGN','ATTACH','VERIFY','SECURED'].includes(phase)&&!w.ready){phase='SAFE_HOLD';reason=w.failures.join('+');count=0;}
+    else return current;
+  }else if(action==='NEXT'){
+    if(phase==='IDLE')phase='APPROACH';
+    else if(phase==='APPROACH'){
+      if(!w.checks.sensors||!w.checks.carrier){phase='SAFE_HOLD';reason=w.failures.join('+');}
+      else phase='ALIGN';
+    }else if(['ALIGN','ATTACH','VERIFY'].includes(phase)&&!w.ready){phase='SAFE_HOLD';reason=w.failures.join('+');count=0;}
+    else if(phase==='ALIGN')phase='ATTACH';
+    else if(phase==='ATTACH'){phase='VERIFY';count=0;verifyLastTick=-1;}
+    else if(phase==='VERIFY'){
+      if(w.tick<=verifyLastTick){reason='FRESH_TICK_REQUIRED';}
+      else{verifyLastTick=w.tick;count++;if(count>=2)phase='SECURED';}
+    }else if(phase==='RELEASE')phase='COMPLETE';
+    else if(phase==='SAFE_HOLD'){reason='RESET_REQUIRED';}
+    else{reason='NO_TRANSITION';}
+  }else throw Error('unsupported action '+action);
+  const state2={...current,phase,count,verifyLastTick,reason,clampAttached:['VERIFY','SECURED','RELEASE'].includes(phase)||(phase==='SAFE_HOLD'&&current.clampAttached)};
+  return {...state2,...receipt(current,action,w,reason,phase)};
+ }
+ root.HarvesterV10={PATTERN,rails,defaults,sample:snap,step,hash};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script id="harvester-motion-engine">
+/* Harvester V11: normalized, deterministic finite-stroke powered carrier + clamp budget.
+ * Source dynamics remain H10/V8. Hall witness is read only until actively commanded.
+ * Units are dimensionless model units. No real newton, tesla, thrust device, gravity. */
+(function(root){'use strict';
+const DT=1/64;
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const defaults=()=>({position:0,velocity:0,modelTicks:0,driveWork:0,dragHeat:0,boundaryWork:0,workAbs:0,lastDrive:0,lastCommand:'IDLE',ledgerError:0});
+const configDefaults=()=>({mass:1,thrust:3.0,load:.3,damping:.7,holdCapacity:1.25,disturbance:0,settleTolerance:.022,speedLimit:.08,minimumMargin:.18});
+function validate(cfg){const c={...configDefaults(),...cfg};
+ for(const k of ['mass','thrust','load','damping','holdCapacity','disturbance','settleTolerance','speedLimit','minimumMargin'])if(!Number.isFinite(c[k]))throw Error('invalid config '+k);
+ if(c.mass<=0||c.thrust<0||c.load<0||c.damping<0||c.holdCapacity<0||c.disturbance<0)throw Error('invalid physical proxy parameters');
+ return c;
+}
+function advance(prev,cfg,mode='APPROACH',ticks=1){
+ const c=validate(cfg),ticksN=clamp(Math.floor(ticks),0,1024);
+ if(!['APPROACH','RETRACT','PARK'].includes(mode))throw Error('unsupported motion '+mode);
+ let s={...prev};
+ for(let i=0;i<ticksN;i++){
+  const x=s.position,v=s.velocity,m=c.mass,target=mode==='RETRACT'?0:mode==='PARK'?x:1;
+  // Saturated powered PD servo with explicit payload-load compensation.
+  const desired=mode==='PARK'?c.load-c.damping*v:c.load+10*(target-x)-5.5*v;
+  const drive=clamp(desired,-c.thrust,c.thrust);
+  // Viscous drag is implicit-midpoint; exact discrete work-energy relation before stops.
+  const v2=(m*v+DT*(drive-c.load-.5*c.damping*v))/(m+.5*DT*c.damping);
+  const avg=(v+v2)/2,rawX=x+DT*avg;
+  const x2=clamp(rawX,0,1),hit=rawX!==x2;
+  const nextV=hit?0:v2,dx=rawX-x;
+  const powerWork=drive*dx,heat=c.damping*avg*avg*DT;
+  const rawE=.5*m*v2*v2+c.load*rawX;
+  const finalE=.5*m*nextV*nextV+c.load*x2;
+  const boundary=rawE-finalE;
+  s.position=x2;s.velocity=nextV;
+  s.modelTicks++;
+  s.driveWork+=powerWork;s.workAbs+=Math.abs(powerWork);
+  s.dragHeat+=heat;s.boundaryWork+=boundary;
+  s.lastDrive=drive;s.lastCommand=mode;
+  // Fresh reference closure: K + U = K0+U0 + motor work - drag - boundary work.
+  const currentE=.5*m*nextV*nextV+c.load*x2;
+  s.ledgerError=currentE-(s.initialEnergy||0)-s.driveWork+s.dragHeat+s.boundaryWork;
+ }
+ return s;
+}
+function rebase(state,cfg){
+ const c=validate(cfg);return {...state,driveWork:0,dragHeat:0,boundaryWork:0,workAbs:0,initialEnergy:.5*c.mass*state.velocity*state.velocity+c.load*state.position,ledgerError:0};
+}
+function snapshot(state,cfg,hall){
+ const c=validate(cfg),s=state||defaults();
+ const demand=c.load+c.disturbance+Math.abs(s.velocity)*.15;
+ const margin=c.holdCapacity-demand;
+ const docked=s.position>=1-c.settleTolerance;
+ const slow=Math.abs(s.velocity)<=c.speedLimit;
+ const forceSafe=margin>=c.minimumMargin;
+ const coreReady=!hall||hall.ready;
+ const blocked=[];
+ if(!docked)blocked.push('POSITION');
+ if(!slow)blocked.push('VELOCITY');
+ if(!forceSafe)blocked.push('FORCE_BUDGET');
+ if(!coreReady)blocked.push('HALL_INTERLOCK');
+ return {...s,forceDemand:demand,forceMargin:margin,forceSafe,docked,slow,coreReady,
+  travelReady:blocked.length===0,blocked,energy:.5*c.mass*s.velocity*s.velocity+c.load*s.position,
+  appliedThrust:s.lastDrive,thrustLimit:c.thrust,holdCapacity:c.holdCapacity,
+  units:'normalized model units; no physical force / gravity'};
+}
+function witness(hall,motion,cfg){
+ const m=snapshot(motion,cfg,hall);
+ const extra={position:m.docked,velocity:m.slow,force:m.forceSafe};
+ const checks={...hall.checks,...extra};
+ const failures=Object.keys(checks).filter(k=>!checks[k]);
+ return {...hall,checks,failures,ready:failures.length===0,carrierMotion:m};
+}
+function control(clampEngine,clampState,hall,motion,cfg,action){
+ const w=witness(hall,motion,cfg);
+ if(action==='NEXT'&&clampState.phase==='APPROACH'&&!w.carrierMotion.travelReady){
+  return {...clampState,reason:'CARRIER_NOT_DOCKED: '+w.carrierMotion.blocked.join('+')};
+ }
+ if(action==='NEXT'&&clampState.phase==='RELEASE'&&!(motion.position<=.02&&Math.abs(motion.velocity)<=.08)){
+  return {...clampState,reason:'RETRACT_IN_PROGRESS'};
+ }
+ // When in non-attached approach, the base H10 stage may be entered before docking;
+ // all later phases require the new position, speed and force-margin witnesses.
+ return clampEngine.step(clampState,action,w);
+}
+root.HarvesterMotionV11={DT,defaults,configDefaults,validate,advance,rebase,snapshot,witness,control};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script id="vessel-pipe-engine">
+/* Harvester vessel pipe v12 -- symbolic deterministic experiment; not a physical transfer. */
+(function(root){ 'use strict';
+  const LITERAL='{{lv > . . . . . > 40 bits > . . . . 2^3 > 1 1 2 4 > 1 in , 1 , out > {{ix2}} , r1,g1,b1,bk1 }}';
+  const COLORS=['r1','g1','b1','bk1'],WEIGHTS=[1,1,2,4],STAGES=['lv','5 dots','40 bits','4 dots / 2^3','1 1 2 4','1 in, 1 out','{{ix2}}','r1 g1 b1 bk1'];
+  const DEFAULT_HEX='01337AB4FF';
+  const checksum=(value)=>{let a=2166136261>>>0;const s=String(value);for(let i=0;i<s.length;i++){a=Math.imul(a^s.charCodeAt(i),16777619)>>>0;}return a.toString(16).padStart(8,'0')};
+  function encode(seed){
+    if(typeof seed!=='string'||!/^[0-9a-fA-F]{10}$/.test(seed))throw Error('Requires exactly ten hex digits = 40 bits');
+    const hex=seed.toUpperCase(),bytes=Array.from({length:5},(_,i)=>parseInt(hex.slice(i*2,i*2+2),16));
+    const bitString=bytes.map(v=>v.toString(2).padStart(8,'0')).join('');
+    const states=Array.from({length:4},(_,i)=>(bytes[i]^bytes[4])&7);
+    const weighted=states.reduce((sum,val,i)=>sum+val*WEIGHTS[i],0);
+    const lanes=COLORS.map((name,i)=>({name,state:states[i],bit:states[i]&1,weight:WEIGHTS[i]}));
+    const activeLanes=lanes.filter(x=>x.bit).map(x=>x.name);
+    return {literal:LITERAL,hex,bytes,bitString,bits:40,dotsIn:5,dotsOut:4,states,statesPerDot:8,projectedBits:12,weights:[...WEIGHTS],weightedChecksum:weighted,lanes,activeLanes,opaqueOperator:'{{ix2}}',digest:checksum(hex+'/'+states.join(',')+'/'+weighted),lossy:true};
+  }
+  function defaults(){return {phase:'EMPTY',seed:DEFAULT_HEX,packet:null,receipts:[],seq:0,ingress:0,egress:0,inFlight:null,reason:'AWAIT LOAD',version:'12.0-vessel-pipe'};}
+  function receipt(state,kind,tick,packet,reason){
+    const n=state.seq+1;
+    const record={seq:n,kind,tick:Number(tick),packetDigest:packet?.digest||null,prev:state.receipts.at(-1)?.hash||'00000000',reason};
+    record.hash=checksum([record.seq,record.kind,record.tick,record.packetDigest,record.prev,record.reason].join('|'));
+    return {...state,seq:n,receipts:[...state.receipts,record].slice(-96),reason};
+  }
+  function guard(witness){return !!(witness&&witness.phase==='SECURED'&&witness.clampAttached&&witness.interlocksReady===true&&witness.docked===true&&!witness.fault);}
+  function transition(s,action,{seed=s.seed,tick=0,witness={}}={}){
+    let state={...s};
+    if(action==='LOAD'){
+      if(s.inFlight||s.phase==='HELD')return receipt(state,'REJECT',tick,s.packet,'PIPE OCCUPIED; ABORT REQUIRED');
+      let p;try{p=encode(seed)}catch(e){return receipt(state,'REJECT',tick,null,'40-BIT INPUT INVALID')}
+      state={...state,phase:'LOADED',seed:p.hex,packet:p,inFlight:null};
+      return receipt(state,'LOAD',tick,p,'40-BIT REGISTER LOADED / READ-ONLY PROJECTION');
+    }
+    if(action==='IN'){
+      if(!s.packet||s.phase!=='LOADED')return receipt(state,'REJECT',tick,s.packet,'LOAD FIRST / 1 IN MAX');
+      if(!guard(witness))return receipt(state,'BLOCKED',tick,s.packet,'CLAMP / HALL / FORCE INTERLOCK');
+      state={...state,phase:'IN_FLIGHT',ingress:s.ingress+1,inFlight:{digest:s.packet.digest,hex:s.packet.hex,inTick:tick}};
+      return receipt(state,'IN',tick,s.packet,'ONE REGISTER ENTERED VESSEL PIPE');
+    }
+    if(action==='OUT'){
+      if(!s.inFlight||s.phase!=='IN_FLIGHT')return receipt(state,'REJECT',tick,s.packet,'NO IN-FLIGHT REGISTER');
+      if(!guard(witness))return receipt({...state,phase:'HELD'},'HOLD',tick,s.packet,'WITNESS LOST / MUST ABORT OR RESTORE');
+      if(s.packet?.digest!==s.inFlight.digest)return receipt({...state,phase:'HELD'},'HOLD',tick,s.packet,'PAYLOAD DIGEST CHANGED');
+      state={...state,phase:'COMPLETE',egress:s.egress+1,inFlight:null};
+      return receipt(state,'OUT',tick,s.packet,'ONE REGISTER EXITED / RECEIPT MATCH');
+    }
+    if(action==='MONITOR'){
+      if(s.inFlight&&!guard(witness)&&s.phase!=='HELD')return receipt({...state,phase:'HELD'},'HOLD',tick,s.packet,'LIVE INTERLOCK LOST / REGISTER HELD');
+      return s;
+    }
+    if(action==='RESUME'){
+      if(s.phase!=='HELD'||!s.inFlight)return receipt(state,'REJECT',tick,s.packet,'NO HELD REGISTER');
+      if(!guard(witness))return receipt(state,'BLOCKED',tick,s.packet,'RESTORE ALL INTERLOCKS');
+      return receipt({...state,phase:'IN_FLIGHT'},'RESUME',tick,s.packet,'WITNESS RESTORED; OUTPUT PENDING');
+    }
+    if(action==='ABORT'){
+      if(!s.inFlight&&s.phase!=='HELD')return receipt(state,'REJECT',tick,s.packet,'NO IN-FLIGHT REGISTER TO ABORT');
+      return receipt({...state,phase:'ABORTED',inFlight:null},'ABORT',tick,s.packet,'MODELED PACKET DISCARDED / NO OUTPUT');
+    }
+    if(action==='CLEAR'){
+      if(s.inFlight)return receipt(state,'REJECT',tick,s.packet,'CANNOT CLEAR OCCUPIED PIPE');
+      return {...defaults(),seq:s.seq,receipts:s.receipts,ingress:s.ingress,egress:s.egress,reason:'PIPE READY FOR NEW LOAD'};
+    }
+    throw Error('Unsupported pipe action: '+action);
+  }
+  root.HarvesterVesselPipeV12={LITERAL,COLORS,WEIGHTS,STAGES,DEFAULT_HEX,checksum,encode,defaults,transition,guard};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script id="exit-integrity-engine">
+/* v13: read-only 40-bit receive witnesses layered on v12 guarded pipe.
+   Two software replicas are NOT independent physical paths; ix2 stays opaque. */
+(function(root){'use strict';
+ const PIPE=root.HarvesterVesselPipeV12, VERSION='13.0-receiver-readback', BITS=40;
+ const valid=(hex)=>typeof hex==='string'&&/^[0-9A-F]{10}$/.test(hex);
+ const bits=hex=>valid(hex)?Array.from(hex,c=>parseInt(c,16).toString(2).padStart(4,'0')).join(''):null;
+ const fromBits=b=>{if(typeof b!=='string'||!/^[01]{40}$/.test(b))throw Error('40 binary digits required');return Array.from({length:10},(_,i)=>parseInt(b.slice(4*i,4*i+4),2).toString(16).toUpperCase()).join('')};
+ const diff=(a,b)=>Array.from({length:BITS},(_,i)=>i).filter(i=>a?.[i]!==b?.[i]);
+ function defaults(){return {version:VERSION,captured:null,readA:null,readB:null,delivered:null,last:null,seq:0,receipts:[],reason:'AWAIT 1 IN',interpretation:'ix2 remains opaque; two software readback witnesses are a provisional experiment'};}
+ function receipt(s,kind,tick,detail={}){const seq=s.seq+1,prev=s.receipts.at(-1)?.hash||'00000000';const r={seq,kind,tick:Number(tick),prev,...detail};r.hash=PIPE.checksum(JSON.stringify(r));return {...s,seq,receipts:[...s.receipts,r].slice(-96),reason:detail.reason||kind};}
+ function compare(pipe,s){
+  const ref=s.captured,source=pipe.inFlight?.hex||null;
+  const aa=bits(s.readA),bb=bits(s.readB),rr=bits(ref),src=bits(source);
+  if(!rr||!aa||!bb||!src)return {ready:false,matchingBits:0,errorA:40,errorB:40,sourceMismatch:true,badA:[],badB:[],reason:'NO VALID 40-BIT SOURCE / RECEIVERS'};
+  const badA=diff(rr,aa),badB=diff(rr,bb),badSource=diff(rr,src);
+  return {ready:badA.length===0&&badB.length===0&&badSource.length===0&&pipe.packet?.hex===ref,
+   matchingBits:BITS-new Set([...badA,...badB,...badSource]).size,errorA:badA.length,errorB:badB.length,sourceMismatch:badSource.length>0||pipe.packet?.hex!==ref,
+   badA,badB,badSource,referenceHex:ref,readA:s.readA,readB:s.readB,
+   reason:badA.length||badB.length||badSource.length||pipe.packet?.hex!==ref?'BITWISE RECEIVER MISMATCH':'40/40 SOURCE / A / B MATCH'};
+ }
+ function flip(hex,bit){if(!valid(hex)||!Number.isInteger(bit)||bit<0||bit>=BITS)throw Error('bit index must be 0..39');const b=bits(hex),replaced=b.slice(0,bit)+(b[bit]==='1'?'0':'1')+b.slice(bit+1);return fromBits(replaced)}
+ function command(pipe,integrity,action,{tick=0,seed=pipe.seed,witness={},bit=0}={}){
+  let p=pipe,i=integrity;
+  const opt={tick,seed,witness};
+  if(action==='FLIP_A'||action==='FLIP_B'){
+   if(!p.inFlight||!(p.phase==='IN_FLIGHT'||p.phase==='HELD'))return {pipe:p,integrity:receipt(i,'DENY',tick,{reason:'NO OCCUPIED REGISTER TO FAULT'})};
+   const key=action==='FLIP_A'?'readA':'readB';
+   try{i={...i,[key]:flip(i[key],Number(bit))}}catch(e){return {pipe:p,integrity:receipt(i,'DENY',tick,{reason:e.message})};}
+   i=receipt(i,'INJECT',tick,{lane:key,bit:Number(bit),reason:'ONE CONTROLLED RECEIVER BIT FLIPPED'});
+  }else if(action==='REPAIR'){
+   if(!p.inFlight||!(p.phase==='IN_FLIGHT'||p.phase==='HELD'))return {pipe:p,integrity:receipt(i,'DENY',tick,{reason:'NO OCCUPIED REGISTER TO REPAIR'})};
+   i=receipt({...i,readA:i.captured,readB:i.captured},'REPAIR',tick,{reason:'SOFTWARE RECEIVER BUFFERS RESTORED FROM CAPTURED SOURCE'});
+  }else if(action==='LOAD'){
+   p=PIPE.transition(p,action,opt);
+   if(p.phase==='LOADED'&&p.packet?.hex===seed.toUpperCase())i={...i,captured:null,readA:null,readB:null,delivered:null,last:null};
+  }else if(action==='IN'){
+   const before=p.ingress;p=PIPE.transition(p,action,opt);
+   if(p.ingress===before+1&&p.inFlight?.hex){const hex=p.inFlight.hex;i=receipt({...i,captured:hex,readA:hex,readB:hex,delivered:null,last:null},'CAPTURE',tick,{sourceHex:hex,bitCount:BITS,reason:'40-BIT INPUT COPIED TO TWO TEST RECEIVER REGISTERS'});}
+  }else if(action==='OUT'){
+   const c=compare(p,i);
+   if(!c.ready){if(p.phase==='IN_FLIGHT')p=PIPE.transition(p,'OUT',{...opt,witness:{}});
+     i=receipt({...i,last:c},'BLOCKED_EGRESS',tick,{errorA:c.errorA,errorB:c.errorB,sourceMismatch:c.sourceMismatch,reason:'40-BIT READBACK FAILED; ZERO EGRESS'});
+   }else{
+    const before=p.egress;p=PIPE.transition(p,'OUT',opt);
+    if(p.egress===before+1){const data={sourceHex:i.captured,receivedHex:i.readA,readbackB:i.readB,bitMatches:40,sourceDigest:PIPE.checksum(i.captured),receiverDigest:PIPE.checksum(i.readA),reason:'EXACT 40-BIT EGRESS MATCH'};
+       i=receipt({...i,delivered:i.readA,last:c},'OUT_40_MATCH',tick,data);
+    }else i=receipt({...i,last:c},'NO_EGRESS',tick,{reason:'V12 INTERLOCK BLOCKED OUTPUT'});
+   }
+  }else if(action==='RESUME'){
+   const c=compare(p,i);
+   if(!c.ready)i=receipt({...i,last:c},'DENY_RESUME',tick,{reason:'RECEIVER MISMATCH MUST BE REPAIRED'});
+   else{p=PIPE.transition(p,'RESUME',opt);i=receipt({...i,last:c},'RESUME_WITNESS',tick,{reason:p.phase});}
+  }else if(action==='ABORT'){
+   p=PIPE.transition(p,'ABORT',opt);
+   if(p.phase==='ABORTED')i=receipt(i,'ABORT',tick,{reason:'NO OUTPUT; CAPTURE RETAINED AS AUDIT ONLY'});
+  }else if(action==='CLEAR'){
+   const occupied=!!p.inFlight;p=PIPE.transition(p,'CLEAR',opt);
+   if(!occupied&&p.phase==='EMPTY')i={...i,captured:null,readA:null,readB:null,delivered:null,last:null,reason:'CLEAR'};
+  }else if(action==='MONITOR'){
+   p=PIPE.transition(p,'MONITOR',opt);
+  }else throw Error('Unsupported v13 action '+action);
+  if(p.inFlight&&(p.phase==='IN_FLIGHT'||p.phase==='HELD')){
+   const c=compare(p,i);i={...i,last:c};
+   if(!c.ready&&p.phase==='IN_FLIGHT'){
+    p=PIPE.transition(p,'OUT',{...opt,witness:{}});
+    i=receipt(i,'INTEGRITY_HOLD',tick,{errorA:c.errorA,errorB:c.errorB,sourceMismatch:c.sourceMismatch,reason:'BIT MISMATCH LATCHED; NO EGRESS'});
+   }
+  }
+  return {pipe:p,integrity:i};
+ }
+ root.HarvesterIntegrityV13={VERSION,BITS,valid,bits,fromBits,diff,flip,defaults,compare,command};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script id="dual-path-engine">
+/* Harvester v14: two independently scheduled software paths. Symbol {{ix2}} stays opaque.
+   Packets are 5 x 8-bit bytes. A retained sender copy is required for retransmission.
+   The other receiver's partial data and the 12-bit projection NEVER fill missing bits. */
+(function(root){'use strict';
+ const P=root.HarvesterVesselPipeV12, I=root.HarvesterIntegrityV13;
+ const LANES=['A','B'],VERSION='14.0-independent-software-paths';
+ const valid=hex=>typeof hex==='string'&&/^[0-9A-F]{10}$/.test(hex);
+ const configDefaults=()=>({delayA:2,delayB:6,modeA:'NORMAL',modeB:'NORMAL',bitA:17,bitB:17});
+ const newPath=id=>({id,attempt:0,bytes:[null,null,null,null,null],queue:[],status:'EMPTY',sentAt:null,rxHex:null});
+ const defaults=()=>({version:VERSION,reference:null,txSource:null,paths:{A:newPath('A'),B:newPath('B')},tick:0,seq:0,receipts:[],egressReceipt:null,reason:'AWAIT 1 IN · NO PATH PACKETS'});
+ const copy=s=>({ ...s, paths:{A:{...s.paths.A,bytes:[...s.paths.A.bytes],queue:s.paths.A.queue.map(x=>({...x}))},B:{...s.paths.B,bytes:[...s.paths.B.bytes],queue:s.paths.B.queue.map(x=>({...x}))}},receipts:[...s.receipts] });
+ function receipt(s,kind,tick,lane,extra={}){
+  const seq=s.seq+1,prev=s.receipts.at(-1)?.hash||'00000000';
+  const raw={seq,kind,tick, lane,prev,...extra};raw.hash=P.checksum(JSON.stringify(raw));
+  s.receipts.push(raw);if(s.receipts.length>128)s.receipts.shift();s.seq=seq;return s;
+ }
+ function pathConfig(c,lane){const delay=Number(c['delay'+lane]),bit=Number(c['bit'+lane]),mode=c['mode'+lane];
+  if(!Number.isInteger(delay)||delay<1||delay>32)throw Error('delay '+lane+' must be 1..32 ticks');
+  if(!Number.isInteger(bit)||bit<0||bit>39)throw Error('fault bit '+lane+' must be 0..39');
+  if(!['NORMAL','DROP','FLIP'].includes(mode))throw Error('mode '+lane+' is invalid');
+  return {delay,bit,mode};}
+ function queue(s,lane,tick,config){
+  const c=pathConfig(config,lane),p=s.paths[lane],attempt=p.attempt+1,source=s.txSource;
+  if(!valid(source))throw Error('sender source unavailable');
+  const sourceBytes=Array.from({length:5},(_,i)=>parseInt(source.slice(i*2,i*2+2),16));
+  p.attempt=attempt;p.sentAt=tick;p.bytes=[null,null,null,null,null];p.rxHex=null;p.status='IN_FLIGHT';
+  p.queue=sourceBytes.map((byte,index)=>({index,byte,at:tick+c.delay+index,attempt,action:c.mode!=='NORMAL'&&Math.floor(c.bit/8)===index?c.mode:'NORMAL',bit:c.bit}));
+  receipt(s,attempt===1?'SEND':'RETRANSMIT',tick,lane,{attempt,delay:c.delay,mode:c.mode,bytes:5});
+ }
+ function start(s,hex,tick,config=configDefaults()){
+  if(s.reference!==null)throw Error('only one outstanding register per transport epoch');
+  if(!valid(hex))throw Error('exact 40-bit uppercase source required');
+  const x=copy(s);x.reference=hex;x.txSource=hex;x.tick=tick;x.egressReceipt=null;
+  for(const lane of LANES)queue(x,lane,tick,config);
+  x.reason='10 BYTE PACKETS QUEUED OVER TWO DISTINCT SOFTWARE PATHS';return x;
+ }
+ function advance(s,tick){
+  if(!Number.isInteger(tick)||tick<s.tick)throw Error('transport tick must be monotonic');
+  if(!s.reference)return s;
+  const x=copy(s);x.tick=tick;
+  for(const lane of LANES){const p=x.paths[lane];if(!p.queue.length)continue;
+   const due=p.queue.filter(q=>q.at<=tick),remaining=p.queue.filter(q=>q.at>tick);
+   for(const q of due){
+    if(q.attempt!==p.attempt)continue;
+    if(q.action==='DROP'){receipt(x,'DROPPED',q.at,lane,{attempt:q.attempt,index:q.index});continue;}
+    let byte=q.byte;
+    if(q.action==='FLIP'){const byteBit=q.bit%8;byte^=(1<<(7-byteBit));}
+    p.bytes[q.index]=byte;
+    receipt(x,q.action==='FLIP'?'CORRUPTED':'DELIVERED',q.at,lane,{attempt:q.attempt,index:q.index,byte:byte.toString(16).toUpperCase().padStart(2,'0')});
+   }
+   p.queue=remaining;
+   const complete=p.bytes.every(v=>v!==null);
+   p.rxHex=complete?p.bytes.map(v=>v.toString(16).toUpperCase().padStart(2,'0')).join(''):null;
+   p.status=complete?(p.rxHex===x.reference?'VERIFIED':'CORRUPT'):(p.queue.length?'IN_FLIGHT':'MISSING_BYTES');
+  }
+  x.reason=x.paths.A.status+' / '+x.paths.B.status;return x;
+ }
+ function evaluate(s){
+  const a=s.paths.A,b=s.paths.B;
+  const exactA=a.status==='VERIFIED'&&a.rxHex===s.reference;
+  const exactB=b.status==='VERIFIED'&&b.rxHex===s.reference;
+  return {ready:!!s.reference&&exactA&&exactB,source:s.reference,receivedA:a.rxHex,receivedB:b.rxHex,
+   completeA:a.bytes.every(v=>v!==null),completeB:b.bytes.every(v=>v!==null),
+   bitsA:a.bytes.filter(v=>v!==null).length*8,bitsB:b.bytes.filter(v=>v!==null).length*8,
+   errorsA:a.rxHex?I.diff(I.bits(s.reference),I.bits(a.rxHex)).length:null,
+   errorsB:b.rxHex?I.diff(I.bits(s.reference),I.bits(b.rxHex)).length:null,
+   senderRetained:valid(s.txSource),reason:s.reason};
+ }
+ function retry(s,lane,tick,config=configDefaults()){
+  if(!LANES.includes(lane))throw Error('unknown lane');
+  if(!Number.isInteger(tick)||tick<s.tick)throw Error('non-monotonic retry');
+  const x=advance(s,tick);
+  if(x.egressReceipt){receipt(x,'RETRY_DENIED',tick,lane,{reason:'ONE OUTPUT ALREADY VERIFIED'});return x;}
+  if(!valid(x.txSource)){receipt(x,'RETRY_DENIED',tick,lane,{reason:'SENDER SOURCE DISCARDED · NO RECONSTRUCTION'});x.reason='NO SOURCE: CANNOT RESTORE MISSING BYTES';return x;}
+  queue(x,lane,tick,config);x.reason='EXPLICIT RETRANSMISSION '+lane+' ATTEMPT '+x.paths[lane].attempt;return x;
+ }
+ function discardSender(s,tick){const x=advance(s,tick);x.txSource=null;receipt(x,'SOURCE_DISCARDED',tick,'SOURCE',{reason:'RETRIES IMPOSSIBLE WITHOUT RETAINED SENDER'});x.reason='SENDER SOURCE DISCARDED';return x;}
+ function confirmOutput(s,tick){const x=advance(s,tick);if(x.egressReceipt)return x;
+  if(!evaluate(x).ready){receipt(x,'EGRESS_DENIED',tick,'EXIT',{reason:'DUAL PATH EXACT DELIVERY NOT ESTABLISHED'});return x;}
+  const data={source:x.reference,readA:x.paths.A.rxHex,readB:x.paths.B.rxHex,attemptA:x.paths.A.attempt,attemptB:x.paths.B.attempt,bitCount:40};
+  receipt(x,'VERIFIED_EGRESS',tick,'EXIT',data);x.egressReceipt={tick,...data};x.reason='TWO DISTINCT PACKET QUEUES VERIFIED · 40/40 EGRESS';return x;
+ }
+ function abort(s,tick){const x=advance(s,tick);for(const lane of LANES){x.paths[lane].queue=[];if(x.paths[lane].status==='IN_FLIGHT')x.paths[lane].status='ABORTED';}receipt(x,'ABORT',tick,'PIPE',{reason:'NO OUTPUT'});return x;}
+ root.HarvesterDualPathV14={VERSION,LANES,configDefaults,defaults,start,advance,evaluate,retry,discardSender,confirmOutput,abort};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script id="sequenced-transport-engine">
+/* Harvester v15: receiver-originated software acknowledgements; model, not secure network hardware.
+   Every packet/ACK identifies its transmission, lane, attempt, byte index, and delivered value.
+   Wire queues retain late packets across retry and transfer reset. No source reconstruction. */
+(function(root){'use strict';
+ const P=root.HarvesterVesselPipeV12,I=root.HarvesterIntegrityV13;
+ const LANES=Object.freeze(['A','B']),VERSION='15.0-sequenced-packet-ack';
+ const valid=hex=>typeof hex==='string'&&/^[0-9A-F]{10}$/.test(hex);
+ const configDefaults=()=>({delayA:2,delayB:6,modeA:'NORMAL',modeB:'NORMAL',bitA:17,bitB:29,ackModeA:'NORMAL',ackModeB:'NORMAL'});
+ const freshPath=id=>({id,attempt:0,bytes:[null,null,null,null,null],acked:[false,false,false,false,false],queue:[],status:'EMPTY',sentAt:null,rxHex:null,seen:[],lastAccepted:null});
+ const defaults=()=>({version:VERSION,nextTransferId:1,txId:null,reference:null,txSource:null,paths:{A:freshPath('A'),B:freshPath('B')},wire:[],ackWire:[],tick:0,seq:0,receipts:[],egressReceipt:null,aborted:false,reason:'AWAIT 1 IN · NO ACKNOWLEDGED PACKETS'});
+ const copy=s=>({...s,paths:{A:{...s.paths.A,bytes:[...s.paths.A.bytes],acked:[...s.paths.A.acked],queue:s.paths.A.queue.map(q=>({...q})),seen:[...s.paths.A.seen],lastAccepted:s.paths.A.lastAccepted?{...s.paths.A.lastAccepted}:null},B:{...s.paths.B,bytes:[...s.paths.B.bytes],acked:[...s.paths.B.acked],queue:s.paths.B.queue.map(q=>({...q})),seen:[...s.paths.B.seen],lastAccepted:s.paths.B.lastAccepted?{...s.paths.B.lastAccepted}:null}},wire:s.wire.map(q=>({...q})),ackWire:s.ackWire.map(q=>({...q})),receipts:[...s.receipts]});
+ function receipt(s,kind,tick,lane,extra={}){const seq=s.seq+1,prev=s.receipts.at(-1)?.hash||'00000000';const raw={seq,kind,tick,lane,prev,...extra};raw.hash=P.checksum(JSON.stringify(raw));s.receipts.push(raw);if(s.receipts.length>192)s.receipts.shift();s.seq=seq;return raw;}
+ function config(c,lane){const delay=Number(c['delay'+lane]),bit=Number(c['bit'+lane]),mode=c['mode'+lane],ackMode=c['ackMode'+lane]||'NORMAL';if(!Number.isInteger(delay)||delay<1||delay>32)throw Error('delay must be 1..32');if(!Number.isInteger(bit)||bit<0||bit>39)throw Error('fault bit must be 0..39');if(!['NORMAL','DROP','FLIP'].includes(mode))throw Error('invalid path mode');if(!['NORMAL','DROP_ONE'].includes(ackMode))throw Error('invalid acknowledgement mode');return {delay,bit,mode,ackMode};}
+ function schedule(s,lane,tick,c){const p=s.paths[lane],param=config(c,lane),source=s.txSource;
+  if(!valid(source))throw Error('sender copy unavailable');const attempt=p.attempt+1;
+  p.attempt=attempt;p.bytes=[null,null,null,null,null];p.acked=[false,false,false,false,false];p.seen=[];p.queue=[];p.rxHex=null;p.sentAt=tick;p.status='IN_FLIGHT';p.lastAccepted=null;
+  for(let index=0;index<5;index++){
+   const original=parseInt(source.slice(index*2,index*2+2),16);
+   const action=param.mode!=='NORMAL'&&Math.floor(param.bit/8)===index?param.mode:'NORMAL';
+   const q={txId:s.txId,lane,attempt,index,original,at:tick+param.delay+index,action,bit:param.bit,ackDrop:param.ackMode==='DROP_ONE'&&index===2};
+   s.wire.push(q);p.queue.push(q);
+  }
+  receipt(s,attempt===1?'SEND':'RETRANSMIT',tick,lane,{txId:s.txId,attempt,delay:param.delay,mode:param.mode,ackMode:param.ackMode,packets:5});
+ }
+ function reset(s,tick=s.tick){const x=copy(s);if(!Number.isInteger(tick)||tick<x.tick)throw Error('clock cannot go backward');
+  x.tick=tick;x.txId=null;x.reference=null;x.txSource=null;x.paths={A:freshPath('A'),B:freshPath('B')};x.egressReceipt=null;x.aborted=false;x.reason='AWAIT NEW TRANSMISSION · STALE WIRE FRAMES ARE NOT ACCEPTED';receipt(x,'EPOCH_RESET',tick,'CONTROL',{nextTransferId:x.nextTransferId});return x;}
+ function start(s,hex,tick,c=configDefaults()){
+  if(s.reference!==null)throw Error('one outstanding register per epoch');if(!valid(hex))throw Error('40-bit uppercase hex required');
+  if(!Number.isInteger(tick)||tick<s.tick)throw Error('monotonic tick required');
+  const x=copy(s);x.txId=x.nextTransferId++;x.reference=hex;x.txSource=hex;x.tick=tick;x.egressReceipt=null;x.aborted=false;
+  for(const lane of LANES)schedule(x,lane,tick,c);x.reason='TRANSFER '+x.txId+' · A/B FRAMES IN FLIGHT · AWAIT ACKS';return x;
+ }
+ const packetKey=q=>[q.txId,q.lane,q.attempt,q.index].join(':');
+ function advance(s,tick){if(!Number.isInteger(tick)||tick<s.tick)throw Error('clock cannot go backward');const x=copy(s);x.tick=tick;
+  const due=x.wire.filter(q=>q.at<=tick).sort((a,b)=>a.at-b.at||a.txId-b.txId||a.lane.localeCompare(b.lane)||a.index-b.index);
+  x.wire=x.wire.filter(q=>q.at>tick);
+  for(const q of due){const p=x.paths[q.lane],tag={txId:q.txId,attempt:q.attempt,index:q.index};
+   if(x.aborted||q.txId!==x.txId||q.attempt!==p.attempt){receipt(x,'STALE_PACKET_REJECTED',q.at,q.lane,{...tag,reason:'TX OR ATTEMPT DOES NOT MATCH CURRENT RECEIVER'});continue;}
+   const key=packetKey(q);if(p.seen.includes(key)){receipt(x,'REPLAY_PACKET_REJECTED',q.at,q.lane,tag);continue;}
+   p.seen.push(key);p.queue=p.queue.filter(r=>r.index!==q.index||r.attempt!==q.attempt);
+   if(q.action==='DROP'){receipt(x,'DROPPED',q.at,q.lane,tag);continue;}
+   const received=q.action==='FLIP'?(q.original^(1<<(7-q.bit%8))):q.original;
+   p.bytes[q.index]=received;p.lastAccepted={...q,action:'NORMAL',at:q.at,received};
+   receipt(x,q.action==='FLIP'?'CORRUPTED':'DELIVERED',q.at,q.lane,{...tag,byte:received.toString(16).padStart(2,'0').toUpperCase()});
+   const ack={txId:q.txId,lane:q.lane,attempt:q.attempt,index:q.index,received,at:q.at+2};
+   if(q.ackDrop){receipt(x,'ACK_LOST',q.at,q.lane,tag);}
+   else {x.ackWire.push(ack);receipt(x,'ACK_SENT',q.at,q.lane,{...tag,arrives:ack.at});}
+  }
+  const ackDue=x.ackWire.filter(a=>a.at<=tick).sort((a,b)=>a.at-b.at||a.txId-b.txId||a.index-b.index);
+  x.ackWire=x.ackWire.filter(a=>a.at>tick);
+  for(const a of ackDue){const p=x.paths[a.lane],tag={txId:a.txId,attempt:a.attempt,index:a.index};
+   if(x.aborted||a.txId!==x.txId||a.attempt!==p.attempt){receipt(x,'STALE_ACK_REJECTED',a.at,a.lane,tag);continue;}
+   if(p.acked[a.index]){receipt(x,'DUPLICATE_ACK_REJECTED',a.at,a.lane,tag);continue;}
+   if(p.bytes[a.index]===null||p.bytes[a.index]!==a.received){receipt(x,'INVALID_ACK_REJECTED',a.at,a.lane,tag);continue;}
+   p.acked[a.index]=true;receipt(x,'ACK_ACCEPTED',a.at,a.lane,{...tag,byte:a.received.toString(16).padStart(2,'0').toUpperCase()});
+  }
+  for(const lane of LANES){const p=x.paths[lane],complete=p.bytes.every(v=>v!==null),allAcks=p.acked.every(Boolean);
+   p.rxHex=complete?p.bytes.map(v=>v.toString(16).padStart(2,'0').toUpperCase()).join(''):null;
+   p.status=complete&&!allAcks?'AWAIT_ACK':complete?(p.rxHex===x.reference?'VERIFIED':'CORRUPT'):(p.queue.length?'IN_FLIGHT':p.attempt?'MISSING_BYTES':'EMPTY');
+  }
+  x.reason=x.txId===null?'AWAIT NEW TRANSFER':('TX '+x.txId+' · '+x.paths.A.status+' / '+x.paths.B.status);return x;
+ }
+ function evaluate(s){const a=s.paths.A,b=s.paths.B,exactA=a.status==='VERIFIED'&&a.rxHex===s.reference&&a.acked.every(Boolean),exactB=b.status==='VERIFIED'&&b.rxHex===s.reference&&b.acked.every(Boolean);
+  return {ready:!s.aborted&&s.reference!==null&&exactA&&exactB,txId:s.txId,source:s.reference,receivedA:a.rxHex,receivedB:b.rxHex,completeA:a.bytes.every(v=>v!==null),completeB:b.bytes.every(v=>v!==null),bitsA:a.bytes.filter(v=>v!==null).length*8,bitsB:b.bytes.filter(v=>v!==null).length*8,acksA:a.acked.filter(Boolean).length,acksB:b.acked.filter(Boolean).length,errorsA:a.rxHex?I.diff(I.bits(s.reference),I.bits(a.rxHex)).length:null,errorsB:b.rxHex?I.diff(I.bits(s.reference),I.bits(b.rxHex)).length:null,senderRetained:valid(s.txSource),reason:s.reason};
+ }
+ function retry(s,lane,tick,c=configDefaults()){if(!LANES.includes(lane))throw Error('invalid lane');const x=advance(s,tick);if(x.aborted){receipt(x,'RETRY_DENIED',tick,lane,{reason:'ABORTED TRANSMISSION'});return x;}if(x.egressReceipt){receipt(x,'RETRY_DENIED',tick,lane,{reason:'OUTPUT ALREADY CONFIRMED'});return x;}if(!valid(x.txSource)){receipt(x,'RETRY_DENIED',tick,lane,{reason:'SENDER SOURCE NOT RETAINED'});return x;}
+  schedule(x,lane,tick,c);x.reason='TX '+x.txId+' RETRY '+lane+' ATTEMPT '+x.paths[lane].attempt+' · OLD WIRE REMAINS IN FLIGHT';return x;}
+ function discardSender(s,tick){const x=advance(s,tick);x.txSource=null;receipt(x,'SOURCE_DISCARDED',tick,'SOURCE');x.reason='SENDER DISCARDED · NO FUTURE RETRY';return x;}
+ function replay(s,lane,tick){if(!LANES.includes(lane))throw Error('invalid lane');const x=advance(s,tick),p=x.paths[lane];if(x.aborted||!p.lastAccepted){receipt(x,'REPLAY_DENIED',tick,lane,{reason:'NO PREVIOUS RECEIVED PACKET'});return x;}
+  x.wire.push({...p.lastAccepted,at:tick+1});receipt(x,'REPLAY_INJECTED',tick,lane,{txId:p.lastAccepted.txId,attempt:p.lastAccepted.attempt,index:p.lastAccepted.index});return x;}
+ function confirmOutput(s,tick){const x=advance(s,tick);if(x.egressReceipt)return x;if(!evaluate(x).ready){receipt(x,'EGRESS_DENIED',tick,'EXIT',{reason:'WAIT FOR CURRENT TRANSFER, ALL ACKS AND EXACT REGISTER'});return x;}
+  const info={txId:x.txId,source:x.reference,readA:x.paths.A.rxHex,readB:x.paths.B.rxHex,attemptA:x.paths.A.attempt,attemptB:x.paths.B.attempt,acksA:5,acksB:5,bitCount:40};receipt(x,'VERIFIED_EGRESS',tick,'EXIT',info);x.egressReceipt={tick,...info};x.reason='ONE VERIFIED EGRESS · TX '+x.txId+' WITH TEN CURRENT ACKS';return x;}
+ function abort(s,tick){const x=advance(s,tick);x.txSource=null;x.aborted=true;for(const lane of LANES)if(x.paths[lane].status!=='VERIFIED')x.paths[lane].status='ABORTED';receipt(x,'ABORT',tick,'PIPE',{txId:x.txId});return x;}
+ root.HarvesterSequencedTransportV15={VERSION,LANES,configDefaults,defaults,reset,start,advance,evaluate,retry,discardSender,replay,confirmOutput,abort};
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script>
+(()=>{'use strict';
+const DUAL=window.HarvesterSequencedTransportV15,INTEG=window.HarvesterIntegrityV13,M=window.GyroMath,SEA=window.SeaCableMath,PG=window.PulsarGroundMath,BEAR=window.CenterBearingMath,HARV=window.HarvesterV10,H11=window.HarvesterMotionV11,PIPE=window.HarvesterVesselPipeV12,PI=Math.PI,TAU=M.TAU,$=id=>document.getElementById(id),cv=$('stage'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+const scope=$('scope'),sctx=scope.getContext('2d'),torqueScope=$('torqueScope'),tctx=torqueScope.getContext('2d');
+const palette={G:'#67fbb0',R:'#ff7480',B:'#6fbaff',P:'#b68bff',z:'#ffd38a',v:'#67fbb0',w:'#ff7480',x:'#6fbaff',y:'#b68bff',ret:'#7af3e0'};
+const defaults=()=>({rates:{...M.DEFAULT_RATES},levels:{G:3,R:3,B:3,P:3},zSlip:0,cycles:0,playing:true,mode:'hybrid',ascii:false});
+let S=defaults(),C=SEA.defaults(),BH=PG.defaults(),BC=BEAR.defaults(),last=null,lastModel=null,lastCable=null,lastGround=null,lastBearing=null,lastHall=null,harvState=HARV.defaults(),motionState=H11.defaults(),motionCfg=H11.configDefaults(),lastMotion=null,pipeState=PIPE.defaults(),integrityState=INTEG.defaults(),dualState=DUAL.defaults(),frameCount=0;S.cycles=1.25;S.playing=false;
+const PLANETARY_SPEED_KMS=29.75, PLANET_CENTER=[600,331], PLANET_RADIUS=279;
+const coords={v:[360,192],z:[600,117],w:[840,192],y:[840,448],ret:[600,565],x:[360,448],core:[600,331],bh:[600,689]};
+const planetaryAngle=()=>-(S.cycles%1)*TAU;
+
+function withPlanetaryRotation(draw){ctx.save();ctx.translate(PLANET_CENTER[0],PLANET_CENTER[1]);ctx.rotate(planetaryAngle());ctx.translate(-PLANET_CENTER[0],-PLANET_CENTER[1]);draw();ctx.restore()}
+const clamp=M.clip;function rgba(hex,a){const v=parseInt(hex.substring(1),16);return `rgba(${(v>>16)&255},${(v>>8)&255},${v&255},${clamp(a,0,1)})`}
+function path(points,color='#d3e7f2',width=1,alpha=1){ctx.save();ctx.strokeStyle=rgba(color,alpha);ctx.lineWidth=width;ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.stroke();ctx.restore()}
+function dot(x,y,r,color,alpha=1){ctx.fillStyle=rgba(color,alpha);ctx.beginPath();ctx.arc(x,y,Math.max(r,0),0,TAU);ctx.fill()}
+function halo(x,y,r,color,alpha=.3){const v=parseInt(color.slice(1),16),cr=(v>>16)&255,cg=(v>>8)&255,cb=v&255;const grad=ctx.createRadialGradient(x,y,1,x,y,r);grad.addColorStop(0,`rgba(${cr},${cg},${cb},${alpha})`);grad.addColorStop(.3,`rgba(${cr},${cg},${cb},${alpha*.4})`);grad.addColorStop(1,`rgba(${cr},${cg},${cb},0)`);ctx.fillStyle=grad;ctx.fillRect(x-r,y-r,2*r,2*r)}
+function text(message,x,y,size=12,color='#b8d0dc',align='center'){ctx.fillStyle=color;ctx.textAlign=align;ctx.font=`${size}px ui-monospace,Consolas,monospace`;ctx.fillText(message,x,y)}
+function bg(m){ctx.fillStyle='#040a13';ctx.fillRect(0,0,W,H);const g=ctx.createLinearGradient(0,0,0,H);if(S.mode==='aquatic'){g.addColorStop(0,'#082034');g.addColorStop(1,'#03141a')}else if(S.mode==='atomic'){g.addColorStop(0,'#140f2b');g.addColorStop(1,'#050814')}else{g.addColorStop(0,'#071125');g.addColorStop(.6,'#101f2b');g.addColorStop(1,'#031923')}ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+ if(S.mode!=='aquatic'){for(let i=0;i<210;i++){const x=(i*197.369+31)%W,y=(i*113.167+13)%H;dot(x,y,(i%8===0?1.45:.7),'#cfeaff',.12+.38*(.5+.5*Math.sin(i*2.3+m.cycle*3)))}}
+ if(S.mode!=='stellar'){ctx.save();for(let i=0;i<12;i++){const y=530+i*19;ctx.beginPath();ctx.lineWidth=1;ctx.strokeStyle=rgba('#68ddff',S.mode==='aquatic'?.24:.10);for(let x=0;x<=W;x+=12){let wave=y+11*Math.sin(x/67+m.cycle*TAU+i*.54);if(x===0)ctx.moveTo(x,wave);else ctx.lineTo(x,wave)}ctx.stroke()}ctx.restore();for(let i=0;i<12;i++){const x=64+i*100;path([[x,525],[x+18,615],[x,740]],'#6ac8e9',1,.10)}}
+ ctx.save();ctx.strokeStyle=rgba('#e0bc7c',.25);ctx.lineWidth=2;for(let j=0;j<3;j++){const xL=15+j*13,xR=W-xL;ctx.beginPath();ctx.moveTo(xL,665);ctx.bezierCurveTo(xL,70,390+j*30,25,600,40+j*16);ctx.bezierCurveTo(810-j*30,25,xR,70,xR,665);ctx.stroke()}ctx.restore();
+ text('STELLULAR · AQUATIC · ATOMIC PLANETARY GEAR',600,37,13,'#dec99b');text('CCW PLANETARY CARRIER  ·  CW CENTRAL RING  ·  CCW SUN ROTOR',600,744,13,'#dfd0a8');
+ ctx.save();ctx.strokeStyle=rgba('#f0d8a2',.12);ctx.setLineDash([10,10]);ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(PLANET_CENTER[0],PLANET_CENTER[1],PLANET_RADIUS,0,TAU);ctx.stroke();ctx.setLineDash([]);text('OUTER CARRIER CCW · 29.75 km/s',PLANET_CENTER[0],PLANET_CENTER[1]-PLANET_RADIUS-11,12,'#edd4a1');ctx.restore();
+}
+function cube(x,y,size,theta,color,kind){ctx.save();ctx.translate(x,y);const c=Math.cos(theta),s=Math.sin(theta);const p=[];for(const [vx,vy,vz] of [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]]){let rx=vx*c-vz*s,rz=vx*s+vz*c;let yy=vy*.88-rz*.43;let zz=vy*.43+rz*.88;p.push([rx*size*(1+.10*zz),yy*size*(1+.10*zz)])}
+ const edges=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+ halo(0,0,size*2,color,.25);ctx.save();ctx.fillStyle=rgba(color,.11);ctx.beginPath();for(const j of [0,1,5,4])ctx.lineTo(...p[j]);ctx.closePath();ctx.fill();ctx.restore();for(const [a,b] of edges)path([p[a],p[b]],color,1.6,.75);dot(0,0,3,'#ffffff',.95);ctx.restore();}
+function pulsar(name,m,p){const [x,y]=coords[name],color=palette[name],a=m.angles[name],turn=S.rates[name],w=p.nodes[name];
+ const R=name==='z'?65:56,haloLevel=.09+w.light*.28;
+ halo(x,y,R*1.8,color,haloLevel);
+ ctx.save();ctx.translate(x,y);ctx.rotate(a);
+ ctx.strokeStyle=rgba(color,.25+.45*w.light);ctx.lineWidth=2.0;
+ ctx.beginPath();ctx.ellipse(0,0,R,R*.42,0,0,TAU);ctx.stroke();
+ ctx.rotate(PI/3);ctx.beginPath();ctx.ellipse(0,0,R*.86,R*.33,0,0,TAU);ctx.stroke();ctx.restore();
+ // Beam sweeping and emitted pulse are separate from the zero-rate witness rotor.
+ const sweep=TAU*w.phase;
+ path([[x,y],[x+Math.cos(sweep)*(R+20),y+Math.sin(sweep)*(R+20)]],color,1.6+3.3*w.light,.25+.75*w.light);
+ cube(x,y,name==='z'?39:34,a*.52,color,name);
+ halo(x,y,28,color,.15+.45*w.light);
+ text(name.toUpperCase()+'  [-!+] → '+w.symbol+'  '+turn+'°',x,y+R+16,12,color);
+ text(name==='z'?'CROWN / DOUBLE RATE':turn===0?'0-TURN / ACTIVE EMITTER':'ROTATING PULSAR',x,y+R+29,10,'#a9bdce');
+}
+
+function drawHexLattice(m,net){
+ const ring=['v','z','w','y','ret','x'];
+ const pts=ring.map(k=>coords[k]);
+ ctx.save();
+ ctx.strokeStyle=rgba('#9fe6d8',.22);ctx.lineWidth=2.1;ctx.beginPath();
+ pts.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.stroke();
+ ctx.setLineDash([7,7]);ctx.strokeStyle=rgba('#cbeee7',.12);ctx.lineWidth=1.2;
+ for(const k of ring){ctx.beginPath();ctx.moveTo(...coords.core);ctx.lineTo(...coords[k]);ctx.stroke();}
+ ctx.setLineDash([]);
+ // moving packet on the hex ring
+ const edges=[]; for(let i=0;i<pts.length;i++) edges.push([pts[i],pts[(i+1)%pts.length]]);
+ const t=(S.cycles%1)*edges.length; const i=Math.floor(t)%edges.length; const frac=t-i;
+ const a=edges[i][0], b=edges[i][1]; const px=a[0]+(b[0]-a[0])*frac, py=a[1]+(b[1]-a[1])*frac;
+ halo(px,py,20,'#9fe6d8',.28); dot(px,py,3.5,'#9fe6d8',.9);
+ ctx.restore();
+ text('FIVE PULSARS · SIXTH RETURN · SUN',600,90,12,'#b8ddd2');text('PLANETARY CARRIER',600,106,10,'#8fb8b1');
+}
+function drawReturnNode(net){
+ const [x,y]=coords.ret, color=palette.ret; const a=net.tick/10;
+ halo(x,y,105,color,.18); ctx.save(); ctx.translate(x,y); ctx.rotate(a);
+ ctx.strokeStyle=rgba(color,.48); ctx.lineWidth=2.5; ctx.beginPath();
+ for(let i=0;i<6;i++){ const q=-Math.PI/2+i*Math.PI/3; const px=Math.cos(q)*52, py=Math.sin(q)*52; if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);} ctx.closePath(); ctx.stroke();
+ ctx.rotate(-a*1.6); ctx.strokeStyle=rgba('#d7fff8',.25); ctx.beginPath(); ctx.arc(0,0,30,0,TAU); ctx.stroke(); ctx.restore();
+ dot(x,y,5,'#ffffff',.95); text('RETURN / AQUATIC NODE',x,y+78,12,color); text(C.coupled?'COUPLED':'BYPASS',x,y+94,10,'#a9bdce');
+}
+function blackHole(s){
+ const [x,y]=coords.bh,active=BH.connected,c=active?'#90e9d8':'#d26e75';
+ // Live drop from return station into sink. Drained stress controls brightness.
+ path([[coords.ret[0],coords.ret[1]+28],[x,y-43]],c,2+8*s.absorbed,.26+Math.min(.7,s.absorbed));
+ halo(x,y,75,c,active?.09+.30*Math.min(1,s.absorbed):.10);
+ ctx.save();ctx.translate(x,y);ctx.rotate(S.cycles*TAU*.7);
+ ctx.strokeStyle=rgba(c,.55+.35*Math.min(1,s.absorbed));ctx.lineWidth=2.5+4*s.absorbed;
+ ctx.beginPath();ctx.ellipse(0,0,51,20,-.22,0,TAU);ctx.stroke();
+ ctx.beginPath();ctx.ellipse(0,0,34,34,0,0,TAU);ctx.stroke();
+ ctx.restore();
+ const core=ctx.createRadialGradient(x-7,y-8,2,x,y,35);core.addColorStop(0,'#020304');core.addColorStop(.68,'#020509');core.addColorStop(1,'#295263');
+ ctx.beginPath();ctx.arc(x,y,32,0,TAU);ctx.fillStyle=core;ctx.fill();
+ text('BLACK HOLE  '+(active?'GROUND':'ISOLATED'),750,695,12,c,'left');
+ text('DRAIN '+s.absorbed.toFixed(3),750,712,11,'#c0e2e4','left');
+}
+function cableWires(m,net){
+ if(S.mode==='stellar')return;
+ const gain=C.coupled?1:.25,cy=coords.ret[1];
+ const targets={G:[coords.v[0]-32,coords.ret[1]-8],R:[coords.w[0]+32,coords.ret[1]-8],B:[coords.x[0]+24,coords.ret[1]+6],P:[coords.y[0]-24,coords.ret[1]+6]};
+ for(const k of SEA.ORDER){const [x,y]=targets[k],p=net.portReturns[k],src=coords[({G:'v',R:'w',B:'x',P:'y'})[k]];
+  const light=Math.min(1,p.light+.16),col=palette[k];
+  // Outgoing cable / return path: different from the decorative ocean lines.
+  path([[src[0],src[1]],[x,y-32],[x,y],[coords.ret[0],coords.ret[1]]],col,1.5+.9*light,.2+gain*.34);
+  const walk=(net.tick%(2*Math.max(1,p.delay)))/(2*Math.max(1,p.delay));
+  const mx=x+(600-x)*walk,my=cy-6*Math.sin(Math.PI*walk);
+  halo(mx,my,21,col,light*.4);dot(mx,my,3.4,col,.6+light*.35);
+  text(k+'  '+p.delay+'t',x,cy+28,11,col);
+ }
+ path([[coords.ret[0],coords.ret[1]],[coords.ret[0],520],[coords.core[0],coords.core[1]+95]],'#8ff1e9',3,.35+gain*.4);
+ const go=net.returnResidual;halo(coords.ret[0],coords.ret[1],35,'#8ff1e9',.11+.3*Math.min(go,1));
+ text(C.coupled?'RETURN → CENTER':'RETURN (DECOUPLED)',coords.ret[0],cy-18,12,'#a4e9e3');
+}
+function links(m){const center=coords.core;for(const name of M.NAMES){const [x,y]=coords[name],color=palette[name];const c=center;path([[x,y],[.55*x+.45*c[0],.55*y+.45*c[1]],c],color,name==='z'?4:2.5,.25+Math.min(.6,m.emission*.17));const orbit=m.cycle*TAU*(name==='z'?2:1)+M.NAMES.indexOf(name);const k=(Math.sin(orbit)+1)/2,mid=[x+(c[0]-x)*k,y+(c[1]-y)*k];halo(...mid,25,color,.15);dot(...mid,3,color,.85)}}
+function sun(m){let [x,y]=coords.core;const bloom=70+m.excitation*42;halo(x,y,240,'#ffb95c',.18+m.excitation*.13);const l=S.levels;const petals=[['G',0,-1],['R',1,0],['B',0,1],['P',-1,0]];
+ for(const [k,dx,dy] of petals){const strength=l[k]/3,t=m.cycle*TAU+(['G','R','B','P'].indexOf(k)*Math.PI/2),pulse=.5+.5*Math.sin(t),rr=21+36*strength+7*pulse,cx=x+dx*(69+30*strength),cy=y+dy*(69+30*strength);halo(cx,cy,rr*2.1,palette[k],.18*strength);ctx.save();ctx.translate(cx,cy);ctx.rotate(Math.atan2(dy,dx));ctx.fillStyle=rgba(palette[k],.14+.16*strength);ctx.strokeStyle=rgba(palette[k],.32+.55*strength);ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(0,0,rr,rr*.75,0,0,TAU);ctx.fill();ctx.stroke();ctx.restore()}
+ const g=ctx.createRadialGradient(x-19,y-23,2,x,y,bloom);g.addColorStop(0,'#ffffff');g.addColorStop(.16,'#fff4b6');g.addColorStop(.52,'#ffbd56');g.addColorStop(.82,'#ba5b35');g.addColorStop(1,rgba('#f97c39',0));ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,bloom,0,TAU);ctx.fill();ctx.strokeStyle=rgba('#ffeeaa',.48);ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,bloom*.78,0,TAU);ctx.stroke();
+ ctx.strokeStyle=rgba('#fff0c0',.45);ctx.lineWidth=1;ctx.strokeRect(x-31,y-31,62,62);text('[ .|.|.|.| ]',x,y+6,13,'#1b2a35');
+ if(m.flare){const phi=m.cableDominant?m.returnAngle:Math.atan2(Math.sin(m.phiZ-2*m.phiX)+.08,Math.cos(m.phiZ-2*m.phiX));ctx.save();ctx.translate(x,y);ctx.rotate(phi);for(let i=0;i<6;i++){ctx.strokeStyle=rgba('#ffd18a',.42-i*.045);ctx.lineWidth=10-i;ctx.beginPath();ctx.moveTo(bloom*.75,0);ctx.bezierCurveTo(bloom+60,-20+8*i,bloom+115,20-6*i,bloom+230+12*i,6*i-10);ctx.stroke()}ctx.restore();}
+ text(m.flare?'SOLAR FLARE / DISCHARGE':m.residual<1e-7?'0 · SUN GROUNDED':'SUN RESIDUAL / CONTAINMENT',x,y+173,15,m.flare?'#ffb47e':'#f7d793');}
+function drawScope(m,n){
+ const c=sctx,w=scope.width,h=scope.height,left=56,right=w-21,top=20,bottom=h-35;
+ c.fillStyle='#050e17';c.fillRect(0,0,w,h);
+ c.font='14px ui-monospace,Consolas,monospace';c.textAlign='left';
+ for(let i=0;i<=4;i++){const val=i*.5,yy=bottom-(val/2.25)*(bottom-top);
+  c.strokeStyle=i===0?'#9dc9ac55':'#2a4b60';c.lineWidth=1;
+  c.beginPath();c.moveTo(left,yy);c.lineTo(right,yy);c.stroke();
+  c.fillStyle='#9cb1bf';c.fillText(val.toFixed(1),10,yy+4)}
+ let start=Math.max(0,S.cycles-1);let samples=[];
+ for(let i=0;i<=128;i++){let t=start+i/128,s=PG.sample(S,t,C,BH);samples.push({t,emit:s.pulsars.emission,return:s.cable.returned,error:s.sunResidual})}
+ const datasets=[['emit','#ffd78b'],['return','#71baff'],['error','#ff8f9d']];
+ for(const [key,color] of datasets){c.beginPath();c.strokeStyle=color;c.lineWidth=2.8;c.shadowColor=color;c.shadowBlur=5;
+  samples.forEach((p,i)=>{let xx=left+(right-left)*i/128,yy=bottom-M.clip(p[key]/2.25,0,1)*(bottom-top);i?c.lineTo(xx,yy):c.moveTo(xx,yy)});
+  c.stroke();c.shadowBlur=0}
+ c.fillStyle='#a9c8cd';c.fillText('T - 1 cycle',left,bottom+21);c.fillText('NOW →',right-70,bottom+21);
+}
+
+function drawTorqueScope(){
+ const c=tctx,w=torqueScope.width,h=torqueScope.height,left=58,right=w-22,top=23,bottom=h-38;
+ c.fillStyle='#050e17';c.fillRect(0,0,w,h);
+ for(let j=-2;j<=2;j++){
+  const yy=top+(2-j)*(bottom-top)/4;
+  c.strokeStyle=j===0?'#6c9aaa':'#263e50';c.lineWidth=1;
+  c.beginPath();c.moveTo(left,yy);c.lineTo(right,yy);c.stroke();
+  c.fillStyle='#8fb3c4';c.textAlign='left';c.font='13px ui-monospace,monospace';c.fillText(String(j),18,yy+4);
+ }
+ const start=Math.max(0,S.cycles-1),sampleCount=128;
+ for(const [key,color] of [['ringRate','#9ee9ff'],['sunRate','#ffd78b'],['commonDrift','#ff91a7'],['counterspinError','#9bf1c2']]){
+  c.beginPath();c.strokeStyle=color;c.lineWidth=2.5;
+  for(let i=0;i<=sampleCount;i++){
+   const b=BEAR.sample(start+i/sampleCount,BC);
+   const y=top+((2-M.clip(b[key],-2,2))/4)*(bottom-top);
+   const x=left+i*(right-left)/sampleCount;
+   if(!i)c.moveTo(x,y);else c.lineTo(x,y);
+  }c.stroke();
+ }
+ c.fillStyle='#99c0c7';c.textAlign='left';c.fillText('ONE MODEL CYCLE →',left,bottom+25);
+}
+function drawCentralBearing(b){
+ const [x,y]=coords.core;
+ // Two coaxial nested gimbal rims, rotating clockwise against the hex carrier.
+ halo(x,y,183,'#86dfff',.13);
+ ctx.save();ctx.translate(x,y);ctx.rotate(-b.ringAngle);
+ for(const [radius,width,opacity] of [[153,7,.8],[126,3,.55]]){
+  ctx.beginPath();ctx.arc(0,0,radius,0,TAU);
+  ctx.strokeStyle=rgba('#8ccfff',opacity);ctx.lineWidth=width;ctx.shadowColor='#68caff';ctx.shadowBlur=15;ctx.stroke();ctx.shadowBlur=0;
+ }
+ for(let i=0;i<16;i++){
+  const angle=i*TAU/16,a=136,bb=153;
+  ctx.beginPath();ctx.moveTo(Math.cos(angle)*a,Math.sin(angle)*a);
+  ctx.lineTo(Math.cos(angle)*bb,Math.sin(angle)*bb);
+  ctx.lineWidth=i%4===0?4:2;ctx.strokeStyle=rgba(i%4===0?'#fff0b3':'#b7edff',.82);ctx.stroke();
+ }
+ ctx.restore();
+ // Sun spins CCW inside the ring; its pointer is not another outside satellite.
+ ctx.save();ctx.translate(x,y);ctx.rotate(-b.sunAngle);
+ ctx.strokeStyle=rgba('#fff3ce',.84);ctx.lineWidth=3;
+ for(let i=0;i<4;i++){
+  const a=i*TAU/4;ctx.beginPath();ctx.moveTo(Math.cos(a)*37,Math.sin(a)*37);
+  ctx.lineTo(Math.cos(a)*67,Math.sin(a)*67);ctx.stroke();
+ }
+ ctx.restore();
+ text('CW RING / CCW SUN',x,y+205,14,'#c6ebfc');
+ text('1g* = '+b.gEquivalent.toFixed(3)+'  ·  '+(b.locked?'BALANCED':'ADJUSTING'),x,y+222,12,b.locked?'#a6f8cb':'#ffca93');
+}
+
+
+
+function renderMotionTrack(m){
+ const canvas=$('motionTrack'),c=canvas.getContext('2d'),w=canvas.width;
+ const left=85,right=w-90,cy=75,x=left+(right-left)*m.position;
+ c.clearRect(0,0,w,canvas.height);c.fillStyle='#061524';c.fillRect(0,0,w,canvas.height);
+ c.strokeStyle='#456a81';c.lineWidth=13;c.lineCap='round';c.beginPath();c.moveTo(left,cy);c.lineTo(right,cy);c.stroke();
+ c.strokeStyle='#95eccc';c.lineWidth=5;c.beginPath();c.moveTo(left,cy);c.lineTo(x,cy);c.stroke();
+ c.fillStyle='#9dbacb';c.font='13px ui-monospace,Consolas,monospace';c.textAlign='center';
+ c.fillText('CARRIER 0',left,34);c.fillText('VESSEL 1',right,34);c.fillText('STROKE / normalized',w/2,151);
+ c.strokeStyle='#d7aaff';c.lineWidth=4;c.beginPath();c.moveTo(right,48);c.lineTo(right,100);c.stroke();
+ c.save();c.translate(x,cy);c.fillStyle=m.travelReady?'#9bf8ca':'#ffd28b';c.strokeStyle='#ffffff';c.lineWidth=2;
+ c.beginPath();c.moveTo(-18,-14);c.lineTo(20,-14);c.lineTo(30,0);c.lineTo(20,14);c.lineTo(-18,14);c.closePath();c.fill();c.stroke();c.restore();
+ c.fillStyle='#fff2ce';c.fillText('CLAMP '+m.position.toFixed(3)+'  v '+m.velocity.toFixed(3),Math.max(230,Math.min(w-230,x)),115);
+ $('mPos').textContent=m.position.toFixed(3);$('mVel').textContent=m.velocity.toFixed(3);
+ $('mMargin').textContent=(m.forceMargin>=0?'+':'')+m.forceMargin.toFixed(3);
+ $('mMargin').style.color=m.forceSafe?'#a9f1ce':'#ff9699';
+ $('mStatus').textContent=m.travelReady?'DOCK READY':m.docked?'SETTLING':m.forceSafe?'IN TRANSIT':'OVERLOAD / HOLD';
+ $('mWork').textContent=m.driveWork.toFixed(4);$('mHeat').textContent=(m.dragHeat+m.boundaryWork).toFixed(4);
+ $('mLedger').textContent=m.ledgerError.toExponential(1);
+ $('mDrive').textContent=m.appliedThrust.toFixed(2)+' / '+m.thrustLimit.toFixed(2);
+ $('mReason').textContent=m.travelReady?'Position, velocity and hold-force margin meet the gate.':('MOTION INTERLOCK: '+m.blocked.join(', '));
+ for(const [name,key] of [['mThrust','thrust'],['mLoad','load'],['mCapacity','holdCapacity'],['mDamping','damping']]){
+  $(name).value=motionCfg[key];$(name==='mCapacity'?'mCapacityVal':name+'Val').textContent=motionCfg[key].toFixed(2);
+ }
+}
+
+function buildHallGrid(){
+ const root=$('hallGrid');root.textContent='';
+ for(const r of HARV.rails){const e=document.createElement('div');e.className='hallrail';e.id='hall'+r.id;
+  const n=document.createElement('div');n.className='halltitle';n.textContent=r.id+' '+r.from+' → '+r.to;
+  const c=document.createElement('div');c.className='hallcells';for(let i=0;i<7;i++){const slot=document.createElement('span');slot.className=i===0||i===6?'neg':i===1||i===5?'pos':'sample';slot.textContent=r.pattern[i];c.append(slot)}
+  const v=document.createElement('div');v.className='hallvalue';v.textContent='WAITING FOR SIMULATED WITNESS';e.append(n,c,v);root.append(e);
+ }
+}
+function pipeWitness(){return {phase:harvState.phase,clampAttached:harvState.clampAttached,interlocksReady:!!lastHall?.ready,docked:!!lastMotion?.docked&&!!lastMotion?.slow&&!!lastMotion?.forceSafe,fault:!!harvState.faultRail||!!harvState.misalignment};}
+function dualConfig(){return {delayA:Number($('dualDelayA').value),delayB:Number($('dualDelayB').value),modeA:$('dualModeA').value,modeB:$('dualModeB').value,bitA:Number($('dualBitA').value),bitB:Number($('dualBitB').value),ackModeA:$('dualAckModeA').value,ackModeB:$('dualAckModeB').value}}
+function syncDeliveries(){
+ dualState=DUAL.advance(dualState,Math.floor(S.cycles*64));
+ // Only a full, actually delivered path gets installed into V13 readback.
+ if(!integrityState.readA&&dualState.paths.A.rxHex&&dualState.paths.A.acked.every(Boolean))integrityState={...integrityState,readA:dualState.paths.A.rxHex};
+ if(!integrityState.readB&&dualState.paths.B.rxHex&&dualState.paths.B.acked.every(Boolean))integrityState={...integrityState,readB:dualState.paths.B.rxHex};
+}
+function dualAction(action){S.playing=false;S.cycles+=(action==='NEXT16'?16:1)/64;const tick=Math.floor(S.cycles*64);syncDeliveries();
+ if(action==='RETRY_A'||action==='RETRY_B'||action==='RETRY_BOTH'){
+  const lanes=action==='RETRY_BOTH'?['A','B']:[action.slice(-1)];
+  for(const lane of lanes){const before=dualState.paths[lane].attempt;dualState=DUAL.retry(dualState,lane,tick,dualConfig());
+   if(dualState.paths[lane].attempt!==before)integrityState={...integrityState,[lane==='A'?'readA':'readB']:null};}
+ }else if(action==='REPLAY_A'||action==='REPLAY_B')dualState=DUAL.replay(dualState,action.slice(-1),tick);
+ else if(action==='DISCARD_SOURCE')dualState=DUAL.discardSender(dualState,tick);
+ else if(action==='NEXT1'||action==='NEXT16'){syncDeliveries();}
+ render();}
+function pipeAction(action,bit){S.playing=false;S.cycles+=1/64;const tick=Math.floor(S.cycles*64),seed=$('pipeHex').value.trim(),witness=pipeWitness();syncDeliveries();
+ const opts={seed,tick,witness,bit};
+ if(action==='LOAD'){
+  const out=INTEG.command(pipeState,integrityState,'LOAD',opts);pipeState=out.pipe;integrityState=out.integrity;
+  if(pipeState.phase==='LOADED')dualState=DUAL.reset(dualState,tick);
+ }else if(action==='IN'){
+  const before=pipeState.ingress;pipeState=PIPE.transition(pipeState,'IN',opts);
+  if(pipeState.ingress===before+1){const hex=pipeState.inFlight.hex;
+   integrityState={...INTEG.defaults(),captured:hex,reason:'SOURCE CAPTURED · WAITING FOR A/B BYTE DELIVERY'};
+   dualState=DUAL.start(dualState,hex,tick,dualConfig());}
+ }else if(action==='OUT'){
+  if(!DUAL.evaluate(dualState).ready){
+   pipeState=PIPE.transition(pipeState,'OUT',{...opts,witness:{...witness,interlocksReady:false}});
+   pipeState.reason='WAIT: ACTIVE TRANSFER NEEDS TEN CURRENT ACKS AND EXACT A/B DELIVERY';
+   integrityState={...integrityState,reason:pipeState.reason};render();return;
+  }
+  // V13 performs exact 40-bit comparison AND original clamp/pipe witness checks.
+  // Without packets, the buffered receiver values remain null, and OUT latches HELD.
+  const before=pipeState.egress,out=INTEG.command(pipeState,integrityState,'OUT',opts);
+  pipeState=out.pipe;integrityState=out.integrity;
+  if(pipeState.egress===before+1)dualState=DUAL.confirmOutput(dualState,tick);
+ }else if(action==='RESUME'){
+  const out=INTEG.command(pipeState,integrityState,'RESUME',opts);pipeState=out.pipe;integrityState=out.integrity;
+ }else if(action==='REPAIR'){
+  dualAction('RETRY_BOTH');return;
+ }else if(action==='FLIP_A'||action==='FLIP_B'){
+  const out=INTEG.command(pipeState,integrityState,action,opts);pipeState=out.pipe;integrityState=out.integrity;
+ }else if(action==='ABORT'){
+  const out=INTEG.command(pipeState,integrityState,'ABORT',opts);pipeState=out.pipe;integrityState=out.integrity;
+  if(pipeState.phase==='ABORTED')dualState=DUAL.abort(dualState,tick);
+ }else if(action==='CLEAR'){
+  const out=INTEG.command(pipeState,integrityState,'CLEAR',opts);pipeState=out.pipe;integrityState=out.integrity;
+  if(pipeState.phase==='EMPTY')dualState=DUAL.reset(dualState,tick);
+ }
+ render()}
+function renderDual(){
+ const e=DUAL.evaluate(dualState),tick=Math.floor(S.cycles*64);
+ for(const lane of DUAL.LANES){const p=dualState.paths[lane],target=$('dualPackets'+lane);target.textContent='';
+  for(let i=0;i<5;i++){const piece=document.createElement('span'),byte=p.bytes[i],q=p.queue.find(v=>v.index===i);
+   piece.className=byte!==null?(p.rxHex&&p.status==='CORRUPT'?'bad':p.acked[i]?'acknowledged':'waitingAck'):(q?'pending':p.attempt?'missing':'');
+   piece.textContent=byte!==null?byte.toString(16).padStart(2,'0').toUpperCase():(q?'t'+q.at:'—');target.append(piece)}
+  $('dualStatus'+lane).textContent=p.status+' · attempt '+p.attempt+' · ACK '+p.acked.filter(Boolean).length+'/5';
+  $('dualCount'+lane).textContent=p.bytes.filter(v=>v!==null).length+'/5 · '+p.status;
+ }
+ $('dualTickValue').textContent=String(tick);$('dualSource').textContent=e.senderRetained?'RETAINED':'DISCARDED';
+ $('dualVerdict').textContent=e.ready?'A+B: 40/40 + 10 ACK':'AWAIT VALID ACKS';$('dualAck').textContent=dualState.egressReceipt?'ONE MATCHED OUT':'NONE';
+ $('dualTxId').textContent=e.txId===null?'—':'TX-'+e.txId;
+ $('dualAckA').textContent=e.acksA+'/5';$('dualAckB').textContent=e.acksB+'/5';
+ $('dualRejectCount').textContent=String(dualState.receipts.filter(r=>/STALE|REPLAY|DUPLICATE|INVALID_ACK/.test(r.kind)).length);
+ $('dualReason').textContent=dualState.reason+' · '+(e.ready?'ALL TEN ACKS RECEIVED · EXACT READBACK READY':'EGRESS HELD UNTIL CURRENT-TX ACKS AND EXACT 40-BIT RECEIPT');
+ $('dualAudit').textContent=dualState.receipts.length?dualState.receipts.slice(-15).map(r=>'#'+r.seq+' t'+r.tick+' '+r.kind+' '+r.lane+' '+(r.index===undefined?'':'byte'+r.index+' ')+(r.reason||r.hash)).join('\n'):'No transmissions recorded.';
+}
+function renderReadback(){
+ const c=integrityState.last||INTEG.compare(pipeState,integrityState),active=!!integrityState.captured;
+ $('readScore').textContent=active?c.matchingBits+' / 40':'— / 40';$('readErrA').textContent=active?String(c.errorA):'—';$('readErrB').textContent=active?String(c.errorB):'—';
+ $('readVerdict').textContent=pipeState.phase==='COMPLETE'?'40/40 EXIT':pipeState.phase==='HELD'?'HELD':active?(c.ready?'MATCHED':(integrityState.readA&&integrityState.readB?'MISMATCH':'AWAIT BYTE PACKETS')):'AWAIT IN';
+ $('readReason').textContent=integrityState.reason+' · '+(integrityState.delivered?'VERIFIED OUTPUT '+integrityState.delivered:'NO VERIFIED OUTPUT YET');
+ const roots=$('readRows');roots.textContent='';if(active){const ref=INTEG.bits(integrityState.captured);
+  for(const [lab,hex] of [['SOURCE',integrityState.captured],['RX A',integrityState.readA],['RX B',integrityState.readB]]){
+   const wrap=document.createElement('div');wrap.className='bitRow';const title=document.createElement('b');title.textContent=lab;wrap.append(title);
+   const bits=INTEG.bits(hex)||''.padStart(40,'?');for(let j=0;j<40;j++){if(j&&j%8===0)wrap.append(document.createTextNode(' '));const bit=document.createElement('span');bit.textContent=bits[j];if(lab!=='SOURCE'&&bits[j]!==ref[j])bit.className='bad';wrap.append(bit)}roots.append(wrap);
+  }
+ }else roots.textContent='No payload entered the pipe.';
+ $('readAudit').textContent=integrityState.receipts.length?integrityState.receipts.slice(-9).map(r=>'#'+r.seq+' '+r.kind+' @'+r.tick+' '+r.hash+' '+(r.sourceHex||'')+(r.receivedHex?' -> '+r.receivedHex:'')+' '+(r.reason||'')).join('\n'):'No receiver receipts.';
+}
+function renderPipe(){
+ const witness=pipeWitness();syncDeliveries();pipeState=PIPE.transition(pipeState,'MONITOR',{tick:Math.floor(S.cycles*64),witness});integrityState={...integrityState,last:INTEG.compare(pipeState,integrityState)};renderDual();
+ const p=pipeState.packet,$f=$('pipeFlow');$f.textContent='';PIPE.STAGES.forEach((name,i)=>{const div=document.createElement('div');div.className='pipestage'+((i===5&&pipeState.inFlight)||(i===7&&pipeState.phase==='COMPLETE')?' active':'')+(i===6?' opaque':'');const t=document.createElement('strong');t.textContent='0'+(i+1);div.append(t,document.createTextNode(name));$f.append(div)});
+ const target=$('pipeBytes');target.textContent='';if(p)for(let i=0;i<5;i++){const d=document.createElement('div');d.className='pipebyte';const title=document.createElement('strong');title.textContent=p.hex.slice(i*2,i*2+2);d.append(title,document.createTextNode(p.bytes[i].toString(2).padStart(8,'0')));target.append(d)}
+ $('pipePhase').textContent=pipeState.phase;$('pipeCounts').textContent=pipeState.ingress+' / '+pipeState.egress;$('pipeWeight').textContent=p?p.weightedChecksum+' / 56':'—';$('pipeDigest').textContent=p?.digest||'—';$('pipeReason').textContent=pipeState.reason+' · '+(PIPE.guard(witness)?'ALL NINE CLAMP INTERLOCKS LIVE':'PIPE EGRESS LOCKED: CLAMP OR WITNESS');
+ const colors=$('pipeColors');colors.textContent='';if(p)for(const lane of p.lanes){const d=document.createElement('div');d.className='pipecolor';d.style.background=({r1:'#71303b',g1:'#145442',b1:'#1c3d70',bk1:'#1c1f29'})[lane.name];d.textContent=lane.name+' '+lane.bit+' / 3-bit '+lane.state+' ×'+lane.weight;colors.append(d)}
+ $('pipeReceiptLog').textContent=pipeState.receipts.length?pipeState.receipts.slice(-9).map(r=>'#'+r.seq+' '+r.kind+' '+r.hash+' prev:'+r.prev+' payload:'+r.packetDigest+' '+r.reason).join('\n'):'No pipe transactions.';
+ renderReadback();
+ $('ledger').textContent+='\n\n VESSEL PIPE V15 / '+PIPE.LITERAL+'\n PHASE '+pipeState.phase+' · INPUT '+pipeState.ingress+' / OUTPUT '+pipeState.egress+' · DIGEST '+(p?.digest||'—')+' · '+(p?'STATES '+p.states.join('/'):'REGISTER EMPTY');$('asciiFrame').textContent=$('ledger').textContent;
+}
+function renderHarvester(g,n,b){
+ const base=HARV.sample({g,b,c:C,bh:BH},S.cycles,{faultRail:harvState.faultRail,misalignment:harvState.misalignment});const w=H11.witness(base,motionState,motionCfg);lastHall=w;lastMotion=w.carrierMotion;
+ const monitored=HARV.step(harvState,'MONITOR',w);if(monitored!==harvState)harvState=monitored;
+ $('hStage').textContent=harvState.phase;$('hInterlocks').textContent=w.ready?'9/9 READY':(9-w.failures.length)+'/9';
+ $('hRails').textContent=w.activeRails+'/19';$('hVerify').textContent=harvState.count+'/2';$('clampBadge').textContent=harvState.clampAttached?'ENGAGED':harvState.phase;
+ $('hReason').textContent='TICK '+w.tick+' · '+(harvState.reason||(!w.ready?'INTERLOCK: '+w.failures.join(', '):'ALL NINE INTERLOCKS PRESENT'));
+ $('hOpen').textContent=harvState.faultRail?'REPAIR HR11':'OPEN HR11';$('hMisalign').textContent=harvState.misalignment?'CLEAR MISALIGN':'MISALIGN';
+ w.rails.forEach(r=>{const e=$('hall'+r.id);e.className='hallrail'+(r.status==='VISUAL_ONLY'?' visual':r.status==='OPEN'?' open':'');const cells=e.querySelectorAll('.hallcells span');for(let i=2;i<5;i++){cells[i].classList.toggle('inactive',r.status!=='SIMULATED');cells[i].textContent=r.status==='SIMULATED'?(Math.abs(r['h'+(i-2)])>0.035?'●':'0'):'·'}
+ const value=e.querySelector('.hallvalue');value.textContent=r.status==='VISUAL_ONLY'?'UNINSTRUMENTED GEOMETRY':r.status==='OPEN'?'SENSOR RAIL OPEN':('H0 '+r.h0.toFixed(3)+' / H1 '+r.h1.toFixed(3)+' / H2 '+r.h2.toFixed(3))});
+ $('hReceiptLog').textContent=harvState.receipts.length?harvState.receipts.slice(-8).map(r=>'#'+r.seq+'  '+r.kind+'  '+r.phase+'  @'+r.tick+'  '+r.hash+'  '+r.reason).join('\n'):'No receipts.';
+ renderMotionTrack(w.carrierMotion);
+}
+
+function render(){const g=PG.sample(S,S.cycles,C,BH),m=g.cable.gyro,n=g.cable,bearing=BEAR.sample(S.cycles,BC,g.sunResidual),effective={...m,residual:g.sunResidual,containment:g.containment,flare:g.flare,event:g.event,cableDominant:n.contribution>m.residual,returnAngle:Math.atan2(n.im,n.re)};lastModel=m;lastCable=n;lastGround=g;lastBearing=bearing;drawScope(m,n);drawTorqueScope();bg(m);withPlanetaryRotation(()=>{drawHexLattice(m,n);cableWires(m,n);links(m);drawReturnNode(n);for(const name of M.NAMES)pulsar(name,m,g.pulsars);});sun(effective);drawCentralBearing(bearing);blackHole(g);
+ $('residual').textContent=m.residual.toFixed(4);$('containment').textContent=g.containment.toFixed(3);$('emission').textContent=g.pulsars.emission.toFixed(3);$('coupling').textContent=m.xy.toFixed(3)+' / '+m.crown.toFixed(3);$('mask').textContent=m.id+' / 255';$('event').textContent=g.event;$('eventDetail').textContent=g.flare?'sun stress exceeds ground capacity':g.sunResidual<1e-7?'five pulsars active; sun balanced':'sun retains stress after ground';$('cycleText').textContent='ROTATION CYCLE '+(Math.floor(S.cycles)+1)+' · CARRIER CCW 29.75 km/s · RING CW · SUN CCW · 1g* '+bearing.gEquivalent.toFixed(3);$('cycleProgress').style.width=((S.cycles%1)*100).toFixed(2)+'%';$('viewLabel').textContent=S.mode.toUpperCase()+' · OUTER CCW / CENTRAL RING CW / SUN CCW';
+ for(const key of M.NAMES){$('rate'+key).value=S.rates[key];$('out'+key).textContent=S.rates[key]+'°'}for(const key of M.COLORS){$('color'+key).value=S.levels[key];$('strength'+key).textContent=S.levels[key]}$('zSlip').value=S.zSlip;$('zSlipOut').textContent=(S.zSlip>=0?'+':'')+S.zSlip+'°';$('address').value=m.id;$('mode').value=S.mode;$('play').textContent=S.playing?'PAUSE':'PLAY';$('view').textContent=S.ascii?'GRAPHICS':'ASCII';$('artWrap').classList.toggle('hide',S.ascii);$('altPanel').classList.toggle('show',S.ascii);
+ const l=S.levels,fmt=n=>String(n).padStart(3,' '),ascii=[
+ '        .  FIVE PULSARS / PLANETARY GEAR  .',
+ '              [ z : '+fmt(S.rates.z)+' ]',
+ '       [v:'+fmt(S.rates.v)+']   / \\   [w:'+fmt(S.rates.w)+']',
+ '                \\  |  //',
+ '                 \\ ☼ //',
+ '         [x:'+fmt(S.rates.x)+'] [ret] [y:'+fmt(S.rates.y)+']',
+ '',
+ '          [ G | R | B | P ]',
+ '          [ '+l.G+' | '+l.R+' | '+l.B+' | '+l.P+' ]',
+ '            .|.|.|.|',
+ '',
+ '   X/Y counterphase : '+m.xy.toFixed(4),
+ '   Z / 2X mismatch  : '+m.crown.toFixed(4),
+ '   Anchors V/W      : '+m.anchors.toFixed(4),
+ '   Clover imbalance : '+m.petals.toFixed(4),
+ '   CENTER RESIDUAL  : '+g.sunResidual.toFixed(4),
+ '   EMISSION         : '+m.emission.toFixed(4),
+ '   CORE EVENT       : '+g.event,
+ '   4⁴ / '+m.id+' of 255   Σ = '+m.turnBudget+'°',
+ '',
+ '   STELLAR  ↔  AQUATIC  ↔  ATOMIC',
+ '   zero is phase balance, not no emission'
+ ].join('\n');const netLines=[
+ '','     AQUATIC RECEPTION / FOUR CABLES + HEX RETURN',
+ '  G/R/B/P: '+SEA.ORDER.map(k=>n.delays[k]+'t').join(' / '),
+ '  RETURN FLUX  : '+n.returned.toFixed(4),
+ '  RETURN ERROR : '+n.returnResidual.toFixed(4),
+ '  NET DOT ERROR: '+n.combinedResidual.toFixed(4),
+ '  SEA STATUS   : '+(n.ready?'RESPONSE LIVE':'IN FLIGHT')+(C.coupled?' / COUPLED':' / DECOUPLED'),
+ '  '+(n.flare?'!! RETURN STRESS / FLARE':'.. .|.|.|.| RETURN STABLE'),
+ ].join('\n');
+ const extras=['','   FIVE PULSARS  [-!+] :: '+PG.ORDER.map(k=>k.toUpperCase()+g.pulsars.nodes[k].symbol).join('  '),
+ '   PULSAR LIGHT : '+g.pulsars.emission.toFixed(4),
+ '   PULSE DRIFT  : '+g.pulsars.phaseDeviation.toFixed(4),
+ '   RAW SUN LOAD : '+g.rawStress.toFixed(4),
+ '   BLACK HOLE   : '+(BH.connected?'CONNECTED':'ISOLATED')+' / DRAIN '+g.absorbed.toFixed(4),
+ '   SUN STRESS   : '+g.sunResidual.toFixed(4)+' / '+g.event,
+ '   HEX: V - Z - W - Y - RETURN - X - V',
+ '   BELOW: BLACK HOLE GROUND',
+ '   CARRIER: CCW '+PLANETARY_SPEED_KMS.toFixed(2)+' km/s',
+ '   ORBIT   : '+(((-planetaryAngle())/TAU)*360).toFixed(1)+'°',
+ '   INNER RING CW : '+bearing.ringRate.toFixed(4)+' turns/cycle',
+ '   SUN SPIN CCW  : '+bearing.sunRate.toFixed(4)+' turns/cycle',
+ '   1g* BALANCE   : '+bearing.gEquivalent.toFixed(4)+' (proxy)',
+ '   BEARING ERROR : '+bearing.error.toFixed(4), '   REACTION TORQUE: '+bearing.torque.toFixed(4)+' / '+(-bearing.torque).toFixed(4), '   COMMON DRIFT   : '+bearing.commonDrift.toFixed(4), '   MOTOR WORK     : '+bearing.driveWork.toFixed(4), '   GROUND HEAT    : '+bearing.groundHeat.toFixed(4), '   GROUND MOMENTUM: '+bearing.groundMomentum.toFixed(4), '   LEDGER CLOSURE : '+bearing.energyResidual.toExponential(1)+' / '+bearing.momentumResidual.toExponential(1)];
+ $('ledger').textContent=ascii+netLines+'\n'+extras.join('\n');$('asciiFrame').textContent=$('ledger').textContent;
+ $('returnResidual').textContent=n.returnResidual.toFixed(4);$('returnEnergy').textContent=n.returned.toFixed(4);
+ $('combinedResidual').textContent=g.sunResidual.toFixed(4);
+ $('cableEvent').textContent=g.flare?'SUN FLARE':n.ready?'SIGNAL RETURNED':'IN FLIGHT';
+ $('cableWitness').textContent='tick '+n.tick+' · '+(C.coupled?'coupled':'bypassed');
+ $('delayAll').value=C.delay;$('delayAllOut').textContent=C.delay+' t';
+ $('delayPurple').value=C.purpleExtra;$('delayPurpleOut').textContent=C.purpleExtra+' t';
+ $('returnGain').value=C.gain;$('returnGainOut').textContent=C.gain.toFixed(2);
+ $('toggleCoupling').textContent=C.coupled?'RETURN COUPLED':'RETURN BYPASSED';
+ $('pulseEmission').textContent=g.pulsars.emission.toFixed(3);$('pulseError').textContent=g.pulsars.phaseDeviation.toFixed(3);
+ $('rawStress').textContent=g.rawStress.toFixed(3);$('groundDrain').textContent=g.absorbed.toFixed(3);
+ $('sunStress').textContent=g.sunResidual.toFixed(3);$('groundStatus').textContent=BH.connected?'CONNECTED':'DISCONNECTED';
+ $('groundStatus').className=BH.connected?'grounded':'groundFault';$('toggleGround').textContent=BH.connected?'GROUND CONNECTED':'GROUND DISCONNECTED';
+ $('groundCapacity').value=BH.capacity;$('groundCapacityOut').textContent=BH.capacity.toFixed(2);
+ $('gEquivalent').textContent=bearing.gEquivalent.toFixed(3)+' g*';
+ $('bearingStatus').textContent=bearing.locked?'1g* LOCKED':bearing.gain===0?'DRIVE OFF':'EXCHANGING TORQUE';
+ $('carrierSpeed').textContent='+'+bearing.carrierRate.toFixed(3);
+ $('ringSpeed').textContent=bearing.ringRate.toFixed(3);
+ $('sunSpeed').textContent=(bearing.sunRate>=0?'+':'')+bearing.sunRate.toFixed(3);
+ $('bearingError').textContent=bearing.error.toFixed(4);
+ $('bearingTau').value=BC.gain;$('bearingTauOut').textContent=BC.gain.toFixed(1);$('bearingGround').value=BC.groundGain;$('bearingGroundOut').textContent=BC.groundGain.toFixed(1);$('motorTorque').textContent=bearing.torque.toFixed(3);$('meanDrift').textContent=bearing.commonDrift.toFixed(4);$('driveWork').textContent=bearing.driveWork.toFixed(4);$('groundHeat').textContent=bearing.groundHeat.toFixed(4);$('groundMomentum').textContent=bearing.groundMomentum.toFixed(4);$('energyClosure').textContent=Math.max(Math.abs(bearing.energyResidual),Math.abs(bearing.momentumResidual)).toExponential(1);renderHarvester(g,n,bearing);
+ $('ledger').textContent+='\n\n HARVESTER V11 · CARRIER STROKE / FORCE LEDGER\n POSITION: '+lastMotion.position.toFixed(5)+' / V: '+lastMotion.velocity.toFixed(5)+' / FORCE MARGIN: '+lastMotion.forceMargin.toFixed(5)+'\n MOTOR WORK: '+lastMotion.driveWork.toFixed(5)+' / DRAG+STOP: '+(lastMotion.dragHeat+lastMotion.boundaryWork).toFixed(5)+' / CLOSURE: '+lastMotion.ledgerError.toExponential(2);$('asciiFrame').textContent=$('ledger').textContent;
+ renderPipe();
+
+}
+function setRates(key,value){S.rates[key]=Number(value);render()};function setLevel(key,value){S.levels[key]=Math.max(0,Math.min(3,Number(value)));render()};function restore(){S=defaults();C=SEA.defaults();BH=PG.defaults();BC=BEAR.defaults();harvState=HARV.defaults();motionState=H11.defaults();motionCfg=H11.configDefaults();pipeState=PIPE.defaults();integrityState=INTEG.defaults();dualState=DUAL.defaults();S.cycles=1.25;S.playing=false;last=null;render()};
+for(const name of M.NAMES){let max=name==='z'?840:name==='x'||name==='y'?480:90,min=name==='z'?600:name==='x'||name==='y'?240:-90,def=M.DEFAULT_RATES[name];let row=document.createElement('div');row.className='sliderline';let label=document.createElement('label');label.textContent=name.toUpperCase();label.style.background=palette[name];let slider=document.createElement('input');slider.type='range';slider.id='rate'+name;slider.min=min;slider.max=max;slider.step=1;slider.value=def;slider.setAttribute('aria-label',name+' degrees per cycle');let out=document.createElement('output');out.id='out'+name;out.textContent=def+'°';slider.addEventListener('input',()=>setRates(name,slider.value));row.append(label,slider,out);$('rateRows').append(row)}
+for(const name of M.COLORS){let row=document.createElement('div');row.className='sliderline';let label=document.createElement('label');label.textContent=name;label.style.background=palette[name];let slider=document.createElement('input');slider.type='range';slider.id='color'+name;slider.min=0;slider.max=3;slider.step=1;slider.value=3;slider.setAttribute('aria-label',name+' brace strength');let out=document.createElement('output');out.id='strength'+name;out.textContent='3';slider.addEventListener('input',()=>setLevel(name,slider.value));row.append(label,slider,out);$('colorRows').append(row)}
+$('toggleGround').addEventListener('click',()=>{BC=BEAR.anchor(BC,S.cycles,{groundConnected:!BH.connected});BH.connected=!BH.connected;render()});
+$('groundCapacity').addEventListener('input',e=>{BH.capacity=Number(e.target.value);render()});
+$('bearingRelease').addEventListener('click',()=>{BC=BEAR.anchor(BC,S.cycles,{ringRate0:0,sunRate0:0});render()});
+$('bearingKick').addEventListener('click',()=>{const b=BEAR.sample(S.cycles,BC);BC=BEAR.anchor(BC,S.cycles,{ringRate0:b.ringRate+.68,sunRate0:b.sunRate-.28});render()});
+$('bearingLock').addEventListener('click',()=>{BC=BEAR.anchor(BC,S.cycles,{ringRate0:-1,sunRate0:1});render()});
+$('bearingTau').addEventListener('input',e=>{BC=BEAR.anchor(BC,S.cycles,{gain:Number(e.target.value)});render()});$('bearingGround').addEventListener('input',e=>{BC=BEAR.anchor(BC,S.cycles,{groundGain:Number(e.target.value)});render()});
+
+$('demoGround').addEventListener('click',()=>{S.playing=false;S.cycles=Math.max(S.cycles,1.25);C.purpleExtra=8;render()});
+$('resetGround').addEventListener('click',()=>{C.purpleExtra=0;BC=BEAR.anchor(BC,S.cycles,{groundConnected:true});BH.connected=true;BH.capacity=0.45;S.zSlip=0;render()});
+$('toggleCoupling').addEventListener('click',()=>{C.coupled=!C.coupled;render()});
+$('breakCable').addEventListener('click',()=>{C.purpleExtra=8;S.playing=false;S.cycles=Math.max(S.cycles,1.25);render()});
+$('lockCable').addEventListener('click',()=>{C.purpleExtra=0;render()});
+$('delayAll').addEventListener('input',e=>{C.delay=+e.target.value;render()});
+$('delayPurple').addEventListener('input',e=>{C.purpleExtra=+e.target.value;render()});
+$('returnGain').addEventListener('input',e=>{C.gain=+e.target.value;render()});
+$('pulseReturn').addEventListener('click',()=>{S.playing=false;S.cycles+=1/64;render()});
+$('play').addEventListener('click',()=>{S.playing=!S.playing;last=null;render()});$('step').addEventListener('click',()=>{S.playing=false;S.cycles+=.03125;render()});$('lock').addEventListener('click',restore);$('drift').addEventListener('click',()=>{S.zSlip=45;render()});$('weak').addEventListener('click',()=>{S.levels.P=1;render()});$('sweep').addEventListener('click',()=>{S.levels=M.fromId((M.stateId(S.levels)+1)%256);render()});$('mode').addEventListener('change',e=>{S.mode=e.target.value;render()});$('view').addEventListener('click',()=>{S.ascii=!S.ascii;render()});$('zSlip').addEventListener('input',e=>{S.zSlip=+e.target.value;render()});$('address').addEventListener('input',e=>{S.levels=M.fromId(+e.target.value);render()});
+function download(text,filename,mime){const blob=new Blob([text],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+
+buildHallGrid();
+function clampCommand(action){if((action==='RELEASE'||action==='RESET'||action==='ABORT')&&pipeState.inFlight){pipeState=PIPE.transition(pipeState,'MONITOR',{tick:Math.floor(S.cycles*64),witness:{}});pipeState.reason='PIPE OCCUPIED: ABORT OR FINISH BEFORE CLAMP RELEASE';render();return;}S.playing=false;S.cycles+=1/64;const g=PG.sample(S,S.cycles,C,BH),b=BEAR.sample(S.cycles,BC,g.sunResidual);const w=HARV.sample({g,b,c:C,bh:BH},S.cycles,{faultRail:harvState.faultRail,misalignment:harvState.misalignment});harvState=H11.control(HARV,harvState,w,motionState,motionCfg,action);render()}
+
+function moveCarrier(mode,ticks){S.playing=false;motionState=H11.advance(motionState,motionCfg,mode,ticks);S.cycles+=ticks/64;render()}
+$('mAdvance16').addEventListener('click',()=>moveCarrier('APPROACH',16));
+$('mAdvance128').addEventListener('click',()=>moveCarrier('APPROACH',128));
+$('mRetract16').addEventListener('click',()=>moveCarrier('RETRACT',16));
+$('mRetract128').addEventListener('click',()=>moveCarrier('RETRACT',128));
+function setMotorParam(name,val){const next={...motionCfg,[name]:val};motionCfg=next;motionState=H11.rebase(motionState,motionCfg);S.playing=false;render()}
+$('mStall').addEventListener('click',()=>setMotorParam('thrust',0));
+$('mRestore').addEventListener('click',()=>setMotorParam('thrust',3));
+$('mOverload').addEventListener('click',()=>setMotorParam('holdCapacity',.15));
+$('mClear').addEventListener('click',()=>setMotorParam('holdCapacity',1.25));
+for(const [id,name] of [['mThrust','thrust'],['mLoad','load'],['mCapacity','holdCapacity'],['mDamping','damping']])$(id).addEventListener('input',e=>setMotorParam(name,Number(e.target.value)));
+
+$('hNext').addEventListener('click',()=>clampCommand('NEXT'));
+$('hRelease').addEventListener('click',()=>clampCommand('RELEASE'));
+$('hReset').addEventListener('click',()=>clampCommand('RESET'));
+$('hAbort').addEventListener('click',()=>clampCommand('ABORT'));
+$('hOpen').addEventListener('click',()=>{harvState.faultRail=harvState.faultRail?'':'HR11';S.playing=false;render()});
+$('hMisalign').addEventListener('click',()=>{harvState.misalignment=!harvState.misalignment;S.playing=false;render()});
+for(const [id,action] of [['pipeLoad','LOAD'],['pipeIn','IN'],['pipeOut','OUT'],['pipeResume','RESUME'],['pipeAbort','ABORT'],['pipeClear','CLEAR']])$(id).addEventListener('click',()=>pipeAction(action));
+
+for(const [id,action] of [['flipReadA','FLIP_A'],['flipReadB','FLIP_B'],['repairRead','REPAIR']])$(id).addEventListener('click',()=>pipeAction(action,Number($('faultBit').value)));
+for(const [id,action] of [['dualRetryA','RETRY_A'],['dualRetryB','RETRY_B'],['dualReplayA','REPLAY_A'],['dualReplayB','REPLAY_B'],['dualTick','NEXT1'],['dualTicks16','NEXT16'],['dualSourceDiscard','DISCARD_SOURCE']])$(id).addEventListener('click',()=>dualAction(action));
+$('dualDemoFault').addEventListener('click',()=>{$('dualModeB').value='DROP';$('dualBitB').value='29';render()});
+$('pipeExport').addEventListener('click',()=>download(JSON.stringify({version:'harvester-v15-sequenced-acknowledged-queues',literal:PIPE.LITERAL,transmission:dualState,integrity:integrityState,packet:pipeState.packet,phase:pipeState.phase,ingress:pipeState.ingress,egress:pipeState.egress,receipts:pipeState.receipts,lastWitness:pipeWitness()},null,2),'harvester-v15-ack-receipts.json','application/json'));
+$('hTick').addEventListener('click',()=>{S.playing=false;S.cycles+=1/64;render()});
+$('hExport').addEventListener('click',()=>download(JSON.stringify({version:'harvester-v11',symbol:'{{-+000+-}}',stage:harvState.phase,receipts:harvState.receipts,rails:lastHall?.rails,carrier:motionState,forceBudget:lastMotion,configuration:motionCfg},null,2),'harvester-v11-motion-receipts.json','application/json'));
+
+$('saveTXT').addEventListener('click',()=>download($('ledger').textContent,'harvester-v11-ledger.txt','text/plain'));$('savePNG').addEventListener('click',()=>cv.toBlob(b=>{if(!b)return;const url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download='harvester-v11.png';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png'));
+function frame(ts){if(last!==null&&S.playing)S.cycles+=Math.min(90,Math.max(0,ts-last))/6200;last=ts;frameCount++;render();requestAnimationFrame(frame)}
+window.FiveGyro={state:()=>JSON.parse(JSON.stringify(S)),cable:()=>JSON.parse(JSON.stringify(C)),cableMetrics:()=>({...lastCable}),groundMetrics:()=>({...lastGround}),pulsars:()=>({...lastGround?.pulsars}),metrics:()=>({...lastModel}),setRates,setLevel,setSlip:deg=>{S.zSlip=+deg;render()},setCycles:n=>{S.cycles=+n;S.playing=false;render()},restore,setTheme:name=>{S.mode=name;render()},setCable:values=>{Object.assign(C,values);render()},setGround:values=>{Object.assign(BH,values);render()},bearing:()=>({...lastBearing}),setBearing:values=>{BC=BEAR.anchor(BC,S.cycles,values);render()},hall:()=>JSON.parse(JSON.stringify(lastHall)),harvester:()=>JSON.parse(JSON.stringify(harvState)),motion:()=>JSON.parse(JSON.stringify(lastMotion)),motionConfig:()=>({...motionCfg}),advanceCarrier:moveCarrier,setMotorParam,clampAction:clampCommand,setHarvesterFaults:opts=>{Object.assign(harvState,opts);S.playing=false;render()},pipe:()=>JSON.parse(JSON.stringify(pipeState)),pipeAction,pipeEngine:PIPE,integrityEngine:INTEG,dualEngine:DUAL,dual:()=>JSON.parse(JSON.stringify(dualState)),dualAction,integrity:()=>JSON.parse(JSON.stringify(integrityState)),version:'15.0-harvester-sequenced-ack-gating'};
+render();requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
