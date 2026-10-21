@@ -1,0 +1,22 @@
+name: N184 Carbon 3D CERN Mass Reconstruction v86
+on:
+  push:
+    paths:
+      - 'n184/carbon-3d-cern-v86/**'
+      - '.github/workflows/n184-carbon-3d-cern-v86.yml'
+  workflow_dispatch:
+jobs:
+  carbon3d-dimensioned-validation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reproduce CMS 3D vs 2D reconstruction benchmark and checks
+        run: |
+          node --check n184/carbon-3d-cern-v86/carbon3d_core.mjs
+          node --check n184/carbon-3d-cern-v86/test_carbon3d.mjs
+          node n184/carbon-3d-cern-v86/test_carbon3d.mjs
