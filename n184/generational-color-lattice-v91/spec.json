@@ -1,0 +1,208 @@
+{
+  "schema": "oasis/n184/generational-color-lattice/v91",
+  "version": "v9.1",
+  "classification": "deterministic-symbolic-color-generation-overlay",
+  "sourceAlignment": {
+    "registry": "i_color_370_wakaku_complete(1).html referenced by STATE_SPACE_TIME_MACHINE(1).md",
+    "canonicalAddressCount": 370,
+    "orbitRanges": [
+      {
+        "orbit": 1,
+        "start": 1,
+        "end": 122
+      },
+      {
+        "orbit": 2,
+        "start": 123,
+        "end": 244
+      },
+      {
+        "orbit": 3,
+        "start": 245,
+        "end": 370
+      }
+    ],
+    "registryHueFormula": "(address - 1) * 360 / 370",
+    "registryHueMode": {
+      "saturation": 0.78,
+      "value": 0.98
+    },
+    "registryOtherMode": "six component-permutation mode anchored at address 343, not modified by v9.1",
+    "modeInThisOverlay": "hue",
+    "addressModeWarning": "Generated hue mapping is a nearest-angle display address, not a canonical early 1-342 physical color or confirmed wavelength.",
+    "priorRGBAccents": [
+      "red",
+      "blue",
+      "green",
+      "yellow",
+      "purple",
+      "orange",
+      "black",
+      "white"
+    ],
+    "sourceFrozen": true
+  },
+  "generation": {
+    "name": "recursive additive RGB wheel, circular midpoint insertion",
+    "basePrimaries": [
+      {
+        "name": "Red",
+        "hueDeg": 0,
+        "rgb": "#FF0000"
+      },
+      {
+        "name": "Green",
+        "hueDeg": 120,
+        "rgb": "#00FF00"
+      },
+      {
+        "name": "Blue",
+        "hueDeg": 240,
+        "rgb": "#0000FF"
+      }
+    ],
+    "rules": [
+      "Gen 0: red/green/blue at 0°,120°,240° on an HSV rainbow wheel; these are RGB light primaries, not RYB paint primaries.",
+      "Gen g>=1: insert an angular midpoint between every pair of adjacent preexisting hues around 360°; new hues are (2k+1)*60 / (2^(g-1)) degrees for k=0..(3*2^(g-1)-1).",
+      "Generation hues do not replace earlier colors. A Gen3 color is a fourth-order subdivision, not an established named class in color science.",
+      "Each new hue is available at exactly three independently selected display strengths."
+    ],
+    "hueCountFormula": "g=0 =>3; g>=1 =>3*2^(g-1)",
+    "cumulativeFormula": "g>=1 =>3*2^g; g=0 =>3",
+    "virtualGenerationsSupported": "0..8",
+    "maxGeneration": 8,
+    "genesisNames": {
+      "0": "Primary",
+      "1": "Secondary",
+      "2": "Tertiary",
+      "3": "Fourth-order blends",
+      "4": "Fifth-order blends",
+      "5": "Sixth-order blends"
+    },
+    "photometricCaveat": "HSV display channel scaling is a symbolic brightness operation in sRGB; it is not calibrated photometric intensity or physical force strength."
+  },
+  "strengths": [
+    {
+      "name": "Weak",
+      "operator": "W",
+      "valueFraction": "1/3",
+      "value": 0.3333333333333333
+    },
+    {
+      "name": "Medium",
+      "operator": "M",
+      "valueFraction": "2/3",
+      "value": 0.6666666666666666
+    },
+    {
+      "name": "Strong",
+      "operator": "S",
+      "valueFraction": "3/3",
+      "value": 1
+    }
+  ],
+  "palette": {
+    "hueWheel": "HSV as computational presentation of additive RGB color primaries",
+    "requestedOrder": "Weak → Medium → Strong",
+    "digitalPrimarySet": "R,G,B",
+    "digitalSecondarySet": "Y,C,M",
+    "tertiaryHueNames": [
+      "Orange",
+      "Chartreuse",
+      "Spring green",
+      "Azure",
+      "Violet",
+      "Rose"
+    ],
+    "notPigmentPaintRYB": true,
+    "notPhysicalForces": true
+  },
+  "mappingTo370": {
+    "nearestAddressFormula": "((round(hueDegrees * 370/360) % 370) + 1)",
+    "carriesMode": "(index, mode='hue')",
+    "noninjective": true,
+    "warning": "Virtual generation wheel has >370 distinct accumulated hues by Gen7 (384); nearest-address collisions are expected and must never overwrite fixed address definitions.",
+    "orbitRangesImmutable": true
+  },
+  "exampleCounts": [
+    {
+      "gen": 0,
+      "hues": 3,
+      "swatches": 9,
+      "cumulativeHues": 3
+    },
+    {
+      "gen": 1,
+      "hues": 3,
+      "swatches": 9,
+      "cumulativeHues": 6
+    },
+    {
+      "gen": 2,
+      "hues": 6,
+      "swatches": 18,
+      "cumulativeHues": 12
+    },
+    {
+      "gen": 3,
+      "hues": 12,
+      "swatches": 36,
+      "cumulativeHues": 24
+    },
+    {
+      "gen": 4,
+      "hues": 24,
+      "swatches": 72,
+      "cumulativeHues": 48
+    },
+    {
+      "gen": 5,
+      "hues": 48,
+      "swatches": 144,
+      "cumulativeHues": 96
+    },
+    {
+      "gen": 6,
+      "hues": 96,
+      "swatches": 288,
+      "cumulativeHues": 192
+    },
+    {
+      "gen": 7,
+      "hues": 192,
+      "swatches": 576,
+      "cumulativeHues": 384
+    },
+    {
+      "gen": 8,
+      "hues": 384,
+      "swatches": 1152,
+      "cumulativeHues": 768
+    }
+  ],
+  "preserved": {
+    "quadMagnetInventory": {
+      "A": 0,
+      "B": 3,
+      "C": 0,
+      "D": 0
+    },
+    "carbonLayer": 3,
+    "carbonAtomicNumber": 6,
+    "ringArcs": 6,
+    "phaseSteps": 80,
+    "microticks": 240,
+    "gen0HistoryAdaYear": 1832,
+    "gen1HistoryModelYear": 1970,
+    "motherNatureOffsetYears": 0,
+    "historyVsColorGeneration": "Independent meanings: Gen0/Gen1 history anchors remain unchanged; hue generation number is a palette refinement level."
+  },
+  "limitations": [
+    "Generation-to-color naming is a configurable computational representation, not an empirical law of matter emergence.",
+    "Weak, Medium and Strong refer to symbolic intensity tiers and are not the weak/strong nuclear forces, electromagnetism, or objectively defined intermediate forces.",
+    "Red/yellow/blue paint primaries follow a different simplified color-mixing convention; this digital additive RGB overlay is chosen explicitly.",
+    "HSV is a nonlinear color model for display; physical spectral mixing is not fully described by hue midpoints.",
+    "The 370 indexed source colors and three orbit boundaries are preserved, not retroactively renamed primary/secondary/tertiary.",
+    "Virtual hues share approximate addresses once the generational subdivision becomes fine enough; do not treat identical address as identical source or provenance."
+  ]
+}
