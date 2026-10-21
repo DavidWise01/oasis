@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {SAPPHON_SPECTRUM,SAPPHON_BROADBAND,SAPPHON_SPECTRUM_GLYPH,validateSapphonSpectrum} from './sapphon-spectrum.mjs';
+import {SAPPHON_SPECTRUM,SAPPHON_BROADBAND,SAPPHON_SPECTRUM_GLYPH,validateSapphonSpectrum,SAPPHON_OUTER_ANCHORS,validateSapphonOuterAnchors} from './sapphon-spectrum.mjs';
 
 test('seven color intervals preserve all eighteen cubit positions',()=>{
  assert.equal(SAPPHON_SPECTRUM.length,7);
@@ -28,4 +28,20 @@ test('each polarity gets a distinct Greek epithet, including broadband white',()
 test('invalid topology and wavelength gaps fail validation',()=>{
  assert.equal(validateSapphonSpectrum(SAPPHON_SPECTRUM.slice(0,6)),false);
  assert.equal(validateSapphonSpectrum(SAPPHON_SPECTRUM.map((b,i)=>i===2?{...b,high:591}:b)),false);
+});
+
+test('two immutable non-spectral outer operators frame the wavelength registry',()=>{
+ assert.equal(validateSapphonOuterAnchors(),true);
+ assert.deepEqual(SAPPHON_OUTER_ANCHORS.map(a=>a.operator),['--','++']);
+ assert.deepEqual(SAPPHON_OUTER_ANCHORS.map(a=>a.label),['VOID','GRAVITY']);
+ assert.deepEqual(SAPPHON_OUTER_ANCHORS.map(a=>a.polarity),[['−','−'],['+','+']]);
+ assert.deepEqual(SAPPHON_OUTER_ANCHORS.map(a=>a.greek),['Κενόν','Βαρύτητα']);
+ assert(SAPPHON_OUTER_ANCHORS.every(a=>a.wavelengthNm===null && a.kind==='symbolic-boundary'));
+ assert.equal(SAPPHON_SPECTRUM.flatMap(a=>a.slots).length,18);
+});
+test('outer operators cannot be mistaken for wavelength bands or flipped polarity',()=>{
+ const [voidAnchor,gravityAnchor]=SAPPHON_OUTER_ANCHORS;
+ assert.equal(validateSapphonOuterAnchors([{...voidAnchor,wavelengthNm:380},gravityAnchor]),false);
+ assert.equal(validateSapphonOuterAnchors([{...voidAnchor,polarity:['+','-']},gravityAnchor]),false);
+ assert.equal(validateSapphonOuterAnchors([gravityAnchor,voidAnchor]),false);
 });
