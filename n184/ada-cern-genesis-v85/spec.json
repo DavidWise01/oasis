@@ -1,0 +1,236 @@
+{
+  "schema": "oasis/n184/ada-cern-genesis/v85",
+  "version": "v8.5",
+  "classification": "historical-anchored-symbolic-thesis-and-reproducible-simulation",
+  "thesisTitle": "From Ada's Symbolic Engine to a CERN-Inspired Observable Ring",
+  "createdUtcDate": "2026-10-20",
+  "userDirective": "start date 1970, thesis , einsteing + oppie + cern + offset mother nature. start date 1832, target ada lovelace, gen 0 , start date 1970 , torroidal space magic gen 1. go",
+  "anchors": [
+    {
+      "generation": 0,
+      "year": 1832,
+      "label": "Ada Lovelace",
+      "subtitle": "symbolic computation",
+      "kind": "user-chosen starting epoch",
+      "historicalCaveat": "1832 is a chosen epoch, not the year Ada met Charles Babbage or published the Analytical Engine notes.",
+      "historicalSource": "https://collection.sciencemuseumgroup.org.uk/people/cp38764/ada-lovelace"
+    },
+    {
+      "generation": 1,
+      "year": 1970,
+      "label": "Toroidal Space Magic",
+      "subtitle": "cyclic state, geometry, observation",
+      "kind": "user-defined model epoch",
+      "historicalCaveat": "1970 is a software/Unix epoch and a pre-ISR operation year; the actual CERN ISR first colliding-beam interactions occurred in 1971.",
+      "historicalSource": "https://home.cern/science/accelerators/intersecting-storage-rings/"
+    }
+  ],
+  "historicalOffsetYears": 138,
+  "motherNature": {
+    "label": "Mother Nature",
+    "kind": "symbolic environmental/nature reference frame",
+    "offsetVariable": "delta_MN",
+    "defaultOffsetYears": 0,
+    "allowedRangeYears": {
+      "min": -240,
+      "max": 240,
+      "step": 1
+    },
+    "formula": "nature_overlay_year = historical_event_year + delta_MN",
+    "semantics": "Adjustable display comparison ONLY. A changed offset does not alter the verified historical dates.",
+    "historicalOffsetFromAdaToGen1Years": 138,
+    "noPhysicalConstantInferred": true,
+    "physicalTimeDilationClaim": false
+  },
+  "thesis": {
+    "hypothesis": "Explicit algorithms, dimensioned physical constraints, and independent observation functions can be combined in a cyclic state model that allows testable reconstruction and provenance.",
+    "gen0Role": "Ada's legacy exemplifies descriptions of general-purpose symbolic operations and repeatable procedures.",
+    "historicalPhysics": [
+      {
+        "name": "Albert Einstein",
+        "role": "relativistic reference frames and geometry; mass-energy relations",
+        "verifiedMilestones": [
+          1905,
+          1915
+        ],
+        "historicalAssociationNotDirectCollaboration": true
+      },
+      {
+        "name": "J. Robert Oppenheimer",
+        "role": "scientific organization, theory-to-experiment engineering, and consequences",
+        "verifiedMilestones": [
+          1942,
+          1945
+        ],
+        "historicalAssociationNotDirectCollaboration": true
+      },
+      {
+        "name": "CERN",
+        "role": "circulating beams, instrumentation, independent detectors, and reproducible collision measurements",
+        "verifiedMilestones": [
+          1954,
+          1971,
+          2008
+        ],
+        "historicalAssociationNotDirectCollaboration": true
+      }
+    ],
+    "gen1Role": "User-defined toroidal cyclic-state overlay with discrete phase and four software observers; no claim of physical spacetime toroids.",
+    "question": "Can multiple diverse observer functions reconstruct complementary, nonredundant features of the same event, with errors and provenance tracked, without conflating model clocks with physical beam timing?",
+    "nullHypothesis": "Four software lenses need not improve accuracy or event reconstruction versus a selected baseline; merely computing more predefined fields is not evidence of emergence.",
+    "expectedOutput": "Measured reconstruction residuals, per-feature missingness, provenance, known-source validation and alternative-hypothesis comparisons.",
+    "falsifiability": "If repeated independent evaluations show no improvement beyond feature-count bookkeeping, reject or narrow the multi-observer benefit claim.",
+    "evidenceBoundary": "Historical chronology and known physics are externally sourced; ring mappings are explicitly symbolic/testable software hypotheses."
+  },
+  "timeline": [
+    {
+      "id": "ada-anchor",
+      "year": 1832,
+      "category": "model_epoch",
+      "label": "Gen 0 — Ada anchor",
+      "source": null,
+      "details": "User-selected beginning of the symbolic-genesis track. Not asserted to mark a specific historical invention."
+    },
+    {
+      "id": "ada-meets-babbage",
+      "year": 1833,
+      "category": "history",
+      "label": "Ada meets Babbage",
+      "source": "https://collection.sciencemuseumgroup.org.uk/people/cp38764/ada-lovelace",
+      "details": "Science Museum records Mary Somerville introduced Lovelace to Charles Babbage in 1833."
+    },
+    {
+      "id": "ada-notes",
+      "year": 1843,
+      "category": "history",
+      "label": "Ada Analytical Engine notes",
+      "source": "https://collection.sciencemuseumgroup.org.uk/people/cp38764/ada-lovelace",
+      "details": "Translated Menabrea and published substantial explanatory notes on the Analytical Engine."
+    },
+    {
+      "id": "einstein-special",
+      "year": 1905,
+      "category": "history",
+      "label": "Einstein — relativity and mass-energy",
+      "source": "https://www.ias.edu/albert-einstein-brief",
+      "details": "1905 foundational papers include special relativity and mass-energy equivalence."
+    },
+    {
+      "id": "einstein-general",
+      "year": 1915,
+      "category": "history",
+      "label": "Einstein — general relativity",
+      "source": "https://www.ias.edu/albert-einstein-brief",
+      "details": "Completed general relativity in 1915."
+    },
+    {
+      "id": "oppenheimer-lead",
+      "year": 1942,
+      "category": "history",
+      "label": "Oppenheimer — Los Alamos leadership",
+      "source": "https://www.nps.gov/people/manhattan-project-scientists-j-robert-oppenheimer.htm",
+      "details": "Appointed in 1942 to lead the secret Los Alamos Site Y program."
+    },
+    {
+      "id": "trinity",
+      "year": 1945,
+      "category": "history",
+      "label": "Trinity test",
+      "source": "https://www.nps.gov/people/manhattan-project-scientists-j-robert-oppenheimer.htm",
+      "details": "First nuclear-device test occurred on 16 July 1945."
+    },
+    {
+      "id": "cern-founded",
+      "year": 1954,
+      "category": "history",
+      "label": "CERN founded",
+      "source": "https://archives.web.cern.ch/history_cern/internal_organisation/",
+      "details": "CERN formally established on 29 September 1954."
+    },
+    {
+      "id": "isr-approved",
+      "year": 1965,
+      "category": "history",
+      "label": "CERN ISR approved",
+      "source": "https://home.cern/science/accelerators/intersecting-storage-rings/",
+      "details": "Intersecting Storage Rings program formally approved; it had not yet achieved collisions."
+    },
+    {
+      "id": "gen1",
+      "year": 1970,
+      "category": "model_epoch",
+      "label": "Gen 1 — Toroidal Space Magic",
+      "source": null,
+      "details": "User-selected cyclic-geometry model start; separate from a historical CERN physics breakthrough."
+    },
+    {
+      "id": "unix",
+      "year": 1970,
+      "category": "history",
+      "label": "Unix/POSIX epoch reference",
+      "source": "https://www.gnu.org/software/coreutils/manual/coreutils.pdf",
+      "details": "Common computing timestamp zero is 1 January 1970 00:00 UTC; this is a useful analogy, not evidence of a relationship to CERN."
+    },
+    {
+      "id": "isr-collisions",
+      "year": 1971,
+      "category": "history",
+      "label": "First ISR colliding proton beams",
+      "source": "https://home.cern/science/accelerators/intersecting-storage-rings/",
+      "details": "27 January 1971, two countercirculating beams collided in CERN's Intersecting Storage Rings."
+    },
+    {
+      "id": "lhc",
+      "year": 2008,
+      "category": "history",
+      "label": "First full LHC beam circulation",
+      "source": "https://home.cern/first-beam-in-the-lhc-accelerating-science/",
+      "details": "First LHC proton beam completed a 27-km circuit on 10 September 2008."
+    }
+  ],
+  "machine": {
+    "existingLab": "../cern-observer-lab-v84/",
+    "priorRing": "../arc-phase-duration-v82/",
+    "fourExperimentsAreDetectorSitesNotFourPhysicalToroids": true,
+    "symbolicObserverLabels": [
+      "ALICE",
+      "ATLAS",
+      "CMS",
+      "LHCb"
+    ],
+    "canonicalLayout": {
+      "ringSectors": 6,
+      "phaseSteps": 80,
+      "phaseIncrementPercent": 1.25,
+      "phasePerStepDegrees": 4.5,
+      "sharedMicroticks": 240,
+      "microticksPerPhase": 3,
+      "microticksPerSector": 40
+    },
+    "timeBasis": {
+      "planckLengthMeters": 1.616255e-35,
+      "lightTravelEquivalenceSeconds": 5.391246366844893e-44,
+      "notPhysicalBubblePeriod": true
+    },
+    "fields": "x:state | y:space | z:state+time"
+  },
+  "guardrails": [
+    "A symbolic narrative about Ada, Einstein, Oppenheimer and CERN does not imply direct historical collaboration or derivation of a new physical law.",
+    "The mathematical difference 1970-1832=138 is an ordinary difference in calendar-year labels.",
+    "The year 1832 is an epoch selection, not the date of Lovelace's notes (1843) or meeting with Babbage (1833).",
+    "The year 1970 does not date the first CERN proton-proton ISR collision; that was 1971.",
+    "The phrase toroidal space magic is a model label and must not be presented as measured physical spacetime geometry.",
+    "Nature offset is a free visualization coordinate until a calibrated physical quantity and test protocol are supplied.",
+    "Multiple software observers working on the same CMS input are not four independent CERN detector measurements.",
+    "Planck time is a physical constant; Planck-bubble cycles are conceptual and do not establish actual minimum time ticks."
+  ],
+  "sourceLinks": [
+    "https://collection.sciencemuseumgroup.org.uk/people/cp38764/ada-lovelace",
+    "https://www.ias.edu/albert-einstein-brief",
+    "https://www.nps.gov/people/manhattan-project-scientists-j-robert-oppenheimer.htm",
+    "https://archives.web.cern.ch/history_cern/internal_organisation/",
+    "https://home.cern/science/accelerators/intersecting-storage-rings/",
+    "https://home.cern/first-beam-in-the-lhc-accelerating-science/",
+    "https://www.gnu.org/software/coreutils/manual/coreutils.pdf"
+  ]
+}
