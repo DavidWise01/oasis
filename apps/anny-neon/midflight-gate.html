@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ANNY · Unresolved IndexedDB Transaction Boundary</title>
+<meta name="description" content="Synthetic Sapphon isolation lab for receiver and journal transactions interrupted during pending writes">
+<style>
+:root{color-scheme:dark;--ink:#eaf5ff;--bg:#070a17;--line:#7f7cd6}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font:15px/1.5 system-ui,Segoe UI,sans-serif;background:radial-gradient(ellipse at 50% -3%,#3d245d99,transparent 43%),linear-gradient(145deg,#050914,#101027)}
+main{max-width:1080px;margin:auto;padding:22px}
+nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
+a{color:#8fdaf8}h1{margin:23px 0 3px;font-size:clamp(30px,5vw,56px);line-height:1.1;text-align:center;color:#e1c8ff;text-shadow:0 0 26px #a364ff8c}
+h2{font-size:16px;letter-spacing:.13em;color:#c6b6ff}.lead{text-align:center;color:#b3c5dd}
+.panel{border:1px solid #5b67b8;border-radius:18px;background:linear-gradient(130deg,#102141e8,#0c1028ef);box-shadow:inset 0 0 33px #5a61b228,0 0 20px #5364cf26;padding:20px;margin:20px 0}
+.topology{display:grid;grid-template-columns:1fr 45px 1fr;gap:12px;align-items:center;margin:18px 0}
+.pole{border:1px solid var(--tone);color:var(--tone);padding:15px;text-align:center;border-radius:14px;background:color-mix(in srgb,var(--tone) 13%,#0a1230);box-shadow:inset 0 0 23px color-mix(in srgb,var(--tone) 17%,transparent)}
+.pole strong{font-size:22px}.pole small{display:block;color:#c3cce0;margin-top:7px}.bond{text-align:center;color:#cdf;font:28px ui-monospace,monospace}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}label{font-size:12px;color:#abc4e1;display:block;margin:8px 0}
+select,input{width:100%;background:#0b1832;color:#ebf5ff;border:1px solid #708dd2;padding:12px;border-radius:9px}
+button{cursor:pointer;background:#142c49;border:1px solid #71d4ff;border-radius:9px;padding:12px;color:#e9f7ff;font-weight:650}
+button:hover{filter:brightness(1.25)}.buttons{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0}
+.badge{border:1px solid #9988e9;border-radius:8px;padding:6px 10px;color:#ddcfff;font:12px ui-monospace,monospace}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:450px;overflow:auto;background:#050c20;border:1px solid #456ead;border-radius:12px;padding:15px;color:#b5e0ff;font:12px/1.5 ui-monospace,monospace}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.notes article{border:1px solid #445c92;border-radius:11px;background:#101832;padding:15px;font-size:12px;color:#b2cce2}
+footer{color:#91a7c5;font-size:12px;margin:28px 0}
+@media(max-width:650px){.controls,.notes,.topology{grid-template-columns:1fr}.bond{font-size:14px}}
+</style></head><body><main>
+<nav><b>◈ ANNY · MIDFLIGHT BOUNDARY</b><a href="./">← Main Sapphon spectrum</a></nav>
+<h1>−  Unresolved  +</h1>
+<p class="lead">Synthetic 40-bit receiver/journal IndexedDB transactions. The test driver kills Chromium <em>while</em> a transaction is still pending.</p>
+<div class="panel">
+<div class="topology"><div class="pole" style="--tone:#db8aff"><strong>− RECEIVER</strong><small>Ledger receipt write in-flight</small></div><div class="bond">║</div><div class="pole" style="--tone:#8deeff"><strong>+ JOURNAL</strong><small>Confirmation write in-flight</small></div></div>
+<h2>Isolated transaction laboratory</h2>
+<div class="controls"><div><label for="mode">Pending transaction to interrupt</label><select id="mode"><option value="RECEIVER_WRITE">RECEIVER_WRITE · no receipt yet</option><option value="JOURNAL_CONFIRM">JOURNAL_CONFIRM · receipt committed</option></select></div><div><label for="token">Externally witnessed transfer ID</label><input id="token" placeholder="mid-..." autocomplete="off" spellcheck="false"/></div></div>
+<div class="buttons"><button id="initialize">1 · Prepare baseline</button><button id="arm">2 · Arm unresolved write</button><button id="progress">Check pending progress</button><button id="abort">Abort transaction</button></div>
+<div class="buttons"><button id="inspect">Independent recovery read</button><button id="continue">Explicit receipt-first continuation</button><button id="duplicate">Five duplicate deliveries</button><button id="forged">Test forged receipt</button></div>
+<span id="status" class="badge">READY</span>
+<p style="color:#9bbad8;font-size:12px">Manual browser use: arm begins a pending write, then auto-aborts after 45 seconds unless the external harness kills the browser first. The page itself does <strong>not</strong> kill Chromium. Paste the preserved transfer ID after reopening.</p>
+<pre id="log" aria-live="polite">Ready. The normal Anny transfer database is not opened by this lab.</pre>
+</div>
+<div class="notes">
+<article><strong>RECEIVER_WRITE · −</strong><p>Before interruption: journal RELEASE_PENDING, no receiver effect. During an unresolved atomic transaction, a tentative receiver receipt and audit marker are written together. After interruption: no partial receipt may authorize release.</p></article>
+<article><strong>JOURNAL_CONFIRM · +</strong><p>Before interruption: receiver receipt independently persisted, journal RELEASE_PENDING. During an unresolved transaction, journal confirmation is tentative. After interruption: Violet must stay HELD until confirmed, with an independently matching receipt.</p></article></div>
+<footer>Separate IndexedDB namespace per transfer: <code>anny-midflight-v16-1-*</code>. This is a browser process-abort/IndexedDB transaction-atomicity test, not a simulated loss of electrical power or exactly-once external side-effect proof. Sapphon polarities, VOID, GRAVITY, radiation tracks and the original 18-slot cubit remain symbolic and unchanged.</footer>
+<script type="module">
+import {annyMidflightLab} from "./midflight-lab.mjs";
+const $=id=>document.getElementById(id),mode=$("mode"),token=$("token");
+function logResult(x,label){$("log").textContent=JSON.stringify(x,null,2);$("status").textContent=label}
+async function exec(method){
+ $("status").textContent="RUNNING";
+ try {
+  const m=mode.value,t=token.value.trim();
+  if(method!=="initialize"&&!t)throw Error("TRANSFER_WITNESS_REQUIRED");
+  const args=method==="initialize"?[m]:method==="duplicate"?[m,t,5]:[m,t];
+  const result=await annyMidflightLab[method](...args);
+  if(method==="initialize")token.value=result.token;
+  logResult(result,method==="arm"?"WRITE PENDING":method.toUpperCase());
+ }catch(e){logResult({error:String(e),stack:String(e.stack)},"HELD / ERROR")}
+}
+for(const id of ["initialize","arm","progress","abort","inspect","continue","duplicate","forged"])
+ $(id).addEventListener("click",()=>exec(id));
+</script></main></body></html>
