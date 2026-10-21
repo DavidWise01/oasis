@@ -37,7 +37,7 @@ footer{color:#a8b7d3;font-size:12px;margin:26px 0}
 <nav><b>◈ ANNY · ISOLATED ABRUPT-STOP LAB</b><a href="./">← Back to Sapphon spectrum</a></nav>
 <h1>Harvester · Kill &amp; Reconcile</h1>
 <p class="lead">Diatomic Sapphon observer simulation with an independent journal/receiver test ledger.
-Five atomic checkpoints. No automatic release upon restart.</p>
+Five atomic checkpoints. No automatic release upon restart. Paste an outside-browser transfer witness after a forced stop if needed.</p>
 <div class="frame">
  <div class="anchors"><b>-- VOID</b> · SYNTHETIC FIVE-BYTE SOURCE · <b>++ GRAVITY</b></div>
  <div class="rails">
@@ -51,7 +51,7 @@ Five atomic checkpoints. No automatic release upon restart.</p>
  <div class="controls"><select id="stage" aria-label="Choose abrupt-stop checkpoint">
  <option>PREPARED</option><option>COMMITTED</option><option>RELEASE_PENDING</option>
  <option>RECEIVER_RECORDED</option><option>CONFIRMED</option></select><span class="badge" id="status">INITIALIZING</span></div>
- <div class="buttons">
+ <label for="lookup-id" style="display:block;color:#a7c5e4;font-size:12px;margin-top:12px">External recovery witness (transfer ID; optional when localStorage survives)</label><input id="lookup-id" placeholder="abr-...  · paste the transfer ID after a forced restart" autocomplete="off" spellcheck="false" style="display:block;width:100%;padding:11px;margin:7px 0 12px;background:#0b1935;border:1px solid #5f90c6;border-radius:9px;color:#e9f3ff;font:12px ui-monospace,monospace"/><div class="buttons">
  <button id="arm">Arm this checkpoint</button>
  <button id="read">Independently reconcile (read-only)</button>
  <button id="resume">Explicitly continue / hold</button>
@@ -74,7 +74,10 @@ async function action(method){
  const selected=stage.value;
  status.textContent="RUNNING";
  try{
-  const result=await annyCrashLab[method](selected, ...(method==="duplicate"?[5]:[]));
+  const external=$("lookup-id").value.trim()||undefined;
+  const args=method==="duplicate"?[5,external]:method==="arm"?[]:[external];
+  const result=await annyCrashLab[method](selected,...args);
+  if(method==="arm" && result?.transferId)$("lookup-id").value=result.transferId;
   log.textContent=JSON.stringify(result,null,2);
   status.textContent=method==="arm"?"ARMED":method==="resume"?"CONTINUED":"OBSERVED";
  }catch(err){
