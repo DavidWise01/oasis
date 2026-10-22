@@ -420,14 +420,14 @@ function drawCodonSubstrate(cx,cy,time,span){
     const active=p.codon===state.selectedCodon;
     const color=p.isStop?'#ff7c9f':matched?'#65ffd0':'#73b5e2';
     ctx.beginPath();ctx.arc(p.x,p.y,active?3.8:matched?2.8:1.5,0,Math.PI*2);
-    ctx.fillStyle=color;ctx.globalAlpha=unavailable?.22:matched||active?1:.55;
+    ctx.fillStyle=color;ctx.globalAlpha=unavailable?0.22:((matched||active)?1:0.55);
     if(active||matched){ctx.shadowBlur=active?14:9;ctx.shadowColor=color;}
     ctx.fill();ctx.shadowBlur=0;
   }
   ctx.globalAlpha=1;
   ctx.fillStyle='#add0ed';ctx.textAlign='center';
   ctx.font='10px ui-monospace,monospace';
-  ctx.fillText('{{n}} ↓ {{4³}} · 64 TRIPLETS',cx,cy+span*.75);
+  ctx.fillText('{{n}} ↓ {{4³}} · 64 TRIPLETS',cx,cy+span*.65);
   ctx.restore();
 }
 
@@ -452,7 +452,7 @@ function drawScene(ts){
   if(amoeba)drawAmoeba(cx,cy,time,dimension*.46);
   if(toroid)drawToroid(cx,cy,time,dimension*.22);
   if(box)drawCenterBox(cx,cy,time,Math.max(105,dimension*(state.mode==='box'?.48:.34)));
-  if(box)drawCodonSubstrate(cx,Math.min(h-80,cy+dimension*.36),time,dimension*.19);
+  if(box)drawCodonSubstrate(cx,Math.min(h-83,cy+dimension*.35),time,dimension*.13);
   ctx.save();
   ctx.textAlign='center';
   ctx.fillStyle='#b0cce5';ctx.font='10px ui-monospace,monospace';
