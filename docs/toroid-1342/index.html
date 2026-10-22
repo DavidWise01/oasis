@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KET · Toroid 1342 / 2431</title>
+<style>
+:root{color-scheme:dark;--bg:#070b14;--pane:#101a2b;--line:#2a3c57;--teal:#52eed3;--orange:#ffb16a;--txt:#e6effa}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px system-ui,-apple-system,sans-serif}main{display:grid;grid-template-columns:minmax(0,1fr) 330px;height:100dvh}#stage{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,#14213a,#030610 72%)}#view{width:100%;height:100%;display:block}.brand{position:absolute;top:22px;left:26px;pointer-events:none}.brand h1{font-size:24px;letter-spacing:.09em;margin:4px 0}.brand small{color:#8ca8c8}.legend{position:absolute;bottom:20px;left:24px;color:#abc2dc;font-size:12px;line-height:1.65}aside{padding:22px;overflow:auto;background:var(--pane);border-left:1px solid var(--line)}h2{font-size:14px;letter-spacing:.16em;color:var(--teal);text-transform:uppercase;margin:0 0 18px}label{display:block;color:#bcd0e4;margin:16px 0 7px}input[type=range],select{width:100%;accent-color:var(--teal)}select,button{background:#172a42;color:var(--txt);padding:11px;border:1px solid #42607b;border-radius:8px;font:inherit}button{cursor:pointer}button:hover{border-color:var(--teal)}.pair{display:flex;justify-content:space-between;gap:10px}.pair strong{color:var(--teal);font-variant-numeric:tabular-nums}.buttons{display:flex;gap:8px;margin-top:18px}.buttons button{flex:1}.stat{border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:16px;background:#0b1423}.big{font-size:27px;color:var(--teal);font-variant-numeric:tabular-nums}.muted{color:#92a9c2;font-size:12px;line-height:1.55}code{color:#f4c391}.pill{display:inline-block;padding:3px 7px;border-radius:6px;background:#21304b}.note{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}#fallback{position:absolute;inset:35% 10%;text-align:center;color:var(--orange);display:none;line-height:1.7}@media(max-width:800px){main{display:block;height:auto}#stage{height:60vh;min-height:370px}aside{border-left:0;border-top:1px solid var(--line)}}
+</style></head><body><main><section id="stage"><canvas id="view" aria-label="Interactive 3D breathing toroid"></canvas><div class="brand"><small>OASIS / KET • SYMBOLIC EXPERIMENT 03</small><h1>TOROID // 1342</h1><small>8 quads × 3 sectors · 24 total · origin (0,0,0)</small></div><div id="fallback">WebGL or the Three.js module could not load.<br>Try a recent browser with network access.</div><div class="legend"><span style="color:#ffb16a">●</span> inward loading &nbsp; <span style="color:#52eed3">●</span> outward recovery<br>Drag orbit • wheel zoom • phase color shows local displacement<br>257 :: neutral bridge → 258 :: next generation (logical labels)</div></section><aside><h2>Breathing controller</h2><label>Phase order</label><select id="direction"><option value="1">1342 — forward</option><option value="-1">2431 — reverse</option></select><label class="pair">Angular phase offset <strong id="offsetVal">15%</strong></label><input type="range" id="offset" min="0" max="30" step=".5" value="15"><label class="pair">Breathing amplitude <strong id="ampVal">18%</strong></label><input type="range" id="amplitude" min="0" max="32" step="1" value="18"><label class="pair">Cycle frequency <strong id="speedVal">0.45 Hz</strong></label><input type="range" id="speed" min=".05" max="2" step=".05" value=".45"><label class="pair">Wave count <strong id="wavesVal">1</strong></label><input type="range" id="waves" min="1" max="4" step="1" value="1"><div class="buttons"><button id="pause">Pause</button><button id="reset">Reset view</button></div><div class="stat"><div class="muted">CURRENT PHASE</div><div class="big" id="phase">1 → 3 → 4 → 2</div><div class="muted">Current active slot: <span id="slot">1</span> / 24</div></div><div class="stat"><div class="muted">SIGNED GEOMETRIC TRANSPORT PROXY</div><div class="big" id="proxy">+0.8090</div><div class="muted">Dimensionless area in a two-shape control cycle. Not fluid flow in m³/s. Direction sign follows chosen phase order.</div></div><div class="stat"><div class="muted">REGISTER CHECK</div><div class="pair"><span>Frozen payload</span><strong>184 bytes</strong></div><div class="pair"><span>Frozen frame</span><strong>257 bytes</strong></div><div class="pair"><span>Bridge</span><strong>NULL</strong></div><div class="pair"><span>Next address</span><strong>258</strong></div></div><div class="note muted">The torus shape is animated by an imposed traveling radial deformation. Geometry, tracer motion, and the transport proxy are illustrative; this page does not solve Navier–Stokes/Stokes equations, include pressure-derived velocities, or establish pumping in an actual device. Inward compression and outward restoration are visual control fields, not a new gravitational force.</div><p class="muted">Model: <code>R(θ,t) = R₀ + A cos(θ·m − 2πft + φ)</code>; phase offset is a fraction of a 15° sector. 24 address sectors are partitioned into 8 groups of 3.</p></aside></main>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js';
+import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/controls/OrbitControls.js';
+const canvas=document.getElementById('view'),stage=document.getElementById('stage'),fallback=document.getElementById('fallback');
+const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(42,1,.1,100);
+camera.position.set(5.6,5.2,7.7);
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
+const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.minDistance=4;controls.maxDistance=20;
+scene.add(new THREE.HemisphereLight(0xa9d4ff,0x101726,2.0));const light=new THREE.PointLight(0x88dfff,75);light.position.set(3,5,5);scene.add(light);
+const N=24,U=240,V=22,R=3.1,r=.87,verts=(U+1)*(V+1);
+const pos=new Float32Array(verts*3),col=new Float32Array(verts*3),ids=new Uint32Array(U*V*6);
+for(let i=0,k=0;i<U;i++)for(let j=0;j<V;j++){const a=i*(V+1)+j,b=a+V+1;ids[k++]=a;ids[k++]=b;ids[k++]=a+1;ids[k++]=b;ids[k++]=b+1;ids[k++]=a+1;}
+const geom=new THREE.BufferGeometry();geom.setAttribute('position',new THREE.BufferAttribute(pos,3));geom.setAttribute('color',new THREE.BufferAttribute(col,3));geom.setIndex(new THREE.BufferAttribute(ids,1));geom.computeVertexNormals();
+const mesh=new THREE.Mesh(geom,new THREE.MeshStandardMaterial({vertexColors:true,roughness:.35,metalness:.24,side:THREE.DoubleSide}));scene.add(mesh);
+const divisions=new THREE.Group();scene.add(divisions);
+for(let s=0;s<24;s++){const a=s*Math.PI/12,pts=[];
+for(let j=0;j<=64;j++){const q=j/64*Math.PI*2;pts.push(new THREE.Vector3((R+r*Math.cos(q))*Math.cos(a),(R+r*Math.cos(q))*Math.sin(a),r*Math.sin(q)));}
+const ring=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:s%3===0?0xddeaff:0x49627a,transparent:true,opacity:s%3===0?.72:.38}));divisions.add(ring);}
+const core=new THREE.Mesh(new THREE.IcosahedronGeometry(.15,1),new THREE.MeshBasicMaterial({color:0xffffff}));scene.add(core);
+const traceGeo=new THREE.SphereGeometry(.055,8,8);const particles=[];
+for(let i=0;i<48;i++){const orb=new THREE.Mesh(traceGeo,new THREE.MeshBasicMaterial({color:i%2?0x52eed3:0xffb16a}));scene.add(orb);particles.push(orb);}
+const $=id=>document.getElementById(id),settings={offset:15,amp:18,speed:.45,waves:1,sign:1};
+let t=0,last=performance.now(),running=true;
+function show(){ $('offsetVal').textContent=settings.offset+'%';$('ampVal').textContent=settings.amp+'%';$('speedVal').textContent=settings.speed.toFixed(2)+' Hz';$('wavesVal').textContent=settings.waves;const phase=settings.sign*2*Math.PI*settings.offset/100;const proxy=2*Math.PI*Math.sin(phase);$('proxy').textContent=(proxy>=0?'+':'')+proxy.toFixed(4);$('phase').textContent=settings.sign>0?'1 → 3 → 4 → 2':'2 → 4 → 3 → 1';}
+for(const [key,id] of [['offset','offset'],['amp','amplitude'],['speed','speed'],['waves','waves']])$(id).addEventListener('input',e=>{settings[key]=+e.target.value;show()});
+$('direction').addEventListener('change',e=>{settings.sign=+e.target.value;show()});
+$('pause').onclick=()=>{running=!running;$('pause').textContent=running?'Pause':'Resume'};
+$('reset').onclick=()=>{camera.position.set(5.6,5.2,7.7);controls.target.set(0,0,0);controls.update()};
+show();
+function deform(theta,t){let phase=2*Math.PI*settings.offset/100;return (settings.amp/100)*Math.cos(settings.waves*theta-settings.sign*2*Math.PI*settings.speed*t+phase);}
+const cWarm=new THREE.Color(0xffb16a),cCool=new THREE.Color(0x52eed3),color=new THREE.Color();
+function draw(now){
+ requestAnimationFrame(draw);const dt=Math.min((now-last)/1000,.05);last=now;if(running)t+=dt;
+ for(let i=0;i<=U;i++){const th=i/U*Math.PI*2,c=Math.cos(th),s=Math.sin(th),delta=deform(th,t);
+ for(let j=0;j<=V;j++){const q=j/V*Math.PI*2,rc=r*(1+delta),k=(i*(V+1)+j)*3;
+ pos[k]=(R+rc*Math.cos(q))*c;pos[k+1]=(R+rc*Math.cos(q))*s;pos[k+2]=rc*Math.sin(q);
+ const f=(delta/(Math.max(settings.amp/100,.001))+1)/2;color.copy(cWarm).lerp(cCool,f);
+ col[k]=color.r;col[k+1]=color.g;col[k+2]=color.b;
+ }}
+ geom.attributes.position.needsUpdate=true;geom.attributes.color.needsUpdate=true;geom.computeVertexNormals();
+ for(let i=0;i<particles.length;i++){const th=(i/particles.length*2*Math.PI + t*(settings.sign*.13))%(2*Math.PI),q=(i*2.399963+t*.6)%(2*Math.PI),rc=r*(1+deform(th,t)),orb=particles[i];orb.position.set((R+rc*Math.cos(q))*Math.cos(th),(R+rc*Math.cos(q))*Math.sin(th),rc*Math.sin(q));}
+ const slot=Math.floor(((settings.speed*t)%1)*24)+1;$('slot').textContent=slot;controls.update();renderer.render(scene,camera);
+}
+function size(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+new ResizeObserver(size).observe(stage);size();requestAnimationFrame(draw);
+window.addEventListener('error',e=>{if(/module|WebGL|THREE|OrbitControls/i.test(e.message))fallback.style.display='block'});
+</script></body></html>
