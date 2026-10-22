@@ -19,6 +19,34 @@ The conceptual vessel is `{ ( [ 20 AA | ACTG | −+ ] ) }`.
 
 All simulation files live only within `apps/anny-neon/luca26/`. The previous Harvester v16.1 journal, receiver, ten ACKs, 18-slot cubit, Sapphon spectrum, overlays, and crash-boundary artifacts are not changed.
 
+## Three-strand zipper crown · `3 × 20` above the box
+
+The user-facing chamber now places a **60-observation symbolic zipper** over the 26-position LUCA box, with its existing shared 64-codon field underneath.
+
+```text
+             α [20 AA]  ← live decoded carrier
+             β [20 AA]  ← symbolic reference strand
+             γ [20 AA]  ← symbolic reference strand
+               ╲ | ╱
+          ZIPPER (20 teeth)
+               ↓
+       [ 20 merged / HOLD ]
+               ↓
+          [ LUCA-26 ]
+               ↓
+        {{n}}{{4³}} = 64
+```
+
+- The top register has three ordered *lanes*, each with 20 positions: `3 × 20 = 60` symbolic observations, merged position-by-position into **20 outputs**, not 60 additional amino-acid species.
+- **α** reads the current transformed LUCA-26 decoded residue positions (including mutations and missing information); **β** and **γ** are initially copied symbolic reference lanes. Click a tooth to introduce/remove a local variation.
+- The zipper slider and `− OPEN 1`, `+ ZIP 1`, `↣ ZIP ALL` controls move through the 20 physical-looking symbolic teeth.
+- `β offset` / `γ offset` deliberately shift the apparent address/temporal alignment; `◎ ALIGN CLOCKS` resets offsets to zero without erasing mutations.
+- `3/3` requires all three visible residues to match the pinned ancestral position. `2/3` permits symbolic two-vote quorum *only when at least two match the pinned ancestral position*. Unclosed teeth remain `OPEN`; disagreement in a closed tooth gives `HOLD`.
+- The Canvas view also renders a three-strand crown **above** the inner box, while the pre-existing 4³ codon lattice remains **beneath** the box.
+- These are educational/symbolic information-flow and temporal-alignment analogies. Three copied strands **do not constitute three independent historical witnesses**, majority voting does not restore unknown biological ground truth, and natural ribosomal translation does not involve a universal three-protein-strand zipper of twenty amino acids.
+
+This feature adds no unit-test suite or workflow changes, per the user's direction.
+
 ## Nested codon lattice: `{{n}}{{4^3}}`
 
 The amino-acid selector `n` (one of the 20 canonical residues) now has a **shared codon layer beneath it**:
