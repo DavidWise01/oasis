@@ -7,6 +7,8 @@ on:
       - 'apps/anny-neon/durability/powercut_gate.py'
       - 'apps/anny-neon/durability/test_powercut_gate.py'
       - 'apps/anny-neon/durability/test_witness_adversarial.py'
+      - 'apps/anny-neon/durability/witness_attestation.py'
+      - 'apps/anny-neon/durability/test_witness_attestation.py'
       - 'apps/anny-neon/durability/POWER_CUT_PROTOCOL.md'
       - 'apps/anny-neon/durability/powercut/**'
       - '.github/workflows/anny-powercut-readiness.yml'
@@ -31,16 +33,20 @@ jobs:
           python -m py_compile apps/anny-neon/durability/powercut_gate.py
           python -m py_compile apps/anny-neon/durability/test_powercut_gate.py
           python -m py_compile apps/anny-neon/durability/test_witness_adversarial.py
+          python -m py_compile apps/anny-neon/durability/witness_attestation.py
+          python -m py_compile apps/anny-neon/durability/test_witness_attestation.py
       - name: Negative-control fixture self-test (no power cut)
         working-directory: apps/anny-neon/durability
         run: |
           set -euo pipefail
           python powercut_gate.py self-test | tee ${{ runner.temp }}/anny-powercut-selftest.txt
-      - name: Run marker, manifest, witness tamper, and fail-closed regression tests
+      - name: Install verifier-only Ed25519 dependency
+        run: python -m pip install 'cryptography==46.0.4'
+      - name: Run marker, manifest, witness tamper, and signed dual-source tests
         working-directory: apps/anny-neon/durability
         run: |
           set -euo pipefail
-          python -m unittest -v test_powercut_gate.py test_witness_adversarial.py 2>&1 | tee ${{ runner.temp }}/anny-powercut-unit-tests.txt
+          python -m unittest -v test_powercut_gate.py test_witness_adversarial.py test_witness_attestation.py 2>&1 | tee ${{ runner.temp }}/anny-powercut-unit-tests.txt
       - name: Assert published readiness explicitly remains NOT_CERTIFIED
         run: |
           python -c "import json; p='apps/anny-neon/durability/powercut/readiness.json'; x=json.load(open(p)); assert x['classification']=='NOT_CERTIFIED'; assert not x['electrical_power_interruption_executed']; assert len(x['modes'])==5; assert all(y['status']=='NOT_RUN' for y in x['modes']); print('NOT_CERTIFIED negative control enforced')"
