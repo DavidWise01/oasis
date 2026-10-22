@@ -39,6 +39,7 @@ jobs:
           python3 docs/y2038/step19_verify.py
           python3 docs/y2038/check_step20.py
           python3 docs/y2038/check_phase2_adapter.py
+          python3 docs/y2038/check_phase2_etcd.py
 
   release_gate:
     if: github.event_name == 'workflow_dispatch'
