@@ -36,3 +36,4 @@ jobs:
           python3 docs/y2038/step16_auth.py
           python3 docs/y2038/step17_snapshot.py
           python3 docs/y2038/step18_faults.py
+          python3 docs/y2038/step19_verify.py
