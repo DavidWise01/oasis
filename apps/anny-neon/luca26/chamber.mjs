@@ -549,6 +549,49 @@ function drawCodonSubstrate(cx,cy,time,span){
   ctx.restore();
 }
 
+function drawZipperCrown(cx,cy,time,span){
+  // 3 × 20 on TOP of the LUCA-26 box. Colors show reference-match and HOLD.
+  if(!zipper)return;
+  ctx.save();
+  const width=Math.min(sceneWidth*.52,span*1.85,295);
+  const left=cx-width*.5;
+  const pitch=width/19;
+  const y0=cy-span*.30;
+  const phase=prefersReduced.matches?0:Math.sin(time*.55)*1.4;
+  ctx.lineWidth=.9;
+  for(let lane=0;lane<3;lane++){
+    ctx.beginPath();
+    for(let i=0;i<20;i++){
+      const x=left+pitch*i;
+      const y=y0+lane*12+phase*Math.sin(i*.5+lane);
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle=['rgba(200,145,255,.46)','rgba(105,233,251,.43)','rgba(139,242,174,.43)'][lane];
+    ctx.stroke();
+  }
+  for(const p of zipper.positions){
+    const x=left+pitch*p.index;
+    const y=y0+3*12+7;
+    const rgb=p.state==='MERGED'?'#86ffce':p.state==='HOLD'?'#ff869f':'#547b9f';
+    ctx.beginPath();
+    ctx.moveTo(x,y0);ctx.lineTo(x,y+4);
+    ctx.strokeStyle=p.sealed?'rgba(170,209,245,.29)':'rgba(104,139,177,.10)';
+    ctx.stroke();
+    for(let lane=0;lane<3;lane++){
+      const col=p.values[lane]===p.reference?'#a9edfb':p.values[lane]===null?'#fcbd78':'#ff98d0';
+      ctx.beginPath();ctx.fillStyle=col;
+      ctx.arc(x,y0+lane*12+phase*Math.sin(p.index*.5+lane),
+        p.sealed?2.3:1.65,0,Math.PI*2);ctx.fill();
+    }
+    ctx.fillStyle=rgb;
+    ctx.fillRect(x-2.4,y-1.1,p.sealed?4.8:2.1,p.sealed?4.8:2.1);
+  }
+  ctx.font='10px ui-monospace,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#d5bcff';ctx.fillText('3 × 20 · TOP ZIPPER',cx,y0-12);
+  ctx.fillStyle='#a4e8cd';ctx.fillText(zipper.accepted+'/20 MERGED · '+zipper.holds+' HELD',cx,y0+65);
+  ctx.restore();
+}
+
 function drawScene(ts){
   if(!ctx)return;
   const w=sceneWidth,h=sceneHeight;
@@ -570,6 +613,7 @@ function drawScene(ts){
   if(amoeba)drawAmoeba(cx,cy,time,dimension*.46);
   if(toroid)drawToroid(cx,cy,time,dimension*.22);
   if(box)drawCenterBox(cx,cy,time,Math.max(105,dimension*(state.mode==='box'?.48:.34)));
+  if(box)drawZipperCrown(cx,cy,time,dimension*.61);
   if(box)drawCodonSubstrate(cx,Math.min(h-83,cy+dimension*.35),time,dimension*.13);
   ctx.save();
   ctx.textAlign='center';
