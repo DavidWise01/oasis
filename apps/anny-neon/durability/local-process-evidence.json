@@ -1,0 +1,215 @@
+{
+  "schema": "anny-disk-process-crash-v1",
+  "scope": "SQLite WAL FULL on local filesystem, subprocess SIGKILL; NOT physical power loss",
+  "environment": {
+    "platform": "Linux",
+    "python": "3.13.5",
+    "sqlite": "3.46.1"
+  },
+  "source": {
+    "bytes": "0102030405",
+    "sha256": "74f81fe167d99b4cb41d6d0ccda82278caee9f3e2f25d5e5a3936ff3dcec60d0"
+  },
+  "scenarios": [
+    {
+      "case": "PREPARE_UNCOMMITTED",
+      "before": {
+        "state": "ABSENT",
+        "receipt": false,
+        "effect_count": 0,
+        "receiver_rows": 0,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "after": {
+        "state": "ABSENT",
+        "receipt": false,
+        "effect_count": 0,
+        "receiver_rows": 0,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "expected": [
+        "ABSENT",
+        false,
+        0,
+        "HELD"
+      ],
+      "checks": {
+        "sigkill": true,
+        "state_and_receipt_atomic": true,
+        "no_duplicate_rows": true,
+        "sqlite_integrity": true
+      },
+      "pass": true
+    },
+    {
+      "case": "COMMIT_UNCOMMITTED",
+      "before": {
+        "state": "PREPARED",
+        "receipt": false,
+        "effect_count": 0,
+        "receiver_rows": 0,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "after": {
+        "state": "PREPARED",
+        "receipt": false,
+        "effect_count": 0,
+        "receiver_rows": 0,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "expected": [
+        "PREPARED",
+        false,
+        0,
+        "HELD"
+      ],
+      "checks": {
+        "sigkill": true,
+        "state_and_receipt_atomic": true,
+        "no_duplicate_rows": true,
+        "sqlite_integrity": true
+      },
+      "pass": true
+    },
+    {
+      "case": "RECEIVER_UNCOMMITTED",
+      "before": {
+        "state": "RELEASE_PENDING",
+        "receipt": false,
+        "effect_count": 0,
+        "receiver_rows": 0,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "after": {
+        "state": "RELEASE_PENDING",
+        "receipt": false,
+        "effect_count": 0,
+        "receiver_rows": 0,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "expected": [
+        "RELEASE_PENDING",
+        false,
+        0,
+        "HELD"
+      ],
+      "checks": {
+        "sigkill": true,
+        "state_and_receipt_atomic": true,
+        "no_duplicate_rows": true,
+        "sqlite_integrity": true
+      },
+      "pass": true
+    },
+    {
+      "case": "CONFIRM_UNCOMMITTED",
+      "before": {
+        "state": "RELEASE_PENDING",
+        "receipt": true,
+        "effect_count": 1,
+        "receiver_rows": 1,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "after": {
+        "state": "RELEASE_PENDING",
+        "receipt": true,
+        "effect_count": 1,
+        "receiver_rows": 1,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "expected": [
+        "RELEASE_PENDING",
+        true,
+        1,
+        "HELD"
+      ],
+      "checks": {
+        "sigkill": true,
+        "state_and_receipt_atomic": true,
+        "no_duplicate_rows": true,
+        "sqlite_integrity": true
+      },
+      "pass": true
+    },
+    {
+      "case": "CONFIRM_COMMITTED",
+      "before": {
+        "state": "RELEASE_PENDING",
+        "receipt": true,
+        "effect_count": 1,
+        "receiver_rows": 1,
+        "violet": "HELD",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "after": {
+        "state": "CONFIRMED",
+        "receipt": true,
+        "effect_count": 1,
+        "receiver_rows": 1,
+        "violet": "VERIFIED",
+        "integrity": [
+          "ok",
+          "ok"
+        ]
+      },
+      "expected": [
+        "CONFIRMED",
+        true,
+        1,
+        "VERIFIED"
+      ],
+      "checks": {
+        "sigkill": true,
+        "state_and_receipt_atomic": true,
+        "no_duplicate_rows": true,
+        "sqlite_integrity": true
+      },
+      "pass": true
+    }
+  ],
+  "status": "PASS",
+  "passed": 5,
+  "total": 5,
+  "exclusions": [
+    "Electrical power loss",
+    "OS/kernel failure",
+    "Filesystem controller cache loss",
+    "Browser IndexedDB durability",
+    "Distributed external exactly-once effects"
+  ]
+}
