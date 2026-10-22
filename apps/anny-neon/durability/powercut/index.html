@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANNY · Physical Power-Cut Boundary</title>
+<meta name="description" content="ANNY's witnessed sacrificial-hardware power-interruption protocol, not yet certified">
+<style>
+:root{color-scheme:dark;--cyan:#73e8ff;--purple:#d5a2ff;--bg:#080c1d}
+*{box-sizing:border-box}
+body{margin:0;color:#edf6ff;background:radial-gradient(ellipse 70% 440px at 50% 0,#263969 0,transparent 85%),#060a18;font:15px/1.5 system-ui,Segoe UI,sans-serif}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,#50acfc08 1px,transparent 1px),linear-gradient(#50acfc08 1px,transparent 1px);background-size:43px 43px;pointer-events:none}
+main{position:relative;margin:auto;max-width:1100px;padding:24px}
+nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;letter-spacing:.07em;color:#d7e5ff}a{color:#9ee6ff}
+h1{font-size:clamp(34px,5vw,57px);line-height:1.05;margin:23px 0 8px;text-align:center;background:linear-gradient(100deg,#fff,#9fe5ff 55%,#cb91ff);color:transparent;background-clip:text}
+.lead{text-align:center;color:#abbfdc;max-width:770px;margin:7px auto 22px}
+h2{font-size:14px;letter-spacing:.15em;color:#afdfff;text-transform:uppercase;margin:0 0 15px}
+.topology{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;border:1px solid #526cb8;border-radius:18px;background:linear-gradient(120deg,#0e1a37,#151433);padding:23px;box-shadow:inset 0 0 30px #474ac51e,0 0 28px #2945a122}
+.node{width:200px;min-height:116px;display:grid;place-items:center;gap:4px;border:1px solid var(--tone);border-radius:14px;background:color-mix(in srgb,var(--tone) 11%,#0b1730);box-shadow:0 0 20px color-mix(in srgb,var(--tone) 17%,transparent);text-align:center;padding:12px}
+.node strong{font-size:18px;color:var(--tone)}.node small{font-size:11px;color:#adbed5}.link{font:30px ui-monospace,monospace;color:#a3c5e4}
+.status{margin:20px 0;border:1px solid #b99770;border-radius:15px;background:linear-gradient(120deg,#33251b88,#0e1628);padding:17px;display:flex;align-items:center;justify-content:space-between;gap:13px;flex-wrap:wrap}
+.status strong{color:#ffd3a0;font-size:19px;letter-spacing:.1em}.status small{display:block;color:#ddc3a4}
+.panel{border:1px solid #486fa1;border-radius:16px;padding:18px;background:linear-gradient(140deg,#0c1d37e9,#0a1326ee);box-shadow:inset 0 0 27px #2950ab20;min-width:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.checklist{display:grid;gap:11px}.check{display:flex;align-items:flex-start;gap:11px;line-height:1.4;color:#d5e1f4;font-size:13px}
+.check input{accent-color:#7adaf7;width:19px;height:19px;flex-shrink:0;margin:0}
+.progress{font:11px ui-monospace,monospace;color:#abd7e8}
+#cases{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+button{border:1px solid #4d89c7;background:#152544;color:#e2f8ff;padding:10px;border-radius:10px;cursor:pointer;font-weight:650}
+button:hover{filter:brightness(1.18)}button:focus-visible{outline:3px solid white}
+.case{text-align:left;overflow-wrap:anywhere}.case b{font-size:11px}.case small{display:block;font-size:10px;margin-top:8px;color:#f6c998}
+.case[aria-pressed="true"]{border-color:#c68bff;box-shadow:0 0 13px #bc7de64b}
+#detail{margin:14px 0;min-height:150px}
+#detail pre{color:#abdff5;font:12px/1.6 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.links{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin:17px 0}
+.note{font-size:12px;color:#a2b8d7}
+footer{margin:25px 0;color:#9aabc6;font-size:12px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}#cases{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:570px){main{padding:13px}.node{width:100%}.link{font-size:18px}#cases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style></head><body><main>
+<nav><b>◈ ANNY · POWER INTERRUPTION</b><a href="../">← Disk evidence</a></nav>
+<h1>Witnessed Power-Cut Boundary</h1>
+<p class="lead">The next step beyond process SIGKILL: an independently witnessed, physical power interruption on <strong>disposable test hardware only</strong>.</p>
+<section class="topology" aria-label="Separated target and witness roles">
+<div class="node" style="--tone:#c793ff"><strong>− TARGET</strong><small>Sacrificial machine · SQLite WAL FULL</small></div>
+<span class="link">║</span>
+<div class="node" style="--tone:#6ee1fa"><strong>0 WITNESS</strong><small>Independent power · hash-chained event log</small></div>
+<span class="link">║</span>
+<div class="node" style="--tone:#7decbf"><strong>+ RECOVERY</strong><small>New boot · read-only integrity audit</small></div>
+</section>
+<section class="status" aria-label="Actual physical test certification state">
+<div><strong id="cert">NOT CERTIFIED</strong><small id="cert-detail">No physical power interruption evidence has been recorded.</small></div>
+<div class="progress" id="progress">0 / 5 scenarios executed</div>
+</section>
+<div class="grid">
+<section class="panel"><h2>Independent evidence requirements</h2>
+<div class="checklist" id="preflight">
+<label class="check"><input type="checkbox">Sacrificial, non-production host and isolated storage</label>
+<label class="check"><input type="checkbox">Separate always-powered witness hardware</label>
+<label class="check"><input type="checkbox">Captured pre-cut manifest and WAL FULL settings</label>
+<label class="check"><input type="checkbox">Independent witness recorded REGISTER / OFF / ON</label>
+<label class="check"><input type="checkbox">New boot ID and post-boot database integrity verified</label>
+<label class="check"><input type="checkbox">Human-reviewed independent electrical or PDU evidence</label>
+</div><p class="note" id="checkhint">This local checklist is only a planning aid; checking boxes cannot change the certification status.</p>
+</section>
+<section class="panel"><h2>Operator procedure</h2>
+<p class="note">1. Mark a scratch directory on a sacrificial Linux machine. Use <code>powercut_gate.py prepare</code> to create a five-byte test fixture.</p>
+<p class="note">2. Copy its manifest to an independent witness. Register the run there, then arm the target and observe <code>ARMED</code>.</p>
+<p class="note">3. An authorized technician cuts power to the <em>sacrificial target only</em>; the script never controls electrical power. Record OFF and ON from the independent witness.</p>
+<p class="note">4. Reboot the target, copy back the witness log, and run <code>verify</code>. The verifier produces a manual-review candidate, never an automatic power-loss certificate.</p>
+<div class="links"><a href="../powercut_gate.py">Python gate</a><a href="../POWER_CUT_PROTOCOL.md">Full procedure</a><a href="./readiness.json">Readiness JSON</a></div>
+</section>
+</div>
+<section class="panel"><h2>Five physical interruption checkpoints</h2><div id="cases"></div><div id="detail" aria-live="polite">Loading registry…</div></section>
+<section class="panel" style="margin-top:16px"><h2>Source-of-truth separation</h2>
+<p class="note">The prior SQLite <code>SIGKILL</code> experiment is a separate, process-crash dataset. The Chromium IndexedDB tests are separate again. This page does not inherit either one's results as power-loss proof.</p>
+<p class="note"><strong>Physical certification requires independent hardware evidence.</strong> Even a valid SHA-256 witness chain detects accidental edits rather than proving an honest observer or genuine electrical cut. Storage controllers and filesystems must honor sync barriers. <a href="https://www.sqlite.org/pragma.html#pragma_synchronous">SQLite synchronous documentation</a>.</p>
+</section>
+<footer>-- VOID · ANNY Sapphon −/+ spectrum · ++ GRAVITY. Original Harvester witness/ACK logic unchanged. No production storage, automatic shutdown, or power control.</footer>
+</main><script type="module">
+const $=s=>document.querySelector(s);
+let registry=null,selection=null;
+const boxes=[...document.querySelectorAll('#preflight input')];
+function checklist(){const count=boxes.filter(x=>x.checked).length;$('#checkhint').textContent=count+'/'+boxes.length+' locally checked. This never certifies physical power loss.'}
+boxes.forEach(x=>x.addEventListener('change',checklist));
+function detail(){if(!registry||!selection)return;const item=registry.modes.find(x=>x.id===selection);const host=$('#detail');host.replaceChildren();const h=document.createElement('h3');h.textContent=item.id+' · '+item.status;h.style.color='#c9a4ff';const pre=document.createElement('pre');pre.textContent=JSON.stringify({expected:item.expected,status:item.status,physicalEvidenceCollected:false},null,2);host.append(h,pre);document.querySelectorAll('#cases button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.id===selection)))}
+async function load(){try{const res=await fetch('./readiness.json',{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);const x=await res.json();if(x.schema!=='anny-powercut-readiness-v1'||!Array.isArray(x.modes)||x.modes.length!==5)throw Error('Invalid readiness registry');registry=x;$('#cert').textContent=x.classification.replaceAll('_',' ');const done=x.modes.filter(m=>m.status!=='NOT_RUN').length;$('#progress').textContent=done+'/5 scenarios with submitted evidence';$('#cert-detail').textContent=x.electrical_power_interruption_executed?'Evidence submitted; manual review remains required':'No electrical power interruption has been performed or independently witnessed.';const host=$('#cases');host.replaceChildren();x.modes.forEach(m=>{const b=document.createElement('button');b.type='button';b.className='case';b.dataset.id=m.id;b.setAttribute('aria-pressed','false');const strong=document.createElement('b');strong.textContent=m.id.replaceAll('_',' ');const small=document.createElement('small');small.textContent=m.status.replaceAll('_',' ');b.append(strong,small);b.addEventListener('click',()=>{selection=m.id;detail()});host.append(b)});selection=x.modes[0].id;detail()}catch(e){$('#cert').textContent='EVIDENCE UNAVAILABLE';$('#cert-detail').textContent=String(e);$('#progress').textContent='0 verified cases'}}
+load();
+</script></body></html>
