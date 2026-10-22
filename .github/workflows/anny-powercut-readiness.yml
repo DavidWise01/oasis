@@ -9,6 +9,9 @@ on:
       - 'apps/anny-neon/durability/test_witness_adversarial.py'
       - 'apps/anny-neon/durability/witness_attestation.py'
       - 'apps/anny-neon/durability/test_witness_attestation.py'
+      - 'apps/anny-neon/durability/hardware_boundary.py'
+      - 'apps/anny-neon/durability/test_hardware_boundary.py'
+      - 'apps/anny-neon/durability/hardware-synthetic-test-evidence.json'
       - 'apps/anny-neon/durability/POWER_CUT_PROTOCOL.md'
       - 'apps/anny-neon/durability/powercut/**'
       - '.github/workflows/anny-powercut-readiness.yml'
@@ -35,6 +38,8 @@ jobs:
           python -m py_compile apps/anny-neon/durability/test_witness_adversarial.py
           python -m py_compile apps/anny-neon/durability/witness_attestation.py
           python -m py_compile apps/anny-neon/durability/test_witness_attestation.py
+          python -m py_compile apps/anny-neon/durability/hardware_boundary.py
+          python -m py_compile apps/anny-neon/durability/test_hardware_boundary.py
       - name: Negative-control fixture self-test (no power cut)
         working-directory: apps/anny-neon/durability
         run: |
@@ -46,7 +51,12 @@ jobs:
         working-directory: apps/anny-neon/durability
         run: |
           set -euo pipefail
-          python -m unittest -v test_powercut_gate.py test_witness_adversarial.py test_witness_attestation.py 2>&1 | tee ${{ runner.temp }}/anny-powercut-unit-tests.txt
+          python -m unittest -v test_powercut_gate.py test_witness_adversarial.py test_witness_attestation.py test_hardware_boundary.py 2>&1 | tee ${{ runner.temp }}/anny-powercut-unit-tests.txt
+      - name: Verify three independent Ed25519 roles and hardware-binding negative controls
+        working-directory: apps/anny-neon/durability
+        run: |
+          set -euo pipefail
+          python -m unittest -v test_witness_attestation.py test_hardware_boundary.py
       - name: Assert published readiness explicitly remains NOT_CERTIFIED
         run: |
           python -c "import json; p='apps/anny-neon/durability/powercut/readiness.json'; x=json.load(open(p)); assert x['classification']=='NOT_CERTIFIED'; assert not x['electrical_power_interruption_executed']; assert len(x['modes'])==5; assert all(y['status']=='NOT_RUN' for y in x['modes']); print('NOT_CERTIFIED negative control enforced')"
