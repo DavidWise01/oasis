@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#050a18"><title>NEON · KET-488 Agentic Tesseract | 4D→3D Shadow</title><meta name="description" content="Interactive neon 4D tesseract projected into 3D and 2D, with a five-wrap wx0yz torus, 488 chromatic address nodes, and a deterministic local agent."><style>
+:root{color-scheme:dark;--bg:#050a18;--line:#53658e;--muted:#a8bbd2;--purple:#ccadff;--cyan:#82ebff}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 48% 0,#29284c,transparent 50%),var(--bg);color:#eff7ff;font:14px/1.5 system-ui,Segoe UI,sans-serif}
+a{color:#95e6fa}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,canvas:focus-visible{outline:2px solid white;outline-offset:2px}
+nav{position:sticky;top:0;z-index:7;background:#0a1023ed;border-bottom:1px solid #607da0;backdrop-filter:blur(13px);padding:12px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+nav b{font:700 13px ui-monospace,monospace;letter-spacing:.14em;color:#e3cbff}nav span{display:flex;gap:14px;flex-wrap:wrap;font:11px ui-monospace,monospace}
+main{max-width:1460px;margin:auto;padding:22px 17px 60px}.kicker{font:11px ui-monospace,monospace;letter-spacing:.15em;color:#a9bcf6}
+h1{font-size:clamp(36px,5vw,70px);line-height:1.05;letter-spacing:-.06em;margin:5px 0}h1 em{font-style:normal;color:#d2acff}
+.lead{color:var(--muted);max-width:950px;margin:8px 0 20px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:14px}
+.stat,.card{border:1px solid var(--line);background:linear-gradient(145deg,#101d36,#0b1128);border-radius:14px}
+.stat{padding:10px 12px}.stat small{font:10px ui-monospace,monospace;color:#99b0d0}.stat strong{display:block;font:700 clamp(15px,2.1vw,24px) ui-monospace,monospace;margin:4px 0;color:#e4d0ff}
+.layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(310px,.8fr);gap:14px}.card{min-width:0;overflow:hidden}
+.heading{border-bottom:1px solid #4c668c;padding:12px 16px;display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;font:11px ui-monospace,monospace;letter-spacing:.07em}
+.heading small{color:#a7c3db}.pad{padding:14px 16px}.viewport{position:relative;background:radial-gradient(ellipse at 50% 47%,#193657,#081123 76%)}
+#scene{display:block;width:100%;height:600px;max-height:75vh;min-height:400px;touch-action:none;cursor:grab}#scene.dragging{cursor:grabbing}
+.hud{position:absolute;left:12px;top:12px;background:#07182ed2;border:1px solid #78b4de77;border-radius:10px;padding:9px 12px;color:#aad8e9;font:11px/1.75 ui-monospace,monospace;pointer-events:none}
+.hud b{color:#e3c8ff}.hudnote{position:absolute;right:12px;top:12px;color:#a7b7d9;font:10px ui-monospace,monospace;text-align:right;pointer-events:none}
+.side{display:grid;gap:12px}.control{border-bottom:1px solid #56769a62;padding:0 0 13px;margin:0 0 12px}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:6px}label{font-size:12px;color:#c6d9ea}output{color:#8ef3fb;font:11px ui-monospace,monospace}
+input[type=range]{width:100%;accent-color:#bda5ff}input[type=number],select{width:100%;background:#0d2038;border:1px solid #5f7ea1;border-radius:9px;padding:9px;color:#eef6ff}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:8px 0}
+.btn{border:1px solid #6284a7;background:#1c3655;color:#e8f6ff;border-radius:9px;padding:9px 10px;font-size:12px}.btn.primary{background:linear-gradient(110deg,#1b6986,#6d509d);border-color:#a4c0ed}
+.readout{white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.7 ui-monospace,monospace;color:#bdd8f1;border:1px solid #46668a;border-radius:9px;background:#091a2e;padding:11px;margin:8px 0;max-height:240px;overflow:auto}
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.checks label{display:flex;gap:6px;align-items:center;font-size:11px}.checks input{accent-color:#a991ed}
+.axes{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.axis{border:1px solid #4e7092;border-radius:8px;padding:6px 5px;min-width:0;background:#0f243b}.axis label{font:700 12px ui-monospace,monospace}.axis output{display:block;font:10px ui-monospace,monospace}
+.trace{padding:0;margin:0;list-style:none;max-height:180px;overflow:auto;display:grid;gap:5px}.trace li{font:10px/1.6 ui-monospace,monospace;color:#c1dbeb;border-left:2px solid #8fc5e7;background:#14253b;padding:5px 9px;border-radius:5px}
+.note{font-size:11px;color:#a4bcd6;line-height:1.7}.note.warn{border-left:2px solid #cba673;padding-left:10px}
+.lower{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(310px,.8fr);gap:14px;margin-top:14px}
+.palette{display:grid;grid-template-columns:repeat(32,minmax(0,1fr));gap:3px}
+.swatch{min-width:0;border:1px solid #ffffff40;background:var(--c);border-radius:2px;padding:0;aspect-ratio:1;opacity:.82}
+.swatch:hover{transform:scale(1.3);z-index:2;opacity:1}.swatch[data-active=true]{outline:2px solid white;outline-offset:1px;z-index:1;opacity:1}
+.roots,.quartet{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.roots button,.quartet button{background:#17283f;border:1px solid var(--c);border-radius:9px;padding:9px 3px;min-width:0;display:grid;gap:4px;color:#e9efff}
+.roots strong,.quartet strong{color:var(--c);font:700 16px ui-monospace,monospace}.roots small,.quartet small{font:10px ui-monospace,monospace;color:#9db6cf}
+.quartet button[aria-pressed=true]{box-shadow:0 0 14px var(--c),inset 0 0 0 1px white}
+.export{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.export button,.export label{cursor:pointer;color:#dcefff;border:1px solid #6885a5;background:#1a304b;border-radius:8px;padding:8px 10px;font-size:11px}
+#import{display:none}.policy{font-size:11px;color:#b1d2eb;padding:8px 10px;background:#122844;border:1px solid #52789c;border-radius:7px;margin:8px 0}
+@media(max-width:1100px){.layout,.lower{grid-template-columns:1fr}.side{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){main{padding:12px}.stats{grid-template-columns:repeat(2,1fr)}.side{grid-template-columns:1fr}.palette{grid-template-columns:repeat(24,1fr)}.roots,.quartet{grid-template-columns:repeat(2,1fr)}#scene{height:440px;min-height:340px}.hudnote{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<nav><b>◈ NEON / KET-488 / TESSERACT</b><span><a href="./ket-488-toroid24.html">← wx0yz TOROID</a><a href="./ket-488-qcd.html">488 QCD BRIDGE</a><a href="./apps/anny-neon/luca26/neon.html">NEON-10</a><a href="./ket-488-i-mesh.html">{{i}} MESH</a></span></nav>
+<main><div class="kicker">4D TESSERACT → 3D SHADOW → SCREEN · LOCAL AGENTIC NEON VESSEL</div><h1>488 colors. <em>Zero pinned.</em></h1>
+<p class="lead">A rotatable 4D tesseract encloses a toroidal 3D shadow and 488 addressable color points. Your canonical <strong>((((( wx0yz )))))</strong> remains a five-position symbolic vessel with its center fixed at zero. An autonomous browser agent patrols and traces addresses.</p>
+<div class="stats"><div class="stat"><small>4D HYPERCUBE</small><strong>16V · 32E</strong></div><div class="stat"><small>CHROMATIC NODES</small><strong>488 / 488</strong></div><div class="stat"><small>ROOTS × SLOTS</small><strong>4 × 122</strong></div><div class="stat"><small>PINNED VESSEL</small><strong>w x 0 y z</strong></div><div class="stat"><small>NEON REFERENCE</small><strong>Ne · 2|8</strong></div></div>
+<div class="layout"><section class="card"><div class="heading"><b>01 / TESSERACT, TORUS & ALL 488 NODES</b><small>DRAG TO ORBIT · SCROLL TO ZOOM · CLICK A COLOR</small></div>
+<div class="viewport"><canvas id="scene" width="960" height="680" tabindex="0" role="img" aria-label="Animated mathematical 4D tesseract projection around a symbolic five-wrap torus; 488 individually selectable color nodes and a pinned zero."></canvas>
+<div class="hud"><b>((((( wx0yz )))))</b><div>0 :: PINNED AT ORIGIN</div><div>4D :: 16 V / 32 E</div><div id="hudmode">PATROL · RUNNING</div></div><div class="hudnote">R⁴ → R³ → R²<br>procedural shadow projection<br>not measured five-dimensional physics</div></div>
+<div class="pad note warn">The tesseract uses actual 4D vertex/edge connectivity projected to a canvas. The nested 5D toroid is symbolic. Every one of the 488 chromatic addresses is rendered, but its initial neon hue is procedural—not a verified wavelength from your source registry.</div>
+</section><div class="side">
+<section class="card"><div class="heading"><b>02 / LOCAL AGENT</b><small>POLICY-DRIVEN ACTIONS</small></div><div class="pad">
+<div class="control"><div class="row"><label for="mode">Agent behavior</label><output id="agentstatus">RUNNING</output></div>
+<select id="mode"><option value="patrol">PATROL · modular 37-hop scan</option><option value="trace">TRACE · four same-slot roots</option><option value="harmonize">HARMONIZE · closest to rose quartz</option></select>
+<p class="policy" id="policy">Advance 37 addresses each tick; inspect and log each selected location.</p>
+<div class="actions"><button id="auto" class="btn primary">Ⅱ PAUSE AGENT</button><button id="step" class="btn">→ SINGLE STEP</button></div>
+<div class="row"><label for="cadence">Agent cadence</label><output id="cadence-v">1.2 s</output></div><input id="cadence" type="range" min="300" max="3000" step="100" value="1200"></div>
+<div class="control"><div class="row"><label for="address">Focus KET address</label><output id="address-v">+O62</output></div><input id="address" type="number" min="1" max="488" step="1" value="184">
+<pre class="readout" id="inspector" aria-live="polite">Loading 488-register…</pre></div>
+<div class="actions"><button id="reset" class="btn">↶ RESET AGENT</button><button id="camera" class="btn">⌖ RESET CAMERA</button></div></div></section>
+<section class="card"><div class="heading"><b>03 / wx0yz SHADOW CONTROLS</b><small>CENTER 0 IS IMMOBILE</small></div><div class="pad">
+<div class="row"><span class="kicker">w x 0 y z</span><span class="kicker">PIN = (0,0,0,0)</span></div>
+<div class="axes">
+<div class="axis"><label for="axis-w">w</label><output id="axis-w-v">0°</output><input id="axis-w" data-axis="w" type="range" min="-180" max="180" step="5" value="0"></div>
+<div class="axis"><label for="axis-x">x</label><output id="axis-x-v">0°</output><input id="axis-x" data-axis="x" type="range" min="-180" max="180" step="5" value="0"></div>
+<div class="axis"><label for="axis-y">y</label><output id="axis-y-v">0°</output><input id="axis-y" data-axis="y" type="range" min="-180" max="180" step="5" value="0"></div>
+<div class="axis"><label for="axis-z">z</label><output id="axis-z-v">0°</output><input id="axis-z" data-axis="z" type="range" min="-180" max="180" step="5" value="0"></div></div>
+<div class="control" style="margin-top:12px"><div class="row"><label for="speed">Projection rotation rate</label><output id="speed-v">0.65×</output></div><input id="speed" type="range" min="0" max="2" step=".05" value=".65"></div>
+<div class="checks">
+<label><input type="checkbox" id="edges" checked> 4D tesseract edges</label><label><input type="checkbox" id="wraps" checked> Five toroidal wraps</label>
+<label><input type="checkbox" id="nodes" checked> 488 color points</label><label><input type="checkbox" id="neon" checked> Neon-10 diagram</label>
+<label><input type="checkbox" id="trails" checked> Agent trace</label><label><input type="checkbox" id="motion" checked> Auto-rotate</label>
+</div></div></section>
+<section class="card"><div class="heading"><b>04 / LOCAL EVENT LEDGER</b><small>DETERMINISTIC</small></div><div class="pad"><ol class="trace" id="events" aria-live="polite"></ol>
+<p class="note">Agentic here means a rule-based agent running while this tab is open. No remote model, network calls, or background task. The page does not operate any physical apparatus.</p></div></section>
+</div></div>
+<div class="lower">
+<section class="card"><div class="heading"><b>05 / 488 CHROMATIC ADDRESSES</b><small>CLICK A SWATCH TO SELECT</small></div><div class="pad">
+<div id="roots" class="roots"></div><div id="palette" class="palette" role="group" aria-label="Four root sets comprising 488 selectable procedural color-address swatches"></div>
+<p class="note warn">Generated hues are placeholders keyed to 488 existing symbolic address slots; these are not 488 verified atomic spectral wavelengths. Import your exact complete registry as JSON to replace them.</p>
+<div class="export"><button type="button" id="export">⬇ EXPORT STATE + PALETTE</button><label for="import">↑ IMPORT 488 JSON</label><input type="file" id="import" accept=".json,application/json"><button id="restore" type="button">↶ RESET COLORS</button></div>
+<p id="importstate" class="note" role="status">Deterministic 488-address neon palette active</p></div></section>
+<section class="card"><div class="heading"><b>06 / INTERSECTIONS, REGISTER & NEON</b><small>INDEPENDENT LAYERS</small></div><div class="pad">
+<div class="kicker">SAME-SLOT ROOT INTERSECTION</div><div class="quartet" id="quartet" role="group" aria-label="Four same-slot root intersection addresses"></div>
+<pre class="readout" id="register"></pre>
+<p class="note">Neon-10 is a separate 2+8 electron-shell reference. The 488 nodes are KET chromatic addresses, not 488 electrons or quarks. The independent 8×3 register has 24 cells, while the 4D hypercube has 16 vertices and 32 edges.</p>
+<div class="kicker">CANONICAL MESH TOKEN</div><pre class="readout">-+001122334455667788990099887766554433221100-+</pre>
+<p class="note"><a href="./ket-488-toroid24.html">Open pinned factorial toroid →</a></p>
+</div></section></div>
+</main><script>
+// AGENT_ENGINE_INJECTION
+</script></body></html>
