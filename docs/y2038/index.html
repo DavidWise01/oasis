@@ -38,7 +38,7 @@ int main(void) {
 [ -+ guard +- ]
        |
 [ chronological ledger ]</pre><p><b>2<sup>31</sup></b> is the signed boundary. <b>2<sup>−10</sup></b> equals 1/1024, and is unrelated to this overflow.</p></section></aside></div>
-<section class="card"><h2>What comes after Step 1?</h2><div class="grid"><div class="step"><b>02 · Audit conversions</b>Find implicit 32-bit timestamp truncations.</div><div class="step"><b>03 · Update storage</b>Review persistence, binary protocols, libraries.</div><div class="step"><b>04 · Validate boundaries</b>Exercise dates before and after 2038.</div></div><p>Step 2 and beyond are roadmap items, not implemented fixes yet. This first page does not claim to fix an entire operating system.</p></section>
+<section class="card"><h2>Continue to Step 2</h2><p>The interactive conversion audit is ready.</p><p><a class="link" href="step2.html">Open Step 2 →</a></p></section><section class="card"><h2>What comes after Step 1?</h2><div class="grid"><div class="step"><b>02 · Audit conversions</b>Find implicit 32-bit timestamp truncations.</div><div class="step"><b>03 · Update storage</b>Review persistence, binary protocols, libraries.</div><div class="step"><b>04 · Validate boundaries</b>Exercise dates before and after 2038.</div></div><p>Step 2 and beyond are roadmap items, not implemented fixes yet. This first page does not claim to fix an entire operating system.</p></section>
 <footer><small>Y2038 Workshop · Step 1 · Static GitHub Pages compatible · No external scripts or dependencies</small></footer>
 </main><script>
 const base=2147483647n, range=document.querySelector('#offset');
