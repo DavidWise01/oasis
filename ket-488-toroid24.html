@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080a17"><meta name="description" content="KET 24-position factorial toroid; exact quotient versus normalized multinomial, four nested rings, and 488-address root intersection."><title>KET / 24! Factorial Toroid · 8×3 Register</title><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080a17"><meta name="description" content="KET 24-position factorial toroid; exact quotient versus normalized multinomial, five nested coordinate wraps pinned to wx0yz, and 488-address root intersection."><title>KET / 5D Factorial Toroid · wx0yz Pinned Origin · 8×3</title><style>
 :root{color-scheme:dark;--bg:#080a17;--ink:#eef2ff;--muted:#a3afca;--line:#5b5984;--violet:#d2afff;--cyan:#78e9ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 52% -16%,#303051 0%,transparent 51%),#080a17;color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(#5c91e20b 1px,transparent 1px),linear-gradient(90deg,#5c91e20b 1px,transparent 1px);background-size:42px 42px}
@@ -53,28 +53,37 @@ footer{margin:22px 0 0;color:#97aac9;border-left:2px solid #b59de6;padding-left:
 @media(max-width:1000px){.columns,.lower{grid-template-columns:1fr}}
 @media(max-width:650px){main{padding:13px}.metrics{grid-template-columns:repeat(2,1fr)}.legend{grid-template-columns:repeat(4,minmax(0,1fr))}.band{gap:4px}.lane{padding:5px 2px}.slot{font-size:9px}.intersections{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.axis-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.axis-card{border:1px solid var(--axis);background:#111c35;border-radius:10px;padding:10px;display:grid;gap:5px}
+.axis-card label{display:flex;align-items:center;justify-content:space-between;gap:5px;color:var(--axis);font:700 12px ui-monospace,monospace}
+.axis-card output{color:#bed5f0;font:10px ui-monospace,monospace}
+.pin-readout{background:#282942;border:1px solid #c7c6e4;border-radius:10px;text-align:center;padding:12px;color:#faf9ff}
+.pin-readout strong{display:block;font:700 27px ui-monospace,monospace}.pin-readout small{font:10px ui-monospace,monospace;color:#c4cee6}
+#zero-pin circle{filter:drop-shadow(0 0 8px #fff8)}#zero-pin text{font:700 19px ui-monospace,monospace;fill:#13162b;text-anchor:middle;dominant-baseline:middle}
+@media(max-width:580px){.axis-controls{grid-template-columns:1fr 1fr}}
 </style></head><body>
-<nav><strong>◈ KET / FACTORIAL TOROID</strong><span><a href="./ket-488-qcd.html">← 488 QCD BRIDGE</a><a href="./ket-488.html">488 TOROID</a><a href="./ket-488-i-mesh.html">{{i}} MESH</a><a href="./apps/anny-neon/">ANNY</a></span></nav>
+<nav><strong>◈ KET / 5D FACTORIAL TOROID</strong><span><a href="./ket-488-qcd.html">← 488 QCD BRIDGE</a><a href="./ket-488.html">488 TOROID</a><a href="./ket-488-i-mesh.html">{{i}} MESH</a><a href="./apps/anny-neon/">ANNY</a></span></nav>
 <main>
-<div class="kicker">FOUR WRAPS · 24 REGISTER POSITIONS · FACTORIAL / PERMUTATION LAYER</div>
-<h1>Four wraps. <em>One count.</em></h1>
-<p>Interpret <strong>(((( … ))))</strong> as four symbolic nested toroidal layers around the KET 8×3 register. The denominator specifies six group sizes using 19 of 24 positions; the remaining five are an open gap unless explicitly grouped.</p>
-<div class="formula">(((( 24! / 8! / 4! / 3! / 2! / 1! / 1! ))))</div>
+<div class="kicker">FIVE WRAPS · wx0yz PIN · 24 REGISTER POSITIONS · FACTORIAL / PERMUTATION LAYER</div>
+<h1>Five wraps. <em>Zero pinned.</em></h1>
+<p>Canonical vessel: <strong>((((( wx0yz )))))</strong>. Five ordered symbolic coordinate wraps are shown in projection; the central <strong>0</strong> is fixed, while w, x, y, z may vary. The 8×3 register and the 24! quotient are independent payloads, not extra dimensions. The six denominator groups occupy 19 of 24 cells; the last five remain open unless grouped.</p>
+<div class="formula">((((( wx0yz ))))) <span style="color:#8dbadf"> ⊃ [ 24! / (8! × 4! × 3! × 2! × 1! × 1!) ]</span></div>
 <div class="metrics">
 <div class="metric"><small>24! RAW PERMUTATIONS</small><strong id="f24">620,448,401,733,239,439,360,000</strong></div>
 <div class="metric"><small>ORIGINAL QUOTIENT</small><strong id="rawnum">53,430,920,839,296,000</strong></div>
 <div class="metric"><small>SEVEN-GROUP MULTINOMIAL</small><strong id="normalized">445,257,673,660,800</strong></div>
 <div class="metric"><small>RATIO = 5!</small><strong>120 ×</strong></div>
 </div>
-<div class="columns"><section class="card"><div class="head"><b>01 / QUADRUPLE TOROID · 24 DOTS</b><small>FOUR CONCENTRIC WRAPS · SIX GROUPS + GAP</small></div>
-<div class="stage"><svg id="torus" viewBox="0 0 760 555" role="img" aria-label="Four nested toroidal rings with twenty-four selectable symbolic positions, displaying six explicit groups plus a five-position gap.">
+<div class="columns"><section class="card"><div class="head"><b>01 / 5D PINNED TOROID · 24 DOTS</b><small>FIVE CONCENTRIC WRAPS · 0 PINNED · SIX GROUPS + GAP</small></div>
+<div class="stage"><svg id="torus" viewBox="0 0 760 555" role="img" aria-label="Five nested toroidal coordinate wraps w, x, 0, y, z with a stationary zero origin and twenty-four selectable symbolic register positions.">
 <defs><radialGradient id="core"><stop offset="0" stop-color="#443b75"/><stop offset="1" stop-color="#101933"/></radialGradient></defs>
 <g id="rings"></g><g id="connectors"></g><g id="dots"></g>
 <ellipse cx="380" cy="278" rx="117" ry="68" fill="url(#core)" stroke="#a48de0" stroke-opacity=".7"/>
-<text x="380" y="260" fill="#e2c9ff" text-anchor="middle" font-size="19" font-weight="bold">24! / denominator</text>
-<text x="380" y="286" fill="#bad9f5" text-anchor="middle" font-size="11">8 × 3 REGISTER</text>
-<text id="core-status" x="380" y="308" fill="#acd1fa" text-anchor="middle" font-size="10">5 OPEN / 19 ASSIGNED</text></svg>
-<div class="hud" id="hud">TORUS · PHASE 0 · GAP OPEN</div></div>
+<text x="380" y="249" fill="#e2c9ff" text-anchor="middle" font-size="20" font-weight="bold">w x 0 y z</text>
+<g id="zero-pin" role="img" aria-label="Zero origin is permanently pinned"><circle cx="380" cy="279" r="15" fill="#e6e6ff" stroke="#ffffff" stroke-width="2"/><text x="380" y="281">0</text></g>
+<text id="core-status" x="380" y="310" fill="#acd1fa" text-anchor="middle" font-size="10">5 OPEN / 19 ASSIGNED</text></svg>
+<div class="hud" id="hud">5D · wx0yz · 0 FIXED · PHASE 0</div></div>
 <div class="panel">
 <div class="kicker">GROUP PARTITION · CLICK FOR DETAILS</div><div class="legend" id="legend" role="group" aria-label="Six explicit factorial groups and the remaining gap"></div>
 <p class="small">Groups of sizes <strong>8, 4, 3, 2, 1, 1</strong> use 19 positions. Positions <strong>20–24</strong> are unassigned in the original denominator. Closing the gap as a group of five changes the counting formula by the factor 5!.</p>
@@ -84,6 +93,16 @@ footer{margin:22px 0 0;color:#97aac9;border-left:2px solid #b59de6;padding-left:
 <button data-mode="raw" type="button" aria-pressed="true">ORIGINAL 6 GROUPS</button>
 <button data-mode="sealed" type="button" aria-pressed="false">SEAL GAP AS 5!</button></div>
 <p class="small">Original: 24! divided by the six written factorials. Sealed: additionally divide by 5! to make seven classes summing to 24.</p></div>
+<div class="control"><div class="kicker">5D COORDINATE REGISTER · w x 0 y z</div>
+<div class="axis-controls">
+<div class="axis-card" style="--axis:#f05c65"><label for="axis-w">w <output id="axis-w-v">0°</output></label><input id="axis-w" data-axis="w" type="range" min="0" max="360" step="15" value="0"></div>
+<div class="axis-card" style="--axis:#33d3a0"><label for="axis-x">x <output id="axis-x-v">0°</output></label><input id="axis-x" data-axis="x" type="range" min="0" max="360" step="15" value="0"></div>
+<div class="pin-readout" aria-label="Center zero coordinate is pinned and cannot be adjusted"><strong>0</strong><small>PINNED · IMMOBILE</small></div>
+<div class="axis-card" style="--axis:#ab75ff"><label for="axis-y">y <output id="axis-y-v">0°</output></label><input id="axis-y" data-axis="y" type="range" min="0" max="360" step="15" value="0"></div>
+<div class="axis-card" style="--axis:#54c9ff"><label for="axis-z">z <output id="axis-z-v">0°</output></label><input id="axis-z" data-axis="z" type="range" min="0" max="360" step="15" value="0"></div>
+</div>
+<p class="small">Five-coordinate symbolic 5D register, fixed 0 slice. Four independent motion values; neither the center position nor the factorial sum changes.</p>
+</div>
 <div class="control"><div class="row"><label for="phase">Rotate 24-slot register</label><output id="phase-v">0 / 23</output></div><input id="phase" type="range" min="0" max="23" step="1" value="0"></div>
 <div class="control"><div class="row"><label for="address">Anchor KET address</label><output id="address-v">Z184 · +O62</output></div><input id="address" type="number" min="1" max="488" step="1" value="184"></div>
 <div class="control"><div class="row"><label for="speed">Illustration rate</label><output id="speed-v">1.0×</output></div><input id="speed" type="range" min="0.25" max="3" step="0.25" value="1"></div>
@@ -102,7 +121,7 @@ footer{margin:22px 0 0;color:#97aac9;border-left:2px solid #b59de6;padding-left:
 <div id="mapping" class="inspect">Loading intersection…</div>
 </div></section></div>
 <footer>
-<strong>Mathematics:</strong> the stated quotient is an integer but not a complete 24-item multinomial partition because the denominator class sizes sum to 19. The 5-class remainder must either stay distinguishable as 5 ordered slots or be grouped via an additional 5!. <strong>Physics:</strong> these are finite combinatorial counts and toroidal graphics, not quark-size measurements, gluon calculations, literal electron orbit paths, or physical evidence that a 24-state QCD system exists. The original 488 chromatic registry and its wavelength-provenance limits remain unchanged.
+<strong>Mathematics:</strong> the stated quotient is an integer but not a complete 24-item multinomial partition because the denominator class sizes sum to 19. The pinned center 0 in wx0yz is a coordinate, not the five-position factorial remainder. The 5-class remainder must either stay distinguishable as 5 ordered slots or be grouped via an additional 5!. <strong>Physics:</strong> these are finite combinatorial counts and toroidal graphics, not a measured five-dimensional spacetime, a proof of a mathematical 5-torus, quark-size measurements, gluon calculations, electron trajectories, or physical evidence that a 24-state QCD system exists. The original 488 chromatic registry and its wavelength-provenance limits remain unchanged.
 </footer></main><script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
@@ -110,7 +129,9 @@ const COLOR=['#65def3','#d2a2ff','#83eeaf','#ffc483','#ee9ba9','#9daafb','#92a1b
 const LABEL=['8','4','3','2','1a','1b','GAP 5'];
 const ROOTS=[{name:'+H',c:'#f05c65'},{name:'+O',c:'#33d3a0'},{name:'−N',c:'#ab75ff'},{name:'+N',c:'#54c9ff'}];
 const SIZES=[8,4,3,2,1,1,5];
-const STATE={phase:0,mode:'raw',anchor:184,selected:0,highlight:0,playing:true,speed:1,angle:0};
+const AXES=[{id:'w',color:'#f05c65'},{id:'x',color:'#33d3a0'},{id:'0',color:'#f7f4ff'},{id:'y',color:'#ab75ff'},{id:'z',color:'#54c9ff'}];
+const PIN=Object.freeze({coordinate:'0',value:0,origin:[380,278]});
+const STATE={phase:0,mode:'raw',anchor:184,selected:0,highlight:0,playing:true,speed:1,angle:0,axis:{w:0,x:0,y:0,z:0}};
 const ROOT=(z)=>Math.floor((z-1)/122),SLOT=(z)=>(z-1)%122+1,ADDR=(root,slot)=>root*122+slot;
 const factorial=(n)=>{let out=1n;for(let i=2n;i<=BigInt(n);i++)out*=i;return out};
 const FACT24=factorial(24),DEN=SIZES.slice(0,6).reduce((a,n)=>a*factorial(n),1n);
@@ -121,13 +142,14 @@ const cellGroup=physical=>groupOf((physical+STATE.phase)%24);
 const slotName=physical=>{const logical=(physical+STATE.phase)%24;return {logical,lane:Math.floor(logical/3)+1,port:logical%3+1,group:groupOf(logical)}};
 const mk=(tag,attrs,parent)=>{const el=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,String(v));parent.append(el);return el};
 const rings=[],points=[],cells=[];
-for(let k=0;k<4;k++){
- const rx=288-k*26,ry=213-k*23;
- const ring=mk('ellipse',{cx:380,cy:278,rx,ry,fill:'none',stroke:ROOTS[k].c,
-  'stroke-opacity':.20+k*.035,'stroke-width':k===0?7:4},$('rings'));
- rings.push(ring);
- const text=mk('text',{x:380,y:278-ry-7,'text-anchor':'middle',fill:ROOTS[k].c,'font-size':10},$('rings'));
- text.textContent='WRAP '+(k+1);
+for(let k=0;k<5;k++){
+ const rx=288-k*27,ry=213-k*24;
+ const axis=AXES[k];
+ const ring=mk('ellipse',{cx:PIN.origin[0],cy:PIN.origin[1],rx,ry,fill:'none',stroke:axis.color,
+  'stroke-opacity':axis.id==='0'?.9:.45,'stroke-width':axis.id==='0'?5:3.7},$('rings'));
+ rings.push({ring,axis});
+ const text=mk('text',{x:PIN.origin[0],y:PIN.origin[1]-ry-7,'text-anchor':'middle',fill:axis.color,'font-size':11},$('rings'));
+ text.textContent='WRAP '+(k+1)+' / '+axis.id+(axis.id==='0'?' PINNED':'');
 }
 for(let i=0;i<24;i++){
  const line=mk('line',{stroke:'#7d8bb3','stroke-opacity':'.14','stroke-width':1.2},$('connectors'));
@@ -168,9 +190,10 @@ for(let lane=0;lane<8;lane++){
 }
 function render(){
  $('phase').value=String(STATE.phase);$('phase-v').textContent=STATE.phase+' / 23';
+ for(const axis of AXES){if(axis.id==='0')continue;$('axis-'+axis.id).value=String(STATE.axis[axis.id]);$('axis-'+axis.id+'-v').textContent=STATE.axis[axis.id]+'°'}
  $('address').value=String(STATE.anchor);
  $('speed').value=String(STATE.speed);$('speed-v').textContent=STATE.speed.toFixed(2)+'×';
- $('hud').textContent='TORUS · PHASE '+STATE.phase+' · '+(STATE.mode==='raw'?'GAP OPEN':'GAP SEALED');
+ $('hud').textContent='5D · wx0yz · 0 PINNED · PHASE '+STATE.phase+' · '+(STATE.mode==='raw'?'GAP OPEN':'GAP SEALED');
  $('core-status').textContent=STATE.mode==='raw'?'5 UNASSIGNED / 19 EXPLICIT':'SEVEN GROUPS · 24 ASSIGNED';
  [...document.querySelectorAll('[data-mode]')].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===STATE.mode)));
  [...legend.children].forEach((b,g)=>{b.setAttribute('aria-pressed',String(STATE.highlight===g));b.lastChild.textContent=g===6?(STATE.mode==='raw'?'OPEN GAP':'SEALED GROUP'):'GROUP '+(g+1)});
@@ -185,6 +208,7 @@ function render(){
  '\nGROUP          '+(selected.group===6?'FIVE-POSITION GAP':LABEL[selected.group]+' / G'+(selected.group+1))+
  '\nASSIGNMENT     '+(selected.group===6&&STATE.mode==='raw'?'UNASSIGNED (original expression)':'INCLUDED IN PARTITION')+
  '\nROOT ADDRESS   Z'+localZ+' / '+ROOTS[root].name+crossSlot+
+ '\n5D PIN wx0yz     0=FIXED · w'+STATE.axis.w+'° x'+STATE.axis.x+'° y'+STATE.axis.y+'° z'+STATE.axis.z+'°'+
  '\nSELECTED COUNT '+formatting(STATE.mode==='raw'?RAW:SEALED);
  $('arithmetic').textContent='24! = '+formatting(FACT24)+
  '\nD = 8!×4!×3!×2!×1!×1! = '+formatting(DEN)+
@@ -192,7 +216,8 @@ function render(){
  '\nSUM SIZES = 8+4+3+2+1+1 = 19; REMAINDER 5'+
  '\nSEALED = 24! / (D×5!) = '+formatting(SEALED)+
  '\nRELATION = RAW / SEALED = '+formatting(RAW/SEALED)+
- '\nMODE = '+STATE.mode.toUpperCase()+' · PHASE = '+STATE.phase;
+ '\nMODE = '+STATE.mode.toUpperCase()+' · PHASE = '+STATE.phase+
+ '\nGEOMETRY = ((((( wx0yz ))))) · center 0 fixed';
  $('intersection').replaceChildren();
  ROOTS.forEach((r,index)=>{
   const z=ADDR(index,crossSlot);
@@ -205,7 +230,7 @@ function render(){
  '\nCELL '+(selected.logical+1)+' → ROOT OFFSET '+selected.logical+
  '\nINTERSECTION SLOT '+crossSlot+'/122'+
  '\nROOTS +H / +O / −N / +N'+
- '\nFOUR-WRAP TORUS ≠ QCD SU(3) PHYSICAL GEOMETRY';
+ '\n5D wx0yz PROJECTION (0 PINNED) ≠ QCD SU(3) PHYSICAL GEOMETRY';
  cells.forEach(b=>{
   const p=Number(b.dataset.position),g=cellGroup(p);
   b.textContent=String(slotName(p).logical+1);
@@ -221,24 +246,38 @@ function render(){
  });
 }
 function frame(){
+ const rad=Math.PI/180;
+ for(const wrap of rings){
+  if(wrap.axis.id==='0'){wrap.ring.removeAttribute('transform');continue}
+  const orientation=STATE.axis[wrap.axis.id]+STATE.angle*(180/Math.PI)*(wrap.axis.id==='w'?1:wrap.axis.id==='x'?-1:wrap.axis.id==='y'?.7:-.6);
+  wrap.ring.setAttribute('transform','rotate('+orientation.toFixed(3)+' '+PIN.origin.join(' ')+')');
+ }
+ const a=STATE.axis;
  for(const p of points){
   const theta=2*Math.PI*p.i/24-Math.PI/2+STATE.angle;
-  const x=380+288*Math.cos(theta),y=278+213*Math.sin(theta);
-  const xi=380+110*Math.cos(theta),yi=278+65*Math.sin(theta);
+  const projected=theta+.12*Math.sin(theta+a.w*rad)+.07*Math.cos(2*theta+a.x*rad);
+  const rx=288+8*Math.sin(theta+a.y*rad),ry=213+7*Math.cos(theta+a.z*rad);
+  const x=PIN.origin[0]+rx*Math.cos(projected),y=PIN.origin[1]+ry*Math.sin(projected);
+  const xi=PIN.origin[0]+110*Math.cos(projected),yi=PIN.origin[1]+65*Math.sin(projected);
   p.group.setAttribute('transform','translate('+x.toFixed(2)+' '+y.toFixed(2)+')');
   p.line.setAttribute('x1',xi.toFixed(2));p.line.setAttribute('y1',yi.toFixed(2));
   p.line.setAttribute('x2',x.toFixed(2));p.line.setAttribute('y2',y.toFixed(2));
  }
 }
 document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{STATE.mode=b.dataset.mode;render()}));
+document.querySelectorAll('input[data-axis]').forEach(input=>input.addEventListener('input',()=>{
+ const id=input.dataset.axis;
+ if(id==='0'||!Object.hasOwn(STATE.axis,id))return;
+ STATE.axis[id]=Number(input.value);render();frame();
+}));
 $('phase').oninput=e=>{STATE.phase=Number(e.target.value);STATE.highlight=cellGroup(STATE.selected);render()};
 $('address').onchange=e=>{const n=Number(e.target.value);if(Number.isInteger(n)&&n>=1&&n<=488)STATE.anchor=n;render()};
 $('speed').oninput=e=>{STATE.speed=Number(e.target.value);render()};
 $('advance').onclick=()=>{STATE.phase=(STATE.phase+1)%24;STATE.highlight=cellGroup(STATE.selected);render()};
 $('play').onclick=()=>{STATE.playing=!STATE.playing;$('play').textContent=STATE.playing?'Ⅱ PAUSE':'▶ RESUME'};
-$('reset').onclick=()=>{Object.assign(STATE,{phase:0,mode:'raw',anchor:184,selected:0,highlight:0,playing:true,speed:1,angle:0});$('play').textContent='Ⅱ PAUSE';render()};
+$('reset').onclick=()=>{Object.assign(STATE,{phase:0,mode:'raw',anchor:184,selected:0,highlight:0,playing:true,speed:1,angle:0,axis:{w:0,x:0,y:0,z:0}});$('play').textContent='Ⅱ PAUSE';render()};
 $('copy').onclick=async()=>{
- const sample='KET FACTORIAL TOROID\nEXPRESSION ((((24! / 8! / 4! / 3! / 2! / 1! / 1!))))\nRAW '+RAW+
+ const sample='KET 5D FACTORIAL TOROID\nPIN ((((( wx0yz ))))) · 0=0\nPAYLOAD 24!/(8!×4!×3!×2!×1!×1!)\nAXES '+JSON.stringify(STATE.axis)+'\nRAW '+RAW+
  '\nREMAINDER 5\nNORMALIZED '+SEALED+'\nSELECT '+(STATE.selected+1)+' PHASE '+STATE.phase+' MODE '+STATE.mode+' ANCHOR '+STATE.anchor;
  try{await navigator.clipboard.writeText(sample);$('feedback').textContent=' Copied'}catch(err){$('feedback').textContent=' Clipboard unavailable'}
 };
@@ -251,6 +290,7 @@ function animate(now){
  frame();requestAnimationFrame(animate);
 }
 if(SIZES.reduce((a,b)=>a+b,0)!==24)throw Error('PARTITION_SHAPE_INVALID');
+if(AXES.map(a=>a.id).join('')!=='wx0yz'||PIN.value!==0||AXES.length!==5)throw Error('PINNED_5D_REGISTER_INVALID');
 if(RAW!==53430920839296000n||SEALED!==445257673660800n||RAW/SEALED!==120n)throw Error('FACTORIAL_CHECK_FAILED');
 render();requestAnimationFrame(animate);
 })();</script></body></html>
