@@ -42,6 +42,7 @@ jobs:
           python3 docs/y2038/check_phase2_etcd.py
           python3 docs/y2038/check_phase2_idempotent.py
           python3 -m py_compile docs/y2038/phase2_cluster/run_cluster_test.py
+          python3 docs/y2038/phase2_evidence/test_evidence.py
 
   release_gate:
     if: github.event_name == 'workflow_dispatch'
