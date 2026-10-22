@@ -85,3 +85,28 @@ on a user's primary computer, filesystem, or irreplaceable data.
 The original ANNY v16.1 journal/receiver modules, 10 dual ACKs, 18-slot
 analytical cubit, signed Sapphon wavelength registry, VOID, GRAVITY, and
 radiation overlays were not modified.
+
+## 2026-10-21 fail-closed extra-receiver-effect regression
+
+A follow-up **local SQLite fault-injection test** exposed an observer defect
+in the separate `disk_gate.py` analogue: a matching primary receiver receipt
+could incorrectly mark Violet `VERIFIED` while an unrelated second receiver
+effect also existed (`receiver_rows=2`, `effect_count=2`).
+
+The checker was changed to require **exactly one receiver row, exactly one
+receiver ledger effect, and the expected synthetic source and digest** before
+Violet becomes `VERIFIED`.
+
+Reproduction evidence in
+`durability/failclosed-regression-evidence.json`:
+
+- Before fix: `CONFIRMED / 2 effects / VERIFIED` (**defect**).
+- After fix: `CONFIRMED / 2 effects / HELD` (**correct fail-closed behavior**).
+- Legitimate single matching receipt: `CONFIRMED / 1 effect / VERIFIED`.
+- Eleven standalone negative/control tests: **11/11 passed locally**.
+- Original five process-SIGKILL scenarios re-executed: **5/5 passed locally**.
+
+The fixed checker and unit tests are now included in
+`.github/workflows/anny-disk-crash.yml`. Neither these tests nor the
+earlier analog SIGKILL tests establish actual power-loss durability or
+Chromium IndexedDB recovery.
