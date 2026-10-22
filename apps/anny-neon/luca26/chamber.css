@@ -153,3 +153,62 @@ input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cur
  .aa-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.footer-panels{grid-template-columns:1fr}
  .controls{padding:15px}.panel-header{padding:13px}.grammar{justify-content:center}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Top-of-box symbolic three-strand zipper / 3 × 20 amino-acid positions. */
+.zipper-panel{margin-top:17px}
+.zipper-shell{padding:18px 20px 22px;background:radial-gradient(ellipse at 50% -10%,#32204c65,transparent 54%)}
+.zipper-intro{display:flex;justify-content:space-between;align-items:start;gap:16px;flex-wrap:wrap}
+.zipper-intro>div{max-width:750px}
+.zipper-formula{margin:5px 0 8px;font:700 clamp(23px,3.1vw,34px) ui-monospace,monospace;color:#efd1ff}
+.zipper-formula span{color:#80e9ff;font-size:.52em;letter-spacing:.07em}
+.zipper-tag{flex:none;background:#183332;color:#9de9df;border:1px solid #66ccc8;
+ border-radius:8px;font:11px ui-monospace,monospace;padding:8px 12px}
+.zipper-tag.hold{background:#3f2128;border-color:#ff8ca5;color:#ffbac6}
+.zipper-tag.merged{background:#143e31;border-color:#7ce4b2;color:#b6ffdc}
+.zipper-controls{display:flex;gap:15px;flex-wrap:wrap;align-items:end;padding:18px 0}
+.zipper-control{flex:1 1 125px;min-width:120px}
+.zipper-control label,.zipper-control output{font:11px ui-monospace,monospace}
+.zipper-control input{accent-color:#bc8bfd}
+.zipper-choice{display:flex;gap:5px;margin-top:8px}
+.zipper-choice button{background:#142442;color:#aec9e5;border:1px solid #536b8b;border-radius:9px;
+ padding:7px 12px;flex:1;min-width:0;cursor:pointer}
+.zipper-choice button[aria-pressed="true"]{background:#422758;color:#f1d8ff;border-color:#cb94ff}
+.zipper-rails{border:1px solid #496282aa;background:linear-gradient(145deg,#10172e,#0c1834);
+ border-radius:15px;padding:13px 11px;display:grid;gap:6px}
+.zipper-rail{display:grid;grid-template-columns:83px minmax(0,1fr);gap:10px;align-items:center}
+.zipper-rail-label{color:#d9c6f8;font:700 17px ui-monospace,monospace;display:flex;align-items:center;gap:6px}
+.zipper-rail-label small{color:#8c9abb;font:9px ui-monospace,monospace}
+.zipper-rail-output{color:#a7f4d1}
+.zipper-teeth{min-width:0;display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:3px}
+.zipper-tooth{min-width:0;min-height:40px;border:1px solid #53618d8c;border-radius:6px;
+ background:#181d3e;color:#e4c8fa;font:700 11px ui-monospace,monospace;padding:5px 0;cursor:pointer;
+ display:grid;place-items:center;position:relative}
+.zipper-tooth[data-sealed="true"]{border-color:#7fdbcd7a;background:#113b3b}
+.zipper-tooth[data-variance="true"]{border-color:#ff8aa5;color:#ffbed3;background:#3c2038}
+.zipper-tooth[data-missing="true"]{color:#fbce9d;border-color:#ae7e5a;background:#382d27}
+.zipper-tooth[data-focus="true"]{outline:1px solid #e7d0ff;outline-offset:1px}
+.zipper-tooth:hover,.zipper-tooth:focus-visible{z-index:1;border-color:#cdb6ff;outline:2px solid #dfc4ff;outline-offset:1px}
+.zipper-output .zipper-tooth{pointer-events:none;border-color:#385571;color:#8dacc7;background:#0a1c2f}
+.zipper-output .zipper-tooth[data-merged="true"]{color:#9cffe1;border-color:#58e3b2;background:#123c32;box-shadow:0 0 12px #58e3b122}
+.zipper-output .zipper-tooth[data-hold="true"]{color:#ffa9c4;border-color:#b35470;background:#3b1a2f}
+.zipper-spine{display:grid;grid-template-columns:83px minmax(0,1fr);gap:10px;align-items:center}
+.zipper-spine>span:first-child{color:#bd97f4;text-align:center}
+.zipper-spine .zipper-track{display:flex;gap:8px;justify-content:center;align-items:center;min-width:0;
+ border-bottom:1px dashed #756fbb83;color:#86b6de;font:9px ui-monospace,monospace;letter-spacing:.1em}
+.zipper-spine>span:last-child{display:none}
+.zipper-action-row{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}
+.zipper-action-row button{flex:1 1 115px}
+.zipper-result-line{display:flex;gap:9px 18px;align-items:center;flex-wrap:wrap;color:#c5eeea;
+ padding:9px 0 7px;font:11px ui-monospace,monospace}
+.zipper-warning{border-left:2px solid #b47aef;padding-left:11px;margin-top:10px}
+@media(max-width:780px){.zipper-shell{padding:12px}.zipper-rails{padding:11px 7px}
+ .zipper-rail,.zipper-spine{grid-template-columns:46px minmax(0,1fr);gap:5px}
+ .zipper-rail-label{font-size:14px;flex-direction:column;align-items:center;gap:0}
+ .zipper-rail-label small{font-size:8px}
+ .zipper-teeth{gap:2px}
+ .zipper-tooth{min-height:33px;padding:2px 0;font-size:9px;border-radius:3px}
+ .zipper-controls{gap:10px}.zipper-control{min-width:90px}
+}
+@media(max-width:420px){.zipper-tooth{font-size:8px;min-height:30px}
+ .zipper-rail,.zipper-spine{grid-template-columns:34px minmax(0,1fr);gap:3px}
+ .zipper-rail-label{font-size:12px}}
