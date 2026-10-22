@@ -115,12 +115,12 @@
           <h2 class="zipper-formula">{{3 × 20}} <span>↓ ZIPPER MERGE</span></h2>
           <p class="hint">Three rows of 20 residues form 60 symbolic observations. Each vertical tooth closes into one of 20 merged positions. Click a residue to introduce or remove a strand-local change.</p>
         </div>
-        <span class="zipper-tag" id="zipper-status" role="status" aria-live="polite">IN PROGRESS</span>
+        <span class="zipper-tag merged" id="zipper-status" role="status" aria-live="polite">MERGED</span>
       </div>
       <div class="zipper-controls">
         <div class="zipper-control" style="flex:2 1 240px">
-          <div class="row"><label for="zipper-close">Zipper closure</label><output id="zipper-close-v" for="zipper-close">0 / 20</output></div>
-          <input id="zipper-close" type="range" min="0" max="20" step="1" value="0">
+          <div class="row"><label for="zipper-close">Zipper closure</label><output id="zipper-close-v" for="zipper-close">20 / 20</output></div>
+          <input id="zipper-close" type="range" min="0" max="20" step="1" value="20">
         </div>
         <div class="zipper-control">
           <span class="micro">DECODING RULE</span>
@@ -152,8 +152,8 @@
         <button id="zipper-align" class="action muted" type="button">◎ ALIGN CLOCKS</button>
       </div>
       <div class="zipper-result-line" aria-live="polite">
-        <span id="zipper-merged-count">0 / 20 accepted</span>
-        <span id="zipper-held-count">0 held · 20 open</span>
+        <span id="zipper-merged-count">20 / 20 accepted</span>
+        <span id="zipper-held-count">0 held · 0 open</span>
         <span class="micro" id="zipper-interpretation">Three reference lanes are illustrative, not independently authenticated biological sequences.</span>
       </div>
       <p class="hint zipper-warning">3 × 20 is an invented KET zipper overlay, not how biological translation works. A 2/3 agreement is merely a quorum model: matching replicated strands cannot independently prove ancestry or reconstruct erased truth.</p>
