@@ -58,7 +58,7 @@ input[type=range]{width:100%;accent-color:#bda5ff}input[type=number],select{widt
 <div class="stats"><div class="stat"><small>4D VERTEX NODES</small><strong>16 · 32E</strong></div><div class="stat"><small>{{3×3}}³ PER VERTEX</small><strong>729</strong></div><div class="stat"><small>CHROMATIC NODES</small><strong>488 / 488</strong></div><div class="stat"><small>ROOTS × SLOTS</small><strong>4 × 122</strong></div><div class="stat"><small>PINNED VESSEL</small><strong>w x 0 y z</strong></div><div class="stat"><small>VERTEX-STATE ADDRESSES</small><strong>11,664</strong></div><div class="stat"><small>NEON REFERENCE</small><strong>Ne · 2|8</strong></div></div>
 <div class="layout"><section class="card"><div class="heading"><b>01 / 16 VERTEX NODES + TORUS + 488 CHROMATIC NODES</b><small>DRAG · ZOOM · CLICK VERTEX OR COLOR</small></div>
 <div class="viewport"><canvas id="scene" width="960" height="680" tabindex="0" role="img" aria-label="Projected mathematical 4D tesseract with sixteen selectable vertex-anchor nodes, a symbolic 729-state toroidal register per vertex, 488 separate selectable chromatic nodes, and a pinned zero."></canvas>
-<div class="hud"><b>((((( wx0yz )))))</b><div>0 :: PINNED AT ORIGIN</div><div>4D :: 16 V / 32 E</div><div>16 VERTEX NODES · 729 STATES EACH</div><div id="hudmode">PATROL · RUNNING</div></div><div class="hudnote">R⁴ → R³ → R²<br>procedural shadow projection<br>not measured five-dimensional physics</div></div>
+<div class="hud"><b>((((( wx0yz )))))</b><div>Co·0 :: COBALT / PINNED</div><div>4D :: 16 V / 32 E</div><div>16 VERTEX NODES · 729 STATES EACH</div><div id="corelinks-status">504 NODE→CORE LINKS ACTIVE</div><div id="hudmode">PATROL · RUNNING</div></div><div class="hudnote">R⁴ → R³ → R²<br>procedural shadow projection<br>not measured five-dimensional physics</div></div>
 <div class="pad note warn">Each of the 16 projected tesseract vertices has an installed selectable node and its own symbolic {{3×3}}^{{3}} register (729 possibilities, 11,664 combinations across vertices). These are not 11,664 additional geometric vertices. All 488 separate chromatic nodes remain visible; initial hues are procedural, not measured wavelengths.</div>
 </section><div class="side">
 <section class="card"><div class="heading"><b>02 / LOCAL AGENT</b><small>POLICY-DRIVEN ACTIONS</small></div><div class="pad">
@@ -80,7 +80,7 @@ input[type=range]{width:100%;accent-color:#bda5ff}input[type=number],select{widt
 <div class="control" style="margin-top:12px"><div class="row"><label for="speed">Projection rotation rate</label><output id="speed-v">0.65×</output></div><input id="speed" type="range" min="0" max="2" step=".05" value=".65"></div>
 <div class="checks">
 <label><input type="checkbox" id="edges" checked> 4D tesseract edges</label><label><input type="checkbox" id="vertices" checked> 16 vertex nodes</label><label><input type="checkbox" id="wraps" checked> Five toroidal wraps</label>
-<label><input type="checkbox" id="nodes" checked> 488 color points</label><label><input type="checkbox" id="neon" checked> Neon-10 diagram</label>
+<label><input type="checkbox" id="nodes" checked> 488 color points</label><label><input type="checkbox" id="corelinks" checked> 504 cobalt core links</label><label><input type="checkbox" id="neon" checked> Neon-10 diagram</label>
 <label><input type="checkbox" id="trails" checked> Agent trace</label><label><input type="checkbox" id="motion" checked> Auto-rotate</label>
 </div></div></section>
 <section class="card"><div class="heading"><b>04 / VERTEX TOROID REGISTERS</b><small>16 × (3×3)³ = 11,664</small></div><div class="pad">
@@ -118,8 +118,10 @@ const ROOTS=[{name:'+H',color:'#f05c65'},{name:'+O',color:'#33d3a0'},{name:'−N
 const TOKEN='-+001122334455667788990099887766554433221100-+';
 const KEY='ket488-tesseract-agent-palette-v1';
 const CENTER=Object.freeze({x:0,y:0,z:0,w:0});
+const COBALT_CORE=Object.freeze({symbol:'Co',label:'Cobalt Core',hex:'#0047AB',glow:'#4fa3ff',ring:'#dff3ff',origin:CENTER});
 const VERTICES=Array.from({length:16},(_,i)=>[(i&1)?1:-1,(i&2)?1:-1,(i&4)?1:-1,(i&8)?1:-1]);
 const EDGES=[];for(let i=0;i<16;i++)for(let d=0;d<4;d++){const j=i^(1<<d);if(i<j)EDGES.push({a:i,b:j,dim:d})}
+const CORE_LINKS=Object.freeze({vertices:VERTICES.length,chromatic:488,total:VERTICES.length+488});
 const STATES=['patrol','trace','harmonize','vertex'];
 const TOROID_SHAPE=Object.freeze([3,3,3]);
 const TOROID_CHOICES=3*3, TOROID_PER_VERTEX=TOROID_CHOICES**3;
@@ -154,9 +156,9 @@ function validateRecords(payload){
  return arr;
 }
 fromStorage();
-if(VERTICES.length!==16||EDGES.length!==32||TOROID_PER_VERTEX!==729||TOTAL_VERTEX_STATES!==11664||records.length!==488||new Set(baseRecords().map(r=>r.hex)).size!==488)throw Error('GEOMETRY_OR_TOROID_INVARIANT');
+if(VERTICES.length!==16||EDGES.length!==32||CORE_LINKS.total!==504||COBALT_CORE.origin!==CENTER||TOROID_PER_VERTEX!==729||TOTAL_VERTEX_STATES!==11664||records.length!==488||new Set(baseRecords().map(r=>r.hex)).size!==488)throw Error('GEOMETRY_OR_TOROID_INVARIANT');
 const state={selected:184,policy:'patrol',agent:true,cadence:1200,ticks:0,steps:0,carry:0,speed:.65,spin:0,axis:{w:0,x:0,y:0,z:0},
- yaw:.32,pitch:.16,zoom:1,vertex:0,digits:[0,0,0],show:{edges:true,vertices:true,wraps:true,nodes:true,neon:true,trails:true,motion:true},trail:[],hover:null};
+ yaw:.32,pitch:.16,zoom:1,vertex:0,digits:[0,0,0],show:{edges:true,vertices:true,wraps:true,nodes:true,corelinks:true,neon:true,trails:true,motion:true},trail:[],hover:null};
 const root=z=>Math.floor((z-1)/122),slot=z=>(z-1)%122+1,addr=(r,s)=>122*r+s;
 const props=z=>({id:z,root:root(z),slot:slot(z),entry:records[z-1]});
 const name=z=>ROOTS[root(z)].name+slot(z);
@@ -250,10 +252,9 @@ function torusWraps(){
  }
 }
 const vertexPixels=[];
-function tesseract(){
- if(!state.show.edges&&!state.show.vertices){vertexPixels.length=0;return}
- const v=VERTICES.map(p=>project(p.map(n=>n*1.18)));
+function tesseract(v){
  vertexPixels.length=0;v.forEach((p,id)=>vertexPixels.push({id,x:p.x,y:p.y,depth:p.depth}));
+ if(!state.show.edges&&!state.show.vertices)return;
  if(state.show.edges){
  const edges=EDGES.map(e=>({...e,z:(v[e.a].depth+v[e.b].depth)/2})).sort((a,b)=>a.z-b.z);
  for(const e of edges){
@@ -280,9 +281,9 @@ function tesseract(){
  }
 }
 const particlePixels=[];
-function particles(){
+function particles(projections){
  particlePixels.length=0;
- const order=nodes.map(n=>({address:n.address,p:project(n.q)})).sort((a,b)=>a.p.depth-b.p.depth);
+ const order=projections.slice().sort((a,b)=>a.p.depth-b.p.depth);
  for(const {address,p} of order){
   particlePixels[address-1]={x:p.x,y:p.y};
   if(!state.show.nodes)continue;
@@ -300,13 +301,30 @@ function trail(){
  const pixels=state.trail.map(z=>particlePixels[z-1]).filter(Boolean);
  strokePoints(pixels,'#ffffff',1.6,.55);
 }
-function origin(){
- const p=project([CENTER.x,CENTER.y,CENTER.z,CENTER.w]);
- ctx.beginPath();ctx.arc(p.x,p.y,17,0,2*Math.PI);ctx.fillStyle='#edebff';ctx.shadowColor='#cb9dff';ctx.shadowBlur=18;ctx.fill();ctx.shadowBlur=0;
- ctx.fillStyle='#15142a';ctx.font='bold 17px ui-monospace,monospace';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('0',p.x,p.y+1);
- ctx.strokeStyle='#e9ddff85';ctx.lineWidth=1;
- for(const [dx,dy] of [[-28,0],[28,0],[0,-28],[0,28]]){ctx.beginPath();ctx.moveTo(p.x+dx*.76,p.y+dy*.76);ctx.lineTo(p.x+dx,p.y+dy);ctx.stroke()}
- ctx.fillStyle='#bcd3ed';ctx.font='11px ui-monospace,monospace';ctx.fillText('wx0yz · FIXED',p.x,p.y+38);
+function origin(p){
+ ctx.save();ctx.shadowColor=COBALT_CORE.glow;ctx.shadowBlur=25;
+ ctx.beginPath();ctx.arc(p.x,p.y,21,0,Math.PI*2);ctx.fillStyle=COBALT_CORE.hex;ctx.fill();
+ ctx.shadowBlur=0;ctx.lineWidth=2.2;ctx.strokeStyle=COBALT_CORE.ring;ctx.stroke();
+ ctx.beginPath();ctx.arc(p.x,p.y,28,0,Math.PI*2);ctx.strokeStyle='#82cbff88';ctx.lineWidth=1.2;ctx.stroke();
+ ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#fff';
+ ctx.font='bold 15px ui-monospace,monospace';ctx.fillText(COBALT_CORE.symbol,p.x,p.y-4);
+ ctx.fillStyle='#dbebff';ctx.font='bold 10px ui-monospace,monospace';ctx.fillText('0',p.x,p.y+10);
+ ctx.fillStyle='#bad9ff';ctx.font='11px ui-monospace,monospace';ctx.fillText('Co·0 · PINNED',p.x,p.y+44);
+ ctx.restore();return p;
+}
+function drawCoreLinks(core,chromatic,vertices){
+ if(!state.show.corelinks)return;
+ if(chromatic.length!==CORE_LINKS.chromatic||vertices.length!==CORE_LINKS.vertices)throw Error('COBALT_LINK_COUNT_MISMATCH');
+ ctx.save();ctx.lineCap='round';
+ ctx.beginPath();for(const a of chromatic){ctx.moveTo(core.x,core.y);ctx.lineTo(a.p.x,a.p.y)}
+ ctx.strokeStyle='#398bf5';ctx.globalAlpha=.13;ctx.lineWidth=.75;ctx.stroke();
+ ctx.beginPath();for(const v of vertices){ctx.moveTo(core.x,core.y);ctx.lineTo(v.x,v.y)}
+ ctx.strokeStyle='#8ad0ff';ctx.globalAlpha=.25;ctx.lineWidth=1.15;ctx.stroke();
+ const p=chromatic[state.selected-1]?.p;
+ if(p){ctx.beginPath();ctx.moveTo(core.x,core.y);ctx.lineTo(p.x,p.y);ctx.strokeStyle='#ddf1ff';ctx.globalAlpha=.78;ctx.lineWidth=2;ctx.stroke()}
+ const selected=vertices[state.vertex];
+ if(selected){ctx.beginPath();ctx.moveTo(core.x,core.y);ctx.lineTo(selected.x,selected.y);ctx.strokeStyle='#efd4ff';ctx.globalAlpha=.85;ctx.lineWidth=2.7;ctx.stroke()}
+ ctx.restore();
 }
 function neonInset(){
  if(!state.show.neon)return;
@@ -322,7 +340,11 @@ function neonInset(){
 }
 function draw(){
  if(!width)return;
- backdrop(state.spin);torusWraps();particles();tesseract();trail();origin();neonInset();
+ const chromatic=nodes.map(n=>({address:n.address,p:project(n.q)}));
+ const vertices=VERTICES.map(v=>project(v.map(n=>n*1.18)));
+ const core=project([CENTER.x,CENTER.y,CENTER.z,CENTER.w]);
+ backdrop(state.spin);torusWraps();drawCoreLinks(core,chromatic,vertices);
+ particles(chromatic);tesseract(vertices);trail();origin(core);neonInset();
 }
 const swatches=[];
 function buildPalette(){
@@ -409,6 +431,7 @@ function update(){
  $('address').value=state.selected;$('address-v').textContent=name(state.selected);
  $('agentstatus').textContent=state.agent?'RUNNING':'PAUSED';
  $('hudmode').textContent=state.policy.toUpperCase()+' · '+(state.agent?'RUNNING':'PAUSED');
+ $('corelinks-status').textContent='504 NODE→CORE LINKS '+(state.show.corelinks?'ACTIVE':'HIDDEN');
  $('auto').textContent=state.agent?'Ⅱ PAUSE AGENT':'▶ RESUME AGENT';
  $('policy').textContent=DESCRIPTIONS[state.policy];
  $('cadence-v').textContent=(state.cadence/1000).toFixed(1)+' s';
@@ -438,8 +461,8 @@ function update(){
 for(const input of document.querySelectorAll('input[data-axis]')){
  input.oninput=e=>{state.axis[e.target.dataset.axis]=Number(e.target.value);update()};
 }
-for(const id of ['edges','vertices','wraps','nodes','neon','trails','motion']){
- $(id).onchange=e=>{state.show[id]=e.target.checked;draw()};
+for(const id of ['edges','vertices','wraps','nodes','corelinks','neon','trails','motion']){
+ $(id).onchange=e=>{state.show[id]=e.target.checked;update();draw()};
 }
 $('mode').onchange=e=>{state.policy=e.target.value;state.carry=0;log('POLICY '+state.policy.toUpperCase());update()};
 $('auto').onclick=()=>{state.agent=!state.agent;state.carry=0;log(state.agent?'AGENT RESUMED':'AGENT PAUSED');update()};
