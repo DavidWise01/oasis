@@ -6,6 +6,7 @@ on:
     paths:
       - 'apps/anny-neon/durability/powercut_gate.py'
       - 'apps/anny-neon/durability/test_powercut_gate.py'
+      - 'apps/anny-neon/durability/test_witness_adversarial.py'
       - 'apps/anny-neon/durability/POWER_CUT_PROTOCOL.md'
       - 'apps/anny-neon/durability/powercut/**'
       - '.github/workflows/anny-powercut-readiness.yml'
