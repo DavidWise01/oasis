@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06091b">
+<meta name="description" content="ANNY LUCA-26 — an interactive toroid consuming a conserved ancestral box, inside an adaptive amoeba.">
+<title>LUCA-26 · The Toroid Eats the Box | ANNY</title>
+<style>
+:root{
+  color-scheme:dark;--night:#06091b;--ink:#e9f5ff;--muted:#92a9c5;
+  --line:rgba(106,169,227,.22);--violet:#cb93ff;--cyan:#63e7ff;--jade:#72f6b5;
+  --amber:#ffbf7a;--bad:#ff708f;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+ background:radial-gradient(ellipse at 52% -12%,#273b64 0%,transparent 43%),
+ radial-gradient(ellipse at 99% 65%,#26113e 0%,transparent 30%),var(--night);
+ min-height:100vh}
+body:before{position:fixed;inset:0;content:"";pointer-events:none;
+ background:linear-gradient(transparent 98%,rgba(55,178,249,.035) 100%),
+ linear-gradient(90deg,transparent 98%,rgba(55,178,249,.035) 100%);background-size:42px 42px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #d6e8ff;outline-offset:3px}
+a{color:#9defff;text-decoration:none}a:hover{text-decoration:underline}
+.topbar{border-bottom:1px solid var(--line);background:#080e20dc;backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}
+.top-inner{margin:auto;max-width:1480px;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:13px}.brand-mark{width:37px;height:37px;display:grid;place-items:center;color:#cef4ff;
+ border:1px solid #70caf4;border-radius:10px;font-size:20px;box-shadow:0 0 18px #62c4fa28}
+.brand b{font-size:14px;letter-spacing:.19em}.brand span{display:block;font:10px ui-monospace,monospace;color:var(--muted);letter-spacing:.12em}
+.top-inner nav{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;color:#a4bdd9}
+.shell{max-width:1480px;margin:0 auto;padding:22px 24px 60px}
+.intro{padding:18px 0 25px;display:flex;justify-content:space-between;align-items:end;gap:24px}
+.kicker{color:var(--cyan);font:11px ui-monospace,monospace;letter-spacing:.2em}
+h1{font-size:clamp(34px,4.2vw,66px);font-weight:780;letter-spacing:-.053em;line-height:1.06;margin:8px 0 12px}
+h1 em{font-style:normal;background:linear-gradient(90deg,#e9f4ff,#b08bff 60%,#68e9ff);background-clip:text;color:transparent}
+.intro p{color:#a9bbd2;margin:0;max-width:680px;font-size:14px}
+.hero-stamp{flex:none;align-self:center;border:1px solid #9c72bf66;border-radius:20px;padding:15px 21px;text-align:center;
+ background:#2c174633;box-shadow:0 0 34px #5b398728}
+.hero-stamp strong{font-size:34px;line-height:1;letter-spacing:.1em;color:#dcc3ff;display:block}
+.hero-stamp small{font:10px ui-monospace,monospace;letter-spacing:.15em;color:#a6a3d2}
+.cols{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(320px,.9fr);gap:17px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,rgba(15,26,50,.93),rgba(6,13,32,.95));
+ box-shadow:inset 0 0 32px #508df10b;overflow:hidden}
+.panel-header{padding:16px 19px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;
+ border-bottom:1px solid var(--line)}
+.panel-header b{font-size:12px;letter-spacing:.15em;font-weight:700}
+.micro{color:var(--muted);font:10px ui-monospace,monospace;letter-spacing:.09em}
+.micro i{font-style:normal;color:var(--jade)}
+.viz-wrap{height:clamp(380px,45vw,580px);position:relative;overflow:hidden}
+#chamber{display:block;width:100%;height:100%}
+.viz-hud{position:absolute;pointer-events:none;left:17px;top:16px;display:flex;gap:8px;flex-direction:column}
+.viz-hud span{font:10px ui-monospace,monospace;letter-spacing:.11em;color:#a2d9e8;
+ background:rgba(5,11,25,.67);border:1px solid #567a9e61;border-radius:7px;padding:6px 8px;width:max-content}
+.layer-buttons{display:flex;flex-wrap:wrap;gap:7px;padding:14px 17px;border-top:1px solid var(--line)}
+.pill{background:#101a32;color:#b5cce6;border:1px solid #45628577;padding:8px 11px;border-radius:999px;font-size:11px}
+.pill[aria-pressed="true"]{background:#322149;color:#f6d9ff;border-color:#bb8afe;box-shadow:0 0 13px #8b59d635}
+.timeline{padding:12px 17px 16px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.stat-band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.stat-band>div{padding:15px 17px;border-right:1px solid var(--line);min-width:0}
+.stat-band>div:last-child{border-right:0}
+.stat-band strong{display:block;font:26px/1.1 ui-monospace,monospace;color:#e5f6ff}
+.stat-band small{font:10px ui-monospace,monospace;letter-spacing:.06em;color:#94aac6}
+.status-tag{display:inline-flex;align-items:center;border-radius:8px;padding:5px 9px;font:11px ui-monospace,monospace;letter-spacing:.06em;border:1px solid #67e5b183;color:#a5f2c7;background:#17372b}
+.status-tag.warn{border-color:#ffbf7a88;color:#ffdcaa;background:#3a281a}.status-tag.fail{border-color:#ff708f88;color:#ffadba;background:#431929}
+.controls{padding:17px 19px}
+.section-title{margin:0 0 12px;color:#aed5f1;font-size:11px;letter-spacing:.16em;font-weight:700}
+.control{padding:13px 0;border-bottom:1px solid rgba(113,146,185,.16)}
+.control:first-of-type{padding-top:0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:11px}
+.row label{font-size:13px;font-weight:600}.row output{font:12px ui-monospace,monospace;color:var(--cyan)}
+input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cursor:pointer}
+.hint{font-size:11px;color:var(--muted);margin:5px 0 0}
+.switcher{display:flex;gap:8px;margin-top:10px}
+.switcher button{flex:1;background:#131f3b;border:1px solid #52648a;border-radius:10px;padding:8px;color:#b8d5ef;font-size:14px}
+.switcher button[aria-pressed="true"]{background:#2b2150;border-color:#ba8bff;color:#eed4ff}
+.action-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}
+.action{border:1px solid #5e7da2;background:#17283e;color:#e0efff;border-radius:10px;padding:10px;font-weight:700;font-size:12px}
+.action.primary{background:linear-gradient(115deg,#3987b5,#7560bc);border-color:#9fb8ff;color:white}
+.action:hover{filter:brightness(1.2)}
+.action.muted{background:#0a1528}
+.grammar{display:flex;align-items:center;flex-wrap:wrap;gap:8px;justify-content:space-between}
+.token{display:grid;place-items:center;padding:9px 10px;min-width:69px;border:1px solid #586a88;border-radius:11px}
+.token b{font:20px ui-monospace,monospace}.token small{color:#9db7d1;font:9px ui-monospace,monospace}
+.token.violet{border-color:#a87cff;color:#dbb0ff}.token.cyan{border-color:#5dcde8;color:#a6f3ff}.token.green{border-color:#6eddac;color:#b3ffdc}
+.token.center{border-color:#b69ff9;color:#efe2ff}
+.core{margin-top:17px}.core-heading{display:flex;gap:12px;justify-content:space-between;align-items:baseline}
+.core-heading h2{margin:0;font-size:13px;letter-spacing:.16em;color:#d5eaff}
+.core-heading small{font:10px ui-monospace,monospace;color:#8ca2c0}
+.aa-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;margin-top:13px}
+.aa{display:grid;place-items:center;border-radius:9px;border:1px solid #52627c;
+ background:linear-gradient(140deg,#101d36,#10162c);padding:7px 0;min-height:48px;color:#e3ebff}
+.aa strong{font:17px ui-monospace,monospace}.aa small{font:9px ui-monospace,monospace;color:#899fbc}
+.aa:hover{border-color:#a7ecff}
+.aa[aria-pressed="true"]{border-color:var(--bad);color:#ffbfcb;background:#3e162a}
+.aa.lost{border-color:#eda869;color:#ffcfab;background:#3d281a}
+.bases{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;align-items:center}
+.base{min-width:44px;background:#0e2134;border:1px solid #5fabb5;border-radius:8px;color:#b7f8ff;padding:7px 12px;font:15px ui-monospace,monospace}
+.base[aria-pressed="true"]{opacity:.42;border-color:#e97c98;color:#ffb2c4;text-decoration:line-through}
+.polarity{font:13px ui-monospace,monospace;color:#e2c1ff;border:1px solid #705496;border-radius:8px;padding:7px 10px}
+.footer-panels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:17px}
+.output{padding:17px 19px}
+.output h2{margin:0 0 10px;color:#b7d9ee;font-size:12px;letter-spacing:.14em}
+#frame-readout{white-space:pre-wrap;overflow-wrap:anywhere;color:#a3e8ed;font:11px/1.7 ui-monospace,monospace;margin:0;min-height:115px}
+.events{margin:0;padding:0;list-style:none;display:grid;gap:7px;max-height:210px;overflow:auto}
+.events li{display:flex;align-items:baseline;gap:9px;font:11px/1.5 ui-monospace,monospace;color:#bccde0;border-bottom:1px dashed #3a526a;padding-bottom:5px}
+.events li span{color:#78bfde;flex:none}
+.smallprint{padding-top:22px;color:#758da9;font-size:11px}
+.smallprint a{color:#9edbfc}
+@media(max-width:1020px){.cols{grid-template-columns:1fr}.footer-panels{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.shell{padding:14px 12px 36px}.top-inner{padding:11px 13px}.intro{display:block}.hero-stamp{display:none}.top-inner nav{gap:9px}
+ .viz-wrap{height:390px}.stat-band strong{font-size:20px}.stat-band>div{padding:10px}
+ .aa-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.footer-panels{grid-template-columns:1fr}
+ .controls{padding:15px}.panel-header{padding:13px}.grammar{justify-content:center}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="top-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">◈</div>
+      <div><b>KET / LUCA–26</b><span>SAPPHON · TEMPORAL CHAMBER</span></div>
+    </div>
+    <nav aria-label="Project navigation">
+      <a href="../">← ANNY NEON</a>
+      <a href="https://github.com/DavidWise01/oasis/tree/main/apps/anny-neon/luca26">SOURCE ↗</a>
+    </nav>
+  </div>
+</header>
+<main class="shell">
+  <section class="intro" aria-labelledby="title">
+    <div>
+      <div class="kicker">EXPERIMENT 01 / TEMPORAL ISOMORPHISM</div>
+      <h1 id="title">The toroid <em>eats the box.</em></h1>
+      <p>The amoeba adapts. The toroid distills and changes the clock. The box protects a 26-position ancestral identity: <strong>20 amino acids + ACTG + −/+</strong>. Explore what survives—and what cannot be recovered.</p>
+    </div>
+    <div class="hero-stamp" aria-hidden="true"><strong>{ ( [ ] ) }</strong><small>LUCA :: 20 + 4 + 2</small></div>
+  </section>
+
+  <div class="cols">
+    <section class="panel" aria-labelledby="scene-title">
+      <div class="panel-header">
+        <b id="scene-title">01 / LIVE TEMPORAL VESSEL</b>
+        <span class="micro"><i>●</i> CANVAS 2D · SYMBOLIC</span>
+      </div>
+      <div class="viz-wrap">
+        <canvas id="chamber" role="img" aria-label="Animated conceptual amoeba membrane around a rotating toroid containing the LUCA-26 register. State is reported below the canvas.">Your browser needs Canvas 2D to display the vessel; all controls and readouts remain available.</canvas>
+        <div class="viz-hud" aria-hidden="true">
+          <span id="hud-mode">FORM: { ( [ ] ) }</span>
+          <span id="hud-time">TICK: 000 · OBSERVER RATE: 1.00×</span>
+          <span id="hud-loss">DISTILLATION: 00%</span>
+        </div>
+      </div>
+      <div class="layer-buttons" role="group" aria-label="Choose visible kernel layers">
+        <button class="pill" type="button" data-mode="all" aria-pressed="true">{ ( [ ] ) } ALL</button>
+        <button class="pill" type="button" data-mode="amoeba" aria-pressed="false">{ } AMOEBA</button>
+        <button class="pill" type="button" data-mode="toroid" aria-pressed="false">( ) TOROID</button>
+        <button class="pill" type="button" data-mode="box" aria-pressed="false">[ ] BOX</button>
+      </div>
+      <div class="timeline">
+        <span class="micro">OBSERVER READOUT / RETAINED LINEAGE</span>
+        <span class="status-tag" id="state-tag" role="status" aria-live="polite">PRESERVED</span>
+      </div>
+      <div class="stat-band">
+        <div><strong id="score">26/26</strong><small>INVARIANT SLOTS</small></div>
+        <div><strong id="generation">000</strong><small>GENERATION</small></div>
+        <div><strong id="mutations">00</strong><small>CHANGES</small></div>
+        <div><strong id="losses">00</strong><small>ERASURES</small></div>
+      </div>
+    </section>
+
+    <aside class="panel" aria-labelledby="ctrl-title">
+      <div class="panel-header"><b id="ctrl-title">02 / DISTILLATION ENGINE</b><span class="micro">ACT || REACT || CHANGE</span></div>
+      <div class="controls">
+        <div class="control">
+          <div class="row"><label for="distill">Distillation · information removal</label><output id="distill-value" for="distill">00%</output></div>
+          <input id="distill" type="range" min="0" max="100" step="1" value="24">
+          <p class="hint">Early stages shed context. After 60%, codon positions are progressively erased. Lost information is not silently reconstructed.</p>
+        </div>
+        <div class="control">
+          <div class="row"><label for="time-rate">Observer clock · relative rate</label><output id="time-value" for="time-rate">1.00×</output></div>
+          <input id="time-rate" type="range" min="0.25" max="4" step="0.25" value="1">
+          <p class="hint">Illustrative clock-rate multiplier, not a physical relativity calculation.</p>
+        </div>
+        <div class="control">
+          <div class="row"><label>Polarity · KET operator</label><output id="polarity-value">+</output></div>
+          <div class="switcher" role="group" aria-label="Select active operator">
+            <button type="button" data-polarity="−" aria-pressed="false">− REVERSE</button>
+            <button type="button" data-polarity="+" aria-pressed="true">+ FORWARD</button>
+          </div>
+          <p class="hint">Both symbols remain in the invariant register; this switch changes the transform direction.</p>
+        </div>
+        <div class="control">
+          <div class="grammar" aria-label="Three-layer glyph grammar">
+            <div class="token violet"><b>{ }</b><small>ADAPT</small></div>
+            <div class="token cyan"><b>( )</b><small>PROCESS</small></div>
+            <div class="token green"><b>[ ]</b><small>RETAIN</small></div>
+            <div class="token center"><b>− +</b><small>OPERATE</small></div>
+          </div>
+        </div>
+        <div class="action-row">
+          <button id="step" type="button" class="action primary">↻ ADVANCE 1</button>
+          <button id="play" type="button" class="action" aria-pressed="false">▶ PLAY</button>
+          <button id="repair" type="button" class="action muted">↶ RESTORE ANCESTOR</button>
+          <button id="copy" type="button" class="action muted">⧉ COPY LINEAGE</button>
+        </div>
+        <p id="action-feedback" class="hint" aria-live="polite">Click amino acids to change their codon identity. Click a DNA base to remove it from the carrier.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="panel core" aria-labelledby="watermark-title">
+    <div class="panel-header">
+      <b id="watermark-title">03 / LUCA–26 ANCESTRAL WATERMARK</b>
+      <span class="micro">20 AA :: 4 DNA :: 2 OPERATORS</span>
+    </div>
+    <div class="controls">
+      <div class="core-heading"><h2>[ AA :: 20 ]</h2><small id="aa-summary">Tap a residue to mutate; tap again to restore</small></div>
+      <div id="aa-grid" class="aa-grid" aria-label="Twenty canonical amino acids"></div>
+      <div class="row" style="margin-top:17px;flex-wrap:wrap">
+        <div>
+          <div class="core-heading"><h2>[ NT :: 4 ]</h2></div>
+          <div class="bases" id="bases" role="group" aria-label="Toggle DNA base availability"></div>
+        </div>
+        <div>
+          <div class="core-heading"><h2>[ OP :: 2 ]</h2></div>
+          <div class="bases"><span class="polarity">− VOID / BOUNDARY</span><span class="polarity">+ GRAVITY / RETURN</span></div>
+        </div>
+      </div>
+      <p class="hint">Biological grounding: the 20 conventional amino-acid codes and synonymous DNA codons are real. The chosen 20-residue sequence, framing operators, amoeba, and toroid are an invented KET model—not a recovered LUCA genome.</p>
+    </div>
+  </section>
+
+  <div class="footer-panels">
+    <section class="panel output" aria-labelledby="decode-title">
+      <h2 id="decode-title">04 / DISTILLED CARRIER & DECODE</h2>
+      <pre id="frame-readout">Loading ancestral register…</pre>
+      <p class="hint" id="lineage-note">The ancestral identity is held separately from the changing carrier.</p>
+    </section>
+    <section class="panel output" aria-labelledby="ledger-title">
+      <h2 id="ledger-title">05 / LINEAGE TRACE · APPEND IN SESSION</h2>
+      <ol class="events" id="events" aria-live="off"></ol>
+      <p class="hint">This is an in-memory demonstration ledger, not a signed immutable record or Git commit.</p>
+    </section>
+  </div>
+  <footer class="smallprint">KET :: LUCA-26 · <strong>{ ( [ 20 AA | ACTG | −+ ] ) }</strong> · A lineage visualization of distillation and differing clock rates, not evidence of biological ancestry, relativity, or data recoverability. <a href="../">Return to frozen ANNY Harvester ↗</a></footer>
+</main>
+<noscript><p style="padding:20px;text-align:center">Enable JavaScript to operate the interactive LUCA-26 chamber.</p></noscript>
+<script>
+(()=>{'use strict';
+/*
+ * LUCA-26 symbolic lineage simulator. NOT a reconstructed LUCA sequence.
+ * The 20 amino-acid letters and DNA codons are biological conventions;
+ * the 26-slot architecture and toroidal display are KET design choices.
+ *
+ * Codon substitutions may preserve translated amino acids. Deleting or
+ * replacing symbols is explicitly marked degraded/unknown, not "survived".
+ */
+const AA20 = Object.freeze([
+  {code:'A',name:'Alanine',codons:['GCT','GCC','GCA','GCG'],family:'nonpolar'},
+  {code:'R',name:'Arginine',codons:['CGT','CGC','CGA','CGG','AGA','AGG'],family:'charged'},
+  {code:'N',name:'Asparagine',codons:['AAT','AAC'],family:'polar'},
+  {code:'D',name:'Aspartic acid',codons:['GAT','GAC'],family:'charged'},
+  {code:'C',name:'Cysteine',codons:['TGT','TGC'],family:'polar'},
+  {code:'Q',name:'Glutamine',codons:['CAA','CAG'],family:'polar'},
+  {code:'E',name:'Glutamic acid',codons:['GAA','GAG'],family:'charged'},
+  {code:'G',name:'Glycine',codons:['GGT','GGC','GGA','GGG'],family:'nonpolar'},
+  {code:'H',name:'Histidine',codons:['CAT','CAC'],family:'charged'},
+  {code:'I',name:'Isoleucine',codons:['ATT','ATC','ATA'],family:'nonpolar'},
+  {code:'L',name:'Leucine',codons:['TTA','TTG','CTT','CTC','CTA','CTG'],family:'nonpolar'},
+  {code:'K',name:'Lysine',codons:['AAA','AAG'],family:'charged'},
+  {code:'M',name:'Methionine',codons:['ATG'],family:'nonpolar'},
+  {code:'F',name:'Phenylalanine',codons:['TTT','TTC'],family:'nonpolar'},
+  {code:'P',name:'Proline',codons:['CCT','CCC','CCA','CCG'],family:'nonpolar'},
+  {code:'S',name:'Serine',codons:['TCT','TCC','TCA','TCG','AGT','AGC'],family:'polar'},
+  {code:'T',name:'Threonine',codons:['ACT','ACC','ACA','ACG'],family:'polar'},
+  {code:'W',name:'Tryptophan',codons:['TGG'],family:'nonpolar'},
+  {code:'Y',name:'Tyrosine',codons:['TAT','TAC'],family:'polar'},
+  {code:'V',name:'Valine',codons:['GTT','GTC','GTA','GTG'],family:'nonpolar'}
+]);
+const DNA4=Object.freeze(['A','C','T','G']);
+const POLARITY2=Object.freeze(['−','+']);
+const ANCESTOR=AA20.map(x=>x.code).join('')+'|ACTG|−+';
+const CODE_INDEX=Object.freeze(Object.fromEntries(AA20.flatMap(amino=>amino.codons.map(c=>[c,amino.code]))));
+
+function transformFrame({generation=0,distill=0,polarity='+',mutations=[],lostBases=[]}={}) {
+  const tick=Math.max(0,Math.trunc(Number(generation)||0));
+  const loss=Math.min(100,Math.max(0,Number(distill)||0));
+  const damaged=new Set(mutations);
+  const missingBases=new Set(lostBases);
+  const erasedCount=Math.min(7,Math.max(0,Math.floor((loss-60)/6)));
+  const erasedPositions=new Set(Array.from({length:erasedCount},(_,j)=>(j*7+3)%20));
+  const decoded=AA20.map((amino,i)=>{
+    const alternatives=amino.codons;
+    const chosen=alternatives[(tick+i+(polarity==='+'?1:0))%alternatives.length];
+    const replaced=damaged.has(i);
+    const codon=replaced?AA20[(i+1)%20].codons[0]:chosen;
+    const erased=erasedPositions.has(i);
+    const filtered=[...codon].some(x=>missingBases.has(x));
+    const observed=erased||filtered?null:CODE_INDEX[codon]??null;
+    return {index:i,code:amino.code,name:amino.name,codon:erased?'···':filtered?'×××':codon,observed,
+      original:chosen,erased,filtered,mutated:replaced,match:observed===amino.code};
+  });
+  const matches=decoded.filter(x=>x.match).length;
+  const missing=decoded.filter(x=>x.observed===null).length;
+  const changed=20-matches-missing;
+  const basis=DNA4.filter(x=>!missingBases.has(x)).length;
+  const fidelity=matches+basis+2;
+  const state=fidelity===26?'PRESERVED':
+    (missing+changed<=5&&basis===4?'DEGRADED':'UNKNOWN');
+  return {
+    tick,loss,polarity,decoded,matched:matches,missing,changed,basis,fidelity,state,erasedCount,
+    carriers:decoded.map(x=>x.codon).join(' '),ancestral:ANCESTOR,
+    reversible:erasedCount===0&&changed===0&&basis===4,
+    note:state==='PRESERVED'
+      ?'Synonymous DNA codon changes retain all 20 decoded residues and the six framing positions.'
+      :state==='DEGRADED'
+      ?'Some ancestral residue information was altered or erased; exact reconstruction is not established.'
+      :'Too much ancestral information or base framing is missing to establish continuity.'
+  };
+}
+
+const $ = id => document.getElementById(id);
+const state = {
+  tick:0, distill:24, rate:1, mode:'all', polarity:'+',
+  mutations:new Set(), lostBases:new Set(), playing:false, trace:[]
+};
+const canvas=$('chamber');
+const ctx=canvas.getContext('2d',{alpha:false});
+const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+let sceneWidth=1,sceneHeight=1,frame=null,timer=null,origin=performance.now();
+
+function logEvent(action,detail) {
+  state.trace.unshift({tick:state.tick,action,detail});
+  state.trace=state.trace.slice(0,11);
+  $('events').replaceChildren();
+  for (const item of state.trace) {
+    const li=document.createElement('li');
+    const num=document.createElement('span');
+    num.textContent='T'+String(item.tick).padStart(3,'0');
+    li.append(num,document.createTextNode(item.action+' · '+item.detail));
+    $('events').append(li);
+  }
+}
+
+function updateFrame(log=false) {
+  frame=transformFrame({
+    generation:state.tick,distill:state.distill,polarity:state.polarity,
+    mutations:state.mutations,lostBases:state.lostBases
+  });
+  $('score').textContent=frame.fidelity+'/26';
+  $('generation').textContent=String(state.tick).padStart(3,'0');
+  $('mutations').textContent=String(frame.changed).padStart(2,'0');
+  $('losses').textContent=String(frame.missing).padStart(2,'0');
+  const tag=$('state-tag');
+  tag.textContent=frame.state;
+  tag.className='status-tag'+(frame.state==='DEGRADED'?' warn':frame.state==='UNKNOWN'?' fail':'');
+  $('distill-value').textContent=String(Math.round(state.distill)).padStart(2,'0')+'%';
+  $('time-value').textContent=state.rate.toFixed(2)+'×';
+  $('polarity-value').textContent=state.polarity;
+  $('hud-mode').textContent='FORM: '+({all:'{ ( [ ] ) }',amoeba:'{ }',toroid:'( [ ] )',box:'[ ]'}[state.mode]);
+  $('hud-time').textContent='TICK: '+String(state.tick).padStart(3,'0')+' · OBSERVER RATE: '+state.rate.toFixed(2)+'×';
+  $('hud-loss').textContent='DISTILLATION: '+String(Math.round(state.distill)).padStart(2,'0')+'%';
+  $('lineage-note').textContent=frame.note;
+  const symbols=frame.decoded.map(x=>x.observed??'·').join('');
+  const carrier=frame.decoded.map(x=>x.codon).join(' ');
+  $('frame-readout').textContent=[
+    'ANCESTOR  '+ANCESTOR,
+    'DECODED   '+symbols+'|'+DNA4.filter(x=>!state.lostBases.has(x)).join('')+'|−+',
+    'CARRIER   '+carrier,
+    'PROTECTED '+frame.matched+'/20 amino-acid identities · '+frame.basis+'/4 DNA bases · 2/2 operators',
+    'CONTEXT   '+Math.max(0,100-state.distill).toFixed(0)+'% (symbolic non-core annotation)',
+    'RESULT    '+frame.state+' · '+frame.fidelity+'/26'
+  ].join('\n');
+  for(const button of $('aa-grid').querySelectorAll('button')){
+    const i=Number(button.dataset.index);
+    const row=frame.decoded[i];
+    button.classList.toggle('lost',row.observed===null);
+    button.setAttribute('aria-pressed',String(state.mutations.has(i)));
+    button.querySelector('small').textContent=row.codon;
+    button.title=row.name+' · '+(row.match?'decoded intact':row.observed===null?'missing':'identity changed')+
+       ' · click to '+(state.mutations.has(i)?'restore':'mutate');
+    button.setAttribute('aria-label',button.title);
+  }
+  for(const button of $('bases').querySelectorAll('button')){
+    button.setAttribute('aria-pressed',String(state.lostBases.has(button.dataset.base)));
+  }
+  $('aa-summary').textContent=frame.matched+'/20 residue identities decoded · tap to mutate / restore';
+  if(log) logEvent(frame.state,'AA '+frame.matched+'/20 · bases '+frame.basis+'/4 · rate '+state.rate.toFixed(2)+'×');
+  if(prefersReduced.matches)drawScene(performance.now());
+}
+
+function buildSymbols(){
+  const grid=$('aa-grid');
+  AA20.forEach((acid,i)=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='aa';
+    b.dataset.index=String(i);
+    const letter=document.createElement('strong');letter.textContent=acid.code;
+    const codon=document.createElement('small');codon.textContent=acid.codons[0];
+    b.append(letter,codon);
+    b.addEventListener('click',()=>{
+      if(state.mutations.has(i))state.mutations.delete(i);
+      else state.mutations.add(i);
+      updateFrame();
+      logEvent(state.mutations.has(i)?'MUTATE '+acid.code:'RESTORE '+acid.code,
+        state.mutations.has(i)?'Codon rewritten to a different residue':'Ancestral residue identity restored');
+    });
+    grid.append(b);
+  });
+  const basebox=$('bases');
+  DNA4.forEach(base=>{
+    const b=document.createElement('button');
+    b.type='button';b.className='base';b.textContent=base;b.dataset.base=base;
+    b.addEventListener('click',()=>{
+      if(state.lostBases.has(base)) state.lostBases.delete(base);
+      else state.lostBases.add(base);
+      updateFrame();logEvent('DNA '+base,state.lostBases.has(base)?'Carrier base removed':'Carrier base restored');
+    });
+    basebox.append(b);
+  });
+}
+
+function pressState(selector,key,value){
+  document.querySelectorAll(selector).forEach(b=>
+    b.setAttribute('aria-pressed',String(b.dataset[key]===value)));
+}
+function stopPlayback(){
+  if(timer!==null){clearTimeout(timer);timer=null}
+  state.playing=false;
+  $('play').textContent='▶ PLAY';
+  $('play').setAttribute('aria-pressed','false');
+}
+function queueTick(){
+  if(!state.playing)return;
+  timer=setTimeout(()=>{
+    state.tick+=1;
+    updateFrame();
+    logEvent('REFOLD',frame.state+' · synonymous carrier cycle '+state.tick);
+    queueTick();
+  },Math.max(180,Math.round(980/state.rate)));
+}
+function startPlayback(){
+  state.playing=true;
+  $('play').textContent='Ⅱ PAUSE';
+  $('play').setAttribute('aria-pressed','true');
+  queueTick();
+}
+function feedback(message){$('action-feedback').textContent=message}
+
+function bindControls(){
+  $('distill').addEventListener('input',e=>{
+    state.distill=Number(e.target.value);updateFrame();
+  });
+  $('distill').addEventListener('change',()=>{
+    logEvent('DISTILL '+state.distill+'%',frame.state);
+  });
+  $('time-rate').addEventListener('input',e=>{
+    state.rate=Number(e.target.value);
+    updateFrame();
+    if(state.playing){clearTimeout(timer);queueTick()}
+  });
+  $('time-rate').addEventListener('change',()=>logEvent('CLOCK',state.rate.toFixed(2)+'× observer rate'));
+  document.querySelectorAll('[data-polarity]').forEach(b=>b.addEventListener('click',()=>{
+    state.polarity=b.dataset.polarity;
+    pressState('[data-polarity]','polarity',state.polarity);
+    updateFrame();logEvent('OPERATOR',state.polarity==='+'?'Forward codon mapping':'Reverse codon mapping');
+  }));
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{
+    state.mode=b.dataset.mode;
+    pressState('[data-mode]','mode',state.mode);
+    updateFrame();
+    logEvent('VIEW',state.mode+' glyph projection');
+  }));
+  $('step').addEventListener('click',()=>{
+    state.tick+=1;updateFrame();
+    logEvent('REFOLD',frame.state+' · manual generation '+state.tick);
+  });
+  $('play').addEventListener('click',()=>state.playing?stopPlayback():startPlayback());
+  $('repair').addEventListener('click',()=>{
+    stopPlayback();
+    state.tick=0;state.distill=24;state.rate=1;state.polarity='+';state.mode='all';
+    state.mutations.clear();state.lostBases.clear();
+    $('distill').value='24';$('time-rate').value='1';
+    pressState('[data-polarity]','polarity','+');pressState('[data-mode]','mode','all');
+    state.trace=[];updateFrame();logEvent('GENESIS','LUCA-26 ancestral reference restored');
+    feedback('Restored symbolic ancestor. The previous session trace was reset by request.');
+  });
+  $('copy').addEventListener('click',async()=>{
+    const dump=[
+      'KET :: LUCA-26 / TEMPORAL LINEAGE',
+      'Glyph: { ( [ 20 AA | ACTG | −+ ] ) }',
+      'Note: invented symbolic ancestor, not a reconstructed LUCA sequence.',
+      $('frame-readout').textContent,
+      ...state.trace.map(e=>'T'+e.tick+' '+e.action+' '+e.detail)
+    ].join('\n');
+    try{await navigator.clipboard.writeText(dump);feedback('Copied the current symbolic lineage and session trace.')}
+    catch(e){feedback('Clipboard unavailable; select and copy the decoded carrier readout.')}
+  });
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden&&state.playing){stopPlayback();feedback('Playback paused while tab was hidden.')}
+  });
+}
+
+function resize(){
+  if(!ctx)return;
+  const rect=canvas.getBoundingClientRect();
+  sceneWidth=Math.max(1,rect.width);
+  sceneHeight=Math.max(1,rect.height);
+  const dpr=Math.min(2,window.devicePixelRatio||1);
+  canvas.width=Math.floor(sceneWidth*dpr);
+  canvas.height=Math.floor(sceneHeight*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  if(prefersReduced.matches)drawScene(performance.now());
+}
+function ellipseArc(cx,cy,rx,ry,start,end){
+  ctx.beginPath();ctx.ellipse(cx,cy,rx,ry,0,start,end);ctx.stroke();
+}
+function drawAmoeba(cx,cy,time,rad){
+  ctx.save();
+  const soft=ctx.createRadialGradient(cx,cy,rad*.38,cx,cy,rad*1.23);
+  soft.addColorStop(0,'rgba(168,92,255,.014)');
+  soft.addColorStop(.8,'rgba(150,86,234,.036)');
+  soft.addColorStop(1,'rgba(159,100,250,0)');
+  ctx.fillStyle=soft;ctx.beginPath();ctx.arc(cx,cy,rad*1.3,0,Math.PI*2);ctx.fill();
+  for(let shell=0;shell<2;shell++){
+    ctx.beginPath();
+    for(let i=0;i<=180;i++){
+      const a=i*Math.PI*2/180;
+      const w=(Math.sin(a*5+time*.6)+.5*Math.sin(a*11-time*.42)+.29*Math.cos(a*17+time*.7))*rad*.033;
+      const rr=rad*(shell?1:.92)+w;
+      const x=cx+Math.cos(a)*rr,y=cy+Math.sin(a)*rr*.81;
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle=shell?'rgba(208,120,255,.52)':'rgba(120,165,255,.37)';
+    ctx.shadowColor='#b071ff';ctx.shadowBlur=shell?17:6;ctx.lineWidth=shell?2.1:1;
+    ctx.stroke();
+    if(shell){ctx.fillStyle='rgba(127,68,207,.044)';ctx.fill();}
+  }
+  for(let i=0;i<34;i++){
+    const a=i*2.3999+time*.018,rr=rad*(.86+.13*Math.sin(i*8.1+time*.3));
+    const x=cx+rr*Math.cos(a),y=cy+rr*.81*Math.sin(a);
+    ctx.fillStyle=i%3?'rgba(209,149,250,.25)':'rgba(97,235,252,.40)';
+    ctx.beginPath();ctx.arc(x,y,i%5===0?2.6:1.3,0,Math.PI*2);ctx.fill();
+  }
+  ctx.restore();
+}
+function project(x,y,z,rotY,rotX,cx,cy,scale){
+  const ay=Math.cos(rotY),by=Math.sin(rotY);
+  const ax=Math.cos(rotX),bx=Math.sin(rotX);
+  const px=x*ay-z*by,pz=x*by+z*ay;
+  const py=y*ax-pz*bx,depth=y*bx+pz*ax;
+  const perspective=3.2/(3.2+depth*.29);
+  return [cx+px*scale*perspective,cy+py*scale*perspective,depth];
+}
+function drawToroid(cx,cy,time,scale){
+  const rotY=time*.43;
+  const rotX=-.75+Math.sin(time*.17)*.17;
+  const ring=(u,v)=>{
+    const R=1.20,r=.43;
+    return project((R+r*Math.cos(v))*Math.cos(u),
+      (R+r*Math.cos(v))*Math.sin(u),r*Math.sin(v),rotY,rotX,cx,cy,scale);
+  };
+  ctx.save();
+  ctx.globalCompositeOperation='screen';
+  for(let j=0;j<17;j++){
+    const v=j*Math.PI*2/17;
+    ctx.beginPath();
+    for(let i=0;i<=150;i++){
+      const p=ring(i*Math.PI*2/150,v);
+      if(i===0)ctx.moveTo(p[0],p[1]);else ctx.lineTo(p[0],p[1]);
+    }
+    const light=.18+.26*(.5+.5*Math.cos(v+time*.2));
+    ctx.strokeStyle=j%3===0?'rgba(114,242,221,'+light+')':'rgba(80,170,255,'+light+')';
+    ctx.lineWidth=j%3===0?1.7:.8;
+    ctx.shadowBlur=j%3===0?9:0;ctx.shadowColor='#5de2ff';
+    ctx.stroke();
+  }
+  for(let j=0;j<44;j++){
+    const u=j*Math.PI*2/44;
+    ctx.beginPath();
+    for(let i=0;i<=50;i++){
+      const p=ring(u,i*Math.PI*2/50);
+      if(i===0)ctx.moveTo(p[0],p[1]);else ctx.lineTo(p[0],p[1]);
+    }
+    ctx.shadowBlur=j%7===0?11:0;
+    ctx.strokeStyle=j%4===0?'rgba(192,125,255,.47)':'rgba(101,185,255,.20)';
+    ctx.lineWidth=j%7===0?1.4:.7;ctx.stroke();
+  }
+  for(let k=0;k<26;k++){
+    const u=(k/26)*Math.PI*2+time*(state.polarity==='+'?.15:-.15);
+    const v=(k*1.618%1)*Math.PI*2;
+    const p=ring(u,v),c=k<20?'#d0a0ff':k<24?'#8ef0ff':'#ffd5a7';
+    ctx.beginPath();ctx.fillStyle=c;ctx.shadowColor=c;ctx.shadowBlur=k%4===0?13:6;
+    ctx.arc(p[0],p[1],k<20?2.15:3.1,0,Math.PI*2);ctx.fill();
+  }
+  ctx.restore();
+}
+function drawCenterBox(cx,cy,time,size){
+  const bw=size*1.17,bh=size*.94;
+  ctx.save();ctx.translate(cx,cy);
+  ctx.rotate(state.mode==='box'?0:Math.sin(time*.23)*.045);
+  for(let i=3;i>=1;i--){
+    ctx.save();
+    ctx.rotate(i*.11+Math.sin(time*.18)*.025);
+    ctx.strokeStyle='rgba(121,198,255,'+(.075+.025*i)+')';
+    ctx.lineWidth=1;ctx.strokeRect(-bw*.49-i*6,-bh*.51-i*5,bw+i*12,bh+i*10);
+    ctx.restore();
+  }
+  ctx.shadowColor=frame?.state==='PRESERVED'?'#72f6b5':frame?.state==='DEGRADED'?'#ffbf7a':'#ff708f';
+  ctx.shadowBlur=30;
+  const bg=ctx.createLinearGradient(-bw/2,-bh/2,bw/2,bh/2);
+  bg.addColorStop(0,'rgba(23,31,66,.96)');bg.addColorStop(1,'rgba(17,31,52,.98)');
+  ctx.fillStyle=bg;ctx.strokeStyle=frame?.state==='PRESERVED'?'#80f1c3':frame?.state==='DEGRADED'?'#ffbf7a':'#ff708f';
+  ctx.lineWidth=2;ctx.beginPath();
+  if(ctx.roundRect)ctx.roundRect(-bw/2,-bh/2,bw,bh,9);
+  else ctx.rect(-bw/2,-bh/2,bw,bh);
+  ctx.fill();ctx.stroke();ctx.shadowBlur=0;
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle='#afe2e9';ctx.font='700 '+Math.max(11,Math.round(size*.085))+'px ui-monospace,monospace';
+  ctx.fillText('LUCA · 26',0,-bh*.36);
+  const rows=[frame?frame.decoded.slice(0,10).map(d=>d.observed??'·').join(' '):'',
+    frame?frame.decoded.slice(10).map(d=>d.observed??'·').join(' '):''];
+  ctx.fillStyle='#ead7ff';ctx.font=Math.max(10,Math.round(size*.078))+'px ui-monospace,monospace';
+  ctx.fillText(rows[0],0,-bh*.12);ctx.fillText(rows[1],0,bh*.10);
+  ctx.fillStyle='#98dfeb';ctx.font='700 '+Math.max(12,Math.round(size*.096))+'px ui-monospace,monospace';
+  ctx.fillText(DNA4.filter(x=>!state.lostBases.has(x)).join('')+'  |  −+',0,bh*.31);
+  ctx.restore();
+}
+function drawScene(ts){
+  if(!ctx)return;
+  const w=sceneWidth,h=sceneHeight;
+  ctx.clearRect(0,0,w,h);
+  const bg=ctx.createRadialGradient(w*.5,h*.50,8,w*.5,h*.51,Math.max(w,h)*.7);
+  bg.addColorStop(0,'#14253e');bg.addColorStop(.60,'#0b1430');bg.addColorStop(1,'#070e21');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+  const time=prefersReduced.matches?1.7:(ts-origin)*.001*state.rate;
+  const cx=w*.50,cy=h*.53;
+  const dimension=Math.min(w,h);
+  for(let k=0;k<75;k++){
+    const px=((k*179.6+53)%997)/997*w,py=((k*317.8+89)%997)/997*h;
+    const p=.25+.4*(.5+.5*Math.sin(time*.44+k));
+    ctx.fillStyle='rgba(157,215,255,'+p.toFixed(2)+')';ctx.fillRect(px,py,1.1,1.1);
+  }
+  const amoeba=state.mode==='all'||state.mode==='amoeba';
+  const toroid=state.mode==='all'||state.mode==='toroid';
+  const box=state.mode==='all'||state.mode==='box'||state.mode==='toroid';
+  if(amoeba)drawAmoeba(cx,cy,time,dimension*.46);
+  if(toroid)drawToroid(cx,cy,time,dimension*.22);
+  if(box)drawCenterBox(cx,cy,time,Math.max(105,dimension*(state.mode==='box'?.48:.34)));
+  ctx.save();
+  ctx.textAlign='center';
+  ctx.fillStyle='#b0cce5';ctx.font='10px ui-monospace,monospace';
+  ctx.fillText(state.mode==='all'?'{ AMOEBA → ( TOROID → [ INVARIANT ] ) }':
+    ({amoeba:'{ ADAPTIVE FIELD }',toroid:'( TIME / DISTILLATION VESSEL )',box:'[ ANCESTRAL REGISTER ]'}[state.mode]),cx,h-21);
+  ctx.restore();
+}
+function animation(t){drawScene(t);if(!prefersReduced.matches)requestAnimationFrame(animation)}
+
+buildSymbols();
+bindControls();
+updateFrame();
+logEvent('GENESIS','20 AA | ACTG | −+ instantiated');
+resize();
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(resize).observe(canvas);
+else window.addEventListener('resize',resize);
+if(!prefersReduced.matches)requestAnimationFrame(animation);
+
+})();
+</script>
+</body></html>
