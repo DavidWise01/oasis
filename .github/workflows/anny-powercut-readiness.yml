@@ -13,6 +13,10 @@ on:
       - 'apps/anny-neon/durability/test_hardware_boundary.py'
       - 'apps/anny-neon/durability/five_run_gate.py'
       - 'apps/anny-neon/durability/test_five_run_gate.py'
+      - 'apps/anny-neon/durability/evidence_intake.py'
+      - 'apps/anny-neon/durability/test_evidence_intake.py'
+      - 'apps/anny-neon/durability/EVIDENCE_INTAKE.md'
+      - 'apps/anny-neon/durability/intake-synthetic-validation.json'
       - 'apps/anny-neon/durability/five-run-synthetic-validation.json'
       - 'apps/anny-neon/durability/FIVE_RUN_EVIDENCE.md'
       - 'apps/anny-neon/durability/hardware-synthetic-test-evidence.json'
@@ -46,6 +50,8 @@ jobs:
           python -m py_compile apps/anny-neon/durability/test_hardware_boundary.py
           python -m py_compile apps/anny-neon/durability/five_run_gate.py
           python -m py_compile apps/anny-neon/durability/test_five_run_gate.py
+          python -m py_compile apps/anny-neon/durability/evidence_intake.py
+          python -m py_compile apps/anny-neon/durability/test_evidence_intake.py
       - name: Negative-control fixture self-test (no power cut)
         working-directory: apps/anny-neon/durability
         run: |
@@ -63,6 +69,11 @@ jobs:
         run: |
           set -euo pipefail
           python -m unittest -v test_witness_attestation.py test_hardware_boundary.py test_five_run_gate.py
+      - name: Validate offline redacted five-run intake (65 synthetic tests)
+        working-directory: apps/anny-neon/durability
+        run: |
+          set -euo pipefail
+          python -m unittest -v test_witness_attestation.py test_hardware_boundary.py test_five_run_gate.py test_evidence_intake.py 2>&1 | tee ${{ runner.temp }}/anny-intake-unit-tests.txt
       - name: Assert published readiness explicitly remains NOT_CERTIFIED
         run: |
           python -c "import json; p='apps/anny-neon/durability/powercut/readiness.json'; x=json.load(open(p)); assert x['classification']=='NOT_CERTIFIED'; assert not x['electrical_power_interruption_executed']; assert len(x['modes'])==5; assert all(y['status']=='NOT_RUN' for y in x['modes']); print('NOT_CERTIFIED negative control enforced')"
@@ -74,5 +85,6 @@ jobs:
           path: |
             ${{ runner.temp }}/anny-powercut-selftest.txt
             ${{ runner.temp }}/anny-powercut-unit-tests.txt
+            ${{ runner.temp }}/anny-intake-unit-tests.txt
           if-no-files-found: warn
           retention-days: 30
