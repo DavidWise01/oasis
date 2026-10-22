@@ -135,8 +135,11 @@ def setup_fixture(root,case):
  if case in ("CONFIRM_UNCOMMITTED","CONFIRM_COMMITTED"):
   r.execute("INSERT INTO receiver VALUES (?,?,?,?,1,1)",(key,"transfer",DIGEST,BYTES.hex()))
  j.close();r.close()
+ target_identity=host_id()
+ if not all(target_identity.get(k) for k in ("hostname","machine_id","boot_id")):
+  raise ValueError("TARGET_IDENTITY_INCOMPLETE")
  manifest={"schema":SCHEMA,"run_id":dest.name,"case":case,"created_utc":now(),
-   "target":host_id(),"fixture_dir":str(dest),"source_sha256":DIGEST,
+   "target":target_identity,"fixture_dir":str(dest),"source_sha256":DIGEST,
    "expected":list(EXPECT[case])}
  manifest["manifest_sha256"]=sha(manifest)
  mf=dest/"manifest.json"
@@ -311,9 +314,13 @@ def verify(manifest_path,ledger_path,out_path):
  chosen=[e for e in events if e["run_id"]==m["run_id"]]
  checks["external_witness_three_events"]=[e["event"] for e in chosen]==[
      "REGISTER","OFF_OBSERVED","ON_OBSERVED"]
- checks["witness_on_separate_host"]=bool(chosen and
-   not same_physical_host(m["target"],chosen[0]["witness_host"]) and
-   m["target"]["hostname"]!=chosen[0]["witness_host"]["hostname"])
+ checks["target_identity_complete"]=bool(all(
+   m["target"].get(k) for k in ("hostname","machine_id","boot_id")))
+ checks["witness_on_separate_host"]=bool(chosen
+   and checks["target_identity_complete"]
+   and chosen[0].get("witness_host",{}).get("machine_id")
+   and not same_physical_host(m["target"],chosen[0]["witness_host"])
+   and m["target"]["hostname"]!=chosen[0]["witness_host"].get("hostname"))
  checks["witness_manifest_consistent"]=bool(chosen and all(
    e.get("manifest_sha256")==m["manifest_sha256"] for e in chosen))
  sequence=validate_witness_sequence(chosen,m)
@@ -327,7 +334,9 @@ def verify(manifest_path,ledger_path,out_path):
  result={"schema":SCHEMA,"run_id":m["run_id"],"case":m["case"],
    "status":status,"certified":False,"checks":checks,"snapshot":snapshot,
    "expected":m["expected"],"manifest_sha256":m["manifest_sha256"],
-   "witness_tail":prev,"excluded":["unverified electrical waveform",
+   "witness_tail":prev,"evidence_class":"OPERATOR_STATEMENTS_ONLY",
+   "independent_electrical_measurement_verified":False,
+   "excluded":["unverified electrical waveform",
    "uncorroborated operator statements","hardware cache flush guarantees",
    "browser IndexedDB", "external exactly-once effects"],"verified_utc":now()}
  pathlib.Path(out_path).write_text(json.dumps(result,indent=2)+"\n")
