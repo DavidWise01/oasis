@@ -83,5 +83,28 @@
     "actual_electrical_power_cut": false,
     "independently_verified_hardware": false,
     "certified": false
+  },
+  "hardware_binding_gate": {
+    "schema": "anny-hardware-evidence-v1",
+    "status": "SYNTHETIC_TESTS_PASSED_ONLY",
+    "local_tests_passed": 37,
+    "local_tests_total": 37,
+    "dedicated_hardware_tests_passed": 21,
+    "exact_tested_source_git_blob_sha1": "d2582bef54a1ab607cd49d87f044707394c9bd7c",
+    "exact_tested_test_git_blob_sha1": "313fcb2f24dd120e62d77b95e8632a97b4d1949b",
+    "evidence_file": "../hardware-synthetic-test-evidence.json",
+    "signer_roles": [
+      "witness",
+      "meter",
+      "target_recovery"
+    ],
+    "trusted_policy_anchor": "REQUIRES_OUT_OF_BAND_SHA256",
+    "real_hardware_serial_verified": false,
+    "real_meter_channel_verified": false,
+    "independent_meter_connected": false,
+    "target_recovery_key_connected": false,
+    "physical_power_cut_performed": false,
+    "physical_scenarios_completed": 0,
+    "certified": false
   }
 }
