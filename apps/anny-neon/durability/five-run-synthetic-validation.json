@@ -1,0 +1,21 @@
+{
+  "schema": "anny-five-run-synthetic-validation-v1",
+  "timestamp_utc": "2026-10-22T05:01:39.470006+00:00",
+  "scope": "Synthetic five-run signed evidence only; no physical cut or real meter",
+  "files_sha256": {
+    "five_run_gate.py": "3b2920a72859cb19d582e185804e01dcdcde58cff95",
+    "test_five_run_gate.py": "1b310d03f8d2e8eb7abba4e162e11d4a24a5b895f5d727034b945d0f1c0bd0c4"
+  },
+  "tests": {
+    "new": 16,
+    "combined": 53,
+    "failed": 0,
+    "status": "PASS",
+    "command": "python -m unittest -q test_witness_attestation.py test_hardware_boundary.py test_five_run_gate.py"
+  },
+  "hardware_connected": false,
+  "physical_cut_executed": false,
+  "certified": false,
+  "real_five_run_bundle_submitted": false,
+  "verified_run_state": "SYNTHETIC_ONLY"
+}
