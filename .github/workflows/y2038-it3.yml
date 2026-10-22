@@ -27,3 +27,4 @@ jobs:
           python3 docs/y2038/check_it3.py docs/y2038/it3
           python3 docs/y2038/check_voxel.py
           python3 docs/y2038/check_recovery.py
+          python3 docs/y2038/check_step10.py
