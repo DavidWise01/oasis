@@ -33,6 +33,25 @@ export const POLARITY2=Object.freeze(['−','+']);
 export const ANCESTOR=AA20.map(x=>x.code).join('')+'|ACTG|−+';
 export const CODE_INDEX=Object.freeze(Object.fromEntries(AA20.flatMap(amino=>amino.codons.map(c=>[c,amino.code]))));
 
+// A single shared 4³ codon field sits BELOW every selected residue n.
+// 64 DNA triplets total: 61 sense codons + 3 translation STOP signals.
+// This is not 64 codons per amino acid, and not a reconstructed LUCA genome.
+export const STOP_CODONS=Object.freeze(['TAA','TAG','TGA']);
+export const CODON_CUBE=Object.freeze(DNA4.flatMap((first,a)=>
+  DNA4.flatMap((second,b)=>
+    DNA4.map((third,c)=>{
+      const codon=first+second+third;
+      return Object.freeze({
+        codon,first,second,third,coordinate:Object.freeze([a,b,c]),
+        meaning:CODE_INDEX[codon]??'STOP',isStop:STOP_CODONS.includes(codon)
+      });
+    })
+  )
+));
+export const CODON_LAYERS=Object.freeze(DNA4.map((base,index)=>Object.freeze({
+  base,index,codons:Object.freeze(CODON_CUBE.filter(x=>x.first===base))
+})));
+
 export function transformFrame({generation=0,distill=0,polarity='+',mutations=[],lostBases=[]}={}) {
   const tick=Math.max(0,Math.trunc(Number(generation)||0));
   const loss=Math.min(100,Math.max(0,Number(distill)||0));
