@@ -1,0 +1,26 @@
+name: IT3 isomorphic time conformance
+on:
+  push:
+    paths:
+      - 'docs/y2038/**'
+      - '.github/workflows/y2038-it3.yml'
+  pull_request:
+    paths:
+      - 'docs/y2038/**'
+      - '.github/workflows/y2038-it3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile C reference with UBSan
+        run: |
+          cc -std=c11 -Wall -Wextra -Werror -fsanitize=undefined -fno-sanitize-recover=undefined docs/y2038/it3.c -o docs/y2038/it3
+      - name: Run C / Python / golden conformance
+        run: python3 docs/y2038/check_it3.py docs/y2038/it3
