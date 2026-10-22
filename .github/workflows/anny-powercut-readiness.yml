@@ -1,0 +1,52 @@
+name: ANNY Power-Cut Readiness Only
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/anny-neon/durability/powercut_gate.py'
+      - 'apps/anny-neon/durability/test_powercut_gate.py'
+      - 'apps/anny-neon/durability/POWER_CUT_PROTOCOL.md'
+      - 'apps/anny-neon/durability/powercut/**'
+      - '.github/workflows/anny-powercut-readiness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readiness-negative-control:
+    name: Validate evidence gates without touching electrical power
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile gate and unit tests
+        run: |
+          python -m py_compile apps/anny-neon/durability/powercut_gate.py
+          python -m py_compile apps/anny-neon/durability/test_powercut_gate.py
+      - name: Negative-control fixture self-test (no power cut)
+        working-directory: apps/anny-neon/durability
+        run: |
+          python powercut_gate.py self-test | tee ${{ runner.temp }}/anny-powercut-selftest.txt
+      - name: Run marker, manifest, witness tamper, and fail-closed regression tests
+        working-directory: apps/anny-neon/durability
+        run: |
+          python -m unittest -v test_powercut_gate.py 2>&1 | tee ${{ runner.temp }}/anny-powercut-unit-tests.txt
+      - name: Assert published readiness explicitly remains NOT_CERTIFIED
+        run: |
+          python -c "import json; p='apps/anny-neon/durability/powercut/readiness.json'; x=json.load(open(p)); assert x['classification']=='NOT_CERTIFIED'; assert not x['electrical_power_interruption_executed']; assert len(x['modes'])==5; assert all(y['status']=='NOT_RUN' for y in x['modes']); print('NOT_CERTIFIED negative control enforced')"
+      - name: Preserve self-test records (never a physical cut certificate)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: anny-powercut-readiness-only
+          path: |
+            ${{ runner.temp }}/anny-powercut-selftest.txt
+            ${{ runner.temp }}/anny-powercut-unit-tests.txt
+          if-no-files-found: warn
+          retention-days: 30
