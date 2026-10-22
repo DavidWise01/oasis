@@ -106,5 +106,22 @@
     "physical_power_cut_performed": false,
     "physical_scenarios_completed": 0,
     "certified": false
+  },
+  "five_run_batch_gate": {
+    "schema": "anny-five-run-evidence-batch-v1",
+    "status": "SYNTHETIC_TESTS_PASSED_ONLY",
+    "local_tests_passed": 53,
+    "local_tests_total": 53,
+    "local_new_tests": 16,
+    "exact_tested_source_git_blob_sha1": "ec50c5d0b52e2265e22e41cd0bf9910dd48a14b6",
+    "exact_tested_test_git_blob_sha1": "f3e70b090fd72de49ca8e1a22997f2c87bca5437",
+    "evidence_file": "../five-run-synthetic-validation.json",
+    "real_meter_and_witness_evidence_collected": false,
+    "real_five_run_bundle_received": false,
+    "cross_run_hardware_continuity_verified_on_real_hardware": false,
+    "out_of_band_bundle_policy_pin": "REQUIRED_NOT_AVAILABLE",
+    "physical_scenarios_completed": 0,
+    "physical_power_loss_certified": false,
+    "certified": false
   }
 }
