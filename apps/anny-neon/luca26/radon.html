@@ -1,0 +1,216 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080b1a"><meta name="description" content="Radon-86 interactive six-shell KET symbolic cubit: 86 electrons, 43 two-position gates, and Rn-222 isotope half-life."><title>Radon-86 · KET Interactive Cubit Practice</title><style>*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0,#20385b,transparent 50%),#060b1c;color:#eff7ff;font:14px/1.5 system-ui,sans-serif}a{color:#8de9ff}button,input{font:inherit}button{cursor:pointer}nav{background:#071022ea;border-bottom:1px solid #537aa477;padding:13px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}nav b{letter-spacing:.17em}nav span{display:flex;gap:15px;font:11px ui-monospace,monospace}main{max-width:1190px;margin:auto;padding:20px}h1{font-size:clamp(34px,5vw,62px);margin:0;letter-spacing:-.05em}h1 em{font-style:normal;color:#c7a7ff}.lead{color:#a8bfd7;margin:4px 0 20px}.columns{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr);gap:14px}.card{border:1px solid #647eae77;border-radius:16px;background:linear-gradient(150deg,#0e1d37,#090f21);overflow:hidden}.heading{padding:13px 17px;border-bottom:1px solid #647eae55;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font:11px ui-monospace,monospace;letter-spacing:.07em}.heading span{color:#8fb3ca}.pad{padding:16px}.glyph{background:#101c37;border:1px solid #5d7b9c88;border-radius:10px;padding:12px;color:#edcaff;font:17px/1.6 ui-monospace,monospace;overflow-wrap:anywhere}.small{font-size:11px;color:#a0b5d0}.over{font:11px ui-monospace,monospace;color:#94e5fa;letter-spacing:.09em}input[type=range]{width:100%;accent-color:#b6a0ff;margin:8px 0}.setting{border-top:1px solid #536e9455;padding:12px 0}.row{display:flex;justify-content:space-between;align-items:center;gap:9px}output{font:12px ui-monospace,monospace;color:#9de6ff}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.btn{background:#142644;border:1px solid #547fa0;color:#edf7ff;padding:9px;border-radius:9px}.btn.primary{background:linear-gradient(110deg,#2e7f97,#7656a2)}.pairs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:12px}.pair{min-width:0;border:1px solid var(--c);border-radius:9px;background:#111d38;color:var(--c);padding:10px 2px;display:grid;justify-items:center;gap:5px}.pair b{font:19px ui-monospace,monospace}.pair small{font:9px ui-monospace,monospace;color:#b9c8db}.pair[aria-pressed=true]{background:#283354;box-shadow:inset 0 0 0 1px var(--c)}svg{display:block;width:100%;height:auto;background:radial-gradient(circle at center,#1d3958,#091125 70%)}.electron{cursor:pointer}.electron text{pointer-events:none;font:12px ui-monospace,monospace;fill:white;text-anchor:middle}.electron circle{filter:drop-shadow(0 0 7px currentColor)}.electron:focus-visible{outline:none;filter:drop-shadow(0 0 15px white)}.stat{border-top:1px solid #657da35a;display:flex;justify-content:space-around;padding:12px;gap:6px;font:12px ui-monospace,monospace}.stat strong{color:#c5f8ff}.below{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#bce2f1;font:12px/1.7 ui-monospace,monospace}#trace{list-style:none;margin:0;padding:0;max-height:180px;overflow:auto}#trace li{border-bottom:1px dashed #536c8a7b;padding:5px 0;font:11px ui-monospace,monospace;color:#abc9e0}.warning{color:#b4bcd0;border-left:2px solid #a07cea;padding-left:11px;font-size:11px;margin-top:18px}@media(max-width:880px){.columns,.below{grid-template-columns:1fr}}@media(max-width:560px){main{padding:12px}.pad{padding:12px}.pairs{gap:4px}.pair b{font-size:14px}.pair small{font-size:8px}}
+body{background:radial-gradient(ellipse at 45% -2%,#32254f,transparent 50%),#080b1a}
+.elem{background:#302144;border:1px solid #bd8dff;border-radius:14px;padding:9px 15px;min-width:95px;text-align:center}
+.elem strong{display:block;font:700 41px ui-monospace,monospace;color:#e5c6ff}.elem small{font:10px ui-monospace,monospace;color:#c1afd7}
+.radon-head{display:flex;justify-content:space-between;gap:14px;align-items:center}.glow{color:#ca9fff}
+#shellmap{width:100%;display:block;height:auto;max-height:620px;background:radial-gradient(ellipse at center,#202444,#090f22 72%)}
+.radon-shell{fill:none;stroke-width:1.3}.radon-shell.active{stroke-width:2.7;filter:drop-shadow(0 0 9px currentColor)}
+.atom-dot{cursor:pointer;stroke:#0a1327;stroke-width:1}.atom-dot.active{stroke:white;stroke-width:2.2;filter:drop-shadow(0 0 8px white)}.atom-dot.dim{opacity:.26}
+.six{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.shell-button{border:1px solid var(--color);background:#152039;color:var(--color);border-radius:10px;padding:8px 3px;display:grid;gap:3px}
+.shell-button strong{font:20px ui-monospace,monospace}.shell-button small{font:10px ui-monospace,monospace;color:#b3c4d7}
+.shell-button[aria-pressed=true]{background:#36294f;box-shadow:inset 0 0 0 1px var(--color)}
+.gate-group{margin:12px 0;padding:12px;background:#0c192d;border:1px solid #57739478;border-radius:12px}
+.gate-heading{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:12px ui-monospace,monospace;margin-bottom:9px}
+.gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(65px,1fr));gap:6px}
+.gate{background:#172238;border:1px solid #456787;border-radius:8px;padding:8px 3px;display:grid;gap:4px;min-width:0}
+.gate b{font:12px ui-monospace,monospace;color:#d9edff}.gate small{font:9px ui-monospace,monospace;color:#9db4cd}
+.gate.closed{background:#123b35;border-color:#65eac3}.gate[aria-pressed=true]{border-color:#dfc2ff;box-shadow:0 0 13px #ae79ea77}
+.switch{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0}
+.switch button{border:1px solid #577b9c;background:#11233c;color:#a9ccdf;border-radius:50px;padding:7px 12px;font:11px ui-monospace,monospace}
+.switch button[aria-pressed=true]{background:#27445d;color:#ecfaff;border-color:#8ce3f5}
+.decay{border-left:2px solid #dc9d6f;background:#3c271f55;padding:10px 12px;color:#f6c9a6;border-radius:5px;font-size:12px}
+.decay-eqn{font:clamp(16px,2.6vw,25px) ui-monospace,monospace;color:#eccdfd;margin:11px 0}
+.bar{border:1px solid #745987;background:#462b46;border-radius:10px;height:17px;overflow:hidden}
+.bar>div{height:100%;background:linear-gradient(90deg,#66d9d8,#d2a2ff);transition:width .15s}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.nums div{background:#111b31;border:1px solid #537597;border-radius:9px;padding:10px 8px}.nums strong{display:block;font:22px ui-monospace,monospace;color:#d1ecff}.nums small{font:10px ui-monospace,monospace;color:#a0b8d6}
+#inspection{white-space:pre-wrap;overflow-wrap:anywhere}
+.radon-legend{display:flex;gap:10px;flex-wrap:wrap;font:11px ui-monospace,monospace;color:#c8d9ef}.radon-legend span{display:flex;align-items:center;gap:5px}
+.radon-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--clr)}
+@media(max-width:680px){.six{grid-template-columns:repeat(3,minmax(0,1fr))}.gates{grid-template-columns:repeat(auto-fit,minmax(56px,1fr))}.elem strong{font-size:31px}}
+</style></head><body>
+<nav><b>◈ KET / RADON-86</b><span><a href="./neon.html">← NEON-10</a><a href="./standalone.html">LUCA-26</a><a href="../">ANNY HUB</a><a href="https://github.com/DavidWise01/oasis/tree/main/apps/anny-neon/luca26">SOURCE ↗</a></span></nav>
+<main>
+<div class="radon-head"><div><div class="over">ELEMENT 86 · SIX NESTED ELECTRON SHELLS</div><h1>Radon <em>in the vessel.</em></h1><p class="lead">Expand the Neon-10 seed into 86 electron addresses and 43 symbolic gates across six shells. Keep the separate nuclear decay layer grounded in Rn-222.</p></div><div class="elem"><small>ATOMIC #86</small><strong>Rn</strong><small>RADIOACTIVE GAS</small></div></div>
+<div class="columns"><section class="card"><div class="heading"><b>01 / SIX-SHELL PROJECTION</b><span>2 · 8 · 18 · 32 · 18 · 8</span></div>
+<svg id="shellmap" viewBox="0 0 700 680" role="img" aria-label="Illustrative six-shell Radon diagram containing 86 selectable electron markers" xmlns="http://www.w3.org/2000/svg">
+<g id="shellrings"></g><g id="electrons"></g>
+<circle cx="350" cy="330" r="33" fill="#241b41" stroke="#d3a9ff" stroke-width="2"/>
+<text x="350" y="327" font-size="24" fill="#f3dfff" font-weight="bold" text-anchor="middle">Rn</text>
+<text x="350" y="346" font-size="10" fill="#ccb5e4" text-anchor="middle">86p⁺</text>
+<text x="20" y="655" font-size="12" fill="#9cc8d9">86 labeled positions</text><text x="675" y="655" font-size="11" fill="#a6bbd8" text-anchor="end">NOT LITERAL ORBITS</text></svg>
+<div class="stat"><span><strong>86</strong> e⁻</span><span><strong>6</strong> shells</span><span><strong>43</strong> gates</span><span><strong id="meter">0/43</strong> folded</span></div>
+</section><aside class="card"><div class="heading"><b>02 / NESTED RADON GLYPH</b><span>NEON SEED PRESERVED</span></div><div class="pad"><div class="over">INNER TEN · ORIGINAL NEON GROUPING</div><div class="glyph" id="seed"></div><p class="small">Mapped to n=1 (two electrons) and n=2 (eight electrons).</p>
+<div class="over">EXTRA FOUR SHELLS · SYMBOLIC REGISTER</div><div class="glyph" id="extension"></div><p class="small">43 gates = 1+4+9+16+9+4; each gate has exactly two electron addresses.</p>
+<div class="setting"><div class="row"><label for="fold">Zipper closure</label><output id="fold-v">0/43</output></div><input id="fold" type="range" min="0" max="43" step="1" value="0"></div>
+<div class="setting"><div class="row"><label for="rate">Illustrative time rate</label><output id="rate-v">1.00×</output></div><input id="rate" type="range" min="0.25" max="3" step="0.25" value="1"></div>
+<div class="setting"><div class="row"><label for="distill">Label distillation</label><output id="distill-v">0%</output></div><input id="distill" type="range" min="0" max="100" step="5" value="0"><p class="small">Label information is hidden; electrons are never removed.</p></div>
+<div class="actions"><button class="btn primary" id="next">+ FOLD NEXT</button><button class="btn" id="prev">− UNFOLD</button><button class="btn" id="all">↣ FOLD ALL</button><button class="btn" id="reset">↶ RESET</button></div>
+<button class="btn" style="margin-top:8px;width:100%" id="play">Ⅱ PAUSE MOTION</button><div class="row" style="margin-top:8px"><span class="over">VESSEL STATUS</span><output id="status">OPEN</output></div>
+</div></aside></div>
+<section class="card" style="margin-top:14px"><div class="heading"><b>03 / SIX-SHELL REGISTER + 43 PAIRS</b><span>CLICK SHELL / GATE TO INSPECT</span></div><div class="pad">
+<div id="shellcards" class="six" role="group" aria-label="Six selectable Radon shells"></div>
+<div class="switch" role="group" aria-label="Which gates to display"><button id="show-shell" aria-pressed="true">SELECTED SHELL</button><button id="show-all" aria-pressed="false">ALL 43 GATES</button></div>
+<div id="gatebank"></div><p id="pairinfo" class="small">43 symbolic pair registers, 86 electron addresses.</p>
+</div></section>
+<div class="below"><section class="card"><div class="heading"><b>04 / Rn-222 NUCLEAR DECAY</b><span>SEPARATE PHYSICAL PROCESS</span></div><div class="pad">
+<div class="decay">Radon is a colorless, odorless radioactive gas. Alpha-emitting radon and its decay products present a significant inhalation hazard.</div>
+<div class="decay-eqn">²²²Rn → ²¹⁸Po + ⁴He</div>
+<p class="small">Nuclear accounting: 86 protons + 136 neutrons → 84 protons + 134 neutrons, plus an alpha particle containing 2 protons and 2 neutrons.</p>
+<div class="setting"><div class="row"><label for="days">Rn-222 elapsed days</label><output id="days-v">0.000 days</output></div><input id="days" type="range" min="0" max="15.294" step="0.001" value="0"></div>
+<div class="bar" aria-label="Expected radon-222 population remaining"><div id="remain-bar" style="width:100%"></div></div>
+<div class="nums"><div><strong id="remain">100.00%</strong><small>EXPECTED REMAINING</small></div><div><strong id="decayed">0.00%</strong><small>EXPECTED DECAYED</small></div></div>
+<p class="small">Rn-222 half-life: 3.8235 days. The decay curve predicts the fraction of a large population expected to survive, not the moment when a single atom decays.</p>
+</div></section><section class="card"><div class="heading"><b>05 / REGISTER INSPECTOR</b><span>LOCAL SESSION · NO PHYSICAL MEASUREMENT</span></div><div class="pad">
+<pre id="inspection" aria-live="polite"></pre><div class="over">PRACTICE TRACE</div><ol id="trace"></ol><button id="copy" class="btn">⧉ COPY REGISTER + STATE</button><span id="feedback" class="small" role="status"></span>
+</div></section></div>
+<p class="warning">The six radial rings show electron counts, not measured electron paths or quantum orbitals. Pair closures are KET symbols, not established atomic physics. The independent isotope panel models Rn-222 population decay; it never claims the electron picture remains a Radon atom after a nuclear transformation. Sources: <a href="https://physics.nist.gov/PhysRefData/Handbook/Tables/radontable1_a.htm">NIST electron configuration</a> · <a href="https://www.epa.gov/radiation/radionuclide-basics-radon">EPA radon</a>.</p>
+</main><script>(() => {
+'use strict';
+const $=id=>document.getElementById(id);
+const NS='http://www.w3.org/2000/svg';
+const shells=[
+ {n:1,count:2,r:47,color:'#84f1ff'},
+ {n:2,count:8,r:85,color:'#c99dff'},
+ {n:3,count:18,r:131,color:'#84efbf'},
+ {n:4,count:32,r:176,color:'#ffc18b'},
+ {n:5,count:18,r:223,color:'#ff91bd'},
+ {n:6,count:8,r:267,color:'#9cb4ff'}
+];
+const seed='{1.2}{(3|4)(5|6){7.8}(1|0)}';
+const E=[],gates=[];
+let number=1;
+shells.forEach((shell,si)=>{
+ shell.start=number;shell.startGate=gates.length;
+ for(let k=0;k<shell.count;k+=2){
+  const a=number+k,b=a+1;
+  const gi=gates.length;
+  const glyph=gi<5?['1.2','3|4','5|6','7.8','1|0'][gi]:'E'+String(a).padStart(2,'0')+'|E'+String(b).padStart(2,'0');
+  gates.push({gi,si,a,b,glyph});
+ }
+ for(let k=0;k<shell.count;k++)E.push({id:number+k,si,index:k,gate:shell.startGate+Math.floor(k/2)});
+ number+=shell.count;
+});
+const state={fold:0,selShell:0,selGate:0,rate:1,distill:0,time:0,play:true,days:0,tick:0,filter:'shell'};
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const shapes=[],shellRings=[],shellButtons=[],groups=[];
+$('seed').textContent=seed;
+$('extension').textContent='{{n3:9×2}}{{n4:16×2}}{{n5:9×2}}{{n6:4×2}}';
+function svg(tag,props,parent){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(props))e.setAttribute(k,String(v));parent.append(e);return e}
+function log(msg){const li=document.createElement('li');li.textContent='T'+String(state.tick).padStart(3,'0')+' · '+msg;$('trace').prepend(li);while($('trace').children.length>8)$('trace').lastElementChild.remove()}
+shells.forEach((s,si)=>{
+ const ring=svg('circle',{cx:350,cy:330,r:s.r,stroke:s.color,class:'radon-shell',opacity:'.61'},$('shellrings'));
+ ring.style.color=s.color;shellRings.push(ring);
+ const button=document.createElement('button');button.type='button';button.className='shell-button';button.style.setProperty('--color',s.color);
+ const label=document.createElement('strong'),desc=document.createElement('small');label.textContent='n'+s.n;desc.textContent=s.count+'e⁻ · '+s.count/2+' pairs';button.append(label,desc);
+ button.addEventListener('click',()=>{state.selShell=si;state.selGate=s.startGate;state.tick++;update();log('SHELL n='+s.n+' selected')});
+ button.setAttribute('aria-label','Select shell '+s.n+', '+s.count+' electrons');
+ $('shellcards').append(button);shellButtons.push(button);
+ const container=document.createElement('section');container.className='gate-group';
+ const h=document.createElement('div');h.className='gate-heading';h.style.color=s.color;
+ const title=document.createElement('b');title.textContent='SHELL '+s.n+' · '+s.count+' ELECTRONS';
+ const detail=document.createElement('span');detail.textContent=s.count/2+' × 2 GATES';
+ h.append(title,detail);container.append(h);
+ const grid=document.createElement('div');grid.className='gates';
+ gates.filter(g=>g.si===si).forEach(g=>{
+  const b=document.createElement('button');b.type='button';b.className='gate';b.dataset.gate=String(g.gi);
+  const a=document.createElement('b'),small=document.createElement('small');a.textContent=g.glyph;small.textContent='OPEN';b.append(a,small);
+  b.onclick=()=>{state.selShell=si;state.selGate=g.gi;state.fold=g.gi+1;state.tick++;update();log('GATE '+g.glyph+' · fold '+state.fold+'/43')};
+  b.setAttribute('aria-label','Select gate '+g.glyph+', electrons '+g.a+' and '+g.b);
+  grid.append(b);
+ });container.append(grid);$('gatebank').append(container);groups.push(container);
+});
+E.forEach(e=>{
+ const shell=shells[e.si];
+ const g=svg('g',{role:'button',tabindex:'0','aria-label':'Select electron E'+String(e.id).padStart(2,'0')},$('electrons'));
+ g.style.color=shell.color;
+ const dot=svg('circle',{r:4,fill:shell.color,class:'atom-dot'},g);
+ const label=svg('text',{x:0,y:-12,'text-anchor':'middle',fill:'#dbeeff','font-size':'9'},g);label.textContent=String(e.id);
+ const select=()=>{state.selShell=e.si;state.selGate=e.gate;state.tick++;update();log('E'+String(e.id).padStart(2,'0')+' → shell '+shell.n)};
+ g.addEventListener('click',select);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();select()}});
+ shapes.push({...e,g,dot,label,r:shell.r});
+});
+function stepTo(n){state.fold=Math.max(0,Math.min(43,n));state.tick++;update();log('ZIPPER '+state.fold+'/43 gates closed')}
+function update(){
+ $('meter').textContent=state.fold+'/43';$('fold-v').textContent=state.fold+'/43';$('fold').value=String(state.fold);
+ $('rate-v').textContent=state.rate.toFixed(2)+'×';$('distill-v').textContent=state.distill+'%';
+ $('status').textContent=state.distill>0?'LABELS DEGRADED':state.fold===43?'ALL FOLDED':'OPEN / PARTIAL';
+ $('show-shell').setAttribute('aria-pressed',String(state.filter==='shell'));
+ $('show-all').setAttribute('aria-pressed',String(state.filter==='all'));
+ shellButtons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===state.selShell)));
+ groups.forEach((node,i)=>node.hidden=state.filter==='shell'&&i!==state.selShell);
+ const current=gates[state.selGate];
+ $('pairinfo').textContent='Pair '+(state.selGate+1)+'/43 · '+current.glyph+' · E'+String(current.a).padStart(2,'0')+
+ ' / E'+String(current.b).padStart(2,'0')+' · '+(state.selGate<state.fold?'CLOSED':'OPEN');
+ for(const btn of $('gatebank').querySelectorAll('.gate')){
+  const g=gates[Number(btn.dataset.gate)];
+  btn.classList.toggle('closed',g.gi<state.fold);
+  btn.setAttribute('aria-pressed',String(g.gi===state.selGate));
+  btn.querySelector('small').textContent=g.gi<state.fold?'FOLDED':'OPEN';
+ }
+ shellRings.forEach((ring,i)=>ring.classList.toggle('active',i===state.selShell));
+ shapes.forEach(s=>{
+  s.dot.classList.toggle('active',s.gate===state.selGate);
+  s.dot.classList.toggle('dim',s.si!==state.selShell&&state.filter==='shell');
+  s.dot.setAttribute('r',s.gate===state.selGate?'6.5':(s.si===3?3.5:4.3));
+  s.dot.setAttribute('stroke',s.gate<state.fold?'#e5fffa':'#08152b');
+  s.label.style.display=s.id>86-Math.floor(state.distill*86/100)?'none':'';
+ });
+ $('inspection').textContent='RADON · Rn · Z=86\\nSHELL COUNTS  2 | 8 | 18 | 32 | 18 | 8\\nGATES         43 × 2 = 86\\nSELECTED      '+current.glyph+
+ '\\nADDRESSES     E'+String(current.a).padStart(2,'0')+' / E'+String(current.b).padStart(2,'0')+
+ '\\nSHELL        n='+shells[current.si].n+'\\nFOLD STATE    '+(state.selGate<state.fold?'CLOSED':'OPEN')+
+ '\\nLABEL LOSS    '+state.distill+'% (symbols only)\\nELECTRON CONF [Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶';
+ $('play').textContent=state.play?'Ⅱ PAUSE MOTION':'▶ RESUME MOTION';
+}
+function renderMotion(){
+ shapes.forEach(s=>{
+  const count=shells[s.si].count;
+  const angular=(s.index/count)*2*Math.PI+state.time*(s.si%2===0?.14:-.11);
+  const x=350+Math.cos(angular)*s.r,y=330+Math.sin(angular)*s.r;
+  s.g.setAttribute('transform','translate('+x.toFixed(2)+' '+y.toFixed(2)+')');
+ });
+}
+function decay(){
+ const half=3.8235;
+ const remaining=100*Math.pow(2,-state.days/half);
+ $('remain').textContent=remaining.toFixed(2)+'%';
+ $('decayed').textContent=(100-remaining).toFixed(2)+'%';
+ $('remain-bar').style.width=remaining.toFixed(4)+'%';
+ $('days-v').textContent=state.days.toFixed(3)+' days';
+}
+$('fold').oninput=e=>{state.fold=Number(e.target.value);update()};
+$('fold').onchange=()=>{state.tick++;log('ZIP '+state.fold+'/43')};
+$('rate').oninput=e=>{state.rate=Number(e.target.value);update()};
+$('distill').oninput=e=>{state.distill=Number(e.target.value);update()};
+$('distill').onchange=()=>{state.tick++;log('DISTILL '+state.distill+'% label reduction')};
+$('days').oninput=e=>{state.days=Number(e.target.value);decay()};
+$('days').onchange=()=>{state.tick++;log('POPULATION '+state.days.toFixed(2)+' days')};
+$('next').onclick=()=>stepTo(state.fold+1);$('prev').onclick=()=>stepTo(state.fold-1);
+$('all').onclick=()=>stepTo(43);
+$('play').onclick=()=>{state.play=!state.play;update()};
+$('show-shell').onclick=()=>{state.filter='shell';update()};
+$('show-all').onclick=()=>{state.filter='all';update()};
+$('reset').onclick=()=>{
+ Object.assign(state,{fold:0,selShell:0,selGate:0,rate:1,distill:0,time:0,play:true,days:0,tick:0,filter:'shell'});
+ for(const [id,value] of [['fold',0],['rate',1],['distill',0],['days',0]])$(id).value=String(value);
+ $('trace').replaceChildren();update();decay();log('GENESIS · neutral Rn-86, Rn-222 overlay')
+};
+$('copy').onclick=async()=>{
+ const data=['RADON-86 KET PRACTICE','NEON SEED '+seed,'EXTEND n3:9×2 n4:16×2 n5:9×2 n6:4×2',
+ 'PHYSICAL Neutron count for Rn-222: 136','ELECTRON SHELLS 2/8/18/32/18/8','PAIR GATES 43','FOLDED '+state.fold,
+ 'DECAY Rn-222->Po-218+He-4','ELAPSED '+state.days.toFixed(3)+'d','ELECTRON CONFIG [Xe] 4f14 5d10 6s2 6p6'].join('\\n');
+ try{await navigator.clipboard.writeText(data);$('feedback').textContent=' Copied'}
+ catch(e){$('feedback').textContent=' Clipboard unavailable'}
+};
+let prev=0;
+function animate(timestamp){
+ if(!document.getElementById('shellmap'))return;
+ if(!prev)prev=timestamp;
+ const dt=Math.min(.05,(timestamp-prev)/1000);prev=timestamp;
+ if(state.play&&!matchMedia('(prefers-reduced-motion: reduce)').matches)state.time+=dt*state.rate;
+ renderMotion();requestAnimationFrame(animate);
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){state.play=false;update()}});
+update();decay();log('GENESIS · 86e, six shells, 43 paired gates');requestAnimationFrame(animate);
+})();</script></body></html>
