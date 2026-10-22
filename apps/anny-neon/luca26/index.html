@@ -121,6 +121,32 @@
           <div class="bases"><span class="polarity">− VOID / BOUNDARY</span><span class="polarity">+ GRAVITY / RETURN</span></div>
         </div>
       </div>
+      <section class="codon-well" aria-labelledby="codon-title">
+        <div class="codon-header">
+          <div>
+            <div class="kicker" style="margin-bottom:6px">UNDER THE BOX · TRIPLET REGISTER</div>
+            <h2 id="codon-title" class="codon-formula">{{n}} ↓ {{4<sup>3</sup>}}</h2>
+            <p class="hint">Select a residue above to inspect its shared 64-codon field below. Four DNA bases at three positions: 61 amino-acid codons and three STOP signals.</p>
+          </div>
+          <div class="codon-counts" aria-label="Codon totals">
+            <span><b>64</b><small>TOTAL</small></span>
+            <span><b>61</b><small>SENSE</small></span>
+            <span><b>03</b><small>STOP</small></span>
+          </div>
+        </div>
+        <div class="codon-topology" aria-label="Residue selection above DNA triplet cube">
+          <div class="codon-parent">[ n : <strong id="codon-parent">Alanine / A</strong> ]</div>
+          <div class="codon-direction" aria-hidden="true">↓</div>
+          <div class="codon-child">{ { ACTG } }<sup>3</sup> = <strong>64</strong> codons</div>
+        </div>
+        <div id="codon-layers" class="codon-layers" aria-label="Four layers, each a four by four grid of DNA triplets"></div>
+        <div class="codon-inspector" aria-live="polite">
+          <div><span class="micro">SELECTED DNA TRIPLET</span><strong id="codon-selected">GCT</strong></div>
+          <p id="codon-explanation">GCT translates to alanine (A).</p>
+          <span class="micro" id="codon-synonyms">Synonymous codons: GCT · GCC · GCA · GCG</span>
+        </div>
+        <p class="hint">Every amino acid references the <em>same</em> 4³ field—not 64 codons per residue. STOP is a translation signal, not a 21st standard amino acid. Codon inspection does not mutate the box; click a residue above to do that.</p>
+      </section>
       <p class="hint">Biological grounding: the 20 conventional amino-acid codes and synonymous DNA codons are real. The chosen 20-residue sequence, framing operators, amoeba, and toroid are an invented KET model—not a recovered LUCA genome.</p>
     </div>
   </section>
