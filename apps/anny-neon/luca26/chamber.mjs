@@ -1,15 +1,17 @@
-import { AA20, DNA4, ANCESTOR, CODON_LAYERS, transformFrame } from './model.mjs';
+import { AA20, DNA4, ANCESTOR, CODON_LAYERS, ZIPPER_REFERENCE, zipperMerge, transformFrame } from './model.mjs';
 
 const $ = id => document.getElementById(id);
 const state = {
   tick:0, distill:24, rate:1, mode:'all', polarity:'+',
   mutations:new Set(), lostBases:new Set(), playing:false, trace:[],
-  selectedIndex:0, selectedCodon:'GCT'
+  selectedIndex:0, selectedCodon:'GCT',
+  zipperClosed:0, zipperRule:'strict', zipperShifts:[0,0,0],
+  zipperFaults:[new Set(),new Set(),new Set()]
 };
 const canvas=$('chamber');
 const ctx=canvas.getContext('2d',{alpha:false});
 const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)');
-let sceneWidth=1,sceneHeight=1,frame=null,timer=null,origin=performance.now();
+let sceneWidth=1,sceneHeight=1,frame=null,zipper=null,timer=null,origin=performance.now();
 
 function logEvent(action,detail) {
   state.trace.unshift({tick:state.tick,action,detail});
@@ -29,6 +31,13 @@ function updateFrame(log=false) {
     generation:state.tick,distill:state.distill,polarity:state.polarity,
     mutations:state.mutations,lostBases:state.lostBases
   });
+  const lanes=[
+    frame.decoded.map(x=>x.observed),
+    ZIPPER_REFERENCE.map((aa,i)=>state.zipperFaults[1].has(i)?ZIPPER_REFERENCE[(i+1)%20]:aa),
+    ZIPPER_REFERENCE.map((aa,i)=>state.zipperFaults[2].has(i)?ZIPPER_REFERENCE[(i+1)%20]:aa)
+  ];
+  zipper=zipperMerge({lanes,shifts:state.zipperShifts,
+    closed:state.zipperClosed,rule:state.zipperRule});
   $('score').textContent=frame.fidelity+'/26';
   $('generation').textContent=String(state.tick).padStart(3,'0');
   $('mutations').textContent=String(frame.changed).padStart(2,'0');
@@ -51,7 +60,8 @@ function updateFrame(log=false) {
     'CARRIER   '+carrier,
     'PROTECTED '+frame.matched+'/20 amino-acid identities · '+frame.basis+'/4 DNA bases · 2/2 operators',
     'CONTEXT   '+Math.max(0,100-state.distill).toFixed(0)+'% (symbolic non-core annotation)',
-    'RESULT    '+frame.state+' · '+frame.fidelity+'/26'
+    'RESULT    '+frame.state+' · '+frame.fidelity+'/26',
+    'ZIPPER    '+zipper.output+' · '+zipper.accepted+'/20 merged · '+zipper.holds+' HOLD'
   ].join('\n');
   for(const button of $('aa-grid').querySelectorAll('button')){
     const i=Number(button.dataset.index);
@@ -69,6 +79,7 @@ function updateFrame(log=false) {
   }
   $('aa-summary').textContent=frame.matched+'/20 residue identities decoded · tap to select and mutate / restore';
   updateCodonInspector();
+  updateZipper();
   if(log) logEvent(frame.state,'AA '+frame.matched+'/20 · bases '+frame.basis+'/4 · rate '+state.rate.toFixed(2)+'×');
   if(prefersReduced.matches)drawScene(performance.now());
 }
@@ -145,6 +156,108 @@ function updateCodonInspector(){
        b.dataset.meaning)+'; '+(residue.codons.includes(codon)?'matches selected residue':
        'different residue')+(b.dataset.unavailable==='true'?'; base missing':''));
   }
+}
+
+function buildZipper(){
+  const ids=['zipper-alpha','zipper-beta-rail','zipper-gamma-rail'];
+  for(let lane=0;lane<3;lane++){
+    const host=$(ids[lane]);
+    for(let index=0;index<ZIPPER_REFERENCE.length;index++){
+      const tooth=document.createElement('button');
+      tooth.type='button';tooth.className='zipper-tooth';
+      tooth.dataset.index=String(index);tooth.dataset.lane=String(lane);
+      tooth.textContent=ZIPPER_REFERENCE[index];
+      tooth.addEventListener('click',()=>{
+        const originalIndex=((index+state.zipperShifts[lane])%20+20)%20;
+        state.selectedIndex=originalIndex;
+        state.selectedCodon=AA20[originalIndex].codons[0];
+        const faults=lane===0?state.mutations:state.zipperFaults[lane];
+        if(faults.has(originalIndex)) faults.delete(originalIndex);
+        else faults.add(originalIndex);
+        updateFrame();
+        logEvent('ZIPPER '+(['α','β','γ'][lane])+' '+String(index+1).padStart(2,'0'),
+          faults.has(originalIndex)?'Strand-local variation introduced':'Strand-local variation restored');
+      });
+      host.append(tooth);
+    }
+  }
+  for(let index=0;index<20;index++){
+    const tooth=document.createElement('span');
+    tooth.className='zipper-tooth';tooth.dataset.index=String(index);
+    tooth.textContent='·';$('zipper-result').append(tooth);
+  }
+}
+function updateZipper(){
+  if(!zipper)return;
+  const tag=$('zipper-status');
+  tag.textContent=zipper.status.replace('_',' ');
+  tag.className='zipper-tag'+(zipper.status==='HOLD'?' hold':zipper.status==='MERGED'?' merged':'');
+  $('zipper-close-v').textContent=zipper.closed+' / 20';
+  $('zipper-merged-count').textContent=zipper.accepted+' / 20 accepted · '+zipper.unanimity+' unanimous';
+  $('zipper-held-count').textContent=zipper.holds+' held · '+zipper.open+' open';
+  $('zipper-beta-v').textContent=(state.zipperShifts[1]>0?'+':'')+state.zipperShifts[1];
+  $('zipper-gamma-v').textContent=(state.zipperShifts[2]>0?'+':'')+state.zipperShifts[2];
+  $('zipper-interpretation').textContent=zipper.status==='HOLD'
+   ?'Alignment or observation disagreement; at least one closed tooth is HELD.'
+   :zipper.status==='MERGED'
+   ?'All 20 teeth merged under the selected symbolic rule. This does not prove common ancestry.'
+   :'Close teeth to merge matching observations; unclosed teeth remain OPEN.';
+  const rows=['zipper-alpha','zipper-beta-rail','zipper-gamma-rail'];
+  for(const [index,p] of zipper.positions.entries()){
+    for(let lane=0;lane<3;lane++){
+      const b=$(rows[lane]).children[index];
+      b.textContent=p.values[lane]??'·';
+      b.dataset.sealed=String(p.sealed);
+      b.dataset.variance=String(p.values[lane]!==null&&p.values[lane]!==p.reference);
+      b.dataset.missing=String(p.values[lane]===null);
+      b.dataset.focus=String(index===state.selectedIndex);
+      const description=['α','β','γ'][lane]+' position '+(index+1)+', observed '+(p.values[lane]??'missing')+
+       ', expected '+p.reference+', '+p.state;
+      b.title=description;b.setAttribute('aria-label',description);
+      b.setAttribute('aria-pressed',String(p.values[lane]!==p.reference));
+    }
+    const result=$('zipper-result').children[index];
+    result.textContent=p.state==='OPEN'?'·':p.state==='HOLD'?'×':p.output;
+    result.dataset.merged=String(p.state==='MERGED');
+    result.dataset.hold=String(p.state==='HOLD');
+    result.title='Merged position '+(index+1)+': '+p.state+' · '+p.referenceVotes+'/3 match ancestor';
+  }
+  for(const b of document.querySelectorAll('[data-ziprule]')){
+    b.setAttribute('aria-pressed',String(b.dataset.ziprule===state.zipperRule));
+  }
+}
+function bindZipperControls(){
+  $('zipper-close').addEventListener('input',e=>{
+    state.zipperClosed=Number(e.target.value);updateFrame();
+  });
+  $('zipper-close').addEventListener('change',()=>
+    logEvent('ZIPPER',zipper.closed+'/20 closed · '+zipper.accepted+' merged · '+zipper.holds+' held'));
+  document.querySelectorAll('[data-ziprule]').forEach(b=>b.addEventListener('click',()=>{
+    state.zipperRule=b.dataset.ziprule;updateFrame();
+    logEvent('ZIPPER RULE',state.zipperRule==='strict'?'3/3 unanimity':'2/3 symbolic quorum');
+  }));
+  for(const [id,lane] of [['zipper-beta',1],['zipper-gamma',2]]){
+    $(id).addEventListener('input',e=>{
+      state.zipperShifts[lane]=Number(e.target.value);updateFrame();
+    });
+    $(id).addEventListener('change',()=>{
+      logEvent('CLOCK OFFSET',(['α','β','γ'][lane])+' '+state.zipperShifts[lane]+' residues');
+    });
+  }
+  function setClosure(n){
+    state.zipperClosed=Math.max(0,Math.min(20,n));
+    $('zipper-close').value=String(state.zipperClosed);
+    updateFrame();
+    logEvent('ZIPPER',state.zipperClosed+'/20 teeth closed · '+zipper.holds+' held');
+  }
+  $('zipper-open').addEventListener('click',()=>setClosure(state.zipperClosed-1));
+  $('zipper-advance').addEventListener('click',()=>setClosure(state.zipperClosed+1));
+  $('zipper-all').addEventListener('click',()=>setClosure(20));
+  $('zipper-align').addEventListener('click',()=>{
+    state.zipperShifts=[0,0,0];
+    $('zipper-beta').value='0';$('zipper-gamma').value='0';
+    updateFrame();logEvent('ZIPPER ALIGN','Three symbolic clock offsets restored to zero');
+  });
 }
 
 function buildSymbols(){
@@ -242,6 +355,9 @@ function bindControls(){
     state.tick=0;state.distill=24;state.rate=1;state.polarity='+';state.mode='all';
     state.mutations.clear();state.lostBases.clear();
     state.selectedIndex=0;state.selectedCodon='GCT';
+    state.zipperClosed=0;state.zipperRule='strict';state.zipperShifts=[0,0,0];
+    state.zipperFaults.forEach(x=>x.clear());
+    $('zipper-close').value='0';$('zipper-beta').value='0';$('zipper-gamma').value='0';
     $('distill').value='24';$('time-rate').value='1';
     pressState('[data-polarity]','polarity','+');pressState('[data-mode]','mode','all');
     state.trace=[];updateFrame();logEvent('GENESIS','LUCA-26 ancestral reference restored');
@@ -252,6 +368,8 @@ function bindControls(){
       'KET :: LUCA-26 / TEMPORAL LINEAGE',
       'Glyph: { ( [ 20 AA | ACTG | −+ ] ) }',
       'Note: invented symbolic ancestor, not a reconstructed LUCA sequence.',
+      'Zipper: 3 x 20 positions, '+state.zipperRule+', '+zipper.closed+' closed, '+zipper.accepted+' merged, '+zipper.holds+' held.',
+      'Zipper output: '+zipper.output,
       $('frame-readout').textContent,
       ...state.trace.map(e=>'T'+e.tick+' '+e.action+' '+e.detail)
     ].join('\n');
@@ -464,7 +582,9 @@ function animation(t){drawScene(t);if(!prefersReduced.matches)requestAnimationFr
 
 buildSymbols();
 buildCodonCube();
+buildZipper();
 bindControls();
+bindZipperControls();
 updateFrame();
 logEvent('GENESIS','20 AA | ACTG | −+ instantiated');
 resize();
