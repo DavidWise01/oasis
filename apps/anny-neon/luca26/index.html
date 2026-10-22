@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06091b">
+<meta name="description" content="ANNY LUCA-26 — an interactive toroid consuming a conserved ancestral box, inside an adaptive amoeba.">
+<title>LUCA-26 · The Toroid Eats the Box | ANNY</title>
+<link rel="stylesheet" href="./chamber.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="top-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">◈</div>
+      <div><b>KET / LUCA–26</b><span>SAPPHON · TEMPORAL CHAMBER</span></div>
+    </div>
+    <nav aria-label="Project navigation">
+      <a href="../">← ANNY NEON</a>
+      <a href="https://github.com/DavidWise01/oasis/tree/main/apps/anny-neon/luca26">SOURCE ↗</a>
+    </nav>
+  </div>
+</header>
+<main class="shell">
+  <section class="intro" aria-labelledby="title">
+    <div>
+      <div class="kicker">EXPERIMENT 01 / TEMPORAL ISOMORPHISM</div>
+      <h1 id="title">The toroid <em>eats the box.</em></h1>
+      <p>The amoeba adapts. The toroid distills and changes the clock. The box protects a 26-position ancestral identity: <strong>20 amino acids + ACTG + −/+</strong>. Explore what survives—and what cannot be recovered.</p>
+    </div>
+    <div class="hero-stamp" aria-hidden="true"><strong>{ ( [ ] ) }</strong><small>LUCA :: 20 + 4 + 2</small></div>
+  </section>
+
+  <div class="cols">
+    <section class="panel" aria-labelledby="scene-title">
+      <div class="panel-header">
+        <b id="scene-title">01 / LIVE TEMPORAL VESSEL</b>
+        <span class="micro"><i>●</i> CANVAS 2D · SYMBOLIC</span>
+      </div>
+      <div class="viz-wrap">
+        <canvas id="chamber" role="img" aria-label="Animated conceptual amoeba membrane around a rotating toroid containing the LUCA-26 register. State is reported below the canvas.">Your browser needs Canvas 2D to display the vessel; all controls and readouts remain available.</canvas>
+        <div class="viz-hud" aria-hidden="true">
+          <span id="hud-mode">FORM: { ( [ ] ) }</span>
+          <span id="hud-time">TICK: 000 · OBSERVER RATE: 1.00×</span>
+          <span id="hud-loss">DISTILLATION: 00%</span>
+        </div>
+      </div>
+      <div class="layer-buttons" role="group" aria-label="Choose visible kernel layers">
+        <button class="pill" type="button" data-mode="all" aria-pressed="true">{ ( [ ] ) } ALL</button>
+        <button class="pill" type="button" data-mode="amoeba" aria-pressed="false">{ } AMOEBA</button>
+        <button class="pill" type="button" data-mode="toroid" aria-pressed="false">( ) TOROID</button>
+        <button class="pill" type="button" data-mode="box" aria-pressed="false">[ ] BOX</button>
+      </div>
+      <div class="timeline">
+        <span class="micro">OBSERVER READOUT / RETAINED LINEAGE</span>
+        <span class="status-tag" id="state-tag" role="status" aria-live="polite">PRESERVED</span>
+      </div>
+      <div class="stat-band">
+        <div><strong id="score">26/26</strong><small>INVARIANT SLOTS</small></div>
+        <div><strong id="generation">000</strong><small>GENERATION</small></div>
+        <div><strong id="mutations">00</strong><small>CHANGES</small></div>
+        <div><strong id="losses">00</strong><small>ERASURES</small></div>
+      </div>
+    </section>
+
+    <aside class="panel" aria-labelledby="ctrl-title">
+      <div class="panel-header"><b id="ctrl-title">02 / DISTILLATION ENGINE</b><span class="micro">ACT || REACT || CHANGE</span></div>
+      <div class="controls">
+        <div class="control">
+          <div class="row"><label for="distill">Distillation · information removal</label><output id="distill-value" for="distill">00%</output></div>
+          <input id="distill" type="range" min="0" max="100" step="1" value="24">
+          <p class="hint">Early stages shed context. After 60%, codon positions are progressively erased. Lost information is not silently reconstructed.</p>
+        </div>
+        <div class="control">
+          <div class="row"><label for="time-rate">Observer clock · relative rate</label><output id="time-value" for="time-rate">1.00×</output></div>
+          <input id="time-rate" type="range" min="0.25" max="4" step="0.25" value="1">
+          <p class="hint">Illustrative clock-rate multiplier, not a physical relativity calculation.</p>
+        </div>
+        <div class="control">
+          <div class="row"><label>Polarity · KET operator</label><output id="polarity-value">+</output></div>
+          <div class="switcher" role="group" aria-label="Select active operator">
+            <button type="button" data-polarity="−" aria-pressed="false">− REVERSE</button>
+            <button type="button" data-polarity="+" aria-pressed="true">+ FORWARD</button>
+          </div>
+          <p class="hint">Both symbols remain in the invariant register; this switch changes the transform direction.</p>
+        </div>
+        <div class="control">
+          <div class="grammar" aria-label="Three-layer glyph grammar">
+            <div class="token violet"><b>{ }</b><small>ADAPT</small></div>
+            <div class="token cyan"><b>( )</b><small>PROCESS</small></div>
+            <div class="token green"><b>[ ]</b><small>RETAIN</small></div>
+            <div class="token center"><b>− +</b><small>OPERATE</small></div>
+          </div>
+        </div>
+        <div class="action-row">
+          <button id="step" type="button" class="action primary">↻ ADVANCE 1</button>
+          <button id="play" type="button" class="action" aria-pressed="false">▶ PLAY</button>
+          <button id="repair" type="button" class="action muted">↶ RESTORE ANCESTOR</button>
+          <button id="copy" type="button" class="action muted">⧉ COPY LINEAGE</button>
+        </div>
+        <p id="action-feedback" class="hint" aria-live="polite">Click amino acids to change their codon identity. Click a DNA base to remove it from the carrier.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="panel core" aria-labelledby="watermark-title">
+    <div class="panel-header">
+      <b id="watermark-title">03 / LUCA–26 ANCESTRAL WATERMARK</b>
+      <span class="micro">20 AA :: 4 DNA :: 2 OPERATORS</span>
+    </div>
+    <div class="controls">
+      <div class="core-heading"><h2>[ AA :: 20 ]</h2><small id="aa-summary">Tap a residue to mutate; tap again to restore</small></div>
+      <div id="aa-grid" class="aa-grid" aria-label="Twenty canonical amino acids"></div>
+      <div class="row" style="margin-top:17px;flex-wrap:wrap">
+        <div>
+          <div class="core-heading"><h2>[ NT :: 4 ]</h2></div>
+          <div class="bases" id="bases" role="group" aria-label="Toggle DNA base availability"></div>
+        </div>
+        <div>
+          <div class="core-heading"><h2>[ OP :: 2 ]</h2></div>
+          <div class="bases"><span class="polarity">− VOID / BOUNDARY</span><span class="polarity">+ GRAVITY / RETURN</span></div>
+        </div>
+      </div>
+      <p class="hint">Biological grounding: the 20 conventional amino-acid codes and synonymous DNA codons are real. The chosen 20-residue sequence, framing operators, amoeba, and toroid are an invented KET model—not a recovered LUCA genome.</p>
+    </div>
+  </section>
+
+  <div class="footer-panels">
+    <section class="panel output" aria-labelledby="decode-title">
+      <h2 id="decode-title">04 / DISTILLED CARRIER & DECODE</h2>
+      <pre id="frame-readout">Loading ancestral register…</pre>
+      <p class="hint" id="lineage-note">The ancestral identity is held separately from the changing carrier.</p>
+    </section>
+    <section class="panel output" aria-labelledby="ledger-title">
+      <h2 id="ledger-title">05 / LINEAGE TRACE · APPEND IN SESSION</h2>
+      <ol class="events" id="events" aria-live="off"></ol>
+      <p class="hint">This is an in-memory demonstration ledger, not a signed immutable record or Git commit.</p>
+    </section>
+  </div>
+  <footer class="smallprint">KET :: LUCA-26 · <strong>{ ( [ 20 AA | ACTG | −+ ] ) }</strong> · A lineage visualization of distillation and differing clock rates, not evidence of biological ancestry, relativity, or data recoverability. <a href="../">Return to frozen ANNY Harvester ↗</a></footer>
+</main>
+<noscript><p style="padding:20px;text-align:center">Enable JavaScript to operate the interactive LUCA-26 chamber.</p></noscript>
+<script type="module" src="./chamber.mjs"></script>
+</body></html>
