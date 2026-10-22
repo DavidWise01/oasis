@@ -1,0 +1,39 @@
+name: ANNY Disk Process Crash
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/anny-neon/durability/**'
+      - '.github/workflows/anny-disk-crash.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sqlite-wal-kill:
+    name: SQLite FULL / WAL process-SIGKILL regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout ANNY source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check Python syntax
+        run: python -m py_compile apps/anny-neon/durability/disk_gate.py
+      - name: Run five actual subprocess SIGKILL cases
+        run: |
+          python apps/anny-neon/durability/disk_gate.py \
+            --output ${{ runner.temp }}/anny-disk-process-evidence.json
+      - name: Preserve genuine runner report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: anny-disk-process-crash-evidence
+          path: ${{ runner.temp }}/anny-disk-process-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
