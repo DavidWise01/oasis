@@ -5,7 +5,7 @@ const state = {
   tick:0, distill:24, rate:1, mode:'all', polarity:'+',
   mutations:new Set(), lostBases:new Set(), playing:false, trace:[],
   selectedIndex:0, selectedCodon:'GCT',
-  zipperClosed:0, zipperRule:'strict', zipperShifts:[0,0,0],
+  zipperClosed:20, zipperRule:'strict', zipperShifts:[0,0,0],
   zipperFaults:[new Set(),new Set(),new Set()]
 };
 const canvas=$('chamber');
@@ -355,9 +355,9 @@ function bindControls(){
     state.tick=0;state.distill=24;state.rate=1;state.polarity='+';state.mode='all';
     state.mutations.clear();state.lostBases.clear();
     state.selectedIndex=0;state.selectedCodon='GCT';
-    state.zipperClosed=0;state.zipperRule='strict';state.zipperShifts=[0,0,0];
+    state.zipperClosed=20;state.zipperRule='strict';state.zipperShifts=[0,0,0];
     state.zipperFaults.forEach(x=>x.clear());
-    $('zipper-close').value='0';$('zipper-beta').value='0';$('zipper-gamma').value='0';
+    $('zipper-close').value='20';$('zipper-beta').value='0';$('zipper-gamma').value='0';
     $('distill').value='24';$('time-rate').value='1';
     pressState('[data-polarity]','polarity','+');pressState('[data-mode]','mode','all');
     state.trace=[];updateFrame();logEvent('GENESIS','LUCA-26 ancestral reference restored');
