@@ -1,0 +1,187 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KET 488 · Quark Chromatic Bridge</title><meta name="description" content="Interactive KET 488-address bridge to QCD three color indices with same-slot intersections and optional author-supplied wavelength data."><style>
+:root{color-scheme:dark;--bg:#070b1b;--panel:#111a31;--edge:#536084;--muted:#a1b4d4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0,#282444,transparent 55%),var(--bg);color:#eaf2ff;font:14px/1.5 system-ui,sans-serif}
+a{color:#94dfff}button,input,textarea,select{font:inherit}button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid white;outline-offset:2px}
+nav{background:#0a1024ee;position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 21px;border-bottom:1px solid var(--edge)}
+nav b{letter-spacing:.14em}nav span{display:flex;gap:14px;font:11px ui-monospace,monospace}
+main{max-width:1360px;padding:22px 19px 55px;margin:auto}h1{font-size:clamp(34px,5vw,62px);letter-spacing:-.055em;line-height:1.13;margin:5px 0}
+h1 em{font-style:normal;color:#c3acff}.lead{max-width:1000px;color:var(--muted);margin:9px 0 20px}
+.kicker{color:#b0b1f8;font:11px ui-monospace,monospace;letter-spacing:.15em}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:15px}
+.stat{border:1px solid #485a86;background:#111b32;border-radius:11px;padding:11px 14px}
+.stat strong{font:700 26px ui-monospace,monospace;display:block;color:#d6c2ff}.stat small{font:10px ui-monospace,monospace;color:#97abc8}
+.grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,.9fr);gap:15px}
+.panel{border:1px solid #53628b;background:linear-gradient(155deg,#111b34,#0b1022);border-radius:15px;overflow:hidden;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #52648a;padding:13px 17px;font:11px ui-monospace,monospace;letter-spacing:.07em}
+.head small{color:#9eb4d1}.pad{padding:15px}.controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.control{display:grid;gap:5px}label{font:11px ui-monospace,monospace;color:#b6d7ed}
+input[type=number],select,textarea{color:#e5f3ff;background:#0c182e;border:1px solid #63799d;border-radius:9px;padding:9px;width:100%}
+input[type=range]{width:100%;accent-color:#b1a1ef}
+.marker{color:#9fcdea;font:11px ui-monospace,monospace;letter-spacing:.09em;margin:14px 0 9px}
+.intersections{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.intersections button{border:1px solid var(--c);background:#1a233e;color:#e5f0ff;border-radius:11px;min-width:0;padding:12px 4px;display:grid;gap:5px}
+.intersections button[aria-pressed=true]{box-shadow:0 0 15px var(--c),inset 0 0 0 1px var(--c)}
+.intersections strong{color:var(--c);font:700 clamp(13px,1.7vw,21px) ui-monospace,monospace}.intersections small{font:10px ui-monospace,monospace;color:#bbcae2}
+.quarks{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.quark{border:1px solid var(--c);border-radius:12px;padding:11px 5px;background:#172038;display:grid;justify-items:center;gap:6px;text-align:center}
+.quark .sphere{width:63px;height:63px;border-radius:50%;display:grid;place-items:center;font:700 21px ui-monospace,monospace;color:#fff;background:radial-gradient(circle at 35% 25%,#ffffffaa,var(--c) 35%,#16223b 78%);box-shadow:0 0 20px var(--c)}
+.quark strong{font:18px ui-monospace,monospace}.quark small{font:10px ui-monospace,monospace;color:#b4c4dd;overflow-wrap:anywhere}
+.neutral{background:#272440;border:1px solid #706c9e;padding:11px;border-radius:11px;margin:12px 0;text-align:center}
+.neutral b{display:block;color:#e3cfff;font:17px ui-monospace,monospace}.neutral small{color:#b9bedc}
+.perms{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.perm{background:#192744;color:#dbe8ff;border:1px solid #59749c;border-radius:8px;padding:8px;font:12px ui-monospace,monospace}
+.perm[aria-pressed=true]{background:#554073;border-color:#d3b8ff}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#b8d7f1;background:#0c1830;border:1px solid #405b7e;border-radius:9px;padding:12px;font:11px/1.7 ui-monospace,monospace}
+.mesh{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin:10px 0}
+.mesh div{background:var(--c);text-align:center;padding:6px 2px;border-radius:6px;font:10px ui-monospace,monospace;color:#fff}
+.palette{display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:3px}
+.cell{aspect-ratio:1;border:1px solid #ffffff33;border-radius:2px;background:var(--c);padding:0;opacity:.75;min-width:0}
+.cell[data-current=true]{opacity:1;outline:2px solid white;outline-offset:1px;z-index:1}.cell:hover{opacity:1;transform:scale(1.2);z-index:2}
+.warn{border-left:2px solid #b5a077;padding-left:11px;color:#acbad0;font-size:11px;margin:12px 0}
+.bottom{display:grid;grid-template-columns:1.25fr .85fr;gap:15px;margin-top:15px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btn{border:1px solid #647ca0;background:#213054;color:#f0f7ff;border-radius:8px;padding:9px 11px}
+.btn.primary{background:#50457d;border-color:#b4a0ee}
+textarea{resize:vertical;min-height:120px;font:12px/1.5 ui-monospace,monospace}
+.state{font:11px ui-monospace,monospace;color:#afdbf3}
+@media(max-width:1070px){.grid,.bottom{grid-template-columns:1fr}}
+@media(max-width:660px){main{padding:12px}.stats{grid-template-columns:repeat(2,1fr)}.palette{grid-template-columns:repeat(16,1fr)}.intersections{grid-template-columns:repeat(2,1fr)}.quark .sphere{width:45px;height:45px}}
+</style></head><body>
+<nav><b>◈ KET / 488 / QCD</b><span><a href="./ket-488.html">488 TOROID</a><a href="./ket-488-i-mesh.html">{{i}} MESH</a><a href="./apps/anny-neon/">ANNY</a></span></nav>
+<main><div class="kicker">CHROMATIC ADDRESS INTERSECTIONS · QUARK INDEX LAYER</div><h1>488 roots <em>meet QCD.</em></h1>
+<p class="lead">Apply three QCD color-index labels across your four-root, 488-address mesh without overwriting the original palette. Element spectral wavelengths are a separate, optional source field—not an inferred property of quarks.</p>
+<div class="stats"><div class="stat"><small>REGISTRY ADDRESSES</small><strong>488</strong></div><div class="stat"><small>ROOTS × SLOTS</small><strong>4 × 122</strong></div><div class="stat"><small>QUARK COLOR INDICES</small><strong>3</strong></div><div class="stat"><small>GLUON GAUGE STATES</small><strong>8</strong></div></div>
+<div class="grid"><section class="panel"><div class="head"><b>01 / FOUR-ROOT INTERSECTION</b><small>THREE CHANNELS + ONE WITNESS</small></div><div class="pad">
+<div class="controls"><div class="control"><label for="address">KET address Z1–Z488</label><input id="address" type="number" min="1" max="488" step="1" value="184"></div>
+<div class="control"><label for="slot">Shared local slot 1–122</label><input id="slot" type="range" min="1" max="122" step="1" value="62"></div>
+<div class="control"><label for="baryon">Baryon flavor content</label><select id="baryon"><option value="p">Proton uud · +1</option><option value="n">Neutron udd · 0</option></select></div>
+<div class="control"><label for="anchor">Anchor root</label><select id="anchor"><option value="0">+H</option><option value="1" selected>+O</option><option value="2">−N</option><option value="3">+N</option></select></div></div>
+<div class="marker">SELECTED ADDRESS AND ALL FOUR ROOT INTERSECTIONS</div><div id="intersections" class="intersections" role="group" aria-label="Four same-slot KET intersections"></div>
+<div class="marker">RGB ARE QCD INDEX NAMES; ROOT COLORS REMAIN KET DISPLAY COLORS</div><div id="quarks" class="quarks"></div>
+<div class="neutral"><b>COLOR SINGLET · “WHITE”</b><span id="singlet">uud · +rgb</span><br><small>One of six signed permutation terms, not physical mixing of three light colors.</small></div>
+<div class="marker">CHOOSE A REPRESENTATIVE TERM OF THE ANTISYMMETRIC SIX-TERM SINGLET</div><div id="perms" class="perms" role="group" aria-label="Six QCD color permutation terms"></div>
+<pre id="info" aria-live="polite"></pre><p class="warn">QCD charge (r/g/b), quark flavor (u/d), element emission wavelength and KET display swatches are distinct fields. This is an address overlay, not proof of a wavelength–quark identity.</p>
+</div></section><section class="panel"><div class="head"><b>02 / FULL 488-ADDRESS REGISTER</b><small>CLICK ANY ADDRESS</small></div><div class="pad">
+<div class="marker">SOURCE {{i}} · EIGHT EXISTING MESH DISPLAY SWATCHES</div><div id="mesh" class="mesh"></div>
+<div id="palette" class="palette" role="group" aria-label="488 clickable address tiles using existing four KET root colors"></div>
+<p class="warn">Existing code defines 488 addresses and root/group display colors; it does not contain 488 independently verified element-to-wavelength records. The 488 tiles therefore reuse root colors unless supplied annotations are loaded.</p>
+<div class="actions"><button id="copy" class="btn" type="button">⧉ COPY CURRENT STATE</button><a class="btn" href="./ket-488.html">OPEN SOURCE REGISTRY ↗</a></div>
+<p id="feedback" class="state" role="status"></p><pre id="registry"></pre>
+</div></section></div>
+<div class="bottom"><section class="panel"><div class="head"><b>03 / OPTIONAL ELEMENT WAVELENGTH IMPORT</b><small>LOCAL SESSION · NONDESTRUCTIVE</small></div><div class="pad">
+<p class="warn">The exact 488-wavelength table wasn't found in the checked GitHub sources. Import annotations from your own source, with provenance, rather than assigning fictional nanometers. A chemical element normally has many emission lines, so a single line is not the full element spectrum.</p>
+<label for="payload">JSON array of address records</label><textarea id="payload" spellcheck="false" placeholder='[{"address":184,"wavelength_nm":null,"hex":"#12aa78","source":"reference","intersection":"..."}]'></textarea>
+<div class="actions"><button id="apply" class="btn primary" type="button">APPLY ANNOTATION OVERLAY</button><button id="clear" class="btn" type="button">CLEAR OVERLAY</button></div>
+<p id="importstate" class="state">0 annotations, 0 supplied wavelengths</p><pre id="spectral">Wavelength unassigned.</pre>
+</div></section><section class="panel"><div class="head"><b>04 / QCD BOUNDARY</b><small>WHAT THE COLORS ACTUALLY MEAN</small></div><div class="pad">
+<p>In quantum chromodynamics (QCD), red, green and blue name three quantum charge indices, not human-visible colors. Protons carry flavor content uud; neutrons carry udd. Both are color-singlet baryons.</p>
+<p>QCD has an eight-dimensional gluon gauge field associated with SU(3). KET's eight mesh lanes can display eight indexed positions without implying that those lanes literally are gluons.</p>
+<pre>QCD :: color index ∈ {r,g,b}
+KET :: address = root×122 + slot
+MAPPING :: (r,g,b) → 3 addressed roots
+WITNESS :: unused fourth root
+COLORLESS :: signed six-term singlet
+NOT :: an additive RGB photon pixel</pre>
+<p class="state">Reference: <a href="https://www.energy.gov/science/doe-explainsquantum-chromodynamics">DOE Quantum Chromodynamics</a> · <a href="https://pdg.lbl.gov/">Particle Data Group</a>.</p>
+</div></section></div>
+<p class="warn">Experimental symbolic overlay, not a quantum simulation or new particle discovery. Original KET roots, token, 18-slot cubit, ANNY/Harvester, Neon and Radon are unchanged.</p>
+</main><script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const ROOTS=[{name:'+H',color:'#f05c65'},{name:'+O',color:'#33d3a0'},{name:'−N',color:'#ab75ff'},{name:'+N',color:'#54c9ff'}];
+const MESH=['#ff4960','#3398ff','#37f6a1','#f0f5ff','#bd6cff','#ff9634','#75819b','#ffe35b'];
+const TOKEN='-+001122334455667788990099887766554433221100-+';
+const TERMS=[['+',[0,1,2]],['+',[1,2,0]],['+',[2,0,1]],['−',[0,2,1]],['−',[2,1,0]],['−',[1,0,2]]];
+const NAMES=['RED','GREEN','BLUE'],LABELS=['r','g','b'];
+const S={address:184,baryon:'p',term:0,imported:new Map()};
+const root=z=>Math.floor((z-1)/122),slot=z=>(z-1)%122+1,addr=(r,s)=>r*122+s;
+function roots(){const a=root(S.address);return [a,(a+1)%4,(a+2)%4,(a+3)%4]}
+function label(z){return ROOTS[root(z)].name+slot(z)}
+function hex(z){return S.imported.get(z)?.hex||ROOTS[root(z)].color}
+function select(z){if(!Number.isInteger(z)||z<1||z>488)return;S.address=z;render()}
+function node(tag,text,cssClass){const e=document.createElement(tag);if(cssClass)e.className=cssClass;if(text!==undefined)e.textContent=text;return e}
+for(let z=1;z<=488;z++){
+ const b=node('button',undefined,'cell');b.type='button';b.dataset.z=String(z);b.setAttribute('aria-label','Select KET address Z'+z+' '+label(z));
+ b.title='Z'+z+' / '+label(z);b.style.setProperty('--c',hex(z));b.onclick=()=>select(z);$('palette').append(b);
+}
+MESH.forEach((c,i)=>{const e=node('div','L'+(i+1));e.style.setProperty('--c',c);$('mesh').append(e)});
+TERMS.forEach((term,i)=>{
+ const b=node('button',term[0]+' '+term[1].map(x=>LABELS[x]).join(''),'perm');b.type='button';
+ b.setAttribute('aria-label','Select singlet representative '+b.textContent);
+ b.onclick=()=>{S.term=i;render()};$('perms').append(b);
+});
+function render(){
+ const r=roots(),s=slot(S.address),colors=TERMS[S.term][1],f=S.baryon==='p'?['u','u','d']:['u','d','d'];
+ $('address').value=S.address;$('anchor').value=root(S.address);$('slot').value=s;
+ $('intersections').replaceChildren();
+ r.forEach((rindex,i)=>{
+  const z=addr(rindex,s),b=node('button',undefined);b.type='button';b.style.setProperty('--c',hex(z));
+  b.append(node('strong',label(z)),node('small','Z'+z+' · '+(i===3?'WITNESS':'QCD '+LABELS[i])));
+  b.setAttribute('aria-pressed',String(S.address===z));b.onclick=()=>select(z);$('intersections').append(b);
+ });
+ $('quarks').replaceChildren();
+ colors.forEach((index,i)=>{
+  const z=addr(r[index],s),e=node('div',undefined,'quark');e.style.setProperty('--c',hex(z));
+  const sphere=node('div',LABELS[index],'sphere');
+  e.append(node('strong',f[i]),sphere,node('small',NAMES[index]+' INDEX / '+label(z)+' Z'+z),
+   node('small',S.imported.get(z)?.wavelength_nm?'λ '+S.imported.get(z).wavelength_nm+' nm':'λ UNSUPPLIED'));
+  $('quarks').append(e);
+ });
+ $('singlet').textContent=f.join('')+' · '+TERMS[S.term][0]+' '+colors.map(x=>LABELS[x]).join('')+' / √6 (one term)';
+ [...$('perms').children].forEach((e,i)=>e.setAttribute('aria-pressed',String(i===S.term)));
+ for(const button of $('palette').children){
+  const z=Number(button.dataset.z);button.dataset.current=String(z===S.address);
+  button.style.setProperty('--c',hex(z));
+  button.setAttribute('aria-pressed',String(z===S.address));
+ }
+ $('info').textContent='SELECTED  Z'+S.address+' · '+label(S.address)+'\nINTERSECTION '+r.map(q=>'Z'+addr(q,s)+'='+ROOTS[q].name+s).join(' ∩ ')+
+  '\nQUARK ROOTS  '+r.slice(0,3).map((q,i)=>LABELS[i]+'→'+ROOTS[q].name+s).join(' | ')+
+  '\nWITNESS     '+ROOTS[r[3]].name+s+
+  '\nCANON TOKEN '+TOKEN;
+ $('registry').textContent='ADDRESS Z'+S.address+' :: '+label(S.address)+'\nROOT '+ROOTS[root(S.address)].name+
+  ' · POSITION '+s+'/122\nDISPLAY '+hex(S.address)+
+  '\nSOURCE ket-488.html + ket-488-i-mesh.html\nSTATUS display colors only; wavelength data unverified';
+ const entry=S.imported.get(S.address);
+ $('spectral').textContent=entry?
+  'ADDRESS  '+S.address+'\nλ        '+(entry.wavelength_nm===null?'NOT SUPPLIED':entry.wavelength_nm+' nm')+
+  '\nHEX      '+(entry.hex||'source swatch')+'\nSOURCE   '+(entry.source||'not supplied')+
+  '\nINTERSECT '+(entry.intersection||'four-root same-slot'):
+  'ADDRESS Z'+S.address+' has no imported wavelength annotation.\nThe visible hue is a source registry color, not a measured spectral line.';
+ $('importstate').textContent=S.imported.size+' imported addresses, '+
+  [...S.imported.values()].filter(x=>x.wavelength_nm!==null).length+' supplied wavelengths · not independently validated';
+}
+$('address').onchange=e=>{const z=Number(e.target.value);Number.isInteger(z)&&z>=1&&z<=488?select(z):render()};
+$('slot').oninput=e=>select(addr(root(S.address),Number(e.target.value)));
+$('anchor').onchange=e=>select(addr(Number(e.target.value),slot(S.address)));
+$('baryon').onchange=e=>{S.baryon=e.target.value;render()};
+$('apply').onclick=()=>{
+ try{
+  const list=JSON.parse($('payload').value);
+  if(!Array.isArray(list)||list.length>488)throw Error('Expected array of at most 488 records.');
+  const next=new Map();
+  for(const item of list){
+   if(!item||!Number.isInteger(item.address)||item.address<1||item.address>488)throw Error('Each address must be integer 1..488.');
+   if(item.hex!==undefined&&!(typeof item.hex==='string'&&/^#[a-f0-9]{6}$/i.test(item.hex)))throw Error('hex must be #RRGGBB.');
+   const w=item.wavelength_nm===undefined||item.wavelength_nm===null?null:Number(item.wavelength_nm);
+   if(w!==null&&(!Number.isFinite(w)||w<=0))throw Error('wavelength_nm must be positive or null.');
+   if(item.source!==undefined&&typeof item.source!=='string')throw Error('source must be text.');
+   if(item.intersection!==undefined&&typeof item.intersection!=='string')throw Error('intersection must be text.');
+   if(next.has(item.address))throw Error('Duplicate address '+item.address);
+   next.set(item.address,{hex:item.hex||null,wavelength_nm:w,
+    source:(item.source||'').slice(0,220),intersection:(item.intersection||'').slice(0,220)});
+  }
+  S.imported=next;$('feedback').textContent='Applied in browser session. Original GitHub registry unchanged.';render();
+ }catch(err){$('feedback').textContent='Import rejected: '+err.message}
+};
+$('clear').onclick=()=>{S.imported.clear();$('payload').value='';$('feedback').textContent='Local annotations cleared.';render()};
+$('copy').onclick=async()=>{
+ const r=roots(),s=slot(S.address);
+ const text=['KET 488 / QCD CHROMATIC OVERLAY','Z'+S.address+' = '+label(S.address),
+  'RGB '+r.slice(0,3).map((q,i)=>LABELS[i]+': '+ROOTS[q].name+s).join(' / '),
+  'WITNESS '+ROOTS[r[3]].name+s,'BARYON '+S.baryon,
+  'TERM '+TERMS[S.term][0]+TERMS[S.term][1].map(x=>LABELS[x]).join(''),
+  'WAVELENGTH '+JSON.stringify(S.imported.get(S.address)||null),
+  'DISCLAIMER optical color not QCD color charge'].join('\n');
+ try{await navigator.clipboard.writeText(text);$('feedback').textContent='State copied.'}
+ catch(e){$('feedback').textContent='Clipboard unavailable.'}
+};
+render();
+})();</script></body></html>
