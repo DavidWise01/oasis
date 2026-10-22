@@ -11,7 +11,8 @@ Linux, Python standard library. Use --help and POWER_CUT_PROTOCOL.md.
 """
 from __future__ import annotations
 import argparse, datetime as dt, hashlib, json, os, pathlib, platform
-import socket, sqlite3, sys, tempfile, time, uuid
+import socket, sqlite3, sys, tempfile, time, uuid, fcntl
+from urllib.parse import quote
 
 MARKER="ANNY_SACRIFICIAL_STORAGE_ONLY"
 CASES=("PREPARE_UNCOMMITTED","COMMIT_UNCOMMITTED","RECEIVER_UNCOMMITTED",
@@ -64,6 +65,52 @@ def open_db(path):
  c.execute("PRAGMA synchronous=FULL")
  c.execute("PRAGMA busy_timeout=10000")
  return c
+
+def read_db(path):
+ # Avoid mutating SQLite journal mode or accidentally creating a database
+ # during a post-restart audit. SQLite may perform ordinary WAL recovery.
+ p=pathlib.Path(path).resolve(strict=True)
+ uri="file:"+quote(str(p),safe="/")+"?mode=ro"
+ c=sqlite3.connect(uri,uri=True,timeout=10,isolation_level=None)
+ c.execute("PRAGMA query_only=ON")
+ return c
+
+def parse_witness_clock(value):
+ try:
+  d=dt.datetime.fromisoformat(value)
+  if d.tzinfo is None:raise ValueError("NAIVE_TIMESTAMP")
+  return d.astimezone(dt.timezone.utc)
+ except (TypeError,AttributeError,ValueError) as e:
+  raise ValueError("WITNESS_TIMESTAMP_INVALID") from e
+
+def validate_witness_sequence(events,manifest):
+ # Hashes detect changes, not truth of an operator-entered event.
+ if len(events)!=3:return {"host_stable":False,"clock_ordered":False,
+  "manifest_bound":False,"distinct_event_ids":False}
+ expected=("REGISTER","OFF_OBSERVED","ON_OBSERVED")
+ host=events[0].get("witness_host")
+ host_stable=bool(isinstance(host,dict) and host.get("hostname")
+  and host.get("machine_id") and host.get("boot_id")
+  and all(e.get("witness_host")==host for e in events))
+ manifest_bound=all(e.get("schema")==SCHEMA
+  and e.get("event")==expected[i]
+  and e.get("run_id")==manifest.get("run_id")
+  and e.get("manifest_sha256")==manifest.get("manifest_sha256")
+  for i,e in enumerate(events))
+ nonces=[e.get("event_nonce") for e in events]
+ distinct_event_ids=all(isinstance(n,str) and len(n)==32
+  and all(c in "0123456789abcdef" for c in n) for n in nonces)
+ distinct_event_ids=distinct_event_ids and len(set(nonces))==3
+ clock_ordered=False
+ try:
+  times=[parse_witness_clock(e["observed_utc"]) for e in events]
+  clocks=[e["monotonic_ns"] for e in events]
+  clock_ordered=(times[0]<times[1]<times[2]
+   and all(type(n) is int and n>=0 for n in clocks)
+   and clocks[0]<clocks[1]<clocks[2])
+ except (KeyError,TypeError,ValueError):pass
+ return {"host_stable":host_stable,"clock_ordered":clock_ordered,
+  "manifest_bound":manifest_bound,"distinct_event_ids":distinct_event_ids}
 
 def setup_fixture(root,case):
  if case not in CASES: raise ValueError("UNKNOWN_CASE")
@@ -154,8 +201,8 @@ def arm(manifest_path,seconds):
 
 def inspect(manifest):
  d=pathlib.Path(manifest["fixture_dir"])
- j=open_db(d/"journal.sqlite3")
- r=open_db(d/"receiver.sqlite3")
+ j=read_db(d/"journal.sqlite3")
+ r=read_db(d/"receiver.sqlite3")
  try:
   row=j.execute("SELECT id,digest,source_hex,state,receipt_digest FROM journal "
                 "WHERE id='transfer'").fetchone()
@@ -173,17 +220,28 @@ def inspect(manifest):
   "receiver_rows":len(rec),"violet":violet,"integrity":integrity,
   "source_consistent":not row or (row[1]==DIGEST and row[2]==BYTES.hex())}
 
-def ledger_load(path):
- path=pathlib.Path(path); lines=path.read_text().splitlines() if path.exists() else []
- events=[]; prev="GENESIS"
+def ledger_parse(lines):
+ events=[]; prev="GENESIS"; nonces=set()
  for line in lines:
-  e=json.loads(line)
+  try:e=json.loads(line)
+  except (ValueError,TypeError) as exc:
+   raise ValueError("WITNESS_CHAIN_INVALID") from exc
+  if not isinstance(e,dict):raise ValueError("WITNESS_CHAIN_INVALID")
   digest=e.get("entry_sha256")
   core={k:v for k,v in e.items() if k!="entry_sha256"}
   if e.get("previous_sha256")!=prev or sha(core)!=digest:
    raise ValueError("WITNESS_CHAIN_INVALID")
+  nonce=e.get("event_nonce")
+  if not isinstance(nonce,str) or len(nonce)!=32 or nonce in nonces:
+   raise ValueError("WITNESS_NONCE_REPLAY")
+  nonces.add(nonce)
   events.append(e);prev=digest
  return events,prev
+
+def ledger_load(path):
+ p=pathlib.Path(path)
+ if p.is_symlink():raise ValueError("WITNESS_SYMLINK_FORBIDDEN")
+ return ledger_parse(p.read_text().splitlines() if p.exists() else [])
 
 def witness(manifest_path,ledger_path,event,operator):
  if event not in ("REGISTER","OFF_OBSERVED","ON_OBSERVED"):
@@ -192,31 +250,52 @@ def witness(manifest_path,ledger_path,event,operator):
  witness_host=host_id()
  if same_physical_host(m["target"],witness_host) or m["target"]["hostname"]==witness_host["hostname"]:
   raise ValueError("WITNESS_MUST_BE_ON_SEPARATE_HOST")
- events,prev=ledger_load(ledger_path)
- same=[e for e in events if e["run_id"]==m["run_id"]]
- actual=[e["event"] for e in same]
- expected={"REGISTER":[],"OFF_OBSERVED":["REGISTER"],
-           "ON_OBSERVED":["REGISTER","OFF_OBSERVED"]}[event]
- if actual!=expected:raise ValueError("WITNESS_EVENT_ORDER")
- if same and any(e["manifest_sha256"]!=m["manifest_sha256"] or
-                 e["witness_host"]["machine_id"]!=witness_host["machine_id"] for e in same):
-  raise ValueError("WITNESS_IDENTITY_MISMATCH")
- core={"schema":SCHEMA,"event":event,"run_id":m["run_id"],
-       "manifest_sha256":m["manifest_sha256"],
-       "witness_host":witness_host,"observed_utc":now(),
-       "operator_note":operator.strip()[:300],"previous_sha256":prev}
- e={**core,"entry_sha256":sha(core)}
+ if not all(witness_host.get(k) for k in ("hostname","machine_id","boot_id")):
+  raise ValueError("WITNESS_IDENTITY_INCOMPLETE")
+ if not isinstance(operator,str) or not operator.strip():
+  raise ValueError("WITNESS_NOTE_REQUIRED")
  p=pathlib.Path(ledger_path)
  p.parent.mkdir(parents=True,exist_ok=True)
- with p.open("a",encoding="utf-8") as f:
-  f.write(json.dumps(e,sort_keys=True,ensure_ascii=False)+"\n")
-  f.flush();os.fsync(f.fileno())
+ if p.is_symlink():raise ValueError("WITNESS_SYMLINK_FORBIDDEN")
+ # Lock the full validate-and-append operation. Without flock concurrent
+ # observer processes can each append the same event to the same prior tail.
+ with p.open("a+",encoding="utf-8") as f:
+  fcntl.flock(f.fileno(),fcntl.LOCK_EX)
+  try:
+   f.seek(0)
+   lines=f.read().splitlines()
+   events,prev=ledger_parse(lines)
+   same=[e for e in events if e.get("run_id")==m["run_id"]]
+   actual=[e.get("event") for e in same]
+   expected={"REGISTER":[],"OFF_OBSERVED":["REGISTER"],
+             "ON_OBSERVED":["REGISTER","OFF_OBSERVED"]}[event]
+   if actual!=expected:raise ValueError("WITNESS_EVENT_ORDER")
+   if same:
+    if any(e.get("manifest_sha256")!=m["manifest_sha256"]
+      or e.get("witness_host")!=witness_host for e in same):
+     raise ValueError("WITNESS_IDENTITY_MISMATCH")
+   observed_at=now()
+   clock=time.monotonic_ns()
+   if same and (parse_witness_clock(observed_at)<=
+      parse_witness_clock(same[-1]["observed_utc"])
+      or clock<=same[-1].get("monotonic_ns",-1)):
+    raise ValueError("WITNESS_CLOCK_REVERSED")
+   core={"schema":SCHEMA,"event":event,"run_id":m["run_id"],
+         "manifest_sha256":m["manifest_sha256"],
+         "witness_host":witness_host,"observed_utc":observed_at,
+         "monotonic_ns":clock,"event_nonce":uuid.uuid4().hex,
+         "operator_note":operator.strip()[:300],"previous_sha256":prev}
+   e={**core,"entry_sha256":sha(core)}
+   f.seek(0,os.SEEK_END)
+   f.write(json.dumps(e,sort_keys=True,ensure_ascii=False)+"\n")
+   f.flush();os.fsync(f.fileno())
+  finally:fcntl.flock(f.fileno(),fcntl.LOCK_UN)
  dir_fd=os.open(str(p.parent),os.O_RDONLY|os.O_DIRECTORY)
  try:os.fsync(dir_fd)
  finally:os.close(dir_fd)
  print(json.dumps({"event_recorded":event,"run_id":m["run_id"],
                    "entry_sha256":e["entry_sha256"],
-                   "warning":"manual witness note, not independent electrical measurement"}))
+                   "warning":"operator statement only; hash chain not independent electrical measurement"}))
 
 def verify(manifest_path,ledger_path,out_path):
  m=read_manifest(manifest_path,True)
@@ -236,7 +315,12 @@ def verify(manifest_path,ledger_path,out_path):
    not same_physical_host(m["target"],chosen[0]["witness_host"]) and
    m["target"]["hostname"]!=chosen[0]["witness_host"]["hostname"])
  checks["witness_manifest_consistent"]=bool(chosen and all(
-   e["manifest_sha256"]==m["manifest_sha256"] for e in chosen))
+   e.get("manifest_sha256")==m["manifest_sha256"] for e in chosen))
+ sequence=validate_witness_sequence(chosen,m)
+ checks["witness_host_stable"]=sequence["host_stable"]
+ checks["witness_clock_monotonic"]=sequence["clock_ordered"]
+ checks["witness_event_binding"]=sequence["manifest_bound"]
+ checks["witness_event_nonce_unique"]=sequence["distinct_event_ids"]
  # This is intentionally not certified: witness is operator-reported and
  # no independent electrical meter / immutable attestation has been checked.
  status="EVIDENCE_CANDIDATE_MANUAL_REVIEW" if all(checks.values()) else "NOT_CERTIFIED"
