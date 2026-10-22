@@ -163,6 +163,65 @@ input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cur
  .controls{padding:15px}.panel-header{padding:13px}.grammar{justify-content:center}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
+/* Top-of-box symbolic three-strand zipper / 3 × 20 amino-acid positions. */
+.zipper-panel{margin-top:17px}
+.zipper-shell{padding:18px 20px 22px;background:radial-gradient(ellipse at 50% -10%,#32204c65,transparent 54%)}
+.zipper-intro{display:flex;justify-content:space-between;align-items:start;gap:16px;flex-wrap:wrap}
+.zipper-intro>div{max-width:750px}
+.zipper-formula{margin:5px 0 8px;font:700 clamp(23px,3.1vw,34px) ui-monospace,monospace;color:#efd1ff}
+.zipper-formula span{color:#80e9ff;font-size:.52em;letter-spacing:.07em}
+.zipper-tag{flex:none;background:#183332;color:#9de9df;border:1px solid #66ccc8;
+ border-radius:8px;font:11px ui-monospace,monospace;padding:8px 12px}
+.zipper-tag.hold{background:#3f2128;border-color:#ff8ca5;color:#ffbac6}
+.zipper-tag.merged{background:#143e31;border-color:#7ce4b2;color:#b6ffdc}
+.zipper-controls{display:flex;gap:15px;flex-wrap:wrap;align-items:end;padding:18px 0}
+.zipper-control{flex:1 1 125px;min-width:120px}
+.zipper-control label,.zipper-control output{font:11px ui-monospace,monospace}
+.zipper-control input{accent-color:#bc8bfd}
+.zipper-choice{display:flex;gap:5px;margin-top:8px}
+.zipper-choice button{background:#142442;color:#aec9e5;border:1px solid #536b8b;border-radius:9px;
+ padding:7px 12px;flex:1;min-width:0;cursor:pointer}
+.zipper-choice button[aria-pressed="true"]{background:#422758;color:#f1d8ff;border-color:#cb94ff}
+.zipper-rails{border:1px solid #496282aa;background:linear-gradient(145deg,#10172e,#0c1834);
+ border-radius:15px;padding:13px 11px;display:grid;gap:6px}
+.zipper-rail{display:grid;grid-template-columns:83px minmax(0,1fr);gap:10px;align-items:center}
+.zipper-rail-label{color:#d9c6f8;font:700 17px ui-monospace,monospace;display:flex;align-items:center;gap:6px}
+.zipper-rail-label small{color:#8c9abb;font:9px ui-monospace,monospace}
+.zipper-rail-output{color:#a7f4d1}
+.zipper-teeth{min-width:0;display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:3px}
+.zipper-tooth{min-width:0;min-height:40px;border:1px solid #53618d8c;border-radius:6px;
+ background:#181d3e;color:#e4c8fa;font:700 11px ui-monospace,monospace;padding:5px 0;cursor:pointer;
+ display:grid;place-items:center;position:relative}
+.zipper-tooth[data-sealed="true"]{border-color:#7fdbcd7a;background:#113b3b}
+.zipper-tooth[data-variance="true"]{border-color:#ff8aa5;color:#ffbed3;background:#3c2038}
+.zipper-tooth[data-missing="true"]{color:#fbce9d;border-color:#ae7e5a;background:#382d27}
+.zipper-tooth[data-focus="true"]{outline:1px solid #e7d0ff;outline-offset:1px}
+.zipper-tooth:hover,.zipper-tooth:focus-visible{z-index:1;border-color:#cdb6ff;outline:2px solid #dfc4ff;outline-offset:1px}
+.zipper-output .zipper-tooth{pointer-events:none;border-color:#385571;color:#8dacc7;background:#0a1c2f}
+.zipper-output .zipper-tooth[data-merged="true"]{color:#9cffe1;border-color:#58e3b2;background:#123c32;box-shadow:0 0 12px #58e3b122}
+.zipper-output .zipper-tooth[data-hold="true"]{color:#ffa9c4;border-color:#b35470;background:#3b1a2f}
+.zipper-spine{display:grid;grid-template-columns:83px minmax(0,1fr);gap:10px;align-items:center}
+.zipper-spine>span:first-child{color:#bd97f4;text-align:center}
+.zipper-spine .zipper-track{display:flex;gap:8px;justify-content:center;align-items:center;min-width:0;
+ border-bottom:1px dashed #756fbb83;color:#86b6de;font:9px ui-monospace,monospace;letter-spacing:.1em}
+.zipper-spine>span:last-child{display:none}
+.zipper-action-row{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}
+.zipper-action-row button{flex:1 1 115px}
+.zipper-result-line{display:flex;gap:9px 18px;align-items:center;flex-wrap:wrap;color:#c5eeea;
+ padding:9px 0 7px;font:11px ui-monospace,monospace}
+.zipper-warning{border-left:2px solid #b47aef;padding-left:11px;margin-top:10px}
+@media(max-width:780px){.zipper-shell{padding:12px}.zipper-rails{padding:11px 7px}
+ .zipper-rail,.zipper-spine{grid-template-columns:46px minmax(0,1fr);gap:5px}
+ .zipper-rail-label{font-size:14px;flex-direction:column;align-items:center;gap:0}
+ .zipper-rail-label small{font-size:8px}
+ .zipper-teeth{gap:2px}
+ .zipper-tooth{min-height:33px;padding:2px 0;font-size:9px;border-radius:3px}
+ .zipper-controls{gap:10px}.zipper-control{min-width:90px}
+}
+@media(max-width:420px){.zipper-tooth{font-size:8px;min-height:30px}
+ .zipper-rail,.zipper-spine{grid-template-columns:34px minmax(0,1fr);gap:3px}
+ .zipper-rail-label{font-size:12px}}
+
 </style>
 </head>
 <body>
@@ -183,7 +242,7 @@ input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cur
     <div>
       <div class="kicker">EXPERIMENT 01 / TEMPORAL ISOMORPHISM</div>
       <h1 id="title">The toroid <em>eats the box.</em></h1>
-      <p>The amoeba adapts. The toroid distills and changes the clock. The box protects a 26-position ancestral identity: <strong>20 amino acids + ACTG + −/+</strong>. Explore what survives—and what cannot be recovered.</p>
+      <p>The three-strand zipper merges above the conserved core. The amoeba adapts. The toroid distills and changes the clock. The box protects a 26-position ancestral identity: <strong>20 amino acids + ACTG + −/+</strong>. Explore what survives—and what cannot be recovered.</p>
     </div>
     <div class="hero-stamp" aria-hidden="true"><strong>{ ( [ ] ) }</strong><small>LUCA :: 20 + 4 + 2</small></div>
   </section>
@@ -260,9 +319,66 @@ input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cur
     </aside>
   </div>
 
+  <section class="panel zipper-panel" aria-labelledby="zipper-title">
+    <div class="panel-header">
+      <b id="zipper-title">03 / TOP ZIPPER · 3 × 20 AMINO ACIDS</b>
+      <span class="micro">α20 || β20 || γ20 → ONE ALIGNED 20-SLOT RESULT</span>
+    </div>
+    <div class="zipper-shell">
+      <div class="zipper-intro">
+        <div>
+          <div class="kicker">ABOVE THE LUCA BOX · THREE TEMPORAL LANES</div>
+          <h2 class="zipper-formula">{{3 × 20}} <span>↓ ZIPPER MERGE</span></h2>
+          <p class="hint">Three rows of 20 residues form 60 symbolic observations. Each vertical tooth closes into one of 20 merged positions. Click a residue to introduce or remove a strand-local change.</p>
+        </div>
+        <span class="zipper-tag" id="zipper-status" role="status" aria-live="polite">IN PROGRESS</span>
+      </div>
+      <div class="zipper-controls">
+        <div class="zipper-control" style="flex:2 1 240px">
+          <div class="row"><label for="zipper-close">Zipper closure</label><output id="zipper-close-v" for="zipper-close">0 / 20</output></div>
+          <input id="zipper-close" type="range" min="0" max="20" step="1" value="0">
+        </div>
+        <div class="zipper-control">
+          <span class="micro">DECODING RULE</span>
+          <div class="zipper-choice" role="group" aria-label="Zipper agreement rule">
+            <button type="button" data-ziprule="strict" aria-pressed="true">3 / 3</button>
+            <button type="button" data-ziprule="quorum" aria-pressed="false">2 / 3</button>
+          </div>
+        </div>
+        <div class="zipper-control">
+          <div class="row"><label for="zipper-beta">β offset</label><output id="zipper-beta-v" for="zipper-beta">0</output></div>
+          <input id="zipper-beta" type="range" min="-3" max="3" step="1" value="0">
+        </div>
+        <div class="zipper-control">
+          <div class="row"><label for="zipper-gamma">γ offset</label><output id="zipper-gamma-v" for="zipper-gamma">0</output></div>
+          <input id="zipper-gamma" type="range" min="-3" max="3" step="1" value="0">
+        </div>
+      </div>
+      <div class="zipper-rails" aria-label="Three 20-position residue rails and a merged output rail">
+        <div class="zipper-rail"><span class="zipper-rail-label">α <small>LIVE</small></span><div class="zipper-teeth" id="zipper-alpha"></div></div>
+        <div class="zipper-rail"><span class="zipper-rail-label">β <small>REF</small></span><div class="zipper-teeth" id="zipper-beta-rail"></div></div>
+        <div class="zipper-rail"><span class="zipper-rail-label">γ <small>REF</small></span><div class="zipper-teeth" id="zipper-gamma-rail"></div></div>
+        <div class="zipper-spine" aria-hidden="true"><span>▼</span><span class="zipper-track">MERGE / CONSENSUS / HOLD</span><span>▼</span></div>
+        <div class="zipper-rail"><span class="zipper-rail-label zipper-rail-output">Σ <small>MERGE</small></span><div class="zipper-teeth zipper-output" id="zipper-result"></div></div>
+      </div>
+      <div class="zipper-action-row">
+        <button id="zipper-open" class="action muted" type="button">− OPEN 1</button>
+        <button id="zipper-advance" class="action primary" type="button">+ ZIP 1</button>
+        <button id="zipper-all" class="action" type="button">↣ ZIP ALL</button>
+        <button id="zipper-align" class="action muted" type="button">◎ ALIGN CLOCKS</button>
+      </div>
+      <div class="zipper-result-line" aria-live="polite">
+        <span id="zipper-merged-count">0 / 20 accepted</span>
+        <span id="zipper-held-count">0 held · 20 open</span>
+        <span class="micro" id="zipper-interpretation">Three reference lanes are illustrative, not independently authenticated biological sequences.</span>
+      </div>
+      <p class="hint zipper-warning">3 × 20 is an invented KET zipper overlay, not how biological translation works. A 2/3 agreement is merely a quorum model: matching replicated strands cannot independently prove ancestry or reconstruct erased truth.</p>
+    </div>
+  </section>
+
   <section class="panel core" aria-labelledby="watermark-title">
     <div class="panel-header">
-      <b id="watermark-title">03 / LUCA–26 ANCESTRAL WATERMARK</b>
+      <b id="watermark-title">04 / LUCA–26 ANCESTRAL WATERMARK</b>
       <span class="micro">20 AA :: 4 DNA :: 2 OPERATORS</span>
     </div>
     <div class="controls">
@@ -310,12 +426,12 @@ input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cur
 
   <div class="footer-panels">
     <section class="panel output" aria-labelledby="decode-title">
-      <h2 id="decode-title">04 / DISTILLED CARRIER & DECODE</h2>
+      <h2 id="decode-title">05 / DISTILLED CARRIER & DECODE</h2>
       <pre id="frame-readout">Loading ancestral register…</pre>
       <p class="hint" id="lineage-note">The ancestral identity is held separately from the changing carrier.</p>
     </section>
     <section class="panel output" aria-labelledby="ledger-title">
-      <h2 id="ledger-title">05 / LINEAGE TRACE · APPEND IN SESSION</h2>
+      <h2 id="ledger-title">06 / LINEAGE TRACE · APPEND IN SESSION</h2>
       <ol class="events" id="events" aria-live="off"></ol>
       <p class="hint">This is an in-memory demonstration ledger, not a signed immutable record or Git commit.</p>
     </section>
@@ -416,16 +532,76 @@ function transformFrame({generation=0,distill=0,polarity='+',mutations=[],lostBa
   };
 }
 
+
+/*
+ * 3 × 20 residue zipper above the existing LUCA-26 register.
+ * Three symbolic observation lanes have 20 slots each (60 observations).
+ * The merge returns 20 aligned outcomes; it does NOT create new amino acids,
+ * assert biological triple-stranded translation, or authenticate independent
+ * ancestry. A two-of-three agreement is a demonstration quorum, not proof.
+ */
+const ZIPPER_REFERENCE=Object.freeze(AA20.map(amino=>amino.code));
+const ZIPPER_LANES=Object.freeze(['α','β','γ']);
+const ZIPPER_STEPS=20;
+
+function zipperMerge({
+  lanes=[ZIPPER_REFERENCE,ZIPPER_REFERENCE,ZIPPER_REFERENCE],
+  shifts=[0,0,0],
+  closed=0,
+  rule='strict'
+}={}) {
+  if(!Array.isArray(lanes)||lanes.length!==3||
+     lanes.some(lane=>!Array.isArray(lane)||lane.length!==ZIPPER_STEPS)){
+    throw new TypeError('ZIPPER_REQUIRES_THREE_20_SLOT_LANES');
+  }
+  if(!Array.isArray(shifts)||shifts.length!==3||
+     shifts.some(n=>!Number.isInteger(n)||Math.abs(n)>ZIPPER_STEPS)){
+    throw new TypeError('ZIPPER_SHIFT_INVALID');
+  }
+  if(rule!=='strict'&&rule!=='quorum')throw new TypeError('ZIPPER_RULE_INVALID');
+  const teeth=Math.max(0,Math.min(ZIPPER_STEPS,Math.trunc(Number(closed)||0)));
+  const positions=ZIPPER_REFERENCE.map((reference,index)=>{
+    const values=lanes.map((lane,rail)=>lane[((index+shifts[rail])%ZIPPER_STEPS+ZIPPER_STEPS)%ZIPPER_STEPS]??null);
+    const counts=new Map();
+    for(const v of values)if(v!==null)counts.set(v,(counts.get(v)||0)+1);
+    const unanimous=values.every(v=>v===reference);
+    const referenceVotes=values.filter(v=>v===reference).length;
+    const quorum=referenceVotes>=2;
+    const sealed=index<teeth;
+    const accepted=sealed&&(rule==='strict'?unanimous:quorum);
+    return Object.freeze({
+      index,reference,values:Object.freeze(values),sealed,unanimous,quorum,referenceVotes,
+      accepted,output:accepted?reference:null,
+      state:!sealed?'OPEN':accepted?'MERGED':'HOLD',
+      disagreements:3-referenceVotes
+    });
+  });
+  const sealed=positions.filter(x=>x.sealed).length;
+  const accepted=positions.filter(x=>x.accepted).length;
+  const holds=sealed-accepted;
+  const unanimity=positions.filter(x=>x.sealed&&x.unanimous).length;
+  return Object.freeze({
+    rule,closed:teeth,total:ZIPPER_STEPS,lanes:3,observations:60,
+    accepted,holds,unanimity,open:ZIPPER_STEPS-sealed,
+    status:holds?'HOLD':sealed===ZIPPER_STEPS?'MERGED':'IN_PROGRESS',
+    output:positions.map(x=>x.output??'·').join(''),
+    positions:Object.freeze(positions),
+    caution:'Three symbolic lanes do not prove independent provenance; majority vote alone cannot recover lost source truth.'
+  });
+}
+
 const $ = id => document.getElementById(id);
 const state = {
   tick:0, distill:24, rate:1, mode:'all', polarity:'+',
   mutations:new Set(), lostBases:new Set(), playing:false, trace:[],
-  selectedIndex:0, selectedCodon:'GCT'
+  selectedIndex:0, selectedCodon:'GCT',
+  zipperClosed:0, zipperRule:'strict', zipperShifts:[0,0,0],
+  zipperFaults:[new Set(),new Set(),new Set()]
 };
 const canvas=$('chamber');
 const ctx=canvas.getContext('2d',{alpha:false});
 const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)');
-let sceneWidth=1,sceneHeight=1,frame=null,timer=null,origin=performance.now();
+let sceneWidth=1,sceneHeight=1,frame=null,zipper=null,timer=null,origin=performance.now();
 
 function logEvent(action,detail) {
   state.trace.unshift({tick:state.tick,action,detail});
@@ -445,6 +621,13 @@ function updateFrame(log=false) {
     generation:state.tick,distill:state.distill,polarity:state.polarity,
     mutations:state.mutations,lostBases:state.lostBases
   });
+  const lanes=[
+    frame.decoded.map(x=>x.observed),
+    ZIPPER_REFERENCE.map((aa,i)=>state.zipperFaults[1].has(i)?ZIPPER_REFERENCE[(i+1)%20]:aa),
+    ZIPPER_REFERENCE.map((aa,i)=>state.zipperFaults[2].has(i)?ZIPPER_REFERENCE[(i+1)%20]:aa)
+  ];
+  zipper=zipperMerge({lanes,shifts:state.zipperShifts,
+    closed:state.zipperClosed,rule:state.zipperRule});
   $('score').textContent=frame.fidelity+'/26';
   $('generation').textContent=String(state.tick).padStart(3,'0');
   $('mutations').textContent=String(frame.changed).padStart(2,'0');
@@ -467,7 +650,8 @@ function updateFrame(log=false) {
     'CARRIER   '+carrier,
     'PROTECTED '+frame.matched+'/20 amino-acid identities · '+frame.basis+'/4 DNA bases · 2/2 operators',
     'CONTEXT   '+Math.max(0,100-state.distill).toFixed(0)+'% (symbolic non-core annotation)',
-    'RESULT    '+frame.state+' · '+frame.fidelity+'/26'
+    'RESULT    '+frame.state+' · '+frame.fidelity+'/26',
+    'ZIPPER    '+zipper.output+' · '+zipper.accepted+'/20 merged · '+zipper.holds+' HOLD'
   ].join('\n');
   for(const button of $('aa-grid').querySelectorAll('button')){
     const i=Number(button.dataset.index);
@@ -485,6 +669,7 @@ function updateFrame(log=false) {
   }
   $('aa-summary').textContent=frame.matched+'/20 residue identities decoded · tap to select and mutate / restore';
   updateCodonInspector();
+  updateZipper();
   if(log) logEvent(frame.state,'AA '+frame.matched+'/20 · bases '+frame.basis+'/4 · rate '+state.rate.toFixed(2)+'×');
   if(prefersReduced.matches)drawScene(performance.now());
 }
@@ -561,6 +746,108 @@ function updateCodonInspector(){
        b.dataset.meaning)+'; '+(residue.codons.includes(codon)?'matches selected residue':
        'different residue')+(b.dataset.unavailable==='true'?'; base missing':''));
   }
+}
+
+function buildZipper(){
+  const ids=['zipper-alpha','zipper-beta-rail','zipper-gamma-rail'];
+  for(let lane=0;lane<3;lane++){
+    const host=$(ids[lane]);
+    for(let index=0;index<ZIPPER_REFERENCE.length;index++){
+      const tooth=document.createElement('button');
+      tooth.type='button';tooth.className='zipper-tooth';
+      tooth.dataset.index=String(index);tooth.dataset.lane=String(lane);
+      tooth.textContent=ZIPPER_REFERENCE[index];
+      tooth.addEventListener('click',()=>{
+        const originalIndex=((index+state.zipperShifts[lane])%20+20)%20;
+        state.selectedIndex=originalIndex;
+        state.selectedCodon=AA20[originalIndex].codons[0];
+        const faults=lane===0?state.mutations:state.zipperFaults[lane];
+        if(faults.has(originalIndex)) faults.delete(originalIndex);
+        else faults.add(originalIndex);
+        updateFrame();
+        logEvent('ZIPPER '+(['α','β','γ'][lane])+' '+String(index+1).padStart(2,'0'),
+          faults.has(originalIndex)?'Strand-local variation introduced':'Strand-local variation restored');
+      });
+      host.append(tooth);
+    }
+  }
+  for(let index=0;index<20;index++){
+    const tooth=document.createElement('span');
+    tooth.className='zipper-tooth';tooth.dataset.index=String(index);
+    tooth.textContent='·';$('zipper-result').append(tooth);
+  }
+}
+function updateZipper(){
+  if(!zipper)return;
+  const tag=$('zipper-status');
+  tag.textContent=zipper.status.replace('_',' ');
+  tag.className='zipper-tag'+(zipper.status==='HOLD'?' hold':zipper.status==='MERGED'?' merged':'');
+  $('zipper-close-v').textContent=zipper.closed+' / 20';
+  $('zipper-merged-count').textContent=zipper.accepted+' / 20 accepted · '+zipper.unanimity+' unanimous';
+  $('zipper-held-count').textContent=zipper.holds+' held · '+zipper.open+' open';
+  $('zipper-beta-v').textContent=(state.zipperShifts[1]>0?'+':'')+state.zipperShifts[1];
+  $('zipper-gamma-v').textContent=(state.zipperShifts[2]>0?'+':'')+state.zipperShifts[2];
+  $('zipper-interpretation').textContent=zipper.status==='HOLD'
+   ?'Alignment or observation disagreement; at least one closed tooth is HELD.'
+   :zipper.status==='MERGED'
+   ?'All 20 teeth merged under the selected symbolic rule. This does not prove common ancestry.'
+   :'Close teeth to merge matching observations; unclosed teeth remain OPEN.';
+  const rows=['zipper-alpha','zipper-beta-rail','zipper-gamma-rail'];
+  for(const [index,p] of zipper.positions.entries()){
+    for(let lane=0;lane<3;lane++){
+      const b=$(rows[lane]).children[index];
+      b.textContent=p.values[lane]??'·';
+      b.dataset.sealed=String(p.sealed);
+      b.dataset.variance=String(p.values[lane]!==null&&p.values[lane]!==p.reference);
+      b.dataset.missing=String(p.values[lane]===null);
+      b.dataset.focus=String(index===state.selectedIndex);
+      const description=['α','β','γ'][lane]+' position '+(index+1)+', observed '+(p.values[lane]??'missing')+
+       ', expected '+p.reference+', '+p.state;
+      b.title=description;b.setAttribute('aria-label',description);
+      b.setAttribute('aria-pressed',String(p.values[lane]!==p.reference));
+    }
+    const result=$('zipper-result').children[index];
+    result.textContent=p.state==='OPEN'?'·':p.state==='HOLD'?'×':p.output;
+    result.dataset.merged=String(p.state==='MERGED');
+    result.dataset.hold=String(p.state==='HOLD');
+    result.title='Merged position '+(index+1)+': '+p.state+' · '+p.referenceVotes+'/3 match ancestor';
+  }
+  for(const b of document.querySelectorAll('[data-ziprule]')){
+    b.setAttribute('aria-pressed',String(b.dataset.ziprule===state.zipperRule));
+  }
+}
+function bindZipperControls(){
+  $('zipper-close').addEventListener('input',e=>{
+    state.zipperClosed=Number(e.target.value);updateFrame();
+  });
+  $('zipper-close').addEventListener('change',()=>
+    logEvent('ZIPPER',zipper.closed+'/20 closed · '+zipper.accepted+' merged · '+zipper.holds+' held'));
+  document.querySelectorAll('[data-ziprule]').forEach(b=>b.addEventListener('click',()=>{
+    state.zipperRule=b.dataset.ziprule;updateFrame();
+    logEvent('ZIPPER RULE',state.zipperRule==='strict'?'3/3 unanimity':'2/3 symbolic quorum');
+  }));
+  for(const [id,lane] of [['zipper-beta',1],['zipper-gamma',2]]){
+    $(id).addEventListener('input',e=>{
+      state.zipperShifts[lane]=Number(e.target.value);updateFrame();
+    });
+    $(id).addEventListener('change',()=>{
+      logEvent('CLOCK OFFSET',(['α','β','γ'][lane])+' '+state.zipperShifts[lane]+' residues');
+    });
+  }
+  function setClosure(n){
+    state.zipperClosed=Math.max(0,Math.min(20,n));
+    $('zipper-close').value=String(state.zipperClosed);
+    updateFrame();
+    logEvent('ZIPPER',state.zipperClosed+'/20 teeth closed · '+zipper.holds+' held');
+  }
+  $('zipper-open').addEventListener('click',()=>setClosure(state.zipperClosed-1));
+  $('zipper-advance').addEventListener('click',()=>setClosure(state.zipperClosed+1));
+  $('zipper-all').addEventListener('click',()=>setClosure(20));
+  $('zipper-align').addEventListener('click',()=>{
+    state.zipperShifts=[0,0,0];
+    $('zipper-beta').value='0';$('zipper-gamma').value='0';
+    updateFrame();logEvent('ZIPPER ALIGN','Three symbolic clock offsets restored to zero');
+  });
 }
 
 function buildSymbols(){
@@ -658,6 +945,9 @@ function bindControls(){
     state.tick=0;state.distill=24;state.rate=1;state.polarity='+';state.mode='all';
     state.mutations.clear();state.lostBases.clear();
     state.selectedIndex=0;state.selectedCodon='GCT';
+    state.zipperClosed=0;state.zipperRule='strict';state.zipperShifts=[0,0,0];
+    state.zipperFaults.forEach(x=>x.clear());
+    $('zipper-close').value='0';$('zipper-beta').value='0';$('zipper-gamma').value='0';
     $('distill').value='24';$('time-rate').value='1';
     pressState('[data-polarity]','polarity','+');pressState('[data-mode]','mode','all');
     state.trace=[];updateFrame();logEvent('GENESIS','LUCA-26 ancestral reference restored');
@@ -668,6 +958,8 @@ function bindControls(){
       'KET :: LUCA-26 / TEMPORAL LINEAGE',
       'Glyph: { ( [ 20 AA | ACTG | −+ ] ) }',
       'Note: invented symbolic ancestor, not a reconstructed LUCA sequence.',
+      'Zipper: 3 x 20 positions, '+state.zipperRule+', '+zipper.closed+' closed, '+zipper.accepted+' merged, '+zipper.holds+' held.',
+      'Zipper output: '+zipper.output,
       $('frame-readout').textContent,
       ...state.trace.map(e=>'T'+e.tick+' '+e.action+' '+e.detail)
     ].join('\n');
@@ -847,6 +1139,49 @@ function drawCodonSubstrate(cx,cy,time,span){
   ctx.restore();
 }
 
+function drawZipperCrown(cx,cy,time,span){
+  // 3 × 20 on TOP of the LUCA-26 box. Colors show reference-match and HOLD.
+  if(!zipper)return;
+  ctx.save();
+  const width=Math.min(sceneWidth*.52,span*1.85,295);
+  const left=cx-width*.5;
+  const pitch=width/19;
+  const y0=cy-span*.30;
+  const phase=prefersReduced.matches?0:Math.sin(time*.55)*1.4;
+  ctx.lineWidth=.9;
+  for(let lane=0;lane<3;lane++){
+    ctx.beginPath();
+    for(let i=0;i<20;i++){
+      const x=left+pitch*i;
+      const y=y0+lane*12+phase*Math.sin(i*.5+lane);
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle=['rgba(200,145,255,.46)','rgba(105,233,251,.43)','rgba(139,242,174,.43)'][lane];
+    ctx.stroke();
+  }
+  for(const p of zipper.positions){
+    const x=left+pitch*p.index;
+    const y=y0+3*12+7;
+    const rgb=p.state==='MERGED'?'#86ffce':p.state==='HOLD'?'#ff869f':'#547b9f';
+    ctx.beginPath();
+    ctx.moveTo(x,y0);ctx.lineTo(x,y+4);
+    ctx.strokeStyle=p.sealed?'rgba(170,209,245,.29)':'rgba(104,139,177,.10)';
+    ctx.stroke();
+    for(let lane=0;lane<3;lane++){
+      const col=p.values[lane]===p.reference?'#a9edfb':p.values[lane]===null?'#fcbd78':'#ff98d0';
+      ctx.beginPath();ctx.fillStyle=col;
+      ctx.arc(x,y0+lane*12+phase*Math.sin(p.index*.5+lane),
+        p.sealed?2.3:1.65,0,Math.PI*2);ctx.fill();
+    }
+    ctx.fillStyle=rgb;
+    ctx.fillRect(x-2.4,y-1.1,p.sealed?4.8:2.1,p.sealed?4.8:2.1);
+  }
+  ctx.font='10px ui-monospace,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#d5bcff';ctx.fillText('3 × 20 · TOP ZIPPER',cx,y0-12);
+  ctx.fillStyle='#a4e8cd';ctx.fillText(zipper.accepted+'/20 MERGED · '+zipper.holds+' HELD',cx,y0+65);
+  ctx.restore();
+}
+
 function drawScene(ts){
   if(!ctx)return;
   const w=sceneWidth,h=sceneHeight;
@@ -868,6 +1203,7 @@ function drawScene(ts){
   if(amoeba)drawAmoeba(cx,cy,time,dimension*.46);
   if(toroid)drawToroid(cx,cy,time,dimension*.22);
   if(box)drawCenterBox(cx,cy,time,Math.max(105,dimension*(state.mode==='box'?.48:.34)));
+  if(box)drawZipperCrown(cx,cy,time,dimension*.61);
   if(box)drawCodonSubstrate(cx,Math.min(h-83,cy+dimension*.35),time,dimension*.13);
   ctx.save();
   ctx.textAlign='center';
@@ -880,7 +1216,9 @@ function animation(t){drawScene(t);if(!prefersReduced.matches)requestAnimationFr
 
 buildSymbols();
 buildCodonCube();
+buildZipper();
 bindControls();
+bindZipperControls();
 updateFrame();
 logEvent('GENESIS','20 AA | ACTG | −+ instantiated');
 resize();
