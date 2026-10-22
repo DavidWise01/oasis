@@ -123,5 +123,21 @@
     "physical_scenarios_completed": 0,
     "physical_power_loss_certified": false,
     "certified": false
+  },
+  "offline_intake_gate": {
+    "schema": "anny-evidence-intake-v1",
+    "status": "SYNTHETIC_TESTS_PASSED_ONLY",
+    "local_tests_passed": 65,
+    "local_tests_total": 65,
+    "new_intake_tests_passed": 12,
+    "source_git_blob_sha1": "660ddefb1c261308d3921f666254ccd00011cd0d",
+    "test_git_blob_sha1": "4bd5b0a3d0ed204397dd04eefb095270044ee3a9",
+    "policy": "EXTERNAL_BATCH_SHA256_REQUIRED",
+    "intake_status_for_valid_signed_bundle": "AUTHENTICATED_REVIEW_REQUIRED",
+    "quarantine_status": "QUARANTINED",
+    "raw_real_evidence_received": false,
+    "private_hardware_keys_received": false,
+    "physical_cut_executed": false,
+    "certified": false
   }
 }
