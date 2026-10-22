@@ -19,6 +19,33 @@ The conceptual vessel is `{ ( [ 20 AA | ACTG | −+ ] ) }`.
 
 All simulation files live only within `apps/anny-neon/luca26/`. The previous Harvester v16.1 journal, receiver, ten ACKs, 18-slot cubit, Sapphon spectrum, overlays, and crash-boundary artifacts are not changed.
 
+## Nested codon lattice: `{{n}}{{4^3}}`
+
+The amino-acid selector `n` (one of the 20 canonical residues) now has a **shared codon layer beneath it**:
+
+```text
+{ ( [ LUCA-26 ] ) }
+          [ AA n ]
+             ↓
+       {{n}}{{4^3}}
+             ↓
+  first base:  A  C  T  G
+  second base: A  C  T  G
+  third base:  A  C  T  G
+             ↓
+     4 × 4 × 4 = 64
+       61 translate
+       3 terminate
+```
+
+The 64-codon field is grouped into four first-base sections, each a 4×4 grid. Select an amino acid in the 20-residue box to highlight its synonymous codons, or select a codon to inspect the amino acid it encodes. Three termination triplets (`TAA`, `TAG`, `TGA`) are shown in a separate warning style. Missing DNA bases dim unavailable carrier triplets. A small projected 4³ substrate also appears **beneath the box** in the Canvas vessel.
+
+`{{n}}` selects a lookup target; `{{4^3}}` is a **single shared alphabet of 64 possible DNA triplets**, not 64 codons for each of 20 amino acids. The codon association comes from the standard genetic code; the 26-position watermark and geometric layout are symbolic design choices. Neither the full DNA triplet table nor the invented ancestry reveals LUCA's actual sequence.
+
+The standalone interactive HTML includes its own CSS, registry, and renderer:
+
+https://davidwise01.github.io/oasis/apps/anny-neon/luca26/standalone.html
+
 ## Layout
 
 ```text
