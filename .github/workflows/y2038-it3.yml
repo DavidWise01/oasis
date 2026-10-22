@@ -30,3 +30,4 @@ jobs:
           python3 docs/y2038/check_step10.py
           python3 docs/y2038/step11_quorum.py
           python3 docs/y2038/step12_wal.py
+          python3 docs/y2038/step13_raft.py
