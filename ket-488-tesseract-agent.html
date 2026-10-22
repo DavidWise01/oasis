@@ -59,7 +59,7 @@ input[type=range]{width:100%;accent-color:#bda5ff}input[type=number],select{widt
 <div class="layout"><section class="card"><div class="heading"><b>01 / 16 VERTEX NODES + TORUS + 488 CHROMATIC NODES</b><small>DRAG · ZOOM · CLICK VERTEX OR COLOR</small></div>
 <div class="viewport"><canvas id="scene" width="960" height="680" tabindex="0" role="img" aria-label="Projected mathematical 4D tesseract with sixteen selectable vertex-anchor nodes, a symbolic 729-state toroidal register per vertex, 488 separate selectable chromatic nodes, and a pinned zero."></canvas>
 <div class="hud"><b>((((( wx0yz )))))</b><div>Co·0 :: COBALT / PINNED</div><div>4D :: 16 V / 32 E</div><div>16 VERTEX NODES · 729 STATES EACH</div><div id="corelinks-status">504 NODE→CORE LINKS ACTIVE</div><div id="hudmode">PATROL · RUNNING</div></div><div class="hudnote">R⁴ → R³ → R²<br>procedural shadow projection<br>not measured five-dimensional physics</div></div>
-<div class="pad note warn">Each of the 16 projected tesseract vertices has an installed selectable node and its own symbolic {{3×3}}^{{3}} register (729 possibilities, 11,664 combinations across vertices). These are not 11,664 additional geometric vertices. All 488 separate chromatic nodes remain visible; initial hues are procedural, not measured wavelengths.</div>
+<div class="pad note warn">Each of the 16 projected tesseract vertices has an installed selectable node and its own symbolic {{3×3}}^{{3}} register (729 possibilities, 11,664 combinations across vertices). These are not 11,664 additional geometric vertices. All 488 separate chromatic nodes remain visible. They and the 16 vertex nodes each have a symbolic radial link to the same pinned cobalt Co·0 core: 504 links total. Original 32 tesseract edges and 729 states per vertex remain intact. Colors are procedural, not measured wavelengths.</div>
 </section><div class="side">
 <section class="card"><div class="heading"><b>02 / LOCAL AGENT</b><small>POLICY-DRIVEN ACTIONS</small></div><div class="pad">
 <div class="control"><div class="row"><label for="mode">Agent behavior</label><output id="agentstatus">RUNNING</output></div>
@@ -443,7 +443,9 @@ function update(){
  '\nWAVELENGTH '+(e.wavelength_nm==null?'NOT PROVIDED':e.wavelength_nm+' nm (supplied)')+
  '\nSOURCE '+e.source+
  '\nAGENT '+state.policy.toUpperCase()+' / '+(state.agent?'ACTIVE':'PAUSED')+
- '\nPIN ((wx0yz)) · CENTER ZERO FIXED'+
+ '\nCORE '+COBALT_CORE.label+' / Co·0 / '+COBALT_CORE.hex+
+ '\nLINKS '+CORE_LINKS.vertices+' vertex + '+CORE_LINKS.chromatic+' chromatic = '+CORE_LINKS.total+
+ '\nPIN ((((( wx0yz ))))) · CENTER ZERO FIXED'+
  '\n8×3 REGISTER SLOT '+(((p.id-1)%24)+1)+'/24';
  swatches.forEach((b,i)=>{b.dataset.active=String(i+1===state.selected);b.style.setProperty('--c',records[i].hex)});
  $('quartet').replaceChildren();
@@ -455,7 +457,7 @@ function update(){
   $('quartet').append(q);
  }
  $('register').textContent='REGISTRY  488 = 4 × 122\nTESSY     4D = 16V / 32E\nVESSEL    ((((( wx0yz )))))\nPIN       (0,0,0,0) · IMMUTABLE\n'+
- '8×3       24 symbolic register slots\nFOCUS     '+(Math.floor((p.id-1)%24/3)+1)+' / '+(((p.id-1)%3)+1)+
+ 'COBALT    Co·0 / 504 symbolic core connections\n8×3       24 symbolic register slots\nFOCUS     '+(Math.floor((p.id-1)%24/3)+1)+' / '+(((p.id-1)%3)+1)+
  '\nNEON      Z10 · 1s² 2s² 2p⁶ · shell 2|8\nQCD       color charge ≠ optical color';
 }
 for(const input of document.querySelectorAll('input[data-axis]')){
@@ -498,6 +500,7 @@ $('export').onclick=()=>{
   schema:'ket488-neon-agent-v1',
   vessel:'((((( wx0yz )))))',center:CENTER,
   tesseract:{vertices:16,edges:32,projection:'R4 to R3 to R2'},
+  cobalt:{symbol:COBALT_CORE.symbol,pin:CENTER,hex:COBALT_CORE.hex,links:CORE_LINKS,visible:state.show.corelinks},
   provenance:paletteKind,selected:state.selected,
   agent:{policy:state.policy,steps:state.steps,cadence_ms:state.cadence},
   axis:state.axis,vertex:{id:state.vertex,local_index:localIndex(state.digits),global_index:state.vertex*TOROID_PER_VERTEX+localIndex(state.digits),digits:state.digits},vertex_toroid:{per_vertex:TOROID_PER_VERTEX,total:TOTAL_VERTEX_STATES},records
