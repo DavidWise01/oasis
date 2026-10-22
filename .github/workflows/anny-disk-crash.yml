@@ -25,6 +25,11 @@ jobs:
           python-version: '3.12'
       - name: Check Python syntax
         run: python -m py_compile apps/anny-neon/durability/disk_gate.py
+      - name: Reject mismatched receipts and extra receiver effects
+        run: |
+          python -m unittest discover \
+            -s apps/anny-neon/durability \
+            -p 'test_disk_gate_faults.py' -v
       - name: Run five actual subprocess SIGKILL cases
         run: |
           python apps/anny-neon/durability/disk_gate.py \
