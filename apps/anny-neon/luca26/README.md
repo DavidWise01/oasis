@@ -147,3 +147,21 @@ This is an ensemble expectation, not the decay time for one atom; after actual n
 
 Neither the animated shell rings nor the 43-gate KET structure are literal electron trajectories, nuclear dynamics, or accepted atomic notation. The page uses no radioactive source or physical apparatus. No unit-test suite was added.
 
+
+
+## Noble-Gas Mirror — Neon-10 ⇄ Radon-86
+
+**Single-file HTML:** https://davidwise01.github.io/oasis/apps/anny-neon/luca26/compare.html
+
+This is the side-by-side, interactive comparison of the preserved standalone Neon and Radon chambers. The original LUCA-26 toroidal chamber and the two individual element practice pages remain separate.
+
+Three view lenses can be selected:
+
+1. **ALL SHELLS:** physical occupancy `Ne = [2,8]`; `Rn = [2,8,18,32,18,8]`. Their six/ two ring radii are illustrative, not to scale. Click individual electron markers or a row of the occupancy table to highlight a physical shell.
+2. **OUTER 8 / 8:** show the full outer valence shell of each atom with **8** electrons. These are `n=2` for Neon and `n=6` for Radon. The matching occupancy does not imply identical ionization energy, chemical reactivity, isotope stability, or electronic history.
+3. **SHARED INNER 10:** show Neon's complete first two shells and Radon's *inner* first two shells. These both occupy `[2,8]`; Radon has **76 additional electrons** in shells `n=3–6`. It is a symbolic KET lineage comparison, **not** a claim Radon descended from Neon.
+
+The synchronized `0…43` KET zipper closes a maximum of `5` two-position gates for Neon and `43` for Radon. A shared control also changes visual time-rate and label distillation without removing electrons or inventing real relativistic dynamics. A physically separate `Rn-222` panel displays the expected surviving population with `2^(-t / 3.8235)`. Rn-222 decays via an alpha emission into Po-218, which no longer has atomic number 86 or the same neutral Radon electron configuration.
+
+Reference facts and first-ionization values are from [NIST Neon](https://physics.nist.gov/PhysRefData/Handbook/Tables/neontable1_a.htm) and [NIST Radon](https://physics.nist.gov/PhysRefData/Handbook/Tables/radontable1_a.htm). Rn-222 radioactive hazard and half-life: [EPA Radon](https://www.epa.gov/radiation/radionuclide-basics-radon). This independent practice viewer does **not** introduce a test suite, modify the frozen Harvester, or claim hardware evidence.
+
