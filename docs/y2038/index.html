@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Y2038 | Step 1 · Time64</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#101a2b;--edge:#293a53;--text:#eaf2ff;--muted:#9db0cc;--green:#55e9b0;--red:#ff747b;--gold:#ffd17a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -20%,#193252 0,transparent 55%),var(--bg);color:var(--text);font:16px/1.55 system-ui,sans-serif}main{max-width:1100px;margin:auto;padding:26px 18px 80px}header{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--edge);padding-bottom:20px}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.12;margin:26px 0 12px}h2{font-size:1.28rem;margin:0 0 16px}p{color:var(--muted)}.eyebrow{color:var(--green);font-weight:800;letter-spacing:.16em;font-size:.76rem}.pill{border:1px solid var(--edge);border-radius:100px;padding:7px 14px;color:var(--muted);font-size:.8rem}.layout{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.card{background:linear-gradient(140deg,#14213a,#0c1626);border:1px solid var(--edge);border-radius:18px;padding:23px;margin:17px 0;box-shadow:0 10px 30px #0003}.metric{display:grid;grid-template-columns:1fr 1fr;gap:12px}.metric>div{padding:16px;border:1px solid var(--edge);border-radius:12px;background:#08111f}.metric strong{display:block;font:700 clamp(1rem,2.5vw,1.5rem) ui-monospace,monospace}.safe{color:var(--green)}.bad{color:var(--red)}small{color:var(--muted)}code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}pre{white-space:pre;overflow-x:auto;background:#070d19;padding:20px;border:1px solid var(--edge);border-radius:12px;font-size:12px;color:#d6e7ff}.actions{display:flex;flex-wrap:wrap;gap:9px;margin:10px 0 0}button,.link{appearance:none;border:1px solid #3c7892;background:#13374e;color:#dffff5;padding:10px 14px;border-radius:10px;font:600 .92rem system-ui;cursor:pointer}button:hover,.link:hover{background:#1a5265}button:focus-visible,input:focus-visible{outline:3px solid var(--gold)}input[type=range]{width:100%;accent-color:var(--green)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.step{border:1px solid var(--edge);padding:14px;border-radius:12px;color:var(--muted)}.step b{display:block;color:var(--text)}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.row span{font-family:monospace}.track{height:13px;border-radius:30px;background:linear-gradient(90deg,var(--green) 0 95%,var(--red) 95%);margin:21px 0 7px;position:relative}.track:after{content:'';position:absolute;right:5%;top:-10px;height:32px;border-left:2px dashed white}.checks label{display:block;margin:12px 0;color:var(--text)}.checks input{margin-right:10px;accent-color:var(--green)}.status{font-weight:700;color:var(--gold)}a{color:#8ce7ff}@media(max-width:740px){.layout,.grid{grid-template-columns:1fr}.metric{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}}</style></head>
+<body><main>
+<header><div><span class="eyebrow">KET / UNIX TIME REPAIR</span><div style="font-weight:750;font-size:1.1rem">Y2038 · Interactive workshop</div></div><span class="pill">STEP 01 / TIME REGISTER</span></header>
+<h1>Keep the epoch.<br><span class="safe">Widen the clock.</span></h1>
+<p>Repair the signed 32-bit Unix time boundary with a 64-bit <code>time_t</code>. This is a static, client-side tutorial: the simulation runs in your browser; compilation runs on your Linux machine.</p>
+<section class="card"><h2>01 / See the failure boundary</h2><div class="metric"><div><small>Last valid signed 32-bit second</small><strong class="safe">2,147,483,647</strong><small>2038-01-19 03:14:07 UTC</small></div><div><small>Next second as signed 32-bit</small><strong class="bad">−2,147,483,648</strong><small>1901-12-13 20:45:52 UTC</small></div></div><div class="track"></div><p>Drag across the critical seconds. The browser models mathematical wrapping; it does not modify your operating-system clock.</p><label for="offset">Seconds relative to the boundary: <b id="delta">0</b></label><input id="offset" type="range" min="-5" max="5" value="0"><div class="metric"><div><small>64-bit Unix seconds</small><strong id="wide"></strong><small id="iso"></small></div><div><small>Legacy signed 32-bit interpretation</small><strong id="narrow"></strong><small id="judge"></small></div></div></section>
+<div class="layout"><div><section class="card"><h2>02 / Step 1: enforce 64-bit time</h2><p>For supported 32-bit Linux/glibc builds, these macros request 64-bit time interfaces. The compile-time assertion catches unsupported configurations.</p><pre id="code">#define _FILE_OFFSET_BITS 64
+#define _TIME_BITS 64
+#include &lt;stdint.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+#include &lt;inttypes.h&gt;
+
+_Static_assert(sizeof(time_t) &gt;= 8,
+               "Y2038 unsafe: time_t must be &gt;=64 bits");
+
+int main(void) {
+    time_t now = time(NULL);
+    if (now == (time_t)-1) {
+        fputs("Clock read failed\n", stderr);
+        return 1;
+    }
+    printf("Unix timestamp: %" PRId64 "\n", (int64_t)now);
+    printf("time_t width: %zu bits\n", sizeof(time_t) * 8);
+    return 0;
+}</pre><div class="actions"><button data-copy="code">Copy source</button><a class="link" href="time64.c" download>Get time64.c</a></div></section>
+<section class="card"><h2>03 / Compile and run</h2><p>Run the following from the folder containing <code>time64.c</code>.</p><pre id="command">cc -std=c11 -Wall -Wextra -Werror time64.c -o time64
+./time64</pre><div class="actions"><button data-copy="command">Copy commands</button></div><p>Expected: the program prints the current Unix timestamp and a <code>time_t</code> width of at least <b>64 bits</b>.</p></section></div><aside><section class="card"><h2>Step 1 checklist</h2><div class="checks"><label><input type="checkbox" data-check="source"> Saved the C file</label><label><input type="checkbox" data-check="compile"> Compiled without errors</label><label><input type="checkbox" data-check="runtime"> Confirmed 64-bit width</label><label><input type="checkbox" data-check="review"> Reviewed the 2038 boundary</label></div><p class="status" id="progress">0 / 4 complete</p><button id="clear">Reset checklist</button><p><small>Checklist state stays in this browser only. Checking boxes does not independently verify the binary.</small></p></section><section class="card"><h2>Kernel register</h2><pre>[ epoch :: 1970 ]
+       |
+[ t :: int64 ]
+       |
+[ boundary :: 2^31 ]
+       |
+[ -+ guard +- ]
+       |
+[ chronological ledger ]</pre><p><b>2<sup>31</sup></b> is the signed boundary. <b>2<sup>−10</sup></b> equals 1/1024, and is unrelated to this overflow.</p></section></aside></div>
+<section class="card"><h2>What comes after Step 1?</h2><div class="grid"><div class="step"><b>02 · Audit conversions</b>Find implicit 32-bit timestamp truncations.</div><div class="step"><b>03 · Update storage</b>Review persistence, binary protocols, libraries.</div><div class="step"><b>04 · Validate boundaries</b>Exercise dates before and after 2038.</div></div><p>Step 2 and beyond are roadmap items, not implemented fixes yet. This first page does not claim to fix an entire operating system.</p></section>
+<footer><small>Y2038 Workshop · Step 1 · Static GitHub Pages compatible · No external scripts or dependencies</small></footer>
+</main><script>
+const base=2147483647n, range=document.querySelector('#offset');
+function render(){const d=BigInt(range.value),t=base+d;const narrow=BigInt.asIntN(32,t);document.querySelector('#delta').textContent=(d>0n?'+':'')+d;document.querySelector('#wide').textContent=t.toLocaleString();document.querySelector('#narrow').textContent=narrow.toLocaleString();document.querySelector('#iso').textContent=new Date(Number(t)*1000).toISOString().replace('.000Z',' UTC');document.querySelector('#judge').textContent=t>base?'OVERFLOW · invalid legacy value':'REPRESENTABLE';document.querySelector('#narrow').className=t>base?'bad':'safe'}range.addEventListener('input',render);render();
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const s=document.getElementById(b.dataset.copy).textContent;try{await navigator.clipboard.writeText(s);b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy '+(b.dataset.copy==='code'?'source':'commands'),1400)}catch{b.textContent='Select text to copy'}}));
+const boxes=[...document.querySelectorAll('[data-check]')],key='y2038-step1-checks';let state={};try{state=JSON.parse(localStorage.getItem(key)||'{}')}catch{}function update(){const count=boxes.filter(x=>x.checked).length;document.querySelector('#progress').textContent=count+' / 4 complete'+(count===4?' · locally marked complete':'');try{localStorage.setItem(key,JSON.stringify(Object.fromEntries(boxes.map(x=>[x.dataset.check,x.checked]))))}catch{}}boxes.forEach(x=>{x.checked=!!state[x.dataset.check];x.addEventListener('change',update)});document.querySelector('#clear').addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);update()});update();
+</script></body></html>
