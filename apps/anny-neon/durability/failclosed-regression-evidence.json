@@ -1,0 +1,78 @@
+{
+  "schema": "anny-failclosed-duplicate-regression-v1",
+  "date": "2026-10-21",
+  "scope": "Linux Python SQLite local process-crash analogue; no physical power loss or browser IndexedDB result",
+  "runtime": {
+    "python": "3.13.5",
+    "sqlite": "3.46.1",
+    "platform": "Linux"
+  },
+  "source_sha256": "bccb586e4bea5333969946a8a69a8f9e382c5916c08da3239f017548a3edd750",
+  "test_sha256": "153379eafcca6db81ad168dd88c7ddc1d204b0324225e5e038c4b68acb3e4646",
+  "pre_fix_failure_observed": {
+    "state": "CONFIRMED",
+    "receiver_rows": 2,
+    "effect_count": 2,
+    "violet": "VERIFIED",
+    "classification": "DEFECT_IN_SQLITE_ANALOGUE"
+  },
+  "post_fix": {
+    "clean": {
+      "state": "CONFIRMED",
+      "receiver_rows": 1,
+      "effect_count": 1,
+      "violet": "VERIFIED",
+      "integrity": [
+        "ok",
+        "ok"
+      ]
+    },
+    "injected_second_effect": {
+      "state": "CONFIRMED",
+      "receiver_rows": 2,
+      "effect_count": 2,
+      "violet": "HELD",
+      "integrity": [
+        "ok",
+        "ok"
+      ]
+    },
+    "fail_closed": true
+  },
+  "unit_tests": {
+    "executed_locally": true,
+    "passed": 11,
+    "total": 11
+  },
+  "process_sigkill": {
+    "executed_locally": true,
+    "passed": 5,
+    "total": 5,
+    "cases": [
+      {
+        "case": "PREPARE_UNCOMMITTED",
+        "pass": true
+      },
+      {
+        "case": "COMMIT_UNCOMMITTED",
+        "pass": true
+      },
+      {
+        "case": "RECEIVER_UNCOMMITTED",
+        "pass": true
+      },
+      {
+        "case": "CONFIRM_UNCOMMITTED",
+        "pass": true
+      },
+      {
+        "case": "CONFIRM_COMMITTED",
+        "pass": true
+      }
+    ]
+  },
+  "electrical_power_interruption_tested": false,
+  "chromium_indexeddb_tested": false,
+  "certification": "LOCAL_REGRESSION_ONLY",
+  "status": "PASS"
+}
