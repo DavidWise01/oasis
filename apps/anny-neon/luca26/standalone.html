@@ -99,6 +99,54 @@ input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cur
 .base{min-width:44px;background:#0e2134;border:1px solid #5fabb5;border-radius:8px;color:#b7f8ff;padding:7px 12px;font:15px ui-monospace,monospace}
 .base[aria-pressed="true"]{opacity:.42;border-color:#e97c98;color:#ffb2c4;text-decoration:line-through}
 .polarity{font:13px ui-monospace,monospace;color:#e2c1ff;border:1px solid #705496;border-radius:8px;padding:7px 10px}
+/* Under {{n}}, one shared 4³ codon field: 4 first-base layers × 16 each. */
+.aa[data-selected="true"]{border-color:var(--violet);box-shadow:inset 0 0 0 1px #bb89ff,0 0 18px #ac77fb48}
+.codon-well{margin-top:22px;padding:19px;border:1px solid #71599e78;border-radius:16px;
+ background:radial-gradient(ellipse at 14% 0%,#40265a55,transparent 48%),linear-gradient(145deg,#0d1b33,#090e23)}
+.codon-header{display:flex;justify-content:space-between;align-items:start;gap:18px;flex-wrap:wrap}
+.codon-header>div:first-child{max-width:730px}
+.codon-formula{font:700 clamp(23px,3vw,35px)/1.15 ui-monospace,monospace;letter-spacing:.01em;margin:0 0 9px;
+ color:#e1c4ff}
+.codon-formula sup{font-size:53%}
+.codon-counts{display:flex;align-items:center;gap:7px}
+.codon-counts span{border:1px solid #4f6886a3;border-radius:9px;padding:8px 11px;min-width:57px;
+ background:#0e1d38;text-align:center}
+.codon-counts b{display:block;color:#e6f5ff;font:20px ui-monospace,monospace}
+.codon-counts small{display:block;color:#99b4cf;font:9px ui-monospace,monospace}
+.codon-topology{display:flex;justify-content:center;align-items:center;gap:9px;flex-direction:column;
+ margin:20px auto;border-bottom:1px solid #47648865;padding-bottom:15px;max-width:460px}
+.codon-parent,.codon-child{border:1px solid #986dc0b0;border-radius:9px;padding:9px 17px;
+ background:#221a3e;text-align:center;color:#eacfff;font:12px ui-monospace,monospace}
+.codon-child{border-color:#4fb5d7ba;color:#a6e9f8;background:#102a40}
+.codon-direction{font-size:19px;line-height:1;color:#e2c5ff}
+.codon-layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.codon-layer{border:1px solid #4f6685a1;background:linear-gradient(155deg,#111e39,#0a152b);
+ border-radius:12px;padding:9px;min-width:0}
+.codon-layer-title{display:flex;justify-content:space-between;align-items:center;gap:5px;
+ padding:0 2px 9px;color:#a9d9f2;font:10px ui-monospace,monospace;letter-spacing:.03em}
+.codon-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.codon-cell{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:2px;border:1px solid #355371cc;border-radius:7px;background:#0e1b33;
+ color:#a8bdd1;padding:7px 1px;min-height:49px}
+.codon-cell strong{font:600 12px ui-monospace,monospace}
+.codon-cell small{font:9px ui-monospace,monospace;color:#7698b3}
+.codon-cell:hover{border-color:#86ccff;background:#163252}
+.codon-cell[data-match="true"]{border-color:#58e2b09e;background:#11372d;color:#adffe1;
+ box-shadow:inset 0 0 9px #56f4a818}
+.codon-cell[data-match="true"] small{color:#71edc2}
+.codon-cell[data-stop="true"]{border-color:#8b5669;color:#fca3b6;background:#2b1c2d}
+.codon-cell[data-stop="true"] small{color:#e89bad}
+.codon-cell[data-unavailable="true"]{opacity:.42;filter:grayscale(.6)}
+.codon-cell[data-active="true"]{border-color:#eed0ff!important;outline:1px solid #c0a1ff;outline-offset:1px;
+ box-shadow:0 0 13px #b690ff78!important;opacity:1}
+.codon-inspector{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;
+ margin:14px 0 12px;padding:12px 14px;border:1px solid #506a8c;border-radius:11px;background:#111f38}
+.codon-inspector>div{display:flex;flex-direction:column;gap:3px}
+.codon-inspector strong{font:700 25px ui-monospace,monospace;color:#a9ffe2}
+.codon-inspector p{color:#cfdbeb;margin:0;font-size:12px;max-width:530px}
+@media(max-width:1100px){.codon-layers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.codon-layers{grid-template-columns:1fr}.codon-well{padding:11px}
+ .codon-header{gap:10px}.codon-inspector{flex-direction:column;align-items:start}}
 .footer-panels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:17px}
 .output{padding:17px 19px}
 .output h2{margin:0 0 10px;color:#b7d9ee;font-size:12px;letter-spacing:.14em}
@@ -230,6 +278,32 @@ input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cur
           <div class="bases"><span class="polarity">− VOID / BOUNDARY</span><span class="polarity">+ GRAVITY / RETURN</span></div>
         </div>
       </div>
+      <section class="codon-well" aria-labelledby="codon-title">
+        <div class="codon-header">
+          <div>
+            <div class="kicker" style="margin-bottom:6px">UNDER THE BOX · TRIPLET REGISTER</div>
+            <h2 id="codon-title" class="codon-formula">{{n}} ↓ {{4<sup>3</sup>}}</h2>
+            <p class="hint">Select a residue above to inspect its shared 64-codon field below. Four DNA bases at three positions: 61 amino-acid codons and three STOP signals.</p>
+          </div>
+          <div class="codon-counts" aria-label="Codon totals">
+            <span><b>64</b><small>TOTAL</small></span>
+            <span><b>61</b><small>SENSE</small></span>
+            <span><b>03</b><small>STOP</small></span>
+          </div>
+        </div>
+        <div class="codon-topology" aria-label="Residue selection above DNA triplet cube">
+          <div class="codon-parent">[ n : <strong id="codon-parent">Alanine / A</strong> ]</div>
+          <div class="codon-direction" aria-hidden="true">↓</div>
+          <div class="codon-child">{ { ACTG } }<sup>3</sup> = <strong>64</strong> codons</div>
+        </div>
+        <div id="codon-layers" class="codon-layers" aria-label="Four layers, each a four by four grid of DNA triplets"></div>
+        <div class="codon-inspector" aria-live="polite">
+          <div><span class="micro">SELECTED DNA TRIPLET</span><strong id="codon-selected">GCT</strong></div>
+          <p id="codon-explanation">GCT translates to alanine (A).</p>
+          <span class="micro" id="codon-synonyms">Synonymous codons: GCT · GCC · GCA · GCG</span>
+        </div>
+        <p class="hint">Every amino acid references the <em>same</em> 4³ field—not 64 codons per residue. STOP is a translation signal, not a 21st standard amino acid. Codon inspection does not mutate the box; click a residue above to do that.</p>
+      </section>
       <p class="hint">Biological grounding: the 20 conventional amino-acid codes and synonymous DNA codons are real. The chosen 20-residue sequence, framing operators, amoeba, and toroid are an invented KET model—not a recovered LUCA genome.</p>
     </div>
   </section>
@@ -286,6 +360,25 @@ const POLARITY2=Object.freeze(['−','+']);
 const ANCESTOR=AA20.map(x=>x.code).join('')+'|ACTG|−+';
 const CODE_INDEX=Object.freeze(Object.fromEntries(AA20.flatMap(amino=>amino.codons.map(c=>[c,amino.code]))));
 
+// A single shared 4³ codon field sits BELOW every selected residue n.
+// 64 DNA triplets total: 61 sense codons + 3 translation STOP signals.
+// This is not 64 codons per amino acid, and not a reconstructed LUCA genome.
+const STOP_CODONS=Object.freeze(['TAA','TAG','TGA']);
+const CODON_CUBE=Object.freeze(DNA4.flatMap((first,a)=>
+  DNA4.flatMap((second,b)=>
+    DNA4.map((third,c)=>{
+      const codon=first+second+third;
+      return Object.freeze({
+        codon,first,second,third,coordinate:Object.freeze([a,b,c]),
+        meaning:CODE_INDEX[codon]??'STOP',isStop:STOP_CODONS.includes(codon)
+      });
+    })
+  )
+));
+const CODON_LAYERS=Object.freeze(DNA4.map((base,index)=>Object.freeze({
+  base,index,codons:Object.freeze(CODON_CUBE.filter(x=>x.first===base))
+})));
+
 function transformFrame({generation=0,distill=0,polarity='+',mutations=[],lostBases=[]}={}) {
   const tick=Math.max(0,Math.trunc(Number(generation)||0));
   const loss=Math.min(100,Math.max(0,Number(distill)||0));
@@ -326,7 +419,8 @@ function transformFrame({generation=0,distill=0,polarity='+',mutations=[],lostBa
 const $ = id => document.getElementById(id);
 const state = {
   tick:0, distill:24, rate:1, mode:'all', polarity:'+',
-  mutations:new Set(), lostBases:new Set(), playing:false, trace:[]
+  mutations:new Set(), lostBases:new Set(), playing:false, trace:[],
+  selectedIndex:0, selectedCodon:'GCT'
 };
 const canvas=$('chamber');
 const ctx=canvas.getContext('2d',{alpha:false});
@@ -380,6 +474,7 @@ function updateFrame(log=false) {
     const row=frame.decoded[i];
     button.classList.toggle('lost',row.observed===null);
     button.setAttribute('aria-pressed',String(state.mutations.has(i)));
+    button.dataset.selected=String(state.selectedIndex===i);
     button.querySelector('small').textContent=row.codon;
     button.title=row.name+' · '+(row.match?'decoded intact':row.observed===null?'missing':'identity changed')+
        ' · click to '+(state.mutations.has(i)?'restore':'mutate');
@@ -388,9 +483,84 @@ function updateFrame(log=false) {
   for(const button of $('bases').querySelectorAll('button')){
     button.setAttribute('aria-pressed',String(state.lostBases.has(button.dataset.base)));
   }
-  $('aa-summary').textContent=frame.matched+'/20 residue identities decoded · tap to mutate / restore';
+  $('aa-summary').textContent=frame.matched+'/20 residue identities decoded · tap to select and mutate / restore';
+  updateCodonInspector();
   if(log) logEvent(frame.state,'AA '+frame.matched+'/20 · bases '+frame.basis+'/4 · rate '+state.rate.toFixed(2)+'×');
   if(prefersReduced.matches)drawScene(performance.now());
+}
+
+function buildCodonCube(){
+  const host=$('codon-layers');
+  // n chooses the highlighted translation target; one common 4×4×4 field
+  // exists under every amino acid, never sixty-four codons per residue.
+  for(const layer of CODON_LAYERS){
+    const section=document.createElement('section');
+    section.className='codon-layer';
+    section.setAttribute('aria-label','First base '+layer.base+', 16 codons');
+    const heading=document.createElement('div');
+    heading.className='codon-layer-title';
+    const first=document.createElement('span');
+    first.textContent='FIRST BASE / '+layer.base;
+    const tally=document.createElement('span');tally.className='micro';
+    tally.textContent='4 × 4 = 16';
+    heading.append(first,tally);
+    const grid=document.createElement('div');grid.className='codon-grid';
+    for(const item of layer.codons){
+      const b=document.createElement('button');
+      b.className='codon-cell';b.type='button';
+      b.dataset.codon=item.codon;
+      b.dataset.meaning=item.meaning;
+      b.dataset.first=item.first;
+      b.dataset.second=item.second;
+      b.dataset.third=item.third;
+      const code=document.createElement('strong');
+      code.textContent=item.codon;
+      const meaning=document.createElement('small');
+      meaning.textContent=item.meaning==='STOP'?'STOP':item.meaning;
+      b.append(code,meaning);
+      b.addEventListener('click',()=>{
+        state.selectedCodon=item.codon;
+        if(!item.isStop){
+          const i=AA20.findIndex(x=>x.code===item.meaning);
+          if(i>=0)state.selectedIndex=i;
+        }
+        updateFrame();
+        logEvent('CODON '+item.codon,
+          item.isStop?'STOP / termination signal':
+          'Decodes to '+AA20[state.selectedIndex].name+' ('+item.meaning+')');
+      });
+      grid.append(b);
+    }
+    section.append(heading,grid);
+    host.append(section);
+  }
+}
+
+function updateCodonInspector(){
+  const residue=AA20[state.selectedIndex]||AA20[0];
+  const picked=CODON_LAYERS.flatMap(x=>x.codons).find(x=>x.codon===state.selectedCodon);
+  $('codon-parent').textContent=String(state.selectedIndex+1).padStart(2,'0')+
+    ' · '+residue.name+' ('+residue.code+')';
+  $('codon-selected').textContent=picked?.codon??'—';
+  const unavailable=picked&&[...picked.codon].some(base=>state.lostBases.has(base));
+  $('codon-explanation').textContent=!picked?'No DNA triplet selected.':
+    picked.isStop?picked.codon+' is a STOP codon, signalling translation termination.':
+    picked.codon+' decodes to '+AA20.find(x=>x.code===picked.meaning)?.name+
+    ' ('+picked.meaning+'). '+(unavailable?'This carrier contains a currently removed base.':
+      picked.meaning===residue.code?'It encodes selected n.':'Selecting it changes the inspected n.');
+  $('codon-synonyms').textContent='n = '+residue.code+' · '+
+    residue.codons.length+' of 64 codons: '+residue.codons.join(' · ');
+  for(const b of $('codon-layers').querySelectorAll('button')){
+    const codon=b.dataset.codon;
+    b.dataset.match=String(residue.codons.includes(codon));
+    b.dataset.active=String(codon===state.selectedCodon);
+    b.dataset.unavailable=String([...codon].some(base=>state.lostBases.has(base)));
+    b.dataset.stop=String(b.dataset.meaning==='STOP');
+    b.setAttribute('aria-pressed',String(codon===state.selectedCodon));
+    b.setAttribute('aria-label',codon+' → '+(b.dataset.meaning==='STOP'?'translation stop':
+       b.dataset.meaning)+'; '+(residue.codons.includes(codon)?'matches selected residue':
+       'different residue')+(b.dataset.unavailable==='true'?'; base missing':''));
+  }
 }
 
 function buildSymbols(){
@@ -404,6 +574,8 @@ function buildSymbols(){
     const codon=document.createElement('small');codon.textContent=acid.codons[0];
     b.append(letter,codon);
     b.addEventListener('click',()=>{
+      state.selectedIndex=i;
+      state.selectedCodon=acid.codons[0];
       if(state.mutations.has(i))state.mutations.delete(i);
       else state.mutations.add(i);
       updateFrame();
@@ -485,6 +657,7 @@ function bindControls(){
     stopPlayback();
     state.tick=0;state.distill=24;state.rate=1;state.polarity='+';state.mode='all';
     state.mutations.clear();state.lostBases.clear();
+    state.selectedIndex=0;state.selectedCodon='GCT';
     $('distill').value='24';$('time-rate').value='1';
     pressState('[data-polarity]','polarity','+');pressState('[data-mode]','mode','all');
     state.trace=[];updateFrame();logEvent('GENESIS','LUCA-26 ancestral reference restored');
@@ -632,6 +805,48 @@ function drawCenterBox(cx,cy,time,size){
   ctx.fillText(DNA4.filter(x=>!state.lostBases.has(x)).join('')+'  |  −+',0,bh*.31);
   ctx.restore();
 }
+function drawCodonSubstrate(cx,cy,time,span){
+  // Visual 4×4×4 carrier layer UNDER n and its invariant box.
+  // First, second, third bases are the three projected cube axes.
+  ctx.save();
+  const residue=AA20[state.selectedIndex]||AA20[0];
+  const pts=CODON_LAYERS.flatMap(layer=>layer.codons).map(item=>{
+    const [a,b,c]=item.coordinate;
+    const wobble=Math.sin(time*.33)*.08;
+    const x=(b-1.5)*span*.42+(a-1.5)*span*(.23+wobble);
+    const y=(c-1.5)*span*.22+(a-1.5)*span*.15;
+    return {...item,x:cx+x,y:cy+y};
+  });
+  ctx.strokeStyle='rgba(105,182,243,.24)';
+  ctx.lineWidth=.7;
+  for(const p of pts){
+    const [a,b,c]=p.coordinate;
+    if(b<3){
+      const q=pts.find(x=>x.coordinate[0]===a&&x.coordinate[1]===b+1&&x.coordinate[2]===c);
+      if(q){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}
+    }
+    if(c<3){
+      const q=pts.find(x=>x.coordinate[0]===a&&x.coordinate[1]===b&&x.coordinate[2]===c+1);
+      if(q){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}
+    }
+  }
+  for(const p of pts){
+    const matched=residue.codons.includes(p.codon);
+    const unavailable=[...p.codon].some(letter=>state.lostBases.has(letter));
+    const active=p.codon===state.selectedCodon;
+    const color=p.isStop?'#ff7c9f':matched?'#65ffd0':'#73b5e2';
+    ctx.beginPath();ctx.arc(p.x,p.y,active?3.8:matched?2.8:1.5,0,Math.PI*2);
+    ctx.fillStyle=color;ctx.globalAlpha=unavailable?0.22:((matched||active)?1:0.55);
+    if(active||matched){ctx.shadowBlur=active?14:9;ctx.shadowColor=color;}
+    ctx.fill();ctx.shadowBlur=0;
+  }
+  ctx.globalAlpha=1;
+  ctx.fillStyle='#add0ed';ctx.textAlign='center';
+  ctx.font='10px ui-monospace,monospace';
+  ctx.fillText('{{n}} ↓ {{4³}} · 64 TRIPLETS',cx,cy+span*.65);
+  ctx.restore();
+}
+
 function drawScene(ts){
   if(!ctx)return;
   const w=sceneWidth,h=sceneHeight;
@@ -653,6 +868,7 @@ function drawScene(ts){
   if(amoeba)drawAmoeba(cx,cy,time,dimension*.46);
   if(toroid)drawToroid(cx,cy,time,dimension*.22);
   if(box)drawCenterBox(cx,cy,time,Math.max(105,dimension*(state.mode==='box'?.48:.34)));
+  if(box)drawCodonSubstrate(cx,Math.min(h-83,cy+dimension*.35),time,dimension*.13);
   ctx.save();
   ctx.textAlign='center';
   ctx.fillStyle='#b0cce5';ctx.font='10px ui-monospace,monospace';
@@ -663,6 +879,7 @@ function drawScene(ts){
 function animation(t){drawScene(t);if(!prefersReduced.matches)requestAnimationFrame(animation)}
 
 buildSymbols();
+buildCodonCube();
 bindControls();
 updateFrame();
 logEvent('GENESIS','20 AA | ACTG | −+ instantiated');
