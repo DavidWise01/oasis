@@ -1,0 +1,256 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080a17"><meta name="description" content="KET 24-position factorial toroid; exact quotient versus normalized multinomial, four nested rings, and 488-address root intersection."><title>KET / 24! Factorial Toroid · 8×3 Register</title><style>
+:root{color-scheme:dark;--bg:#080a17;--ink:#eef2ff;--muted:#a3afca;--line:#5b5984;--violet:#d2afff;--cyan:#78e9ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 52% -16%,#303051 0%,transparent 51%),#080a17;color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(#5c91e20b 1px,transparent 1px),linear-gradient(90deg,#5c91e20b 1px,transparent 1px);background-size:42px 42px}
+a{color:#a7e4ff}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:2px}
+nav{position:sticky;top:0;z-index:10;background:#0a1025ef;border-bottom:1px solid #66678a;backdrop-filter:blur(12px);display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;padding:12px max(18px,calc((100vw - 1320px)/2))}
+nav strong{letter-spacing:.15em}nav span{display:flex;gap:15px;flex-wrap:wrap;font:11px ui-monospace,monospace}
+main{max-width:1340px;margin:auto;padding:24px 20px 65px}.kicker{font:11px ui-monospace,monospace;letter-spacing:.14em;color:#bcaeff}
+h1{font-size:clamp(38px,6vw,76px);margin:6px 0 10px;line-height:1.02;letter-spacing:-.065em}h1 em{font-style:normal;color:#8be6ff}
+p{color:var(--muted);margin:7px 0 12px;max-width:920px}
+.formula{font:clamp(13px,2.5vw,24px)/1.45 ui-monospace,monospace;overflow-wrap:anywhere;color:#f1d3ff;padding:14px 17px;background:#181b35;border:1px solid #686698;border-radius:12px;margin:18px 0}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.metric{background:linear-gradient(150deg,#131d35,#161529);border:1px solid #535c82;border-radius:12px;padding:14px 15px}
+.metric small{color:#a6accd;font:10px ui-monospace,monospace;letter-spacing:.07em}.metric strong{display:block;color:#e9dcff;font:700 clamp(16px,2.1vw,24px) ui-monospace,monospace;margin:5px 0}
+.columns{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(315px,.85fr);gap:15px}
+.card{border-radius:16px;background:linear-gradient(155deg,#111b35,#0b1125);border:1px solid #555f89;overflow:hidden;min-width:0}
+.head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:13px 17px;border-bottom:1px solid #4e5b84;font:11px ui-monospace,monospace;letter-spacing:.09em}.head small{color:#9fb1cd}
+.panel{padding:15px 17px}.stage{position:relative;background:radial-gradient(ellipse at 52% 49%,#283459 0%,#111a36 50%,#091022 77%)}
+#torus{display:block;width:100%;height:auto;max-height:570px;min-height:335px}
+.orbit{fill:none;stroke-width:4;opacity:.45}.ring-label{font:10px ui-monospace,monospace;fill:#adb1d9;text-anchor:middle}
+.atom{cursor:pointer}.atom circle{stroke:#13263d;stroke-width:1.1;transition:r .16s,opacity .16s}
+.atom.active circle{stroke:white;stroke-width:2.8;filter:drop-shadow(0 0 8px white)}
+.atom.gap circle{opacity:.52;stroke:#cab8ec;stroke-dasharray:2 2}.atom.gap.active circle{opacity:1}
+.atom text{pointer-events:none;font:12px ui-monospace,monospace;fill:white;text-anchor:middle;dominant-baseline:middle}
+.hud{position:absolute;left:14px;top:14px;background:#080e20b7;border:1px solid #7981ae;border-radius:8px;padding:7px 10px;color:#c6dfff;font:10px ui-monospace,monospace;pointer-events:none}
+.legend{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:12px}
+.legend button{min-width:0;border:1px solid var(--color);background:#142037;color:var(--color);border-radius:9px;display:grid;gap:3px;justify-items:center;padding:8px 3px}
+.legend button small{font:9px ui-monospace,monospace;color:#b5c6d9}.legend button b{font:19px ui-monospace,monospace}
+.legend button[aria-pressed=true]{background:#302748;box-shadow:inset 0 0 0 1px var(--color)}
+.controls{display:grid;gap:14px}.control{border-bottom:1px solid #56709562;padding-bottom:12px}
+.control .row{display:flex;justify-content:space-between;gap:10px;margin-bottom:7px}.control output{font:11px ui-monospace,monospace;color:#9de9f5}
+input[type=range]{width:100%;accent-color:#ba9cfb}
+input[type=number]{width:100%;padding:9px;border-radius:9px;background:#0d1b32;color:white;border:1px solid #566d92}
+.segment{display:flex;gap:5px}.segment button{flex:1;min-width:0;border:1px solid #6f759f;border-radius:9px;background:#1b2744;color:#b9cae3;padding:10px 6px;font-size:12px}
+.segment button[aria-pressed=true]{border-color:#d1b6ff;background:#4b365c;color:#f1dbff}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.btn{background:#1b2a48;color:#eef4ff;border:1px solid #6e7aaf;border-radius:9px;padding:9px 10px}
+.btn.primary{background:linear-gradient(120deg,#397c92,#7256aa)}
+.small{font-size:11px;color:#a7b7d0;line-height:1.6}.small.warn{border-left:2px solid #d7a16d;padding-left:11px}
+.inspect{font:12px/1.7 ui-monospace,monospace;background:#0b1a30;border:1px solid #47648e;border-radius:11px;white-space:pre-wrap;overflow-wrap:anywhere;color:#bddaf0;padding:12px;margin:10px 0}
+.lower{display:grid;grid-template-columns:1.1fr .9fr;gap:15px;margin-top:15px}
+.band{display:grid;grid-template-columns:repeat(8,1fr);gap:7px}
+.lane{background:#121f36;border:1px solid #516e99;border-radius:9px;display:grid;justify-items:center;gap:5px;padding:7px}
+.lane b{font:10px ui-monospace,monospace;color:#91b9d4}
+.slots{display:grid;grid-template-rows:repeat(3,26px);gap:4px;width:100%}
+.slot{border:1px solid #486387;border-radius:5px;color:white;font:11px ui-monospace,monospace;background:var(--c);padding:0;min-width:0}
+.slot[aria-pressed=true]{outline:2px solid white;outline-offset:1px}
+.intersections{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:10px}
+.root{background:#16223c;border:1px solid var(--c);border-radius:9px;padding:12px 5px;text-align:center;display:grid;gap:4px}
+.root b{font:17px ui-monospace,monospace;color:var(--c)}.root small{color:#a5b9d1;font:10px ui-monospace,monospace}
+pre{font:11px/1.65 ui-monospace,monospace;color:#b4cdea;white-space:pre-wrap;overflow-wrap:anywhere}
+footer{margin:22px 0 0;color:#97aac9;border-left:2px solid #b59de6;padding-left:14px;font-size:11px;line-height:1.65}
+@media(max-width:1000px){.columns,.lower{grid-template-columns:1fr}}
+@media(max-width:650px){main{padding:13px}.metrics{grid-template-columns:repeat(2,1fr)}.legend{grid-template-columns:repeat(4,minmax(0,1fr))}.band{gap:4px}.lane{padding:5px 2px}.slot{font-size:9px}.intersections{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<nav><strong>◈ KET / FACTORIAL TOROID</strong><span><a href="./ket-488-qcd.html">← 488 QCD BRIDGE</a><a href="./ket-488.html">488 TOROID</a><a href="./ket-488-i-mesh.html">{{i}} MESH</a><a href="./apps/anny-neon/">ANNY</a></span></nav>
+<main>
+<div class="kicker">FOUR WRAPS · 24 REGISTER POSITIONS · FACTORIAL / PERMUTATION LAYER</div>
+<h1>Four wraps. <em>One count.</em></h1>
+<p>Interpret <strong>(((( … ))))</strong> as four symbolic nested toroidal layers around the KET 8×3 register. The denominator specifies six group sizes using 19 of 24 positions; the remaining five are an open gap unless explicitly grouped.</p>
+<div class="formula">(((( 24! / 8! / 4! / 3! / 2! / 1! / 1! ))))</div>
+<div class="metrics">
+<div class="metric"><small>24! RAW PERMUTATIONS</small><strong id="f24">620,448,401,733,239,439,360,000</strong></div>
+<div class="metric"><small>ORIGINAL QUOTIENT</small><strong id="rawnum">53,430,920,839,296,000</strong></div>
+<div class="metric"><small>SEVEN-GROUP MULTINOMIAL</small><strong id="normalized">445,257,673,660,800</strong></div>
+<div class="metric"><small>RATIO = 5!</small><strong>120 ×</strong></div>
+</div>
+<div class="columns"><section class="card"><div class="head"><b>01 / QUADRUPLE TOROID · 24 DOTS</b><small>FOUR CONCENTRIC WRAPS · SIX GROUPS + GAP</small></div>
+<div class="stage"><svg id="torus" viewBox="0 0 760 555" role="img" aria-label="Four nested toroidal rings with twenty-four selectable symbolic positions, displaying six explicit groups plus a five-position gap.">
+<defs><radialGradient id="core"><stop offset="0" stop-color="#443b75"/><stop offset="1" stop-color="#101933"/></radialGradient></defs>
+<g id="rings"></g><g id="connectors"></g><g id="dots"></g>
+<ellipse cx="380" cy="278" rx="117" ry="68" fill="url(#core)" stroke="#a48de0" stroke-opacity=".7"/>
+<text x="380" y="260" fill="#e2c9ff" text-anchor="middle" font-size="19" font-weight="bold">24! / denominator</text>
+<text x="380" y="286" fill="#bad9f5" text-anchor="middle" font-size="11">8 × 3 REGISTER</text>
+<text id="core-status" x="380" y="308" fill="#acd1fa" text-anchor="middle" font-size="10">5 OPEN / 19 ASSIGNED</text></svg>
+<div class="hud" id="hud">TORUS · PHASE 0 · GAP OPEN</div></div>
+<div class="panel">
+<div class="kicker">GROUP PARTITION · CLICK FOR DETAILS</div><div class="legend" id="legend" role="group" aria-label="Six explicit factorial groups and the remaining gap"></div>
+<p class="small">Groups of sizes <strong>8, 4, 3, 2, 1, 1</strong> use 19 positions. Positions <strong>20–24</strong> are unassigned in the original denominator. Closing the gap as a group of five changes the counting formula by the factor 5!.</p>
+</div></section>
+<aside class="card"><div class="head"><b>02 / OPERATORS</b><small>CHOOSE COUNTING INTERPRETATION</small></div><div class="panel controls">
+<div class="control"><div class="kicker">COUNTING MODE</div><div class="segment" role="group" aria-label="Counting interpretation">
+<button data-mode="raw" type="button" aria-pressed="true">ORIGINAL 6 GROUPS</button>
+<button data-mode="sealed" type="button" aria-pressed="false">SEAL GAP AS 5!</button></div>
+<p class="small">Original: 24! divided by the six written factorials. Sealed: additionally divide by 5! to make seven classes summing to 24.</p></div>
+<div class="control"><div class="row"><label for="phase">Rotate 24-slot register</label><output id="phase-v">0 / 23</output></div><input id="phase" type="range" min="0" max="23" step="1" value="0"></div>
+<div class="control"><div class="row"><label for="address">Anchor KET address</label><output id="address-v">Z184 · +O62</output></div><input id="address" type="number" min="1" max="488" step="1" value="184"></div>
+<div class="control"><div class="row"><label for="speed">Illustration rate</label><output id="speed-v">1.0×</output></div><input id="speed" type="range" min="0.25" max="3" step="0.25" value="1"></div>
+<div class="actions"><button id="advance" class="btn primary" type="button">+ ROTATE ONE</button><button id="play" class="btn" type="button">Ⅱ PAUSE</button><button id="reset" class="btn" type="button">↶ RESET</button><button id="copy" class="btn" type="button">⧉ COPY STATE</button></div>
+<div class="row"><span class="kicker">SELECTED POSITION</span><span id="feedback" class="small" role="status"></span></div>
+<div class="inspect" id="inspector" aria-live="polite">Loading…</div>
+</div></aside></div>
+<div class="lower"><section class="card"><div class="head"><b>03 / EXACT 8 × 3 REGISTER</b><small>24 CELLS; NO CELL ADDED OR LOST</small></div><div class="panel">
+<div class="band" id="register" role="group" aria-label="Eight lanes of three slots each"></div>
+<p class="small">Rotating permutes the assignment of group labels across the same 24 positions. It does not change the underlying combinatorial count.</p>
+<div class="inspect" id="arithmetic">Calculating factorial counts with BigInt…</div>
+</div></section>
+<section class="card"><div class="head"><b>04 / SAME-SLOT INTERSECTIONS</b><small>KET 488 · FOUR ROOTS × 122</small></div><div class="panel">
+<p class="small">The highlighted 24-position register is an illustration layer. For each selected position, its address is mapped to an offset within the selected KET root; cross-root links share that local slot. This mapping is an explicit visualization choice.</p>
+<div id="intersection" class="intersections"></div>
+<div id="mapping" class="inspect">Loading intersection…</div>
+</div></section></div>
+<footer>
+<strong>Mathematics:</strong> the stated quotient is an integer but not a complete 24-item multinomial partition because the denominator class sizes sum to 19. The 5-class remainder must either stay distinguishable as 5 ordered slots or be grouped via an additional 5!. <strong>Physics:</strong> these are finite combinatorial counts and toroidal graphics, not quark-size measurements, gluon calculations, literal electron orbit paths, or physical evidence that a 24-state QCD system exists. The original 488 chromatic registry and its wavelength-provenance limits remain unchanged.
+</footer></main><script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
+const COLOR=['#65def3','#d2a2ff','#83eeaf','#ffc483','#ee9ba9','#9daafb','#92a1b9'];
+const LABEL=['8','4','3','2','1a','1b','GAP 5'];
+const ROOTS=[{name:'+H',c:'#f05c65'},{name:'+O',c:'#33d3a0'},{name:'−N',c:'#ab75ff'},{name:'+N',c:'#54c9ff'}];
+const SIZES=[8,4,3,2,1,1,5];
+const STATE={phase:0,mode:'raw',anchor:184,selected:0,highlight:0,playing:true,speed:1,angle:0};
+const ROOT=(z)=>Math.floor((z-1)/122),SLOT=(z)=>(z-1)%122+1,ADDR=(root,slot)=>root*122+slot;
+const factorial=(n)=>{let out=1n;for(let i=2n;i<=BigInt(n);i++)out*=i;return out};
+const FACT24=factorial(24),DEN=SIZES.slice(0,6).reduce((a,n)=>a*factorial(n),1n);
+const RAW=FACT24/DEN,SEALED=RAW/factorial(5);
+const formatting=x=>x.toLocaleString('en-US');
+const groupOf=i=>{let sum=0;for(let g=0;g<SIZES.length;g++){sum+=SIZES[g];if(i<sum)return g}throw Error('position out of range')};
+const cellGroup=physical=>groupOf((physical+STATE.phase)%24);
+const slotName=physical=>{const logical=(physical+STATE.phase)%24;return {logical,lane:Math.floor(logical/3)+1,port:logical%3+1,group:groupOf(logical)}};
+const mk=(tag,attrs,parent)=>{const el=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,String(v));parent.append(el);return el};
+const rings=[],points=[],cells=[];
+for(let k=0;k<4;k++){
+ const rx=288-k*26,ry=213-k*23;
+ const ring=mk('ellipse',{cx:380,cy:278,rx,ry,fill:'none',stroke:ROOTS[k].c,
+  'stroke-opacity':.20+k*.035,'stroke-width':k===0?7:4},$('rings'));
+ rings.push(ring);
+ const text=mk('text',{x:380,y:278-ry-7,'text-anchor':'middle',fill:ROOTS[k].c,'font-size':10},$('rings'));
+ text.textContent='WRAP '+(k+1);
+}
+for(let i=0;i<24;i++){
+ const line=mk('line',{stroke:'#7d8bb3','stroke-opacity':'.14','stroke-width':1.2},$('connectors'));
+ const group=mk('g',{role:'button',tabindex:'0','aria-label':'Select register position '+(i+1),class:'atom'},$('dots'));
+ const dot=mk('circle',{r:11,fill:COLOR[groupOf(i)]},group);
+ const label=mk('text',{},group);label.textContent=String(i+1);
+ const select=()=>{STATE.selected=i;STATE.highlight=cellGroup(i);render()};
+ group.addEventListener('click',select);
+ group.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select()}});
+ points.push({group,dot,label,line,i});
+}
+const legend=$('legend');
+SIZES.forEach((size,g)=>{
+ const b=document.createElement('button');b.type='button';b.style.setProperty('--color',COLOR[g]);
+ const name=document.createElement('b');name.textContent=String(size);
+ const desc=document.createElement('small');desc.textContent=g===6?'UNASSIGNED':g<6?'GROUP '+(g+1):'GROUP 7';
+ b.append(name,desc);b.setAttribute('aria-label','Inspect '+(g===6?'five-position gap':'group '+(g+1))+' with '+size+' positions');
+ b.onclick=()=>{
+  STATE.highlight=g;
+  const first=Array.from({length:24},(_,i)=>i).find(i=>cellGroup(i)===g);
+  if(first!==undefined)STATE.selected=first;
+  render();
+ };
+ legend.append(b);
+});
+for(let lane=0;lane<8;lane++){
+ const section=document.createElement('div');section.className='lane';
+ const heading=document.createElement('b');heading.textContent='L'+(lane+1);section.append(heading);
+ const slots=document.createElement('div');slots.className='slots';
+ for(let k=0;k<3;k++){
+  const physical=lane*3+k;
+  const button=document.createElement('button');button.className='slot';button.type='button';button.dataset.position=String(physical);
+  button.onclick=()=>{STATE.selected=physical;STATE.highlight=cellGroup(physical);render()};
+  button.setAttribute('aria-label','Select physical lane '+(lane+1)+' position '+(k+1));
+  slots.append(button);cells.push(button);
+ }
+ section.append(slots);$('register').append(section);
+}
+function render(){
+ $('phase').value=String(STATE.phase);$('phase-v').textContent=STATE.phase+' / 23';
+ $('address').value=String(STATE.anchor);
+ $('speed').value=String(STATE.speed);$('speed-v').textContent=STATE.speed.toFixed(2)+'×';
+ $('hud').textContent='TORUS · PHASE '+STATE.phase+' · '+(STATE.mode==='raw'?'GAP OPEN':'GAP SEALED');
+ $('core-status').textContent=STATE.mode==='raw'?'5 UNASSIGNED / 19 EXPLICIT':'SEVEN GROUPS · 24 ASSIGNED';
+ [...document.querySelectorAll('[data-mode]')].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===STATE.mode)));
+ [...legend.children].forEach((b,g)=>{b.setAttribute('aria-pressed',String(STATE.highlight===g));b.lastChild.textContent=g===6?(STATE.mode==='raw'?'OPEN GAP':'SEALED GROUP'):'GROUP '+(g+1)});
+ const selected=slotName(STATE.selected);
+ const root=ROOT(STATE.anchor);
+ const crossSlot=((SLOT(STATE.anchor)-1+selected.logical)%122)+1;
+ const localZ=ADDR(root,crossSlot);
+ $('address-v').textContent='Z'+STATE.anchor+' · '+ROOTS[root].name+SLOT(STATE.anchor);
+ $('inspector').textContent='PHYSICAL SLOT '+(STATE.selected+1)+'/24\n'+
+ 'LOGICAL SLOT   '+(selected.logical+1)+'/24\n'+
+ '8×3 REGISTER   LANE '+selected.lane+' · PORT '+selected.port+
+ '\nGROUP          '+(selected.group===6?'FIVE-POSITION GAP':LABEL[selected.group]+' / G'+(selected.group+1))+
+ '\nASSIGNMENT     '+(selected.group===6&&STATE.mode==='raw'?'UNASSIGNED (original expression)':'INCLUDED IN PARTITION')+
+ '\nROOT ADDRESS   Z'+localZ+' / '+ROOTS[root].name+crossSlot+
+ '\nSELECTED COUNT '+formatting(STATE.mode==='raw'?RAW:SEALED);
+ $('arithmetic').textContent='24! = '+formatting(FACT24)+
+ '\nD = 8!×4!×3!×2!×1!×1! = '+formatting(DEN)+
+ '\nRAW = 24! / D = '+formatting(RAW)+
+ '\nSUM SIZES = 8+4+3+2+1+1 = 19; REMAINDER 5'+
+ '\nSEALED = 24! / (D×5!) = '+formatting(SEALED)+
+ '\nRELATION = RAW / SEALED = '+formatting(RAW/SEALED)+
+ '\nMODE = '+STATE.mode.toUpperCase()+' · PHASE = '+STATE.phase;
+ $('intersection').replaceChildren();
+ ROOTS.forEach((r,index)=>{
+  const z=ADDR(index,crossSlot);
+  const node=document.createElement('div');node.className='root';node.style.setProperty('--c',r.c);
+  const a=document.createElement('b');a.textContent=r.name+crossSlot;
+  const b=document.createElement('small');b.textContent='Z'+z+(index===root?' · ANCHOR':'');
+  node.append(a,b);$('intersection').append(node);
+ });
+ $('mapping').textContent='ANCHOR Z'+STATE.anchor+' / ROOT '+ROOTS[root].name+
+ '\nCELL '+(selected.logical+1)+' → ROOT OFFSET '+selected.logical+
+ '\nINTERSECTION SLOT '+crossSlot+'/122'+
+ '\nROOTS +H / +O / −N / +N'+
+ '\nFOUR-WRAP TORUS ≠ QCD SU(3) PHYSICAL GEOMETRY';
+ cells.forEach(b=>{
+  const p=Number(b.dataset.position),g=cellGroup(p);
+  b.textContent=String(slotName(p).logical+1);
+  b.style.setProperty('--c',COLOR[g]);
+  b.setAttribute('aria-pressed',String(p===STATE.selected));
+  b.title='G'+(g+1)+'; logical '+(slotName(p).logical+1);
+ });
+ points.forEach(p=>{
+  const g=cellGroup(p.i);
+  p.dot.setAttribute('fill',COLOR[g]);p.label.textContent=String(slotName(p.i).logical+1);
+  p.group.classList.toggle('active',p.i===STATE.selected);
+  p.group.classList.toggle('gap',g===6&&STATE.mode==='raw');
+ });
+}
+function frame(){
+ for(const p of points){
+  const theta=2*Math.PI*p.i/24-Math.PI/2+STATE.angle;
+  const x=380+288*Math.cos(theta),y=278+213*Math.sin(theta);
+  const xi=380+110*Math.cos(theta),yi=278+65*Math.sin(theta);
+  p.group.setAttribute('transform','translate('+x.toFixed(2)+' '+y.toFixed(2)+')');
+  p.line.setAttribute('x1',xi.toFixed(2));p.line.setAttribute('y1',yi.toFixed(2));
+  p.line.setAttribute('x2',x.toFixed(2));p.line.setAttribute('y2',y.toFixed(2));
+ }
+}
+document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{STATE.mode=b.dataset.mode;render()}));
+$('phase').oninput=e=>{STATE.phase=Number(e.target.value);STATE.highlight=cellGroup(STATE.selected);render()};
+$('address').onchange=e=>{const n=Number(e.target.value);if(Number.isInteger(n)&&n>=1&&n<=488)STATE.anchor=n;render()};
+$('speed').oninput=e=>{STATE.speed=Number(e.target.value);render()};
+$('advance').onclick=()=>{STATE.phase=(STATE.phase+1)%24;STATE.highlight=cellGroup(STATE.selected);render()};
+$('play').onclick=()=>{STATE.playing=!STATE.playing;$('play').textContent=STATE.playing?'Ⅱ PAUSE':'▶ RESUME'};
+$('reset').onclick=()=>{Object.assign(STATE,{phase:0,mode:'raw',anchor:184,selected:0,highlight:0,playing:true,speed:1,angle:0});$('play').textContent='Ⅱ PAUSE';render()};
+$('copy').onclick=async()=>{
+ const sample='KET FACTORIAL TOROID\nEXPRESSION ((((24! / 8! / 4! / 3! / 2! / 1! / 1!))))\nRAW '+RAW+
+ '\nREMAINDER 5\nNORMALIZED '+SEALED+'\nSELECT '+(STATE.selected+1)+' PHASE '+STATE.phase+' MODE '+STATE.mode+' ANCHOR '+STATE.anchor;
+ try{await navigator.clipboard.writeText(sample);$('feedback').textContent=' Copied'}catch(err){$('feedback').textContent=' Clipboard unavailable'}
+};
+const pref=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let previous=0;
+function animate(now){
+ if(!document.getElementById('torus'))return;
+ if(!previous)previous=now;const delta=Math.min(.05,(now-previous)/1000);previous=now;
+ if(STATE.playing&&!pref)STATE.angle+=delta*.15*STATE.speed;
+ frame();requestAnimationFrame(animate);
+}
+if(SIZES.reduce((a,b)=>a+b,0)!==24)throw Error('PARTITION_SHAPE_INVALID');
+if(RAW!==53430920839296000n||SEALED!==445257673660800n||RAW/SEALED!==120n)throw Error('FACTORIAL_CHECK_FAILED');
+render();requestAnimationFrame(animate);
+})();</script></body></html>
