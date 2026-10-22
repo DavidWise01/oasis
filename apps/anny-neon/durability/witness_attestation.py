@@ -171,6 +171,7 @@ def authenticate(manifest_path, policy_path, witness_path, meter_path,
             v[0] >= on and v[1] <= off and v[2] >= on)
         if not checks["meter_readings_cross_thresholds"]:
             raise ValueError("METER_TRACE_DOES_NOT_SHOW_CUT")
+        # Signed event times must agree within a policy-prescribed bound.
         drift = policy.get("max_witness_meter_skew_seconds", 30)
         if type(drift) not in (float, int) or not (0 < drift <= 300):
             raise ValueError("SKEW_POLICY_INVALID")
