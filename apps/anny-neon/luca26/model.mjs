@@ -88,3 +88,61 @@ export function transformFrame({generation=0,distill=0,polarity='+',mutations=[]
       :'Too much ancestral information or base framing is missing to establish continuity.'
   };
 }
+
+
+/*
+ * 3 × 20 residue zipper above the existing LUCA-26 register.
+ * Three symbolic observation lanes have 20 slots each (60 observations).
+ * The merge returns 20 aligned outcomes; it does NOT create new amino acids,
+ * assert biological triple-stranded translation, or authenticate independent
+ * ancestry. A two-of-three agreement is a demonstration quorum, not proof.
+ */
+export const ZIPPER_REFERENCE=Object.freeze(AA20.map(amino=>amino.code));
+export const ZIPPER_LANES=Object.freeze(['α','β','γ']);
+export const ZIPPER_STEPS=20;
+
+export function zipperMerge({
+  lanes=[ZIPPER_REFERENCE,ZIPPER_REFERENCE,ZIPPER_REFERENCE],
+  shifts=[0,0,0],
+  closed=0,
+  rule='strict'
+}={}) {
+  if(!Array.isArray(lanes)||lanes.length!==3||
+     lanes.some(lane=>!Array.isArray(lane)||lane.length!==ZIPPER_STEPS)){
+    throw new TypeError('ZIPPER_REQUIRES_THREE_20_SLOT_LANES');
+  }
+  if(!Array.isArray(shifts)||shifts.length!==3||
+     shifts.some(n=>!Number.isInteger(n)||Math.abs(n)>ZIPPER_STEPS)){
+    throw new TypeError('ZIPPER_SHIFT_INVALID');
+  }
+  if(rule!=='strict'&&rule!=='quorum')throw new TypeError('ZIPPER_RULE_INVALID');
+  const teeth=Math.max(0,Math.min(ZIPPER_STEPS,Math.trunc(Number(closed)||0)));
+  const positions=ZIPPER_REFERENCE.map((reference,index)=>{
+    const values=lanes.map((lane,rail)=>lane[((index+shifts[rail])%ZIPPER_STEPS+ZIPPER_STEPS)%ZIPPER_STEPS]??null);
+    const counts=new Map();
+    for(const v of values)if(v!==null)counts.set(v,(counts.get(v)||0)+1);
+    const unanimous=values.every(v=>v===reference);
+    const referenceVotes=values.filter(v=>v===reference).length;
+    const quorum=referenceVotes>=2;
+    const sealed=index<teeth;
+    const accepted=sealed&&(rule==='strict'?unanimous:quorum);
+    return Object.freeze({
+      index,reference,values:Object.freeze(values),sealed,unanimous,quorum,referenceVotes,
+      accepted,output:accepted?reference:null,
+      state:!sealed?'OPEN':accepted?'MERGED':'HOLD',
+      disagreements:3-referenceVotes
+    });
+  });
+  const sealed=positions.filter(x=>x.sealed).length;
+  const accepted=positions.filter(x=>x.accepted).length;
+  const holds=sealed-accepted;
+  const unanimity=positions.filter(x=>x.sealed&&x.unanimous).length;
+  return Object.freeze({
+    rule,closed:teeth,total:ZIPPER_STEPS,lanes:3,observations:60,
+    accepted,holds,unanimity,open:ZIPPER_STEPS-sealed,
+    status:holds?'HOLD':sealed===ZIPPER_STEPS?'MERGED':'IN_PROGRESS',
+    output:positions.map(x=>x.output??'·').join(''),
+    positions:Object.freeze(positions),
+    caution:'Three symbolic lanes do not prove independent provenance; majority vote alone cannot recover lost source truth.'
+  });
+}
