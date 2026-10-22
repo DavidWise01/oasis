@@ -58,7 +58,7 @@ footer{color:#8cabc6;font-size:12px;margin:35px 0}
 <h2 style="margin:25px 0 8px;font-size:15px;color:#ace2ff">SELECT A KILL CHECKPOINT</h2>
 <section id="cases" aria-label="Scenario selectors"></section>
 <section class="panel" id="detail" aria-live="polite">Loading scenario details…</section>
-<section class="panel" style="margin-top:17px"><h2>REPRODUCE / AUDIT</h2>
+<section class="panel" style="margin-top:17px"><h2>FAIL-CLOSED RECEIVER REGRESSION · 11/11 LOCAL PASS</h2><p class="scope">A targeted fault injection previously left Violet VERIFIED even with two receiver ledger effects. The standalone SQLite analogue now requires exactly one row and one effect, plus the original synthetic source digest. Repeated testing produced 11/11 passing negative controls and 5/5 passing SIGKILL checkpoints. This does not certify browser IndexedDB or electrical power loss.</p><a href="./failclosed-regression-evidence.json">Read fault-injection evidence JSON</a> · <a href="./test_disk_gate_faults.py">Inspect regression tests</a></section><section class="panel" style="margin-top:17px"><h2>REPRODUCE / AUDIT</h2>
 <p class="scope">This file-backed test was executed locally. It reopens separate journal and receiver databases after killing a worker process, checks SHA-256 and receipt agreement, and verifies atomic rollback. The data shown is a committed historical report, not a live CI status. SQLite is not the browser's IndexedDB implementation.</p>
 <div class="controls"><button id="reload" type="button">↻ Reload report</button><button id="copy" type="button">Copy selection</button>
 <a href="./disk_gate.py">Python test</a><a href="./local-process-evidence.json">Raw JSON</a>
