@@ -1,0 +1,29 @@
+# UNSAFE LOCAL TEST FIXTURE: loopback clients only, NO TLS. Never deploy to production.
+name: it3-p23
+x-base: &base
+  image: quay.io/coreos/etcd:v3.5.18
+  networks: [internal]
+  restart: "no"
+services:
+  node1:
+    <<: *base
+    command: ["/usr/local/bin/etcd","--name=node1","--data-dir=/data","--listen-client-urls=http://0.0.0.0:2379","--advertise-client-urls=http://node1:2379","--listen-peer-urls=http://0.0.0.0:2380","--initial-advertise-peer-urls=http://node1:2380","--initial-cluster=node1=http://node1:2380,node2=http://node2:2380,node3=http://node3:2380","--initial-cluster-state=new","--initial-cluster-token=it3-p23"]
+    ports: ["127.0.0.1:12379:2379"]
+    volumes: [n1:/data]
+  node2:
+    <<: *base
+    command: ["/usr/local/bin/etcd","--name=node2","--data-dir=/data","--listen-client-urls=http://0.0.0.0:2379","--advertise-client-urls=http://node2:2379","--listen-peer-urls=http://0.0.0.0:2380","--initial-advertise-peer-urls=http://node2:2380","--initial-cluster=node1=http://node1:2380,node2=http://node2:2380,node3=http://node3:2380","--initial-cluster-state=new","--initial-cluster-token=it3-p23"]
+    ports: ["127.0.0.1:22379:2379"]
+    volumes: [n2:/data]
+  node3:
+    <<: *base
+    command: ["/usr/local/bin/etcd","--name=node3","--data-dir=/data","--listen-client-urls=http://0.0.0.0:2379","--advertise-client-urls=http://node3:2379","--listen-peer-urls=http://0.0.0.0:2380","--initial-advertise-peer-urls=http://node3:2380","--initial-cluster=node1=http://node1:2380,node2=http://node2:2380,node3=http://node3:2380","--initial-cluster-state=new","--initial-cluster-token=it3-p23"]
+    ports: ["127.0.0.1:32379:2379"]
+    volumes: [n3:/data]
+networks:
+  internal:
+    internal: true
+volumes:
+  n1:
+  n2:
+  n3:
