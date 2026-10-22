@@ -112,3 +112,38 @@ Balanced display (the only structural repair is a final brace):
 
 The page is a self-contained `neon.html` with no external JS or CSS dependencies. The LUCA-26 zipper, 26-register, underlying 64-codon lattice, and main ANNY Harvester are not modified.
 
+
+## Radon-86 · Six-shell interactive practice
+
+**Single-file HTML:** https://davidwise01.github.io/oasis/apps/anny-neon/luca26/radon.html
+
+This intentionally extends the previous **Neon-10** symbolic vessel without changing the original Neon file or the LUCA-26 code:
+
+```text
+Ne-10 seed:
+{1.2}{(3|4)(5|6){7.8}(1|0)}
+
+Radon symbolic outer-shell extension:
+{{n3:9×2}}{{n4:16×2}}{{n5:9×2}}{{n6:4×2}}
+
+Physical neutral Rn shell occupancy:
+n1=2 n2=8 n3=18 n4=32 n5=18 n6=8
+
+Symbolic two-position gates:
+1 + 4 + 9 + 16 + 9 + 4 = 43 gates = 86 addresses
+```
+
+The standalone HTML contains **86 selectable electron markers**, six concentric shell rings and shell selectors, all 43 paired gates, global fold/unfold, fold-all, clock-rate visualization, and label-distillation (which never removes physical electrons). Gates 1–5 retain the original Neon glyphs, including `1|0` as literal glyph characters rather than a decimal conversion. Shells 3–6 gain indexed pairs `E11|E12` through `E85|E86`.
+
+**Physical data:** radon has atomic number 86 and electron configuration `[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶`. The shells contain 2, 8, 18, 32, 18, and 8 electrons. See the [NIST atomic data](https://physics.nist.gov/PhysRefData/Handbook/Tables/radontable1_a.htm) and [Royal Society of Chemistry entry](https://periodic-table.rsc.org/element/86/radon).
+
+The page's **separate Rn-222 nuclear panel** shows alpha decay `²²²Rn → ²¹⁸Po + ⁴He` and the expected population remaining after elapsed time `t`:
+
+```text
+remaining_fraction = 2 ** (-t_days / 3.8235)
+```
+
+This is an ensemble expectation, not the decay time for one atom; after actual nuclear decay the product is polonium, **not** a Radon atom retaining the same electron structure. The half-life and alpha radiation are sourced from [EPA radon information](https://www.epa.gov/radiation/radionuclide-basics-radon) and [NCBI/ATSDR toxicological data](https://www.ncbi.nlm.nih.gov/books/NBK158787/table/T23/).
+
+Neither the animated shell rings nor the 43-gate KET structure are literal electron trajectories, nuclear dynamics, or accepted atomic notation. The page uses no radioactive source or physical apparatus. No unit-test suite was added.
+
