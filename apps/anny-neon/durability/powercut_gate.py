@@ -69,6 +69,10 @@ def setup_fixture(root,case):
  if case not in CASES: raise ValueError("UNKNOWN_CASE")
  dest=safe_root(root)/("run-"+uuid.uuid4().hex)
  dest.mkdir(mode=0o700)
+ # Persist directory creation metadata before arming the actual power cut.
+ parent_fd=os.open(str(dest.parent),os.O_RDONLY|os.O_DIRECTORY)
+ try:os.fsync(parent_fd)
+ finally:os.close(parent_fd)
  j=open_db(dest/"journal.sqlite3")
  r=open_db(dest/"receiver.sqlite3")
  j.execute("CREATE TABLE journal (id TEXT PRIMARY KEY,digest TEXT NOT NULL,"
@@ -89,7 +93,12 @@ def setup_fixture(root,case):
    "expected":list(EXPECT[case])}
  manifest["manifest_sha256"]=sha(manifest)
  mf=dest/"manifest.json"
- mf.write_text(json.dumps(manifest,indent=2)+"\n")
+ with mf.open("w",encoding="utf-8") as file:
+  file.write(json.dumps(manifest,indent=2)+"\n")
+  file.flush();os.fsync(file.fileno())
+ dir_fd=os.open(str(dest),os.O_RDONLY|os.O_DIRECTORY)
+ try:os.fsync(dir_fd)
+ finally:os.close(dir_fd)
  print(json.dumps({"status":"PREPARED_NOT_ARMED","manifest":str(mf),
                    "manifest_sha256":manifest["manifest_sha256"]}))
  return manifest
@@ -202,6 +211,9 @@ def witness(manifest_path,ledger_path,event,operator):
  with p.open("a",encoding="utf-8") as f:
   f.write(json.dumps(e,sort_keys=True,ensure_ascii=False)+"\n")
   f.flush();os.fsync(f.fileno())
+ dir_fd=os.open(str(p.parent),os.O_RDONLY|os.O_DIRECTORY)
+ try:os.fsync(dir_fd)
+ finally:os.close(dir_fd)
  print(json.dumps({"event_recorded":event,"run_id":m["run_id"],
                    "entry_sha256":e["entry_sha256"],
                    "warning":"manual witness note, not independent electrical measurement"}))
