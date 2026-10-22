@@ -54,13 +54,13 @@
     }
   ],
   "proof_requirements": {
-    "sacrificial_target_marked": true,
+    "sacrificial_target_marked": "REQUIRED_NOT_VERIFIED",
     "independent_witness_host": "REQUIRED_NOT_CONNECTED",
     "witness_sequence": "REGISTER -> OFF_OBSERVED -> ON_OBSERVED",
     "new_boot_identity": "REQUIRED",
     "sqlite_integrity_and_expected_state": "REQUIRED",
-    "power_meter_or_external_hardware_log": "RECOMMENDED_NOT_COLLECTED",
-    "manual_operator_review": "REQUIRED"
+    "power_meter_or_external_hardware_log": "REQUIRED_FOR_INDEPENDENT_ELECTRICAL_REVIEW_NOT_COLLECTED",
+    "manual_operator_review": "REQUIRED_NOT_STARTED"
   },
   "limits": [
     "Scripts never trigger a power cut",
