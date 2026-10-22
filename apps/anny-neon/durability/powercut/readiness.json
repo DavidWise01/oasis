@@ -1,0 +1,71 @@
+{
+  "schema": "anny-powercut-readiness-v1",
+  "generated_at": "2026-10-21",
+  "classification": "NOT_CERTIFIED",
+  "electrical_power_interruption_executed": false,
+  "independent_witness_log_received": false,
+  "storage_recovery_evidence_received": false,
+  "purpose": "preflight and externally witnessed sacrificial-hardware cut, not automated power control",
+  "modes": [
+    {
+      "id": "PREPARE_UNCOMMITTED",
+      "expected": {
+        "journal": "ABSENT",
+        "receiver_effects": 0,
+        "violet": "HELD"
+      },
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "COMMIT_UNCOMMITTED",
+      "expected": {
+        "journal": "PREPARED",
+        "receiver_effects": 0,
+        "violet": "HELD"
+      },
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "RECEIVER_UNCOMMITTED",
+      "expected": {
+        "journal": "RELEASE_PENDING",
+        "receiver_effects": 0,
+        "violet": "HELD"
+      },
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "CONFIRM_UNCOMMITTED",
+      "expected": {
+        "journal": "RELEASE_PENDING",
+        "receiver_effects": 1,
+        "violet": "HELD"
+      },
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "CONFIRM_COMMITTED",
+      "expected": {
+        "journal": "CONFIRMED",
+        "receiver_effects": 1,
+        "violet": "VERIFIED"
+      },
+      "status": "NOT_RUN"
+    }
+  ],
+  "proof_requirements": {
+    "sacrificial_target_marked": true,
+    "independent_witness_host": "REQUIRED_NOT_CONNECTED",
+    "witness_sequence": "REGISTER -> OFF_OBSERVED -> ON_OBSERVED",
+    "new_boot_identity": "REQUIRED",
+    "sqlite_integrity_and_expected_state": "REQUIRED",
+    "power_meter_or_external_hardware_log": "RECOMMENDED_NOT_COLLECTED",
+    "manual_operator_review": "REQUIRED"
+  },
+  "limits": [
+    "Scripts never trigger a power cut",
+    "Fixture tests and GitHub Actions self-tests do not certify physical power loss",
+    "SQLite WAL and device fsync promises depend on the actual filesystem and hardware",
+    "No claims about external exactly-once effects or the Chromium IndexedDB store"
+  ]
+}
