@@ -1,9 +1,10 @@
-import { AA20, DNA4, ANCESTOR, transformFrame } from './model.mjs';
+import { AA20, DNA4, ANCESTOR, CODON_LAYERS, transformFrame } from './model.mjs';
 
 const $ = id => document.getElementById(id);
 const state = {
   tick:0, distill:24, rate:1, mode:'all', polarity:'+',
-  mutations:new Set(), lostBases:new Set(), playing:false, trace:[]
+  mutations:new Set(), lostBases:new Set(), playing:false, trace:[],
+  selectedIndex:0, selectedCodon:'GCT'
 };
 const canvas=$('chamber');
 const ctx=canvas.getContext('2d',{alpha:false});
@@ -57,6 +58,7 @@ function updateFrame(log=false) {
     const row=frame.decoded[i];
     button.classList.toggle('lost',row.observed===null);
     button.setAttribute('aria-pressed',String(state.mutations.has(i)));
+    button.dataset.selected=String(state.selectedIndex===i);
     button.querySelector('small').textContent=row.codon;
     button.title=row.name+' · '+(row.match?'decoded intact':row.observed===null?'missing':'identity changed')+
        ' · click to '+(state.mutations.has(i)?'restore':'mutate');
@@ -65,9 +67,84 @@ function updateFrame(log=false) {
   for(const button of $('bases').querySelectorAll('button')){
     button.setAttribute('aria-pressed',String(state.lostBases.has(button.dataset.base)));
   }
-  $('aa-summary').textContent=frame.matched+'/20 residue identities decoded · tap to mutate / restore';
+  $('aa-summary').textContent=frame.matched+'/20 residue identities decoded · tap to select and mutate / restore';
+  updateCodonInspector();
   if(log) logEvent(frame.state,'AA '+frame.matched+'/20 · bases '+frame.basis+'/4 · rate '+state.rate.toFixed(2)+'×');
   if(prefersReduced.matches)drawScene(performance.now());
+}
+
+function buildCodonCube(){
+  const host=$('codon-layers');
+  // n chooses the highlighted translation target; one common 4×4×4 field
+  // exists under every amino acid, never sixty-four codons per residue.
+  for(const layer of CODON_LAYERS){
+    const section=document.createElement('section');
+    section.className='codon-layer';
+    section.setAttribute('aria-label','First base '+layer.base+', 16 codons');
+    const heading=document.createElement('div');
+    heading.className='codon-layer-title';
+    const first=document.createElement('span');
+    first.textContent='FIRST BASE / '+layer.base;
+    const tally=document.createElement('span');tally.className='micro';
+    tally.textContent='4 × 4 = 16';
+    heading.append(first,tally);
+    const grid=document.createElement('div');grid.className='codon-grid';
+    for(const item of layer.codons){
+      const b=document.createElement('button');
+      b.className='codon-cell';b.type='button';
+      b.dataset.codon=item.codon;
+      b.dataset.meaning=item.meaning;
+      b.dataset.first=item.first;
+      b.dataset.second=item.second;
+      b.dataset.third=item.third;
+      const code=document.createElement('strong');
+      code.textContent=item.codon;
+      const meaning=document.createElement('small');
+      meaning.textContent=item.meaning==='STOP'?'STOP':item.meaning;
+      b.append(code,meaning);
+      b.addEventListener('click',()=>{
+        state.selectedCodon=item.codon;
+        if(!item.isStop){
+          const i=AA20.findIndex(x=>x.code===item.meaning);
+          if(i>=0)state.selectedIndex=i;
+        }
+        updateFrame();
+        logEvent('CODON '+item.codon,
+          item.isStop?'STOP / termination signal':
+          'Decodes to '+AA20[state.selectedIndex].name+' ('+item.meaning+')');
+      });
+      grid.append(b);
+    }
+    section.append(heading,grid);
+    host.append(section);
+  }
+}
+
+function updateCodonInspector(){
+  const residue=AA20[state.selectedIndex]||AA20[0];
+  const picked=CODON_LAYERS.flatMap(x=>x.codons).find(x=>x.codon===state.selectedCodon);
+  $('codon-parent').textContent=String(state.selectedIndex+1).padStart(2,'0')+
+    ' · '+residue.name+' ('+residue.code+')';
+  $('codon-selected').textContent=picked?.codon??'—';
+  const unavailable=picked&&[...picked.codon].some(base=>state.lostBases.has(base));
+  $('codon-explanation').textContent=!picked?'No DNA triplet selected.':
+    picked.isStop?picked.codon+' is a STOP codon, signalling translation termination.':
+    picked.codon+' decodes to '+AA20.find(x=>x.code===picked.meaning)?.name+
+    ' ('+picked.meaning+'). '+(unavailable?'This carrier contains a currently removed base.':
+      picked.meaning===residue.code?'It encodes selected n.':'Selecting it changes the inspected n.');
+  $('codon-synonyms').textContent='n = '+residue.code+' · '+
+    residue.codons.length+' of 64 codons: '+residue.codons.join(' · ');
+  for(const b of $('codon-layers').querySelectorAll('button')){
+    const codon=b.dataset.codon;
+    b.dataset.match=String(residue.codons.includes(codon));
+    b.dataset.active=String(codon===state.selectedCodon);
+    b.dataset.unavailable=String([...codon].some(base=>state.lostBases.has(base)));
+    b.dataset.stop=String(b.dataset.meaning==='STOP');
+    b.setAttribute('aria-pressed',String(codon===state.selectedCodon));
+    b.setAttribute('aria-label',codon+' → '+(b.dataset.meaning==='STOP'?'translation stop':
+       b.dataset.meaning)+'; '+(residue.codons.includes(codon)?'matches selected residue':
+       'different residue')+(b.dataset.unavailable==='true'?'; base missing':''));
+  }
 }
 
 function buildSymbols(){
@@ -81,6 +158,8 @@ function buildSymbols(){
     const codon=document.createElement('small');codon.textContent=acid.codons[0];
     b.append(letter,codon);
     b.addEventListener('click',()=>{
+      state.selectedIndex=i;
+      state.selectedCodon=acid.codons[0];
       if(state.mutations.has(i))state.mutations.delete(i);
       else state.mutations.add(i);
       updateFrame();
@@ -162,6 +241,7 @@ function bindControls(){
     stopPlayback();
     state.tick=0;state.distill=24;state.rate=1;state.polarity='+';state.mode='all';
     state.mutations.clear();state.lostBases.clear();
+    state.selectedIndex=0;state.selectedCodon='GCT';
     $('distill').value='24';$('time-rate').value='1';
     pressState('[data-polarity]','polarity','+');pressState('[data-mode]','mode','all');
     state.trace=[];updateFrame();logEvent('GENESIS','LUCA-26 ancestral reference restored');
@@ -340,6 +420,7 @@ function drawScene(ts){
 function animation(t){drawScene(t);if(!prefersReduced.matches)requestAnimationFrame(animation)}
 
 buildSymbols();
+buildCodonCube();
 bindControls();
 updateFrame();
 logEvent('GENESIS','20 AA | ACTG | −+ instantiated');
