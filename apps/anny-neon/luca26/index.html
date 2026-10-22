@@ -26,7 +26,7 @@
     <div>
       <div class="kicker">EXPERIMENT 01 / TEMPORAL ISOMORPHISM</div>
       <h1 id="title">The toroid <em>eats the box.</em></h1>
-      <p>The amoeba adapts. The toroid distills and changes the clock. The box protects a 26-position ancestral identity: <strong>20 amino acids + ACTG + −/+</strong>. Explore what survives—and what cannot be recovered.</p>
+      <p>The three-strand zipper merges above the conserved core. The amoeba adapts. The toroid distills and changes the clock. The box protects a 26-position ancestral identity: <strong>20 amino acids + ACTG + −/+</strong>. Explore what survives—and what cannot be recovered.</p>
     </div>
     <div class="hero-stamp" aria-hidden="true"><strong>{ ( [ ] ) }</strong><small>LUCA :: 20 + 4 + 2</small></div>
   </section>
@@ -103,9 +103,66 @@
     </aside>
   </div>
 
+  <section class="panel zipper-panel" aria-labelledby="zipper-title">
+    <div class="panel-header">
+      <b id="zipper-title">03 / TOP ZIPPER · 3 × 20 AMINO ACIDS</b>
+      <span class="micro">α20 || β20 || γ20 → ONE ALIGNED 20-SLOT RESULT</span>
+    </div>
+    <div class="zipper-shell">
+      <div class="zipper-intro">
+        <div>
+          <div class="kicker">ABOVE THE LUCA BOX · THREE TEMPORAL LANES</div>
+          <h2 class="zipper-formula">{{3 × 20}} <span>↓ ZIPPER MERGE</span></h2>
+          <p class="hint">Three rows of 20 residues form 60 symbolic observations. Each vertical tooth closes into one of 20 merged positions. Click a residue to introduce or remove a strand-local change.</p>
+        </div>
+        <span class="zipper-tag" id="zipper-status" role="status" aria-live="polite">IN PROGRESS</span>
+      </div>
+      <div class="zipper-controls">
+        <div class="zipper-control" style="flex:2 1 240px">
+          <div class="row"><label for="zipper-close">Zipper closure</label><output id="zipper-close-v" for="zipper-close">0 / 20</output></div>
+          <input id="zipper-close" type="range" min="0" max="20" step="1" value="0">
+        </div>
+        <div class="zipper-control">
+          <span class="micro">DECODING RULE</span>
+          <div class="zipper-choice" role="group" aria-label="Zipper agreement rule">
+            <button type="button" data-ziprule="strict" aria-pressed="true">3 / 3</button>
+            <button type="button" data-ziprule="quorum" aria-pressed="false">2 / 3</button>
+          </div>
+        </div>
+        <div class="zipper-control">
+          <div class="row"><label for="zipper-beta">β offset</label><output id="zipper-beta-v" for="zipper-beta">0</output></div>
+          <input id="zipper-beta" type="range" min="-3" max="3" step="1" value="0">
+        </div>
+        <div class="zipper-control">
+          <div class="row"><label for="zipper-gamma">γ offset</label><output id="zipper-gamma-v" for="zipper-gamma">0</output></div>
+          <input id="zipper-gamma" type="range" min="-3" max="3" step="1" value="0">
+        </div>
+      </div>
+      <div class="zipper-rails" aria-label="Three 20-position residue rails and a merged output rail">
+        <div class="zipper-rail"><span class="zipper-rail-label">α <small>LIVE</small></span><div class="zipper-teeth" id="zipper-alpha"></div></div>
+        <div class="zipper-rail"><span class="zipper-rail-label">β <small>REF</small></span><div class="zipper-teeth" id="zipper-beta-rail"></div></div>
+        <div class="zipper-rail"><span class="zipper-rail-label">γ <small>REF</small></span><div class="zipper-teeth" id="zipper-gamma-rail"></div></div>
+        <div class="zipper-spine" aria-hidden="true"><span>▼</span><span class="zipper-track">MERGE / CONSENSUS / HOLD</span><span>▼</span></div>
+        <div class="zipper-rail"><span class="zipper-rail-label zipper-rail-output">Σ <small>MERGE</small></span><div class="zipper-teeth zipper-output" id="zipper-result"></div></div>
+      </div>
+      <div class="zipper-action-row">
+        <button id="zipper-open" class="action muted" type="button">− OPEN 1</button>
+        <button id="zipper-advance" class="action primary" type="button">+ ZIP 1</button>
+        <button id="zipper-all" class="action" type="button">↣ ZIP ALL</button>
+        <button id="zipper-align" class="action muted" type="button">◎ ALIGN CLOCKS</button>
+      </div>
+      <div class="zipper-result-line" aria-live="polite">
+        <span id="zipper-merged-count">0 / 20 accepted</span>
+        <span id="zipper-held-count">0 held · 20 open</span>
+        <span class="micro" id="zipper-interpretation">Three reference lanes are illustrative, not independently authenticated biological sequences.</span>
+      </div>
+      <p class="hint zipper-warning">3 × 20 is an invented KET zipper overlay, not how biological translation works. A 2/3 agreement is merely a quorum model: matching replicated strands cannot independently prove ancestry or reconstruct erased truth.</p>
+    </div>
+  </section>
+
   <section class="panel core" aria-labelledby="watermark-title">
     <div class="panel-header">
-      <b id="watermark-title">03 / LUCA–26 ANCESTRAL WATERMARK</b>
+      <b id="watermark-title">04 / LUCA–26 ANCESTRAL WATERMARK</b>
       <span class="micro">20 AA :: 4 DNA :: 2 OPERATORS</span>
     </div>
     <div class="controls">
@@ -153,12 +210,12 @@
 
   <div class="footer-panels">
     <section class="panel output" aria-labelledby="decode-title">
-      <h2 id="decode-title">04 / DISTILLED CARRIER & DECODE</h2>
+      <h2 id="decode-title">05 / DISTILLED CARRIER & DECODE</h2>
       <pre id="frame-readout">Loading ancestral register…</pre>
       <p class="hint" id="lineage-note">The ancestral identity is held separately from the changing carrier.</p>
     </section>
     <section class="panel output" aria-labelledby="ledger-title">
-      <h2 id="ledger-title">05 / LINEAGE TRACE · APPEND IN SESSION</h2>
+      <h2 id="ledger-title">06 / LINEAGE TRACE · APPEND IN SESSION</h2>
       <ol class="events" id="events" aria-live="off"></ol>
       <p class="hint">This is an in-memory demonstration ledger, not a signed immutable record or Git commit.</p>
     </section>
