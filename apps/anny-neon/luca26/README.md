@@ -86,3 +86,29 @@ luca26/
 ```
 
 No test files or CI workflow are introduced for this creative chamber.
+
+## Neon-10 symbolic practice chamber
+
+**HTML:** https://davidwise01.github.io/oasis/apps/anny-neon/luca26/neon.html
+
+Exact user-provided unbalanced glyph:
+
+```text
+{1.2}{(3|4)(5|6){7.8}(1|0)
+```
+
+Balanced display (the only structural repair is a final brace):
+
+```text
+{1.2}{(3|4)(5|6){7.8}(1|0)}
+```
+
+- Inner first pair: `{1.2}` → electron addresses E01 and E02 (physical n=1 shell).
+- Outer four pairs: `(3|4)`, `(5|6)`, `{7.8}`, `(1|0)` → E03–E10 (physical n=2 shell).
+- The last `(1|0)` contains the original **two literal glyphs** `1` and `0`, bound by explicit address metadata to E09 and E10 for this visualization; never silently convert the characters to numeral `10`.
+- This gives **5×2 = 10 symbolic electron addresses**, which overlays the real neutral Neon shell occupancy of **2+8**, and ground-state electron configuration `1s² 2s² 2p⁶`.
+- Click a pair or electron, fold/unfold the groups, change the illustrative observer rate, pause motion, and apply display-only distillation to remove labels. All 10 electron positions remain represented; information-loss controls never mean a real electron has vanished.
+- These are symbolic KET grouping and occupancy *analogies*, not atomic orbitals, or actual relativistic time dilation.
+
+The page is a self-contained `neon.html` with no external JS or CSS dependencies. The LUCA-26 zipper, 26-register, underlying 64-codon lattice, and main ANNY Harvester are not modified.
+
