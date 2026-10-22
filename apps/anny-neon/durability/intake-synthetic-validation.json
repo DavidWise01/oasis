@@ -1,0 +1,49 @@
+{
+  "schema": "anny-offline-evidence-intake-validation-v1",
+  "generated_utc": "2026-10-22",
+  "scope": "synthetic Ed25519 signatures, hardware claims, five-run continuity and redacted local intake only",
+  "environment": {
+    "python": "3.13.5",
+    "cryptography": "46.0.4",
+    "runtime": "Linux local container"
+  },
+  "tested_sources": [
+    {
+      "path": "apps/anny-neon/durability/evidence_intake.py",
+      "sha256": "314f0d402227dfd8468b11bfae08300b08e9f0cbcffdfd56afa71f8c4d82e74b",
+      "git_blob_sha1": "660ddefb1c261308d3921f666254ccd00011cd0d"
+    },
+    {
+      "path": "apps/anny-neon/durability/test_evidence_intake.py",
+      "sha256": "5fd6edc6480101b678390f8bcb04cc73990f4718b9d13310777acf78c12005de",
+      "git_blob_sha1": "4bd5b0a3d0ed204397dd04eefb095270044ee3a9"
+    }
+  ],
+  "command": "python -m unittest -q test_witness_attestation.py test_hardware_boundary.py test_five_run_gate.py test_evidence_intake.py",
+  "results": {
+    "prior_signed_models": 53,
+    "new_intake_cases": 12,
+    "total": 65,
+    "passed": 65,
+    "failed": 0,
+    "status": "PASS"
+  },
+  "case_categories": [
+    "genuine external hash required",
+    "exactly 26 files",
+    "no unexpected or hidden files",
+    "symlink/hardlink rejection",
+    "missing file quarantine",
+    "signature tamper detection",
+    "redacted output",
+    "reused file rejection",
+    "forbidden private key material",
+    "synthetic candidate never certified"
+  ],
+  "raw_real_evidence_received": false,
+  "actual_meter_hardware_connected": false,
+  "power_interruption_occurred": false,
+  "power_loss_certified": false,
+  "github_actions_execution_unverified": true,
+  "classification": "SYNTHETIC_TESTS_ONLY"
+}
