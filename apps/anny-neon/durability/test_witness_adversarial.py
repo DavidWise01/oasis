@@ -161,12 +161,15 @@ class AdversarialWitnessTests(unittest.TestCase):
  def test_same_run_concurrent_register_single_writer(self):
   def worker(_):
    try:
-    self.witness("REGISTER")
+    g.witness(self.manifest,self.ledger,"REGISTER","synthetic concurrent note")
     return "APPENDED"
    except ValueError as e:
     return str(e)
-  with concurrent.futures.ThreadPoolExecutor(max_workers=2) as ex:
-   results=list(ex.map(worker,(0,1)))
+  # Single mock spans both worker threads; individual patch/redirect scopes
+  # would be global process state and could race with one another.
+  with patch.object(g,"host_id",return_value=self.independent):
+   with concurrent.futures.ThreadPoolExecutor(max_workers=2) as ex:
+    results=list(ex.map(worker,(0,1)))
   self.assertEqual(results.count("APPENDED"),1,results)
   self.assertTrue(any("WITNESS_EVENT_ORDER" in x for x in results))
   self.assertEqual(len(g.ledger_load(self.ledger)[0]),1)
