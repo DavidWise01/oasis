@@ -68,6 +68,10 @@ footer{margin:25px 0;color:#9aabc6;font-size:12px}
 </section>
 </div>
 <section class="panel"><h2>Five physical interruption checkpoints</h2><div id="cases"></div><div id="detail" aria-live="polite">Loading registry…</div></section>
+<section class="panel" style="margin-top:16px"><h2>Witness replay and false-event defenses · source updated</h2>
+<p class="note">The witness verifier now checks <strong>stable host and boot identity</strong>, sequential UTC/monotonic clocks, unique event nonces, manifest binding, and locked append. The post-reboot SQLite connection is opened read-only. These guards detect many accidental or malicious edits, but unkeyed hash chains cannot authenticate physical power loss.</p>
+<p class="note"><strong>20 adversarial tests + 7 prior safety tests are committed, not yet independently reported as passing.</strong> All five physical interruption scenarios remain NOT RUN. Manual OFF/ON statements never become electrical measurements.</p>
+<div class="links"><a href="../../test_witness_adversarial.py">Adversarial test source</a><a href="https://github.com/DavidWise01/oasis/actions/workflows/anny-powercut-readiness.yml">Readiness CI</a><a href="../../POWER_CUT_PROTOCOL.md">Witness protocol</a></div></section>
 <section class="panel" style="margin-top:16px"><h2>Source-of-truth separation</h2>
 <p class="note">The prior SQLite <code>SIGKILL</code> experiment is a separate, process-crash dataset. The Chromium IndexedDB tests are separate again. This page does not inherit either one's results as power-loss proof.</p>
 <p class="note"><strong>Physical certification requires independent hardware evidence.</strong> Even a valid SHA-256 witness chain detects accidental edits rather than proving an honest observer or genuine electrical cut. Storage controllers and filesystems must honor sync barriers. <a href="https://www.sqlite.org/pragma.html#pragma_synchronous">SQLite synchronous documentation</a>.</p>
