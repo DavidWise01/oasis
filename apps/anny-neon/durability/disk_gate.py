@@ -111,9 +111,15 @@ def inspect(base: Path):
                    r.execute('PRAGMA integrity_check').fetchone()[0])
     finally:
         j.close();r.close()
-    matching=bool(row and receipt and row[0]==receipt[1] and row[1]==receipt[2]
-                  and row[2]==receipt[3] and receipt[0]==KEY and receipt[4]==1
-                  and receipt[5]==1 and row[4]==receipt[2])
+    # Fail-closed: a matching receipt alone is insufficient if ANY extra
+    # ledger effect exists or the synthetic source/digest pair was altered.
+    # This requirement is scoped to the isolated, single-transfer fixture.
+    matching=bool(row and receipt
+                  and row[0]==TRANSFER and row[1]==DIGEST and row[2]==SOURCE.hex()
+                  and receipt[0]==KEY and receipt[1]==TRANSFER
+                  and receipt[2]==DIGEST and receipt[3]==SOURCE.hex()
+                  and receipt[4]==1 and receipt[5]==1
+                  and row[4]==DIGEST and total[0]==1 and total[1]==1)
     violet='VERIFIED' if row and row[3]=='CONFIRMED' and matching else 'HELD'
     return dict(state=row[3] if row else 'ABSENT',receipt=bool(receipt),
                 effect_count=total[1],receiver_rows=total[0],violet=violet,
