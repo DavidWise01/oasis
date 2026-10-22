@@ -333,7 +333,9 @@ function update(){
  '\nWAVELENGTH '+(e.wavelength_nm==null?'NOT PROVIDED':e.wavelength_nm+' nm (supplied)')+
  '\nSOURCE '+e.source+
  '\nAGENT '+state.policy.toUpperCase()+' / '+(state.agent?'ACTIVE':'PAUSED')+
- '\nPIN ((wx0yz)) · CENTER ZERO FIXED'+
+ '\nCORE '+COBALT_CORE.label+' / Co·0 / '+COBALT_CORE.hex+
+ '\nLINKS '+CORE_LINKS.vertices+' vertex + '+CORE_LINKS.chromatic+' chromatic = '+CORE_LINKS.total+
+ '\nPIN ((((( wx0yz ))))) · CENTER ZERO FIXED'+
  '\n8×3 REGISTER SLOT '+(((p.id-1)%24)+1)+'/24';
  swatches.forEach((b,i)=>{b.dataset.active=String(i+1===state.selected);b.style.setProperty('--c',records[i].hex)});
  $('quartet').replaceChildren();
@@ -345,7 +347,7 @@ function update(){
   $('quartet').append(q);
  }
  $('register').textContent='REGISTRY  488 = 4 × 122\nTESSY     4D = 16V / 32E\nVESSEL    ((((( wx0yz )))))\nPIN       (0,0,0,0) · IMMUTABLE\n'+
- '8×3       24 symbolic register slots\nFOCUS     '+(Math.floor((p.id-1)%24/3)+1)+' / '+(((p.id-1)%3)+1)+
+ 'COBALT    Co·0 / 504 symbolic core connections\n8×3       24 symbolic register slots\nFOCUS     '+(Math.floor((p.id-1)%24/3)+1)+' / '+(((p.id-1)%3)+1)+
  '\nNEON      Z10 · 1s² 2s² 2p⁶ · shell 2|8\nQCD       color charge ≠ optical color';
 }
 for(const input of document.querySelectorAll('input[data-axis]')){
@@ -388,6 +390,7 @@ $('export').onclick=()=>{
   schema:'ket488-neon-agent-v1',
   vessel:'((((( wx0yz )))))',center:CENTER,
   tesseract:{vertices:16,edges:32,projection:'R4 to R3 to R2'},
+  cobalt:{symbol:COBALT_CORE.symbol,pin:CENTER,hex:COBALT_CORE.hex,links:CORE_LINKS,visible:state.show.corelinks},
   provenance:paletteKind,selected:state.selected,
   agent:{policy:state.policy,steps:state.steps,cadence_ms:state.cadence},
   axis:state.axis,vertex:{id:state.vertex,local_index:localIndex(state.digits),global_index:state.vertex*TOROID_PER_VERTEX+localIndex(state.digits),digits:state.digits},vertex_toroid:{per_vertex:TOROID_PER_VERTEX,total:TOTAL_VERTEX_STATES},records
