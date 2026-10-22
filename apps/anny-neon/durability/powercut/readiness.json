@@ -67,5 +67,21 @@
     "Fixture tests and GitHub Actions self-tests do not certify physical power loss",
     "SQLite WAL and device fsync promises depend on the actual filesystem and hardware",
     "No claims about external exactly-once effects or the Chromium IndexedDB store"
-  ]
+  ],
+  "signed_evidence_gate": {
+    "schema": "anny-signed-witness-v1",
+    "status": "SYNTHETIC_TESTS_PASSED_ONLY",
+    "local_tests_passed": 16,
+    "local_tests_total": 16,
+    "tested_git_source_blob": "e7f7e55b407fd1950f27f3e7865930239ee7e1ea",
+    "tested_git_test_blob": "eb7854a342bb637c9fac897d8fa204583b91504c",
+    "signing_technology": "Ed25519",
+    "trusted_policy_anchor": "REQUIRES_OUT_OF_BAND_SHA256",
+    "witness_signer": "NOT_CONNECTED",
+    "meter_signer": "NOT_CONNECTED",
+    "independent_meter_trace": "NOT_COLLECTED",
+    "actual_electrical_power_cut": false,
+    "independently_verified_hardware": false,
+    "certified": false
+  }
 }
