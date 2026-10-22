@@ -90,6 +90,54 @@ input[type=range]{width:100%;height:22px;margin-top:9px;accent-color:#a287ff;cur
 .base{min-width:44px;background:#0e2134;border:1px solid #5fabb5;border-radius:8px;color:#b7f8ff;padding:7px 12px;font:15px ui-monospace,monospace}
 .base[aria-pressed="true"]{opacity:.42;border-color:#e97c98;color:#ffb2c4;text-decoration:line-through}
 .polarity{font:13px ui-monospace,monospace;color:#e2c1ff;border:1px solid #705496;border-radius:8px;padding:7px 10px}
+/* Under {{n}}, one shared 4³ codon field: 4 first-base layers × 16 each. */
+.aa[data-selected="true"]{border-color:var(--violet);box-shadow:inset 0 0 0 1px #bb89ff,0 0 18px #ac77fb48}
+.codon-well{margin-top:22px;padding:19px;border:1px solid #71599e78;border-radius:16px;
+ background:radial-gradient(ellipse at 14% 0%,#40265a55,transparent 48%),linear-gradient(145deg,#0d1b33,#090e23)}
+.codon-header{display:flex;justify-content:space-between;align-items:start;gap:18px;flex-wrap:wrap}
+.codon-header>div:first-child{max-width:730px}
+.codon-formula{font:700 clamp(23px,3vw,35px)/1.15 ui-monospace,monospace;letter-spacing:.01em;margin:0 0 9px;
+ color:#e1c4ff}
+.codon-formula sup{font-size:53%}
+.codon-counts{display:flex;align-items:center;gap:7px}
+.codon-counts span{border:1px solid #4f6886a3;border-radius:9px;padding:8px 11px;min-width:57px;
+ background:#0e1d38;text-align:center}
+.codon-counts b{display:block;color:#e6f5ff;font:20px ui-monospace,monospace}
+.codon-counts small{display:block;color:#99b4cf;font:9px ui-monospace,monospace}
+.codon-topology{display:flex;justify-content:center;align-items:center;gap:9px;flex-direction:column;
+ margin:20px auto;border-bottom:1px solid #47648865;padding-bottom:15px;max-width:460px}
+.codon-parent,.codon-child{border:1px solid #986dc0b0;border-radius:9px;padding:9px 17px;
+ background:#221a3e;text-align:center;color:#eacfff;font:12px ui-monospace,monospace}
+.codon-child{border-color:#4fb5d7ba;color:#a6e9f8;background:#102a40}
+.codon-direction{font-size:19px;line-height:1;color:#e2c5ff}
+.codon-layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.codon-layer{border:1px solid #4f6685a1;background:linear-gradient(155deg,#111e39,#0a152b);
+ border-radius:12px;padding:9px;min-width:0}
+.codon-layer-title{display:flex;justify-content:space-between;align-items:center;gap:5px;
+ padding:0 2px 9px;color:#a9d9f2;font:10px ui-monospace,monospace;letter-spacing:.03em}
+.codon-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.codon-cell{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:2px;border:1px solid #355371cc;border-radius:7px;background:#0e1b33;
+ color:#a8bdd1;padding:7px 1px;min-height:49px}
+.codon-cell strong{font:600 12px ui-monospace,monospace}
+.codon-cell small{font:9px ui-monospace,monospace;color:#7698b3}
+.codon-cell:hover{border-color:#86ccff;background:#163252}
+.codon-cell[data-match="true"]{border-color:#58e2b09e;background:#11372d;color:#adffe1;
+ box-shadow:inset 0 0 9px #56f4a818}
+.codon-cell[data-match="true"] small{color:#71edc2}
+.codon-cell[data-stop="true"]{border-color:#8b5669;color:#fca3b6;background:#2b1c2d}
+.codon-cell[data-stop="true"] small{color:#e89bad}
+.codon-cell[data-unavailable="true"]{opacity:.42;filter:grayscale(.6)}
+.codon-cell[data-active="true"]{border-color:#eed0ff!important;outline:1px solid #c0a1ff;outline-offset:1px;
+ box-shadow:0 0 13px #b690ff78!important;opacity:1}
+.codon-inspector{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;
+ margin:14px 0 12px;padding:12px 14px;border:1px solid #506a8c;border-radius:11px;background:#111f38}
+.codon-inspector>div{display:flex;flex-direction:column;gap:3px}
+.codon-inspector strong{font:700 25px ui-monospace,monospace;color:#a9ffe2}
+.codon-inspector p{color:#cfdbeb;margin:0;font-size:12px;max-width:530px}
+@media(max-width:1100px){.codon-layers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.codon-layers{grid-template-columns:1fr}.codon-well{padding:11px}
+ .codon-header{gap:10px}.codon-inspector{flex-direction:column;align-items:start}}
 .footer-panels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:17px}
 .output{padding:17px 19px}
 .output h2{margin:0 0 10px;color:#b7d9ee;font-size:12px;letter-spacing:.14em}
