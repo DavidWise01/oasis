@@ -34,3 +34,4 @@ jobs:
           python3 docs/y2038/step14_replication.py
           python3 docs/y2038/step15_partition.py
           python3 docs/y2038/step16_auth.py
+          python3 docs/y2038/step17_snapshot.py
