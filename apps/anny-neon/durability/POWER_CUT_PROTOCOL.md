@@ -99,3 +99,27 @@ These tests use temporary synthetic scratch fixtures and mock a separate witness
 - No modification to ANNY's 18-position cubit, 10 ACKs, immutable protocol stages, Sapphon colors or Greek `− / +` names, `-- VOID` or `++ GRAVITY`.
 
 **Next certification boundary** (only after actual authorized hardware access): review a witnessed electrical meter/PDU log paired with all five post-boot recovery reports, then scope the pass to that exact drive, filesystem, firmware, power hardware, and test sequence.
+
+
+## 2026-10-21 Witness-integrity hardening — replay and false-event boundary
+
+This gate is now versioned as an **operator-claim audit**, not an electrical power sensor. The runtime and regression suite enforce:
+
+- **Independent identity through all events:** stable complete witness hostname, machine ID, **and boot ID** for REGISTER → OFF_OBSERVED → ON_OBSERVED. A witness reboot or host substitution fails closed; complete target identity is required at prepare.
+- **Ordered witness clocks:** increasing aware UTC timestamps and increasing monotonic-clock counters across one stable witness boot, with a distinct 128-bit nonce per event. A reordered or repeated nonce is rejected, even when a caller recalculates unkeyed SHA-256 entries.
+- **Bound event provenance:** the three entries must all name the same `run_id`, schema and original manifest SHA-256. An unrelated run's log is not accepted as the current transfer's witness.
+- **Atomic log append:** an advisory `fcntl.flock` guards the sequence check and append as one critical section. A concurrent duplicate REGISTER cannot slip through by both reading the same prior tail.
+- **Safe post-boot inspection:** database verification connects with `mode=ro` and `PRAGMA query_only=ON`, does not set journal mode, and refuses absent SQLite files rather than silently creating empty databases. SQLite may still perform its normal WAL recovery and sidecar bookkeeping where filesystem permissions allow.
+- **Explicit lack of power authentication:** reports label witness entries `OPERATOR_STATEMENTS_ONLY`, with `independent_electrical_measurement_verified=false`, `certified=false`. This does not become an electrical power proof by passing integrity checks.
+
+The new `test_witness_adversarial.py` defines 20 attack/control cases: duplicate REGISTER, repeated OFF, OFF without REGISTER, ON without OFF, changed witness host/boot, missing witness identity, empty operator note, valid synthetic sequence (still **NOT CERTIFIED**), changed boot with recomputed hash, timestamp reversal, monotonic replay, duplicate nonce, wrong manifest, cross-run replay, appended forged REGISTER, two concurrent REGISTER writers, absent log, malformed UTC, and symlinked ledger. Together with seven existing negative controls, the workflow runs **27 Python test cases**.
+
+**Execution status:** the GitHub source and workflow are committed; a completed hosted-run report has not yet been independently obtained. Do not describe these 27 tests as passed until a runner or the local Python command returns successful results.
+
+```bash
+cd apps/anny-neon/durability
+python3 powercut_gate.py self-test
+python3 -m unittest -v test_powercut_gate.py test_witness_adversarial.py
+```
+
+**Trust boundary:** a SHA-256 hash chain without an external signed or immutable anchor can be fully rewritten by someone who controls the witness log. All OFF/ON entries are human-supplied, and boot identity alone cannot prove the target lost electrical power. Independent measured power logs and manual review remain required for a physical certification claim. The published readiness register continues to show **five physical scenarios NOT_RUN / NOT_CERTIFIED**.
