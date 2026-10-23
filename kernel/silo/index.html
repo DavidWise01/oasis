@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="OASIS / KET Kernel Silo 1.0 — symbolic nested geometry and scalar-zero state machine. Offline visualizer. Not an empirical cosmology." />
+  <link rel="icon" href="data:," />
+  <title>OASIS / KET — Kernel Silo</title>
+  <link rel="stylesheet" href="./silo.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="mast">
+      <div>
+        <p class="overline">OASIS / KET · Kernel Silo · Rev 1.0 · evolve · fossils append-only · Patricia holds law</p>
+        <h1>The nest keeps the commits it survives.</h1>
+      </div>
+      <div class="scale-lock">
+        <div><b>layers</b> 10 · odd toroid · even box</div>
+        <div><b>flex</b> 2.875% · bulge = halfSide × 0.02875</div>
+        <div><b>notation</b> 10! preserved · factorial ≠ layer count</div>
+      </div>
+    </header>
+    <div class="honesty" id="honesty">
+      <span class="pill lit" id="pillLit">LIT software contract</span>
+      <span class="pill amber" id="pillAmber">AMBER visualization metaphor</span>
+      <span class="pill" id="pillWall">WALL empirical claims</span>
+    </div>
+
+    <section class="workspace" aria-label="Kernel silo instrument">
+      <div>
+        <div class="stage">
+          <canvas id="field" width="1600" height="1000" role="img" aria-label="Nested ten-level silo, odd toroids and even flexed boxes around scalar zero"></canvas>
+          <div class="hud">
+            <div class="tl">
+              <div>SILO <span class="live" id="hudRenderer">…</span></div>
+              <div>SCALAR <span id="hudScalar">0</span> · STEP <span id="hudStep">0</span></div>
+            </div>
+            <div class="tr">
+              <div id="hudTime">NOW +2s window</div>
+              <div id="hudChoice">pending unresolved</div>
+            </div>
+            <div class="bl" id="hudGeom">01 TOROID → 10 BOX</div>
+            <div class="br" id="hudFlex">flex 2.875%</div>
+          </div>
+        </div>
+        <div class="controlbar">
+          <button type="button" class="choice yes" id="btnYes" data-choice="YES">YES</button>
+          <button type="button" class="choice no" id="btnNo" data-choice="NO">NO</button>
+          <button type="button" class="choice maybe" id="btnMaybe" data-choice="MAYBE">MAYBE</button>
+          <button type="button" id="btnAuto" aria-pressed="false">AUTO</button>
+          <button type="button" id="btnReset">RESET DEMO</button>
+          <button type="button" id="btnJson">JSON</button>
+          <button type="button" id="btnOverlay" aria-pressed="false">3–1–3</button>
+          <button type="button" id="btnDeviate" aria-pressed="true">DEVIATE</button>
+          <button type="button" id="btnEvolve" aria-pressed="true">EVOLVE</button>
+          <div class="speed">
+            <label for="speed">auto ms</label>
+            <input id="speed" type="range" min="400" max="4000" step="100" value="2000" />
+            <output id="speedOut">2000</output>
+          </div>
+        </div>
+      </div>
+
+      <aside class="rail">
+        <section class="panel">
+          <h2>State</h2>
+          <div class="metrics">
+            <div class="metric"><span>scalar</span><strong id="mScalar">0</strong></div>
+            <div class="metric"><span>step / +2s</span><strong id="mStep">0 / 0s</strong></div>
+            <div class="metric"><span>flex</span><strong id="mFlex">2.875%</strong></div>
+            <div class="metric"><span>workspaces</span><strong id="mWs">6</strong></div>
+            <div class="metric"><span>fold</span><strong id="mFold">1–3–1</strong></div>
+            <div class="metric"><span>history</span><strong id="mHist">0</strong></div>
+            <div class="metric"><span>deviate</span><strong id="mDev">ON 78%</strong></div>
+            <div class="metric"><span>fossils</span><strong id="mFoss">0</strong></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Levels 1–10 · select</h2>
+          <div class="layer-row" id="layers"></div>
+          <div class="exp-row">
+            <label for="explode">explode</label>
+            <output id="explodeOut">0%</output>
+            <input id="explode" type="range" min="0" max="100" value="0" />
+          </div>
+          <div class="exp-row">
+            <label for="flex">box flex</label>
+            <output id="flexOut">2.875%</output>
+            <input id="flex" type="range" min="0" max="800" value="287.5" step="0.5" />
+          </div>
+          <div class="exp-row">
+            <label for="deviate">Stochieon miss</label>
+            <output id="deviateOut">78%</output>
+            <input id="deviate" type="range" min="0" max="100" value="78" />
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>VAINL · five parallel lanes</h2>
+          <div class="vainl" id="vainl"></div>
+          <div class="group-row">
+            <label>2/5 · 3/5 grouping
+              <select id="grouping">
+                <option value="unassigned" selected>unassigned (not law)</option>
+                <option value="proposal">proposal I+N internal</option>
+                <option value="custom">custom</option>
+              </select>
+            </label>
+          </div>
+          <div class="group-row" id="customGroup" hidden></div>
+          <p class="empty" style="margin:8px 0 0">I+N internal / V+A+L external is a proposal, not frozen law.</p>
+        </section>
+
+        <section class="panel">
+          <h2>Fold / unfold · <span id="netLabel">1–3–1 OPEN</span></h2>
+          <canvas id="foldNet" width="640" height="336" aria-label="Cross-net fold of the vessel"></canvas>
+          <div class="exp-row">
+            <label for="fold">fold strength</label>
+            <output id="foldOut">0%</output>
+            <input id="fold" type="range" min="0" max="100" value="0" />
+          </div>
+          <div class="group-row">
+            <button type="button" id="btnOpen" aria-pressed="true">OPEN 1–3–1</button>
+            <button type="button" id="btnClosed" aria-pressed="false">CLOSED 1–1–3–1</button>
+          </div>
+          <p class="empty" style="margin:8px 0 0">Workspaces stay <code>{{ -1{} -1{} -3{} -1{} }}</code> · six addresses. Fold does not change that count.</p>
+        </section>
+
+        <section class="panel">
+          <h2>Toph journal · append-only demo</h2>
+          <ul class="stream" id="journal"><li class="empty">No commits. Choose YES / NO / MAYBE.</li></ul>
+        </section>
+
+        <section class="panel">
+          <h2>Governance · top-down</h2>
+          <div class="stack">
+            <div class="apex">0ROOT :: T128  APEX</div>
+            <div>↓</div>
+            <div class="law">PATRICIA  IMMUTABLE LAW</div>
+            <div>↓</div>
+            <div class="support">STOCHIEON  SUPPORT / DEVIATE</div>
+            <div>↓</div>
+            <div class="do">TOPH  DO / RECORD</div>
+            <div>↓</div>
+            <div class="ref">SCALAR 0  REFERENCE / RESPAWN</div>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="notes">
+      <article>
+        <h2>Nested geometry</h2>
+        <pre class="nest-ascii">OUTER
+  01 [ TOROID  ] ─ flow
+    02 { BOX     } ─ containment; flex 2.875%
+      03 [ TOROID  ]
+        04 { BOX     }
+          05 [ TOROID  ]
+            06 { BOX     }
+              07 [ TOROID  ]
+                08 { BOX     }
+                  09 [ TOROID  ]
+                    10 { BOX     }
+                         .  SCALAR 0
+INNER</pre>
+        <p>Odd levels circulate. Even levels contain. Scalar 0 is the shared origin, not a layer. The law tunnel stays on the shared axis. Stochieon may tilt, precess, and miss; Life-like recovers toward the nest. Connectivity mnemonic <code>1, 2, 4, 6, 8, 10</code> is not a chemical valence list.</p>
+      </article>
+      <article>
+        <h2>What this is not</h2>
+        <p>Symbolic state-machine and visualization. Not a running Rust/WASM networking runtime, not a physical black hole / brain / diatom, not proof of ten nested dimensions, gravity-based replay, or verified physiological effects. The folded box is a software architecture. Reset clears only this demo’s journal.</p>
+        <p>Wave overlay payload retains seven 7-bit groups (49 bits) in a 3–1–3 spatial reading. Four extra control bits are <b>not</b> asserted on the wire.</p>
+      </article>
+    </section>
+    <footer>OASIS / KET Kernel Silo 1.0 · additive beside frozen current-additive-v01 and ket.mjs · LOCAL EXECUTABLE · NO CDN</footer>
+  </main>
+  <script type="module" src="./silo.js"></script>
+</body>
+</html>

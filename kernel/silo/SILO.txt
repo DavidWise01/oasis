@@ -1,0 +1,58 @@
+OASIS / KET — Kernel Silo
+Revision: 1.0
+Kind: additive architecture beside the frozen kernel
+Path: C:\Users\Dave\oasis\kernel\silo\
+
+DO NOT REWRITE
+  docs/reality-tensor/dyson-inversions/ket.mjs
+  docs/reality-tensor/dyson-inversions/kernel0.mjs
+  docs/reality-tensor/dyson-inversions/test_ket.mjs
+  docs/reality-tensor/dyson-inversions/test_kernel0.mjs
+  docs/reality-tensor/dyson-inversions/p443_atomic.mjs
+  docs/reality-tensor/dyson-inversions/release_gate.mjs
+  kernel/frozen/current-additive-v01/*
+  oasis/universe/oasis.html
+  hashed 027 kit files
+  A:\K\1\sapphon\city\index.html
+  gfx/index.* unless Dave says "this is your city"
+
+INVARIANTS
+  scalar 0          referent, not a level
+  layerCount        10
+  odd 1,3,5,7,9     toroid  flow / circulation
+  even 2,4,6,8,10   box     vessel / containment
+  boxFlexFraction   0.02875   bulge = halfSide × 0.02875
+  lanes             V A I N L   five parallel, not five serial stages
+  workspaces        [1,1,3,1] = 6 addresses
+  notation          {{ -1{} -1{} -3{} -1{} }}
+  authority         0ROOT_T128 → Patricia → Stochieon → Toph → scalar 0
+  transition        YES | NO | MAYBE   exactly one history record
+  clock             simulatedSeconds += 2 per commit
+  reset             clears demo history only
+  10!               user notation; 3,628,800 is factorial, not layer count
+  grouping          2/5 internal · 3/5 external configurable
+                    I+N internal / V+A+L external is a proposal, not law
+  wave              7 × 7-bit groups = 49 bits · 3–1–3 spatial
+                    four control bits NOT asserted
+  mnemonic          1, 2, 4, 6, 8, 10   connectivity, not chemical valence
+
+FILES
+  index.html        instrument shell
+  silo.css          dark local stylesheet, no CDN fonts
+  silo.js           WebGL2 + canvas 2D visualizer (ES module)
+  silo-kernel.mjs   state machine
+  silo.mjs          node prove
+  README.md         this layer's map
+  SILO.txt          this file
+
+PROVE
+  node silo.mjs
+
+SERVE (Chrome)
+  python -m http.server 4188
+  http://127.0.0.1:4188/
+
+HONESTY
+  LIT     ten alternating levels, flex default, six workspaces, one record per transition
+  AMBER   nested geometry, fold net, VAINL meters, 3–1–3 overlay as visualization
+  WALL    empirical cosmology, physical apparatus, Rust/WASM runtime in this HTML
