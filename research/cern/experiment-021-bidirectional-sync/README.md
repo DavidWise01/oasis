@@ -1,0 +1,5 @@
+# PRIM 021 — bidirectional [8×1×8] synchronization
+
+Date: 2026-10-23. Classical Kuramoto star network with 16 leaf oscillators + 1 central oscillator. Every leaf affects the hub (mean-normalized influence), and hub affects each leaf. Natural frequencies centered at 1 Hz with seeded Gaussian standard deviations 0, 0.05 or 0.2 Hz. Couplings k=0,0.5,2,8,20 rad/s. Eight random seeds per configuration; 120 numerical integrations with SciPy solve_ivp/DOP853 to t=150 s. Measurement window t=100–150s. Phase coherence R=|mean exp(i theta)| and relative phase slip between beginning/end of window (<0.15 rad) reported. With zero frequency spread and no coupling, relative phases are constant and count as frequency-locked, even though coherence is low (R≈0.172). For 0.05 Hz spread, 8/8 trials locked at k≥2; for 0.2 Hz spread, 8/8 locked at k≥8. At k=20, global average coherence is 0.99987 (0.05 Hz spread) and 0.99795 (0.2 Hz spread). Results are classical dynamics only, not physical photons, optical locking across all Hertz, or proof of quantum emergence.
+
+Reproduction: Python script and complete JSON supplied in ChatGPT `prim_exp021.zip`. Dependencies: numpy, scipy.
