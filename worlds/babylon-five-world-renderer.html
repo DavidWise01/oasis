@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07110e">
+<title>OaSIs · Babylon · five-world renderer (W1–W5 + SaPpH{{i}}on)</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#07110e; --pane:#0c1c16; --edge:#28503f;
+  --green:#77efad; --cyan:#8cd9dc; --amber:#e9c27d; --muted:#8da99c; --white:#eafff3;
+  --w1:#b38cf0; --w2:#39fc6b; --w3:#f4c740;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--white);font-family:Inter,system-ui,Arial,sans-serif;overflow-x:hidden}
+body{padding:20px;max-width:1500px;margin:0 auto}
+header{background:linear-gradient(180deg,#08130f88,#07110e);border-bottom:1px solid #28503f;padding:14px 20px;position:sticky;top:0;z-index:5}
+header>div{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font-size:11px;letter-spacing:.3em;color:var(--green);text-transform:uppercase}
+h1{font-size:clamp(28px,5vw,56px);letter-spacing:3px;margin:8px 0 4px;background:linear-gradient(100deg,var(--w1) 0%,var(--green) 26%,#5ff08a 42%,var(--w3) 60%,var(--w1) 100%);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:hallSheen 10s ease-in-out infinite}
+@keyframes hallSheen{0%{background-position:0% center;}100%{background-position:240% center;}}
+.muted{color:var(--muted)}
+main{max-width:1420px;margin:22px auto 60px;padding:0 16px}
+.worlds{display:grid;grid-template-columns:1fr 1.4fr 1.4fr;gap:20px;margin-top:26px}
+.panel{border:1px solid var(--edge);border-radius:18px;background:linear-gradient(180deg,#112b20dd,#0a1913);padding:24px}
+.panel h2{font-size:18px;margin:0 0 14px;border-bottom:1px solid var(--edge);padding-bottom:10px}
+.panel .tag{display:inline-block;font:700 10px ui-monospace,monospace;letter-spacing:.1em;padding:4px 9px;color:var(--green);border:1px solid #397459;border-radius:999px;margin-right:8px}
+.panel .lead{max-width:720px;color:#b3cdc0;line-height:1.75}
+.panel p{color:#c7dcce;line-height:1.65;margin-bottom:10px}
+.diagram{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:12px;line-height:1.7;white-space:pre;overflow:auto;color:#b0ebc8;min-height:280px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{border:1px solid var(--edge);border-radius:12px;padding:14px;background:#0e241ad0;min-width:0}
+.stat .k{font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+.stat .v{font-size:22px;font-weight:700;color:var(--green)}
+.world-label{font-size:9px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:8px}
+canvas#nebula{display:block;width:100%;height:420px;border-radius:12px;background:radial-gradient(circle at 50% 45%,#0e241a,#060a0c);border:1px solid var(--edge)}
+@media(max-width:1020px){.worlds{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="brand">OaSIs · BABYLON · 0ROOT</div>
+    <div class="muted">five-world palette · one {~~~} towel · SaPpH{{i}}on outer</div>
+  </div>
+  <h1>W1 | W2 || W3 || W4 | W5 — outside it, SaPpH{{i}}on</h1>
+</header>
+
+<main>
+  <p class="lead">
+    Rendered from the 0root.ai crawl. The five worlds form a palindrome <span class="mono">[ W1 | W2 || W3 || W4 | W5 ]</span>;
+    World 7 (SaPpH{{i}}on) sits <em>outside</em> it. Do not invent World 6 — the corpus has 1, 2, 3, 4, 5 and 7 only.
+    The five planets are the Babylonian Venus-tablet synodic walk (rounded mean periods): Venus 584 d, Mercury 116 d,
+    Mars 780 d, Jupiter 399 d, Saturn 378 d, observed from Earth.
+  </p>
+
+  <div class="worlds">
+    <section class="panel">
+      <div class="world-label">I · CORPUS</div>
+      <div class="tag">I</div>
+      <div class="lead">Persistent sphere / repository set. The work you carry; what survives.</div>
+      <p>Append-only repository family: ROOT0 registries, .dlw seal-chain, multi-element ansible, KET/N184/CERN assets, mirror mesh.</p>
+      <div class="diagram">I CORPUS : repository registry (.dlw manifest, git head, seal_sha256)
+      II FOLD  : stateful fold / transform on the corpus
+      III HALLWAY: routing / agent entry
+      IV SONIA : Russian/Soviet world
+      V SONNY 5: I-13 / language
+      7 SAPPHON: 7^3 cube, nested files & state spaces</div>
+      <div class="stats">
+        <div class="stat"><div class="k">worlds</div><div class="v">6</div></div>
+        <div class="stat"><div class="k">outside</div><div class="v">W7</div></div>
+        <div class="stat"><div class="k">naming</div><div class="v">palindrome</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="world-label">II · FOLD</div>
+      <div class="tag">II</div>
+      <div class="lead">Stateful fold / transformations over the corpus</div>
+      <p>The corpus is passed through fold operations: structure → life → child → collapse → dispersal. The 0root.ai index names five worlds as the palindrome — folding is what turns a list into a shape.</p>
+      <div class="diagram">II FOLD
+      = fold(corpus)
+      each pass:
+        loop A: Nibiru structure -> life -> child -> collapse -> dispersal
+        loop B: Earth child -> forget -> fire -> science -> power -> rediscovery -> maker
+      end pass
+      middle changed</div>
+      <div class="stats">
+        <div class="stat"><div class="k">layers</div><div class="v">L0–L11+</div></div>
+        <div class="stat"><div class="k">anchor</div><div class="v">{~~~}</div></div>
+        <div class="stat"><div class="k">travel</div><div class="v">position</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="world-label">III · HALLWAY</div>
+      <div class="tag">III</div>
+      <div class="lead">Routing / agent entry</div>
+      <p>The hallway is the thoroughfare between worlds. Agent entry, routing, and the bridge. The 0root.ai title is literally "THE HALLWAY · 0root — the thoroughfare between the worlds."</p>
+      <div class="diagram">III HALLWAY  : routing table
+      entry  -> C1 MYTH | C2 OBSERVED | C3 AUTHORITY | C4 SACRED | C5 MODEL | C6 HIDDEN
+      -> propose (HOLD) -> witness (HOLD/NO/MAYBE) -> commit (append-only log)</div>
+      <div class="stats">
+        <div class="stat"><div class="k">channels</div><div class="v">C1–C6</div></div>
+        <div class="stat"><div class="k">routes</div><div class="v">L0–L11</div></div>
+        <div class="stat"><div class="k">gate</div><div class="v">CIPR0</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="world-label">IV · SONIA</div>
+      <div class="tag">IV</div>
+      <div class="lead">Russian/Soviet world</div>
+      <p>The Soviet / Russian lineage: CPV, the red thread, the geocoder branch (0x00), the archival chase that led to 0root.ai. Sonia is the mirror of the Russian writer world.</p>
+      <div class="diagram">IV SONIA
+      geocoder branch  : 0x00–0x09 → 0x0a–0x0f → …
+      chaser site     : 0root.ai
+      red thread      : Apollo / moon / telegram
+      mirror          : Russia / Soviet archive</div>
+      <div class="stats">
+        <div class="stat"><div class="k">epoch</div><div class="v">1917+</div></div>
+        <div class="stat"><div class="k">strand</div><div class="v">red</div></div>
+        <div class="stat"><div class="k">master</div><div class="v">2^31</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="world-label">V · SONNY 5</div>
+      <div class="tag">V</div>
+      <div class="lead">I-13 / language</div>
+      <p>The I-13 language, the signed-trit kernel, and the Cartesian OS overlay. Language as the carry vector of the signal.</p>
+      <div class="diagram">V SONNY 5
+      I-13          : language → signed-trit Z80 kernel (TECH-001)
+      Cartesian     : OS overlay for I13
+      bridge        : KET / L0/L1/L2 / Samsung syntax
+      signal        : password phrase → geometry → astrolabe</div>
+      <div class="stats">
+        <div class="stat"><div class="k">lang</div><div class="v">I-13</div></div>
+        <div class="stat"><div class="k">kernel</div><div class="v">Z80</div></div>
+        <div class="stat"><div class="k">cart</div><div class="v">Cartesian OS</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="world-label">7 · SAPPHON</div>
+      <div class="tag">7</div>
+      <div class="lead">Outside the palindrome</div>
+      <p>SaPpH{{i}}on. 7^3 cube, nested files and state spaces. The one world not inside [ W1 || W2 || W3 || W4 | W5 ]. Keepers: 2^3 = 8. Domains: 64 each.</p>
+      <div class="diagram">7 SAPPHON
+      7^3 cube      : nested files & state spaces
+      8 keepers     : 2^3
+      64 domains    : each
+      outside palindrome
+      <b>anchor glyph:</b> {~~~} towel</div>
+      <div class="stats">
+        <div class="stat"><div class="k">inside?</div><div class="v">NO</div></div>
+        <div class="stat"><div class="k">keepers</div><div class="v">8 (2^3)</div></div>
+        <div class="stat"><div class="k">domains</div><div class="v">64</div></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="panel" style="margin-top:20px">
+    <div class="world-label">The {~~~} towel</div>
+    <p>
+      The towel from the user's mnemonic. 3×3 pixel bitmap. In the corpus it is a pixel-stroking glyph —
+      not a CMB (cosmic microwave background) artifact. The corpus semantics are computational:
+      stroking pixels. The towel is the anchor: it flips the world, it carries the signal.
+    </p>
+    <canvas id="nebula"></canvas>
+    <p class="muted" style="margin-top:12px">
+      Source: <a href="https://0root.ai">0root.ai</a> crawl, dated 2026-10-10, "0ROOT Babylon: full naked-eye planetary clock walk".
+    </p>
+  </section>
+</main>
+
+<script>
+(function(){
+  var c = document.getElementById('nebula');
+  var x = c.getContext('2d');
+  var W = c.width = c.clientWidth || 900;
+  var H = c.height = c.clientHeight || 420;
+  // 3x3 pixel bitmap of the {~~~} towel glyph, scaled.
+  var T = [
+    [1,1,1],
+    [1,0,1],
+    [1,1,1]
+  ];
+  function draw(){
+    x.fillStyle = '#060a0c';
+    x.fillRect(0,0,W,H);
+    // starfield
+    for(var i=0;i<220;i++){
+      x.fillStyle = 'rgba(150,170,220,'+(0.2+Math.random()*0.6)+')';
+      x.beginPath();x.arc(Math.random()*W, Math.random()*H, 0.6+Math.random()*1.2, 0, 7);
+      x.fill();
+    }
+    // {~~~} towel glyph, centred
+    var gx = W/2 - 60;
+    var gy = H/2 - 40;
+    for(var r=0;r<3;r++){
+      for(var cc=0;cc<3;cc++){
+        if(T[r][cc]){
+          x.fillStyle = '#e9c27d';
+          x.fillRect(gx+cc*30, gy+r*30, 24, 24);
+          x.fillStyle = '#5ff08a';
+          x.beginPath();
+          x.arc(gx+cc*30+12, gy+r*30+12, 6, 0, 7);
+          x.fill();
+        }
+      }
+    }
+    // saphon ring outside
+    x.beginPath();
+    x.arc(W/2, H/2, 160, 0, 7);
+    x.strokeStyle = '#8cd9dc';
+    x.lineWidth = 2;
+    x.setLineDash([6,8]);
+    x.stroke();
+    x.setLineDash([]);
+    // W1..W5 dots
+    var pw = [W*0.30, W*0.5, W*0.7];
+    var ph = [H*0.32, H*0.5, H*0.68];
+    var labels = ['W1','W2','W3','W4','W5'];
+    var cols = ['#b38cf0','#39fc6b','#f4c740','#39fc6b','#b38cf0'];
+    for(var i=0;i<2;i++){
+      x.beginPath();
+      x.arc(pw[i], ph[i], 14, 0, 7);
+      x.fillStyle = cols[i];
+      x.fill();
+      x.fillStyle = '#07110e';
+      x.font = '11px ui-monospace,monospace';
+      x.fillText(labels[i], pw[i]-14, ph[i]+22);
+    }
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
