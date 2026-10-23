@@ -1,0 +1,7 @@
+# E.V.E. v30 — Leave-one-element-chain-out shell-gap detection
+
+Date: 2026-10-23. Executed 5 folds over the 13 v29 shell-gap examples from O, Ni, Sn, Ca, and Pb. Each fold withholds all records of one element, fitting a single threshold at the midpoint of the largest training nonmagic gap and smallest training magic gap. Test candidate marked magic if gap > training threshold.
+
+Results: Ca 5/5 at threshold 2.0614 MeV; Ni 2/2 at 3.11742 MeV; O 2/2 at 2.33093 MeV; Pb 2/2 at 2.33093 MeV; Sn 2/2 at 2.33093 MeV. Aggregate TP=5, TN=8, FP=0, FN=0; 13/13=100%; always-nonmagic baseline 8/13=61.5%. All v29 isotope cases were selected around known magic numbers; this is a held-out chain **consistency test**, NOT external blind discovery of magicity, nuclear stability, or lifetime. Two Ni samples depend on estimated masses. Labels are known N magic membership, not measured half-life.
+
+Reproducible files packaged for the conversation: `eve_v30.py`, `fold_metrics.csv`, `heldout_predictions.csv`, `summary.json`, `README.md`, plus exact v29 input CSV. No lifetime modeling performed. Formula delta2n=S2n(Z,N)-S2n(Z,N+2). Relevant independent explanation: https://cds.cern.ch/record/1410677/files/INTC-P-321.pdf . Next experiment should obtain broader unlabeled nuclide chains before inspecting results and separately score actual observed decay outcomes. KET `[stable{(test-zone)}]` and frozen 184/257 architecture unchanged.
