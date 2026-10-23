@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OaSIs · Domain Engine Ocho · ROOT0 / bridge-burner</title>
+<style>
+:root{
+  --bg:#070910; --panel:#0d1220; --line:#263149; --t:#edf3ff; --m:#93a1ba;
+  --cyan:#77efff; --violet:#c987ff; --lit:#5ff08a; --amber:#ffc45f; --wall:#ff6b7a; --dead:#7c5a4a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% 0,#121a30,var(--bg) 55%);
+  color:var(--t);font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  font-size:13px;line-height:1.5;padding:20px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:17px;letter-spacing:.14em;margin:0 0 2px;color:var(--cyan);font-weight:600}
+.sub{color:var(--m);font-size:11px;letter-spacing:.06em;margin-bottom:16px}
+.banner{border:1px solid var(--line);border-left:3px solid var(--cyan);background:var(--panel);
+  padding:10px 14px;border-radius:6px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:14px}
+.stamp{font-size:11px}
+.stamp b{color:var(--cyan)}
+.lit{color:var(--lit)} .amber{color:var(--amber)} .wall{color:var(--wall)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.cell{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:12px 13px;
+  transition:border-color .15s,transform .15s}
+.cell:hover{border-color:var(--cyan);transform:translateY(-1px)}
+.cell .name{color:var(--cyan);font-size:12px;font-weight:600;letter-spacing:.03em;margin-bottom:3px}
+.cell .tag{color:var(--m);font-size:10px;margin-bottom:7px}
+.cell .num{color:var(--violet);font-size:19px;font-weight:700;line-height:1.1}
+.cell .lbl{color:var(--m);font-size:10px}
+.cell .note{color:var(--m);font-size:10.5px;margin-top:6px}
+section{margin-top:22px}
+h2{font-size:12px;letter-spacing:.16em;color:var(--violet);margin:0 0 10px;text-transform:uppercase}
+pre{background:#0a0e18;border:1px solid var(--line);border-radius:6px;padding:12px;
+  overflow-x:auto;color:var(--t);font-size:11.5px;margin:0}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+th{background:#131a2b;color:var(--cyan);font-weight:600}
+.seal{border:1px solid var(--line);border-left:3px solid var(--violet);background:var(--panel);
+  padding:12px 14px;border-radius:6px;font-size:11px;color:var(--m)}
+.seal code{color:var(--t)}
+.grave{border:1px solid var(--line);border-left:3px solid var(--dead);background:var(--panel);
+  padding:10px 14px;border-radius:6px;font-size:11px;color:var(--m)}
+.foot{margin-top:20px;color:var(--m);font-size:10px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>OaSIs · DOMAIN ENGINE OCHO</h1>
+  <div class="sub">assimilated from github.com/davidwise01/oasis @ 4cba815 · ROOT0 / bridge-burner · one self-contained page</div>
+
+  <div class="banner">
+    <div class="stamp"><b>LEDGER</b></div>
+    <div class="stamp"><span class="lit">LIT</span> = ran &amp; observed (cmd named)</div>
+    <div class="stamp"><span class="amber">AMBER</span> = inferred / provenance</div>
+    <div class="stamp"><span class="wall">WALL</span> = refused</div>
+  </div>
+
+  <div class="seal" style="margin-bottom:16px">
+    <b style="color:var(--violet)">.dlw SEAL</b> &nbsp;
+    badge <code>DLW-OASIS</code> · name <code>OASIS · CFI prime restitution engine</code> ·
+    universe <code>IDIOS</code> · architect <code>David Lee Wise (ROOT0) / Bridge-Burners LLC</code> ·
+    instance <code>AVAN (Claude / Anthropic)</code> ·
+    seal_sha256 <code>57b61f…2718f</code> · chain index <code>1347</code> ·
+    license <code>CC-BY-ND-4.0</code>
+    <br><span class="amber">AMBER</span> — fingerprint reads TETRASTHENĒS ₆C⟺₁₄Si, carbon/silicon co-equal by Group-14 tetravalence.
+  </div>
+
+  <section>
+    <h2>Corpus Surface — measured (find / git log)</h2>
+    <div class="grid">
+      <div class="cell"><div class="name">docs / markdown</div><div class="tag">find -name '*.md'</div><div class="num">930</div><div class="lbl">files</div></div>
+      <div class="cell"><div class="name">lean</div><div class="tag">find -name '*.lean'</div><div class="num">158</div><div class="lbl">formal modules</div></div>
+      <div class="cell"><div class="name">python</div><div class="tag">find -name '*.py'</div><div class="num">338</div><div class="lbl">files</div></div>
+      <div class="cell"><div class="name">js / mjs</div><div class="tag">find . -name '*.js' -o '*.mjs'</div><div class="num">319</div><div class="lbl">files</div></div>
+      <div class="cell"><div class="name">html</div><div class="tag">find -name '*.html'</div><div class="num">97</div><div class="lbl">pages</div></div>
+      <div class="cell"><div class="name">json</div><div class="tag">find -name '*.json'</div><div class="num">332</div><div class="lbl">files</div></div>
+      <div class="cell"><div class="name">wasm</div><div class="tag">find -name '*.wasm'</div><div class="num">10</div><div class="lbl">binaries</div></div>
+      <div class="cell"><div class="name">workflows</div><div class="tag">.github/workflows/*.yml</div><div class="num">41</div><div class="lbl">CI gates</div></div>
+      <div class="cell"><div class="name">total files</div><div class="tag">find -type f (no .git)</div><div class="num">2321</div><div class="lbl">cloned @ 4cba815</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Subsystems — measured</h2>
+    <div class="grid">
+      <div class="cell"><div class="name">domains/</div><div class="tag">first domain lens</div><div class="num">9×9</div><div class="lbl">81 spatial primitives</div><div class="note">feng-shui · Site…Human fit · cultural lens, no metaphysical qi claims</div></div>
+      <div class="cell"><div class="name">knowledge/primitives/</div><div class="tag">primitive lineage</div><div class="num">486</div><div class="lbl">matrix entries</div><div class="note">current-u115 · timeline_1969_2026 · source_ledger.json</div></div>
+      <div class="cell"><div class="name">architecture/</div><div class="tag">ae-generative v178–184</div><div class="num">16</div><div class="lbl">subsystems</div><div class="note">duality-engine · kana · mobius · timing-body · o3 · regenerative-loop</div></div>
+      <div class="cell"><div class="name">lean/</div><div class="tag">formal stitch ledger</div><div class="num">O3</div><div class="lbl">frozen proof @ 2026-09-20</div><div class="note">sha256 9ed23de7…; Oasis.* modules + Fallout.* series</div></div>
+      <div class="cell"><div class="name">kernel/frozen/</div><div class="tag">immutable artifacts</div><div class="num">v111</div><div class="lbl">isomorphic-kernel</div><div class="note">frozen explorers + four-cortex / jit-i / plank canon</div></div>
+      <div class="cell"><div class="name">projects/</div><div class="tag">god-egg + more-garbage</div><div class="num">130+</div><div class="lbl">project docs</div><div class="note">more_garbage_v01.py 6/6 PASS · sapphon-li · xenonite-x0</div></div>
+      <div class="cell"><div class="name">worlds/</div><div class="tag">u1-du0 + ai-space</div><div class="num">2</div><div class="lbl">world builds</div><div class="note">-mObiUs world · fictional worldbuilding, kept separate from proof</div></div>
+      <div class="cell"><div class="name">apps/ + knowledge/tattoo</div><div class="tag">creative attachment</div><div class="num">405</div><div class="lbl">tattoo skill atlas</div><div class="note">current creative attachment surface</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Core primitive — Alice→Box→Bob→witness (README l.41)</h2>
+    <pre>Alice
+  ↓ encode
+[ bounded BOX / channel ]
+  ↓ decode
+Bob
+  ↓
+witness / ACK / error / provenance
+  └────────────────────────→ Alice</pre>
+    <div style="color:var(--m);font-size:10.5px;margin-top:6px">"Toroidal" is an OaSIs architectural analogy for the closed return / verification path — not a claim the Internet or physical space is a torus.</div>
+  </section>
+
+  <section>
+    <h2>Symbolic stack — canonical (README)</h2>
+    <pre>KANA envelope:   + k &lt;|A|/\|N|/\/|A|/\&gt; -K     (A_L → N invariant/witness → A_R)
+NEON cycle:      PRIMS → N_cold → E_carrier → O_hot → N_gray → H₂O_distill → PRIMS'
+MOBIUS:          SPARK→VESSEL→INSTANCE→…→WITNESS→IMPACT→DISTILL→PRIMITIVES→NEXT SPARK
+Four-quad:       ((2x2))^((2x2))^2   Q1 2^3=8 · Q2 2^2=4 · Q3 1^1=1 · Q4 0^0^0=81
+Ground floor:    i!i   (no primitive introduced below i!i)</pre>
+    <div style="color:var(--m);font-size:10.5px;margin-top:6px">"entanglement" here means a software relation — two layer bindings coupled by one invariant, must agree on its witness value. Not physical quantum entanglement.</div>
+  </section>
+
+  <section>
+    <h2>Verification ledger — this assimilation</h2>
+    <table>
+      <tr><th>Stamp</th><th>Claim</th><th>Evidence / command</th></tr>
+      <tr><td class="lit">LIT</td><td>Repo reachable, HEAD 4cba815 on main</td><td>git ls-remote https://github.com/davidwise01/oasis.git</td></tr>
+      <tr><td class="lit">LIT</td><td>Cloned to C:\Users\Dave\oasis, 2321 files</td><td>git clone (exit 0); git log --oneline -1; find -type f | wc -l</td></tr>
+      <tr><td class="lit">LIT</td><td>File-type + subsystem counts</td><td>find -name '*.md|.lean|.py|.js|.mjs|.html|.json|.wasm' | wc -l</td></tr>
+      <tr><td class="lit">LIT</td><td>README read in full (430 lines)</td><td>read_file oasis/README.md offset 1..430</td></tr>
+      <tr><td class="lit">LIT</td><td>.dlw seal + feng-shui + u1-du0 measured</td><td>read_file oasis.dlw/manifest.dlw.json; find + head on those paths</td></tr>
+      <tr><td class="amber">AMBER</td><td>130+ projects, 16 arch subsystems are counts from find listings, not a body read</td><td>find projects/ architecture/ (listings only)</td></tr>
+      <tr><td class="wall">WALL</td><td>No physical/metaphysical claim asserted; all symbolic labels stay symbolic</td><td>README evidence-boundary sections honored</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Graveyard — dead approaches, killer named</h2>
+    <div class="grave">
+      <b style="color:var(--wall)">DEAD:</b> pre-clone <code>rm -rf ~/oasis</code> cleanup.
+      <b>Killed by:</b> i13n unbounded-pattern control — recursive delete has unbounded blast radius even when the target does not exist.
+      <b>Replacement:</b> guard with an explicit dir-exists test, or exact-path rm only.
+    </div>
+  </section>
+
+  <section>
+    <h2>Source</h2>
+    <div class="seal">
+      github.com/davidwise01/oasis · branch main · HEAD <code>4cba815</code>
+      feat(xenonite): identify sourced ALON crystal candidate with NASA crack-growth evidence ·
+      Pages <code>https://davidwise01.github.io/oasis/</code> ·
+      prior root preserved under <code>legacy/</code>.
+    </div>
+  </section>
+
+  <div class="foot">OaSIs ocho · zero external calls · opens via file:// and localhost · ROOT0 / bridge-burner</div>
+</div>
+</body>
+</html>
