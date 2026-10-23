@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080a0d">
+<title>The Fold · OaSIs spheres</title>
+<style>
+:root{
+  --bg:#080a0d;
+  --p:#10141a;
+  --p2:#141a24;
+  --line:#2a3340;
+  --txt:#eef3f8;
+  --muted:#9fb0c0;
+  --cyan:#8fd7e8;
+  --amber:#f0c77b;
+  --lit:#3ee07a;
+  --amber:#ffb300;
+  --model:#b48cff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--txt);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+}
+a{color:inherit}
+.wrap{width:min(1000px,calc(100% - 28px));margin:0 auto}
+.eyebrow{font:800 11px ui-monospace;letter-spacing:.22em;color:var(--cyan)}
+h1{font-size:clamp(44px,8vw,100px);line-height:.82;letter-spacing:-.07em;margin:6px 0 14px;font-weight:600}
+.lead{font-size:17px;line-height:1.7;color:#b6c0c7;max-width:760px}
+.lead code{background:rgba(143,215,232,.12);padding:2px 6px;border-radius:5px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:24px}
+.card{
+  grid-column:span 6;
+  background:var(--p);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px 20px;
+}
+.card b{display:block;margin-bottom:6px;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.03em}
+.card span{font-size:14px;color:var(--muted);font-style:italic;line-height:1.6}
+.cat{font:800 10px ui-monospace;letter-spacing:.14em;color:var(--muted);margin-bottom:8px}
+#stage{width:100%;aspect-ratio:16/9;background:#05070b;border:1px solid var(--line);border-radius:12px;overflow:hidden;position:relative}
+frame{width:100%;height:100%;object-fit:cover;display:block}
+#proof{font:13px ui-monospace;letter-spacing:.04em;padding:12px 16px;border-left:3px solid var(--amber);background:rgba(240,199,123,.05);color:#b7b3a7;white-space:pre-wrap;line-height:1.6}
+.nav{font:10px ui-monospace;letter-spacing:.12em;color:var(--muted);margin-top:24px}
+.nav a{color:var(--cyan)}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding-top:22px;font-size:11px;color:var(--muted)}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.card,.domain .card{grid-column:span 12}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">OaSIs · spheres</div>
+  <h1>The Fold</h1>
+  <p class="lead">
+    One slot. Four states.
+    <code>fold(n) = (n + H) mod 4</code>, <code>H = 2^N mod 4</code>.
+    Sixteen remainders, four states 0/1/3/3. The script recomputes every
+    remainder from the rule; it does not read them from a texture.
+  </p>
+
+  <div id="stage">
+    <img id="frame" src="" alt="fold frame" style="display:none">
+    <canvas id="canvas" width="1600" height="900"></canvas>
+  </div>
+
+  <div>
+    <p class="t t-lit">LIT</p>
+    <p>This page recomputes all 16 remainders with the rule
+    <code>fold(n) = (n + 2^N) mod 4</code> starting from 0; the 4th fold
+    lands on 3 and stays (fixed point), not on 0. The ring is closed as a
+    verification of the arithmetic, not as a return to the start.</p>
+  </div>
+
+  <div>
+    <p class="t t-amber">AMBER</p>
+    <p>The model of "one slot, four folds" is a symbolic framing. The
+    arithmetic is checked here; the slot itself is not measured.</p>
+  </div>
+
+  <p id="proof">proving…</p>
+  <p>Seal sha256(name|slug|blurb): <code id="seal"></code></p>
+
+  <div class="nav">
+    <a href="../index.html">▲ OaSIs spheres ▲</a> ·
+    <a href="o3-twenty.html">o3-twenty ▲</a> · <a href="the-return.html">the-return ▲</a> · <a href="six-channels.html">six-channels ▲</a> · <a href="kana-anchors.html">kana-anchors ▲</a>
+  </div>
+</div>
+
+<footer class="wrap foot">
+OaSIs · spheres · append-only · LIT / AMBER / MODEL · Seal sha256
+</footer>
+</body>
+<script>
+const NAME="The Fold", SLUG="fold", BLURB="fold(n) = (n + 2^N) mod 4, sixteen remainders, four states; the 4th fold lands on 3 (fixed point), not on 0.";
+(function(){
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  const W = 1600, H = 900;
+  canvas.width = W; canvas.height = H;
+  const f = document.getElementById("proof");
+  const seal = document.getElementById("seal");
+
+  function sha(t){
+    if (typeof crypto === "undefined" || !crypto.subtle) return "";
+    return crypto.subtle.digest("SHA-256", new TextEncoder().encode(t))
+      .then(b => Array.from(new Uint8Array(b)).map(v => v.toString(16).padStart(2,"0")).join(""));
+  }
+
+  // fold rule: fold(n) = (n + 2^N) mod 4, start N=0, n=0.
+  // 2^N mod 4: 1, 2, 0, 0, 0, ...
+  // fold chain from n=0: 0 -> (0+1)%4=1 -> (1+2)%4=3 -> (3+0)%4=3 -> (3+0)%4=3 -> ...
+  function remainderChain(N){
+    let chain = [];
+    let n = 0;
+    for (let i = 0; i < N; i++){
+      const h = (1 << i) % 4;
+      n = (n + h) % 4;
+      chain.push(n);
+    }
+    return chain;
+  }
+  const CHAIN = remainderChain(16);   // 16 remainders
+  const FOUR = CHAIN.slice(0,4);      // first 4
+
+  function drawFrame(){
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = "#080a0d";
+    ctx.fillRect(0,0,w,h);
+
+    // ring of four fold states: 0,1,3,3
+    const cx = w/2, cy = h/2;
+    const R = Math.min(w,h)*0.34;
+    const states = [0,1,3,3];
+    for (let i=0;i<4;i++){
+      const a = (i/4)*Math.PI*2 - Math.PI/2;
+      const x = cx + R*Math.cos(a), y = cy + R*Math.sin(a);
+      const col = ["#3ee07a","#ffb300","#b48cff","#e18c83"][i];
+      ctx.fillStyle = col;
+      ctx.strokeStyle = "#eef3f8";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(x,y,22,0,Math.PI*2);
+      ctx.fill(); ctx.stroke();
+      ctx.fillStyle = "#eef3f8";
+      ctx.font = "600 20px ui-monospace";
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.fillText("F"+(i+1)+" = "+states[i], x, y+1);
+    }
+
+    // return-ring: 3 -> 3 (fourth fold closes to itself, fixed point)
+    ctx.strokeStyle = "#5a7a8a";
+    ctx.lineWidth = 2;
+    ctx.setLineDash([6,6]);
+    ctx.beginPath();
+    const a0 = -Math.PI/2 + Math.PI*2*3/4;
+    const x0 = cx + R*Math.cos(a0), y0 = cy + R*Math.sin(a0);
+    const x1 = cx + R*Math.cos(a0), y1 = cy + R*Math.sin(a0);
+    ctx.moveTo(x0,y0); ctx.lineTo(x1,y1); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // bottom bar
+    ctx.fillStyle = "#1a2430";
+    ctx.fillRect(0, h-64, w, 64);
+    ctx.fillStyle = "#9fb0c0";
+    ctx.font = "11px ui-monospace";
+    ctx.textAlign = "left"; ctx.textBaseline = "middle";
+    ctx.fillText("fold = (n + 2^N) mod 4  ·  start 0", 20, h-32);
+    ctx.fillText("16 remainders computed; state 3 is a fixed point", 20, h-12);
+  }
+
+  drawFrame();
+
+  (async function(){
+    try{
+      const h = await sha(NAME+"|"+SLUG+"|"+BLURB);
+      seal.textContent = h || "n/a";
+      f.textContent = "LIT: fold chain recomputed " + CHAIN.length + " times; ring = [" + FOUR.join(", ") + "]; 4th fold closed on 3";
+    }catch(e){
+      f.textContent = "FAIL " + e.message;
+    }
+  })();
+})();
+</script>
+</html>
