@@ -1,0 +1,3 @@
+# PRIM 020 — [8×1×8] frequency sweep
+
+Fixed reference Adler phase model, eight inputs plus eight outputs sharing one fixed hub. 16 logarithmic frequencies 1e-3 to 1e12 Hz, detunings 0,1e-9,1e-6,0.001,0.01 relative to carrier. Coupling K=2π×10 rad/s; asymptotic phase-locking requires |delta f|<10 Hz. 80 cases tested. Locked frequency counts: 16, 13, 10, 7, 6 out of 16 for each respective detuning. Physical frequencies much larger than coupling yield no locking if relative mismatch causes >10 Hz absolute detuning. Not a photon simulation or bidirectionally coupled network. Results represent analytical stability tests, not integrated time histories.
