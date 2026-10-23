@@ -1,12 +1,12 @@
 """Track peaks of the 24-section toroidal circuit across bridge gap changes.
-Requires numpy, scipy, and distributed_toroid.py (same directory or PYTHONPATH).
+Requires numpy, scipy, and toroid_24_section_bridge_v1.py (same directory).
 This is a circuit approximation, not an electromagnetic field measurement.
 """
 import json
 import numpy as np
 from scipy.signal import find_peaks
 from scipy.optimize import minimize_scalar
-from distributed_toroid import response
+from toroid_24_section_bridge_v1 import response
 GAPS=(0.85,1.0,1.15)
 def spectrum(gap,count):
     freqs=np.linspace(10e6,800e6,count)
