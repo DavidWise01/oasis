@@ -301,26 +301,7 @@ def _anchor_ring(w, h):
 
 
 CANVAS_HISTORY = {
-    "apollo-thessalos": "six-ring-orrery",
-    "jupiter-cyclops": "tesseract-dice",
-    "hermes-astrape": "32x32-seal-clerk",
-    "theseus-minotaur": "dragon-curve-labyrinth",
-    "mnemosyne-erica": "16-cell-starve",
-    "natura-styx": "33-odd-even-atlas",
-    "atlas-vesper": "meridian-rule",
-    "jupiter-juno": "nine-elder-conclave",
-    "sapphon-sephira": "sapphon-cube-8x8",
-    "apollo-lyre": "cone-of-voices",
-    "hermes-kerkopes": "prism-lattice",
-    "zeus-thunder": "seamless-ring-torus",
-    "themis-covenant": "16-step-echo",
-    "poseidon-triton": "sea-sphere",
-    "hermes-dolphin": "hex-balance",
-    "jupiter-saturn": "ascending-dyads",
-    "zeus-olympus": "moirai-spiral",
-    "themis-lapara": "5x5-anchor",
-    "hermes-elysed": "six-ring-orrery",
-    "apollo-venus": "circle-of-five",
+    # round-1 (20)
     "apollo-quincunx": "circle-of-five",
     "jupiter-orrery": "six-ring-orrery",
     "hermes-dice": "tesseract-dice",
@@ -341,6 +322,48 @@ CANVAS_HISTORY = {
     "apollo-natura": "natura-sphere",
     "zeus-spiral": "moirai-spiral",
     "themis-anchor": "5x5-anchor",
+    # round-2 (20)
+    "apollo-thessalos": "six-ring-orrery",
+    "jupiter-cyclops": "tesseract-dice",
+    "hermes-astrape": "32x32-seal-clerk",
+    "theseus-minotaur": "dragon-curve-labyrinth",
+    "mnemosyne-erica": "16-cell-starve",
+    "natura-styx": "33-odd-even-atlas",
+    "atlas-vesper": "meridian-rule",
+    "jupiter-juno": "nine-elder-conclave",
+    "sapphon-sephira": "sapphon-cube-8x8",
+    "apollo-lyre": "cone-of-voices",
+    "hermes-kerkopes": "prism-lattice",
+    "zeus-thunder": "seamless-ring-torus",
+    "themis-covenant": "16-step-echo",
+    "poseidon-triton": "sea-sphere",
+    "hermes-dolphin": "hex-balance",
+    "jupiter-saturn": "ascending-dyads",
+    "zeus-olympus": "moirai-spiral",
+    "themis-lapara": "5x5-anchor",
+    "hermes-elysed": "six-ring-orrery",
+    "apollo-venus": "circle-of-five",
+    # round-3 (20)
+    "jupiter-dorio": "circle-of-five",
+    "hermes-athena": "hex-balance",
+    "theseus-donkey": "12-dark-cells",
+    "mnemosyne-teichos": "meridian-rule",
+    "natura-kyma": "ascending-dyads",
+    "atlas-dawn": "circle-of-five",
+    "jupiter-zeus": "six-ring-orrery",
+    "sapphon-mikra": "sapphon-cube-8x8",
+    "apollo-ganymede": "16-step-echo",
+    "hermes-erotes": "hex-balance",
+    "zeus-themis": "16-cell-starve",
+    "themis-majesty": "ascending-dyads",
+    "poseidon-thalassa": "seamless-ring-torus",
+    "hermes-iris": "cone-of-voices",
+    "jupiter-cronus": "tesseract-dice",
+    "zeus-astor": "16-step-echo",
+    "themis-dike": "5x5-anchor",
+    "hermes-ambul": "hex-balance",
+    "jupiter-hispani": "moirai-spiral",
+    "zeus-apollo": "circle-of-five",
 }
 
 
@@ -366,6 +389,7 @@ def canvas_art(key, w=1600, h=900):
         "natura-sphere": _natura_sphere,
         "moirai-spiral": _moirai_spiral,
         "5x5-anchor": _anchor_ring,
+        "12-dark-cells": _16_cell_starve,
     }[key]
     return fn(w, h)
 
@@ -419,7 +443,9 @@ def sphere_html(folder, name, blurb, story, lime_style, seal):
 
 
 def render_themes():
-    for i, (folder, name, blurb, story, lime) in enumerate(THEMES):
+    for i, t in enumerate(THEMES):
+        folder, name, blurb, story = t[0], t[1], t[2], t[3]
+        lime = t[4] if len(t) > 4 else "computed glyph"
         d = OUT / folder
         d.mkdir(exist_ok=True, parents=True)
         key = CANVAS_HISTORY[folder]
@@ -434,17 +460,13 @@ def render_themes():
 
 def write_index():
     rows = []
-    # sphere pages live in sub-folders; collect them recursively,
-    # excluding the hub index.html itself which sits in the same dir.
-    # gather all sphere pages (in sub-folders), excluding the hub index
-    # which lives in the same directory as the hub.
-    all_html = []
     for p in sorted(OUT.glob("**/*.html")):
         if p.name == "index.html":
             continue
-        all_html.append(p)
-    for t, p in zip(THEMES, all_html):
-        rows.append('<div class="card" style="grid-column:span 6"><b><a href="' + p.relative_to(REPO).as_posix() + '">' + t[1] + "</a></b><span>" + t[3] + "</span></div>")
+        for t in THEMES:
+            if t[0] == p.parent.name:
+                rows.append('<div class="card" style="grid-column:span 6"><b><a href="' + p.relative_to(REPO).as_posix() + '">' + t[1] + "</a></b><span>" + t[3] + "</span></div>")
+                break
     html = ("""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rome Gods & Hermes · OaSIs spheres</title>
@@ -482,6 +504,7 @@ h1{font-size:clamp(40px,7vw,90px);margin:6px 0 14px;font-weight:600}
 
 
 THEMES = [
+    # ── ROUND ONE (20) ─────────────────────────────────────────────────────────
     ("apollo-quincunx", "The Quincunx", "Apollo's five-point signature traced in the golden ratio.",
      "Apollo shapes the sky as five points on a circle; the quincunx is his signature and the heartbeat of order.", "golden-ratio star"),
     ("jupiter-orrery", "The Orrery", "Jupiter's six orbital rings around a central sun.",
@@ -522,6 +545,7 @@ THEMES = [
      "Zeus' Moirai spin the spiral of three fates; each thread is a life, each twist a choice, each knot a destiny.", "three-fate spiral"),
     ("themis-anchor", "The Anchor Ring", "Themis' 5x5 ring as the anchor of every covenant.",
      "Themis' 5x5 ring anchors every covenant; the center holds, the border holds, and the whole ring is a vow the sky can see.", "5x5 anchor ring"),
+    # ── ROUND TWO (20) ─────────────────────────────────────────────────────────
     ("apollo-thessalos", "The Thessalos", "Apollo's oracular staff in the cells of the temple.",
      "Apollo's Thessalos is the oracular staff set in the temple at Thessaly; the smoke of the altar writes the words the Pythia speaks.", "oracular staff"),
     ("jupiter-cyclops", "The Cyclopean Forge", "Jupiter's forge with the one-eyed brothers.",
@@ -562,6 +586,47 @@ THEMES = [
      "Hermes' road to Elysium runs without end; every step is a country the hand can reach.", "endless road"),
     ("apollo-venus", "The Venus Dawn", "Apollo's dawn that wakes Venus from the sea.",
      "Apollo's dawn is the kiss that wakes Venus from the sea; the dawn is a promise the sea keeps.", "venus dawn"),
+    # ── ROUND THREE (20) ───────────────────────────────────────────────────────
+    ("jupiter-dorio", "The Dorian Gate", "Jupiter's gate that opens only in the west wind.",
+     "Jupiter's Dorian gate opens when the west wind blows; no hand can close a door the wind has set.", "west-wind gate"),
+    ("hermes-athena", "Athena's Stealth", "Hermes' cloak that is also Athena's aegis.",
+     "Hermes' cloak is Athena's aegis, a single garment that is both stealth and shield.", "cloak of aegis"),
+    ("theseus-donkey", "The Ass's Skin", "Theseus' painted ass that barks when it sees the road.",
+     "Theseus paints the ass's skin and barks at the road; the noise is a tattoo on the wall.", "ass's skin tattoo"),
+    ("mnemosyne-teichos", "The Wall of Names", "Mnemosyne's wall of every name the river washes.",
+     "Mnemosyne keeps the wall of every name the river washes; the stones remember the water.", "wall of names"),
+    ("natura-kyma", "Kym's Tide", "Natura's kym that marks the line where the rope ends.",
+     "Natura's kym is the line where the rope ends; the tide draws the boundary in the sand.", "kym boundary"),
+    ("atlas-dawn", "Dawn's Atlas", "Atlas' dawn that holds the sun before it climbs.",
+     "Atlas' dawn holds the sun before it climbs; the light is a lantern on a spine.", "dawn lantern"),
+    ("jupiter-zeus", "Zeus' Oath", "Jupiter's oath that is a sky that never breaks.",
+     "Jupiter's oath is a sky that never breaks; the vow is a ceiling held by an arch.", "vow arch"),
+    ("sapphon-mikra", "The Mikra Grid", "SaPpH{{i}}on's mikra as a grid of twelve dark cells.",
+     "SaPpH{{i}}on's mikra is a grid of twelve dark cells, and the artist counts the walls.", "twelve dark cells"),
+    ("apollo-ganymede", "Ganymede's Cup", "Apollo's cup that never empties.",
+     "Apollo's cup is the well that never empties; the water is a mirror and the moon is a bowl.", "well of moon"),
+    ("hermes-erotes", "Erotes' Spoke", "Hermes' erotes that bisect the angle of the sun.",
+     "Hermes' erotes bisect the angle of the sun; two rays that make one line.", "sun-bisector"),
+    ("zeus-themis", "Zeus' Themis", "Zeus' themis as the pillar that reminds him of law.",
+     "Zeus' themis is the pillar that reminds him of law before his heart is soft.", "pillar of law"),
+    ("themis-majesty", "Majesty's Scale", "Themis' scale that never leans.",
+     "Themis' scale is the balance that never leans; the beam is a horizon.", "never-leaning beam"),
+    ("poseidon-thalassa", "Thalassa's Sea", "Poseidon's thalassa that keeps the shape of the wave.",
+     "Poseidon's thalassa keeps the shape of the wave as the water turns into glass.", "shape of glass"),
+    ("hermes-iris", "Iris' Way", "Hermes' iris that follows the hand back to the root.",
+     "Hermes' iris follows the hand back to the root; the road is a chain of names.", "chain of names"),
+    ("jupiter-cronus", "Cronus' Seed", "Jupiter's cronus that hides the salt of the earth.",
+     "Jupiter's cronus hides the salt of the earth; the seed is a wave that rises.", "secret seed"),
+    ("zeus-astor", "Astor's Belt", "Zeus' astor that wraps the sky like a belt.",
+     "Zeus' astor wraps the sky like a belt; the buckle is the navel of the world.", "belt of sky"),
+    ("themis-dike", "Dike's Chord", "Themis' dike as the chord that closes a circle.",
+     "Themis' dike is the chord that closes a circle; a straight line that is a wall.", "chord closed"),
+    ("hermes-ambul", "The Ambul", "Hermes' ambul that turns without a step.",
+     "Hermes' ambul turns without a step; the wheel is a line that moves no place.", "wheel of no place"),
+    ("jupiter-hispani", "The Hispanic Star", "Jupiter's hispani that spells the sea in stars.",
+     "Jupiter's hispani spells the sea in stars; three letters make the wave.", "spelled sea"),
+    ("zeus-apollo", "Apollo's Zeus", "Zeus' apollo that is the fire behind the veil.",
+     "Zeus' apollo is the fire behind the veil; the flame is a name the sky keeps.", "fire of the veil"),
 ]
 
 
