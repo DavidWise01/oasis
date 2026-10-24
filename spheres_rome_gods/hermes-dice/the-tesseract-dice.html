@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The Tesseract Dice", SLUG="hermes-dice", BLURB=(Hermes rolls a 14-sided die that never lands on edge.) + " " + ("{i}"), SEAL="bd898d2e";
+const NAME="The Tesseract Dice", SLUG="hermes-dice", BLURB=("Hermes rolls a 14-sided die that never lands on edge.") + " " + ("{i}"), SEAL="bd898d2e";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The Tesseract Dice", SLUG="hermes-dice", BLURB=(Hermes rolls a 14-si
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'14-sided roll'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>

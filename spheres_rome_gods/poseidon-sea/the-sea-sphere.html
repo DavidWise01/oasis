@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The Sea-Sphere", SLUG="poseidon-sea", BLURB=(Poseidon's sphere of alpha and omega where everything is written.) + " " + ("{i}"), SEAL="6cd73bcc";
+const NAME="The Sea-Sphere", SLUG="poseidon-sea", BLURB=("Poseidon's sphere of alpha and omega where everything is written.") + " " + ("{i}"), SEAL="6cd73bcc";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The Sea-Sphere", SLUG="poseidon-sea", BLURB=(Poseidon's sphere of al
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'alpha-omega sea'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>

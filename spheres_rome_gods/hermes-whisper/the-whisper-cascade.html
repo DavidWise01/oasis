@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The Whisper Cascade", SLUG="hermes-whisper", BLURB=(Hermes' ascending dyads, ever rising.) + " " + ("{i}"), SEAL="b64b3196";
+const NAME="The Whisper Cascade", SLUG="hermes-whisper", BLURB=("Hermes' ascending dyads, ever rising.") + " " + ("{i}"), SEAL="b64b3196";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The Whisper Cascade", SLUG="hermes-whisper", BLURB=(Hermes' ascendin
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'ascending dyad ladder'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>

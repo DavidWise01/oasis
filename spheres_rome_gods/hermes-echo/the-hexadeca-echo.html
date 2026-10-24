@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The Hexadeca Echo", SLUG="hermes-echo", BLURB=(Hermes' 16-step echo of a single note.) + " " + ("{i}"), SEAL="52444086";
+const NAME="The Hexadeca Echo", SLUG="hermes-echo", BLURB=("Hermes' 16-step echo of a single note.") + " " + ("{i}"), SEAL="52444086";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The Hexadeca Echo", SLUG="hermes-echo", BLURB=(Hermes' 16-step echo 
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'16-step echo chains'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>

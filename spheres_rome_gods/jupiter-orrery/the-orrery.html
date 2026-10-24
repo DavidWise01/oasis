@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The Orrery", SLUG="jupiter-orrery", BLURB=(Jupiter's six orbital rings around a central sun.) + " " + ("{i}"), SEAL="ff1e7d30";
+const NAME="The Orrery", SLUG="jupiter-orrery", BLURB=("Jupiter's six orbital rings around a central sun.") + " " + ("{i}"), SEAL="ff1e7d30";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The Orrery", SLUG="jupiter-orrery", BLURB=(Jupiter's six orbital rin
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'orbital ring map'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>

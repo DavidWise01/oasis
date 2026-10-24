@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The Spiral Courts", SLUG="zeus-spiral", BLURB=(Zeus' Moirai spinning the three fates.) + " " + ("{i}"), SEAL="9721a409";
+const NAME="The Spiral Courts", SLUG="zeus-spiral", BLURB=("Zeus' Moirai spinning the three fates.") + " " + ("{i}"), SEAL="9721a409";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The Spiral Courts", SLUG="zeus-spiral", BLURB=(Zeus' Moirai spinning
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'three-fate spiral'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>

@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The Seal Clerk", SLUG="hermes-seal", BLURB=(Hermes stamps a 32x32 hash grid as the clerk of every signature.) + " " + ("{i}"), SEAL="15c1756d";
+const NAME="The Seal Clerk", SLUG="hermes-seal", BLURB=("Hermes stamps a 32x32 hash grid as the clerk of every signature.") + " " + ("{i}"), SEAL="15c1756d";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The Seal Clerk", SLUG="hermes-seal", BLURB=(Hermes stamps a 32x32 ha
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'32x32 hash grid'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>

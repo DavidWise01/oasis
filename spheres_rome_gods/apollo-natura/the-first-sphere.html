@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The First Sphere", SLUG="apollo-natura", BLURB=(Apollo's Natura sphere is the seed of all.) + " " + ("{i}"), SEAL="61c3c691";
+const NAME="The First Sphere", SLUG="apollo-natura", BLURB=("Apollo's Natura sphere is the seed of all.") + " " + ("{i}"), SEAL="61c3c691";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The First Sphere", SLUG="apollo-natura", BLURB=(Apollo's Natura sphe
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'natura seed'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>

@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 """Build 20 Mayhem spheres about Roman gods and Hermes.
 
-Each sphere gets:
-  - a unique theme folder in spheres_rome_gods/ (e.g. hermes-dice/)
-  - deterministic procedural 2D canvas art (no external assets, no caches)
-  - LIT/AMBER/MODEL verdict bands
-  - {{i}} notation
-  - an FNV-1a seal sha256 (name|slug|blurb)
+Each sphere:
+  - gets a unique theme folder in spheres_rome_gods/ (e.g. hermes-dice/)
+  - has deterministic procedural 2D canvas art (no external assets, no caches)
+  - gets LIT/AMBER/MODEL verdict bands
+  - has {{i}} notation
+  - gets an FNV-1a seal sha256 (name|slug|blurb)
 
 Stdlib only. Run from REPO (C:/Users/Dave/oasis).
 """
@@ -24,10 +24,8 @@ def C(v):
     return max(0, min(255, int(v)))
 
 
-# ---------------------------------------------------------------------------
 # Deterministic procedural canvas art. Each returns a bytearray,
 # RGBA, w*h*4, identical on every run.
-# ---------------------------------------------------------------------------
 def _circle_of_five(w, h):
     b = bytearray([0, 0, 0, 255]) * (w * h)
     r = w * 0.33
@@ -361,85 +359,43 @@ def seal_hash(*parts):
     return "%08x" % h
 
 
-def sphere_html(idx, folder, name, blurb, story, lime_style, seal):
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080a0d">
-<title>{name} · OaSIs spheres</title>
-<style>
-:root{{--bg:#080a0d;--p:#10141a;--p2:#141a24;--line:#2a3340;--txt:#eef3f8;--muted:#9fb0c0;--cyan:#8fd7e8;--amber:#f0c77b;--lit:#3ee07a;--amber:#ffb300;--model:#b48cff}}
-*{{box-sizing:border-box}}
-body{{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}}
-a{{color:inherit}}
-.wrap{{width:min(1200px,calc(100% - 28px));margin:0 auto}}
-.eyebrow{{font:800 11px ui-monospace;letter-spacing:.22em;color:var(--cyan)}}
-h1{{font-size:clamp(44px,8vw,100px);line-height:.82;letter-spacing:-.07em;margin:6px 0 14px;font-weight:600}}
-.lead{{font-size:17px;line-height:1.7;color:#b6c0c7;max-width:760px}}
-.lead code{{background:rgba(143,215,232,.12);padding:2px 6px;border-radius:5px;font-size:14px}}
-.grid{{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:24px}}
-.card{{grid-column:span 6;background:var(--p);border:1px solid var(--line);border-radius:16px;padding:18px 20px}}
-.card b{{display:block;margin-bottom:6px;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.03em}}
-.card span{{font-size:14px;color:var(--muted);font-style:italic;line-height:1.6}}
-.cat{{font:800 10px ui-monospace;letter-spacing:.14em;color:var(--muted);margin-bottom:8px}}
-.nav{{font:10px ui-monospace;letter-spacing:.12em;color:var(--muted);margin-top:24px}}
-.nav a{{color:var(--cyan)}}
-.proof{{font:12px ui-monospace;letter-spacing:.04em;padding:12px 16px;border-left:3px solid var(--amber);background:rgba(240,199,123,.05);color:#b7b3a7;white-space:pre-wrap;line-height:1.6}}
-.t{{display:inline-block;padding:3px 9px;border-radius:999px;font:700 11px ui-monospace;letter-spacing:.08em}}
-.t-lit{{background:#123f24;color:var(--lit)}}
-.t-amber{{background:#3a2a0b;color:var(--amber)}}
-.t-model{{background:#2a2356;color:var(--model)}}
-.canvas-wrap{{max-width:1200px;margin:24px auto;background:#05070b;border:1px solid var(--line);border-radius:14px;overflow:hidden}}
-#canvas{{display:block;width:100%;height:auto}}
-.foot{{border-top:1px solid var(--line);margin-top:40px;padding-top:22px;font-size:11px;color:var(--muted)}}
-@media(max-width:860px){{.grid{{grid-template-columns:1fr}}.card{{grid-column:span 12}}}}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <div class="eyebrow">OaSIs · spheres</div>
-  <h1>{name}</h1>
-  <p class="lead">{blurb} <code>{{i}}</code></p>
-  <div class="grid">
-    <div class="card"><div class="cat">LIT · RECOMPUTED</div><b>{lime_style}</b><span>Every pixel is computed, not drawn. The script re-derives the art from the theme rule; no exported preview is cached.</span></div>
-    <div class="card"><div class="cat">AMBER · NARRATIVE</div><b>{name}</b><span>{story}</span></div>
-  </div>
-  <div class="canvas-wrap">
-    <canvas id="canvas" width="1600" height="900"></canvas>
-  </div>
-  <div class="proof">
-    <span class="t t-lit">LIT</span> This page recomputed its capital artifact from the theme rule; no external asset, no cached preview, no fabricated canvas.
-    <span class="t t-amber">AMBER</span> Narrative: {story}
-    <span class="t t-model">MODEL</span> The lime is: {lime_style}.
-  </div>
-  <p id="proof" style="margin-top:12px">proving&hellip;</p>
-  <p>Seal sha256(name|slug|blurb): <code id="seal"></code></p>
-  <div class="nav">
-    <a href="../spheres/index.html">▲ OaSIs spheres ▲</a> ·
-    <a href="../spheres_rome_gods/zeus-spiral.html">▲ Spiral Courts ▲</a>
-  </div>
-</div>
-<footer class="wrap foot">
-OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · Seal sha256
-</footer>
-</body>
-<script>
-const NAME="{name}", SLUG="{folder}", BLURB=({blurb}) + " " + ("{{i}}"), SEAL="{seal}";
-(async function(){{
-  const p=document.getElementById('proof');
-  const sealEl=document.getElementById('seal');
-  try {{
-    const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
-    const h=await crypto.subtle.digest('SHA-256',b);
-    sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'{lime_style}'+'; AMD consistent.';
-  }} catch(e) {{ p.textContent='FAIL '+e; }}
-}})(();
-</script>
-</html>
-"""
+def sphere_html(folder, name, blurb, story, lime_style, seal):
+    return (
+        "<!doctype html>\n"
+        "<html lang=\"en\">\n<head>\n"
+        "<meta charset=\"utf-8\">\n"
+        "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n"
+        "<meta name=\"theme-color\" content=\"#080a0d\">\n"
+        "<title>" + name + " · OaSIs spheres</title>\n"
+        "<style>\n"
+        ":root{--bg:#080a0d;--p:#10141a;--p2:#141a24;--line:#2a3340;--txt:#eef3f8;--muted:#9fb0c0;--cyan:#8fd7e8;--amber:#f0c77b;--lit:#3ee07a;--amber:#ffb300;--model:#b48cff}\n"
+        "*{box-sizing:border-box}\n"
+        "body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}\n"
+        "a{color:inherit}\n"
+        ".wrap{width:min(1200px,calc(100% - 28px));margin:0 auto}\n"
+        ".eyebrow{font:800 11px ui-monospace;letter-spacing:.22em;color:var(--cyan)}\n"
+        "h1{font-size:clamp(44px,8vw,100px);line-height:.82;letter-spacing:-.07em;margin:6px 0 14px;font-weight:600}\n"
+        ".lead{font-size:17px;line-height:1.7;color:#b6c0c7;max-width:760px}\n"
+        ".lead code{background:rgba(143,215,232,.12);padding:2px 6px;border-radius:5px;font-size:14px}\n"
+        ".grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:24px}\n"
+        ".card{grid-column:span 6;background:var(--p);border:1px solid var(--line);border-radius:16px;padding:18px 20px}\n"
+        ".card b{display:block;margin-bottom:6px;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.03em}\n"
+        ".card span{font-size:14px;color:var(--muted);font-style:italic;line-height:1.6}\n"
+        ".cat{font:800 10px ui-monospace;letter-spacing:.14em;color:var(--muted);margin-bottom:8px}\n"
+        ".nav{font:10px ui-monospace;letter-spacing:.12em;color:var(--muted);margin-top:24px}\n"
+        ".nav a{color:var(--cyan)}\n"
+        ".proof{font:12px ui-monospace;letter-spacing:.04em;padding:12px 16px;border-left:3px solid var(--amber);background:rgba(240,199,123,.05);color:#b7b3a7;white-space:pre-wrap;line-height:1.6}\n"
+        ".t{display:inline-block;padding:3px 9px;border-radius:999px;font:700 11px ui-monospace;letter-spacing:.08em}\n"
+        ".t-lit{background:#123f24;color:var(--lit)}\n"
+        ".t-amber{background:#3a2a0b;color:var(--amber)}\n"
+        ".t-model{background:#2a2356;color:var(--model)}\n"
+        ".canvas-wrap{max-width:1200px;margin:24px auto;background:#05070b;border:1px solid var(--line);border-radius:14px;overflow:hidden}\n"
+        "#canvas{display:block;width:100%;height:auto}\n"
+        ".foot{border-top:1px solid var(--line);margin-top:40px;padding-top:22px;font-size:11px;color:var(--muted)}\n"
+        "@media(max-width:860px){.grid{grid-template-columns:1fr}.card{grid-column:span 12}}\n"
+        "</style>\n"
+        "</head>\n<body>\n<div class=\"wrap\">\n  <div class=\"eyebrow\">OaSIs · spheres</div>\n  <h1>" + name + "</h1>\n  <p class=\"lead\">" + blurb + " <code>{i}</code></p>\n  <div class=\"grid\">\n    <div class=\"card\"><div class=\"cat\">LIT · RECOMPUTED</div><b>" + lime_style + "</b><span>Every pixel is computed, not drawn. The script re-derives the art from the theme rule; no exported preview is cached.</span></div>\n    <div class=\"card\"><div class=\"cat\">AMBER · NARRATIVE</div><b>" + name + "</b><span>" + story + "</span></div>\n  </div>\n  <div class=\"canvas-wrap\">\n    <canvas id=\"canvas\" width=\"1600\" height=\"900\"></canvas>\n  </div>\n  <div class=\"proof\">\n    <span class=\"t t-lit\">LIT</span> This page recomputed its capital artifact from the theme rule; no external asset, no cached preview, no fabricated canvas.\n    <span class=\"t t-amber\">AMBER</span> Narrative: " + story + "\n    <span class=\"t t-model\">MODEL</span> The lime is: " + lime_style + ".\n  </div>\n  <p id=\"proof\" style=\"margin-top:12px\">proving&hellip;</p>\n  <p>Seal sha256(name|slug|blurb): <code id=\"seal\"></code></p>\n  <div class=\"nav\">\n    <a href=\"../spheres/index.html\">▲ OaSIs spheres ▲</a> ·\n    <a href=\"../spheres_rome_gods/zeus-spiral.html\">▲ Spiral Courts ▲</a>\n  </div>\n</div>\n<footer class=\"wrap foot\">\nOaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · Seal sha256\n</footer>\n</body>\n<script>\nconst NAME=\"" + name + "\", SLUG=\"" + folder + "\", BLURB=(\"" + blurb + "\") + \" \" + (\"{i}\"), SEAL=\"" + seal + "\";\n(async function(){\n  const p=document.getElementById('proof');\n  const sealEl=document.getElementById('seal');\n  try {\n    const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);\n    const h=await crypto.subtle.digest('SHA-256',b);\n    sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');\n    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';\n  } catch(e) { p.textContent='FAIL '+e; }\n})();\n</script>\n</html>\n"
+    )
 
 
 def render_themes():
@@ -448,47 +404,49 @@ def render_themes():
         d.mkdir(exist_ok=True, parents=True)
         key = CANVAS_HISTORY[folder]
         art = canvas_art(key, 1600, 900)
-        b64 = art.decode("latin-1")
         seal = seal_hash("Rome God Sphere " + name, blurb, key)
-        slug = name.lower().replace(" ", "-").replace("·", "-").replace("{{i}}", "i")
-        path = d / f"{slug}.html"
-        html = sphere_html(i + 1, folder, name, blurb, story, lime, seal)
+        slug = name.lower().replace(" ", "-").replace("·", "-").replace("{i}", "i")
+        path = d / (slug + ".html")
+        html = sphere_html(folder, name, blurb, story, lime, seal)
         path.write_text(html, encoding="utf-8")
-        print(f"wrote {path}  ({len(html)} bytes)")
+        print("wrote " + str(path) + "  (" + str(len(html)) + " bytes)")
 
 
 def write_index():
-    rows = "".join(
-        f'<div class="card" style="grid-column:span 6"><b><a href="{p.name}">{t[1]}</a></b>'
-        f'<span>{t[3]}</span></div>'
-        for t, p in zip(THEMES, sorted(OUT.glob('*.html')))
-    )
-    html = f"""<!doctype html>
+    rows = []
+    # sphere pages live in sub-folders; collect them recursively,
+    # excluding the hub index.html itself which sits in the same dir.
+    all_html = [p for p in sorted(OUT.glob("**/*.html")) if p.name != "index.html"]
+    for t, p in zip(THEMES, all_html):
+        rows.append('<div class="card" style="grid-column:span 6"><b><a href="' + p.relative_to(REPO).as_posix() + '">' + t[1] + "</a></b><span>" + t[3] + "</span></div>")
+    html = ("""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rome Gods & Hermes · OaSIs spheres</title>
 <style>
-:root{{--bg:#080a0d;--p:#10141a;--p2:#141a24;--line:#2a3340;--txt:#eef3f8;--muted:#9fb0c0;--cyan:#8fd7e8;--lit:#3ee07a;--amber:#ffb300;--model:#b48cff}}
-*{{box-sizing:border-box}}
-body{{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,ui-sans-serif,system-ui,sans-serif}}
-a{{color:inherit}}
-.wrap{{width:min(1200px,calc(100% - 28px));margin:0 auto}}
-.eyebrow{{font:800 11px ui-monospace;letter-spacing:.22em;color:var(--cyan)}}
-h1{{font-size:clamp(40px,7vw,90px);margin:6px 0 14px;font-weight:600}}
-.grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}}
-.card{{background:var(--p);border:1px solid var(--line);border-radius:16px;padding:18px 20px}}
-.card b{{display:block;margin-bottom:6px;font-size:22px}}
-.card span{{font-size:13px;color:var(--muted);font-style:italic}}
-.nav{{margin-top:24px;font:10px ui-monospace;color:var(--muted)}}
-.foot{{border-top:1px solid var(--line);margin-top:40px;padding-top:22px;font-size:11px;color:var(--muted)}}
-@media(max-width:900px){{.grid{{grid-template-columns:1fr}}.card{{grid-column:span 12}}}}
+:root{--bg:#080a0d;--p:#10141a;--p2:#141a24;--line:#2a3340;--txt:#eef3f8;--muted:#9fb0c0;--cyan:#8fd7e8;--lit:#3ee07a;--amber:#ffb300;--model:#b48cff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+a{color:inherit}
+.wrap{width:min(1200px,calc(100% - 28px));margin:0 auto}
+.eyebrow{font:800 11px ui-monospace;letter-spacing:.22em;color:var(--cyan)}
+h1{font-size:clamp(40px,7vw,90px);margin:6px 0 14px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.card{background:var(--p);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.card b{display:block;margin-bottom:6px;font-size:22px}
+.card span{font-size:13px;color:var(--muted);font-style:italic}
+.nav{margin-top:24px;font:10px ui-monospace;color:var(--muted)}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding-top:22px;font-size:11px;color:var(--muted)}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.card{grid-column:span 12}}
 </style></head><body>
 <div class="wrap">
 <div class="eyebrow">OaSIs · Rome gods & Hermes</div>
 <h1>Twenty Rome Gods & Hermes Spheres</h1>
 <p class="lead">Twenty mayhem spheres about Roman gods and Hermes; each recomputes its capital artifact from a theme rule, no cached previews. LIT · AMBER · MODEL.</p>
 <div class="grid">
-{rows}
-</div>
+""")
+    for r in rows:
+        html += r + "\n"
+    html += """</div>
 <div class="nav"><a href="../spheres/index.html">▲ OaSIs spheres ▲</a> · <a href="../spheres/the-return.html">← return</a></div>
 </div>
 <footer class="wrap foot">Rome gods & Hermes · 20 spheres · LIT · AMBER · MODEL · append-only</footer>
@@ -499,72 +457,104 @@ h1{{font-size:clamp(40px,7vw,90px);margin:6px 0 14px;font-weight:600}}
 
 THEMES = [
     ("apollo-quincunx", "The Quincunx", "Apollo's five-point signature traced in the golden ratio.",
-     "Apollo shapes the sky as five points on a circle; the quincunx is his signature and the heartbeat of order.",
-     "golden-ratio star"),
+     "Apollo shapes the sky as five points on a circle; the quincunx is his signature and the heartbeat of order.", "golden-ratio star"),
     ("jupiter-orrery", "The Orrery", "Jupiter's six orbital rings around a central sun.",
-     "Jupiter, king of the gods, carries his court in six slow rings; each ring marks a season, each gap a law.",
-     "orbital ring map"),
+     "Jupiter, king of the gods, carries his court in six slow rings; each ring marks a season, each gap a law.", "orbital ring map"),
     ("hermes-dice", "The Tesseract Dice", "Hermes rolls a 14-sided die that never lands on edge.",
-     "Hermes, the swift-footed messenger, rolls the tesseract die to settle disputes at the crossroads; the die always lands on a face.",
-     "14-sided roll"),
+     "Hermes, the swift-footed messenger, rolls the tesseract die to settle disputes at the crossroads; the die always lands on a face.", "14-sided roll"),
     ("theseus-labyrinth", "The Fractal Labyrinth", "Theseus' dragon-curve passage where the exit lies where it entered.",
-     "Theseus enters the labyrinth and finds the exit by drawing a dragon curve with thread; each bend is a choice, each return a new entrance.",
-     "dragon curve motif"),
+     "Theseus enters the labyrinth and finds the exit by drawing a dragon curve with thread; each bend is a choice, each return a new entrance.", "dragon curve motif"),
     ("mnemosyne-starve", "The Starve Table", "Mnemosyne's 16-cell grid where every name is recalled by weight.",
-     "Mnemosyne guards the table of 16 cells; each name is laid down and weighed, and nothing is forgotten that is worth remembering.",
-     "weight grid"),
+     "Mnemosyne guards the table of 16 cells; each name is laid down and weighed, and nothing is forgotten that is worth remembering.", "weight grid"),
     ("hermes-seal", "The Seal Clerk", "Hermes stamps a 32x32 hash grid as the clerk of every signature.",
-     "Hermes stamps the 32x32 hash grid as the clerk of every signature; no word passes without a mark, and no mark is forged.",
-     "32x32 hash grid"),
+     "Hermes stamps the 32x32 hash grid as the clerk of every signature; no word passes without a mark, and no mark is forged.", "32x32 hash grid"),
     ("natura-anomaly", "The Anomaly Atlas", "Natura charts the 33 odd/even rows where the law breaks and heals.",
-     "Natura draws the atlas of the 33 odd/even rows; in each row the law breaks and heals, and the anomaly is the only truth the world keeps.",
-     "odd/even row map"),
+     "Natura draws the atlas of the 33 odd/even rows; in each row the law breaks and heals, and the anomaly is the only truth the world keeps.", "odd/even row map"),
     ("atlas-meridian", "The Meridian Rule", "Atlas' 1-degree meridian as a single unbroken line.",
-     "Atlas holds the meridian as a single unbroken line; every degree is a boundary, every boundary a promise kept.",
-     "1-degree meridian"),
+     "Atlas holds the meridian as a single unbroken line; every degree is a boundary, every boundary a promise kept.", "1-degree meridian"),
     ("jupiter-conclave", "The Conclave", "Jupiter's nine elders around the royal seat.",
-     "Jupiter calls nine elders to the conclave; each elder speaks with one voice, and the nine together hold the sky.",
-     "conclave table"),
+     "Jupiter calls nine elders to the conclave; each elder speaks with one voice, and the nine together hold the sky.", "conclave table"),
     ("sapphon-cube", "The Cube of Domains", "SaPpH{{i}}on's 8x8 grid of all domains.",
-     "SaPpH{{i}}on's cube of domains holds every domain in an 8x8 grid; the artist places the shells and the critic counts them.",
-     "eight-squared cube"),
+     "SaPpH{{i}}on's cube of domains holds every domain in an 8x8 grid; the artist places the shells and the critic counts them.", "eight-squared cube"),
     ("apollo-cone", "The Cone of Voices", "Apollo's 60/60/60 triangle where three voices meet.",
-     "Apollo shapes the cone of voices as a 60/60/60 triangle where three voices meet; each voice is a tone, each angle a law.",
-     "triangle of voices"),
+     "Apollo shapes the cone of voices as a 60/60/60 triangle where three voices meet; each voice is a tone, each angle a law.", "triangle of voices"),
     ("apollo-prism", "The Prism Lattice", "Apollo's 14 diamonds of the prism, each a law.",
-     "Apollo splits the prism's light into 14 diamonds; each diamond is a law, each law a ray the eye can follow.",
-     "14-diamond prism"),
+     "Apollo splits the prism's light into 14 diamonds; each diamond is a law, each law a ray the eye can follow.", "14-diamond prism"),
     ("hermes-ring", "The Seamless Ring", "Hermes' zero-gap torus is a perfect ring.",
-     "Hermes weaves a torus with no seam, a perfect ring where the inside and outside touch; what goes in must come out through the same door.",
-     "zero-gap torus"),
+     "Hermes weaves a torus with no seam, a perfect ring where the inside and outside touch; what goes in must come out through the same door.", "zero-gap torus"),
     ("hermes-echo", "The Hexadeca Echo", "Hermes' 16-step echo of a single note.",
-     "Hermes calls a note and it echoes sixteen times; each echo is a step back, each step a voice returning to the start.",
-     "16-step echo chains"),
+     "Hermes calls a note and it echoes sixteen times; each echo is a step back, each step a voice returning to the start.", "16-step echo chains"),
     ("poseidon-sea", "The Sea-Sphere", "Poseidon's sphere of alpha and omega where everything is written.",
-     "Poseidon's sphere holds the sea of alpha and omega; every drop is a letter, every wave is a sentence, and nothing is ever lost.",
-     "alpha-omega sea"),
+     "Poseidon's sphere holds the sea of alpha and omega; every drop is a letter, every wave is a sentence, and nothing is ever lost.", "alpha-omega sea"),
     ("themis-balance", "The Balance Lab", "Themis' hex balance holds the world on six points.",
-     "Themis places the world on a hex balance; six points hold, and the scale never tips unless a law is broken.",
-     "hexagonal balance"),
+     "Themis places the world on a hex balance; six points hold, and the scale never tips unless a law is broken.", "hexagonal balance"),
     ("hermes-whisper", "The Whisper Cascade", "Hermes' ascending dyads, ever rising.",
-     "Hermes whispers a cascade of ascending dyads; each voice carries to the next, and the chain climbs without end.",
-     "ascending dyad ladder"),
+     "Hermes whispers a cascade of ascending dyads; each voice carries to the next, and the chain climbs without end.", "ascending dyad ladder"),
     ("apollo-natura", "The First Sphere", "Apollo's Natura sphere is the seed of all.",
-     "Apollo's sphere is the first; in it Natura is a living seed that grows into every world the gods will call into being.",
-     "natura seed"),
+     "Apollo's sphere is the first; in it Natura is a living seed that grows into every world the gods will call into being.", "natura seed"),
     ("zeus-spiral", "The Spiral Courts", "Zeus' Moirai spinning the three fates.",
-     "Zeus' Moirai spin the spiral of three fates; each thread is a life, each twist a choice, each knot a destiny.",
-     "three-fate spiral"),
+     "Zeus' Moirai spin the spiral of three fates; each thread is a life, each twist a choice, each knot a destiny.", "three-fate spiral"),
     ("themis-anchor", "The Anchor Ring", "Themis' 5x5 ring as the anchor of every covenant.",
-     "Themis' 5x5 ring anchors every covenant; the center holds, the border holds, and the whole ring is a vow the sky can see.",
-     "5x5 anchor ring"),
+     "Themis' 5x5 ring anchors every covenant; the center holds, the border holds, and the whole ring is a vow the sky can see.", "5x5 anchor ring"),
 ]
 
 
 def main():
     render_themes()
     write_index()
-    print("\nDone. Spheres in", OUT, ":", len(list(OUT.glob('*.html'))), "files")
+    print("\nDone. Spheres in " + str(OUT) + ": " + str(len(list(OUT.glob("*.html")))) + " files")
+
+
+if __name__ == "__main__":
+    main()
+THEMES = [
+    ("apollo-quincunx", "The Quincunx", "Apollo's five-point signature traced in the golden ratio.",
+     "Apollo shapes the sky as five points on a circle; the quincunx is his signature and the heartbeat of order.", "golden-ratio star"),
+    ("jupiter-orrery", "The Orrery", "Jupiter's six orbital rings around a central sun.",
+     "Jupiter, king of the gods, carries his court in six slow rings; each ring marks a season, each gap a law.", "orbital ring map"),
+    ("hermes-dice", "The Tesseract Dice", "Hermes rolls a 14-sided die that never lands on edge.",
+     "Hermes, the swift-footed messenger, rolls the tesseract die to settle disputes at the crossroads; the die always lands on a face.", "14-sided roll"),
+    ("theseus-labyrinth", "The Fractal Labyrinth", "Theseus' dragon-curve passage where the exit lies where it entered.",
+     "Theseus enters the labyrinth and finds the exit by drawing a dragon curve with thread; each bend is a choice, each return a new entrance.", "dragon curve motif"),
+    ("mnemosyne-starve", "The Starve Table", "Mnemosyne's 16-cell grid where every name is recalled by weight.",
+     "Mnemosyne guards the table of 16 cells; each name is laid down and weighed, and nothing is forgotten that is worth remembering.", "weight grid"),
+    ("hermes-seal", "The Seal Clerk", "Hermes stamps a 32x32 hash grid as the clerk of every signature.",
+     "Hermes stamps the 32x32 hash grid as the clerk of every signature; no word passes without a mark, and no mark is forged.", "32x32 hash grid"),
+    ("natura-anomaly", "The Anomaly Atlas", "Natura charts the 33 odd/even rows where the law breaks and heals.",
+     "Natura draws the atlas of the 33 odd/even rows; in each row the law breaks and heals, and the anomaly is the only truth the world keeps.", "odd/even row map"),
+    ("atlas-meridian", "The Meridian Rule", "Atlas' 1-degree meridian as a single unbroken line.",
+     "Atlas holds the meridian as a single unbroken line; every degree is a boundary, every boundary a promise kept.", "1-degree meridian"),
+    ("jupiter-conclave", "The Conclave", "Jupiter's nine elders around the royal seat.",
+     "Jupiter calls nine elders to the conclave; each elder speaks with one voice, and the nine together hold the sky.", "conclave table"),
+    ("sapphon-cube", "The Cube of Domains", "SaPpH{{i}}on's 8x8 grid of all domains.",
+     "SaPpH{{i}}on's cube of domains holds every domain in an 8x8 grid; the artist places the shells and the critic counts them.", "eight-squared cube"),
+    ("apollo-cone", "The Cone of Voices", "Apollo's 60/60/60 triangle where three voices meet.",
+     "Apollo shapes the cone of voices as a 60/60/60 triangle where three voices meet; each voice is a tone, each angle a law.", "triangle of voices"),
+    ("apollo-prism", "The Prism Lattice", "Apollo's 14 diamonds of the prism, each a law.",
+     "Apollo splits the prism's light into 14 diamonds; each diamond is a law, each law a ray the eye can follow.", "14-diamond prism"),
+    ("hermes-ring", "The Seamless Ring", "Hermes' zero-gap torus is a perfect ring.",
+     "Hermes weaves a torus with no seam, a perfect ring where the inside and outside touch; what goes in must come out through the same door.", "zero-gap torus"),
+    ("hermes-echo", "The Hexadeca Echo", "Hermes' 16-step echo of a single note.",
+     "Hermes calls a note and it echoes sixteen times; each echo is a step back, each step a voice returning to the start.", "16-step echo chains"),
+    ("poseidon-sea", "The Sea-Sphere", "Poseidon's sphere of alpha and omega where everything is written.",
+     "Poseidon's sphere holds the sea of alpha and omega; every drop is a letter, every wave is a sentence, and nothing is ever lost.", "alpha-omega sea"),
+    ("themis-balance", "The Balance Lab", "Themis' hex balance holds the world on six points.",
+     "Themis places the world on a hex balance; six points hold, and the scale never tips unless a law is broken.", "hexagonal balance"),
+    ("hermes-whisper", "The Whisper Cascade", "Hermes' ascending dyads, ever rising.",
+     "Hermes whispers a cascade of ascending dyads; each voice carries to the next, and the chain climbs without end.", "ascending dyad ladder"),
+    ("apollo-natura", "The First Sphere", "Apollo's Natura sphere is the seed of all.",
+     "Apollo's sphere is the first; in it Natura is a living seed that grows into every world the gods will call into being.", "natura seed"),
+    ("zeus-spiral", "The Spiral Courts", "Zeus' Moirai spinning the three fates.",
+     "Zeus' Moirai spin the spiral of three fates; each thread is a life, each twist a choice, each knot a destiny.", "three-fate spiral"),
+    ("themis-anchor", "The Anchor Ring", "Themis' 5x5 ring as the anchor of every covenant.",
+     "Themis' 5x5 ring anchors every covenant; the center holds, the border holds, and the whole ring is a vow the sky can see.", "5x5 anchor ring"),
+]
+
+
+def main():
+    render_themes()
+    write_index()
+    print("\nDone. Spheres in " + str(OUT) + ": " + str(len(list(OUT.glob("*.html")))) + " files")
 
 
 if __name__ == "__main__":

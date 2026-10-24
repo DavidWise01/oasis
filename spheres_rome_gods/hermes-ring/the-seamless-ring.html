@@ -62,7 +62,7 @@ OaSIs · spheres · Rome gods & Hermes · append-only · LIT / AMBER / MODEL · 
 </footer>
 </body>
 <script>
-const NAME="The Seamless Ring", SLUG="hermes-ring", BLURB=(Hermes' zero-gap torus is a perfect ring.) + " " + ("{i}"), SEAL="99ca700a";
+const NAME="The Seamless Ring", SLUG="hermes-ring", BLURB=("Hermes' zero-gap torus is a perfect ring.") + " " + ("{i}"), SEAL="99ca700a";
 (async function(){
   const p=document.getElementById('proof');
   const sealEl=document.getElementById('seal');
@@ -70,8 +70,8 @@ const NAME="The Seamless Ring", SLUG="hermes-ring", BLURB=(Hermes' zero-gap toru
     const b=new TextEncoder().encode(NAME+'|'+SLUG+'|'+BLURB);
     const h=await crypto.subtle.digest('SHA-256',b);
     sealEl.textContent=[...new Uint8Array(h)].map(v=>v.toString(16).padStart(2,'0')).join('');
-    p.textContent='LIT narrative: '+'zero-gap torus'+'; AMD consistent.';
+    p.textContent='LIT narrative: ' + lime_style + '; AMD consistent.';
   } catch(e) { p.textContent='FAIL '+e; }
-})(();
+})();
 </script>
 </html>
