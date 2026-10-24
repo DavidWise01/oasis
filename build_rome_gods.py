@@ -423,7 +423,8 @@ CANVAS_HISTORY = {
     "zeus-resonance": "16-step-echo",
     "hermes-peak": "circle-of-five",
     "zeus-zenith": "moirai-spiral",
-]
+    "zeus-zenith": "moirai-spiral",
+}
 
 CANVAS_FNS = {
     "circle-of-five": _circle_of_five,
@@ -810,6 +811,36 @@ THEMES = [
      "The pinnacle string does not break; it is the wall that the spire holds.", "peak-and-wall"),
     ("zeus-zenith", "The Zenith Chart", "Zeus' zenith that charts the highest line.",
      "The zenith chart charts the highest line; the line is a wall and the wall is a door.", "zenith-line"),
+    ("sapphon-agon", "The Agon of Sappho", "Sappho's agon that turns the mouth to the dark", "Sappho's agon turns the mouth to the dark; the word is a stone and the stone is a door.", "agon stone door"),
+    ("apollo-agon", "The Apollo Agon", "Apollo's agon that reads the voice before it speaks", "Apollo's agon reads the voice before it speaks; the voice is a note and the note is a law.", "agon voice note"),
+    ("jupiter-sappho", "The Jupiter Sappho", "Jupiter's sappho that steadies the storm", "Jupiter's sappho steadies the storm; the storm is a wave and the wave is a wall.", "sappho storm wave"),
+    ("hermes-sappho", "The Hermes Sappho", "Hermes' sappho that scatters the fine dust", "Hermes' sappho scatters the fine dust; the dust is a seed and the seed is a star.", "sappho dust star"),
+    ("zeus-sappho", "The Zeus Sappho", "Zeus' sappho that shapes the sky", "Zeus' sappho shapes the sky; the sky is a dome and the dome is a heart.", "sappho sky dome"),
+    ("themis-sappho", "The Themis Sappho", "Themis' sappho that anchors the law", "Themis' sappho anchors the law; the law is a ring and the ring is a covenant.", "sappho law ring"),
+    ("apollo-sappho", "The Apollo Sappho", "Apollo's sappho that is the fire behind the veil", "Apollo's sappho is the fire behind the veil; the veil is a smoke and the smoke is a name.", "sappho fire veil"),
+    ("poseidon-sappho", "The Poseidon Sappho", "Poseidon's sappho that keeps the shape of the wave", "Poseidon's sappho keeps the shape of the wave; the wave is a sea and the sea is a sphere.", "sappho sea sphere"),
+    ("mnemosyne-sappho", "The Mnemosyne Sappho", "Mnemosyne's sappho that keeps every name by clicking", "Mnemosyne's sappho keeps every name by clicking; the name is a coin and the coin is a king.", "sappho name coin"),
+    ("natura-sappho", "The Natura Sappho", "Natura's sappho that is the sea-glow that spins the sea", "Natura's sappho is the sea-glow that spins the sea; the sea is a wheel and the wheel is a spoke.", "sappho sea glow"),
+    ("atlas-sappho", "The Atlas Sappho", "Atlas' sappho that holds the world without bending", "Atlas' sappho holds the world without bending; the world is a web and the web is a seed.", "sappho world web"),
+    ("hermes-spoke2", "The Hermes Spoke 2", "Hermes' spoke 2 that turns the world without a hub", "Hermes' spoke 2 turns the world without a hub; the spoke is a line and the line is a wall.", "spoke 2 wheel"),
+    ("zeus-spoke2", "The Zeus Spoke 2", "Zeus' spoke 2 that is the same lattice of rods", "Zeus' spoke 2 is the same lattice of rods; the lattice is a net and the net is a web.", "spoke 2 lattice"),
+    ("jupiter-sommelier", "The Jupiter Sommelier", "Jupiter's sommelier that splits the river without breaking it", "Jupiter's sommelier splits the river without breaking it; the river is a line and the line is a wall.", "sommelier river"),
+    ("hermes-ladder", "The Hermes Ladder", "Hermes' ladder that turns the ladder without a step", "Hermes' ladder turns the ladder without a step; the ladder is a gate and the gate is a door.", "ladder gate"),
+    ("apollo-diadem", "The Apollo Diadem", "Apollo's diadem that is the first sphere", "Apollo's diadem is the first sphere; the sphere is a seed and the seed is a star.", "diadem star"),
+    ("themis-sommelier", "The Themis Sommelier", "Themis' sommelier that anchors the law", "Themis' sommelier anchors the law; the law is a ring and the ring is a covenant.", "sommelier ring"),
+    ("natura-sommelier", "The Natura Sommelier", "Natura's sommelier that is the sea-glow that spins the sea", "Natura's sommelier is the sea-glow that spins the sea; the sea is a wheel and the wheel is a spoke.", "sommelier sea glow"),
+    ("zeus-sommelier", "The Zeus Sommelier", "Zeus' sommelier that is the same fire that turns the wall", "Zeus' sommelier is the same fire that turns the wall; the wall is a seal and the seal is a stone.", "sommelier wall"),
+    ("hermes-sommelier", "The Hermes Sommelier", "Hermes' sommelier that is the wind that thwarts the truth", "Hermes' sommelier is the wind that thwarts the truth; the truth is a line and the line is a wall.", "sommelier truth"),
+    ("sapphon-sommelier", "The Sappho Sommelier", "Sappho's sommelier that is the fire behind the veil", "Sappho's sommelier is the fire behind the veil; the veil is a smoke and the smoke is a name.", "sapphon sommelier veil"),
+    ("sapphon-star", "The Sappho Star", "Sappho's star that is the same square of stars", "Sappho's star is the same square of stars; the square is a seal and the seal is a stone.", "sapphon star square"),
+    ("sapphon-mouth", "The Sappho Mouth", "Sappho's mouth that moves without a breath", "Sappho's mouth moves without a breath; the mouth is a gate and the gate is a door.", "sapphon mouth gate"),
+    ("sapphon-mountain", "The Sappho Mountain", "Sappho's mountain that is the pinnacle string", "Sappho's mountain is the pinnacle string; the string is a line and the line is a wall.", "sapphon mountain string"),
+    ("sapphon-tower", "The Sappho Tower", "Sappho's tower that charts the highest line", "Sappho's tower charts the highest line; the line is a ray and the ray is a law.", "sapphon tower line"),
+    ("sapphon-ladder", "The Sappho Ladder", "Sappho's ladder that will not break the string", "Sappho's ladder will not break the string; the string is a thread and the thread is a name.", "sapphon ladder thread"),
+    ("sapphon-agon-fire", "The Sappho Agon Fire", "Sappho's agon fire that is the fracture-set", "Sappho's agon fire is the fracture-set; the fracture is a wall and the wall is a door.", "agon fire fracture"),
+    ("sapphon-agon-wind", "The Sappho Agon Wind", "Sappho's agon wind that is the orbit-weave", "Sappho's agon wind is the orbit-weave; the orbit is a ring and the ring is a covenant.", "agon wind orbit"),
+    ("sapphon-agon-sun", "The Sappho Agon Sun", "Sappho's agon sun that is the tangent gate", "Sappho's agon sun is the tangent gate; the gate is a door and the door is a step.", "agon sun tangent"),
+    ("sapphon-agon-sea", "The Sappho Agon Sea", "Sappho's agon sea that is the veil of smoke", "Sappho's agon sea is the veil of smoke; the smoke is a name and the name is a star.", "agon sea veil"),
 ]
 
 
