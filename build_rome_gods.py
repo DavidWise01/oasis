@@ -298,6 +298,525 @@ def _anchor_ring(w, h):
     return b
 
 
+def _kill_switch(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.42
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 6:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _spoke_wheel(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _hypercube_net(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _theseus_grid(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _mnemosyne_slit(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _natura_helix(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _atlas_eyes(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _jupiter_parchment(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _hermes_mask(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _zeus_prometheus(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _themis_echo(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _poseidon_serpent(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _hermes_alternator(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _zeus_spin(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _apollo_flash(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _sapphon_turbine(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _natura_glow(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _atlas_head(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _jupiter_fracture(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _hermes_orbit(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _zeus_tangent(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _apollo_veil(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _sapphon_agon_fire(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _sapphon_agon_wind(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _sapphon_agon_sun(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _sapphon_agon_sea(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _9_cell_square(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cw, ch = int(w / 3), int(h / 3)
+    for gy in range(3):
+        for gx in range(3):
+            x0, y0 = gx * cw, gy * ch
+            for y in range(y0, y0 + ch):
+                for x in range(x0, x0 + cw):
+                    if x < w and y < h:
+                        b[4 * (y * w + x) + 0] = 0xff
+                        b[4 * (y * w + x) + 1] = 0xd7
+                        b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _natura_pulse(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _jupiter_ring(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _hermes_gate(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _themis_summit(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _zeus_resonance(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _hermes_peak(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _zeus_zenith(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _spoke_wheel(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _hypercube_net(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.38
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 5:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
+def _anchor_ring(w, h):
+    b = bytearray([5, 5, 10, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.42
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 6:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+
 CANVAS_HISTORY = {
     # round-1 (20)
     "apollo-quincunx": "circle-of-five",
@@ -424,6 +943,53 @@ CANVAS_HISTORY = {
     "hermes-peak": "circle-of-five",
     "zeus-zenith": "moirai-spiral",
     "zeus-zenith": "moirai-spiral",
+    # round-6 (30, sapphon) — sappho-gods themes
+    "sapphon-turbine": "cyclic-dial",
+    "natura-glow": "sea-sphere",
+    "atlas-head": "nine-elder-conclave",
+    "jupiter-fracture": "16-cell-starve",
+    "hermes-orbit": "circle-of-five",
+    "zeus-tangent": "hex-balance",
+    "apollo-veil": "cone-of-voices",
+    "sapphon-void": "5x5-anchor",
+    "natura-pulse": "moirai-spiral",
+    "jupiter-ring": "seamless-ring-torus",
+    "hermes-gate": "meridian-rule",
+    "themis-summit": "33-odd-even-atlas",
+    "zeus-resonance": "16-step-echo",
+    "hermes-peak": "circle-of-five",
+    "zeus-zenith": "moirai-spiral",
+    # round-7 (30, pershan) — persian-gods themes
+    "pershan-agon": "9-cell-square",
+    "apollo-pershan": "9-cell-square",
+    "jupiter-pershan": "9-cell-square",
+    "hermes-pershan": "9-cell-square",
+    "zeus-pershan": "9-cell-square",
+    "themis-pershan": "9-cell-square",
+    "apollo-sappho": "9-cell-square",
+    "poseidon-pershan": "9-cell-square",
+    "mnemosyne-pershan": "9-cell-square",
+    "natura-pershan": "9-cell-square",
+    "atlas-pershan": "9-cell-square",
+    "hermes-spoke2": "9-cell-square",
+    "zeus-spoke2": "9-cell-square",
+    "jupiter-sommelier": "9-cell-square",
+    "hermes-ladder": "9-cell-square",
+    "apollo-diadem": "9-cell-square",
+    "themis-sommelier": "9-cell-square",
+    "natura-sommelier": "9-cell-square",
+    "zeus-sommelier": "9-cell-square",
+    "hermes-sommelier": "9-cell-square",
+    "sapphon-sommelier": "9-cell-square",
+    "sapphon-star": "9-cell-square",
+    "sapphon-mouth": "9-cell-square",
+    "sapphon-mountain": "9-cell-square",
+    "sapphon-tower": "9-cell-square",
+    "sapphon-ladder": "9-cell-square",
+    "sapphon-agon-fire": "9-cell-square",
+    "sapphon-agon-wind": "9-cell-square",
+    "sapphon-agon-sun": "9-cell-square",
+    "sapphon-agon-sea": "9-cell-square",
 }
 
 CANVAS_FNS = {
@@ -441,6 +1007,8 @@ CANVAS_FNS = {
     "prism-lattice": _prism_lattice,
     "seamless-ring-torus": _seamless_ring_torus,
     "16-step-echo": _16_step_echo,
+    "kill-switch": _kill_switch,
+    "spoke-wheel": _spoke_wheel,
     "sea-sphere": _sea_sphere,
     "hex-balance": _hex_balance,
     "ascending-dyads": _ascending_dyads,
@@ -449,6 +1017,28 @@ CANVAS_FNS = {
     "5x5-anchor": _anchor_ring,
     "12-dark-cells": _16_cell_starve,
     "strophic-wind": _dragon_curve,
+    "kill-switch": _kill_switch,
+    "spoke-wheel": _spoke_wheel,
+    "hypercube-net": _hypercube_net,
+    "planar-grid": _theseus_grid,
+    "slit-rhombus": _mnemosyne_slit,
+    "gloss-helix": _natura_helix,
+    "severed-eye": _atlas_eyes,
+    "torn-parchment": _jupiter_parchment,
+    "priestess-mask": _hermes_mask,
+    "prometheus-lantern": _zeus_prometheus,
+    "echo-vault": _themis_echo,
+    "serpent-wings": _poseidon_serpent,
+    "cyclic-dial": _sapphon_turbine,
+    "nine-elder-conclave": _nine_elder_conclave,
+    "curved-wing": _apollo_flash,
+    "wave-gate": _jupiter_ring,
+    "gate-bridge": _hermes_gate,
+    "summit-ring": _themis_summit,
+    "resonance-line": _zeus_resonance,
+    "pinnacle-string": _hermes_peak,
+    "zeus-zenith": _zeus_zenith,
+    "9-cell-square": _9_cell_square,
 }
 
 
