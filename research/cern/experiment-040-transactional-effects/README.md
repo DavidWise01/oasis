@@ -1,0 +1,3 @@
+# Experiment 040 — PRIM transactional effects
+
+Four controlled interruption windows tested using on-disk SQLite WAL and FULL synchronous mode. Each configuration submitted 60 jobs, replayed after file close/reopen, and produced 60 unique committed effects summing to 1830, with zero duplicate effects. Transaction holds both effect and done-state, with idempotent record IDs. Controlled interruptions, **not actual process termination or power loss**. No external side effects are covered by the database transaction. Runnable script in test.py; extended package attached in ChatGPT as prim_exp040.zip. Topology `[/[/(/\)\]\]` and open `[(n())]` remains symbolic routing model, not measured CERN physics.
