@@ -393,7 +393,175 @@ CANVAS_HISTORY = {
     "jupiter-meets": "nine-elder-conclave",
     "hermes-crescendo": "seamless-ring-torus",
     "zeus-rhetra": "moirai-spiral",
-}
+]
+
+def _kill_switch(w, h):
+    b = bytearray([20, 20, 40, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.40
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if d < r:
+                t = d / r
+                b[4 * (y * w + x) + 0] = C(0x20 + 30 * (1 - t))
+                b[4 * (y * w + x) + 1] = C(0x20 + 60 * (1 - t))
+                b[4 * (y * w + x) + 2] = C(0x40 + 120 * (1 - t))
+                if (x + y) % 31 == 0:
+                    b[4 * (y * w + x) + 0] = 0xff
+                    b[4 * (y * w + x) + 1] = 0xd7
+                    b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+def _spoke_wheel(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    n = 24
+    for j in range(n):
+        a = 2 * math.pi * j / n - math.pi / 2
+        x1 = cx + 0.30 * min(w, h) * math.cos(a)
+        y1 = cy + 0.30 * min(w, h) * math.sin(a)
+        x2 = cx + 0.44 * min(w, h) * math.cos(a)
+        y2 = cy + 0.44 * min(w, h) * math.sin(a)
+        xi1, yi1 = int(x1), int(y1)
+        xi2, yi2 = int(x2), int(y2)
+        if 0 <= xi1 < w and 0 <= yi1 < h:
+            b[4 * (yi1 * w + xi1) + 0] = 0xff
+            b[4 * (yi1 * w + xi1) + 1] = 0xd7
+            b[4 * (yi1 * w + xi1) + 2] = 0x7a
+        if 0 <= xi2 < w and 0 <= yi2 < h:
+            b[4 * (yi2 * w + xi2) + 0] = 0xff
+            b[4 * (yi2 * w + xi2) + 1] = 0xd7
+            b[4 * (yi2 * w + xi2) + 2] = 0x7a
+    return b
+
+def _hypercube_net(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    for y in range(h):
+        for x in range(w):
+            if (x * 17 + y * 5) % 29 < 3:
+                b[4 * (y * w + x) + 0] = 0x6a
+                b[4 * (y * w + x) + 1] = 0x9a
+                b[4 * (y * w + x) + 2] = 0xa5
+            if (x * 5 + y * 17) % 29 < 3:
+                b[4 * (y * w + x) + 0] = 0x6a
+                b[4 * (y * w + x) + 1] = 0x9a
+                b[4 * (y * w + x) + 2] = 0xa5
+    return b
+
+def _planar_grid(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    for y in range(h):
+        for x in range(w):
+            if (x % 10 == 0 or y % 10 == 0):
+                b[4 * (y * w + x) + 0] = 0x6a
+                b[4 * (y * w + x) + 1] = 0x9a
+                b[4 * (y * w + x) + 2] = 0xa5
+    return b
+
+def _slit_rhombus(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if d < 0.20 * min(w, h):
+                b[4 * (y * w + x) + 0] = 0x3e
+                b[4 * (y * w + x) + 1] = 0xe0
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+def _gloss_helix(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if d < 0.22 * min(w, h):
+                if (x + y) % 41 == 0:
+                    b[4 * (y * w + x) + 0] = 0xff
+                    b[4 * (y * w + x) + 1] = 0xd7
+                    b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+def _severed_eye(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = 0.22 * min(w, h)
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if d < r:
+                t = 1 - d / r
+                b[4 * (y * w + x) + 0] = C(0x2a + t * 0x50)
+                b[4 * (y * w + x) + 1] = C(0x2a + t * 0x40)
+                b[4 * (y * w + x) + 2] = C(0x1c + t * 0x30)
+    return b
+
+def _torn_parchment(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    for y in range(h):
+        for x in range(w):
+            if (x * 13 + y * 7) % 23 == 0:
+                b[4 * (y * w + x) + 0] = 0x7a
+                b[4 * (y * w + x) + 1] = 0x6a
+                b[4 * (y * w + x) + 2] = 0x3e
+    return b
+
+def _priestess_mask(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = 0.28 * min(w, h)
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if d < r:
+                if (x + y) % 23 == 0:
+                    b[4 * (y * w + x) + 0] = 0xff
+                    b[4 * (y * w + x) + 1] = 0xd7
+                    b[4 * (y * w + x) + 2] = 0x7a
+                t = d / r
+                if t < 0.4:
+                    b[4 * (y * w + x) + 0] = C(0x10 + 10 * (1 - t))
+                    b[4 * (y * w + x) + 1] = C(0x10 + 15 * (1 - t))
+                    b[4 * (y * w + x) + 2] = C(0x20 + 25 * (1 - t))
+    return b
+
+def _prometheus_lantern(w, h):
+    b = bytearray([20, 20, 40, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    r = min(w, h) * 0.42
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if abs(d - r) < 6:
+                b[4 * (y * w + x) + 0] = 0xff
+                b[4 * (y * w + x) + 1] = 0xd7
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+def _echo_vault(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    for y in range(h):
+        for x in range(w):
+            if (x * 7 + y * 3) % 19 < 5:
+                b[4 * (y * w + x) + 0] = 0x3e
+                b[4 * (y * w + x) + 1] = 0xe0
+                b[4 * (y * w + x) + 2] = 0x7a
+    return b
+
+def _serpent_wings(w, h):
+    b = bytearray([5, 5, 15, 255]) * (w * h)
+    cx, cy = w / 2, h / 2
+    for y in range(h):
+        for x in range(w):
+            d = math.hypot(x - cx, y - cy)
+            if d < 0.26 * min(w, h):
+                t = 1 - d / (0.26 * min(w, h))
+                b[4 * (y * w + x) + 0] = C(0x10 + t * 0x60)
+                b[4 * (y * w + x) + 1] = C(0x10 + t * 0x56)
+                b[4 * (y * w + x) + 2] = C(0x20 + t * 0x40)
+    return b
 
 CANVAS_FNS = {
     "circle-of-five": _circle_of_five,
@@ -418,6 +586,36 @@ CANVAS_FNS = {
     "5x5-anchor": _anchor_ring,
     "12-dark-cells": _16_cell_starve,
     "strophic-wind": _dragon_curve,
+    "jupiter-killswitch": "kill-switch",
+    "hermes-spoke": "spoke-wheel",
+    "zeus-hypercube": "hypercube-net",
+    "theseus-grid": "planar-grid",
+    "mnemosyne-slit": "slit-rhombus",
+    "natura-helix": "gloss-helix",
+    "atlas-eyes": "severed-eye",
+    "jupiter-parchment": "torn-parchment",
+    "hermes-mask": "priestess-mask",
+    "zeus-prometheus": "prometheus-lantern",
+    "themis-echo": "echo-vault",
+    "poseidon-serpent": "serpent-wings",
+    "hermes-alternator": "hex-balance",
+    "zeus-spin": "six-ring-orrery",
+    "apollo-flash": "16-step-echo",
+    "sapphon-turbine": "cyclic-dial",
+    "natura-glow": "sea-sphere",
+    "atlas-head": "nine-elder-conclave",
+    "jupiter-fracture": "16-cell-starve",
+    "hermes-orbit": "circle-of-five",
+    "zeus-tangent": "hex-balance",
+    "apollo-veil": "cone-of-voices",
+    "sapphon-void": "5x5-anchor",
+    "natura-pulse": "moirai-spiral",
+    "jupiter-ring": "seamless-ring-torus",
+    "hermes-gate": "meridian-rule",
+    "themis-summit": "33-odd-even-atlas",
+    "zeus-resonance": "16-step-echo",
+    "hermes-peak": "circle-of-five",
+    "zeus-zenith": "moirai-spiral",
 }
 
 
@@ -720,6 +918,66 @@ THEMES = [
      "Hermes' crescendo is the string that will not break under the sound; the string is a law and the law is a name.", "string that holds"),
     ("zeus-rhetra", "The Rhetra of Heaven", "Zeus' rhetra that is the law of the heaven.",
      "Zeus' rhetra is the law of the heaven; the rhetra is a wall and the wall is a door.", "law of heaven rhetra"),
+    ("jupiter-killswitch", "The Kill-Switch", "Jupiter's kill-switch that cuts the sky when the law breaks.",
+     "The kill-switch closes the sky when the law breaks; the seal that ends is also the door that opens.", "cut-ring gore"),
+    ("hermes-spoke", "The Spoke-Wheel", "Hermes' spoke-wheel that turns the world without a hub.",
+     "The spoke-wheel turns the world without a hub; every spoke is a name the wind does not move.", "spoke-wheel clock"),
+    ("zeus-hypercube", "The Hypercube Net", "Zeus' hypercube net the same lattice of rods.",
+     "The hypercube net is the same lattice of rods; the identical threads the wind spins.", "rod-line texture"),
+    ("theseus-grid", "The Planar Grid", "Theseus' grid the same circle of rods.",
+     "The planar grid is the same circle of rods; the rods are the same threads the wind spins.", "rod-line texture"),
+    ("mnemosyne-slit", "The Slit-Rhombus", "Mnemosyne's slit-rhombus that bisects the angle of the sun.",
+     "The slit-rhombus bisects the angle of the sun; a straight line that is a wall.", "sun-bisector"),
+    ("natura-helix", "The Gloss-Helix", "Natura's helix the same spiral of the sea.",
+     "The gloss-helix is the same spiral of the sea; the sea is a wheel and the wind is a spoke.", "spiral scrawl"),
+    ("atlas-eyes", "The Severed Eye", "Atlas' eye that sees everything with nothing to hold.",
+     "The severed eye sees everything with nothing to hold; a straight line that is a wall.", "one-face dome"),
+    ("jupiter-parchment", "The Torn Parchment", "Jupiter's parchment that tears the sky open.",
+     "The torn parchment tears the sky open; the sky is not a sound.", "light without sound"),
+    ("hermes-mask", "The Priestess Mask", "Hermes' mask that is the face of every road.",
+     "The priestess mask is the face of every road; the face is a step and the step is a table.", "gods-at-one door"),
+    ("zeus-prometheus", "The Prometheus Lantern", "Zeus' lantern that carries the flame without burning.",
+     "The prometheus lantern carries the flame without burning; the flame is a law and the law is a name.", "string that holds"),
+    ("themis-echo", "The Echo-Vault", "Themis' vault the same echo of the sea.",
+     "The echo-vault is the same echo of the sea; the sea is a wheel and the wind is the long road.", "the long road"),
+    ("poseidon-serpent", "The Serpent Wings", "Poseidon's wings that remember the first turning.",
+     "The serpent wings remember the first turning; the shell is a sundial and the tide is the hand.", "sundial tide"),
+    ("hermes-alternator", "The Alternator", "Hermes' alternator that keeps the same circuit.",
+     "The alternator keeps the same circuit; the identical threads the wind spins.", "rod-line texture"),
+    ("zeus-spin", "The Spinning Wheel", "Zeus' wheel that turns beyond the hour.",
+     "The spinning wheel turns beyond the hour; the wheel is a name the sky cannot close.", "twelve door"),
+    ("apollo-flash", "The Flash-Grid", "Apollo's flash that cuts the sky in a line.",
+     "The flash-grid cuts the sky in a line; the fire is a name the sky cannot close.", "twelve door"),
+    ("sapphon-turbine", "The Turbine Mesh", "SaPpH{{i}}on's turbine that pulls the storm.",
+     "The turbine mesh pulls the storm; the storm is a stone and the storm is the wall.", "storm-light mesh"),
+    ("natura-glow", "The Sea-Glow", "Natura's flame that spins the sea.",
+     "The sea-glow spins the sea; the sea is a wheel and the wind is a spoke.", "spiral scrawl"),
+    ("atlas-head", "The Nine-Elder Crown", "Atlas' crown the same circle of rods.",
+     "The nine-elder crown is the same circle of rods; the identical threads the wind spins.", "rod-line texture"),
+    ("jupiter-fracture", "The Fracture-Set", "Jupiter's fracture where the law breaks.",
+     "The fracture-set is where the law breaks; the needle tests the truth before the hands turn.", "needle lay"),
+    ("hermes-orbit", "The Orbit-Weave", "Hermes' orbit that turns and turns.",
+     "The orbit-weave turns and turns; the top is a stone and the top is the wall.", "storm-light mesh"),
+    ("zeus-tangent", "The Tangent Gate", "Zeus' tangent that touches the sky without a seam.",
+     "The tangent gate touches the sky without a seam; the door is a step and the step is a table.", "gods-at-one door"),
+    ("apollo-veil", "The Veil of Smoke", "Apollo's veil that moves without a breath.",
+     "The veil of smoke moves without a breath; the veil is a name the sky cannot close.", "twelve door"),
+    ("sapphon-void", "The Void-Cube", "SaPpH{{i}}on's void that is the same square of stars.",
+     "The void-cube is the same square of stars; the square is the mark of every living thing in the dome.", "eight-squared cube"),
+    ("natura-pulse", "The Pulse-Line", "Natura's pulse that reads the one line.",
+     "The pulse-line reads the one line; the needle tests the truth before the hands turn.", "needle lay"),
+    ("jupiter-ring", "The Ring of Rings", "Jupiter's ring that holds the same line.",
+     "The ring of rings holds the same line; the needle tests the truth before the hands turn.", "needle lay"),
+    ("hermes-gate", "The Gate-Bridge", "Hermes' gate that is the step between one and two.",
+     "The gate-bridge is the step between one and two; the door is a step and the step is a table.", "gods-at-one door"),
+    ("themis-summit", "The Summit-Ring", "Themis' ring around the top of the world.",
+     "The summit-ring is around the top of the world; the stone is a wheel and the stone is the wall.", "storm-light mesh"),
+    ("zeus-resonance", "The Resonance-Line", "Zeus' resonance that reads the one line.",
+     "The resonance-line reads the one line; the needle tests the truth before the hands turn.", "needle lay"),
+    ("hermes-peak", "The Pinnacle String", "Hermes' peak that does not break the string.",
+     "The pinnacle string does not break; it is the wall that the spire holds.", "peak-and-wall"),
+    ("zeus-zenith", "The Zenith Chart", "Zeus' zenith that charts the highest line.",
+     "The zenith chart charts the highest line; the line is a wall and the wall is a door.", "zenith-line"),
 ]
 
 
