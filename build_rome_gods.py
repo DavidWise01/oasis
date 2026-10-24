@@ -24,8 +24,6 @@ def C(v):
     return max(0, min(255, int(v)))
 
 
-# Deterministic procedural canvas art. Each returns a bytearray,
-# RGBA, w*h*4, identical on every run.
 def _circle_of_five(w, h):
     b = bytearray([0, 0, 0, 255]) * (w * h)
     r = w * 0.33
@@ -107,7 +105,7 @@ def _32x32_clerk(w, h):
     return b
 
 
-def _33_odd_even(w, h):
+def _33_odd_even_atlas(w, h):
     b = bytearray([15, 10, 20, 255]) * (w * h)
     for y in range(h):
         for x in range(w):
@@ -134,7 +132,7 @@ def _meridian_rule(w, h):
     return b
 
 
-def _nine_elder(w, h):
+def _nine_elder_conclave(w, h):
     b = bytearray([10, 10, 20, 255]) * (w * h)
     cx, cy = w / 2, h / 2
     for i in range(9):
@@ -149,7 +147,7 @@ def _nine_elder(w, h):
     return b
 
 
-def _sapphon_cube(w, h):
+def _sapphon_cube_8x8(w, h):
     b = bytearray([5, 5, 10, 255]) * (w * h)
     for gy in range(8):
         for gx in range(8):
@@ -185,7 +183,7 @@ def _prism_lattice(w, h):
     return b
 
 
-def _seamless_ring(w, h):
+def _seamless_ring_torus(w, h):
     b = bytearray([20, 20, 40, 255]) * (w * h)
     cx, cy = w / 2, h / 2
     r = min(w, h) * 0.38
@@ -364,34 +362,67 @@ CANVAS_HISTORY = {
     "hermes-ambul": "hex-balance",
     "jupiter-hispani": "moirai-spiral",
     "zeus-apollo": "circle-of-five",
+    # round-4 (20)
+    "jupiter-nebula": "circle-of-five",
+    "hermes-pan": "hex-balance",
+    "zeus-contradiction": "16-cell-starve",
+    "theseus-olive": "meridian-rule",
+    "mnemosyne-phon": "ascending-dyads",
+    "natura-lantern": "circle-of-five",
+    "atlas-totem": "six-ring-orrery",
+    "jupiter-sana": "tesseract-dice",
+    "sapphon-kavya": "sapphon-cube-8x8",
+    "apollo-sport": "16-step-echo",
+    "hermes-vom": "hex-balance",
+    "zeus-amal": "moirai-spiral",
+    "themis-goad": "5x5-anchor",
+    "poseidon-norma": "cone-of-voices",
+    "natura-finale": "moirai-spiral",
+    "atlas-gropius": "seamless-ring-torus",
+    "jupiter-branch": "tesseract-dice",
+    "hermes-descent": "circle-of-five",
+    "sapphon-simulacrum": "sapphon-cube-8x8",
+    "apollo-box": "16-step-echo",
+    "hermes-strophe": "strophic-wind",
+    "jupiter-syllogism": "16-step-echo",
+    "zeus-buff": "ascending-dyads",
+    "themis-arche": "hex-balance",
+    "poseidon-polar": "meridian-rule",
+    "mnemosyne-violet": "sapphon-cube-8x8",
+    "atlas-web": "cone-of-voices",
+    "jupiter-meets": "nine-elder-conclave",
+    "hermes-crescendo": "seamless-ring-torus",
+    "zeus-rhetra": "moirai-spiral",
+}
+
+CANVAS_FNS = {
+    "circle-of-five": _circle_of_five,
+    "six-ring-orrery": _six_ring_orrery,
+    "tesseract-dice": _tesseract_dice,
+    "dragon-curve-labyrinth": _dragon_curve,
+    "16-cell-starve": _16_cell_starve,
+    "32x32-seal-clerk": _32x32_clerk,
+    "33-odd-even-atlas": _33_odd_even_atlas,
+    "meridian-rule": _meridian_rule,
+    "nine-elder-conclave": _nine_elder_conclave,
+    "sapphon-cube-8x8": _sapphon_cube_8x8,
+    "cone-of-voices": _cone_of_voices,
+    "prism-lattice": _prism_lattice,
+    "seamless-ring-torus": _seamless_ring_torus,
+    "16-step-echo": _16_step_echo,
+    "sea-sphere": _sea_sphere,
+    "hex-balance": _hex_balance,
+    "ascending-dyads": _ascending_dyads,
+    "natura-sphere": _natura_sphere,
+    "moirai-spiral": _moirai_spiral,
+    "5x5-anchor": _anchor_ring,
+    "12-dark-cells": _16_cell_starve,
+    "strophic-wind": _dragon_curve,
 }
 
 
 def canvas_art(key, w=1600, h=900):
-    fn = {
-        "circle-of-five": _circle_of_five,
-        "six-ring-orrery": _six_ring_orrery,
-        "tesseract-dice": _tesseract_dice,
-        "dragon-curve-labyrinth": _dragon_curve,
-        "16-cell-starve": _16_cell_starve,
-        "32x32-seal-clerk": _32x32_clerk,
-        "33-odd-even-atlas": _33_odd_even,
-        "meridian-rule": _meridian_rule,
-        "nine-elder-conclave": _nine_elder,
-        "sapphon-cube-8x8": _sapphon_cube,
-        "cone-of-voices": _cone_of_voices,
-        "prism-lattice": _prism_lattice,
-        "seamless-ring-torus": _seamless_ring,
-        "16-step-echo": _16_step_echo,
-        "sea-sphere": _sea_sphere,
-        "hex-balance": _hex_balance,
-        "ascending-dyads": _ascending_dyads,
-        "natura-sphere": _natura_sphere,
-        "moirai-spiral": _moirai_spiral,
-        "5x5-anchor": _anchor_ring,
-        "12-dark-cells": _16_cell_starve,
-    }[key]
-    return fn(w, h)
+    return CANVAS_FNS[key](w, h)
 
 
 def seal_hash(*parts):
@@ -410,7 +441,7 @@ def sphere_html(folder, name, blurb, story, lime_style, seal):
         "<meta charset=\"utf-8\">\n"
         "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n"
         "<meta name=\"theme-color\" content=\"#080a0d\">\n"
-        "<title>" + name + " · OaSIs spheres</title>\n"
+        "<title>" + name + " + OaSIs spheres</title>\n"
         "<style>\n"
         ":root{--bg:#080a0d;--p:#10141a;--p2:#141a24;--line:#2a3340;--txt:#eef3f8;--muted:#9fb0c0;--cyan:#8fd7e8;--amber:#f0c77b;--lit:#3ee07a;--amber:#ffb300;--model:#b48cff}\n"
         "*{box-sizing:border-box}\n"
@@ -489,7 +520,7 @@ h1{font-size:clamp(40px,7vw,90px);margin:6px 0 14px;font-weight:600}
 <div class="wrap">
 <div class="eyebrow">OaSIs · Rome gods & Hermes</div>
 <h1>Twenty Rome Gods & Hermes Spheres</h1>
-<p class="lead">Twenty mayhem spheres about Roman gods and Hermes; each recomputes its capital artifact from a theme rule, no cached previews. LIT · AMBER · MODEL.</p>
+<p class="lead">All fourth-round mayhem spheres about Roman gods and Hermes; each recomputes its capital artifact from a theme rule, no cached previews. LIT · AMBER · MODEL.</p>
 <div class="grid">
 """)
     for r in rows:
@@ -497,12 +528,13 @@ h1{font-size:clamp(40px,7vw,90px);margin:6px 0 14px;font-weight:600}
     html += """</div>
 <div class="nav"><a href="../spheres/index.html">▲ OaSIs spheres ▲</a> · <a href="../spheres/the-return.html">← return</a></div>
 </div>
-<footer class="wrap foot">Rome gods & Hermes · 20 spheres · LIT · AMBER · MODEL · append-only</footer>
+<footer class="wrap foot">Rome gods & Hermes · 40 spheres · LIT · AMBER · MODEL · append-only</footer>
 </body></html>"""
     (OUT / "index.html").write_text(html, encoding="utf-8")
     print("wrote index.html")
 
 
+# 20 roman gods and hermes themes per round
 THEMES = [
     # ── ROUND ONE (20) ─────────────────────────────────────────────────────────
     ("apollo-quincunx", "The Quincunx", "Apollo's five-point signature traced in the golden ratio.",
@@ -627,6 +659,67 @@ THEMES = [
      "Jupiter's hispani spells the sea in stars; three letters make the wave.", "spelled sea"),
     ("zeus-apollo", "Apollo's Zeus", "Zeus' apollo that is the fire behind the veil.",
      "Zeus' apollo is the fire behind the veil; the flame is a name the sky keeps.", "fire of the veil"),
+    # ── ROUND FOUR (20) ───────────────────────────────────────────────────────
+    ("jupiter-nebula", "The Nebula Crown", "Jupiter's nebula that is a crown of burning silk.",
+     "Jupiter's nebula is a crown of burning silk; the stars spell the names of the kings.", "nebula crown"),
+    ("hermes-pan", "The Pan Signal", "Hermes' pan that sings the first coded drum.",
+     "Hermes' pan sings the first coded drum; every pause is a frame the gods read.", "coded drum pattern"),
+    ("zeus-contradiction", "The Contradiction Wheel", "Zeus' wheel of opposing truths that always returns to zero.",
+     "Zeus' wheel of opposing truths turns and returns to zero; every spoke is an argument, every spoke a law.", "opposing-truth wheel"),
+    ("theseus-olive", "The Olive Crest", "Theseus' olive crest that bears the mark of every road.",
+     "Theseus' olive crest bears the mark of every road the sun returns to.", "sun-returned crest"),
+    ("mnemosyne-phon", "The Phonarch", "Mnemosyne's phon that keeps every voice by clicking.",
+     "Mnemosyne's phon clicks every voice back; each click is a name, and none is ever lost.", "clicked archive"),
+    ("natura-lantern", "The Lantern of Names", "Natura's lantern that shows three names in one flame.",
+     "Natura's lantern shows three names in one flame; the same fire sees three different men.", "one flame three names"),
+    ("atlas-totem", "The Totemic Load", "Atlas' totem that holds the world without bending.",
+     "Atlas' totem keeps the world without bending; the cross is held by every direction.", "world on a cross"),
+    ("jupiter-sana", "The Sanas", "Jupiter's sana that can split the river without breaking it.",
+     "Jupiter's sana can split the river without breaking it; the staff is a door and the bank is a hand.", "split without break"),
+    ("sapphon-kavya", "The Kavya Mesh", "SaPpH{{i}}on's kavya as a mesh of storm-light.",
+     "SaPpH{{i}}on's kavya is a mesh of storm-light; the poet threads the sky and the critic counts the knots.", "storm-light mesh"),
+    ("apollo-sport", "The Sport of Fire", "Apollo's sport that burns the name of the winner.",
+     "Apollo's sport burns the name of the winner; the ash is a verse and the flame is a line.", "flame verse"),
+    ("hermes-vom", "The Vomitorium", "Hermes' vomitorium that never needs a turn.",
+     "Hermes' vomitorium never needs a turn; the wheel is a line that turns and turns.", "turneless wheel"),
+    ("zeus-amal", "The Amaltheia", "Zeus' amal that is the horn of plenty and the cliff.",
+     "Zeus' amal is the horn of plenty that is also the cliff; the same horn holds the sea and the stone.", "horn of cliff"),
+    ("themis-goad", "The Goad of Standing", "Themis' goad that makes the hands stand without a threat.",
+     "Themis' goad is the cowherd's stick that makes the hands stand without a threat; a stick holds the sky.", "stand-without-threat"),
+    ("poseidon-norma", "The Norma of the Tide", "Poseidon's norma that sets the water to the sun.",
+     "Poseidon's norma sets the water to the sun; the sea is a sundial and the tide is the hand.", "sundial tide"),
+    ("natura-finale", "The Final Chord", "Natura's finale that returns the voice to the root.",
+     "Natura's finale returns the voice to the root; the echo is a name and the name is a door.", "echo to root"),
+    ("atlas-gropius", "The Gropius Grid", "Atlas' gropius grid the same circle of rods.",
+     "Atlas' gropius grid is the same circle of rods; the rods are the same threads the wind spins.", "rod-line texture"),
+    ("jupiter-branch", "The Twinning Branch", "Jupiter's branch that is also the trunk.",
+     "Jupiter's branch is also the trunk; the same wood holds a bird and a vine.", "common-wood valediction"),
+    ("hermes-descent", "The Descent Step", "Hermes' descent from the bridge that touches no foot.",
+     "Hermes' descent from the bridge touches no foot; the step is a name and the river is the same.", "silent descent"),
+    ("sapphon-simulacrum", "The Simulacrum Dome", "SaPpH{{i}}on's simulacrum as a dome of only one face.",
+     "SaPpH{{i}}on's simulacrum is a dome of only one face; the dome keeps its shape and the wind does not move it.", "one-face dome"),
+    ("apollo-box", "The Box of Light", "Apollo's box that lets the lightning in but keeps none out.",
+     "Apollo's box lets the lightning in but keeps none out; the chest holds the sky and the sky is not a sound.", "light without sound"),
+    ("hermes-strophe", "The Strophic Wind", "Hermes' strophe that is the dead-end of the road.",
+     "Hermes' strophe is the dead-end of the road; the road ends and the wind does not move it.", "dead-end strophe"),
+    ("jupiter-syllogism", "The Syllogism Bridge", "Jupiter's syllogism that runs between two lines.",
+     "Jupiter's syllogism runs between two lines; the bridge is a law and the law is a frame.", "law between lines"),
+    ("zeus-buff", "The Buff of Zeus", "Zeus' buff that is also the wind that thwarts the truth.",
+     "Zeus' buff is the wind that thwarts the truth; the buff is a soft word and the wind is a hard name.", "soft-word buff"),
+    ("themis-arche", "The Arche of Fire", "Themis' arche that bends every angle.",
+     "Themis' arche bends every angle; the same fire turns the wall and the door.", "bend-everything fire"),
+    ("poseidon-polar", "The Polar Sea", "Poseidon's polar that is a polar of the pole.",
+     "Poseidon's polar is a polar of the pole; the sea is a wheel and the wind is a spoke.", "wheel-of-polar"),
+    ("mnemosyne-violet", "The Violet Coin", "Mnemosyne's violet that is a coin that sings.",
+     "Mnemosyne's violet is a coin that sings; the song is a name and the coin is a king.", "singing violet"),
+    ("atlas-web", "The Atlas Web", "Atlas' web that is the same web of all the seeds.",
+     "Atlas' web is the same web of all the seeds; the threads are the roots of the world.", "seed-web pattern"),
+    ("jupiter-meets", "The Meeting of Gods", "Jupiter's meets that is the meeting of all the gods.",
+     "Jupiter's meets is the meeting of all the gods; the door is a step and the step is a table.", "gods-at-one door"),
+    ("hermes-crescendo", "The Crescendo String", "Hermes' crescendo that will not break the string.",
+     "Hermes' crescendo is the string that will not break under the sound; the string is a law and the law is a name.", "string that holds"),
+    ("zeus-rhetra", "The Rhetra of Heaven", "Zeus' rhetra that is the law of the heaven.",
+     "Zeus' rhetra is the law of the heaven; the rhetra is a wall and the wall is a door.", "law of heaven rhetra"),
 ]
 
 
