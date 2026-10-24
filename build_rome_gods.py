@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build 20 Mayhem spheres about Roman gods and Hermes.
+"""Build Mayhem spheres about Roman gods and Hermes.
 
 Each sphere:
   - gets a unique theme folder in spheres_rome_gods/ (e.g. hermes-dice/)
@@ -301,6 +301,26 @@ def _anchor_ring(w, h):
 
 
 CANVAS_HISTORY = {
+    "apollo-thessalos": "six-ring-orrery",
+    "jupiter-cyclops": "tesseract-dice",
+    "hermes-astrape": "32x32-seal-clerk",
+    "theseus-minotaur": "dragon-curve-labyrinth",
+    "mnemosyne-erica": "16-cell-starve",
+    "natura-styx": "33-odd-even-atlas",
+    "atlas-vesper": "meridian-rule",
+    "jupiter-juno": "nine-elder-conclave",
+    "sapphon-sephira": "sapphon-cube-8x8",
+    "apollo-lyre": "cone-of-voices",
+    "hermes-kerkopes": "prism-lattice",
+    "zeus-thunder": "seamless-ring-torus",
+    "themis-covenant": "16-step-echo",
+    "poseidon-triton": "sea-sphere",
+    "hermes-dolphin": "hex-balance",
+    "jupiter-saturn": "ascending-dyads",
+    "zeus-olympus": "moirai-spiral",
+    "themis-lapara": "5x5-anchor",
+    "hermes-elysed": "six-ring-orrery",
+    "apollo-venus": "circle-of-five",
     "apollo-quincunx": "circle-of-five",
     "jupiter-orrery": "six-ring-orrery",
     "hermes-dice": "tesseract-dice",
@@ -416,7 +436,13 @@ def write_index():
     rows = []
     # sphere pages live in sub-folders; collect them recursively,
     # excluding the hub index.html itself which sits in the same dir.
-    all_html = [p for p in sorted(OUT.glob("**/*.html")) if p.name != "index.html"]
+    # gather all sphere pages (in sub-folders), excluding the hub index
+    # which lives in the same directory as the hub.
+    all_html = []
+    for p in sorted(OUT.glob("**/*.html")):
+        if p.name == "index.html":
+            continue
+        all_html.append(p)
     for t, p in zip(THEMES, all_html):
         rows.append('<div class="card" style="grid-column:span 6"><b><a href="' + p.relative_to(REPO).as_posix() + '">' + t[1] + "</a></b><span>" + t[3] + "</span></div>")
     html = ("""<!doctype html>
@@ -496,58 +522,46 @@ THEMES = [
      "Zeus' Moirai spin the spiral of three fates; each thread is a life, each twist a choice, each knot a destiny.", "three-fate spiral"),
     ("themis-anchor", "The Anchor Ring", "Themis' 5x5 ring as the anchor of every covenant.",
      "Themis' 5x5 ring anchors every covenant; the center holds, the border holds, and the whole ring is a vow the sky can see.", "5x5 anchor ring"),
-]
-
-
-def main():
-    render_themes()
-    write_index()
-    print("\nDone. Spheres in " + str(OUT) + ": " + str(len(list(OUT.glob("*.html")))) + " files")
-
-
-if __name__ == "__main__":
-    main()
-THEMES = [
-    ("apollo-quincunx", "The Quincunx", "Apollo's five-point signature traced in the golden ratio.",
-     "Apollo shapes the sky as five points on a circle; the quincunx is his signature and the heartbeat of order.", "golden-ratio star"),
-    ("jupiter-orrery", "The Orrery", "Jupiter's six orbital rings around a central sun.",
-     "Jupiter, king of the gods, carries his court in six slow rings; each ring marks a season, each gap a law.", "orbital ring map"),
-    ("hermes-dice", "The Tesseract Dice", "Hermes rolls a 14-sided die that never lands on edge.",
-     "Hermes, the swift-footed messenger, rolls the tesseract die to settle disputes at the crossroads; the die always lands on a face.", "14-sided roll"),
-    ("theseus-labyrinth", "The Fractal Labyrinth", "Theseus' dragon-curve passage where the exit lies where it entered.",
-     "Theseus enters the labyrinth and finds the exit by drawing a dragon curve with thread; each bend is a choice, each return a new entrance.", "dragon curve motif"),
-    ("mnemosyne-starve", "The Starve Table", "Mnemosyne's 16-cell grid where every name is recalled by weight.",
-     "Mnemosyne guards the table of 16 cells; each name is laid down and weighed, and nothing is forgotten that is worth remembering.", "weight grid"),
-    ("hermes-seal", "The Seal Clerk", "Hermes stamps a 32x32 hash grid as the clerk of every signature.",
-     "Hermes stamps the 32x32 hash grid as the clerk of every signature; no word passes without a mark, and no mark is forged.", "32x32 hash grid"),
-    ("natura-anomaly", "The Anomaly Atlas", "Natura charts the 33 odd/even rows where the law breaks and heals.",
-     "Natura draws the atlas of the 33 odd/even rows; in each row the law breaks and heals, and the anomaly is the only truth the world keeps.", "odd/even row map"),
-    ("atlas-meridian", "The Meridian Rule", "Atlas' 1-degree meridian as a single unbroken line.",
-     "Atlas holds the meridian as a single unbroken line; every degree is a boundary, every boundary a promise kept.", "1-degree meridian"),
-    ("jupiter-conclave", "The Conclave", "Jupiter's nine elders around the royal seat.",
-     "Jupiter calls nine elders to the conclave; each elder speaks with one voice, and the nine together hold the sky.", "conclave table"),
-    ("sapphon-cube", "The Cube of Domains", "SaPpH{{i}}on's 8x8 grid of all domains.",
-     "SaPpH{{i}}on's cube of domains holds every domain in an 8x8 grid; the artist places the shells and the critic counts them.", "eight-squared cube"),
-    ("apollo-cone", "The Cone of Voices", "Apollo's 60/60/60 triangle where three voices meet.",
-     "Apollo shapes the cone of voices as a 60/60/60 triangle where three voices meet; each voice is a tone, each angle a law.", "triangle of voices"),
-    ("apollo-prism", "The Prism Lattice", "Apollo's 14 diamonds of the prism, each a law.",
-     "Apollo splits the prism's light into 14 diamonds; each diamond is a law, each law a ray the eye can follow.", "14-diamond prism"),
-    ("hermes-ring", "The Seamless Ring", "Hermes' zero-gap torus is a perfect ring.",
-     "Hermes weaves a torus with no seam, a perfect ring where the inside and outside touch; what goes in must come out through the same door.", "zero-gap torus"),
-    ("hermes-echo", "The Hexadeca Echo", "Hermes' 16-step echo of a single note.",
-     "Hermes calls a note and it echoes sixteen times; each echo is a step back, each step a voice returning to the start.", "16-step echo chains"),
-    ("poseidon-sea", "The Sea-Sphere", "Poseidon's sphere of alpha and omega where everything is written.",
-     "Poseidon's sphere holds the sea of alpha and omega; every drop is a letter, every wave is a sentence, and nothing is ever lost.", "alpha-omega sea"),
-    ("themis-balance", "The Balance Lab", "Themis' hex balance holds the world on six points.",
-     "Themis places the world on a hex balance; six points hold, and the scale never tips unless a law is broken.", "hexagonal balance"),
-    ("hermes-whisper", "The Whisper Cascade", "Hermes' ascending dyads, ever rising.",
-     "Hermes whispers a cascade of ascending dyads; each voice carries to the next, and the chain climbs without end.", "ascending dyad ladder"),
-    ("apollo-natura", "The First Sphere", "Apollo's Natura sphere is the seed of all.",
-     "Apollo's sphere is the first; in it Natura is a living seed that grows into every world the gods will call into being.", "natura seed"),
-    ("zeus-spiral", "The Spiral Courts", "Zeus' Moirai spinning the three fates.",
-     "Zeus' Moirai spin the spiral of three fates; each thread is a life, each twist a choice, each knot a destiny.", "three-fate spiral"),
-    ("themis-anchor", "The Anchor Ring", "Themis' 5x5 ring as the anchor of every covenant.",
-     "Themis' 5x5 ring anchors every covenant; the center holds, the border holds, and the whole ring is a vow the sky can see.", "5x5 anchor ring"),
+    ("apollo-thessalos", "The Thessalos", "Apollo's oracular staff in the cells of the temple.",
+     "Apollo's Thessalos is the oracular staff set in the temple at Thessaly; the smoke of the altar writes the words the Pythia speaks.", "oracular staff"),
+    ("jupiter-cyclops", "The Cyclopean Forge", "Jupiter's forge with the one-eyed brothers.",
+     "Jupiter's forge rings with the Cyclopes, the one-eyed brothers who hammer the thunderbolt; the anvil is the center of the sky.", "one-eyed anvil"),
+    ("hermes-astrape", "The Astrabe", "Hermes' celestial lute that reads the stars.",
+     "Hermes' astrabe is the lute that reads the stars, the first clock and the first map of the heavens.", "celestial lute"),
+    ("theseus-minotaur", "The Minotaur's Breath", "Theseus after the labyrinth, the horn below the stone.",
+     "Theseus leaves the labyrinth with the horn below the stone; the Minotaur's breath is still on his sword.", "horn below the stone"),
+    ("mnemosyne-erica", "The Erinye Grove", "Mnemosyne's memory shepherded by the erica.",
+     "Mnemosyne keeps the memory of every footfall in the erica grove, where the leaves remember the wind.", "erica grove"),
+    ("natura-styx", "The Styx's Edge", "Natura's boundary where the water remembers names.",
+     "Natura's Styx is the edge where the river remembers names; the hollow vessel drinks the vow.", "hollow vessel"),
+    ("atlas-vesper", "Vesper's Load", "Atlas' shell of the evening that holds the world.",
+     "Atlas carries vesper's shell, the evening that becomes the weight of the world on his shoulders.", "vesper shell"),
+    ("jupiter-juno", "The Tether of the Sky", "Jupiter's Juno as the tether that steadies the storm.",
+     "Jupiter's Juno is the tether that steadies the storm, and the tether is a promise against the storm.", "sky tether"),
+    ("sapphon-sephira", "The Sephira Grid", "SaPpH{{i}}on's sephira as a grid of seven lights.",
+     "SaPpH{{i}}on's sephira is a grid of seven lights, the mark of every living thing in the dome.", "seven-light grid"),
+    ("apollo-lyre", "The Lyre's Third Choice", "Apollo's lyre that chooses between two strings.",
+     "Apollo's lyre is the third choice between two strings; the musician must cut one line to lift the other.", "third choice"),
+    ("hermes-kerkopes", "The Kerkopes' Hill", "Hermes' hill of the three-armed children.",
+     "Hermes' hill of the Kerkopes is the three-armed children, but they are never three above the vine.", "three-armed hill"),
+    ("zeus-thunder", "Zeus' Thunderbolt", "Zeus' thundering wheel that never breaks the ground.",
+     "Zeus' thunderbolt is a wheel that thunders without breaking ground; every rotation is a name the sky keeps.", "thundering wheel"),
+    ("themis-covenant", "The Covenant Ring", "Themis' covenant as a ring that no hand can draw.",
+     "Themis' covenant is a ring that no hand can draw; the lock is a word the gods keep.", "no-hand ring"),
+    ("poseidon-triton", "Triton's Conch", "Poseidon's conch that calls the three waves.",
+     "Poseidon's conch is the triton shell that calls the three waves; each tone is a shore the sea obeys.", "three-wave conch"),
+    ("hermes-dolphin", "The Dolphin's Jump", "Hermes' dolphin that leaps the chain of the anchors.",
+     "Hermes' dolphin leaps the chain of the anchors; the chain is the border between sky and sea.", "dolphin leap"),
+    ("jupiter-saturn", "The Ring of Time", "Jupiter's saturn that devours its own children.",
+     "Jupiter's saturn is the ring of time that devours what it has swallowed; the child is the memory of the ring.", "ring of time"),
+    ("zeus-olympus", "The Olympus Gate", "Zeus' gate of the twelve that stands at the end of the world.",
+     "Zeus' gate of Olympus stands at the end of the world, and the gate is the door the sky cannot close.", "twelve door"),
+    ("themis-lapara", "Lapara's Stone", "Themis' lapara stone that is the anchor of law.",
+     "Themis' lapara stone is the anchor of law; the stone is always in the water and always firm.", "lapara anchor"),
+    ("hermes-elysed", "The Elysian Gate", "Hermes' road to Elysium that never runs out.",
+     "Hermes' road to Elysium runs without end; every step is a country the hand can reach.", "endless road"),
+    ("apollo-venus", "The Venus Dawn", "Apollo's dawn that wakes Venus from the sea.",
+     "Apollo's dawn is the kiss that wakes Venus from the sea; the dawn is a promise the sea keeps.", "venus dawn"),
 ]
 
 
