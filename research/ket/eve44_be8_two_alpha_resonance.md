@@ -1,0 +1,11 @@
+# E.V.E. 44 — Be-8 two-alpha resonance test
+
+2026-10-23. Compared the Be-8 ground-state unbound alpha–alpha resonance with evaluated parameters from TUNL: resonance E_r = 91.84 ± 0.04 keV above the 2-alpha threshold; width Γ = 5.57 ± 0.25 eV. Source https://nucldata.tunl.duke.edu/nucldata/GroundStatedecays/08Be.shtml . Computed mean lifetime ħ/Γ = 1.1817090788e-16 seconds; half-life ln2*ħ/Γ = 8.1909831622e-17 seconds. Width uncertainty maps to half-life range 7.839e-17–8.576e-17 seconds.
+
+The s-wave alpha–alpha Coulomb penetrability uses exact Coulomb wave functions F0 and G0: P0(E,a)=ka/(F0²+G0²), Sommerfeld parameter η=Z1Z2 e² μ/(ħ²k). At a=5fm and E_r, P0=8.6399328995e−6. Fitting reduced width to observed Γ via Γ=2Pγ² yields γ²=0.3223404663 MeV. Single-particle Wigner reference γW²=3ħ²/(2μa²)=1.253575758 MeV, ratio=0.257136806. Audit radii 3.5–8fm. Fit Γ at E_r, so reproduction of 5.57eV is a **consistency check, not an independent width/lifetime prediction**. An energy-dependent normalized Lorentzian line shape was evaluated from 50–150 keV, near-resonance meaningful, no full R-matrix shift function/phase-shift fit or microscopic strong-force interaction.
+
+**Gate:** numerical penetrability PASS; gamma/lifetime evaluation PASS; Be-8 remains unbound and should be treated as a temporary test-zone two-alpha resonance rather than a heavy-element shell-closure; predicting Γ without fitting it remains NOT TESTED. Experiment 40–43 Be-8 quantization failure is a model scope condition, not an actual physics anomaly.
+
+Reproducible `eve44.py`, `channel_radius_audit.csv`, `resonance_profile.csv`, `summary.json` and README distributed as `KET_EVE_44.zip` in conversation. Baseline KET 184/257 unchanged.
+
+**Next E.V.E. 45:** fit alpha-alpha scattering phase shifts or experimental elastic-scattering excitation curves with Coulomb-modified effective range / R-matrix, and then predict an independently withheld resonance property. Avoid deriving width and claiming prediction from that same width.
