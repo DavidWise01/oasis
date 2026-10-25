@@ -298,525 +298,6 @@ def _anchor_ring(w, h):
     return b
 
 
-def _kill_switch(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.42
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 6:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _spoke_wheel(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _hypercube_net(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _theseus_grid(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _mnemosyne_slit(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _natura_helix(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _atlas_eyes(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _jupiter_parchment(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _hermes_mask(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _zeus_prometheus(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _themis_echo(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _poseidon_serpent(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _hermes_alternator(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _zeus_spin(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _apollo_flash(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _sapphon_turbine(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _natura_glow(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _atlas_head(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _jupiter_fracture(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _hermes_orbit(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _zeus_tangent(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _apollo_veil(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _sapphon_agon_fire(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _sapphon_agon_wind(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _sapphon_agon_sun(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _sapphon_agon_sea(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _9_cell_square(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cw, ch = int(w / 3), int(h / 3)
-    for gy in range(3):
-        for gx in range(3):
-            x0, y0 = gx * cw, gy * ch
-            for y in range(y0, y0 + ch):
-                for x in range(x0, x0 + cw):
-                    if x < w and y < h:
-                        b[4 * (y * w + x) + 0] = 0xff
-                        b[4 * (y * w + x) + 1] = 0xd7
-                        b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _natura_pulse(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _jupiter_ring(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _hermes_gate(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _themis_summit(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _zeus_resonance(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _hermes_peak(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _zeus_zenith(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _spoke_wheel(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _hypercube_net(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.38
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 5:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
-def _anchor_ring(w, h):
-    b = bytearray([5, 5, 10, 255]) * (w * h)
-    cx, cy = w / 2, h / 2
-    r = min(w, h) * 0.42
-    for y in range(h):
-        for x in range(w):
-            d = math.hypot(x - cx, y - cy)
-            if abs(d - r) < 6:
-                b[4 * (y * w + x) + 0] = 0xff
-                b[4 * (y * w + x) + 1] = 0xd7
-                b[4 * (y * w + x) + 2] = 0x7a
-    return b
-
-
 CANVAS_HISTORY = {
     # round-1 (20)
     "apollo-quincunx": "circle-of-five",
@@ -942,54 +423,6 @@ CANVAS_HISTORY = {
     "zeus-resonance": "16-step-echo",
     "hermes-peak": "circle-of-five",
     "zeus-zenith": "moirai-spiral",
-    "zeus-zenith": "moirai-spiral",
-    # round-6 (30, sapphon) — sappho-gods themes
-    "sapphon-turbine": "cyclic-dial",
-    "natura-glow": "sea-sphere",
-    "atlas-head": "nine-elder-conclave",
-    "jupiter-fracture": "16-cell-starve",
-    "hermes-orbit": "circle-of-five",
-    "zeus-tangent": "hex-balance",
-    "apollo-veil": "cone-of-voices",
-    "sapphon-void": "5x5-anchor",
-    "natura-pulse": "moirai-spiral",
-    "jupiter-ring": "seamless-ring-torus",
-    "hermes-gate": "meridian-rule",
-    "themis-summit": "33-odd-even-atlas",
-    "zeus-resonance": "16-step-echo",
-    "hermes-peak": "circle-of-five",
-    "zeus-zenith": "moirai-spiral",
-    # round-7 (30, pershan) — persian-gods themes
-    "pershan-agon": "9-cell-square",
-    "apollo-pershan": "9-cell-square",
-    "jupiter-pershan": "9-cell-square",
-    "hermes-pershan": "9-cell-square",
-    "zeus-pershan": "9-cell-square",
-    "themis-pershan": "9-cell-square",
-    "apollo-sappho": "9-cell-square",
-    "poseidon-pershan": "9-cell-square",
-    "mnemosyne-pershan": "9-cell-square",
-    "natura-pershan": "9-cell-square",
-    "atlas-pershan": "9-cell-square",
-    "hermes-spoke2": "9-cell-square",
-    "zeus-spoke2": "9-cell-square",
-    "jupiter-sommelier": "9-cell-square",
-    "hermes-ladder": "9-cell-square",
-    "apollo-diadem": "9-cell-square",
-    "themis-sommelier": "9-cell-square",
-    "natura-sommelier": "9-cell-square",
-    "zeus-sommelier": "9-cell-square",
-    "hermes-sommelier": "9-cell-square",
-    "sapphon-sommelier": "9-cell-square",
-    "sapphon-star": "9-cell-square",
-    "sapphon-mouth": "9-cell-square",
-    "sapphon-mountain": "9-cell-square",
-    "sapphon-tower": "9-cell-square",
-    "sapphon-ladder": "9-cell-square",
-    "sapphon-agon-fire": "9-cell-square",
-    "sapphon-agon-wind": "9-cell-square",
-    "sapphon-agon-sun": "9-cell-square",
-    "sapphon-agon-sea": "9-cell-square",
 }
 
 CANVAS_FNS = {
@@ -1007,8 +440,6 @@ CANVAS_FNS = {
     "prism-lattice": _prism_lattice,
     "seamless-ring-torus": _seamless_ring_torus,
     "16-step-echo": _16_step_echo,
-    "kill-switch": _kill_switch,
-    "spoke-wheel": _spoke_wheel,
     "sea-sphere": _sea_sphere,
     "hex-balance": _hex_balance,
     "ascending-dyads": _ascending_dyads,
@@ -1017,28 +448,6 @@ CANVAS_FNS = {
     "5x5-anchor": _anchor_ring,
     "12-dark-cells": _16_cell_starve,
     "strophic-wind": _dragon_curve,
-    "kill-switch": _kill_switch,
-    "spoke-wheel": _spoke_wheel,
-    "hypercube-net": _hypercube_net,
-    "planar-grid": _theseus_grid,
-    "slit-rhombus": _mnemosyne_slit,
-    "gloss-helix": _natura_helix,
-    "severed-eye": _atlas_eyes,
-    "torn-parchment": _jupiter_parchment,
-    "priestess-mask": _hermes_mask,
-    "prometheus-lantern": _zeus_prometheus,
-    "echo-vault": _themis_echo,
-    "serpent-wings": _poseidon_serpent,
-    "cyclic-dial": _sapphon_turbine,
-    "nine-elder-conclave": _nine_elder_conclave,
-    "curved-wing": _apollo_flash,
-    "wave-gate": _jupiter_ring,
-    "gate-bridge": _hermes_gate,
-    "summit-ring": _themis_summit,
-    "resonance-line": _zeus_resonance,
-    "pinnacle-string": _hermes_peak,
-    "zeus-zenith": _zeus_zenith,
-    "9-cell-square": _9_cell_square,
 }
 
 
@@ -1401,67 +810,66 @@ THEMES = [
      "The pinnacle string does not break; it is the wall that the spire holds.", "peak-and-wall"),
     ("zeus-zenith", "The Zenith Chart", "Zeus' zenith that charts the highest line.",
      "The zenith chart charts the highest line; the line is a wall and the wall is a door.", "zenith-line"),
-    ("pershan-agon", "The Agon of the Pershan", "The Persian agon that turns the mouth to the dark", "The pershan agon turns the mouth to the dark; the word is a stone and the stone is a door.", "agon stone door"),
-    ("apollo-pershan", "The Apollo Pershan", "The Persian agon that reads the voice before it speaks", "The pershan agon reads the voice before it speaks; the voice is a note and the note is a law.", "agon voice note"),
-    ("jupiter-pershan", "The Jupiter Pershan", "The Persian jupiter that steadies the storm", "The pershan jupiter steadies the storm; the storm is a wave and the wave is a wall.", "jupiter storm wave"),
-    ("hermes-pershan", "The Hermes Pershan", "The Persian hermes that scatters the fine dust", "The pershan hermes scatters the fine dust; the dust is a seed and the seed is a star.", "hermes dust star"),
-    ("zeus-pershan", "The Zeus Pershan", "The Persian zeus that shapes the sky", "The pershan zeus shapes the sky; the sky is a dome and the dome is a heart.", "zeus sky dome"),
-    ("themis-pershan", "The Themis Pershan", "The Persian themis that anchors the law", "The pershan themis anchors the law; the law is a ring and the ring is a covenant.", "themis law ring"),
-    ("apollo-sappho", "The Apollo Sappho", "The Persian sappho that is the fire behind the veil", "The pershan sappho is the fire behind the veil; the veil is a smoke and the smoke is a name.", "sappho fire veil"),
-    ("poseidon-pershan", "The Poseidon Pershan", "The Persian sappho that keeps the shape of the wave", "The pershan sappho keeps the shape of the wave; the wave is a sea and the sea is a sphere.", "sappho sea sphere"),
-    ("mnemosyne-pershan", "The Mnemosyne Pershan", "The Persian sappho that keeps every name by clicking", "The pershan sappho keeps every name by clicking; the name is a coin and the coin is a king.", "sappho name coin"),
-    ("natura-pershan", "The Natura Pershan", "The Persian sappho that is the sea-glow that spins the sea", "The pershan sappho is the sea-glow that spins the sea; the sea is a wheel and the wheel is a spoke.", "sappho sea glow"),
-    ("atlas-pershan", "The Atlas Pershan", "The Persian sappho that holds the world without bending", "The pershan sappho holds the world without bending; the world is a web and the web is a seed.", "sappho world web"),
-    ("hermes-spoke2", "The Hermes Spoke 2", "The Persian hermes that turns the world without a hub", "The pershan hermes turns the world without a hub; the spoke is a line and the line is a wall.", "hermes spoke 2"),
-    ("zeus-spoke2", "The Zeus Spoke 2", "The Persian zeus that is the same lattice of rods", "The pershan zeus is the same lattice of rods; the lattice is a net and the net is a web.", "zeus spoke 2"),
-    ("jupiter-sommelier", "The Jupiter Sommelier", "The Persian jupiter that splits the river without breaking it", "The pershan jupiter splits the river without breaking it; the river is a line and the line is a wall.", "jupiter sommelier"),
-    ("hermes-ladder", "The Hermes Ladder", "The Persian hermes that turns the ladder without a step", "The pershan hermes turns the ladder without a step; the ladder is a gate and the gate is a door.", "hermes ladder"),
-    ("apollo-diadem", "The Apollo Diadem", "The Persian apollo that is the first sphere", "The pershan apollo is the first sphere; the sphere is a seed and the seed is a star.", "apollo diadem"),
-    ("themis-sommelier", "The Themis Sommelier", "The Persian themis that anchors the law", "The pershan themis anchors the law; the law is a ring and the ring is a covenant.", "themis sommelier"),
-    ("natura-sommelier", "The Natura Sommelier", "The Persian natura that is the sea-glow that spins the sea", "The pershan natura is the sea-glow that spins the sea; the sea is a wheel and the wheel is a spoke.", "natura sommelier"),
-    ("zeus-sommelier", "The Zeus Sommelier", "The Persian zeus that is the same fire that turns the wall", "The pershan zeus is the same fire that turns the wall; the wall is a seal and the seal is a stone.", "zeus sommelier"),
-    ("hermes-sommelier", "The Hermes Sommelier", "The Persian hermes that is the wind that thwarts the truth", "The pershan hermes is the wind that thwarts the truth; the truth is a line and the line is a wall.", "hermes sommelier"),
-    ("sapphon-sommelier", "The Sappho Sommelier", "The Persian sappho that is the fire behind the veil", "The pershan sappho is the fire behind the veil; the veil is a smoke and the smoke is a name.", "sapphon sommelier"),
-    ("sapphon-star", "The Sappho Star", "The Persian sappho that is the same square of stars", "The pershan sappho is the same square of stars; the square is a seal and the seal is a stone.", "sapphon star"),
-    ("sapphon-mouth", "The Sappho Mouth", "The Persian sappho that moves without a breath", "The pershan sappho moves without a breath; the mouth is a gate and the gate is a door.", "sapphon mouth"),
-    ("sapphon-mountain", "The Sappho Mountain", "The Persian sappho that is the pinnacle string", "The pershan sappho is the pinnacle string; the string is a line and the line is a wall.", "sapphon mountain"),
-    ("sapphon-tower", "The Sappho Tower", "The Persian sappho that charts the highest line", "The pershan sappho charts the highest line; the line is a ray and the ray is a law.", "sapphon tower"),
-    ("sapphon-ladder", "The Sappho Ladder", "The Persian sappho that will not break the string", "The pershan sappho will not break the string; the string is a thread and the thread is a name.", "sapphon ladder"),
-    ("sapphon-agon-fire", "The Sappho Agon Fire", "The Persian sappho that is the fracture-set", "The pershan sappho is the fracture-set; the fracture is a wall and the wall is a door.", "agon fire"),
-    ("sapphon-agon-wind", "The Sappho Agon Wind", "The Persian sappho that is the orbit-weave", "The pershan sappho is the orbit-weave; the orbit is a ring and the ring is a covenant.", "agon wind"),
-    ("sapphon-agon-sun", "The Sappho Agon Sun", "The Persian sappho that is the tangent gate", "The pershan sappho is the tangent gate; the gate is a door and the door is a step.", "agon sun"),
-    ("sapphon-agon-sea", "The Sappho Agon Sea", "The Persian sappho that is the veil of smoke", "The pershan sappho is the veil of smoke; the smoke is a name and the name is a star.", "agon sea"),
-    # ── ROUND SEVEN (30, pershan) ─────────────────────────────────────────────────
-    ("pershan-agon", "The Agon of the Pershan", "The Persian agon that turns the mouth to the dark", "The pershan agon turns the mouth to the dark; the word is a stone and the stone is a door.", "agon stone door"),
-    ("apollo-pershan", "The Apollo Pershan", "The Persian agon that reads the voice before it speaks", "The pershan agon reads the voice before it speaks; the voice is a note and the note is a law.", "agon voice note"),
-    ("jupiter-pershan", "The Jupiter Pershan", "The Persian jupiter that steadies the storm", "The pershan jupiter steadies the storm; the storm is a wave and the wave is a wall.", "jupiter storm wave"),
-    ("hermes-pershan", "The Hermes Pershan", "The Persian hermes that scatters the fine dust", "The pershan hermes scatters the fine dust; the dust is a seed and the seed is a star.", "hermes dust star"),
-    ("zeus-pershan", "The Zeus Pershan", "The Persian zeus that shapes the sky", "The pershan zeus shapes the sky; the sky is a dome and the dome is a heart.", "zeus sky dome"),
-    ("themis-pershan", "The Themis Pershan", "The Persian themis that anchors the law", "The pershan themis anchors the law; the law is a ring and the ring is a covenant.", "themis law ring"),
-    ("apollo-sappho", "The Apollo Sappho", "The Persian sappho that is the fire behind the veil", "The pershan sappho is the fire behind the veil; the veil is a smoke and the smoke is a name.", "sappho fire veil"),
-    ("poseidon-pershan", "The Poseidon Pershan", "The Persian sappho that keeps the shape of the wave", "The pershan sappho keeps the shape of the wave; the wave is a sea and the sea is a sphere.", "sappho sea sphere"),
-    ("mnemosyne-pershan", "The Mnemosyne Pershan", "The Persian sappho that keeps every name by clicking", "The pershan sappho keeps every name by clicking; the name is a coin and the coin is a king.", "sappho name coin"),
-    ("natura-pershan", "The Natura Pershan", "The Persian sappho that is the sea-glow that spins the sea", "The pershan sappho is the sea-glow that spins the sea; the sea is a wheel and the wheel is a spoke.", "sappho sea glow"),
-    ("atlas-pershan", "The Atlas Pershan", "The Persian sappho that holds the world without bending", "The pershan sappho holds the world without bending; the world is a web and the web is a seed.", "sappho world web"),
-    ("hermes-spoke2", "The Hermes Spoke 2", "The Persian hermes that turns the world without a hub", "The pershan hermes turns the world without a hub; the spoke is a line and the line is a wall.", "hermes spoke 2"),
-    ("zeus-spoke2", "The Zeus Spoke 2", "The Persian zeus that is the same lattice of rods", "The pershan zeus is the same lattice of rods; the lattice is a net and the net is a web.", "zeus spoke 2"),
-    ("jupiter-sommelier", "The Jupiter Sommelier", "The Persian jupiter that splits the river without breaking it", "The pershan jupiter splits the river without breaking it; the river is a line and the line is a wall.", "jupiter sommelier"),
-    ("hermes-ladder", "The Hermes Ladder", "The Persian hermes that turns the ladder without a step", "The pershan hermes turns the ladder without a step; the ladder is a gate and the gate is a door.", "hermes ladder"),
-    ("apollo-diadem", "The Apollo Diadem", "The Persian apollo that is the first sphere", "The pershan apollo is the first sphere; the sphere is a seed and the seed is a star.", "apollo diadem"),
-    ("themis-sommelier", "The Themis Sommelier", "The Persian themis that anchors the law", "The pershan themis anchors the law; the law is a ring and the ring is a covenant.", "themis sommelier"),
-    ("natura-sommelier", "The Natura Sommelier", "The Persian natura that is the sea-glow that spins the sea", "The pershan natura is the sea-glow that spins the sea; the sea is a wheel and the wheel is a spoke.", "natura sommelier"),
-    ("zeus-sommelier", "The Zeus Sommelier", "The Persian zeus that is the same fire that turns the wall", "The pershan zeus is the same fire that turns the wall; the wall is a seal and the seal is a stone.", "zeus sommelier"),
-    ("hermes-sommelier", "The Hermes Sommelier", "The Persian hermes that is the wind that thwarts the truth", "The pershan hermes is the wind that thwarts the truth; the truth is a line and the line is a wall.", "hermes sommelier"),
-    ("sapphon-sommelier", "The Sappho Sommelier", "The Persian sappho that is the fire behind the veil", "The pershan sappho is the fire behind the veil; the veil is a smoke and the smoke is a name.", "sapphon sommelier"),
-    ("sapphon-star", "The Sappho Star", "The Persian sappho that is the same square of stars", "The pershan sappho is the same square of stars; the square is a seal and the seal is a stone.", "sapphon star"),
-    ("sapphon-mouth", "The Sappho Mouth", "The Persian sappho that moves without a breath", "The pershan sappho moves without a breath; the mouth is a gate and the gate is a door.", "sapphon mouth"),
-    ("sapphon-mountain", "The Sappho Mountain", "The Persian sappho that is the pinnacle string", "The pershan sappho is the pinnacle string; the string is a line and the line is a wall.", "sapphon mountain"),
-    ("sapphon-tower", "The Sappho Tower", "The Persian sappho that charts the highest line", "The pershan sappho charts the highest line; the line is a ray and the ray is a law.", "sapphon tower"),
-    ("sapphon-ladder", "The Sappho Ladder", "The Persian sappho that will not break the string", "The pershan sappho will not break the string; the string is a thread and the thread is a name.", "sapphon ladder"),
-    ("sapphon-agon-fire", "The Sappho Agon Fire", "The Persian sappho that is the fracture-set", "The pershan sappho is the fracture-set; the fracture is a wall and the wall is a door.", "agon fire"),
-    ("sapphon-agon-wind", "The Sappho Agon Wind", "The Persian sappho that is the orbit-weave", "The pershan sappho is the orbit-weave; the orbit is a ring and the ring is a covenant.", "agon wind"),
-    ("sapphon-agon-sun", "The Sappho Agon Sun", "The Persian sappho that is the tangent gate", "The pershan sappho is the tangent gate; the gate is a door and the door is a step.", "agon sun"),
-    ("sapphon-agon-sea", "The Sappho Agon Sea", "The Persian sappho that is the veil of smoke", "The pershan sappho is the veil of smoke; the smoke is a name and the name is a star.", "agon sea"),
+    ("sapphon-agon", "The sapphon-agon description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon", "sapphon-style")
+    ("apollo-agon", "The apollo-agon description", "Sapphic theme placeholder", "Placeholder story for apollo-agon", "sapphon-style")
+    ("jupiter-sappho", "The jupiter-sappho description", "Sapphic theme placeholder", "Placeholder story for jupiter-sappho", "sapphon-style")
+    ("hermes-sappho", "The hermes-sappho description", "Sapphic theme placeholder", "Placeholder story for hermes-sappho", "sapphon-style")
+    ("zeus-sappho", "The zeus-sappho description", "Sapphic theme placeholder", "Placeholder story for zeus-sappho", "sapphon-style")
+    ("themis-sappho", "The themis-sappho description", "Sapphic theme placeholder", "Placeholder story for themis-sappho", "sapphon-style")
+    ("apollo-sappho", "The apollo-sappho description", "Sapphic theme placeholder", "Placeholder story for apollo-sappho", "sapphon-style")
+    ("poseidon-sappho", "The poseidon-sappho description", "Sapphic theme placeholder", "Placeholder story for poseidon-sappho", "sapphon-style")
+    ("mnemosyne-sappho", "The mnemosyne-sappho description", "Sapphic theme placeholder", "Placeholder story for mnemosyne-sappho", "sapphon-style")
+    ("natura-sappho", "The natura-sappho description", "Sapphic theme placeholder", "Placeholder story for natura-sappho", "sapphon-style")
+    ("atlas-sappho", "The atlas-sappho description", "Sapphic theme placeholder", "Placeholder story for atlas-sappho", "sapphon-style")
+    ("hermes-spoke2", "The hermes-spoke2 description", "Sapphic theme placeholder", "Placeholder story for hermes-spoke2", "sapphon-style")
+    ("zeus-spoke2", "The zeus-spoke2 description", "Sapphic theme placeholder", "Placeholder story for zeus-spoke2", "sapphon-style")
+    ("jupiter-sommelier", "The jupiter-sommelier description", "Sapphic theme placeholder", "Placeholder story for jupiter-sommelier", "sapphon-style")
+    ("hermes-ladder", "The hermes-ladder description", "Sapphic theme placeholder", "Placeholder story for hermes-ladder", "sapphon-style")
+    ("apollo-diadem", "The apollo-diadem description", "Sapphic theme placeholder", "Placeholder story for apollo-diadem", "sapphon-style")
+    ("themis-sommelier", "The themis-sommelier description", "Sapphic theme placeholder", "Placeholder story for themis-sommelier", "sapphon-style")
+    ("natura-sommelier", "The natura-sommelier description", "Sapphic theme placeholder", "Placeholder story for natura-sommelier", "sapphon-style")
+    ("zeus-sommelier", "The zeus-sommelier description", "Sapphic theme placeholder", "Placeholder story for zeus-sommelier", "sapphon-style")
+    ("hermes-sommelier", "The hermes-sommelier description", "Sapphic theme placeholder", "Placeholder story for hermes-sommelier", "sapphon-style")
+    ("sapphon-sommelier", "The sapphon-sommelier description", "Sapphic theme placeholder", "Placeholder story for sapphon-sommelier", "sapphon-style")
+    ("sapphon-star", "The sapphon-star description", "Sapphic theme placeholder", "Placeholder story for sapphon-star", "sapphon-style")
+    ("sapphon-mouth", "The sapphon-mouth description", "Sapphic theme placeholder", "Placeholder story for sapphon-mouth", "sapphon-style")
+    ("sapphon-mountain", "The sapphon-mountain description", "Sapphic theme placeholder", "Placeholder story for sapphon-mountain", "sapphon-style")
+    ("sapphon-tower", "The sapphon-tower description", "Sapphic theme placeholder", "Placeholder story for sapphon-tower", "sapphon-style")
+    ("sapphon-ladder", "The sapphon-ladder description", "Sapphic theme placeholder", "Placeholder story for sapphon-ladder", "sapphon-style")
+    ("sapphon-agon-fire", "The sapphon-agon-fire description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-fire", "sapphon-style")
+    ("sapphon-agon-wind", "The sapphon-agon-wind description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-wind", "sapphon-style")
+    ("sapphon-agon-sun", "The sapphon-agon-sun description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-sun", "sapphon-style")
+    ("sapphon-agon-sea", "The sapphon-agon-sea description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-sea", "sapphon-style")
+    ("pershan-agon", "The pershan-agon description", "Persian theme placeholder", "Placeholder story for pershan-agon", "pershan-style")
+    ("apollo-pershan", "The apollo-pershan description", "Persian theme placeholder", "Placeholder story for apollo-pershan", "pershan-style")
+    ("jupiter-pershan", "The jupiter-pershan description", "Persian theme placeholder", "Placeholder story for jupiter-pershan", "pershan-style")
+    ("hermes-pershan", "The hermes-pershan description", "Persian theme placeholder", "Placeholder story for hermes-pershan", "pershan-style")
+    ("zeus-pershan", "The zeus-pershan description", "Persian theme placeholder", "Placeholder story for zeus-pershan", "pershan-style")
+    ("themis-pershan", "The themis-pershan description", "Persian theme placeholder", "Placeholder story for themis-pershan", "pershan-style")
+    ("poseidon-pershan", "The poseidon-pershan description", "Persian theme placeholder", "Placeholder story for poseidon-pershan", "pershan-style")
+    ("mnemosyne-pershan", "The mnemosyne-pershan description", "Persian theme placeholder", "Placeholder story for mnemosyne-pershan", "pershan-style")
+    ("natura-pershan", "The natura-pershan description", "Persian theme placeholder", "Placeholder story for natura-pershan", "pershan-style")
+    ("atlas-pershan", "The atlas-pershan description", "Persian theme placeholder", "Placeholder story for atlas-pershan", "pershan-style")
+    ("hermes-spoke3", "The hermes-spoke3 description", "Persian theme placeholder", "Placeholder story for hermes-spoke3", "pershan-style")
+    ("zeus-spoke3", "The zeus-spoke3 description", "Persian theme placeholder", "Placeholder story for zeus-spoke3", "pershan-style")
+    ("jupiter-sommelier2", "The jupiter-sommelier2 description", "Persian theme placeholder", "Placeholder story for jupiter-sommelier2", "pershan-style")
+    ("hermes-ladder2", "The hermes-ladder2 description", "Persian theme placeholder", "Placeholder story for hermes-ladder2", "pershan-style")
+    ("apollo-diadem2", "The apollo-diadem2 description", "Persian theme placeholder", "Placeholder story for apollo-diadem2", "pershan-style")
+    ("themis-sommelier2", "The themis-sommelier2 description", "Persian theme placeholder", "Placeholder story for themis-sommelier2", "pershan-style")
+    ("natura-sommelier2", "The natura-sommelier2 description", "Persian theme placeholder", "Placeholder story for natura-sommelier2", "pershan-style")
+    ("zeus-sommelier2", "The zeus-sommelier2 description", "Persian theme placeholder", "Placeholder story for zeus-sommelier2", "pershan-style")
+    ("hermes-sommelier2", "The hermes-sommelier2 description", "Persian theme placeholder", "Placeholder story for hermes-sommelier2", "pershan-style")
+    ("pershan-sommelier", "The pershan-sommelier description", "Persian theme placeholder", "Placeholder story for pershan-sommelier", "pershan-style")
+    ("pershan-star", "The pershan-star description", "Persian theme placeholder", "Placeholder story for pershan-star", "pershan-style")
+    ("pershan-mouth", "The pershan-mouth description", "Persian theme placeholder", "Placeholder story for pershan-mouth", "pershan-style")
+    ("pershan-mountain", "The pershan-mountain description", "Persian theme placeholder", "Placeholder story for pershan-mountain", "pershan-style")
+    ("pershan-tower", "The pershan-tower description", "Persian theme placeholder", "Placeholder story for pershan-tower", "pershan-style")
+    ("pershan-ladder", "The pershan-ladder description", "Persian theme placeholder", "Placeholder story for pershan-ladder", "pershan-style")
+    ("pershan-agon-fire", "The pershan-agon-fire description", "Persian theme placeholder", "Placeholder story for pershan-agon-fire", "pershan-style")
+    ("pershan-agon-wind", "The pershan-agon-wind description", "Persian theme placeholder", "Placeholder story for pershan-agon-wind", "pershan-style")
+    ("pershan-agon-sun", "The pershan-agon-sun description", "Persian theme placeholder", "Placeholder story for pershan-agon-sun", "pershan-style")
+    ("pershan-agon-sea", "The pershan-agon-sea description", "Persian theme placeholder", "Placeholder story for pershan-agon-sea", "pershan-style")
+    ("pershan-agon-star", "The pershan-agon-star description", "Persian theme placeholder", "Placeholder story for pershan-agon-star", "pershan-style")
 ]
 
 
