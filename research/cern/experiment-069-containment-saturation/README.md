@@ -1,0 +1,3 @@
+# PRIM 069 — Containment saturation
+
+Ten 0.050 J pulses, `||[;]||` capacity 0.100 J. Each tick, safely vent up to a chosen amount, then capture available pulse energy; all excess overflows equally to two neighbors. A neighbor fails if one tick's incoming overflow is at least 0.020 J. Exact rational conservation tested for all 60 pulse events, six end-of-scenario closures: 126 checks. No release yields saturation tick 2, first neighbor failure tick 3; 0.020 J release/tick prevents single-pulse secondary failure but permits 0.220 J cumulative overflow; 0.050 J/tick prevents overflow. No cumulative damage model and no physically specified energy sink. Symbolic model, not quantum gravity. No leader, no quorum. Runnable test and full sweep available in conversation ZIP.
