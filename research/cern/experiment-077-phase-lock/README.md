@@ -1,0 +1,3 @@
+# PRIM 077 — Phase-locking
+
+Three damped spinors with 120° preferred offsets. 45 combinations of coupling K∈{0,.08,.2,.5,1}, damping b∈{0,.08,.2}, and detuning Δω∈{0,.03,.12}. Local executed Python model returned 31/45 locked. Coupling .5 and 1: 9/9 locked at each. `index.html` provides a live symbolic browser animation with parameters and coherent-phase indicator. The HTML uses a simplified first-order dynamical model versus the benchmark's second-order model. The benchmark is not explicitly beat-driven, and the values do not validate physical resonance or quantum spin. More complete runnable test and sweep in conversation ZIP `prim_exp077.zip`. No leaders/quorums.
