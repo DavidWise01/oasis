@@ -1,0 +1,3 @@
+# PRIM 071 — Fatigue recovery and hysteresis
+
+18 scenarios, 120 ticks each, 8,640 exact rational checks pass. Input 0.050 J per pulse; reservoir 0.100 J; safe vent 0.020 J each tick; each of two adjacent sectors receives half of overflow. Fatigue threshold 0.050 J per sector; rest-only damage recovery 0, 0.005, or 0.010 J/tick. Schedules 20/0, 4/1, 4/2, 4/4, 2/2, 1/3. 4/4 and 2/2 schedules do not fail over 120 ticks with positive recovery, but do fail without recovery; continuous drive fails at tick 6. Energy conserved independently of damage repair. Recovery law and fatigue threshold are hypothetical, not measured quantum or nuclear physics. No leader/quorum. Full package with sweep.csv and results.json is downloadable from the conversation as prim_exp071.zip.
