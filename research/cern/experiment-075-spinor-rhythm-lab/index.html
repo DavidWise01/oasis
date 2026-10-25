@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRIM 075 · Spinor Rhythm Lab</title>
+<style>
+:root{color-scheme:dark;font-family:ui-monospace,Consolas,monospace;background:#080b16;color:#e9efff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 25%,#182441,#080b16 62%)}header{padding:24px 30px 12px;border-bottom:1px solid #27314b}h1{margin:0 0 7px;font-size:clamp(23px,3vw,37px);letter-spacing:.06em}h2{font-size:15px;letter-spacing:.13em;color:#9ee1ef}small,.muted{color:#a6b4d2}main{display:grid;grid-template-columns:minmax(330px,1.45fr) minmax(310px,1fr);gap:16px;padding:16px;max-width:1650px;margin:auto}section{border:1px solid #354262;border-radius:13px;background:#0b1223d9;padding:17px;min-width:0}.display{position:relative}canvas{display:block;width:100%;height:auto;border-radius:12px;background:#080e1b}button,input{accent-color:#77cad2}button{background:#192c44;border:1px solid #4f7499;border-radius:7px;color:#f5faff;padding:9px 13px;cursor:pointer}button:hover{background:#274665}button:focus-visible{outline:3px solid #6edcef}label{display:block;margin:14px 0 5px;color:#bcd2ee;font-size:13px}input[type=range]{width:100%}.val{float:right;color:#97eed4}.controls{display:flex;gap:8px;flex-wrap:wrap}.stat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}.stat>div{background:#111d34;border-radius:8px;padding:10px}.stat b{display:block;font-size:20px;color:#8bebd9}pre{white-space:pre;overflow:auto;font-size:12px;line-height:1.55;background:#060d1a;padding:14px;border-radius:7px}footer{padding:14px 30px;color:#9db2ce;font-size:12px}.beat{display:flex;gap:5px;justify-content:space-between}.beat span{flex:1;text-align:center;background:#1b3950;border-radius:5px;padding:8px 0}.beat span.active{background:#8ee1c5;color:#061322;font-weight:bold}.panels{display:grid;gap:16px}.note{font-size:12px;line-height:1.6;color:#9baecb}.status{color:#8aefd0}@media(max-width:950px){main{grid-template-columns:1fr}} 
+</style></head>
+<body><header><h1>PRIM // 075 · SPINOR RHYTHM LAB</h1><small>(((000))) · [1×4×4×1] · [(-1+)|(-0+-0+)|(+1-)] · ||\/|| → ||[;]||</small></header>
+<main><section class="display"><h2>THREE-SPINOR TOROID · AGENTIC LOCAL RULES</h2><canvas id="view" width="860" height="680" aria-label="Interactive three-spinor toroid visualization"></canvas><p class="note">Spinors evolve as three separate deterministic local state agents (phase, signed torsion and pressure response). No remote model, coordinator, quorum or network calls. Center remains pinned at (0,0,0).</p><div class="beat" id="beat"></div></section>
+<div class="panels"><section><h2>CONTROL SURFACE</h2><div class="controls"><button id="toggle">▶ Run</button><button id="step">Step 1</button><button id="reset">Reset</button><button id="sweep">Sweep resonance</button></div>
+<label for="rate">Clock rate <output class="val" id="rateOut"></output></label><input id="rate" type="range" min="1" max="90" value="30">
+<label for="drive">Drive amplitude <output class="val" id="driveOut"></output></label><input id="drive" type="range" min="0" max="100" value="25">
+<label for="freq">Drive frequency multiplier <output class="val" id="freqOut"></output></label><input id="freq" type="range" min="20" max="250" value="100">
+<label for="damping">Damping <output class="val" id="dampingOut"></output></label><input id="damping" type="range" min="0" max="50" value="12">
+<div class="stat"><div>BEAT UNIT<b id="unit">0 / 60</b></div><div>CENTRAL CELL<b id="cell">0 / 15</b></div><div>INTERNAL / EXTERNAL<b id="domain">2 / 5</b></div><div>ENERGY (MODEL)<b id="energy">0.000</b></div><div>ORIGIN ERROR<b id="origin">0</b></div><div>ALERT<b id="alert" class="status">STABLE</b></div></div></section>
+<section><h2>RESONANCE &amp; ENERGY</h2><canvas id="plot" width="750" height="235" aria-label="Frequency response graph"></canvas><p id="finding" class="note">Press “Sweep resonance” to scan the local oscillator’s driven response. Beat weights vary the forcing; resonance is a property of the chosen model parameters, not evidence of quantum resonance.</p></section>
+<section><h2>ASCII // CANONICAL TOPOLOGY</h2><pre>             (((0,0,0)))
+                  |
+             [1×4×4×1]
+              16 cells
+                  |
+           55577 | 55777
+             29  +  31
+                  |
+        1/3 | 1/3 | 1/3
+        /      |      \
+       Sp0    Sp120   Sp240
+      (-1+) (-0+-0+) (+1-)
+        \      |      /
+            2/5 : 3/5
+             8 : 12
+                  |
+  [{r+1,f-1}{r-1,f+1}]
+                  |
+           [()] > ||\||
+                  |
+                ||/||
+                  |
+                ([])
+         HOLD: ||\/|| = ||[;]||</pre></section></div></main>
+<footer>PRIM 075 · Local numerical/symbolic simulation only. 60 clock units, 3×20 sectors, 8 internal + 12 external per sector; 16-cell pointer realigns every 240 units. Quantum-gravity physics is not inferred from this visualization.</footer>
+<script>
+"use strict";
+const BEATS=[5,5,5,7,7,5,5,7,7,7], TOTAL=BEATS.reduce((a,b)=>a+b,0);
+const $=id=>document.getElementById(id);
+const ctx=$("view").getContext("2d"), graph=$("plot").getContext("2d");
+let tick=0, running=false, last=0, accumulator=0, agents=[], response=[], failure=false;
+const palette=["#f27c8c","#60ddb9","#7c9dfd"], TAU=2*Math.PI;
+const makeAgent=i=>({id:i,phase:TAU*i/3,angle:TAU*i/3,x:0,v:0,heat:0,sign:i===0?-1:i===2?1:0});
+const val=id=>+$((id)).value;
+function parameters(){return{rate:val("rate"),drive:val("drive")/100,frequency:val("freq")/100,damping:val("damping")/100}}
+function labels(){for(const id of ["rate","drive","freq","damping"]){const p=parameters();$(id+"Out").textContent=id==="rate"?p.rate+" Hz":(id==="freq"?p.frequency.toFixed(2)+"×":p[id].toFixed(2))}}
+function setupBeats(){BEATS.forEach((b,i)=>{let x=document.createElement("span");x.textContent=b;x.dataset.index=i;$("beat").append(x)})}
+function reset(){tick=0;agents=[0,1,2].map(makeAgent);failure=false;response=[];draw();update()}
+function beatInfo(t){let n=((t%TOTAL)+TOTAL)%TOTAL;for(let i=0;i<BEATS.length;i++){if(n<BEATS[i])return {index:i,beat:BEATS[i],local:n};n-=BEATS[i]}throw Error("invalid beat")}
+function act(){const p=parameters(), b=beatInfo(tick);let sector=Math.floor((tick%60)/20);
+for(let i=0;i<3;i++){let a=agents[i];let offset=(i===0?-15:i===2?15:0)*Math.PI/180; a.angle=(TAU*(tick%120)/60+TAU*i/3+offset)%(2*TAU);let forcing=p.drive*(b.beat===7?1.4:1)*Math.sin(TAU*p.frequency*tick/60+TAU*i/3);let accel=forcing-p.damping*a.v-a.x;a.v+=accel*.1;a.x+=a.v*.1;a.heat=Math.max(0,a.heat+Math.abs(forcing*a.v)*.001-p.damping*a.v*a.v*.001);if(Math.abs(a.x)>.3){failure=true;a.x=Math.sign(a.x)*.3;a.v*=-.6}}
+tick++;update();draw()}
+function update(){const bi=beatInfo(tick);document.querySelectorAll(".beat span").forEach((n,i)=>n.classList.toggle("active",i===bi.index));$("unit").textContent=(tick%60)+" / 60";$("cell").textContent=(tick%16)+" / 15";$("domain").textContent=(tick%20)<8?"INTERNAL 2/5":"EXTERNAL 3/5";$("energy").textContent=agents.reduce((s,a)=>s+.5*(a.v*a.v+a.x*a.x),0).toFixed(5);$("origin").textContent="0";$("alert").textContent=failure?"−1 LIMIT":"STABLE";$("alert").style.color=failure?"#ff8a91":"#8aefd0"}
+function line(cx,cy,r,a,b){ctx.beginPath();ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a));ctx.lineTo(cx+r*Math.cos(b),cy+r*Math.sin(b));ctx.stroke()}
+function draw(){const c=ctx,w=c.canvas.width,h=c.canvas.height;c.clearRect(0,0,w,h);let cx=w/2,cy=h/2,R=215;
+c.save();c.translate(cx,cy);c.strokeStyle="#456582";c.lineWidth=2;for(let rad of [R-48,R,R+48]){c.beginPath();c.arc(0,0,rad,0,TAU);c.stroke()}for(let j=0;j<16;j++){let a=TAU*j/16-Math.PI/2;c.fillStyle=j===tick%16?"#d3f5ad":"#445a74";c.beginPath();c.arc((R-48)*Math.cos(a),(R-48)*Math.sin(a),j===tick%16?7:3,0,TAU);c.fill()}
+for(let i=0;i<3;i++){const a=agents[i],angle=a.angle-Math.PI/2;let r=R+34*a.x;c.strokeStyle=palette[i];c.lineWidth=2;c.beginPath();c.moveTo(0,0);c.lineTo(r*Math.cos(angle),r*Math.sin(angle));c.stroke();c.fillStyle=palette[i];c.beginPath();c.arc(r*Math.cos(angle),r*Math.sin(angle),19,0,TAU);c.fill();c.fillStyle="#0a1223";c.font="bold 15px monospace";c.textAlign="center";c.fillText("Sp"+i,r*Math.cos(angle),r*Math.sin(angle)+5);
+for(let k=0;k<2;k++){let theta=angle+k*Math.PI;c.strokeStyle=palette[i]+"66";c.beginPath();c.arc(r*Math.cos(angle),r*Math.sin(angle),24+k*7,theta,theta+1.5);c.stroke()}}
+c.fillStyle="#b7c9ef";c.textAlign="center";c.font="bold 15px monospace";c.fillText("(((000)))",0,-49);c.fillText("[1×4×4×1]",0,66);let side=14,gap=3;for(let n=0;n<16;n++){let x=(n%4-2)* (side+gap)+gap/2,y=(Math.floor(n/4)-2)*(side+gap)+gap/2;c.fillStyle=n===tick%16?"#a9ebdb":"#29445c";c.fillRect(x,y,side,side)}
+c.restore();c.textAlign="left";c.font="15px monospace";c.fillStyle="#b7c8e4";c.fillText("60 UNITS · 3 SPINORS · 720° SIGN CYCLE",25,38);c.fillText("2/5 INTERNAL | 3/5 EXTERNAL",25,h-30)}
+function amplitude(w,p){return p.drive/Math.hypot(1-w*w,p.damping*w)}
+function sweep(){let p=parameters();response=[];for(let k=0;k<=250;k++){let w=.2+k*.008;response.push({w,a:amplitude(w,p)})}let peak=response.reduce((a,b)=>a.a>b.a?a:b);$("finding").textContent="Model scan: peak at "+peak.w.toFixed(3)+"× natural frequency; amplitude "+peak.a.toFixed(3)+". The 5/7 beat modulation adds sidebands, so this sine-response envelope is a reference, not the full forced multi-spinor spectrum.";plot()}
+function plot(){let w=graph.canvas.width,h=graph.canvas.height;graph.clearRect(0,0,w,h);graph.strokeStyle="#4a607d";graph.strokeRect(48,12,w-62,h-48);if(!response.length){graph.fillStyle="#a6b4d2";graph.font="17px monospace";graph.fillText("RUN SWEEP TO INSPECT RESPONSE",70,110);return}let max=Math.max(...response.map(x=>x.a),.1);graph.beginPath();response.forEach((p,i)=>{let x=48+i/250*(w-62),y=h-36-(p.a/max)*(h-55);i?graph.lineTo(x,y):graph.moveTo(x,y)});graph.strokeStyle="#6bedd0";graph.lineWidth=3;graph.stroke();graph.fillStyle="#adbfdb";graph.font="14px monospace";graph.fillText("0.2",44,h-13);graph.fillText("2.2 × frequency",w-170,h-13);graph.fillText(max.toFixed(2),7,22)}
+function frame(t){if(running){const hz=parameters().rate;if(!last)last=t;accumulator+=Math.min((t-last)/1000,.1)*hz;last=t;for(let k=0;k<Math.min(Math.floor(accumulator),15);k++)act();accumulator-=Math.floor(accumulator)}else last=t;requestAnimationFrame(frame)}
+$("toggle").onclick=()=>{running=!running;$("toggle").textContent=running?"❚❚ Pause":"▶ Run"};
+$("step").onclick=()=>{running=false;$("toggle").textContent="▶ Run";act()};
+$("reset").onclick=()=>{running=false;$("toggle").textContent="▶ Run";reset()};
+$("sweep").onclick=sweep;
+for(const id of ["rate","drive","freq","damping"])$(id).addEventListener("input",()=>{labels();if(response.length)sweep()});
+setupBeats();labels();reset();plot();requestAnimationFrame(frame);
+window.PRIM075={BEATS,TOTAL,beatInfo,parameters,step:act,reset,sweep,getState:()=>({tick,agents:agents.map(a=>({...a})),failed:failure})};
+</script></body></html>
