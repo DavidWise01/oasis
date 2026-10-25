@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PRIM 076 Coupled Rhythm</title><style>body{background:#080d19;color:#dceaff;font:15px monospace;margin:25px}main{display:flex;flex-wrap:wrap;gap:20px}section{flex:1;min-width:300px;background:#101a2d;padding:17px;border:1px solid #38516e;border-radius:12px}canvas{max-width:100%;background:#070e1d}button,select{padding:9px;background:#18344e;color:white;border:1px solid #638bac;border-radius:6px}h2{color:#8ee3ce}pre{overflow:auto;font-size:12px}</style><h1>PRIM 076 // COUPLED RHYTHM</h1><p>(((000))) • [1×4×4×1] • three spinors • 60 units • 29+31 • no leaders/quorums</p><main><section><h2>Three 120° spinors</h2><canvas id="torus" width="620" height="480"></canvas><p><button id="run">▶ Run</button><button id="step">Step</button><button id="reset">Reset</button></p><select id="pattern"><option value="original">5557755777</option><option value="reversed">7775577555</option><option value="uniform">6666666666</option><option value="grouped">5555577777</option></select><p id="status"></p></section><section><h2>Measured RK4 model response</h2><canvas id="plot" width="620" height="340"></canvas><p id="values"></p><pre>             (((000)))
+             [1×4×4×1]
+                  |
+           55577 | 55777
+              29 + 31
+                  |
+           Sp0 Sp120 Sp240
+             8/12 each
+                  |
+       [()] > ||\|| > ||/||
+                  |
+                 ([])
+        hold: ||\/|| = ||[;]||</pre><p>Python model: 3 coupled classical damped oscillators; phases 0°,120°,240°, m=k=1, b=0.14, coupling=0.12. The animated orbit is a symbolic phase view, not a physical sensor.</p></section></main><script>
+const curves={original:[.025,.034,.048,.061,.066,.067,.052],reversed:[.025,.034,.048,.061,.066,.067,.052],uniform:[.028,.038,.054,.068,.074,.075,.059],grouped:[.025,.034,.048,.061,.066,.067,.052]};
+const measured={original:.0671035,reversed:.0671156,uniform:.0747507,grouped:.0672355};
+const $=x=>document.getElementById(x),ctx=$('torus').getContext('2d'),p=$('plot').getContext('2d');let tick=0,running=false,last=0;
+function draw(){ctx.clearRect(0,0,620,480);ctx.save();ctx.translate(310,240);for(let R of [130,180]){ctx.strokeStyle='#365f83';ctx.beginPath();ctx.arc(0,0,R,0,2*Math.PI);ctx.stroke()}for(let j=0;j<16;j++){let a=j*2*Math.PI/16;ctx.fillStyle=j===tick%16?'#91f1c9':'#3c567a';ctx.beginPath();ctx.arc(130*Math.cos(a),130*Math.sin(a),j===tick%16?7:3,0,2*Math.PI);ctx.fill()}for(let i=0;i<3;i++){let a=2*Math.PI*tick/60+2*Math.PI*i/3-Math.PI/2;let x=180*Math.cos(a),y=180*Math.sin(a);ctx.strokeStyle=['#f48195','#6bdfc0','#859ef2'][i];ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(x,y);ctx.stroke();ctx.fillStyle=ctx.strokeStyle;ctx.beginPath();ctx.arc(x,y,20,0,2*Math.PI);ctx.fill();ctx.fillStyle='#07101e';ctx.textAlign='center';ctx.font='bold 13px monospace';ctx.fillText('Sp'+i,x,y+4)}ctx.textAlign='center';ctx.fillStyle='#c9defc';ctx.font='bold 16px monospace';ctx.fillText('(((000)))',0,-29);ctx.fillText('1×4×4×1',0,43);ctx.restore();$('status').textContent='tick '+tick+' | unit '+tick%60+'/60 | center cell '+tick%16+'/16 | '+((tick%20)<8?'INTERNAL':'EXTERNAL')}
+function plot(){let names=Object.keys(curves),colors=['#f48195','#e8b878','#6bdfc0','#859ef2'];p.clearRect(0,0,620,340);p.strokeStyle='#456581';p.strokeRect(50,15,540,270);for(let k=0;k<4;k++){p.beginPath();curves[names[k]].forEach((v,i)=>{let x=50+540*i/6,y=285-250*v/.08;i?p.lineTo(x,y):p.moveTo(x,y)});p.strokeStyle=colors[k];p.lineWidth=names[k]===$('pattern').value?4:1.5;p.stroke()}p.fillStyle='#bcd0ee';p.font='12px monospace';p.fillText('0.7 rad/s',49,310);p.fillText('1.3 rad/s',505,310);$('values').textContent=names.map((n,i)=>n+': '+measured[n].toFixed(5)).join(' | ')}
+function frame(now){if(running && now-last>50){tick++;last=now;draw()}requestAnimationFrame(frame)}
+$('run').onclick=()=>{running=!running;$('run').textContent=running?'Pause':'▶ Run'};$('step').onclick=()=>{tick++;draw()};$('reset').onclick=()=>{tick=0;running=false;draw()};$('pattern').onchange=plot;draw();plot();requestAnimationFrame(frame);
+</script></html>
