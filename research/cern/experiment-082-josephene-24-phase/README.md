@@ -1,0 +1,3 @@
+# PRIM 082 — Josephene 24-phase geometry
+
+Corrects Experiment 081: four **drive scenarios** were not a 24-phase enumeration. Model assigns 24 phase addresses (3 sectors × 8 steps, 15° each) to 24 square faces of a four-dimensional tesseract, bijectively. Tesseract = 4D hypercube; a distinct 3D cube is modeled inside it with a toroid surrounding a central z-directed vector. Verified combinatorics: 16 vertices, 32 edges, 24 square faces, 8 cubic boundary cells, plus internal cube 8 vertices and sampled torus geometry. This is **proposed geometry**, not a result inferred from real Josephson hardware. Next experiment must couple 24 phase registers with 60-unit 5557755777 driving and energy accounting.
