@@ -1,0 +1,3 @@
+# PRIM 078 — Terminal finite register boundary
+
+Exact capacities: `8^8 = 16,777,216`, `9^9 = 387,420,489`, and `10^10 = 10,000,000,000`. Encode each source integer as fixed-width base-8, base-9, or base-10 digits. Decode the target digits to the identical integer; maps are injective on the smaller register. Tests: 60,018 deterministic edge/random roundtrips and 720 three-spinor clock/cell-pointer assertions = **60,738 passes**. Correct terminal address `9,999,999,999`; overflow `10,000,000,000`. `∞` is a symbolic application-defined overflow result or unbounded-register mode, **not mathematical infinity after 10^10**. Sixteen-cell pointer aligns every 240 ticks; beat is 60 ticks. Run `python test.py`. The local ZIP includes machine-readable results.
