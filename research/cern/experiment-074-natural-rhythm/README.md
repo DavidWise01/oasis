@@ -1,0 +1,3 @@
+# PRIM 074 — Natural rhythm in all beat units
+
+The string `5557755777` contains five 5s and five 7s, **60 units**, not 58. Five-beat phrases total 29 and 31 units, centered on 30 ± 1. One spinor sector is 60/3=20 units, subdivided exactly into 8 internal and 12 external (2:3). Full rhythm repeats after 10 notes / 60 units, with 6° per unit. Simulated sequential 16-cell pointer advances by 60 mod 16=12 per cycle and aligns after four cycles, 240 units. This scan rule is a model choice. Beat frequency, dynamical physical resonance, Planck-pressure response are not established. Run `python test.py` to generate a complete 60-unit timeline. No leaders/quorums.
