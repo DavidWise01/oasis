@@ -1,0 +1,3 @@
+# PRIM 080 — Reversible triadic binding
+
+`[−+{1,1,1}{0,0,0}{1,1,1}+−]` collapses inputs Mandel, Juliet, Josephene to their sum `s=m+j+p`; its matrix rank is one. Two independent difference channels `d1=m−j` and `d2=j−p` restore exact recovery: `m=(s+2*d1+d2)/3`, `j=(s−d1+d2)/3`, `p=(s−d1−2*d2)/3`. **10,964 rational and 240-tick phase/routing checks pass**. `5557755777` totals 60; with 16-cell sequential scan, full alignment is 240. The symbolic signs/infinity labels represent routing semantics, not physical infinities. Next: test whether the two difference channels can drive a phase-sensitive Josephson-junction emulator without violating energy accounting. No leaders, votes, quorums. The conversation ZIP includes expanded runnable test, JSON and CSV.
