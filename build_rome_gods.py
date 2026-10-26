@@ -446,8 +446,20 @@ CANVAS_FNS = {
     "natura-sphere": _natura_sphere,
     "moirai-spiral": _moirai_spiral,
     "5x5-anchor": _anchor_ring,
+    "kill-switch": _16_cell_starve,
     "12-dark-cells": _16_cell_starve,
     "strophic-wind": _dragon_curve,
+    "spoke-wheel": _16_cell_starve,
+    "hypercube-net": _dragon_curve,
+    "planar-grid": _dragon_curve,
+    "slit-rhombus": _16_cell_starve,
+    "gloss-helix": _dragon_curve,
+    "severed-eye": _16_cell_starve,
+    "torn-parchment": _dragon_curve,
+    "priestess-mask": _16_cell_starve,
+    "prometheus-lantern": _dragon_curve,
+    "echo-vault": _dragon_curve,
+    "serpent-wings": _dragon_curve,
 }
 
 
@@ -810,66 +822,150 @@ THEMES = [
      "The pinnacle string does not break; it is the wall that the spire holds.", "peak-and-wall"),
     ("zeus-zenith", "The Zenith Chart", "Zeus' zenith that charts the highest line.",
      "The zenith chart charts the highest line; the line is a wall and the wall is a door.", "zenith-line"),
-    ("sapphon-agon", "The sapphon-agon description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon", "sapphon-style")
-    ("apollo-agon", "The apollo-agon description", "Sapphic theme placeholder", "Placeholder story for apollo-agon", "sapphon-style")
-    ("jupiter-sappho", "The jupiter-sappho description", "Sapphic theme placeholder", "Placeholder story for jupiter-sappho", "sapphon-style")
-    ("hermes-sappho", "The hermes-sappho description", "Sapphic theme placeholder", "Placeholder story for hermes-sappho", "sapphon-style")
-    ("zeus-sappho", "The zeus-sappho description", "Sapphic theme placeholder", "Placeholder story for zeus-sappho", "sapphon-style")
-    ("themis-sappho", "The themis-sappho description", "Sapphic theme placeholder", "Placeholder story for themis-sappho", "sapphon-style")
-    ("apollo-sappho", "The apollo-sappho description", "Sapphic theme placeholder", "Placeholder story for apollo-sappho", "sapphon-style")
-    ("poseidon-sappho", "The poseidon-sappho description", "Sapphic theme placeholder", "Placeholder story for poseidon-sappho", "sapphon-style")
-    ("mnemosyne-sappho", "The mnemosyne-sappho description", "Sapphic theme placeholder", "Placeholder story for mnemosyne-sappho", "sapphon-style")
-    ("natura-sappho", "The natura-sappho description", "Sapphic theme placeholder", "Placeholder story for natura-sappho", "sapphon-style")
-    ("atlas-sappho", "The atlas-sappho description", "Sapphic theme placeholder", "Placeholder story for atlas-sappho", "sapphon-style")
-    ("hermes-spoke2", "The hermes-spoke2 description", "Sapphic theme placeholder", "Placeholder story for hermes-spoke2", "sapphon-style")
-    ("zeus-spoke2", "The zeus-spoke2 description", "Sapphic theme placeholder", "Placeholder story for zeus-spoke2", "sapphon-style")
-    ("jupiter-sommelier", "The jupiter-sommelier description", "Sapphic theme placeholder", "Placeholder story for jupiter-sommelier", "sapphon-style")
-    ("hermes-ladder", "The hermes-ladder description", "Sapphic theme placeholder", "Placeholder story for hermes-ladder", "sapphon-style")
-    ("apollo-diadem", "The apollo-diadem description", "Sapphic theme placeholder", "Placeholder story for apollo-diadem", "sapphon-style")
-    ("themis-sommelier", "The themis-sommelier description", "Sapphic theme placeholder", "Placeholder story for themis-sommelier", "sapphon-style")
-    ("natura-sommelier", "The natura-sommelier description", "Sapphic theme placeholder", "Placeholder story for natura-sommelier", "sapphon-style")
-    ("zeus-sommelier", "The zeus-sommelier description", "Sapphic theme placeholder", "Placeholder story for zeus-sommelier", "sapphon-style")
-    ("hermes-sommelier", "The hermes-sommelier description", "Sapphic theme placeholder", "Placeholder story for hermes-sommelier", "sapphon-style")
-    ("sapphon-sommelier", "The sapphon-sommelier description", "Sapphic theme placeholder", "Placeholder story for sapphon-sommelier", "sapphon-style")
-    ("sapphon-star", "The sapphon-star description", "Sapphic theme placeholder", "Placeholder story for sapphon-star", "sapphon-style")
-    ("sapphon-mouth", "The sapphon-mouth description", "Sapphic theme placeholder", "Placeholder story for sapphon-mouth", "sapphon-style")
-    ("sapphon-mountain", "The sapphon-mountain description", "Sapphic theme placeholder", "Placeholder story for sapphon-mountain", "sapphon-style")
-    ("sapphon-tower", "The sapphon-tower description", "Sapphic theme placeholder", "Placeholder story for sapphon-tower", "sapphon-style")
-    ("sapphon-ladder", "The sapphon-ladder description", "Sapphic theme placeholder", "Placeholder story for sapphon-ladder", "sapphon-style")
-    ("sapphon-agon-fire", "The sapphon-agon-fire description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-fire", "sapphon-style")
-    ("sapphon-agon-wind", "The sapphon-agon-wind description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-wind", "sapphon-style")
-    ("sapphon-agon-sun", "The sapphon-agon-sun description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-sun", "sapphon-style")
-    ("sapphon-agon-sea", "The sapphon-agon-sea description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-sea", "sapphon-style")
-    ("pershan-agon", "The pershan-agon description", "Persian theme placeholder", "Placeholder story for pershan-agon", "pershan-style")
-    ("apollo-pershan", "The apollo-pershan description", "Persian theme placeholder", "Placeholder story for apollo-pershan", "pershan-style")
-    ("jupiter-pershan", "The jupiter-pershan description", "Persian theme placeholder", "Placeholder story for jupiter-pershan", "pershan-style")
-    ("hermes-pershan", "The hermes-pershan description", "Persian theme placeholder", "Placeholder story for hermes-pershan", "pershan-style")
-    ("zeus-pershan", "The zeus-pershan description", "Persian theme placeholder", "Placeholder story for zeus-pershan", "pershan-style")
-    ("themis-pershan", "The themis-pershan description", "Persian theme placeholder", "Placeholder story for themis-pershan", "pershan-style")
-    ("poseidon-pershan", "The poseidon-pershan description", "Persian theme placeholder", "Placeholder story for poseidon-pershan", "pershan-style")
-    ("mnemosyne-pershan", "The mnemosyne-pershan description", "Persian theme placeholder", "Placeholder story for mnemosyne-pershan", "pershan-style")
-    ("natura-pershan", "The natura-pershan description", "Persian theme placeholder", "Placeholder story for natura-pershan", "pershan-style")
-    ("atlas-pershan", "The atlas-pershan description", "Persian theme placeholder", "Placeholder story for atlas-pershan", "pershan-style")
-    ("hermes-spoke3", "The hermes-spoke3 description", "Persian theme placeholder", "Placeholder story for hermes-spoke3", "pershan-style")
-    ("zeus-spoke3", "The zeus-spoke3 description", "Persian theme placeholder", "Placeholder story for zeus-spoke3", "pershan-style")
-    ("jupiter-sommelier2", "The jupiter-sommelier2 description", "Persian theme placeholder", "Placeholder story for jupiter-sommelier2", "pershan-style")
-    ("hermes-ladder2", "The hermes-ladder2 description", "Persian theme placeholder", "Placeholder story for hermes-ladder2", "pershan-style")
-    ("apollo-diadem2", "The apollo-diadem2 description", "Persian theme placeholder", "Placeholder story for apollo-diadem2", "pershan-style")
-    ("themis-sommelier2", "The themis-sommelier2 description", "Persian theme placeholder", "Placeholder story for themis-sommelier2", "pershan-style")
-    ("natura-sommelier2", "The natura-sommelier2 description", "Persian theme placeholder", "Placeholder story for natura-sommelier2", "pershan-style")
-    ("zeus-sommelier2", "The zeus-sommelier2 description", "Persian theme placeholder", "Placeholder story for zeus-sommelier2", "pershan-style")
-    ("hermes-sommelier2", "The hermes-sommelier2 description", "Persian theme placeholder", "Placeholder story for hermes-sommelier2", "pershan-style")
-    ("pershan-sommelier", "The pershan-sommelier description", "Persian theme placeholder", "Placeholder story for pershan-sommelier", "pershan-style")
-    ("pershan-star", "The pershan-star description", "Persian theme placeholder", "Placeholder story for pershan-star", "pershan-style")
-    ("pershan-mouth", "The pershan-mouth description", "Persian theme placeholder", "Placeholder story for pershan-mouth", "pershan-style")
-    ("pershan-mountain", "The pershan-mountain description", "Persian theme placeholder", "Placeholder story for pershan-mountain", "pershan-style")
-    ("pershan-tower", "The pershan-tower description", "Persian theme placeholder", "Placeholder story for pershan-tower", "pershan-style")
-    ("pershan-ladder", "The pershan-ladder description", "Persian theme placeholder", "Placeholder story for pershan-ladder", "pershan-style")
-    ("pershan-agon-fire", "The pershan-agon-fire description", "Persian theme placeholder", "Placeholder story for pershan-agon-fire", "pershan-style")
-    ("pershan-agon-wind", "The pershan-agon-wind description", "Persian theme placeholder", "Placeholder story for pershan-agon-wind", "pershan-style")
-    ("pershan-agon-sun", "The pershan-agon-sun description", "Persian theme placeholder", "Placeholder story for pershan-agon-sun", "pershan-style")
-    ("pershan-agon-sea", "The pershan-agon-sea description", "Persian theme placeholder", "Placeholder story for pershan-agon-sea", "pershan-style")
-    ("pershan-agon-star", "The pershan-agon-star description", "Persian theme placeholder", "Placeholder story for pershan-agon-star", "pershan-style")
+    ("sapphon-agon", "The sapphon-agon description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon",
+     "sapphon-style"),
+    ("apollo-agon", "The apollo-agon description", "Sapphic theme placeholder", "Placeholder story for apollo-agon",
+     "sapphon-style"),
+    ("jupiter-sappho", "The jupiter-sappho description", "Sapphic theme placeholder", "Placeholder story for jupiter-sappho",
+     "sapphon-style"),
+    ("hermes-sappho", "The hermes-sappho description", "Sapphic theme placeholder", "Placeholder story for hermes-sappho",
+     "sapphon-style"),
+    ("zeus-sappho", "The zeus-sappho description", "Sapphic theme placeholder", "Placeholder story for zeus-sappho",
+     "sapphon-style"),
+    ("themis-sappho", "The themis-sappho description", "Sapphic theme placeholder", "Placeholder story for themis-sappho",
+     "sapphon-style"),
+    ("apollo-sappho", "The apollo-sappho description", "Sapphic theme placeholder", "Placeholder story for apollo-sappho",
+     "sapphon-style"),
+    ("poseidon-sappho", "The poseidon-sappho description", "Sapphic theme placeholder", "Placeholder story for poseidon-sappho",
+     "sapphon-style"),
+    ("mnemosyne-sappho", "The mnemosyne-sappho description", "Sapphic theme placeholder", "Placeholder story for mnemosyne-sappho",
+     "sapphon-style"),
+    ("natura-sappho", "The natura-sappho description", "Sapphic theme placeholder", "Placeholder story for natura-sappho",
+     "sapphon-style"),
+    ("atlas-sappho", "The atlas-sappho description", "Sapphic theme placeholder", "Placeholder story for atlas-sappho",
+     "sapphon-style"),
+    ("hermes-spoke2", "The hermes-spoke2 description", "Sapphic theme placeholder", "Placeholder story for hermes-spoke2",
+     "sapphon-style"),
+    ("zeus-spoke2", "The zeus-spoke2 description", "Sapphic theme placeholder", "Placeholder story for zeus-spoke2",
+     "sapphon-style"),
+    ("jupiter-sommelier", "The jupiter-sommelier description", "Sapphic theme placeholder", "Placeholder story for jupiter-sommelier",
+     "sapphon-style"),
+    ("hermes-ladder", "The hermes-ladder description", "Sapphic theme placeholder", "Placeholder story for hermes-ladder",
+     "sapphon-style"),
+    ("apollo-diadem", "The apollo-diadem description", "Sapphic theme placeholder", "Placeholder story for apollo-diadem",
+     "sapphon-style"),
+    ("themis-sommelier", "The themis-sommelier description", "Sapphic theme placeholder", "Placeholder story for themis-sommelier",
+     "sapphon-style"),
+    ("natura-sommelier", "The natura-sommelier description", "Sapphic theme placeholder", "Placeholder story for natura-sommelier",
+     "sapphon-style"),
+    ("zeus-sommelier", "The zeus-sommelier description", "Sapphic theme placeholder", "Placeholder story for zeus-sommelier",
+     "sapphon-style"),
+    ("hermes-sommelier", "The hermes-sommelier description", "Sapphic theme placeholder", "Placeholder story for hermes-sommelier",
+     "sapphon-style"),
+    ("sapphon-sommelier", "The sapphon-sommelier description", "Sapphic theme placeholder", "Placeholder story for sapphon-sommelier",
+     "sapphon-style"),
+    ("sapphon-star", "The sapphon-star description", "Sapphic theme placeholder", "Placeholder story for sapphon-star",
+     "sapphon-style"),
+    ("sapphon-mouth", "The sapphon-mouth description", "Sapphic theme placeholder", "Placeholder story for sapphon-mouth",
+     "sapphon-style"),
+    ("sapphon-mountain", "The sapphon-mountain description", "Sapphic theme placeholder", "Placeholder story for sapphon-mountain",
+     "sapphon-style"),
+    ("sapphon-tower", "The sapphon-tower description", "Sapphic theme placeholder", "Placeholder story for sapphon-tower",
+     "sapphon-style"),
+    ("sapphon-ladder", "The sapphon-ladder description", "Sapphic theme placeholder", "Placeholder story for sapphon-ladder",
+     "sapphon-style"),
+    ("sapphon-agon-fire", "The sapphon-agon-fire description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-fire",
+     "sapphon-style"),
+    ("sapphon-agon-wind", "The sapphon-agon-wind description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-wind",
+     "sapphon-style"),
+    ("sapphon-agon-sun", "The sapphon-agon-sun description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-sun",
+     "sapphon-style"),
+    ("sapphon-agon-sea", "The sapphon-agon-sea description", "Sapphic theme placeholder", "Placeholder story for sapphon-agon-sea",
+     "sapphon-style"),
+    ("pershan-agon", "The pershan-agon description", "Persian theme placeholder", "Placeholder story for pershan-agon",
+     "pershan-style"),
+    ("apollo-pershan", "The apollo-pershan description", "Persian theme placeholder", "Placeholder story for apollo-pershan",
+     "pershan-style"),
+    ("jupiter-pershan", "The jupiter-pershan description", "Persian theme placeholder", "Placeholder story for jupiter-pershan",
+     "pershan-style"),
+    ("hermes-pershan", "The hermes-pershan description", "Persian theme placeholder", "Placeholder story for hermes-pershan",
+     "pershan-style"),
+    ("zeus-pershan", "The zeus-pershan description", "Persian theme placeholder", "Placeholder story for zeus-pershan",
+     "pershan-style"),
+    ("themis-pershan", "The themis-pershan description", "Persian theme placeholder", "Placeholder story for themis-pershan",
+     "pershan-style"),
+    ("poseidon-pershan", "The poseidon-pershan description", "Persian theme placeholder", "Placeholder story for poseidon-pershan",
+     "pershan-style"),
+    ("mnemosyne-pershan", "The mnemosyne-pershan description", "Persian theme placeholder", "Placeholder story for mnemosyne-pershan",
+     "pershan-style"),
+    ("natura-pershan", "The natura-pershan description", "Persian theme placeholder", "Placeholder story for natura-pershan",
+     "pershan-style"),
+    ("atlas-pershan", "The atlas-pershan description", "Persian theme placeholder", "Placeholder story for atlas-pershan",
+     "pershan-style"),
+    ("hermes-spoke3", "The hermes-spoke3 description", "Persian theme placeholder", "Placeholder story for hermes-spoke3",
+     "pershan-style"),
+    ("zeus-spoke3", "The zeus-spoke3 description", "Persian theme placeholder", "Placeholder story for zeus-spoke3",
+     "pershan-style"),
+    ("jupiter-sommelier2", "The jupiter-sommelier2 description", "Persian theme placeholder", "Placeholder story for jupiter-sommelier2",
+     "pershan-style"),
+    ("hermes-ladder2", "The hermes-ladder2 description", "Persian theme placeholder", "Placeholder story for hermes-ladder2",
+     "pershan-style"),
+    ("apollo-diadem2", "The apollo-diadem2 description", "Persian theme placeholder", "Placeholder story for apollo-diadem2",
+     "pershan-style"),
+    ("themis-sommelier2", "The themis-sommelier2 description", "Persian theme placeholder", "Placeholder story for themis-sommelier2",
+     "pershan-style"),
+    ("natura-sommelier2", "The natura-sommelier2 description", "Persian theme placeholder", "Placeholder story for natura-sommelier2",
+     "pershan-style"),
+    ("zeus-sommelier2", "The zeus-sommelier2 description", "Persian theme placeholder", "Placeholder story for zeus-sommelier2",
+     "pershan-style"),
+    ("hermes-sommelier2", "The hermes-sommelier2 description", "Persian theme placeholder", "Placeholder story for hermes-sommelier2",
+     "pershan-style"),
+    ("pershan-sommelier", "The pershan-sommelier description", "Persian theme placeholder", "Placeholder story for pershan-sommelier",
+     "pershan-style"),
+    ("pershan-star", "The pershan-star description", "Persian theme placeholder", "Placeholder story for pershan-star",
+     "pershan-style"),
+    ("pershan-mouth", "The pershan-mouth description", "Persian theme placeholder", "Placeholder story for pershan-mouth",
+     "pershan-style"),
+    ("pershan-mountain", "The pershan-mountain description", "Persian theme placeholder", "Placeholder story for pershan-mountain",
+     "pershan-style"),
+    ("pershan-tower", "The pershan-tower description", "Persian theme placeholder", "Placeholder story for pershan-tower",
+     "pershan-style"),
+    ("pershan-ladder", "The pershan-ladder description", "Persian theme placeholder", "Placeholder story for pershan-ladder",
+     "pershan-style"),
+    ("pershan-agon-fire", "The pershan-agon-fire description", "Persian theme placeholder", "Placeholder story for pershan-agon-fire",
+     "pershan-style"),
+    ("pershan-agon-wind", "The pershan-agon-wind description", "Persian theme placeholder", "Placeholder story for pershan-agon-wind",
+     "pershan-style"),
+    ("pershan-agon-sun", "The pershan-agon-sun description", "Persian theme placeholder", "Placeholder story for pershan-agon-sun",
+     "pershan-style"),
+    ("pershan-agon-sea", "The pershan-agon-sea description", "Persian theme placeholder", "Placeholder story for pershan-agon-sea",
+     "pershan-style"),
+    ("pershan-agon-star", "The pershan-agon-star description", "Persian theme placeholder", "Placeholder story for pershan-agon-star",
+     "pershan-style"),
+    ("hermes-sommelier2", "The hermes-sommelier2 description", "Persian theme placeholder", "Placeholder story for hermes-sommelier2",
+     "pershan-style"),
+    ("pershan-sommelier", "The pershan-sommelier description", "Persian theme placeholder", "Placeholder story for pershan-sommelier",
+     "pershan-style"),
+    ("pershan-star", "The pershan-star description", "Persian theme placeholder", "Placeholder story for pershan-star",
+     "pershan-style"),
+    ("pershan-mouth", "The pershan-mouth description", "Persian theme placeholder", "Placeholder story for pershan-mouth",
+     "pershan-style"),
+    ("pershan-mountain", "The pershan-mountain description", "Persian theme placeholder", "Placeholder story for pershan-mountain",
+     "pershan-style"),
+    ("pershan-tower", "The pershan-tower description", "Persian theme placeholder", "Placeholder story for pershan-tower",
+     "pershan-style"),
+    ("pershan-ladder", "The pershan-ladder description", "Persian theme placeholder", "Placeholder story for pershan-ladder",
+     "pershan-style"),
+    ("pershan-agon-fire", "The pershan-agon-fire description", "Persian theme placeholder", "Placeholder story for pershan-agon-fire",
+     "pershan-style"),
+    ("pershan-agon-wind", "The pershan-agon-wind description", "Persian theme placeholder", "Placeholder story for pershan-agon-wind",
+     "pershan-style"),
+    ("pershan-agon-sun", "The pershan-agon-sun description", "Persian theme placeholder", "Placeholder story for pershan-agon-sun",
+     "pershan-style"),
+    ("pershan-agon-sea", "The pershan-agon-sea description", "Persian theme placeholder", "Placeholder story for pershan-agon-sea",
+     "pershan-style"),
+    ("pershan-agon-star", "The pershan-agon-star description", "Persian theme placeholder", "Placeholder story for pershan-agon-star",
+     "pershan-style"),
 ]
 
 
