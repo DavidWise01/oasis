@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRIM 092 | ~##~ Collision Observatory</title>
+<style>
+:root{color-scheme:dark;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#e6efff;background:#070c15}
+*{box-sizing:border-box}body{margin:0}header{padding:15px 22px;border-bottom:1px solid #26374d;background:#0b1422}h1{font-size:clamp(20px,3vw,29px);margin:0 0 6px;color:#b8f9e6}header p{margin:0;color:#9db1cc;font-size:12px}main{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:12px;padding:12px;max-width:1800px;margin:auto}.viewport{min-height:520px;position:relative;border:1px solid #28465a;border-radius:12px;overflow:hidden;background:#060b14}#scene{width:100%;height:100%;min-height:520px;display:block}.hud{position:absolute;top:12px;left:12px;pointer-events:none;color:#9cebd7;font-size:12px;line-height:1.6;background:#06101cba;padding:11px;border-radius:8px}.panel{padding:14px;border:1px solid #2a4159;border-radius:12px;background:#0e1828;margin-bottom:12px}h2{font-size:14px;letter-spacing:.08em;color:#8cdec9;margin:0 0 12px}button,select{border:1px solid #496780;background:#19344b;color:white;border-radius:7px;padding:9px;cursor:pointer}button:hover{background:#285573}.buttons{display:flex;flex-wrap:wrap;gap:8px}label{display:flex;justify-content:space-between;gap:12px;font-size:12px;margin:14px 0 5px}input[type=range]{width:100%;accent-color:#65dabc}.row{display:flex;justify-content:space-between;gap:8px;margin:8px 0;font-size:12px}.witness{padding:9px;border:1px solid #354962;border-radius:8px;margin:8px 0;font-size:12px;line-height:1.6}.witness b{color:#cdeafd}.muted{color:#9aabc2}.status{color:#90f0bf}.warning{color:#f5c38f}pre{font-size:11px;overflow:auto;line-height:1.35;color:#b8dcd8}footer{padding:12px 22px;font-size:11px;color:#9aaec5}.error{color:#ff9da6}@media(max-width:960px){main{grid-template-columns:1fr}.viewport,#scene{min-height:440px}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"}}</script>
+</head><body>
+<header><h1>PRIM // ~##~ COLLISION OBSERVATORY</h1><p>3D THREE.JS • ELECTRUM / ICE IX / NaCl • FRACTURED DUST FIELD • MANDEL / JULIET / JOSEPHENE • THREE WITNESSES</p></header>
+<main><div class="viewport"><canvas id="scene" aria-label="3D collision simulation of two layered crystal bodies"></canvas><div class="hud" id="hud">FRAME 0<br>APPROACH<br>(((0)))</div></div>
+<aside><section class="panel"><h2>FLIGHT CONTROLS</h2><div class="buttons"><button id="play">⏸ Pause</button><button id="restart">↺ Restart</button><button id="prev">◀ Step</button><button id="next">Step ▶</button><button id="view">Reset camera</button></div>
+<label for="time">Collision progression <output id="timeOut">0%</output></label><input id="time" type="range" min="0" max="1000" value="0" step="1">
+<label for="speed">Playback speed <output id="speedOut">1.0×</output></label><input id="speed" type="range" min="0" max="300" value="100" step="5">
+<label for="impact">Impact offset <output id="impactOut">0.35</output></label><input id="impact" type="range" min="0" max="100" value="35" step="1">
+<label><span>Layers</span><select id="layers"><option value="all">All / transparent</option><option value="shell">Electrum shell</option><option value="ice">Ice IX shell</option><option value="core">NaCl core</option></select></label>
+<div class="row"><span>Scenario</span><span id="phase" class="status">APPROACH</span></div><div class="row"><span>Model energy split</span><span id="energies">—</span></div>
+<p class="muted" style="font-size:11px">Mouse drag: orbit. Wheel: zoom. Right-drag: pan. Drag time slider to inspect eight stages. Impact and fragment trajectories are an illustrative kinematic scene, not a validated molecular-dynamics solver.</p></section>
+<section class="panel"><h2>WITNESS CLOSURE · WHAT / HOW / WHY</h2><div id="witnesses"></div><div class="buttons"><button id="seal">Seal event for human</button><button id="open">Reopen view</button></div><p id="sealState" class="muted">LIVE OBSERVATION · No consensus mechanism.</p></section>
+<section class="panel"><h2>CANONICAL STRUCTURE</h2><pre>              BODY A     BODY B
+         ~ [AuAg(IX{NaCl})] ~
+                   >< 
+         ~ [AuAg(IX{NaCl})] ~
+                    X
+              ~# #~ ~##~
+                    |
+                 (((0)))
+                    |
+          A1    B1    C1
+         [M]   (J)   {Jo}
+          WHAT / HOW / WHY
+                    |
+                  ||[;]||
+                HUMAN REVIEW</pre><p class="muted" style="font-size:11px">Casimir microgap effects and thermal Kelvin physics are indicated as model labels, not numerically resolved. No actual Josephson junction is implied by these materials.</p></section></aside></main>
+<footer>PRIM 092 · Dedicated 3D visualization with Three.js. Electrum = Au–Ag alloy; Ice IX phase stability and NaCl core feasibility remain conditional. Collision outcomes and toroidal aftermath are hypothesis-driven visualizations.</footer>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const $=id=>document.getElementById(id), canvas=$('scene');
+let renderer;
+try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});}
+catch(e){$('hud').textContent='WebGL unavailable: '+e.message;throw e}
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x060b14);
+const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x060b14,.012);
+const camera=new THREE.PerspectiveCamera(50,1,.1,1500);camera.position.set(0,10,24);
+const orbit=new OrbitControls(camera,canvas);orbit.enableDamping=true;orbit.target.set(0,0,0);orbit.minDistance=8;orbit.maxDistance=90;
+scene.add(new THREE.HemisphereLight(0x8fc2ff,0x171827,1.6));
+const sun=new THREE.DirectionalLight(0xf5e7d4,3);sun.position.set(-5,8,9);scene.add(sun);
+const blue=new THREE.PointLight(0x5adbd8,55,35);blue.position.set(4,-2,3);scene.add(blue);
+const sphere=new THREE.SphereGeometry(1,24,16),box=new THREE.BoxGeometry(1,1,1);
+const mat=(color,opacity=1,metalness=0,roughness=.45)=>new THREE.MeshStandardMaterial({color,transparent:opacity<1,opacity,depthWrite:opacity>=1,metalness,roughness,side:THREE.DoubleSide});
+const gold=mat(0xe1bd84,.36,.86,.24),ice=mat(0x78d7f1,.28,.05,.16),salt=mat(0xdbd3f2,.96,.03,.5),crack=mat(0xff7c9b,.85,.25,.3),dust=mat(0x92b6d8,.75,.12,.65);
+function seeded(seed){let x=seed|0;return()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return (x>>>0)/4294967296}}
+const rnd=seeded(91092), bodies=[], fragments=[], starPositions=[];
+function ring(group,R,color,opacity){const mesh=new THREE.Mesh(new THREE.TorusGeometry(R,.013,6,130),mat(color,opacity,.2,.55));mesh.rotation.x=Math.PI/2;group.add(mesh);return mesh}
+function makeBody(index){const root=new THREE.Group();scene.add(root);
+ const shell=new THREE.Group(),iceG=new THREE.Group(),coreG=new THREE.Group();root.add(shell,iceG,coreG);
+ let electrum=new THREE.Mesh(sphere,gold.clone());electrum.scale.setScalar(1.85);shell.add(electrum);
+ let iceM=new THREE.Mesh(sphere,ice.clone());iceM.scale.setScalar(1.49);iceG.add(iceM);
+ for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++){let q=new THREE.Mesh(box,mat((x+y+z)%2?0xd8e0ff:0xaaa4cf,.92));q.position.set(x*.34,y*.34,z*.34);q.scale.setScalar(.29);coreG.add(q)}
+ for(let i=0;i<20;i++){let a=rnd()*Math.PI*2,b=(rnd()-.5)*Math.PI;let p=new THREE.Vector3(Math.cos(a)*Math.cos(b),Math.sin(b),Math.sin(a)*Math.cos(b)).multiplyScalar(1.64);let end=p.clone().add(new THREE.Vector3((rnd()-.5)*.3,(rnd()-.5)*.3,(rnd()-.5)*.3));let geo=new THREE.BufferGeometry().setFromPoints([p,end]);const line=new THREE.Line(geo,new THREE.LineBasicMaterial({color:0x92e7e6,transparent:true,opacity:.55}));shell.add(line)}
+ const halo=new THREE.Group();root.add(halo);for(let i=0;i<4;i++){let r=ring(halo,2.1+i*.32,index?0xd09ff3:0x79e8d4,.30);r.rotation.set((rnd()-.5)*.6,(rnd()-.5)*.5,(rnd()-.5)*.9)}
+ let points=[];for(let i=0;i<260;i++){let th=rnd()*Math.PI*2,v=rnd()*Math.PI*2,R=2.65+.30*Math.cos(v);points.push(R*Math.cos(th),.30*Math.sin(v),R*Math.sin(th))}
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(points,3));
+ const cloud=new THREE.Points(g,new THREE.PointsMaterial({color:index?0xb4abfa:0x98ecd3,size:.045,transparent:true,opacity:.55}));halo.add(cloud);
+ bodies.push({root,shell,iceG,coreG,halo,index});}
+makeBody(0);makeBody(1);
+const ejecta=new THREE.Group();scene.add(ejecta);
+for(let i=0;i<420;i++){const q=new THREE.Mesh(i%4===0?box:sphere, i%3===0?crack:i%3===1?dust:salt);q.scale.setScalar(.03+rnd()*.095);ejecta.add(q);
+const a=rnd()*Math.PI*2,rad=.8+rnd()*5.5,y=(rnd()-.5)*2.7;
+fragments.push({mesh:q,a,rad,y,spin:rnd()*5+1,offset:rnd()*Math.PI*2});}
+const stars=new THREE.BufferGeometry();for(let i=0;i<1000;i++){const th=rnd()*Math.PI*2,p=Math.acos(2*rnd()-1),r=80+rnd()*200;starPositions.push(Math.sin(p)*Math.cos(th)*r,Math.cos(p)*r,Math.sin(p)*Math.sin(th)*r)}
+stars.setAttribute('position',new THREE.Float32BufferAttribute(starPositions,3));scene.add(new THREE.Points(stars,new THREE.PointsMaterial({color:0x8baccb,size:.24,sizeAttenuation:true})));
+const seam=new THREE.Group();scene.add(seam);const axisGeo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-3,0),new THREE.Vector3(0,3,0)]);seam.add(new THREE.Line(axisGeo,new THREE.LineDashedMaterial({color:0xf8e2a7,dashSize:.22,gapSize:.15})));seam.children[0].computeLineDistances();
+const torus=new THREE.Mesh(new THREE.TorusGeometry(3.1,.035,10,120),new THREE.MeshBasicMaterial({color:0x67dec9,transparent:true,opacity:.4}));torus.rotation.x=Math.PI/2;scene.add(torus);
+const phases=['APPROACH','FIELD OVERLAP','ELECTRUM CONTACT','ICE IX SHOCK','CORE COMPRESSION','FRACTURE / EJECTA','TOROIDAL DEBRIS','WITNESS CLOSURE'];
+let progress=0,playing=true,sealed=false,prev=0;
+function clamp(x){return THREE.MathUtils.clamp(x,0,1)}
+function stateAt(t){let stage=Math.min(7,Math.floor(t*8)),p=clamp((t-.47)/.28),impact=+$('impact').value/100;
+ const separation=t<.43?6.6*(1-t/.43)+1.58:t<.65?1.58+1.5*clamp((t-.49)/.16):3.1+2.6*clamp((t-.65)/.32);
+ bodies.forEach((b,i)=>{let sign=i===0?-1:1;b.root.position.set(sign*separation,(i===0?-1:1)*impact*(t<.6?1:.65),0);b.root.rotation.set(.12*t*sign,.6*t*sign,.4*t*sign);let fract=clamp((t-.39)/.29);b.shell.scale.setScalar(1+.06*fract);b.iceG.scale.setScalar(1-.09*fract);b.coreG.rotation.y=fract*sign*.5;b.halo.rotation.y=t*sign*3;b.shell.children[0].material.opacity=.36*(1-.47*fract);b.iceG.children[0].material.opacity=.28*(1-.3*fract);
+ const selected=$('layers').value;b.shell.visible=selected==='all'||selected==='shell';b.iceG.visible=selected==='all'||selected==='ice';b.coreG.visible=selected==='all'||selected==='core';b.halo.visible=selected==='all';});
+ ejecta.visible=t>.48;for(const f of fragments){const q=f.mesh;let grow=clamp((t-.48)*2.2);let r=grow*f.rad;let a=f.a+t*f.spin*.6;q.position.set(Math.cos(a)*r, f.y*grow*.6, Math.sin(a)*r);q.rotation.set(t*f.spin,t*f.spin*.7,f.offset);}
+ torus.material.opacity=t>.58?.12+.5*clamp((t-.58)*3):.04;
+ torus.scale.setScalar(.8+1.3*clamp((t-.55)/.35));torus.rotation.z=t*.4;
+ seam.visible=t>.3;seam.rotation.z=.25*t;
+ const split=clamp((t-.34)/.5);$('phase').textContent=phases[stage];$('timeOut').textContent=(t*100).toFixed(1)+'%';$('time').value=Math.round(t*1000);
+ $('energies').textContent='K '+(1-.58*split).toFixed(2)+' / heat '+(.22*split).toFixed(2)+' / ejecta '+(.36*split).toFixed(2);
+ $('hud').textContent='(((0))) · '+phases[stage]+'\nT = '+(t*60).toFixed(1)+' / 60 beat units\n~##~ FRACTURE FIELD\nCASIMIR: LOCAL · KELVIN: GLOBAL';
+ const types=[
+ {name:'A1 · MANDY',what:t<.35?'Two nested bodies approach':t<.62?'Shell collision and stress transfer':'Fragments / remnant separation',how:'Relative motion + metallic contact',why:'Momentum redistribution (model)'},
+ {name:'B1 · JULIET',what:t<.5?'Two independent halo orbits':'Dust and ejecta orbit reorganize',how:'Off-axis geometry and rotating dust',why:'Impact parameter and angular momentum'},
+ {name:'C1 · JOSEPHENE',what:t<.5?'Core relationship intact':'Ice/NaCl interface disturbed',how:'Fracture fronts and gap change',why:'Stress and temperature redistribution'}
+ ];$('witnesses').innerHTML=types.map(w=>'<div class="witness"><b>'+w.name+'</b><div>WHAT: '+w.what+'</div><div>HOW: '+w.how+'</div><div>WHY: '+w.why+'</div></div>').join('');
+}
+function resize(){const rect=canvas.getBoundingClientRect();const w=Math.max(1,Math.floor(rect.width)),h=Math.max(1,Math.floor(rect.height));renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+const ro=new ResizeObserver(resize);ro.observe(canvas);resize();stateAt(0);
+function draw(now){let delta=prev?(now-prev)/1000:0;prev=now;if(playing&&!sealed){progress=progress+Math.min(delta,.1)*.055*(+$('speed').value/100);if(progress>=1){progress=1;playing=false;$('play').textContent='▶ Play'}stateAt(progress)}orbit.update();renderer.render(scene,camera);requestAnimationFrame(draw)}requestAnimationFrame(draw);
+$('play').onclick=()=>{if(sealed)return;if(progress>=1)progress=0;playing=!playing;$('play').textContent=playing?'⏸ Pause':'▶ Play'};
+$('restart').onclick=()=>{progress=0;sealed=false;playing=true;$('sealState').textContent='LIVE OBSERVATION · No consensus mechanism.';$('play').textContent='⏸ Pause';stateAt(progress)};
+$('time').oninput=e=>{progress=+e.target.value/1000;playing=false;$('play').textContent='▶ Play';stateAt(progress)};
+$('speed').oninput=e=>$('speedOut').textContent=(+e.target.value/100).toFixed(2)+'×';
+$('impact').oninput=e=>{$('impactOut').textContent=(+e.target.value/100).toFixed(2);stateAt(progress)};
+$('layers').onchange=()=>stateAt(progress);
+$('next').onclick=()=>{progress=Math.min(1,(Math.floor(progress*8)+1)/8);playing=false;stateAt(progress)};
+$('prev').onclick=()=>{progress=Math.max(0,(Math.ceil(progress*8)-1)/8);playing=false;stateAt(progress)};
+$('view').onclick=()=>{camera.position.set(0,10,24);orbit.target.set(0,0,0);orbit.update()};
+$('seal').onclick=()=>{sealed=true;playing=false;$('play').textContent='▶ Play';$('sealState').textContent='||[;]|| · THREE ACCOUNTS SEALED FOR HUMAN REVIEW (in this session)';$('sealState').className='status'};
+$('open').onclick=()=>{sealed=false;$('sealState').textContent='REOPENED FOR INSPECTION';$('sealState').className='muted'};
+</script></body></html>
