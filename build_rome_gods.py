@@ -409,6 +409,7 @@ CANVAS_HISTORY = {
     "zeus-spin": "six-ring-orrery",
     "apollo-flash": "16-step-echo",
     "sapphon-turbine": "cyclic-dial",
+    "cyclic-dial": _dragon_curve,
     "natura-glow": "sea-sphere",
     "atlas-head": "nine-elder-conclave",
     "jupiter-fracture": "16-cell-starve",
