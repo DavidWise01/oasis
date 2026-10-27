@@ -1,6 +1,6 @@
 # Derived comparison uses source table from Cautun et al. 2020 GitHub repository, a public redistribution of Eilers et al. (2019) rotation data.
 # Source: https://github.com/MariusCautun/Milky_Way_mass_profile/blob/eb747da6b0383f23cfa4e1fc0dfb8f00a857bfac/MW_rotation_Eilers_2019.txt
-# Source repository license: GPL-3.0 https://github.com/MariusCautun/Milky_Way_mass_profile/blob/master/LICENSE.md
+# Source repository license: GPL-3.0 https://github.com/MariusCautun/Milky_Way_mass_profile/blob/master/LICENSE
 # This derived comparison table is distributed under GNU GPL-3.0-or-later with source attribution.
 bin_index,radius_kpc,observed_km_s,source_sigma_col3_km_s,source_sigma_col4_km_s,source_systematic_percent,model_km_s,model_minus_observed_km_s,conservative_envelope_km_s,outside_simple_envelope,scope,source_license
 1,5.27,226.83,1.91,1.9,2,240.277517,13.447517,6.4466,YES,WITHIN_ORIGINAL_CORRIDOR,GPL-3.0-or-later
