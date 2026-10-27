@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-27",
+  "axis": "Sgr A* to Sun",
+  "station_count": 729,
+  "adopted_R0_pc": 8277,
+  "adopted_BH_mass_solar": 4297000,
+  "adopted_circular_speed_km_s": 233,
+  "method": "point mass BH, solar circular speed benchmark; no individual star mass inferred",
+  "units": {
+    "acceleration": "m/s2",
+    "tidal_radial_gradient": "s^-2"
+  },
+  "GM_sun_m3_s2": 132712440000000000000,
+  "parsec_m": 30856775814913670,
+  "solar_bh_acceleration_m_s2": 8.742386181306883e-15,
+  "solar_circular_acceleration_m_s2": 2.1256332831296986e-10,
+  "solar_bh_to_circular_ratio": 0.000041128383953580826,
+  "solar_bh_percent": 0.004112838395358083,
+  "solar_bh_radial_gradient_s_minus_2": 6.845993494431305e-35,
+  "conservative_sensitivity_ratio_envelope": [
+    0.00003826467641610916,
+    0.000044283061498597816
+  ],
+  "sources": [
+    "https://doi.org/10.1051/0004-6361/202142465",
+    "https://doi.org/10.1051/0004-6361/202346474",
+    "https://docs.galpy.org/en/v1.11.2/reference/potential.html"
+  ],
+  "notes": [
+    "Solar circular field is inferred from v_c^2/R_0 and represents net inward dynamical radial force, not summation of observed 729 bright stars.",
+    "No physical mass or gravity is assigned to the 729 stations or bright-star catalog rows.",
+    "At r=0, point-mass formula is undefined; no acceleration assigned.",
+    "The ratio envelope varies black-hole mass by ±40000 solar masses, R0 by ±30 parsecs and circular speed by ±7 km/s, conservatively and independently. This is sensitivity, not a joint confidence interval."
+  ]
+}
