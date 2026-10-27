@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sgr A* → Sun | 729 Gravitational Field Bound</title>
+<style>
+:root{color-scheme:dark;--bg:#08101c;--panel:#101e31;--ink:#eaf3ff;--muted:#9cb0c8;--cyan:#57dddf;--gold:#ffc16a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -15%,#12324b,var(--bg) 52%);color:var(--ink);font:15px/1.5 system-ui,Segoe UI,Arial}main{max-width:1100px;margin:auto;padding:26px 18px 65px}h1{font-size:clamp(27px,4vw,44px);line-height:1.12;letter-spacing:-.03em;margin:4px 0 12px}h2{font-size:19px;margin:0 0 12px}.eyebrow{letter-spacing:.16em;font-size:12px;color:var(--cyan);font-weight:700}p{color:var(--muted)}.panel{background:#0e1a2ae8;border:1px solid #344a63;border-radius:14px;padding:18px;margin:17px 0}.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.number{border:1px solid #344a63;border-radius:11px;padding:14px;background:#15273b}.number strong{font-size:clamp(17px,2.3vw,25px);display:block}.number span{font-size:12px;color:var(--muted)}label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}input[type=range]{width:100%;accent-color:var(--cyan)}.controls{display:grid;grid-template-columns:2fr 1fr;gap:20px}select{padding:9px 12px;background:#1a2a3e;color:var(--ink);border:1px solid #45627c;border-radius:8px;font:inherit;width:100%}canvas{width:100%;height:320px;border-radius:9px;background:#0b1523;display:block;touch-action:none}a{color:#67d9e6}.note{border-left:3px solid var(--gold);background:#4430203b;padding:11px 14px}code{color:#a8edfa}.legend{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px}.key{display:inline-block;width:11px;height:11px;border-radius:100%;margin-right:5px;background:var(--cyan)}.key.gold{background:var(--gold)}footer{color:var(--muted);font-size:12px;padding:15px 0}@media(max-width:630px){.numbers{grid-template-columns:1fr}.controls{grid-template-columns:1fr}canvas{height:270px}}
+</style></head><body><main><div class="eyebrow">OASIS · GRAVITATIONAL FIELD · 2026-10-27</div>
+<h1>729 gravitational stations<br>Sgr A* → Sun</h1>
+<p>One measured central black-hole mass. One observed solar-orbit calibration. No invented intervening stellar masses. The mathematical stations sample a straight radial line; <b>they are not 729 gravitational relay bodies</b>.</p>
+<div class="numbers"><div class="number"><strong id="bhSun"></strong><span>Sgr A* acceleration at Sun · m/s²</span></div><div class="number"><strong id="mwSun"></strong><span>Milky Way orbital radial benchmark · m/s²</span></div><div class="number"><strong id="percent"></strong><span>Sgr A* share of local inward acceleration, relative benchmark</span></div></div>
+<section class="panel"><h2>One gravitational field, 729 sample stations</h2>
+<div class="controls"><div><label for="position">Radial station <span id="stationNumber"></span> of 729 — distance from Sgr A*: <b id="distance"></b></label><input id="position" type="range" min="2" max="729" step="1" value="729"></div>
+<div><label for="mode">View</label><select id="mode"><option value="g">Acceleration magnitude</option><option value="tidal">Radial tidal gradient</option></select></div></div>
+<canvas id="plot" role="img" aria-label="Log-scale plot of Sgr A star gravity at increasing distance, 729 stations"></canvas>
+<div class="legend"><span><i class="key"></i> Sgr A* point-mass field</span><span><i class="key gold"></i> Selected station</span></div>
+<p id="value"></p></section>
+<section class="panel"><h2>Quarter rule · distance, not body size</h2>
+<p>For the <b>same mass</b>, double the distance from the black hole and the acceleration drops to one quarter. Likewise, a different point mass with ¼ the mass at ½ the distance produces the same magnitude, though vector direction still matters.</p>
+<div class="numbers"><div class="number"><strong>1 × g</strong><span>At reference radius r</span></div><div class="number"><strong>¼ × g</strong><span>Same mass at radius 2r</span></div><div class="number"><strong>¹⁄₁₆ × g</strong><span>Same mass at radius 4r</span></div></div>
+<p class="note">No physical mass, velocity, or gravitational contribution is inferred for any of the 729 original catalog stars. Sgr A* contributes approximately 0.0041% of the inward acceleration indicated by the Sun's ~233 km/s galactic circular speed. Most comes from extended galactic mass, including gas, stars and dark matter.</p>
+<p><a href="SGRA_EARTH_729_GRAVITY_BOUND_20261027.csv">729-station gravity values (CSV)</a> · <a href="SGRA_EARTH_GRAVITY_BOUND_20261027.json">Constants, assumptions and sensitivity (JSON)</a> · <a href="gravity_mass_gate.py">Verified-mass vector gate (Python)</a> · <a href="FIELD_BOUND_2026-10-27.md">Method and source audit</a></p></section>
+<footer>Sources: GRAVITY Collaboration, Astronomy &amp; Astrophysics 2022, doi:10.1051/0004-6361/202142465; Gaia DR3 Milky Way circular-velocity study, Astronomy &amp; Astrophysics 2023, doi:10.1051/0004-6361/202346474. Units SI. Newtonian point-mass approximation invalid as r → 0. The central sample is intentionally undefined. No all-Galaxy profile has been extrapolated to internal radii.</footer></main>
+<script>
+"use strict";
+const ROOT=8277, PC=3.0856775814913673e16, GM_SUN=1.3271244e20, BH=4.297e6, V=233000, K=729, LY=3.26156, mu=GM_SUN*BH;
+const g=r=>mu/(r*PC)**2, tide=r=>2*mu/(r*PC)**3, gmw=V*V/(ROOT*PC);
+const $=x=>document.getElementById(x), canvas=$("plot"), ctx=canvas.getContext("2d");
+const fmt=x=>x.toExponential(3);
+$("bhSun").textContent=fmt(g(ROOT));$("mwSun").textContent=fmt(gmw);$("percent").textContent=(100*g(ROOT)/gmw).toFixed(4)+"%";
+function getRadius(){return (Number($("position").value)-1)*ROOT/(K-1);}
+function render(){
+  const station=Number($("position").value),r=getRadius(),tidal=$("mode").value==="tidal";
+  $("stationNumber").textContent=station;
+  $("distance").textContent=r.toFixed(2)+" pc / "+(r*LY).toFixed(0)+" ly";
+  const v=(tidal?tide:g)(r),solar=(tidal?tide:g)(ROOT);
+  $("value").textContent=(tidal?"Radial tidal gradient |dg/dr|: ":"BH acceleration: ")+fmt(v)+(tidal?" s⁻²":" m/s²")+" · "+(v/solar).toFixed(2)+"× the Sun-location BH value.";
+  let rect=canvas.getBoundingClientRect(),W=rect.width,H=rect.height,DPR=devicePixelRatio||1;
+  canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);
+  const L=68,R=W-22,T=28,B=H-45;
+  ctx.clearRect(0,0,W,H);
+  const a=tidal?tide:g, lmin=Math.log10(a(ROOT)),lmax=Math.log10(a(ROOT/(K-1)));
+  function xx(rad){return L+(rad/ROOT)*(R-L)}
+  function yy(value){return B-(Math.log10(value)-lmin)/(lmax-lmin)*(B-T)}
+  ctx.strokeStyle="#32516e";ctx.lineWidth=1;ctx.font="11px system-ui";ctx.fillStyle="#90a7bf";
+  for(let q=0;q<=4;q++){let y=T+(B-T)*q/4;ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(R,y);ctx.stroke();let label=(lmax-(lmax-lmin)*q/4).toFixed(1);ctx.fillText("10^"+label,7,y+4);}
+  for(let q=0;q<=4;q++){let pr=ROOT*q/4,x=xx(pr);ctx.beginPath();ctx.moveTo(x,T);ctx.lineTo(x,B);ctx.stroke();ctx.fillText((pr*LY/1000).toFixed(1)+"k ly",Math.max(L-15,x-17),H-19);}
+  ctx.beginPath();let started=false;
+  for(let i=1;i<K;i++){let rad=i*ROOT/(K-1),x=xx(rad),y=yy(a(rad));if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y);}
+  ctx.lineWidth=2.5;ctx.strokeStyle="#57dddf";ctx.stroke();
+  ctx.globalAlpha=.20;ctx.fillStyle="#57dddf";
+  for(let i=1;i<K;i++){let rad=i*ROOT/(K-1),x=xx(rad),y=yy(a(rad));ctx.fillRect(x-1,y-1,2,2);}
+  ctx.globalAlpha=1;let px=xx(r),py=yy(v);ctx.beginPath();ctx.arc(px,py,6,0,2*Math.PI);ctx.fillStyle="#ffc16a";ctx.fill();ctx.strokeStyle="#fff";ctx.lineWidth=1;ctx.stroke();
+  ctx.font="12px system-ui";ctx.fillStyle="#d4e9f8";ctx.textAlign="right";ctx.fillText("SUN",R,B+40);ctx.textAlign="left";ctx.fillText("Sgr A*",L,T-10);
+}
+$("position").addEventListener("input",render);$("mode").addEventListener("change",render);window.addEventListener("resize",render);render();
+</script></body></html>
