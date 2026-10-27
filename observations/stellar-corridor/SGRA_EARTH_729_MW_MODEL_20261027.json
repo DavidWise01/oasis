@@ -1,0 +1,65 @@
+{
+  "record": "ITD_MILKY_WAY_729_MULTI_COMPONENT_FIELD_20261027",
+  "date": "2026-10-27",
+  "model": "Axisymmetric MWPotential2014-shape, renormalized to Gaia DR3 local circular speed",
+  "not_original_MWPotential2014": true,
+  "not_galpy_execution": true,
+  "station_count": 729,
+  "center_undefined": true,
+  "adopted": {
+    "R0_pc": 8277,
+    "v_c_sun_km_s": 233,
+    "black_hole_mass_solar": 4297000,
+    "parsec_m": 30856775814913670,
+    "GM_sun_m3_s2": 132712440000000000000,
+    "solar_fractions_renormalized": {
+      "bulge": 0.05,
+      "disk": 0.6,
+      "halo": 0.35
+    },
+    "bulge": {
+      "alpha": 1.8,
+      "cutoff_pc": 1900
+    },
+    "disk": {
+      "miyamoto_nagai_a_pc": 3000,
+      "b_pc": 280,
+      "midplane_a_plus_b_pc": 3280
+    },
+    "halo": {
+      "nfw_scale_pc": 16000
+    }
+  },
+  "at_sun": {
+    "inward_acceleration_m_s2": 2.1256332831296983e-10,
+    "black_hole_m_s2": 8.742386181306883e-15,
+    "bulge_m_s2": 1.0627729296339428e-11,
+    "disk_m_s2": 1.2753275155607311e-10,
+    "halo_m_s2": 7.439410507437598e-11,
+    "circular_velocity_km_s": 233,
+    "black_hole_fraction": 0.00004112838395358083
+  },
+  "checks": {
+    "gamma_regularized_lower_0p6_x0p277": 0.46855638440162783,
+    "sun_circular_speed_closure": true,
+    "quarter_distance_inverse_square": true,
+    "finite_stations": 728,
+    "center_not_sampled": true,
+    "positive_components": true
+  },
+  "limitations": [
+    "This is an extrapolated, axisymmetric GALACTIC PLANE model, not direct observed gravity in each of 729 stations.",
+    "Renormalization at 8.277 kpc and 233 km/s means model is not galpy's canonical 8 kpc, 220 km/s MWPotential2014.",
+    "Bulge, disk and NFW shares at the Sun are model-defined; do not interpret as uniquely measured matter fractions.",
+    "Black hole mass at center uses a Newtonian point source outside its horizon; r=0 is undefined.",
+    "Model is midplane with no bar, spiral arms, detailed inner Galactic Center nuclear disk, gas, individual stars or perturbations.",
+    "A circular-speed profile computed from model should not be read as observed stellar speeds near the Galactic Center.",
+    "The halo's NFW profile is extrapolated, not constrained by this single circular-speed anchor."
+  ],
+  "sources": [
+    "https://docs.galpy.org/en/v1.12.0/tutorials/potentials/milky_way_potentials.html",
+    "https://doi.org/10.1088/0067-0049/216/2/29",
+    "https://doi.org/10.1051/0004-6361/202346474",
+    "https://doi.org/10.1051/0004-6361/202142465"
+  ]
+}
