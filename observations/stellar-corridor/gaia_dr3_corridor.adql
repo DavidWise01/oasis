@@ -1,0 +1,20 @@
+-- ESA Gaia DR3 public archive ADQL (Gaia Archive, query asynchronously for large results).
+-- Candidate cone, not a 3D cylinder. Input may be heavily incomplete / TOP-truncated.
+-- Output column names match gaia_ingest.py. Sgr A* ICRS reference: RA 266.41683, DEC -29.00781.
+SELECT TOP 100000
+  g.source_id, g.ra, g.dec,
+  g.distance_gspphot,
+  g.distance_gspphot_lower,
+  g.distance_gspphot_upper,
+  g.ruwe
+FROM gaiadr3.gaia_source AS g
+WHERE 1 = CONTAINS(
+ POINT('ICRS', g.ra, g.dec),
+ CIRCLE('ICRS', 266.41683, -29.00781, 4.0)
+)
+ AND g.distance_gspphot BETWEEN 1 AND 8277
+ AND g.distance_gspphot_lower IS NOT NULL
+ AND g.distance_gspphot_upper IS NOT NULL
+ AND g.ruwe < 1.4
+-- For rigorous census: replace TOP with smaller, explicitly documented sky/distance
+-- slices; disclose selection function, incompleteness, crowding and extinction.
