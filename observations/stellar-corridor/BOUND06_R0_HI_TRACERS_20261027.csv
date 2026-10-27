@@ -1,0 +1,10 @@
+# Observations: Eilers et al. (2019) via Cautun repository (GPL-3.0); HI quadrant tables from McGaugh public 2018 model page. Attribution in Bound 06 README.
+# Derived model values: unchanged OASIS Bound 04, approximate R0-only sensitivity, NOT reprocessing the source data.
+# Source URLs: https://astroweb.case.edu/ssm/models/RCQ1.dat and https://astroweb.case.edu/ssm/models/RCQ4.dat
+# Selected HI data are nearest published rows, not averaged over matched physical tracer uncertainties.
+rgb_radius_kpc,rgb_v_kms,rgb_comparison_envelope_kms,original_model_v_kms,additive_155pc_model_v_kms,scale_R0_model_v_kms,original_flag,additive_flag,scaled_flag,hi_q1_radius_kpc,hi_q1_v_kms,hi_q1_source_line,hi_q4_radius_kpc,hi_q4_v_kms,hi_q4_source_line,hi_illustrative_mean_kms,q1_minus_q4_kms,hi_mean_minus_rgb_kms,hi_mean_minus_original_model_kms
+5.27,226.83,6.4466,240.27751725,240.18421862,240.2242972,YES,YES,YES,5.269112,233.2783,340,5.268141,227.5004,301,230.38935,5.7779,3.55935,-9.88816725
+5.74,230.8,6.046,239.81624341,239.5622123,239.64108409,YES,YES,YES,5.742931,236.3508,410,5.740324,231.6059,369,233.97835,4.7449,3.17835,-5.83789341
+6.23,230.8,6.316,238.88482099,238.52317752,238.60975179,YES,YES,YES,6.227924,248.7344,488,6.23138,244.2637,440,246.49905,4.4707,15.69905,7.61422901
+6.73,231.2,6.064,237.63597076,237.20835746,237.28269832,YES,NO,YES,6.732106,243.0092,579,6.731233,245.4741,525,244.24165,-2.4649,13.04165,6.60567924
+7.22,229.88,5.9676,236.24043512,235.77756684,235.82933545,YES,NO,NO,7.220152,242.9605,683,7.222034,249.9745,627,246.4675,-7.014,16.5875,10.22706488
