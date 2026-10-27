@@ -1,0 +1,114 @@
+{
+  "record": "SGRA_EARTH_BOUND06_R0_HI_SENSITIVITY_20261027",
+  "date": "2026-10-27",
+  "purpose": "External independent HI tracer cross-check plus R0-only radius sensitivity on 5 Bound05 Eilers flagged bins",
+  "inputs": {
+    "eilers": "https://github.com/MariusCautun/Milky_Way_mass_profile/blob/eb747da6b0383f23cfa4e1fc0dfb8f00a857bfac/MW_rotation_Eilers_2019.txt",
+    "q1": "https://astroweb.case.edu/ssm/models/RCQ1.dat",
+    "q4": "https://astroweb.case.edu/ssm/models/RCQ4.dat",
+    "q1_q4_website": "https://astroweb.case.edu/ssm/models/",
+    "method_citation": "McGaugh 2018 via McClure-Griffiths and Dickey 2007/2016 HI terminal velocity observations",
+    "original_model": "observations/stellar-corridor/milky_way_bound.py"
+  },
+  "calibration": {
+    "R0_model_kpc": 8.277,
+    "R0_eilers_hi_kpc": 8.122,
+    "theta0_hi_kms": 233.34,
+    "theta0_model_kms": 233,
+    "delta_R0_kpc": 0.155
+  },
+  "methods": {
+    "baseline": "Compare unchanged model speed with Eilers published radius",
+    "additive": "Model speed at Eilers published R + 0.155 kpc; not valid full coordinate transform",
+    "scaled": "Model speed at Eilers published R * (8.277 / 8.122); not valid full coordinate transform",
+    "hi": "Select nearest Q1 and Q4 published HI row to each of five exact Eilers flagged radii (two tracer regions, not identical 3D spatial positions)",
+    "flag": "abs(model_v - RGB_observed_v) > conservative bound 05 envelope",
+    "uncertainty": "HI uncertainties are not included in downloaded tables. No statistical significance claimed, no independent-point confidence estimates."
+  },
+  "flags": {
+    "original": 5,
+    "additive": 3,
+    "scaled": 4
+  },
+  "anchors": [
+    {
+      "r": 5.27,
+      "obs": 226.83,
+      "envelope": 6.4466,
+      "baseline": 240.27751724506052,
+      "add": 240.18421861649165,
+      "scale": 240.22429720062965,
+      "q1r": 5.269112,
+      "q1": 233.2783,
+      "q4r": 5.268141,
+      "q4": 227.5004,
+      "q1line": 340,
+      "q4line": 301
+    },
+    {
+      "r": 5.74,
+      "obs": 230.8,
+      "envelope": 6.046,
+      "baseline": 239.81624340536635,
+      "add": 239.56221230140818,
+      "scale": 239.64108408512436,
+      "q1r": 5.742931,
+      "q1": 236.3508,
+      "q4r": 5.740324,
+      "q4": 231.6059,
+      "q1line": 410,
+      "q4line": 369
+    },
+    {
+      "r": 6.23,
+      "obs": 230.8,
+      "envelope": 6.316,
+      "baseline": 238.88482099028548,
+      "add": 238.52317752399046,
+      "scale": 238.60975178648076,
+      "q1r": 6.227924,
+      "q1": 248.7344,
+      "q4r": 6.23138,
+      "q4": 244.2637,
+      "q1line": 488,
+      "q4line": 440
+    },
+    {
+      "r": 6.73,
+      "obs": 231.2,
+      "envelope": 6.064,
+      "baseline": 237.63597075650748,
+      "add": 237.20835746220985,
+      "scale": 237.28269832458201,
+      "q1r": 6.732106,
+      "q1": 243.0092,
+      "q4r": 6.731233,
+      "q4": 245.4741,
+      "q1line": 579,
+      "q4line": 525
+    },
+    {
+      "r": 7.22,
+      "obs": 229.88,
+      "envelope": 5.9676,
+      "baseline": 236.24043512050883,
+      "add": 235.7775668371153,
+      "scale": 235.82933544777003,
+      "q1r": 7.220152,
+      "q1": 242.9605,
+      "q4r": 7.222034,
+      "q4": 249.9745,
+      "q1line": 683,
+      "q4line": 627
+    }
+  ],
+  "limitations": [
+    "R0 change requires original source sky positions, distance estimates and solar motion to recalculate galactocentric radius and velocity; the two sensitivity transforms are NOT astronomical data reductions.",
+    "McGaugh 2018 HI derived curves are normalized at 233.34 km/s and R0 8.122 kpc; do not pretend they are raw HI line-of-sight velocities.",
+    "Q1 and Q4 HI tangent-point velocities vary at near-identical radius owing to streaming, spiral structure and methods; their mean is illustrative, not a prescribed physical average.",
+    "The five Eilers bins were selected after seeing the discrepancy; this is a targeted cross-check, not five independent pre-registered random samples.",
+    "HI tables do not supply uncertainties or covariance; no numerical HI rejection threshold was calculated.",
+    "Do not infer changes to gravity laws or a proof of physical toroidal force transmission from these residuals.",
+    "No modification to prior Bound 04 or Bound 05 data."
+  ]
+}
