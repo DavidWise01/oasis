@@ -1,0 +1,110 @@
+{
+  "record_id": "ITD_EILERS2019_MW_FIELD_HOLDOUT_20261027",
+  "date": "2026-10-27",
+  "source_repository": "MariusCautun/Milky_Way_mass_profile",
+  "source_filename": "MW_rotation_Eilers_2019.txt",
+  "source_commit": "eb747da6b0383f23cfa4e1fc0dfb8f00a857bfac",
+  "source_blob_sha": "1214ace5da1b1a02688f2edd5e817ec5826fc3a8",
+  "source_license": "GPL-3.0",
+  "source_paper": "https://doi.org/10.3847/1538-4357/aaf648",
+  "source_scope_kpc": [
+    5.27,
+    24.82
+  ],
+  "previous_model": "SGRA_EARTH_729_MW_MODEL_20261027.json",
+  "calibrated_solar_radius_kpc": 8.277,
+  "calibrated_solar_speed_km_s": 233,
+  "source_stated_columns": [
+    "R_kpc",
+    "v_c_km_s",
+    "sigma_column_3_km_s",
+    "sigma_column_4_km_s",
+    "systematic_percent"
+  ],
+  "derived_envelope_method": "abs(prediction-observation) > max(source sigma column 3, source sigma column 4) + systematic_pct * observation / 100; simple descriptive heuristic; not a confidence level; systematic errors can correlate",
+  "independent_check": "published Gaia DR2 / APOGEE-era rotation curve, not used to calibrate this 233 km/s Gaia DR3-era normalized model, though survey methodologies overlap",
+  "scopes": {
+    "all": {
+      "n": 38,
+      "above_envelope": 5,
+      "mean_residual_km_s": 4.521848488318619,
+      "rms_residual_km_s": 8.634129906620041,
+      "mean_absolute_residual_km_s": 5.565337767301696
+    },
+    "original_corridor": {
+      "n": 7,
+      "above_envelope": 5,
+      "mean_residual_km_s": 7.5088963058729155,
+      "rms_residual_km_s": 8.03499173128011,
+      "mean_absolute_residual_km_s": 7.5088963058729155
+    },
+    "supplementary_outer": {
+      "n": 31,
+      "above_envelope": 0,
+      "mean_residual_km_s": 3.8473538198386166,
+      "rms_residual_km_s": 8.763752191021512,
+      "mean_absolute_residual_km_s": 5.12646971020497
+    },
+    "5_to_15_kpc": {
+      "n": 20,
+      "above_envelope": 5,
+      "mean_residual_km_s": 3.318158837676761,
+      "rms_residual_km_s": 5.023949236432412,
+      "mean_absolute_residual_km_s": 3.570445739056028
+    },
+    "15_to_25_kpc": {
+      "n": 18,
+      "above_envelope": 0,
+      "mean_residual_km_s": 5.859281433476239,
+      "rms_residual_km_s": 11.372555299398652,
+      "mean_absolute_residual_km_s": 7.78188446535244
+    }
+  },
+  "flags": [
+    {
+      "radius_kpc": 5.27,
+      "observed_km_s": 226.83,
+      "predicted_km_s": 240.27751724506052,
+      "residual_km_s": 13.44751724506051,
+      "envelope_km_s": 6.4466
+    },
+    {
+      "radius_kpc": 5.74,
+      "observed_km_s": 230.8,
+      "predicted_km_s": 239.81624340536638,
+      "residual_km_s": 9.016243405366367,
+      "envelope_km_s": 6.046
+    },
+    {
+      "radius_kpc": 6.23,
+      "observed_km_s": 230.8,
+      "predicted_km_s": 238.8848209902855,
+      "residual_km_s": 8.084820990285493,
+      "envelope_km_s": 6.316000000000001
+    },
+    {
+      "radius_kpc": 6.73,
+      "observed_km_s": 231.2,
+      "predicted_km_s": 237.63597075650748,
+      "residual_km_s": 6.435970756507487,
+      "envelope_km_s": 6.064
+    },
+    {
+      "radius_kpc": 7.22,
+      "observed_km_s": 229.88,
+      "predicted_km_s": 236.24043512050883,
+      "residual_km_s": 6.360435120508839,
+      "envelope_km_s": 5.9676
+    }
+  ],
+  "critical_caveats": [
+    "This is external validation of a simplified axisymmetric model, not the exact galpy MWPotential2014 canonical output.",
+    "Calibration closure at 8.277 kpc remains by construction; external measurements give meaningful residuals.",
+    "Published source table is reproduced by Cautun et al. and may contain asymmetric statistical error columns; the two columns are kept separately rather than misidentified.",
+    "Systematic uncertainties are correlated between radial bins; counts outside the envelope do NOT imply a formal hypothesis test or independent Gaussian draws.",
+    "Eilers et al. adopted solar galactocentric radius ~8.122 kpc, rather than 8.277 kpc; published radii are compared as-is here without frame rescaling.",
+    "The model is only originally sampled 0-8.277 kpc; bins 8.78-24.82 are out-of-corridor predictions from the same analytic potential.",
+    "Independent holdout measurements remain separate; no parameters were re-fit to reduce residuals.",
+    "No inner <5kpc observational claims are made from Eilers because their study excludes the barred inner region."
+  ]
+}
