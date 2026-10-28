@@ -1,0 +1,378 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OASIS Check 17 | Two Null Shells DTR Junction</title><style>:root{color-scheme:dark;--bg:#09111e;--card:#122135;--border:#355269;--light:#eef6ff;--muted:#a8bdcf;--teal:#6be4d9;--rose:#f296ad;--amber:#ffcf87;--violet:#bea6ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 78% -15%,#254351,transparent 45%),var(--bg);color:var(--light);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+main{max-width:1160px;margin:auto;padding:24px 18px 70px}h1{font-size:clamp(28px,4.4vw,45px);letter-spacing:-.045em;line-height:1.08;margin:9px 0 12px}h2{font-size:18px;margin:0 0 10px}p{color:var(--muted)}a{color:#8aebe1}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--teal)}.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.stat{background:#162b40;border:1px solid var(--border);border-radius:10px;padding:11px}.stat strong{font-size:clamp(16px,2vw,23px);display:block;overflow-wrap:anywhere}.stat span{font-size:11px;color:var(--muted)}.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:15px}.panel{background:#112032ed;border:1px solid var(--border);border-radius:14px;padding:16px;margin:15px 0}.layout>.left .panel:first-child,.layout>.right .panel:first-child{margin-top:0}.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.control label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.control select{background:#1c364c;color:var(--light);border:1px solid #51778f;border-radius:9px;padding:9px;width:100%;font:inherit}input[type=range]{width:100%;accent-color:var(--teal)}canvas{background:#081827;border:1px solid #294d65;border-radius:8px;width:100%;height:305px;display:block}.readouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.datum{background:#172e43;border:1px solid #36566d;padding:10px;border-radius:9px}.datum span{font-size:11px;color:var(--muted);display:block}.datum strong{font-size:clamp(13px,1.7vw,19px);display:block;overflow-wrap:anywhere}.pill{display:inline-block;border:1px solid #3b7c71;color:#acf5df;border-radius:99px;padding:5px 10px;font-size:12px}.pill.warn{border-color:#a97859;color:#ffd8a8}.note{border-left:3px solid var(--amber);background:#513b265e;padding:12px;color:#f3dcc2}.actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}button{border:1px solid #53768c;color:var(--light);background:#224259;border-radius:8px;padding:9px 12px;cursor:pointer;font:inherit}button.primary{background:#156d64;border-color:#46c0ad}button:focus-visible,input:focus-visible{outline:2px solid var(--teal)}.legend{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:12px;margin:9px 0}.sw{display:inline-block;width:11px;height:10px;border-radius:2px;margin-right:5px}.mono{font:12px/1.65 ui-monospace,Consolas,monospace;background:#081726;border:1px solid #2f5066;color:#a9e7df;white-space:pre-wrap;overflow-wrap:anywhere;border-radius:9px;padding:12px}.bits{display:flex;gap:7px;margin:12px 0}.bit{flex:1;font-size:24px;text-align:center;font-weight:800;background:#162e42;border:1px solid #406d82;border-radius:9px;padding:8px}.bit.on{background:#16545a;color:#b0faeb}.rankinput{display:flex;gap:8px}.rankinput input{background:#172e44;border:1px solid #537990;color:var(--light);padding:9px;border-radius:8px;font:inherit;flex:1;min-width:0}.files{display:flex;flex-wrap:wrap;gap:12px}.small{font-size:12px;color:var(--muted)}@media(max-width:850px){.layout{grid-template-columns:1fr}}@media(max-width:580px){.statrow{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr}canvas{height:255px}}</style></head><body><main>
+<div class="eyebrow">OASIS / NATURAL CHECK 17 / 2026-10-27 / TWO-STREAM DTR JUNCTION</div>
+<h1>TWO STREAMS.<br><span style="color:#6be4d9">ONE LOCAL GEOMETRIC CONSTRAINT.</span></h1>
+<p>This check applies the exact Dray–’t Hooft–Redmount relation to crossing ingoing/outgoing <b>null shells in a spherical charged Reissner–Nordström black hole</b>. It is a separate control model, <b>not Kerr</b> and not a time-dependent Einstein–matter simulation.</p>
+<div class="statrow"><div class="stat"><strong>4 × 729</strong><span>Charged spherical crossing samples</span></div><div class="stat"><strong>70 digits</strong><span>Independent Python Decimal witness</span></div><div class="stat"><strong>f₀ f₄ = f₁ f₂</strong><span>Exact junction condition</span></div><div class="stat"><strong>24! unchanged</strong><span>Separate logical address ring</span></div></div>
+<div class="layout"><div class="left">
+<section class="panel"><h2>Two independent shell fluxes at one crossing</h2><div class="controls">
+<div class="control"><label for="charge">Assumed charge-to-mass Q/M (not spin)</label><select id="charge"><option value="0.5">0.50</option><option value="0.8" selected>0.80</option><option value="0.95">0.95</option><option value="0.99">0.99</option></select></div>
+<div class="control"><label for="streams">Crossing control</label><select id="streams"><option value="both">Incoming and outgoing</option><option value="incoming">Incoming only</option><option value="outgoing">Outgoing only</option><option value="neither">No shells</option></select></div>
+<div class="control"><label for="incoming">Log₁₀ incoming shell mass (M=1): <b id="incomingText">−4</b></label><input type="range" id="incoming" min="-8" max="-2" step=".25" value="-4"></div>
+<div class="control"><label for="outgoing">Log₁₀ outgoing shell mass (M=1): <b id="outgoingText">−4</b></label><input type="range" id="outgoing" min="-8" max="-2" step=".25" value="-4"></div></div>
+<canvas id="chart" role="img" aria-label="Crossing mass parameter vs logarithmic distance above ideal Reissner Nordstrom inner horizon"></canvas>
+<div class="legend"><span><i class="sw" style="background:var(--teal)"></i>After local crossing</span><span><i class="sw" style="background:var(--violet)"></i>Additive shell mass, no nonlinear term</span><span><i class="sw" style="background:var(--amber)"></i>Selected radius</span></div>
+<label for="crossing" class="small">Crossing distance above inner horizon, log₁₀ δ = <b id="deltaText">−3</b></label><input id="crossing" type="range" min="-10" max="-1" value="-3" step=".025">
+<div class="actions"><button class="primary" id="far">Farther crossing</button><button id="near">Near-horizon formal crossing</button><button id="resetShell">Reset shell assumptions</button></div>
+<p class="note"><strong>Interpretation boundary:</strong> The algebraic DTR condition can remain satisfied when the resulting corner mass grows dramatically, but this does not establish a consistent sequence of shell encounters or a physically realized Kerr interior. Where shell jumps are not small compared with |f₀|, a small-background-perturbation approximation is invalid; the interface flags those samples.</p>
+</section>
+<section class="panel"><h2>Exact four-region junction</h2><div class="mono">G=c=M_before=1
+f(r;M,Q) = 1 − 2M/r + Q²/r²
+r± = M_before ± sqrt(M_before² − Q²)
+r_cross = r− + δ(r+−r−),   0 < δ < 1
+f₀ = [(r−r+)(r−r−)]/r²   [negative between horizons]
+f₁ = f₀ − 2δm_in/r
+f₂ = f₀ − 2δm_out/r
+f₄ = (f₁ f₂)/f₀               DTR local junction
+M_after = M_before + δm_in + δm_out − 2δm_inδm_out/(r f₀)
+DTR residual = [f₀ f₄ − f₁ f₂] / max(|products|)</div>
+<p class="small">The equality is a local null-shell matching condition. It is not a numerical solution of the full two-null flux equations or the evolution of an astrophysical black hole. For an actual rotating black hole, the Kerr problem and the necessary nonspherical perturbations remain separate.</p></section>
+</div>
+<div class="right">
+<section class="panel"><h2>Four regions, one event</h2><span class="pill" id="status">Awaiting test</span><div class="readouts" style="margin-top:12px">
+<div class="datum"><span>r_cross/M</span><strong id="rNow"></strong></div>
+<div class="datum"><span>r_inner/M</span><strong id="inner"></strong></div>
+<div class="datum"><span>Background f₀</span><strong id="fzero"></strong></div>
+<div class="datum"><span>Incoming f₁</span><strong id="fin"></strong></div>
+<div class="datum"><span>Outgoing f₂</span><strong id="fout"></strong></div>
+<div class="datum"><span>Final f₄</span><strong id="ffinal"></strong></div>
+<div class="datum"><span>Post-crossing mass M_after</span><strong id="mfinal"></strong></div>
+<div class="datum"><span>Nonlinear cross term</span><strong id="cross"></strong></div>
+<div class="datum"><span>Additional fraction vs shell sum</span><strong id="relative"></strong></div>
+<div class="datum"><span>Normalized DTR residual</span><strong id="residual"></strong></div>
+</div><p class="small" id="statusExplain"></p></section>
+<section class="panel"><h2>Independent controls</h2><div class="mono" id="controls"></div>
+<p class="small">Turning off either stream removes the nonlinear product exactly. Swapping the two streams leaves the same final mass. The local junction relation is checked by an independent high-precision Decimal implementation.</p></section>
+<section class="panel"><h2>24! ring (not mass flow)</h2><div class="bits" id="bits"></div><div class="mono" id="rank"></div>
+<div class="actions"><button class="primary" id="next">Rank +1</button><button id="back">Reverse</button><button id="last">Last / seam</button><button id="resetRank">Reset</button></div>
+<div class="rankinput"><input type="text" id="rankInput" value="0" inputmode="numeric" aria-label="Factorial rank"/><button id="jump">Jump</button></div><p class="small" id="rankNotice">The 24! cycle never advances a null shell or the gravitational mass parameter.</p></section>
+</div></div>
+<section class="panel"><h2>Audit, high-precision replication, and the next physical question</h2><p>Scientific sources: the Dray–’t Hooft–Redmount matching relation for lightlike shell collisions, Poisson and Israel's mass-inflation picture, and Ori's exact charged-black-hole inner structure. This shell check does not replace the observational Galactic corridor or establish Sgr A* charge. All new files are append-only.</p>
+<div class="files"><a href="bound17_null_shell_dtr_core.js">DTR equation engine</a><a href="bound17_dtr_decimal_witness.py">70-digit independent Python witness</a><a href="BOUND17_729_DTR_CHARGED_NULL_SHELL_CROSSINGS_20261027.csv">4 × 729 charge sweep</a><a href="BOUND17_ZERO_STREAM_CAUSAL_CONTROLS_20261027.csv">One-/two-stream controls</a><a href="BOUND17_NATURAL_CHECK_2026-10-27.md">Frozen research check</a><a href="BOUND17_DTR_AUDIT_20261027.json">Machine-readable audit</a><a href="bound16-mass-inflation-sensitivity.html">Prior Bound 16</a></div></section>
+<footer>This is not a black-hole simulator with physical observations or an inferred Planck-scale center. It is an auditable algebraic null-shell crossing test with explicit causal/model limitations.</footer>
+</main><script>/* OASIS NATURAL CHECK 17 | Exact LOCAL DTR null-shell crossing, 2026-10-27
+   Reissner-Nordström spherical Einstein-Maxwell thin-null-shell toy.
+   Not rotating Kerr. Not Sgr A* charge measurement. No time-evolution PDE.
+   Units G=c=M_background=1 and charge q=Q/M with 0<q<1.
+   Four vacuum regions at same crossing sphere r:
+     f_i=1-2 M_i/r+q^2/r^2, all have common fixed charge q
+     M_0=1; M_in=1+din; M_out=1+dout;
+     M_f=1+din+dout - 2 din*dout / (r f0).
+   DTR exact: f0 * f_final = f_in * f_out.
+   The background RN f0 is negative inside outer horizon and outside
+   inner horizon, so with positive din/dout the crossing term is positive.
+   Two-stream shell-crossing is a LOCAL junction, not a continuous mass
+   inflation Einstein-field evolution. Interpret near inner horizon only
+   with compatible null-shell causal orientation and matching conditions.
+   Uses stable horizon-factorized f0=-(gap^2 * delta*(1-delta))/r^2.
+ */
+(function(root){"use strict";
+const CHARGES=Object.freeze([.5,.8,.95,.99]);
+const DEFAULT=Object.freeze({q:.8,din:1e-4,dout:1e-4,delta:.001});
+const COUNT=729,DELTA_MIN=1e-10,DELTA_MAX=0.1,RG_SGRA_M=1.3271244e20*4.297e6/(299792458**2);
+function nonneg(x,n){if(!Number.isFinite(x)||x<0)throw Error(n+" must be finite and nonnegative");return x;}
+function parameters(p={}){
+ const a={...DEFAULT,...p};
+ if(!Number.isFinite(a.q)||a.q<=0||a.q>=1)throw Error("0 < q=Q/M < 1 required (charged spherical toy only)");
+ nonneg(a.din,"din");nonneg(a.dout,"dout");
+ if(!(a.delta>0&&a.delta<1&&Number.isFinite(a.delta)))throw Error("0<delta<1 required");
+ return a;
+}
+function horizons(q){
+ if(!(q>0&&q<1&&Number.isFinite(q)))throw Error("subextremal nonzero q required");
+ const t=Math.sqrt(1-q*q);
+ return {q,outer:1+t,inner:1-t,gap:2*t,inner_horizon_is_charged_not_Kerr:true};
+}
+function sample(p={}){
+ const x=parameters(p),h=horizons(x.q),r=h.inner+h.gap*x.delta;
+ // Exact factorization of background f0: (r-r+)(r-r-)/r².
+ const f0=-(h.gap*h.gap*x.delta*(1-x.delta))/(r*r);
+ const fi=f0-2*x.din/r,fo=f0-2*x.dout/r;
+ const interaction=-2*x.din*x.dout/(r*f0);
+ const mfinal=1+x.din+x.dout+interaction;
+ const ff=f0-2*(x.din+x.dout+interaction)/r;
+ const product1=f0*ff,product2=fi*fo;
+ const residual=(product1-product2)/Math.max(1e-300,Math.abs(product1),Math.abs(product2));
+ const shellScale=Math.max(2*x.din/r,2*x.dout/r)/Math.abs(f0);
+ return {...x,r,outer:h.outer,inner:h.inner,gap:h.gap,f0,fi,fo,ff,
+  before_m:1,after_m:mfinal,nonlinear_cross_mass:interaction,
+  baseline_without_interaction:1+x.din+x.dout,
+  incoming_shell_mass:x.din,outgoing_shell_mass:x.dout,
+  crossing_to_sum_of_shells:x.din+x.dout>0?interaction/(x.din+x.dout):null,
+  DTR_normalized_residual:residual,
+  background_trapped_region:f0<0,
+  same_sign_branch:Math.sign(f0)===Math.sign(fi)&&Math.sign(f0)===Math.sign(fo),
+  near_horizon_small_shell_ratio:shellScale,
+  perturbative_shell_relative_to_f0:shellScale<=.1,
+  strict_delta_positive:true,
+  charged_RN_not_Kerr:true,
+  observed_mass_inflation:false,
+  evolved_metric:false,
+  physical_center_solution:false,
+  local_exact_junction_only:true};
+}
+function logScan(q=.8,din=1e-4,dout=1e-4,n=COUNT){
+ if(!Number.isInteger(n)||n<2)throw Error("n must be >=2");
+ const out=[];
+ for(let i=0;i<n;i++){
+  const log=Math.log10(DELTA_MAX)+(Math.log10(DELTA_MIN)-Math.log10(DELTA_MAX))*i/(n-1);
+  out.push(sample({q,din,dout,delta:10**log}));
+ }
+ return out;
+}
+function selfTest(){
+ const approx=(a,b,t=1e-9)=>Math.abs(a-b)<=t*Math.max(1,Math.abs(a),Math.abs(b));
+ const checks=[];
+ for(const q of CHARGES){
+  const data=logScan(q),h=horizons(q),first=data[0],last=data.at(-1);
+  if(!(h.inner>0&&h.inner<h.outer&&first.r>last.r&&last.r>h.inner))throw Error("inner radius");
+  if(!(last.nonlinear_cross_mass>first.nonlinear_cross_mass*1e5))throw Error("expected near horizon amplification");
+  for(const s of data){
+   if(!s.background_trapped_region||!s.same_sign_branch)throw Error("crossing wrong region or signs");
+   if(!(Math.abs(s.DTR_normalized_residual)<1e-10))throw Error("DTR constraint violated");
+   if(!(s.nonlinear_cross_mass>=0))throw Error("positive product not positive correction");
+   if(!(s.after_m>=s.baseline_without_interaction))throw Error("nonlinear mass decrease");
+  }
+  checks.push({q,samples:data.length,nearest_mass:last.after_m,
+    outer_far_mass:first.after_m,nearest_DTR_residual:last.DTR_normalized_residual});
+ }
+ const offIn=sample({din:0}),offOut=sample({dout:0}),bothOff=sample({din:0,dout:0});
+ if(!approx(offIn.nonlinear_cross_mass,0)||!approx(offOut.nonlinear_cross_mass,0)||
+    !approx(offIn.after_m,1+offIn.dout)||!approx(offOut.after_m,1+offOut.din)||
+    !approx(bothOff.after_m,1))throw Error("zero stream controls");
+ const s=sample(),x=sample({din:s.dout,dout:s.din});
+ if(!approx(s.after_m,x.after_m)||!approx(s.nonlinear_cross_mass,x.nonlinear_cross_mass))throw Error("shell exchange");
+ // Exact DTR double-difference algebra for independent shell energies:
+ const a=sample({din:1e-4,dout:2e-4}),b=sample({din:1e-4,dout:0}),
+ c=sample({din:0,dout:2e-4}),d=sample({din:0,dout:0});
+ if(!approx(a.after_m-b.after_m-c.after_m+d.after_m,a.nonlinear_cross_mass))
+  throw Error("two-stream bilinear term");
+ // Radius approaching inner horizon: interaction scales like 1/delta.
+ const near=sample({delta:1e-7}),near2=sample({delta:1e-8});
+ if(Math.abs(near2.nonlinear_cross_mass/near.nonlinear_cross_mass-10)>.00002)
+  throw Error("near-horizon inverse-gap scaling");
+ // Charge approaching 0 is a different Schwarzschild geometry: forbid
+ let denied=false;try{sample({q:0})}catch{denied=true}if(!denied)throw Error("q=0 guard");
+ return {pass:true,charged_RN_not_Kerr:true,geometric_units:"G=c=Mbase=1",
+  test_charges:checks,zero_incoming:"PASS",zero_outgoing:"PASS",
+  both_zero:"PASS",stream_swap:"PASS",DTR_product_constraint:"PASS",
+  bilinear_two_stream_interaction:"PASS",inverse_gap_asymptotic:"PASS",
+  Schwarzschild_no_inner_horizon_guard:"PASS",
+  no_observed_mass_or_evolved_metric:true};
+}
+const api=Object.freeze({CHARGES,DEFAULT,COUNT,DELTA_MIN,DELTA_MAX,RG_SGRA_M,
+ parameters,horizons,sample,logScan,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound17DTR=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* OASIS | Natural Bound 08 | 2026-10-27
+   Exact lazy cyclic Hamiltonian traversal on 24! permutations, with a
+   synchronized 3-bit Gray register and 729 logical station addresses.
+
+   No astronomical mass, acceleration, or energy is derived from permutations.
+   No attempt is made to materialize the 24! states.
+
+   Mathematical basis: Steinhaus-Johnson-Trotter "plain changes",
+   recursive insertion of the new largest symbol from alternate ends.
+   Every neighboring permutation differs by an adjacent swap, including seam.
+*/
+(function(root){
+"use strict";
+const OPERATORS=24;
+const STATIONS=729;
+const GRAY_PERIOD=8n;
+function factorial(n){
+ if(!Number.isInteger(n)||n<1||n>100)throw Error("factorial integer 1..100 required");
+ let a=1n;
+ for(let i=2n;i<=BigInt(n);i++)a*=i;
+ return a;
+}
+const SIZE=factorial(OPERATORS);
+const VISITS_PER_STATION=SIZE/BigInt(STATIONS);
+if(SIZE%BigInt(STATIONS)!==0n||SIZE%GRAY_PERIOD!==0n)
+ throw Error("The 729-station and 8-state Gray ring must divide the 24! cycle");
+function normalizedRank(rank,n=OPERATORS){
+ const count=factorial(n);
+ let a=typeof rank==="bigint"?rank:BigInt(rank);
+ return (a%count+count)%count;
+}
+function sjtUnrank(n,rank){
+ if(!Number.isInteger(n)||n<1||n>OPERATORS)throw Error("operator count 1..24 required");
+ let r=normalizedRank(rank,n);
+ if(n===1)return [1];
+ const quotient=r/BigInt(n);
+ const digit=Number(r%BigInt(n));
+ const perm=sjtUnrank(n-1,quotient);
+ const slot=quotient%2n===0n?n-1-digit:digit;
+ perm.splice(slot,0,n);
+ return perm;
+}
+function sjtRank(perm){
+ if(!Array.isArray(perm)||perm.length<1||perm.length>OPERATORS)
+  throw Error("Expected a permutation of length 1..24");
+ const n=perm.length;
+ if(new Set(perm).size!==n||!perm.every(v=>Number.isInteger(v)&&v>=1&&v<=n))
+  throw Error("Not a permutation of 1.."+n);
+ if(n===1)return 0n;
+ const slot=perm.indexOf(n);
+ const ancestor=sjtRank(perm.filter(v=>v!==n));
+ const digit=ancestor%2n===0n?n-1-slot:slot;
+ return ancestor*BigInt(n)+BigInt(digit);
+}
+function grayNumber(rank){
+ const phase=Number(normalizedRank(rank)%GRAY_PERIOD);
+ return phase^(phase>>1);
+}
+function grayBits(rank){return grayNumber(rank).toString(2).padStart(3,"0");}
+function stationIndex(rank){
+ return Number(normalizedRank(rank)%BigInt(STATIONS));
+}
+function stationLabel(rank){return String(stationIndex(rank)).padStart(3,"0");}
+function adjacentSwap(a,b){
+ if(a.length!==b.length)throw Error("Permutations have different lengths");
+ const diffs=[];
+ for(let i=0;i<a.length;i++)if(a[i]!==b[i])diffs.push(i);
+ if(diffs.length!==2||diffs[1]!==diffs[0]+1||a[diffs[0]]!==b[diffs[1]]||a[diffs[1]]!==b[diffs[0]])
+  return null;
+ return {leftIndex:diffs[0],rightIndex:diffs[1],
+         leftSymbolBefore:a[diffs[0]],rightSymbolBefore:a[diffs[1]]};
+}
+function state(rank){
+ const r=normalizedRank(rank);
+ return {rank:r,gray:grayBits(r),grayNumber:grayNumber(r),
+         station:stationIndex(r),stationLabel:stationLabel(r),
+         permutation:sjtUnrank(OPERATORS,r),
+         visitWithinStation:r/BigInt(STATIONS),
+         nextRank:(r+1n)%SIZE};
+}
+function transition(rank,offset=1n){
+ const a=state(rank),b=state(a.rank+BigInt(offset));
+ const oneStep=offset===1n||offset===-1n;
+ const swap=oneStep?adjacentSwap(a.permutation,b.permutation):null;
+ const changedBits=(a.grayNumber^b.grayNumber).toString(2).split("1").length-1;
+ return {before:a,after:b,adjacent:swap,
+         grayHammingDistance:changedBits,
+         isSingleStepValid:oneStep&&!!swap&&changedBits===1};
+}
+function selfTest(){
+ const checks={};
+ for(let n=2;n<=8;n++){
+  const count=Number(factorial(n));
+  const seen=new Set();
+  let old=sjtUnrank(n,0n);
+  for(let i=0;i<count;i++){
+   const p=sjtUnrank(n,BigInt(i));
+   const key=p.join(",");
+   if(seen.has(key))throw Error("Repeated rank n="+n+" i="+i);
+   seen.add(key);
+   if(sjtRank(p)!==BigInt(i))throw Error("rank/unrank n="+n+" i="+i);
+   if(i>0&&!adjacentSwap(old,p))throw Error("nonadjacent step n="+n+" i="+i);
+   old=p;
+  }
+  if(!adjacentSwap(old,sjtUnrank(n,0n)))throw Error("seam n="+n);
+  if(seen.size!==count)throw Error("exhaustiveness n="+n);
+ }
+ checks.smallNExhaustive="PASS n=2..8, including wrap";
+ let cur=17n;
+ const sample=[0n,1n,2n,8n,728n,729n,SIZE-1n,SIZE-2n,SIZE/2n,VISITS_PER_STATION];
+ for(let i=0;i<600;i++){
+  cur=(cur*6364136223846793005n+1442695040888963407n)%SIZE;
+  sample.push(cur);
+ }
+ for(const r of sample){
+  const p=sjtUnrank(OPERATORS,r);
+  if(sjtRank(p)!==r)throw Error("24! rank/unrank roundtrip at "+r);
+  const t=transition(r,1n);
+  if(!t.isSingleStepValid)throw Error("24! adjacency / Gray at "+r);
+  if(stationIndex(r)!==Number(r%729n))throw Error("station modulo");
+ }
+ checks.sampled24FactorialRanks="PASS "+sample.length+" exact BigInt ranks";
+ if(SIZE!==620448401733239439360000n)throw Error("24! constant wrong");
+ if(VISITS_PER_STATION!==851095201280163840000n)throw Error("visits/station wrong");
+ if(state(0n).gray!=="000"||state(1n).gray!=="001")throw Error("opening 000 -> 001");
+ if(state(SIZE-1n).gray!=="100")throw Error("closing Gray label wrong");
+ if(stationIndex(0n)!==0||stationIndex(1n)!==1||stationIndex(SIZE-1n)!==728)
+  throw Error("station boundary");
+ const seam=transition(SIZE-1n,1n);
+ if(!seam.isSingleStepValid||seam.adjacent.leftIndex!==0)throw Error("toroidal seam");
+ checks.firstStep="000 -> 001; adjacent symbols 23 and 24";
+ checks.seam="rank N-1 -> 0; Gray 100 -> 000; adjacent symbols 2 and 1";
+ checks.fair729Visits="24!/729 exact = "+VISITS_PER_STATION;
+ checks.grayPeriod="8, Gray one-bit for every step including cycle seam";
+ checks.astronomicalClaim="NO: symbolic address projection only";
+ return checks;
+}
+const api=Object.freeze({OPERATORS,STATIONS,SIZE,VISITS_PER_STATION,
+ factorial,normalizedRank,sjtUnrank,sjtRank,grayBits,grayNumber,
+ stationIndex,stationLabel,adjacentSwap,state,transition,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound08Toroid=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script>
+<script>
+(function(){"use strict";
+const B=globalThis.Bound17DTR,T=globalThis.Bound08Toroid,$=id=>document.getElementById(id);
+let rank=0n;const f=v=>v===null||v===undefined?"—":Number(v).toExponential(5);
+function args(){
+ const q=Number($("charge").value),mode=$("streams").value,
+   din=mode==="both"||mode==="incoming"?10**Number($("incoming").value):0,
+   dout=mode==="both"||mode==="outgoing"?10**Number($("outgoing").value):0,
+   delta=10**Number($("crossing").value);
+ return {q,din,dout,delta};
+}
+function canvas(){const el=$("chart"),rect=el.getBoundingClientRect(),ratio=Math.min(2,globalThis.devicePixelRatio||1),w=rect.width,h=rect.height;
+ el.width=Math.round(w*ratio);el.height=Math.round(h*ratio);const c=el.getContext("2d");c.setTransform(ratio,0,0,ratio,0,0);return {c,w,h};}
+function plot(p){
+ const {c,w,h}=canvas(),L=57,R=w-16,U=19,D=h-44,xl=-10,xr=-1;
+ c.clearRect(0,0,w,h);c.font="11px system-ui";c.strokeStyle="#2c4860";c.fillStyle="#abc6d6";
+ let lo=0,hi=0,vals=[];
+ for(let i=0;i<=240;i++){let ld=-10+i*9/240,v=B.sample({...p,delta:10**ld}),ym=Math.log10(v.after_m);vals.push([ld,ym]);hi=Math.max(hi,ym)}
+ hi=Math.max(.3,Math.ceil(hi*1.15*10)/10);
+ const X=ld=>L+(ld-xl)/(xr-xl)*(R-L),Y=z=>D-z/hi*(D-U);
+ for(let i=0;i<=4;i++){let x=L+i*(R-L)/4;c.beginPath();c.moveTo(x,U);c.lineTo(x,D);c.stroke();c.fillText((-10+i*9/4).toFixed(1),x-15,h-23);
+ let yy=D-i*(D-U)/4;c.beginPath();c.moveTo(L,yy);c.lineTo(R,yy);c.stroke();c.fillText((i*hi/4).toFixed(1),5,yy+3)}
+ c.lineWidth=2.5;c.strokeStyle="#6ce2d5";c.beginPath();
+ vals.forEach((v,i)=>i?c.lineTo(X(v[0]),Y(v[1])):c.moveTo(X(v[0]),Y(v[1])));c.stroke();
+ c.strokeStyle="#baa0f5";c.setLineDash([4,4]);const yy=Y(Math.log10(1+p.din+p.dout));c.beginPath();c.moveTo(L,yy);c.lineTo(R,yy);c.stroke();c.setLineDash([]);
+ const x=X(Math.log10(p.delta)),y=Y(Math.log10(B.sample(p).after_m));c.fillStyle="#ffcf87";c.beginPath();c.arc(x,y,5,0,Math.PI*2);c.fill();
+ c.fillStyle="#bbd0df";c.fillText("log10(delta): inner horizon (left)",L,h-5);c.fillText("log10 M_after",3,12);
+}
+function render(){
+ const a=args(),p=B.sample(a);
+ $("incomingText").textContent=$("incoming").value;$("outgoingText").textContent=$("outgoing").value;
+ $("deltaText").textContent=Number($("crossing").value).toFixed(3);
+ $("rNow").textContent=f(p.r);$("inner").textContent=f(p.inner);$("fzero").textContent=f(p.f0);
+ $("fin").textContent=f(p.fi);$("fout").textContent=f(p.fo);$("ffinal").textContent=f(p.ff);
+ $("mfinal").textContent=f(p.after_m);$("cross").textContent=f(p.nonlinear_cross_mass);
+ $("relative").textContent=p.crossing_to_sum_of_shells===null?"zero input shells":(100*p.crossing_to_sum_of_shells).toFixed(4)+"%";
+ $("residual").textContent=f(p.DTR_normalized_residual);
+ const good=p.perturbative_shell_relative_to_f0;
+ $("status").textContent=good?"PASS DTR · SHELLS SMALL VS |f₀|":"PASS DTR · SMALL-SHELL APPROXIMATION UNSUPPORTED";
+ $("status").className="pill"+(good?"":" warn");
+ $("statusExplain").textContent="The DTR equation remains satisfied. Reference-shell jump / |f₀| = "+f(p.near_horizon_small_shell_ratio)+". "+(good?
+ "Small shell jumps compared to reference lapse for the chosen radius. This does NOT establish a full causal history.":
+ "Large relative shell jumps; do not apply an independent small-perturbation argument to the background geometry.");
+ const cin=B.sample({...a,dout:0}),cout=B.sample({...a,din:0}),none=B.sample({...a,din:0,dout:0});
+ $("controls").textContent="Two streams: M_final = "+f(p.after_m)+"\nIncoming only: "+f(cin.after_m)+"\nOutgoing only: "+f(cout.after_m)+"\nNeither: "+f(none.after_m)+"\nDTR residual = "+f(p.DTR_normalized_residual)+"\nCross term is zero for each one-stream control.";
+ plot(a);
+}
+function showRank(){const s=T.state(rank);$("rankInput").value=rank.toString();$("bits").replaceChildren();for(const k of s.gray){const e=document.createElement("div");e.className="bit"+(k==="1"?" on":"");e.textContent=k;$("bits").appendChild(e)}
+ $("rank").textContent="rank "+rank.toLocaleString("en-US")+"\nGray "+s.gray+" | logical station "+s.stationLabel+"\n"+s.permutation.map(k=>String(k).padStart(2,"0")).join(" ");}
+function moveRank(v){rank=T.normalizedRank(v);showRank();$("rankNotice").textContent="Rank changed; physical crossing, shell masses and radius were not changed."}
+for(const id of ["charge","streams","incoming","outgoing","crossing"])$(id).addEventListener(id==="charge"||id==="streams"?"change":"input",render);
+$("far").addEventListener("click",()=>{$("crossing").value="-1";render()});
+$("near").addEventListener("click",()=>{$("crossing").value="-10";render()});
+$("resetShell").addEventListener("click",()=>{$("charge").value=".8";$("streams").value="both";$("incoming").value="-4";$("outgoing").value="-4";$("crossing").value="-3";render()});
+$("next").addEventListener("click",()=>moveRank(rank+1n));
+$("back").addEventListener("click",()=>moveRank(rank-1n));
+$("last").addEventListener("click",()=>moveRank(T.SIZE-1n));
+$("resetRank").addEventListener("click",()=>moveRank(0n));
+function jump(){let s=$("rankInput").value.trim();if(!/^\d+$/.test(s)){$("rankNotice").textContent="Invalid rank; use digits";return}const n=BigInt(s);if(n>=T.SIZE){$("rankNotice").textContent="Rank outside 24! cycle";return}moveRank(n)}
+$("jump").addEventListener("click",jump);$("rankInput").addEventListener("keydown",e=>{if(e.key==="Enter")jump()});
+globalThis.addEventListener("resize",render);
+try{let a=B.selfTest(),t=T.selfTest();$("rankNotice").textContent="PASS: 4 × 729 DTR checks, stream exchange/zero controls, 24! ring.";
+ $("rankNotice").title=JSON.stringify({a,t});}catch(err){$("rankNotice").textContent="SELF TEST ERROR "+String(err)}
+showRank();render();
+})();
+</script></body></html>
