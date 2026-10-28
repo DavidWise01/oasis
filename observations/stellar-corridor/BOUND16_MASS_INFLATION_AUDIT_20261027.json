@@ -1,0 +1,221 @@
+{
+  "id": "ITD_BOUND16_KERR_CAUSAL_PERTURBATION_BLUESHIFT_DIAGNOSTIC_20261027",
+  "date": "2026-10-27",
+  "state": "APPEND_ONLY_KERR_INNER_SURFACE_GRAVITY_POWERLAW_TAIL_TOY_LOG_DOMAIN_VERIFIED",
+  "scientific_scope": "Stationary exact Kerr inner-horizon surface-gravity magnitude and explicit late advanced-time sensitivity proxy. NOT a self-consistent perturbed Einstein metric or physical mass-inflation simulation.",
+  "sources": [
+    {
+      "title": "Poisson and Israel, Internal structure of black holes, Phys Rev D 41,1796 (1990)",
+      "url": "https://doi.org/10.1103/PhysRevD.41.1796",
+      "role": "Radiative-tail blueshift and internal mass-inflation mechanism"
+    },
+    {
+      "title": "Carballo-Rubio, Di Filippo, Liberati, Visser, Mass Inflation without Cauchy Horizons, PRL 133,181402 (2024)",
+      "url": "https://doi.org/10.1103/PhysRevLett.133.181402",
+      "role": "Time-dependent inner trapping horizons; instability need not require exact Cauchy surface"
+    },
+    {
+      "title": "Pradhan, Black hole interior mass formula, Eur Phys J C 74,2887 (2014)",
+      "url": "https://doi.org/10.1140/epjc/s10052-014-2887-2",
+      "role": "Kerr-Newman horizon surface gravity κ± = (r±−r∓)/(2(r±²+a²)) in geometric units"
+    },
+    {
+      "title": "GRAVITY 2022 adopted Sgr A* mass",
+      "url": "https://doi.org/10.1051/0004-6361/202142465",
+      "role": "Mass scale; not spin or any observed inner field"
+    }
+  ],
+  "prior_bound": "BOUND15_NATURAL_BOUND_2026-10-27.md",
+  "model": {
+    "mass_solar": 4297000,
+    "radial_length_rg_m": 6345057788.501387,
+    "gravitational_time_tg_s": 21.164834602014526,
+    "spin_scenarios": [
+      0,
+      0.5,
+      0.9,
+      0.99
+    ],
+    "spin_observed": false,
+    "spin_zero_case": "χ=0 has no distinct inner Cauchy horizon, no κ− or blue-shift proxy assigned",
+    "kerr_horizon_y": "y±=1±sqrt(1−χ²), with r=yrg; 0<χ<1",
+    "inner_surface_gravity_inverse_length": "κ_abs=(r+−r−)/(2(r−²+a²))",
+    "inner_surface_gravity_inverse_seconds": "γ− = c κ_abs",
+    "dimensionless_beta": "β=rg κ_abs=sqrt(1−χ²)/[2(1−sqrt(1−χ²))]",
+    "late_advanced_coordinate": "advanced coordinate v has LENGTH; Δv/c has seconds, x=Δv/rg is dimensionless",
+    "late_time_reference": "v0/rg=x0>0, arbitrary reference, not bound15 observer initial event",
+    "declared_toy_tail": "S(x)=ε(1+x/x0)^(−p) exp(β x), dimensionless sensitivity proxy only",
+    "logarithmic_evaluation": "log10S=log10ε+(βx−p ln(1+x/x0))/ln10",
+    "derivative": "d ln S/dx=β−p/(x0+x)",
+    "chosen_threshold": "log10S=0 (S=1) entirely arbitrary computational crossing, not physical mass inflation onset",
+    "default_inputs": {
+      "epsilon": 1e-9,
+      "p": 7,
+      "x0": 100,
+      "xMax": 1000,
+      "thresholdLog10": 0
+    },
+    "backreaction_or_metric_evolution": "NOT SOLVED",
+    "measured_incoming_tail": "NONE",
+    "observed_perturbation_origin": "NONE",
+    "material_fracture": "NOT PREDICTED",
+    "observed_or_model_inferred_center": "NONE",
+    "causal_note": "Large v corresponds to late ingoing signals in a stationary horizon construction, not the brief proper time for one E=1 infaller crossing from outer horizon to model guard."
+  },
+  "numerical": {
+    "core_source_sha": "97d6155818afce76dcacac8c2445dfffb4a9b762",
+    "self_test": {
+      "passed": true,
+      "test_spins": [
+        0,
+        0.5,
+        0.9,
+        0.99
+      ],
+      "kg_seconds": 21.164834602014526,
+      "spin_zero_has_no_inner_horizon": true,
+      "inner_surface_gravity_formula": "PASS",
+      "time_units": "PASS",
+      "local_derivative": "PASS",
+      "turning_point": "PASS",
+      "threshold_bracketing": "PASS",
+      "log_overflow_protection": "PASS",
+      "large_growth_is_not_a_solved_perturbed_metric": true,
+      "default_crossings": [
+        {
+          "chi": 0,
+          "kappa": null,
+          "efold_s": null,
+          "threshold": {
+            "status": "NO_INNER_HORIZON",
+            "x": null,
+            "timeS": null
+          }
+        },
+        {
+          "chi": 0.5,
+          "kappa": 0.15270853131359885,
+          "efold_s": 6.5484226152789216,
+          "threshold": {
+            "status": "CROSSED_ASSUMED_TOY_THRESHOLD",
+            "x": 6.549192211302268,
+            "timeS": 138.61256992901426,
+            "diagnostic_only": true,
+            "not_a_mass_inflation_onset_time": true
+          }
+        },
+        {
+          "chi": 0.9,
+          "kappa": 0.018254420311016227,
+          "efold_s": 54.7812520453754,
+          "threshold": {
+            "status": "CROSSED_ASSUMED_TOY_THRESHOLD",
+            "x": 62.426686067699194,
+            "timeS": 1321.250485374738,
+            "diagnostic_only": true,
+            "not_a_mass_inflation_onset_time": true
+          }
+        },
+        {
+          "chi": 0.99,
+          "kappa": 0.003879918088290332,
+          "efold_s": 257.73739992553436,
+          "threshold": {
+            "status": "CROSSED_ASSUMED_TOY_THRESHOLD",
+            "x": 387.373806859902,
+            "timeS": 8198.702551342545,
+            "diagnostic_only": true,
+            "not_a_mass_inflation_onset_time": true
+          }
+        }
+      ]
+    },
+    "default_toy_crossings": [
+      {
+        "chi": 0,
+        "kappa": null,
+        "efold_s": null,
+        "threshold": {
+          "status": "NO_INNER_HORIZON",
+          "x": null,
+          "timeS": null
+        }
+      },
+      {
+        "chi": 0.5,
+        "kappa": 0.15270853131359885,
+        "efold_s": 6.5484226152789216,
+        "threshold": {
+          "status": "CROSSED_ASSUMED_TOY_THRESHOLD",
+          "x": 6.549192211302268,
+          "timeS": 138.61256992901426,
+          "diagnostic_only": true,
+          "not_a_mass_inflation_onset_time": true
+        }
+      },
+      {
+        "chi": 0.9,
+        "kappa": 0.018254420311016227,
+        "efold_s": 54.7812520453754,
+        "threshold": {
+          "status": "CROSSED_ASSUMED_TOY_THRESHOLD",
+          "x": 62.426686067699194,
+          "timeS": 1321.250485374738,
+          "diagnostic_only": true,
+          "not_a_mass_inflation_onset_time": true
+        }
+      },
+      {
+        "chi": 0.99,
+        "kappa": 0.003879918088290332,
+        "efold_s": 257.73739992553436,
+        "threshold": {
+          "status": "CROSSED_ASSUMED_TOY_THRESHOLD",
+          "x": 387.373806859902,
+          "timeS": 8198.702551342545,
+          "diagnostic_only": true,
+          "not_a_mass_inflation_onset_time": true
+        }
+      }
+    ],
+    "series_729_per_spin": 4,
+    "total_rows": 2916,
+    "chi_0_series_all_proxy_values_null": true,
+    "default_advanced_axis_max_x": 1000,
+    "full_log_domain_no_exponential_overflow": true
+  },
+  "validation": {
+    "analytic_kappa_minus_formula_and_horizon_identity": "PASS",
+    "geometric_to_per_second_conversion": "PASS",
+    "finite_difference_log_proxy_derivative": "PASS",
+    "toy_minimum_location_and_upcrossing_threshold": "PASS",
+    "epsilon_positive_and_nonzero_guard": "PASS",
+    "chi0_missing_horizon_guard": "PASS",
+    "large_x_log_domain_no_overflow": "PASS",
+    "interactive_five_embedded_js_compiled": "PASS",
+    "mock_browser": "PASS: χ=0, .5, .9, epsilon/p/v0 sliders, toy crossing, first and last 24! Gray states",
+    "live_github_pages_verified": false,
+    "real_browser_render_verified": false,
+    "backreacted_einstein_equations_verified": false
+  },
+  "limits": [
+    "Neither an exponential sensitivity proxy nor its unity threshold is a physical mass-inflation measurement or a coordinate-independent local energy density.",
+    "Stationary Kerr κ− is a geometrically defined quantity with asymptotically normalized horizon Killing vector. A time-dependent perturbed interior does not retain exact stationary Kerr symmetry.",
+    "No outgoing flux, crossflow equation, stress-energy tensor, blueshift-local energy or Einstein backreaction are solved.",
+    "Power-law tail exponent is input. Different perturbation types and modes lead to different late-time decay laws; p=7 is not universal.",
+    "The late advanced-coordinate displacement cannot be identified with the observer's own short proper-time journey from Bound15.",
+    "Near-extremal χ→1, inner and outer horizons coalesce and limits can be nonuniform; χ=1 not sampled.",
+    "The χ→0 inner-surface-gravity formal limit is not a physical Schwarzschild inner horizon.",
+    "No statement is made about survival, an invariant zero core, quantum gravity, or a stable Cauchy horizon.",
+    "The 24! ring and 729 index are symbolic addresses and arbitrary sampling grids, not physical trajectories or time direction."
+  ],
+  "artifacts": [
+    "bound16_mass_inflation_diagnostic_core.js",
+    "bound16-mass-inflation-sensitivity.html",
+    "BOUND16_729_ADVANCED_TIME_PERTURBATION_SPIN_SWEEP_20261027.csv",
+    "BOUND16_INNER_SURFACE_GRAVITY_TOY_THRESHOLD_20261027.csv",
+    "BOUND16_MASS_INFLATION_AUDIT_20261027.json",
+    "BOUND16_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next_bound": "Bound17: solve a controlled, explicitly labeled double-null two-stream Einstein-matter toy system, with incoming and outgoing fluxes and self-consistent mass parameter evolution; use numerical conservation and convergence tests. Do not identify scalar logarithmic S with mass or stress-energy without an actual coupled model."
+}
