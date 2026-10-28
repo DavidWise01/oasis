@@ -1,0 +1,484 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OASIS Bound 09 — The Galactic Train</title><style>
+:root{color-scheme:dark;--bg:#060d17;--panel:#0e1d2c;--panel2:#172b40;--line:#304b60;--ink:#e5f2fc;--sub:#9ab0c4;--cyan:#61e5db;--amber:#ffc479;--violet:#c097eb;--blue:#83aeff;--rose:#f182aa;--green:#7ae8a4}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font:14px/1.5 system-ui,Segoe UI,Arial;background:radial-gradient(circle at 70% -20%,#1b3b4d,transparent 48%),radial-gradient(circle at -10% 60%,#152640,transparent 50%),var(--bg)}main{max-width:1270px;padding:25px 18px 80px;margin:auto}
+h1{font-size:clamp(30px,4.6vw,48px);letter-spacing:-.045em;line-height:1.07;margin:8px 0 12px}h2{font-size:18px;margin:0 0 10px}p{margin:7px 0 12px;color:var(--sub)}a{color:#81e9e5}.eyebrow{color:var(--cyan);letter-spacing:.16em;font-size:12px;font-weight:800;text-transform:uppercase}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.summary .m{background:#152a3b;border-radius:11px;border:1px solid var(--line);padding:13px}.m strong{display:block;font-size:clamp(16px,1.9vw,24px)}.m span{display:block;color:var(--sub);font-size:12px;margin-top:4px}
+.panel{background:#0c1b2bdc;border:1px solid #2f4a61;border-radius:14px;padding:16px;margin:16px 0}.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.control{min-width:0}.control label{display:block;color:var(--sub);font-size:12px;margin-bottom:7px}.control strong{color:var(--ink)}.control input[type=range]{width:100%;accent-color:var(--cyan)}.control select,.control input[type=text]{background:#162c43;color:var(--ink);border:1px solid #4b6e84;border-radius:8px;padding:8px;font:inherit;width:100%}
+.visuals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.visuals .panel{margin:0}.visuals canvas{display:block;width:100%;height:345px;background:#0a1626;border-radius:10px;border:1px solid #2c435e}.caption{font-size:12px;color:var(--sub)}
+.legend{display:flex;align-items:center;gap:15px;flex-wrap:wrap;color:var(--sub);font-size:12px}.sw{display:inline-block;width:11px;height:11px;border-radius:100%;margin-right:5px}
+.result{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}.score{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.score div{background:#152a3d;border:1px solid #2e4b61;border-radius:9px;padding:10px}.score strong{display:block;font-size:18px}.score span{color:var(--sub);font-size:11px}.gray{display:flex;gap:6px;margin:10px 0}.bit{border:1px solid #456879;border-radius:10px;padding:8px 14px;min-width:50px;text-align:center;background:#15283b;font-size:21px;font-weight:800}.bit.active{color:#0c2a2e;background:#82f0dd;border-color:#a2fff0}
+.code{font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;color:#9ce7e4;background:#081728;border:1px solid #29465d;border-radius:8px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:90px}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}button{font:inherit;color:var(--ink);border-radius:8px;padding:8px 12px;background:#214258;border:1px solid #4a708a;cursor:pointer}button.primary{background:#14696d;border-color:#3ed1bd}button:focus-visible{outline:2px solid var(--cyan)}.rankInput{display:flex;gap:8px}.rankInput input{flex:1;min-width:100px;background:#14293f;color:var(--ink);border:1px solid #4c7187;border-radius:8px;font:inherit;padding:9px}.warn{background:#47351f5e;border-left:3px solid var(--amber);padding:12px;color:#eadcc8;border-radius:0 8px 8px 0}.inv{color:#a8efc9}.tag{display:inline-block;padding:4px 10px;border-radius:999px;background:#173a3c;color:#9af1da;border:1px solid #336c67;font-size:12px}.paths{display:flex;gap:14px;flex-wrap:wrap}footer{font-size:12px;color:var(--sub);margin-top:18px}@media(max-width:860px){.visuals{grid-template-columns:1fr}.result{grid-template-columns:1fr}}@media(max-width:640px){.summary{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr}.visuals canvas{height:290px}.rankInput{flex-wrap:wrap}}
+</style></head><body><main>
+<div class="eyebrow">OASIS · NATURAL BOUND 09 · GALACTIC COMMON-MOTION FRAME</div><h1>THE MOVING GALACTIC TRAIN</h1>
+<p>Bind Sgr A*, the Sun, Earth and all <strong>729 numerical corridor stations</strong> to one shared outward translation. Then distinguish common motion from the Sun's actual relative Galactic orbit. The symbolic 24! traversal remains a separate observation-address register.</p>
+<div class="summary">
+<div class="m"><strong>729</strong><span>Unchanged numerical Galactic stations</span></div>
+<div class="m"><strong>24!</strong><span>Exact toroidal permutation address space</span></div>
+<div class="m"><strong>8.277 kpc</strong><span>Modeled Sun–Sgr A* separation</span></div>
+<div class="m"><strong>233 km/s</strong><span>Adopted Sun circular speed relative to Galactic Center</span></div>
+</div>
+<section class="panel"><h2>One outward motion, different relative motion</h2><div class="controls">
+<div class="control"><label>Shared train speed <strong id="bulkLabel">320 km/s</strong> · illustrative only</label><input type="range" id="bulk" min="0" max="600" step="10" value="320"></div>
+<div class="control"><label>Time from reference epoch <strong id="timeLabel">10 Myr</strong></label><input type="range" id="time" min="0" max="80" step=".5" value="10"></div>
+<div class="control"><label>Forward heading <strong id="headingLabel">0°</strong></label><input type="range" id="heading" min="0" max="360" step="15" value="0"></div>
+<div class="control"><label>Internal motion model</label><select id="mode"><option value="rigid">All aboard — fixed relative station line</option><option value="orbit" selected>Sun circles Galactic Center — station ray rotates</option></select></div>
+<div class="control"><label>Observation station <strong id="stationLabel">728 / SUN</strong></label><input type="range" id="station" min="0" max="728" step="1" value="728"></div>
+<div class="control"><label>Frame witness</label><select id="frame"><option value="world">Fixed external coordinate axes</option><option value="boosted">Compare with boost removed</option></select></div>
+</div></section>
+<div class="visuals">
+<section class="panel"><h2>External view · the whole train advances</h2><canvas id="world" role="img" aria-label="World reference frame showing moving center, Sun and 729 sample markers"></canvas>
+<p class="caption">World axes are held fixed. The dotted line traces common-frame translation from a chosen origin; the forward direction is user-defined, not an absolute Galactic heading.</p>
+</section>
+<section class="panel"><h2>Galactocentric view · remove common translation</h2><canvas id="relative" role="img" aria-label="Galactocentric frame showing unchanged center-to-Sun separation and rotating sampling spoke"></canvas>
+<p class="caption">Subtract the shared train displacement. The center remains at (0,0), and no gravitational acceleration changes because of the uniform boost.</p>
+</section></div>
+<div class="legend" style="margin:12px 0"><span><i class="sw" style="background:#ffc479"></i>Sgr A*</span><span><i class="sw" style="background:#7dbeff"></i>Sun / Earth (Earth's 1 AU orbit too small to resolve)</span><span><i class="sw" style="background:#61e5db"></i>Selected station</span><span><i class="sw" style="background:#9a8ff0"></i>Shared forward vector</span></div>
+<div class="result">
+<section class="panel"><h2>Actual separation and velocity bookkeeping</h2><div class="score">
+<div><span>Train displacement from reference</span><strong id="displacement"></strong></div>
+<div><span>Sun distance from Sgr A*</span><strong id="separation"></strong></div>
+<div><span>Sun forward/back projection</span><strong id="lag"></strong></div>
+<div><span>Sun circular orbit period (idealized)</span><strong id="period"></strong></div>
+<div><span>Common velocity vector (km/s)</span><strong id="velCommon"></strong></div>
+<div><span>Sun relative orbital velocity (km/s)</span><strong id="velRelative"></strong></div>
+</div>
+<div class="warn" style="margin-top:12px"><strong>Behind ≠ slower gravity.</strong> In fixed-relative-position mode the Sun is always 8.277 kpc behind Sgr A* along the chosen axis. With orbital motion, its projection can be behind, alongside or ahead. Neither situation changes the gravity merely because a reference frame is moving.</div>
+</section>
+<section class="panel"><h2>24! observation-address binding</h2><span class="tag" id="status">Self-tests pending</span>
+<div class="gray" id="bits"></div>
+<div class="code" id="state"></div>
+<div class="actions"><button class="primary" id="step">Rank +1</button><button id="back">−1</button><button id="last">Last / seam</button><button id="reset">Reset 000</button></div>
+<div class="rankInput"><input id="rank" type="text" inputmode="numeric" value="0" aria-label="Exact factorial rank"/><button id="jump">Jump</button></div><p class="caption" id="rankError">Moving the station selector or advancing physical time does not advance 24! rank. The address and physical clock are independent.</p>
+<div class="score" style="margin-top:12px"><div><span>Selected station radius</span><strong id="rStation"></strong></div><div><span>Original radial field, unchanged</span><strong id="gStation"></strong></div></div>
+</section></div>
+<section class="panel"><h2>Bound 09 invariants</h2>
+<div class="code">xᵢ(t) = X_train(t) + rᵢ(t)
+vᵢ(t) = V_train + vᵢ,relative(t)
+xᵢ(t) − xⱼ(t) = rᵢ(t) − rⱼ(t)
+aᵢ,grav = Σⱼ Gmⱼ(rⱼ−rᵢ)/|rⱼ−rᵢ|³
+
+Rank k  →  Gray(k mod 8)  →  station(k mod 729)
+Physical time t is NOT factorial rank k.</div>
+<p>All station positions share the same common translation. The intermediate stations are reference samples of the center-to-Sun ray, not dynamically integrated stars. Their 729 frozen midplane field values are unchanged. The Sun's circular track is an approximation, and Earth's separate 1 AU orbit is negligible at kiloparsec resolution. The slider's 320 km/s reference speed is hypothetical; it is not claimed as a measured intrinsic Sgr A* or Milky Way bulk velocity.</p>
+<div class="paths"><a href="bound09_shared_motion_core.js">Common-frame engine</a><a href="BOUND09_729_COMMON_TRAIN_WITNESS_20261027.csv">729-station witness CSV</a><a href="BOUND09_MOTION_AUDIT_20261027.json">Scientific audit JSON</a><a href="BOUND09_NATURAL_BOUND_2026-10-27.md">Bound 09 evidence freeze</a><a href="bound08-24factorial-toroid.html">Prior 24! torus</a></div>
+</section>
+<footer>Observational calibration: GRAVITY Collaboration (2022), Sgr A* distance 8.277 kpc; Gaia DR3 rotation inference (Jiao et al. 2023), 233 ± 7 km/s near Sun; Reid & Brunthaler (2004), apparent Sgr A* proper motion mostly solar-reflex. The common bulk velocity axis here is a freely selected coordinate motion, not an astronomical measurement. This browser demo uses no external scripts or data requests.</footer>
+</main>
+<script>/* OASIS | Bound 09 | moving common Galactocentric reference frame
+   The shared boost is a chosen visualization frame, NOT an observed
+   absolute velocity of the Milky Way or Sgr A*.
+   The 729 points are coordinate sampling stations, not 729 actual orbiting stars.
+*/
+(function(root){
+"use strict";
+const R0_KPC=8.277;
+const STATIONS=729;
+const ORBIT_KM_S=233;
+const PC_PER_MYR_PER_KM_S=1.022712165045695;
+const KPC_PER_MYR_PER_KM_S=PC_PER_MYR_PER_KM_S/1000;
+const AU_TO_KPC=4.84813681109536e-9;
+const SOLAR_PERIOD_MYR=2*Math.PI*(R0_KPC*1000)/(ORBIT_KM_S*PC_PER_MYR_PER_KM_S);
+const C=Object.freeze({R0_KPC,STATIONS,ORBIT_KM_S,PC_PER_MYR_PER_KM_S,AU_TO_KPC,SOLAR_PERIOD_MYR});
+function finite(x,label){if(typeof x!=="number"||!Number.isFinite(x))throw Error("Invalid "+label);return x;}
+function axes(headingDeg){
+ finite(headingDeg,"headingDeg");const a=headingDeg*Math.PI/180;
+ return {forward:[Math.cos(a),Math.sin(a)],side:[-Math.sin(a),Math.cos(a)]};
+}
+const plus=(a,b)=>[a[0]+b[0],a[1]+b[1]];
+const minus=(a,b)=>[a[0]-b[0],a[1]-b[1]];
+const times=(k,a)=>[k*a[0],k*a[1]];
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1];
+const len=a=>Math.hypot(a[0],a[1]);
+function position({station=0,timeMyr=0,bulkKmS=0,headingDeg=0,mode="orbit"}={}){
+ if(!Number.isInteger(station)||station<0||station>=STATIONS)throw Error("station 0..728");
+ finite(timeMyr,"timeMyr");finite(bulkKmS,"bulkKmS");
+ const {forward,side}=axes(headingDeg);
+ if(mode!=="orbit"&&mode!=="rigid")throw Error("mode must be orbit or rigid");
+ // Every object/station gets exactly the same center-frame translation.
+ const carrierKm=bulkKmS*KPC_PER_MYR_PER_KM_S*timeMyr;
+ const center=times(carrierKm,forward);
+ // Orbit is one idealized circular Sun track, not a measured orbital solution.
+ // The other 728 markers are samples on the rotating Sun->center ray,
+ // NOT stars all with the same angular speed.
+ const phase=mode==="orbit"?(2*Math.PI*timeMyr/SOLAR_PERIOD_MYR):0;
+ const fraction=station/(STATIONS-1),radius=R0_KPC*fraction;
+ const trailingVector=plus(times(-radius*Math.cos(phase),forward),
+                           times(-radius*Math.sin(phase),side));
+ const point=plus(center,trailingVector);
+ const trailingDistance=-dot(trailingVector,forward); // + = behind train center
+ return {station,pcFromCenter:radius*1000,timeMyr,center,point,
+         trailingKpc:trailingDistance,phaseRad:phase,
+         bulkKmS,headingDeg,mode};
+}
+function sun({timeMyr=0,bulkKmS=0,headingDeg=0,mode="orbit"}={}){
+ return position({station:728,timeMyr,bulkKmS,headingDeg,mode});
+}
+function earth({timeMyr=0,bulkKmS=0,headingDeg=0,mode="orbit"}={}){
+ const s=sun({timeMyr,bulkKmS,headingDeg,mode}),{forward,side}=axes(headingDeg);
+ // Idealized 1-AU circular Earth orbit, only for local bookkeeping.
+ // We DO NOT resolve the annual phase when inspecting million-year epochs.
+ const annualPhase=2*Math.PI*((timeMyr*1e6)%1);
+ const rel=plus(times(AU_TO_KPC*Math.cos(annualPhase),forward),
+                times(AU_TO_KPC*Math.sin(annualPhase),side));
+ return {...s,point:plus(s.point,rel),orbitalOffsetKpc:rel,
+         modelStatus:"idealized Earth 1 AU position; annual phase not survey ephemeris"};
+}
+function velocity({station=728,timeMyr=0,bulkKmS=0,headingDeg=0,mode="orbit"}={}){
+ const p=position({station,timeMyr,bulkKmS,headingDeg,mode});
+ const {forward,side}=axes(headingDeg);
+ const common=times(bulkKmS,forward);
+ const fraction=station/(STATIONS-1);
+ const internal=mode==="orbit"?
+  plus(times(ORBIT_KM_S*fraction*Math.sin(p.phaseRad),forward),
+       times(-ORBIT_KM_S*fraction*Math.cos(p.phaseRad),side)):[0,0];
+ return {commonKmS:common,internalKmS:internal,totalKmS:plus(common,internal),
+         stationIsPhysicalStar:false};
+}
+function separation(a,b){return len(minus(a.point,b.point))}
+function relativeVelocity(a,b){return minus(a.totalKmS,b.totalKmS)}
+function stationForRank(rank){
+ const n=typeof rank==="bigint"?rank:BigInt(rank);
+ return Number(((n%729n)+729n)%729n);
+}
+function snapshot(timeMyr,bulkKmS,headingDeg,mode){
+ return {center:position({station:0,timeMyr,bulkKmS,headingDeg,mode}),
+         sun:sun({timeMyr,bulkKmS,headingDeg,mode}),
+         earth:earth({timeMyr,bulkKmS,headingDeg,mode})};
+}
+function close(a,b,rtol=1e-10){return Math.abs(a-b)<=rtol*Math.max(1,Math.abs(a),Math.abs(b))}
+function selfTest(){
+ const cases=[0,1,11,242,364,728];
+ const timesToCheck=[0,1,10,50,100,200];
+ const modes=["rigid","orbit"];
+ let checks=0;
+ for(const mode of modes)for(const t of timesToCheck)for(const index of cases){
+  const a=position({station:index,timeMyr:t,bulkKmS:0,headingDeg:34,mode});
+  const b=position({station:index,timeMyr:t,bulkKmS:320,headingDeg:34,mode});
+  const c=position({station:0,timeMyr:t,bulkKmS:0,headingDeg:34,mode});
+  const d=position({station:0,timeMyr:t,bulkKmS:320,headingDeg:34,mode});
+  if(!close(separation(a,c),separation(b,d)))throw Error("Boost changes distance");
+  if(!close(separation(a,c),R0_KPC*index/728))throw Error("Station radius altered");
+  const diff=minus(b.point,a.point),displaced=minus(d.point,c.point);
+  if(!close(diff[0],displaced[0])||!close(diff[1],displaced[1]))throw Error("Unequal boost");
+  const va=velocity({station:index,timeMyr:t,bulkKmS:0,headingDeg:34,mode});
+  const vb=velocity({station:index,timeMyr:t,bulkKmS:320,headingDeg:34,mode});
+  const vc=velocity({station:0,timeMyr:t,bulkKmS:0,headingDeg:34,mode});
+  const vd=velocity({station:0,timeMyr:t,bulkKmS:320,headingDeg:34,mode});
+  let rel0=relativeVelocity(va,vc),rel1=relativeVelocity(vb,vd);
+  if(!close(rel0[0],rel1[0])||!close(rel0[1],rel1[1]))throw Error("Boost changes relative speed");
+  checks++;
+ }
+ const p0=snapshot(0,320,0,"rigid");
+ const p10=snapshot(10,320,0,"rigid");
+ if(!close(p10.sun.trailingKpc,8.277))throw Error("Not fixed distance behind train");
+ if(!close(p10.center.point[0],320*KPC_PER_MYR_PER_KM_S*10))throw Error("Train shift wrong");
+ if(!close(separation(p10.sun,p10.center),8.277))throw Error("Rigidity broken");
+ if(!close(separation(p0.earth,p0.sun),AU_TO_KPC,1e-9))throw Error("Earth offset wrong");
+ const po=snapshot(SOLAR_PERIOD_MYR/4,320,0,"orbit");
+ if(Math.abs(po.sun.trailingKpc)>1e-9)throw Error("Orbital side phase fails");
+ const ph=snapshot(SOLAR_PERIOD_MYR/2,320,0,"orbit");
+ if(!close(ph.sun.trailingKpc,-8.277))throw Error("Orbital forward phase fails");
+ const front=sun({timeMyr:0,bulkKmS:320,headingDeg:0,mode:"orbit"});
+ if(!close(front.trailingKpc,8.277))throw Error("Behind convention wrong");
+ if(stationForRank(0n)!==0||stationForRank(1n)!==1||
+ stationForRank(620448401733239439359999n)!==728)throw Error("24! station mapping inconsistent");
+ return {pass:true,boostInvariantCases:checks,stationCount:STATIONS,
+  rigidBehind_kpc:p10.sun.trailingKpc,orbitQuarterBehind_kpc:po.sun.trailingKpc,
+  orbitHalfBehind_kpc:ph.sun.trailingKpc,
+  tenMyr_320km_s_translation_kpc:p10.center.point[0],
+  solarOrbitPeriodMyr:SOLAR_PERIOD_MYR,
+  "earth1AU_offset_test":"PASS",
+  "station_rank_000_001_last":"PASS",
+  "gravity_unmodified":"PASS: test compares coordinates only",
+  "intrinsic_sgra_bulkmotion_measured_here":false};
+}
+const api=Object.freeze({...C,axes,position,sun,earth,velocity,separation,
+ relativeVelocity,stationForRank,snapshot,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound09SharedMotion=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+
+</script><script>/* OASIS | Natural Bound 08 | 2026-10-27
+   Exact lazy cyclic Hamiltonian traversal on 24! permutations, with a
+   synchronized 3-bit Gray register and 729 logical station addresses.
+
+   No astronomical mass, acceleration, or energy is derived from permutations.
+   No attempt is made to materialize the 24! states.
+
+   Mathematical basis: Steinhaus-Johnson-Trotter "plain changes",
+   recursive insertion of the new largest symbol from alternate ends.
+   Every neighboring permutation differs by an adjacent swap, including seam.
+*/
+(function(root){
+"use strict";
+const OPERATORS=24;
+const STATIONS=729;
+const GRAY_PERIOD=8n;
+function factorial(n){
+ if(!Number.isInteger(n)||n<1||n>100)throw Error("factorial integer 1..100 required");
+ let a=1n;
+ for(let i=2n;i<=BigInt(n);i++)a*=i;
+ return a;
+}
+const SIZE=factorial(OPERATORS);
+const VISITS_PER_STATION=SIZE/BigInt(STATIONS);
+if(SIZE%BigInt(STATIONS)!==0n||SIZE%GRAY_PERIOD!==0n)
+ throw Error("The 729-station and 8-state Gray ring must divide the 24! cycle");
+function normalizedRank(rank,n=OPERATORS){
+ const count=factorial(n);
+ let a=typeof rank==="bigint"?rank:BigInt(rank);
+ return (a%count+count)%count;
+}
+function sjtUnrank(n,rank){
+ if(!Number.isInteger(n)||n<1||n>OPERATORS)throw Error("operator count 1..24 required");
+ let r=normalizedRank(rank,n);
+ if(n===1)return [1];
+ const quotient=r/BigInt(n);
+ const digit=Number(r%BigInt(n));
+ const perm=sjtUnrank(n-1,quotient);
+ const slot=quotient%2n===0n?n-1-digit:digit;
+ perm.splice(slot,0,n);
+ return perm;
+}
+function sjtRank(perm){
+ if(!Array.isArray(perm)||perm.length<1||perm.length>OPERATORS)
+  throw Error("Expected a permutation of length 1..24");
+ const n=perm.length;
+ if(new Set(perm).size!==n||!perm.every(v=>Number.isInteger(v)&&v>=1&&v<=n))
+  throw Error("Not a permutation of 1.."+n);
+ if(n===1)return 0n;
+ const slot=perm.indexOf(n);
+ const ancestor=sjtRank(perm.filter(v=>v!==n));
+ const digit=ancestor%2n===0n?n-1-slot:slot;
+ return ancestor*BigInt(n)+BigInt(digit);
+}
+function grayNumber(rank){
+ const phase=Number(normalizedRank(rank)%GRAY_PERIOD);
+ return phase^(phase>>1);
+}
+function grayBits(rank){return grayNumber(rank).toString(2).padStart(3,"0");}
+function stationIndex(rank){
+ return Number(normalizedRank(rank)%BigInt(STATIONS));
+}
+function stationLabel(rank){return String(stationIndex(rank)).padStart(3,"0");}
+function adjacentSwap(a,b){
+ if(a.length!==b.length)throw Error("Permutations have different lengths");
+ const diffs=[];
+ for(let i=0;i<a.length;i++)if(a[i]!==b[i])diffs.push(i);
+ if(diffs.length!==2||diffs[1]!==diffs[0]+1||a[diffs[0]]!==b[diffs[1]]||a[diffs[1]]!==b[diffs[0]])
+  return null;
+ return {leftIndex:diffs[0],rightIndex:diffs[1],
+         leftSymbolBefore:a[diffs[0]],rightSymbolBefore:a[diffs[1]]};
+}
+function state(rank){
+ const r=normalizedRank(rank);
+ return {rank:r,gray:grayBits(r),grayNumber:grayNumber(r),
+         station:stationIndex(r),stationLabel:stationLabel(r),
+         permutation:sjtUnrank(OPERATORS,r),
+         visitWithinStation:r/BigInt(STATIONS),
+         nextRank:(r+1n)%SIZE};
+}
+function transition(rank,offset=1n){
+ const a=state(rank),b=state(a.rank+BigInt(offset));
+ const oneStep=offset===1n||offset===-1n;
+ const swap=oneStep?adjacentSwap(a.permutation,b.permutation):null;
+ const changedBits=(a.grayNumber^b.grayNumber).toString(2).split("1").length-1;
+ return {before:a,after:b,adjacent:swap,
+         grayHammingDistance:changedBits,
+         isSingleStepValid:oneStep&&!!swap&&changedBits===1};
+}
+function selfTest(){
+ const checks={};
+ for(let n=2;n<=8;n++){
+  const count=Number(factorial(n));
+  const seen=new Set();
+  let old=sjtUnrank(n,0n);
+  for(let i=0;i<count;i++){
+   const p=sjtUnrank(n,BigInt(i));
+   const key=p.join(",");
+   if(seen.has(key))throw Error("Repeated rank n="+n+" i="+i);
+   seen.add(key);
+   if(sjtRank(p)!==BigInt(i))throw Error("rank/unrank n="+n+" i="+i);
+   if(i>0&&!adjacentSwap(old,p))throw Error("nonadjacent step n="+n+" i="+i);
+   old=p;
+  }
+  if(!adjacentSwap(old,sjtUnrank(n,0n)))throw Error("seam n="+n);
+  if(seen.size!==count)throw Error("exhaustiveness n="+n);
+ }
+ checks.smallNExhaustive="PASS n=2..8, including wrap";
+ let cur=17n;
+ const sample=[0n,1n,2n,8n,728n,729n,SIZE-1n,SIZE-2n,SIZE/2n,VISITS_PER_STATION];
+ for(let i=0;i<600;i++){
+  cur=(cur*6364136223846793005n+1442695040888963407n)%SIZE;
+  sample.push(cur);
+ }
+ for(const r of sample){
+  const p=sjtUnrank(OPERATORS,r);
+  if(sjtRank(p)!==r)throw Error("24! rank/unrank roundtrip at "+r);
+  const t=transition(r,1n);
+  if(!t.isSingleStepValid)throw Error("24! adjacency / Gray at "+r);
+  if(stationIndex(r)!==Number(r%729n))throw Error("station modulo");
+ }
+ checks.sampled24FactorialRanks="PASS "+sample.length+" exact BigInt ranks";
+ if(SIZE!==620448401733239439360000n)throw Error("24! constant wrong");
+ if(VISITS_PER_STATION!==851095201280163840000n)throw Error("visits/station wrong");
+ if(state(0n).gray!=="000"||state(1n).gray!=="001")throw Error("opening 000 -> 001");
+ if(state(SIZE-1n).gray!=="100")throw Error("closing Gray label wrong");
+ if(stationIndex(0n)!==0||stationIndex(1n)!==1||stationIndex(SIZE-1n)!==728)
+  throw Error("station boundary");
+ const seam=transition(SIZE-1n,1n);
+ if(!seam.isSingleStepValid||seam.adjacent.leftIndex!==0)throw Error("toroidal seam");
+ checks.firstStep="000 -> 001; adjacent symbols 23 and 24";
+ checks.seam="rank N-1 -> 0; Gray 100 -> 000; adjacent symbols 2 and 1";
+ checks.fair729Visits="24!/729 exact = "+VISITS_PER_STATION;
+ checks.grayPeriod="8, Gray one-bit for every step including cycle seam";
+ checks.astronomicalClaim="NO: symbolic address projection only";
+ return checks;
+}
+const api=Object.freeze({OPERATORS,STATIONS,SIZE,VISITS_PER_STATION,
+ factorial,normalizedRank,sjtUnrank,sjtRank,grayBits,grayNumber,
+ stationIndex,stationLabel,adjacentSwap,state,transition,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound08Toroid=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+
+</script><script>
+const FIELD=[[0,null],[11.36950549,1.831898197816e-8],[22.73901099,9.078932126221e-9],[34.10851648,6.282415843928e-9],[45.47802198,4.903437424559e-9],[56.84752747,4.071423791787e-9],[68.21703297,3.510344615633e-9],[79.58653846,3.104283464792e-9],[90.95604396,2.795703726705e-9],[102.32554945,2.552662287357e-9],[113.69505495,2.355936521693e-9],[125.06456044,2.193232073068e-9],[136.43406593,2.056301343047e-9],[147.80357143,1.939394680524e-9],[159.17307692,1.838375010898e-9],[170.54258242,1.750185627664e-9],[181.91208791,1.672516604881e-9],[193.28159341,1.603588171271e-9],[204.6510989,1.542005702349e-9],[216.0206044,1.486660064478e-9],[227.39010989,1.436657529875e-9],[238.75961538,1.39126947432e-9],[250.12912088,1.349895613632e-9],[261.49862637,1.312036695507e-9],[272.86813187,1.277273916178e-9],[284.23763736,1.245253199104e-9],[295.60714286,1.21567304169e-9],[306.97664835,1.188275016233e-9],[318.34615385,1.162836270027e-9],[329.71565934,1.13916354856e-9],[341.08516484,1.11708839135e-9],[352.45467033,1.09646323949e-9],[363.82417582,1.077158258437e-9],[375.19368132,1.059058726673e-9],[386.56318681,1.042062875584e-9],[397.93269231,1.026080091775e-9],[409.3021978,1.011029412533e-9],[420.6717033,9.968382598979e-10],[432.04120879,9.834413701765e-10],[443.41071429,9.707798844175e-10],[454.78021978,9.588005721973e-10],[466.14972527,9.474551663662e-10],[477.51923077,9.36699790606e-10],[488.88873626,9.264944649739e-10],[500.25824176,9.168026772597e-10],[511.62774725,9.075910101184e-10],[522.99725275,8.988288156537e-10],[534.36675824,8.904879305251e-10],[545.73626374,8.825424257867e-10],[557.10576923,8.749683865945e-10],[568.47527473,8.677437176861e-10],[579.84478022,8.608479711674e-10],[591.21428571,8.542621936648e-10],[602.58379121,8.479687903383e-10],[613.9532967,8.419514036161e-10],[625.3228022,8.361948048148e-10],[636.69230769,8.306847970705e-10],[648.06181319,8.254081282198e-10],[659.43131868,8.203524124555e-10],[670.80082418,8.155060597393e-10],[682.17032967,8.108582120853e-10],[693.53983516,8.063986859426e-10],[704.90934066,8.021179200039e-10],[716.27884615,7.980069278504e-10],[727.64835165,7.940572549153e-10],[739.01785714,7.902609393105e-10],[750.38736264,7.866104761176e-10],[761.75686813,7.830987847868e-10],[773.12637363,7.797191793324e-10],[784.49587912,7.764653410475e-10],[795.86538462,7.733312934909e-10],[807.23489011,7.703113795266e-10],[818.6043956,7.674002402233e-10],[829.9739011,7.645927954359e-10],[841.34340659,7.618842259165e-10],[852.71291209,7.592699568137e-10],[864.08241758,7.567456424353e-10],[875.45192308,7.543071521632e-10],[886.82142857,7.519505574174e-10],[898.19093407,7.496721195804e-10],[909.56043956,7.474682787983e-10],[920.92994505,7.453356435849e-10],[932.29945055,7.432709811618e-10],[943.66895604,7.412712084749e-10],[955.03846154,7.393333838293e-10],[966.40796703,7.374546990964e-10],[977.77747253,7.356324724448e-10],[989.14697802,7.338641415552e-10],[1000.51648352,7.321472572815e-10],[1011.88598901,7.304794777231e-10],[1023.25549451,7.288585626781e-10],[1034.625,7.27282368448e-10],[1045.99450549,7.257488429679e-10],[1057.36401099,7.242560212385e-10],[1068.73351648,7.228020210378e-10],[1080.10302198,7.213850388917e-10],[1091.47252747,7.200033462867e-10],[1102.84203297,7.186552861053e-10],[1114.21153846,7.173392692705e-10],[1125.58104396,7.160537715844e-10],[1136.95054945,7.147973307464e-10],[1148.32005495,7.135685435411e-10],[1159.68956044,7.123660631825e-10],[1171.05906593,7.11188596805e-10],[1182.42857143,7.100349030916e-10],[1193.79807692,7.089037900299e-10],[1205.16758242,7.077941127885e-10],[1216.53708791,7.067047717049e-10],[1227.90659341,7.056347103788e-10],[1239.2760989,7.04582913864e-10],[1250.6456044,7.035484069525e-10],[1262.01510989,7.025302525454e-10],[1273.38461538,7.015275501051e-10],[1284.75412088,7.00539434184e-10],[1296.12362637,6.995650730255e-10],[1307.49313187,6.986036672319e-10],[1318.86263736,6.976544484971e-10],[1330.23214286,6.96716678398e-10],[1341.60164835,6.957896472435e-10],[1352.97115385,6.948726729763e-10],[1364.34065934,6.939651001251e-10],[1375.71016484,6.930662988043e-10],[1387.07967033,6.921756637585e-10],[1398.44917582,6.912926134494e-10],[1409.81868132,6.90416589183e-10],[1421.18818681,6.89547054274e-10],[1432.55769231,6.886834932472e-10],[1443.9271978,6.878254110715e-10],[1455.2967033,6.869723324275e-10],[1466.66620879,6.861238010047e-10],[1478.03571429,6.852793788277e-10],[1489.40521978,6.844386456105e-10],[1500.77472527,6.836011981361e-10],[1512.14423077,6.827666496613e-10],[1523.51373626,6.819346293452e-10],[1534.88324176,6.811047816997e-10],[1546.25274725,6.802767660614e-10],[1557.62225275,6.794502560841e-10],[1568.99175824,6.786249392501e-10],[1580.36126374,6.778005164002e-10],[1591.73076923,6.769767012816e-10],[1603.10027473,6.761532201113e-10],[1614.46978022,6.753298111571e-10],[1625.83928571,6.745062243325e-10],[1637.20879121,6.736822208067e-10],[1648.5782967,6.728575726286e-10],[1659.9478022,6.720320623638e-10],[1671.31730769,6.712054827444e-10],[1682.68681319,6.703776363311e-10],[1694.05631868,6.695483351867e-10],[1705.42582418,6.687174005608e-10],[1716.79532967,6.678846625855e-10],[1728.16483516,6.670499599807e-10],[1739.53434066,6.662131397699e-10],[1750.90384615,6.653740570048e-10],[1762.27335165,6.645325744995e-10],[1773.64285714,6.636885625729e-10],[1785.01236264,6.628418987998e-10],[1796.38186813,6.619924677695e-10],[1807.75137363,6.61140160853e-10],[1819.12087912,6.602848759765e-10],[1830.49038462,6.594265174027e-10],[1841.85989011,6.585649955193e-10],[1853.2293956,6.577002266329e-10],[1864.5989011,6.568321327706e-10],[1875.96840659,6.559606414867e-10],[1887.33791209,6.550856856761e-10],[1898.70741758,6.542072033927e-10],[1910.07692308,6.53325137674e-10],[1921.44642857,6.524394363703e-10],[1932.81593407,6.515500519798e-10],[1944.18543956,6.506569414877e-10],[1955.55494505,6.497600662111e-10],[1966.92445055,6.488593916479e-10],[1978.29395604,6.479548873301e-10],[1989.66346154,6.470465266818e-10],[2001.03296703,6.461342868816e-10],[2012.40247253,6.452181487277e-10],[2023.77197802,6.44298096509e-10],[2035.14148352,6.433741178781e-10],[2046.51098901,6.424462037292e-10],[2057.88049451,6.415143480788e-10],[2069.25,6.405785479505e-10],[2080.61950549,6.396388032624e-10],[2091.98901099,6.386951167189e-10],[2103.35851648,6.377474937039e-10],[2114.72802198,6.367959421791e-10],[2126.09752747,6.358404725834e-10],[2137.46703297,6.348810977367e-10],[2148.83653846,6.339178327451e-10],[2160.20604396,6.329506949104e-10],[2171.57554945,6.319797036404e-10],[2182.94505495,6.310048803635e-10],[2194.31456044,6.300262484445e-10],[2205.68406593,6.290438331035e-10],[2217.05357143,6.280576613373e-10],[2228.42307692,6.27067761842e-10],[2239.79258242,6.260741649393e-10],[2251.16208791,6.250769025039e-10],[2262.53159341,6.240760078932e-10],[2273.9010989,6.230715158797e-10],[2285.2706044,6.220634625844e-10],[2296.64010989,6.210518854127e-10],[2308.00961538,6.200368229922e-10],[2319.37912088,6.190183151123e-10],[2330.74862637,6.179964026653e-10],[2342.11813187,6.169711275896e-10],[2353.48763736,6.159425328143e-10],[2364.85714286,6.149106622058e-10],[2376.22664835,6.138755605157e-10],[2387.59615385,6.128372733302e-10],[2398.96565934,6.117958470214e-10],[2410.33516484,6.107513286999e-10],[2421.70467033,6.097037661685e-10],[2433.07417582,6.086532078779e-10],[2444.44368132,6.075997028835e-10],[2455.81318681,6.065433008033e-10],[2467.18269231,6.054840517773e-10],[2478.5521978,6.044220064285e-10],[2489.9217033,6.033572158246e-10],[2501.29120879,6.022897314412e-10],[2512.66071429,6.01219605126e-10],[2524.03021978,6.001468890643e-10],[2535.39972527,5.990716357456e-10],[2546.76923077,5.979938979312e-10],[2558.13873626,5.969137286229e-10],[2569.50824176,5.958311810326e-10],[2580.87774725,5.947463085532e-10],[2592.24725275,5.936591647304e-10],[2603.61675824,5.925698032351e-10],[2614.98626374,5.91478277837e-10],[2626.35576923,5.903846423792e-10],[2637.72527473,5.892889507537e-10],[2649.09478022,5.881912568774e-10],[2660.46428571,5.870916146691e-10],[2671.83379121,5.859900780278e-10],[2683.2032967,5.84886700811e-10],[2694.5728022,5.83781536814e-10],[2705.94230769,5.826746397507e-10],[2717.31181319,5.815660632339e-10],[2728.68131868,5.804558607574e-10],[2740.05082418,5.793440856779e-10],[2751.42032967,5.782307911986e-10],[2762.78983516,5.771160303523e-10],[2774.15934066,5.75999855986e-10],[2785.52884615,5.748823207456e-10],[2796.89835165,5.73763477062e-10],[2808.26785714,5.726433771366e-10],[2819.63736264,5.715220729283e-10],[2831.00686813,5.703996161408e-10],[2842.37637363,5.692760582102e-10],[2853.74587912,5.681514502938e-10],[2865.11538462,5.670258432583e-10],[2876.48489011,5.658992876697e-10],[2887.8543956,5.647718337829e-10],[2899.2239011,5.636435315322e-10],[2910.59340659,5.625144305217e-10],[2921.96291209,5.613845800171e-10],[2933.33241758,5.602540289367e-10],[2944.70192308,5.591228258439e-10],[2956.07142857,5.579910189399e-10],[2967.44093407,5.568586560559e-10],[2978.81043956,5.557257846471e-10],[2990.17994505,5.545924517857e-10],[3001.54945055,5.534587041556e-10],[3012.91895604,5.523245880462e-10],[3024.28846154,5.511901493475e-10],[3035.65796703,5.500554335446e-10],[3047.02747253,5.48920485714e-10],[3058.39697802,5.477853505184e-10],[3069.76648352,5.466500722032e-10],[3081.13598901,5.455146945923e-10],[3092.50549451,5.443792610855e-10],[3103.875,5.432438146544e-10],[3115.24450549,5.421083978402e-10],[3126.61401099,5.409730527507e-10],[3137.98351648,5.398378210582e-10],[3149.35302198,5.387027439969e-10],[3160.72252747,5.375678623618e-10],[3172.09203297,5.364332165062e-10],[3183.46153846,5.352988463409e-10],[3194.83104396,5.341647913323e-10],[3206.20054945,5.330310905022e-10],[3217.57005495,5.318977824262e-10],[3228.93956044,5.307649052336e-10],[3240.30906593,5.296324966068e-10],[3251.67857143,5.285005937807e-10],[3263.04807692,5.273692335431e-10],[3274.41758242,5.262384522346e-10],[3285.78708791,5.251082857487e-10],[3297.15659341,5.239787695323e-10],[3308.5260989,5.228499385861e-10],[3319.8956044,5.217218274656e-10],[3331.26510989,5.205944702815e-10],[3342.63461538,5.194679007011e-10],[3354.00412088,5.18342151949e-10],[3365.37362637,5.172172568084e-10],[3376.74313187,5.160932476226e-10],[3388.11263736,5.149701562962e-10],[3399.48214286,5.138480142968e-10],[3410.85164835,5.127268526567e-10],[3422.22115385,5.116067019744e-10],[3433.59065934,5.104875924166e-10],[3444.96016484,5.093695537203e-10],[3456.32967033,5.082526151945e-10],[3467.69917582,5.071368057225e-10],[3479.06868132,5.060221537642e-10],[3490.43818681,5.049086873581e-10],[3501.80769231,5.037964341238e-10],[3513.1771978,5.026854212644e-10],[3524.5467033,5.015756755688e-10],[3535.91620879,5.004672234148e-10],[3547.28571429,4.993600907708e-10],[3558.65521978,4.982543031994e-10],[3570.02472527,4.971498858593e-10],[3581.39423077,4.960468635086e-10],[3592.76373626,4.949452605074e-10],[3604.13324176,4.938451008207e-10],[3615.50274725,4.927464080212e-10],[3626.87225275,4.916492052924e-10],[3638.24175824,4.905535154314e-10],[3649.61126374,4.89459360852e-10],[3660.98076923,4.883667635878e-10],[3672.35027473,4.872757452951e-10],[3683.71978022,4.861863272561e-10],[3695.08928571,4.850985303821e-10],[3706.45879121,4.840123752165e-10],[3717.8282967,4.829278819381e-10],[3729.1978022,4.81845070364e-10],[3740.56730769,4.807639599533e-10],[3751.93681319,4.796845698099e-10],[3763.30631868,4.78606918686e-10],[3774.67582418,4.77531024985e-10],[3786.04532967,4.764569067653e-10],[3797.41483516,4.753845817431e-10],[3808.78434066,4.743140672958e-10],[3820.15384615,4.732453804655e-10],[3831.52335165,4.72178537962e-10],[3842.89285714,4.711135561663e-10],[3854.26236264,4.700504511336e-10],[3865.63186813,4.68989238597e-10],[3877.00137363,4.679299339706e-10],[3888.37087912,4.668725523528e-10],[3899.74038462,4.658171085295e-10],[3911.10989011,4.647636169776e-10],[3922.4793956,4.637120918679e-10],[3933.8489011,4.626625470691e-10],[3945.21840659,4.616149961501e-10],[3956.58791209,4.605694523841e-10],[3967.95741758,4.595259287516e-10],[3979.32692308,4.584844379433e-10],[3990.69642857,4.574449923637e-10],[4002.06593407,4.564076041344e-10],[4013.43543956,4.55372285097e-10],[4024.80494505,4.543390468165e-10],[4036.17445055,4.533079005845e-10],[4047.54395604,4.522788574221e-10],[4058.91346154,4.512519280835e-10],[4070.28296703,4.502271230588e-10],[4081.65247253,4.492044525773e-10],[4093.02197802,4.481839266105e-10],[4104.39148352,4.471655548753e-10],[4115.76098901,4.46149346837e-10],[4127.13049451,4.451353117124e-10],[4138.5,4.441234584727e-10],[4149.86950549,4.431137958469e-10],[4161.23901099,4.421063323243e-10],[4172.60851648,4.41101076158e-10],[4183.97802198,4.400980353673e-10],[4195.34752747,4.390972177411e-10],[4206.71703297,4.380986308408e-10],[4218.08653846,4.371022820029e-10],[4229.45604396,4.36108178342e-10],[4240.82554945,4.351163267539e-10],[4252.19505495,4.341267339181e-10],[4263.56456044,4.33139406301e-10],[4274.93406593,4.321543501582e-10],[4286.30357143,4.311715715377e-10],[4297.67307692,4.301910762823e-10],[4309.04258242,4.292128700329e-10],[4320.41208791,4.282369582306e-10],[4331.78159341,4.272633461194e-10],[4343.1510989,4.262920387495e-10],[4354.5206044,4.253230409793e-10],[4365.89010989,4.243563574781e-10],[4377.25961538,4.233919927291e-10],[4388.62912088,4.224299510315e-10],[4399.99862637,4.214702365032e-10],[4411.36813187,4.205128530835e-10],[4422.73763736,4.195578045355e-10],[4434.10714286,4.186050944481e-10],[4445.47664835,4.176547262395e-10],[4456.84615385,4.167067031586e-10],[4468.21565934,4.157610282878e-10],[4479.58516484,4.148177045457e-10],[4490.95467033,4.138767346888e-10],[4502.32417582,4.129381213145e-10],[4513.69368132,4.120018668628e-10],[4525.06318681,4.110679736192e-10],[4536.43269231,4.101364437163e-10],[4547.8021978,4.092072791368e-10],[4559.1717033,4.08280481715e-10],[4570.54120879,4.073560531394e-10],[4581.91071429,4.064339949548e-10],[4593.28021978,4.055143085646e-10],[4604.64972527,4.045969952324e-10],[4616.01923077,4.036820560848e-10],[4627.38873626,4.02769492113e-10],[4638.75824176,4.01859304175e-10],[4650.12774725,4.009514929977e-10],[4661.49725275,4.000460591788e-10],[4672.86675824,3.991430031891e-10],[4684.23626374,3.982423253738e-10],[4695.60576923,3.973440259552e-10],[4706.97527473,3.964481050343e-10],[4718.34478022,3.955545625925e-10],[4729.71428571,3.946633984939e-10],[4741.08379121,3.937746124869e-10],[4752.4532967,3.928882042061e-10],[4763.8228022,3.92004173174e-10],[4775.19230769,3.911225188031e-10],[4786.56181319,3.902432403975e-10],[4797.93131868,3.893663371544e-10],[4809.30082418,3.884918081665e-10],[4820.67032967,3.87619652423e-10],[4832.03983516,3.867498688118e-10],[4843.40934066,3.858824561208e-10],[4854.77884615,3.850174130399e-10],[4866.14835165,3.841547381624e-10],[4877.51785714,3.832944299868e-10],[4888.88736264,3.824364869183e-10],[4900.25686813,3.815809072702e-10],[4911.62637363,3.807276892658e-10],[4922.99587912,3.798768310397e-10],[4934.36538462,3.790283306396e-10],[4945.73489011,3.781821860273e-10],[4957.1043956,3.773383950808e-10],[4968.4739011,3.764969555953e-10],[4979.84340659,3.756578652847e-10],[4991.21291209,3.748211217834e-10],[5002.58241758,3.739867226473e-10],[5013.95192308,3.731546653553e-10],[5025.32142857,3.72324947311e-10],[5036.69093407,3.714975658434e-10],[5048.06043956,3.706725182089e-10],[5059.42994505,3.698498015923e-10],[5070.79945055,3.690294131082e-10],[5082.16895604,3.682113498022e-10],[5093.53846154,3.673956086522e-10],[5104.90796703,3.665821865699e-10],[5116.27747253,3.657710804017e-10],[5127.64697802,3.6496228693e-10],[5139.01648352,3.641558028747e-10],[5150.38598901,3.633516248939e-10],[5161.75549451,3.625497495857e-10],[5173.125,3.617501734887e-10],[5184.49450549,3.609528930838e-10],[5195.86401099,3.601579047948e-10],[5207.23351648,3.593652049897e-10],[5218.60302198,3.585747899821e-10],[5229.97252747,3.577866560317e-10],[5241.34203297,3.57000799346e-10],[5252.71153846,3.56217216081e-10],[5264.08104396,3.554359023421e-10],[5275.45054945,3.546568541858e-10],[5286.82005495,3.538800676198e-10],[5298.18956044,3.531055386049e-10],[5309.55906593,3.523332630552e-10],[5320.92857143,3.515632368398e-10],[5332.29807692,3.507954557832e-10],[5343.66758242,3.500299156666e-10],[5355.03708791,3.492666122287e-10],[5366.40659341,3.485055411666e-10],[5377.7760989,3.477466981369e-10],[5389.1456044,3.469900787562e-10],[5400.51510989,3.462356786026e-10],[5411.88461538,3.454834932159e-10],[5423.25412088,3.447335180992e-10],[5434.62362637,3.439857487191e-10],[5445.99313187,3.432401805067e-10],[5457.36263736,3.424968088588e-10],[5468.73214286,3.417556291383e-10],[5480.10164835,3.410166366752e-10],[5491.47115385,3.402798267674e-10],[5502.84065934,3.395451946814e-10],[5514.21016484,3.388127356531e-10],[5525.57967033,3.380824448886e-10],[5536.94917582,3.37354317565e-10],[5548.31868132,3.366283488311e-10],[5559.68818681,3.359045338078e-10],[5571.05769231,3.351828675896e-10],[5582.4271978,3.344633452445e-10],[5593.7967033,3.337459618153e-10],[5605.16620879,3.330307123197e-10],[5616.53571429,3.323175917517e-10],[5627.90521978,3.316065950817e-10],[5639.27472527,3.308977172572e-10],[5650.64423077,3.30190953204e-10],[5662.01373626,3.29486297826e-10],[5673.38324176,3.287837460066e-10],[5684.75274725,3.28083292609e-10],[5696.12225275,3.273849324765e-10],[5707.49175824,3.266886604338e-10],[5718.86126374,3.259944712871e-10],[5730.23076923,3.253023598247e-10],[5741.60027473,3.246123208178e-10],[5752.96978022,3.239243490209e-10],[5764.33928571,3.232384391726e-10],[5775.70879121,3.225545859957e-10],[5787.0782967,3.218727841982e-10],[5798.4478022,3.211930284738e-10],[5809.81730769,3.205153135019e-10],[5821.18681319,3.19839633949e-10],[5832.55631868,3.191659844683e-10],[5843.92582418,3.184943597009e-10],[5855.29532967,3.17824754276e-10],[5866.66483516,3.171571628113e-10],[5878.03434066,3.164915799138e-10],[5889.40384615,3.158280001799e-10],[5900.77335165,3.151664181963e-10],[5912.14285714,3.1450682854e-10],[5923.51236264,3.13849225779e-10],[5934.88186813,3.131936044728e-10],[5946.25137363,3.125399591728e-10],[5957.62087912,3.118882844227e-10],[5968.99038462,3.112385747586e-10],[5980.35989011,3.105908247103e-10],[5991.7293956,3.099450288007e-10],[6003.0989011,3.093011815469e-10],[6014.46840659,3.086592774603e-10],[6025.83791209,3.08019311047e-10],[6037.20741758,3.073812768085e-10],[6048.57692308,3.067451692415e-10],[6059.94642857,3.061109828389e-10],[6071.31593407,3.054787120897e-10],[6082.68543956,3.048483514796e-10],[6094.05494505,3.042198954912e-10],[6105.42445055,3.035933386048e-10],[6116.79395604,3.02968675298e-10],[6128.16346154,3.023459000466e-10],[6139.53296703,3.017250073249e-10],[6150.90247253,3.011059916057e-10],[6162.27197802,3.00488847361e-10],[6173.64148352,2.998735690622e-10],[6185.01098901,2.9926015118e-10],[6196.38049451,2.986485881856e-10],[6207.75,2.980388745502e-10],[6219.11950549,2.974310047455e-10],[6230.48901099,2.968249732442e-10],[6241.85851648,2.962207745203e-10],[6253.22802198,2.956184030489e-10],[6264.59752747,2.950178533071e-10],[6275.96703297,2.94419119774e-10],[6287.33653846,2.938221969308e-10],[6298.70604396,2.932270792613e-10],[6310.07554945,2.926337612523e-10],[6321.44505495,2.920422373933e-10],[6332.81456044,2.914525021773e-10],[6344.18406593,2.908645501008e-10],[6355.55357143,2.902783756643e-10],[6366.92307692,2.896939733719e-10],[6378.29258242,2.891113377324e-10],[6389.66208791,2.885304632588e-10],[6401.03159341,2.879513444689e-10],[6412.4010989,2.873739758856e-10],[6423.7706044,2.867983520366e-10],[6435.14010989,2.862244674554e-10],[6446.50961538,2.856523166808e-10],[6457.87912088,2.850818942575e-10],[6469.24862637,2.84513194736e-10],[6480.61813187,2.839462126733e-10],[6491.98763736,2.833809426326e-10],[6503.35714286,2.828173791836e-10],[6514.72664835,2.82255516903e-10],[6526.09615385,2.816953503742e-10],[6537.46565934,2.811368741878e-10],[6548.83516484,2.805800829419e-10],[6560.20467033,2.800249712417e-10],[6571.57417582,2.794715337003e-10],[6582.94368132,2.789197649387e-10],[6594.31318681,2.783696595856e-10],[6605.68269231,2.778212122781e-10],[6617.0521978,2.772744176613e-10],[6628.4217033,2.767292703891e-10],[6639.79120879,2.761857651238e-10],[6651.16071429,2.756438965363e-10],[6662.53021978,2.751036593067e-10],[6673.89972527,2.74565048124e-10],[6685.26923077,2.740280576862e-10],[6696.63873626,2.73492682701e-10],[6708.00824176,2.729589178852e-10],[6719.37774725,2.724267579653e-10],[6730.74725275,2.718961976774e-10],[6742.11675824,2.713672317677e-10],[6753.48626374,2.70839854992e-10],[6764.85576923,2.703140621164e-10],[6776.22527473,2.69789847917e-10],[6787.59478022,2.692672071804e-10],[6798.96428571,2.687461347035e-10],[6810.33379121,2.682266252938e-10],[6821.7032967,2.677086737692e-10],[6833.0728022,2.671922749587e-10],[6844.44230769,2.666774237017e-10],[6855.81181319,2.661641148489e-10],[6867.18131868,2.656523432618e-10],[6878.55082418,2.651421038131e-10],[6889.92032967,2.646333913869e-10],[6901.28983516,2.641262008782e-10],[6912.65934066,2.636205271938e-10],[6924.02884615,2.631163652517e-10],[6935.39835165,2.626137099816e-10],[6946.76785714,2.621125563248e-10],[6958.13736264,2.616128992345e-10],[6969.50686813,2.611147336753e-10],[6980.87637363,2.606180546242e-10],[6992.24587912,2.601228570698e-10],[7003.61538462,2.596291360127e-10],[7014.98489011,2.591368864658e-10],[7026.3543956,2.586461034542e-10],[7037.7239011,2.581567820149e-10],[7049.09340659,2.576689171976e-10],[7060.46291209,2.57182504064e-10],[7071.83241758,2.566975376885e-10],[7083.20192308,2.562140131578e-10],[7094.57142857,2.557319255713e-10],[7105.94093407,2.552512700407e-10],[7117.31043956,2.547720416906e-10],[7128.67994505,2.542942356583e-10],[7140.04945055,2.538178470937e-10],[7151.41895604,2.533428711596e-10],[7162.78846154,2.528693030316e-10],[7174.15796703,2.523971378981e-10],[7185.52747253,2.519263709606e-10],[7196.89697802,2.514569974335e-10],[7208.26648352,2.509890125442e-10],[7219.63598901,2.505224115332e-10],[7231.00549451,2.50057189654e-10],[7242.375,2.495933421734e-10],[7253.74450549,2.491308643711e-10],[7265.11401099,2.486697515402e-10],[7276.48351648,2.482099989871e-10],[7287.85302198,2.477516020313e-10],[7299.22252747,2.472945560056e-10],[7310.59203297,2.468388562562e-10],[7321.96153846,2.463844981426e-10],[7333.33104396,2.459314770378e-10],[7344.70054945,2.454797883279e-10],[7356.07005495,2.450294274127e-10],[7367.43956044,2.445803897054e-10],[7378.80906593,2.441326706327e-10],[7390.17857143,2.436862656346e-10],[7401.54807692,2.432411701647e-10],[7412.91758242,2.427973796903e-10],[7424.28708791,2.42354889692e-10],[7435.65659341,2.41913695664e-10],[7447.0260989,2.414737931143e-10],[7458.3956044,2.410351775642e-10],[7469.76510989,2.405978445487e-10],[7481.13461538,2.401617896164e-10],[7492.50412088,2.397270083296e-10],[7503.87362637,2.392934962642e-10],[7515.24313187,2.388612490096e-10],[7526.61263736,2.384302621691e-10],[7537.98214286,2.380005313594e-10],[7549.35164835,2.37572052211e-10],[7560.72115385,2.371448203681e-10],[7572.09065934,2.367188314883e-10],[7583.46016484,2.362940812433e-10],[7594.82967033,2.358705653181e-10],[7606.19917582,2.354482794116e-10],[7617.56868132,2.350272192363e-10],[7628.93818681,2.346073805183e-10],[7640.30769231,2.341887589975e-10],[7651.6771978,2.337713504273e-10],[7663.0467033,2.33355150575e-10],[7674.41620879,2.329401552215e-10],[7685.78571429,2.325263601611e-10],[7697.15521978,2.321137612022e-10],[7708.52472527,2.317023541665e-10],[7719.89423077,2.312921348894e-10],[7731.26373626,2.308830992202e-10],[7742.63324176,2.304752430214e-10],[7754.00274725,2.300685621696e-10],[7765.37225275,2.296630525545e-10],[7776.74175824,2.292587100799e-10],[7788.11126374,2.288555306628e-10],[7799.48076923,2.284535102341e-10],[7810.85027473,2.28052644738e-10],[7822.21978022,2.276529301324e-10],[7833.58928571,2.272543623887e-10],[7844.95879121,2.26856937492e-10],[7856.3282967,2.264606514406e-10],[7867.6978022,2.260655002465e-10],[7879.06730769,2.256714799353e-10],[7890.43681319,2.252785865457e-10],[7901.80631868,2.248868161304e-10],[7913.17582418,2.24496164755e-10],[7924.54532967,2.241066284989e-10],[7935.91483516,2.237182034546e-10],[7947.28434066,2.233308857284e-10],[7958.65384615,2.229446714396e-10],[7970.02335165,2.225595567209e-10],[7981.39285714,2.221755377186e-10],[7992.76236264,2.21792610592e-10],[8004.13186813,2.214107715139e-10],[8015.50137363,2.210300166701e-10],[8026.87087912,2.206503422601e-10],[8038.24038462,2.202717444962e-10],[8049.60989011,2.198942196041e-10],[8060.9793956,2.195177638226e-10],[8072.3489011,2.191423734038e-10],[8083.71840659,2.187680446129e-10],[8095.08791209,2.18394773728e-10],[8106.45741758,2.180225570406e-10],[8117.82692308,2.176513908551e-10],[8129.19642857,2.172812714889e-10],[8140.56593407,2.169121952726e-10],[8151.93543956,2.165441585495e-10],[8163.30494505,2.161771576762e-10],[8174.67445055,2.15811189022e-10],[8186.04395604,2.154462489692e-10],[8197.41346154,2.15082333913e-10],[8208.78296703,2.147194402615e-10],[8220.15247253,2.143575644354e-10],[8231.52197802,2.139967028685e-10],[8242.89148352,2.136368520073e-10],[8254.26098901,2.132780083109e-10],[8265.63049451,2.129201682512e-10],[8277,2.12563328313e-10]];
+(function(){
+"use strict";
+const M=globalThis.Bound09SharedMotion,T=globalThis.Bound08Toroid;
+const $=id=>document.getElementById(id);
+let factorialRank=0n,prevRank=null,lastStepValid=false;
+const numeric=x=>Number($(x).value);
+const controls=["bulk","time","heading","station","mode","frame"];
+function params(){
+ return {bulkKmS:numeric("bulk"),timeMyr:numeric("time"),
+ headingDeg:numeric("heading"),mode:$("mode").value};
+}
+const format=(x,d=3)=>Number(x).toFixed(d);
+const vec=v=>"("+format(v[0],2)+", "+format(v[1],2)+")";
+const kmsec=v=>vec(v)+" km/s";
+function setRank(next){
+ prevRank=factorialRank;factorialRank=T.normalizedRank(next);let delta=(factorialRank-prevRank+T.SIZE)%T.SIZE;
+ lastStepValid=delta===1n||delta===T.SIZE-1n;
+ if(lastStepValid){
+   const gap=delta===1n?1n:-1n;
+   lastStepValid=T.transition(prevRank,gap).isSingleStepValid;
+ }
+ $("rank").value=factorialRank.toString();$("rankError").textContent=lastStepValid?"PASS: adjacent permutation swap and one Gray bit. Physical time remains independent.":"Direct rank jump; not claiming an adjacent step.";
+ const station=M.stationForRank(factorialRank);$("station").value=station;draw();
+}
+function canvasSize(id){
+ let el=$(id),r=el.getBoundingClientRect(),W=r.width,H=r.height,dpr=Math.min(2,globalThis.devicePixelRatio||1);
+ el.width=Math.round(W*dpr);el.height=Math.round(H*dpr);
+ let c=el.getContext("2d");c.setTransform(dpr,0,0,dpr,0,0);
+ return {c,W,H};
+}
+function mapCanvas(id,p,kind){
+ const {c,W,H}=canvasSize(id),forward=M.axes(p.headingDeg).forward,side=M.axes(p.headingDeg).side;
+ const world=kind==="world",range=world?52:10.7,unit=Math.min(W,H)*.43/range,cx=W/2,cy=H/2;
+ function proj(pt){return [cx+pt[0]*unit,cy-pt[1]*unit]}
+ function stroke(points,color,width=1,dash=[]){
+  c.beginPath();points.forEach((pt,i)=>{let xy=proj(pt);if(i)c.lineTo(...xy);else c.moveTo(...xy)});
+  c.strokeStyle=color;c.lineWidth=width;c.setLineDash(dash);c.stroke();c.setLineDash([]);
+ }
+ function point(pt,size,color){
+  let [x,y]=proj(pt);c.beginPath();c.arc(x,y,size,0,Math.PI*2);c.fillStyle=color;c.fill();return[x,y];
+ }
+ function textAt(label,pt,offset,color){
+  let [x,y]=proj(pt);c.font="12px system-ui";c.fillStyle=color;c.fillText(label,x+offset[0],y+offset[1]);
+ }
+ c.clearRect(0,0,W,H);
+ c.fillStyle="#829bb6";c.font="11px system-ui";c.fillText(world?"COMMON MOTION / WORLD COORDINATES":"BULK TRANSLATION SUBTRACTED",13,20);
+ for(let n=-Math.floor(range/5)*5;n<=range;n+=5){
+  stroke([[n,-range],[n,range]],"#1e344a",.8);
+  stroke([[-range,n],[range,n]],"#1e344a",.8);
+ }
+ stroke([[-range,0],[range,0]],"#3e5971",1);
+ stroke([[0,-range],[0,range]],"#3e5971",1);
+ const sg=M.position({station:0,...p}),su=M.sun(p),se=M.position({station:Number($("station").value),...p});
+ const zero=world?[0,0]:sg.point;
+ function shown(item){return world?item.point:[item.point[0]-sg.point[0],item.point[1]-sg.point[1]]}
+ const center=shown(sg),sun=shown(su),selected=shown(se);
+ if(world){
+  stroke([zero,center],"#918bf0",2,[6,5]);
+  point(zero,3,"#8e95b3");textAt("start of selected external frame",zero,[9,18],"#95a6c2");
+ }else {
+  point([0,0],3,"#7488a3");
+ }
+ const sharedVel=M.axes(p.headingDeg).forward;
+ const arrowStart=center,arrowEnd=[center[0]+3.3*sharedVel[0],center[1]+3.3*sharedVel[1]];
+ stroke([arrowStart,arrowEnd],"#9e8fff",2.5);
+ const tip=proj(arrowEnd),a=p.headingDeg*Math.PI/180;
+ c.strokeStyle="#b7a7ff";c.beginPath();c.moveTo(tip[0],tip[1]);c.lineTo(tip[0]-11*Math.cos(a-.5),tip[1]+11*Math.sin(a-.5));c.moveTo(tip[0],tip[1]);c.lineTo(tip[0]-11*Math.cos(a+.5),tip[1]+11*Math.sin(a+.5));c.stroke();
+ stroke([center,sun],"#365d6e",2);
+ // The 729 points are sampling coordinates along one radial line/spoke,
+ // not observed stars dynamically carried by an arbitrary rigid arm.
+ for(let i=1;i<=728;i++){
+  const x=M.position({station:i,...p}),pos=shown(x),coords=proj(pos);
+  if(coords[0]<0||coords[0]>W||coords[1]<0||coords[1]>H)continue;
+  c.fillStyle=i<243?"#e77f93":i<486?"#79cda2":"#668ce4";
+  c.globalAlpha=.52;
+  c.fillRect(coords[0]-1,coords[1]-1,2,2);
+ }
+ c.globalAlpha=1;
+ point(center,7,"#ffc479");textAt("Sgr A*",center,[11,-11],"#ffe0b0");
+ point(sun,6.5,"#76b5ff");textAt("Sun + Earth*",sun,[11,-9],"#b2d4ff");
+ point(selected,5,"#69eade");textAt("station "+String(Number($("station").value)).padStart(3,"0"),selected,[10,15],"#affef4");
+ c.fillStyle="#8ca5bf";c.fillText(world?"fixed world scale ±52 kpc":"Galactocentric scale ±10.7 kpc",14,H-13);
+ c.fillText("*Earth shown at Sun's galactic scale",14,H-29);
+}
+function draw(){
+const p=params(),mode=p.mode;
+$("bulkLabel").textContent=p.bulkKmS+" km/s";
+$("timeLabel").textContent=p.timeMyr+" Myr";
+$("headingLabel").textContent=p.headingDeg+"°";
+$("stationLabel").textContent=String(Number($("station").value)).padStart(3,"0")+(Number($("station").value)===728?" / SUN":"");
+const snap=M.snapshot(p.timeMyr,p.bulkKmS,p.headingDeg,mode);
+const center=snap.center,sun=snap.sun;
+const disc=M.separation(center,sun),commonVel=M.velocity({station:0,...p}),sunVel=M.velocity({station:728,...p});
+$("displacement").textContent=format(Math.hypot(...center.point),3)+" kpc";
+$("separation").textContent=format(disc,6)+" kpc";
+$("lag").textContent=format(sun.trailingKpc,4)+" kpc "+(sun.trailingKpc>1e-7?"behind":sun.trailingKpc< -1e-7?"ahead":"sideways");
+$("period").textContent=format(M.SOLAR_PERIOD_MYR,2)+" Myr";
+$("velCommon").textContent=kmsec(commonVel.commonKmS);
+$("velRelative").textContent=kmsec(sunVel.internalKmS);
+let station=M.stationForRank(factorialRank);
+let st=T.state(factorialRank),raw=st.gray;
+$("bits").replaceChildren();for(let i=0;i<3;i++){let x=document.createElement("div");x.className="bit"+(raw[i]==="1"?" active":"");x.textContent=raw[i];$("bits").appendChild(x)}
+$("state").textContent="rank      "+factorialRank.toLocaleString("en-US")+
+ "\nGray      "+st.gray+"   station "+st.stationLabel+
+ "\nnext rank "+st.nextRank.toLocaleString("en-US")+
+ "\n24 ops    "+st.permutation.map(v=>String(v).padStart(2,"0")).join(" ");
+const row=FIELD[numeric("station")];$("rStation").textContent=format(row[0],3)+" pc";
+$("gStation").textContent=row[1]===null?"undefined at center":row[1].toExponential(4)+" m/s²";
+mapCanvas("world",p,"world");
+mapCanvas("relative",p,"relative");
+}
+for(const id of controls){
+ $(id).addEventListener(id==="mode"||id==="frame"?"change":"input",draw);
+}
+$("step").addEventListener("click",()=>setRank(factorialRank+1n));
+$("back").addEventListener("click",()=>setRank(factorialRank-1n));
+$("last").addEventListener("click",()=>setRank(T.SIZE-1n));
+$("reset").addEventListener("click",()=>setRank(0n));
+function jump(){
+ let txt=$("rank").value.trim();if(!/^\d+$/.test(txt)){$("rankError").textContent="Invalid rank; enter nonnegative digits.";return;}
+ let k=BigInt(txt);if(k>=T.SIZE){$("rankError").textContent="Out of range: rank must be less than 24!";return;}
+ setRank(k);
+}
+$("jump").addEventListener("click",jump);$("rank").addEventListener("keydown",event=>{if(event.key==="Enter")jump()});
+globalThis.addEventListener("resize",draw);
+try {
+ const a=M.selfTest(),b=T.selfTest();
+ $("status").textContent="PASS · "+a.boostInvariantCases+" invariant cases + 24! permutation tests";
+ $("status").title=JSON.stringify({a,b});
+} catch(e) {
+ $("status").textContent="TEST FAILURE";
+ $("status").style.color="#ffa2ae";
+ $("rankError").textContent="Runtime error: "+String(e);
+}
+draw();
+})();
+</script></body></html>
