@@ -1,0 +1,764 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OASIS Bound 15 | Ingoing Kerr Horizon-Crossing Tetrad</title><style>:root{color-scheme:dark;--bg:#08111e;--panel:#101f32;--line:#304d63;--text:#ecf6ff;--muted:#9fbbcf;--teal:#66ead5;--gold:#ffd083;--pink:#ed8fb1;--lav:#be9eff;--blue:#8eb4ff}
+*{box-sizing:border-box}body{margin:0;color:var(--text);font:14px/1.5 system-ui,Segoe UI,Arial;background:radial-gradient(circle at 80% -15%,#234153,transparent 47%),radial-gradient(circle at -10% 85%,#1a2341,transparent 48%),var(--bg)}
+main{max-width:1220px;margin:auto;padding:26px 18px 65px}.eyebrow{color:var(--teal);letter-spacing:.16em;font-size:11px;font-weight:800}h1{font-size:clamp(30px,4.4vw,46px);letter-spacing:-.045em;line-height:1.05;margin:10px 0}h2{font-size:19px;margin:0 0 8px}p{color:var(--muted)}a{color:#93ecde}.topstats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:17px 0}.stat{border:1px solid var(--line);background:#152d42;border-radius:10px;padding:12px}.stat strong{display:block;font-size:clamp(17px,2vw,23px);overflow-wrap:anywhere}.stat span{color:var(--muted);font-size:12px}.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:15px}.panel{background:#111e2edc;border:1px solid var(--line);border-radius:14px;padding:17px;margin:15px 0}.layout>.side .panel:first-child{margin-top:0}.controlgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.ctrl label{font-size:12px;color:var(--muted);display:block;margin:0 0 5px}.ctrl select{width:100%;background:#1b344a;color:var(--text);border:1px solid #55738a;border-radius:9px;padding:9px;font:inherit}.ctrl input[type=range]{width:100%;accent-color:var(--teal)}canvas{width:100%;height:330px;border-radius:9px;display:block;background:#081725;border:1px solid #2b4b5f}.short{height:215px}.tags{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:9px 0}.sw{display:inline-block;width:11px;height:9px;border-radius:3px;margin-right:5px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}button{font:inherit;border-radius:8px;background:#1e4356;border:1px solid #567b94;color:var(--text);padding:9px 11px;cursor:pointer}button.primary{background:#155c64;border-color:#3ab3a8}button:focus-visible,input:focus-visible{outline:2px solid var(--teal)}.readings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.datum{background:#182d40;border:1px solid #315268;padding:10px;border-radius:9px}.datum span{color:var(--muted);font-size:11px;display:block}.datum strong{font-size:clamp(13px,1.8vw,20px);display:block;overflow-wrap:anywhere}.pill{border:1px solid #47766a;color:#a0eedc;font-size:12px;border-radius:99px;padding:5px 11px;display:inline-block}.warn{border-left:3px solid var(--gold);background:#49362268;padding:12px;color:#e7d8bf}.mono{background:#081827;border:1px solid #2e4d64;color:#a8ede5;font:12px/1.6 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;border-radius:9px}.bits{display:flex;gap:7px;margin:12px 0}.bit{flex:1;font-size:24px;text-align:center;font-weight:800;background:#152f40;border:1px solid #3a6979;border-radius:8px;padding:8px}.bit.on{color:#b9fff1;background:#176066}.inputrow{display:flex;gap:8px}.inputrow input{min-width:0;flex:1;border:1px solid #4f7790;border-radius:9px;background:#193149;color:var(--text);padding:9px;font:inherit}.files{display:flex;gap:12px;flex-wrap:wrap}.small{color:var(--muted);font-size:12px}@media(max-width:860px){.layout{grid-template-columns:1fr}}@media(max-width:590px){.topstats{grid-template-columns:repeat(2,1fr)}.controlgrid{grid-template-columns:1fr}canvas{height:280px}}</style></head><body><main>
+<div class="eyebrow">OASIS / NATURAL BOUND 15 / 2026-10-27 / FUTURE-INGOING KERR FRAME</div>
+<h1>HORIZON CROSSED.<br><span style="color:#65e7d9">CENTER NOT ASSUMED.</span></h1>
+<p>The same Kerr infaller from Bound 14—<b>E=1, Lz=0, Q=0</b>—is now expressed in a future-ingoing coordinate system whose metric, four-velocity and parallel-transported tetrad remain regular on the outer horizon. Continue the ideal classical geometry only to a declared guard *outside* the inner Cauchy horizon, not to an invented center.</p>
+<div class="topstats">
+<div class="stat"><strong>4 × 729</strong><span>Interior proper-time witness samples</span></div>
+<div class="stat"><strong>16</strong><span>Independent Riemann/transport checks across horizon</span></div>
+<div class="stat"><strong>1% gap</strong><span>Chosen pre-inner-horizon stop for rotating cases</span></div>
+<div class="stat"><strong>000 → 001</strong><span>24! logical ring unaffected</span></div>
+</div>
+<div class="layout"><div class="maincol">
+<section class="panel"><h2>Continuous falling clock, outer horizon → pre-inner guard</h2>
+<div class="controlgrid"><div class="ctrl"><label for="spin">Assumed black-hole spin <b id="spinLabel">0.90</b></label><select id="spin"><option value="0">0.00 · nonrotating baseline</option><option value="0.5">0.50 · illustrative spin</option><option value="0.9" selected>0.90 · illustrative spin</option><option value="0.99">0.99 · near-extremal example</option></select></div>
+<div class="ctrl"><label for="fraction">Proper-time progress after outer horizon <b id="progressLabel">0%</b></label><input id="fraction" type="range" min="0" max="728" step="1" value="0"/></div></div>
+<canvas id="journey" role="img" aria-label="Finite proper-time inward Kerr worldline from future outer horizon to conservative pre-inner model guard, normalized by gravitational radius"></canvas>
+<div class="tags"><span><i class="sw" style="background:var(--teal)"></i>Regular ingoing worldline</span><span><i class="sw" style="background:var(--gold)"></i>Current event</span><span><i class="sw" style="background:var(--pink)"></i>Unresolved region past guard</span></div>
+<div class="actions"><button class="primary" id="outer">Outer horizon · 000</button><button id="middle">Interior clock midpoint</button><button id="stop">Guard · 728</button></div>
+<div class="warn"><strong>Guard, not discovery.</strong> For nonzero spin, the lower point is \(r_-+0.01(r_+-r_-)\), a chosen stopping distance above the Kerr inner horizon. For spin zero, Kerr has no distinct inner Cauchy horizon; a positive radius \(0.02r_g\) is used only to stop before the mathematical singularity. Instability and mass inflation make the real interior uncertain.</div>
+</section>
+<section class="panel"><h2>Local tidal field across the outer horizon</h2>
+<canvas id="tidal" class="short" role="img" aria-label="Three local tidal eigenvalues in the ingoing Kerr parallel-transported frame, normalized by GM/r cubed"></canvas>
+<div class="tags"><span><i class="sw" style="background:var(--teal)"></i>Radial stretch</span><span><i class="sw" style="background:var(--lav)"></i>Polar compress</span><span><i class="sw" style="background:var(--pink)"></i>Azimuth compress</span></div><p class="small">The three eigenvalues are finite across the horizon in the model. The spherical gravitating source assumption, unperturbed Kerr geometry and free-fall test-particle interpretation remain explicit.</p>
+</section>
+</div>
+<div class="side">
+<section class="panel"><h2>Horizon-penetrating observer report</h2><span class="pill" id="gateStatus">Awaiting validation</span>
+<div class="readings" style="margin-top:12px">
+<div class="datum"><span>Current BL radial label \(r/r_g\)</span><strong id="radius"></strong></div>
+<div class="datum"><span>Proper seconds since outer horizon</span><strong id="elapsed"></strong></div>
+<div class="datum"><span>Proper seconds remaining to guard</span><strong id="remaining"></strong></div>
+<div class="datum"><span>Outer horizon \(r_+/r_g\)</span><strong id="outerY"></strong></div>
+<div class="datum"><span>Ideal inner horizon \(r_-/r_g\)</span><strong id="innerY"></strong></div>
+<div class="datum"><span>Chosen guard \(r_{\rm stop}/r_g\)</span><strong id="guardY"></strong></div>
+<div class="datum"><span>Radial stretch (s⁻²)</span><strong id="radial"></strong></div>
+<div class="datum"><span>Polar compression (s⁻²)</span><strong id="polar"></strong></div>
+<div class="datum"><span>Azimuth compression (s⁻²)</span><strong id="azimuth"></strong></div>
+<div class="datum"><span>Vacuum trace (s⁻²)</span><strong id="trace"></strong></div>
+</div></section>
+<section class="panel"><h2>Finite observer tetrad</h2><p class="small">Contravariant four-vectors in coordinates \((v/r_g,r/r_g,\theta,\tilde\phi)\). The frame is parallel transported along this *specific* equatorial test geodesic.</p>
+<div class="mono" id="tetrad"></div>
+<p class="small" id="tetradNote"></p></section>
+<section class="panel"><h2>24! independent observer address</h2>
+<div class="bits" id="bits"></div><div class="mono" id="rankState"></div>
+<div class="actions"><button class="primary" id="next">Rank +1</button><button id="back">−1</button><button id="last">Last / seam</button><button id="reset">Reset</button></div>
+<div class="inputrow"><input id="rankInput" inputmode="numeric" type="text" aria-label="Exact factorial rank" value="0"/><button id="jump">Jump</button></div><p class="small" id="notice">The ring is an address, not an infaller clock.</p></section>
+</div></div>
+<section class="panel"><h2>Three witnesses and reproducibility</h2>
+<p><strong>A — Geometry:</strong> Future-ingoing Kerr metric has no \(1/\Delta\) pole at the outer horizon. <strong>B — Observer:</strong> the exact \(E=1,L_z=Q=0\) four-vectors are finite and orthonormal. <strong>C — Independent auditor:</strong> differentiates the ingoing metric, reconstructs the full Riemann tensor, checks the tidal eigenvalues and verifies \(\nabla_u e_i=0\) at exterior, horizon and ideal interior samples.</p>
+<div class="mono">dv = dt + [(r²+a²)/Δ]dr ; dφ₊ = dφ + (a/Δ)dr
+ds² = −(1−2yr/Σr)(dv−a sin²θ dφ₊)² + 2(dv−a sin²θ dφ₊)dr
+      + Σr dθ² + [sin²θ/Σr](P dφ₊ − a dv)²
+Σr=r²+a² cos²θ ; P=r²+a²
+λ = (GM/r³)[2+3(a/r)², −1−3(a/r)², −1]
+r_stop = r_- + 0.01(r_+−r_-)  [for χ>0, CHOSEN]
+At χ=0: r_stop=0.02rg [numerical/interpretation guard]
+24! rank counter != physical time</div>
+<p class="small">The coordinate formulas are standard; the displayed metric is dimensionally schematic until lengths are normalized by \(r_g\). The actual JavaScript uses explicit dimensionless ingoing Kerr metric components and SI conversions. No new observed mass, stellar dynamics, or resolved black-hole interior is asserted.</p>
+<div class="files"><a href="bound15_ingoing_kerr_core.js">Regular-frame geodesic engine</a><a href="bound15_ingoing_independent_validator.js">Independent full curvature and parallel transport</a><a href="BOUND15_INGOING_KERR_729_INTERIOR_SPIN_CLOCK_20261027.csv">2,916 proper-clock interior samples</a><a href="BOUND15_OUTER_INNER_GUARD_ANCHORS_20261027.csv">Outer, inner and conservative stop witnesses</a><a href="BOUND15_NATURAL_BOUND_2026-10-27.md">Bound 15 scientific freeze</a><a href="BOUND15_INGOING_KERR_AUDIT_20261027.json">Machine-readable audit</a><a href="bound14-kerr-falling-frame.html">Prior Bound 14</a></div></section>
+<footer>Source literature: advanced Kerr / Eddington–Finkelstein coordinates (MNRAS 2014; Princeton Kerr horizon regularity notes); Poisson–Israel 1989/1990 mass inflation; McMaken–Hamilton 2021 inner-horizon instability; GRAVITY 2022 mass. No physical stable Cauchy horizon or center predicted by this model.</footer>
+</main>
+<script>/* OASIS Bound 14: equatorial Kerr E=1, Lz=0, Carter Q=0 test-particle infall.
+ *
+ * Physically meaningful output: proper-time radial trajectory and the three
+ * eigenvalues of geodesic deviation in a parallel-transported orthonormal
+ * tetrad, OUTSIDE the Kerr outer horizon only. No material strength, fracture,
+ * quantum interior or observed Sgr A* spin is inferred.
+ *
+ * r_g=GM/c^2, chi=a/r_g, y=r/r_g. Coordinates:
+ * x^mu=(ct/r_g, r/r_g, theta, phi), signature (-,+,+,+).
+ * P=y^2+chi^2, Delta=y^2-2y+chi^2, H=sqrt(P)/y.
+ * Carter-frame observer u=(A,B,0,D):
+ *   A=P/(y sqrt Delta), B=-sqrt(2yP)/(y sqrt Delta), D=-chi/y.
+ * Parallel-propagated spatial vectors in Carter basis:
+ *   s1=(B/H,A/H,0,0); s2=(0,0,1,0);
+ *   s3=(A D/H, B D/H,0,H).
+ * Marck angle dPsi/dtau = sqrt(K)/(r^2+K)*(E+a/(Lz-aE)) = 0
+ * for E=1,Lz=0,K=a^2 (chi>0). Continuous chi->0 limit is 0.
+ * These vectors were independently verified by Kerr Christoffels and the
+ * projected Riemann curvature at non-horizon exterior points.
+ *
+ * Eigenvalues of relative test-particle acceleration [s^-2], for this
+ * special geodesic in this specific parallel frame:
+ *   (2+3q, -(1+3q), -1) * GM/r^3, q=a^2/r^2.
+ * Source: Marck/Kesden equatorial Kerr tidal tensor; verified independent
+ * direct metric-curvature projection for the chosen frame.
+ */
+(function(root){"use strict";
+const C=299792458,GM_SUN=1.3271244e20,MASS_MSUN=4.297e6,RG=GM_SUN*MASS_MSUN/C**2,RS=2*RG,
+ LP=1.616255e-35,START=100*RS;
+const START_Y=START/RG;
+const SPINS=Object.freeze([0,.5,.9,.99]);
+const X3={E:1,Lz:0,Q:0};
+function validSpin(chi){if(!Number.isFinite(chi)||chi<0||chi>=1)throw Error("spin chi must satisfy 0<=chi<1 for external frame");return chi;}
+function radY(chi){validSpin(chi);return 1+Math.sqrt(1-chi*chi);}
+function properIntegrandDimensionless(y,chi){return y**1.5/Math.sqrt(2*(y*y+chi*chi));}
+function integrateSimpson(a,b,chi,panels=1280){
+ validSpin(chi);if(!(b>=a)&&Number.isFinite(a))throw Error("integration interval");
+ if(a===b)return 0;
+ if(!Number.isInteger(panels)||panels<4||panels%2)throw Error("even panels >=4");
+ const h=(b-a)/panels;
+ let sum=properIntegrandDimensionless(a,chi)+properIntegrandDimensionless(b,chi);
+ for(let i=1;i<panels;i++)sum+=(i%2?4:2)*properIntegrandDimensionless(a+i*h,chi);
+ return h*sum/3*RG/C;
+}
+function properFromStart(y,chi){
+ validSpin(chi);const horizon=radY(chi);
+ if(!Number.isFinite(y)||y<horizon||y>START_Y)return null;
+ return integrateSimpson(y,START_Y,chi);
+}
+function horizonProperTime(chi){return properFromStart(radY(chi),chi);}
+function yAtTimeFraction(f,chi){
+ validSpin(chi);
+ if(!Number.isFinite(f)||f<0||f>1)throw Error("clock fraction 0..1");
+ const rh=radY(chi);if(f===0)return START_Y;if(f===1)return rh;
+ const target=f*horizonProperTime(chi);
+ let y=Math.pow(START_Y**1.5 - f*(START_Y**1.5-rh**1.5),2/3);
+ // Damped Newton inversion of the monotonic proper-time integral; exact
+ // Schwarzschild analytic phase supplies a close initial guess.
+ for(let i=0;i<12;i++){
+  const value=properFromStart(y,chi)-target;
+  const deriv=-(RG/C)*properIntegrandDimensionless(y,chi);
+  const next=Math.min(START_Y,Math.max(rh,y-value/deriv));
+  if(Math.abs(next-y)<2e-12*Math.max(1,y))return next;
+  y=next;
+ }
+ return y;
+}
+function radialRateMps(y,chi){
+ validSpin(chi);if(!(y>0))throw Error("positive BL y required");
+ return -C*Math.sqrt(2*(y*y+chi*chi))/y**1.5;
+}
+function projectedTidal(y,chi){
+ validSpin(chi);if(!(y>0))throw Error("positive BL y");
+ const q=(chi/y)**2, k=C*C/(RG*RG*y*y*y); // GM/r^3 = c²/(rg² y³)
+ const lambdas=[k*(2+3*q),-k*(1+3*q),-k];
+ return {y,chi,q,k,stretch_s2:lambdas[0],polar_compress_s2:lambdas[1],
+  azimuth_compress_s2:lambdas[2],trace_s2:lambdas.reduce((a,b)=>a+b,0),
+  schwarzschild_stretch_s2:2*k,
+  fractional_stretch_extra:1.5*q,
+  sgra_spin_assumed_not_observed:true,
+  local_frame:"parallel-transported Marck frame for E=1,Lz=0,Q=0, exterior"};
+}
+function delta(y,chi){return y*y-2*y+chi*chi;}
+function carterTetrad(y,chi){
+ validSpin(chi);
+ if(!(y>radY(chi)*(1+1e-7)))return null; // BL/Carter chart singular at horizon
+ const D=delta(y,chi),P=y*y+chi*chi,root=Math.sqrt(D);
+ const A=P/(y*root),B=-Math.sqrt(2*y*P)/(y*root),az=-chi/y,H=Math.sqrt(P)/y;
+ // Orthonormal frame expressed in Carter tetrad internal components
+ const internal=[
+  [A,B,0,az],
+  [B/H,A/H,0,0],
+  [0,0,1,0],
+  [A*az/H,B*az/H,0,H]
+ ];
+ // Carter coframe inverse: e_(0) = [P/(y sqrtD),0,0,chi/(y sqrtD)],
+ // e_(1)=[0,sqrtD/y,0,0],e_(2)=[0,0,1/y,0],
+ // e_(3)=[chi/y,0,0,1/y].
+ const base=[
+  [P/(y*root),0,0,chi/(y*root)],
+  [0,root/y,0,0],
+  [0,0,1/y,0],
+  [chi/y,0,0,1/y]
+ ];
+ const BL=internal.map(v=>[0,1,2,3].map(k=>v.reduce((sum,coefficient,i)=>sum+coefficient*base[i][k],0)));
+ return {y,chi,internal,BL,
+  coordinate_units:"x=(ct/rg,r/rg,theta,phi), dimensionless",
+  parallel_transport_claim:"Marck e1,e2,e3 in Carter coframe, special E=1,Lz=0,Q=0 equatorial geodesic",
+  phasePsi_rad:0,phaseDerivative_s_inv:0,
+  physical_at_horizon:false};
+}
+function metricBL(y,theta,chi){
+ validSpin(chi);if(!(y>0)||!Number.isFinite(theta))throw Error("metric domain");
+ const sth=Math.sin(theta),cth=Math.cos(theta),S=y*y+chi*chi*cth*cth,D=delta(y,chi),ss=sth*sth;
+ const g=Array.from({length:4},()=>[0,0,0,0]);
+ g[0][0]=-(1-2*y/S);g[0][3]=g[3][0]=-2*chi*y*ss/S;
+ g[1][1]=S/D;g[2][2]=S;g[3][3]=(y*y+chi*chi+2*chi*chi*y*ss/S)*ss;
+ return g;
+}
+function metricDot(a,b,g){
+ return a.reduce((acc,x,i)=>acc+x*b.reduce((s,y,j)=>s+y*g[i][j],0),0);
+}
+function pointAtFraction(f,chi){
+ const y=yAtTimeFraction(f,chi),h=radY(chi),t=projectedTidal(y,chi);
+ return {...t,proper_elapsed_s:f*horizonProperTime(chi),
+   time_to_outer_horizon_s:(1-f)*horizonProperTime(chi),
+   r_m:y*RG,r_over_schwarzschild_rs:y/2,
+   BL_outer_horizon_y:h,
+   BL_outer_horizon_r_m:h*RG,
+   dr_dtau_m_s_NOT_LOCAL_SPEED:radialRateMps(y,chi),
+   tetrad:carterTetrad(y,chi),
+   region:f===1?"OUTER_HORIZON_TIDAL_LIMIT_BL_TETRAD_SINGULAR":
+          "VALID_EXTERIOR_EQUATORIAL_E1_L0_Q0",
+   spin_measured:false,observed_trajectory:false};
+}
+function selfTest(){
+ const clos=(a,b,tol=2e-8)=>Math.abs(a-b)<=tol*Math.max(1,Math.abs(a),Math.abs(b));
+ let checks=0,maxOrtho=0;
+ const expectedSchw=(2*RS/(3*C))*(1000-1);
+ if(!clos(horizonProperTime(0),expectedSchw,2e-9))throw Error("Schwarzschild proper-time limit");
+ for(const chi of SPINS){
+  const h=radY(chi),a=horizonProperTime(chi);
+  if(!(h>1&&h<=2&&a>0))throw Error("horizon range");
+  if(!clos(yAtTimeFraction(0,chi),200)||!clos(yAtTimeFraction(1,chi),h))throw Error("time endpoints");
+  const side=projectedTidal(5,chi);
+  if(!clos(side.trace_s2,0,1e-16))throw Error("vacuum tidal trace");
+  if(chi===0&&(!clos(side.stretch_s2,side.schwarzschild_stretch_s2)||
+    !clos(side.polar_compress_s2,side.azimuth_compress_s2)))throw Error("Schwarzschild tides");
+  for(const y of [3,5,10,30,100,200]){
+   if(y<=h)continue;
+   const v=carterTetrad(y,chi),g=metricBL(y,Math.PI/2,chi);
+   for(let i=0;i<4;i++)for(let j=0;j<4;j++){
+    const target=i===j?(i===0?-1:1):0,got=metricDot(v.BL[i],v.BL[j],g);
+    maxOrtho=Math.max(maxOrtho,Math.abs(got-target));
+    if(!clos(got,target,4e-9))throw Error("orthonormal BL tetrad, spin="+chi+" y="+y+" "+i+","+j);
+    checks++;
+   }
+   const u=v.BL[0];
+   if(!clos(u[1]*C,radialRateMps(y,chi),1e-8))throw Error("u radial rate");
+   if(!clos(u[3],2*chi/(y*delta(y,chi)),1e-8))throw Error("Lz=0 frame dragging rate");
+  }
+  for(const f of [0,.1,.5,.9,1]){
+   const pt=pointAtFraction(f,chi);
+   if(!clos(pt.proper_elapsed_s,f*a,1e-9))throw Error("inverse clock");
+   if(pt.y<h*(1-1e-12)||pt.y>200*(1+1e-12))throw Error("trajectory out of bounds");
+  }
+ }
+ for(const chi of [0,.5,.9]){
+  const y=10,h=2e-4,
+   deriv=(properFromStart(y+h,chi)-properFromStart(y-h,chi))/(2*h),
+   expected=-(RG/C)*properIntegrandDimensionless(y,chi);
+  if(!clos(deriv,expected,3e-6))throw Error("proper-time derivative");
+ }
+ if(carterTetrad(radY(.9),.9)!==null)throw Error("BL horizon singularity not guarded");
+ return {passed:true,spins:SPINS,geodesic:{E:1,Lz:0,Q:0},
+  all_orthonormal_metric_checks:checks,
+  max_orthonormal_metric_residual:maxOrtho,
+  proper_time_inversion:"PASS",
+  finite_difference_proper_time_derivative:"PASS",
+  schwarzschild_reference_elapsed_s:expectedSchw,
+  spin0_horizon_elapsed_s:horizonProperTime(0),
+  spin09_horizon_elapsed_s:horizonProperTime(.9),
+  spin09_relative_stretch_at_y2:projectedTidal(2,.9).fractional_stretch_extra,
+  BL_horizon_frame_guard:"PASS",
+  tidal_eigenvalues_Kerr_locally_measured:true,
+  full_material_stress_or_live_Gaia_data:false,
+  below_outer_horizon_worldline_propagated:false};
+}
+const api=Object.freeze({C,GM_SUN,MASS_MSUN,RG,RS,LP,START,START_Y,
+ SPINS,INITIAL_CONDITIONS:X3,radY,delta,properIntegrandDimensionless,
+ integrateSimpson,properFromStart,horizonProperTime,yAtTimeFraction,
+ radialRateMps,projectedTidal,carterTetrad,metricBL,metricDot,pointAtFraction,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound14KerrFall=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* OASIS Bound15 | ingoing Kerr, continuous E=1,Lz=0,Q=0 local PP tetrad
+   This is a stationary EXACT KERR model, NOT a verified physical interior.
+   The ingoing chart is regular across the FUTURE outer horizon.
+   End of interpretation is a DECLARED 1%-of-horizon-gap guard outside the
+   Cauchy horizon; chi=0 instead ends at 0.02rg purely as a numeric/model guard.
+   Metric units rg=GM/c^2; coord x=(v/rg, r/rg, theta, phi_tilde), v has length.
+   Metric signature (-+++).
+*/
+(function(root){"use strict";
+const K=root.Bound14KerrFall;
+if(!K)throw Error("Load Bound14 core first.");
+const C=K.C, RG=K.RG, RS=K.RS, MASS=K.MASS_MSUN,LP=K.LP;
+const SPINS=Object.freeze([0,.5,.9,.99]);
+const START_Y=K.START_Y, GUARD_FRACTION=.01,COUNT=729;
+const indices=()=>[0,1,2,3];
+function limits(chi){
+ if(!(Number.isFinite(chi)&&chi>=0&&chi<1))throw Error("0<=chi<1 required");
+ const s=Math.sqrt(1-chi*chi),outer=1+s,inner=1-s;
+ const stop=inner+GUARD_FRACTION*(outer-inner);
+ return {chi,y_outer:outer,y_inner:inner,y_stop:stop,
+  guard_fraction:GUARD_FRACTION,
+  kind:chi===0?"NONROTATING_POSITIVE_RADIUS_GUARD_NO_CAUCHY_HORIZON":
+  "PRE_CAUCHY_HORIZON_1PERCENT_GAP_MODEL_GUARD",
+  outer_radius_m:outer*RG,inner_radius_m:inner*RG,stop_radius_m:stop*RG};
+}
+function metric(y,theta,chi){
+ if(!(y>0&&Number.isFinite(y)&&Number.isFinite(theta)))throw Error("metric domain");
+ const sn=Math.sin(theta),sn2=sn*sn,cs=Math.cos(theta),S=y*y+chi*chi*cs*cs,P=y*y+chi*chi;
+ const g=indices().map(()=>[0,0,0,0]);
+ g[0][0]=-1+2*y/S;g[0][1]=g[1][0]=1;
+ g[0][3]=g[3][0]=-2*chi*y*sn2/S;
+ g[1][3]=g[3][1]=-chi*sn2;
+ g[2][2]=S;
+ g[3][3]=(P+2*chi*chi*y*sn2/S)*sn2;
+ return g;
+}
+function inverseMetric(y,theta,chi){
+ if(!(y>0&&Number.isFinite(y)&&Number.isFinite(theta)))throw Error("inverse metric domain");
+ const sn2=Math.sin(theta)**2,S=y*y+chi*chi*Math.cos(theta)**2,P=y*y+chi*chi,D=P-2*y;
+ const inv=indices().map(()=>[0,0,0,0]);
+ inv[0][0]=chi*chi*sn2/S;
+ inv[0][1]=inv[1][0]=P/S;
+ inv[0][3]=inv[3][0]=chi/S;
+ inv[1][1]=D/S;
+ inv[1][3]=inv[3][1]=chi/S;
+ inv[2][2]=1/S;
+ inv[3][3]=1/(S*sn2);
+ return inv;
+}
+function frame(y,chi){
+ if(!(Number.isFinite(y)&&y>0))throw Error("r>0");
+ limits(chi);
+ const P=y*y+chi*chi,W=Math.sqrt(2*y*P),S=Math.sqrt(P),den=P+W;
+ // Finite rationalized limits of Carter/Marck E1L0Q0 tetrad after
+ // dv=dt+(P/Delta)dr; dphi_+=dphi+(chi/Delta)dr.
+ // No division by Delta appears anywhere in this representation.
+ const u=[(P*P/den-chi*chi)/(y*y),-W/(y*y),0,-2*chi/(y*(2*y+W))];
+ const e1=[P*S/(y*den),S/y,0,chi*S/(y*den)];
+ const e2=[0,0,1/y,0];
+ const e3=[2*chi*S/(y*(2*y+W)),chi*W/(y*y*S),0,
+  S*(y*y+W)/(y*y*den)];
+ return {y,chi,PP_basis_ing:[u,e1,e2,e3],
+  frame_coordinates:"(v/rg, y, theta, phi_+), future-ingoing Kerr",
+  horizon_regular_in_chart:true,continued_from_bound14:true};
+}
+function dot(a,b,g){return a.reduce((z,v,i)=>z+v*b.reduce((w,x,j)=>w+x*g[i][j],0),0)}
+function properTimeFromStart(y,chi){
+ const l=limits(chi);
+ if(!(y>=l.y_stop&&y<=START_Y))return null;
+ // Add short interior clock separately to avoid a 7.8-hour subtraction
+ // and poorly resolved Simpson panels over 0.02..200.
+ const toOuter=K.integrateSimpson(l.y_outer,START_Y,chi);
+ return y>=l.y_outer?K.integrateSimpson(y,START_Y,chi):
+   toOuter+K.integrateSimpson(y,l.y_outer,chi);
+}
+function outerClock(chi){const l=limits(chi);return K.integrateSimpson(l.y_outer,START_Y,chi);}
+function stopClock(chi){const l=limits(chi);return properTimeFromStart(l.y_stop,chi)}
+function horizonToStop(chi){const l=limits(chi);return K.integrateSimpson(l.y_stop,l.y_outer,chi);}
+function yAtInteriorClockFraction(f,chi){
+ const l=limits(chi);
+ if(!(f>=0&&f<=1&&Number.isFinite(f)))throw Error("fraction must be 0..1");
+ if(f===0)return l.y_outer;if(f===1)return l.y_stop;
+ const target=f*horizonToStop(chi);
+ // Schwarzschild exact inversion is a close initial guess.
+ let y=Math.pow(l.y_outer**1.5-f*(l.y_outer**1.5-l.y_stop**1.5),2/3);
+ for(let i=0;i<12;i++){
+  const actual=K.integrateSimpson(y,l.y_outer,chi);
+  const deriv=-(RG/C)*K.properIntegrandDimensionless(y,chi);
+  const next=Math.min(l.y_outer,Math.max(l.y_stop,y-(actual-target)/deriv));
+  if(Math.abs(next-y)<1e-13*Math.max(1,y))return next;
+  y=next;
+ }
+ return y;
+}
+function tidalAt(y,chi){
+ if(!(y>0))throw Error("positive y");
+ const l=limits(chi),r=K.projectedTidal(y,chi);
+ const t=properTimeFromStart(y,chi);
+ return {...r,r_m:y*RG,
+  trajectory_proper_since_selected_start_s:t,
+  since_outer_horizon_s:t===null||y>l.y_outer?null:K.integrateSimpson(y,l.y_outer,chi),
+  after_first_Cauchy_guard:y<l.y_stop,
+  declared_status:y>l.y_outer?"EXTERIOR_MODEL":
+   y===l.y_outer?"FUTURE_OUTER_HORIZON_REGULAR_INGOING_CHART":
+   y>=l.y_stop?"INTERIOR_EXACT_KERR_BEFORE_MODEL_CAUCHY_GUARD":
+   "OUTSIDE_DECLARED_MODEL_SCOPE",
+  not_observed:true,
+  curvature_note:"Kerr vacuum solution, NOT stable astrophysical interior"};
+}
+function positionAtFraction(f,chi){
+ const l=limits(chi),y=yAtInteriorClockFraction(f,chi);
+ const m=metric(y,Math.PI/2,chi),F=frame(y,chi);
+ const proper=outerClock(chi)+f*horizonToStop(chi);
+ return {index_fraction:f,chi,y,r_m:y*RG,
+  elapsed_from_selected_start_proper_s:proper,
+  elapsed_since_outer_crossing_proper_s:f*horizonToStop(chi),
+  remaining_to_model_guard_proper_s:(1-f)*horizonToStop(chi),
+  outer_horizon_y:l.y_outer,inner_horizon_y:l.y_inner,guard_y:l.y_stop,
+  frame_ing:F.PP_basis_ing,
+  local_eigenvalues:tidalAt(y,chi),
+  metric_chart:"future ingoing EF Kerr",
+  model_stop_status:f===1?"STOP_AT_DECLARED_PRE_INNER_HORIZON_GUARD":
+   f===0?"OUTER_HORIZON_CROSSED_COORDINATE_REGULAR":
+    "INTERIOR_EXACT_KERR_IDEALIZATION_ONLY",
+  physical_quantum_or_inner_horizon_outcome:"UNKNOWN",
+  physical_actual_stellar_observation:false};
+}
+function selfTest(){
+ const close=(a,b,tol=1e-9)=>Math.abs(a-b)<=tol*Math.max(1,Math.abs(a),Math.abs(b));
+ let checks=0,maxErr=0,maxMetricInv=0;
+ for(const chi of SPINS){
+  const l=limits(chi);
+  if(!(l.y_stop>l.y_inner&&l.y_stop<l.y_outer))throw Error("inner guard");
+  const insideTime=horizonToStop(chi);
+  if(!(insideTime>0))throw Error("infall proper time positive");
+  if(!close(outerClock(chi),K.horizonProperTime(chi),1e-8))throw Error("Bound14 clock mismatch");
+  if(!close(yAtInteriorClockFraction(0,chi),l.y_outer)||
+     !close(yAtInteriorClockFraction(1,chi),l.y_stop))throw Error("interior endpoints");
+  for(const y of [l.y_outer+1, l.y_outer, (l.y_outer+l.y_stop)/2, l.y_stop]){
+   const G=metric(y,Math.PI/2,chi),Gi=inverseMetric(y,Math.PI/2,chi),F=frame(y,chi);
+   for(let a=0;a<4;a++)for(let b=0;b<4;b++){
+    const target=a===b?1:0;
+    let result=0;for(let j=0;j<4;j++)result+=G[a][j]*Gi[j][b];
+    maxMetricInv=Math.max(maxMetricInv,Math.abs(result-target));
+    if(!close(result,target,1e-8))throw Error("inverse ingoing metric");
+    const want=a===b?(a===0?-1:1):0;
+    const value=dot(F.PP_basis_ing[a],F.PP_basis_ing[b],G);
+    maxErr=Math.max(maxErr,Math.abs(value-want));
+    if(!close(value,want,1e-8))throw Error("orthonormality across horizon");
+    checks++;
+   }
+   if(!close(F.PP_basis_ing[0][1]*K.C,K.radialRateMps(y,chi),1e-8))throw Error("radial geodesic");
+   const tide=tidalAt(y,chi);if(Math.abs(tide.trace_s2)>1e-12*Math.abs(tide.stretch_s2))throw Error("vacuum trace");
+  }
+  for(const f of [0,.1,.5,.9,1]){
+   const y=yAtInteriorClockFraction(f,chi),p=positionAtFraction(f,chi);
+   if(y<l.y_stop*(1-1e-12)||y>l.y_outer*(1+1e-12))throw Error("invalid trajectory");
+   if(!close(p.elapsed_since_outer_crossing_proper_s,f*insideTime))throw Error("inside clock");
+  }
+  if(!close(horizonToStop(chi),stopClock(chi)-outerClock(chi),1e-8))throw Error("continuous clock");
+ }
+ if(!close(K.projectedTidal(2,0).stretch_s2,tidalAt(2,0).stretch_s2))throw Error("schwarzschild continuation");
+ return {pass:true,spin_scenarios:SPINS,
+  metric_inverse_checked:"PASS",metric_and_tetrad_component_comparisons:checks,
+  max_tetrad_minkowski_error:maxErr,max_metric_inverse_error:maxMetricInv,
+  all_future_horizon_frame_components_finite:true,
+  Schwarzschild_horizon_clock_consistent_with_bound14:true,
+  model_guard_not_actual_inner_physical_boundary:true,
+  results:SPINS.map(chi=>{const l=limits(chi);return {chi,r_plus_y:l.y_outer,r_minus_y:l.y_inner,stop_y:l.y_stop,
+    horizon_to_guard_proper_s:horizonToStop(chi),outer_horizon_proper_from_start_s:outerClock(chi),
+    stop_kind:l.kind}}),
+  physical_center_prediction:false,actual_inner_horizon_stability_verified:false};
+}
+const api=Object.freeze({SPINS,C,RG,RS,MASS,LP,START_Y,GUARD_FRACTION,COUNT,
+ limits,metric,inverseMetric,frame,dot,properTimeFromStart,outerClock,stopClock,
+ horizonToStop,yAtInteriorClockFraction,tidalAt,positionAtFraction,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound15IngoingKerr=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* Bound15 independent ingoing-Kerr numerical verification.
+   Numerical derivatives of ingoing metric, independent full connection
+   and Riemann projection, local tetrad parallel transport at, before, and
+   after future outer horizon. Not an independent astrophysical observation.
+*/
+(function(root){"use strict";
+const F=root.Bound15IngoingKerr,K=root.Bound14KerrFall;
+if(!F||!K)throw Error("Load Bound14 and Bound15 cores first");
+const I=()=>[0,1,2,3];
+const z2=()=>I().map(()=>[0,0,0,0]),z3=()=>I().map(()=>z2()),z4=()=>I().map(()=>z3());
+function gamma(y,theta,chi,h=8e-6){
+ const g=F.metric(y,theta,chi),inv=F.inverseMetric(y,theta,chi),der=z3();
+ for(const ax of [1,2]){
+  const gp=ax===1?F.metric(y+h,theta,chi):F.metric(y,theta+h,chi);
+  const gm=ax===1?F.metric(y-h,theta,chi):F.metric(y,theta-h,chi);
+  for(const i of I())for(const j of I())der[ax][i][j]=(gp[i][j]-gm[i][j])/(2*h);
+ }
+ const G=z3();
+ for(const a of I())for(const b of I())for(const c of I())for(const d of I())
+  G[a][b][c]+=inv[a][d]*(der[b][d][c]+der[c][d][b]-der[d][b][c])/2;
+ return G;
+}
+function riemann(y,theta,chi,step=7e-5){
+ const G=gamma(y,theta,chi),dG=I().map(()=>z3());
+ for(const ax of [1,2]){
+  const gp=ax===1?gamma(y+step,theta,chi):gamma(y,theta+step,chi),
+        gm=ax===1?gamma(y-step,theta,chi):gamma(y,theta-step,chi);
+  for(const a of I())for(const b of I())for(const c of I())
+   dG[ax][a][b][c]=(gp[a][b][c]-gm[a][b][c])/(2*step);
+ }
+ const R=z4();
+ for(const a of I())for(const b of I())for(const c of I())for(const d of I()){
+  let v=dG[c][a][d][b]-dG[d][a][c][b];
+  for(const e of I())v+=G[a][c][e]*G[e][d][b]-G[a][d][e]*G[e][c][b];
+  R[a][b][c][d]=v;
+ }
+ return R;
+}
+function project(y,chi){
+ const t=Math.PI/2,g=F.metric(y,t,chi),e=F.frame(y,chi).PP_basis_ing,
+       R=riemann(y,t,chi),lambda=I().slice(0,3).map(()=>[0,0,0]);
+ const lower=e.slice(1).map(v=>I().map(i=>I().reduce((s,j)=>s+g[i][j]*v[j],0)));
+ for(let i=0;i<3;i++)for(let j=0;j<3;j++){
+  let s=0;
+  for(const a of I())for(const b of I())for(const c of I())for(const d of I())
+   s-=lower[i][a]*R[a][b][c][d]*e[0][b]*e[j+1][c]*e[0][d];
+  lambda[i][j]=s*K.C*K.C/(K.RG*K.RG);
+ }
+ return {projected:lambda,analytic:K.projectedTidal(y,chi)};
+}
+function parallelResidual(y,chi,h=8e-6){
+ const e=F.frame(y,chi).PP_basis_ing,
+       gp=F.frame(y+h,chi).PP_basis_ing,
+       gm=F.frame(y-h,chi).PP_basis_ing,
+       G=gamma(y,Math.PI/2,chi),res=[];
+ for(let i=1;i<=3;i++){
+  const val=[];
+  for(const a of I()){
+   let q=e[0][1]*(gp[i][a]-gm[i][a])/(2*h);
+   for(const b of I())for(const c of I())q+=G[a][b][c]*e[0][b]*e[i][c];
+   val.push(q);
+  }
+  res.push(val);
+ }
+ return res;
+}
+function selfTest(){
+ let n=0,maxDiag=0,maxOffDiag=0,maxTransport=0,details=[];
+ for(const chi of [0,.5,.9,.99]){
+  const l=F.limits(chi);
+  for(const y of [l.y_outer+.5,l.y_outer,(l.y_outer+l.y_stop)/2,Math.max(l.y_stop,.3)]){
+   const p=project(y,chi),expected=[p.analytic.stretch_s2,
+      p.analytic.polar_compress_s2,p.analytic.azimuth_compress_s2],base=p.analytic.k;
+   let maxDiagAt=0,maxOffAt=0;
+   for(let i=0;i<3;i++)for(let j=0;j<3;j++){
+    const e=i===j?expected[i]:0,dev=Math.abs(p.projected[i][j]-e)/base;
+    if(i===j){maxDiag=Math.max(maxDiag,dev);maxDiagAt=Math.max(maxDiagAt,dev)}
+    else{maxOffDiag=Math.max(maxOffDiag,dev);maxOffAt=Math.max(maxOffAt,dev)}
+   }
+   let mr=0;
+   for(const v of parallelResidual(y,chi).flat()){
+    mr=Math.max(mr,Math.abs(v));maxTransport=Math.max(maxTransport,Math.abs(v))
+   }
+   details.push({chi,y,position:y>l.y_outer?"EXTERIOR":y===l.y_outer?"OUTER_HORIZON":"CLASSICAL_INTERIOR",
+     diagonal_error: maxDiagAt,off_diagonal_error:maxOffAt,transport_error:mr});
+   n++;
+   if(maxDiagAt>0.002||maxOffAt>0.002||mr>1e-5)
+    throw Error("Boundary validation failed "+JSON.stringify(details.at(-1)));
+  }
+ }
+ return {pass:true,cases:n,details,
+  maximum_relative_diagonal_curvature_error:maxDiag,
+  maximum_relative_off_diagonal_curvature_error:maxOffDiag,
+  max_absolute_parallel_transport_residual:maxTransport,
+  metric_to_connection_to_full_Riemann:"independent of closed form analytic tidal eigenvalue",
+  crossing_horizon_without_BL_inverse_Delta:true};
+}
+const api=Object.freeze({gamma,riemann,project,parallelResidual,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound15IndependentValidator=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* OASIS | Natural Bound 08 | 2026-10-27
+   Exact lazy cyclic Hamiltonian traversal on 24! permutations, with a
+   synchronized 3-bit Gray register and 729 logical station addresses.
+
+   No astronomical mass, acceleration, or energy is derived from permutations.
+   No attempt is made to materialize the 24! states.
+
+   Mathematical basis: Steinhaus-Johnson-Trotter "plain changes",
+   recursive insertion of the new largest symbol from alternate ends.
+   Every neighboring permutation differs by an adjacent swap, including seam.
+*/
+(function(root){
+"use strict";
+const OPERATORS=24;
+const STATIONS=729;
+const GRAY_PERIOD=8n;
+function factorial(n){
+ if(!Number.isInteger(n)||n<1||n>100)throw Error("factorial integer 1..100 required");
+ let a=1n;
+ for(let i=2n;i<=BigInt(n);i++)a*=i;
+ return a;
+}
+const SIZE=factorial(OPERATORS);
+const VISITS_PER_STATION=SIZE/BigInt(STATIONS);
+if(SIZE%BigInt(STATIONS)!==0n||SIZE%GRAY_PERIOD!==0n)
+ throw Error("The 729-station and 8-state Gray ring must divide the 24! cycle");
+function normalizedRank(rank,n=OPERATORS){
+ const count=factorial(n);
+ let a=typeof rank==="bigint"?rank:BigInt(rank);
+ return (a%count+count)%count;
+}
+function sjtUnrank(n,rank){
+ if(!Number.isInteger(n)||n<1||n>OPERATORS)throw Error("operator count 1..24 required");
+ let r=normalizedRank(rank,n);
+ if(n===1)return [1];
+ const quotient=r/BigInt(n);
+ const digit=Number(r%BigInt(n));
+ const perm=sjtUnrank(n-1,quotient);
+ const slot=quotient%2n===0n?n-1-digit:digit;
+ perm.splice(slot,0,n);
+ return perm;
+}
+function sjtRank(perm){
+ if(!Array.isArray(perm)||perm.length<1||perm.length>OPERATORS)
+  throw Error("Expected a permutation of length 1..24");
+ const n=perm.length;
+ if(new Set(perm).size!==n||!perm.every(v=>Number.isInteger(v)&&v>=1&&v<=n))
+  throw Error("Not a permutation of 1.."+n);
+ if(n===1)return 0n;
+ const slot=perm.indexOf(n);
+ const ancestor=sjtRank(perm.filter(v=>v!==n));
+ const digit=ancestor%2n===0n?n-1-slot:slot;
+ return ancestor*BigInt(n)+BigInt(digit);
+}
+function grayNumber(rank){
+ const phase=Number(normalizedRank(rank)%GRAY_PERIOD);
+ return phase^(phase>>1);
+}
+function grayBits(rank){return grayNumber(rank).toString(2).padStart(3,"0");}
+function stationIndex(rank){
+ return Number(normalizedRank(rank)%BigInt(STATIONS));
+}
+function stationLabel(rank){return String(stationIndex(rank)).padStart(3,"0");}
+function adjacentSwap(a,b){
+ if(a.length!==b.length)throw Error("Permutations have different lengths");
+ const diffs=[];
+ for(let i=0;i<a.length;i++)if(a[i]!==b[i])diffs.push(i);
+ if(diffs.length!==2||diffs[1]!==diffs[0]+1||a[diffs[0]]!==b[diffs[1]]||a[diffs[1]]!==b[diffs[0]])
+  return null;
+ return {leftIndex:diffs[0],rightIndex:diffs[1],
+         leftSymbolBefore:a[diffs[0]],rightSymbolBefore:a[diffs[1]]};
+}
+function state(rank){
+ const r=normalizedRank(rank);
+ return {rank:r,gray:grayBits(r),grayNumber:grayNumber(r),
+         station:stationIndex(r),stationLabel:stationLabel(r),
+         permutation:sjtUnrank(OPERATORS,r),
+         visitWithinStation:r/BigInt(STATIONS),
+         nextRank:(r+1n)%SIZE};
+}
+function transition(rank,offset=1n){
+ const a=state(rank),b=state(a.rank+BigInt(offset));
+ const oneStep=offset===1n||offset===-1n;
+ const swap=oneStep?adjacentSwap(a.permutation,b.permutation):null;
+ const changedBits=(a.grayNumber^b.grayNumber).toString(2).split("1").length-1;
+ return {before:a,after:b,adjacent:swap,
+         grayHammingDistance:changedBits,
+         isSingleStepValid:oneStep&&!!swap&&changedBits===1};
+}
+function selfTest(){
+ const checks={};
+ for(let n=2;n<=8;n++){
+  const count=Number(factorial(n));
+  const seen=new Set();
+  let old=sjtUnrank(n,0n);
+  for(let i=0;i<count;i++){
+   const p=sjtUnrank(n,BigInt(i));
+   const key=p.join(",");
+   if(seen.has(key))throw Error("Repeated rank n="+n+" i="+i);
+   seen.add(key);
+   if(sjtRank(p)!==BigInt(i))throw Error("rank/unrank n="+n+" i="+i);
+   if(i>0&&!adjacentSwap(old,p))throw Error("nonadjacent step n="+n+" i="+i);
+   old=p;
+  }
+  if(!adjacentSwap(old,sjtUnrank(n,0n)))throw Error("seam n="+n);
+  if(seen.size!==count)throw Error("exhaustiveness n="+n);
+ }
+ checks.smallNExhaustive="PASS n=2..8, including wrap";
+ let cur=17n;
+ const sample=[0n,1n,2n,8n,728n,729n,SIZE-1n,SIZE-2n,SIZE/2n,VISITS_PER_STATION];
+ for(let i=0;i<600;i++){
+  cur=(cur*6364136223846793005n+1442695040888963407n)%SIZE;
+  sample.push(cur);
+ }
+ for(const r of sample){
+  const p=sjtUnrank(OPERATORS,r);
+  if(sjtRank(p)!==r)throw Error("24! rank/unrank roundtrip at "+r);
+  const t=transition(r,1n);
+  if(!t.isSingleStepValid)throw Error("24! adjacency / Gray at "+r);
+  if(stationIndex(r)!==Number(r%729n))throw Error("station modulo");
+ }
+ checks.sampled24FactorialRanks="PASS "+sample.length+" exact BigInt ranks";
+ if(SIZE!==620448401733239439360000n)throw Error("24! constant wrong");
+ if(VISITS_PER_STATION!==851095201280163840000n)throw Error("visits/station wrong");
+ if(state(0n).gray!=="000"||state(1n).gray!=="001")throw Error("opening 000 -> 001");
+ if(state(SIZE-1n).gray!=="100")throw Error("closing Gray label wrong");
+ if(stationIndex(0n)!==0||stationIndex(1n)!==1||stationIndex(SIZE-1n)!==728)
+  throw Error("station boundary");
+ const seam=transition(SIZE-1n,1n);
+ if(!seam.isSingleStepValid||seam.adjacent.leftIndex!==0)throw Error("toroidal seam");
+ checks.firstStep="000 -> 001; adjacent symbols 23 and 24";
+ checks.seam="rank N-1 -> 0; Gray 100 -> 000; adjacent symbols 2 and 1";
+ checks.fair729Visits="24!/729 exact = "+VISITS_PER_STATION;
+ checks.grayPeriod="8, Gray one-bit for every step including cycle seam";
+ checks.astronomicalClaim="NO: symbolic address projection only";
+ return checks;
+}
+const api=Object.freeze({OPERATORS,STATIONS,SIZE,VISITS_PER_STATION,
+ factorial,normalizedRank,sjtUnrank,sjtRank,grayBits,grayNumber,
+ stationIndex,stationLabel,adjacentSwap,state,transition,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound08Toroid=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script>
+<script>
+(function(){"use strict";
+const I=globalThis.Bound15IngoingKerr,T=globalThis.Bound08Toroid,V=globalThis.Bound15IndependentValidator;
+const $=id=>document.getElementById(id);let rank=0n;
+const fnum=(v,n=5)=>Number(v).toExponential(n);
+function params(){return {chi:Number($("spin").value),f:+$("fraction").value/728};}
+function makeCanvas(id){const cv=$(id),b=cv.getBoundingClientRect(),w=b.width,h=b.height,scale=Math.min(2,globalThis.devicePixelRatio||1);
+cv.width=Math.floor(w*scale);cv.height=Math.floor(h*scale);const c=cv.getContext("2d");c.setTransform(scale,0,0,scale,0,0);return{c,w,h};}
+function drawJourney(chi,f,current){
+ const {c,w,h}=makeCanvas("journey"),left=55,right=w-20,top=35,bottom=h-46,X=t=>left+t*(right-left),
+ limits=I.limits(chi),lo=limits.y_stop,hi=limits.y_outer,Y=y=>bottom-(y-lo)/(hi-lo)*(bottom-top);
+ c.clearRect(0,0,w,h);c.font="11px system-ui";c.fillStyle="#a9c0d5";c.strokeStyle="#2a485d";
+ for(let j=0;j<=4;j++){const x=X(j/4);c.beginPath();c.moveTo(x,top);c.lineTo(x,bottom);c.stroke();c.fillText((j*25)+"%",x-10,h-20)}
+ for(let j=0;j<=4;j++){let y=lo+(hi-lo)*j/4,yy=Y(y);c.beginPath();c.moveTo(left,yy);c.lineTo(right,yy);c.stroke();c.fillText(y.toFixed(3),7,yy+4)}
+ c.fillStyle="#5a3440a6";c.fillRect(left,bottom+1,right-left,12);
+ const points=121;c.beginPath();c.lineWidth=2.5;c.strokeStyle="#68e6d9";
+ for(let j=0;j<points;j++){let x=j/(points-1),y=I.yAtInteriorClockFraction(x,chi),px=X(x),py=Y(y);if(j)c.lineTo(px,py);else c.moveTo(px,py)}c.stroke();
+ c.fillStyle="#ffcd86";c.beginPath();c.arc(X(f),Y(current.y),6,0,Math.PI*2);c.fill();
+ c.fillStyle="#bbd0e2";c.fillText("proper time since outer horizon crossing",left,h-4);
+ c.fillText("r/rg",6,13);c.fillText("future outer horizon",left+4,top-9);c.fillText("PRE-INNER GUARD",left+5,bottom-6);
+}
+function drawTidal(chi,current){
+ const {c,w,h}=makeCanvas("tidal"),left=50,right=w-16,top=20,bottom=h-38,X=t=>left+t*(right-left),
+ lower=-13,upper=25,Y=q=>bottom-(q-lower)/(upper-lower)*(bottom-top),l=I.limits(chi);
+ c.clearRect(0,0,w,h);c.font="11px system-ui";c.strokeStyle="#2b465e";c.fillStyle="#aac7db";
+ for(const v of [-10,0,10,20]){let y=Y(v);c.beginPath();c.moveTo(left,y);c.lineTo(right,y);c.stroke();c.fillText(String(v),15,y+4)}
+ for(const [part,color] of [["stretch_s2","#67e9d9"],["polar_compress_s2","#c1a4fe"],["azimuth_compress_s2","#ed8fb1"]]){
+  c.beginPath();c.strokeStyle=color;c.lineWidth=2.1;for(let i=0;i<=180;i++){
+   const f=i/180,y=I.yAtInteriorClockFraction(f,chi),z=I.tidalAt(y,chi);
+   const val=z[part]/z.k,px=X(f),py=Y(val);i?c.lineTo(px,py):c.moveTo(px,py);
+  }c.stroke();const val=current.local_eigenvalues[part]/current.local_eigenvalues.k;
+  c.fillStyle=color;c.beginPath();c.arc(X(current.index_fraction),Y(val),4,0,Math.PI*2);c.fill();
+ }
+ c.fillStyle="#bbd0e2";c.fillText("proper time fraction outer horizon → model guard",left,h-4);
+ c.fillText("λ/(GM/r³)",6,13);
+}
+function rankRender(){
+ const st=T.state(rank);$("rankInput").value=rank.toString();$("bits").replaceChildren();
+ for(const ch of st.gray){let div=document.createElement("div");div.className="bit"+(ch==="1"?" on":"");div.textContent=ch;$("bits").appendChild(div)}
+ $("rankState").textContent="rank: "+rank.toLocaleString("en-US")+"\nGray: "+st.gray+"  |  registry: "+st.stationLabel+"\n"+
+ st.permutation.map(k=>String(k).padStart(2,"0")).join(" ");
+}
+function render(){
+ const {chi,f}=params(),p=I.positionAtFraction(f,chi),l=I.limits(chi),t=p.local_eigenvalues,e=p.frame_ing;
+ $("spinLabel").textContent=chi.toFixed(2);$("progressLabel").textContent=(100*f).toFixed(1)+"%";
+ $("gateStatus").textContent=f===0?"OUTER HORIZON · FRAME REGULAR":f===1?"STOP AT CHOSEN INNER GUARD":"CLASSICAL INTERIOR · IDEAL KERR ONLY";
+ $("radius").textContent=fnum(p.y,6);
+ $("elapsed").textContent=fnum(p.elapsed_since_outer_crossing_proper_s,6)+" s";
+ $("remaining").textContent=fnum(p.remaining_to_model_guard_proper_s,6)+" s";
+ $("outerY").textContent=l.y_outer.toFixed(7);
+ $("innerY").textContent=l.y_inner.toFixed(7)+(chi===0?" (not an inner horizon)":"");
+ $("guardY").textContent=l.y_stop.toFixed(7);
+ $("radial").textContent=fnum(t.stretch_s2,5);
+ $("polar").textContent=fnum(t.polar_compress_s2,5);
+ $("azimuth").textContent=fnum(t.azimuth_compress_s2,5);
+ $("trace").textContent=fnum(t.trace_s2,3);
+ $("tetrad").textContent=["Ingoing coordinates: (v/rg, r/rg, theta, phi+)",
+ "Metric orthonormality: diag(-1,+1,+1,+1)",
+ ...e.map((v,i)=>"e"+i+" = ("+v.map(x=>Number(x).toFixed(6)).join(", ")+")")].join("\n");
+ $("tetradNote").textContent="No coordinate divergences at r+; no claim the ideal Kerr inner-horizon geometry remains physically stable.";
+ drawJourney(chi,f,p);drawTidal(chi,p);
+}
+$("spin").addEventListener("change",render);
+$("fraction").addEventListener("input",render);
+$("outer").addEventListener("click",()=>{$("fraction").value="0";render()});
+$("middle").addEventListener("click",()=>{$("fraction").value="364";render()});
+$("stop").addEventListener("click",()=>{$("fraction").value="728";render()});
+function setRank(n){rank=T.normalizedRank(n);rankRender();$("notice").textContent="Only the logical address changed. Infaller proper time and curvature stay unchanged."}
+$("next").addEventListener("click",()=>setRank(rank+1n));
+$("back").addEventListener("click",()=>setRank(rank-1n));
+$("last").addEventListener("click",()=>setRank(T.SIZE-1n));
+$("reset").addEventListener("click",()=>setRank(0n));
+function jump(){const txt=$("rankInput").value.trim();if(!/^\d+$/.test(txt)){$("notice").textContent="Invalid rank; use nonnegative integers";return}
+const r=BigInt(txt);if(r>=T.SIZE){$("notice").textContent="Rank outside exact 24! cycle";return}setRank(r)}
+$("jump").addEventListener("click",jump);$("rankInput").addEventListener("keydown",e=>{if(e.key==="Enter")jump()});
+globalThis.addEventListener("resize",render);
+try{const a=I.selfTest(),b=V.selfTest(),c=T.selfTest();
+ $("tetradNote").textContent="PASS: "+b.cases+" metric-curvature and parallel transport test points, before/on/after horizon.";
+ $("tetradNote").title=JSON.stringify({a,b,c});
+}catch(e){$("tetradNote").textContent="VALIDATION ERROR: "+String(e);}
+rankRender();render();
+})();
+</script></body></html>
