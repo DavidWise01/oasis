@@ -360,5 +360,28 @@
     "BOUND20_AUDIT_20261028.json",
     "BOUND20_NATURAL_BOUND_2026-10-28.md"
   ],
-  "next_bound": "Bound 21: physically normalized horizon/exterior-tail data and genuinely local adaptive double-null mesh, independent curvature and mass evolution near Cauchy limit"
+  "next_bound": "Bound 21: physically normalized horizon/exterior-tail data and genuinely local adaptive double-null mesh, independent curvature and mass evolution near Cauchy limit",
+  "final_readback": {
+    "verified_all_nine_artifacts": true,
+    "committed_source_and_boundary_tests_executed": true,
+    "HTML_inline_scripts_compiled": 4,
+    "HTML_mock_browser_test_passed": true,
+    "verified_stale_convergence_receipt_cleared_on_input_change": true,
+    "verified_stop_hides_mass_and_field_numbers": true,
+    "verified_24_factorial_seam": true,
+    "verified_field_CSV_rows": 2916,
+    "verified_fields_per_CSV_row": 33,
+    "verified_field_CSV_row_width_errors": 0,
+    "rows_by_input": {
+      "VACUUM_RN": 729,
+      "U_PULSE_ONLY": 729,
+      "V_PRESCRIBED_TAIL_ONLY": 729,
+      "BOTH_PULSE_AND_TAIL": 729
+    },
+    "verified_convergence_records": 16,
+    "verified_initial_boundary_constraint_records": 8,
+    "verified_finite_length_gate_records": 7,
+    "live_GitHub_Pages_confirmed": false,
+    "actual_graphical_browser_screenshot_confirmed": false
+  }
 }
