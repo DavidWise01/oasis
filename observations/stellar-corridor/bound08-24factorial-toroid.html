@@ -204,7 +204,7 @@ function setPlayback(on){playing=on;$("play").textContent=on?"Pause":"Play";$("p
 function updateGroups(state,swap){const parent=$("groups");parent.replaceChildren();for(let g=0;g<3;g++){let group=document.createElement("div");group.className="group";let title=document.createElement("div");title.className="label";title.textContent=["H / − : LANES 01–08","O / 0 : LANES 09–16","N / + : LANES 17–24"][g];group.appendChild(title);let grid=document.createElement("div");grid.className="dots";
 for(let i=g*8;i<(g+1)*8;i++){let token=document.createElement("div");token.className="token "+(g===0?"h":g===1?"o":"n")+((swap&&(i===swap.leftIndex||i===swap.rightIndex))?" hot":"");token.textContent=String(state.permutation[i]).padStart(2,"0");grid.appendChild(token)}group.appendChild(grid);parent.appendChild(group);}}
 function paint(){
-const st=C.state(rank),from=C.state(previous===null?rank:previous),transition=previous!==null?C.transition(previous,rank-previous):null;
+const st=C.state(rank),from=C.state(previous===null?rank:previous),stepOffset=previous===null?0n:((rank-previous+C.SIZE)%C.SIZE===1n?1n:((previous-rank+C.SIZE)%C.SIZE===1n?-1n:0n)),transition=previous!==null&&stepOffset!==0n?C.transition(previous,stepOffset):null;
 $("rankText").textContent=fmt(rank)+" / "+fmt(C.SIZE);
 $("stationText").textContent=st.stationLabel;
 $("cycleText").textContent=fmt(st.visitWithinStation)+" / "+fmt(C.VISITS_PER_STATION)+" station sweeps";
