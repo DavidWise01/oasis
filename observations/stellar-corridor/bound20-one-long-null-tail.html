@@ -508,7 +508,8 @@ function plot(id,run,which){
  c.fillStyle="#c2d8e3";c.fillText(which==="r"?"Area radius on u=.1 slice":"Charged Hawking mass on u=.1 slice",L,13);
  c.fillText("characteristic v (NOT observational time)",L,h-2);
 }
-function render(){
+function render(preserveReceipt=false){
+ if(!preserveReceipt)$("receipt").textContent="Selection changed. Previous convergence receipt cleared; use Verify four resolutions for these exact controls.";
  const p=par(),N=Number($("resolution").value),M=N*4;
  try{
   const run=E.compute(N,M,p,true);latest=run;
@@ -564,6 +565,6 @@ try{const a=E.selfTest(),b=V.selfTest(),c=T.selfTest();
  "independent boundary Cuu/Cvv last ratios="+b.both.Cuu_ratios.at(-1).toFixed(4)+"/"+b.both.Cvv_ratios.at(-1).toFixed(4)+"\n"+
  "All three witnesses are internal numerical/theory checks, not astrophysical observations.";
 }catch(err){$("receipt").textContent="SELF CHECK FAILED: "+String(err)}
-rankRender();render();
+rankRender();render(true);
 })();
 </script></body></html>
