@@ -1,0 +1,378 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OASIS Bound 10 — Invariant Zero / Planck Reference Corridor</title>
+<style>
+:root{color-scheme:dark;--bg:#080d19;--panel:#111d2d;--panel2:#192c41;--ink:#edf5ff;--muted:#99b0c6;--line:#32485e;--aqua:#63e4db;--gold:#ffcf85;--red:#ed8198;--purple:#b79afb;--blue:#7baaff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% -10%,#183048,transparent 50%),radial-gradient(circle at 0% 85%,#19203b,transparent 55%),var(--bg);color:var(--ink);font:14px/1.52 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:1200px;margin:auto;padding:28px 18px 76px}h1{font-size:clamp(29px,4.6vw,45px);line-height:1.08;letter-spacing:-.045em;margin:6px 0 14px}h2{font-size:19px;margin:0 0 11px}.eyebrow{color:var(--aqua);font-size:11px;letter-spacing:.17em;font-weight:800}p{color:var(--muted)}.metricrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.metric{border:1px solid var(--line);background:#152639;border-radius:11px;padding:12px}.metric strong{display:block;font-size:clamp(17px,1.9vw,23px);overflow-wrap:anywhere}.metric span{font-size:11px;color:var(--muted)}.layout{display:grid;grid-template-columns:1.55fr 1fr;gap:15px}.panel{border:1px solid var(--line);background:#101b2ce8;border-radius:14px;padding:16px;margin:15px 0}.panel>*:first-child{margin-top:0}.canvas{height:365px;width:100%;display:block;background:#081421;border:1px solid #28485d;border-radius:9px;touch-action:none}.smallcanvas{height:225px}.slider{width:100%;accent-color:var(--aqua)}.ctr{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0}button{background:#1d3b56;color:var(--ink);font:inherit;padding:9px 11px;border-radius:9px;border:1px solid #49738d;cursor:pointer}button:hover{background:#29516b}button.primary{background:#1a696d;border-color:#43b6ab}button:focus-visible,input:focus-visible{outline:2px solid var(--aqua)}input[type=text]{background:#14283e;border:1px solid #50728d;border-radius:8px;font:inherit;color:var(--ink);padding:9px;min-width:80px;flex:1}.datum{border:1px solid #344a62;background:#17283d;border-radius:9px;padding:10px;margin:8px 0}.datum label{font-size:11px;color:var(--muted)}.datum strong{font-size:17px;display:block;overflow-wrap:anywhere}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.warn{border-left:3px solid var(--gold);padding:12px;background:#4233206e;color:#ebdbc1}.graybits{display:flex;gap:9px;justify-content:space-between;margin:12px 0}.bit{flex:1;padding:8px;text-align:center;font-size:26px;font-weight:800;background:#142b3d;border:1px solid #3b6071;border-radius:9px}.bit.on{background:#12545b;color:#89fff2}.tiny{font-size:12px;color:var(--muted)}.mono{font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;color:#a8e7df;white-space:pre-wrap;overflow-wrap:anywhere}a{color:#85e8ec}.files{display:flex;flex-wrap:wrap;gap:12px}footer{font-size:12px;color:var(--muted);margin-top:22px}.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin:10px 0}.spot{width:11px;height:11px;border-radius:50%;display:inline-block;margin-right:5px}.status{font-size:12px;border:1px solid #366b60;color:#9cefd8;border-radius:999px;padding:4px 10px}.keyval{font-variant-numeric:tabular-nums}@media(max-width:850px){.layout{grid-template-columns:1fr}}@media(max-width:640px){.metricrow{grid-template-columns:repeat(2,1fr)}.canvas{height:285px}}
+</style></head><body><main>
+<div class="eyebrow">OASIS | NATURAL BOUND 10 | 2026-10-27 | LOGARITHMIC PHYSICAL SCALE</div>
+<h1>INVARIANT ZERO <span style="color:#68e0d4">·</span> SGR A* → PLANCK REFERENCE</h1>
+<p>From the Sun toward Sagittarius A*: 729 named registry positions, shrinking logarithmically across 55.20 orders of magnitude. The mathematical center <b>000</b> and the Planck reference <b>001</b> are intentionally distinct. Below the event horizon the diagram is an algebraic extrapolation, <b>not a measured path through spacetime</b>.</p>
+<div class="metricrow">
+<div class="metric"><strong>000 / 001</strong><span>Center sentinel / Planck reference</span></div>
+<div class="metric"><strong>1.616255 × 10⁻³⁵ m</strong><span>CODATA 2022 Planck length</span></div>
+<div class="metric"><strong>12.690 million km</strong><span>Nonrotating Sgr A* Schwarzschild horizon radius</span></div>
+<div class="metric"><strong>55.20 decades</strong><span>Sun radius → Planck reference</span></div></div>
+<div class="layout"><div>
+<section class="panel"><h2>Sun → horizon → curvature → 001</h2>
+<div class="legend"><span><i class="spot" style="background:#7baaff"></i>Outside horizon</span><span><i class="spot" style="background:#ae95fc"></i>Formal interior</span><span><i class="spot" style="background:#f3a782"></i>High-curvature warning</span><span><i class="spot" style="background:#64e4db"></i>Selected sample</span></div>
+<canvas class="canvas" id="logmap" aria-label="Logarithmic sequence of areal-radius reference levels from Planck length to Sun with explicit Schwarzschild horizon and curvature markers"></canvas>
+<label for="stationSlider" class="tiny">Registry position <b id="stationId">728</b> · drag inward toward 001 or 000</label>
+<input id="stationSlider" class="slider" type="range" min="0" max="728" value="728" step="1"/>
+<div class="ctr"><button class="primary" id="inward">Inward −1</button><button id="outward">Outward +1</button><button id="sunBtn">Sun · 728</button><button id="horizonBtn">Horizon vicinity</button><button id="curvatureBtn">K ℓP⁴ ≈ 1</button><button id="planckBtn">Planck · 001</button><button id="zeroBtn">Center · 000</button></div>
+</section>
+<section class="panel"><h2>Invariant meaning</h2><div class="mono">ℓP = sqrt(ℏ G / c³)                 CODATA scale
+r  = sqrt(area / 4π)                areal radius, spherical symmetry
+χ(r) = r / R₀                      normalized center-distance
+log₁₀(r / ℓP)                      logarithmic scale coordinate
+rₛ = 2 G M / c²                    Schwarzschild horizon
+K = 12 rₛ² / r⁶                    classical curvature invariant
+K ℓP⁴ = 1                          formal curvature-scale marker</div>
+<p>For a spherical nonrotating Schwarzschild approximation, areal radius is geometrically defined, not dependent on how the radial coordinate is labeled. That does <b>not</b> make the entire inward route a physical static spatial line across the horizon.</p>
+<div class="warn"><strong>Do not equate Planck scale with the singularity.</strong> The Planck length is a derived scale from physical constants, not a demonstrated discrete minimum step or observed black-hole core. The classical formula stops being trustworthy in the extreme-curvature interior.</div></section>
+</div><div>
+<section class="panel"><h2>Selected reference radius</h2>
+<div class="datum"><label>Areal radius (meters)</label><strong id="radiusValue" class="keyval"></strong></div>
+<div class="grid2">
+<div class="datum"><label>Log₁₀(r/ℓP)</label><strong id="logRatio"></strong></div>
+<div class="datum"><label>Radius / horizon</label><strong id="horizonRatio"></strong></div>
+<div class="datum"><label>Log₁₀(K ℓP⁴)</label><strong id="curvature"></strong></div>
+<div class="datum"><label>Static exterior slice length to horizon</label><strong id="properDist"></strong></div></div>
+<div class="datum"><label>Physical/model status</label><strong style="font-size:13px" id="regime"></strong></div>
+<p class="tiny" id="radiusNote"></p></section>
+<section class="panel"><h2>24! deterministic address ring</h2><span class="status" id="testBadge">Checking…</span>
+<div class="graybits" id="graybits"></div>
+<div class="mono" id="rankDisplay"></div>
+<div class="ctr"><button class="primary" id="rankPlus">000 → 001 · next</button><button id="rankMinus">Reverse</button><button id="rankLast">Last / seam</button><button id="rankReset">Reset</button></div>
+<div class="ctr"><input id="rankInput" type="text" inputmode="numeric" value="0" aria-label="Exact BigInt rank"/><button id="rankJump">Jump</button></div>
+<p class="tiny" id="rankNotice">Factorial rank selects a log registry position through rank modulo 729; it is <b>not</b> physical time or a geodesic.</p></section>
+<section class="panel"><h2>Reconciliation with earlier field models</h2><p>The earlier <strong>729 linear Galactic stations</strong> and their Sgr A* + bulge + disk + halo accelerations stay frozen. This new logarithmic registry is a separate inward-resolution grid. It uses the same 000–728 addresses for navigation, but those addresses no longer mean the same physical radius.</p>
+<p>The shared velocity of Bound 09 cancels from all relative positions. Uniformly moving the entire “train” does not alter the horizon radius, Planck reference or areal radius.</p>
+</section></div></div>
+<section class="panel"><h2>Primary measurements and immutable outputs</h2>
+<div class="files"><a href="bound10_invariant_zero_core.js">Scale engine / mathematical checks</a><a href="BOUND10_729_LOG_AREAL_RADIUS_20261027.csv">729 log-spaced reference levels</a><a href="BOUND10_EXPLICIT_ANCHORS_20261027.csv">Exact boundary anchors</a><a href="BOUND10_NATURAL_BOUND_2026-10-27.md">Bound 10 scientific record</a><a href="bound09-galactic-train.html">Bound 09 moving frame</a></div>
+<p class="tiny">Source values: NIST CODATA 2022 Planck length ℓP = 1.616255(18) × 10⁻³⁵ m; GRAVITY Collaboration Sgr A* mass M = 4.297 million solar masses, R₀ = 8,277 pc. Schwarzschild quantities assume zero spin and spherical symmetry. The Kerr solution is needed for a spinning black hole; no spin is inferred here.</p></section>
+<footer>The center 000 is a mathematical label only. Curvature threshold at K ℓP⁴ = 1 and the Schwarzschild photon sphere, ISCO and horizon are analytic model boundaries rather than newly observed events. Source provenance is recorded with these files. No claim about physical geometry below the Planck scale or the exact black-hole interior is made.</footer>
+</main><script>/* OASIS Bound 10: 000 -> 001 Planck reference -> 728 Sun.
+   729 labeled positions: 000 CENTER_SENTINEL (r=0), 001..728
+   logarithmic areal-radius reference levels. No physical path inside horizon
+   claimed; only an algebraic Schwarzschild, nonrotating approximation.
+
+   CODATA 2022: lp = 1.616255(18)×10^-35 m, NIST.
+   GRAVITY Collaboration (2022): Sgr A* M=4.297×10^6 Msolar,
+   Sun to Galactic Center 8277 pc.
+*/
+(function(root){
+"use strict";
+const N=729;
+const LP=1.616255e-35;
+const C=299792458;
+const GM_SUN=1.3271244e20;
+const M_BH_SUN=4.297e6;
+const PC=3.0856775814913673e16;
+const R0=8277*PC;
+const RS=2*GM_SUN*M_BH_SUN/(C*C);
+const R_PHOTON=1.5*RS;
+const R_ISCO=3*RS;
+const R_KCRIT=Math.pow(12*RS*RS*LP**4,1/6);
+const LOGSPAN=Math.log10(R0/LP);
+const LOGSTEP=LOGSPAN/(N-2);
+const RATIO=10**LOGSTEP;
+const CONST=Object.freeze({N,LP,C,GM_SUN,M_BH_SUN,PC,R0,RS,R_PHOTON,R_ISCO,R_KCRIT,LOGSPAN,LOGSTEP,RATIO});
+function log10(v){return Math.log10(v);}
+function posToRadius(i){
+ if(!Number.isInteger(i)||i<0||i>=N)throw Error("Station must be 000..728");
+ if(i===0)return 0;
+ return LP*10**((i-1)*LOGSTEP);
+}
+function radiusToFractionalStation(radius){
+ if(!Number.isFinite(radius)||radius<=0||radius>R0*(1+1e-12))throw Error("Radius must be positive and <= Sun");
+ return 1+log10(radius/LP)/LOGSTEP;
+}
+function logKlp4(r){
+ if(!(r>0))return null;
+ return log10(12)+2*log10(RS/LP)-6*log10(r/LP);
+}
+function externalSchwarzschildSliceProperLength(r){
+ // Proper radial *length* from the horizon to areal radius r
+ // at constant Schwarzschild t, only defined on exterior t=const slice.
+ if(r<RS)return null;
+ if(r===RS)return 0;
+ const x=r/RS;
+ return Math.sqrt(r*(r-RS))+RS*Math.acosh(Math.sqrt(x));
+}
+function classification(r){
+ if(r===0)return "CENTER_SENTINEL_NO_CONTINUUM_VALUE";
+ if(r<LP)return "BELOW_PLANCK_REFERENCE_NOT_SAMPLED";
+ if(r<R_KCRIT)return "FORMAL_HIGH_CURVATURE_INSIDE_HORIZON_UNVERIFIED";
+ if(r<RS)return "FORMAL_CLASSICAL_INTERIOR_NOT_A_SPATIAL_RADIAL_PATH";
+ if(r===RS)return "HORIZON_ANCHOR";
+ return "SCHWARZSCHILD_EXTERIOR_SPHERICALLY_SYMMETRIC_APPROXIMATION";
+}
+function station(i){
+ const r=posToRadius(i);
+ return {index:i,label:String(i).padStart(3,"0"),
+  radius_m:r,ratio_to_planck:i===0?null:r/LP,
+  log10_radius_to_planck:i===0?null:log10(r/LP),
+  ratio_to_horizon:i===0?null:r/RS,
+  log10_planck_normalized_K:i===0?null:logKlp4(r),
+  external_slice_proper_m:i===0?null:externalSchwarzschildSliceProperLength(r),
+  classification:classification(r),physical_observation:false};
+}
+function milestones(){
+ return [
+  {name:"Mathematical center sentinel",r:0,index:0,label:"000"},
+  {name:"Planck length reference",r:LP,index:1,label:"001"},
+  {name:"Formal Planck curvature (K lp^4 = 1)",r:R_KCRIT,index:radiusToFractionalStation(R_KCRIT),label:"not an exact station"},
+  {name:"Schwarzschild event horizon",r:RS,index:radiusToFractionalStation(RS),label:"not an exact station"},
+  {name:"Schwarzschild photon sphere",r:R_PHOTON,index:radiusToFractionalStation(R_PHOTON),label:"not an exact station"},
+  {name:"Schwarzschild ISCO",r:R_ISCO,index:radiusToFractionalStation(R_ISCO),label:"not an exact station"},
+  {name:"Sun galactocentric radius",r:R0,index:728,label:"728"}];
+}
+function counts(){
+ const out={};
+ for(let i=0;i<N;i++){let c=classification(posToRadius(i));out[c]=(out[c]||0)+1}
+ return out;
+}
+function selfTest(){
+ if(N!==729)throw Error("Wrong station count");
+ if(Math.abs(posToRadius(1)/LP-1)>1e-12)throw Error("Planck anchor wrong");
+ if(Math.abs(posToRadius(728)/R0-1)>1e-12)throw Error("Solar anchor wrong");
+ if(posToRadius(0)!==0)throw Error("Zero sentinel wrong");
+ let previous=0;
+ for(let i=1;i<N;i++){
+  const r=posToRadius(i);
+  if(!Number.isFinite(r)||r<=previous)throw Error("Station ordering fails: "+i);
+  if(Math.abs(radiusToFractionalStation(r)-i)>1e-10)throw Error("Reverse log rank fails: "+i);
+  previous=r;
+ }
+ if(Math.abs(radiusToFractionalStation(RS)-592.29335905074)>1e-7)throw Error("Horizon anchor wrong");
+ if(Math.abs(radiusToFractionalStation(R_KCRIT)-200.46669652477183)>1e-7)throw Error("Curvature anchor wrong");
+ if(Math.abs(logKlp4(R_KCRIT))>1e-10)throw Error("Planck curvature equation failed");
+ if(externalSchwarzschildSliceProperLength(RS)!==0)throw Error("Exterior horizon proper limit wrong");
+ if(externalSchwarzschildSliceProperLength(RS/2)!==null)throw Error("Improper interior Schwarzschild slice");
+ if(externalSchwarzschildSliceProperLength(R0)<=0)throw Error("Exterior proper length wrong");
+ const v=milestones();
+ if(v.length!==7)throw Error("Anchor count wrong");
+ return {
+  test:"PASS: all 729 stations strictly ordered; source anchors, inverse index, curvature, exterior slice",
+  station000:"r=0 named mathematical sentinel, not a physical Planck region",
+  station001:"r=1.616255e-35 m CODATA Planck reference",
+  station728:"r=8,277 pc model solar radius",
+  Schwarzschild_horizon_m:RS,
+  classical_Klp4_unity_radius_m:R_KCRIT,
+  decades_from_sun_to_Planck:LOGSPAN,
+  exterior_radial_slices_only:true,
+  center_gravity_field:"UNKNOWN/UNDEFINED",
+  counts:counts()
+ };
+}
+const API=Object.freeze({...CONST,posToRadius,radiusToFractionalStation,
+ logKlp4,externalSchwarzschildSliceProperLength,classification,station,milestones,counts,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=API;
+root.Bound10InvariantZero=API;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* OASIS | Natural Bound 08 | 2026-10-27
+   Exact lazy cyclic Hamiltonian traversal on 24! permutations, with a
+   synchronized 3-bit Gray register and 729 logical station addresses.
+
+   No astronomical mass, acceleration, or energy is derived from permutations.
+   No attempt is made to materialize the 24! states.
+
+   Mathematical basis: Steinhaus-Johnson-Trotter "plain changes",
+   recursive insertion of the new largest symbol from alternate ends.
+   Every neighboring permutation differs by an adjacent swap, including seam.
+*/
+(function(root){
+"use strict";
+const OPERATORS=24;
+const STATIONS=729;
+const GRAY_PERIOD=8n;
+function factorial(n){
+ if(!Number.isInteger(n)||n<1||n>100)throw Error("factorial integer 1..100 required");
+ let a=1n;
+ for(let i=2n;i<=BigInt(n);i++)a*=i;
+ return a;
+}
+const SIZE=factorial(OPERATORS);
+const VISITS_PER_STATION=SIZE/BigInt(STATIONS);
+if(SIZE%BigInt(STATIONS)!==0n||SIZE%GRAY_PERIOD!==0n)
+ throw Error("The 729-station and 8-state Gray ring must divide the 24! cycle");
+function normalizedRank(rank,n=OPERATORS){
+ const count=factorial(n);
+ let a=typeof rank==="bigint"?rank:BigInt(rank);
+ return (a%count+count)%count;
+}
+function sjtUnrank(n,rank){
+ if(!Number.isInteger(n)||n<1||n>OPERATORS)throw Error("operator count 1..24 required");
+ let r=normalizedRank(rank,n);
+ if(n===1)return [1];
+ const quotient=r/BigInt(n);
+ const digit=Number(r%BigInt(n));
+ const perm=sjtUnrank(n-1,quotient);
+ const slot=quotient%2n===0n?n-1-digit:digit;
+ perm.splice(slot,0,n);
+ return perm;
+}
+function sjtRank(perm){
+ if(!Array.isArray(perm)||perm.length<1||perm.length>OPERATORS)
+  throw Error("Expected a permutation of length 1..24");
+ const n=perm.length;
+ if(new Set(perm).size!==n||!perm.every(v=>Number.isInteger(v)&&v>=1&&v<=n))
+  throw Error("Not a permutation of 1.."+n);
+ if(n===1)return 0n;
+ const slot=perm.indexOf(n);
+ const ancestor=sjtRank(perm.filter(v=>v!==n));
+ const digit=ancestor%2n===0n?n-1-slot:slot;
+ return ancestor*BigInt(n)+BigInt(digit);
+}
+function grayNumber(rank){
+ const phase=Number(normalizedRank(rank)%GRAY_PERIOD);
+ return phase^(phase>>1);
+}
+function grayBits(rank){return grayNumber(rank).toString(2).padStart(3,"0");}
+function stationIndex(rank){
+ return Number(normalizedRank(rank)%BigInt(STATIONS));
+}
+function stationLabel(rank){return String(stationIndex(rank)).padStart(3,"0");}
+function adjacentSwap(a,b){
+ if(a.length!==b.length)throw Error("Permutations have different lengths");
+ const diffs=[];
+ for(let i=0;i<a.length;i++)if(a[i]!==b[i])diffs.push(i);
+ if(diffs.length!==2||diffs[1]!==diffs[0]+1||a[diffs[0]]!==b[diffs[1]]||a[diffs[1]]!==b[diffs[0]])
+  return null;
+ return {leftIndex:diffs[0],rightIndex:diffs[1],
+         leftSymbolBefore:a[diffs[0]],rightSymbolBefore:a[diffs[1]]};
+}
+function state(rank){
+ const r=normalizedRank(rank);
+ return {rank:r,gray:grayBits(r),grayNumber:grayNumber(r),
+         station:stationIndex(r),stationLabel:stationLabel(r),
+         permutation:sjtUnrank(OPERATORS,r),
+         visitWithinStation:r/BigInt(STATIONS),
+         nextRank:(r+1n)%SIZE};
+}
+function transition(rank,offset=1n){
+ const a=state(rank),b=state(a.rank+BigInt(offset));
+ const oneStep=offset===1n||offset===-1n;
+ const swap=oneStep?adjacentSwap(a.permutation,b.permutation):null;
+ const changedBits=(a.grayNumber^b.grayNumber).toString(2).split("1").length-1;
+ return {before:a,after:b,adjacent:swap,
+         grayHammingDistance:changedBits,
+         isSingleStepValid:oneStep&&!!swap&&changedBits===1};
+}
+function selfTest(){
+ const checks={};
+ for(let n=2;n<=8;n++){
+  const count=Number(factorial(n));
+  const seen=new Set();
+  let old=sjtUnrank(n,0n);
+  for(let i=0;i<count;i++){
+   const p=sjtUnrank(n,BigInt(i));
+   const key=p.join(",");
+   if(seen.has(key))throw Error("Repeated rank n="+n+" i="+i);
+   seen.add(key);
+   if(sjtRank(p)!==BigInt(i))throw Error("rank/unrank n="+n+" i="+i);
+   if(i>0&&!adjacentSwap(old,p))throw Error("nonadjacent step n="+n+" i="+i);
+   old=p;
+  }
+  if(!adjacentSwap(old,sjtUnrank(n,0n)))throw Error("seam n="+n);
+  if(seen.size!==count)throw Error("exhaustiveness n="+n);
+ }
+ checks.smallNExhaustive="PASS n=2..8, including wrap";
+ let cur=17n;
+ const sample=[0n,1n,2n,8n,728n,729n,SIZE-1n,SIZE-2n,SIZE/2n,VISITS_PER_STATION];
+ for(let i=0;i<600;i++){
+  cur=(cur*6364136223846793005n+1442695040888963407n)%SIZE;
+  sample.push(cur);
+ }
+ for(const r of sample){
+  const p=sjtUnrank(OPERATORS,r);
+  if(sjtRank(p)!==r)throw Error("24! rank/unrank roundtrip at "+r);
+  const t=transition(r,1n);
+  if(!t.isSingleStepValid)throw Error("24! adjacency / Gray at "+r);
+  if(stationIndex(r)!==Number(r%729n))throw Error("station modulo");
+ }
+ checks.sampled24FactorialRanks="PASS "+sample.length+" exact BigInt ranks";
+ if(SIZE!==620448401733239439360000n)throw Error("24! constant wrong");
+ if(VISITS_PER_STATION!==851095201280163840000n)throw Error("visits/station wrong");
+ if(state(0n).gray!=="000"||state(1n).gray!=="001")throw Error("opening 000 -> 001");
+ if(state(SIZE-1n).gray!=="100")throw Error("closing Gray label wrong");
+ if(stationIndex(0n)!==0||stationIndex(1n)!==1||stationIndex(SIZE-1n)!==728)
+  throw Error("station boundary");
+ const seam=transition(SIZE-1n,1n);
+ if(!seam.isSingleStepValid||seam.adjacent.leftIndex!==0)throw Error("toroidal seam");
+ checks.firstStep="000 -> 001; adjacent symbols 23 and 24";
+ checks.seam="rank N-1 -> 0; Gray 100 -> 000; adjacent symbols 2 and 1";
+ checks.fair729Visits="24!/729 exact = "+VISITS_PER_STATION;
+ checks.grayPeriod="8, Gray one-bit for every step including cycle seam";
+ checks.astronomicalClaim="NO: symbolic address projection only";
+ return checks;
+}
+const api=Object.freeze({OPERATORS,STATIONS,SIZE,VISITS_PER_STATION,
+ factorial,normalizedRank,sjtUnrank,sjtRank,grayBits,grayNumber,
+ stationIndex,stationLabel,adjacentSwap,state,transition,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound08Toroid=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script>
+<script>
+(function(){
+"use strict";
+const C=globalThis.Bound10InvariantZero,T=globalThis.Bound08Toroid,$=id=>document.getElementById(id);let rank=0n,selected=728;
+function sci(x,d=5){return x===null?"unavailable":Number(x).toExponential(d)}
+function setStation(i){selected=Math.max(0,Math.min(728,Math.round(i)));$("stationSlider").value=selected;paint();}
+function setRank(v,action){rank=T.normalizedRank(v);$("rankInput").value=rank.toString();selected=T.stationIndex(rank);$("stationSlider").value=selected;$("rankNotice").textContent=action;paint();}
+function statusText(st){return st.classification.replaceAll("_"," ").toLowerCase();}
+function paint(){
+const st=C.station(selected);$("stationId").textContent=st.label;$("radiusValue").textContent=selected===0?"r = 0 · mathematical sentinel":sci(st.radius_m,7)+" m";$("logRatio").textContent=selected===0?"undefined":st.log10_radius_to_planck.toFixed(6);
+$("horizonRatio").textContent=selected===0?"undefined":sci(st.ratio_to_horizon,4);
+$("curvature").textContent=selected===0?"undefined (singularity)":st.log10_planck_normalized_K.toFixed(5);
+$("properDist").textContent=st.external_slice_proper_m===null?"not defined for this slice":sci(st.external_slice_proper_m,4)+" m";
+$("regime").textContent=statusText(st);
+$("radiusNote").textContent=selected===0?"Classical r=0 is not a measured physical center; no field value is assigned.":st.radius_m<C.RS?"Inside the modeled horizon: logarithmic radius is a formal label, not a traversable static spatial path.":"Exterior Schwarzschild slice distance is defined only for the spherical nonspinning model.";
+const t=T.state(rank);$("rankDisplay").textContent="exact rank "+rank.toLocaleString("en-US")+"\nGray "+t.gray+" / registry "+t.stationLabel+"\nnext rank "+t.nextRank.toLocaleString("en-US")+"\nPermutation "+t.permutation.map(x=>String(x).padStart(2,"0")).join(" ");
+$("graybits").replaceChildren();for(let b of t.gray){let x=document.createElement("div");x.className="bit"+(b==="1"?" on":"");x.textContent=b;$("graybits").appendChild(x)}
+draw();
+}
+function canvas(id){let el=$(id),rect=el.getBoundingClientRect(),dpr=Math.min(2,globalThis.devicePixelRatio||1),w=rect.width,h=rect.height;el.width=Math.floor(w*dpr);el.height=Math.floor(h*dpr);let ctx=el.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);return {ctx,w,h}}
+function draw(){let {ctx:c,w,h}=canvas("logmap"),L=35,R=w-32,T0=68,B=h-54,span=R-L,mid=(T0+B)/2;
+c.clearRect(0,0,w,h);c.font="11px system-ui";c.fillStyle="#a8bfd1";c.fillText("INWARD ← decreasing physical radius",14,21);c.fillText("LEFT: PLANCK REFERENCE",14,39);c.textAlign="right";c.fillText("RIGHT: SUN",R,39);c.textAlign="left";
+const xp=r=>L+Math.log10(r/C.LP)/C.LOGSPAN*span;
+const xZ=L-22;
+for(let i=0;i<7;i++){let t=i/6,x=L+span*t; c.strokeStyle="#294459";c.lineWidth=.8;c.beginPath();c.moveTo(x,T0);c.lineTo(x,B);c.stroke();c.fillStyle="#829db5";c.fillText((C.LOGSPAN*t).toFixed(1),x-13,h-23);}
+c.fillStyle="#a1b6c9";c.fillText("log₁₀(r / ℓP)",w/2-40,h-7);
+const xCritical=xp(C.R_KCRIT),xH=xp(C.RS),xPhoton=xp(C.R_PHOTON),xISCO=xp(C.R_ISCO);
+const zones=[{a:L,b:xCritical,c:"#4f2f36"},{a:xCritical,b:xH,c:"#2b274a"},{a:xH,b:R,c:"#17394b"}];
+zones.forEach(z=>{c.fillStyle=z.c;c.globalAlpha=.65;c.fillRect(z.a,T0,z.b-z.a,B-T0);c.globalAlpha=1;});
+c.strokeStyle="#8ab9c9";c.lineWidth=2;c.beginPath();c.moveTo(L,mid);c.lineTo(R,mid);c.stroke();
+for(let i=1;i<729;i++){let x=xp(C.posToRadius(i));c.fillStyle=i<=200?"#f0a589":i<=592?"#ab9af4":"#8cc9e4";c.globalAlpha=.57;c.fillRect(x,mid-3,1.5,6);}c.globalAlpha=1;
+const drawMark=(x,text,y,color)=>{c.strokeStyle=color;c.lineWidth=1.1;c.setLineDash([5,4]);c.beginPath();c.moveTo(x,T0-5);c.lineTo(x,B+3);c.stroke();c.setLineDash([]);c.fillStyle=color;c.fillText(text,Math.max(30,Math.min(w-120,x+5)),y)};
+drawMark(xCritical,"KℓP⁴=1 (formal)",T0+23,"#fcb78d");
+drawMark(xH,"event horizon",T0+43,"#beacff");
+drawMark(xPhoton,"",T0+61,"#7babe9");
+drawMark(xISCO,"",T0+61,"#9bceea");
+c.beginPath();c.arc(xZ,mid,4,0,Math.PI*2);c.fillStyle="#fa9eac";c.fill();c.fillText("000",3,mid+19);
+const st=C.station(selected),x=selected===0?xZ:xp(st.radius_m);
+c.strokeStyle="#63e4db";c.lineWidth=2;c.beginPath();c.moveTo(x,T0-12);c.lineTo(x,B+10);c.stroke();
+c.beginPath();c.arc(x,mid,7,0,Math.PI*2);c.fillStyle="#77f1dd";c.fill();
+c.fillStyle="#d5f7f1";c.fillText("station "+st.label,Math.max(15,Math.min(w-105,x-20)),B+25);
+}
+$("stationSlider").addEventListener("input",()=>setStation(+$("stationSlider").value));
+$("inward").addEventListener("click",()=>setStation(selected-1));
+$("outward").addEventListener("click",()=>setStation(selected+1));
+$("sunBtn").addEventListener("click",()=>setStation(728));
+$("horizonBtn").addEventListener("click",()=>setStation(Math.round(C.radiusToFractionalStation(C.RS))));
+$("curvatureBtn").addEventListener("click",()=>setStation(Math.round(C.radiusToFractionalStation(C.R_KCRIT))));
+$("planckBtn").addEventListener("click",()=>setStation(1));
+$("zeroBtn").addEventListener("click",()=>setStation(0));
+$("rankPlus").addEventListener("click",()=>setRank(rank+1n,"One cyclic adjacent swap; Gray changes exactly one bit."));
+$("rankMinus").addEventListener("click",()=>setRank(rank-1n,"Reverse single adjacent swap; Gray changes exactly one bit."));
+$("rankLast").addEventListener("click",()=>setRank(T.SIZE-1n,"Last factorial rank; next returns to center sentinel 000."));
+$("rankReset").addEventListener("click",()=>setRank(0n,"Reset rank 000 = center sentinel."));
+function jump(){let s=$("rankInput").value.trim();if(!/^\d+$/.test(s)){$("rankNotice").textContent="Invalid rank, enter digits only";return}let n=BigInt(s);if(n>=T.SIZE){$("rankNotice").textContent="Out of range, rank must be below 24!";return}setRank(n,"Direct rank jump; no adjacent-step claim.")}
+$("rankJump").addEventListener("click",jump);
+$("rankInput").addEventListener("keydown",e=>{if(e.key==="Enter")jump()});
+globalThis.addEventListener("resize",draw);
+try{let a=C.selfTest(),b=T.selfTest();$("testBadge").textContent="PASS · 729 log samples + 24! SJT checks";$("testBadge").title=JSON.stringify({a,b});}catch(e){$("testBadge").textContent="TEST FAILED";$("testBadge").style.color="#f59cae";$("rankNotice").textContent=String(e)}
+paint();
+})();
+</script></body></html>
