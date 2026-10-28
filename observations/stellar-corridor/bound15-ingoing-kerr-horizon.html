@@ -738,7 +738,6 @@ function render(){
  $("tetrad").textContent=["Ingoing coordinates: (v/rg, r/rg, theta, phi+)",
  "Metric orthonormality: diag(-1,+1,+1,+1)",
  ...e.map((v,i)=>"e"+i+" = ("+v.map(x=>Number(x).toFixed(6)).join(", ")+")")].join("\n");
- $("tetradNote").textContent="No coordinate divergences at r+; no claim the ideal Kerr inner-horizon geometry remains physically stable.";
  drawJourney(chi,f,p);drawTidal(chi,p);
 }
 $("spin").addEventListener("change",render);
