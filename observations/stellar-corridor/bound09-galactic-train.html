@@ -24,7 +24,7 @@ h1{font-size:clamp(30px,4.6vw,48px);letter-spacing:-.045em;line-height:1.07;marg
 <div class="control"><label>Forward heading <strong id="headingLabel">0°</strong></label><input type="range" id="heading" min="0" max="360" step="15" value="0"></div>
 <div class="control"><label>Internal motion model</label><select id="mode"><option value="rigid">All aboard — fixed relative station line</option><option value="orbit" selected>Sun circles Galactic Center — station ray rotates</option></select></div>
 <div class="control"><label>Observation station <strong id="stationLabel">728 / SUN</strong></label><input type="range" id="station" min="0" max="728" step="1" value="728"></div>
-<div class="control"><label>Frame witness</label><select id="frame"><option value="world">Fixed external coordinate axes</option><option value="boosted">Compare with boost removed</option></select></div>
+
 </div></section>
 <div class="visuals">
 <section class="panel"><h2>External view · the whole train advances</h2><canvas id="world" role="img" aria-label="World reference frame showing moving center, Sun and 729 sample markers"></canvas>
@@ -351,7 +351,7 @@ const M=globalThis.Bound09SharedMotion,T=globalThis.Bound08Toroid;
 const $=id=>document.getElementById(id);
 let factorialRank=0n,prevRank=null,lastStepValid=false;
 const numeric=x=>Number($(x).value);
-const controls=["bulk","time","heading","station","mode","frame"];
+const controls=["bulk","time","heading","station","mode"];
 function params(){
  return {bulkKmS:numeric("bulk"),timeMyr:numeric("time"),
  headingDeg:numeric("heading"),mode:$("mode").value};
@@ -457,7 +457,7 @@ mapCanvas("world",p,"world");
 mapCanvas("relative",p,"relative");
 }
 for(const id of controls){
- $(id).addEventListener(id==="mode"||id==="frame"?"change":"input",draw);
+ $(id).addEventListener(id==="mode"?"change":"input",draw);
 }
 $("step").addEventListener("click",()=>setRank(factorialRank+1n));
 $("back").addEventListener("click",()=>setRank(factorialRank-1n));
