@@ -1,0 +1,279 @@
+{
+  "id": "ITD_BOUND18_SPHERICAL_EINSTEIN_MAXWELL_SCALAR_CHARACTERISTIC_EVOLUTION_20261027",
+  "date": "2026-10-27",
+  "status": "NUMERICAL_COUPLED_EINSTEIN_MAXWELL_NEUTRAL_SCALAR_TRAPPED_PATCH_WITH_CONVERGENT_CONSTRAINTS",
+  "parent": "BOUND17_NATURAL_CHECK_2026-10-27.md",
+  "scope": {
+    "spacetime": "Spherical Reissner–Nordström charged background plus fully evolving neutral minimally coupled massless scalar; 1+1D double-null equations",
+    "metric": "ds² = -exp(2sigma) du dv + r² dOmega²; g_uv=-exp(2sigma)/2",
+    "units": "Geometric G=c=M0=1",
+    "Q_assumed": 0.8,
+    "background_mass_M0": 1,
+    "corner_r0": 1.2,
+    "initial_domain_u_and_v": "0 <= u,v <= 0.4, both finite; stable trapped patch inside ideal RN outer horizon and above inner horizon",
+    "boundary_pulses": "phi(u,0)=A sin²(pi u/L), phi(0,v)=B sin²(pi v/L), L=0.4, both vanish at shared corner",
+    "scenarios": [
+      "A=0,B=0 vacuum",
+      "A=0,B=.015 incoming-only initial segment",
+      "A=.02,B=0 outgoing-only initial segment",
+      "A=.02,B=.015 both initial segments"
+    ],
+    "Q_observed_SgrA": false,
+    "astrophysical_spin_modeled": false,
+    "mass_inflation_near_Cauchy_computed": false,
+    "center_physical_unresolved": true,
+    "actual_observed_scalar_radiation": false
+  },
+  "equations": {
+    "r_uv": "-r_u r_v/r - exp(2sigma)/(4r)*(1-Q²/r²)",
+    "sigma_uv": "r_u r_v/r² + exp(2sigma)/(4r²)*(1-2Q²/r²) - phi_u phi_v",
+    "phi_uv": "-(r_u phi_v+r_v phi_u)/r",
+    "C_uu": "r_uu - 2 sigma_u r_u + r (phi_u)² = 0",
+    "C_vv": "r_vv - 2 sigma_v r_v + r (phi_v)² = 0",
+    "charged_Hawking_mass": "m=r/2*[1+4*r_u*r_v/exp(2sigma)+Q²/r²]",
+    "original_RN_lapse": "F(r)=1-2M0/r+Q²/r²",
+    "initial_r_boundaries": "dr/ds=F(r)/2, from same r0; inside trapped region F<0",
+    "initial_sigma": "sigma_RN(s)=(1/2)ln[-F(r(s))]; correction = integral r*phi_s²/F(r) ds enforcing null constraints along both initial characteristics",
+    "boundary_constraint_derivation": "r_ss-2 sigma_s r_s+r phi_s²=0; r_s=F/2, r_ss=F'F/4, sigma_s=F'/4+r phi_s²/F",
+    "initial_data_compatibility": "r,sigma,phi agree at u=v=0; null constraints imposed on both characteristic arms before evolution."
+  },
+  "numerical_method": {
+    "grid_N": [
+      24,
+      48,
+      96,
+      192
+    ],
+    "diamond_rule": "Implicit centered double-null NE = SE+NW−SW+h² RHS(midpoint) with full four-corner derivative averages",
+    "fixed_point_iterations": 8,
+    "boundary_radius_integration": "RK4 per null-segment cell",
+    "boundary_sigma_correction": "Simpson rule integrating constraint source r phi_s²/F(r)",
+    "interior_constraints": "finite-difference Cuu,Cvv monitored on all (N−1)² interior cells; not imposed by projection",
+    "independent_resolution_test": "Four refinements, halving h yields ~4 reduction in checkpoint solution differences",
+    "test_center_location": "u=v=0.2 characteristic midpoint; not proper-time observer position",
+    "point_status": "inside trapped finite patch with r_u<0 and r_v<0 in all four cases; not near r_-=0.4",
+    "nonlinear_scalar_initial_data_not_shells": true,
+    "no_horizon_penetration_this_bound": true
+  },
+  "tested_results": {
+    "test_source_sha": "0744b64b842b07c0b90e639d7cd3e03302a1be44",
+    "all_self_test_pass": true,
+    "tests": {
+      "pass": true,
+      "domain": "RN trapped region r0=1.2, Q=.8; no inner-horizon limit",
+      "numerically_evolving_Einstein_scalar": true,
+      "convergence_order": "fourfold second-order expected",
+      "four_cases": {
+        "base": {
+          "masses": [
+            1.0000018904493995,
+            1.0000004726102014,
+            1.0000001181525007,
+            1.0000000295386706
+          ],
+          "constraint_Cuu_l2": [
+            8.80906781317128e-8,
+            2.2011010876378643e-8,
+            5.5012286086231776e-9,
+            1.4672153013221562e-9
+          ],
+          "constraint_Cvv_l2": [
+            8.809067813171283e-8,
+            2.2011010876378643e-8,
+            5.501228608623182e-9,
+            1.4672153013221529e-9
+          ],
+          "observed_refinement_ratios": [
+            4.000023539371752,
+            4.000025265797787
+          ],
+          "observed_Cuu_constraint_ratios": [
+            4.002118695341171,
+            4.00110819642659,
+            3.7494351399319776
+          ],
+          "observed_Cvv_constraint_ratios": [
+            4.002118695341172,
+            4.001108196426587,
+            3.749435139931989
+          ]
+        },
+        "both": {
+          "masses": [
+            1.005649036905282,
+            1.0056475341504465,
+            1.0056471586273585,
+            1.0056470647584614
+          ],
+          "constraint_Cuu_l2": [
+            0.0003950723511521445,
+            0.00010164827474790378,
+            0.00002570655154520965,
+            0.000006459160941208054
+          ],
+          "constraint_Cvv_l2": [
+            0.000222196497738186,
+            0.00005716936810922415,
+            0.000014458001623806098,
+            0.0000036327883687173237
+          ],
+          "observed_refinement_ratios": [
+            4.0020893989487405,
+            4.000586390905132
+          ],
+          "observed_Cuu_constraint_ratios": [
+            3.8866606652395923,
+            3.9541777732861902,
+            3.97985926952329
+          ],
+          "observed_Cvv_constraint_ratios": [
+            3.886635537298078,
+            3.954168051488584,
+            3.979863442722642
+          ]
+        },
+        "incoming": {
+          "masses": [
+            1.0019777655204842,
+            1.0019763264399064,
+            1.001975966741278,
+            1.0019758768194664
+          ],
+          "constraint_Cuu_l2": [
+            8.79098531419819e-8,
+            2.1965972368656116e-8,
+            5.490742822745275e-9,
+            1.4799715337558506e-9
+          ],
+          "constraint_Cvv_l2": [
+            0.00022220192514116484,
+            0.00005717046304403666,
+            0.000014458247732743339,
+            0.000003632855313084565
+          ],
+          "observed_refinement_ratios": [
+            4.000655761286529,
+            4.000092055609743
+          ],
+          "observed_Cuu_constraint_ratios": [
+            4.002092494089769,
+            4.000546570431706,
+            3.710032725299078
+          ],
+          "observed_Cvv_constraint_ratios": [
+            3.8866560337286313,
+            3.954176474273831,
+            3.9798578491878356
+          ]
+        },
+        "outgoing": {
+          "masses": [
+            1.0035342233580993,
+            1.003532769309573,
+            1.0035324059264832,
+            1.0035323150883813
+          ],
+          "constraint_Cuu_l2": [
+            0.0003950779122171379,
+            0.00010164940239405196,
+            0.00002570680407105349,
+            0.000006459210037976138
+          ],
+          "constraint_Cvv_l2": [
+            8.77681516477028e-8,
+            2.1930523945989378e-8,
+            5.482000550386282e-9,
+            1.4577764372562857e-9
+          ],
+          "observed_refinement_ratios": [
+            4.001187914873034,
+            4.000281541036272
+          ],
+          "observed_Cuu_constraint_ratios": [
+            3.8866722569168393,
+            3.954182795850214,
+            3.9798681138890775
+          ],
+          "observed_Cvv_constraint_ratios": [
+            4.002100080411153,
+            4.000460004412818,
+            3.760522128279203
+          ]
+        }
+      },
+      "mixed_mass_response_at_center": 0.0001389023892843788,
+      "no_mass_inflation_prediction": true
+    },
+    "checkpoint_N192": {
+      "vacuum_mass": 1.0000000295386706,
+      "incoming_only_mass": 1.0019758768194664,
+      "outgoing_only_mass": 1.0035323150883813,
+      "both_streams_mass": 1.0056470647584614,
+      "nonlinear_mixed_mass_difference": 0.0001389023892843788,
+      "both_Cuu_l2": 0.000006459160941208054,
+      "both_Cvv_l2": 0.0000036327883687173237
+    },
+    "actual_C_uu_refinement_factors": [
+      3.8866606652395923,
+      3.9541777732861902,
+      3.97985926952329
+    ],
+    "actual_C_vv_refinement_factors": [
+      3.886635537298078,
+      3.954168051488584,
+      3.979863442722642
+    ],
+    "checkpoint_solution_refinement_factors": [
+      4.0020893989487405,
+      4.000586390905132
+    ],
+    "C_uu_C_vv_norms_reduce_with_resolution": true,
+    "exact_RN_vacuum_limit_recovered": true,
+    "two_stream_mixed_finite": true,
+    "scientific_interpretation": "Nonlinear coupling is nonzero at the midpoint and initial-data controls are distinguished, but bounded small patch does not establish mass inflation or Cauchy instability.",
+    "filename_data_table": "4x729 samples from four actual N=192 numerical grids, not 729 stellar observations or 729 proper-time ticks",
+    "filename_convergence": "4 scenarios by 4 refinements = 16 records",
+    "HTML_mock_interactions": "PASS: vacuum vs both, 192 refinement, modified fluxes, 24! forward/last-seam/backward and invalid rank guard",
+    "HTML_inline_syntax": "PASS three scripts",
+    "real_browser_screenshot": false,
+    "live_GitHub_Pages_deployed_verified": false
+  },
+  "theory_sources": [
+    {
+      "title": "Lior Burko and Amos Ori, Late-time evolution of nonlinear gravitational collapse, Phys Rev D 56,7820 (1997)",
+      "url": "https://doi.org/10.1103/PhysRevD.56.7820",
+      "role": "Double-null free evolution, constraints monitored, second order accuracy and charged scalar perturbation model"
+    },
+    {
+      "title": "Thomas Mädler, Radouane Gannouj and Emanuel Gallo, Characteristic initial value problems for Einstein-Maxwell-scalar in spherical symmetry, Phys Rev D (2025)",
+      "url": "https://doi.org/10.1103/f5fc-zpld",
+      "role": "Well-posed data and null characteristic formulation"
+    },
+    {
+      "title": "Luk, Oh and collaborators, Einstein-Maxwell-scalar mass inflation and late tails, 2024-2025",
+      "url": "https://arxiv.org/abs/2412.17927",
+      "role": "Long-time nonlinear Cauchy horizon requires stronger global analysis than finite local patch"
+    }
+  ],
+  "cautions": [
+    "Second-order grid convergence does not demonstrate late-time power-law tails or inner-horizon mass inflation; the simulated patch remains well above inner RN radius.",
+    "The result is spherical and electrically charged; Kerr is rotating and the two systems are not interchangeable.",
+    "No numerical solution in this work approaches the Cauchy horizon, assesses physical collapse, or maps the full Sgr A* observed spacetime.",
+    "An arbitrary neutral scalar pulse A,B and a charged background Q/M0=0.8 were assumed, not measured. Neither Q nor scalar amplitude is inferred for Sgr A*.",
+    "Double-null metric functions carry gauge freedom; some coordinate derivatives are gauge-dependent. Charged Hawking mass is spherical invariant when evaluated from geometry.",
+    "The monitor Cuu/Cvv is a finite difference residual in grid coordinates; the RMS values have grid-dependent normalization and cannot be treated as physics uncertainty bars.",
+    "Initial null constraint satisfaction is enforced numerically by constraint integration; interior constraints monitored only, avoiding hiding evolution failure.",
+    "The convergent positive change in spherical charged mass parameter at a checkpoint does not prove an explosive divergence approaching an inner horizon.",
+    "These are 729 chosen numerical u,v coordinate samples per control; original 729 Galactic stations and the 24! ring are not changed.",
+    "No Planck-scale limit, quantum gravity microstructure or physical central core inferred."
+  ],
+  "artifacts": [
+    "bound18_double_null_ems_core.js",
+    "bound18-characteristic-field-evolution.html",
+    "BOUND18_729_DOUBLE_NULL_MASS_FLUX_CONSTRAINT_SAMPLES_20261027.csv",
+    "BOUND18_FOUR_REFINEMENTS_CONSTRAINT_CONVERGENCE_20261027.csv",
+    "BOUND18_CHARACTERISTIC_AUDIT_20261027.json",
+    "BOUND18_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next_bound": "Bound19: extend characteristic charged Einstein-Maxwell-neutral-scalar solver toward the inner horizon with adaptive mesh and regular gauge; propagate both constraints, monitor Hawking mass and curvature, use independent convergence/error diagnostics, stop before underresolved gradients. Do not claim actual mass inflation before numerical convergence near CH."
+}
