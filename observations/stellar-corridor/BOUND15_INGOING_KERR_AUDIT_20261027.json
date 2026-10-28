@@ -1,0 +1,154 @@
+{
+  "id": "ITD_BOUND15_FUTURE_INGOING_KERR_OUTER_HORIZON_20261027",
+  "date": "2026-10-27",
+  "state": "EXECUTED_IDEAL_KERR_HORIZON_PENETRATION_WITH_DECLARED_PRECAUCHY_GUARD",
+  "parent": "BOUND14_NATURAL_BOUND_2026-10-27.md",
+  "assumptions": {
+    "metric": "Exact stationary Kerr, asymptotically flat vacuum; unrealistic unperturbed black-hole interior near Cauchy horizon",
+    "source_mass": "Sgr A* 4.297 million solar masses adopted from GRAVITY 2022, not new observations",
+    "geodesic": "Same Bound14 equatorial E=1,Lz=0,Q=0 inward timelike test-particle worldline, initial radius=200 rg",
+    "spin_values_assumed": [
+      0,
+      0.5,
+      0.9,
+      0.99
+    ],
+    "spin_observed_in_this_work": false,
+    "coordinates": "Future-ingoing Kerr advanced v=t+integral(P/Delta)dr; phiPlus=phi+integral(chi/Delta)dr, with rg=GM/c² normalization",
+    "crossing": "Continuous through future OUTER horizon only in coordinate and classical ideal-metric sense",
+    "full_physical_inner_horizon_or_center": "UNKNOWN"
+  },
+  "invariants_and_equations": {
+    "ingoing_metric": "g_vv=-1+2y/Sigma; g_vr=1; g_vPhi=-2chi*y*sin²theta/Sigma; g_rPhi=-chi*sin²theta; g_the tatheta=Sigma; g_PhiPhi=(y²+chi²+2chi²y sin²theta/Sigma)*sin²theta, Sigma=y²+chi² cos²theta",
+    "D": "y²-2y+chi²; zero at r± but absent from ingoing metric and rationalized tetrad",
+    "horizons": "y±=1±sqrt(1-chi²), chi>=0 and chi<1",
+    "frame": "Ingoing metric-orthonormal and parallel transported E=1,Lz=Q=0 tetrad from Bound14 transformed and rationalized to eliminate inverse-Delta poles",
+    "tidal_eigenvalues": "(GM/r³)[2+3(chi/y)², −1−3(chi/y)², −1], same local falling frame on both sides of outer horizon",
+    "vacuum_trace": "zero in exact Kerr solution",
+    "interior_proper_clock": "tau_inside(y)=rg/c * integral_y^yplus [y'^(3/2)/sqrt(2(y'²+chi²))] dy'",
+    "guard_rotating": "y_stop=y_minus + .01 (y_plus-y_minus) = declared conservative stop before ideal Cauchy horizon; not physical safe radius",
+    "guard_zero_spin": "y_stop=.02 rg for chi=0 is arbitrary positive-model stop; chi=0 has no distinct inner horizon",
+    "address": "24! SJT rank modulo 729 and Gray bits are logical only; not proper time"
+  },
+  "numerical": {
+    "source_core_sha": "970dfae6fb1e779e47ba33cf54e31c57b113f6e2",
+    "source_independent_sha": "a94b85a487915af9019bb6f4b0a677dba4f13973",
+    "core_execution": {
+      "pass": true,
+      "spin_scenarios": [
+        0,
+        0.5,
+        0.9,
+        0.99
+      ],
+      "metric_inverse_checked": "PASS",
+      "metric_and_tetrad_component_comparisons": 256,
+      "max_tetrad_minkowski_error": 1.7763568394002505e-14,
+      "max_metric_inverse_error": 5.684341886080802e-14,
+      "all_future_horizon_frame_components_finite": true,
+      "Schwarzschild_horizon_clock_consistent_with_bound14": true,
+      "model_guard_not_actual_inner_physical_boundary": true,
+      "results": [
+        {
+          "chi": 0,
+          "r_plus_y": 2,
+          "r_minus_y": 0,
+          "stop_y": 0.02,
+          "horizon_to_guard_proper_s": 28.19155968674701,
+          "outer_horizon_proper_from_start_s": 28191.55968674697,
+          "stop_kind": "NONROTATING_POSITIVE_RADIUS_GUARD_NO_CAUCHY_HORIZON"
+        },
+        {
+          "chi": 0.5,
+          "r_plus_y": 1.8660254037844386,
+          "r_minus_y": 0.1339745962155614,
+          "stop_y": 0.15129510429125018,
+          "horizon_to_guard_proper_s": 21.498427009371653,
+          "outer_horizon_proper_from_start_s": 28191.901388823077,
+          "stop_kind": "PRE_CAUCHY_HORIZON_1PERCENT_GAP_MODEL_GUARD"
+        },
+        {
+          "chi": 0.9,
+          "r_plus_y": 1.4358898943540672,
+          "r_minus_y": 0.5641101056459328,
+          "stop_y": 0.5728279035330142,
+          "horizon_to_guard_proper_s": 9.483593264251944,
+          "outer_horizon_proper_from_start_s": 28193.86154072174,
+          "stop_kind": "PRE_CAUCHY_HORIZON_1PERCENT_GAP_MODEL_GUARD"
+        },
+        {
+          "chi": 0.99,
+          "r_plus_y": 1.141067359796659,
+          "r_minus_y": 0.858932640203341,
+          "stop_y": 0.8617539873992742,
+          "horizon_to_guard_proper_s": 2.9699395734314993,
+          "outer_horizon_proper_from_start_s": 28196.098090306165,
+          "stop_kind": "PRE_CAUCHY_HORIZON_1PERCENT_GAP_MODEL_GUARD"
+        }
+      ],
+      "physical_center_prediction": false,
+      "actual_inner_horizon_stability_verified": false
+    },
+    "independent_connection_riemann_transport": {
+      "pass": true,
+      "cases": 16,
+      "normalized_max_diagonal_residual": 8.748673111608735e-7,
+      "normalized_max_off_diagonal_residual": 0.0000022797000056016258,
+      "max_absolute_coordinate_parallel_transport_residual": 1.1822010037576547e-7,
+      "independent_methods": "finite differences of ingoing Kerr metric -> Christoffel -> full Riemann -> local tetrad; derivative-based covariant transport"
+    },
+    "sample_table": "Four independently sampled 729-step proper-time fractions from outer horizon to chosen guard, total 2916 model records",
+    "separate_boundary_table": "Four spin-dependent r+, r−, guard, and proper-time horizon/guard anchors",
+    "browser_scripts_compiled": 5,
+    "browser_control_mock_pass": "Start, middle, guard, spins 0/.9/.99, 24! logical forward/back/seam, invalid rank guard",
+    "real_browser_render_verified": false,
+    "live_Github_Pages_verified": false
+  },
+  "sources": [
+    {
+      "title": "Kerr spacetime in advanced ingoing coordinates; MNRAS 2014 exact metric",
+      "url": "https://academic.oup.com/mnras/article/445/3/2500/1035561"
+    },
+    {
+      "title": "Kerr advanced Eddington-Finkelstein exterior to interior metric references",
+      "url": "https://blackhole.org/reference/spacetimes-coordinates/kerr-charts/"
+    },
+    {
+      "title": "Poisson and Israel (1990) Internal structure of black holes, mass inflation",
+      "url": "https://doi.org/10.1103/PhysRevD.41.1796"
+    },
+    {
+      "title": "Poisson and Israel (1989) Cauchy-horizon instability",
+      "url": "https://doi.org/10.1103/PhysRevLett.63.1663"
+    },
+    {
+      "title": "McMaken and Hamilton (2021), rotating accreting black-hole inner horizon",
+      "url": "https://doi.org/10.1103/PhysRevD.103.084014"
+    },
+    {
+      "title": "GRAVITY Collaboration 2022, mass from S2 orbit",
+      "url": "https://doi.org/10.1051/0004-6361/202142465"
+    }
+  ],
+  "caveats": [
+    "Regular advanced Kerr coordinates and a locally regular parallel tetrad at r+ do not establish stability of a real spinning black-hole interior.",
+    "Inner Cauchy-horizon limit in a realistic rotating accreting hole can undergo mass inflation; stop at an arbitrary 1%-of-gap guard, not an inferred physically safe surface.",
+    "For chi=0 the formal y_minus=0 is not a separate inner horizon. A positive .02 rg stop is a numerical limit, not a quantum or classical hard boundary.",
+    "At exact ideal Kerr r−, matter/radiative perturbations are not modeled. Numerical continuation there would be unjustified as physical prediction.",
+    "At the horizon, old Boyer-Lindquist tetrad components diverge, but ingoing local components remain finite; eigenvalues are continuous.",
+    "24! ring does not physically loop a worldline. The 729 samples are model clock coordinates not stars.",
+    "Near ring singularity and Planck domain remain unknown; no atomic, nuclear, photonic or quanta substructure inferred.",
+    "No rod strength, full magnetic Weyl tensor, stress waves, dynamic material fracture or Kerr spin observational fit calculated.",
+    "Interior proper-time results are from unperturbed exact Kerr and cannot be assumed to predict an astrophysical black hole without accretion, gravitational waves or perturbations."
+  ],
+  "files": [
+    "bound15_ingoing_kerr_core.js",
+    "bound15_ingoing_independent_validator.js",
+    "BOUND15_INGOING_KERR_729_INTERIOR_SPIN_CLOCK_20261027.csv",
+    "BOUND15_OUTER_INNER_GUARD_ANCHORS_20261027.csv",
+    "bound15-ingoing-kerr-horizon.html",
+    "BOUND15_INGOING_KERR_AUDIT_20261027.json",
+    "BOUND15_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next_bound": "Bound16: perturb the ideal Kerr inner-horizon approach with an explicitly measured/inventoried incoming tail or finite perturbation model, derive mass-inflation diagnostics separately from background; compare with a dynamic proper stress/strain wave simulation and never identify singularity center with Planck length."
+}
