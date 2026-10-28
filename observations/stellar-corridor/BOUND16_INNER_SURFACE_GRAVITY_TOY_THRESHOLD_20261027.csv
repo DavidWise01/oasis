@@ -1,0 +1,5 @@
+assumed_chi,outer_y,inner_y,has_Cauchy_inner_horizon,abs_kappa_dimensionless_rg_times_invlength,abs_inner_horizon_surface_gravity_s_inverse,e_fold_time_seconds,default_threshold_crossing_x_Delta_v_over_rg,default_threshold_crossing_advanced_time_seconds,threshold_is_real_mass_inflation_event,initial_perturbation_epsilon_assumed,tail_exponent_p_assumed,late_time_reference_x0_assumed,source_status
+0,2.000000000000e+0,0.000000000000e+0,NO,,,,,,NO_TOY_THRESHOLD_ONLY,1e-9,7,100,NO_INNER_HORIZON
+0.5,1.866025403784e+0,1.339745962156e-1,YES,3.232050807569e+0,1.527085313136e-1,6.548422615279e+0,6.549192211302e+0,1.386125699290e+2,NO_TOY_THRESHOLD_ONLY,1e-9,7,100,CROSSED_ASSUMED_TOY_THRESHOLD
+0.9,1.435889894354e+0,5.641101056459e-1,YES,3.863517866383e-1,1.825442031102e-2,5.478125204538e+1,6.242668606770e+1,1.321250485375e+3,NO_TOY_THRESHOLD_ONLY,1e-9,7,100,CROSSED_ASSUMED_TOY_THRESHOLD
+0.99,1.141067359797e+0,8.589326402033e-1,YES,8.211782460803e-2,3.879918088290e-3,2.577373999255e+2,3.873738068599e+2,8.198702551343e+3,NO_TOY_THRESHOLD_ONLY,1e-9,7,100,CROSSED_ASSUMED_TOY_THRESHOLD
