@@ -1,1 +1,129 @@
-#!/usr/bin/env python3\n"""Chemical Mnemonic v185 — discrete recoverability/time-ring model.\n\nModel boundary:\n- "mnemonic" means a chemically persistent/recoverable trace inside a declared\n  observation window.\n- This is an abstract finite-state model, not a universal chemical decay law.\n- Real kinetics require compound, environment, assay, temperature, water, etc.\n\nStates monotonically lose recoverability under decomposition:\nSTRONG -> MEDIUM -> WEAK -> ZERO\nZERO is absorbing.\n\nFather-Time rings index elapsed decomposition stages.\nMother-Nature disposition is an observation label:\nreuse / hold / release.\n"""\nfrom dataclasses import dataclass\nfrom enum import IntEnum\nfrom typing import Iterable\n\nclass Strength(IntEnum):\n    ZERO = 0\n    WEAK = 1\n    MEDIUM = 2\n    STRONG = 3\n\nclass Disposition(IntEnum):\n    RELEASE = 0\n    HOLD = 1\n    REUSE = 2\n\n@dataclass(frozen=True)\nclass Ring:\n    stage: int\n    start: float\n    end: float\n\n@dataclass(frozen=True)\nclass Trace:\n    strength: Strength\n    ring: Ring\n    disposition: Disposition\n\ndef degrade(s: Strength, hits: int = 1) -> Strength:\n    if hits < 0:\n        raise ValueError("hits must be >= 0")\n    return Strength(max(0, int(s) - hits))\n\ndef recoverable(s: Strength) -> bool:\n    return s != Strength.ZERO\n\ndef disposition(s: Strength) -> Disposition:\n    if s >= Strength.MEDIUM:\n        return Disposition.REUSE\n    if s == Strength.WEAK:\n        return Disposition.HOLD\n    return Disposition.RELEASE\n\ndef father_time_rings(boundaries: Iterable[float]) -> list[Ring]:\n    xs = list(boundaries)\n    if len(xs) < 2:\n        raise ValueError("need at least two time boundaries")\n    if any(b < a for a, b in zip(xs, xs[1:])):\n        raise ValueError("boundaries must be monotone")\n    return [Ring(i, xs[i], xs[i+1]) for i in range(len(xs)-1)]\n\ndef walk(initial: Strength, rings: list[Ring]) -> list[Trace]:\n    s = initial\n    out = []\n    for r in rings:\n        out.append(Trace(s, r, disposition(s)))\n        s = degrade(s)\n    return out\n\ndef lineage_tether(parent: Strength, generations: int) -> Strength:\n    return degrade(parent, generations)\n\ndef decomposition_tether(source: Strength, stages: int) -> Strength:\n    return degrade(source, stages)\n\ndef validate() -> None:\n    assert degrade(Strength.STRONG) == Strength.MEDIUM\n    assert degrade(Strength.MEDIUM) == Strength.WEAK\n    assert degrade(Strength.WEAK) == Strength.ZERO\n    assert degrade(Strength.ZERO) == Strength.ZERO\n\n    cases = 0\n    for s in Strength:\n        prev = s\n        for n in range(1001):\n            cur = degrade(s, n)\n            assert cur <= prev\n            assert cur <= s\n            if prev == Strength.ZERO:\n                assert cur == Strength.ZERO\n            prev = cur\n            cases += 1\n\n    assert disposition(Strength.STRONG) == Disposition.REUSE\n    assert disposition(Strength.MEDIUM) == Disposition.REUSE\n    assert disposition(Strength.WEAK) == Disposition.HOLD\n    assert disposition(Strength.ZERO) == Disposition.RELEASE\n\n    rings = father_time_rings([0, 1, 2, 5, 10])\n    assert len(rings) == 4\n    assert [(r.start, r.end) for r in rings] == [(0,1),(1,2),(2,5),(5,10)]\n\n    seq = [t.strength for t in walk(Strength.STRONG, father_time_rings(range(0, 7)))]\n    assert seq == [\n        Strength.STRONG, Strength.MEDIUM, Strength.WEAK,\n        Strength.ZERO, Strength.ZERO, Strength.ZERO\n    ]\n\n    for s in Strength:\n        for n in range(32):\n            assert lineage_tether(s, n) == decomposition_tether(s, n)\n\n    print({\n        "status": "PASS",\n        "exhaustive_monotonic_cases": cases,\n        "strength_states": len(Strength),\n        "zero_absorbing": True,\n        "ring_sequence": [x.name for x in seq],\n        "seal": "0e / CHEMICAL MNEMONIC v185 EXECUTABLE PASS",\n    })\n\nif __name__ == "__main__":\n    validate()\n
+#!/usr/bin/env python3
+"""Chemical Mnemonic v185 — discrete recoverability/time-ring model.
+
+Model boundary:
+- "mnemonic" means a chemically persistent/recoverable trace inside a declared
+  observation window.
+- This is an abstract finite-state model, not a universal chemical decay law.
+- Real kinetics require compound, environment, assay, temperature, water, etc.
+
+States monotonically lose recoverability under decomposition:
+STRONG -> MEDIUM -> WEAK -> ZERO
+ZERO is absorbing.
+
+Father-Time rings index elapsed decomposition stages.
+Mother-Nature disposition is an observation label:
+reuse / hold / release.
+"""
+from dataclasses import dataclass
+from enum import IntEnum
+from typing import Iterable
+
+class Strength(IntEnum):
+    ZERO = 0
+    WEAK = 1
+    MEDIUM = 2
+    STRONG = 3
+
+class Disposition(IntEnum):
+    RELEASE = 0
+    HOLD = 1
+    REUSE = 2
+
+@dataclass(frozen=True)
+class Ring:
+    stage: int
+    start: float
+    end: float
+
+@dataclass(frozen=True)
+class Trace:
+    strength: Strength
+    ring: Ring
+    disposition: Disposition
+
+def degrade(s: Strength, hits: int = 1) -> Strength:
+    if hits < 0:
+        raise ValueError("hits must be >= 0")
+    return Strength(max(0, int(s) - hits))
+
+def recoverable(s: Strength) -> bool:
+    return s != Strength.ZERO
+
+def disposition(s: Strength) -> Disposition:
+    if s >= Strength.MEDIUM:
+        return Disposition.REUSE
+    if s == Strength.WEAK:
+        return Disposition.HOLD
+    return Disposition.RELEASE
+
+def father_time_rings(boundaries: Iterable[float]) -> list[Ring]:
+    xs = list(boundaries)
+    if len(xs) < 2:
+        raise ValueError("need at least two time boundaries")
+    if any(b < a for a, b in zip(xs, xs[1:])):
+        raise ValueError("boundaries must be monotone")
+    return [Ring(i, xs[i], xs[i+1]) for i in range(len(xs)-1)]
+
+def walk(initial: Strength, rings: list[Ring]) -> list[Trace]:
+    s = initial
+    out = []
+    for r in rings:
+        out.append(Trace(s, r, disposition(s)))
+        s = degrade(s)
+    return out
+
+def lineage_tether(parent: Strength, generations: int) -> Strength:
+    return degrade(parent, generations)
+
+def decomposition_tether(source: Strength, stages: int) -> Strength:
+    return degrade(source, stages)
+
+def validate() -> None:
+    assert degrade(Strength.STRONG) == Strength.MEDIUM
+    assert degrade(Strength.MEDIUM) == Strength.WEAK
+    assert degrade(Strength.WEAK) == Strength.ZERO
+    assert degrade(Strength.ZERO) == Strength.ZERO
+
+    cases = 0
+    for s in Strength:
+        prev = s
+        for n in range(1001):
+            cur = degrade(s, n)
+            assert cur <= prev
+            assert cur <= s
+            if prev == Strength.ZERO:
+                assert cur == Strength.ZERO
+            prev = cur
+            cases += 1
+
+    assert disposition(Strength.STRONG) == Disposition.REUSE
+    assert disposition(Strength.MEDIUM) == Disposition.REUSE
+    assert disposition(Strength.WEAK) == Disposition.HOLD
+    assert disposition(Strength.ZERO) == Disposition.RELEASE
+
+    rings = father_time_rings([0, 1, 2, 5, 10])
+    assert len(rings) == 4
+    assert [(r.start, r.end) for r in rings] == [(0,1),(1,2),(2,5),(5,10)]
+
+    seq = [t.strength for t in walk(Strength.STRONG, father_time_rings(range(0, 7)))]
+    assert seq == [
+        Strength.STRONG, Strength.MEDIUM, Strength.WEAK,
+        Strength.ZERO, Strength.ZERO, Strength.ZERO
+    ]
+
+    for s in Strength:
+        for n in range(32):
+            assert lineage_tether(s, n) == decomposition_tether(s, n)
+
+    print({
+        "status": "PASS",
+        "exhaustive_monotonic_cases": cases,
+        "strength_states": len(Strength),
+        "zero_absorbing": True,
+        "ring_sequence": [x.name for x in seq],
+        "seal": "0e / CHEMICAL MNEMONIC v185 EXECUTABLE PASS",
+    })
+
+if __name__ == "__main__":
+    validate()
