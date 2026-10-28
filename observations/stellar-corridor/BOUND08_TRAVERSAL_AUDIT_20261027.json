@@ -1,0 +1,101 @@
+{
+  "id": "ITD_BOUND08_24_FACTORIAL_TOROID_000_TO_001_20261027",
+  "date": "2026-10-27",
+  "status": "EXACT_CYCLIC_COMBINATORIAL_ENGINE_TESTED_AND_COMMITTED_BROWSER_JS_SMOKE_PASS_PHYSICAL_OBSERVATIONS_UNCHANGED",
+  "meaning": "24 distinguishable symbolic operator lanes, all 24! permutations arranged as one cyclic adjacent-swap walk, projected into an 8-phase Gray register and 729 established radial model station addresses",
+  "combinatorics": {
+    "operators": 24,
+    "states_exact": "620448401733239439360000",
+    "N_per_observation_station_exact": "851095201280163840000",
+    "stations": 729,
+    "station_address": "Number(rank % 729n): 000..728",
+    "gray_phase": "gray((rank % 8n)) with 3-bit reflected Gray",
+    "permutation_order": "Recursive Steinhaus-Johnson-Trotter; neighbor differs by one adjacent transposition; cyclic seam also one adjacent transposition",
+    "random_access": "BigInt rank/unrank in O(n^2) time for n=24, O(n) memory; no 24! materialization",
+    "visit_count_equality": "N divisible by 729, so each station is addressed exactly N/729 times; N divisible by 8, Gray step also closes",
+    "first_state": {
+      "rank": "0",
+      "gray": "000",
+      "station": "000",
+      "first24": "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24"
+    },
+    "second_state": {
+      "rank": "1",
+      "gray": "001",
+      "station": "001",
+      "first24": "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 24 23",
+      "swap_slots": [
+        23,
+        24
+      ]
+    },
+    "last_state": {
+      "rank": "620448401733239439359999",
+      "gray": "100",
+      "station": "728",
+      "first24": "02 01 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24"
+    },
+    "seam": {
+      "from": "last",
+      "to": "rank 0",
+      "gray": "100 -> 000",
+      "station": "728 -> 000",
+      "adjacent_swap_slots": [
+        1,
+        2
+      ]
+    },
+    "gray_cycle": [
+      "000",
+      "001",
+      "011",
+      "010",
+      "110",
+      "111",
+      "101",
+      "100",
+      "000"
+    ]
+  },
+  "test_receipt": {
+    "source_js_was_read_back_from_github": true,
+    "actual_committed_js_self_test_executed": true,
+    "exhaustive_SJT_sizes": "2..8 inclusive, verifying all ranks, reverse ranks, adjacent changes, cyclic closure",
+    "sampled_24_factorial_ranks": 610,
+    "sampled_rank_unrank": "PASS",
+    "sampled_adjacent_swap_and_gray": "PASS including cyclic last to first",
+    "station_divisibility": "PASS",
+    "actual_html_scripts_compiled": "PASS: inline engine and HTML UI script",
+    "mock_browser_dom_interaction_test": "PASS: initial 000, step 001, last address, seam to 000, reverse seam, exact rank jump and invalid-input guard",
+    "real_chromium_browser_visited": false,
+    "live_github_pages_deployment_confirmed": false
+  },
+  "physical_provenance": {
+    "prior_model": "SGRA_EARTH_729_MW_COMPONENTS_20261027.csv",
+    "prior_physical_model_record": "MW_FIELD_BOUND_2026-10-27.md",
+    "prior_azimuthal_observation_record": "BOUND07_NATURAL_BOUND_2026-10-27.md",
+    "center_station": "000 has undefined Newtonian central BH point-mass acceleration; not assigned zero",
+    "first_finite_station": "001 = 11.36950549 pc; prior model total g = 1.831898197816e-8 m/s2",
+    "solar_station": "728 = 8277 pc; prior model g = 2.12563328313e-10 m/s2 (locally calibrated)",
+    "permutations_are_physical_objects": false,
+    "toroid_closure_is_physical_shortcut": false,
+    "gravity_changed_by_traversal": false,
+    "full_24_factorial_states_materialized": false,
+    "source_astronomy_unchanged": true
+  },
+  "computational_limitations": [
+    "Full 24! traversal is mathematically defined and random-accessible; it is impractical to display or evaluate all 620,448,401,733,239,439,360,000 states sequentially.",
+    "The rendered three-dimensional torus is a non-injective symbolic projection of permutation rank; it is not a 24-dimensional gravitational manifold.",
+    "Although 729 model stations map evenly from rank modulo 729, the physical radial field is not periodic and does not teleport between the Sun and Sgr A*.",
+    "Permutation swaps and Gray changes are computational state transitions, not actual photons, mass, force or energy propagation.",
+    "An earlier four-component Galactic potential remains only locally calibrated and was shown to have out-of-sample mismatches. This traversal does not resolve them.",
+    "Real live GitHub Pages build serving the new page has not been confirmed."
+  ],
+  "links": {
+    "source_repo": "https://github.com/DavidWise01/oasis",
+    "core": "observations/stellar-corridor/bound08_toroidal_core.js",
+    "viewer": "observations/stellar-corridor/bound08-24factorial-toroid.html",
+    "reference_factorial": "https://oeis.org/A000142",
+    "reference_cyclic_SJT": "https://wrap.warwick.ac.uk/id/eprint/174321/13/WRAP-combinatorial-generation-via-permutation-languages-acyclic-orientations-Mutze-2023.pdf"
+  }
+}
