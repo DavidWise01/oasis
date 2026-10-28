@@ -96,7 +96,9 @@
     "beyond_curvature_stop_returns_null": "PASS",
     "all_729_witness_rows_gated": "PASS",
     "viewer_inline_script_syntax": "PASS",
-    "real_browser_render_or_pages_deployed": false
+    "real_browser_render_or_pages_deployed": false,
+    "viewer_mock_DOM_interactions": "PASS: initial model, exact Schwarzschild horizon, 1m/1mm gates, high-curvature diagnostic warning, logical 000→001→last→000/reverse, invalid BigInt guard",
+    "independent_live_browser_render": false
   },
   "interpretation_limits": [
     "Geodesic deviation is infinitesimal. Its analytic extension beyond a 1% local smallness test is diagnostic only, not a trustworthy extended-object separation.",
