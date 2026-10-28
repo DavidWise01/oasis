@@ -1,0 +1,72 @@
+{
+  "record": "ITD_BOUND07_MIRROR_ODD_M2_20261027",
+  "date": "2026-10-27",
+  "bound": "07",
+  "status": "OBSERVED_MIRROR_VELOCITY_DIAGNOSTIC_PLUS_SEPARATE_POTENTIAL_SCENARIO",
+  "reference_geometry": {
+    "gas_R0_kpc": 8.122,
+    "sun_to_sgra_model_R0_kpc": 8.277,
+    "bar_orientation_scenario_deg": 25,
+    "bar_scale_kpc": 4.5,
+    "epsilon_unfitted_scenario": 0.02,
+    "vc_scenario_km_s": 233
+  },
+  "five_point_summary": {
+    "odd_signs": [
+      1,
+      1,
+      1,
+      -1,
+      -1
+    ],
+    "q1_greater_q4": 3,
+    "q4_greater_q1": 2,
+    "linear_zero_cross_kpc": 6.55230088240383,
+    "conditional_m2_velocity_coefficients_kms": [
+      2.925895615075678,
+      2.372450320914714,
+      2.2710477730641454,
+      -1.3288213429398659,
+      -4.308562158932682
+    ]
+  },
+  "physical_math": {
+    "mirror_phi": "abs(phi) = arccos(R/R0) tangent point in a flat-plane circular-geometry approximation; the Q1/Q4 source radii differ slightly",
+    "velocity_even": "(vQ1+vQ4)/2",
+    "velocity_odd": "(vQ1-vQ4)/2",
+    "toy_velocity": "v0(R)+A(R)cos(2phi)+B(R)sin(2phi); only B* sin2phi identified by two mirror points, not A and v0 separately",
+    "conditional_B": "odd / sin(2*phi) if tangent geometry and exactly the stated m2 velocity ansatz",
+    "conditional_centripetal_proxy": "(vQ1^2-vQ4^2)/(R in meters), purely a circular-orbit proxy, NOT measured delta force",
+    "scenario_delta_phi": "epsilon * (233000 m/s)^2 * (R/4.5kpc)^2 * exp(1-(R/4.5kpc)^2) * cos[2(phi-25deg)]",
+    "scenario_delta_gR": "-d(delta_phi)/dR, R in meters",
+    "scenario_delta_gphi": "-(1/R)*d(delta_phi)/dphi",
+    "scenario_total_signed_gR": "-g_bound04 + delta_gR"
+  },
+  "limitations": [
+    "Only five deliberately selected prior Bound06 target radii; no new unselected H I population-level fit.",
+    "Q1 and Q4 gas curves do not measure a matched 3D location; inferred tangent-point circular speeds carry assumptions about circular orbits and solar motion.",
+    "No measurement uncertainty or covariance is supplied in the selected H I source tables, so a sign reversal cannot be assigned formal statistical significance here.",
+    "The effective B coefficient is conditional on a restrictive m=2 Fourier-velocity ansatz, not a measured Galactic bar mode.",
+    "m=2 potential is an illustrative scenario with epsilon=0.02, bar tilt 25 degrees and Gaussian-like radial envelope. It has not been fitted to either tracer family and is not a self-consistent stellar dynamics solution.",
+    "Bar rotating time evolution (pattern speed) and real spiral arms/perturbers are not solved.",
+    "At R=0, the Sgr A* Newtonian point-source field is undefined; no physical simulation of its interior.",
+    "At r>8.122kpc from GC, gas tangent-point mirror geometry is undefined in this simple Sun-based scheme and the CSV Q1/Q4 scenario fields are intentionally blank.",
+    "The mock quadrupole may alter the local solar radial force and should not be represented as still calibrated to 233km/s with nonzero epsilon.",
+    "No individual star gravity is allocated to any 729 station. The H I velocity comparisons cannot prove unique gravitational field components."
+  ],
+  "sources": [
+    "https://astroweb.case.edu/ssm/models/RCQ1.dat",
+    "https://astroweb.case.edu/ssm/models/RCQ4.dat",
+    "https://astroweb.case.edu/ssm/models/",
+    "https://doi.org/10.1088/1674-4527/20/10/159",
+    "https://docs.galpy.org/en/latest/reference/potential.html"
+  ],
+  "checks": {
+    "five_observed_witnesses": true,
+    "all_729_model_stations": true,
+    "center_undefined": true,
+    "odd_sign_change_between_6p23_and_6p73": true,
+    "epsilon_scaling_identity": true,
+    "finite_difference_radial_and_phi_force_match": true
+  }
+}
