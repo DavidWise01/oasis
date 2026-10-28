@@ -89,7 +89,7 @@ function selfTest(){
     !approx(offIn.after_m,1+offIn.dout)||!approx(offOut.after_m,1+offOut.din)||
     !approx(bothOff.after_m,1))throw Error("zero stream controls");
  const s=sample(),x=sample({din:s.dout,dout:s.din});
- if(!approx(s.after_m,x.after_m)||!approx(s.interaction,x.interaction))throw Error("shell exchange");
+ if(!approx(s.after_m,x.after_m)||!approx(s.nonlinear_cross_mass,x.nonlinear_cross_mass))throw Error("shell exchange");
  // Exact DTR double-difference algebra for independent shell energies:
  const a=sample({din:1e-4,dout:2e-4}),b=sample({din:1e-4,dout:0}),
  c=sample({din:0,dout:2e-4}),d=sample({din:0,dout:0});
