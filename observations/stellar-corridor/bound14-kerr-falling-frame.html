@@ -527,9 +527,9 @@ function clockChart(chi,p){
  c.fillStyle="#aac1d3";c.fillText("proper-time progress to each horizon",L,h-5);c.fillText("r/r_g",8,12);
 }
 function tideChart(chi,p){
- const {c,w,h}=sizeCanvas("tidalGraph"),L=55,R=w-17,U=16,B=h-39,X=f=>L+f*(R-L),Y=q=>B-(q+2.8)/(5.6)*(B-U);
+ const {c,w,h}=sizeCanvas("tidalGraph"),L=55,R=w-17,U=16,B=h-39,X=f=>L+f*(R-L),Y=q=>B-(q+5)/(10)*(B-U);
  c.clearRect(0,0,w,h);c.font="11px system-ui";c.fillStyle="#adc1d4";c.strokeStyle="#2b465a";
- for(let i=-2;i<=2;i++){let yy=Y(i);c.beginPath();c.moveTo(L,yy);c.lineTo(R,yy);c.stroke();c.fillText(String(i),23,yy+4)}
+ for(let i=-4;i<=4;i+=2){let yy=Y(i);c.beginPath();c.moveTo(L,yy);c.lineTo(R,yy);c.stroke();c.fillText(String(i),23,yy+4)}
  // Show eigenvalues normalized by k(r)=GM/r³; x is r in rg on log scale
  const hplus=K.radY(chi),xFor=y=>Math.log(y/hplus)/Math.log(K.START_Y/hplus);
  const curves=[{k:"stretch_s2",color:"#66e6d9"},{k:"polar_compress_s2",color:"#c0a3ff"},{k:"azimuth_compress_s2",color:"#f28eac"}];
