@@ -1,0 +1,121 @@
+{
+  "id": "ITD_BOUND12_SCHWARZSCHILD_LOCAL_JACOBI_20261027",
+  "date": "2026-10-27",
+  "status": "ANALYTIC_GEODESIC_DEVIATION_WITH_EXPLICIT_LINEARIZATION_STOP",
+  "sources": [
+    {
+      "title": "Tidal forces in Kiselev black hole, freely falling tetrad and geodesic deviation (2017)",
+      "url": "https://doi.org/10.1140/epjc/s10052-017-4935-1"
+    },
+    {
+      "title": "Tidal forces in dirty black hole spacetimes, geodesic deviation (2022)",
+      "url": "https://doi.org/10.1140/epjc/s10052-022-10410-0"
+    },
+    {
+      "title": "CERN-hosted review on black-hole test-particle tidal relative acceleration, arXiv 2202.04658",
+      "url": "https://cds.cern.ch/record/2812678/files/2202.04658.pdf"
+    },
+    {
+      "title": "GRAVITY 2022 Sgr A* dynamical mass",
+      "url": "https://doi.org/10.1051/0004-6361/202142465"
+    },
+    {
+      "title": "NIST CODATA 2022 Planck length",
+      "url": "https://physics.nist.gov/cuu/pdf/all.pdf"
+    }
+  ],
+  "initial_conditions": {
+    "metric": "Schwarzschild non-rotating spherical spacetime; single E=1 radial reference geodesic",
+    "E_specific_energy": 1,
+    "r_start_divided_rs": 100,
+    "initial_radial_m": 1,
+    "initial_each_transverse_m": 1,
+    "initial_relative_velocity_per_direction_m_s": 0,
+    "separations": "Jacobi fields between independently freely falling neighboring probes, NOT a solid rigid physical material body",
+    "tetrad": "Parallel transported orthonormal basis along radial freely falling reference observer",
+    "initial_clock": "Observer released from rest at infinity, already inward-moving when reaches 100 rs"
+  },
+  "mathematical_method": {
+    "schwarzschild_radius_m": 12690115577.002773,
+    "radial_lambda_s_minus2": "c^2*rs/r^3",
+    "tangential_lambda_s_minus2": "-c^2*rs/(2r^3)",
+    "tidal_trace": "radial + two tangential coefficients = zero (vacuum instant)",
+    "u_time": "T(r) = 2 rs/(3c)*(r/rs)^(3/2), formal remaining time to r=0",
+    "w": "(r/r_start)^(3/2) = u/u_start",
+    "jacobi_radial": "(4/5)*w^(-1/3)+(1/5)*w^(4/3)",
+    "jacobi_tangential": "2*w^(1/3)-w^(2/3), twice in orthogonal transverse axes",
+    "volume_factor": "Jacobi radial multiplier times transverse multiplier squared, no material properties",
+    "geometric_curvature_length_m": "c/sqrt(lambda_r)=sqrt(r^3/rs)",
+    "local_smallness_test": "max(abs(xi_r), abs(xi_transverse)) <= 0.01 * min(areal_radius,curvature_length)",
+    "extra_stop": "r >= Bound11 declared K*lp^4=1; no underlying metric solution claimed beyond",
+    "chosen_threshold_status": "1% is a deterministic modeling choice, not a material rupture threshold or physical law",
+    "limit_order": "For each finite initial probe size, the smallness test fails before the extreme curvature stop"
+  },
+  "calculations": {
+    "horizon_initial_1m": {
+      "radial_m": 8.00002,
+      "each_transverse_m": 0.19,
+      "relative_cloud_volume_factor": 0.28880072199999995,
+      "radial_relative_acceleration_m_s2": 0.00446479294807245,
+      "transverse_relative_acceleration_m_s2": -0.00005301928371015107
+    },
+    "gate_initial_1m": {
+      "areal_radius_m": 3186234.840935633,
+      "areal_radius_km": 3186.234840935633,
+      "radial_separation_m": 504.87502144105474,
+      "each_transverse_separation_m": 0.003166590327613223,
+      "curvature_length_m": 50487.50214405512,
+      "remaining_formal_proper_time_s": 0.00011227211980997673,
+      "distance_fraction_rs": 0.000251080049003634
+    },
+    "gate_initial_1mm": {
+      "areal_radius_m": 100757.59257540885,
+      "areal_radius_km": 100.75759257540885,
+      "radial_separation_m": 2.839120886126682,
+      "each_transverse_separation_m": 5.634753299607265e-7,
+      "remaining_formal_proper_time_s": 6.31352526358718e-7
+    },
+    "schwarzschild_classical_curvature_stop_radius_m": 2.2561016048275532e-20,
+    "log_registry_729": {
+      "reportable_under_1meter_criterion": 74,
+      "calculable_but_jacobi_invalid": 344,
+      "after_high_curvature_stop": 200,
+      "before_worldline_start": 110,
+      "center_sentinel": 1,
+      "reported_physical_trajectories_count": 0
+    }
+  },
+  "tests": {
+    "source_JS_retrieved_from_committed_Github_and_executed": true,
+    "analytic_initial_conditions_pass": true,
+    "horizon_eigenvalue_and_shape_pass": true,
+    "tidal_vacuum_trace_pass": true,
+    "finite_difference_solution_against_ODE": "3 radii x two axes PASS",
+    "deterministic_1000_steps_start_to_horizon": "PASS",
+    "one_meter_and_one_mm_invalidity_bisection": "PASS",
+    "beyond_curvature_stop_returns_null": "PASS",
+    "all_729_witness_rows_gated": "PASS",
+    "viewer_inline_script_syntax": "PASS",
+    "real_browser_render_or_pages_deployed": false
+  },
+  "interpretation_limits": [
+    "Geodesic deviation is infinitesimal. Its analytic extension beyond a 1% local smallness test is diagnostic only, not a trustworthy extended-object separation.",
+    "At the horizon no physical discontinuity in the tidal eigenvalues occurs. A Schwarzschild-coordinate singularity is not a local tidal singularity.",
+    "The model tracks freely falling independent test particles, not a body with material elasticity or a tensile breaking threshold.",
+    "Some modeled values inside a black hole horizon are Schwarzschild classical extrapolations; quantum effects, accretion, spin, and backreaction remain unresolved.",
+    "Relative acceleration coefficients are measured in the locally falling frame; the reference geodesic has zero proper acceleration.",
+    "The radial/ transverse shape factors are relative lengths in a linearized local frame, not coordinates on a global toroidal surface.",
+    "24! index, 729 logarithmic addresses and shared train direction are independent computational selectors, not physical clock ticks or gravitational force relays.",
+    "Actual Sgr A* spin is not modeled, so no Kerr tetrad or frame dragging conclusion is supported.",
+    "Resizing the initial probe separation changes the validity boundary, illustrating a modeling dependence, not a universal singular surface."
+  ],
+  "artifacts": [
+    "bound12_geodesic_deviation_core.js",
+    "bound12-local-tidal-frame.html",
+    "BOUND12_729_LOCAL_TIDAL_GATED_20261027.csv",
+    "BOUND12_GEODESIC_SEPARATION_MILESTONES_20261027.csv",
+    "BOUND12_TIDAL_AUDIT_20261027.json",
+    "BOUND12_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next_bound": "Bound 13: quantify local finite-body stress only after selecting actual material parameters and object length; separately compare rotating Kerr tidal eigenvalues against Schwarzschild in a matched local tetrad. Preserve the linearized validity and Planck curvature gates."
+}
