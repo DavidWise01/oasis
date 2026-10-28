@@ -92,7 +92,7 @@ function tidalAt(y,chi){
  const t=properTimeFromStart(y,chi);
  return {...r,r_m:y*RG,
   trajectory_proper_since_selected_start_s:t,
-  since_outer_horizon_s:t===null?null:K.integrateSimpson(y,l.y_outer,chi),
+  since_outer_horizon_s:t===null||y>l.y_outer?null:K.integrateSimpson(y,l.y_outer,chi),
   after_first_Cauchy_guard:y<l.y_stop,
   declared_status:y>l.y_outer?"EXTERIOR_MODEL":
    y===l.y_outer?"FUTURE_OUTER_HORIZON_REGULAR_INGOING_CHART":
