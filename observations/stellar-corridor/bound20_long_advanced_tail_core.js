@@ -71,7 +71,7 @@ function mass(r,s,ru,rv,Q){
  return r/2*(1+4*ru*rv*Math.exp(-2*s)+Q*Q/(r*r));
 }
 function compute(Nu,Nv,par={},internal=false){
- if(!Number.isInteger(Nu)||Nu<8||Nu>256||!Number.isInteger(Nv)||Nv<16||Nv>1024)throw Error("grid domain");
+ if(!Number.isInteger(Nu)||Nu<8||Nu>256||Nu%2||!Number.isInteger(Nv)||Nv<16||Nv>1024||Nv%2)throw Error("even-numbered grid domain required");
  const p=validate(par),du=p.Lu/Nu,dv=p.Lv/Nv,guard=R_MINUS+(R_PLUS-R_MINUS)*p.guardGapFraction;
  const u=initArm(Nu,p.Lu,p.Q,p.r0,p,"u"),v=initArm(Nv,p.Lv,p.Q,p.r0,p,"v");
  if(!(v.R[Nv]>guard&&u.R[Nu]>guard))throw Error("ABORT_INITIAL_CHARACTERISTIC_GUARD");
@@ -181,7 +181,7 @@ function selfTest(){
  if(!(x.corner_radius>R_MINUS&&x.maximum_cell_iteration_error<1e-7))throw Error("domain guard");
  const verdicts={};
  for(const L of [2,3,4,4.25,4.5,5,8]){
-  try{const z=compute(24,Math.round(12*L),{Lv:L});verdicts[L]={status:"COMPUTED",corner_r:z.corner_radius,guard:z.chosen_guard_radius,
+  try{const z=compute(24,2*Math.round(6*L),{Lv:L});verdicts[L]={status:"COMPUTED",corner_r:z.corner_radius,guard:z.chosen_guard_radius,
     mass:z.center.mass,Cu:z.constraints.CuRMS,Cv:z.constraints.CvRMS}}
   catch(e){verdicts[L]={status:"ABORT",reason:String(e).slice(0,200)}}
  }
