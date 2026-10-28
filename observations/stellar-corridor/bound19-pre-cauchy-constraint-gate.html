@@ -1,0 +1,624 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OASIS Bound 19 | Pre-Cauchy Numerical Gate</title><style>:root{color-scheme:dark;--bg:#07101c;--panel:#101f30;--line:#325166;--ink:#e9f5ff;--sub:#acc1cf;--teal:#64e3d6;--gold:#ffd28c;--rose:#f198ae;--violet:#bba6fc}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 82% -18%,#25455b,transparent 48%),var(--bg);font:14px/1.5 system-ui,Segoe UI,Arial,sans-serif;color:var(--ink)}main{max-width:1240px;margin:auto;padding:25px 18px 72px}.eyebrow{font-size:11px;letter-spacing:.16em;color:var(--teal);font-weight:800}h1{font-size:clamp(30px,4.4vw,45px);letter-spacing:-.046em;line-height:1.1;margin:7px 0 12px}h2{font-size:18px;margin:0 0 9px}p{color:var(--sub)}a{color:#91eae1}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:17px 0}.stat{background:#132b41;border:1px solid var(--line);border-radius:11px;padding:13px}.stat strong{display:block;font-size:clamp(17px,1.9vw,23px);overflow-wrap:anywhere}.stat span{font-size:11px;color:var(--sub)}.layout{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(0,1fr);gap:15px}.panel{background:#102031e9;border:1px solid var(--line);border-radius:14px;margin:16px 0;padding:17px}.layout .panel:first-child{margin-top:0}.controlgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.control label{display:block;color:var(--sub);font-size:12px;margin-bottom:5px}.control select{background:#1a354b;border:1px solid #50768d;border-radius:9px;color:var(--ink);padding:9px;font:inherit;width:100%}button{font:inherit;background:#1b4056;color:var(--ink);border:1px solid #4b798c;border-radius:9px;padding:9px 12px;cursor:pointer}button.primary{background:#166e69;border-color:#47baaa}button:focus-visible,input:focus-visible{outline:2px solid var(--teal)}canvas{width:100%;height:290px;background:#071626;border-radius:9px;border:1px solid #2f5068;display:block}.short{height:212px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin:11px 0}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.datum{background:#162d42;border:1px solid #34566c;border-radius:9px;padding:10px}.datum span{display:block;color:var(--sub);font-size:11px}.datum strong{display:block;font-size:clamp(13px,1.7vw,19px);overflow-wrap:anywhere}.status{font-size:12px;border:1px solid #4e8f79;color:#bcffdf;border-radius:99px;padding:5px 11px;display:inline-block}.status.bad{border-color:#b37877;color:#ffb7b7}.warn{border-left:3px solid var(--gold);background:#44362180;padding:12px;color:#efdec2}.mono{font:12px/1.65 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#081827;border:1px solid #34536c;border-radius:9px;padding:12px;color:#a1ece2}.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--sub);margin:10px 0}.sw{display:inline-block;width:12px;height:10px;border-radius:3px;margin-right:5px}.bits{display:flex;gap:8px;margin:12px 0}.bit{flex:1;text-align:center;font-size:24px;font-weight:800;background:#142c43;border:1px solid #436d85;border-radius:9px;padding:8px}.bit.on{background:#145758;color:#b0fcef}.rankin{display:flex;gap:8px}.rankin input{min-width:0;flex:1;border:1px solid #50758b;background:#1a334a;padding:10px;color:var(--ink);font:inherit;border-radius:9px}.files{display:flex;flex-wrap:wrap;gap:13px}.tiny{font-size:12px;color:var(--sub)}@media(max-width:850px){.layout{grid-template-columns:1fr}}@media(max-width:580px){.stats{grid-template-columns:repeat(2,1fr)}.controlgrid{grid-template-columns:1fr}canvas{height:230px}}</style></head><body><main>
+<div class="eyebrow">OASIS / NATURAL BOUND 19 / 2026-10-28 / GLOBAL REFINEMENT GATE</div>
+<h1>NEAR THE INNER HORIZON.<br><span style="color:#6de9db">STOP WHERE THE MODEL STOPS.</span></h1>
+<p>The fully coupled spherical Einstein–Maxwell–neutral-scalar solver from Bound 18 is evaluated at several <strong>independent</strong> initial radii approaching the charged Reissner–Nordström inner horizon. Each run passes both null-constraint and mass-flux identity checks before it is marked accepted. No Kerr rotation or long-time Cauchy-horizon mass-inflation history is solved here.</p>
+<div class="stats"><div class="stat"><strong>5 PASS</strong><span>Default initial-radius cases</span></div><div class="stat"><strong>3 STOP</strong><span>Guard or evolution-domain rejection</span></div><div class="stat"><strong>5 × 729</strong><span>Accepted field/flux witness records</span></div><div class="stat"><strong>4 resolutions</strong><span>24, 48, 96, 192 grid cells per axis</span></div></div>
+<div class="layout"><div>
+<section class="panel"><h2>Explore one independent initial region</h2>
+<div class="controlgrid">
+<div class="control"><label for="r0">Assumed starting radius r₀ (r₋ = 0.4)</label><select id="r0"><option value="0.8">0.800 · accepted</option><option value="0.6">0.600 · accepted</option><option value="0.5">0.500 · accepted</option><option value="0.45">0.450 · accepted</option><option value="0.42" selected>0.420 · deepest accepted default</option><option value="0.415">0.415 · default guard</option><option value="0.41">0.410 · default guard</option><option value="0.405">0.405 · default evolution-domain stop</option></select></div>
+<div class="control"><label for="pulse">Assumed initial scalar pulse amplitudes</label><select id="pulse"><option value="default">A=0.020, B=0.015 (default)</option><option value="reduced">A=0.015, B=0.01125 (reduced)</option></select></div>
+</div><div class="actions"><button class="primary" id="run">Run four-refinement gate</button><button id="deepest">Deepest verified default</button><button id="stopCase">Deliberate boundary stop</button></div>
+<canvas id="scanChart" aria-label="Checkpoint mass against starting radius for independently initialized null characteristic simulations"></canvas>
+<div class="legend"><span><i class="sw" style="background:var(--teal)"></i>Accepted default initial regions</span><span><i class="sw" style="background:var(--rose)"></i>Model stopped</span><span><i class="sw" style="background:var(--gold)"></i>Selected initial radius</span></div>
+<p class="tiny">The plotted masses are at the same coordinate checkpoint (u,v)=(0.2,0.2) but originate from <b>different initial-value problems</b>. This graph is <b>not</b> a mass-vs-time trajectory or evidence of a singularity.</p></section>
+<section class="panel"><h2>Independent conservation identity convergence</h2>
+<canvas class="short" id="refineChart" aria-label="Second-order convergence of the two null constraint residuals and the two local mass-flux balance residuals"></canvas>
+<div class="legend"><span><i class="sw" style="background:var(--teal)"></i>Cuu</span><span><i class="sw" style="background:var(--violet)"></i>Cvv</span><span><i class="sw" style="background:var(--gold)"></i>mass-u identity</span><span><i class="sw" style="background:var(--rose)"></i>mass-v identity</span></div><p class="tiny">All four residuals are computed independently of the evolution update and should decrease by about 4 when the grid spacing halves. This is global resolution escalation, <b>not local AMR</b>.</p></section></div>
+<div>
+<section class="panel"><h2>Boundary decision</h2><span class="status" id="status">Checking</span><div class="metrics" style="margin-top:12px">
+<div class="datum"><span>Background inner horizon r₋</span><strong id="inner">0.400000</strong></div>
+<div class="datum"><span>Declared numerical guard</span><strong id="guard">0.400600</strong></div>
+<div class="datum"><span>Smallest computed radius</span><strong id="minimum"></strong></div>
+<div class="datum"><span>Checkpoint mass M</span><strong id="mass"></strong></div>
+<div class="datum"><span>Cuu RMS (finest computed grid)</span><strong id="cu"></strong></div>
+<div class="datum"><span>Cvv RMS (finest computed grid)</span><strong id="cv"></strong></div>
+<div class="datum"><span>Mass-flux u refinement ratio</span><strong id="fluxU"></strong></div>
+<div class="datum"><span>Mass-flux v refinement ratio</span><strong id="fluxV"></strong></div></div>
+<p class="warn" id="explain">A pre-inner horizon guard is a declared numerical stop, not a physical safe surface. The solver must never claim to reach or cross the Cauchy horizon merely because its coordinates are regular.</p>
+</section>
+<section class="panel"><h2>Independent run receipt</h2><div class="mono" id="receipt"></div></section>
+<section class="panel"><h2>24! address register</h2><div class="bits" id="bits"></div><div class="mono" id="rankText"></div>
+<div class="actions"><button class="primary" id="next">000 → 001</button><button id="back">Reverse</button><button id="last">Last → 000</button><button id="reset">Reset</button></div>
+<div class="rankin"><input type="text" inputmode="numeric" id="rankInput" value="0" aria-label="Exact factorial rank"/><button id="jump">Jump</button></div>
+<p class="tiny" id="rankNotice">A rank change does not move the evolving metric, scalar flux, or physical observer.</p></section>
+</div></div>
+<section class="panel"><h2>Three checks, not a vote</h2>
+<div class="mono">Source: Bound18 frozen double-null Einstein-Maxwell-scalar solver.
+M=1, Q=0.8, r₋=0.4, r₊=1.6, initial scalar pulse A/B.
+r_guard=r₋ + 0.0005*(r₊−r₋) = 0.4006  [CHOSEN]
+m=(r/2)*(1+4exp(-2σ)r_u r_v+Q²/r²)
+Cuu = r_uu−2σ_u r_u+rφ_u²
+Cvv = r_vv−2σ_v r_v+rφ_v²
+m_u = −2r²exp(−2σ) r_v φ_u²
+m_v = −2r²exp(−2σ) r_u φ_v²
+REQUIRE: every computed region stays r>r_guard
+REQUIRE: ratios of solution, two constraints and two flux-identity residuals
+         approximately second-order (2.7 ≤ ratio ≤ 5.3).
+STOP: failure of guard, domain, or independent convergence.
+No future null infinity / Price-law tail data, Kerr, or actual CH computed.</div>
+<p class="tiny">The charged RN inner-horizon mass-inflation problem is discussed by Burko and Ori (1997), Droz (1997) and Ori (1991). Their results are scientific context, not additional measured data in this numerical demonstration.</p>
+<div class="files"><a href="bound19_inner_approach_gate_core.js">Boundary gate source</a><a href="BOUND19_PRECAUCHY_RADIUS_GATES_20261028.csv">All acceptance/abort receipts</a><a href="BOUND19_FOUR_REFINEMENTS_CONSTRAINT_MASS_FLUX_20261028.csv">Resolution and conservation checks</a><a href="BOUND19_729_NEAR_INNER_FIELD_MASS_FLUX_WITNESS_20261028.csv">5×729 full numerical witnesses</a><a href="BOUND19_NATURAL_BOUND_2026-10-28.md">Scientific freeze</a><a href="BOUND19_AUDIT_20261028.json">Audit</a><a href="bound18-characteristic-field-evolution.html">Prior Bound 18</a></div></section>
+</main><script>/* OASIS Bound 18 | Spherical Einstein-Maxwell-neutral-massless-scalar
+   fully coupled characteristic Cauchy boundary evolution (u,v) grid.
+   Equations in G=c=1, fixed electric charge Q, metric
+    ds² = -exp(2sigma) du dv + r² dOmega², g_uv=-exp(2sigma)/2.
+    r_uv = -ru*rv/r -exp(2sigma)/(4r)*(1-Q²/r²)
+    sigma_uv = ru*rv/r² + exp(2sigma)/(4r²)*(1-2Q²/r²)-phi_u*phi_v
+    phi_uv = -(ru*phi_v+rv*phi_u)/r
+   Null constraints (not enforced in interior, MONITORED):
+    C_uu=r_uu-2 sigma_u*r_u+r*phi_u²=0;
+    C_vv=r_vv-2 sigma_v*r_v+r*phi_v²=0.
+   Charge mass function M=r/2*[1+4ru rv/exp(2sigma)+Q²/r²].
+   Initial intersecting null rays are exact RN trapped-region boundaries:
+    r(0,0)=1.2, Q=.8, M0=1, r_u(0)=r_v(0)=F(r)/2<0,
+    Omega²=-F(r)>0, F(r)=1-2/r+Q²/r².
+   Along each boundary choose phi(s)=A sin²(pi*s/L).
+   Solve constraint exactly in continuum by prescribed r'=F/2 and
+    sigma(s)=0.5 ln[-F(r(s))]+integral(r*phi_s²/F(r)) ds,
+   using RK4 radius and Simpson quadrature each edge cell.
+   2nd order double-null diamond scheme; implicit midpoint (8 iterations).
+   Finite-difference interior constraints are *independent* diagnostics.
+   This IS coupled Einstein+neutral scalar evolution (within stated domain).
+   It is NOT rotating Kerr and it is NOT a late-time mass-inflation solution.
+   No calibrated observed scalar radiation, charge, or astrophysical spin.
+*/
+(function(root){"use strict";
+const PARAMS=Object.freeze({Q:.8,M0:1,r0:1.2,L:.4,A:.02,B:.015});
+const G_C_UNITS="G=c=M0=1", PI=Math.PI;
+function num(x,name){if(!Number.isFinite(x))throw Error(name+" nonfinite");return x;}
+function config(p={}){
+ const z={...PARAMS,...p};
+ if(!(z.Q>0&&z.Q<1&&z.M0===1))throw Error("0<Q<1, M0 fixed to 1");
+ if(!(z.r0>1-Math.sqrt(1-z.Q*z.Q)&&z.r0<1+Math.sqrt(1-z.Q*z.Q)))throw Error("r0 inside RN trapped region");
+ if(!(z.L>0&&z.L<1))throw Error("0<L<1");
+ for(const s of ["A","B"])if(!(z[s]>=0&&z[s]<=.1))throw Error("pulse amplitude in [0,.1]");
+ return z;
+}
+function F(r,Q){return 1-2/r+Q*Q/(r*r)}
+function Fp(r,Q){return 2/(r*r)-2*Q*Q/(r*r*r)}
+function pulse(s,A,L){return A*Math.sin(PI*s/L)**2}
+function pulsePrime(s,A,L){return A*PI/L*Math.sin(2*PI*s/L)}
+function radiusRK4(r,h,Q){
+ const rhs=x=>F(x,Q)/2;
+ const a=rhs(r),b=rhs(r+h*a/2),c=rhs(r+h*b/2),d=rhs(r+h*c);
+ return r+h*(a+2*b+2*c+d)/6;
+}
+function boundary(n,A,p){
+ const h=p.L/n,rr=new Float64Array(n+1),ss=new Float64Array(n+1),
+  phi=new Float64Array(n+1);
+ rr[0]=p.r0;ss[0]=Math.log(-F(p.r0,p.Q))/2;
+ for(let i=0;i<n;i++){
+  const u=i*h,r=rr[i],rm=radiusRK4(r,h/2,p.Q),
+    re=radiusRK4(r,h,p.Q),fun=(x,t)=>x*pulsePrime(t,A,p.L)**2/F(x,p.Q);
+  const correction=h*(fun(r,u)+4*fun(rm,u+h/2)+fun(re,u+h))/6;
+  rr[i+1]=re;ss[i+1]=Math.log(-F(re,p.Q))/2+(ss[i]-Math.log(-F(r,p.Q))/2)+correction;
+ }
+ for(let i=0;i<=n;i++)phi[i]=pulse(i*h,A,p.L);
+ return{r:rr,sigma:ss,phi};
+}
+function pde(r,s,phi,ru,rv,phiu,phiv,Q){
+ const f=Math.exp(2*s),r2=r*r;
+ return[-ru*rv/r-f/(4*r)*(1-Q*Q/r2),
+   ru*rv/r2+f/(4*r2)*(1-2*Q*Q/r2)-phiu*phiv,
+   -(ru*phiv+rv*phiu)/r];
+}
+function mass(r,s,ru,rv,Q){return r/2*(1+4*ru*rv/Math.exp(2*s)+Q*Q/(r*r))}
+function evolve(N,input={},internal=false){
+ if(!Number.isInteger(N)||N<8||N>768||N%2!==0)throw Error("even N in [8,768]");
+ const p=config(input),h=p.L/N;
+ const u=boundary(N,p.A,p),v=boundary(N,p.B,p);
+ const RR=Array.from({length:N+1},()=>new Float64Array(N+1)),
+   SS=Array.from({length:N+1},()=>new Float64Array(N+1)),
+   PP=Array.from({length:N+1},()=>new Float64Array(N+1));
+ for(let i=0;i<=N;i++){RR[i][0]=u.r[i];SS[i][0]=u.sigma[i];PP[i][0]=u.phi[i];
+    RR[0][i]=v.r[i];SS[0][i]=v.sigma[i];PP[0][i]=v.phi[i];}
+ let fixedPointMax=0;
+ for(let i=0;i<N;i++)for(let j=0;j<N;j++){
+  const r0=RR[i][j],r1=RR[i+1][j],r2=RR[i][j+1],
+  s0=SS[i][j],s1=SS[i+1][j],s2=SS[i][j+1],
+  x0=PP[i][j],x1=PP[i+1][j],x2=PP[i][j+1];
+  let nr=r1+r2-r0,ns=s1+s2-s0,nx=x1+x2-x0;
+  let err=0;
+  for(let k=0;k<8;k++){
+   const rc=(r0+r1+r2+nr)/4,sc=(s0+s1+s2+ns)/4,
+      ru=(r1-r0+nr-r2)/(2*h),rv=(r2-r0+nr-r1)/(2*h),
+      xu=(x1-x0+nx-x2)/(2*h),xv=(x2-x0+nx-x1)/(2*h);
+   const [fr,fs,fx]=pde(rc,sc,0,ru,rv,xu,xv,p.Q);
+   const rt=r1+r2-r0+h*h*fr,st=s1+s2-s0+h*h*fs,xt=x1+x2-x0+h*h*fx;
+   err=Math.max(Math.abs(rt-nr),Math.abs(st-ns),Math.abs(xt-nx));
+   nr=rt;ns=st;nx=xt;
+  }
+  if(!Number.isFinite(nr+ns+nx)||nr<=0||nr<=1-Math.sqrt(1-p.Q*p.Q)+1e-6)
+   throw Error("evolution reached noncontrolled radius or overflow; reduce domain/pulses");
+  fixedPointMax=Math.max(fixedPointMax,err);
+  RR[i+1][j+1]=nr;SS[i+1][j+1]=ns;PP[i+1][j+1]=nx;
+ }
+ function centralDerivs(i,j){
+  return {
+   ru:(RR[i+1][j]-RR[i-1][j])/(2*h),
+   rv:(RR[i][j+1]-RR[i][j-1])/(2*h),
+   su:(SS[i+1][j]-SS[i-1][j])/(2*h),
+   sv:(SS[i][j+1]-SS[i][j-1])/(2*h),
+   pu:(PP[i+1][j]-PP[i-1][j])/(2*h),
+   pv:(PP[i][j+1]-PP[i][j-1])/(2*h)
+  };
+ }
+ function point(i,j){
+  const d=centralDerivs(i,j),r=RR[i][j],s=SS[i][j],ph=PP[i][j];
+  const cu=(RR[i+1][j]-2*r+RR[i-1][j])/(h*h)-2*d.su*d.ru+r*d.pu*d.pu;
+  const cv=(RR[i][j+1]-2*r+RR[i][j-1])/(h*h)-2*d.sv*d.rv+r*d.pv*d.pv;
+  const m=mass(r,s,d.ru,d.rv,p.Q);
+  return{i,j,r,sigma:s,phi:ph,mass:m,r_u:d.ru,r_v:d.rv,
+   C_uu:cu,C_vv:cv,scalar_incoming_flux:d.pv*d.pv,
+   scalar_outgoing_flux:d.pu*d.pu,
+   geometric_charge_term:p.Q*p.Q/r/r,
+   trapped:d.ru<0&&d.rv<0};
+ }
+ const c=point(N/2,N/2),quarter=point(N/4,N/4),
+  threequarter=point(3*N/4,3*N/4);
+ let worstCu=0,worstCv=0,meanCu=0,meanCv=0,points=0,minimumR=Infinity,maximumMass=-Infinity;
+ for(let i=1;i<N;i++)for(let j=1;j<N;j++){
+  const P=point(i,j);
+  worstCu=Math.max(worstCu,Math.abs(P.C_uu));
+  worstCv=Math.max(worstCv,Math.abs(P.C_vv));
+  meanCu+=P.C_uu*P.C_uu;meanCv+=P.C_vv*P.C_vv;points++;
+  minimumR=Math.min(minimumR,P.r);maximumMass=Math.max(maximumMass,P.mass);
+ }
+ // At corner u=v=L use 1st-order derivative only as display (not convergence witness).
+ const corner_r=RR[N][N],corner_phi=PP[N][N],corner_sigma=SS[N][N];
+ const output={N,h,Q:p.Q,initial_A:p.A,initial_B:p.B,
+  initial_radius:p.r0,domain_length:p.L,
+  center:c,quarter,threequarter,corner_r,corner_phi,corner_sigma,
+  constraints:{Cuu_l2:Math.sqrt(meanCu/points),Cvv_l2:Math.sqrt(meanCv/points),
+   Cuu_max:worstCu,Cvv_max:worstCv,sampled:points},
+  minimum_interior_r:minimumR,maximum_interior_mass:maximumMass,
+  fixedPointMax,
+  model_kind:"FULLY_COUPLED_SPHERICAL_EM_NEUTRAL_SCALAR_DOUBLE_NULL_DIAMOND",
+  not_Kerr:true,mass_inflation_claim:false,
+  fluxes_specified_on_both_initial_null_segments:true,
+  constraints_interior_monitored_not_manually_forced:true,
+  actual_astro_data:false};
+ if(internal)output.grid={R:RR,S:SS,P:PP};
+ return output;
+}
+function convergence(caseName,params={A:.02,B:.015},Nlist=[24,48,96,192]){
+ const results=Nlist.map(N=>evolve(N,params));
+ const difference=(a,b)=>{
+  const x=results[a],y=results[b];
+  return Math.abs(x.center.mass-y.center.mass)+Math.abs(x.center.r-y.center.r)+
+     Math.abs(x.center.phi-y.center.phi)+Math.abs(x.center.sigma-y.center.sigma);
+ };
+ const d0=difference(0,1),d1=difference(1,2),d2=difference(2,3);
+ return{caseName,params,results,
+  observed_resolution_ratios:[d0/d1,d1/d2],
+  observed_constraint_l2_ratios:{
+    Cuu:[results[0].constraints.Cuu_l2/results[1].constraints.Cuu_l2,
+         results[1].constraints.Cuu_l2/results[2].constraints.Cuu_l2,
+         results[2].constraints.Cuu_l2/results[3].constraints.Cuu_l2],
+    Cvv:[results[0].constraints.Cvv_l2/results[1].constraints.Cvv_l2,
+         results[1].constraints.Cvv_l2/results[2].constraints.Cvv_l2,
+         results[2].constraints.Cvv_l2/results[3].constraints.Cvv_l2]
+  }, finest:results.at(-1)};
+}
+function selfTest(){
+ const base=convergence("VACUUM_EXACT_RN",{A:0,B:0}),
+      both=convergence("BOTH_SCALAR_STREAMS",{A:.02,B:.015}),
+      incoming=convergence("INCOMING_ONLY",{A:0,B:.015}),
+      outgoing=convergence("OUTGOING_ONLY",{A:.02,B:0});
+ const refs={base,both,incoming,outgoing};
+ for(const [name,e] of Object.entries(refs)){
+  const l=e.results;
+  for(const r of l){
+   if(!r.center.trapped||r.minimum_interior_r<=.4)throw Error("trapped RN domain broken: "+name);
+   if(!Number.isFinite(r.center.mass+r.constraints.Cuu_l2))throw Error("nonfinite "+name);
+  }
+  const ratios=e.observed_resolution_ratios;
+  if(!(ratios[0]>2.5&&ratios[1]>2.5))throw Error("convergence order not demonstrated "+name+" "+ratios);
+  const q=e.observed_constraint_l2_ratios;
+  if(!(q.Cuu[2]>2.2&&q.Cvv[2]>2.2))throw Error("constraints not convergent "+name+" "+JSON.stringify(q));
+ }
+ if(Math.abs(base.finest.center.mass-1)>2e-5)throw Error("vacuum RN mass not recovered");
+ const mixed=both.finest.center.mass-incoming.finest.center.mass-outgoing.finest.center.mass+base.finest.center.mass;
+ if(!Number.isFinite(mixed))throw Error("two-stream nonlinearity");
+ return {pass:true,domain:"RN trapped region r0=1.2, Q=.8; no inner-horizon limit",
+  numerically_evolving_Einstein_scalar:true,
+  convergence_order:"fourfold second-order expected",
+  four_cases:Object.fromEntries(Object.entries(refs).map(([k,v])=>[k,{
+    masses:v.results.map(r=>r.center.mass),
+    constraint_Cuu_l2:v.results.map(r=>r.constraints.Cuu_l2),
+    constraint_Cvv_l2:v.results.map(r=>r.constraints.Cvv_l2),
+    observed_refinement_ratios:v.observed_resolution_ratios,
+    observed_Cuu_constraint_ratios:v.observed_constraint_l2_ratios.Cuu,
+    observed_Cvv_constraint_ratios:v.observed_constraint_l2_ratios.Cvv}])),
+  mixed_mass_response_at_center:mixed,
+  no_mass_inflation_prediction:true};
+}
+const api=Object.freeze({PARAMS,G_C_UNITS,config,F,Fp,pulse,pulsePrime,
+ radiusRK4,boundary,pde,mass,evolve,convergence,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound18EMS=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* OASIS Natural Bound 19 | 2026-10-28
+   Resolution-escalating near-inner-horizon DOMAIN GATE, not AMR.
+   Reuse frozen Bound18 double-null Einstein-Maxwell-neutral-scalar core.
+   Physical scope: small square patches at separately CHOSEN RN trapped
+   starting radii. Not one continued worldline or late-v Price tail.
+   Geometric units M=G=c=1,Q=.8, r-=.4, r+=1.6.
+   Stop if the ENTIRE patch crosses selected guard r_guard=r-+0.0005(r+-r-),
+   or evolution fails, mass/constraint/flux-identity refinement fails.
+   The guard is a CHOSEN numerical gate, no universal invariant.
+   No actual adaptive local mesh refinement, no curvatures fitted.
+ */
+(function(root){"use strict";
+const E=root.Bound18EMS;if(!E)throw Error("Load frozen Bound18 source first");
+const R_MINUS=.4,R_PLUS=1.6,GAP=1.2,GUARD_FRACTION=.0005,
+ R_GUARD=R_MINUS+GAP*GUARD_FRACTION,
+ DEFAULT=Object.freeze({Q:.8,A:.02,B:.015,L:.4}),
+ NLIST=Object.freeze([24,48,96,192]),
+ SCAN=Object.freeze([.8,.6,.5,.45,.42,.415,.41,.405]);
+const almost=(x,y,eps=1e-8)=>Math.abs(x-y)<=eps*Math.max(1,Math.abs(x),Math.abs(y));
+function sampleAt(grid,N,ii,jj){
+ const {R,S,P}=grid,h=.4/N,r=R[ii][jj],s=S[ii][jj],
+   ru=(R[ii+1][jj]-R[ii-1][jj])/(2*h),
+   rv=(R[ii][jj+1]-R[ii][jj-1])/(2*h),
+   pu=(P[ii+1][jj]-P[ii-1][jj])/(2*h),
+   pv=(P[ii][jj+1]-P[ii][jj-1])/(2*h);
+ return {r,s,ru,rv,pu,pv,mass:E.mass(r,s,ru,rv,.8)};
+}
+function fluxWitness(run){
+ const N=run.N,c=N/2,h=DEFAULT.L/N,G=run.grid,p=sampleAt(G,N,c,c);
+ const du=(sampleAt(G,N,c+1,c).mass-sampleAt(G,N,c-1,c).mass)/(2*h);
+ const dv=(sampleAt(G,N,c,c+1).mass-sampleAt(G,N,c,c-1).mass)/(2*h);
+ const expectedDu=-2*p.r*p.r*Math.exp(-2*p.s)*p.rv*p.pu*p.pu,
+   expectedDv=-2*p.r*p.r*Math.exp(-2*p.s)*p.ru*p.pv*p.pv;
+ return {
+  m_u_numeric:du,m_u_from_flux_identity:expectedDu,
+  m_u_residual:du-expectedDu,
+  m_v_numeric:dv,m_v_from_flux_identity:expectedDv,
+  m_v_residual:dv-expectedDv,
+  source_spherical_mass_identity:
+    "m_u=-2r²exp(-2sigma) r_v phi_u² ; m_v=-2r²exp(-2sigma) r_u phi_v²",
+  midpoint_trapped:p.ru<0&&p.rv<0,
+  positivity_expected_in_trapped_region:expectedDu>=0&&expectedDv>=0};
+}
+function monitorRun(N,{r0,A=DEFAULT.A,B=DEFAULT.B}){
+ const run=E.evolve(N,{Q:DEFAULT.Q,r0,L:DEFAULT.L,A,B},true);
+ // all computed interior plus corner (which is the minimum here)
+ const minR=Math.min(run.minimum_interior_r,run.corner_r);
+ const t=fluxWitness(run);
+ return {N,r0,A,B,h:run.h,
+  mass:run.center.mass,center_r:run.center.r,
+  corner_r:run.corner_r,min_r_including_corner:minR,
+  normalized_inner_gap:(minR-R_MINUS)/GAP,
+  safe_wrt_declared_guard:minR>R_GUARD,
+  Cuu_l2:run.constraints.Cuu_l2,Cvv_l2:run.constraints.Cvv_l2,
+  Cuu_max:run.constraints.Cuu_max,Cvv_max:run.constraints.Cvv_max,
+  midpoint_flux:t,mass_baseline_RN:1,
+  delta_mass:run.center.mass-1,
+  actual_Kerr_interpretation:false};
+}
+function ratio(first,second){return Math.abs(first)/Math.max(1e-30,Math.abs(second))}
+function analyze(r0,A=DEFAULT.A,B=DEFAULT.B){
+ if(!(Number.isFinite(r0)&&r0>R_MINUS&&r0<R_PLUS))throw Error("starting radius must be trapped RN r-<r0<r+");
+ if(!(A>=0&&B>=0&&A<=.1&&B<=.1))throw Error("pulse amplitudes in [0,.1]");
+ let records=[],status=null;
+ for(const N of NLIST){
+  try{
+   const r=monitorRun(N,{r0,A,B});records.push(r);
+   if(!r.safe_wrt_declared_guard){
+    status="ABORT_PRE_INNER_GUARD";break;
+   }
+   if(!r.midpoint_flux.midpoint_trapped || !r.midpoint_flux.positivity_expected_in_trapped_region){
+    status="ABORT_SIGN_OR_FLUX";break;
+   }
+  }catch(err){status="ABORT_EVOLUTION_DOMAIN";records.push({N,error:String(err)});break;}
+ }
+ if(status)return {r0,A,B,status,records,
+   accepted:false,guard_radius:R_GUARD,stopped_without_extrapolation:true};
+ const [a,b,c,d]=records;
+ const metric=x=>x.mass+x.center_r;
+ const solRatios=[ratio(metric(a)-metric(b),metric(b)-metric(c)),
+   ratio(metric(b)-metric(c),metric(c)-metric(d))];
+ // Use a scalar difference only (mass) for independent checkpoint convergence
+ const massRatios=[ratio(a.mass-b.mass,b.mass-c.mass),ratio(b.mass-c.mass,c.mass-d.mass)];
+ const cuRatios=[ratio(a.Cuu_l2,b.Cuu_l2),ratio(b.Cuu_l2,c.Cuu_l2),ratio(c.Cuu_l2,d.Cuu_l2)];
+ const cvRatios=[ratio(a.Cvv_l2,b.Cvv_l2),ratio(b.Cvv_l2,c.Cvv_l2),ratio(c.Cvv_l2,d.Cvv_l2)];
+ const fuRatios=[ratio(Math.abs(a.midpoint_flux.m_u_residual),Math.abs(b.midpoint_flux.m_u_residual)),
+   ratio(Math.abs(b.midpoint_flux.m_u_residual),Math.abs(c.midpoint_flux.m_u_residual)),
+   ratio(Math.abs(c.midpoint_flux.m_u_residual),Math.abs(d.midpoint_flux.m_u_residual))];
+ const fvRatios=[ratio(Math.abs(a.midpoint_flux.m_v_residual),Math.abs(b.midpoint_flux.m_v_residual)),
+   ratio(Math.abs(b.midpoint_flux.m_v_residual),Math.abs(c.midpoint_flux.m_v_residual)),
+   ratio(Math.abs(c.midpoint_flux.m_v_residual),Math.abs(d.midpoint_flux.m_v_residual))];
+ const convergenceCheck={
+  mass_last_ratio:massRatios[1],
+  Cuu_last_ratio:cuRatios[2],Cvv_last_ratio:cvRatios[2],
+  m_u_flux_last_ratio:fuRatios[2],m_v_flux_last_ratio:fvRatios[2],
+  expected_2nd_order_step_ratio:4,
+  success:[massRatios[1],cuRatios[2],cvRatios[2],fuRatios[2],fvRatios[2]].every(x=>x>2.7&&x<5.3)};
+ const accepted=convergenceCheck.success;
+ return {r0,A,B,status:accepted?"ACCEPT_CONVERGENT_BEFORE_DECLARED_GUARD":"ABORT_REFINEMENT_UNVERIFIED",
+  accepted,guard_radius:R_GUARD,records,
+  convergenceCheck,ratios:{solution:solRatios,mass:massRatios,
+   Cuu:cuRatios,Cvv:cvRatios,flux_u:fuRatios,flux_v:fvRatios},
+  finest:d,maximum_sampled_depth_fraction:1-d.normalized_inner_gap,
+  physically_realized_late_time_mass_inflation:false,
+  local_adaptive_mesh_refinement_used:false,
+  resolution_escalated_globally:true};
+}
+function scan(){
+ return SCAN.map(r0=>analyze(r0));
+}
+function selfTest(){
+ const x=scan(),accepted=x.filter(s=>s.accepted);
+ if(accepted.length!==5||x.length!==8)throw Error("expected 5 accepted and 3 guarded");
+ for(const a of accepted){
+  if(!a.finest||a.finest.min_r_including_corner<=R_GUARD)throw Error("failed radius gate");
+  if(a.ratios.mass[1]<=2.7||a.convergenceCheck.Cuu_last_ratio<=2.7||
+   a.convergenceCheck.Cvv_last_ratio<=2.7)throw Error("refinement");
+  if(a.convergenceCheck.m_u_flux_last_ratio<=2.7||a.convergenceCheck.m_v_flux_last_ratio<=2.7)
+   throw Error("independent mass flux identity lacks convergence");
+  if(!(a.finest.mass>1))throw Error("mass sign");
+ }
+ if(x[5].status!=="ABORT_PRE_INNER_GUARD"||
+    x[6].status!=="ABORT_PRE_INNER_GUARD"||
+    x[7].status!=="ABORT_EVOLUTION_DOMAIN")throw Error("guard statuses");
+ const check=analyze(.42,.02,.015),baseline=E.evolve(192,{r0:.42,A:0,B:0});
+ if(!almost(check.finest.mass,.0006852506301538+1,1e-8))throw Error("readback mass");
+ if(Math.abs(baseline.center.mass-1)>1e-5)throw Error("vacuum mass");
+ // Explicit amplitude-dependence witness: a reduced amplitude at .415
+ // may pass the chosen 0.0005-gap guard, unlike .02/.015.
+ const smaller=analyze(.415,.015,.01125);
+ if(!smaller.accepted)throw Error("amplitude dependent domain gate");
+ return {pass:true,kind:"resolution_escalation_not_local_AMR",
+  physical_domain:"spherical charged RN+real scalar, NOT Kerr",
+  charge_Q:DEFAULT.Q,r_minus:R_MINUS,r_plus:R_PLUS,chosen_guard:R_GUARD,
+  accepted_count:accepted.length,aborted_count:x.length-accepted.length,
+  scan_summary:x.map(z=>({r0:z.r0,status:z.status,finest_N:z.finest?.N||null,
+    nearest_r:z.finest?.min_r_including_corner||z.records?.at(-1)?.min_r_including_corner||null,
+    checkpoint_mass:z.finest?.mass||null,
+    mass_2nd_order_ratio:z.convergenceCheck?.mass_last_ratio||null,
+    Cuu_2nd_order_ratio:z.convergenceCheck?.Cuu_last_ratio||null,
+    Cvv_2nd_order_ratio:z.convergenceCheck?.Cvv_last_ratio||null,
+    mass_flux_u_ratio:z.convergenceCheck?.m_u_flux_last_ratio||null,
+    mass_flux_v_ratio:z.convergenceCheck?.m_v_flux_last_ratio||null})),
+  reduced_amplitude_at_r0_0415:{A:.015,B:.01125,status:smaller.status,
+    nearest_r:smaller.finest?.min_r_including_corner,
+    checkpoint_mass:smaller.finest?.mass},
+  no_mass_inflation_at_inner_horizon_claim:true,center_prediction:null,
+  actual_late_tail_initial_data_not_present:true};
+}
+const api=Object.freeze({DEFAULT,NLIST,SCAN,R_MINUS,R_PLUS,GAP,
+ GUARD_FRACTION,R_GUARD,sampleAt,fluxWitness,monitorRun,analyze,scan,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound19Guard=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* OASIS | Natural Bound 08 | 2026-10-27
+   Exact lazy cyclic Hamiltonian traversal on 24! permutations, with a
+   synchronized 3-bit Gray register and 729 logical station addresses.
+
+   No astronomical mass, acceleration, or energy is derived from permutations.
+   No attempt is made to materialize the 24! states.
+
+   Mathematical basis: Steinhaus-Johnson-Trotter "plain changes",
+   recursive insertion of the new largest symbol from alternate ends.
+   Every neighboring permutation differs by an adjacent swap, including seam.
+*/
+(function(root){
+"use strict";
+const OPERATORS=24;
+const STATIONS=729;
+const GRAY_PERIOD=8n;
+function factorial(n){
+ if(!Number.isInteger(n)||n<1||n>100)throw Error("factorial integer 1..100 required");
+ let a=1n;
+ for(let i=2n;i<=BigInt(n);i++)a*=i;
+ return a;
+}
+const SIZE=factorial(OPERATORS);
+const VISITS_PER_STATION=SIZE/BigInt(STATIONS);
+if(SIZE%BigInt(STATIONS)!==0n||SIZE%GRAY_PERIOD!==0n)
+ throw Error("The 729-station and 8-state Gray ring must divide the 24! cycle");
+function normalizedRank(rank,n=OPERATORS){
+ const count=factorial(n);
+ let a=typeof rank==="bigint"?rank:BigInt(rank);
+ return (a%count+count)%count;
+}
+function sjtUnrank(n,rank){
+ if(!Number.isInteger(n)||n<1||n>OPERATORS)throw Error("operator count 1..24 required");
+ let r=normalizedRank(rank,n);
+ if(n===1)return [1];
+ const quotient=r/BigInt(n);
+ const digit=Number(r%BigInt(n));
+ const perm=sjtUnrank(n-1,quotient);
+ const slot=quotient%2n===0n?n-1-digit:digit;
+ perm.splice(slot,0,n);
+ return perm;
+}
+function sjtRank(perm){
+ if(!Array.isArray(perm)||perm.length<1||perm.length>OPERATORS)
+  throw Error("Expected a permutation of length 1..24");
+ const n=perm.length;
+ if(new Set(perm).size!==n||!perm.every(v=>Number.isInteger(v)&&v>=1&&v<=n))
+  throw Error("Not a permutation of 1.."+n);
+ if(n===1)return 0n;
+ const slot=perm.indexOf(n);
+ const ancestor=sjtRank(perm.filter(v=>v!==n));
+ const digit=ancestor%2n===0n?n-1-slot:slot;
+ return ancestor*BigInt(n)+BigInt(digit);
+}
+function grayNumber(rank){
+ const phase=Number(normalizedRank(rank)%GRAY_PERIOD);
+ return phase^(phase>>1);
+}
+function grayBits(rank){return grayNumber(rank).toString(2).padStart(3,"0");}
+function stationIndex(rank){
+ return Number(normalizedRank(rank)%BigInt(STATIONS));
+}
+function stationLabel(rank){return String(stationIndex(rank)).padStart(3,"0");}
+function adjacentSwap(a,b){
+ if(a.length!==b.length)throw Error("Permutations have different lengths");
+ const diffs=[];
+ for(let i=0;i<a.length;i++)if(a[i]!==b[i])diffs.push(i);
+ if(diffs.length!==2||diffs[1]!==diffs[0]+1||a[diffs[0]]!==b[diffs[1]]||a[diffs[1]]!==b[diffs[0]])
+  return null;
+ return {leftIndex:diffs[0],rightIndex:diffs[1],
+         leftSymbolBefore:a[diffs[0]],rightSymbolBefore:a[diffs[1]]};
+}
+function state(rank){
+ const r=normalizedRank(rank);
+ return {rank:r,gray:grayBits(r),grayNumber:grayNumber(r),
+         station:stationIndex(r),stationLabel:stationLabel(r),
+         permutation:sjtUnrank(OPERATORS,r),
+         visitWithinStation:r/BigInt(STATIONS),
+         nextRank:(r+1n)%SIZE};
+}
+function transition(rank,offset=1n){
+ const a=state(rank),b=state(a.rank+BigInt(offset));
+ const oneStep=offset===1n||offset===-1n;
+ const swap=oneStep?adjacentSwap(a.permutation,b.permutation):null;
+ const changedBits=(a.grayNumber^b.grayNumber).toString(2).split("1").length-1;
+ return {before:a,after:b,adjacent:swap,
+         grayHammingDistance:changedBits,
+         isSingleStepValid:oneStep&&!!swap&&changedBits===1};
+}
+function selfTest(){
+ const checks={};
+ for(let n=2;n<=8;n++){
+  const count=Number(factorial(n));
+  const seen=new Set();
+  let old=sjtUnrank(n,0n);
+  for(let i=0;i<count;i++){
+   const p=sjtUnrank(n,BigInt(i));
+   const key=p.join(",");
+   if(seen.has(key))throw Error("Repeated rank n="+n+" i="+i);
+   seen.add(key);
+   if(sjtRank(p)!==BigInt(i))throw Error("rank/unrank n="+n+" i="+i);
+   if(i>0&&!adjacentSwap(old,p))throw Error("nonadjacent step n="+n+" i="+i);
+   old=p;
+  }
+  if(!adjacentSwap(old,sjtUnrank(n,0n)))throw Error("seam n="+n);
+  if(seen.size!==count)throw Error("exhaustiveness n="+n);
+ }
+ checks.smallNExhaustive="PASS n=2..8, including wrap";
+ let cur=17n;
+ const sample=[0n,1n,2n,8n,728n,729n,SIZE-1n,SIZE-2n,SIZE/2n,VISITS_PER_STATION];
+ for(let i=0;i<600;i++){
+  cur=(cur*6364136223846793005n+1442695040888963407n)%SIZE;
+  sample.push(cur);
+ }
+ for(const r of sample){
+  const p=sjtUnrank(OPERATORS,r);
+  if(sjtRank(p)!==r)throw Error("24! rank/unrank roundtrip at "+r);
+  const t=transition(r,1n);
+  if(!t.isSingleStepValid)throw Error("24! adjacency / Gray at "+r);
+  if(stationIndex(r)!==Number(r%729n))throw Error("station modulo");
+ }
+ checks.sampled24FactorialRanks="PASS "+sample.length+" exact BigInt ranks";
+ if(SIZE!==620448401733239439360000n)throw Error("24! constant wrong");
+ if(VISITS_PER_STATION!==851095201280163840000n)throw Error("visits/station wrong");
+ if(state(0n).gray!=="000"||state(1n).gray!=="001")throw Error("opening 000 -> 001");
+ if(state(SIZE-1n).gray!=="100")throw Error("closing Gray label wrong");
+ if(stationIndex(0n)!==0||stationIndex(1n)!==1||stationIndex(SIZE-1n)!==728)
+  throw Error("station boundary");
+ const seam=transition(SIZE-1n,1n);
+ if(!seam.isSingleStepValid||seam.adjacent.leftIndex!==0)throw Error("toroidal seam");
+ checks.firstStep="000 -> 001; adjacent symbols 23 and 24";
+ checks.seam="rank N-1 -> 0; Gray 100 -> 000; adjacent symbols 2 and 1";
+ checks.fair729Visits="24!/729 exact = "+VISITS_PER_STATION;
+ checks.grayPeriod="8, Gray one-bit for every step including cycle seam";
+ checks.astronomicalClaim="NO: symbolic address projection only";
+ return checks;
+}
+const api=Object.freeze({OPERATORS,STATIONS,SIZE,VISITS_PER_STATION,
+ factorial,normalizedRank,sjtUnrank,sjtRank,grayBits,grayNumber,
+ stationIndex,stationLabel,adjacentSwap,state,transition,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound08Toroid=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script>
+<script>
+(function(){"use strict";
+const B=globalThis.Bound19Guard,E=globalThis.Bound18EMS,T=globalThis.Bound08Toroid,$=id=>document.getElementById(id);
+const defaultScan=B.scan();let rank=0n,cur=null;
+const fmt=x=>x==null?"not computed":Number(x).toExponential(6);
+const math=x=>x==null?"n/a":Number(x).toFixed(4);
+function canvas(id){const a=$(id),rect=a.getBoundingClientRect(),dpr=Math.min(2,globalThis.devicePixelRatio||1);
+ a.width=Math.round(rect.width*dpr);a.height=Math.round(rect.height*dpr);const c=a.getContext("2d");c.setTransform(dpr,0,0,dpr,0,0);return{c,w:rect.width,h:rect.height};}
+function drawScan(){
+ const {c,w,h}=canvas("scanChart"),L=62,R=w-25,U=24,D=h-47,X=x=>L+(x-.4)/.45*(R-L),Y=m=>D-(m-1)/.0029*(D-U);
+ c.clearRect(0,0,w,h);c.font="11px system-ui";c.strokeStyle="#345065";c.fillStyle="#b4cad9";
+ for(const r of [.4,.5,.6,.7,.8]){const x=X(r);c.beginPath();c.moveTo(x,U);c.lineTo(x,D);c.stroke();c.fillText(r.toFixed(2),x-12,h-20)}
+ for(let i=0;i<=4;i++){let m=1+i*.0007,yy=Y(m);c.beginPath();c.moveTo(L,yy);c.lineTo(R,yy);c.stroke();c.fillText(m.toFixed(4),3,yy+4)}
+ const a=defaultScan.filter(x=>x.accepted).sort((x,y)=>x.r0-y.r0);
+ c.beginPath();c.lineWidth=2.3;c.strokeStyle="#6de7d8";a.forEach((z,i)=>{let px=X(z.r0),py=Y(z.finest.mass);i?c.lineTo(px,py):c.moveTo(px,py)});c.stroke();
+ for(const z of defaultScan){const xx=X(z.r0),yy=z.accepted?Y(z.finest.mass):D+5;
+  c.fillStyle=z.accepted?"#6de7d8":"#f498ae";c.beginPath();c.arc(xx,yy,4.5,0,Math.PI*2);c.fill()}
+ const choice=+$("r0").value,selected=defaultScan.find(z=>z.r0===choice);
+ c.strokeStyle="#ffd08b";c.beginPath();c.moveTo(X(choice),U);c.lineTo(X(choice),D);c.stroke();
+ c.fillStyle="#b3cbd9";c.fillText("r₀ (independent characteristic initial radii)",L,h-5);c.fillText("M (checkpoint)",5,12);
+}
+function drawRefinement(x){
+ const {c,w,h}=canvas("refineChart"),L=52,R=w-20,U=18,D=h-35;
+ c.clearRect(0,0,w,h);c.fillStyle="#bed0dc";c.font="11px system-ui";c.strokeStyle="#2b495e";
+ const good=(x.records||[]).filter(a=>a.midpoint_flux);if(good.length<2){c.fillText("Run stopped before valid refinement; no curves invented.",14,h/2);return}
+ const keys=[["Cuu_l2","#6ce8d9"],["Cvv_l2","#bfa3fc"],["m_u_residual","#ffd08b"],["m_v_residual","#f498ae"]];
+ let vals=[];for(let z of good)for(const [k] of keys){const v=k.includes("residual")?z.midpoint_flux[k]:z[k];vals.push(Math.log10(Math.max(1e-15,Math.abs(v))))}
+ const low=Math.floor(Math.min(...vals)-.5),high=Math.ceil(Math.max(...vals)+.5),Y=v=>D-(v-low)/(high-low)*(D-U),X=i=>L+i*(R-L)/3;
+ for(let j=0;j<4;j++){const xx=X(j);c.beginPath();c.moveTo(xx,U);c.lineTo(xx,D);c.stroke();c.fillText(String(B.NLIST[j]),xx-8,h-12)}
+ for(const [key,col] of keys){c.beginPath();c.strokeStyle=col;c.lineWidth=2;
+  for(let i=0;i<good.length;i++){const v=key.includes("residual")?good[i].midpoint_flux[key]:good[i][key];
+   const xx=X(i),yy=Y(Math.log10(Math.max(1e-15,Math.abs(v))));i?c.lineTo(xx,yy):c.moveTo(xx,yy)}c.stroke()}
+ c.fillStyle="#b9cddc";c.fillText("log10 residual vs N",8,12);
+}
+function analyze(){
+ const r0=+$("r0").value,reduced=$("pulse").value==="reduced",A=reduced?.015:.02,B0=reduced?.01125:.015;
+ cur=B.analyze(r0,A,B0);
+ const x=cur,z=x.finest||x.records?.filter(r=>r.midpoint_flux).at(-1)||{},c=x.convergenceCheck||{};
+ $("status").textContent=x.status.replaceAll("_"," ");$("status").className="status"+(x.accepted?"":" bad");
+ $("minimum").textContent=fmt(z.min_r_including_corner);
+ $("mass").textContent=x.accepted?fmt(z.mass):"WITHHELD (STOPPED)";
+ $("cu").textContent=fmt(z.Cuu_l2);$("cv").textContent=fmt(z.Cvv_l2);
+ $("fluxU").textContent=math(c.m_u_flux_last_ratio);$("fluxV").textContent=math(c.m_v_flux_last_ratio);
+ $("explain").textContent=x.accepted?
+  "Passed all four resolution stages. This is a separate finite RN+scalar initial-value problem, not a sequence in observer proper time or proof of Cauchy-horizon mass inflation.":
+  "STOP. The attempted region fell below the chosen guard or left the solver's domain. Any previous partial numerical values are diagnostics only and must not be reported as accepted.";
+ const r=x.records.map(v=>v.error?"N="+v.N+" ABORT: "+v.error:"N="+v.N+"  min_r="+fmt(v.min_r_including_corner)+"  mass="+fmt(v.mass)+"  Cuu="+fmt(v.Cuu_l2)+"  Cvv="+fmt(v.Cvv_l2));
+ $("receipt").textContent=["r0="+r0+" A="+A+" B="+B0,"guard="+B.R_GUARD,"status="+x.status,...r,
+ x.accepted?"Cuu ratio="+math(c.Cuu_last_ratio)+" Cvv ratio="+math(c.Cvv_last_ratio):"NO accepted convergence certificate",
+ "Kerr=not modeled; Sgr A*=not measured; mass inflation=not demonstrated"].join("\n");
+ drawScan();drawRefinement(x);
+}
+function showRank(){
+ const st=T.state(rank);$("rankInput").value=rank.toString();$("bits").replaceChildren();
+ for(const b of st.gray){const n=document.createElement("div");n.className="bit"+(b==="1"?" on":"");n.textContent=b;$("bits").appendChild(n)}
+ $("rankText").textContent="rank "+rank.toLocaleString("en-US")+"\nGray "+st.gray+"  |  registry "+st.stationLabel+"\n"+st.permutation.map(v=>String(v).padStart(2,"0")).join(" ");
+}
+function rankMove(n){rank=T.normalizedRank(n);showRank();$("rankNotice").textContent="Only the logical address changed. No field equations re-evolved."}
+$("run").addEventListener("click",analyze);
+$("deepest").addEventListener("click",()=>{$("r0").value=".42";$("pulse").value="default";analyze()});
+$("stopCase").addEventListener("click",()=>{$("r0").value=".415";$("pulse").value="default";analyze()});
+$("r0").addEventListener("change",analyze);$("pulse").addEventListener("change",analyze);
+$("next").addEventListener("click",()=>rankMove(rank+1n));
+$("back").addEventListener("click",()=>rankMove(rank-1n));
+$("last").addEventListener("click",()=>rankMove(T.SIZE-1n));
+$("reset").addEventListener("click",()=>rankMove(0n));
+function jump(){const s=$("rankInput").value.trim();if(!/^\d+$/.test(s)){$("rankNotice").textContent="Invalid rank digits";return}
+ const v=BigInt(s);if(v>=T.SIZE){$("rankNotice").textContent="Rank outside exact 24! ring";return}rankMove(v)}
+$("jump").addEventListener("click",jump);$("rankInput").addEventListener("keydown",e=>{if(e.key==="Enter")jump()});
+globalThis.addEventListener("resize",()=>{drawScan();if(cur)drawRefinement(cur)});
+try{B.selfTest();T.selfTest();$("rankNotice").textContent="PASS: initial data scan, null constraints, local mass flux and exact 24! ring."; }
+catch(err){$("rankNotice").textContent="SELF-CHECK FAILED: "+String(err)}
+showRank();analyze();
+})();
+</script></body></html>
