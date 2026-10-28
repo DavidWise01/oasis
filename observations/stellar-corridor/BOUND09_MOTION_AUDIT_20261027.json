@@ -1,0 +1,110 @@
+{
+  "id": "ITD_BOUND09_GALACTIC_COMMON_MODE_TRAIN_20261027",
+  "date": "2026-10-27",
+  "status": "SHARED_MOTION_IMPLEMENTED_729_STATION_WITNESS_PASS_24FACTORIAL_ADDRESS_SEPARATE_FROM_TIME",
+  "user_rule": "Sgr A*, Sun, Earth, all 729 geometric stations share one chosen outward velocity; the Sun can be behind in the chosen forward coordinate",
+  "central_witnesses": [
+    {
+      "source": "GRAVITY Collaboration, Astronomy & Astrophysics (2022)",
+      "claim": "Sgr A* galactocentric Sun distance ~8277 pc",
+      "url": "https://doi.org/10.1051/0004-6361/202142465"
+    },
+    {
+      "source": "Jiao et al., Astronomy & Astrophysics (2023)",
+      "claim": "near-Sun Milky Way circular speed 233 ± 7 km/s; not Galaxy's bulk translation velocity",
+      "url": "https://doi.org/10.1051/0004-6361/202346474"
+    },
+    {
+      "source": "Reid & Brunthaler, ApJ (2004)",
+      "claim": "apparent Sgr A* proper motion 6.379 ± 0.024 mas/yr predominantly attributable to solar orbital reflex motion",
+      "url": "https://doi.org/10.1086/424960"
+    }
+  ],
+  "equations": [
+    "x_i_world(t)=V_bulk * t * u + r_i_relative(t)",
+    "v_i_world(t)=V_bulk * u + v_i_relative(t)",
+    "x_i_world-x_j_world=r_i_relative-r_j_relative",
+    "g_i=G sum_j m_j (x_j-x_i)/|x_j-x_i|^3 is invariant under shared constant-speed translation in Newtonian approximation",
+    "kinematic model: r_sun(t)=-R0[cos(omega*t) u+sin(omega*t)n], omega=v_c/R0",
+    "rigid visualization: r_station(t)=-R_station*u",
+    "spoke visualization: r_station(t)=R_station/R0 * r_sun(t), these are sampling coordinates NOT stars with real orbits",
+    "behind_along_train=-dot(x_sun-x_sgra,u) [positive=behind, negative=ahead]",
+    "station_address(rank)=rank mod 729; 24! permutation rank and physical epoch t are independent"
+  ],
+  "conventions": {
+    "bulk_velocity_km_s": "User-selected 0..600 km/s, default 320 km/s, NOT measured Galaxy absolute velocity",
+    "forward_unit_vector": "u=[cos heading, sin heading], heading=0 along plot x positive; orientation unmeasured",
+    "frame": "Illustrative external Galilean coordinate frame, plus boost-subtracted Galactocentric view",
+    "R0_kpc": 8.277,
+    "solar_circular_km_s": 233,
+    "station_count": 729,
+    "earth_offset": "idealized 1AU circular orbit; visually coincident with Sun at kpc scale",
+    "reference_time": "t0 in arbitrary visualization epoch, not Gaia's observation epoch",
+    "relative_sun_orbit": "one nominal circular orbit, period around 218.245 Myr; no detailed ephemerides, solar peculiar motion, bar perturbations or relativistic gravity",
+    "actual_measured_729_station_kinematics": false,
+    "physical_gravity_models_changed": false,
+    "origin_of_force": "Bound04 four-component model values, fixed and unchanged",
+    "source_sgra_intrinsic_bulk_velocity_estimate": null
+  },
+  "example": {
+    "mode": "rigid and orbit",
+    "selected_t_Myr": 10,
+    "selected_bulk_km_s": 320,
+    "selected_heading_deg": 0,
+    "common_center_displacement_kpc": 3.2726789281462243,
+    "sun_station_r0_kpc": 8.277,
+    "rigid_sun_trailing_kpc": 8.277,
+    "orbit_sun_trailing_kpc": 7.936345622599319,
+    "orbit_sun_world_kpc": [
+      -4.663666694453095,
+      -2.3501376892958032
+    ],
+    "solar_orbit_period_myr": 218.2445868607662
+  },
+  "exact_traversal": {
+    "size": "24! = 620448401733239439360000",
+    "first_gray": "000",
+    "next_gray": "001",
+    "station_index": "rank%729",
+    "center_state": "000",
+    "first_step": "001",
+    "last_state": "728",
+    "seam": "728→000 is a logical wrap, not physical teleportation",
+    "independent_from_physical_time": true
+  },
+  "runtime_checks": {
+    "source_core_readback_and_run": "PASS",
+    "boost_invariance_72_cases": "PASS",
+    "all_station_radii_constant_under_common_translation": "PASS",
+    "relative_velocities_invariant_under_common_velocity": "PASS",
+    "rigid_behind_projection_at_t10": "8.277 kpc",
+    "orbital_time_quarter_period_forward_projection": "~0 kpc",
+    "orbital_time_half_period_forward_projection": "-8.277 kpc (ahead)",
+    "Earth_Sun_1AU_separation": "PASS (idealized)",
+    "24_factorial_endpoints_mapping": "PASS",
+    "new_interactive_HTML_three_JS_scripts_compile": "PASS",
+    "mock_browser_UI": "PASS: station, bulk speed, rigid/orbit mode, exact rank forward/reverse/wrap, invalid input",
+    "real_browser_render_confirmed": false,
+    "github_pages_serving_confirmed": false
+  },
+  "important_limits": [
+    "No absolute cosmic rest frame or physical universal 'forward' exists here; chosen frame direction may be freely rotated.",
+    "Adding equal bulk velocity to all objects does not generate extra gravitational attraction, delay, mass, or a change in gravitational field.",
+    "The Sun is physically offset from Sagittarius A* and also orbits it; fixed 'behind' persists only if its relative position is held constant or the forward projection stays negative.",
+    "Sgr A* apparent sky motion is mostly solar reflex; do not confuse it with center-of-Galaxy bulk velocity.",
+    "No gravitational interaction is computed for every star, because masses and 6D phase space are missing.",
+    "729 are coordinate sampling stations, not physically rigid orbiting stars. The orbital mode's intermediate spoke markers are kinematic geometry only.",
+    "Linear common translation is a Galilean Newtonian modeling transformation; accelerating/noninertial frames introduce fictitious inertial terms.",
+    "The torus is a logical combinatorial ring and rank→station mapping does not identify worldline time, actual star position, or cosmic topology.",
+    "Earth's 1AU phase is illustrative and does not replace a Solar System ephemeris.",
+    "Initial alignment of the Sun 8.277 kpc behind the chosen heading is a deliberate coordinate choice, not a measured alignment of the Sun with the Galaxy's actual peculiar motion."
+  ],
+  "artifacts": [
+    "bound09_shared_motion_core.js",
+    "bound09-galactic-train.html",
+    "BOUND09_729_COMMON_TRAIN_WITNESS_20261027.csv",
+    "BOUND09_MOTION_AUDIT_20261027.json",
+    "BOUND09_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next_bound": "Bound10: add observationally inferred Gaia DR3 proper motions and radial velocities with covariance to actual stars; compare their differential motions in a consistent Sun/Galactic frame, not a bulk acceleration."
+}
