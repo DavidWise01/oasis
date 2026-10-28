@@ -34,6 +34,7 @@ function tauRemainingFormal(r) {
 }
 function properFromStart(r) {
  assertRadius(r);
+ if(Math.abs(r/START-1)<1e-12)return 0;
  if(r>START*(1+1e-12))return null; // not traversed from selected start
  if(r<STOP*(1-1e-12))return null;  // no extrapolated physical record past stop
  // DOUBLE precision cancellation for r<<rs: this near-constant number is
@@ -115,11 +116,14 @@ function markers() {
 function radiusAtFraction(fraction,phase) {
  if(!Number.isFinite(fraction)||fraction<0||fraction>1)throw Error("fraction 0..1 required");
  if(phase==="exterior"){
+  if(fraction===0)return START;
+  if(fraction===1)return RS;
   // tau from start to horizon follows x=r/rs cubed-over-two.
   const power=1000-fraction*999;
   return RS*Math.pow(power,2/3);
  }
  if(phase==="interior"){
+  if(fraction===0)return RS;
   // horizon r=RS to named curvature cutoff; at phase=1 do not
   // round its tiny nonzero radius to classical r=0.
   if(fraction===1)return STOP;
