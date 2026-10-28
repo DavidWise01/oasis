@@ -1,0 +1,94 @@
+{
+  "id": "ITD_BOUND10_INVARIANT_ZERO_PLANCK_CORRIDOR_20261027",
+  "date": "2026-10-27",
+  "scope": "729 logarithmic areal-radius reference levels 000 center sentinel 001 Planck scale 728 Sun, separate from prior 729 linear model stations",
+  "status": "CALCULATED_VERIFIED_MODEL_WITH_OBSERVATION_CONSTRAINTS_NOT_PHYSICAL_INTERIOR_PATH",
+  "numerical_anchors": {
+    "planck_length_m": 1.616255e-35,
+    "planck_length_standard_uncertainty_m": 1.8e-40,
+    "planck_time_s": 5.391247e-44,
+    "R0_pc": 8277,
+    "R0_m": 255401533420040450000,
+    "MBH_solar": 4297000,
+    "schwarzschild_radius_m": 12690115577.002773,
+    "photon_sphere_m": 19035173365.504158,
+    "schwarzschild_ISCO_m": 38070346731.008316,
+    "formal_K_lp4_equals_one_m": 2.2561016048275532e-20,
+    "log10_R0_over_lp": 55.19871361900953,
+    "log10_step": 0.07592670374004062,
+    "multiplicative_step": 1.1910409780351636,
+    "fractional_station_of_classical_curvature_boundary": 200.46669652477183,
+    "fractional_station_of_horizon": 592.29335905074,
+    "counts": {
+      "center_sentinel": 1,
+      "formal_high_curvature": 200,
+      "formal_classical_interior": 392,
+      "classical_exterior": 136
+    }
+  },
+  "source_receipts": [
+    {
+      "source": "NIST CODATA 2022 Planck length and time",
+      "url": "https://physics.nist.gov/cuu/pdf/all.pdf",
+      "facts": "lp=1.616255(18)e-35 m; tP=5.391247(60)e-44 s; latest recommended CODATA available at time"
+    },
+    {
+      "source": "GRAVITY Collaboration 2022",
+      "url": "https://doi.org/10.1051/0004-6361/202142465",
+      "facts": "Sgr A* mass 4.297 million solar masses and distance 8277 parsecs"
+    },
+    {
+      "source": "Event Horizon Telescope Collaboration 2022",
+      "url": "https://doi.org/10.3847/2041-8213/ac6674",
+      "facts": "Sgr A* 2022 shadow measurements consistent with central SMBH; not imaging the classical interior"
+    }
+  ],
+  "physical_equations": {
+    "planck": "lp=sqrt(hbar*G/c^3); not a verified minimal physical size",
+    "center": "r=0 is a mathematical limit / singularity under classical Schwarzschild; no measured center",
+    "areal_radius": "r=sqrt(A/4pi) in spherically symmetric geometry; invariant under radial coordinate relabelings, not a unique invariant radial path to singularity",
+    "r_s": "2 G M/c^2",
+    "R_0": "Sun-to-Sgr A* distance adopted from GRAVITY; scale from observation",
+    "log_grid": "r(0)=0 mathematical sentinel; for i=1..728 r(i)=lp * (R0/lp)^((i-1)/727)",
+    "dimensionless_radial_zero": "zeta(r)=r/R0, zeta->0 when r->0 (spherical metric family, no physical measured singularity)",
+    "K": "K = R_abcd R^abcd = 48 (GM/c^2)^2/r^6 = 12 r_s^2/r^6, only classical Schwarzschild metric",
+    "formal_K_criterion": "K*lp^4=1, NOT a verified quantum gravity transition",
+    "exterior_proper_distance": "L(r)=sqrt(r(r-r_s))+r_s*arcosh(sqrt(r/r_s)) defined on Schwarzschild t=constant exterior slice r>=r_s; it is slicing-dependent, not an invariant unique center distance",
+    "common_boost": "uniform shared translation cancels for relative coordinates; Bound09 unaffected",
+    "factorial_mapping": "rank modulo 729 remains logical address with 24! SJT permutation cyclic Gray; rank is not physical time"
+  },
+  "checks": {
+    "full_729_rows": "PASS",
+    "strictly_increasing_r_001_to_728": "PASS",
+    "zero_sentinel_no_gravity": "PASS",
+    "R0_lp_source_anchor": "PASS",
+    "Schwarzschild_horizon_and_curvature_fractional_station": "PASS",
+    "K_lp4_unity_algebra": "PASS",
+    "exterior_slice_proper_distance_only": "PASS",
+    "source_JS_executed_from_GitHub": "PASS",
+    "HTML_3_inline_script_syntax": "PASS",
+    "HTML_mock_DOM_jumps_to_sun_horizon_curvature_lp_zero_and_24factorial_Gray_seams": "PASS",
+    "independently_rendered_in_real_browser": false,
+    "live_GitHub_Pages_verified": false
+  },
+  "interpretation_and_caveats": [
+    "At least three meanings of zero are distinct: mathematical coordinate r=0, dimensionless center limit zeta=r/R0->0, and Planck-scale reference r=lp which is nonzero.",
+    "The 729 log registry is a NEW coordinate-resolution grid. Its labels correspond to the original 000..728 24! logical address but not the same radii as the old 729 linear Galactic samples.",
+    "In a Schwarzschild black hole the event horizon is not a singular curvature surface; K lp^4 is negligible there for this very massive black hole.",
+    "The interpolated scale where the Schwarzschild formula produces K lp^4=1 is about 2.26e-20 m, very far inside the horizon and above lp. This is a formal extrapolation where quantum effects may matter; do not claim an observed classical surface or hard floor.",
+    "Planck length is a derived dimensional scale with uncertainty from measured gravitational constant; not a proven smallest length quantum, and not an observable singularity size.",
+    "Constant-Schwarzschild-t proper radial distance is defined outside the horizon only. This work supplies no static spacelike path across the horizon or into the singularity.",
+    "Schwarzschild model assumes zero spin and exact spherical symmetry. Sgr A* likely spins; numerical Kerr radius and interior geometry are not established here.",
+    "Neither 24! traversal nor 729 model points represents physical star positions or causal motion, and the cyclic station seam is a logical wrap only.",
+    "Previous measured red giant vs H I residuals, mass-contribution uncertainties and center physics remain unresolved."
+  ],
+  "artifacts": [
+    "bound10_invariant_zero_core.js",
+    "bound10-invariant-zero.html",
+    "BOUND10_729_LOG_AREAL_RADIUS_20261027.csv",
+    "BOUND10_EXPLICIT_ANCHORS_20261027.csv",
+    "BOUND10_INVARIANT_ZERO_AUDIT_20261027.json",
+    "BOUND10_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next_bounds": "Use actual GR geodesics and proper time with explicit initial conditions; evaluate invariant curvature and tidal tensor outside the horizon and keep physically uncertain inner geometry unfilled. Do not assume a unique invariant spacelike radial distance to r=0."
+}
