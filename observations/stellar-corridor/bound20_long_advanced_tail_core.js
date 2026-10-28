@@ -22,7 +22,7 @@
  */
 (function(root){"use strict";
 const PI=Math.PI;
-const DEFAULT=Object.freeze({Q:.8,r0:1.2,Lu:.2,Lv:8,A:.012,B:.0005,v0:1,p:3,
+const DEFAULT=Object.freeze({Q:.8,r0:1.2,Lu:.2,Lv:4.25,A:.012,B:.0005,v0:1,p:3,
   guardGapFraction:.0005,maxTailTime:50});
 const R_MINUS=.4,R_PLUS=1.6;
 const REFINEMENTS=Object.freeze([[12,48],[24,96],[48,192],[96,384]]);
@@ -171,7 +171,7 @@ function selfTest(){
  if(!both.pass||!vacuum.pass)throw Error("rectangular second-order convergence missing");
  if(Math.abs(vacuum.run.at(-1).center.mass-1)>2e-5)throw Error("RN vacuum");
  if(!(both.run.at(-1).center.mass>vacuum.run.at(-1).center.mass))throw Error("scalar mass effect");
- if(!(both.run.at(-1).tail.v>3)&&!(both.run.at(-1).tail.v>p.Lv*.95))
+ if(!(both.run.at(-1).tail.v>3&&both.run.at(-1).tail.v>p.Lv*.95))
   throw Error("tail witness");
  for(let i=0;i<7;i++){
   const v=p.Lv*i/6,a=dPhiV(v,p),b=dPhiV(v+1,p);
@@ -180,7 +180,7 @@ function selfTest(){
  const x=compute(24,96,{A:0,B:0});
  if(!(x.corner_radius>R_MINUS&&x.maximum_cell_iteration_error<1e-7))throw Error("domain guard");
  const verdicts={};
- for(const L of [8,12,16,20,30,40]){
+ for(const L of [2,3,4,4.25,4.5,5,8]){
   try{const z=compute(24,Math.round(12*L),{Lv:L});verdicts[L]={status:"COMPUTED",corner_r:z.corner_radius,guard:z.chosen_guard_radius,
     mass:z.center.mass,Cu:z.constraints.CuRMS,Cv:z.constraints.CvRMS}}
   catch(e){verdicts[L]={status:"ABORT",reason:String(e).slice(0,200)}}
