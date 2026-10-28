@@ -1,0 +1,25 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {CommitJournal,MemoryJournalStore} from './journal.mjs';
+import {ReceiverLedger} from './receiver.mjs';
+import {readAnny} from './anny-observer.mjs';
+test('Anny observes PREPARED through CONFIRMED without initiating state transitions',async()=>{
+ const store=new MemoryJournalStore(),journal=new CommitJournal(store),receiver=new ReceiverLedger(store);
+ const transferId='anny-e2e',epoch=1,bytes=[1,2,3,4,5];
+ const acks=['A','B'].flatMap(path=>bytes.map((byte,position)=>({transferId,epoch,path,position,byte})));
+ await journal.prepare({transferId,epoch,bytes,acks});
+ let snapshot=await readAnny(journal,receiver,transferId);
+ assert.equal(snapshot.phase,'PREPARED');assert.equal(snapshot.slots[17].value,'HELD');
+ assert.equal((await journal.read(transferId)).state,'PREPARED');
+ await journal.commit(transferId,epoch);snapshot=await readAnny(journal,receiver,transferId);
+ assert.equal(snapshot.phase,'COMMITTED');assert.equal(snapshot.slots[17].value,'HELD');
+ await journal.pending(transferId,epoch);
+ const row=await journal.read(transferId);
+ const receipt=await receiver.deliver({deliveryKey:row.deliveryKey,transferId,digest:row.digest,sourceHex:row.sourceHex});
+ snapshot=await readAnny(journal,receiver,transferId);
+ assert.equal(snapshot.slots[16].status,'observed');assert.equal(snapshot.slots[17].value,'HELD');
+ await journal.confirm(transferId,epoch,receipt);
+ snapshot=await readAnny(journal,receiver,transferId);
+ assert.equal(snapshot.phase,'CONFIRMED');assert.equal(snapshot.slots[17].value,'VERIFIED');
+ assert.equal(await receiver.effectCount(row.deliveryKey),1);
+});
