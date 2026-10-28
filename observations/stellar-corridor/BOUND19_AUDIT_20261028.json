@@ -1,0 +1,226 @@
+{
+  "id": "ITD_BOUND19_NEAR_INNER_RN_CONSTRAINT_FLUX_GUARD_20261028",
+  "date": "2026-10-28",
+  "status": "APPEND_ONLY_VERIFIED_5_NEAR_INNER_PATCHES_3_HARD_STOPS_NO_MASS_INFLATION_CLAIM",
+  "source_bound18_SHA": "0744b64b842b07c0b90e639d7cd3e03302a1be44",
+  "bound19_gate_source_SHA": "b8654b7b3eb0f1d796f733774cfe34250b63754c",
+  "physics": {
+    "metric": "Spherical Einstein-Maxwell-neutral real massless scalar (double null), not rotating Kerr",
+    "units": "G=c=M0=1",
+    "assumed_charge_Q": 0.8,
+    "background_ideal_horizons": {
+      "r_plus": 1.6,
+      "r_minus": 0.4
+    },
+    "initial_r0_values": [
+      0.8,
+      0.6,
+      0.5,
+      0.45,
+      0.42,
+      0.415,
+      0.41,
+      0.405
+    ],
+    "selected_inputs_default": {
+      "A": 0.02,
+      "B": 0.015,
+      "L": 0.4
+    },
+    "reduced_amplitude_control": {
+      "r0": 0.415,
+      "A": 0.015,
+      "B": 0.01125
+    },
+    "independent_initial_value_regions": true,
+    "not_one_continuous_worldline": true,
+    "chosen_guard_radius": 0.4006,
+    "chosen_guard_rule": "r>r_minus +0.0005*(r_plus-r_minus), checked including grid corner",
+    "numerical_strategy": "Automatic escalation of UNIFORM resolutions N=24,48,96,192, NOT local adaptive mesh refinement",
+    "constraints": {
+      "Cuu": "r_uu−2sigma_u r_u+r(phi_u)^2",
+      "Cvv": "r_vv−2sigma_v r_v+r(phi_v)^2"
+    },
+    "mass": "m=r/2*(1+4r_u r_v exp(-2sigma)+Q²/r²)",
+    "independent_mass_flux_identities": {
+      "mu": "−2r² exp(−2sigma) r_v(phi_u)²",
+      "mv": "−2r² exp(−2sigma) r_u(phi_v)²",
+      "trapped_region_sign": "r_u<0 and r_v<0 imply nonnegative coordinate mu,mv for real scalar"
+    },
+    "numeric_reportability": "Only accept if all four grids stay outside guard and mass/constraints/flux identity residuals converge by roughly fourfold after h halved; no values after ABORT presented as accepted",
+    "measured_SgrA_charge": false,
+    "observed_cauchy_horizon": false,
+    "physical_center_unresolved": true,
+    "real_price_tails_or_long_null_time_initial_data": false
+  },
+  "executed": {
+    "selfTest": {
+      "pass": true,
+      "kind": "resolution_escalation_not_local_AMR",
+      "physical_domain": "spherical charged RN+real scalar, NOT Kerr",
+      "charge_Q": 0.8,
+      "r_minus": 0.4,
+      "r_plus": 1.6,
+      "chosen_guard": 0.4006,
+      "accepted_count": 5,
+      "aborted_count": 3,
+      "scan_summary": [
+        {
+          "r0": 0.8,
+          "status": "ACCEPT_CONVERGENT_BEFORE_DECLARED_GUARD",
+          "finest_N": 192,
+          "nearest_r": 0.5824236743022821,
+          "checkpoint_mass": 1.00246560802765,
+          "mass_2nd_order_ratio": 3.999579130864859,
+          "Cuu_2nd_order_ratio": 3.980046029454582,
+          "Cvv_2nd_order_ratio": 3.9803396123325268,
+          "mass_flux_u_ratio": 3.9966392850890426,
+          "mass_flux_v_ratio": 3.9964602595844316
+        },
+        {
+          "r0": 0.6,
+          "status": "ACCEPT_CONVERGENT_BEFORE_DECLARED_GUARD",
+          "finest_N": 192,
+          "nearest_r": 0.43312151211823247,
+          "checkpoint_mass": 1.0013731001059316,
+          "mass_2nd_order_ratio": 3.9991764039063247,
+          "Cuu_2nd_order_ratio": 3.9828120752922374,
+          "Cvv_2nd_order_ratio": 3.9850590364382734,
+          "mass_flux_u_ratio": 3.9964157690834163,
+          "mass_flux_v_ratio": 3.997131567366683
+        },
+        {
+          "r0": 0.5,
+          "status": "ACCEPT_CONVERGENT_BEFORE_DECLARED_GUARD",
+          "finest_N": 192,
+          "nearest_r": 0.40857881101271093,
+          "checkpoint_mass": 1.0009453547029634,
+          "mass_2nd_order_ratio": 3.999719866377228,
+          "Cuu_2nd_order_ratio": 3.98412427162287,
+          "Cvv_2nd_order_ratio": 3.9868304078146743,
+          "mass_flux_u_ratio": 3.9956862353620886,
+          "mass_flux_v_ratio": 3.9965825919153732
+        },
+        {
+          "r0": 0.45,
+          "status": "ACCEPT_CONVERGENT_BEFORE_DECLARED_GUARD",
+          "finest_N": 192,
+          "nearest_r": 0.4029621803602771,
+          "checkpoint_mass": 1.0007701227171735,
+          "mass_2nd_order_ratio": 4.000111306080295,
+          "Cuu_2nd_order_ratio": 3.983834816859624,
+          "Cvv_2nd_order_ratio": 3.9859306983879965,
+          "mass_flux_u_ratio": 3.993533873119466,
+          "mass_flux_v_ratio": 3.9936630055746285
+        },
+        {
+          "r0": 0.42,
+          "status": "ACCEPT_CONVERGENT_BEFORE_DECLARED_GUARD",
+          "finest_N": 192,
+          "nearest_r": 0.4007910326236164,
+          "checkpoint_mass": 1.0006852506301538,
+          "mass_2nd_order_ratio": 4.000586782266298,
+          "Cuu_2nd_order_ratio": 3.982936982745861,
+          "Cvv_2nd_order_ratio": 3.9839028628460262,
+          "mass_flux_u_ratio": 3.992708025741025,
+          "mass_flux_v_ratio": 3.992163313969148
+        },
+        {
+          "r0": 0.415,
+          "status": "ABORT_PRE_INNER_GUARD",
+          "finest_N": null,
+          "nearest_r": 0.40049240349769094,
+          "checkpoint_mass": null,
+          "mass_2nd_order_ratio": null,
+          "Cuu_2nd_order_ratio": null,
+          "Cvv_2nd_order_ratio": null,
+          "mass_flux_u_ratio": null,
+          "mass_flux_v_ratio": null
+        },
+        {
+          "r0": 0.41,
+          "status": "ABORT_PRE_INNER_GUARD",
+          "finest_N": null,
+          "nearest_r": 0.40021563722358666,
+          "checkpoint_mass": null,
+          "mass_2nd_order_ratio": null,
+          "Cuu_2nd_order_ratio": null,
+          "Cvv_2nd_order_ratio": null,
+          "mass_flux_u_ratio": null,
+          "mass_flux_v_ratio": null
+        },
+        {
+          "r0": 0.405,
+          "status": "ABORT_EVOLUTION_DOMAIN",
+          "finest_N": null,
+          "nearest_r": null,
+          "checkpoint_mass": null,
+          "mass_2nd_order_ratio": null,
+          "Cuu_2nd_order_ratio": null,
+          "Cvv_2nd_order_ratio": null,
+          "mass_flux_u_ratio": null,
+          "mass_flux_v_ratio": null
+        }
+      ],
+      "reduced_amplitude_at_r0_0415": {
+        "A": 0.015,
+        "B": 0.01125,
+        "status": "ACCEPT_CONVERGENT_BEFORE_DECLARED_GUARD",
+        "nearest_r": 0.4006319629808075,
+        "checkpoint_mass": 1.0003753791179024
+      },
+      "no_mass_inflation_at_inner_horizon_claim": true,
+      "center_prediction": null,
+      "actual_late_tail_initial_data_not_present": true
+    },
+    "sample_grid": "5 accepted default initial regions x 27x27 grid points = 3645 numerical field witnesses, each from N=192 solved 2D field",
+    "convergence_table": "Default scan and reduced amplitude control with 24/48/96/192 grid refinement, stopped cases not extrapolated",
+    "default_accepted": 5,
+    "default_stopped": 3,
+    "thresholds_requested": "last-step mass ratio, both constraint L2 ratios, both mass flux identity residual ratios required between 2.7 and 5.3",
+    "hard_stop_0415": "ABORT_PRE_INNER_GUARD for default pulse A=.02 B=.015",
+    "hard_stop_0410": "ABORT_PRE_INNER_GUARD for default pulse A=.02 B=.015",
+    "hard_stop_0405": "ABORT_EVOLUTION_DOMAIN for default pulse A=.02 B=.015",
+    "pulse_dependence": "At r0=.415 reduced A=.015 B=.01125 accepts; guard is not universal.",
+    "full_browser_real_visual_render_checked": false,
+    "Github_Pages_live_deployment_checked": false,
+    "simulated_DOM_controls": "PASS: deepest accepted, chosen guard, smaller-pulse accepted, evolution failure, exact 24! ring 000->001->last->000 reverse and bad rank rejection",
+    "html_inline_script_compile": "PASS four scripts",
+    "generated_large_CSV_retrieved_verify_pending": true
+  },
+  "interpretation_limits": [
+    "These are distinct characteristic initial-value spacetimes and are not a single observer's radial trajectory or a physical time evolution of mass versus radius.",
+    "Even convergent local charged Hawking-mass estimates do not establish late-time Cauchy-horizon mass inflation. No Price tail or advanced null coordinate to infinity evolved.",
+    "The radius guard .4006 is chosen numerically (0.05% of ideal horizon coordinate gap), not a physical horizon, material safety condition or fundamental constant.",
+    "Only resolution escalation on globally uniform grids was implemented; there is NO locally adaptive mesh refinement.",
+    "Absolute coordinate Cuu/Cvv and mass-flux residual values are gauge-and-grid-dependent numerical diagnostics, not direct observation errors.",
+    "The physical RN inner horizon may be unstable under perturbations, and continuing an ideal background past it is not justified by this bounded simulation.",
+    "Reissner-Nordström Q is assumed; it is not Kerr spin or observed galactic electric charge.",
+    "24! combinatorial address and 729 scalar field sample grid remain computational selectors, not objects or clocks.",
+    "Near-horizon numerical proximity does not prove solution convergence at the limiting Cauchy horizon itself, stable extension, or any physical center."
+  ],
+  "scientific_sources": [
+    {
+      "title": "Burko and Ori, Late-time evolution of nonlinear gravitational collapse, Phys Rev D 56,7820 (1997)",
+      "url": "https://doi.org/10.1103/PhysRevD.56.7820"
+    },
+    {
+      "title": "Droz, Numerical investigation of black hole interiors, Phys Rev D 55,3575 (1997)",
+      "url": "https://doi.org/10.1103/PhysRevD.55.3575"
+    },
+    {
+      "title": "Ori, Inner structure of a charged black hole, exact mass-inflation solution, Phys Rev Lett 67,789 (1991)",
+      "url": "https://doi.org/10.1103/PhysRevLett.67.789"
+    }
+  ],
+  "artifacts": [
+    "bound19_inner_approach_gate_core.js",
+    "bound19-pre-cauchy-constraint-gate.html",
+    "BOUND19_729_NEAR_INNER_FIELD_MASS_FLUX_WITNESS_20261028.csv",
+    "BOUND19_PRECAUCHY_RADIUS_GATES_20261028.csv",
+    "BOUND19_FOUR_REFINEMENTS_CONSTRAINT_MASS_FLUX_20261028.csv",
+    "BOUND19_AUDIT_20261028.json",
+    "BOUND19_NATURAL_BOUND_2026-10-28.md"
+  ],
+  "next_bound": "Bound 20: impose a physically justified long-advanced-time exterior tail in one globally consistent double-null initial-value problem, evolve toward and along the charged inner-horizon regime with proper local AMR/regular-gauge choices; check Hawking-mass and curvature divergence under repeated independent refinements, constraints, and stop before invalid classical dynamics. Keep rotating Kerr separate."
+}
