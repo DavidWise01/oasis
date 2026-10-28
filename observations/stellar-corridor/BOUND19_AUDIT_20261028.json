@@ -186,7 +186,21 @@
     "Github_Pages_live_deployment_checked": false,
     "simulated_DOM_controls": "PASS: deepest accepted, chosen guard, smaller-pulse accepted, evolution failure, exact 24! ring 000->001->last->000 reverse and bad rank rejection",
     "html_inline_script_compile": "PASS four scripts",
-    "generated_large_CSV_retrieved_verify_pending": true
+    "large_CSV_verified_via_GitHub_blob": true,
+    "large_CSV_rows": 3645,
+    "large_CSV_per_accepted_initial_radius": {
+      "0.8": 729,
+      "0.6": 729,
+      "0.5": 729,
+      "0.45": 729,
+      "0.42": 729
+    },
+    "large_CSV_columns": 28,
+    "gate_table_verified_rows": 9,
+    "convergence_table_verified_rows": 27,
+    "all_seven_artifacts_read_back": true,
+    "standalone_HTML_4_scripts_compiled": true,
+    "standalone_HTML_mock_browser_pass": true
   },
   "interpretation_limits": [
     "These are distinct characteristic initial-value spacetimes and are not a single observer's radial trajectory or a physical time evolution of mass versus radius.",
