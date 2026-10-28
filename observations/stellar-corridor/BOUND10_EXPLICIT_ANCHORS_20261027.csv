@@ -1,0 +1,8 @@
+boundary,label,areal_radius_m,fractional_station_position,reference_type,measurement_status
+"Mathematical center sentinel",000,0.0000000000000e+0,0.000000000,mathematical sentinel,MODEL_BOUNDARY_NOT_OBSERVED_PATH
+"Planck length reference",001,1.6162550000000e-35,1.000000000,CODATA derived/scale reference,MODEL_BOUNDARY_NOT_OBSERVED_PATH
+"Formal Planck curvature (K lp^4 = 1)",not an exact station,2.2561016048276e-20,200.466696525,CODATA derived/scale reference,MODEL_BOUNDARY_NOT_OBSERVED_PATH
+"Schwarzschild event horizon",not an exact station,1.2690115577003e+10,592.293359051,analytic Schwarzschild approximation,MODEL_BOUNDARY_NOT_OBSERVED_PATH
+"Schwarzschild photon sphere",not an exact station,1.9035173365504e+10,594.612586021,analytic Schwarzschild approximation,MODEL_BOUNDARY_NOT_OBSERVED_PATH
+"Schwarzschild ISCO",not an exact station,3.8070346731008e+10,598.577330713,analytic Schwarzschild approximation,MODEL_BOUNDARY_NOT_OBSERVED_PATH
+"Sun galactocentric radius",728,2.5540153342004e+20,728.000000000,GRAVITY stellar orbit R0,MODEL_BOUNDARY_NOT_OBSERVED_PATH
