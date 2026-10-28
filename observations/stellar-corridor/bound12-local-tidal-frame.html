@@ -478,7 +478,7 @@ root.Bound08Toroid=api;
 (function(){"use strict";
 const J=globalThis.Bound12Jacobi,Z=globalThis.Bound10InvariantZero,T=globalThis.Bound08Toroid;
 const $=id=>document.getElementById(id);
-let rank=0n;
+let rank=0n, exactRadius=null;
 const fmt=(x,n=4)=>x===null?"undefined":Number(x).toExponential(n);
 const nice=(x)=>x<1e-6?x.toExponential(3):x.toLocaleString("en-US",{maximumFractionDigits:6});
 const radiusFrac=r=>Math.log(J.START/r)/Math.log(J.START/J.CURV_STOP);
@@ -523,7 +523,7 @@ function drawCurve(r,gate){
  c.fillStyle="#a9c2d6";c.fillText("log10(r / meters)",w*.38,h-2);c.fillText("log10 factor",7,14);
 }
 function render(){
- const frac=+$("range").value/1000,r=radiusAtProgress(frac),size=+$("size").value,p=J.jacobi(r,size),gate=J.firstBreak(size);
+ const frac=+$("range").value/1000,r=exactRadius===null?Math.max(J.CURV_STOP,Math.min(J.START,radiusAtProgress(frac))):exactRadius,size=+$("size").value,p=J.jacobi(r,size),gate=J.firstBreak(size);
  $("progressText").textContent=(frac*100).toFixed(1)+"%";$("rValue").textContent=fmt(r,5)+" m";
  $("ratio").textContent=fmt(r/J.RS,4);
  $("radSep").textContent=fmt(p.radial_m,5)+" m";
@@ -553,9 +553,9 @@ function showRank(){
  "\n"+s.permutation.map(x=>String(x).padStart(2,"0")).join(" ");
 }
 function setRank(n){rank=T.normalizedRank(n);$("station").value=T.stationIndex(rank);showRank();showStation();$("notice").textContent="Logical 24! selection only. Proper time and test-particle state were not advanced.";}
-for(const id of ["range","size"])$(id).addEventListener(id==="range"?"input":"change",render);
+for(const id of ["range","size"])$(id).addEventListener(id==="range"?"input":"change",()=>{if(id==="range")exactRadius=null;render();});
 $("station").addEventListener("input",showStation);
-function move(radius){$("range").value=Math.max(0,Math.min(1000,Math.round(1000*radiusFrac(radius))));render();}
+function move(radius){exactRadius=radius;$("range").value=Math.max(0,Math.min(1000,Math.round(1000*radiusFrac(radius))));render();}
 $("start").addEventListener("click",()=>move(J.START));
 $("horizon").addEventListener("click",()=>move(J.RS));
 $("gate").addEventListener("click",()=>move(J.firstBreak(+$("size").value).r));
