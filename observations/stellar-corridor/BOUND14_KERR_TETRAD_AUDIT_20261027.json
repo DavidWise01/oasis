@@ -1,0 +1,195 @@
+{
+  "id": "ITD_BOUND14_KERR_PP_TETRAD_E1_L0_Q0_20261027",
+  "date": "2026-10-27",
+  "status": "EXACT_EQUATORIAL_KERR_TIMELIKE_WORLDLINE_AND_PARALLEL_TRANSPORTED_TETRAD_VERIFIED_OUTSIDE_HORIZON",
+  "parent": "BOUND13_NATURAL_BOUND_2026-10-27.md",
+  "input_parameters": {
+    "adopted_sgra_mass_solar": 4297000,
+    "RG_m": 6345057788.501387,
+    "RS_m": 12690115577.002773,
+    "geodesic_constants": {
+      "specific_energy_E": 1,
+      "axial_angular_momentum_Lz": 0,
+      "Carter_Q": 0,
+      "K_Carter_combined": "(Lz-a E)^2+Q=a²"
+    },
+    "start_radius": "100 times prior Schwarzschild rs (=200 rg)",
+    "start_r_m": 1269011557700.2773,
+    "assumed_dimensionless_spins": [
+      0,
+      0.5,
+      0.9,
+      0.99
+    ],
+    "spin_measured_from_data": false,
+    "end_radius": "Outer Kerr event horizon BL coordinate r_plus=rg*(1+sqrt(1-chi^2))",
+    "interior_regime": "NOT COMPUTED",
+    "physical_test_body_observed": false
+  },
+  "physical_equations": {
+    "r_geometric": "rg=GM/c² and a=chi rg, BL equatorial y=r/rg",
+    "radial_proper": "dr/dtau=-c*sqrt(2(y²+chi²))/y^(3/2), using E=1 Lz=Q=0",
+    "BL_azimuthal_frame_dragging": "dphi/dtau=(c/rg)*2 chi/(y*delta), delta=y²-2y+chi²; BL coordinate diverges at horizon and is not physical local rotation rate",
+    "BL_time_component": "d(ct/rg)/d(c tau/rg)=P²/(y² delta)-chi²/y²",
+    "proper_time_integral": "tau(y)=rg/c * integral_y^200 [y'^(3/2) / sqrt(2(y'^2+chi²))] dy', adaptive domain via composite Simpson 1280 panels",
+    "Carter_coframe": "omega0=(sqrt(delta)/y)(dx0−chi dphi); omega1=(y/sqrt(delta))dy; omega2=y dtheta; omega3=(P dphi−chi dx0)/y, x0=ct/rg",
+    "observer_internal": "u=(A,B,0,D), A=P/(y sqrt(delta)), B=-sqrt(2 y P)/(y sqrt(delta)), D=-chi/y",
+    "spatial_tetrad": "e1=(B/H,A/H,0,0); e2=(0,0,1,0); e3=(A D/H,B D/H,0,H), H=sqrt(P)/y",
+    "parallel_rotation_phase": "Marck dPsi/dtau =sqrt(K)/(r²+K)*(E+a/(Lz−aE))=0 in special E=1 Lz=0 Q=0 case; chi=0 continuous zero limit",
+    "tidal_tensor_eigenvalues_s2": "(2+3 chi²/y², −1−3 chi²/y², −1) GM/r³, oriented radial/stretch/polar/azimuth in specified parallel tetrad",
+    "same_radius_fractional_stretch_increase_over_chi0": "(3/2)*(chi²/y²)",
+    "tidal_trace": "sum lambda_i = 0 exactly in Kerr vacuum",
+    "numeric_boundary_condition": "Only r>r_plus*(1+1e-7) has finite BL tetrad vector output. At horizon eigenvalues are exterior limits."
+  },
+  "selected_results": {
+    "spin_horizon_clocks": [
+      {
+        "chi": 0,
+        "horizon_BL_y": 2,
+        "horizon_BL_km": 12690115.577002773,
+        "proper_from_100rs_s": 28191.55968674697,
+        "matched_y2_extra_stretch_pct": 0
+      },
+      {
+        "chi": 0.5,
+        "horizon_BL_y": 1.8660254037844386,
+        "horizon_BL_km": 11840039.021823896,
+        "proper_from_100rs_s": 28191.901388823077,
+        "matched_y2_extra_stretch_pct": 9.375
+      },
+      {
+        "chi": 0.9,
+        "horizon_BL_y": 1.4358898943540672,
+        "horizon_BL_km": 9110804.357601708,
+        "proper_from_100rs_s": 28193.86154072174,
+        "matched_y2_extra_stretch_pct": 30.375000000000004
+      },
+      {
+        "chi": 0.99,
+        "horizon_BL_y": 1.141067359796659,
+        "horizon_BL_km": 7240138.338482505,
+        "proper_from_100rs_s": 28196.098090306165,
+        "matched_y2_extra_stretch_pct": 36.75375
+      }
+    ],
+    "chi_09_horizon_tidal_stretch_s2": 0.0023968552058506918,
+    "chi_0_schwarzschild_proper_time_analytic_s": 28191.55968988335,
+    "Kerr_vs_Schwarzschild_comparison": "Same BL coordinate radius and same E,Lz,Q initial constants; horizons are different radii, so horizon-vs-horizon values not matched events.",
+    "logarithmic_729_grid_status_counts": {
+      "chi_0": {
+        "center_sentinel": 1,
+        "inside_outer_horizon_blank": 592,
+        "exterior_valid": 26,
+        "above_chosen_start_blank": 110
+      },
+      "chi_05": {
+        "center_sentinel": 1,
+        "inside_outer_horizon_blank": 591,
+        "exterior_valid": 27,
+        "above_chosen_start_blank": 110
+      },
+      "chi_09": {
+        "center_sentinel": 1,
+        "inside_outer_horizon_blank": 590,
+        "exterior_valid": 28,
+        "above_chosen_start_blank": 110
+      },
+      "chi_099": {
+        "center_sentinel": 1,
+        "inside_outer_horizon_blank": 589,
+        "exterior_valid": 29,
+        "above_chosen_start_blank": 110
+      }
+    },
+    "proper_clock_datasets": "729 actual evenly spaced modeled proper-time FRACTIONS per spin for four spins: 2916 rows, separate from 729 historical logarithmic radius grid",
+    "log_radius_witness": "2916 rows (729 source radius labels ×4 assumed spins) with blank all interior, zero sentinel and out-of-start tidal field values"
+  },
+  "independent_validation": {
+    "actual_committed_JS_fetched_and_executed": true,
+    "analytical_core_test": {
+      "passed": true,
+      "spins": [
+        0,
+        0.5,
+        0.9,
+        0.99
+      ],
+      "geodesic": {
+        "E": 1,
+        "Lz": 0,
+        "Q": 0
+      },
+      "all_orthonormal_metric_checks": 384,
+      "max_orthonormal_metric_residual": 2.4424906541753444e-15,
+      "proper_time_inversion": "PASS",
+      "finite_difference_proper_time_derivative": "PASS",
+      "schwarzschild_reference_elapsed_s": 28191.55968988335,
+      "spin0_horizon_elapsed_s": 28191.55968674697,
+      "spin09_horizon_elapsed_s": 28193.86154072174,
+      "spin09_relative_stretch_at_y2": 0.30375,
+      "BL_horizon_frame_guard": "PASS",
+      "tidal_eigenvalues_Kerr_locally_measured": true,
+      "full_material_stress_or_live_Gaia_data": false,
+      "below_outer_horizon_worldline_propagated": false
+    },
+    "full_Riemann_Christoffel_projection_test": {
+      "pass": true,
+      "samples": 9,
+      "max_normalized_tidal_residual": 0.000037338013979332564,
+      "max_normalized_tidal_offdiagonal": 3.5288282150374694e-7,
+      "max_parallel_transport_residual": 2.6060063829103086e-11,
+      "independent_of_closed_form_curvature": "YES, Christoffels and Riemann generated from numerical BL metric derivatives",
+      "exterior_only": "YES",
+      "kerr_observer": "E=1,Lz=0,Q=0"
+    },
+    "separate_from_analytic_tidal_formula": "Independent finite-difference Kerr BL metric -> metric inverse -> gamma -> full Riemann -> projection onto tetrad",
+    "parallel_transport_condition": "u^nu nabla_nu e_i^mu approximately zero, nine exterior checks",
+    "BL_orthonormal_check_count": 384,
+    "interactive_four_script_compilation": "PASS",
+    "mock_browser_control_test": "PASS: spin selections 0/.9/.99, horizon frame guard, proper clock reset/midpoint, 24! 000->001 and closing/reverse, invalid-rank guard",
+    "browser_actual_graphical_render_verified": false,
+    "live_github_pages_deployed_verified": false
+  },
+  "sources": [
+    {
+      "title": "E. Camilloni et al., Binary mergers in strong gravity background of Kerr black hole, MNRAS 531, 1884 (2024), Marck PP tidal tensor Eq. 28",
+      "url": "https://academic.oup.com/mnras/article/531/1/1884/7667944"
+    },
+    {
+      "title": "Xin and Mummery, Relativistic tidal tensor, Phys Rev D 113, 044036 (2026)",
+      "url": "https://doi.org/10.1103/xdm3-48nb"
+    },
+    {
+      "title": "Banerjee et al., Tidal effects away from equatorial plane, Phys Lett B (2019), Kerr integrals",
+      "url": "https://scoap3-prod-backend.s3.cern.ch/media/files/47754/10.1016/j.physletb.2019.05.048_a.pdf"
+    },
+    {
+      "title": "Marck 1983 parallel transport Kerr, Proceedings Royal Society A",
+      "url": "https://doi.org/10.1098/rspa.1983.0011"
+    },
+    {
+      "title": "GRAVITY 2022 adopted Sgr A* mass",
+      "url": "https://doi.org/10.1051/0004-6361/202142465"
+    }
+  ],
+  "limitations": [
+    "Real Sgr A* spin is not fitted or measured in this model; chi values are hypothetical.",
+    "E=1,Lz=0,Q=0 is a special equatorial zero-angular-momentum plunge from rest at infinity. Coordinate dphi/dtau !=0 in Kerr due to frame dragging; the worldline is not constant-phi in Boyer-Lindquist coordinates.",
+    "Parallel frame vectors are represented in a Carter coframe singular at outer Kerr horizon; their components are withheld at and below that surface. Exterior tidal eigenvalues have finite horizon limits.",
+    "The Kerr r coordinate is Boyer-Lindquist, not an intrinsic areal radius; comparing two chi values at same BL r is a declared coordinate-equatorial diagnostic, not a universal metric-invariant radial-distance comparison.",
+    "Proper-time values are numerical integration results with fixed Simpson quadrature; no external observer's Schwarzschild/Boyer-Lindquist coordinate time is asserted to be finite at the horizon.",
+    "Only the electric tidal eigenvalues of test-particle geodesic deviation are computed. No full magnetic tidal tensor, dynamic finite-body elasticity, stress waves or fracture.",
+    "These derived local tensor values are model calculations, not measured observations. No physical GR interior solution or 000 center was inferred.",
+    "The Schwarzschild and Kerr source values in prior 13 bounds have not been modified, nor the 729 original linear field observations or symbolic 24! toroidal ring."
+  ],
+  "artifacts": [
+    "bound14_kerr_fall_tetrad_core.js",
+    "bound14_independent_curvature_validator.js",
+    "BOUND14_KERR_729_PROPER_CLOCK_SPIN_SWEEP_20261027.csv",
+    "BOUND14_KERR_729_LOG_RADIUS_WITNESS_20261027.csv",
+    "bound14-kerr-falling-frame.html",
+    "BOUND14_KERR_TETRAD_AUDIT_20261027.json",
+    "BOUND14_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next_bound": "Bound15: switch to horizon-penetrating ingoing Kerr coordinates, propagate the same observer and parallel tetrad continuously through r+ where classical Kerr remains valid, then separately model the magnetic tidal tensor and a causally constrained dynamic rod. Preserve quantum and classical inner-horizon uncertainty gates."
+}
