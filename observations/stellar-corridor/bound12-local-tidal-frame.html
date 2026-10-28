@@ -1,0 +1,576 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OASIS Bound 12 - Local Tidal Geodesic Deviation</title><style>:root{color-scheme:dark;--bg:#060e1b;--surface:#101f32;--surface2:#1a3148;--text:#ecf6ff;--sub:#9cb3c9;--border:#344d62;--cyan:#5ce7d8;--amber:#ffc179;--lav:#c0a2ff;--rose:#f294a7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 74% -10%,#1b4055,var(--bg) 52%);font:14px/1.5 system-ui,Segoe UI,sans-serif;color:var(--text)}main{margin:auto;max-width:1180px;padding:28px 18px 80px}.eyebrow{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.16em}h1{font-size:clamp(28px,4vw,44px);letter-spacing:-.04em;line-height:1.07;margin:8px 0 11px}h2{font-size:19px;margin:0 0 10px}p{color:var(--sub)}a{color:#80e9e8}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:16px 0}.stat{background:#152a40;border:1px solid var(--border);padding:13px;border-radius:11px}.stat strong{font-size:clamp(17px,2vw,23px);display:block}.stat span{color:var(--sub);font-size:12px}.panel{background:#0e1c2dde;border:1px solid var(--border);border-radius:14px;margin:16px 0;padding:17px}.layout{display:grid;grid-template-columns:1.35fr 1fr;gap:15px}.controls{display:grid;grid-template-columns:1.1fr 1fr;gap:13px}.controls label{font-size:12px;color:var(--sub);display:block;margin-bottom:5px}.controls select{background:#1d354a;color:var(--text);border:1px solid #56758e;border-radius:9px;padding:9px;width:100%;font:inherit}input[type=range]{width:100%;accent-color:var(--cyan)}canvas{width:100%;height:300px;display:block;background:#081728;border-radius:9px;border:1px solid #2d4860}.shortcanvas{height:235px}.values{display:grid;grid-template-columns:1fr 1fr;gap:9px}.datum{border-radius:9px;background:#162b42;border:1px solid #325168;padding:11px}.datum span{font-size:11px;color:var(--sub);display:block}.datum strong{font-size:clamp(14px,1.7vw,19px);display:block;overflow-wrap:anywhere}.warn{border-left:3px solid var(--amber);padding:12px;background:#43332476;color:#e9d4b7}.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--sub);font-size:12px;margin:9px 0}.sw{width:12px;height:9px;border-radius:3px;display:inline-block;margin-right:5px}.badge{border-radius:999px;border:1px solid #367368;padding:5px 11px;color:#a3f9e3;font-size:12px;display:inline-block}.badge.fail{border-color:#a66a70;color:#ffb5ae}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}button{border:1px solid #4c728c;background:#234059;color:var(--text);border-radius:9px;padding:9px 12px;font:inherit;cursor:pointer}button:hover{background:#31536c}button.primary{background:#156164;border-color:#4cb6b1}button:focus-visible,input:focus-visible{outline:2px solid var(--cyan)}.codes{font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#081826;border:1px solid #344c62;border-radius:9px;padding:12px;color:#a2e9e4}.bits{display:flex;gap:7px;margin:10px 0}.bit{border:1px solid #4c6375;border-radius:9px;padding:7px;font-size:25px;font-weight:800;text-align:center;flex:1}.bit.on{background:#174a51;color:#8effe3}.rank-input{display:flex;gap:8px}.rank-input input{flex:1;min-width:0;font:inherit;border:1px solid #4c738d;border-radius:8px;padding:9px;background:#18334a;color:var(--text)}.files{display:flex;gap:13px;flex-wrap:wrap}footer{font-size:12px;color:var(--sub)}@media(max-width:870px){.layout{grid-template-columns:1fr}}@media(max-width:580px){.stats{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr}canvas{height:265px}}</style></head><body><main>
+<div class="eyebrow">OASIS · NATURAL BOUND 12 · 2026-10-27 · LOCAL FREE-FALL FRAME</div>
+<h1>RADIAL STRETCH.<br>TRANSVERSE COMPRESSION.</h1>
+<p>Nearby freely falling test particles in an idealized Sagittarius A* Schwarzschild geometry. The infaller carries a local orthonormal frame; its geodesic-deviation tensor has <b>one stretching</b> and <b>two equal compressing</b> directions. A test-particle cloud is not a solid body.</p>
+<div class="stats">
+<div class="stat"><strong>8.00002×</strong><span>Radial separation factor at horizon</span></div>
+<div class="stat"><strong>0.19000×</strong><span>Transverse factor at horizon</span></div>
+<div class="stat"><strong>3,186 km</strong><span>Model gate radius for 1m starting separation</span></div>
+<div class="stat"><strong>74/729</strong><span>Log-grid locations passing 1m / 1% applicability gate</span></div>
+</div>
+<div class="layout"><div>
+<section class="panel"><h2>Local test-particle cloud</h2>
+<div class="controls"><div><label for="size">Initial separation in each direction</label><select id="size"><option value="1">1 meter · original witness</option><option value="0.001">1 millimeter</option><option value="0.000001">1 micrometer</option></select></div>
+<div><label for="range">Travel inward (logarithmic radius) · <b id="progressText">0%</b></label><input id="range" type="range" min="0" max="1000" step="1" value="0"/></div></div>
+<canvas id="cloud" role="img" aria-label="Symbolic ellipsoidal shape of an initially spherical cloud of freely falling test particles"></canvas>
+<div class="legend"><span><i class="sw" style="background:#63e7d7"></i>Radial separation</span><span><i class="sw" style="background:#b99df4"></i>Transverse separation (both dimensions)</span><span><i class="sw" style="background:#f5a57f"></i>Applicability gate</span></div>
+<div class="actions"><button class="primary" id="start">Start (100 rₛ)</button><button id="horizon">Horizon</button><button id="gate">Last valid local scale</button><button id="cutoff">Curvature cutoff (diagnostic only)</button></div>
+<p class="warn">The ellipse depicts <b>relative separation factors</b>, with an adaptive drawing scale. It is not a material-strength or destruction simulation. After the 1% small-separation gate, hypothetical analytic values may still be displayed as diagnostics, but do not represent a controlled approximation for a finite cloud.</p></section>
+<section class="panel"><h2>Analytic Jacobi factors versus radius</h2><canvas id="curve" class="shortcanvas" aria-label="Logarithmic radial growth and transverse compression factors with current local-linearization limit"></canvas>
+<p class="small">Each test particle begins at zero <b>relative velocity</b> at 100 rₛ. The reference observer is not released from rest there; its E=1 geodesic corresponds to rest at infinity.</p></section>
+</div><div>
+<section class="panel"><h2>Exact local-frame readout</h2><span id="gateBadge" class="badge">CHECKING</span><div class="values" style="margin-top:12px">
+<div class="datum"><span>Areal radius</span><strong id="rValue"></strong></div>
+<div class="datum"><span>Relative radius r/rₛ</span><strong id="ratio"></strong></div>
+<div class="datum"><span>Radial separation</span><strong id="radSep"></strong></div>
+<div class="datum"><span>Each transverse separation</span><strong id="trSep"></strong></div>
+<div class="datum"><span>Local curvature length</span><strong id="curvLen"></strong></div>
+<div class="datum"><span>Maximum separation / local scale</span><strong id="ratioLocal"></strong></div>
+<div class="datum"><span>Radial relative acceleration</span><strong id="radAccel"></strong></div>
+<div class="datum"><span>Instantaneous tidal trace</span><strong id="trace"></strong></div>
+<div class="datum"><span>Formal time left in Schwarzschild solution</span><strong id="timeLeft"></strong></div>
+<div class="datum"><span>Chosen first invalidity radius</span><strong id="breakRadius"></strong></div>
+</div><p id="disposition" class="small"></p></section>
+<section class="panel"><h2>729 reference radii + 24! ring</h2>
+<p>Inspect an independent logarithmic radius from Bound 10. The factorial state register selects addresses, not physics time or accelerated particle motion.</p>
+<label class="small" for="station">Radius registry station <b id="stationNumber">728</b></label><input id="station" type="range" min="0" max="728" value="728" step="1"/>
+<div class="datum"><span>Selected logarithmic station</span><strong id="stationRadius"></strong><span id="stationResult"></span></div>
+<div class="bits" id="gray"></div><div class="codes" id="rankText"></div>
+<div class="actions"><button class="primary" id="next">Rank +1</button><button id="back">−1</button><button id="last">Last / seam</button><button id="reset">Reset 000</button></div>
+<div class="rank-input"><input id="rank" type="text" inputmode="numeric" value="0" aria-label="Exact factorial rank"/><button id="jump">Jump</button></div><p class="small" id="notice"></p></section>
+</div></div>
+<section class="panel"><h2>Actual mathematical solution and limits</h2>
+<div class="codes">u = τ_formal_remaining_to_r=0; w = u/u₀ = (r/r₀)^(3/2)
+ξᵣ/ξ₀ = (4/5) w^(-1/3) + (1/5) w^(4/3)
+ξₜ/ξ₀ = 2 w^(1/3) - w^(2/3)
+d²ξᵣ/dτ² = + (c²rₛ/r³) ξᵣ
+d²ξₜ/dτ² = - (c²rₛ/2r³) ξₜ
+λᵣ + λₜ + λₜ = 0                  vacuum tidal trace
+ℓ_curv = c/sqrt(λᵣ) = sqrt(r³/rₛ)
+VALID ONLY IF max(|ξᵣ|,|ξₜ|) <= 0.01 * min(r,ℓ_curv)
+ALSO r >= declared classical high-curvature cutoff</div>
+<p>The analytic Jacobi factors solve the linearized geodesic-deviation equations for initial unit separations with zero initial relative velocity. Their accuracy fails for a finite cloud when the displacement is no longer small compared with local geometric scales. The 1% gate is explicitly user-selectable model hygiene (held fixed in this version), **not** a measured tearing threshold. A free-falling ideal reference observer has zero proper acceleration; only nearby freely falling points accelerate relative to one another.</p>
+<div class="files"><a href="bound12_geodesic_deviation_core.js">Jacobi computation engine</a><a href="BOUND12_729_LOCAL_TIDAL_GATED_20261027.csv">729 gated station values</a><a href="BOUND12_GEODESIC_SEPARATION_MILESTONES_20261027.csv">Horizon and validity markers</a><a href="BOUND12_NATURAL_BOUND_2026-10-27.md">Scientific frozen record</a><a href="bound11-proper-time.html">Bound 11 infaller clock</a></div></section>
+<footer>Physics references: orthonormal Schwarzschild tetrad and Jacobi equations, Physics Letters/European Physical Journal C (2017), DOI 10.1140/epjc/s10052-017-4935-1; CERN-hosted review on tidal deviations, arXiv 2202.04658. Sources and exactly defined initial conditions are pinned in the audit. All page scripts are embedded. This viewer does not fetch any live stellar positions or pretend to compute a Kerr trajectory.</footer>
+</main>
+<script>/* OASIS | Natural Bound 12 | 2026-10-27
+ * Schwarzschild geodesic deviation, local orthonormal freely falling frame.
+ * Initial Jacobi displacements: 1 meter each radial and transverse
+ * at r_start=100 r_s, with zero INITIAL RELATIVE VELOCITY (dξ/dτ=0).
+ * These are freely falling neighboring probes, NOT a material body.
+ * E=1 reference observer (rest at infinity), Schwarzschild nonrotating model.
+ * Fundamental local equations:
+ * ξr''=+c² rs/r³ ξr,  ξperp''=-c² rs/(2r³) ξperp.
+ * Analytic solutions with w=T(r)/T(start)=(r/r_start)^(3/2):
+ * f_r=4/5 w^(-1/3)+1/5 w^(4/3);
+ * f_t=2 w^(1/3)-w^(2/3), in BOTH transverse directions.
+ * Mathematical regime limited by the FIRST of:
+ * (i) local Jacobi small-separation gate, max ξ <= .01 min(r,ell_curv)
+ * where ell_curv=c/sqrt(|λ_r|)=sqrt(r³/rs);
+ * (ii) declared K lp^4=1 stop from Bound 11.
+ * A 1% bound is a chosen modeling criterion, NOT a universal failure threshold.
+ */
+(function(root){"use strict";
+const C=299792458,GM_SUN=1.3271244e20,M=4.297e6,LP=1.616255e-35,
+      RS=2*GM_SUN*M/C**2,START=100*RS,CURV_STOP=Math.pow(12*RS*RS*LP**4,1/6),
+      T0=(2*RS/(3*C))*1000,TH=2*RS/(3*C),THRESHOLD=.01,N=729;
+const CONSTANTS=Object.freeze({C,GM_SUN,M,LP,RS,START,CURV_STOP,T0,TH,THRESHOLD,N});
+function requireFinitePositive(x,name){if(!(x>0)||!Number.isFinite(x))throw Error(name+" must be positive finite");}
+function factors(r){
+ requireFinitePositive(r,"r");
+ if(r>START*(1+1e-12))return null;
+ // Direct powers in r/start avoid subtracting the near-singularity elapsed time.
+ const x=r/START;
+ const w=x**1.5;
+ const radial=.8*x**(-.5)+.2*x**2;
+ const transverse=2*Math.sqrt(x)-x;
+ return {w,radial,transverse,product:radial*transverse*transverse};
+}
+function curvatureLength(r){requireFinitePositive(r,"r");return Math.sqrt(r*r*r/RS);}
+function tidal(r){
+ requireFinitePositive(r,"r");
+ const radial=C*C*RS/(r*r*r);
+ return {radial,transverse:-radial/2,trace:radial-radial/2-radial/2};
+}
+function relativeAcceleration(r,separationM){
+ const f=tidal(r);return {radial_m_s2:f.radial*separationM,
+ transverse_m_s2:f.transverse*separationM};
+}
+function jacobi(r,initialM=1,smallFraction=THRESHOLD){
+ requireFinitePositive(initialM,"initial separation");
+ requireFinitePositive(smallFraction,"smallFraction");
+ if(smallFraction>=1)throw Error("Fraction must be strictly below one");
+ if(r===0)return {r,radial_m:null,transverse_m:null,status:"CENTER_UNRESOLVED"};
+ if(!(r>0))throw Error("r positive or zero sentinel");
+ if(r>START)return {r,radial_m:null,transverse_m:null,status:"BEFORE_START"};
+ if(r<CURV_STOP)return {r,radial_m:null,transverse_m:null,status:"AFTER_HIGH_CURVATURE_STOP"};
+ const f=factors(r), radialM=initialM*f.radial, transverseM=initialM*f.transverse,
+       lcurv=curvatureLength(r),bound=smallFraction*Math.min(r,lcurv),
+       maxSep=Math.max(Math.abs(radialM),Math.abs(transverseM));
+ const ratio=maxSep/Math.min(r,lcurv),valid=maxSep<=bound*(1+1e-12);
+ const T=TH*(r/RS)**1.5;
+ return {r,radial_m:radialM,transverse_m:transverseM,
+         radial_factor:f.radial,transverse_factor:f.transverse,
+         volume_factor:f.product,
+         radial_relative_accel_m_s2:tidal(r).radial*radialM,
+         transverse_relative_accel_m_s2:tidal(r).transverse*transverseM,
+         curvature_length_m:lcurv,
+         gate_separation_m:bound,
+         max_separation_over_local_scale:ratio,
+         proper_time_to_formal_center_s:T,
+         elapsed_proper_time_from_start_s:T0-T,
+         status:!valid?"JACOBI_LINEARIZATION_INVALID":
+           r===CURV_STOP?"NAMED_CLASSICAL_CURVATURE_STOP":
+           r<RS?"FORMAL_SCHWARZSCHILD_INTERIOR_LINEAR_JACOBI":
+           "EXTERIOR_LINEAR_JACOBI",
+         usable_linearization:valid,
+         after_curvature_stop:false};
+}
+function firstBreak(initialM=1,smallFraction=THRESHOLD){
+ requireFinitePositive(initialM,"initialM");
+ requireFinitePositive(smallFraction,"smallFraction");
+ if(smallFraction>=1)throw Error("Fraction too large");
+ const start=jacobi(START,initialM,smallFraction);
+ if(!start.usable_linearization)
+   return {r:START,already_invalid_at_start:true,source:"INITIAL_SPACING_TOO_LARGE"};
+ const atStop=jacobi(CURV_STOP,initialM,smallFraction);
+ if(atStop.usable_linearization)return {r:CURV_STOP,atCurvatureStop:true,source:"CLASSICAL_CURVATURE_GATE"};
+ // Bisection on log radius; progressively smaller r is more deformed.
+ let low=Math.log(CURV_STOP),high=Math.log(START);
+ for(let i=0;i<240;i++){
+   const mid=(low+high)/2,r=Math.exp(mid),v=jacobi(r,initialM,smallFraction);
+   if(v.usable_linearization)high=mid;
+   else low=mid;
+ }
+ const r=Math.exp(high),s=jacobi(r,initialM,smallFraction);
+ return {r,atCurvatureStop:false,source:"ONE_PERCENT_JACOBI_LOCAL_CURVATURE_GATE",
+         snapshot:s,remaining_formal_time_s:TH*(r/RS)**1.5,
+         proper_after_horizon_s:TH*(1-(r/RS)**1.5)};
+}
+function sample(r,initialM=1,smallFraction=THRESHOLD){
+ const point=jacobi(r,initialM,smallFraction),gate=firstBreak(initialM,smallFraction);
+ if(point.radial_m===null)return point;
+ return {...point,active_before_gate:r>=gate.r*(1-1e-12),
+   reporting_status:point.usable_linearization?"SUPPORTED_LINEARIZED_MODEL":
+     "INVALID_LINEARIZATION_VALUES_FOR_DIAGNOSTIC_ONLY"};
+}
+function selfTest(){
+ const close=(a,b,t=1e-10)=>Math.abs(a-b)<=t*Math.max(1,Math.abs(a),Math.abs(b));
+ const horizon=jacobi(RS),begin=jacobi(START),gate=firstBreak(1),tinyGate=firstBreak(.001);
+ if(!close(begin.radial_factor,1)||!close(begin.transverse_factor,1))throw Error("initial separation");
+ if(!close(horizon.radial_factor,8.00002)||!close(horizon.transverse_factor,.19))throw Error("horizon analytic");
+ if(!close(horizon.volume_factor,8.00002*.19*.19))throw Error("volume result");
+ if(!close(tidal(RS).trace,0,1e-16))throw Error("vacuum tidal trace");
+ if(!close(tidal(RS).radial,-2*tidal(RS).transverse))throw Error("tide eigenvalues");
+ if(!close(gate.r,3186234.8409372214,1e-8))throw Error("1m validity gate");
+ if(!close(tinyGate.r,100757.59257545913,1e-8))throw Error("1mm validity gate");
+ if(!close(gate.snapshot.max_separation_over_local_scale,.01,1e-8))throw Error("relative criterion");
+ if(jacobi(CURV_STOP/2).radial_m!==null)throw Error("curvature gate wrongly crossed");
+ if(jacobi(0).radial_m!==null)throw Error("center resolved");
+ if(gate.r<=CURV_STOP||gate.r>=RS)throw Error("gate outside interior");
+ if(!close(gate.snapshot.radial_m,504.8750214409288,1e-9))throw Error("gate radial separation");
+ // Jacobi ODE via numerical finite differences in proper time.
+ // T(r)=T0*(r/START)^1.5, remaining-to-zero time u.
+ const checkRadius=[START/10,RS,RS*.1];
+ for(const r of checkRadius){
+   const u=TH*(r/RS)**1.5,h=1e-4*u;
+   function f(u,side){
+     const x=Math.pow(u/T0,2/3);
+     return side==="radial"? .8*x**(-.5)+.2*x*x : 2*Math.sqrt(x)-x;
+   }
+   for(const side of ["radial","transverse"]){
+     const second=(f(u+h,side)-2*f(u,side)+f(u-h,side))/(h*h);
+     const exact=(side==="radial"?4/9:-2/9)/(u*u)*f(u,side);
+     if(Math.abs((second-exact)/exact)>3e-7)throw Error("ODE residual "+side+" r="+r);
+   }
+ }
+ let previous=jacobi(START).radial_factor;
+ for(let j=1;j<=1000;j++){
+   const rr=START*Math.exp(-j*Math.log(START/RS)/1000);
+   const x=jacobi(rr);
+   if(x.radial_factor<previous-1e-9)throw Error("radial contraction");
+   if(x.transverse_factor>1+1e-10||x.transverse_factor<0)throw Error("transverse behavior");
+   previous=x.radial_factor;
+ }
+ return {pass:true,initial_separation_m:1,
+  initialization:"independent nearby freely falling probes with zero initial relative velocity",
+  horizon_radial_m:horizon.radial_m,horizon_transverse_m:horizon.transverse_m,
+  horizon_volume_ratio:horizon.volume_factor,
+  maximum_validity_radius_1m_m:gate.r,
+  remaining_formal_time_at_1m_gate_s:gate.remaining_formal_time_s,
+  validity_gate_1m_relative_radial_m:gate.snapshot.radial_m,
+  maximum_validity_radius_1mm_m:tinyGate.r,
+  tidal_trace:"zero in vacuum instantaneous orthonormal frame",
+  ode_finite_difference_tests:"PASS 3 radii × 2 directions",
+  model_limitation:"Jacobi 1% criterion chosen, not biological/material breaking point",
+  center_and_subcutoff_null:true};
+}
+const api=Object.freeze({...CONSTANTS,factors,curvatureLength,tidal,
+ relativeAcceleration,jacobi,firstBreak,sample,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound12Jacobi=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* OASIS Bound 10: 000 -> 001 Planck reference -> 728 Sun.
+   729 labeled positions: 000 CENTER_SENTINEL (r=0), 001..728
+   logarithmic areal-radius reference levels. No physical path inside horizon
+   claimed; only an algebraic Schwarzschild, nonrotating approximation.
+
+   CODATA 2022: lp = 1.616255(18)×10^-35 m, NIST.
+   GRAVITY Collaboration (2022): Sgr A* M=4.297×10^6 Msolar,
+   Sun to Galactic Center 8277 pc.
+*/
+(function(root){
+"use strict";
+const N=729;
+const LP=1.616255e-35;
+const C=299792458;
+const GM_SUN=1.3271244e20;
+const M_BH_SUN=4.297e6;
+const PC=3.0856775814913673e16;
+const R0=8277*PC;
+const RS=2*GM_SUN*M_BH_SUN/(C*C);
+const R_PHOTON=1.5*RS;
+const R_ISCO=3*RS;
+const R_KCRIT=Math.pow(12*RS*RS*LP**4,1/6);
+const LOGSPAN=Math.log10(R0/LP);
+const LOGSTEP=LOGSPAN/(N-2);
+const RATIO=10**LOGSTEP;
+const CONST=Object.freeze({N,LP,C,GM_SUN,M_BH_SUN,PC,R0,RS,R_PHOTON,R_ISCO,R_KCRIT,LOGSPAN,LOGSTEP,RATIO});
+function log10(v){return Math.log10(v);}
+function posToRadius(i){
+ if(!Number.isInteger(i)||i<0||i>=N)throw Error("Station must be 000..728");
+ if(i===0)return 0;
+ return LP*10**((i-1)*LOGSTEP);
+}
+function radiusToFractionalStation(radius){
+ if(!Number.isFinite(radius)||radius<=0||radius>R0*(1+1e-12))throw Error("Radius must be positive and <= Sun");
+ return 1+log10(radius/LP)/LOGSTEP;
+}
+function logKlp4(r){
+ if(!(r>0))return null;
+ return log10(12)+2*log10(RS/LP)-6*log10(r/LP);
+}
+function externalSchwarzschildSliceProperLength(r){
+ // Proper radial *length* from the horizon to areal radius r
+ // at constant Schwarzschild t, only defined on exterior t=const slice.
+ if(r<RS)return null;
+ if(r===RS)return 0;
+ const x=r/RS;
+ return Math.sqrt(r*(r-RS))+RS*Math.acosh(Math.sqrt(x));
+}
+function classification(r){
+ if(r===0)return "CENTER_SENTINEL_NO_CONTINUUM_VALUE";
+ if(r<LP)return "BELOW_PLANCK_REFERENCE_NOT_SAMPLED";
+ if(r<R_KCRIT)return "FORMAL_HIGH_CURVATURE_INSIDE_HORIZON_UNVERIFIED";
+ if(r<RS)return "FORMAL_CLASSICAL_INTERIOR_NOT_A_SPATIAL_RADIAL_PATH";
+ if(r===RS)return "HORIZON_ANCHOR";
+ return "SCHWARZSCHILD_EXTERIOR_SPHERICALLY_SYMMETRIC_APPROXIMATION";
+}
+function station(i){
+ const r=posToRadius(i);
+ return {index:i,label:String(i).padStart(3,"0"),
+  radius_m:r,ratio_to_planck:i===0?null:r/LP,
+  log10_radius_to_planck:i===0?null:log10(r/LP),
+  ratio_to_horizon:i===0?null:r/RS,
+  log10_planck_normalized_K:i===0?null:logKlp4(r),
+  external_slice_proper_m:i===0?null:externalSchwarzschildSliceProperLength(r),
+  classification:classification(r),physical_observation:false};
+}
+function milestones(){
+ return [
+  {name:"Mathematical center sentinel",r:0,index:0,label:"000"},
+  {name:"Planck length reference",r:LP,index:1,label:"001"},
+  {name:"Formal Planck curvature (K lp^4 = 1)",r:R_KCRIT,index:radiusToFractionalStation(R_KCRIT),label:"not an exact station"},
+  {name:"Schwarzschild event horizon",r:RS,index:radiusToFractionalStation(RS),label:"not an exact station"},
+  {name:"Schwarzschild photon sphere",r:R_PHOTON,index:radiusToFractionalStation(R_PHOTON),label:"not an exact station"},
+  {name:"Schwarzschild ISCO",r:R_ISCO,index:radiusToFractionalStation(R_ISCO),label:"not an exact station"},
+  {name:"Sun galactocentric radius",r:R0,index:728,label:"728"}];
+}
+function counts(){
+ const out={};
+ for(let i=0;i<N;i++){let c=classification(posToRadius(i));out[c]=(out[c]||0)+1}
+ return out;
+}
+function selfTest(){
+ if(N!==729)throw Error("Wrong station count");
+ if(Math.abs(posToRadius(1)/LP-1)>1e-12)throw Error("Planck anchor wrong");
+ if(Math.abs(posToRadius(728)/R0-1)>1e-12)throw Error("Solar anchor wrong");
+ if(posToRadius(0)!==0)throw Error("Zero sentinel wrong");
+ let previous=0;
+ for(let i=1;i<N;i++){
+  const r=posToRadius(i);
+  if(!Number.isFinite(r)||r<=previous)throw Error("Station ordering fails: "+i);
+  if(Math.abs(radiusToFractionalStation(r)-i)>1e-10)throw Error("Reverse log rank fails: "+i);
+  previous=r;
+ }
+ if(Math.abs(radiusToFractionalStation(RS)-592.29335905074)>1e-7)throw Error("Horizon anchor wrong");
+ if(Math.abs(radiusToFractionalStation(R_KCRIT)-200.46669652477183)>1e-7)throw Error("Curvature anchor wrong");
+ if(Math.abs(logKlp4(R_KCRIT))>1e-10)throw Error("Planck curvature equation failed");
+ if(externalSchwarzschildSliceProperLength(RS)!==0)throw Error("Exterior horizon proper limit wrong");
+ if(externalSchwarzschildSliceProperLength(RS/2)!==null)throw Error("Improper interior Schwarzschild slice");
+ if(externalSchwarzschildSliceProperLength(R0)<=0)throw Error("Exterior proper length wrong");
+ const v=milestones();
+ if(v.length!==7)throw Error("Anchor count wrong");
+ return {
+  test:"PASS: all 729 stations strictly ordered; source anchors, inverse index, curvature, exterior slice",
+  station000:"r=0 named mathematical sentinel, not a physical Planck region",
+  station001:"r=1.616255e-35 m CODATA Planck reference",
+  station728:"r=8,277 pc model solar radius",
+  Schwarzschild_horizon_m:RS,
+  classical_Klp4_unity_radius_m:R_KCRIT,
+  decades_from_sun_to_Planck:LOGSPAN,
+  exterior_radial_slices_only:true,
+  center_gravity_field:"UNKNOWN/UNDEFINED",
+  counts:counts()
+ };
+}
+const API=Object.freeze({...CONST,posToRadius,radiusToFractionalStation,
+ logKlp4,externalSchwarzschildSliceProperLength,classification,station,milestones,counts,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=API;
+root.Bound10InvariantZero=API;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script><script>/* OASIS | Natural Bound 08 | 2026-10-27
+   Exact lazy cyclic Hamiltonian traversal on 24! permutations, with a
+   synchronized 3-bit Gray register and 729 logical station addresses.
+
+   No astronomical mass, acceleration, or energy is derived from permutations.
+   No attempt is made to materialize the 24! states.
+
+   Mathematical basis: Steinhaus-Johnson-Trotter "plain changes",
+   recursive insertion of the new largest symbol from alternate ends.
+   Every neighboring permutation differs by an adjacent swap, including seam.
+*/
+(function(root){
+"use strict";
+const OPERATORS=24;
+const STATIONS=729;
+const GRAY_PERIOD=8n;
+function factorial(n){
+ if(!Number.isInteger(n)||n<1||n>100)throw Error("factorial integer 1..100 required");
+ let a=1n;
+ for(let i=2n;i<=BigInt(n);i++)a*=i;
+ return a;
+}
+const SIZE=factorial(OPERATORS);
+const VISITS_PER_STATION=SIZE/BigInt(STATIONS);
+if(SIZE%BigInt(STATIONS)!==0n||SIZE%GRAY_PERIOD!==0n)
+ throw Error("The 729-station and 8-state Gray ring must divide the 24! cycle");
+function normalizedRank(rank,n=OPERATORS){
+ const count=factorial(n);
+ let a=typeof rank==="bigint"?rank:BigInt(rank);
+ return (a%count+count)%count;
+}
+function sjtUnrank(n,rank){
+ if(!Number.isInteger(n)||n<1||n>OPERATORS)throw Error("operator count 1..24 required");
+ let r=normalizedRank(rank,n);
+ if(n===1)return [1];
+ const quotient=r/BigInt(n);
+ const digit=Number(r%BigInt(n));
+ const perm=sjtUnrank(n-1,quotient);
+ const slot=quotient%2n===0n?n-1-digit:digit;
+ perm.splice(slot,0,n);
+ return perm;
+}
+function sjtRank(perm){
+ if(!Array.isArray(perm)||perm.length<1||perm.length>OPERATORS)
+  throw Error("Expected a permutation of length 1..24");
+ const n=perm.length;
+ if(new Set(perm).size!==n||!perm.every(v=>Number.isInteger(v)&&v>=1&&v<=n))
+  throw Error("Not a permutation of 1.."+n);
+ if(n===1)return 0n;
+ const slot=perm.indexOf(n);
+ const ancestor=sjtRank(perm.filter(v=>v!==n));
+ const digit=ancestor%2n===0n?n-1-slot:slot;
+ return ancestor*BigInt(n)+BigInt(digit);
+}
+function grayNumber(rank){
+ const phase=Number(normalizedRank(rank)%GRAY_PERIOD);
+ return phase^(phase>>1);
+}
+function grayBits(rank){return grayNumber(rank).toString(2).padStart(3,"0");}
+function stationIndex(rank){
+ return Number(normalizedRank(rank)%BigInt(STATIONS));
+}
+function stationLabel(rank){return String(stationIndex(rank)).padStart(3,"0");}
+function adjacentSwap(a,b){
+ if(a.length!==b.length)throw Error("Permutations have different lengths");
+ const diffs=[];
+ for(let i=0;i<a.length;i++)if(a[i]!==b[i])diffs.push(i);
+ if(diffs.length!==2||diffs[1]!==diffs[0]+1||a[diffs[0]]!==b[diffs[1]]||a[diffs[1]]!==b[diffs[0]])
+  return null;
+ return {leftIndex:diffs[0],rightIndex:diffs[1],
+         leftSymbolBefore:a[diffs[0]],rightSymbolBefore:a[diffs[1]]};
+}
+function state(rank){
+ const r=normalizedRank(rank);
+ return {rank:r,gray:grayBits(r),grayNumber:grayNumber(r),
+         station:stationIndex(r),stationLabel:stationLabel(r),
+         permutation:sjtUnrank(OPERATORS,r),
+         visitWithinStation:r/BigInt(STATIONS),
+         nextRank:(r+1n)%SIZE};
+}
+function transition(rank,offset=1n){
+ const a=state(rank),b=state(a.rank+BigInt(offset));
+ const oneStep=offset===1n||offset===-1n;
+ const swap=oneStep?adjacentSwap(a.permutation,b.permutation):null;
+ const changedBits=(a.grayNumber^b.grayNumber).toString(2).split("1").length-1;
+ return {before:a,after:b,adjacent:swap,
+         grayHammingDistance:changedBits,
+         isSingleStepValid:oneStep&&!!swap&&changedBits===1};
+}
+function selfTest(){
+ const checks={};
+ for(let n=2;n<=8;n++){
+  const count=Number(factorial(n));
+  const seen=new Set();
+  let old=sjtUnrank(n,0n);
+  for(let i=0;i<count;i++){
+   const p=sjtUnrank(n,BigInt(i));
+   const key=p.join(",");
+   if(seen.has(key))throw Error("Repeated rank n="+n+" i="+i);
+   seen.add(key);
+   if(sjtRank(p)!==BigInt(i))throw Error("rank/unrank n="+n+" i="+i);
+   if(i>0&&!adjacentSwap(old,p))throw Error("nonadjacent step n="+n+" i="+i);
+   old=p;
+  }
+  if(!adjacentSwap(old,sjtUnrank(n,0n)))throw Error("seam n="+n);
+  if(seen.size!==count)throw Error("exhaustiveness n="+n);
+ }
+ checks.smallNExhaustive="PASS n=2..8, including wrap";
+ let cur=17n;
+ const sample=[0n,1n,2n,8n,728n,729n,SIZE-1n,SIZE-2n,SIZE/2n,VISITS_PER_STATION];
+ for(let i=0;i<600;i++){
+  cur=(cur*6364136223846793005n+1442695040888963407n)%SIZE;
+  sample.push(cur);
+ }
+ for(const r of sample){
+  const p=sjtUnrank(OPERATORS,r);
+  if(sjtRank(p)!==r)throw Error("24! rank/unrank roundtrip at "+r);
+  const t=transition(r,1n);
+  if(!t.isSingleStepValid)throw Error("24! adjacency / Gray at "+r);
+  if(stationIndex(r)!==Number(r%729n))throw Error("station modulo");
+ }
+ checks.sampled24FactorialRanks="PASS "+sample.length+" exact BigInt ranks";
+ if(SIZE!==620448401733239439360000n)throw Error("24! constant wrong");
+ if(VISITS_PER_STATION!==851095201280163840000n)throw Error("visits/station wrong");
+ if(state(0n).gray!=="000"||state(1n).gray!=="001")throw Error("opening 000 -> 001");
+ if(state(SIZE-1n).gray!=="100")throw Error("closing Gray label wrong");
+ if(stationIndex(0n)!==0||stationIndex(1n)!==1||stationIndex(SIZE-1n)!==728)
+  throw Error("station boundary");
+ const seam=transition(SIZE-1n,1n);
+ if(!seam.isSingleStepValid||seam.adjacent.leftIndex!==0)throw Error("toroidal seam");
+ checks.firstStep="000 -> 001; adjacent symbols 23 and 24";
+ checks.seam="rank N-1 -> 0; Gray 100 -> 000; adjacent symbols 2 and 1";
+ checks.fair729Visits="24!/729 exact = "+VISITS_PER_STATION;
+ checks.grayPeriod="8, Gray one-bit for every step including cycle seam";
+ checks.astronomicalClaim="NO: symbolic address projection only";
+ return checks;
+}
+const api=Object.freeze({OPERATORS,STATIONS,SIZE,VISITS_PER_STATION,
+ factorial,normalizedRank,sjtUnrank,sjtRank,grayBits,grayNumber,
+ stationIndex,stationLabel,adjacentSwap,state,transition,selfTest});
+if(typeof module!=="undefined"&&module.exports)module.exports=api;
+root.Bound08Toroid=api;
+})(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this);
+</script>
+<script>
+(function(){"use strict";
+const J=globalThis.Bound12Jacobi,Z=globalThis.Bound10InvariantZero,T=globalThis.Bound08Toroid;
+const $=id=>document.getElementById(id);
+let rank=0n;
+const fmt=(x,n=4)=>x===null?"undefined":Number(x).toExponential(n);
+const nice=(x)=>x<1e-6?x.toExponential(3):x.toLocaleString("en-US",{maximumFractionDigits:6});
+const radiusFrac=r=>Math.log(J.START/r)/Math.log(J.START/J.CURV_STOP);
+const radiusAtProgress=f=>J.START*Math.exp(-f*Math.log(J.START/J.CURV_STOP));
+function canvas(id){let el=$(id),b=el.getBoundingClientRect(),w=b.width,h=b.height,dpr=Math.min(2,globalThis.devicePixelRatio||1);el.width=Math.round(w*dpr);el.height=Math.round(h*dpr);let c=el.getContext("2d");c.setTransform(dpr,0,0,dpr,0,0);return {c,w,h};}
+function drawCloud(p){
+ const {c,w,h}=canvas("cloud"),cx=w*.5,cy=h*.51;
+ c.clearRect(0,0,w,h);
+ const L=Math.max(p.radial_factor,1e-30),V=Math.max(p.transverse_factor,1e-30);
+ let lR=Math.log10(L),lT=Math.log10(V),maxLog=Math.max(lR,lT),range=2.0;
+ // Compressed depiction with logarithmic scales: shown shape is not to scale.
+ const halfW=Math.max(5,(w*.38)*(0.14+0.86*Math.exp(Math.max(-12,lR-maxLog)*Math.log(3)/3)));
+ const halfH=Math.max(4,(h*.38)*(0.14+0.86*Math.exp(Math.max(-12,lT-maxLog)*Math.log(3)/3)));
+ c.strokeStyle="#2a4053";c.lineWidth=1;c.beginPath();c.moveTo(15,cy);c.lineTo(w-15,cy);c.moveTo(cx,14);c.lineTo(cx,h-14);c.stroke();
+ c.save();c.translate(cx,cy);c.scale(halfW,halfH);c.beginPath();c.arc(0,0,1,0,Math.PI*2);
+ c.fillStyle=p.usable_linearization?"#1456588f":"#603e4a8f";c.fill();c.strokeStyle=p.usable_linearization?"#7ff5e5":"#f3a5a9";c.lineWidth=2/Math.max(halfW,halfH);c.stroke();c.restore();
+ c.fillStyle="#68e6d8";c.font="12px system-ui";c.fillText("radial ×"+p.radial_factor.toExponential(2),19,h-29);
+ c.fillStyle="#c5aeff";c.fillText("transverse ×"+p.transverse_factor.toExponential(2),19,h-12);
+ c.fillStyle="#a5bdd1";c.fillText(p.usable_linearization?"LINEARIZED LOCAL MODEL":"DIAGNOSTIC FORM ONLY / OUTSIDE VALIDITY",17,22);
+ c.strokeStyle="#f5c57c";c.beginPath();c.moveTo(cx-halfW-12,cy);c.lineTo(cx+halfW+12,cy);c.stroke();
+}
+function drawCurve(r,gate){
+ const {c,w,h}=canvas("curve"),L=56,R=w-18,U=26,B=h-40;
+ c.clearRect(0,0,w,h);const lgMin=Math.log10(J.CURV_STOP),lgMax=Math.log10(J.START),loglo=-18,loghi=17;
+ function xx(z){return L+(Math.log10(z)-lgMin)/(lgMax-lgMin)*(R-L);}
+ function yy(logv){return B-(logv-loglo)/(loghi-loglo)*(B-U);}
+ c.fillStyle="#a9c2d6";c.font="11px system-ui";c.strokeStyle="#2a445e";
+ for(let k=-15;k<=15;k+=10){let y=yy(k);c.beginPath();c.moveTo(L,y);c.lineTo(R,y);c.stroke();c.fillText(String(k),11,y+3)}
+ for(let t=0;t<=4;t++){let x=L+(R-L)*t/4;c.beginPath();c.moveTo(x,U);c.lineTo(x,B);c.stroke();c.fillText(String(Math.round(lgMin+(lgMax-lgMin)*t/4)),x-9,h-14)}
+ let gateX=xx(gate.r);c.fillStyle="#543c3e88";c.fillRect(L,U,Math.max(0,gateX-L),B-U);
+ function curve(factor,color){
+   c.beginPath();let first=true;
+   for(let i=0;i<=400;i++){
+     let z=J.CURV_STOP*Math.exp((i/400)*Math.log(J.START/J.CURV_STOP));
+     let j=J.factors(z);let py=yy(Math.log10(Math.max(1e-35,j[factor]))),px=xx(z);
+     if(first){c.moveTo(px,py);first=false}else c.lineTo(px,py);
+   }c.strokeStyle=color;c.lineWidth=2;c.stroke();
+ }
+ curve("radial","#62ebdf");curve("transverse","#be9ffc");
+ c.setLineDash([5,5]);c.strokeStyle="#f4bd77";c.beginPath();c.moveTo(gateX,U);c.lineTo(gateX,B);c.stroke();c.setLineDash([]);
+ let p=J.factors(r);c.fillStyle="#fff0b8";for(let k of ["radial","transverse"]){c.beginPath();c.arc(xx(r),yy(Math.log10(p[k])),4,0,Math.PI*2);c.fill();}
+ c.fillStyle="#a9c2d6";c.fillText("log10(r / meters)",w*.38,h-2);c.fillText("log10 factor",7,14);
+}
+function render(){
+ const frac=+$("range").value/1000,r=radiusAtProgress(frac),size=+$("size").value,p=J.jacobi(r,size),gate=J.firstBreak(size);
+ $("progressText").textContent=(frac*100).toFixed(1)+"%";$("rValue").textContent=fmt(r,5)+" m";
+ $("ratio").textContent=fmt(r/J.RS,4);
+ $("radSep").textContent=fmt(p.radial_m,5)+" m";
+ $("trSep").textContent=fmt(p.transverse_m,5)+" m";
+ $("curvLen").textContent=fmt(p.curvature_length_m,4)+" m";
+ $("ratioLocal").textContent=fmt(p.max_separation_over_local_scale,4);
+ $("radAccel").textContent=fmt(p.radial_relative_accel_m_s2,4)+" m/s²";
+ $("trace").textContent=fmt(J.tidal(r).trace,2)+" s⁻²";
+ $("timeLeft").textContent=fmt(p.proper_time_to_formal_center_s,4)+" s (formal)";
+ $("breakRadius").textContent=fmt(gate.r,5)+" m";
+ const good=p.usable_linearization;$("gateBadge").textContent=good?"WITHIN DECLARED 1% SMALL-SEPARATION GATE":"OUTSIDE 1% VALIDITY GATE";
+ $("gateBadge").className="badge"+(good?"":" fail");
+ $("disposition").textContent=good?"Jacobi estimate is small relative to local curvature length for the chosen initial separation.":"Analytic factor continuation beyond this point is shown for mathematical comparison ONLY; do not infer a finite body's motion or material survival.";
+ drawCloud(p);drawCurve(r,gate);showStation();
+}
+function showStation(){
+ const s=+$("station").value,r=Z.posToRadius(s),len=+$("size").value,p=J.jacobi(r,len);
+ $("stationNumber").textContent=String(s).padStart(3,"0");
+ $("stationRadius").textContent=s===0?"r=0 sentinel":fmt(r,5)+" m";
+ $("stationResult").textContent=p.status.replaceAll("_"," ")+" | physical observable: NO";
+}
+function showRank(){
+ const s=T.state(rank);$("rank").value=rank.toString();
+ $("gray").replaceChildren();for(let ch of s.gray){const d=document.createElement("div");d.className="bit"+(ch==="1"?" on":"");d.textContent=ch;$("gray").appendChild(d);}
+ $("rankText").textContent="rank "+rank.toLocaleString("en-US")+
+ "\nGray "+s.gray+" | registry "+s.stationLabel+
+ "\n"+s.permutation.map(x=>String(x).padStart(2,"0")).join(" ");
+}
+function setRank(n){rank=T.normalizedRank(n);$("station").value=T.stationIndex(rank);showRank();showStation();$("notice").textContent="Logical 24! selection only. Proper time and test-particle state were not advanced.";}
+for(const id of ["range","size"])$(id).addEventListener(id==="range"?"input":"change",render);
+$("station").addEventListener("input",showStation);
+function move(radius){$("range").value=Math.max(0,Math.min(1000,Math.round(1000*radiusFrac(radius))));render();}
+$("start").addEventListener("click",()=>move(J.START));
+$("horizon").addEventListener("click",()=>move(J.RS));
+$("gate").addEventListener("click",()=>move(J.firstBreak(+$("size").value).r));
+$("cutoff").addEventListener("click",()=>move(J.CURV_STOP));
+$("next").addEventListener("click",()=>setRank(rank+1n));
+$("back").addEventListener("click",()=>setRank(rank-1n));
+$("last").addEventListener("click",()=>setRank(T.SIZE-1n));
+$("reset").addEventListener("click",()=>setRank(0n));
+function jump(){
+ const s=$("rank").value.trim();if(!/^\d+$/.test(s)){$("notice").textContent="Enter a nonnegative integer rank";return}
+ const n=BigInt(s);if(n>=T.SIZE){$("notice").textContent="Rank is outside the 24! ring";return}setRank(n);
+}
+$("jump").addEventListener("click",jump);$("rank").addEventListener("keydown",e=>{if(e.key==="Enter")jump()});
+globalThis.addEventListener("resize",render);
+try{const a=J.selfTest(),b=Z.selfTest(),c=T.selfTest();$("notice").textContent="PASS: Jacobi analytic ODE, 729 log registry and cyclic 24! rank tested.";$("notice").title=JSON.stringify({a,b,c});}catch(e){$("notice").textContent="SELF-TEST FAILURE "+String(e);}
+showRank();render();
+})();
+</script></body></html>
