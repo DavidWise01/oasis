@@ -1,0 +1,147 @@
+{
+  "id": "ITD_BOUND17_DTR_REISSNER_NORDSTROM_TWO_NULL_SHELL_CROSSING_20261027",
+  "date": "2026-10-27",
+  "status": "EXACT_LOCAL_DTR_JUNCTION_TESTED_NOT_SELF_CONSISTENT_EINSTEIN_FLUX_EVOLUTION",
+  "parent": "BOUND16_NATURAL_BOUND_2026-10-27.md",
+  "physics_and_model": {
+    "metric": "Spherical Reissner-Nordström Einstein-Maxwell background, shared charge Q across four vacuum regions",
+    "NOT_KERR": true,
+    "source_mass_SgrA": "Used only for prior background context, not assumed charge. Normalized Mbefore=1 instead.",
+    "geometric_units": "G=c=M_background=1",
+    "M_background": 1,
+    "assumed_charge_to_mass_ratios": [
+      0.5,
+      0.8,
+      0.95,
+      0.99
+    ],
+    "assumed_ingoing_null_shell_mass": 0.0001,
+    "assumed_outgoing_null_shell_mass": 0.0001,
+    "rplus_minus": "r±=1±sqrt(1−q²), q=Q/M",
+    "crossing_coordinate": "r=r−+δ(r+−r−), 1e−10<=δ<=.1",
+    "background_lapse": "f0=(r−r+)(r−r−)/r²=−gap²*δ*(1−δ)/r², sign negative in trapped region",
+    "four_region_metric_pieces": "f_in=f0−2dm_in/r ; f_out=f0−2dm_out/r ; f_final=f_in*f_out/f0",
+    "exact_DTR_condition": "f0 * f_final = f_in * f_out",
+    "mass_parameter_after_crossing": "M_final=1+dm_in+dm_out−2dm_in*dm_out/(r*f0)",
+    "cross_mass_positive_for_two_positive_streams_when_f0_negative": true,
+    "zero_incoming_or_outgoing_disables_nonlinearity": true,
+    "local_mass_parameter": "Spherical RN vacuum-region mass parameter, not Kerr horizon mass/observed astrophysical mass",
+    "small_shell_warning_criterion": "max(2dm_in/r,2dm_out/r)/|f0| <= 0.1 is chosen relative-lapse diagnostic, NOT an exact junction applicability theorem",
+    "near_horizon_causal_limitation": "Physical matching branch, null shell trajectories and global causal embedding require additional checks. The algebraic DTR identity alone does not establish a physically realized family of crossing spacetimes.",
+    "no_continuum_Einstein_maxwell_PDE_solved": true,
+    "no_coherent_729_shell_collision_history_solved": true,
+    "no_kerr_rotation_modeled": true,
+    "no_planck_center_prediction": true
+  },
+  "tests": {
+    "javascript_committed_retrieved_executed": true,
+    "self_test": {
+      "pass": true,
+      "charged_RN_not_Kerr": true,
+      "geometric_units": "G=c=Mbase=1",
+      "test_charges": [
+        {
+          "q": 0.5,
+          "samples": 729,
+          "nearest_mass": 9.931839760144264,
+          "outer_far_mass": 1.0002000227540502,
+          "nearest_DTR_residual": -1.9004021210131383e-16
+        },
+        {
+          "q": 0.8,
+          "samples": 729,
+          "nearest_mass": 56.555755577777816,
+          "outer_far_mass": 1.0002000802469135,
+          "nearest_DTR_residual": 0
+        },
+        {
+          "q": 0.95,
+          "samples": 729,
+          "nearest_mass": 353.69255908272044,
+          "outer_far_mass": 1.0002004274644332,
+          "nearest_DTR_residual": 1.5650254940354036e-16
+        },
+        {
+          "q": 0.99,
+          "samples": 729,
+          "nearest_mass": 2159.1224118528808,
+          "outer_far_mass": 1.0002024766781468,
+          "nearest_DTR_residual": 0
+        }
+      ],
+      "zero_incoming": "PASS",
+      "zero_outgoing": "PASS",
+      "both_zero": "PASS",
+      "stream_swap": "PASS",
+      "DTR_product_constraint": "PASS",
+      "bilinear_two_stream_interaction": "PASS",
+      "inverse_gap_asymptotic": "PASS",
+      "Schwarzschild_no_inner_horizon_guard": "PASS",
+      "no_observed_mass_or_evolved_metric": true
+    },
+    "four_charge_scenarios_x_729_crossing_radius_samples": 2916,
+    "independent_python_decimal_precision": 70,
+    "independent_decimal_representative_after_mass_q08": {
+      "delta_0p1": "1.000200080246913580246913580246913580246913580246913580246913580246914",
+      "delta_0p001": "1.000205577800022244466688911133355577800022244466688911133355577800022",
+      "delta_1e_minus6": "1.005755577777800000022222244444466666688888911111133333355555577777800",
+      "delta_1e_minus9": "6.555755577777777800000000022222222244444444466666666688888888911111110",
+      "delta_1e_minus10": "56.55575557777777778000000000022222222224444444444666666666688888888891"
+    },
+    "independent_decimal_DTR_exact_residual": "zero or <1e-70 in reference checks",
+    "DTR_JS_relative_residual_max": "<1e-10 for 4 x 729 samples (verified; usually ~1e-16)",
+    "cross_stream_symmetry": "PASS",
+    "one_stream_controls": "PASS",
+    "neither_stream_control": "PASS",
+    "inverse_gap_sensitivity": "PASS",
+    "q_zero_invalidity": "PASS; no separate RN inner horizon",
+    "large_relative_shell_warning": "PASS",
+    "HTML_three_inline_scripts_compiled": true,
+    "simulated_browser_interaction": "PASS: charge and stream controls, far/near radius, q=.99 case, 24! Gray seam and invalid rank guard",
+    "live_Github_Pages_verified": false,
+    "independent_real_browser_render_verified": false
+  },
+  "example": {
+    "q_over_M": 0.8,
+    "din": 0.0001,
+    "dout": 0.0001,
+    "Mfinal_far_delta_0p1": 1.0002000802469135,
+    "Mfinal_at_delta_0p001": 1.0002055778000223,
+    "Mfinal_near_delta_1e_minus10": 56.555755577777816,
+    "mass_without_interaction": 1.0002,
+    "near_horizon_shell_reference_lapse_ratio_warning": "FAILED small-shell relative-lapse criterion at delta=1e-10; result strictly a four-region junction algebraic value, no perturbative interpretation",
+    "no_observed_SgrA_electric_charge": true
+  },
+  "evidence": [
+    {
+      "title": "Collision of Time-Like Shells in Spherically Symmetric Spacetime",
+      "url": "https://academic.oup.com/ptp/article/101/5/989/1821765",
+      "role": "Original DTR relation as null-shell transparent crossing limit; causal shell sign and near-horizon mass discussion"
+    },
+    {
+      "title": "Inner horizon instability and mass inflation, Poisson and Israel (1989)",
+      "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.63.1663/fulltext",
+      "role": "DTR as schematic mechanism for mass inflation"
+    },
+    {
+      "title": "Inner structure of a charged black hole: An exact mass-inflation solution, Ori (1991)",
+      "url": "https://doi.org/10.1103/PhysRevLett.67.789",
+      "role": "Independent physical exact Einstein-Maxwell mass-inflation solution, not reproduced by this single crossing"
+    },
+    {
+      "title": "Regular black holes in quasitopological gravity: Null shells and mass inflation (2026)",
+      "url": "https://doi.org/10.1103/nrd7-j6hs",
+      "role": "Modern stated RN-type DTR mass corner relation"
+    }
+  ],
+  "artifacts": [
+    "bound17_null_shell_dtr_core.js",
+    "bound17_dtr_decimal_witness.py",
+    "BOUND17_729_DTR_CHARGED_NULL_SHELL_CROSSINGS_20261027.csv",
+    "BOUND17_ZERO_STREAM_CAUSAL_CONTROLS_20261027.csv",
+    "bound17-two-stream-dtr-check.html",
+    "BOUND17_DTR_AUDIT_20261027.json",
+    "BOUND17_NATURAL_CHECK_2026-10-27.md"
+  ],
+  "next_bound": "Bound18: simulate a consistent initial-value characteristic Einstein-Maxwell-scalar system in spherical symmetry with both ingoing and outgoing flux and convergence checks; separately revisit Kerr rotating perturbation modes and their causal geometry. Do not relabel an RN thin-shell algebraic mass corner as a Kerr spacetime solution."
+}
