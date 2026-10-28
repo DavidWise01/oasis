@@ -33,7 +33,7 @@ const X3={E:1,Lz:0,Q:0};
 function validSpin(chi){if(!Number.isFinite(chi)||chi<0||chi>=1)throw Error("spin chi must satisfy 0<=chi<1 for external frame");return chi;}
 function radY(chi){validSpin(chi);return 1+Math.sqrt(1-chi*chi);}
 function properIntegrandDimensionless(y,chi){return y**1.5/Math.sqrt(2*(y*y+chi*chi));}
-function integrateSimpson(a,b,chi,panels=320){
+function integrateSimpson(a,b,chi,panels=1280){
  validSpin(chi);if(!(b>=a)&&Number.isFinite(a))throw Error("integration interval");
  if(a===b)return 0;
  if(!Number.isInteger(panels)||panels<4||panels%2)throw Error("even panels >=4");
@@ -53,12 +53,17 @@ function yAtTimeFraction(f,chi){
  if(!Number.isFinite(f)||f<0||f>1)throw Error("clock fraction 0..1");
  const rh=radY(chi);if(f===0)return START_Y;if(f===1)return rh;
  const target=f*horizonProperTime(chi);
- let low=rh,high=START_Y;
- for(let i=0;i<45;i++){
-  const mid=(low+high)/2;
-  if(properFromStart(mid,chi)>target)low=mid;else high=mid;
+ let y=Math.pow(START_Y**1.5 - f*(START_Y**1.5-rh**1.5),2/3);
+ // Damped Newton inversion of the monotonic proper-time integral; exact
+ // Schwarzschild analytic phase supplies a close initial guess.
+ for(let i=0;i<12;i++){
+  const value=properFromStart(y,chi)-target;
+  const deriv=-(RG/C)*properIntegrandDimensionless(y,chi);
+  const next=Math.min(START_Y,Math.max(rh,y-value/deriv));
+  if(Math.abs(next-y)<2e-12*Math.max(1,y))return next;
+  y=next;
  }
- return (low+high)/2;
+ return y;
 }
 function radialRateMps(y,chi){
  validSpin(chi);if(!(y>0))throw Error("positive BL y required");
