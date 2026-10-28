@@ -1,0 +1,74 @@
+{
+  "id": "ITD_BOUND11_TIMELIKE_INVARIANT_FALL_20261027",
+  "date": "2026-10-27",
+  "status": "E1_GEODESIC_COMPUTED_HIGH_CURVATURE_STOP_ENFORCED",
+  "sources": [
+    {
+      "title": "GRAVITY 2022 Sagittarius A mass",
+      "url": "https://doi.org/10.1051/0004-6361/202142465"
+    },
+    {
+      "title": "NIST CODATA 2022 Planck length",
+      "url": "https://physics.nist.gov/cuu/pdf/all.pdf"
+    },
+    {
+      "title": "University of Edinburgh general relativity notes p72",
+      "url": "https://www.roe.ac.uk/japwww/teaching/gr/GR_notes_2021.pdf"
+    }
+  ],
+  "parameters": {
+    "metric": "Nonrotating Schwarzschild vacuum idealization",
+    "E": 1,
+    "mass_solar": 4297000,
+    "start_rs": 100,
+    "r_s_m": 12690115577.002773,
+    "planck_length_m": 1.616255e-35,
+    "stop_m": 2.2561016048275532e-20
+  },
+  "results": {
+    "start_to_horizon_s": 28191.55968988335,
+    "start_to_horizon_hr": 7.830988802745375,
+    "horizon_to_formal_r0_s": 28.2197794693527,
+    "formal_remaining_at_stop_s": 6.689493420803197e-44,
+    "formal_remaining_in_planck_times": 1.2408064788027995,
+    "horizon_radial_tidal_per_s2": 0.0005580977232647482,
+    "valid_formal_registry_positions": 418,
+    "unknown_or_outside_positions": 311
+  },
+  "equations": [
+    "dr/dtau=-c*sqrt(rs/r) for E=1 radial infall",
+    "T(r)=2*rs/(3*c)*(r/rs)^1.5",
+    "K=12*rs^2/r^6",
+    "radial tidal=c^2*rs/r^3, transverse=-radial/2",
+    "K*lp^4=1 is a declared curvature stop",
+    "T(stop)/t_planck=(2/3)*12^0.25, model mass cancels"
+  ],
+  "computational_checks": [
+    "core executed after GitHub fetch",
+    "2002 phase inverse samples passed",
+    "729 log registry positions sampled; unknown values null",
+    "center/Planck worldline values deliberately null",
+    "four HTML script syntax checks passed",
+    "mock DOM start/horizon/stop/rank seam tests passed"
+  ],
+  "cautions": [
+    "No black hole interior direct observations or measured test-body trajectory",
+    "Real Sgr A* may spin, so Schwarzschild is a simplifying idealization",
+    "Rest at infinity means starting segment at 100rs has nonzero inward velocity",
+    "The central formal remaining time is NOT a prediction of quantum gravity",
+    "Coordinate dr/dtau is NOT a local speed or superluminal signal",
+    "Schwarzschild horizon finite proper time; distant coordinate time is not infaller time",
+    "Factorial rank and 729 logarithmic model stations are not physical clock ticks",
+    "Previous Gaia/HI and bulge/disk/halo Galactic models remain unchanged",
+    "Live Pages deployment and real screenshot rendering are not verified"
+  ],
+  "files": [
+    "bound11_infall_proper_time_core.js",
+    "BOUND11_729_FALL_CLOCK_20261027.csv",
+    "BOUND11_INVARIANT_MILESTONES_20261027.csv",
+    "bound11-proper-time.html",
+    "BOUND11_INVARIANT_FALL_AUDIT_20261027.json",
+    "BOUND11_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next": "Bound12 use a falling observer orthonormal tetrad to analyze radial stretching and transverse compression with uncertainty and model validity limits."
+}
