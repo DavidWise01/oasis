@@ -1,0 +1,364 @@
+{
+  "id": "ITD_BOUND20_LONG_NULL_TAIL_CHARACTERISTIC_20261028",
+  "date": "2026-10-28",
+  "state": "APPEND_ONLY_SINGLE_CONTIGUOUS_FINITE_CHARACTERISTIC_RECTANGLE_FOUR_CONTROLS_CONVERGED",
+  "parent": "BOUND19_NATURAL_BOUND_2026-10-28.md",
+  "science": {
+    "equations": "Fully coupled spherical Einstein-Maxwell-neutral-real-scalar double-null, ds²=-exp(2sigma)du dv+r²dΩ²",
+    "units": "G=c=M0=1",
+    "assumed_charge_Q": 0.8,
+    "initial_radius": 1.2,
+    "rectangle": {
+      "u_min": 0,
+      "u_max": 0.2,
+      "v_min": 0,
+      "v_max": 4.25
+    },
+    "initial_scalar_u": "phi(u,0)=0.012 sin²(pi u/0.2)",
+    "initial_scalar_v": "partial_v phi(0,v)=0.0005(1+v)^(-3)",
+    "data_origin": "u,v arm conditions are assumed, their null gravitational constraints integrated; not exterior scattering-derived",
+    "corner_consistency": true,
+    "interior_equations": "r_uv, sigma_uv, phi_uv solved simultaneously in centered implicit double-null diamond",
+    "null_constraints": "r_uu-2 sigma_u r_u+r phi_u²; r_vv-2 sigma_v r_v+r phi_v²",
+    "mass": "m=r(1+4exp(-2sigma)r_u r_v+Q²/r²)/2",
+    "conservation": "m_u=-2r²exp(-2sigma)r_v(phi_u)²; m_v=-2r²exp(-2sigma)r_u(phi_v)²",
+    "inner_background_radius": 0.4,
+    "chosen_guard_radius": 0.4006,
+    "refinement_grids": [
+      [
+        12,
+        48
+      ],
+      [
+        24,
+        96
+      ],
+      [
+        48,
+        192
+      ],
+      [
+        96,
+        384
+      ]
+    ],
+    "method": "uniform globally refined rectangular cells, not local adaptive meshing",
+    "no_observed_mass_inflation": true,
+    "no_Kerr_spin": true,
+    "no_physical_center": true,
+    "v_is_Bondi_normalized_advanced_time": false
+  },
+  "numerical": {
+    "core_source_sha": "d9594034fe0bd63af5701eb1bab421f6a0c2c2a6",
+    "independent_boundary_sha": "7c639a2f23e1a65118716c17ee621a834c55bb98",
+    "core_test": {
+      "pass": true,
+      "spacetime": "single finite rectangular RN+scalar double-null initial problem",
+      "inputs": {
+        "Q": 0.8,
+        "r0": 1.2,
+        "Lu": 0.2,
+        "Lv": 4.25,
+        "A": 0.012,
+        "B": 0.0005,
+        "v0": 1,
+        "p": 3,
+        "guardGapFraction": 0.0005,
+        "maxTailTime": 50
+      },
+      "long_incoming_tail_is_prescribed_not_exterior_solved": true,
+      "both": {
+        "finest": {
+          "N": 96,
+          "Nv": 384,
+          "mass": 1.0025726145865872,
+          "corner": 0.4037517311364897,
+          "Cu": 0.00006761711799897089,
+          "Cv": 0.000010513362731601472
+        },
+        "solution_ratios": [
+          3.9302105181172924,
+          3.983204810634436
+        ],
+        "Cu_ratios": [
+          3.689565955953869,
+          3.883775112175227,
+          3.9523684967734973
+        ],
+        "Cv_ratios": [
+          3.9689333232428305,
+          3.995570602748914,
+          4.000264505679446
+        ],
+        "fluxU_ratios": [
+          4.9939549784781745,
+          4.308259105737907,
+          4.081415963677654
+        ],
+        "fluxV_ratios": [
+          4.031033190076334,
+          4.0077453074949405,
+          4.001936192138446
+        ]
+      },
+      "vacuum": {
+        "mass": 1.0000000149327208,
+        "solution_ratios": [
+          3.8835822942247145,
+          3.9711285614758536
+        ]
+      },
+      "finite_domain_length_scan": {
+        "2": {
+          "status": "COMPUTED",
+          "corner_r": 0.8350319312537731,
+          "guard": 0.4006,
+          "mass": 1.0025925557873412,
+          "Cu": 0.0006482880674833929,
+          "Cv": 0.000007826493446638775
+        },
+        "3": {
+          "status": "COMPUTED",
+          "corner_r": 0.567058957006838,
+          "guard": 0.4006,
+          "mass": 1.0025959595228953,
+          "Cu": 0.0007498112653961423,
+          "Cv": 0.00015896385081839653
+        },
+        "4": {
+          "status": "COMPUTED",
+          "corner_r": 0.4104890725369725,
+          "guard": 0.4006,
+          "mass": 1.0025831307660182,
+          "Cu": 0.0010222839444420672,
+          "Cv": 0.0005680464557482251
+        },
+        "5": {
+          "status": "ABORT",
+          "reason": "Error: ABORT_PRE_INNER_GUARD {\"i\":24,\"j\":55,\"r\":0.4001754457903691,\"u\":0.2,\"v\":4.583333333333333}"
+        },
+        "8": {
+          "status": "ABORT",
+          "reason": "Error: ABORT_INITIAL_CHARACTERISTIC_GUARD"
+        },
+        "4.25": {
+          "status": "COMPUTED",
+          "corner_r": 0.4035643034281753,
+          "guard": 0.4006,
+          "mass": 1.0025733858840205,
+          "Cu": 0.0011023889530441663,
+          "Cv": 0.000568753640665455
+        },
+        "4.5": {
+          "status": "COMPUTED",
+          "corner_r": 0.400681996725956,
+          "guard": 0.4006,
+          "mass": 1.0025591172510533,
+          "Cu": 0.0011792644719084123,
+          "Cv": 0.0005859722125226088
+        }
+      },
+      "local_AMR": false,
+      "real_mass_inflation_not_demonstrated": true
+    },
+    "boundary_test": {
+      "passed": true,
+      "u_constraint_ratios": [
+        3.6921037210236873,
+        3.8865994953115717,
+        3.9541484875368185
+      ],
+      "v_constraint_ratios": [
+        3.9583633899478627,
+        3.9910185890610124,
+        3.998134682613312
+      ],
+      "endpoint_tail_derivative_ratio": 0.006910700788251809
+    },
+    "controls": [
+      {
+        "name": "vacuum",
+        "A": 0,
+        "B": 0,
+        "convergence_pass": true,
+        "center_mass": 1.0000000149327208,
+        "late_v_checkpoint_mass": 1.000012740144729,
+        "corner_radius": 0.4046954499922921,
+        "Cuu_RMS": 0.0000034637207299182173,
+        "Cvv_RMS": 0.00001051231537634258,
+        "solution_ratios": [
+          3.8835822942247145,
+          3.9711285614758536
+        ],
+        "Cu_ratios": [
+          3.920777444559918,
+          3.9677276021754184,
+          3.985703457482062
+        ],
+        "Cv_ratios": [
+          3.96903981309246,
+          3.995613787702578,
+          4.0002839961980925
+        ],
+        "mass_flux_u_ratios": [
+          4.006440397122693,
+          4.001615918459739,
+          3.9999494781825677
+        ],
+        "mass_flux_v_ratios": [
+          4.0338960238759505,
+          4.00850295385163,
+          4.002118473952787
+        ]
+      },
+      {
+        "name": "u_pulse_only",
+        "A": 0.012,
+        "B": 0,
+        "convergence_pass": true,
+        "center_mass": 1.00257164053518,
+        "late_v_checkpoint_mass": 1.0026435653306778,
+        "corner_radius": 0.4037519172986225,
+        "Cuu_RMS": 0.00006761714460536551,
+        "Cvv_RMS": 0.000010513362061284309,
+        "solution_ratios": [
+          3.9302218389957444,
+          3.983216746398514
+        ],
+        "Cu_ratios": [
+          3.6895669906606163,
+          3.883775661075102,
+          3.952367573741463
+        ],
+        "Cv_ratios": [
+          3.9689333497255777,
+          3.9955706126930743,
+          4.000264506475967
+        ],
+        "mass_flux_u_ratios": [
+          4.993968051941244,
+          4.308261933256973,
+          4.081349553328361
+        ],
+        "mass_flux_v_ratios": [
+          4.031031000825597,
+          4.007744674113667,
+          4.001937588270262
+        ]
+      },
+      {
+        "name": "v_tail_only",
+        "A": 0,
+        "B": 0.0005,
+        "convergence_pass": true,
+        "center_mass": 1.0000000833668066,
+        "late_v_checkpoint_mass": 1.0000128087005113,
+        "corner_radius": 0.4046954273752045,
+        "Cuu_RMS": 0.0000034637212707692265,
+        "Cvv_RMS": 0.000010512315399592096,
+        "solution_ratios": [
+          3.8836131451483773,
+          3.9711352990354336
+        ],
+        "Cu_ratios": [
+          3.920777469467289,
+          3.9677281104471858,
+          3.985698900800395
+        ],
+        "Cv_ratios": [
+          3.969039809091533,
+          3.9956137862670977,
+          4.000283991675879
+        ],
+        "mass_flux_u_ratios": [
+          4.006439393502631,
+          4.001627503779663,
+          4.0005434975699155
+        ],
+        "mass_flux_v_ratios": [
+          4.033896035747083,
+          4.008502646227774,
+          4.0021306050664665
+        ]
+      },
+      {
+        "name": "both",
+        "A": 0.012,
+        "B": 0.0005,
+        "convergence_pass": true,
+        "center_mass": 1.0025726145865872,
+        "late_v_checkpoint_mass": 1.0026446807367737,
+        "corner_radius": 0.4037517311364897,
+        "Cuu_RMS": 0.00006761711799897089,
+        "Cvv_RMS": 0.000010513362731601472,
+        "solution_ratios": [
+          3.9302105181172924,
+          3.983204810634436
+        ],
+        "Cu_ratios": [
+          3.689565955953869,
+          3.883775112175227,
+          3.9523684967734973
+        ],
+        "Cv_ratios": [
+          3.9689333232428305,
+          3.995570602748914,
+          4.000264505679446
+        ],
+        "mass_flux_u_ratios": [
+          4.9939549784781745,
+          4.308259105737907,
+          4.081415963677654
+        ],
+        "mass_flux_v_ratios": [
+          4.031033190076334,
+          4.0077453074949405,
+          4.001936192138446
+        ]
+      }
+    ],
+    "model_rows": 2916,
+    "model_rows_per_control": 729,
+    "convergence_table_rows": 16,
+    "initial_boundary_table_rows": 8,
+    "length_stop_table_rows": 7,
+    "viewer_mock_DOM_PASS": true,
+    "viewer_inline_JS_syntax_PASS": true,
+    "real_browser_render_verified": false,
+    "public_Github_Pages_deployment_verified": false
+  },
+  "interpretation": [
+    "Only one finite joined initial-value rectangle is evolved per selected control; the four controls are distinct initial-value problems.",
+    "Power-law incoming derivative is prescribed, not derived from full exterior collapse or a physically normalized v at infinity.",
+    "Finite mass growth and convergent null constraints do not prove Cauchy-horizon mass inflation.",
+    "No local AMR or curvature-invariant divergence computed; there is a hard pre-inner guard and domain abort.",
+    "RN electric charge is assumed. These are not Kerr or actual Sagittarius A* measurements.",
+    "Numerical 729 states per case and preserved 24! SJT logical ring are not physical clocks or stars."
+  ],
+  "references": [
+    {
+      "title": "Dafermos (2005), interior charged black holes and mass inflation",
+      "url": "https://doi.org/10.1002/cpa.20071"
+    },
+    {
+      "title": "Mädler Gannouji Gallo (2025), characteristic Einstein-Maxwell-scalar problems",
+      "url": "https://doi.org/10.1103/f5fc-zpld"
+    },
+    {
+      "title": "Gautam (2024), late-time tails and mass inflation",
+      "url": "https://arxiv.org/abs/2412.17927"
+    }
+  ],
+  "files": [
+    "bound20_long_advanced_tail_core.js",
+    "bound20_independent_boundary_constraints.js",
+    "bound20-one-long-null-tail.html",
+    "BOUND20_729_ONE_RECTANGLE_TAIL_FIELD_WITNESSES_20261028.csv",
+    "BOUND20_FOUR_STREAMS_RECTANGULAR_CONVERGENCE_20261028.csv",
+    "BOUND20_TWO_BOUNDARY_CONSTRAINTS_20261028.csv",
+    "BOUND20_ADVANCED_NULL_LENGTH_GATES_20261028.csv",
+    "BOUND20_AUDIT_20261028.json",
+    "BOUND20_NATURAL_BOUND_2026-10-28.md"
+  ],
+  "next_bound": "Bound 21: physically normalized horizon/exterior-tail data and genuinely local adaptive double-null mesh, independent curvature and mass evolution near Cauchy limit"
+}
