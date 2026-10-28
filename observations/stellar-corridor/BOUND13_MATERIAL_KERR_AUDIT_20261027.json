@@ -1,0 +1,185 @@
+{
+  "record_id": "ITD_BOUND13_FINITE_ROD_AND_KERR_GEOMETRY_20261027",
+  "date": "2026-10-27",
+  "status": "APPEND_ONLY_TWO_DISTINCT_MODELS_KERR_STRESS_UNKNOWN",
+  "independent_scientific_sources": [
+    {
+      "title": "GRAVITY Collaboration 2022 Sgr A* mass",
+      "url": "https://doi.org/10.1051/0004-6361/202142465"
+    },
+    {
+      "title": "Leo C Stein Kerr Calculator (Bardeen-Press-Teukolsky ISCO)",
+      "url": "https://duetosymmetry.com/tool/kerr-calculator-v2/"
+    },
+    {
+      "title": "Bini and Geralico: observer-dependent Kerr tidal indicators",
+      "url": "https://www.iac.rm.cnr.it/observer-dependent-tidal-indicators-kerr-spacetime?aiac=434"
+    },
+    {
+      "title": "Relativistic tidal tensor local tetrad 2026 research",
+      "url": "https://journals.aps.org/prd/abstract/10.1103/xdm3-48nb"
+    },
+    {
+      "title": "NIST CODATA 2022",
+      "url": "https://www.physics.nist.gov/cuu/pdf/wall_2022.pdf"
+    }
+  ],
+  "material_model": {
+    "type": "hypothetical uniform one-dimensional linear elastic free-end slender rod quasi-statically balancing tidal differential acceleration in an E=1 Schwarzschild reference freefall frame",
+    "steel_like_parameter_assumptions": {
+      "label": "STEEL_LIKE_ILLUSTRATIVE",
+      "rho": 7800,
+      "E": 200000000000,
+      "yieldStress": 250000000,
+      "L": 1,
+      "quasiLimit": 0.1,
+      "localLimit": 0.01
+    },
+    "aluminum_like_parameter_assumptions": {
+      "label": "ALUMINUM_LIKE_ILLUSTRATIVE",
+      "rho": 2700,
+      "E": 70000000000,
+      "yieldStress": 150000000,
+      "L": 1,
+      "quasiLimit": 0.1,
+      "localLimit": 0.01
+    },
+    "radial_tidal_coefficient_s_inverse2": "lambda=c²r_s/r³",
+    "equilibrium_stress_profile": "sigma(x)=rho*lambda*(L²/8 − x²/2), x from -L/2 to L/2, sigma(±L/2)=0",
+    "midpoint_tension_Pa": "rho*lambda*L²/8",
+    "transverse_compression_axis_proxy": "−sigma_midpoint/2 (NOT full 3D constitutive solution)",
+    "wave_speed_mps": "sqrt(E/rho)",
+    "wave_to_tidal_time": "(L/sqrt(E/rho))*sqrt(lambda)",
+    "applicability": "wave/tide<=0.1, L/min(r,sqrt(r³/rs))<=0.01, sigma<assumed yield and radius before classical K*lp^4 stop",
+    "material_actual_measurement": false,
+    "material_failure_confirmed": false
+  },
+  "computed": {
+    "steel_horizon_tension_pa": 0.5441452801831295,
+    "steel_1m": {
+      "first_gate_km": 16445.88302043888,
+      "reasons": [
+        "YIELD_PROXY",
+        "WAVE_QUASISTATIC_GATE"
+      ],
+      "yield_radius_km": 16445.88302043888,
+      "quasistatic_wave_radius_km": 16445.88302043888,
+      "local_length_radius_km": 50.252213068216854
+    },
+    "aluminum_1m": {
+      "first_gate_km": 16385.419669376308,
+      "reasons": [
+        "WAVE_QUASISTATIC_GATE"
+      ],
+      "yield_radius_km": 13690.831765335386,
+      "quasistatic_wave_radius_km": 16385.419669376308,
+      "local_length_radius_km": 50.252213068216854
+    },
+    "schwarzschild_radius_m": 12690115577.002773,
+    "model_radius_start_m": 1269011557700.2773,
+    "formal_curvature_stop_m": 2.2561016048275532e-20,
+    "registry_729_counts": {
+      "reportable_steel_1m": 64,
+      "diagnostic_yield_exceeded": 354,
+      "above_sample_start": 110,
+      "below_curvature_gate": 200,
+      "center_sentinel": 1,
+      "total": 729
+    }
+  },
+  "kerr_model": {
+    "chi_definition": "cJ/(G M²), assumed not measured for Sgr A* in this model",
+    "r_plus": "r_g(1+sqrt(1−chi²)) Boyer-Lindquist coordinate; NOT areal radius",
+    "equatorial_static_limit": "2r_g",
+    "isco": "Bardeen Press Teukolsky equatorial prograde and retrograde circular orbit radii",
+    "horizon_area_invariant": "4π(r_plus²+(chi*r_g)²)",
+    "horizon_angular_frequency": "c*chi/[2*r_g*(1+sqrt(1−chi²))]",
+    "kerr_boyer_lindquist_coordinate_is_not_areal_radius": true,
+    "sample_scenarios": [
+      {
+        "chi": 0,
+        "horizon_km": 12690115.577002773,
+        "ergo_equator_km": 12690115.577002773,
+        "prograde_isco_km": 38070346.73100831,
+        "retrograde_isco_km": 38070346.73100831,
+        "intrinsic_horizon_area_m2": 2.0236761765508625e+21
+      },
+      {
+        "chi": 0.5,
+        "horizon_km": 11840039.021823896,
+        "ergo_equator_km": 12690115.577002773,
+        "prograde_isco_km": 26858645.66874564,
+        "retrograde_isco_km": 47934276.58171016,
+        "intrinsic_horizon_area_m2": 1.8881155772386357e+21
+      },
+      {
+        "chi": 0.9,
+        "horizon_km": 9110804.357601708,
+        "ergo_equator_km": 12690115.577002773,
+        "prograde_isco_km": 14726137.02033205,
+        "retrograde_isco_km": 55312103.97682747,
+        "intrinsic_horizon_area_m2": 1.4528880856772303e+21
+      },
+      {
+        "chi": 0.99,
+        "horizon_km": 7240138.338482505,
+        "ergo_equator_km": 12690115.577002773,
+        "prograde_isco_km": 9228873.470244726,
+        "retrograde_isco_km": 56926978.68888216,
+        "intrinsic_horizon_area_m2": 1.1545754159301451e+21
+      }
+    ],
+    "kerr_falling_frame_tidal_eigenvalues": null,
+    "kerr_material_stress": null,
+    "reason_missing": "A compatible Kerr geodesic and a specified local falling tetrad are required to calculate observer-dependent electric tidal tensor; not inferred from Kerr horizon or from Schwarzschild formulas.",
+    "equatorial_Kretschmann_fact": "At equatorial Boyer-Lindquist r the Kerr Kretschmann scalar reduces to 48r_g²/r⁶ independent of chi; this is NOT spin independence of observer measured tidal eigenvalues."
+  },
+  "executed_tests": {
+    "committed_source_retrieved_executed": true,
+    "results": {
+      "pass": true,
+      "model": "quasistatic_1d_free_end_rod_plus_independent_Kerr_geometry",
+      "steel_like_horizon_stress_pa": 0.5441452801831295,
+      "steel_like_r_yield_km": 16445.88302043888,
+      "steel_like_r_wave_km": 16445.88302043888,
+      "steel_like_first_gate_km": 16445.88302043888,
+      "first_gate_reasons": [
+        "YIELD_PROXY",
+        "WAVE_QUASISTATIC_GATE"
+      ],
+      "kerr_spin0_horizon_r_s": "PASS",
+      "kerr_spin0_isco_3rs": "PASS",
+      "kerr_spin1_limit": "PASS",
+      "equatorial_K_spin_independence": "PASS",
+      "material_midpoint_stress_balance": "PASS",
+      "tetrad_force_not_fabricated": true
+    },
+    "rod_boundary_and_equilibrium_balance": "PASS",
+    "Kerr_chi0_horizon_and_ISCO_Schwarzschild_limit": "PASS",
+    "Kerr_chi1_ideal_extremal_endpoints": "PASS",
+    "Kerr_6_spin_3_radius_equatorial_K_check": "PASS",
+    "source_729_csv_status_counts": "PASS",
+    "interactive_scripts_syntax": "PASS four embedded scripts",
+    "mock_browser_ui": "PASS horizon, steel/aluminum first gates, spins 0 and .99, 24factorial seam, invalid rank guard",
+    "live_browser_render": false,
+    "live_github_pages_verified": false
+  },
+  "limitations": [
+    "Thresholds are illustrative and NOT a tested material, measured failure point or physical singularity.",
+    "Quasi-static rod equilibrium neglects dynamic stress-wave propagation once wave/tidal timescale ratio is large.",
+    "Poisson coupling, plasticity, fractures, temperature, shock and material anisotropy are not modeled.",
+    "Kerr metric spin is hypothetical and no matching freely falling Kerr observer/tetrad or material stress was computed.",
+    "Schwarzschild and Kerr Boyer-Lindquist coordinate radii are not to be treated as identical physical areal radii.",
+    "24! and the 729 logarithmic registry remain independent logical selectors; no celestial matter is transported by address changes.",
+    "Historical Bounds 01-12, including red giant / HI tracer residuals, were not modified."
+  ],
+  "artifacts": [
+    "bound13_material_kerr_core.js",
+    "bound13-material-kerr.html",
+    "BOUND13_729_MATERIAL_GATES_20261027.csv",
+    "BOUND13_KERR_SPIN_SCENARIOS_20261027.csv",
+    "BOUND13_MATERIAL_KERR_AUDIT_20261027.json",
+    "BOUND13_NATURAL_BOUND_2026-10-27.md"
+  ],
+  "next_boundary": "Bound 14: specify Kerr geodesic E,L_z,Q and construct parallel transported local tetrad to calculate actual Kerr electric/magnetic tidal tensors; separately, dynamic finite-element/elastic-wave rod evolution."
+}
