@@ -1,1 +1,35 @@
-name: OaSIs Chemical Mnemonic v185 Lean Proof\n\non:\n  push:\n    branches: [main]\n    paths:\n      - "kernel/generative/chemical-mnemonic-v185/**"\n      - ".github/workflows/chemical-mnemonic-v185.yml"\n  pull_request:\n    paths:\n      - "kernel/generative/chemical-mnemonic-v185/**"\n      - ".github/workflows/chemical-mnemonic-v185.yml"\n\npermissions:\n  contents: read\n\njobs:\n  prove:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-python@v5\n        with:\n          python-version: "3.12"\n      - name: Run executable benchmark\n        working-directory: kernel/generative/chemical-mnemonic-v185\n        run: python kernel.py\n      - name: Install Lean 4.33.1\n        run: |\n          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1\n          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"\n      - name: Compile Lean proof\n        run: |\n          lean --version\n          lean kernel/generative/chemical-mnemonic-v185/proof/OaSIs_Chemical_Mnemonic_v185.lean\n
+name: OaSIs Chemical Mnemonic v185 Lean Proof
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kernel/generative/chemical-mnemonic-v185/**"
+      - ".github/workflows/chemical-mnemonic-v185.yml"
+  pull_request:
+    paths:
+      - "kernel/generative/chemical-mnemonic-v185/**"
+      - ".github/workflows/chemical-mnemonic-v185.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run executable benchmark
+        working-directory: kernel/generative/chemical-mnemonic-v185
+        run: python kernel.py
+      - name: Install Lean 4.33.1
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.1
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compile Lean proof
+        run: |
+          lean --version
+          lean kernel/generative/chemical-mnemonic-v185/proof/OaSIs_Chemical_Mnemonic_v185.lean
