@@ -67,9 +67,13 @@ function dot(a,b,g){return a.reduce((z,v,i)=>z+v*b.reduce((w,x,j)=>w+x*g[i][j],0
 function properTimeFromStart(y,chi){
  const l=limits(chi);
  if(!(y>=l.y_stop&&y<=START_Y))return null;
- return K.integrateSimpson(y,START_Y,chi);
+ // Add short interior clock separately to avoid a 7.8-hour subtraction
+ // and poorly resolved Simpson panels over 0.02..200.
+ const toOuter=K.integrateSimpson(l.y_outer,START_Y,chi);
+ return y>=l.y_outer?K.integrateSimpson(y,START_Y,chi):
+   toOuter+K.integrateSimpson(y,l.y_outer,chi);
 }
-function outerClock(chi){const l=limits(chi);return properTimeFromStart(l.y_outer,chi)}
+function outerClock(chi){const l=limits(chi);return K.integrateSimpson(l.y_outer,START_Y,chi);}
 function stopClock(chi){const l=limits(chi);return properTimeFromStart(l.y_stop,chi)}
 function horizonToStop(chi){const l=limits(chi);return K.integrateSimpson(l.y_stop,l.y_outer,chi);}
 function yAtInteriorClockFraction(f,chi){
