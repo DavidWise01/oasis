@@ -724,7 +724,7 @@ function rankRender(){
 function render(){
  const {chi,f}=params(),p=I.positionAtFraction(f,chi),l=I.limits(chi),t=p.local_eigenvalues,e=p.frame_ing;
  $("spinLabel").textContent=chi.toFixed(2);$("progressLabel").textContent=(100*f).toFixed(1)+"%";
- $("gateStatus").textContent=f===0?"OUTER HORIZON · FRAME REGULAR":f===1?"STOP AT CHOSEN INNER GUARD":"CLASSICAL INTERIOR · IDEAL KERR ONLY";
+ $("gateStatus").textContent=f===0?"OUTER HORIZON · FRAME REGULAR":f===1?(chi===0?"SCHWARZSCHILD POSITIVE-RADIUS GUARD":"STOP AT CHOSEN PRE-CAUCHY GUARD"):"CLASSICAL INTERIOR · IDEAL KERR ONLY";
  $("radius").textContent=fnum(p.y,6);
  $("elapsed").textContent=fnum(p.elapsed_since_outer_crossing_proper_s,6)+" s";
  $("remaining").textContent=fnum(p.remaining_to_model_guard_proper_s,6)+" s";
