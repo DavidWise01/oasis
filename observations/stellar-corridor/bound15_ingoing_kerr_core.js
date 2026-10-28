@@ -81,14 +81,16 @@ function yAtInteriorClockFraction(f,chi){
  if(!(f>=0&&f<=1&&Number.isFinite(f)))throw Error("fraction must be 0..1");
  if(f===0)return l.y_outer;if(f===1)return l.y_stop;
  const target=f*horizonToStop(chi);
- let lo=l.y_stop,hi=l.y_outer;
- // Enough for the interior seconds scale; avoid subtracting the 7.8h
- // accumulated exterior clock when finding a short inside interval.
- for(let i=0;i<48;i++){
-  const mid=(lo+hi)/2,t=K.integrateSimpson(mid,l.y_outer,chi);
-  if(t>target)lo=mid;else hi=mid;
+ // Schwarzschild exact inversion is a close initial guess.
+ let y=Math.pow(l.y_outer**1.5-f*(l.y_outer**1.5-l.y_stop**1.5),2/3);
+ for(let i=0;i<12;i++){
+  const actual=K.integrateSimpson(y,l.y_outer,chi);
+  const deriv=-(RG/C)*K.properIntegrandDimensionless(y,chi);
+  const next=Math.min(l.y_outer,Math.max(l.y_stop,y-(actual-target)/deriv));
+  if(Math.abs(next-y)<1e-13*Math.max(1,y))return next;
+  y=next;
  }
- return (lo+hi)/2;
+ return y;
 }
 function tidalAt(y,chi){
  if(!(y>0))throw Error("positive y");
