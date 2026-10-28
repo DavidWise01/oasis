@@ -148,7 +148,7 @@ function selfTest(){
     checks++;
    }
    if(!close(F.PP_basis_ing[0][1]*K.C,K.radialRateMps(y,chi),1e-8))throw Error("radial geodesic");
-   if(!close(tidalAt(y,chi).trace_s2,0,1e-15))throw Error("vacuum trace");
+   const tide=tidalAt(y,chi);if(Math.abs(tide.trace_s2)>1e-12*Math.abs(tide.stretch_s2))throw Error("vacuum trace");
   }
   for(const f of [0,.1,.5,.9,1]){
    const y=yAtInteriorClockFraction(f,chi),p=positionAtFraction(f,chi);
