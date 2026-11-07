@@ -2,8 +2,8 @@
   "schema": "oasis/agent-discovery/v0.2",
   "source": "GitHub REST /users/{owner}/repos (paginated)",
   "owner": "DavidWise01",
-  "profile_public_repos": 2147,
-  "discovered_count": 2147,
+  "profile_public_repos": 2149,
+  "discovered_count": 2149,
   "classification_policy": "unreviewed; no remote code is executed",
   "external_site": {
     "url": "https://0root.ai",
@@ -10567,6 +10567,19 @@
       "connection": "discovered_not_connected"
     },
     {
+      "id": 1448634117,
+      "name": "quanta",
+      "repository": "DavidWise01/quanta",
+      "url": "https://github.com/DavidWise01/quanta",
+      "default_branch": "main",
+      "description": null,
+      "archived": false,
+      "fork": false,
+      "visibility": "public",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
       "id": 1258787542,
       "name": "quantum-box",
       "repository": "DavidWise01/quantum-box",
@@ -12002,6 +12015,19 @@
       "repository": "DavidWise01/sonnet-channel",
       "url": "https://github.com/DavidWise01/sonnet-channel",
       "default_branch": "main",
+      "description": null,
+      "archived": false,
+      "fork": false,
+      "visibility": "public",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
+    {
+      "id": 1448415974,
+      "name": "sophia",
+      "repository": "DavidWise01/sophia",
+      "url": "https://github.com/DavidWise01/sophia",
+      "default_branch": "master",
       "description": null,
       "archived": false,
       "fork": false,
