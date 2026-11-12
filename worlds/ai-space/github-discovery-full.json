@@ -2,14 +2,27 @@
   "schema": "oasis/agent-discovery/v0.2",
   "source": "GitHub REST /users/{owner}/repos (paginated)",
   "owner": "DavidWise01",
-  "profile_public_repos": 2152,
-  "discovered_count": 2152,
+  "profile_public_repos": 2153,
+  "discovered_count": 2153,
   "classification_policy": "unreviewed; no remote code is executed",
   "external_site": {
     "url": "https://0root.ai",
     "status": "separate crawl required"
   },
   "repositories": [
+    {
+      "id": 1455342464,
+      "name": "-we-",
+      "repository": "DavidWise01/-we-",
+      "url": "https://github.com/DavidWise01/-we-",
+      "default_branch": "main",
+      "description": null,
+      "archived": false,
+      "fork": false,
+      "visibility": "public",
+      "classification": "unreviewed",
+      "connection": "discovered_not_connected"
+    },
     {
       "id": 1330275896,
       "name": "0root",
