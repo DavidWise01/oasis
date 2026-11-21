@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UEP-030 · The Sufficiency Gate</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#111f34;--edge:#33465d;--text:#edf8ff;--muted:#abc2d6;--teal:#43dfce;--purple:#b19bff;--orange:#ffaf70}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 78% -16%,#263755,transparent 60%),var(--bg);color:var(--text);font:15px/1.5 system-ui,Segoe UI,Arial,sans-serif}header,main,footer{max-width:1260px;width:94%;margin:auto}header{padding:38px 0 25px;border-bottom:1px solid var(--edge)}h1{font-size:clamp(32px,5vw,62px);line-height:1.08;margin:8px 0}h2{font-size:21px;margin:0 0 14px}h3{font-size:16px;margin:8px 0}p{color:var(--muted)}.eyebrow{color:var(--teal);letter-spacing:.17em;text-transform:uppercase;font-size:11px}.tag{padding:4px 10px;border:1px solid var(--edge);border-radius:30px;color:var(--muted);font-size:11px;display:inline-block;margin:3px 3px 3px 0}.panel{background:linear-gradient(138deg,#16283e,#101b2c);border:1px solid var(--edge);padding:20px;border-radius:15px}.stack{display:grid;gap:16px;padding:20px 0}.columns{display:grid;grid-template-columns:390px 1fr;gap:16px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.metric small{display:block;color:var(--muted)}.metric b{font-size:clamp(20px,2.5vw,31px);letter-spacing:-.04em;display:block;margin-top:8px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:11px}label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}input,select,button{font:inherit;background:#091626;border:1px solid #48617b;border-radius:8px;padding:10px;color:var(--text);width:100%}button{cursor:pointer;background:#155350;border-color:#368a7d;color:#ddfff7;font-weight:650}button.secondary{background:#252746;border-color:#50557a}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.bar{height:16px;background:#273b53;border-radius:12px;overflow:hidden}.bar>div{background:linear-gradient(90deg,var(--teal),var(--purple));height:100%}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;min-width:550px;font-size:13px}th,td{text-align:right;border-bottom:1px solid #293f55;padding:9px 8px}th:first-child,td:first-child{text-align:left}th{color:var(--muted);font-weight:500}.note{background:#222638;border-left:3px solid var(--orange);padding:12px;color:#f9e4d3}.good{color:var(--teal)}.orange{color:var(--orange)}pre{background:#091525;border-radius:9px;padding:15px;white-space:pre-wrap;word-break:break-word;font-size:12px;color:#d5e7f4}svg{display:block;width:100%;height:auto}a{color:var(--teal)}footer{padding:14px 0 35px;color:var(--muted);font-size:12px;border-top:1px solid var(--edge)}@media(max-width:900px){.columns{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:550px){.fields,.metrics,.buttons{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="eyebrow">OaSIs · Universal Economic Participation · Bound 030</div><h1>The Sufficiency Gate</h1><p>Begin with the actual universal income target. Work backward through eligible population, legally collectible public receipts, and productive asset cash yield. Test an immediate dividend against an aspirational fully funded program without claiming uncollected AI wealth.</p><span class="tag">ONE PERSON · ONE ENTITLEMENT</span><span class="tag">REALIZED CASH ONLY</span><span class="tag">RESTITUTION INDEPENDENT</span></header>
+<main class="stack">
+<section class="metrics">
+<div class="panel metric"><small>Annual UBI target</small><b id="annual">—</b></div>
+<div class="panel metric"><small>Required productive assets</small><b id="assetsNeed">—</b></div>
+<div class="panel metric"><small>Current monthly capacity</small><b id="capacity">—</b></div>
+<div class="panel metric"><small>Funding coverage</small><b id="coverage">—</b></div>
+</section>
+<div class="columns">
+<section class="panel"><h2>Design a sufficient income</h2><div class="fields">
+<div><label for="monthly">Monthly target per person ($)</label><input id="monthly" type="number" min="0" value="2000" step="100"></div>
+<div><label for="people">Eligible population (millions)</label><input id="people" type="number" min="1" value="330"></div>
+<div><label for="assets">Public productive assets ($T)</label><input id="assets" type="number" min="0" value="5" step=".5"></div>
+<div><label for="yield">Net distributable cash yield (%)</label><input id="yield" type="number" min="0" max="100" value="4" step=".25"></div>
+<div><label for="royalty">Other verified annual public receipts ($T)</label><input id="royalty" type="number" min="0" value=".3" step=".1"></div>
+<div><label for="reserve">Additional liquidity holdback (%)</label><input id="reserve" type="number" min="0" max="100" value="20" step="1"></div>
+<div><label for="overhead">Administrative overhead (%)</label><input id="overhead" type="number" min="0" max="100" value="2" step="1"></div>
+<div><label for="horizon">Projection horizon (years)</label><input id="horizon" type="number" min="1" max="80" value="30"></div>
+<div><label for="growth">New capital added yearly ($T)</label><input id="growth" type="number" min="0" value=".25" step=".05"></div>
+<div><label for="inflation">Annual inflation (%)</label><input id="inflation" type="number" min="0" max="20" value="2.5" step=".25"></div>
+</div><div class="buttons"><button id="reset">Reset inputs</button><button class="secondary" id="csv">Export projection</button></div>
+<p style="font-size:12px">The model treats cash yield as already net of maintenance and investment expenses, but subtracts explicit further reserve and administration fractions. Sources of new capital must be established separately. Inflation escalates the target payment while nominal asset yield, royalties and additions remain unchanged unless you change assumptions.</p></section>
+<div class="stack" style="padding:0">
+<section class="panel"><h2>Immediate sufficiency</h2><div class="bar"><div id="fill" style="width:0"></div></div><p id="gap"></p><div class="scroll"><table><tbody id="summary"></tbody></table></div><p class="note" id="warning"></p></section>
+<section class="panel"><h2>Funding paths</h2>
+<pre>PATH A · TODAY
+Owned capital + enforceable net receipts
+→ reserve + overhead → equal monthly dividend
+
+PATH B · ACCUMULATION
+New public capital acquired each year
+→ future distributable receipts → larger dividend
+
+PATH C · FULL UBI TARGET
+Payment target × eligible people × 12
+→ required annual receipts
+→ required productive asset base
+→ independently verified acquisition and cash</pre>
+<p>Changing the target does not create new AI output. The model exposes the gap between available cash and the proposed universal payment.</p></section>
+</div></div>
+<section class="panel"><h2>Thirty-year path: nominal capacity vs inflation-adjusted target</h2><svg viewBox="0 0 900 300" role="img" aria-label="Projected annual public payout capacity and annual UBI cost"><g id="graph"></g></svg><p style="font-size:12px"><span style="color:var(--teal)">━━</span> Annual distributable capacity &nbsp; <span style="color:var(--purple)">━━</span> Target indexed for inflation</p><div class="scroll"><table><thead><tr><th>Year</th><th>Assets ($T)</th><th>Cash capacity ($T)</th><th>UBI target ($T)</th><th>Monthly/person capacity</th><th>Coverage</th></tr></thead><tbody id="projection"></tbody></table></div></section>
+<section class="panel"><h2>Cash-yield sensitivity</h2><div class="scroll"><table><thead><tr><th>Net cash yield</th><th>Assets required if no other receipts ($T)</th><th>Assets required with other receipts ($T)</th></tr></thead><tbody id="sensitivity"></tbody></table></div></section>
+<section class="panel"><h2>Boundary of the claim</h2><pre>PROJECTED AI PRODUCTIVITY ≠ PUBLIC CASH
+PAPER WEALTH ≠ SETTLED DIVIDEND RECEIPT
+RECURRENT CASH YIELD ≠ GUARANTEED RETURN
+UNIVERSAL TECHNOLOGY DIVIDEND ≠ RESTITUTION
+
+No one needs AI access, employment, investment holdings
+or an individual output score to qualify under the
+hypothetical all-person entitlement rule.</pre><p>This is a static, deterministic funding model. It does not establish national AI surplus, asset values, behavior changes, inflation effects from transfers, financing costs of acquiring assets, or legal authority to collect revenues. It does not guarantee principal preservation.</p></section>
+<section class="panel"><h2>Next natural bound — UEP-031: The Real Acquisition Schedule</h2><p>Replace hypothetical capital additions with specific public investment instruments, enforceable claims, acquisition costs and observed cash receipts. Run a traceable reconciliation against the sufficiency gap without treating repeated claims as independent evidence.</p><p><a href="./UEP-029-equal-share-gate.html">Previous bound · UEP-029 Equal-Share Gate</a></p></section>
+</main><footer>UEP-030 · Illustrative economic research tool, not a funded UBI program or independently verified investment forecast.</footer>
+<script>(()=>{'use strict';const $=s=>document.getElementById(s),val=s=>Math.max(0,Number($(s).value)||0),pct=s=>Math.min(1,val(s)/100),fmt=(x,d=2)=>Number(x).toLocaleString('en-US',{maximumFractionDigits:d}),T=x=>'$'+fmt(x)+'T',D=x=>'$'+fmt(x),safe=x=>Number.isFinite(x)?T(x):'Undefined';let rows=[];
+function metrics(){const monthly=val('monthly'),people=Math.max(.00001,val('people')),assets=val('assets'),yieldRate=pct('yield'),royalty=val('royalty'),reserve=pct('reserve'),overhead=pct('overhead'),keep=Math.max(0,1-reserve-overhead),gross=assets*yieldRate+royalty,available=gross*keep,target=monthly*12*people/1e6,need=Math.max(0,target/Math.max(keep,.000000001)-royalty),required=keep>0&&yieldRate>0?Math.max(0,need/yieldRate):target<=royalty*keep?0:Infinity;return{monthly,people,assets,yieldRate,royalty,reserve,overhead,keep,gross,available,target,required,per:available*1e6/(12*people),coverage:target>0?available/target:1};}
+function compute(){let x=metrics();$('annual').textContent=T(x.target);$('assetsNeed').textContent=safe(x.required);$('capacity').textContent=D(x.per);$('coverage').textContent=fmt(x.coverage*100,1)+'%';$('fill').style.width=Math.min(100,100*x.coverage)+'%';$('gap').textContent=x.available>=x.target?'Illustrative cash capacity covers the stated target, subject to all assumptions.':'Annual cash shortfall: '+T(x.target-x.available);$('warning').textContent='The asset base is a financing requirement, not proof those assets exist or can be acquired without cost. Cash flows may also vary or fail.';$('summary').innerHTML=[['Required target',T(x.target)],['Estimated net yield before extra holdback',T(x.gross)],['Further reserves + administration',T(x.gross-x.available)],['Currently distributable',T(x.available)],['Monthly payment capacity',D(x.per)],['Additional productive assets required',safe(Math.max(0,x.required-x.assets))]].map(v=>'<tr><td>'+v[0]+'</td><td>'+v[1]+'</td></tr>').join('');
+$('sensitivity').innerHTML=[.02,.03,.04,.05,.08].map(y=>{let raw=x.keep>0?x.target/x.keep:Infinity,withOther=x.keep>0?Math.max(0,raw-x.royalty):Infinity;return '<tr><td>'+fmt(y*100,0)+'%</td><td>'+safe(raw/y)+'</td><td>'+safe(withOther/y)+'</td></tr>'}).join('');
+let horizon=Math.min(80,Math.max(1,Math.floor(val('horizon')))),growth=val('growth'),inflation=pct('inflation');rows=[];for(let t=1;t<=horizon;t++){let assets=x.assets+(t-1)*growth,cap=(assets*x.yieldRate+x.royalty)*x.keep,goal=x.target*Math.pow(1+inflation,t-1);rows.push({t,assets,cap,goal,per:cap*1e6/(x.people*12),cover:goal>0?cap/goal:1});}
+$('projection').innerHTML=rows.filter(r=>r.t===1||r.t===horizon||r.t%5===0).map(r=>'<tr><td>'+r.t+'</td><td>'+fmt(r.assets)+'</td><td>'+fmt(r.cap)+'</td><td>'+fmt(r.goal)+'</td><td>'+D(r.per)+'</td><td>'+fmt(r.cover*100,1)+'%</td></tr>').join('');draw(rows);}
+function draw(data){const max=Math.max(.1,...data.map(o=>Math.max(o.cap,o.goal))),x=i=>68+(data.length===1?0:i/(data.length-1)*785),y=z=>255-z/max*220;let s='';for(let i=0;i<=4;i++){let v=max*i/4,yy=y(v);s+='<line x1="68" y1="'+yy+'" x2="855" y2="'+yy+'" stroke="#33465d"/><text x="61" y="'+(yy+4)+'" fill="#a9bece" text-anchor="end" font-size="12">'+fmt(v,1)+'</text>';}
+for(const [name,color] of [['cap','#43dfce'],['goal','#b19bff']])s+='<polyline fill="none" stroke="'+color+'" stroke-width="3" points="'+data.map((r,i)=>x(i)+','+y(r[name])).join(' ')+'"/>';s+='<text x="68" y="284" fill="#a9bece" font-size="12">Year 1</text><text x="855" y="284" text-anchor="end" fill="#a9bece" font-size="12">Year '+data.length+'</text>';$('graph').innerHTML=s;}
+$('csv').onclick=()=>{const lines=['year,productive_assets_trillions,annual_distributable_cash_trillions,ubi_target_trillions,monthly_per_person,coverage_ratio',...rows.map(r=>[r.t,r.assets,r.cap,r.goal,r.per,r.cover].join(','))];const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/csv'}));const a=document.createElement('a');a.href=url;a.download='UEP-030-sufficiency.csv';a.click();URL.revokeObjectURL(url)};
+$('reset').onclick=()=>{Object.entries({monthly:2000,people:330,assets:5,yield:4,royalty:.3,reserve:20,overhead:2,horizon:30,growth:.25,inflation:2.5}).forEach(([k,v])=>$(k).value=v);compute()};document.querySelectorAll('input').forEach(e=>e.addEventListener('input',compute));compute();})();
+</script></body></html>
