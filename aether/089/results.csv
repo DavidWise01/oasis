@@ -1,0 +1,10 @@
+scenario,policy,trials,looks,pre_authorization_pct,post_authorization_pct,post_trials_ever_authorized_pct,unsafe_post_authorizations,total_authorized_looks
+stable_safe,naive_repeated_records,500,30,99,100,100,0,14925
+stable_safe,root_aware_cumulative,500,30,53.61,100,100,0,11521
+stable_safe,root_aware_rolling,500,30,41.84,65.73,98,0,8068
+stable_unsafe,naive_repeated_records,500,30,0.23,0,0,0,17
+stable_unsafe,root_aware_cumulative,500,30,0,0,0,0,0
+stable_unsafe,root_aware_rolling,500,30,0,0,0,0,0
+abrupt_drift,naive_repeated_records,500,30,98.71,31.99,100,2399,9802
+abrupt_drift,root_aware_cumulative,500,30,52.04,8.65,75.4,649,4552
+abrupt_drift,root_aware_rolling,500,30,39.29,0.32,4.6,24,2971
