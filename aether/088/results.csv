@@ -1,0 +1,13 @@
+regime,true_wrong_sign_risk,dependence,policy,trials,approved,approval_pct,mean_unique_roots_at_first_approval,risk_budget,alpha
+safe,0.003,independent,naive_repeated_peeking,1000,1000,100,206,0.02,0.05
+safe,0.003,independent,anytime_unique_roots,1000,1000,100,504.6,0.02,0.05
+safe,0.003,independent,fixed_final_unique_roots,1000,1000,100,1200,0.02,0.05
+safe,0.003,six_copies_one_root,naive_repeated_peeking,1000,1000,100,39,0.02,0.05
+safe,0.003,six_copies_one_root,anytime_unique_roots,1000,998,99.8,503.7,0.02,0.05
+safe,0.003,six_copies_one_root,fixed_final_unique_roots,1000,1000,100,1200,0.02,0.05
+unsafe,0.024,independent,naive_repeated_peeking,1000,58,5.8,345,0.02,0.05
+unsafe,0.024,independent,anytime_unique_roots,1000,2,0.2,690,0.02,0.05
+unsafe,0.024,independent,fixed_final_unique_roots,1000,3,0.3,1200,0.02,0.05
+unsafe,0.024,six_copies_one_root,naive_repeated_peeking,1000,625,62.5,99.8,0.02,0.05
+unsafe,0.024,six_copies_one_root,anytime_unique_roots,1000,1,0.1,450,0.02,0.05
+unsafe,0.024,six_copies_one_root,fixed_final_unique_roots,1000,4,0.4,1200,0.02,0.05
