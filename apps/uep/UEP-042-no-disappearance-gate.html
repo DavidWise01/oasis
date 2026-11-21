@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UEP-042 | No-Disappearance Gate</title><style>
+:root{color-scheme:light;--bg:#fbfaf5;--paper:#fff;--ink:#252538;--muted:#646878;--line:#dedbe3;--purple:#8050c1;--orange:#e98a36;--teal:#118e84;--red:#b95d61}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 90% -15%,#f1e7fd,transparent 55%),var(--bg);font:15px/1.5 system-ui,Segoe UI,sans-serif;color:var(--ink)}
+header,main,footer{max-width:1260px;width:94%;margin:auto}header{padding:36px 0 24px;border-bottom:1px solid var(--line)}h1{font-size:clamp(32px,5vw,60px);line-height:1.09;margin:7px 0}h2{font-size:21px;margin:0 0 14px}h3{font-size:16px;margin:14px 0 9px}p{color:var(--muted)}.eyebrow{color:var(--purple);font-size:11px;letter-spacing:.17em;font-weight:700}.chip{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:30px;padding:5px 10px;display:inline-block;margin:3px}
+main{padding:19px 0;display:grid;gap:15px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:0 3px 12px #241f3009}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.metric small{display:block;color:var(--muted)}.metric b{display:block;font-size:clamp(20px,2.4vw,31px);margin-top:7px}
+.columns{display:grid;grid-template-columns:405px 1fr;gap:15px}.fields{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.full{grid-column:1/-1}label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}
+input,select,button{width:100%;padding:10px;border:1px solid #cbc3d0;border-radius:9px;background:#fff;color:var(--ink);font:inherit}button{cursor:pointer;background:#4a3560;color:#fff;font-weight:650;border:0}button.alt{color:#4d3770;background:#eee8f7;border:1px solid #d9cce9}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:15px}
+.check{display:flex;gap:9px;align-items:center;font-size:13px;margin:10px 0;color:var(--ink)}.check input{width:auto}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.flow div{border:1px solid var(--line);padding:12px;text-align:center;border-radius:9px;font-size:12px}.flow b{display:block;color:var(--purple)}
+.notice{border-left:3px solid var(--orange);background:#fff5e8;padding:12px}.good{color:var(--teal)}.bad{color:var(--red)}
+.scroll{overflow:auto}table{width:100%;min-width:680px;border-collapse:collapse;font-size:13px}td,th{border-bottom:1px solid #e9e5eb;padding:9px;text-align:left}th{color:var(--muted);font-weight:500}
+pre{background:#f5f1f8;border-radius:9px;padding:15px;font-size:12px;white-space:pre-wrap;word-break:break-word}svg{display:block;width:100%;height:auto}a{color:var(--purple)}footer{font-size:12px;color:var(--muted);padding:17px 0 35px}
+@media(max-width:900px){.columns{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:570px){.metrics,.fields,.buttons,.flow{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="eyebrow">OaSIs · UNIVERSAL ECONOMIC PARTICIPATION · BOUND 042</div><h1>The No-Disappearance Gate</h1><p>Identity credentials, eligibility, accrued entitlement and payment delivery are separate records. Test failures without permitting a mistaken account operation to silently destroy an accrued, legally valid claim.</p><span class="chip">PERSON ≠ ACCOUNT</span><span class="chip">HOLD ≠ FORFEIT</span><span class="chip">LEGAL DISPOSITION REQUIRED</span><span class="chip">SYNTHETIC DATA ONLY</span></header>
+<main>
+<section class="metrics"><div class="panel metric"><small>Accrued entitlement</small><b id="accrued">—</b></div><div class="panel metric"><small>Delivered payment</small><b id="paid">—</b></div><div class="panel metric"><small>Held / unresolved</small><b id="held">—</b></div><div class="panel metric"><small>Ledger identity balance</small><b id="invariant">—</b></div></section>
+<section class="flow"><div><b>01 Person</b>Stable internal claimant key</div><div><b>02 Eligibility</b>Time-bounded legal status</div><div><b>03 Accrual</b>Separate owed ledger</div><div><b>04 Delivery</b>Accessible payment route</div><div><b>05 Disposition</b>Paid, held, or legally closed</div></section>
+<section class="columns">
+<div class="panel"><h2>Simulate identity disruption</h2><div class="fields">
+<div class="full"><label for="claim">Synthetic claimant key</label><input id="claim" value="SIM-PERSON-001"></div>
+<div class="full"><label for="event">Event</label><select id="event"><option value="lost">Lost credentials</option><option value="merge">Incorrect identity merge</option><option value="account">Payment account closed</option><option value="move">Relocation</option><option value="death">Death notification</option><option value="offline">No digital access</option></select></div>
+<div><label for="monthly">Monthly entitlement ($)</label><input id="monthly" type="number" value="2000" min="0"></div>
+<div><label for="months">Accrued eligible months</label><input id="months" type="number" value="3" min="0" max="240"></div>
+<div><label for="alreadyPaid">Already paid ($)</label><input id="alreadyPaid" type="number" value="2000" min="0"></div>
+<div><label for="delivery">Delivery mechanism</label><select id="delivery"><option value="bank">Bank / credit union</option><option value="prepaid">Accessible prepaid account</option><option value="check">Paper check / offline</option><option value="hold">Held pending recovery</option></select></div>
+<div><label for="reviewDays">Identity resolution delay (days)</label><input id="reviewDays" type="number" value="30" min="0" max="365"></div>
+<div><label for="future">Future accrual allowed?</label><select id="future"><option value="yes">Assumed eligible</option><option value="unknown">Unknown pending review</option><option value="no">Stopped under assumed rule</option></select></div>
+</div>
+<h3>Authority / evidence declarations</h3>
+<label class="check"><input id="identityVerified" type="checkbox"> Claimant identity independently verified</label>
+<label class="check"><input id="eligibilityVerified" type="checkbox"> Time-specific eligibility independently verified</label>
+<label class="check"><input id="channelVerified" type="checkbox"> Replacement payment route verified</label>
+<label class="check"><input id="legalClose" type="checkbox"> Specific lawful disposition authority established</label>
+<div class="buttons"><button id="append">Append event snapshot</button><button class="alt" id="demos">Load sample disruptions</button></div>
+<div class="buttons"><button class="alt" id="json">Export JSON</button><button class="alt" id="csv">Export CSV</button></div>
+<p class="notice">Only synthetic records belong in this prototype. Checkbox assertions do not establish real identity, legal eligibility, payment settlement or probate rights. The model never performs an actual cancellation or transfer.</p>
+</div>
+<div style="display:grid;gap:15px">
+<section class="panel"><h2>Entitlement conservation</h2>
+<svg viewBox="0 0 850 200" aria-label="Accrued funds allocation into paid, held and legally closed" role="img"><rect x="30" y="45" width="790" height="38" fill="#ece6f2" rx="10"/><rect id="paidbar" x="30" y="45" width="0" height="38" fill="#159987" rx="10"/><rect id="heldbar" x="30" y="95" width="0" height="24" fill="#8d63ce" rx="5"/><rect id="closedbar" x="30" y="129" width="0" height="24" fill="#e98a36" rx="5"/><text x="30" y="20" font-size="15" fill="#4e4460">Allocated payment ledger</text><text x="30" y="179" font-size="12" fill="#646878">Teal: paid · Purple: held · Orange: lawful disposition (if established)</text></svg>
+<div id="detail"></div><p id="verdict" class="notice"></p></section>
+<section class="panel"><h2>Independent claim processing</h2><div id="audit"></div><pre>New credential → same person key
+New account → same accrued entitlement
+Unresolved merge → quarantine identity link
+Unpaid amount → hold with explicit trace
+Ineligible future period → no new accrual
+Past accrued balance → lawful disposition needed</pre></section>
+</div>
+</section>
+<section class="panel"><h2>Append-only event archive</h2><div class="scroll"><table><thead><tr><th>#</th><th>Synthetic key</th><th>Disruption</th><th>Accrued</th><th>Paid</th><th>Held</th><th>Release status</th></tr></thead><tbody id="ledger"></tbody></table></div><p id="archiveNote"></p></section>
+<section class="panel"><h2>Legal and design boundaries</h2><div class="scroll"><table><thead><tr><th>Issue</th><th>Necessary distinction</th></tr></thead><tbody>
+<tr><td>Missing credential</td><td>An authentication failure is not necessarily an eligibility failure</td></tr>
+<tr><td>Record collision</td><td>Similar names or IDs are not proof of a single person; preserve both histories</td></tr>
+<tr><td>Account closure</td><td>Payment route status is separate from unpaid entitlement status</td></tr>
+<tr><td>Moving jurisdictions</td><td>Future eligibility can change; past claims require their own legal treatment</td></tr>
+<tr><td>Death</td><td>Future accrual, already earned entitlements and estate disposition are distinct questions</td></tr>
+<tr><td>Unclaimed property</td><td>Abandonment, escheat and expiration rules require actual applicable law and due process</td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>Next natural bound — UEP-043: Portable Economic Identity</h2><p>Design an identity-minimizing entitlement credential that can survive provider changes and offline operation without letting the administrator build a surveillance system. Test duplicate prevention, lawful succession, recovery and appeal without exposing personal data.</p>
+<pre>ECONOMIC ENTITLEMENT ≠ DIGITAL ACCOUNT
+UNPAID ≠ DISAPPEARED
+UNVERIFIED ≠ FORFEITED
+DEATH ≠ AUTOMATIC ERASURE OF PAST RECORDS
+RESTITUTION ≠ TECHNOLOGY DIVIDEND</pre>
+<p><a href="./UEP-041-continuity-essential-rights.html">Previous iteration: UEP-041</a></p></section>
+</main><footer>UEP-042 · Research simulator, not a benefits portal. No real IDs or claimant information should be entered.</footer>
+<script>(()=>{'use strict';const $=id=>document.getElementById(id),num=id=>Math.max(0,Number($(id).value)||0),fmt=x=>'$'+Number(x).toLocaleString('en-US',{maximumFractionDigits:2}),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let ledger=[];
+function evaluate(){const key=$('claim').value.trim(),event=$('event').value,accrued=num('monthly')*num('months'),paid=Math.min(num('alreadyPaid'),accrued),held=Math.max(0,accrued-paid),identity=$('identityVerified').checked,eligible=$('eligibilityVerified').checked,channel=$('channelVerified').checked,close=$('legalClose').checked,collision=ledger.some(x=>x.key===key&&x.event===event),release=identity&&eligible&&channel&&event!=='merge'&&event!=='death',balanced=Math.abs(accrued-paid-held)<.001;return{key,event,accrued,paid,held,identity,eligible,channel,close,release,collision,balanced,days:num('reviewDays'),future:$('future').value,delivery:$('delivery').value};}
+function render(){let x=evaluate();$('accrued').textContent=fmt(x.accrued);$('paid').textContent=fmt(x.paid);$('held').textContent=fmt(x.held);$('invariant').textContent=x.balanced?'BALANCED':'ERROR';let ratio=x.accrued>0?x.paid/x.accrued:0,heldRatio=x.accrued>0?x.held/x.accrued:0;$('paidbar').setAttribute('width',String(790*ratio));$('heldbar').setAttribute('width',String(790*heldRatio));$('closedbar').setAttribute('width','0');$('detail').innerHTML='<p>Accrued '+fmt(x.accrued)+' = paid '+fmt(x.paid)+' + held '+fmt(x.held)+'. No funds are deleted or marked forfeited in this simulator.</p>';$('verdict').textContent=x.release?'Model release conditions satisfied by input declarations. This is not independently verified and no payment occurs.':x.event==='death'?'Future accrual and the legal treatment of the already accrued balance require separate determinations. No automatic deletion.':'HOLD pending evidence, account recovery, or lawful resolution. An entitlement remains a distinct ledger entry.';$('audit').innerHTML=[['Claimant identity confirmed (asserted)',x.identity],['Eligibility for accrued months (asserted)',x.eligible],['Payment route verified (asserted)',x.channel],['Specific lawful disposition identified (asserted)',x.close],['Ledger arithmetic conserved',x.balanced]].map(([s,yes])=>'<p><span class="'+(yes?'good':'bad')+'">'+(yes?'✓':'✕')+'</span> '+s+'</p>').join('');$('ledger').innerHTML=ledger.map((r,i)=>'<tr><td>'+(i+1)+'</td><td>'+esc(r.key)+'</td><td>'+esc(r.event)+'</td><td>'+fmt(r.accrued)+'</td><td>'+fmt(r.paid)+'</td><td>'+fmt(r.held)+'</td><td>'+(r.release?'Model-ready':'Held')+'</td></tr>').join('');$('archiveNote').textContent=ledger.length+' immutable session snapshots. Similar keys may refer to the same claimant at different times; rows are events, not distinct people or additive fund balances.';}
+function append(){const x=evaluate();if(!x.key){alert('Enter a synthetic case key.');return;}ledger.push({...x,seq:ledger.length+1,timestamp:new Date().toISOString(),status:'simulation-only'});render()}
+$('append').onclick=append;
+$('demos').onclick=()=>{ledger=[];const cases=[['DEMO-LOST','lost',2000,3,2000],['DEMO-MERGE','merge',2000,3,0],['DEMO-ACCOUNT','account',2000,2,0],['DEMO-MOVE','move',2000,4,4000],['DEMO-DEATH','death',2000,1,0]];cases.forEach(([key,event,pay,months,already])=>{ $('claim').value=key;$('event').value=event;$('monthly').value=pay;$('months').value=months;$('alreadyPaid').value=already;ledger.push({...evaluate(),seq:ledger.length+1,timestamp:'illustrative',status:'simulation-only'});});$('claim').value='SIM-PERSON-006';render();}
+function download(content,name,mime){let url=URL.createObjectURL(new Blob([content],{type:mime})),a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
+$('json').onclick=()=>download(JSON.stringify({model:'UEP-042',synthetic:true,events:ledger},null,2),'UEP-042-entitlement-events.json','application/json');
+$('csv').onclick=()=>download(['sequence,synthetic_key,event,accrued,paid,held,status',...ledger.map((r,i)=>[i+1,'"'+r.key.replaceAll('"','""')+'"',r.event,r.accrued,r.paid,r.held,r.release?'model-ready':'held'].join(','))].join('\n'),'UEP-042-entitlement-events.csv','text/csv');
+document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',render));render()})();</script></body></html>
