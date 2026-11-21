@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UEP-024 | The Realization Gate</title>
+<style>
+:root{color-scheme:dark;--bg:#080d17;--panel:#101d30;--panel2:#16283d;--line:#31485e;--text:#eaf8ff;--muted:#a3b9cc;--cyan:#47ecdb;--orange:#ffb568;--purple:#bea7ff;--red:#ff8e9d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 70% 50% at 90% -10%,#1b3150,transparent),var(--bg);color:var(--text);font:15px/1.5 system-ui,Segoe UI,sans-serif}a{color:var(--cyan)}header,main,footer{width:min(1260px,94%);margin:auto}header{padding:40px 0 22px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:.2em;text-transform:uppercase}h1{font-size:clamp(32px,5vw,64px);line-height:1.06;margin:8px 0}h2{font-size:20px;margin:0 0 14px}p{color:var(--muted);margin:8px 0 16px}.shell{padding:22px 0;display:grid;gap:18px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:linear-gradient(140deg,#14273b,#101a29);border:1px solid var(--line);border-radius:14px;padding:17px;min-width:0}.card small{display:block;color:var(--muted)}.metric{font-size:clamp(20px,2.5vw,31px);font-weight:750;letter-spacing:-.04em;margin-top:8px}.two{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.bar{display:flex;height:12px;border-radius:12px;overflow:hidden;background:#273c51}.bar div{transition:width .25s}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.stage{border:1px solid var(--line);padding:12px;border-radius:11px;text-align:center;min-height:88px}.stage b{display:block;color:var(--cyan);font-size:13px}.stage span{font-size:12px;color:var(--muted)}label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}input,select,button{background:#0a1422;border:1px solid #3a546c;color:var(--text);border-radius:9px;padding:10px;font:inherit;width:100%}input:focus,select:focus{outline:1px solid var(--cyan)}button{cursor:pointer;background:#153c43;border-color:#387e7e;color:#d9fffa;font-weight:650}button:hover{filter:brightness(1.15)}button.secondary{background:#20283e;border-color:#555578}.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.check{display:flex;gap:9px;align-items:center;margin:8px 0;color:var(--text)}.check input{width:auto}.tag{display:inline-block;padding:3px 9px;border-radius:30px;border:1px solid var(--line);color:var(--muted);font-size:11px}.warn{color:var(--orange)}.good{color:var(--cyan)}.bad{color:var(--red)}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:9px 8px;border-bottom:1px solid #263c51}th{color:var(--muted);font-weight:500}td.num{text-align:right;font-variant-numeric:tabular-nums}#records{overflow-x:auto}pre{white-space:pre-wrap;word-break:break-word;background:#091421;border-radius:10px;padding:14px;color:#cbeaff;font-size:12px}.note{border-left:3px solid var(--purple);padding-left:14px}footer{padding:22px 0 42px;color:var(--muted);font-size:12px}@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.fields{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fields,.buttons,.grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="eyebrow">OaSIs / Universal Economic Participation / Bound 024</div><h1>The Realization Gate</h1><p>Promises are not payments. Track each candidate cash flow from expected → invoiced → collected → verified → distributable. Every simulated receipt is tagged; no claim of real government revenue is made.</p><span class="tag">OBSERVATION-ONLY</span> <span class="tag">APPEND-ONLY SNAPSHOTS</span> <span class="tag">RESTITUTION SEPARATE</span></header>
+<main class="shell">
+<section class="grid" aria-live="polite">
+<div class="card"><small>Expected, non-cash</small><div class="metric" id="mExpected">$0</div></div>
+<div class="card"><small>Collected cash</small><div class="metric" id="mCollected">$0</div></div>
+<div class="card"><small>Verified and eligible</small><div class="metric" id="mEligible">$0</div></div>
+<div class="card"><small>Available for payout</small><div class="metric good" id="mPayout">$0</div></div>
+</section>
+<section class="card"><h2>Five-layer cash waterfall</h2><div class="flow"><div class="stage"><b>01 · Forecast</b><span>Possible receipt, never cash</span></div><div class="stage"><b>02 · Invoice</b><span>Recognized claim, not settled</span></div><div class="stage"><b>03 · Cash</b><span>Bank-settled receipt</span></div><div class="stage"><b>04 · Verify</b><span>Unique right + evidence</span></div><div class="stage"><b>05 · Release</b><span>Costs, reserve, authority</span></div></div><div class="bar"><div id="bReserve" style="background:#a78bfa;width:0"></div><div id="bPayout" style="background:#47ecdb;width:0"></div></div><p id="waterfallNote"></p></section>
+<div class="two">
+<section class="card"><h2>Receipt controls</h2>
+<div class="fields">
+<div><label for="source">Ownership engine</label><select id="source"><option>Equity dividend</option><option>License royalty</option><option>Automation revenue share</option><option>Infrastructure lease</option></select></div>
+<div><label for="expected">Forecast ($M)</label><input id="expected" type="number" value="100" min="0" step="1"></div>
+<div><label for="invoiced">Invoiced / declared ($M)</label><input id="invoiced" type="number" value="90" min="0" step="1"></div>
+<div><label for="collected">Bank-settled ($M)</label><input id="collected" type="number" value="75" min="0" step="1"></div>
+<div><label for="costs">Attributable costs ($M)</label><input id="costs" type="number" value="5" min="0" step="1"></div>
+<div><label for="reserves">Restricted / reserve fraction (%)</label><input id="reserves" type="number" value="35" min="0" max="100" step="1"></div>
+<div><label for="people">Eligible people (millions)</label><input id="people" type="number" value="210" min=".1" step="1"></div>
+<div><label for="fundDraw">Payout cap on verified net (%)</label><input id="fundDraw" type="number" value="30" min="0" max="100" step="1"></div>
+<div><label for="rightId">Ownership-right identifier</label><input id="rightId" value="RIGHT-001"></div>
+</div>
+<label class="check"><input id="contract" type="checkbox" checked> Signed public ownership / royalty / lease right</label>
+<label class="check"><input id="bank" type="checkbox" checked> Independent bank settlement record exists</label>
+<label class="check"><input id="lineage" type="checkbox" checked> Source ancestry checked; no duplicate recording</label>
+<label class="check"><input id="authority" type="checkbox" checked> Lawful fund deposit and payout authority documented</label>
+<div class="buttons"><button id="post">Append receipt snapshot</button><button class="secondary" id="seed">Load four examples</button><button class="secondary" id="export">Export JSON</button></div>
+<p id="verdict" role="status"></p>
+</section>
+<section class="card"><h2>Gate audit</h2><div id="audit"></div><h2 style="margin-top:22px">Restitution ≠ dividend</h2><p class="note">Restitution liabilities must be established and settled in a separately sourced ledger. The balance shown here excludes restitution claims and never marks those liabilities discharged.</p>
+<pre>REST-LEDGER: owed → validated → paid → outstanding
+TECH-FUND: owned → earned → collected → reserved → dividend
+
+A payment from TECH-FUND does not reduce REST-LEDGER.</pre>
+<h2>Accounting guardrails</h2><p>Cash is capped by invoiced amounts for this simplified demonstration. Negative claims, duplicate ownership IDs, missing bank evidence, or missing distribution authority are gated. This is a cash-flow experiment, not GAAP accounting or an audit opinion.</p></section></div>
+<section class="card"><h2>Immutable session snapshots</h2><p>Entries append during this browser session, with sequential identifiers and provenance checks. Export the JSON to retain history; no hidden cloud storage or real verification occurs.</p><div id="records"><table><thead><tr><th>Seq</th><th>Source</th><th>Right ID</th><th>Collected</th><th>Verified net</th><th>Dividend</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div><p id="total"></p></section>
+<section class="card"><h2>Next bound · UEP-025: The Sustainability Gate</h2><p>Separate a one-time cash distribution from a durable endowment draw. Test sequence-of-returns risk, inflation protection, mandatory liquidity buffers and downturns. A defensible permanent dividend must be measured against long-term asset preservation—not just a single year of positive receipts.</p></section>
+</main><footer>UEP-024 · A research prototype in OaSIs · Simulated values only · No real funds or private financial records accessed.</footer>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),money=n=>'$'+Number(n||0).toLocaleString('en-US',{maximumFractionDigits:2})+'M',num=id=>Math.max(0,Number($(id).value)||0);
+let ledger=[],seq=0;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function evaluate(){
+const expected=num('expected'),invoiced=num('invoiced'),collected=num('collected'),costs=num('costs'),reserve=Math.min(1,num('reserves')/100),cap=Math.min(1,num('fundDraw')/100),people=Math.max(.1,num('people')),rightId=$('rightId').value.trim(),source=$('source').value;
+const checks={contract:$('contract').checked,bank:$('bank').checked,lineage:$('lineage').checked,authority:$('authority').checked,unique:!!rightId&&!ledger.some(x=>x.rightId===rightId&&x.status==='ADMITTED'),bounded:collected<=invoiced&&invoiced<=expected,costs:costs<=collected};
+const ok=Object.values(checks).every(Boolean),net=ok?Math.max(0,collected-costs):0,restricted=net*reserve,free=net-restricted,payout=free*cap,retained=free-payout;
+return{source,rightId,expected,invoiced,collected,costs,reserve,cap,people,checks,ok,net,restricted,free,payout,retained,person:payout/people,status:ok?'ADMITTED':'QUARANTINED'};}
+function render(){
+const x=evaluate();$('mExpected').textContent=money(x.expected);$('mCollected').textContent=money(x.collected);$('mEligible').textContent=money(x.net);$('mPayout').textContent=money(x.payout);
+$('bReserve').style.width=(x.net?x.restricted/x.net*100:0)+'%';$('bPayout').style.width=(x.net?x.payout/x.net*100:0)+'%';
+$('waterfallNote').textContent='Verified net '+money(x.net)+' · restricted '+money(x.restricted)+' · retained unrestricted '+money(x.retained)+' · potential distribution '+money(x.payout)+' (~$'+x.person.toFixed(2)+' per eligible person).';
+$('audit').innerHTML=Object.entries(x.checks).map(([k,v])=>'<div style="padding:7px 0;border-bottom:1px solid #263c51"><span class="'+(v?'good':'bad')+'">'+(v?'✓':'✕')+'</span> '+esc(({contract:'Documented ownership right',bank:'Independent cash settlement',lineage:'Unique source / ancestry',authority:'Legal distribution authority',unique:'Unique right identifier',bounded:'Forecast ≥ invoice ≥ cash',costs:'Costs do not exceed receipts'})[k])+'</div>').join('');
+$('verdict').innerHTML=x.ok?'<span class="good">PASS · model-admissible (not externally verified)</span>':'<span class="bad">QUARANTINE · receipt not distributable</span>';
+$('rows').innerHTML=ledger.map(r=>'<tr><td>'+r.seq+'</td><td>'+esc(r.source)+'</td><td>'+esc(r.rightId)+'</td><td class="num">'+money(r.collected)+'</td><td class="num">'+money(r.net)+'</td><td class="num">'+money(r.payout)+'</td><td class="'+(r.ok?'good':'bad')+'">'+r.status+'</td></tr>').join('');
+$('total').textContent='Session admitted distribution: '+money(ledger.reduce((a,x)=>a+x.payout,0))+' · Quarantined snapshots: '+ledger.filter(x=>!x.ok).length+'.';
+}
+function append(){const x=evaluate();ledger.push({...x,seq:++seq,timestamp:new Date().toISOString(),mode:'illustrative-only'});$('rightId').value='RIGHT-'+String(seq+1).padStart(3,'0');render();}
+$('post').addEventListener('click',append);
+$('seed').addEventListener('click',()=>{ledger=[];seq=0;const demo=[['Equity dividend',100,90,75,5,35],['License royalty',70,63,60,3,25],['Automation revenue share',120,110,65,7,45],['Infrastructure lease',80,80,72,10,30]];demo.forEach((d,i)=>{const net=d[3]-d[4],restricted=net*d[5]/100,payout=(net-restricted)*.3;ledger.push({seq:++seq,source:d[0],rightId:'DEMO-'+(i+1),expected:d[1],invoiced:d[2],collected:d[3],costs:d[4],reserve:d[5]/100,net,restricted,payout,retained:net-restricted-payout,people:210,ok:true,status:'ADMITTED',checks:{contract:true,bank:true,lineage:true,authority:true,unique:true,bounded:true,costs:true},timestamp:new Date().toISOString(),mode:'illustrative-only'});});$('rightId').value='RIGHT-005';render();});
+$('export').addEventListener('click',()=>{const b=new Blob([JSON.stringify({version:'UEP-024',exportedAt:new Date().toISOString(),currencyUnit:'USD millions',evidenceStatus:'illustrative only',records:ledger},null,2)],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='UEP-024-realization-ledger.json';a.click();URL.revokeObjectURL(u);});
+document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',render));render();
+})();
+</script></body></html>
