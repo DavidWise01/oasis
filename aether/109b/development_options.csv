@@ -1,0 +1,6 @@
+roots,unsafe_lower,per_scenario_cost_nonincreasing,safe_resume_delay_le_3,safe_resume_usefulness,passed,total_savings
+480,True,True,True,True,True,18022.0
+500,True,True,True,True,True,17614.0
+520,True,True,True,True,True,17206.0
+540,True,True,True,True,True,16798.0
+560,True,False,True,True,False,16390.0
