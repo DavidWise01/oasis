@@ -1,7 +1,7 @@
-# AETHER Phase II — Live Progress
+# AETHER Phase II — CLOSED / Frozen Progress
 
-**Completed: 7 / 8 turns · 87.5%**  
-**Current status: AETHER-102B accepted under the declared synthetic stress gate. AETHER-103 next.**
+**Completed: 8 / 8 turns · 100%**  
+**Current status: CLOSED on 2026-11-22 after AETHER-103 integration checks passed. No further Phase II turns.**
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
@@ -12,7 +12,7 @@
 | 5 | 100 Conditional reauthorization | **Accepted via 100B** | **62.5%** |
 | 6 | 101 Best-admissible action | **Accepted** | **75%** |
 | 7 | 102 Homeostatic stress | **Accepted via 102B; 102 failure preserved** | **87.5%** |
-| 8 | 103 Freeze and closure | Not started | 87.5% |
+| 8 | 103 Freeze and closure | **Accepted; phase CLOSED** | **100%** |
 
 ## Evidence and completion gate
 
@@ -134,6 +134,17 @@
 - [AETHER-102B source and interactive report](102b/) verified in repository; live GitHub Pages deployment separate.
 
 **Next AETHER-103 — phase integration and immutable freeze, 100% target upon successful verification.**
+
+## AETHER-103 closure and final acceptance
+
+- Final integration: **60 synthetic cases × 96 ticks = 5,760** executed controller decisions.
+- All five checks passed on all 60 cases: deterministic replay, changed-future prefix independence, complete hash-chain recomputation, action admissibility, and unrequested sensor independence (**300/300 total**).
+- Action distribution: **2,512 DIRECT**, **85 GUARDED**, **3,163 HOLD**.
+- **Seven accepted predecessor variants** and **four retained failed predecessor variants** inventoried with source/result/manifest SHA-256 values. No missing required local files.
+- [AETHER-103 closure laboratory](103/) · [AETHER-103 immutable-source inventory](103/inventory.csv) · [Integration case audit](103/integration_cases.csv).
+- **Phase II is closed at 8/8 = 100%**. This percentage refers to the agreed eight-bound *research plan*, not universal safety or real-world production fitness. A new research scope begins in a separate phase with a new percentage tracker.
+- Phase closure occurred **without witness quorum, Byzantine protocols, or distributed voting**; these were outside this phase's hegemonic/diodic single-controller scope.
+- GitHub source and Pages-ready HTML are committed. Live GitHub Pages accessibility is not independently certified.
 
 ## Phase rules
 
