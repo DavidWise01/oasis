@@ -1,18 +1,18 @@
 # AETHER Phase II — Live Progress
 
-**Completed: 3 / 8 turns · 37.5%**  
-**Current status: AETHER-099 failed the acceptance gate; AETHER-099B next.**
+**Completed: 4 / 8 turns · 50%**  
+**Current status: AETHER-099B accepted. Next: AETHER-100.**
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
 | 1 | 096 Context detection | **Accepted via 096B** | **12.5%** |
 | 2 | 097 Context contradictions | **Accepted** | **25%** |
 | 3 | 098 Diodic decision path | **Accepted** | **37.5%** |
-| 4 | 099 Revocation latency | **Tested; FAILED; revise as 099B** | **37.5%** |
-| 5 | 100 Conditional reauthorization | Not started | 37.5% |
-| 6 | 101 Best-admissible action | Not started | 37.5% |
-| 7 | 102 Homeostatic stress | Not started | 37.5% |
-| 8 | 103 Freeze and closure | Not started | 37.5% |
+| 4 | 099 Revocation latency | **Accepted via 099B** | **50%** |
+| 5 | 100 Conditional reauthorization | Not started | 50% |
+| 6 | 101 Best-admissible action | Not started | 50% |
+| 7 | 102 Homeostatic stress | Not started | 50% |
+| 8 | 103 Freeze and closure | Not started | 50% |
 
 ## Evidence and completion gate
 
@@ -60,6 +60,18 @@
 - The decoy context is a preserved counterexample; sensor signals can change while action risk stays safe.
 - The rolling-only controller retains governing authority. [AETHER-099 failed experiment](099/).
 - **Completion stays 3 / 8 = 37.5%.** AETHER-099B will use new development and holdout seeds.
+
+## AETHER-099B accepted correction — Turn 4
+
+- Development on **40 distinct seeds per regime**; 18 candidate alarm gates; frozen choice: audit error count ≥2, observed proxy ≥2.0, no extra cooldown.
+- Independent final evaluation on **80 new seeds per regime**, 24,000 ticks/controller across abrupt, gradual, decoy conditions.
+- Unsafe authorizations: rolling **42**, conditional **3** (92.86% reduction).
+- Additional safe HOLDs **333**, 1.6584% of safe inspections (≤5% acceptance gate).
+- Modeled cost: rolling **159,600.0**, conditional **157,718.4**, savings **1,881.6**.
+- Continuous sensor comparator remains expensive, **172,575.0**.
+- The decoy regime alone still favors rolling-only; aggregate acceptance is not universal dominance.
+- [AETHER-099B reproducible source and report](099b/).
+- **Phase II now 4/8 = 50%. Next AETHER-100 fresh-evidence reauthorization.**
 
 ## Phase rules
 
