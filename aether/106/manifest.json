@@ -1,0 +1,23 @@
+{
+  "bound": "AETHER-106",
+  "phase": "IV",
+  "status": "ACCEPTED",
+  "phase_completion_pct": 25.0,
+  "seed_first": 106001,
+  "seed_last": 106500,
+  "risks": [0.003, 0.018, 0.035, 0.065],
+  "modes": ["iid", "block10"],
+  "looks": [40, 140, 280, 560],
+  "alpha": 0.05,
+  "certification_limit": 0.025,
+  "acceptance": {
+    "iid_safe_acts_min": 250,
+    "risky_false_certificates_max_per_500": 20,
+    "correlated_root_aware_false_less_than_naive_optional_at_risk_.035": true
+  },
+  "limitations": [
+    "Only synthetic IID Bernoulli roots or correctly identified blocks of ten are covered.",
+    "Four-look alpha spending is not an across-episode or nonstationary confidence guarantee.",
+    "Correlation-aware certification withheld all 500 safe block-correlated cases."
+  ]
+}
