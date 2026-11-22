@@ -45,18 +45,21 @@ TODAY'S PAYOUT MUST NOT SILENTLY LIQUIDATE TOMORROW'S PRODUCTIVE CAPACITY</pre><
 <script>(()=>{'use strict';
 const $=id=>document.getElementById(id),n=id=>Math.max(0,Number($(id).value)||0),b=x=>'$'+Number(x).toLocaleString('en-US',{maximumFractionDigits:2})+'B',m=x=>'$'+Number(x).toLocaleString('en-US',{maximumFractionDigits:2}),esc=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])),cases=['stable','recession','automation','infrastructure','combined'];
 let latest=null,comparison=[],promised=false;
-function config(){return{scenario:$('scenario').value,assets:[n('assetEquity'),n('assetInfrastructure'),n('assetIP')],income:[n('equityIncome'),n('infrastructureIncome'),n('ipIncome'),n('otherIncome')],operating:n('operating'),maintenance:n('maintenance'),reinvest:Math.min(1,n('reinvest')/100),stabilize:Math.min(1,n('stabilize')/100),floorShare:Math.min(1,n('floorShare')/100),people:Math.max(.001,n('people')),openingCash:n('openingCash'),minReserve:n('minReserve'),growth:Math.max(-.5,Math.min(.5,Number($('growth').value)||0))/100,policy:$('policy').value}}
+function config(){return{scenario:$('scenario').value,assets:[n('assetEquity'),n('assetInfrastructure'),n('assetIP')],income:[n('equityIncome'),n('infrastructureIncome'),n('ipIncome'),n('otherIncome')],operating:n('operating'),maintenance:n('maintenance'),reinvest:Math.min(1,n('reinvest')/100),stabilize:Math.min(1,n('stabilize')/100),floorShare:Math.min(1,n('floorShare')/100),people:Math.max(.001,n('people')),openingCash:n('openingCash'),minReserve:n('minReserve'),growth:Math.max(-50,Math.min(50,Number($('growth').value)||0))/100,policy:$('policy').value}}
 function forecast(scenario,inputs){let c=inputs||config(),assetValue=c.assets.reduce((a,v)=>a+v,0),reserve=c.openingCash,liquidated=0,paidEssentials=0,paidDividends=0,unfunded=0,operatingTotal=0,maintenanceTotal=0,reinvestTotal=0,stabilizeTotal=0,receivedTotal=0,rows=[];const baseGross=c.income.reduce((a,v)=>a+v,0);let promisedPool=Math.max(0,(baseGross-c.operating-c.maintenance)*(1-c.reinvest)*(1-c.stabilize));
 for(let year=1;year<=10;year++){let factor=Math.pow(1+c.growth,year-1),shock=1,costShock=1;if(['recession','combined'].includes(scenario)&&year>=2&&year<=4)shock*=.55;if(scenario==='automation')factor*=Math.pow(1.11,year-1);if(['infrastructure','combined'].includes(scenario)&&year>=3&&year<=5){shock*=.68;costShock=1.35}
 let gross=baseGross*factor*shock,ops=c.operating*costShock,maintenance=c.maintenance*costShock,availableIncome=Math.max(0,gross-ops-maintenance),deficit=Math.max(0,ops+maintenance-gross),cashForObligations=reserve+gross,actualCosts=Math.min(cashForObligations,ops+maintenance),unpaidCosts=ops+maintenance-actualCosts;reserve=cashForObligations-actualCosts;
-let invest=availableIncome*c.reinvest,stabilize=availableIncome*(1-c.reinvest)*c.stabilize,planned=Math.max(0,availableIncome-invest-stabilize),distributable=planned,assetDraw=0,yearUnfunded=unpaidCosts;
-let protectedLiquidity=Math.max(0,reserve-c.minReserve);let payable=Math.min(planned,protectedLiquidity);if(c.policy==='hardstop'&&reserve<c.minReserve+planned)payable=0;
+let invest=availableIncome*c.reinvest,stabilize=availableIncome*(1-c.reinvest)*c.stabilize,planned=Math.max(0,availableIncome-invest-stabilize),assetDraw=0,yearUnfunded=unpaidCosts,payable=0,reserveContribution=0;
 if(c.policy==='unsafe'){let promise=promisedPool,fromCash=Math.min(Math.max(0,reserve),promise);let missing=promise-fromCash;assetDraw=Math.min(assetValue-liquidated,missing);liquidated+=assetDraw;reserve-=fromCash;payable=fromCash+assetDraw;yearUnfunded+=Math.max(0,missing-assetDraw)}
-else{yearUnfunded+=Math.max(0,planned-payable)}
-// invest and stabilization are earmarked from realized income but not additions to asset valuation.
-if(c.policy!=='unsafe'){reserve-=payable;reserve-=Math.min(reserve,invest);reinvestTotal+=Math.min(invest,Math.max(0,gross-ops-maintenance));}
-// For unsafe case, no promised principal preservation; reinvestment skipped.
-let reserveContribution=c.policy==='unsafe'?0:Math.max(0,Math.min(reserve,stabilize));stabilizeTotal+=reserveContribution;
+else{
+  let investPaid=Math.min(Math.max(0,reserve),invest);reserve-=investPaid;reinvestTotal+=investPaid;
+  reserveContribution=Math.min(stabilize,Math.max(0,reserve));
+  let freeCash=Math.max(0,reserve-c.minReserve-reserveContribution);
+  payable=Math.min(planned,freeCash);
+  if(c.policy==='hardstop'&&freeCash<planned)payable=0;
+  reserve-=payable;yearUnfunded+=Math.max(0,planned-payable)
+}
+stabilizeTotal+=reserveContribution;
 let services=payable*c.floorShare,dividends=payable-services;paidEssentials+=services;paidDividends+=dividends;unfunded+=yearUnfunded;operatingTotal+=ops;maintenanceTotal+=maintenance;receivedTotal+=gross;
 rows.push({year,gross,ops,maintenance,invest:c.policy==='unsafe'?0:invest,stabilize:reserveContribution,services,dividends,reserve,unfunded:yearUnfunded,assetDraw,principalRemaining:assetValue-liquidated});
 }
