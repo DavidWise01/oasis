@@ -1,7 +1,7 @@
 # AETHER Phase II — Live Progress
 
-**Completed: 6 / 8 turns · 75%**  
-**Current status: AETHER-102 failed per-regime generalization; AETHER-102B next.
+**Completed: 7 / 8 turns · 87.5%**  
+**Current status: AETHER-102B accepted under the declared synthetic stress gate. AETHER-103 next.**
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
@@ -11,8 +11,8 @@
 | 4 | 099 Revocation latency | **Accepted via 099B** | **50%** |
 | 5 | 100 Conditional reauthorization | **Accepted via 100B** | **62.5%** |
 | 6 | 101 Best-admissible action | **Accepted** | **75%** |
-| 7 | 102 Homeostatic stress | **TESTED — FAILED; revise as 102B** | **75%** |
-| 8 | 103 Freeze and closure | Not started | 75% |
+| 7 | 102 Homeostatic stress | **Accepted via 102B; 102 failure preserved** | **87.5%** |
+| 8 | 103 Freeze and closure | Not started | 87.5% |
 
 ## Evidence and completion gate
 
@@ -119,6 +119,21 @@
 - Prespecified acceptance required no *per-regime* cost regression: **FAILED**.
 - **Completion holds at 6/8 = 75%.** [AETHER-102 failed test](102/).
 - **Next AETHER-102B:** observation-based guard-effectiveness gate, frozen then tested on untouched seeds.
+
+## AETHER-102B completion evidence
+
+- AETHER-102 failed its no-regime-regression gate because of degraded guarded effectiveness; preserved at [102](102/).
+- AETHER-102B introduces a noisy observable guard-health diagnostic **only when GUARDED is otherwise admissible**. The hidden guard-effectiveness parameter is never passed to the runtime controller.
+- Threshold **1.15** selected on development seeds 102301–102320 and evaluated on fresh seeds 102401–102480.
+- **400 evaluation cases × 96 ticks = 38,400 ticks per controller** in the five existing synthetic stress environments.
+- Held-out total cost: direct-only **326,530.0**, unmonitored **317,915.0**, monitored **317,399.8**.
+- Monitored savings **9,130.2** vs direct-only; **515.2** vs unmonitored.
+- Previously failing guard-degradation regime now shows **937.76** savings vs direct-only; no regime cost regression.
+- Unsafe authorized ticks **288** for all three policies; 1,600/1,600 replay/prefix/hash/admissibility checks passed.
+- The sensor is a synthetic informative proxy and has not been validated in any actual hardware.
+- [AETHER-102B source and interactive report](102b/) verified in repository; live GitHub Pages deployment separate.
+
+**Next AETHER-103 — phase integration and immutable freeze, 100% target upon successful verification.**
 
 ## Phase rules
 
