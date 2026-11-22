@@ -1,0 +1,4 @@
+policy,eligible,dev_cost,unsafe_auth,safe_holds,delay
+fresh2,1,82760.0,3,359,1.056
+fresh2_quiet,1,82760.0,3,359,1.056
+fresh3,1,83017.5,3,440,1.569
