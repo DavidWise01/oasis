@@ -1,39 +1,44 @@
 {
-  "bound": "AETHER-102B",
+  "bound": "AETHER-103",
+  "phase": "II",
   "status": "PASS",
-  "phase_percent": 87.5,
-  "chosen_threshold": 1.15,
-  "development_seeds": [
-    102301,
-    102320
+  "closure": "CLOSED",
+  "completed_turns": 8,
+  "total_turns": 8,
+  "phase_pct": 100,
+  "retained_failed_variants": [
+    "096",
+    "099",
+    "100",
+    "102"
   ],
-  "holdout_seeds": [
-    102401,
-    102480
+  "accepted_variants": [
+    "096b",
+    "097",
+    "098",
+    "099b",
+    "100b",
+    "101",
+    "102b"
   ],
-  "diagnostic_cost": 0.08,
-  "diagnostic_sd": 0.25,
-  "acceptance": {
-    "no_regime_cost_regression": true,
-    "overall_cost_not_higher": true,
-    "all_replay_and_admissibility": true
+  "inventory_errors": [],
+  "integrated": {
+    "cases": 60,
+    "ticks": 5760,
+    "checks": {
+      "replay": 60,
+      "causal_future": 60,
+      "hash_integrity": 60,
+      "policy_admissibility": 60,
+      "unrequested_sensor": 60
+    },
+    "actions": {
+      "direct": 2512,
+      "guarded": 85,
+      "hold": 3163
+    },
+    "all_pass": true
   },
-  "regime_savings": {
-    "flash_shift": 353.28,
-    "scarce_audit": 1042.12,
-    "phase_chirp": 3126.96,
-    "guard_degradation": 937.76,
-    "correlated_audit": 3670.08
-  },
-  "checks": {
-    "replay": 400,
-    "causal_prefix": 400,
-    "hash": 400,
-    "admissibility": 400
-  },
-  "limitations": [
-    "Synthetic diagnostic proxy of guard efficacy",
-    "Health proxy assumed observable with fixed calibration noise",
-    "Not evidence of generalization outside five environments"
-  ]
+  "scope": "Synthetic integration and reproducibility; no general safety guarantee or live deployment certification",
+  "notes": "No witness quorum or Byzantine architecture introduced. Future work starts a separate phase."
 }
