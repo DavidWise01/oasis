@@ -1,0 +1,13 @@
+scenario,policy,cases,cost,roots,acts,holds,wrong,unsafe_authorized,safe_holds
+stable_safe,fixed,80,18620.0,880000,1376,544,574,0,544
+stable_safe,adaptive,80,17631.6,869660,1694,226,724,0,226
+hazard_burst,fixed,80,21012.5,880000,801,1119,382,0,479
+hazard_burst,adaptive,80,17894.0,680400,1164,756,542,0,116
+oscillation,fixed,80,20940.0,880000,728,1192,320,0,232
+oscillation,adaptive,80,17584.4,590940,878,1042,386,0,82
+scarce_budget,fixed,80,20445.0,880000,934,986,425,0,506
+scarce_budget,adaptive,80,17841.4,728140,1300,620,591,0,140
+correlated_duplicates,fixed,80,15475.2,107520,0,1920,0,0,1280
+correlated_duplicates,adaptive,80,15475.2,107520,0,1920,0,0,1280
+ALL,fixed,400,96492.7,3627520,3839,5761,1701,0,3041
+ALL,adaptive,400,86426.6,2976660,5036,4564,2243,0,1844
