@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-110",
+  "phase": "IV",
+  "status": "PASS",
+  "phase_completion_percent": 75,
+  "selected_budget": 11000,
+  "development_seeds": [
+    110001,
+    110030
+  ],
+  "test_seeds": [
+    110101,
+    110180
+  ],
+  "acceptance": {
+    "cost_nonincrease": true,
+    "unsafe_nonincrease": true,
+    "safe_acts_at_least_fixed": true,
+    "replay_determinism": true
+  },
+  "limits": [
+    "Synthetic independent Bernoulli roots except explicit tenfold duplication",
+    "Fixed-time Bonferroni across 24 inspections × 4 planned looks",
+    "No guarantees under unmodeled drift or source ancestry fraud",
+    "Costs assume 10 per wrong authorized action, 7.5 per HOLD, 0.01 per root"
+  ]
+}
