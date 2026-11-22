@@ -1,0 +1,11 @@
+scenario,policy,episodes,acts,unsafe_authorized,safe_holds,wrong,mean_first_safe_act_delay,total_cost
+safe_resume,stale_reuse,100,2200,0,800,1022,0.0,29660.0
+safe_resume,fresh_certificate,100,2200,0,800,1023,1.0,29670.0
+hazard_at_resume,stale_reuse,100,2000,300,800,3865,6.0,59590.0
+hazard_at_resume,fresh_certificate,100,1700,0,800,748,6.0,30670.0
+delayed_delivery,stale_reuse,100,2100,300,800,3783,5.0,58020.0
+delayed_delivery,fresh_certificate,100,1800,0,800,847,5.0,30910.0
+duplicate_flood,stale_reuse,100,1700,0,900,860,0.0,31790.0
+duplicate_flood,fresh_certificate,100,1700,0,900,856,1.0,31750.0
+ALL,stale_reuse,400,8000,600,3300,9530,2.75,179060.0
+ALL,fresh_certificate,400,7400,0,3300,3474,3.25,123000.0
