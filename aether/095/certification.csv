@@ -1,0 +1,7 @@
+regime,discovery_candidate,validation_mean_savings,lower_simultaneous_bound,upper_simultaneous_bound,approved,validation_seeds
+stable,0,-3.907,-4.4,-3.427,0,60
+step,1,7.342,-1.055,16.769,0,60
+ramp,0,-3.682,-8.927,3.19,0,60
+burst,1,16.735,3.23,31.542,1,60
+asymmetric_burst,1,-5.667,-10.076,1.995,0,60
+oscillatory_shift,1,1.182,-8.222,11.902,0,60
