@@ -1,6 +1,6 @@
 # AETHER Phase IV — Live Progress
 
-**4 / 8 completed · 50% · AETHER-108 accepted.**
+**4 / 8 completed · 50% · AETHER-109 failed its local recovery-cost gate.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -8,10 +8,20 @@
 | 2 | 106 Sequential calibration | **Accepted (synthetic)** | **25%** |
 | 3 | 107 Temporal risk budgeting | **Accepted (synthetic)** | **37.5%** |
 | 4 | 108 Sparse-sensor resilience | **Accepted (synthetic)** | **50%** |
-| 5 | 109 Recovery | Planned | 50% |
+| 5 | 109 Recovery | **Failed; revise within 109B** | **50%** |
 | 6 | 110 Deterministic resource scheduling | Planned | 50% |
 | 7 | 111 Unseen dynamic stress | Planned | 50% |
 | 8 | 112 Phase freeze | Planned | 50% |
+
+## Turn 5 — AETHER-109 (failed; progress unchanged)
+
+- 100 paired seeds × 4 regimes × 30 ticks = **12,000 decision opportunities per policy**.
+- Stale pre-outage certificate reauthorization caused **600 unsafe authorized ticks**; two genuinely fresh post-outage batches reduced this to **0** in simulation.
+- Combined cost fell from **179,060 to 123,000**.
+- **The strict no-regime-regression condition FAILED:** safe-resume cost rose **29,660 → 29,670**, despite favorable aggregate results.
+- Fresh recovery produced one-tick safe-resume delay rather than immediate stale authorization. Out-of-date and duplicate observations were ignored.
+- An initial in-memory prototype double-added a fresh batch to the certificate. Corrected and retested before publishing.
+- [AETHER-109 source and failed gate](109/) archived. Phase remains **4/8 = 50%**; next AETHER-109B must use fresh independent evaluation seeds.
 
 ## Turn 4 — AETHER-108
 
