@@ -1,0 +1,16 @@
+scenario,policy,episodes,episodes_any_false,familywise_false_rate,false_authorized_ticks,act_ticks,safe_holds,cost
+safe_iid,per_tick_95,300,0,0.0,0,7198,2,72345.0
+safe_iid,spent_iid_naive,300,0,0.0,0,6045,1155,75802.5
+safe_iid,spent_root_aware,300,0,0.0,0,6045,1155,75802.5
+boundary_shift,per_tick_95,300,3,0.01,3,2611,1892,97387.5
+boundary_shift,spent_iid_naive,300,0,0.0,0,1716,2784,91080.0
+boundary_shift,spent_root_aware,300,0,0.0,0,1716,2784,91080.0
+oscillatory,per_tick_95,300,2,0.00667,2,4801,1,79872.5
+oscillatory,spent_iid_naive,300,0,0.0,0,4035,765,81997.5
+oscillatory,spent_root_aware,300,0,0.0,0,4035,765,81997.5
+correlated_shift,per_tick_95,300,241,0.80333,431,3717,614,103922.5
+correlated_shift,spent_iid_naive,300,241,0.80333,431,3717,614,103922.5
+correlated_shift,spent_root_aware,300,0,0.0,0,0,3900,94320.0
+ALL,per_tick_95,1200,246,0.205,436,18327,2509,353527.5
+ALL,spent_iid_naive,1200,241,0.20083,431,15513,5318,352802.5
+ALL,spent_root_aware,1200,0,0.0,0,11796,8604,343200.0
