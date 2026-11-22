@@ -1,0 +1,32 @@
+{
+  "bound": "AETHER-105",
+  "phase": "IV",
+  "status": "ACCEPTED",
+  "checks": {
+    "per_case_action_count_identical": true,
+    "unsafe_not_increased": true,
+    "labels_reduced_10_pct": true,
+    "cost_not_increased": true
+  },
+  "phase_completion_pct": 12.5,
+  "seed_range": [
+    105001,
+    105080
+  ],
+  "scenarios": [
+    "stable",
+    "abrupt",
+    "oscillation",
+    "sensor_noise"
+  ],
+  "policy_order": [
+    "fixed",
+    "adaptive"
+  ],
+  "online_rule": "observe 40; extend to 140 if initial one-sided risk upper bound in [.015,.11]; authorize iff final upper bound <=.025",
+  "limitations": [
+    "Synthetic trials, not production evidence",
+    "Correlated audit errors invalidate binomial confidence interpretation",
+    "Hidden true risk used for evaluation only"
+  ]
+}
