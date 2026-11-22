@@ -1,0 +1,13 @@
+scenario,policy,ticks,act,hold,unsafe_authorized,safe_holds,wrong,acquired_roots,stale_ignored,duplicates_ignored,cost
+full,all_available,2880,1505,1375,0,175,665,1612800,0,0,33090.5
+full,early_impossibility,2880,1505,1375,0,175,665,1273160,0,0,29694.1
+half_missing,all_available,2880,450,2430,0,1230,196,806400,0,0,28249.0
+half_missing,early_impossibility,2880,450,2430,0,1230,196,806400,0,0,28249.0
+delayed_half,all_available,2880,447,2433,0,1233,181,806400,772800,0,28121.5
+delayed_half,early_impossibility,2880,447,2433,0,1233,181,806400,772800,0,28121.5
+correlated_tenfold,all_available,2880,0,2880,0,1680,0,161280,0,1451520,23212.8
+correlated_tenfold,early_impossibility,2880,0,2880,0,1680,0,161280,0,1451520,23212.8
+hazard_sparse,all_available,2880,1087,1793,0,473,465,1344000,0,0,31537.5
+hazard_sparse,early_impossibility,2880,1087,1793,0,473,465,1100960,0,0,29107.1
+ALL,all_available,14400,3489,10911,0,4791,1507,4730880,772800,1451520,144211.3
+ALL,early_impossibility,14400,3489,10911,0,4791,1507,4148200,772800,1451520,138384.5
