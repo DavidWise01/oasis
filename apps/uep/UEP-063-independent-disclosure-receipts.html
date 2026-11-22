@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UEP-063 · Independent Disclosure Receipts</title>
+<style>
+:root{--bg:#faf9f4;--paper:#fff;--ink:#292438;--muted:#66707a;--line:#ded9e6;--purple:#8050bf;--orange:#eb893c;--teal:#138e83;--red:#bd5664}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#f0e0fb,transparent 56%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,Segoe UI,sans-serif}
+header,main,footer{width:min(1270px,94%);margin:auto}header{padding:34px 0 22px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:11px;color:var(--purple);font-weight:800;letter-spacing:.16em}h1{font-size:clamp(30px,5vw,60px);line-height:1.07;margin:7px 0}h2{font-size:21px;margin:0 0 13px}h3{font-size:16px;margin:15px 0 9px}
+p{color:var(--muted)}.chip{display:inline-block;border:1px solid var(--line);border-radius:24px;padding:5px 10px;margin:3px;font-size:11px;color:var(--muted)}
+main{padding:18px 0;display:grid;gap:15px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 3px 13px #30233d09}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric small{color:var(--muted);display:block}.metric b{display:block;font-size:clamp(19px,2.3vw,30px);margin-top:5px}
+.cols{display:grid;grid-template-columns:400px 1fr;gap:15px}.fields{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.full{grid-column:1/-1}label{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}input,select,button{width:100%;font:inherit;border:1px solid #c8bfd2;padding:9px;border-radius:8px;background:#fff;color:var(--ink)}
+button{cursor:pointer;border:0;background:#48315f;color:white;font-weight:700}button.alt{background:#efe8f8;border:1px solid #d8cae9;color:#503677}.buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.flow div{text-align:center;font-size:12px;border:1px solid var(--line);padding:12px;border-radius:9px}.flow b{display:block;color:var(--purple)}
+.notice{border-left:3px solid var(--orange);background:#fff4e9;padding:12px}.scroll{overflow:auto}table{width:100%;min-width:720px;border-collapse:collapse;font-size:13px}td,th{padding:9px;text-align:left;border-bottom:1px solid #ece7ef}th{color:var(--muted);font-weight:500}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.mini{padding:13px;border-radius:10px;border:1px solid var(--line);background:#fdfbff}.mini b{color:var(--purple)}.good{color:var(--teal)}.bad{color:var(--red)}
+.bar{height:15px;border-radius:15px;background:#eee9f2;display:flex;overflow:hidden}.bar div{height:100%}.small{font-size:12px;color:var(--muted)}pre{font-size:12px;background:#f5f0f9;border-radius:9px;padding:14px;white-space:pre-wrap;word-break:break-word}a{color:var(--purple)}
+footer{font-size:12px;color:var(--muted);padding:15px 0 35px}@media(max-width:950px){.cols{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:580px){.metrics,.fields,.buttons,.flow,.grid3{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="eyebrow">OaSIs · UNIVERSAL ECONOMIC PARTICIPATION · BOUND 063</div><h1>Independent Disclosure Receipts</h1><p>A delivery receipt must describe what was independently observed. Compare source ancestry, committed response identity, delayed or forged acknowledgments, and contradictory delivery reports without resampling a public answer or refunding committed privacy expenditure.</p><span class="chip">THREE RECEIPT CHANNELS</span><span class="chip">SOURCE ROOT DEDUPLICATION</span><span class="chip">EVIDENCE ≠ CERTAINTY</span><span class="chip">REPLAY SAME ANSWER</span></header>
+<main><section class="metrics">
+<div class="panel metric"><small>Committed privacy ε</small><b id="epsilonMetric">—</b></div>
+<div class="panel metric"><small>Distinct supporting roots</small><b id="rootsMetric">—</b></div>
+<div class="panel metric"><small>Delivery status</small><b id="statusMetric">—</b></div>
+<div class="panel metric"><small>Different public answers</small><b id="answerMetric">—</b></div>
+</section>
+<section class="flow"><div><b>01 Commit</b>Freeze answer identity</div><div><b>02 Transmit</b>Record send attempt</div><div><b>03 Observe</b>Receipt-specific claim</div><div><b>04 Trace</b>Common ancestry</div><div><b>05 Decide</b>Recover without resampling</div></section>
+<div class="cols"><section class="panel"><h2>Receipt audit laboratory</h2>
+<div class="fields">
+<div class="full"><label for="scenario">Adversarial delivery condition</label><select id="scenario">
+<option value="clean">Independent compatible delivery receipts</option>
+<option value="copied">Three receipts copied from one gateway</option>
+<option value="conflict">Two delivery claims, one independent denial</option>
+<option value="forged">Forged ACK from an unrelated response</option>
+<option value="delayed">Delayed valid receipt with clock skew</option>
+<option value="missing">No receipt; send outcome unknown</option>
+<option value="replay">Three identical retries of one committed response</option>
+<option value="tamper">Receipt attempts to substitute response identity</option>
+</select></div>
+<div><label for="budget">Authorized global ε</label><input type="number" id="budget" min=".1" max="20" step=".1" value="1"></div>
+<div><label for="epsilon">Response charge ε</label><input type="number" id="epsilon" min=".05" max="10" step=".05" value=".6"></div>
+<div><label for="quorum">Required independent roots</label><input type="number" id="quorum" min="1" max="3" value="2"></div>
+<div><label for="skew">Allowed timestamp skew (ticks)</label><input type="number" id="skew" min="0" max="50" value="3"></div>
+<div><label for="sent">Transmission tick</label><input type="number" id="sent" min="0" max="100" value="10"></div>
+<div><label for="lease">Response identity</label><select id="lease"><option value="v1|housing">v1 · Housing aggregate</option><option value="v1|food">v1 · Food aggregate</option><option value="v2|housing">v2 · Housing corrected snapshot</option></select></div>
+<div class="full"><label for="policy">Evidence acceptance</label><select id="policy"><option value="protected">Independent roots, matching response, no material conflict</option><option value="unsafe">Naïve positive receipt count (counterexample)</option></select></div>
+</div>
+<h3>Audit rights</h3><p class="small">Delivery status is a statement about transport evidence, not proof that a person read the response, nor validation of its statistical privacy properties.</p>
+<div class="buttons"><button id="run">Evaluate case</button><button class="alt" id="suite">Compare eight attacks</button></div>
+<div class="buttons"><button id="replay">Replay committed response</button><button class="alt" id="export">Export evidence JSON</button></div>
+<div class="buttons"><button class="alt" id="reset">Reset laboratory</button><button class="alt" id="public">Export public projection</button></div>
+<p class="notice">All witnesses, receipts, source roots, timestamps and responses are synthetic. No cryptographic signatures, authenticated clocks, delivery infrastructure or durable logging are provided. A matching root label does not establish institutional independence.</p>
+</section>
+<div style="display:grid;gap:15px">
+<section class="panel"><h2>Three independent channels?</h2><div id="witnesses" class="grid3"></div>
+<h3>Source ancestry</h3><div class="scroll"><table><thead><tr><th>Root</th><th>Receipts</th><th>Observed event</th><th>Response match</th><th>Time compatible</th></tr></thead><tbody id="roots"></tbody></table></div>
+<p id="interpretation"></p></section>
+<section class="panel"><h2>Response settlement</h2>
+<div class="bar"><div id="spentBar" style="background:var(--purple);width:0"></div><div id="availableBar" style="background:var(--teal);width:100%"></div></div>
+<p id="balance"></p><div class="scroll"><table><tbody id="ledger"></tbody></table></div>
+<p id="verdict" class="notice"></p>
+<h3>Permitted recovery action</h3><p id="recovery"></p></section>
+</div></div>
+<section class="panel"><h2>Session event history</h2><div class="scroll"><table><thead><tr><th>Seq</th><th>Case</th><th>Operation</th><th>Response key</th><th>Privacy charge</th><th>Finding</th></tr></thead><tbody id="events"></tbody></table></div><p class="small" id="eventInfo">No events recorded yet.</p></section>
+<section class="panel"><h2>Counterfactual receipt attacks</h2><div class="scroll"><table><thead><tr><th>Scenario</th><th>Supporting roots</th><th>Conflicting roots</th><th>Status</th><th>Committed ε</th><th>Answers</th><th>Evidence gate</th></tr></thead><tbody id="comparison"></tbody></table></div><p class="small" id="suiteInfo">Run all eight cases under the same source ancestry and receipt policy.</p></section>
+<section class="panel"><h2>Boundaries</h2><div class="scroll"><table><thead><tr><th>Failure</th><th>Necessary control</th></tr></thead><tbody>
+<tr><td>Gateway copies one receipt three times</td><td>Count one ancestral evidence source, not three independent witnesses</td></tr>
+<tr><td>Receipt names a different committed response</td><td>Reject mismatched evidence and investigate possible substitution</td></tr>
+<tr><td>One verified source contradicts delivery</td><td>Preserve dispute; do not turn majority vote into certainty</td></tr>
+<tr><td>Late ACK and clock skew</td><td>Preserve original timestamps, report uncertainty, reconcile independently</td></tr>
+<tr><td>No ACK after send</td><td>Keep committed charge; unknown does not imply undelivered</td></tr>
+<tr><td>Three requests for same disclosure</td><td>Replay the same committed payload without additional sampling or privacy charge</td></tr>
+<tr><td>Public transparency</td><td>Report aggregate receipt status without exposing individual benefit records</td></tr></tbody></table></div></section>
+<section class="panel"><h2>UEP-064 · Receipt Provenance & Revocation</h2><p>Introduce durable attestation identifiers, signer-key rotation, revocation after compromised witness credentials, and a time-ordered correction ledger. Test whether a previously accepted receipt can become disputed without overwriting the original record or regenerating a public response.</p>
+<pre>THREE REPORTS ≠ THREE INDEPENDENT SOURCES
+ACKNOWLEDGED ≠ RECEIVED BY EVERY PUBLIC OBSERVER
+CONTRADICTORY ROOT → DISPUTE, NOT ERASURE
+REVOKED ATTESTATION ≠ REFUNDED PRIVACY CHARGE
+RETRY → SAME COMMITTED RESPONSE BYTES
+PUBLIC AUDIT ≠ PRIVATE BENEFICIARY RECORD
+RESTITUTION ≠ TECHNOLOGY DIVIDEND</pre><p><a href="./UEP-062-recoverable-two-phase-disclosure.html">Previous bound · UEP-062</a></p></section></main>
+<footer>UEP-063 · Synthetic receipt reconciliation. No real-world cryptographic identity, delivery evidence, or privacy certification.</footer>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),n=id=>Math.max(0,Number($(id).value)||0),fmt=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:2}),esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const kinds=['clean','copied','conflict','forged','delayed','missing','replay','tamper'];let active=null,history=[],comparisons=[];
+function model(kind,policy=$('policy').value){const budget=Math.max(.1,n('budget')),cost=Math.max(.05,n('epsilon')),key=$('lease').value,sent=n('sent'),skew=n('skew'),minimum=Math.max(1,Math.min(3,Math.floor(n('quorum')))),committed=cost<=budget+1e-9;let receipts=[
+{observer:'Witness A',root:'Origin A',claim:'delivered',key,time:sent+1},
+{observer:'Witness B',root:'Origin B',claim:'delivered',key,time:sent+2},
+{observer:'Witness C',root:'Origin C',claim:'delivered',key,time:sent+1}
+];
+if(kind==='copied')receipts.forEach(r=>r.root='Shared Gateway X');
+if(kind==='conflict')receipts[2].claim='not-delivered';
+if(kind==='forged'){receipts[0].key='other|response';receipts[1].key='other|response';receipts[0].root='Forged Gateway';receipts[1].root='Forged Gateway'}
+if(kind==='delayed')receipts[2].time=sent+skew+10;
+if(kind==='missing')receipts=[];
+if(kind==='replay')receipts.forEach(r=>r.claim='delivered');
+if(kind==='tamper')receipts[1].key='altered|bytes';
+let roots=new Map();for(const r of receipts){if(!roots.has(r.root))roots.set(r.root,[]);roots.get(r.root).push(r)}
+let groups=[...roots.entries()].map(([name,items])=>{let keys=new Set(items.map(x=>x.key)),claims=new Set(items.map(x=>x.claim)),good=keys.size===1&&keys.has(key)&&claims.size===1&&claims.has('delivered')&&items.every(x=>Math.abs(x.time-sent)<=skew);let conflict=claims.has('not-delivered')||keys.size>1||!keys.has(key);return{name,items,good,conflict,timeOk:items.every(x=>Math.abs(x.time-sent)<=skew),match:keys.size===1&&keys.has(key)}});let supporting=groups.filter(g=>g.good).length,conflicts=groups.filter(g=>g.conflict).length,positive=receipts.filter(r=>r.claim==='delivered').length;let status='UNKNOWN';if(!committed)status='UNAUTHORIZED';else if(policy==='unsafe'&&positive>=minimum)status='DELIVERY-CLAIMED';else if(policy==='protected'&&supporting>=minimum&&conflicts===0)status='CORROBORATED';else if(conflicts>0)status='DISPUTED';else if(supporting<minimum)status='UNRESOLVED';
+let answerCount=committed?1:0,attempts=kind==='replay'?3:kind==='missing'?1:1,charged=committed?cost:0;return{kind,policy,budget,cost,committed,charged,key,sent,skew,minimum,receipts,groups,supporting,conflicts,status,answerCount,attempts,available:budget-charged,notice:'Receipt labels are not authenticated independent observations.'}}
+function row(label,value){return '<tr><td>'+esc(label)+'</td><td>'+esc(value)+'</td></tr>'}
+function render(x){active=x;$('epsilonMetric').textContent=fmt(x.charged);$('rootsMetric').textContent=x.supporting;$('statusMetric').textContent=x.status;$('answerMetric').textContent=x.answerCount;$('witnesses').innerHTML=x.receipts.map(r=>'<div class="mini"><b>'+esc(r.observer)+'</b><p class="small">Root: '+esc(r.root)+'</p><p>'+esc(r.claim)+'</p><p class="small">'+esc(r.key)+' · Tick '+r.time+'</p></div>').join('')||'<div class="mini">No receipt available.</div>';$('roots').innerHTML=x.groups.map(r=>'<tr><td>'+esc(r.name)+'</td><td>'+r.items.length+'</td><td>'+(r.good?'Delivery corroborated':r.conflict?'Conflict or mismatched response':'Insufficient/late')+'</td><td>'+(r.match?'Yes':'No')+'</td><td>'+(r.timeOk?'Yes':'No')+'</td></tr>').join('')||'<tr><td colspan="5">No independent receipt roots.</td></tr>';
+$('interpretation').textContent=x.receipts.length+' receipt(s) from '+x.groups.length+' declared root(s). '+x.supporting+' support(s), '+x.conflicts+' material conflict(s). Source ancestry must be authenticated in a real system.';
+$('spentBar').style.width=(100*x.charged/x.budget)+'%';$('availableBar').style.width=(100*x.available/x.budget)+'%';$('balance').textContent='Committed ε '+fmt(x.charged)+' + available ε '+fmt(x.available)+' = authorized ε '+fmt(x.budget)+'.';
+$('ledger').innerHTML=[['Canonical committed response',x.committed?x.key:'None — budget denied'],['Distinct response generations',x.answerCount],['Transport attempts',x.attempts],['Evidence acceptance policy',x.policy],['Support quorum',x.supporting+' / '+x.minimum],['Delivery classification',x.status]].map(z=>row(z[0],z[1])).join('');
+$('verdict').textContent=x.status==='CORROBORATED'?'Compatible independent-root claims corroborate modeled delivery; acknowledgment still does not prove actual viewing.':x.status==='DELIVERY-CLAIMED'?'WARNING: naïve report majority counted copied or incompatible sources.':x.status==='UNAUTHORIZED'?'Response was not authorized; no privacy allowance consumed.':'Delivery remains uncertain or disputed. Preserve the committed response and privacy charge.';
+$('recovery').textContent=x.committed?'Do not sample another answer. Replay the committed response if authorized; pursue new independent evidence when necessary.':'An authorized response may be attempted only after new allowance is provided.'}
+function append(x,operation){history.push({seq:history.length+1,case:x.kind,operation,key:x.key,epsilon:operation==='evaluate'?x.charged:0,status:x.status});showHistory()}
+function showHistory(){$('events').innerHTML=history.slice(-100).map(e=>'<tr><td>'+e.seq+'</td><td>'+e.case+'</td><td>'+e.operation+'</td><td>'+esc(e.key)+'</td><td>'+fmt(e.epsilon)+'</td><td>'+e.status+'</td></tr>').join('');$('eventInfo').textContent=history.length+' append-only synthetic session events. Review events only track a snapshot, not a second disclosure.'}
+function evaluate(){let x=model($('scenario').value);render(x);append(x,'evaluate')}
+function suite(){comparisons=kinds.map(k=>model(k));$('comparison').innerHTML=comparisons.map(x=>'<tr><td>'+x.kind+'</td><td>'+x.supporting+'</td><td>'+x.conflicts+'</td><td>'+x.status+'</td><td>'+fmt(x.charged)+'</td><td>'+x.answerCount+'</td><td>'+(x.status==='CORROBORATED'?'Accept modeled claim':x.status==='DELIVERY-CLAIMED'?'Unsafe acceptance':'Preserve uncertainty')+'</td></tr>').join('');$('suiteInfo').textContent='Eight deterministic, isolated receipt conditions. A missing or disputed receipt does not refund previously committed ε.';render(comparisons[0]);for(const x of comparisons)append(x,'suite snapshot')}
+function replay(){if(!active)return;active.attempts++;render(active);append(active,'replay identical answer')}
+function exportData(publicOnly){const data=publicOnly?{model:'UEP-063',synthetic:true,publicResult:active?{status:active.status,key:active.key,committedEpsilon:active.charged,distinctRoots:active.supporting}:null,history}:{model:'UEP-063',synthetic:true,latest:active,history,comparisons};let url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=publicOnly?'UEP-063-public-receipt-audit.json':'UEP-063-synthetic-receipt-evidence.json';a.click();URL.revokeObjectURL(url)}
+function reset(){Object.entries({scenario:'clean',budget:1,epsilon:.6,quorum:2,skew:3,sent:10,lease:'v1|housing',policy:'protected'}).forEach(([k,val])=>$(k).value=val);history=[];comparisons=[];$('comparison').innerHTML='';showHistory();render(model('clean'))}
+$('run').onclick=evaluate;$('suite').onclick=suite;$('replay').onclick=replay;$('export').onclick=()=>exportData(false);$('public').onclick=()=>exportData(true);$('reset').onclick=reset;reset();
+})();
+</script></body></html>
