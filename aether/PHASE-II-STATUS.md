@@ -1,7 +1,7 @@
 # AETHER Phase II — Live Progress
 
 **Completed: 4 / 8 turns · 50%**  
-**Current status: AETHER-099B accepted. Next: AETHER-100.**
+**Current status: AETHER-100 rejected at development; next AETHER-100B.**
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
@@ -9,7 +9,7 @@
 | 2 | 097 Context contradictions | **Accepted** | **25%** |
 | 3 | 098 Diodic decision path | **Accepted** | **37.5%** |
 | 4 | 099 Revocation latency | **Accepted via 099B** | **50%** |
-| 5 | 100 Conditional reauthorization | Not started | 50% |
+| 5 | 100 Conditional reauthorization | **Tested; failed; revise as 100B** | **50%** |
 | 6 | 101 Best-admissible action | Not started | 50% |
 | 7 | 102 Homeostatic stress | Not started | 50% |
 | 8 | 103 Freeze and closure | Not started | 50% |
@@ -72,6 +72,18 @@
 - The decoy regime alone still favors rolling-only; aggregate acceptance is not universal dominance.
 - [AETHER-099B reproducible source and report](099b/).
 - **Phase II now 4/8 = 50%. Next AETHER-100 fresh-evidence reauthorization.**
+
+## AETHER-100 failed-bound evidence
+
+- Fresh-evidence policy selection tested 40 development seeds per regime; **neither candidate eligible**, so no promotion.
+- 80 unseen holdout seeds each for abrupt recovery, repeated hazard and sensor-only decoy.
+- Unsafe authorizations equal: stale 4; fresh3 4; fresh5 4.
+- Safe holds: **stale 1,315; fresh3 2,559; fresh5 2,572**.
+- Average recovery delays: **2.677 / 6.204 / 6.210 ticks**.
+- Total costs: **166,062.5 / 169,502.5 / 169,550.0**.
+- Completion stays **4/8 = 50%**; fresh evidence has not yet met the utility gate.
+- [AETHER-100 executable, negative result, and dashboard](100/).
+- Next **AETHER-100B**: conditionally earned, non-resetting fresh certificates; independent development and evaluation.
 
 ## Phase rules
 
