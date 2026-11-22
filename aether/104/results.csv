@@ -1,0 +1,5 @@
+scenario,cases,naive_wrong,root_wrong,root_holds,naive_wrong_pct,root_wrong_pct,root_coverage_pct
+independent,2000,79,79,0,3.95,3.95,100.0
+cloned_corrupt,2000,2000,0,0,100.0,0.0,100.0
+insufficient_roots,2000,393,74,618,19.65,3.7,69.1
+ALL,6000,2472,153,618,41.2,2.55,89.7
