@@ -10,8 +10,8 @@
 | 4 | 108 Sparse-sensor resilience | **Accepted (synthetic)** | **50%** |
 | 5 | 109 Recovery | **Accepted via 109B** | **62.5%** |
 | 6 | 110 Deterministic resource scheduling | Planned | 62.5% |
-| 7 | 111 Unseen dynamic stress | Planned | 50% |
-| 8 | 112 Phase freeze | Planned | 50% |
+| 7 | 111 Unseen dynamic stress | Planned | 62.5% |
+| 8 | 112 Phase freeze | Planned | 62.5% |
 
 ## Turn 5 correction — AETHER-109B (accepted)
 
