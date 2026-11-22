@@ -1,0 +1,8 @@
+regime,holdout_cases,promotion,baseline_cost,deployed_cost,savings,baseline_wrong,deployed_wrong,baseline_authorized,deployed_authorized
+stable,60,0,26220.5,26220.5,0,1946,1946,4225,4225
+step,60,0,32070.5,32070.5,0,1547,1547,2913,2913
+ramp,60,0,31838,31838,0,1757,1757,3224,3224
+burst,60,1,33453,32208.7,1244.3,1821,1529,3094,2999
+asymmetric_burst,60,0,30680.5,30680.5,0,1501,1501,3037,3037
+oscillatory_shift,60,0,33053,33053,0,1829,1829,3158,3158
+ALL,360,1,187315.5,186071.2,1244.3,10401,10109,19651,19556
