@@ -1,7 +1,7 @@
 # AETHER Phase II — Live Progress
 
-**Completed: 5 / 8 turns · 62.5%**  
-**Current status: AETHER-100B accepted on held-out seeds; next AETHER-101.**
+**Completed: 6 / 8 turns · 75%**  
+**Current status: AETHER-101 accepted in deterministic synthetic trials; next AETHER-102.**
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
@@ -10,9 +10,9 @@
 | 3 | 098 Diodic decision path | **Accepted** | **37.5%** |
 | 4 | 099 Revocation latency | **Accepted via 099B** | **50%** |
 | 5 | 100 Conditional reauthorization | **Accepted via 100B** | **62.5%** |
-| 6 | 101 Best-admissible action | Not started | 62.5% |
-| 7 | 102 Homeostatic stress | Not started | 62.5% |
-| 8 | 103 Freeze and closure | Not started | 62.5% |
+| 6 | 101 Best-admissible action | **Accepted** | **75%** |
+| 7 | 102 Homeostatic stress | Not started | 75% |
+| 8 | 103 Freeze and closure | Not started | 75% |
 
 ## Evidence and completion gate
 
@@ -96,6 +96,18 @@
 - Four predeclared safety, safe-hold, cost, recovery-delay gates all passed. **Turn 5 completed, 62.5% Phase II.**
 - [AETHER-100B executable source, data, and Pages-ready report](100b/). Live deployment remains separately unverified.
 - **Next AETHER-101: Best-Admissible Action Selection.**
+
+## AETHER-101 completion evidence
+
+- 80 seeds × 3 environments × 96 inspections = **23,040** controller decisions.
+- **Five test categories × 240 seeded episodes = 1,200/1,200 passes**: deterministic replay, future prefix, action ordering, hash integrity and exact argmin.
+- One safety-admissibility bound for both DIRECT and GUARDED. Otherwise HOLD.
+- Action counts: DIRECT **16,304**, GUARDED **276**, HOLD **6,460**.
+- Wrong authorized outcomes **8,733 → 8,317**, total cost **184,616 → 180,621.6** (3,994.4 savings).
+- Unsafe authorized ticks **137 → 137**, unchanged.
+- Guarded-action risk reduction of 45% is a **synthetic assumption**; results are not a field guarantee.
+- [Reproducible experiment](101/) and Pages-ready report committed; live deployment unverified.
+- **Next: AETHER-102**, unseen-dynamics homeostatic stress. Closing phase only after 103 or its independent-witness/Byzantine boundary.
 
 ## Phase rules
 
