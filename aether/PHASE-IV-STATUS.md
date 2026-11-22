@@ -1,6 +1,6 @@
 # AETHER Phase IV — Live Progress
 
-**6 / 8 completed · 75% · AETHER-111 stress failed (revision required).**
+**7 / 8 completed · 87.5% · AETHER-111B accepted on synthetic holdout.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -10,8 +10,21 @@
 | 4 | 108 Sparse-sensor resilience | **Accepted (synthetic)** | **50%** |
 | 5 | 109 Recovery | **Accepted via 109B** | **62.5%** |
 | 6 | 110 Deterministic resource scheduling | **Accepted (synthetic)** | **75%** |
-| 7 | 111 Unseen dynamic stress | **FAILED; revise as 111B** | **75%** |
-| 8 | 112 Phase freeze | Planned | 75% |
+| 7 | 111 Unseen dynamic stress | **Accepted via 111B** | **87.5%** |
+| 8 | 112 Phase freeze | Next | 87.5% |
+
+## Turn 7 correction — AETHER-111B (accepted)
+
+- Original AETHER-111 failure is preserved at [111](111/). It had **48 vs 93 unsafe authorized ticks**, including **45 additional** from hidden duplication.
+- Added an explicit **fail-closed packet validity contract** with `status`, `reported_count`, `certified_unique_count` and values. Missing or unverifiable packets cannot authorize ACT.
+- Tested frozen packet rules on new seeds **111301–111380**, five stress scenarios × 24 ticks = **9,600 inspections per policy**.
+- Both corrected fixed and adaptive policies recorded **zero unsafe authorized ticks** in the synthetic holdout; both issued **2,800** invalid-packet HOLD decisions.
+- Adaptive bought **2,568,320** independent roots vs **3,222,400** fixed (saving **654,080**, 20.3%).
+- Illustrative costs fell **138,986.5 → 130,982.2**, saving **8,004.3**; none of the five tested scenarios regressed in cost.
+- ACT counts rose **3,441 → 4,132**. Incorrect action outcomes also rose **1,657 → 2,079** and are not hidden by the cost calculation.
+- Reproducibility tests recorded **800 replay and 800 future-prefix checks**, plus budget and packet checks; see [AETHER-111B source, results and diagnostic traces](111b/).
+- **Critical assumption:** the upstream data-acquisition process truthfully marks invalid, missing or independence-unverified packets. This is not verified identity or real-world security; no distributed consensus is introduced.
+- **Phase IV: 7 of 8 accepted = 87.5%. Next AETHER-112 integration and freeze.** Pages deployment not independently verified.
 
 ## Turn 7 — AETHER-111 (failed, evidence archived)
 
