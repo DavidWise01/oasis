@@ -1,0 +1,28 @@
+{
+  "bound": "AETHER-109B",
+  "status": "PASS",
+  "phase": "IV",
+  "phase_percent": 62.5,
+  "selected_roots": 480,
+  "development_seed_range": [
+    109201,
+    109230
+  ],
+  "evaluation_seed_range": [
+    109301,
+    109400
+  ],
+  "acceptance": {
+    "unsafe_lower": true,
+    "per_scenario_cost_nonincreasing": true,
+    "safe_resume_delay_le_3": true,
+    "safe_resume_usefulness": true
+  },
+  "passed": true,
+  "limitations": [
+    "Synthetic fixed risk schedules and independent observations",
+    "Stale reference intentionally uses obsolete authorization",
+    "No sequential coverage guarantee under correlated roots",
+    "New evaluation seeds used after selection"
+  ]
+}
