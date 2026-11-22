@@ -1,0 +1,13 @@
+regime,policy,cases,cost,wrong,unsafe_auth,safe_holds,authorized_ticks,chattering,mean_recovery_delay
+abrupt_recovery,stale,80,57012.5,2607,2,421,5581,248,3.962
+abrupt_recovery,fresh3,80,58352.5,2399,2,877,5125,248,9.65
+abrupt_recovery,fresh5,80,58367.5,2399,2,879,5123,248,9.65
+repeat_hazard,stale,80,60337.5,1912,2,751,4211,406,4.056
+repeat_hazard,fresh3,80,62400.0,1534,2,1530,3432,394,8.925
+repeat_hazard,fresh5,80,62422.5,1534,2,1533,3429,394,8.944
+decoy,stale,80,48712.5,3484,0,143,7857,110,0.013
+decoy,fresh3,80,48750.0,3481,0,152,7848,107,0.037
+decoy,fresh5,80,48760.0,3476,0,160,7840,107,0.037
+ALL,stale,240,166062.5,8003,4,1315,17649,764,2.677
+ALL,fresh3,240,169502.5,7414,4,2559,16405,749,6.204
+ALL,fresh5,240,169550.0,7409,4,2572,16392,749,6.21
