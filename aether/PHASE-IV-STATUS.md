@@ -1,17 +1,29 @@
 # AETHER Phase IV — Live Progress
 
-**2 / 8 completed · 25% · AETHER-106 accepted.**
+**3 / 8 completed · 37.5% · AETHER-107 accepted.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
 | 1 | 105 Bounded observation economy | **Accepted (synthetic)** | **12.5%** |
 | 2 | 106 Sequential calibration | **Accepted (synthetic)** | **25%** |
-| 3 | 107 Temporal risk budgeting | Planned | 25% |
-| 4 | 108 Sparse-sensor resilience | Planned | 25% |
-| 5 | 109 Recovery | Planned | 25% |
-| 6 | 110 Deterministic resource scheduling | Planned | 25% |
-| 7 | 111 Unseen dynamic stress | Planned | 25% |
-| 8 | 112 Phase freeze | Planned | 25% |
+| 3 | 107 Temporal risk budgeting | **Accepted (synthetic)** | **37.5%** |
+| 4 | 108 Sparse-sensor resilience | Planned | 37.5% |
+| 5 | 109 Recovery | Planned | 37.5% |
+| 6 | 110 Deterministic resource scheduling | Planned | 37.5% |
+| 7 | 111 Unseen dynamic stress | Planned | 37.5% |
+| 8 | 112 Phase freeze | Planned | 37.5% |
+
+## Turn 3 — AETHER-107
+
+- 300 seeded episodes per environment × 4 environments × 24 decisions = **28,800 decisions per controller**.
+- Alpha spending: `0.05 / [t(t+1)]`, total **0.048** across 24 decisions.
+- Fixed-time per-tick 95% confidence produced **246/1,200 episodes** with at least one unsafe authorization.
+- Budgeted, independent-root-aware upper bounds produced **0/1,200 observed unsafe episodes**; this is not proof of zero underlying risk.
+- In the stable IID environment, the budgeted controller still authorized **6,045/7,200** ticks.
+- For 560 correlated reports representing 56 independent roots, the controller authorized **0** ticks; utility penalty preserved explicitly.
+- Illustrative total cost **343,200** budgeted vs **353,527.5** per-tick baseline.
+- [Source, evidence and interactive lab](107/) committed. Live GitHub Pages deployment not independently verified.
+- **Phase IV: 37.5% complete. Next AETHER-108: sparse-sensor resilience.**
 
 ## Turn 2 — AETHER-106
 
