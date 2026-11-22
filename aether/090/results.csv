@@ -1,0 +1,9 @@
+policy,regime,ticks,authorized_ticks,authorization_rate,wrong_authorizations,authorized_actions,withheld_actions,conditional_error,labels,illustrative_cost
+rolling_only,safe_initial,600,568,0.9467,266,85200,4800,0.00312,84000,3740.0
+rolling_only,unsafe_shift,600,0,0.0,0,0,90000,,84000,5340.0
+rolling_only,safe_recovery,600,520,0.8667,221,78000,12000,0.00283,84000,3650.0
+rolling_only,ALL,1800,1088,0.6044,487,163200,106800,0.00298,252000,12730.0
+sentinel_reauthorize,safe_initial,600,564,0.94,265,84600,5400,0.00313,132000,4240.0
+sentinel_reauthorize,unsafe_shift,600,0,0.0,0,0,90000,,132000,5820.0
+sentinel_reauthorize,safe_recovery,600,516,0.86,220,77400,12600,0.00284,132000,4150.0
+sentinel_reauthorize,ALL,1800,1080,0.6,485,162000,108000,0.00299,396000,14210.0
