@@ -1,6 +1,6 @@
 # AETHER Phase IV — Live Progress
 
-**4 / 8 completed · 50% · AETHER-109 failed its local recovery-cost gate.**
+**5 / 8 completed · 62.5% · AETHER-109B accepted on untouched synthetic holdout.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -8,12 +8,25 @@
 | 2 | 106 Sequential calibration | **Accepted (synthetic)** | **25%** |
 | 3 | 107 Temporal risk budgeting | **Accepted (synthetic)** | **37.5%** |
 | 4 | 108 Sparse-sensor resilience | **Accepted (synthetic)** | **50%** |
-| 5 | 109 Recovery | **Failed; revise within 109B** | **50%** |
-| 6 | 110 Deterministic resource scheduling | Planned | 50% |
+| 5 | 109 Recovery | **Accepted via 109B** | **62.5%** |
+| 6 | 110 Deterministic resource scheduling | Planned | 62.5% |
 | 7 | 111 Unseen dynamic stress | Planned | 50% |
 | 8 | 112 Phase freeze | Planned | 50% |
 
-## Turn 5 — AETHER-109 (failed; progress unchanged)
+## Turn 5 correction — AETHER-109B (accepted)
+
+- AETHER-109 failed its original no-per-environment-cost-regression criterion and remains preserved unmodified.
+- AETHER-109B picked **480 roots per resumed audit** from options 480, 500, 520, 540, 560 on separate development seeds **109201–109230**.
+- Independent holdout **109301–109400** × four scenarios × 30 ticks: 400 paired episodes.
+- The revised policy required **two fresh post-outage batches**; stale certificates never authorize resumption.
+- **Unsafe authorization: 600 stale → 0 fresh** in this synthetic mixture.
+- **Cost: 177,620 stale → 115,757.5 fresh**, saving **61,862.5**. Every scenario improved, including safe resume **29,240 → 27,860**.
+- Safe-resume ACT count 2,200 for both policies and first safe ACT delay 1 tick fresh versus 0 stale; all four gates passed.
+- Synthetic Bernoulli roots, fixed outages, and deliberately unsafe stale comparator limit generalization.
+- [Accepted 109B source and results](109b/). The original [failed 109 evidence](109/) remains immutable in its own folder.
+- **Actual Phase IV completion: 5 of 8 = 62.5%. Next: AETHER-110 deterministic resource scheduling.**
+
+## Turn 5 — AETHER-109 (failed; preserved diagnostic)
 
 - 100 paired seeds × 4 regimes × 30 ticks = **12,000 decision opportunities per policy**.
 - Stale pre-outage certificate reauthorization caused **600 unsafe authorized ticks**; two genuinely fresh post-outage batches reduced this to **0** in simulation.
