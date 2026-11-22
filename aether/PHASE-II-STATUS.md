@@ -1,7 +1,7 @@
 # AETHER Phase II — Live Progress
 
-**Completed: 4 / 8 turns · 50%**  
-**Current status: AETHER-100 rejected at development; next AETHER-100B.**
+**Completed: 5 / 8 turns · 62.5%**  
+**Current status: AETHER-100B accepted on held-out seeds; next AETHER-101.**
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
@@ -9,10 +9,10 @@
 | 2 | 097 Context contradictions | **Accepted** | **25%** |
 | 3 | 098 Diodic decision path | **Accepted** | **37.5%** |
 | 4 | 099 Revocation latency | **Accepted via 099B** | **50%** |
-| 5 | 100 Conditional reauthorization | **Tested; failed; revise as 100B** | **50%** |
-| 6 | 101 Best-admissible action | Not started | 50% |
-| 7 | 102 Homeostatic stress | Not started | 50% |
-| 8 | 103 Freeze and closure | Not started | 50% |
+| 5 | 100 Conditional reauthorization | **Accepted via 100B** | **62.5%** |
+| 6 | 101 Best-admissible action | Not started | 62.5% |
+| 7 | 102 Homeostatic stress | Not started | 62.5% |
+| 8 | 103 Freeze and closure | Not started | 62.5% |
 
 ## Evidence and completion gate
 
@@ -84,6 +84,18 @@
 - Completion stays **4/8 = 50%**; fresh evidence has not yet met the utility gate.
 - [AETHER-100 executable, negative result, and dashboard](100/).
 - Next **AETHER-100B**: conditionally earned, non-resetting fresh certificates; independent development and evaluation.
+
+## AETHER-100B accepted completion evidence
+
+- Initial AETHER-100 was a failed performance test: fresh3 and fresh5 caused excessive recovery delay and safe abstention. It remains archived at [100](100/).
+- AETHER-100B permits post-revocation evidence to accumulate without repeated reset during one continuing suspension.
+- Fresh2 was chosen on **40 independent development seeds per scenario (100301–100340)** before scoring **80 new holdout seeds (100501–100580)** in each of three scenario families.
+- On 240 paired holdout cases, unsafe authorizations were **12 for both controllers**; safe holds **1,354 → 739**.
+- Mean recovery delay **3.041 → 1.106 inspections** and total cost **167,045 → 165,172.5**, a **1,872.5** saving.
+- Additional ordinary wrong outcomes **8,078 → 8,352**, because more safe-period actions were authorized. Do not claim error-free superiority.
+- Four predeclared safety, safe-hold, cost, recovery-delay gates all passed. **Turn 5 completed, 62.5% Phase II.**
+- [AETHER-100B executable source, data, and Pages-ready report](100b/). Live deployment remains separately unverified.
+- **Next AETHER-101: Best-Admissible Action Selection.**
 
 ## Phase rules
 
