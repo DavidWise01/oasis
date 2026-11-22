@@ -1,7 +1,7 @@
 # AETHER Phase II — Live Progress
 
 **Completed: 6 / 8 turns · 75%**  
-**Current status: AETHER-101 accepted in deterministic synthetic trials; next AETHER-102.**
+**Current status: AETHER-102 failed per-regime generalization; AETHER-102B next.
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
@@ -11,7 +11,7 @@
 | 4 | 099 Revocation latency | **Accepted via 099B** | **50%** |
 | 5 | 100 Conditional reauthorization | **Accepted via 100B** | **62.5%** |
 | 6 | 101 Best-admissible action | **Accepted** | **75%** |
-| 7 | 102 Homeostatic stress | Not started | 75% |
+| 7 | 102 Homeostatic stress | **TESTED — FAILED; revise as 102B** | **75%** |
 | 8 | 103 Freeze and closure | Not started | 75% |
 
 ## Evidence and completion gate
@@ -108,6 +108,17 @@
 - Guarded-action risk reduction of 45% is a **synthetic assumption**; results are not a field guarantee.
 - [Reproducible experiment](101/) and Pages-ready report committed; live deployment unverified.
 - **Next: AETHER-102**, unseen-dynamics homeostatic stress. Closing phase only after 103 or its independent-witness/Byzantine boundary.
+
+## AETHER-102 unseen-dynamics counterexample
+
+- 60 new synthetic seeds in each of five regimes, 300 episodes × 96 ticks = **28,800 decisions** per policy.
+- Frozen AETHER-101 selector imported without changes; 300/300 replay, prefix-repeat, hash-integrity and admissibility checks in each category.
+- Aggregate selector cost **238,832.2**, versus direct-only baseline **244,783.0**, an improvement of **5,950.8** units.
+- Unsafe authorized ticks remained **236** under both policies.
+- **Critical guard-degradation regression:** baseline **49,593.5**, selector **50,036.7** = **+443.2**. The benefit of the guarded action was not observable to the controller.
+- Prespecified acceptance required no *per-regime* cost regression: **FAILED**.
+- **Completion holds at 6/8 = 75%.** [AETHER-102 failed test](102/).
+- **Next AETHER-102B:** observation-based guard-effectiveness gate, frozen then tested on untouched seeds.
 
 ## Phase rules
 
