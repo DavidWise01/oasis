@@ -1,6 +1,6 @@
 # AETHER Phase IV — Live Progress
 
-**6 / 8 completed · 75% · AETHER-110 accepted on untouched synthetic holdout.**
+**6 / 8 completed · 75% · AETHER-111 stress failed (revision required).**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -10,8 +10,18 @@
 | 4 | 108 Sparse-sensor resilience | **Accepted (synthetic)** | **50%** |
 | 5 | 109 Recovery | **Accepted via 109B** | **62.5%** |
 | 6 | 110 Deterministic resource scheduling | **Accepted (synthetic)** | **75%** |
-| 7 | 111 Unseen dynamic stress | Planned | 75% |
+| 7 | 111 Unseen dynamic stress | **FAILED; revise as 111B** | **75%** |
 | 8 | 112 Phase freeze | Planned | 75% |
+
+## Turn 7 — AETHER-111 (failed, evidence archived)
+
+- Frozen AETHER-110 policy evaluated without retuning on new seeds **111101–111180** across five unfamiliar scenarios, 24 ticks each. Four hundred episodes per policy.
+- **Adaptive uses 3,591,060 observations**, versus fixed 4,400,000; realized cost **140,018.6**, versus fixed **149,615**.
+- **Safety gate failed:** unsafe authorizations rose **48 → 93**, including **+45** under hidden tenfold correlation. No other scenario showed additional unsafe ticks.
+- **Source-integrity flaw:** zero-filled unavailable packets and tenfold duplicated roots without ancestry metadata are treated as valid observations. Formal input validity, root count, and missingness must be explicit.
+- Reproducibility: 800 deterministic replay and 800 causal prefix tests passed; this does not protect against false source independence.
+- **No phase credit. Stay at 6/8 = 75%.** Continue AETHER-111B with an explicit fail-closed evidence packet contract.
+- [AETHER-111 failed stress experiment](111/). Live GitHub Pages status unverified.
 
 ## Turn 6 — AETHER-110 (accepted)
 
