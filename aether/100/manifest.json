@@ -1,0 +1,26 @@
+{
+  "bound": "AETHER-100",
+  "status": "FAIL",
+  "chosen_policy": null,
+  "phase_percent": 50,
+  "train_seeds": [
+    100001,
+    100040
+  ],
+  "holdout_seeds": [
+    100201,
+    100280
+  ],
+  "acceptance": {
+    "unsafe_auth_max": "stale",
+    "safe_hold_multiplier_max": 1.05,
+    "cost_max": "stale",
+    "recovery_delay_max": "stale"
+  },
+  "limitations": [
+    "Synthetic Bernoulli risk; no real-world certification",
+    "Risk truth and recovery time visible only to evaluator",
+    "Fixed-time Clopper-Pearson bound is not anytime-valid",
+    "Single-tick reauthorization using a fresh certificate must remain conditioned on subsequent audits"
+  ]
+}
