@@ -4,17 +4,47 @@ Diagnostics are sampled on the current tick only when guard is a candidate.
 Evaluate on disjoint development/evaluation seeds; no oracle efficacy at runtime.
 """
 from pathlib import Path
-import importlib.util, numpy as np, csv, json, hashlib
+import numpy as np, csv, json, hashlib
+from scipy.stats import beta
+from functools import lru_cache
 P=Path(__file__).resolve().parent
-spec=importlib.util.spec_from_file_location('aether102',P.parent/'102'/'experiment.py')
-a102=importlib.util.module_from_spec(spec);spec.loader.exec_module(a102)
-frozen=a102.frozen
-REGIMES=a102.REGIMES; T=a102.T; N_ACT=a102.N_ACT
+REGIMES=('flash_shift','scarce_audit','phase_chirp','guard_degradation','correlated_audit')
+T=96;AUD=140;N_ACT=150;LIMIT=.02
+@lru_cache(maxsize=15000)
+def upper_bound(errors,n):
+    return 1.0 if n==0 or errors>=n else float(beta.ppf(.95,errors+1,n-errors))
+def choose(upper,stress):
+    if upper>LIMIT:return 'hold'
+    return 'guarded' if stress else 'direct'
+def environment(seed,regime):
+    rng=np.random.default_rng(seed+dict(flash_shift=0,scarce_audit=200000,phase_chirp=400000,guard_degradation=600000,correlated_audit=800000)[regime])
+    t=np.arange(T);risk=np.full(T,.003,dtype=float)
+    if regime=='flash_shift':
+        start=int(rng.integers(18,39));risk[start:start+6]=.12;risk[start+28:start+36]=.065
+    elif regime=='scarce_audit':
+        risk[18:48]=.055;risk[64:74]=.025
+    elif regime=='phase_chirp':
+        risk[14:82]=np.where((t[14:82]**1.12 % 11)<4,.068,.005)
+    elif regime=='guard_degradation':
+        risk[18:49]=.052;risk[64:81]=.034
+    else:
+        risk[20:72]=np.where(t[20:72]%11<4,.058,.004)
+    n=np.full(T,AUD,dtype=int)
+    if regime=='scarce_audit':n[(t>=20)&(t<80)]=28
+    audit=rng.binomial(n,risk)
+    if regime=='correlated_audit':
+        common=np.repeat(rng.normal(0,.013,25),4)[:T]
+        audit=rng.binomial(n,np.clip(risk+common,0,.2))
+    effectiveness=np.full(T,.55)
+    if regime=='guard_degradation':effectiveness[(t>=30)&(t<82)]=1.35
+    direct=rng.binomial(N_ACT,risk)
+    guarded=rng.binomial(N_ACT,np.clip(risk*effectiveness,0,1))
+    return risk,n,audit,direct,guarded,effectiveness
 DEV=range(102301,102321); TEST=range(102401,102481)
 DIAGNOSTIC_SD=.25; DIAGNOSTIC_COST=.08
 
 def observe(seed,regime):
-    risk,n,audit,direct,guarded,eff=a102.environment(seed,regime)
+    risk,n,audit,direct,guarded,eff=environment(seed,regime)
     rng=np.random.default_rng(seed+791231+list(REGIMES).index(regime)*135791)
     health=eff+rng.normal(0,DIAGNOSTIC_SD,T)
     return risk,n,audit,direct,guarded,eff,health
@@ -24,12 +54,12 @@ def simulate(seed,regime,variant,limit=.87):
     hist=[];trace=[];prev='0'*64
     for t in range(T):
         hist=(hist+[(int(audit[t]),int(n[t]))])[-5:]
-        upper=frozen.ub(sum(x[0] for x in hist),sum(x[1] for x in hist))
+        upper=upper_bound(sum(x[0] for x in hist),sum(x[1] for x in hist))
         stress=bool(audit[t]>=3)
-        proposed=frozen.choose(upper,stress)
+        proposed=choose(upper,stress)
         inspected=int(proposed=='guarded' and variant=='monitor')
         diagnostic=float(health[t]) if inspected else None
-        if variant=='baseline':action='direct' if upper<=frozen.LIMIT else 'hold'
+        if variant=='baseline':action='direct' if upper<=LIMIT else 'hold'
         elif variant=='frozen':action=proposed
         else:action=('direct' if diagnostic is not None and diagnostic>limit else proposed)
         wrong=int(direct[t] if action=='direct' else guarded[t] if action=='guarded' else 0)
@@ -56,7 +86,7 @@ def evaluate(seeds,threshold,save=False):
                     checks['replay']+=int(rows==replay)
                     checks['causal_prefix']+=int(all(rows[i]['hash']==replay[i]['hash'] for i in range(48)))
                     checks['hash']+=int(all(hashlib.sha256(json.dumps({k:r[k] for k in ('tick','errors','sampled','upper','stress','diagnostic','action','prev_hash')},sort_keys=True,separators=(',',':')).encode()).hexdigest()==r['hash'] and (i==0 or r['prev_hash']==rows[i-1]['hash']) for i,r in enumerate(rows)))
-                    checks['admissibility']+=int(all(r['action']=='hold' or r['upper']<=frozen.LIMIT+1e-9 for r in rows))
+                    checks['admissibility']+=int(all(r['action']=='hold' or r['upper']<=LIMIT+1e-9 for r in rows))
                     if seed==min(seeds):sample.extend(rows)
     s=[]
     for g in (*REGIMES,'ALL'):
