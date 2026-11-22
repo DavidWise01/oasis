@@ -1,0 +1,4 @@
+budget,cost_nonincrease,unsafe_nonincrease,safe_acts_at_least_fixed,pass_all,savings
+7000,True,True,True,True,1273.1
+9000,True,True,True,True,2262.1
+11000,True,True,True,True,3742.8
