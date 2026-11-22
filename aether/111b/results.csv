@@ -1,0 +1,13 @@
+scenario,policy,cases,acts,holds,wrong,roots,unsafe_authorized,invalid_packet_holds,safe_holds,realized_cost
+price_shock,fixed,80,1105,815,631,880000,0,0,815,65222.5
+price_shock,adaptive,80,1268,652,805,869980,0,0,652,65138.8
+sensor_dropout,fixed,80,945,975,430,582400,0,880,975,17436.5
+sensor_dropout,adaptive,80,949,971,431,477960,0,880,971,16372.1
+hidden_correlation,fixed,80,0,1920,0,0,0,1920,1200,14400.0
+hidden_correlation,adaptive,80,0,1920,0,0,0,1920,1200,14400.0
+abrupt_spike,fixed,80,802,1118,332,880000,0,0,478,20505.0
+abrupt_spike,adaptive,80,1173,747,507,686700,0,0,107,17539.5
+moving_oscillation,fixed,80,589,1331,264,880000,0,0,211,21422.5
+moving_oscillation,adaptive,80,742,1178,336,533680,0,0,58,17531.8
+ALL,fixed,400,3441,6159,1657,3222400,0,2800,3679,138986.5
+ALL,adaptive,400,4132,5468,2079,2568320,0,2800,2988,130982.2
