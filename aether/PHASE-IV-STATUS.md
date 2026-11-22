@@ -1,17 +1,28 @@
 # AETHER Phase IV — Live Progress
 
-**3 / 8 completed · 37.5% · AETHER-107 accepted.**
+**4 / 8 completed · 50% · AETHER-108 accepted.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
 | 1 | 105 Bounded observation economy | **Accepted (synthetic)** | **12.5%** |
 | 2 | 106 Sequential calibration | **Accepted (synthetic)** | **25%** |
 | 3 | 107 Temporal risk budgeting | **Accepted (synthetic)** | **37.5%** |
-| 4 | 108 Sparse-sensor resilience | Planned | 37.5% |
-| 5 | 109 Recovery | Planned | 37.5% |
-| 6 | 110 Deterministic resource scheduling | Planned | 37.5% |
-| 7 | 111 Unseen dynamic stress | Planned | 37.5% |
-| 8 | 112 Phase freeze | Planned | 37.5% |
+| 4 | 108 Sparse-sensor resilience | **Accepted (synthetic)** | **50%** |
+| 5 | 109 Recovery | Planned | 50% |
+| 6 | 110 Deterministic resource scheduling | Planned | 50% |
+| 7 | 111 Unseen dynamic stress | Planned | 50% |
+| 8 | 112 Phase freeze | Planned | 50% |
+
+## Turn 4 — AETHER-108
+
+- 120 synthetic seeds per environment × 5 environments × 24 ticks = **14,400 paired decision opportunities**.
+- Both policies issued exactly **3,489 ACT** and **10,911 HOLD** decisions, with zero paired mismatches.
+- Economical acquisition saved **582,680 independent roots**, from 4,730,880 down to 4,148,200 (**12.3%**).
+- Synthetic cost dropped from **144,211.3 to 138,384.5**, saving **5,826.8**.
+- No additional unsafe authorizations; **0** unsafe authorized inspection ticks were observed for either policy.
+- Delayed and duplicated reports were not admitted as fresh evidence. The tenfold-correlated scenario still generated **zero ACT** decisions due to insufficient independent samples.
+- [Executable experiment and Pages-ready report](108/) committed. Live Pages deployment remains unverified.
+- **Phase IV: 50% complete. Next AETHER-109: fresh-evidence recovery after sensing resumes.**
 
 ## Turn 3 — AETHER-107
 
