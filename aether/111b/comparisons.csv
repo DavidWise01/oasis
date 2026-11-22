@@ -1,0 +1,6 @@
+scenario,savings,unsafe_delta,safe_acts_delta,passed_cost,passed_safety
+price_shock,83.7,0,163,True,True
+sensor_dropout,1064.4,0,4,True,True
+hidden_correlation,0.0,0,0,True,True
+abrupt_spike,2965.5,0,371,True,True
+moving_oscillation,3890.7,0,153,True,True
