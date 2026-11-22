@@ -1,18 +1,18 @@
 # AETHER Phase II — Live Progress
 
-**Completed: 2 / 8 turns · 25%**  
-**Current status: AETHER-097 accepted. Next: AETHER-098.**
+**Completed: 3 / 8 turns · 37.5%**  
+**Current status: AETHER-098 accepted. Next: AETHER-099.**
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
 | 1 | 096 Context detection | **Accepted via 096B** | **12.5%** |
 | 2 | 097 Context contradictions | **Accepted** | **25%** |
-| 3 | 098 Diodic decision path | Not started | 25% |
-| 4 | 099 Revocation latency | Not started | 25% |
-| 5 | 100 Conditional reauthorization | Not started | 25% |
-| 6 | 101 Best-admissible action | Not started | 25% |
-| 7 | 102 Homeostatic stress | Not started | 25% |
-| 8 | 103 Freeze and closure | Not started | 25% |
+| 3 | 098 Diodic decision path | **Accepted** | **37.5%** |
+| 4 | 099 Revocation latency | Not started | 37.5% |
+| 5 | 100 Conditional reauthorization | Not started | 37.5% |
+| 6 | 101 Best-admissible action | Not started | 37.5% |
+| 7 | 102 Homeostatic stress | Not started | 37.5% |
+| 8 | 103 Freeze and closure | Not started | 37.5% |
 
 ## Evidence and completion gate
 
@@ -35,6 +35,21 @@
 - Wrong authorized actions **4,576**, versus sticky **4,573**; this is not a claim of improved decision accuracy.
 - No hidden regime labels used in online decisions. [Source, visual report and audit](097/).
 - Completed Turn 2 of 8. Next AETHER-098: deterministic diodic single-controller path.
+
+## AETHER-098 completion evidence
+
+- Deterministic controller across 80 independent synthetic seeds × 3 regimes × 96 ticks = **23,040 decisions**.
+- **240/240** deterministic replay comparisons passed.
+- **240/240** changed-future causal-prefix comparisons passed; earlier actions and hashes unchanged.
+- **240/240** append-chain recomputation tests passed.
+- **240/240** unused-sentinel perturbation tests passed.
+- Nontrivial authorization was observed: **15,544 ACT** and **7,496 HOLD** decisions.
+- **384** context revocations were recorded.
+- A preliminary over-conservative confidence bound caused all-HOLD; corrected before the accepted run.
+- [AETHER-098 source and report](098/) and outputs published. Pages live deployment is a separate check.
+- The observed risk bound is retrospective; synthetic causal replay is not a production safety guarantee.
+
+**Next: AETHER-099 — revocation latency and unsafe exposure.**
 
 ## Phase rules
 
