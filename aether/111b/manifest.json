@@ -1,0 +1,22 @@
+{
+  "bound": "AETHER-111B",
+  "phase": "IV",
+  "status": "PASS",
+  "phase_completion_percent": 87.5,
+  "holdout_seeds": [
+    111301,
+    111380
+  ],
+  "development_seeds": [
+    111201,
+    111220
+  ],
+  "cases": 800,
+  "gate": "Every environment no added unsafe ticks and no cost regression",
+  "caveats": [
+    "Trusted packet status and certified independent root count are assumptions, not cryptographically established",
+    "No votes or distributed consensus; single controller",
+    "Unknown correlation without trusted metadata cannot be inferred with certainty",
+    "Synthetic 24-tick Bernoulli outcomes, known tariff for evaluation"
+  ]
+}
