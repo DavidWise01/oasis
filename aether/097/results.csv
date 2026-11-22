@@ -1,0 +1,10 @@
+scenario,policy,ticks,nonburst_ticks,stale_or_false_permission,false_permission_pct,burst_recall_pct,revocations,wrong_actions,sentinel_probes,total_cost
+switch,sticky,8000,4800,1177,24.521,99.531,160,1858,489,59623.7
+switch,instantaneous,8000,4800,57,1.188,98.188,196,1858,227,59414.1
+switch,contradiction,8000,4800,57,1.188,99.312,167,1858,230,59416.5
+decoy,sticky,8000,6400,708,11.062,99.688,91,2715,356,64937.3
+decoy,instantaneous,8000,6400,30,0.469,98.25,107,2718,130,64771.5
+decoy,contradiction,8000,6400,31,0.484,99.562,93,2718,132,64773.1
+ALL,sticky,16000,11200,1885,16.83,99.583,251,4573,845,124561.0
+ALL,instantaneous,16000,11200,87,0.777,98.208,303,4576,357,124185.6
+ALL,contradiction,16000,11200,88,0.786,99.396,260,4576,362,124189.6
