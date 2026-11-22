@@ -1,0 +1,39 @@
+{
+  "bound": "AETHER-102B",
+  "status": "PASS",
+  "phase_percent": 87.5,
+  "chosen_threshold": 1.15,
+  "development_seeds": [
+    102301,
+    102320
+  ],
+  "holdout_seeds": [
+    102401,
+    102480
+  ],
+  "diagnostic_cost": 0.08,
+  "diagnostic_sd": 0.25,
+  "acceptance": {
+    "no_regime_cost_regression": true,
+    "overall_cost_not_higher": true,
+    "all_replay_and_admissibility": true
+  },
+  "regime_savings": {
+    "flash_shift": 353.28,
+    "scarce_audit": 1042.12,
+    "phase_chirp": 3126.96,
+    "guard_degradation": 937.76,
+    "correlated_audit": 3670.08
+  },
+  "checks": {
+    "replay": 400,
+    "causal_prefix": 400,
+    "hash": 400,
+    "admissibility": 400
+  },
+  "limitations": [
+    "Synthetic diagnostic proxy of guard efficacy",
+    "Health proxy assumed observable with fixed calibration noise",
+    "Not evidence of generalization outside five environments"
+  ]
+}
