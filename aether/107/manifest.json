@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-107",
+  "phase": "IV",
+  "status": "ACCEPTED",
+  "phase_pct": 37.5,
+  "seeds": [
+    107001,
+    107300
+  ],
+  "scenarios": [
+    "safe_iid",
+    "boundary_shift",
+    "oscillatory",
+    "correlated_shift"
+  ],
+  "horizon": 24,
+  "nominal_family_alpha": 0.05,
+  "actual_allocated_alpha": 0.048,
+  "confidence": "one-sided CP alpha_t, Bonferroni over 24 looks",
+  "acceptance": {
+    "risky_scenario_episodes_with_any_false_max_per_300": 25,
+    "safe_iid_min_acts": 1000,
+    "overall_risky_familywise_fewer_than_per_tick": true,
+    "never_worse_than_naive_spend": true
+  },
+  "caveats": [
+    "Source-root grouping is known and accurate by construction; unobserved shared roots not tested",
+    "Per-time risk can change, but all Bernoulli samples within each inspection have same p",
+    "Union bound controls confidence failures under correctly modeled independent roots; observed unsafe approvals are Monte Carlo estimates",
+    "A finite-horizon 24-tick alpha budget is not a lifetime or physical safety guarantee",
+    "HOLD expense and lost opportunities can be substantial, especially with correlated observations"
+  ]
+}
