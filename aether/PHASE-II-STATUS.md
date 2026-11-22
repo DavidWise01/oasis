@@ -1,14 +1,14 @@
 # AETHER Phase II — Live Progress
 
 **Completed: 3 / 8 turns · 37.5%**  
-**Current status: AETHER-098 accepted. Next: AETHER-099.**
+**Current status: AETHER-099 failed the acceptance gate; AETHER-099B next.**
 
 | Turn | Bound | State | Cumulative completion |
 |---|---|---|---:|
 | 1 | 096 Context detection | **Accepted via 096B** | **12.5%** |
 | 2 | 097 Context contradictions | **Accepted** | **25%** |
 | 3 | 098 Diodic decision path | **Accepted** | **37.5%** |
-| 4 | 099 Revocation latency | Not started | 37.5% |
+| 4 | 099 Revocation latency | **Tested; FAILED; revise as 099B** | **37.5%** |
 | 5 | 100 Conditional reauthorization | Not started | 37.5% |
 | 6 | 101 Best-admissible action | Not started | 37.5% |
 | 7 | 102 Homeostatic stress | Not started | 37.5% |
@@ -50,6 +50,16 @@
 - The observed risk bound is retrospective; synthetic causal replay is not a production safety guarantee.
 
 **Next: AETHER-099 — revocation latency and unsafe exposure.**
+
+## AETHER-099 failed-bound evidence
+
+- 80 paired seeds in each of abrupt, gradual and decoy proxy-shift environments, 100 ticks each.
+- Sensor-assisted policy cut unsafe authorized inspections **44 → 1**, but increased safe holds **942 → 4,827**.
+- Total illustrative cost rose **160,545 → 173,105**, an increase of **12,560**.
+- Acceptance gate (≥20% fewer unsafe authorizations, non-increasing cost, ≤5% added safe holds): safety criterion passed, cost and safe-hold criteria **failed**.
+- The decoy context is a preserved counterexample; sensor signals can change while action risk stays safe.
+- The rolling-only controller retains governing authority. [AETHER-099 failed experiment](099/).
+- **Completion stays 3 / 8 = 37.5%.** AETHER-099B will use new development and holdout seeds.
 
 ## Phase rules
 
