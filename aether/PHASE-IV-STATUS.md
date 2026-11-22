@@ -1,6 +1,6 @@
 # AETHER Phase IV — Live Progress
 
-**5 / 8 completed · 62.5% · AETHER-109B accepted on untouched synthetic holdout.**
+**6 / 8 completed · 75% · AETHER-110 accepted on untouched synthetic holdout.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -9,9 +9,22 @@
 | 3 | 107 Temporal risk budgeting | **Accepted (synthetic)** | **37.5%** |
 | 4 | 108 Sparse-sensor resilience | **Accepted (synthetic)** | **50%** |
 | 5 | 109 Recovery | **Accepted via 109B** | **62.5%** |
-| 6 | 110 Deterministic resource scheduling | Planned | 62.5% |
-| 7 | 111 Unseen dynamic stress | Planned | 62.5% |
-| 8 | 112 Phase freeze | Planned | 62.5% |
+| 6 | 110 Deterministic resource scheduling | **Accepted (synthetic)** | **75%** |
+| 7 | 111 Unseen dynamic stress | Planned | 75% |
+| 8 | 112 Phase freeze | Planned | 75% |
+
+## Turn 6 — AETHER-110 (accepted)
+
+- Budget selected using separate development seeds **110001–110030**; selected **11,000 independent roots/episode**. Holdout **110101–110180** × 5 scenarios × 24 inspections = **9,600 paired decisions**.
+- Adaptive scheduling purchases independent roots in batches of up to 140; early ACT requires sequentially Bonferroni-adjusted risk bound ≤2.5%; early HOLD requires an optimistic impossibility-of-certification check.
+- **Evidence consumption 3,627,520 fixed → 2,976,660 adaptive**, saving **650,860 roots (17.94%)**.
+- **ACT decisions 3,839 → 5,036** and **HOLD 5,761 → 4,564**.
+- **Total cost 96,492.7 → 86,426.6**, saving **10,066.1** under the documented utility weights.
+- **Unsafe authorizations 0 → 0** in the simulator. **Incorrect authorized action outcomes increased 1,701 → 2,243**, a necessary qualification to the savings claim.
+- All four gates passed on holdout: total cost non-increase, unsafe authorization non-increase, ACT opportunities not reduced, and exact replay hash determinism.
+- The tenfold duplicated-report regime still could not certify ACT due to insufficient independent roots; both policies held all 1,920 decisions in that condition.
+- [AETHER-110 experiment and visual lab](110/). Live Pages deployment not independently verified.
+- **Phase IV: 6/8 = 75%. Next: AETHER-111 unseen dynamics stress.**
 
 ## Turn 5 correction — AETHER-109B (accepted)
 
