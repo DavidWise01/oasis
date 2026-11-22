@@ -1,0 +1,13 @@
+regime,variant,seeds,ticks,direct,guarded,hold,wrong,unsafe_actions,safe_holds,cost
+flash_shift,baseline,60,5760,4381,0,1379,2061,8,547,43397.5
+flash_shift,selector,60,5760,4344,37,1379,2015,8,547,42959.7
+scarce_audit,baseline,60,5760,1955,0,3805,1002,17,1422,44544.5
+scarce_audit,selector,60,5760,1925,30,3805,948,17,1422,44022.5
+phase_chirp,baseline,60,5760,1631,0,4129,1232,49,2678,52982.5
+phase_chirp,selector,60,5760,1574,57,4129,1011,49,2678,50806.7
+guard_degradation,baseline,60,5760,2477,0,3283,1443,76,479,49593.5
+guard_degradation,selector,60,5760,2405,72,3283,1483,76,479,50036.7
+correlated_audit,baseline,60,5760,2586,0,3174,1981,86,2060,54265.0
+correlated_audit,selector,60,5760,2350,236,3174,1641,86,2060,51006.6
+ALL,baseline,300,28800,13030,0,15770,7719,236,7186,244783.0
+ALL,selector,300,28800,12598,432,15770,7098,236,7186,238832.2
