@@ -1,6 +1,6 @@
 # AETHER Phase VII — Physical Measurement Assurance
 
-**AETHER-134 bounded reference-drift synthetic gate passed. Phase VII: 6/8 = 75%. Physical validation: NOT performed.**
+**AETHER-135B constrained synthetic reference-gate passed. Phase VII: 7/8 = 87.5%. Physical validation: NOT performed.**
 
 | Turn | Bound | Status | Phase completion |
 |---|---|---|---:|
@@ -10,8 +10,17 @@
 | 4 | 132 Device response regularity test | **ACCEPTED — synthetic** | **50%** |
 | 5 | 133 Probe insertion and same-path verification | **ACCEPTED via 133B (synthetic)** | **62.5%** |
 | 6 | 134 Reference drift and recalibration economics | **ACCEPTED — synthetic** | **75%** |
-| 7 | 135 Unseen independent instrument stress | Planned | 75% |
-| 8 | 136 Integrated empirical-gate freeze | Planned | 75% |
+| 7 | 135 Unseen independent instrument stress | **ACCEPTED via 135B (synthetic)** | **87.5%** |
+| 8 | 136 Integrated empirical-gate freeze | Planned | 87.5% |
+
+## AETHER-135B — Fail closed when external physical-reference authority is unavailable
+
+- **AETHER-135 failed and preserved**: unchanged local AETHER-134 control policy tested against eight new sensor/reference conditions × 50 seeds × 32 ticks = **400 paired episodes**, **12,800 decisions per policy**. All **5,600/5,600** deterministic replay, chain, signed ingress, frozen source and fail-closed checks passed, yet fixed policy authorized **800 unsafe ACT** and adaptive policy **1,250 unsafe ACT**. Physically false but correctly signed risk and calibration values defeated the digital assumptions.
+- **AETHER-135B accepted within explicitly constrained synthetic assumptions**: introduce a separate designated reference standard with authenticated root, device identity, generation, tick and bounded uncertainty. If its authenticity or acquisition is unavailable, controller MUST HOLD. Eight scenarios × 50 new seeds × 32 ticks = **400 episodes**, **12,800 decisions**, **3,200/3,200 checks passed**, **zero unsafe ACT**.
+- Guarded policy retained clean safe ACT **1,600/1,600** and valid replacement **1,600/1,600**. Overall **4,400 safe ACT**, with **6,000 additional safe HOLD** from absent/invalid reference authority. This is an explicit loss of observability, not free safety.
+- **Critical limitation:** The supposed independent standard, private signing root and exact measurement response remain assumptions coded into the synthetic simulation. Refusing authorization without a known reference does not detect a hidden faulty physical instrument, and does NOT constitute empirical instrument validation. Correct signatures still do not establish a genuine physical trust root.
+- Original failed [135/](135/) and accepted [135b/](135b/) Python sources, summary CSVs, manifests and animated Pages HTML committed. Repository versions independently authored; reproducibility from checkout and live Pages deployment unverified.
+- **Turn 7 accepted only on the restricted fail-closed synthetic gate: Phase VII 7/8 = 87.5%. Next AETHER-136: Phase VII integration and explicit empirical-assurance gap freeze.**
 
 ## AETHER-134 — Bounded reference drift and adaptive calibration economics
 
