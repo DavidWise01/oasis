@@ -1,17 +1,29 @@
 # AETHER Phase VII — Physical Measurement Assurance
 
-**AETHER-131 covariance-aware synthetic software gate passed. Phase VII: 3/8 = 37.5%. Physical validation: NOT performed.**
+**AETHER-132 response-regularity synthetic gate passed. Phase VII: 4/8 = 50%. Physical validation: NOT performed.**
 
 | Turn | Bound | Status | Phase completion |
 |---|---|---|---:|
 | 1 | 129 Physical reference evidence boundary | **ACCEPTED (synthetic)** | **12.5%** |
 | 2 | 130 Reference instrument provenance and traceability | **ACCEPTED via 130B (synthetic)** | **25%** |
 | 3 | 131 Bounded reference uncertainty certificate | **ACCEPTED — synthetic** | **37.5%** |
-| 4 | 132 Device response regularity test | Planned | 37.5% |
-| 5 | 133 Probe insertion and same-path verification | Planned | 37.5% |
-| 6 | 134 Reference drift and recalibration economics | Planned | 37.5% |
-| 7 | 135 Unseen independent instrument stress | Planned | 37.5% |
-| 8 | 136 Integrated empirical-gate freeze | Planned | 37.5% |
+| 4 | 132 Device response regularity test | **ACCEPTED — synthetic** | **50%** |
+| 5 | 133 Probe insertion and same-path verification | Planned | 50% |
+| 6 | 134 Reference drift and recalibration economics | Planned | 50% |
+| 7 | 135 Unseen independent instrument stress | Planned | 50% |
+| 8 | 136 Integrated empirical-gate freeze | Planned | 50% |
+
+## AETHER-132 — Device response regularity between certified calibration points
+
+- **400 paired synthetic episodes**, 50 new seeds × eight sensor-response scenarios × 24 ticks = **9,600 decisions per policy**, **5,600/5,600** deterministic replay, chain, source binding, time and fail-closed checks passed in the local execution.
+- Simple endpoint calibration mistakenly authorized **2,000 unsafe ACT**: **500 each** from nonlinear notch, response discontinuity, gain shift and device dropout. A 51-point interior response-regularity gate authorized **0 unsafe ACT** in these constructed fault scenarios.
+- Test domain: measured risk 0–5% in **0.1 percentage-point** steps. Require current signed device/certificate identity and epoch, residual <=0.08 percentage points, and local response slope in [0.8,1.2].
+- Valid clean and valid calibration rotation both preserved **1,200/1,200 safe ACT**. Overall safe ACT dropped **7,600 → 6,800**, with **800 additional safe HOLDs** caused by expired calibration certificates.
+- Probe demand rose **19,200 → 489,600** (**25.5×**). These are safety/coverage tests, not resource-efficiency improvements.
+- **Physical limitation:** Software directly simulates sensor response at injected probe positions. No physical device or reference standard was connected; actual instrument response, insertion secrecy, and between-probe regularity are **not verified**. Finite-point validation does not certify arbitrary nonlinear distortions or physical metrological traceability.
+- Local tested Python source SHA-256 `2d850e7e5367d57bd0957a24909e3534b20facf4adf47f2dca5ed63508cab9f5`. GitHub reproducer was authored separately; byte-identical checkout replay is **unverified**.
+- [AETHER-132 executable, numerical result, manifest and interactive HTML laboratory](132/) committed. Live Pages deployment remains unverified.
+- **Turn 4 accepted within synthetic assumptions. Phase VII 4/8=50%; next AETHER-133: probe insertion and same-path verification.**
 
 ## AETHER-131 — Covariance-aware reference uncertainty
 
