@@ -1,6 +1,6 @@
 # AETHER Phase VIII — Physical Validation Readiness and Empirical Evidence
 
-**AETHER-141 same-path insertion readiness synthetic PASS: Phase VIII 5/8 = 62.5%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-142 bounded-drift and alarm contract synthetic PASS: Phase VIII 6/8 = 75%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase VIII deliberately has two non-interchangeable progress measures. The phase percentage tracks completed **software/readiness acceptance turns**. The physical-evidence percentage tracks actual observed and independently validated instrument measurements. It remains **0%** until real evidence exists.
 
@@ -11,9 +11,19 @@ Phase VIII deliberately has two non-interchangeable progress measures. The phase
 | 3 | 139 Independent calibration reference evidence | **ACCEPTED — synthetic only** | **37.5%** |
 | 4 | 140 Physical uncertainty and coverage requirements | **ACCEPTED — synthetic only** | **50%** |
 | 5 | 141 Empirical same-path insertion readiness | **ACCEPTED — synthetic only** | **62.5%** |
-| 6 | 142 Measured drift and alarm requirements | Planned | 62.5% |
-| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 62.5% |
-| 8 | 144 Integrated readiness evidence freeze | Planned | 62.5% |
+| 6 | 142 Measured drift and alarm requirements | **ACCEPTED — synthetic only** | **75%** |
+| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 75% |
+| 8 | 144 Integrated readiness evidence freeze | Planned | 75% |
+
+## AETHER-142 — Bounded drift and alarm requirements
+
+- Local modeled experiment: **320 episodes per policy** (40 seeds × eight instrument/alarm conditions × 24 ticks), **7,680 decisions per policy** and **5,120/5,120** deterministic replay, hash-chain, monotonic-time, fail-closed, no-unsafe and availability checks passed.
+- Signed-only comparator authorized **1,600 unsafe dry-run ACT** across concealed sensor jump, missed alarm, understated drift, stale readout, and forged software alarm conditions. The simulated external-reference and drift gate authorized **zero unsafe dry-run ACT**, preserving **6,080 safe dry-run ACT** including **960/960** each in clean, valid rotation, and bounded slow drift.
+- The gated path requires protected model source identity, generation, nonce, acquisition tick/path, fresh reference value, bounded reference divergence, declared uncertainty, and drift-rate constraint. All real operational actions remain HOLD.
+- **Important:** The independently trusted reference, measurement truth, path receipt and alarm are **test-fixture assumptions**. No actual drift rates, reference readings or alarm detection rates were measured. Synthetic no-unsafe result is not a physical guarantee.
+- Tested local source SHA-256 `77bfcbd0b8a803654df92e487cb127b58a2708a24f25af6aa6640552cc68c2d7`. GitHub `aether/142/experiment.py` is a separately authored corresponding implementation: byte identity and checkout replay are unverified.
+- [AETHER-142 complete 5,120-row acceptance CSV, results, seed data, trace samples, Python and interactive Pages laboratory](142/) committed. Live Pages deployment unverified.
+- **Phase VIII software readiness 6/8 = 75%; empirical physical validation remains 0%.** Next AETHER-143: adversarial physical-attestation failure readiness.
 
 ## AETHER-141 — Same-path calibration insertion and operational ingress binding
 
