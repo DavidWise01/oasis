@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-119",
+  "phase": "V",
+  "status": "PASS",
+  "source_sha256": "f7642313075830651348dd368496aa5f409236070466714b5010ab0fadc9ee4c",
+  "cases": 420,
+  "ticks_per_policy": 15120,
+  "checks": 5040,
+  "gates": {
+    "no_unsafe": true,
+    "strict_fewer_unsafe": true,
+    "no_clean_regression": true,
+    "recovery_first_valid": true,
+    "unchanged_controller": true,
+    "deterministic": true
+  },
+  "seeds": [
+    119001,
+    119060
+  ],
+  "caveats": [
+    "Synthetic risk and packets; HMAC key and signing truth assumed",
+    "AETHER-118 ACT/HOLD policy imported unchanged",
+    "No protection against validly signed false measurements",
+    "Recovery means first qualifying fresh safe evidence, not restored connectivity"
+  ]
+}
