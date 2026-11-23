@@ -1,0 +1,34 @@
+{
+  "bound": "AETHER-123",
+  "phase": "VI",
+  "status": "FAIL",
+  "episodes_per_policy": 540,
+  "ticks_per_policy": 12960,
+  "checks": 7560,
+  "gates": {
+    "zero_unsafe": true,
+    "clean_nonregression": false,
+    "hazard_nonregression": false,
+    "moderate_recovery": true,
+    "rejects_nonlinearity": true,
+    "rejects_saturation": true,
+    "deterministic": true
+  },
+  "seeds": [
+    123001,
+    123060
+  ],
+  "pilots": [
+    32,
+    96,
+    160,
+    224
+  ],
+  "correction_margin_count": 3,
+  "limits": [
+    "synthetic only",
+    "trusted opaque same-path known-value pilot source assumed",
+    "clipping at low measurement values cannot be inverted safely",
+    "unmodeled nonlinear or selective response may invalidate corrections"
+  ]
+}
