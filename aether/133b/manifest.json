@@ -1,0 +1,26 @@
+{
+  "bound": "AETHER-133B",
+  "phase": "VII",
+  "status": "PASS",
+  "paired_episodes": 400,
+  "decisions_per_policy": 9600,
+  "checks": 5600,
+  "gates": {
+    "zero_unsafe": true,
+    "comparator_counterexample": true,
+    "clean_availability": true,
+    "rekey_availability": true,
+    "tests": true
+  },
+  "local_source_sha256": "db59e4f8bbd763bb09d79b3bc32141ae8cbd4eebdd868ab97c44872381cc22b5",
+  "comparator_unsafe": 3200,
+  "ingress_unsafe": 0,
+  "safe_act_each": 6400,
+  "failure": null,
+  "assumptions": [
+    "Ingress signing root and route telemetry are explicitly trusted synthetic inputs",
+    "Receipt signatures do not independently prove physical same-path acquisition",
+    "No field equipment connected",
+    "Synthetic detector does not address compromised keys or probe-aware selective cheating"
+  ]
+}
