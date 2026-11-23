@@ -1,0 +1,15 @@
+scenario,policy,cases,unsafe,safe_act,safe_hold,cost
+clean_rotation,cache,80,0,1759,1,55563.2
+clean_rotation,leased,80,0,1759,1,55563.2
+delayed_retirement_notice,cache,80,480,1759,1,230283.2
+delayed_retirement_notice,leased,80,0,1599,161,57355.2
+feed_outage,cache,80,480,1600,160,232064.0
+feed_outage,leased,80,0,1600,160,57344.0
+schedule_rollback,cache,80,320,1759,1,172043.2
+schedule_rollback,leased,80,0,1759,1,55563.2
+untrusted_renewal,cache,80,320,1760,0,172032.0
+untrusted_renewal,leased,80,0,1760,0,55552.0
+outage_recovery,cache,80,0,1759,1,55563.2
+outage_recovery,leased,80,0,1599,161,57355.2
+ALL,cache,480,1600,10396,164,917548.8
+ALL,leased,480,0,10076,484,338732.8
