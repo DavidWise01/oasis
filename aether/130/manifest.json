@@ -1,0 +1,25 @@
+{
+  "bound": "AETHER-130",
+  "phase": "VII",
+  "status": "FAIL",
+  "episodes_per_policy": 400,
+  "decision_ticks_per_policy": 11200,
+  "checks": 5600,
+  "seeds": [
+    130001,
+    130040
+  ],
+  "gates": {
+    "unsafe_zero": true,
+    "baseline_counterexample": true,
+    "clean_nonregression": true,
+    "rotation_nonregression": false,
+    "replay_checks": true
+  },
+  "caveats": [
+    "No physical reference instrument connected",
+    "Root-B independence is a signed declaration; not empirically verified",
+    "HMAC synthetic signatures and simulated reference truth",
+    "Additive uncertainty model assumes away correlations"
+  ]
+}
