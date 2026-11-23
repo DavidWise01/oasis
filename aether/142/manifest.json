@@ -1,0 +1,24 @@
+{
+  "bound": "AETHER-142",
+  "phase": "VIII",
+  "status": "PASS",
+  "scope": "local synthetic test only",
+  "episodes_per_policy": 320,
+  "decisions_per_policy": 7680,
+  "checks": 5120,
+  "checks_passed": 5120,
+  "signed_only_unsafe": 1600,
+  "guarded_unsafe": 0,
+  "safe_act_each_policy": 6080,
+  "physical_actions": 0,
+  "software_readiness_pct": 75,
+  "empirical_physical_validation_pct": 0,
+  "local_source_sha256": "77bfcbd0b8a803654df92e487cb127b58a2708a24f25af6aa6640552cc68c2d7",
+  "published_source_status": "Separately authored executable. This exact GitHub-checkout implementation has not been independently replayed.",
+  "assumptions": [
+    "External reference is simulated, and its reading uses synthetic ground truth",
+    "Protected issuer and alarm are HMAC mock claims, not physically authenticated",
+    "No instrument response or alarm reliability was empirically measured",
+    "All operational ACT decisions intentionally remain HOLD"
+  ]
+}
