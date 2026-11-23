@@ -1,0 +1,20 @@
+{
+  "bound": "AETHER-115",
+  "phase": "V",
+  "status": "PASS",
+  "seeds": [115001,115080],
+  "lease_ticks": 4,
+  "gates": {
+    "no_more_unsafe": true,
+    "no_safe_clean_regression": true,
+    "fewer_unsafe": true,
+    "no_extra_total_cost": true,
+    "replay": true
+  },
+  "caveats": [
+    "synthetic trust anchor and HMAC fixture keys",
+    "lease cannot detect revoked active credentials before expiry",
+    "oracle risk is evaluator-only",
+    "costs are simulated"
+  ]
+}
