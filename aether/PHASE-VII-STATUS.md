@@ -1,17 +1,28 @@
 # AETHER Phase VII — Physical Measurement Assurance
 
-**AETHER-129 accepted on its bounded SYNTHETIC software gate. Phase VII: 1/8 = 12.5%. Physical validation: NOT performed.**
+**AETHER-130B corrected synthetic software gate passed. Phase VII: 2/8 = 25%. Physical validation: NOT performed.**
 
 | Turn | Bound | Status | Phase completion |
 |---|---|---|---:|
 | 1 | 129 Physical reference evidence boundary | **ACCEPTED (synthetic)** | **12.5%** |
-| 2 | 130 Reference instrument provenance and traceability | Planned | 12.5% |
-| 3 | 131 Bounded reference uncertainty certificate | Planned | 12.5% |
-| 4 | 132 Device response regularity test | Planned | 12.5% |
-| 5 | 133 Probe insertion and same-path verification | Planned | 12.5% |
-| 6 | 134 Reference drift and recalibration economics | Planned | 12.5% |
-| 7 | 135 Unseen independent instrument stress | Planned | 12.5% |
-| 8 | 136 Integrated empirical-gate freeze | Planned | 12.5% |
+| 2 | 130 Reference instrument provenance and traceability | **ACCEPTED via 130B (synthetic)** | **25%** |
+| 3 | 131 Bounded reference uncertainty certificate | Planned | 25% |
+| 4 | 132 Device response regularity test | Planned | 25% |
+| 5 | 133 Probe insertion and same-path verification | Planned | 25% |
+| 6 | 134 Reference drift and recalibration economics | Planned | 25% |
+| 7 | 135 Unseen independent instrument stress | Planned | 25% |
+| 8 | 136 Integrated empirical-gate freeze | Planned | 25% |
+
+## AETHER-130B — Traceability and uncertainty ancestry
+
+- **AETHER-130 FAILED its availability gate**: certificate rotation mistakenly signed the prior signature field as part of the new payload; valid rotation safe ACT **719→319**, despite zero modeled unsafe ACT. [Failure preserved](130/); no completion credit for the failed revision.
+- **AETHER-130B accepted:** 40 independent seeded trials × 10 synthetic calibration-lineage scenarios × 28 ticks = **400 paired episodes** and **11,200 decisions/policy**.
+- All **5,600/5,600** deterministic replay, hash chain, source binding, fail-closed, no-unsafe and current-tick checks passed.
+- Synthetic signed-only comparator authorized **3,200 unsafe ACT**, lineage/uncertainty gate authorized **0**. Across all tested scenarios both policies retained **7,597 safe ACT**, including **1,120/1,120** clean and **719/719** valid calibration-rotation ACT.
+- The gate traces `ROOT-B → LAB → instrument certificate → reference serial → S1 risk observation`, matches device and generation, applies per-certificate lease, and adds bounded declared uncertainty components before risk authorization. Missing, cyclic, wrong-device, expired, tampered or incomplete ancestry forces HOLD.
+- **Crucial limitation:** signed `independent_from` is only a synthetic declaration. It does not prove ROOT-B is physically independent or accurate. No physical reference was connected. Fully forged but internally coherent certificate chains may pass. Uncertainty sums ignore some correlations.
+- [Corrected executable, evidence summary and interactive GitHub Pages source](130b/) committed; live Pages not yet independently verified. Generated local traces and check CSV downloadable separately.
+- **Turn 2 accepted: Phase VII 2/8=25% on synthetic software gates.** Next AETHER-131: covariance-aware reference uncertainty and external provenance limits.
 
 ## AETHER-129 — The reference-to-reality boundary
 
