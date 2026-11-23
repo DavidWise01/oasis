@@ -1,0 +1,10 @@
+scenario,cases,decisions,unsafe,safe_act,safe_hold,reference_cost
+clean,25,800,0,800,0,800
+hidden_jump,25,800,0,0,600,0
+false_drift_rate,25,800,0,0,600,0
+false_calibration_bias,25,800,0,0,600,0
+forged_ingress_receipt,25,800,0,0,600,0
+joint_spoof,25,800,0,0,600,800
+honest_anomaly,25,800,0,600,0,800
+valid_replacement,25,800,0,800,0,800
+ALL,200,6400,0,2200,3000,3200
