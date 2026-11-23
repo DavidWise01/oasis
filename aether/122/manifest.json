@@ -1,0 +1,21 @@
+{
+  "bound": "AETHER-122",
+  "phase": "VI",
+  "status": "PASS",
+  "seeds": [
+    122001,
+    122060
+  ],
+  "episodes_per_policy": 420,
+  "ticks_per_policy": 10080,
+  "checks": 5040,
+  "gates": {
+    "zero_unsafe": true,
+    "reduces_unsafe": true,
+    "clean_preserved": true,
+    "transition_preserved": true,
+    "checks": true
+  },
+  "crucial_assumption": "Opaque pilots indistinguishable from ordinary measurements until output committed; trusted insertion and ground truth.",
+  "limitation": "If sensor can identify probes, or falsifies only selected physical input channels, this gate can be defeated; no general anti-deception proof."
+}
