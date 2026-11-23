@@ -1,0 +1,17 @@
+scenario,policy,cases,unsafe,safe_act,safe_hold,probes,cost
+stable,fixed,60,0,1917,3,7680,47649.6
+stable,adaptive,60,0,1917,3,4800,41889.6
+slow_drift,fixed,60,0,240,1260,7680,66432.0
+slow_drift,adaptive,60,0,599,901,6720,60491.2
+noise_burst,fixed,60,0,1368,132,7680,53798.4
+noise_burst,adaptive,60,0,1297,203,5640,50513.6
+instrument_swap,fixed,60,0,778,722,7680,60406.4
+instrument_swap,adaptive,60,0,778,722,6360,57766.4
+hazard_step,fixed,60,0,1380,0,7680,53664.0
+hazard_step,adaptive,60,0,1379,1,4800,47915.2
+broken_calibration,fixed,60,0,1439,61,7680,53003.2
+broken_calibration,adaptive,60,0,1438,62,5640,48934.4
+missing_certificate,fixed,60,0,1200,300,4800,49920.0
+missing_certificate,adaptive,60,0,1197,303,3120,46593.6
+ALL,fixed,420,0,8322,2478,50880,384873.6
+ALL,adaptive,420,0,8605,2195,37080,354104.0
