@@ -1,17 +1,28 @@
 # AETHER Phase VII — Physical Measurement Assurance
 
-**AETHER-130B corrected synthetic software gate passed. Phase VII: 2/8 = 25%. Physical validation: NOT performed.**
+**AETHER-131 covariance-aware synthetic software gate passed. Phase VII: 3/8 = 37.5%. Physical validation: NOT performed.**
 
 | Turn | Bound | Status | Phase completion |
 |---|---|---|---:|
 | 1 | 129 Physical reference evidence boundary | **ACCEPTED (synthetic)** | **12.5%** |
 | 2 | 130 Reference instrument provenance and traceability | **ACCEPTED via 130B (synthetic)** | **25%** |
-| 3 | 131 Bounded reference uncertainty certificate | Planned | 25% |
-| 4 | 132 Device response regularity test | Planned | 25% |
-| 5 | 133 Probe insertion and same-path verification | Planned | 25% |
-| 6 | 134 Reference drift and recalibration economics | Planned | 25% |
-| 7 | 135 Unseen independent instrument stress | Planned | 25% |
-| 8 | 136 Integrated empirical-gate freeze | Planned | 25% |
+| 3 | 131 Bounded reference uncertainty certificate | **ACCEPTED — synthetic** | **37.5%** |
+| 4 | 132 Device response regularity test | Planned | 37.5% |
+| 5 | 133 Probe insertion and same-path verification | Planned | 37.5% |
+| 6 | 134 Reference drift and recalibration economics | Planned | 37.5% |
+| 7 | 135 Unseen independent instrument stress | Planned | 37.5% |
+| 8 | 136 Integrated empirical-gate freeze | Planned | 37.5% |
+
+## AETHER-131 — Covariance-aware reference uncertainty
+
+- **400 paired synthetic episodes**, eight reference-uncertainty ancestry regimes × 50 seeds × 24 ticks = **9,600 decisions per controller**. **5,600/5,600** deterministic integrity, replay, fresh-reference, fail-closed, and zero-unsafe checks passed in the local execution.
+- Signed-only comparator assumes two ±0.004 calibration components are independent. At observed risk ≈0.018 the naive one-sigma upper estimate ≈0.02366 permits ACT under threshold 0.025, while perfectly correlated common-root components produce 0.026 and require HOLD.
+- Under the synthetic modeled risk fault, naive independence authorized **2,500 unsafe ACT**; covariance-aware controller **0 unsafe ACT**. Clean safe ACT **1,200/1,200**, legitimate certificate rotation **1,200/1,200** preserved.
+- Across all scenarios safe ACT **7,100 naive → 6,400 covariance-aware** and **700 additional safe HOLD**, including a deliberately missing covariance certificate.
+- **Critical limitation:** Physical root ancestry, rho, and uncertainty magnitude are synthetic declared facts, not physically established. One-standard-deviation covariance arithmetic is not a validated high-confidence risk bound, and cannot itself establish metrological traceability. This is a software logic experiment, **not physical reference validation**.
+- Local implementation SHA-256 `49fb21d19707e7dd6b02499563c8bbd184926fc1ffb3fe1ba6bcb448266ea654`; the GitHub-authored source is a separate implementation and its byte-identical replay against local data is **unverified**.
+- [Executable and interactive laboratory](131/) committed. Live GitHub Pages deployment unverified.
+- **Turn 3 accepted on synthetic criteria, Phase VII = 3/8 = 37.5%; next AETHER-132: device response regularity.**
 
 ## AETHER-130B — Traceability and uncertainty ancestry
 
