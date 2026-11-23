@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-128",
+  "phase": "VI",
+  "status": "PASS",
+  "evaluated": "LOCAL synthetic run",
+  "cases": 200,
+  "decisions": 6400,
+  "checks": 1600,
+  "unsafe": 0,
+  "safe_act": 2870,
+  "safe_hold": 1955,
+  "probes": 583050,
+  "cost": 1313156,
+  "seeds": [
+    128001,
+    128025
+  ],
+  "gates": {
+    "all_integrations_pass": true,
+    "no_unsafe": true,
+    "original_failure_retained": true,
+    "full_archive_present": true,
+    "source_frozen": true,
+    "manifest_status_matches": true
+  },
+  "local_accepted_sha256": "37837c39760e972834c93386a7236de8cf2744d3f3acc8553a57a5cb21d17eee",
+  "limits": [
+    "Local model assumes trusted hidden probe truth and physical response regularity",
+    "This manifest captures locally executed results, not a verified GitHub workflow run",
+    "Published GitHub experiment may not be byte identical to local harness",
+    "Prior bounds inventoried by source/manifest and status; not exhaustively rerun"
+  ]
+}
