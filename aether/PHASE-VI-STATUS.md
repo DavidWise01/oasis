@@ -1,6 +1,6 @@
 # AETHER Phase VI — Measurement Integrity and Adaptive Homeostasis
 
-**AETHER-127 failed its synthetic safety gate. Phase VI remains 6/8 = 75%.**
+**AETHER-127C corrected synthetic acceptance passed. Phase VI: 7/8 = 87.5%.**
 
 | Turn | Bound | Status | Progress |
 |---|---|---|---:|
@@ -10,8 +10,20 @@
 | 4 | 124 Noise-dependent measurement confidence | **ACCEPTED via 124B** | **50%** |
 | 5 | 125 Recovery after instrument replacement | **ACCEPTED via 125B** | **62.5%** |
 | 6 | 126 Adaptive calibration resource economics | **ACCEPTED** | **75%** |
-| 7 | 127 Unseen sensor drift stress | **FAILED — revision required** | **75%** |
-| 8 | 128 Integration and freeze | Planned | 75% |
+| 7 | 127 Unseen sensor drift stress | **ACCEPTED via 127C** | **87.5%** |
+| 8 | 128 Integration and freeze | Planned | 87.5% |
+
+## AETHER-127C — Explicit coverage under nonlinear measurement errors
+
+- **AETHER-127 original failure preserved**: fixed and adaptive four-probe calibration authorized **696 and 662** unsafe ACT respectively on the original holdout. Four known probes cannot certify nonlinear interpolation.
+- **AETHER-127B failed**: 88 random hidden interior probes eliminated modeled unsafe actions but left coverage gaps, dropping clean safe actions **1,918 → 1,588**. No completion credit; [failed archive](127b/).
+- **AETHER-127C corrected 127B** by guaranteeing a radius-1 net over **integer error-count input domain 0–100**, with randomized parity + additional concealed positions, 88 total probes/tick. Coverage is checked on every tick. Unknown domains and untrusted coverage would force HOLD.
+- New 60-seed × eight-case synthetic holdout: **480 paired episodes**, 15,360 decisions/policy, **6,720/6,720** reproducibility, integrity, coverage, resource and zero-unsafe checks passed.
+- Frozen adaptive policy **665 unsafe authorizations**; corrected coverage gate **0** in this synthetic model. Nonlinear blindspot (409→0) and nonlinear midrange (256→0); clean safe ACT **1,918/1,918** preserved.
+- Total safe ACT **8,066 → 6,867**. Probes increased **47,640 → 1,399,320** (~29.4×); illustrative total cost increased **729,216.8 → 3,151,809.6**. This correction is **not** an economic improvement.
+- **Critical model limitation:** The code uses a known synthetic sensor-response function as its ground-truth challenge oracle. Physical same-path probe secrecy, truthful reference response, response regularity across gaps, and covered operational domain are **assumptions**, not proved protections. A selective or probe-aware sensor can still defeat this; field safety is not established. GitHub checkout exact replay is not yet independently confirmed.
+- [Accepted AETHER-127C executable, evidence summary and interactive laboratory](127c/) committed. Live Pages deployment unverified.
+- **Turn 7 accepted within its explicitly constrained synthetic model: Phase VI 7/8 = 87.5%.** Next AETHER-128 integration and phase freeze.
 
 ## AETHER-127 — Unseen nonlinear drift, safety gate FAILED
 
