@@ -1,17 +1,29 @@
 # AETHER Phase VI — Measurement Integrity and Adaptive Homeostasis
 
-**AETHER-122 accepted on synthetic acceptance gate. Phase VI: 2/8 = 25%.**
+**AETHER-123B corrected acceptance gate passed. Phase VI: 3/8 = 37.5%.**
 
 | Turn | Bound | Status | Progress |
 |---|---|---|---:|
 | 1 | 121 Signed sensor measurement integrity | **ACCEPTED** | **12.5%** |
 | 2 | 122 Calibration integrity under selective fault | **ACCEPTED** | **25%** |
-| 3 | 123 Bounded recalibration and provenance | Planned | 25% |
-| 4 | 124 Noise-dependent measurement confidence | Planned | 25% |
-| 5 | 125 Recovery after instrument replacement | Planned | 25% |
-| 6 | 126 Adaptive calibration resource economics | Planned | 25% |
-| 7 | 127 Unseen sensor drift stress | Planned | 25% |
-| 8 | 128 Integration and freeze | Planned | 25% |
+| 3 | 123 Bounded recalibration and provenance | **ACCEPTED via 123B** | **37.5%** |
+| 4 | 124 Noise-dependent measurement confidence | Planned | 37.5% |
+| 5 | 125 Recovery after instrument replacement | Planned | 37.5% |
+| 6 | 126 Adaptive calibration resource economics | Planned | 37.5% |
+| 7 | 127 Unseen sensor drift stress | Planned | 37.5% |
+| 8 | 128 Integration and freeze | Planned | 37.5% |
+
+## AETHER-123B — Interior probes and bounded affine recalibration
+
+- **AETHER-123 failed acceptance**: 3-count safety margin always applied, including exact-identity calibration, reducing clean safe ACT 839→810 and shifted-hazard safe ACT 480→467. All 7,560 deterministic checks passed and zero unsafe ACT, but no completion credit. [Failed experiment and report](123/) preserved.
+- **AETHER-123B corrected** identity regression: exact measured identity fit passes the original risk count unchanged; nonidentity gains/offsets receive the original +3 uncertainty margin.
+- **540 paired synthetic episodes**, 60 seeded cases × 9 regimes × 24 inspections = **12,960 decisions per policy**.
+- **7,560/7,560 checks** passed; **0 unsafe ACT** for both compared controllers in tested scenarios. Clean safe ACT **839/839**, hazard-shift safe ACT **480/480**.
+- Four interior calibration probes **32, 96, 160, 224**. Three fit a bounded affine model (gain 0.8–1.2, |offset|≤16); fourth validates affine residual. Out-of-range, nonlinear, and saturated conditions fail closed.
+- Total safe ACT rose **1,379→4,239** with bounded recalibration. Negative offset still held because of low-value clipping. Modeled calibration expense raised total cost **364,024.0→431,524.8** illustrative units.
+- Trusted same-path opaque probes, calibration truth, HMAC signing and affine relevance are synthetic assumptions, not real-world assurance.
+- [Accepted corrected experiment, results and interactive lab](123b/) verified in GitHub; Pages deployment not independently checked.
+- **Turn 3 accepted via 123B. Phase VI 3/8=37.5%. Next AETHER-124: noise-dependent calibration uncertainty.**
 
 ## AETHER-122 — Opaque same-path pilot calibration
 
