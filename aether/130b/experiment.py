@@ -37,13 +37,13 @@ def packet(seed,sc,t):
   lab=sign(dict({k:v for k,v in lab.items() if k!='signature'},serial='LAB-2',valid_from=14,parent='ROOT-B',issuer='lab'),'lab')
   cert=sign(dict({k:v for k,v in cert.items() if k!='signature'},serial='CAL-2',parent='LAB-2',valid_from=14),'sensor')
  if faulty:
-  if sc=='broken_parent':cert=sign(dict(cert,parent='MISSING-LAB'),'sensor')
-  if sc=='shared_root':root=sign(dict(root,serial='ROOT-A',independent_from='ROOT-A'),'root-B')
-  if sc=='expired_calibration':cert=sign(dict(cert,valid_until=8),'sensor')
-  if sc=='wrong_device':lab=sign(dict(lab,device='S2'),'lab')
-  if sc=='unknown_uncertainty':cert=sign(dict(cert,random_uncertainty=None),'sensor')
+  if sc=='broken_parent':cert=sign(dict({k:v for k,v in cert.items() if k!='signature'},parent='MISSING-LAB'),'sensor')
+  if sc=='shared_root':root=sign(dict({k:v for k,v in root.items() if k!='signature'},serial='ROOT-A',independent_from='ROOT-A'),'root-B')
+  if sc=='expired_calibration':cert=sign(dict({k:v for k,v in cert.items() if k!='signature'},valid_until=8),'sensor')
+  if sc=='wrong_device':lab=sign(dict({k:v for k,v in lab.items() if k!='signature'},device='S2'),'lab')
+  if sc=='unknown_uncertainty':cert=sign(dict({k:v for k,v in cert.items() if k!='signature'},random_uncertainty=None),'sensor')
   if sc=='tampered_certificate':cert['device']='S2'
-  if sc=='cyclic_parent':lab=sign(dict(lab,parent='CAL-1'),'lab')
+  if sc=='cyclic_parent':lab=sign(dict({k:v for k,v in lab.items() if k!='signature'},parent='CAL-1'),'lab')
   if sc=='missing_calibration':cert=None
  return q,rp,ref,(root,lab,cert)
 def baseline(t,rp,ref):
