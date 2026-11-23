@@ -1,0 +1,22 @@
+{
+  "bound": "AETHER-118",
+  "phase": "V",
+  "status": "PASS",
+  "cases": 400,
+  "ticks_per_policy": 14400,
+  "checks": 4000,
+  "gates": {
+    "no_unsafe": true,
+    "fewer_unsafe": true,
+    "clean_availability": true,
+    "outage_recovery": true,
+    "deterministic": true
+  },
+  "seed_start": 118001,
+  "seed_end": 118050,
+  "limitations": [
+    "Synthetic pretrusted HMAC signer; signed wrong measurements not detected",
+    "Sensor independence and local counter integrity assumed",
+    "Risk truth is evaluation-only; fixed-time confidence bound not guaranteed under drift"
+  ]
+}
