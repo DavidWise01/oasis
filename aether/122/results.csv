@@ -1,0 +1,17 @@
+scenario,policy,cases,unsafe,safe_act,safe_hold,pilot_reject,cost
+clean,public_only,60,0,840,0,0,30912.0
+clean,opaque_pilot,60,0,840,0,0,34598.4
+selective_underreport,public_only,60,161,840,0,1440,103040.0
+selective_underreport,opaque_pilot,60,0,0,840,1440,44006.4
+gradual_selective,public_only,60,266,840,0,1200,150080.0
+gradual_selective,opaque_pilot,60,0,240,600,1200,41318.4
+burst_selective,public_only,60,517,840,0,600,262528.0
+burst_selective,opaque_pilot,60,0,840,0,600,34598.4
+stuck_risk_only,public_only,60,600,840,0,1440,299712.0
+stuck_risk_only,opaque_pilot,60,0,0,840,1440,44006.4
+high_bias,public_only,60,0,0,840,0,40320.0
+high_bias,opaque_pilot,60,0,0,840,0,44006.4
+risk_transition,public_only,60,0,660,0,0,32928.0
+risk_transition,opaque_pilot,60,0,660,0,0,36614.4
+ALL,public_only,420,1544,4860,840,4680,919520.0
+ALL,opaque_pilot,420,0,2580,3120,4680,279148.8
