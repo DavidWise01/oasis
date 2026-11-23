@@ -1,0 +1,17 @@
+scenario,policy,cases,unsafe,safe_act,safe_hold,cost,recovery_cases,recovered
+control,cached,60,0,2159,1,48395.2,60,0
+control,strict,60,0,2159,1,48395.2,60,60
+burst_loss,cached,60,156,1752,18,120696.8,60,0
+burst_loss,strict,60,0,1621,149,52276.0,60,60
+long_outage,cached,60,241,1353,398,160014.4,60,0
+long_outage,strict,60,0,1174,577,54051.2,60,60
+reordered,cached,60,48,1701,52,71674.4,60,0
+reordered,strict,60,0,1115,638,56733.6,60,60
+intermittent,cached,60,77,1665,86,82779.2,60,0
+intermittent,strict,60,0,1031,720,55384.0,60,60
+invalid_signature,cached,60,13,1734,22,58979.2,60,0
+invalid_signature,strict,60,0,1464,292,56179.2,60,60
+counter_discontinuity,cached,60,0,1739,0,53099.2,60,0
+counter_discontinuity,strict,60,0,1208,531,59046.4,60,60
+ALL,cached,420,535,12103,577,595638.4,420,0
+ALL,strict,420,0,9772,2908,382065.6,420,420
