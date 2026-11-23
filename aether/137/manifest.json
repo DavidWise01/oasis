@@ -1,0 +1,30 @@
+{
+  "bound": "AETHER-137",
+  "phase": "VIII",
+  "status": "PASS",
+  "accepted_scope": "synthetic software physical-readiness contract",
+  "physical_validation": "NOT PERFORMED",
+  "measured_physical_evidence_percent": 0,
+  "synthetic_episodes_per_policy": 400,
+  "decisions_per_policy": 9600,
+  "check_count": 8400,
+  "naive_unsafe_ACT": 3500,
+  "dry_run_unsafe_ACT": 0,
+  "operational_ACT": 0,
+  "clean_dry_run_safe_ACT": 1200,
+  "gates": {
+    "physical_no_act": true,
+    "naive_counterexample": true,
+    "synthetic_clean_usable": true,
+    "invalid_fixture_blocked": true,
+    "all_checks": true
+  },
+  "local_executed_source_sha256": "291e3e0aa1b29cf45d78828106a105b7434fa402876a0b2a9fa65404bad32a3d",
+  "reproducibility": "Published repository script separately authored; independent checkout replay has not been verified",
+  "limitations": [
+    "Synthetic HMAC signatures are not hardware evidence",
+    "No physical reference standard was connected",
+    "Real-world action gate HOLD for all cases",
+    "The observed 0 unsafe ACT for physical policy is vacuous because it performed no actions"
+  ]
+}
