@@ -1,0 +1,32 @@
+{
+  "bound": "AETHER-127B",
+  "phase": "VI",
+  "status": "FAIL",
+  "episodes_per_policy": 480,
+  "decisions_per_policy": 15360,
+  "checks": 6720,
+  "gates": {
+    "no_unsafe": true,
+    "nonlinear_zero": true,
+    "clean_availability": false,
+    "baseline_failed": true,
+    "reproducible": true
+  },
+  "base_local_sha256": "9fde4f39ca3806869556561bb6f1a8654ed108f74ae53e9914ccb3631d9d4426",
+  "seed_range": [
+    127201,
+    127260
+  ],
+  "microprobes_per_tick": 88,
+  "certified_input_domain": [
+    0,
+    100
+  ],
+  "coverage_radius_counts": 1,
+  "limitations": [
+    "Trusted opaque same-path challenge insertion and known response truth",
+    "Externally certified local response regularity needed for between-probe claim",
+    "Not protection against selectively disguised measurements",
+    "Synthetic evaluation; no general sensor trust or real-world guarantee"
+  ]
+}
