@@ -1,0 +1,23 @@
+{
+  "bound": "AETHER-117B",
+  "phase": "V",
+  "status": "PASS",
+  "seeds": [117001,117040],
+  "cases": 280,
+  "checks": 3360,
+  "gates": {
+    "replay_and_record": true,
+    "no_unsafe": true,
+    "improves_over_weak": true,
+    "clean_availability": true,
+    "verified_recovery": true,
+    "unauthorized_restart_closed": true
+  },
+  "recovery_ticks": [30],
+  "limitations": [
+    "Synthetic HMAC root, signed bridge and independent risk-audit signer assumed trustworthy",
+    "Integrity-protected local epoch/counter assumed",
+    "Action permission uses current signed risk-audit errors; independent provenance is assumed, not proven",
+    "Zero unsafe ticks here does not imply general safety"
+  ]
+}
