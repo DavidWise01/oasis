@@ -1,6 +1,6 @@
 # AETHER Phase VI — Measurement Integrity and Adaptive Homeostasis
 
-**AETHER-125B corrected acceptance gate passed. Phase VI: 5/8 = 62.5%.**
+**AETHER-126 adaptive calibration gate passed. Phase VI: 6/8 = 75%.**
 
 | Turn | Bound | Status | Progress |
 |---|---|---|---:|
@@ -9,9 +9,20 @@
 | 3 | 123 Bounded recalibration and provenance | **ACCEPTED via 123B** | **37.5%** |
 | 4 | 124 Noise-dependent measurement confidence | **ACCEPTED via 124B** | **50%** |
 | 5 | 125 Recovery after instrument replacement | **ACCEPTED via 125B** | **62.5%** |
-| 6 | 126 Adaptive calibration resource economics | Planned | 62.5% |
-| 7 | 127 Unseen sensor drift stress | Planned | 62.5% |
-| 8 | 128 Integration and freeze | Planned | 62.5% |
+| 6 | 126 Adaptive calibration resource economics | **ACCEPTED** | **75%** |
+| 7 | 127 Unseen sensor drift stress | Planned | 75% |
+| 8 | 128 Integration and freeze | Planned | 75% |
+
+## AETHER-126 — Adaptive calibration resource economics
+
+- **420 paired synthetic episodes**: 60 fresh seeds × seven environments × 32 ticks = **13,440 decisions per policy**, **5,880/5,880** deterministic checks passed.
+- Fixed calibration: four interior probes for each valid packet. Adaptive: full four-probe certification at initial anchor, after device generation change, after bounded age or noisy/suspicious packet; otherwise two current monitor probes compared to a recent full calibration.
+- Adaptation never replaces current signed and independently admissible risk observations. Any invalid certificate, missing counter continuity or failed full calibration yields HOLD.
+- Aggregate probe purchases **50,880 fixed vs 37,080 adaptive**: **13,800 probes saved (27.12%)**. Illustrative total cost **384,873.6 fixed vs 354,104.0 adaptive**: **30,769.6 saved (7.99%)**.
+- Both controllers: **0 unsafe ACT** in modeled scenarios. Safe ACT **8,322 fixed vs 8,605 adaptive** overall; stable regime **1,917/1,917** clean safe ACT, while noisy and certificate-missing cases incurred modest safe-action regressions.
+- Unproven assumptions: honest HMAC issuer/protected counter, truthful bounded additive noise, affine response between full audits, **no sudden selectively hidden drift within a monitoring interval**. These synthetic results are not field safety proof; repeated pointwise confidence bounds do not give familywise guarantees.
+- [AETHER-126 executable, results, manifest and interactive lab](126/) published to GitHub; live Pages status not independently verified.
+- **Turn 6 accepted. Phase VI = 6/8 = 75%. Next AETHER-127: unforeseen drift and abrupt-monitor failures.**
 
 ## AETHER-125B — New instrument, new authority
 
