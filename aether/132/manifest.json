@@ -1,0 +1,31 @@
+{
+  "bound": "AETHER-132",
+  "phase": "VII",
+  "status": "PASS",
+  "episodes_per_policy": 400,
+  "decisions_per_policy": 9600,
+  "check_count": 5600,
+  "gates": {
+    "zero_unsafe": true,
+    "baseline_counterexample": true,
+    "clean_availability": true,
+    "rotation_availability": true,
+    "nonlinear_rejection": true,
+    "deterministic": true
+  },
+  "seed_range": [
+    132001,
+    132050
+  ],
+  "challenge_count": 51,
+  "domain": "risk 0..5 percent in 0.1-percent steps",
+  "local_source_sha256": "2d850e7e5367d57bd0957a24909e3534b20facf4adf47f2dca5ed63508cab9f5",
+  "note": "GitHub executable separately authored; an independent checkout replay has not been verified",
+  "limitations": [
+    "No physical instrument was connected",
+    "True response supplied by synthetic oracle",
+    "Finite probes cannot certify arbitrary response curvature between samples",
+    "Challenge ground truth, same-path injection, and sensor regularity bounds assumed",
+    "One controller; no witness/quorum/Byzantine mechanisms"
+  ]
+}
