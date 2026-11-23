@@ -1,6 +1,6 @@
 # AETHER Phase VIII — Physical Validation Readiness and Empirical Evidence
 
-**AETHER-142 bounded-drift and alarm contract synthetic PASS: Phase VIII 6/8 = 75%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-143 adversarial reference-readiness synthetic PASS: Phase VIII 7/8 = 87.5%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase VIII deliberately has two non-interchangeable progress measures. The phase percentage tracks completed **software/readiness acceptance turns**. The physical-evidence percentage tracks actual observed and independently validated instrument measurements. It remains **0%** until real evidence exists.
 
@@ -12,8 +12,17 @@ Phase VIII deliberately has two non-interchangeable progress measures. The phase
 | 4 | 140 Physical uncertainty and coverage requirements | **ACCEPTED — synthetic only** | **50%** |
 | 5 | 141 Empirical same-path insertion readiness | **ACCEPTED — synthetic only** | **62.5%** |
 | 6 | 142 Measured drift and alarm requirements | **ACCEPTED — synthetic only** | **75%** |
-| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 75% |
-| 8 | 144 Integrated readiness evidence freeze | Planned | 75% |
+| 7 | 143 Adversarial hardware-readiness failure modes | **ACCEPTED — synthetic only** | **87.5%** |
+| 8 | 144 Integrated readiness evidence freeze | Planned | 87.5% |
+
+## AETHER-143 — Adversarial reference-root compromises and unattested physical truth
+
+- Local **320 paired synthetic episodes**, 40 seeds × eight conditions × 24 ticks = **7,680 decisions per policy**, **5,120/5,120** replay, hash chain, chronological, one-action, safety, fail-closed, clean availability and physical HOLD checks passed.
+- Signed-only comparator authorized **1,920 unsafe dry-run ACT** in six constructed adversarial regimes (compromised reference root, replayed attestation, tampered calibration, false same-path assertion, suppressed alarm and dual digital compromise). Bench-gated model authorized **zero unsafe dry-run ACT**. **5,760 safe dry-run ACT** were preserved, including clean and valid rotation **960/960** each.
+- This is **not a demonstration that software can defeat an actually compromised physical reference**. The simulation includes an independently signed 'bench' reading which directly receives synthetic physical ground truth. A dishonest actual bench or shared compromise ancestry is beyond the proof. Real-world operational actions **remain HOLD** and empirical physical validation is **0%**.
+- Local executed Python SHA-256 `8a629056bcb9fdd67a01939788e62fa42cf90e997dc1b3f3f324608912c3d547`. GitHub reproducer is authored separately; exact checkout replay unverified.
+- [AETHER-143 reproducibility script, result summary, assumptions and interactive HTML](143/) committed; live Pages deployment unverified.
+- **Synthetic readiness advances to 7/8 = 87.5%**. Next AETHER-144: readiness integration freeze, while physical validation stays separate.
 
 ## AETHER-142 — Bounded drift and alarm requirements
 
