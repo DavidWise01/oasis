@@ -1,0 +1,26 @@
+{
+  "bound": "AETHER-133",
+  "phase": "VII",
+  "status": "FAIL",
+  "paired_episodes": 400,
+  "decisions_per_policy": 9600,
+  "checks": 5600,
+  "gates": {
+    "zero_unsafe": true,
+    "comparator_counterexample": true,
+    "clean_availability": true,
+    "rekey_availability": true,
+    "tests": false
+  },
+  "local_source_sha256": "8cbffc21622063da28374a88a77c1020b0343b760863a9214a304e85faacd53d",
+  "comparator_unsafe": 2000,
+  "ingress_unsafe": 0,
+  "safe_act_each": 6400,
+  "failure": "240 signature-integrity episode checks failed because mutated packet fixtures were signed with the old MAC still inside the signed payload",
+  "assumptions": [
+    "Ingress signing root and route telemetry are explicitly trusted synthetic inputs",
+    "Receipt signatures do not independently prove physical same-path acquisition",
+    "No field equipment connected",
+    "Synthetic detector does not address compromised keys or probe-aware selective cheating"
+  ]
+}
