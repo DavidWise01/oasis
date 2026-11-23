@@ -1,6 +1,6 @@
 # AETHER Phase VIII — Physical Validation Readiness and Empirical Evidence
 
-**AETHER-139 independent-reference contract synthetic PASS: Phase VIII 3/8 = 37.5%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-140 bounded-uncertainty synthetic PASS: Phase VIII 4/8 = 50%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase VIII deliberately has two non-interchangeable progress measures. The phase percentage tracks completed **software/readiness acceptance turns**. The physical-evidence percentage tracks actual observed and independently validated instrument measurements. It remains **0%** until real evidence exists.
 
@@ -9,11 +9,22 @@ Phase VIII deliberately has two non-interchangeable progress measures. The phase
 | 1 | 137 Independent physical validation readiness | **ACCEPTED — synthetic only** | **12.5%** |
 | 2 | 138 Instrument identity and acquisition receipt contract | **ACCEPTED — synthetic only** | **25%** |
 | 3 | 139 Independent calibration reference evidence | **ACCEPTED — synthetic only** | **37.5%** |
-| 4 | 140 Physical uncertainty and coverage requirements | Planned | 37.5% |
-| 5 | 141 Empirical same-path insertion readiness | Planned | 37.5% |
-| 6 | 142 Measured drift and alarm requirements | Planned | 37.5% |
-| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 37.5% |
-| 8 | 144 Integrated readiness evidence freeze | Planned | 37.5% |
+| 4 | 140 Physical uncertainty and coverage requirements | **ACCEPTED — synthetic only** | **50%** |
+| 5 | 141 Empirical same-path insertion readiness | Planned | 50% |
+| 6 | 142 Measured drift and alarm requirements | Planned | 50% |
+| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 50% |
+| 8 | 144 Integrated readiness evidence freeze | Planned | 50% |
+
+## AETHER-140 — Physical uncertainty budget and coverage claim boundary
+
+- Local synthetic run: **320 paired cases**, 40 seeds × eight conditions × 24 ticks, **7,680 decisions per policy**, **5,120/5,120 deterministic checks passed**. All six model acceptance gates passed.
+- Signed-only comparator authorized **1,920 unsafe dry-run ACT** in constructed uncertainty failures. The model-budget gate authorized **0 unsafe dry-run ACT** and preserved **5,760 safe ACT**, including **960/960 clean** and **960/960 valid calibration rotation**. **All operational ACT remain HOLD**.
+- Rejected missing budget, unsupported statistical-coverage claims, shared calibration ancestry incorrectly treated as independent, upper risk crossing the action threshold, expired uncertainty records and negative/underreported budgets.
+- Illustrated conservative synthetic upper risk equals mock reference value + 0.001 random + 0.001 reference + 0.002 shared + 0.003 systematic. This worst-case sum is an asserted model envelope; **no measured coverage rate or calibrated confidence interval exists**.
+- **Physical validation 0%:** No actual reference data, metrological qualification, calibration samples or real-world hardware measurements. The asserted traceability root and budget are synthetic strings/constants. HOLD on all operational decisions.
+- Local executed Python SHA-256 `9e2e5260c2f7fe62405b14f2fd617a4e9cf9e171387352e36e8475efd2959dcf`. GitHub `140/experiment.py` is separately authored and no independent GitHub-checkout replay has been verified.
+- [AETHER-140 experiment and interactive HTML evidence](140/) committed; live Pages status unverified.
+- **Phase VIII readiness: 4/8 = 50%; physical assurance: 0%.** Next AETHER-141: same-path empirical insertion readiness.
 
 ## AETHER-139 — Reference-standard source ancestry and acquisition-bound values
 
