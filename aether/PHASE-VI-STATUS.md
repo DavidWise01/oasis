@@ -1,6 +1,6 @@
 # AETHER Phase VI — Measurement Integrity and Adaptive Homeostasis
 
-**AETHER-126 adaptive calibration gate passed. Phase VI: 6/8 = 75%.**
+**AETHER-127 failed its synthetic safety gate. Phase VI remains 6/8 = 75%.**
 
 | Turn | Bound | Status | Progress |
 |---|---|---|---:|
@@ -10,8 +10,20 @@
 | 4 | 124 Noise-dependent measurement confidence | **ACCEPTED via 124B** | **50%** |
 | 5 | 125 Recovery after instrument replacement | **ACCEPTED via 125B** | **62.5%** |
 | 6 | 126 Adaptive calibration resource economics | **ACCEPTED** | **75%** |
-| 7 | 127 Unseen sensor drift stress | Planned | 75% |
+| 7 | 127 Unseen sensor drift stress | **FAILED — revision required** | **75%** |
 | 8 | 128 Integration and freeze | Planned | 75% |
+
+## AETHER-127 — Unseen nonlinear drift, safety gate FAILED
+
+- **480 paired synthetic episodes**, 60 untouched seeds × eight new sensor response conditions × 32 ticks; **15,360 decisions per controller**.
+- Frozen AETHER-126 decision engine imported without tuning in the **local** test. 5,760/5,760 replay, SHA-256 chain, one-action, fail-closed, budget and source-freeze checks passed.
+- **Safety FAILED**: adaptive **662 unsafe ACT**, fixed **696 unsafe ACT**. All from two targeted nonlinear response faults that passed all four calibration points, while underreporting true risk outcomes at other count values.
+- Blind-spot case: **403 adaptive** and **421 fixed** unsafe. Midrange distortion: **259 adaptive** and **275 fixed** unsafe.
+- Adaptive saved **13,800 calibration probes** (22.5%) and **41,499.2** synthetic cost units, but savings do not compensate for the failed safety gate.
+- Finite pointwise calibration alone **does not certify entire sensor response curve**; both fixed and adaptive are vulnerable. Blindness is not attributable solely to reduced calibration frequency.
+- **Reproducibility qualification:** The local test imports the archived local AETHER-126 source SHA-256 `9fde4f39ca3806869556561bb6f1a8654ed108f74ae53e9914ccb3631d9d4426`. Exact byte identity with GitHub's prior `126/experiment.py` has **not** been verified; independent GitHub-checkout reproduction remains necessary.
+- [Failure archive, results, harness and interactive HTML](127/). Live GitHub Pages deployment remains unverified.
+- **No phase credit. Phase VI remains 75%.** Next AETHER-127B: randomized *hidden* interior pilot coverage with explicit unobservable-domain HOLD, not witness/quorum or Byzantine consensus.
 
 ## AETHER-126 — Adaptive calibration resource economics
 
