@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-120",
+  "phase": "V",
+  "status": "PASS",
+  "cases": 240,
+  "checks": 1920,
+  "passed": 1920,
+  "decisions": 8640,
+  "unsafe": 0,
+  "act": 5717,
+  "hold": 2923,
+  "archive_entries": 8,
+  "frozen_source_sha256": "f7642313075830651348dd368496aa5f409236070466714b5010ab0fadc9ee4c",
+  "scenarios": [
+    "clean",
+    "late",
+    "tampered",
+    "rollback",
+    "outage_recovery",
+    "mixed"
+  ],
+  "seeds": [
+    120001,
+    120040
+  ],
+  "limits": [
+    "synthetic only",
+    "trusted HMAC signer and authentic provenance assumed",
+    "protected counters and independence not independently proven",
+    "previous bounds inventoried by local byte hashes, not rerun",
+    "inventory hashes refer to the local experimental copies; repository file contents are not claimed byte-identical"
+  ]
+}
