@@ -1,0 +1,25 @@
+{
+  "bound": "AETHER-141",
+  "phase": "VIII",
+  "status": "PASS",
+  "episodes_per_policy": 320,
+  "decisions_per_policy": 7680,
+  "checks": 5120,
+  "gates": {
+    "all_checks": true,
+    "unsafe_gated_zero": true,
+    "baseline_counterexamples": true,
+    "clean_availability": true,
+    "rotation_availability": true,
+    "no_physical_actions": true
+  },
+  "local_executed_sha256": "f851e4a1cea68e3def327ce52e55420c06f7ff705ffe9dc442407ab6ac1c70b0",
+  "physical_validation_percent": 0,
+  "provenance": "Published GitHub Python is independently authored and NOT byte-identical to local executed source; repository checkout replay unverified",
+  "limitations": [
+    "Protected ingress issuer simulated using HMAC secret",
+    "Synthetic physical path selected by test environment, not independently measured",
+    "The receipt is not physical proof of same path",
+    "Every operational ACT was held"
+  ]
+}
