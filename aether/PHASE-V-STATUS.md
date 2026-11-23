@@ -1,6 +1,6 @@
 # AETHER Phase V — Live Progress
 
-**AETHER-117 failed its no-unsafe gate. 4 / 8 turns = 50% (unchanged).**
+**AETHER-117B accepted on the synthetic gate. 5 / 8 turns = 62.5%.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -8,10 +8,23 @@
 | 2 | 114 Key rotation and expiry | **ACCEPTED** | **25%** |
 | 3 | 115 Schedule freshness and delayed retirement | **ACCEPTED** | **37.5%** |
 | 4 | 116 Temporal freshness | **ACCEPTED** | **50%** |
-| 5 | 117 Anchor continuity and reacquisition | **FAILED; revise as 117B** | **50%** |
-| 6 | 118 Verification economy | Planned | 50% |
-| 7 | 119 Unseen ingress stress | Planned | 50% |
-| 8 | 120 Integration freeze | Planned | 50% |
+| 5 | 117 Anchor continuity and reacquisition | **ACCEPTED via 117B** | **62.5%** |
+| 6 | 118 Verification economy | Planned | 62.5% |
+| 7 | 119 Unseen ingress stress | Planned | 62.5% |
+| 8 | 120 Integration freeze | Planned | 62.5% |
+
+## AETHER-117B — Corrected clock + fresh-risk acceptance
+
+- Original AETHER-117 failure preserved: 40 unsafe authorizations in the delayed-anchor scenario.
+- Fixed source tested across 40 seeds and 7 scenarios, 36 ticks per episode: 280 episodes per policy.
+- The verified clock must be continuous and leased, **and** a separately authenticated, current independent risk-audit packet must satisfy the 2.5% upper-bound gate.
+- Corrected fresh-risk policy: **0 unsafe ticks**, including 0/40 in the delayed-anchor cases.
+- Clean scenario: **1,440/1,440** safe actions preserved. Verified restart: **40/40** recoveries; unverified restart remains closed.
+- **3,360/3,360** deterministic replay, record chain, one-action and fail-closed checks passed.
+- Total cost: weak 1,421,974.4; clock continuity 288,982.4; fresh-risk 305,121.6 units. Extra **16,139.2** is the audit-certification cost compared with clock-only; no universal economy claim.
+- The separate risk signer and independent observations are **assumed trusted** in the synthetic evaluation.
+- [AETHER-117B source, evidence and interactive lab](117b/). **Phase V advanced to 5/8 = 62.5%.**
+- Next AETHER-118: interrupted risk-audit ingestion and freshness.
 
 ## AETHER-117 — Failed acceptance, preserved
 
@@ -21,7 +34,7 @@
 - All 40 failures arise in the delayed-anchor case: a currently valid anchor can coincide with falsely clean risk observations during an actual hazard.
 - Chronology is necessary but not sufficient for permission to ACT. The controller must require fresh risk evidence independent of the timing certificate.
 - [Failed executable and report](117/) preserved append-only. **No credit: Phase V remains at 50%.**
-- **Next AETHER-117B:** bind reauthorization to post-anchor fresh-risk evidence on new seeds.
+- **Resolution:** AETHER-117B adds a current signed audit and passes its narrow synthetic gate; original failure retained.
 
 ## AETHER-116 — Clock lease and drift evidence
 
