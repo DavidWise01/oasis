@@ -1,0 +1,34 @@
+{
+  "bound": "AETHER-117",
+  "phase": "V",
+  "status": "FAIL",
+  "phase_completion_pct": 50,
+  "seed_range": [
+    117001,
+    117040
+  ],
+  "episodes_per_policy": 280,
+  "ticks_per_episode": 36,
+  "deterministic_checks": {
+    "passed": 2240,
+    "total": 2240
+  },
+  "unsafe_authorizations": {
+    "weak": 2600,
+    "continuity_aware": 40
+  },
+  "clean_safe_actions": {
+    "weak": 1440,
+    "strong": 1440
+  },
+  "verified_restart_recoveries": 40,
+  "failed_gate": "zero unsafe authorizations",
+  "failed_scenario": "delayed_anchor",
+  "cause": "fresh authenticated anchor did not establish the truth of falsely clean risk observations",
+  "next": "AETHER-117B: fresh risk certificate after anchor continuity",
+  "limitations": [
+    "Synthetic fixed HMAC trust root",
+    "Trusted monotonic counter and epoch state",
+    "No proof that signatures imply truthful measurements"
+  ]
+}
