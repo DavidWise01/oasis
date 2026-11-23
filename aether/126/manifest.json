@@ -1,0 +1,22 @@
+{
+  "bound": "AETHER-126",
+  "phase": "VI",
+  "status": "PASS",
+  "paired_episodes": 420,
+  "ticks_per_policy": 13440,
+  "checks": 5880,
+  "gates": {
+    "no_added_unsafe": true,
+    "zero_unsafe": true,
+    "cost_reduction": true,
+    "probe_reduction": true,
+    "clean_availability": true,
+    "checks": true
+  },
+  "assumptions": [
+    "Trusted signer and protected acquisition counter",
+    "Affine between full audits, drift bounded by current two-probe monitoring; no unmodeled selective step",
+    "Truthful noise bound and same-path calibrated probes",
+    "Pointwise 95% binomial bound is not familywise authorization guarantee"
+  ]
+}
