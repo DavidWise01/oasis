@@ -1,6 +1,6 @@
 # AETHER Phase IV — Live Progress
 
-**7 / 8 completed · 87.5% · AETHER-111B accepted on synthetic holdout.**
+**8 / 8 completed · 100% · PHASE IV FROZEN — AETHER-112 accepted.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -11,7 +11,18 @@
 | 5 | 109 Recovery | **Accepted via 109B** | **62.5%** |
 | 6 | 110 Deterministic resource scheduling | **Accepted (synthetic)** | **75%** |
 | 7 | 111 Unseen dynamic stress | **Accepted via 111B** | **87.5%** |
-| 8 | 112 Phase freeze | Next | 87.5% |
+| 8 | 112 Phase freeze | **Accepted — closed** | **100%** |
+
+## Phase IV closure — AETHER-112
+
+- **Closed: 8/8 = 100%.** Synthetic integration: **720/720** checks passed across **120** cases.
+- **2,880** inspection decisions: **1,132 ACT**, **1,748 HOLD**. Zero observed unsafe authorizations in this limited synthetic run—not a zero-risk guarantee.
+- **27 local archive artifacts** hash-inventoried: accepted 105, 106, 107, 108, 109B, 110 and 111B; failed 109 and 111 are preserved.
+- Deterministic replay, causal-prefix isolation, hash-chain verification, fail-closed invalid packets, action admissibility and bounded resource expenditure each passed 120/120 checks.
+- The frozen AETHER-111B controller was actually reexecuted; earlier bounds were only inventoried and hashed, not rerun.
+- Collector-provided packet status and certified root counts remain **assumptions**. No witness quorum, Byzantine agreement or distributed authority was introduced.
+- [Final experiment, inventory and interactive lab](112/). Live GitHub Pages deployment unverified.
+- Phase IV is frozen. Any Phase V begins separately at 0%, with a new scope and acceptance criteria.
 
 ## Turn 7 correction — AETHER-111B (accepted)
 
