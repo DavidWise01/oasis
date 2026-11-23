@@ -1,0 +1,14 @@
+{
+  "bound": "AETHER-114",
+  "phase": "V",
+  "status": "PASS",
+  "phase_percent": 25,
+  "seeds": [114001, 114060],
+  "rotation_tick": 12,
+  "scenarios": ["clean_rotation", "expired_key", "epoch_rollback", "revoked_key", "unknown_key", "tampered_epoch", "delayed_packet"],
+  "cases": 840,
+  "checks_passed": 3360,
+  "possible_checks": 3360,
+  "assumption": "Trusted key schedule, authentic key metadata and retirement notifications; no detection of compromised active signing key.",
+  "warning": "Test keys are public fixtures. HMAC key possession is not proof of origin or independence."
+}
