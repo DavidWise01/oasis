@@ -1,0 +1,23 @@
+{
+  "bound": "AETHER-135B",
+  "phase": "VII",
+  "status": "PASS",
+  "episodes": 400,
+  "decisions": 12800,
+  "checks": 3200,
+  "gates": {
+    "zero_unsafe": true,
+    "clean_nonregression": true,
+    "replacement_availability": true,
+    "preserved_failure": true,
+    "all_checks": true
+  },
+  "baseline_unsafe_fixed": 800,
+  "baseline_unsafe_adaptive": 1250,
+  "limitations": [
+    "External reference physical truth and root entirely assumed",
+    "Six thousand legitimate safe HOLDs reflect loss of observability",
+    "Software certificate does not prove physical independence",
+    "No hardware validation"
+  ]
+}
