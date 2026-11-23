@@ -1,0 +1,15 @@
+scenario,policy,episodes,unsafe,safe_act,safe_hold,cost
+clean_rotation,wall,60,0,1499,1,47723.2
+clean_rotation,monotonic,60,0,1499,1,47723.2
+backward_jump,wall,60,420,1500,0,212352.0
+backward_jump,monotonic,60,0,1440,60,48384.0
+forward_jump,wall,60,0,660,840,57120.0
+forward_jump,monotonic,60,0,1500,0,47712.0
+slow_drift,wall,60,240,1499,1,141803.2
+slow_drift,monotonic,60,0,1499,1,47723.2
+expiry_boundary,wall,60,180,1440,60,118944.0
+expiry_boundary,monotonic,60,0,1440,60,48384.0
+anchor_outage,wall,60,360,1500,0,188832.0
+anchor_outage,monotonic,60,0,1380,120,49056.0
+ALL,wall,360,1200,8098,902,766774.4
+ALL,monotonic,360,0,8758,242,288982.4
