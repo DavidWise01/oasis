@@ -1,19 +1,30 @@
 # AETHER Phase VIII — Physical Validation Readiness and Empirical Evidence
 
-**AETHER-137 bounded synthetic software readiness PASS: Phase VIII 1/8 = 12.5%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-138 modeled acquisition-receipt software PASS: Phase VIII 2/8 = 25%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase VIII deliberately has two non-interchangeable progress measures. The phase percentage tracks completed **software/readiness acceptance turns**. The physical-evidence percentage tracks actual observed and independently validated instrument measurements. It remains **0%** until real evidence exists.
 
 | Turn | Bound | Acceptance | Synthetic-readiness progress |
 |---|---|---|---:|
 | 1 | 137 Independent physical validation readiness | **ACCEPTED — synthetic only** | **12.5%** |
-| 2 | 138 Instrument identity and acquisition receipt contract | Planned | 12.5% |
-| 3 | 139 Independent calibration reference evidence | Planned | 12.5% |
-| 4 | 140 Physical uncertainty and coverage requirements | Planned | 12.5% |
-| 5 | 141 Empirical same-path insertion readiness | Planned | 12.5% |
-| 6 | 142 Measured drift and alarm requirements | Planned | 12.5% |
-| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 12.5% |
-| 8 | 144 Integrated readiness evidence freeze | Planned | 12.5% |
+| 2 | 138 Instrument identity and acquisition receipt contract | **ACCEPTED — synthetic only** | **25%** |
+| 3 | 139 Independent calibration reference evidence | Planned | 25% |
+| 4 | 140 Physical uncertainty and coverage requirements | Planned | 25% |
+| 5 | 141 Empirical same-path insertion readiness | Planned | 25% |
+| 6 | 142 Measured drift and alarm requirements | Planned | 25% |
+| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 25% |
+| 8 | 144 Integrated readiness evidence freeze | Planned | 25% |
+
+## AETHER-138 — Model-bound protected acquisition receipts, physical permissions still HOLD
+
+- **320 paired synthetic episodes**, eight acquisition states × 40 seeds × 24 ticks, **7,680 decisions per policy**; local execution passed **5,120/5,120 deterministic integrity, replay, temporal-binding, protected-receipt, fail-closed and clean-availability checks**.
+- Signed-only transport authentication falsely allowed **1,920 unsafe ACT** under cloned software keys, stale references, replayed acquisition counters, replaced ingress paths, forged hardware claims, and missing receipts; modeled bound-receipt gate allowed **zero unsafe ACT**.
+- Clean and valid device-rotation scenarios each preserved **960/960 safe dry-run ACT**; **5,760 safe dry-run ACT** overall across all scenarios. All **7,680 physical operational ticks remained HOLD**, because no genuine hardware attestation exists.
+- The receipt contract binds instrument identity, generation, counter/tick, challenge nonce, acquisition path, independently issued reference identity/root, reference epoch/expiry, uncertainty and readout before accepting a **synthetic** authorization.
+- **Critical limitation:** The supposed protected hardware issuer is an HMAC key in a software fixture, and reference risk is generated from scenario ground truth. These signatures are **not genuine hardware attestation**, they cannot validate a physically shared acquisition path, and no real laboratory or instrument was connected. **Physical evidence validated = 0%.**
+- Local executed source SHA-256 `ba26f9ab3554bba44d197a9aacbc16e5c329b41c6f41544cd4a3193696c140dd`. The published GitHub checkout reproducer is **separately authored** and byte identity / independent numerical replay have **not** been verified.
+- [AETHER-138 Python reproduction script, evidence summary, assumptions and interactive Pages](138/) committed. Live Pages status unverified.
+- **Turn 2 accepted on constrained synthetic readiness only: Phase VIII 2/8 = 25%.** Next AETHER-139: external calibration-reference evidence and document authenticity.
 
 ## AETHER-137 — Physical evidence cannot be manufactured by synthetic signing
 
