@@ -1,0 +1,24 @@
+{
+  "bound": "AETHER-121",
+  "phase": "VI",
+  "status": "PASS",
+  "cases": 480,
+  "decisions_per_policy": 11520,
+  "check_count": 5760,
+  "gates": {
+    "no_unsafe": true,
+    "reduction": true,
+    "clean_availability": true,
+    "transition_availability": true,
+    "all_checks": true
+  },
+  "seed_start": 121001,
+  "seed_end": 121060,
+  "caveats": [
+    "Controlled challenge truth and scheduling trusted",
+    "A selectively cheating sensor can evade calibration",
+    "Single instrument ancestry; not independent witness corroboration",
+    "Test is synthetic and quality control adds resource cost"
+  ],
+  "local_source_sha256": "50ef05f92ee47632d7c9c59d67729ca54b8bd85f7508451574eb815247c97ac6"
+}
