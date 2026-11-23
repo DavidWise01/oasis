@@ -1,0 +1,23 @@
+{
+  "bound": "AETHER-138",
+  "phase": "VIII",
+  "status": "PASS",
+  "source": "LOCALLY_EXECUTED_SYNTHETIC_TEST",
+  "episodes_per_policy": 320,
+  "decisions_per_policy": 7680,
+  "checks": 5120,
+  "all_checks_passed": true,
+  "signed_only_unsafe": 1920,
+  "receipt_bound_unsafe": 0,
+  "receipt_bound_safe_act": 5760,
+  "operational_act": 0,
+  "physical_validation": "NOT PERFORMED",
+  "local_source_sha256": "ba26f9ab3554bba44d197a9aacbc16e5c329b41c6f41544cd4a3193696c140dd",
+  "source_note": "Published GitHub executable is a separately authored checkout-oriented implementation, not byte-identical to the local tested script; its replay has not been independently verified.",
+  "assumptions": [
+    "Device root and signing keys are mock HMAC secrets, not physically trusted hardware",
+    "Reference risk is generated from simulation ground truth",
+    "A signed physical-path claim is not a demonstrated physical acquisition",
+    "No real operational ACT can be authorized"
+  ]
+}
