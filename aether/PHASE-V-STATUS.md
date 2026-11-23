@@ -1,17 +1,28 @@
 # AETHER Phase V — Live Progress
 
-**AETHER-115 accepted (synthetic). 3 / 8 turns = 37.5%.**
+**AETHER-116 accepted (synthetic). 4 / 8 turns = 50%.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
 | 1 | 113 Verified ingress | **ACCEPTED** | **12.5%** |
 | 2 | 114 Key rotation and expiry | **ACCEPTED** | **25%** |
 | 3 | 115 Schedule freshness and delayed retirement | **ACCEPTED** | **37.5%** |
-| 4 | 116 Temporal freshness | Planned | 37.5% |
-| 5 | 117 Homeostatic reacquisition | Planned | 37.5% |
-| 6 | 118 Verification economy | Planned | 37.5% |
-| 7 | 119 Unseen ingress stress | Planned | 37.5% |
-| 8 | 120 Integration freeze | Planned | 37.5% |
+| 4 | 116 Temporal freshness | **ACCEPTED** | **50%** |
+| 5 | 117 Homeostatic reacquisition | Planned | 50% |
+| 6 | 118 Verification economy | Planned | 50% |
+| 7 | 119 Unseen ingress stress | Planned | 50% |
+| 8 | 120 Integration freeze | Planned | 50% |
+
+## AETHER-116 — Clock lease and drift evidence
+
+- **60 held-out synthetic seeds × six clock-fault scenarios × 32 inspection ticks × two paired controllers**, 360 episodes per controller.
+- **2,880/2,880** deterministic replay, chain integrity, unique decision and fail-closed checks passed.
+- Wall-clock comparator: **1,200 unsafe authorizations**; monotonic signed-anchor verifier: **0**.
+- Clean rotation safe actions preserved: **1,499** under each policy.
+- Total modeled cost: wall-clock **766,774.4** versus monotonic **288,982.4**, a reduction of **477,792** illustrative cost units.
+- **All five gate conditions passed.** The source code, numerical summary, manifest and interactive HTML are archived at [116](116/).
+- **Assumptions:** authentic signed time anchor, unrollbackable monotonic counter, drift bounded by 0.1 tick/tick, uncompromised HMAC fixture keys. This is not a field safety guarantee.
+- **Next AETHER-117:** time-anchor freshness and counter continuity.
 
 ## AETHER-115 acceptance evidence
 
