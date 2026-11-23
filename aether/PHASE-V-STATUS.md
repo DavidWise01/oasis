@@ -1,6 +1,6 @@
 # AETHER Phase V — Live Progress
 
-**AETHER-118 accepted on the synthetic gate. 6 / 8 turns = 75%.**
+**AETHER-119 accepted on the synthetic gate. 7 / 8 turns = 87.5%.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -10,8 +10,21 @@
 | 4 | 116 Temporal freshness | **ACCEPTED** | **50%** |
 | 5 | 117 Anchor continuity and reacquisition | **ACCEPTED via 117B** | **62.5%** |
 | 6 | 118 Risk-audit freshness | **ACCEPTED** | **75%** |
-| 7 | 119 Unseen ingress stress | Planned | 75% |
-| 8 | 120 Integration freeze | Planned | 75% |
+| 7 | 119 Unseen ingress stress | **ACCEPTED** | **87.5%** |
+| 8 | 120 Integration freeze | Planned | 87.5% |
+
+## AETHER-119 — Frozen packet-loss stress and bounded recovery
+
+- **420 paired synthetic episodes**, 60 new seeds × seven scenarios × 36 inspections: 15,120 decisions per policy.
+- Frozen AETHER-118 packet validator and ACT/HOLD selector imported unchanged, its SHA-256 pinned in the manifest.
+- Cached evidence **535 unsafe authorizations** versus strict fresh evidence **0** across burst, long outage, reorder, intermittent, invalid signature, and counter-discontinuity cases.
+- Clean scenario **2,159 / 2,159** safe ACT retained, no additional clean availability loss.
+- **420 / 420** episode checks for acting at the first qualifying fresh *safe* packet after the test's recovery horizon; this is not proof of generic restoration latency.
+- **5,040 / 5,040** replay, chain integrity, fail-closed, action-uniqueness, valid-source matching and zero-unsafe checks.
+- Strict synthetic cost **382,065.6** versus cached **595,638.4**, contingent on this test's illustrative cost definition; strict holds more frequently while risk packets are unavailable.
+- Simulated signature key, protected acquisition counters, and declared independent measurements remain **assumed trusted**.
+- [AETHER-119 executable, acceptance manifest, results and interactive lab](119/) committed; GitHub Pages live deployment not independently checked.
+- **Turn 7 accepted; Phase V 7/8 = 87.5%. Next AETHER-120 integration and phase freeze.**
 
 ## AETHER-118 — Fresh risk-audit packets under interruption
 
