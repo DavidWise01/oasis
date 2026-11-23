@@ -1,6 +1,6 @@
 # AETHER Phase VI — Measurement Integrity and Adaptive Homeostasis
 
-**AETHER-124B corrected acceptance gate passed. Phase VI: 4/8 = 50%.**
+**AETHER-125B corrected acceptance gate passed. Phase VI: 5/8 = 62.5%.**
 
 | Turn | Bound | Status | Progress |
 |---|---|---|---:|
@@ -8,10 +8,21 @@
 | 2 | 122 Calibration integrity under selective fault | **ACCEPTED** | **25%** |
 | 3 | 123 Bounded recalibration and provenance | **ACCEPTED via 123B** | **37.5%** |
 | 4 | 124 Noise-dependent measurement confidence | **ACCEPTED via 124B** | **50%** |
-| 5 | 125 Recovery after instrument replacement | Planned | 50% |
-| 6 | 126 Adaptive calibration resource economics | Planned | 50% |
-| 7 | 127 Unseen sensor drift stress | Planned | 50% |
-| 8 | 128 Integration and freeze | Planned | 50% |
+| 5 | 125 Recovery after instrument replacement | **ACCEPTED via 125B** | **62.5%** |
+| 6 | 126 Adaptive calibration resource economics | Planned | 62.5% |
+| 7 | 127 Unseen sensor drift stress | Planned | 62.5% |
+| 8 | 128 Integration and freeze | Planned | 62.5% |
+
+## AETHER-125B — New instrument, new authority
+
+- **Failed AETHER-125 retained:** 320 paired synthetic episodes; 4,480 deterministic checks all passed and guarded policy had 0 unsafe ACT, but an incorrectly defined recovery gate equated first valid calibration with first authorized risk evidence. **13 noisy-replacement cases** legitimately required HOLD even after valid calibration, so the recovery test failed (307/320), earning no completion credit. [Failed version and evidence](125/).
+- **Corrected AETHER-125B:** 40 new seeded episodes × 8 scenarios × 32 inspections = **320 paired episodes** and **10,240 decisions per policy**. An independent oracle tests current *risk-admissible* observations, not merely calibration readiness.
+- All **4,480/4,480** deterministic checks and all **320/320** independent risk-admissible recovery cases passed. Guarded policy 0 unsafe ACT; inherited previous-instrument authority **1,120 unsafe ACT** in the modeled attacks.
+- New instrument must have its **own signed device identity, calibration generation/nonce, acquisition epoch/counter continuity, bounded noise certificate and two post-replacement fresh quality reads**. Old certificate cannot renew new authority.
+- Safe ACT **8,267 inherited → 7,795 guarded**; extra HOLDs on replacement documented. Synthetic cost **664,529.6 inherited → 291,166.4 guarded** under the study's illustrative cost function.
+- Assumptions: protected identity/signing authority, accurate independent synthetic probes and truthful noise bounds. A digital signature is not a scientific truth certificate; no field safety claim or multi-tick familywise risk proof.
+- [Accepted AETHER-125B executable and interactive lab](125b/) committed. GitHub Pages live deployment unverified.
+- **Turn 5 accepted via 125B; Phase VI 5/8 = 62.5%. Next AETHER-126: adaptive measurement economics.**
 
 ## AETHER-124B — Bounded noisy calibration intervals
 
