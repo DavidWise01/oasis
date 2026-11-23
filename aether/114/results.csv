@@ -1,0 +1,17 @@
+scenario,policy,ticks,acts,unsafe,safe_acts,rejected,cost
+clean_rotation,keyring_only,1440,960,0,960,0,19814.4
+clean_rotation,epoch_bound,1440,960,0,960,0,19814.4
+expired_key,keyring_only,1440,1200,240,960,0,98654.4
+expired_key,epoch_bound,1440,960,0,960,240,19814.4
+epoch_rollback,keyring_only,1440,1200,240,960,0,98654.4
+epoch_rollback,epoch_bound,1440,960,0,960,240,19814.4
+revoked_key,keyring_only,1440,1200,240,960,0,98654.4
+revoked_key,epoch_bound,1440,960,0,960,240,19814.4
+unknown_key,keyring_only,1440,959,0,959,240,19805.1
+unknown_key,epoch_bound,1440,959,0,959,240,19805.1
+tampered_epoch,keyring_only,1440,958,0,958,240,19795.8
+tampered_epoch,epoch_bound,1440,958,0,958,240,19795.8
+delayed_packet,keyring_only,1440,960,0,960,240,19814.4
+delayed_packet,epoch_bound,1440,960,0,960,240,19814.4
+ALL,keyring_only,10080,7437,720,6717,720,375192.9
+ALL,epoch_bound,10080,6717,0,6717,1440,138672.9
