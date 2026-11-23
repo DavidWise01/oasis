@@ -1,6 +1,6 @@
 # AETHER Phase VII — Physical Measurement Assurance
 
-**AETHER-132 response-regularity synthetic gate passed. Phase VII: 4/8 = 50%. Physical validation: NOT performed.**
+**AETHER-133B corrected same-path synthetic gate passed. Phase VII: 5/8 = 62.5%. Physical validation: NOT performed.**
 
 | Turn | Bound | Status | Phase completion |
 |---|---|---|---:|
@@ -8,10 +8,21 @@
 | 2 | 130 Reference instrument provenance and traceability | **ACCEPTED via 130B (synthetic)** | **25%** |
 | 3 | 131 Bounded reference uncertainty certificate | **ACCEPTED — synthetic** | **37.5%** |
 | 4 | 132 Device response regularity test | **ACCEPTED — synthetic** | **50%** |
-| 5 | 133 Probe insertion and same-path verification | Planned | 50% |
-| 6 | 134 Reference drift and recalibration economics | Planned | 50% |
-| 7 | 135 Unseen independent instrument stress | Planned | 50% |
-| 8 | 136 Integrated empirical-gate freeze | Planned | 50% |
+| 5 | 133 Probe insertion and same-path verification | **ACCEPTED via 133B (synthetic)** | **62.5%** |
+| 6 | 134 Reference drift and recalibration economics | Planned | 62.5% |
+| 7 | 135 Unseen independent instrument stress | Planned | 62.5% |
+| 8 | 136 Integrated empirical-gate freeze | Planned | 62.5% |
+
+## AETHER-133B — Signed calibration does not prove shared acquisition path
+
+- **AETHER-133 original test FAILED:** 240 of 5,600 signature-integrity checks failed due to a test-fixture bug: packet mutations retained the previous `mac` field before computing a new HMAC. This invalidated several attack cases and understated signed-only unsafe ACT as 2,000. The failure, source and evidence are frozen at [133/](133/); **no phase credit**.
+- **AETHER-133B corrected test PASS:** the signer now excludes the existing `mac` before creating a fresh signed mutation. 40 new seeds × 10 acquisition-path conditions × 24 ticks = **400 paired synthetic episodes**, **9,600 decisions per policy**, **5,600/5,600** deterministic checks.
+- The comparator accepts ordinary signed sensor packet/calibration but does not establish same physical acquisition. It made **3,200 unsafe ACT**. The ingress-bound controller required matching **device, epoch, tick, counter, path, probe path, risk path, protected port, nonce, challenge digest and calibration validity**, and made **zero unsafe ACT**.
+- Clean and legitimate instrument rekey both preserved **960/960 safe ACT**; overall both controllers retained **6,400 safe ACT** in the test model. Missing or mismatched ingress receipts force HOLD.
+- The failed and corrected **executed local Python source snapshots**, 5,600-check CSVs, seed results and decision traces are copied into GitHub, with original failures retained.
+- **Physical limitation:** The protected ingress signing root and reported physical route are *assumed trustworthy simulation inputs*. An HMAC signature **cannot physically prove path identity or reference-standard accuracy**; no physical injector/device verification was performed. A forged protected ingress or selectively probe-aware sensor remains outside the guarantees.
+- [Accepted AETHER-133B source, results, checks, traces and interactive Pages HTML](133b/) committed. Live GitHub Pages deployment unverified.
+- **Turn 5 accepted under synthetic software gates: Phase VII 5/8 = 62.5%. Next AETHER-134 — reference drift and recalibration economics.**
 
 ## AETHER-132 — Device response regularity between certified calibration points
 
