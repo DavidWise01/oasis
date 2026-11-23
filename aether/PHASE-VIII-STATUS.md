@@ -1,6 +1,6 @@
 # AETHER Phase VIII — Physical Validation Readiness and Empirical Evidence
 
-**AETHER-140 bounded-uncertainty synthetic PASS: Phase VIII 4/8 = 50%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-141 same-path insertion readiness synthetic PASS: Phase VIII 5/8 = 62.5%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase VIII deliberately has two non-interchangeable progress measures. The phase percentage tracks completed **software/readiness acceptance turns**. The physical-evidence percentage tracks actual observed and independently validated instrument measurements. It remains **0%** until real evidence exists.
 
@@ -10,10 +10,20 @@ Phase VIII deliberately has two non-interchangeable progress measures. The phase
 | 2 | 138 Instrument identity and acquisition receipt contract | **ACCEPTED — synthetic only** | **25%** |
 | 3 | 139 Independent calibration reference evidence | **ACCEPTED — synthetic only** | **37.5%** |
 | 4 | 140 Physical uncertainty and coverage requirements | **ACCEPTED — synthetic only** | **50%** |
-| 5 | 141 Empirical same-path insertion readiness | Planned | 50% |
-| 6 | 142 Measured drift and alarm requirements | Planned | 50% |
-| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 50% |
-| 8 | 144 Integrated readiness evidence freeze | Planned | 50% |
+| 5 | 141 Empirical same-path insertion readiness | **ACCEPTED — synthetic only** | **62.5%** |
+| 6 | 142 Measured drift and alarm requirements | Planned | 62.5% |
+| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 62.5% |
+| 8 | 144 Integrated readiness evidence freeze | Planned | 62.5% |
+
+## AETHER-141 — Same-path calibration insertion and operational ingress binding
+
+- **Local synthetic PASS:** 40 seeds × eight acquisition scenarios × 24 ticks = **320 paired episodes**, **7,680 decisions per policy**; all **5,120/5,120** deterministic replay, hash-chain, single-action, ordering, zero-unsafe, bound-receipt, clean/rotation availability and operational-HOLD checks passed.
+- Signed-only comparator authorized **1,920 unsafe dry-run ACT** across split-path, probe-bypass, replayed acquisition receipt, substituted issuer, swapped session and latency anomalies. The protected-receipt model authorized **0 unsafe dry-run ACT** while retaining **5,760 safe dry-run ACT**, including **960/960 clean** and **960/960 valid rotation**.
+- In the model the ingress receipt binds instrument identity, generation, fresh nonce/counter, calibration session, probe and measurement route, timing and protected acquisition-issuer root.
+- **Physical evidence 0%:** The supposed independent ingress issuer is a mock HMAC key and physical route truth comes from the test generator. There is **no real protected acquisition trace or independent reference measurement**. No operational ACT was authorized.
+- Local executed source SHA-256 `f851e4a1cea68e3def327ce52e55420c06f7ff705ffe9dc442407ab6ac1c70b0`. The published GitHub `141/experiment.py` is a separately authored checkout reproducer and numerical replay is not independently verified.
+- [AETHER-141 source, local result summary, manifest, report and interactive lab](141/) committed. Live Pages verification outstanding.
+- **Phase VIII: 5/8 = 62.5% software-readiness acceptance; empirical physical validation 0%.** Next bound AETHER-142: measured drift and alarm requirements.
 
 ## AETHER-140 — Physical uncertainty budget and coverage claim boundary
 
