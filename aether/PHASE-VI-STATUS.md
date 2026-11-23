@@ -1,17 +1,28 @@
 # AETHER Phase VI — Measurement Integrity and Adaptive Homeostasis
 
-**AETHER-123B corrected acceptance gate passed. Phase VI: 3/8 = 37.5%.**
+**AETHER-124B corrected acceptance gate passed. Phase VI: 4/8 = 50%.**
 
 | Turn | Bound | Status | Progress |
 |---|---|---|---:|
 | 1 | 121 Signed sensor measurement integrity | **ACCEPTED** | **12.5%** |
 | 2 | 122 Calibration integrity under selective fault | **ACCEPTED** | **25%** |
 | 3 | 123 Bounded recalibration and provenance | **ACCEPTED via 123B** | **37.5%** |
-| 4 | 124 Noise-dependent measurement confidence | Planned | 37.5% |
-| 5 | 125 Recovery after instrument replacement | Planned | 37.5% |
-| 6 | 126 Adaptive calibration resource economics | Planned | 37.5% |
-| 7 | 127 Unseen sensor drift stress | Planned | 37.5% |
-| 8 | 128 Integration and freeze | Planned | 37.5% |
+| 4 | 124 Noise-dependent measurement confidence | **ACCEPTED via 124B** | **50%** |
+| 5 | 125 Recovery after instrument replacement | Planned | 50% |
+| 6 | 126 Adaptive calibration resource economics | Planned | 50% |
+| 7 | 127 Unseen sensor drift stress | Planned | 50% |
+| 8 | 128 Integration and freeze | Planned | 50% |
+
+## AETHER-124B — Bounded noisy calibration intervals
+
+- **AETHER-124 original FAILED**: using a *minimum* plausible measurement-error count to decide ACT understated risk, causing **3 unsafe authorizations** on noisy packets. Original executable, results, manifest and failed HTML remain under [124/](124/), with no completion credit.
+- **AETHER-124B corrected** the sign of the uncertainty bound: four interior probes define an outer compatible affine gain/offset interval. Use **maximum** plausible risk count `(reported + noise_bound - min_offset)/min_gain` with ceil, never minimum count, before risk certification.
+- **450 paired synthetic episodes**, 50 seeds × nine test regimes × 24 ticks, 10,800 decisions per policy; **6,300/6,300** deterministic checks passed.
+- Corrected controller **0 unsafe ACT**, preserved **800/800** clean safe ACT. Certified-noise uncertainty ±1/±3/±6 permits **773/250/45** safe ACT; missing noise certificate forces HOLD.
+- Total safe actions **6,587 point-fit → 3,259 interval-aware**; illustrative cost **242,449.6 → 362,667.2**. Availability and resource penalties explicitly recorded.
+- Synthetic assumptions: trusted signed packets, genuine probe positions/ground truth, **truthful bounded additive noise**, and affine sensor model. Per-decision 95% Clopper–Pearson bound **does not control familywise error across repeated decisions**.
+- [Accepted 124B executable, manifest, results and interactive lab](124b/) committed. GitHub Pages live status unverified.
+- **Turn 4 accepted via 124B; Phase VI 4/8 = 50%. Next AETHER-125: bounded recovery after instrument replacement.**
 
 ## AETHER-123B — Interior probes and bounded affine recalibration
 
