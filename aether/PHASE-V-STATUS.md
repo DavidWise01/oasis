@@ -1,6 +1,6 @@
 # AETHER Phase V — Live Progress
 
-**AETHER-119 accepted on the synthetic gate. 7 / 8 turns = 87.5%.**
+**AETHER-120 integration accepted. PHASE V CLOSED: 8 / 8 turns = 100%.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -11,7 +11,19 @@
 | 5 | 117 Anchor continuity and reacquisition | **ACCEPTED via 117B** | **62.5%** |
 | 6 | 118 Risk-audit freshness | **ACCEPTED** | **75%** |
 | 7 | 119 Unseen ingress stress | **ACCEPTED** | **87.5%** |
-| 8 | 120 Integration freeze | Planned | 87.5% |
+| 8 | 120 Integration freeze | **ACCEPTED — FROZEN** | **100%** |
+
+## AETHER-120 — Phase V integration and closure
+
+- **240 new synthetic episodes**, 40 seeds × six packet-delivery scenarios × 36 ticks, **8,640 single-controller decisions**.
+- **1,920/1,920** checks passed across replay equivalence, immutable record chain, unique action per tick, packet-currency guard, independently calculated acceptance predicate, zero unsafe synthetic authorizations, bounded receipt accounting, and safe resumption.
+- **5,717 ACT, 2,923 HOLD, 0 unsafe** on the bounded synthetic test.
+- AETHER-118's policy was imported unchanged; pinned source SHA-256: `f7642313075830651348dd368496aa5f409236070466714b5010ab0fadc9ee4c`.
+- Eight local historical experiment snapshots inventoried by SHA-256, including failed AETHER-117 alongside corrected AETHER-117B; earlier tests **were not comprehensively rerun**.
+- Archive fingerprints refer to **local experiment snapshots** and do not establish byte identity with every historical GitHub file.
+- Synthetic signer, source independence, timing, and protected counter assumptions remain unproven in a live system.
+- [AETHER-120 source, manifest, inventory and interactive phase closure](120/) committed. Pages deployment live status unverified.
+- **Phase V CLOSED at 100% (8/8).** New Phase VI must start from its own 0% tracker; do not change frozen Phase V evidence.
 
 ## AETHER-119 — Frozen packet-loss stress and bounded recovery
 
