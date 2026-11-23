@@ -1,17 +1,29 @@
 # AETHER Phase V — Live Progress
 
-**AETHER-114 accepted (synthetic). 2 / 8 turns = 25%.**
+**AETHER-115 accepted (synthetic). 3 / 8 turns = 37.5%.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
 | 1 | 113 Verified ingress | **ACCEPTED** | **12.5%** |
 | 2 | 114 Key rotation and expiry | **ACCEPTED** | **25%** |
-| 3 | 115 Attestation limits | Planned | 25% |
-| 4 | 116 Temporal freshness | Planned | 25% |
-| 5 | 117 Homeostatic reacquisition | Planned | 25% |
-| 6 | 118 Verification economy | Planned | 25% |
-| 7 | 119 Unseen ingress stress | Planned | 25% |
-| 8 | 120 Integration freeze | Planned | 25% |
+| 3 | 115 Schedule freshness and delayed retirement | **ACCEPTED** | **37.5%** |
+| 4 | 116 Temporal freshness | Planned | 37.5% |
+| 5 | 117 Homeostatic reacquisition | Planned | 37.5% |
+| 6 | 118 Verification economy | Planned | 37.5% |
+| 7 | 119 Unseen ingress stress | Planned | 37.5% |
+| 8 | 120 Integration freeze | Planned | 37.5% |
+
+## AETHER-115 acceptance evidence
+
+- 80 synthetic seeds × six credential-feed conditions × 28 ticks × two paired policies.
+- **1,600 unsafe authorizations** under indefinite schedule caching versus **zero** under four-tick schedule leases.
+- Clean rotation retained **1,759 safe ACT** decisions in both policies.
+- Total illustrative cost: **917,548.8 cached**, **338,732.8 leased**; savings **578,816**.
+- Availability tradeoff: safe HOLD decisions increased from **164 to 484**, including delayed notice and outage recovery.
+- All five declared gates passed: no added unsafe authorization, strictly fewer unsafe authorizations, clean-rotation preservation, lower total cost and exact replay. The synthetic trace archive is preserved at [115](115/).
+- **Important limits:** packet signing keys are fixture secrets; authentic schedule authority and local tick clock are assumed. Active-key compromise, falsified time, and independently verifying correlation remain unsolved.
+- GitHub source committed; live Pages deployment remains unverified.
+- **Next AETHER-116:** clock rollback, drift and expiry ambiguity, under one controller.
 
 ## AETHER-113 evidence
 
@@ -33,7 +45,7 @@
 - Clean rotation preserved **960/960** legitimate safe actions.
 - Trusted rotation schedule and retirement notification are **assumptions**; a compromised active key is not detected.
 - Reproducible [source, numerical audits and interactive lab](114/) committed.
-- **Next: AETHER-115 — Rotation-Schedule Freshness and Revocation-Notice Delays.**
+- AETHER-115 completed with the separate bounded-lease test recorded above.
 
 The governing decision authority remains one deterministic ACT/HOLD controller. If witness agreement or Byzantine problems become necessary, close and freeze this phase at its current real percentage.
 
