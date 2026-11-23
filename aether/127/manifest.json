@@ -1,0 +1,36 @@
+{
+  "bound": "AETHER-127",
+  "phase": "VI",
+  "status": "FAIL",
+  "frozen_local_126_sha256": "9fde4f39ca3806869556561bb6f1a8654ed108f74ae53e9914ccb3631d9d4426",
+  "paired_episodes": 480,
+  "decisions_per_policy": 15360,
+  "checks": 5760,
+  "gates": {
+    "zero_unsafe": false,
+    "no_added_unsafe": true,
+    "strict_cost": true,
+    "cost_reduction_in_clean": true,
+    "deterministic": true
+  },
+  "seeds": [
+    127001,
+    127060
+  ],
+  "scenarios": [
+    "clean",
+    "fast_drift",
+    "abrupt_gain",
+    "abrupt_offset",
+    "monitor_blindspot",
+    "nonlinear_midrange",
+    "intermittent_noise",
+    "replacement_spoof"
+  ],
+  "caveats": [
+    "Synthetic study; signer and noise metadata assumed trustworthy",
+    "Frozen controller was loaded from local /mnt/data/aether126/experiment.py",
+    "Local source SHA-256 pinned above; remote baseline may not be byte-identical until tested",
+    "Full four-point calibration can miss targeted nonlinear midrange distortion; not merely an adaptive sampling failure"
+  ]
+}
