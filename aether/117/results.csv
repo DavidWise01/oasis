@@ -1,0 +1,17 @@
+scenario,policy,episodes,unsafe,safe_act,safe_hold,recovered,cost
+clean,weak,40,0,1440,0,0,32256.0
+clean,strong,40,0,1440,0,40,32256.0
+stale_anchor,weak,40,440,999,1,0,234315.2
+stale_anchor,strong,40,0,839,161,40,38987.2
+counter_rollback,weak,40,440,999,1,0,234315.2
+counter_rollback,strong,40,0,560,440,0,42112.0
+verified_restart,weak,40,440,1000,0,0,234304.0
+verified_restart,strong,40,0,800,200,40,39424.0
+unverified_restart,weak,40,440,1000,0,0,234304.0
+unverified_restart,strong,40,0,560,440,0,42112.0
+anchor_replay,weak,40,400,840,160,0,218176.0
+anchor_replay,strong,40,0,840,160,40,38976.0
+delayed_anchor,weak,40,440,999,1,0,234315.2
+delayed_anchor,strong,40,40,999,1,40,55115.2
+ALL,weak,280,2600,7277,163,0,1421985.6
+ALL,strong,280,40,6038,1402,200,288982.4
