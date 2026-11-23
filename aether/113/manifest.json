@@ -1,0 +1,14 @@
+{
+  "bound": "AETHER-113",
+  "phase": "V",
+  "status": "PASS",
+  "phase_percent": 12.5,
+  "seeds": [113001, 113050],
+  "scenarios": ["clean", "replay", "tamper", "self_signed", "count_forgery", "missing", "uncertified"],
+  "ticks_per_episode": 24,
+  "cases": 700,
+  "test_checks": 2800,
+  "possible_checks": 2800,
+  "clean_safe_act_retention": 1.0,
+  "caveat": "A trusted HMAC ingestion key and truthful independent count are explicit assumptions, not outcomes of this test. Simulated errors and costs are illustrative."
+}
