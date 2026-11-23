@@ -1,0 +1,17 @@
+scenario,policy,ticks,acts,unsafe_authorizations,safe_acts,rejected_packets,total_cost
+clean,naive,1200,800,0,800,0,16512.0
+clean,trusted,1200,800,0,800,0,16512.0
+replay,naive,1200,1199,400,799,0,125502.7
+replay,trusted,1200,799,0,799,400,16502.7
+tamper,naive,1200,1198,400,798,0,125493.4
+tamper,trusted,1200,798,0,798,400,16493.4
+self_signed,naive,1200,1200,400,800,0,125512.0
+self_signed,trusted,1200,800,0,800,400,16512.0
+count_forgery,naive,1200,1200,400,800,0,125512.0
+count_forgery,trusted,1200,800,0,800,400,16512.0
+missing,naive,1200,799,0,799,400,16502.7
+missing,trusted,1200,799,0,799,400,16502.7
+uncertified,naive,1200,1200,400,800,0,125512.0
+uncertified,trusted,1200,800,0,800,400,16512.0
+ALL,naive,8400,7596,2000,5596,400,660546.8
+ALL,trusted,8400,5596,0,5596,2400,115546.8
