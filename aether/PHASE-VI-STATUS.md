@@ -1,6 +1,6 @@
 # AETHER Phase VI — Measurement Integrity and Adaptive Homeostasis
 
-**AETHER-127C corrected synthetic acceptance passed. Phase VI: 7/8 = 87.5%.**
+**AETHER-128 local integration gate passed. PHASE VI CLOSED: 8/8 = 100% of constrained synthetic acceptance.**
 
 | Turn | Bound | Status | Progress |
 |---|---|---|---:|
@@ -11,7 +11,17 @@
 | 5 | 125 Recovery after instrument replacement | **ACCEPTED via 125B** | **62.5%** |
 | 6 | 126 Adaptive calibration resource economics | **ACCEPTED** | **75%** |
 | 7 | 127 Unseen sensor drift stress | **ACCEPTED via 127C** | **87.5%** |
-| 8 | 128 Integration and freeze | Planned | 87.5% |
+| 8 | 128 Integration and freeze | **ACCEPTED — FROZEN** | **100%** |
+
+## AETHER-128 — Phase VI synthesis and evidence freeze
+
+- **200 new synthetic test episodes**, 25 seeds × eight unseen sensor response scenarios × 32 ticks = **6,400 decisions**; 1,600/1,600 repeatability, record-chain, packet-binding, probe-coverage and immutable-source gates passed in local execution.
+- Frozen AETHER-127C policy **zero unsafe ACT** in this synthetic integration; **2,870 safe ACT**, **1,955 safe HOLD**, **583,050 synthetic calibration probe purchases**.
+- All **12 local Phase VI experiment versions** inventoried with SHA-256 source/manifest hashes and expected PASS/FAIL status. Original failed 123, 124, 125, 127 and 127B are preserved and not counted as accepted bounds. Historical tests inventoried, not exhaustively rerun.
+- Crucial limitations: same-path opaque probe ground truth, trustworthy sensor oracle and declared regularity bound remain **synthetic assumptions**; no sensor security or field measurement proof, no repeated-decision familywise risk assurance.
+- **Provenance caution:** local source SHA-256 of AETHER-127C `37837c39760e972834c93386a7236de8cf2744d3f3acc8553a57a5cb21d17eee`; GitHub-authored reproduction script is **not byte-identical** to the local integration harness. Repository checkout and live Pages replay have not been independently tested.
+- [AETHER-128 experiment, local-run results, hash inventory and interactive closure HTML](128/) committed.
+- **Phase VI CLOSED: 8/8 = 100% of specified constrained synthetic gates.** This is a research-program accounting status, not a claim of real-world safety. Freeze prior evidence; next phase starts at 0%.
 
 ## AETHER-127C — Explicit coverage under nonlinear measurement errors
 
