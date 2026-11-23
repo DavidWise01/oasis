@@ -1,0 +1,10 @@
+scenario,policy,cases,unsafe,safe_act,safe_hold,reference_cost
+clean,reference_gated,50,0,1600,0,1600
+hidden_jump,reference_gated,50,0,0,1200,0
+false_drift_rate,reference_gated,50,0,0,1200,0
+false_calibration_bias,reference_gated,50,0,0,1200,0
+forged_ingress_receipt,reference_gated,50,0,0,1200,0
+joint_spoof,reference_gated,50,0,0,1200,1600
+honest_anomaly,reference_gated,50,0,1200,0,1600
+valid_replacement,reference_gated,50,0,1600,0,1600
+ALL,reference_gated,400,0,4400,6000,6400
