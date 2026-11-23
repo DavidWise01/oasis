@@ -1,0 +1,26 @@
+{
+  "bound": "AETHER-140",
+  "phase": "VIII",
+  "status": "PASS",
+  "evaluation": "locally executed bounded synthetic acceptance",
+  "episodes_per_policy": 320,
+  "decisions_per_policy": 7680,
+  "checks": 5120,
+  "all_checks_passed": true,
+  "signed_only_unsafe": 1920,
+  "budget_gated_unsafe": 0,
+  "clean_safe_act": 960,
+  "valid_rotation_safe_act": 960,
+  "total_safe_act": 5760,
+  "operational_ACT": 0,
+  "software_readiness_pct": 50,
+  "physical_validation_pct": 0,
+  "local_executed_sha256": "9e2e5260c2f7fe62405b14f2fd617a4e9cf9e171387352e36e8475efd2959dcf",
+  "reproduction": "GitHub experiment.py separately authored; no independent GitHub checkout execution verified",
+  "limitations": [
+    "Worst-case synthetic uncertainty budget assumed, not measured",
+    "The claimed source root is a string, not genuine traceability",
+    "No statistical coverage or physical device validated",
+    "No real-world ACT permitted"
+  ]
+}
