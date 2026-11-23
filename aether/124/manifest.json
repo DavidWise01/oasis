@@ -1,0 +1,26 @@
+{
+  "bound": "AETHER-124",
+  "phase": "VI",
+  "status": "FAIL",
+  "cases_per_policy": 450,
+  "decisions_per_policy": 10800,
+  "checks": 6300,
+  "seeds": [
+    124001,
+    124050
+  ],
+  "noise_model": "bounded uniform additive with truthful per-packet bound",
+  "gates": {
+    "no_unsafe": false,
+    "clean_nonregression": true,
+    "certified_noise_usable": true,
+    "noise_uncertainty_monotonic": true,
+    "uncertified_fail_closed": true,
+    "checks": false
+  },
+  "limits": [
+    "Synthetic trusted affine sensor and truthful bounded-noise certificate",
+    "Binomial one-sided risk limit per look does not control multiple testing across all ticks",
+    "No general protection against false signed sensor data"
+  ]
+}
