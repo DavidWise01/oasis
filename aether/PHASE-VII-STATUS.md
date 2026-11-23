@@ -1,6 +1,6 @@
 # AETHER Phase VII — Physical Measurement Assurance
 
-**AETHER-135B constrained synthetic reference-gate passed. Phase VII: 7/8 = 87.5%. Physical validation: NOT performed.**
+**AETHER-136 local integration passed. PHASE VII CLOSED: 8/8 = 100% of constrained synthetic acceptance. PHYSICAL VALIDATION: NOT PERFORMED.**
 
 | Turn | Bound | Status | Phase completion |
 |---|---|---|---:|
@@ -11,7 +11,17 @@
 | 5 | 133 Probe insertion and same-path verification | **ACCEPTED via 133B (synthetic)** | **62.5%** |
 | 6 | 134 Reference drift and recalibration economics | **ACCEPTED — synthetic** | **75%** |
 | 7 | 135 Unseen independent instrument stress | **ACCEPTED via 135B (synthetic)** | **87.5%** |
-| 8 | 136 Integrated empirical-gate freeze | Planned | 87.5% |
+| 8 | 136 Integrated empirical-gate freeze | **ACCEPTED — SYNTHETIC FREEZE** | **100%** |
+
+## AETHER-136 — Phase VII integrated local software acceptance and physical-gap freeze
+
+- **200 newly seeded synthetic episodes**, 25 seeds × eight stress scenarios × 32 ticks = **6,400 controller decisions**. Frozen local AETHER-135B policy earned **1,600/1,600** replay, SHA-256 evidence-chain, order, one-way action, fail-closed, external-reference binding, source-integrity and zero-unsafe checks.
+- **Zero unsafe ACT** in this bounded software test, with **2,200 safe ACT, 3,000 safe HOLD and 3,200 modeled reference receipts**. Clean and valid-replacement cases each preserved **800/800 safe ACT**.
+- Original failed **AETHER-130, AETHER-133 and AETHER-135** remain intact alongside accepted 130B, 133B and 135B. All ten prior local Phase VII source/manifest pairs were inventoried with SHA-256 hashes; historical experiments were **not exhaustively rerun**.
+- **Non-negotiable empirical limitation:** Independent accuracy of a reference physical standard, current calibration traceability, covariance/uncertainty bounds, same-path probe insertion and drift detection are **assumed**, not demonstrated. No actual physical instrument was connected or independently certified. Signed evidence cannot create physical truth.
+- Local frozen AETHER-135B source SHA-256 `e50d627d9231d9032027a4e5ffa3a4f307dd64d2d8d63dfcc9947ffe191dcf16`. GitHub `aether/136/experiment.py` is a **separately authored checkout-oriented implementation**. Byte identity and identical numerical replay on GitHub have **not** been verified.
+- [AETHER-136 local-run results, source inventory, standalone reproduction harness, manifest, and interactive Pages lab](136/) committed; live Pages deployment status unverified.
+- **Phase VII CLOSED at 8/8 = 100% of synthetic gates only.** Physical assurance remains **unverified**, not implicitly completed by this percentage. Phase VII is frozen; future physical verification begins at a separate zero baseline.
 
 ## AETHER-135B — Fail closed when external physical-reference authority is unavailable
 
