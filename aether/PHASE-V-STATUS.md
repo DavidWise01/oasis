@@ -1,6 +1,6 @@
 # AETHER Phase V — Live Progress
 
-**AETHER-116 accepted (synthetic). 4 / 8 turns = 50%.**
+**AETHER-117 failed its no-unsafe gate. 4 / 8 turns = 50% (unchanged).**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -8,10 +8,20 @@
 | 2 | 114 Key rotation and expiry | **ACCEPTED** | **25%** |
 | 3 | 115 Schedule freshness and delayed retirement | **ACCEPTED** | **37.5%** |
 | 4 | 116 Temporal freshness | **ACCEPTED** | **50%** |
-| 5 | 117 Homeostatic reacquisition | Planned | 50% |
+| 5 | 117 Anchor continuity and reacquisition | **FAILED; revise as 117B** | **50%** |
 | 6 | 118 Verification economy | Planned | 50% |
 | 7 | 119 Unseen ingress stress | Planned | 50% |
 | 8 | 120 Integration freeze | Planned | 50% |
+
+## AETHER-117 — Failed acceptance, preserved
+
+- 40 synthetic seeds × seven anchor/counter scenarios × 36 ticks × two paired controllers.
+- **2,240/2,240** deterministic checks passed; **verified restart recovery 40/40** and clean availability 1,440/1,440 were preserved.
+- Weak verifier **2,600 unsafe authorizations**; continuity-aware verifier **40 unsafe authorizations**. The all-unsafe-eliminated acceptance gate **FAILED**.
+- All 40 failures arise in the delayed-anchor case: a currently valid anchor can coincide with falsely clean risk observations during an actual hazard.
+- Chronology is necessary but not sufficient for permission to ACT. The controller must require fresh risk evidence independent of the timing certificate.
+- [Failed executable and report](117/) preserved append-only. **No credit: Phase V remains at 50%.**
+- **Next AETHER-117B:** bind reauthorization to post-anchor fresh-risk evidence on new seeds.
 
 ## AETHER-116 — Clock lease and drift evidence
 
