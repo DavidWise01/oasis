@@ -1,6 +1,6 @@
 # AETHER Phase V — Live Progress
 
-**AETHER-117B accepted on the synthetic gate. 5 / 8 turns = 62.5%.**
+**AETHER-118 accepted on the synthetic gate. 6 / 8 turns = 75%.**
 
 | Turn | Bound | Status | Completion |
 |---|---|---|---:|
@@ -9,9 +9,21 @@
 | 3 | 115 Schedule freshness and delayed retirement | **ACCEPTED** | **37.5%** |
 | 4 | 116 Temporal freshness | **ACCEPTED** | **50%** |
 | 5 | 117 Anchor continuity and reacquisition | **ACCEPTED via 117B** | **62.5%** |
-| 6 | 118 Verification economy | Planned | 62.5% |
-| 7 | 119 Unseen ingress stress | Planned | 62.5% |
-| 8 | 120 Integration freeze | Planned | 62.5% |
+| 6 | 118 Risk-audit freshness | **ACCEPTED** | **75%** |
+| 7 | 119 Unseen ingress stress | Planned | 75% |
+| 8 | 120 Integration freeze | Planned | 75% |
+
+## AETHER-118 — Fresh risk-audit packets under interruption
+
+- **400 synthetic paired episodes**, 50 seeds × eight packet scenarios, 36 ticks each. 14,400 decisions/controller.
+- Strict one-tick risk packet contract: valid HMAC/source/epoch, signed current tick, current protected acquisition counter, fresh monotonic packet ID, and declared independence.
+- Cached risk comparator: **1,600 unsafe authorizations**; strict current-risk: **0**.
+- Both policies retain **10,796 safe ACT** and 4 safe HOLD decisions; clean scenario 1,350 / 1,350 legitimate safe actions preserved.
+- **4,000/4,000** deterministic replay, hash, one-action, fail-closed and current-packet checks passed.
+- Illustrative cost: cached **985,364.8** vs strict **358,164.8**; savings 627,200 in these constructed scenarios, not a field estimate.
+- The pretrusted risk signer, protected counter and independence declaration are assumptions, not derived authentication guarantees.
+- [AETHER-118 source and interactive lab](118/) committed, with generated trace export available locally. Live Pages deployment is a separate unverified status.
+- **Turn 6 completed; Phase V now 6/8 = 75%. Next AETHER-119: unseen ingress stress and recovery.**
 
 ## AETHER-117B — Corrected clock + fresh-risk acceptance
 
