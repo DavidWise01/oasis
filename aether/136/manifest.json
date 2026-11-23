@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-136",
+  "phase": "VII",
+  "status": "PASS",
+  "evaluation": "local bounded synthetic replay",
+  "episodes": 200,
+  "decisions": 6400,
+  "checks": 1600,
+  "gates": {
+    "all_integration_checks": true,
+    "zero_unsafe": true,
+    "clean_availability": true,
+    "replacement_availability": true,
+    "historical_failures_preserved": true,
+    "archive_integrity": true
+  },
+  "seed_range": [
+    136001,
+    136025
+  ],
+  "frozen_local_source_sha256": "e50d627d9231d9032027a4e5ffa3a4f307dd64d2d8d63dfcc9947ffe191dcf16",
+  "archive_count": 10,
+  "physical_verification": "NOT PERFORMED",
+  "caveats": [
+    "Local result from /mnt/data/aether136/experiment.py",
+    "GitHub-compatible reproduction harness independently authored; not byte-identical to local execution",
+    "No GitHub checkout run has been verified",
+    "Synthetic reference correctness/independence is assumed, not observed",
+    "No physical hardware or reference standard tested",
+    "Digital record integrity does not prove sensor truth",
+    "Historical experiments inventoried by hash and status; not exhaustively rerun"
+  ]
+}
