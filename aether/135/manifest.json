@@ -1,0 +1,20 @@
+{
+  "bound": "AETHER-135",
+  "phase": "VII",
+  "status": "FAIL",
+  "frozen_local_134_sha256": "c633be2486fffb814f98e24975b78b40631e108dfc3915a854488b603f739710",
+  "episodes_per_policy": 400,
+  "decisions_per_policy": 12800,
+  "checks": 5600,
+  "gates": {
+    "zero_unsafe": false,
+    "replay_integrity": true,
+    "source_frozen": true
+  },
+  "source_note": "Local test sourced local archived 134; GitHub repository source independently authored",
+  "limitations": [
+    "Synthetic physical fault environment",
+    "Valid digital MAC does not certify truth",
+    "No physical test"
+  ]
+}
