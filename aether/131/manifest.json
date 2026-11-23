@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-131",
+  "phase": "VII",
+  "status": "PASS",
+  "episodes_per_policy": 400,
+  "ticks_per_policy": 9600,
+  "checks": 5600,
+  "seed_range": [
+    131001,
+    131050
+  ],
+  "gates": {
+    "zero_unsafe": true,
+    "counterexample": true,
+    "clean_nonregression": true,
+    "rotation_nonregression": true,
+    "missing_fails_closed": true,
+    "checks": true
+  },
+  "local_source_sha256": "49fb21d19707e7dd6b02499563c8bbd184926fc1ffb3fe1ba6bcb448266ea654",
+  "reproduction_note": "GitHub source independently authored from locally executed algorithm; source is not byte-identical and GitHub-checkout replay is not confirmed",
+  "assumptions": [
+    "Covariance coefficient and source ancestry are declared synthetic inputs, not physically verified",
+    "The modeled one-standard-deviation envelope is not a physical coverage guarantee",
+    "Single controller, no witness/quorum voting"
+  ]
+}
