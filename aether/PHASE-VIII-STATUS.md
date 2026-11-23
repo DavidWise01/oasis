@@ -1,6 +1,6 @@
 # AETHER Phase VIII — Physical Validation Readiness and Empirical Evidence
 
-**AETHER-138 modeled acquisition-receipt software PASS: Phase VIII 2/8 = 25%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-139 independent-reference contract synthetic PASS: Phase VIII 3/8 = 37.5%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase VIII deliberately has two non-interchangeable progress measures. The phase percentage tracks completed **software/readiness acceptance turns**. The physical-evidence percentage tracks actual observed and independently validated instrument measurements. It remains **0%** until real evidence exists.
 
@@ -8,12 +8,21 @@ Phase VIII deliberately has two non-interchangeable progress measures. The phase
 |---|---|---|---:|
 | 1 | 137 Independent physical validation readiness | **ACCEPTED — synthetic only** | **12.5%** |
 | 2 | 138 Instrument identity and acquisition receipt contract | **ACCEPTED — synthetic only** | **25%** |
-| 3 | 139 Independent calibration reference evidence | Planned | 25% |
-| 4 | 140 Physical uncertainty and coverage requirements | Planned | 25% |
-| 5 | 141 Empirical same-path insertion readiness | Planned | 25% |
-| 6 | 142 Measured drift and alarm requirements | Planned | 25% |
-| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 25% |
-| 8 | 144 Integrated readiness evidence freeze | Planned | 25% |
+| 3 | 139 Independent calibration reference evidence | **ACCEPTED — synthetic only** | **37.5%** |
+| 4 | 140 Physical uncertainty and coverage requirements | Planned | 37.5% |
+| 5 | 141 Empirical same-path insertion readiness | Planned | 37.5% |
+| 6 | 142 Measured drift and alarm requirements | Planned | 37.5% |
+| 7 | 143 Adversarial hardware-readiness failure modes | Planned | 37.5% |
+| 8 | 144 Integrated readiness evidence freeze | Planned | 37.5% |
+
+## AETHER-139 — Reference-standard source ancestry and acquisition-bound values
+
+- Local **320 paired synthetic cases**, 40 seeds × eight reference-chain conditions × 24 ticks = **7,680 decisions per policy**, **5,120/5,120 deterministic gates passed**.
+- The signed-transport comparator permitted **1,920 unsafe dry-run ACT** in constructed reference-lineage failures. A reference-evidence-contract controller permitted **0 unsafe dry-run ACT** and preserved **5,760 safe dry-run ACT**, including **960/960** clean and **960/960** valid certificate rotation.
+- Controller rejects shared-root calibration, counterfeit signing roots, expired reference certificates, swapped reference identity, invalid uncertainty budgets and acquisition measurements missing the signed nonce/tick/path link.
+- **Empirical qualification remains 0%:** The reference root is a software HMAC key, the so-called national traceability origin is a simulated certificate string, and reference values are produced from ground truth in a test fixture. No independent physical standard or measured source lineage was validated. Every operational action remains **HOLD**.
+- Repo source `139/experiment.py` is independently authored from executed `experiment_local.py`; byte-identical checkout replay is **unverified**. [Experiment source, local-run summary, contract report and interactive laboratory](139/) are committed, but live GitHub Pages status is unverified.
+- **Phase VIII synthetic readiness: 3/8 = 37.5%. Physical progress 0%.** Next natural bound AETHER-140: traceable uncertainty and empirical coverage contract.
 
 ## AETHER-138 — Model-bound protected acquisition receipts, physical permissions still HOLD
 
