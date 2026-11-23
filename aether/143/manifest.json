@@ -1,0 +1,26 @@
+{
+  "bound": "AETHER-143",
+  "phase": "VIII",
+  "status": "PASS",
+  "evaluation": "locally executed constrained synthetic acceptance",
+  "cases_per_policy": 320,
+  "ticks_per_policy": 7680,
+  "checks": 5120,
+  "all_pass": true,
+  "comparator_unsafe": 1920,
+  "bench_gate_unsafe": 0,
+  "clean_safe_act": 960,
+  "rotation_safe_act": 960,
+  "overall_safe_act": 5760,
+  "operational_act": 0,
+  "software_readiness_percent": 87.5,
+  "empirical_physical_validation_percent": 0,
+  "local_python_sha256": "8a629056bcb9fdd67a01939788e62fa42cf90e997dc1b3f3f324608912c3d547",
+  "github_executable": "Separately authored reproduction source; no independently confirmed checkout run",
+  "assumptions": [
+    "Simulated independent bench directly reads synthetic ground truth",
+    "Even a compromised reference signing key does not compromise this oracle",
+    "Digital signatures cannot certify physical independence",
+    "No physical hardware connected; operational permission always HOLD"
+  ]
+}
