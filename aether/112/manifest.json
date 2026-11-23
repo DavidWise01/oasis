@@ -1,0 +1,41 @@
+{
+  "bound": "AETHER-112",
+  "phase": "IV",
+  "status": "PASS",
+  "completion_percent": 100,
+  "accepted_bounds": [
+    "105",
+    "106",
+    "107",
+    "108",
+    "109b",
+    "110",
+    "111b"
+  ],
+  "preserved_failed_bounds": [
+    "109",
+    "111"
+  ],
+  "archived_source_files": 27,
+  "integration_cases": 120,
+  "check_categories": {
+    "replay": 120,
+    "causal_prefix": 120,
+    "hash_chain": 120,
+    "packet_fail_closed": 120,
+    "admissibility": 120,
+    "resource_budget": 120
+  },
+  "check_total": 720,
+  "checks_possible": 720,
+  "simulated_inspections": 2880,
+  "acts": 1132,
+  "holds": 1748,
+  "unsafe_authorized_ticks": 0,
+  "caveats": [
+    "Trusted packet-status and unique-root-count metadata assumed",
+    "Fixed-time bounds are not distribution-free under drift",
+    "Earlier bounds inventoried and hashed, not all reexecuted",
+    "No distributed consensus or Byzantine machinery"
+  ]
+}
