@@ -1,0 +1,31 @@
+{
+  "bound": "AETHER-134",
+  "phase": "VII",
+  "status": "PASS",
+  "local_synthetic_run": true,
+  "episodes_per_policy": 400,
+  "decisions_per_policy": 12800,
+  "check_count": 5600,
+  "seed_range": [
+    134001,
+    134050
+  ],
+  "gates": {
+    "zero_unsafe": true,
+    "no_extra_unsafe": true,
+    "fewer_calibrations": true,
+    "clean_availability": true,
+    "all_checks": true
+  },
+  "fixed_calibrations": 11900,
+  "adaptive_calibrations": 3650,
+  "saved": 8250,
+  "local_tested_python_sha256": "c633be2486fffb814f98e24975b78b40631e108dfc3915a854488b603f739710",
+  "reproduction": "GitHub-authored equivalent test is not byte-identical to locally executed source; independent GitHub checkout replay not yet verified",
+  "assumptions": [
+    "Synthetic reference bias truth provided upon calibration",
+    "Certified drift rate must bound physical inter-calibration drift",
+    "Independent same-tick anomaly detection and ingress path authenticity assumed",
+    "Unannounced abrupt physical faults or false reference certificates can defeat gate"
+  ]
+}
