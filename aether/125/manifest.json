@@ -1,0 +1,21 @@
+{
+  "bound": "AETHER-125",
+  "phase": "VI",
+  "status": "FAIL",
+  "cases_per_policy": 320,
+  "decisions_per_policy": 10240,
+  "checks": 4480,
+  "acceptance": {
+    "no_unsafe": true,
+    "strict_improvement": true,
+    "clean_safe_recovery": true,
+    "all_scenarios_recovery": false,
+    "all_checks": true
+  },
+  "assumptions": [
+    "Trusted root signing authority and protected device identity",
+    "Truthful synthetic calibration and noise metadata",
+    "Calibration-valid is not equivalent to risk-admissible",
+    "Repeated 95% pointwise bounds do not establish familywise guarantee"
+  ]
+}
