@@ -1,0 +1,10 @@
+scenario,cases,decisions,unsafe,safe_act,safe_hold,probes,cost
+clean,25,800,0,799,1,72400,158251.2
+fast_drift,25,800,0,25,550,73600,169320.0
+abrupt_gain,25,800,0,324,251,73150,165071.2
+abrupt_offset,25,800,0,325,250,73150,165060.0
+monitor_blindspot,25,800,0,325,250,72400,163560.0
+nonlinear_midrange,25,800,0,325,250,72400,163560.0
+intermittent_noise,25,800,0,424,151,72900,163451.2
+replacement_spoof,25,800,0,323,252,73050,164882.4
+ALL,200,6400,0,2870,1955,583050,1313156.0
