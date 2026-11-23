@@ -1,0 +1,23 @@
+{
+  "bound": "AETHER-139",
+  "phase": "VIII",
+  "status": "PASS",
+  "execution": "independently authored local synthetic script",
+  "cases_per_policy": 320,
+  "decisions_per_policy": 7680,
+  "deterministic_checks": 5120,
+  "checks_passed": 5120,
+  "signed_transport_unsafe": 1920,
+  "reference_contract_unsafe": 0,
+  "reference_contract_safe_act": 5760,
+  "operational_ACT": 0,
+  "software_readiness_progress_percent": 37.5,
+  "physical_validation_percent": 0,
+  "repo_source_status": "Separate source from locally executed experiment; GitHub checkout replay unverified",
+  "assumptions": [
+    "Reference values generated from synthetic truth",
+    "HMAC issuer keys are software test fixtures, not hardware keys",
+    "The named national traceability root is a string in a mocked certificate, not verified provenance",
+    "No independently measured physical reference data was available"
+  ]
+}
