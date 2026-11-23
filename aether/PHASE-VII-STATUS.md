@@ -1,6 +1,6 @@
 # AETHER Phase VII — Physical Measurement Assurance
 
-**AETHER-133B corrected same-path synthetic gate passed. Phase VII: 5/8 = 62.5%. Physical validation: NOT performed.**
+**AETHER-134 bounded reference-drift synthetic gate passed. Phase VII: 6/8 = 75%. Physical validation: NOT performed.**
 
 | Turn | Bound | Status | Phase completion |
 |---|---|---|---:|
@@ -9,9 +9,20 @@
 | 3 | 131 Bounded reference uncertainty certificate | **ACCEPTED — synthetic** | **37.5%** |
 | 4 | 132 Device response regularity test | **ACCEPTED — synthetic** | **50%** |
 | 5 | 133 Probe insertion and same-path verification | **ACCEPTED via 133B (synthetic)** | **62.5%** |
-| 6 | 134 Reference drift and recalibration economics | Planned | 62.5% |
-| 7 | 135 Unseen independent instrument stress | Planned | 62.5% |
-| 8 | 136 Integrated empirical-gate freeze | Planned | 62.5% |
+| 6 | 134 Reference drift and recalibration economics | **ACCEPTED — synthetic** | **75%** |
+| 7 | 135 Unseen independent instrument stress | Planned | 75% |
+| 8 | 136 Integrated empirical-gate freeze | Planned | 75% |
+
+## AETHER-134 — Bounded reference drift and adaptive calibration economics
+
+- Local **400 paired synthetic episodes**, 50 new seeds × eight conditions × 32 ticks = **12,800 decisions per policy**; **5,600/5,600** replay, chain, one-way action, ordered counter, fail-closed, zero-unsafe and budget checks passed.
+- Fixed policy purchases **11,900 calibrations**, adaptive policy purchases **3,650**, saving **8,250 / 69.3%** under the calibrated model. Both had **zero unsafe ACT, 9,000 safe ACT and 1,000 safe HOLD**; no clean availability regression.
+- Adaptive scheduling uses five ticks for low certified drift and two for high drift; a changed instrument generation requires fresh calibration. A risk upper bound adds the last calibrated bias, a certified maximum inter-calibration drift allowance, and certified sensor noise.
+- Synthetic scenarios: clean, slow drift, high drift, abrupt shift, noise burst, expired reference, route substitution and new instrument.
+- **Essential physical limitation:** This experiment assumes a trustworthy reference reveals actual calibration bias, drift certificates are valid over time, and a separately protected same-tick alarm detects abrupt jumps. **Undetected abrupt physical drift, a forged reference, or false ingress evidence can invalidate zero-unsafe conclusions.** No physical instrument was tested; software checks are not physical validation.
+- Local tested Python SHA-256 `c633be2486fffb814f98e24975b78b40631e108dfc3915a854488b603f739710`. GitHub source is independently authored and exact numerical replay from checkout has **not** been confirmed.
+- [AETHER-134 reproducible source, local numerical summary and interactive HTML](134/) committed. Live GitHub Pages deployment unverified.
+- **Turn 6 accepted on constrained synthetic gates: Phase VII 6/8 = 75%. Next AETHER-135: unseen independent instrument stress.**
 
 ## AETHER-133B — Signed calibration does not prove shared acquisition path
 
