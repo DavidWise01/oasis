@@ -1,0 +1,25 @@
+{
+  "bound": "AETHER-116",
+  "phase": "V",
+  "status": "PASS",
+  "seeds": [
+    116001,
+    116060
+  ],
+  "cases": 360,
+  "checks": 2880,
+  "gates": {
+    "deterministic": true,
+    "zero_unsafe": true,
+    "improves_unsafe": true,
+    "clean_rotation_preserved": true,
+    "total_cost_nonincreasing": true
+  },
+  "assumptions": [
+    "signed time anchor authentic",
+    "local monotonic inspection counter cannot roll back",
+    "clock drift bounded by 0.1 per tick",
+    "HMAC testing keys are uncompromised"
+  ],
+  "warning": "The verifier cannot detect a malicious or compromised trusted clock anchor. No field guarantee."
+}
