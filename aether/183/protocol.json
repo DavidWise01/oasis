@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-183",
+  "phase": "XIII",
+  "turn": 7,
+  "planned_turns": 8,
+  "software_protocol_percent": 87.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "BLINDED SYNTHETIC ORIGINAL PHYSICAL EVIDENCE ADMISSION REVIEW",
+  "original_physical_samples": 0,
+  "method": [
+    "Project bundle to blind evaluation fields; exclude prose and applicant root labels",
+    "Compute SHA-256 over supplied bytes",
+    "Evaluate capture count, challenge, replay, monotonic capture window",
+    "Correlate independently supplied root handles to externally provided attestations",
+    "Reject common ancestry roots, issuers, administrators, and absent external attestations",
+    "No quorum. One deterministic fail-closed reviewer."
+  ],
+  "limitations": [
+    "Passing synthetic root maps does not establish real independent witnesses",
+    "Three separately named sources can belong to one physical operator",
+    "Original hardware source, calibrated clock and alarm have not been authenticated",
+    "Even all mock attestation flags true gives DOCUMENTARY_SCREEN_ONLY; never physical ACT"
+  ],
+  "prior": "../182/protocol.json",
+  "watermark": ".dlw"
+}
