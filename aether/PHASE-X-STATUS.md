@@ -1,6 +1,6 @@
 # AETHER Phase X — Physical Reference Acquisition Setup and Evidence Intake
 
-**AETHER-155 original raw-capture and timing intake PASSED. Phase X synthetic software setup readiness: 3/8 = 37.5%. Empirical physical qualification: 0% (NO PHYSICAL MEASUREMENTS). Operational authority: HOLD.**
+**AETHER-156 reference traceability and uncertainty-budget synthetic test PASSED. Phase X software setup readiness: 4/8 = 50%. Empirical physical qualification: 0% (NO QUALIFIED INSTRUMENT OR REFERENCE MEASUREMENTS). Operational authority: HOLD.**
 
 Phase X distinguishes *software protocol development* from *actual independent reference equipment acquisition, calibration and measurements*. Passing the former cannot advance the latter. This ledger does not claim that any instrument is physically attached or any traceability certificate has been authenticated.
 
@@ -9,11 +9,21 @@ Phase X distinguishes *software protocol development* from *actual independent r
 | 1 | 153 Equipment register and commissioning contract | **ACCEPTED — synthetic only** | **12.5%** |
 | 2 | 154 Independent reference identity and certificate intake | **ACCEPTED — synthetic corrected test** | **25%** |
 | 3 | 155 Original physical-capture file and timing intake | **ACCEPTED — synthetic only** | **37.5%** |
-| 4 | 156 Reference traceability and uncertainty budget | Planned | 37.5% |
-| 5 | 157 Same-path hardware challenge procedure | Planned | 37.5% |
-| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 37.5% |
-| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 37.5% |
-| 8 | 160 Real-world qualification evidence decision freeze | Planned | 37.5% |
+| 4 | 156 Reference traceability and uncertainty budget | **ACCEPTED — synthetic only** | **50%** |
+| 5 | 157 Same-path hardware challenge procedure | Planned | 50% |
+| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 50% |
+| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 50% |
+| 8 | 160 Real-world qualification evidence decision freeze | Planned | 50% |
+
+## AETHER-156 — Calibration ancestry, RSS uncertainty and supported coverage
+
+- Exact locally executed synthetic audit: **25 seeds × eight reference scenarios × 20 ticks**, 200 episodes and **4,000 decisions per policy**, **3,200/3,200** deterministic gates passed.
+- Signed-only baseline authorized **1,200 unsafe dry-run ACT**. The reference traceability and uncertainty gate authorized **0 unsafe dry-run ACT** and preserved **2,800 safe dry-run ACT** (500/500 clean and 500/500 legitimate reference rotation). Operational ACT remained zero.
+- Four required modeled standard uncertainty components: calibration, repeatability, resolution and drift. Combined uncertainty is RSS, expanded with **k=2**; the gate checks a one-sided **90% Wilson lower bound of at least 95%** from 120 simulated held-out samples and rejects bounds crossing the permission threshold.
+- Six modeled faults: missing uncertainty contributor, shared calibration ancestry, understated resolution, expired calibration, unsupported coverage, and reference value contradicting a modeled bench. All failures HOLD without rewriting previous evidence.
+- **Physical qualification remains 0%**: reference and bench are synthetic oracle/fixtures. No actual accredited lab, calibration ancestry, traceable equipment, real uncertainty contributors, independent measurements, or physical uncertainty coverage were validated. [Physical uncertainty register](156/physical_uncertainty_register.json) retains null values and zero measured samples.
+- Locally executed source SHA-256 `05a2bd83fa637c3030fc284384f92c406e99f66db3bcefe96139ee7d3a400db8`. [GitHub lab and evidence summary](156/) are committed; the GitHub Python demo is separately authored from the exact local source, checkout replay unverified. Live Pages deployment unverified. Full local source and 3,200 checks are in the evidence ZIP.
+- **Phase X software protocol setup readiness: 4/8 = 50%; empirical physical qualification: 0%.** Next AETHER-157: same-path hardware challenge protocol.
 
 ## AETHER-155 — Immutable raw-capture bytes and monotonic sample timing
 
