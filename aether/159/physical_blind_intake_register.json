@@ -1,0 +1,11 @@
+{
+  "bound": "AETHER-159",
+  "physical_qualification_percent": 0,
+  "physical_capture_file": null,
+  "real_device_serial": null,
+  "traceable_reference_certificate": null,
+  "independent_bench_evidence": null,
+  "alarm_latency_measurements": null,
+  "real_unknown_fault_trials": 0,
+  "operational_authority": "HOLD"
+}
