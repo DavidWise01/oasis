@@ -1,0 +1,38 @@
+{
+  "bound": "AETHER-178",
+  "phase": "XIII",
+  "turn": 2,
+  "planned_turns": 8,
+  "software_protocol_percent": 25,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "BYTE-EXACT SYNTHETIC CAPTURE MANIFEST",
+  "local_checks": {
+    "passed": 20,
+    "total": 20,
+    "environment": "Node.js WebCrypto local"
+  },
+  "original_physical_samples": 0,
+  "algorithm": "SHA-256 bytes; SHA-256 UTF-8 canonical JSON with fixed field order",
+  "manifest_fields": [
+    "schema",
+    "capture_id",
+    "instrument_serial",
+    "challenge_id",
+    "source_origin_id",
+    "byte_length",
+    "capture_sha256",
+    "sequence",
+    "prior_manifest_sha256",
+    "sealed_at",
+    "manifest_sha256"
+  ],
+  "limitations": [
+    "Digest equality proves byte and declared manifest consistency only",
+    "Physical source and custodian signatures remain unauthenticated",
+    "Client trust flags are synthetic test inputs, never authority",
+    "No physical ACT granted"
+  ],
+  "predecessor": "../177/protocol.json",
+  "watermark": ".dlw"
+}
