@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-161",
+  "phase": "XI",
+  "status": "PASS",
+  "mode": "LOCALLY EXECUTED SYNTHETIC CONTRACT",
+  "checks": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "signed_only_unsafe": 1200,
+  "gated_unsafe": 0,
+  "safe_dry_run": 2800,
+  "clean_safe_dry_run": 500,
+  "legitimate_rotation_safe_dry_run": 500,
+  "synthetic_protocol_readiness_percent": 12.5,
+  "physical_qualification_percent": 0,
+  "physical_samples": 0,
+  "operational_ACT": 0,
+  "executed_local_script": "local_audit.py",
+  "executed_local_source_sha256": "39a08d9bd277b5a96a10efc92ec58c4634aa74725c45d4519221b33c78e81e2d",
+  "github_script": "Distinct but equivalent-intent standalone implementation; independent checkout execution not verified",
+  "limitations": [
+    "Reference and DUT HMAC keys are mock fixture credentials",
+    "Source material and absolute clock are generated software bytes",
+    "A synthetic clean receipt never confers physical authorization"
+  ]
+}
