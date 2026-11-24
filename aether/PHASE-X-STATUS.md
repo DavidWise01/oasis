@@ -1,19 +1,29 @@
 # AETHER Phase X — Physical Reference Acquisition Setup and Evidence Intake
 
-**AETHER-153 synthetic commissioning protocol PASSED. Phase X software setup readiness: 1/8 = 12.5%. Empirical physical qualification: 0% (NO PHYSICAL INSTRUMENT VERIFIED). Operational authority: HOLD.**
+**AETHER-154 corrected certificate-identity intake PASSED. Phase X synthetic software setup readiness: 2/8 = 25%. Empirical physical qualification: 0% (NO PHYSICAL INSTRUMENT OR CERTIFICATE VERIFIED). Operational authority: HOLD.**
 
 Phase X distinguishes *software protocol development* from *actual independent reference equipment acquisition, calibration and measurements*. Passing the former cannot advance the latter. This ledger does not claim that any instrument is physically attached or any traceability certificate has been authenticated.
 
 | Turn | Bound | Acceptance | Software setup readiness |
 |---|---|---|---:|
 | 1 | 153 Equipment register and commissioning contract | **ACCEPTED — synthetic only** | **12.5%** |
-| 2 | 154 Independent reference identity and certificate intake | Planned | 12.5% |
-| 3 | 155 Original physical-capture file and timing intake | Planned | 12.5% |
-| 4 | 156 Reference traceability and uncertainty budget | Planned | 12.5% |
-| 5 | 157 Same-path hardware challenge procedure | Planned | 12.5% |
-| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 12.5% |
-| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 12.5% |
-| 8 | 160 Real-world qualification evidence decision freeze | Planned | 12.5% |
+| 2 | 154 Independent reference identity and certificate intake | **ACCEPTED — synthetic corrected test** | **25%** |
+| 3 | 155 Original physical-capture file and timing intake | Planned | 25% |
+| 4 | 156 Reference traceability and uncertainty budget | Planned | 25% |
+| 5 | 157 Same-path hardware challenge procedure | Planned | 25% |
+| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 25% |
+| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 25% |
+| 8 | 160 Real-world qualification evidence decision freeze | Planned | 25% |
+
+## AETHER-154 — Quarantined reference-issuer identity and calibration certificate intake
+
+- Local corrected software test: **25 seeds × eight scenarios × 20 ticks = 200 episodes per policy, 4,000 decisions per policy**, with **3,200/3,200 deterministic gates passed**.
+- Baseline signed-only comparator: **1,200 unsafe dry-run ACT**; the certificate intake gate: **0 unsafe dry-run ACT**, retaining **2,800 safe dry-run ACT** including **500/500 clean** and **500/500 valid reference rotation**.
+- Tested six synthetic certificate failures: missing issuer identity, unrecognized issuer credential, serial mismatch, expired certificate, broken claimed source ancestry and altered signed uncertainty. The intake policy uses signed mock certificate plus raw record and separate mock bench; no hidden test labels passed into authorization.
+- **Preserved initial failure AETHER-154A:** **400/400 hash-chain verifications failed** because the writer hashed the previous digest field but the verifier omitted it. Corrected 154 fixed the verifier's reconstruction only; the authorization gate remained unchanged. The original and corrected sources, checks, manifests and traces are in the ZIP. [Original failure record](154a/failure.json).
+- **Physical qualification 0%**: the actual equipment/certificate [register](154/physical_reference_register.json) remains null. No accredited laboratory issuer, calibrated standard, physical measurement or real reference acquisition verified; all operational actions **HOLD**.
+- Exact corrected local executed Python SHA-256 `c40bf52d6a1b5ed5068d6e6967d2d25130b16cee9a62963dd354f675747e9fc7`; GitHub [154](154/) includes separately authored standalone reproducer, numerical results, manifest, neon interactive HTML and uncommissioned register. Independent checkout replay and live Pages deployment remain unverified.
+- **Phase X synthetic setup-readiness: 2/8 = 25%; empirical qualification: 0%.** Next AETHER-155: original physical-capture file and timing intake.
 
 ## AETHER-153 — Physical-reference acquisition setup boundary
 
