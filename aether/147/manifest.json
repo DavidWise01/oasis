@@ -1,0 +1,29 @@
+{
+  "bound": "AETHER-147",
+  "phase": "IX",
+  "status": "PASS",
+  "mode": "LOCAL_SYNTHETIC",
+  "seeds": [
+    147001,
+    147030
+  ],
+  "episodes_per_policy": 240,
+  "decisions_per_policy": 4800,
+  "checks": 3840,
+  "checks_passed": 3840,
+  "baseline_unsafe": 1440,
+  "lineage_gated_unsafe": 0,
+  "safe_dry_run_act": 3360,
+  "quarantined_fault_ticks": 1440,
+  "operational_ACT": 0,
+  "protocol_readiness_percent": 37.5,
+  "physical_qualification_percent": 0,
+  "full_local_executed_source_sha256": "8b6d9c34cfdea11743d56936ec581bedda4f1683b7de9bf40c34416df8fa923b",
+  "github_script": "Separately authored smaller demonstration; full local script and audits are in the evidence ZIP",
+  "limitations": [
+    "Reference data is synthetic oracle truth, not measured",
+    "HMAC key is a software fixture, not a physical issuer",
+    "Original-byte hashing cannot prove genuine initial acquisition",
+    "No physical ACT attempted"
+  ]
+}
