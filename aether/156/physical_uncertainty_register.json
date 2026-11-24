@@ -1,0 +1,19 @@
+{
+  "bound": "AETHER-156",
+  "status": "NO_ACTUAL_CALIBRATION_EVIDENCE",
+  "equipment_serial": null,
+  "reference_serial": null,
+  "calibration_issuer": null,
+  "accreditation_document": null,
+  "traceability_chain": null,
+  "calibration_certificate": null,
+  "calibration_date": null,
+  "uncertainty_units": null,
+  "coverage_factor": null,
+  "physical_repeatability_samples": null,
+  "physical_resolution": null,
+  "physical_drift_rate": null,
+  "physical_measurements_count": 0,
+  "physical_qualification_percent": 0,
+  "operational_permission": "HOLD"
+}
