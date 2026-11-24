@@ -1,19 +1,28 @@
 # AETHER Phase XIV — Original External Evidence Intake and Custody Onboarding
 
-**AETHER-185 SOURCE COMMITTED. Phase XIV software-protocol progress: 1/8 = 12.5%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-186 MANUFACTURER ISSUER TRUST-ANCHOR CRYPTOGRAPHIC GATE COMMITTED. Phase XIV software-protocol progress: 2/8 = 25%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound documentary software protocol; no physically authenticated independent source was admitted. Phase XIV introduces original external evidence intake contracts without treating mock external issuers, signed keys, or synthetic bundles as physical proof.
 
 | Turn | Planned bound | Status | Software progress |
 |---|---|---|---:|
 | 1 | 185 Original acquisition receipt and custody onboarding | **COMMITTED — synthetic intake cryptography only** | **12.5%** |
-| 2 | 186 External issuer identity and manufacturer anchor | Planned | 12.5% |
-| 3 | 187 Original acquisition byte custody with external verifier | Planned | 12.5% |
-| 4 | 188 Physical instrument, clock and challenge binding | Planned | 12.5% |
-| 5 | 189 Independent custodian and transfer receipt authentication | Planned | 12.5% |
-| 6 | 190 Blind external-source physical replay audit | Planned | 12.5% |
-| 7 | 191 Original physical response and alarm qualification | Planned | 12.5% |
-| 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 12.5% |
+| 2 | 186 External issuer identity and manufacturer anchor | **COMMITTED — synthetic certificate chain only** | **25%** |
+| 3 | 187 Original acquisition byte custody with external verifier | Planned | 25% |
+| 4 | 188 Physical instrument, clock and challenge binding | Planned | 25% |
+| 5 | 189 Independent custodian and transfer receipt authentication | Planned | 25% |
+| 6 | 190 Blind external-source physical replay audit | Planned | 25% |
+| 7 | 191 Original physical response and alarm qualification | Planned | 25% |
+| 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 25% |
+
+## AETHER-186 — External issuer identity and manufacturer anchor gate
+
+- [ECDSA P-256 trust-chain verifier](186/verification.mjs) checks a pinned root key fingerprint, root-signed manufacturer CA, CA-signed instrument issuer, issuer-signed acquisition receipt, key roles/permissions, revocation claims, validity windows, acquisition challenge and instrument serial binding.
+- [22-case synthetic regression suite](186/test.mjs) was committed, with valid chain, tampered certificates and receipts, altered issuer identity, revoked/expired certificates, unpinned roots, stale receipt and synthetic trust-flag escalation. **The committed suite has not been executed in a Node.js checkout in this turn.**
+- [Full 4D neon shadow-tesseract laboratory](186/) retains the cyan/violet rotating 16-vertex, 32-edge geometry with 3D perspective, double shadow projection and motion controls. Six certificate trust fault buttons use synthetic P-256 keys. Live browser and GitHub Pages deployment remain unverified.
+- This is a **custom synthetic certificate schema, not X.509**. A locally pinned key and matching signatures are not external verification of a real manufacturer root, issuer identity or physical instrument.
+- [Protocol](186/protocol.json): **Phase XIV 2/8 = 25%**, authenticated original physical captures **0**, physical qualification **0%**, operational ACT **HOLD**. A client-controlled trust registry is never grounds to enable ACT.
+- Phase XIII and AETHER-185 historical records are unchanged. **Next AETHER-187:** original acquisition byte custody with an independently authenticated external verifier. `.dlw`
 
 ## AETHER-185 — Original external evidence acquisition receipt
 
