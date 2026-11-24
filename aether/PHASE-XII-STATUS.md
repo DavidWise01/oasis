@@ -1,6 +1,6 @@
 # AETHER Phase XII — Independent Physical Evidence Admission
 
-**AETHER-172 SOURCE-ANCESTRY GRAPH AUDIT PASSED 15/15 LOCALLY. Planned Phase XII software bounds: 4/8 = 50%. Empirical physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-173 ORIGINAL BYTE-DIGEST AND HARDWARE-CLOCK ADMISSION CONTRACT COMMITTED. Planned Phase XII software bounds: 5/8 = 62.5%. Empirical physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](168/decision.json); it was **not** physically qualified. Phase XII performs strict intake of independently authenticated original hardware evidence without allowing simulated signatures, synthetically separate credential strings, or shared-root witnesses to count as independent physical observations.
 
@@ -10,10 +10,19 @@ Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](
 | 2 | 170 Original hardware identity challenge | **ACCEPTED — structural simulation only** | **25%** |
 | 3 | 171 External reference certificate authentication | **ACCEPTED — synthetic structural certificate audit only** | **37.5%** |
 | 4 | 172 Independent ancestry and common-root exclusion | **ACCEPTED — synthetic graph-structure checks only** | **50%** |
-| 5 | 173 Original physical acquisition digest and clock | Planned | 50% |
-| 6 | 174 Same-path response and uncertainty review | Planned | 50% |
-| 7 | 175 Drift/alarm real trace qualification | Planned | 50% |
-| 8 | 176 Physical qualification decision / freeze | Planned | 50% |
+| 5 | 173 Original physical acquisition digest and clock | **ACCEPTED — synthetic capture-integrity contract only** | **62.5%** |
+| 6 | 174 Same-path response and uncertainty review | Planned | 62.5% |
+| 7 | 175 Drift/alarm real trace qualification | Planned | 62.5% |
+| 8 | 176 Physical qualification decision / freeze | Planned | 62.5% |
+
+## AETHER-173 — Raw acquisition digest and monotonic hardware clock
+
+- [Byte-integrity verification engine](173/verification.mjs) computes WebCrypto SHA-256 of supplied raw bytes and compares with a declared capture digest; checks challenge nonce, expected device and clock identity, replayed capture ID, total sample count, monotonic hardware-time tags and consecutive sample counters.
+- [Negative test suite](173/test.mjs) specifies **16 synthetic cases** for missing bytes, alteration, malformed declared digest, identity/nonce mismatch, clock mismatch, replay, counter discontinuity, clock rollback and untrusted physical source flags. Full byte-identical test execution is **not yet confirmed**; the source has been published.
+- [Pages-ready neon laboratory](173/) demonstrates browser-local SHA-256, tampered input, rollback, skipped counter and replay. This is explicitly a mock fixture without physical hardware.
+- Hash equality proves only equality of supplied bytes with a supplied digest; it cannot prove hardware source, calibrated clock, acquisition integrity prior to receipt, or independently authenticated origins. The verifier returns only **DOCUMENTARY_REVIEW_ONLY** or **REJECT**, always operational **HOLD**.
+- [Protocol JSON](173/protocol.json) records **physical samples 0, physical qualification 0%, Phase XII protocol development 5/8 = 62.5%**, predecessor AETHER-172, and missing hardware trust.
+- **Next natural bound AETHER-174:** physical same-path response and uncertainty review. No promotion from model measurements, unverified timestamps or synthetic signatures. `.dlw`
 
 ## AETHER-172 — Ancestry graph and shared-origin exclusion
 
