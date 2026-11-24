@@ -1,6 +1,6 @@
 # AETHER Phase XIII — Physical Evidence Escrow and Source Custody
 
-**AETHER-179 CUSTODIAN IDENTITY / ECDSA P-256 SIGNATURE SOFTWARE GATE COMMITTED. Phase XIII: 3/8 = 37.5% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
+**AETHER-180 DUAL ECDSA P-256 TRANSFER/RECEIPT COUNTERSIGNATURE GATE COMMITTED. Phase XIII: 4/8 = 50% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
 
 Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json), explicitly **without physical qualification**. All past freezes remain historical records. Phase XIII tracks software protocols for acquiring and protecting evidence from genuinely independent original physical sources; no synthetic receipt, signature-shaped string, or declared root label qualifies as physical data.
 
@@ -9,11 +9,19 @@ Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json),
 | 1 | 177 Physical evidence escrow and custody | **ACCEPTED — synthetic structural gate only** | **12.5%** |
 | 2 | 178 Byte-exact sealed capture manifest | **ACCEPTED — synthetic byte-integrity audit only** | **25%** |
 | 3 | 179 Authenticated custodian identity and signatures | **ACCEPTED — cryptographic mock-key signature gate only** | **37.5%** |
-| 4 | 180 Independent transfer and receipt countersignature | Planned | 37.5% |
-| 5 | 181 Clock, source and challenge provenance escrow | Planned | 37.5% |
-| 6 | 182 External archive replication and tamper detection | Planned | 37.5% |
-| 7 | 183 Blind original physical evidence admission review | Planned | 37.5% |
-| 8 | 184 Phase XIII qualification decision and freeze | Planned | 37.5% |
+| 4 | 180 Independent transfer and receipt countersignature | **ACCEPTED — synthetic dual-key cryptographic gate only** | **50%** |
+| 5 | 181 Clock, source and challenge provenance escrow | Planned | 50% |
+| 6 | 182 External archive replication and tamper detection | Planned | 50% |
+| 7 | 183 Blind original physical evidence admission review | Planned | 50% |
+| 8 | 184 Phase XIII qualification decision and freeze | Planned | 50% |
+
+## AETHER-180 — Dual-signed transfer and receipt countersignature
+
+- [Verifier](180/verification.mjs) performs genuine P-256 ECDSA verification against distinct sender and receiver public keys over fixed-order canonical transfer and receipt records. The receiver's signed receipt binds the sender's SHA-256 transfer digest, capture digest, custodian roles, challenge and transfer ID; detects duplicate IDs, altered evidence, time reversal, missing or delayed receipts, revoked or unauthorized keys and broken predecessors.
+- [24-case test suite](180/test.mjs) is published with genuine WebCrypto key generation and signatures, tampering, replay, signature forgery, revoked keys, authorization checks, receipt mismatch and a fully flagged synthetic trust scenario. **Test execution has not been independently confirmed in this turn; no 24/24 runtime-pass claim is made.**
+- [Full 4D neon laboratory](180/) retains the rotating 16-vertex, 32-edge cyan/blue/violet tesseract with ghost shadow, interactive orbit controls and dual-signature custody fault injections. Live GitHub Pages deployment/browser test is unverified.
+- [Protocol contract](180/protocol.json): **Phase XIII 4/8 = 50%**, zero real physical samples, physical qualification 0%, authority HOLD. Two valid signatures under locally constructed test keys do not establish two authenticated real people, independent original hardware origins or physical possession.
+- Previous records AETHER-176 through AETHER-179 are preserved unchanged. Next bound **AETHER-181: clock, source and challenge provenance escrow**. `.dlw`
 
 ## AETHER-179 — Canonical signed custody event & claimed custodian identity
 
