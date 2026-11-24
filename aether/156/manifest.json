@@ -1,0 +1,20 @@
+{
+  "bound": "AETHER-156",
+  "phase": "X",
+  "status": "PASS",
+  "checks": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "baseline_unsafe": 1200,
+  "guarded_unsafe": 0,
+  "safe_dry_run": 2800,
+  "physical_measurements": 0,
+  "operational_act": 0,
+  "software_setup_readiness_percent": 50,
+  "physical_qualification_percent": 0,
+  "local_executed_source_sha256": "05a2bd83fa637c3030fc284384f92c406e99f66db3bcefe96139ee7d3a400db8",
+  "model": "Synthetic lab, mock independent bench and root; four standard uncertainty contributors combined by RSS and expanded k=2; 120 synthetic held-out records and one-sided Wilson lower 90% vs claimed 95% coverage",
+  "github_source": "Independently authored smaller reproduction; exact checkout replay not yet verified",
+  "limit": "Mock signs and modeled truth cannot validate a physical calibration root"
+}
