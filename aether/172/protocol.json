@@ -1,0 +1,30 @@
+{
+  "bound": "AETHER-172",
+  "phase": "XII",
+  "turn": 4,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 50,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "original_physical_samples": 0,
+  "mode": "SYNTHETIC GRAPH-STRUCTURE AUDIT",
+  "tests_passed": 15,
+  "tests_total": 15,
+  "claim": "Distinct reported root names and separate certificates do not prove independence.",
+  "roles": [
+    "DUT",
+    "REFERENCE",
+    "BENCH"
+  ],
+  "graph_invariants": [
+    "each role has a traceable ancestry chain",
+    "each parent must exist and ancestry graph must be acyclic",
+    "roots cannot themselves declare parents",
+    "no overlapping root ancestry across roles",
+    "no duplicated capture digests or device serials",
+    "external origin and physical capture authentication requires independent real-world investigation"
+  ],
+  "authority_rule": "No operational ACT path. Client-side origin flags are not authentication.",
+  "predecessor": "../171/protocol.json",
+  "watermark": ".dlw"
+}
