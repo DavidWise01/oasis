@@ -1,6 +1,6 @@
 # AETHER Phase XIII — Physical Evidence Escrow and Source Custody
 
-**AETHER-183 BLIND ORIGINAL PHYSICAL EVIDENCE ADMISSION SCREENING GATE COMMITTED. Phase XIII: 7/8 = 87.5% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
+**AETHER-184 PHASE XIII DOCUMENTARY FREEZE: 8/8 = 100% SOFTWARE PROTOCOL COMPLETE. PHYSICAL QUALIFICATION DENIED PENDING INDEPENDENT ORIGINAL EVIDENCE. Authenticated physical captures 0; physical qualification 0%; operational authority HOLD.**
 
 Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json), explicitly **without physical qualification**. All past freezes remain historical records. Phase XIII tracks software protocols for acquiring and protecting evidence from genuinely independent original physical sources; no synthetic receipt, signature-shaped string, or declared root label qualifies as physical data.
 
@@ -13,7 +13,17 @@ Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json),
 | 5 | 181 Clock, source and challenge provenance escrow | **ACCEPTED — synthetic source/clock/digest protocol only** | **62.5%** |
 | 6 | 182 External archive replication and tamper detection | **ACCEPTED — synthetic three-replica integrity gate only** | **75%** |
 | 7 | 183 Blind original physical evidence admission review | **ACCEPTED — synthetic blinded admission contract only** | **87.5%** |
-| 8 | 184 Phase XIII qualification decision and freeze | Planned | 87.5% |
+| 8 | 184 Phase XIII qualification decision and freeze | **CLOSED — documentary freeze; physical HOLD** | **100%** |
+
+## AETHER-184 — Phase XIII physical qualification decision and documentary freeze
+
+- **Phase XIII documentary software protocol CLOSED: 8/8 = 100%.** This is a completion metric for the eight planned software bounds, not a physical qualification score.
+- [Machine-readable final decision](184/decision.json): **PHYSICAL_QUALIFICATION_DENIED_PENDING_INDEPENDENT_ORIGINAL_EVIDENCE**. Authenticated original physical captures **0**, independently authenticated physical source roots **0**, physical qualification **0%**, operational ACT **HOLD**.
+- [Full neon 4D shadow-tesseract dashboard](184/) retains a 16-vertex, 32-edge rotating cyan/blue/violet hypercube, 3D perspective, ghost shadow and animation controls. A read-only inspection fetches the actual published decision.json to check internal documentary consistency, list unresolved evidence and show all eight bounds. Live browser/Pages execution remains unverified.
+- [22-assertion Node.js regression suite](184/test.mjs) tests decision consistency, frozen milestones and conservative operational authority. **Suite is published but not independently executed from GitHub checkout.** An additional 11 decision invariant checks passed in-process during construction of the decision JSON; these are documentary assertions, not hardware tests.
+- Eight unresolved external evidence requirements remain explicitly recorded: original authenticated physical bytes, real instrument identity/reference, physical clock calibration, real custodian identity and receipt, independent archive ancestry, same-path measurements and physical alarm, and independent verification.
+- **Freeze semantics:** this is an appended historical documentary decision; GitHub branch mutability has not been technologically removed. Any later physical review requires new original externally authenticated evidence and a separate recorded adjudication. AETHER-176 Phase XII and all AETHER-177–183 historical bounds remain untouched.
+- **Next Phase XIV natural bound AETHER-185:** original external evidence acquisition receipt and independent custody onboarding. No quorum or simulated flags can unlock ACT. `.dlw`
 
 ## AETHER-183 — Blind Original Physical Evidence Admission Review
 
