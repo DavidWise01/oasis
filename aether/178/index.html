@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#050916">
+<title>AETHER-178 · 4D Shadow Capture Vault</title><style>
+:root{color-scheme:dark;--cyan:#76fff0;--violet:#be92ff;--amber:#ffc384;font:16px/1.5 system-ui,Segoe UI,sans-serif;color:#e6faff;background:#050916}*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,#183a59,#081323 50%,#040816 80%)}
+main{max-width:1240px;margin:auto;padding:24px clamp(14px,3vw,34px) 50px}
+h1{font-size:clamp(2.3rem,5.7vw,5.2rem);line-height:1.05;letter-spacing:-.04em;color:var(--cyan);text-shadow:0 0 26px #3cffe780;margin:5px 0}
+h2{font-size:clamp(1.2rem,2vw,1.55rem);color:#baeaff;margin:0 0 12px}.eyebrow{font-size:.78rem;letter-spacing:.17em;font-weight:800;color:#a5c2d3}.tag{color:var(--amber);font-size:.83rem;letter-spacing:.13em;font-weight:800}
+a{color:#8cfff1;text-underline-offset:4px}small,.muted{color:#aac5d5}.hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.82fr);gap:16px;margin:22px 0}
+.panel,.stat,.vault{border:1px solid #6dfff143;border-radius:16px;background:linear-gradient(140deg,#102e45e8,#081727f1);box-shadow:0 0 35px #1ffff015,inset 0 0 30px #4fffe808;overflow:hidden}
+.vault{position:relative;min-height:450px;background:radial-gradient(ellipse at center,#153f5e,#061326 64%,#040c1b)}canvas{display:block;width:100%;height:450px}
+.vault:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#b8fff908 4px);pointer-events:none}
+.corner{position:absolute;left:17px;right:17px;top:14px;display:flex;justify-content:space-between;gap:10px;font-size:.7rem;letter-spacing:.1em;color:#afe7ed;pointer-events:none}.corner.bottom{top:auto;bottom:14px}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#d2fffc;font-weight:850;text-shadow:0 0 10px #5bfdeb,0 0 28px #54fff1;pointer-events:none}
+.panel{padding:21px}.side{display:flex;flex-direction:column;justify-content:space-between;gap:18px}.side p{line-height:1.65}.hold{color:var(--amber)!important;text-shadow:0 0 15px #ffc08064}
+.big{font-size:clamp(1.85rem,3.4vw,2.7rem);font-weight:850;line-height:1.12;margin:8px 0}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{padding:16px}.stat small{font-size:.78rem}
+.bar{height:11px;border-radius:12px;background:#1b3749;overflow:hidden;margin:20px 0 7px}.bar span{display:block;height:100%;width:25%;background:linear-gradient(90deg,#04bda7,#8ffff0,#b686ff);box-shadow:0 0 18px #38ffe1}
+.work{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(290px,.88fr);gap:16px;margin:20px 0}
+.controls{display:flex;flex-wrap:wrap;gap:9px}button{font:inherit;font-size:.84rem;font-weight:650;border-radius:9px;border:1px solid #6cf0dd;color:#e9fffb;background:#19485a;padding:10px 12px;cursor:pointer}button:hover,button:focus-visible{box-shadow:0 0 18px #62ffe978}button[aria-pressed="true"]{background:#2a6471}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:430px;overflow:auto;background:#08192b;border-left:3px solid #ffc080;padding:15px;border-radius:4px}code{color:#80ffed}.links{display:flex;flex-wrap:wrap;gap:16px;padding-top:12px}
+.pipeline{display:flex;gap:8px;flex-wrap:wrap}.pipeline>div{flex:1;min-width:120px;padding:12px;border:1px solid #56efdc57;border-radius:10px;background:#102b3e;text-align:center}.pipeline b{display:block;color:#8cfff0}
+footer{color:#acc6d5;font-size:.82rem;margin-top:25px}
+@media(max-width:900px){.hero,.work{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}canvas{height:370px}.vault{min-height:370px}}
+@media(max-width:530px){canvas{height:320px}.vault{min-height:320px}.panel{padding:15px}.stat{padding:12px}}
+</style></head><body><main>
+<header><div class="eyebrow">OASIS / AETHER / PHASE XIII / TURN 2 OF 8</div><h1>AETHER-178</h1><p class="tag">BYTE-EXACT ESCROW · 4D SHADOW TESSERACT</p></header>
+<div class="hero">
+ <section class="vault"><div class="corner"><span>16 VERTICES / 32 EDGES</span><span>4D → 3D → SHADOW</span></div><canvas id="hypercube" role="img" aria-label="Rotating cyan-blue-violet neon tesseract, with offset shadow projection; decorative only."></canvas><div class="core" aria-hidden="true">.dlw</div><div class="corner bottom"><span>RAW BYTES → SHA-256 → CANONICAL MANIFEST</span><span id="motion">ORBIT ACTIVE</span></div></section>
+ <section class="panel side"><div><div class="eyebrow">Phase XIII · Integrity gate</div><h2>Preserve the original bytes. Seal precisely what was received.</h2><p>Byte-level SHA-256 and a deterministic canonical manifest expose substitutions and altered metadata. They do not certify the physical source of either record.</p></div><div><div class="tag">Operational authority</div><div class="big hold">HOLD</div><p class="muted">The hypercube and its neon shadow are visual projections. The operational gate is fixed.</p></div><div class="controls"><button id="pause" aria-pressed="false">Pause rotation</button><button id="slow" aria-pressed="false">Slow orbit</button><button id="shadow" aria-pressed="true">Shadow ON</button></div></section>
+</div>
+<div class="stats"><div class="stat"><small>Software protocol</small><div class="big">2 / 8</div><small>25% completed</small></div><div class="stat"><small>Local synthetic checks</small><div class="big">20 / 20</div><small>Passed locally</small></div><div class="stat"><small>Authenticated physical samples</small><div class="big">0</div><small>No original hardware</small></div><div class="stat"><small>Physical authority</small><div class="big hold">HOLD</div><small>Qualification 0%</small></div></div>
+<div class="bar" aria-label="Phase XIII 25 percent protocol completion"><span></span></div><small>Phase XIII 2/8 development milestones · Physical qualification remains 0%</small>
+<div class="work"><section class="panel"><h2>Sealed capture pipeline</h2><div class="pipeline"><div><b>RAW BYTES</b><small>Input payload</small></div><div><b>SHA-256</b><small>Computed digest</small></div><div><b>MANIFEST</b><small>Canonical fields</small></div><div><b>HOLD</b><small>No physical ACT</small></div></div><p class="muted">The verifier computes a capture digest from the supplied bytes and a separate digest over ordered manifest fields. Alterations are rejected even when labels claim independence.</p>
+<h2>Fault injection · simulated captures</h2><div class="controls" id="cases"><button data-case="clean">Original fixture</button><button data-case="tamper">Change byte</button><button data-case="metadata">Alter metadata</button><button data-case="replay">Replay ID</button><button data-case="length">Length conflict</button><button data-case="root">Shared origin</button></div><pre id="result" aria-live="polite">Select a synthetic test. All cases preserve operational HOLD.</pre></section>
+<section class="panel"><h2>Evidence boundaries</h2><p><strong>SHA-256 integrity is not physical provenance.</strong> No manufacturer, instrument, independent origin or external custodian has been authenticated by this laboratory.</p><p>Only a separately verified, externally sourced original hardware record could be considered for physical qualification in a future review.</p><div class="links"><a href="verification.mjs">Verification module</a><a href="test.mjs">20-case test suite</a><a href="protocol.json">Protocol JSON</a><a href="../177/">Previous escrow bound</a></div></section></div>
+<footer>One deterministic adjudicator · No quorum authority · Append-only historical evidence policy · Neon 4D shadow is illustrative · .dlw</footer>
+</main>
+<script type="module">
+import {assess,sha256,canonical} from './verification.mjs';
+const enc=new TextEncoder();
+const raw=enc.encode('AETHER-178 synthetic capture bytes; no physical sensor attached.');
+const env={expected_instrument_serial:'REF-178',expected_challenge_id:'CH-178',dut_owned_root:'DUT-root',expected_role:'REFERENCE',used_capture_ids:new Set()};
+async function base(){const m={schema:'AETHER-178/v1',capture_id:'capture-178',instrument_serial:'REF-178',challenge_id:'CH-178',source_origin_id:'EXTERNAL-DECLARED',byte_length:raw.length,capture_sha256:await sha256(raw),sequence:0,prior_manifest_sha256:null,sealed_at:'2026-11-24T12:00:00Z'};m.manifest_sha256=await sha256(enc.encode(canonical(m)));return{bytes:new Uint8Array(raw),manifest:m}}
+document.getElementById('cases').addEventListener('click',async e=>{const kind=e.target?.dataset?.case;if(!kind)return;const p=await base(),ctx={...env};if(kind==='tamper')p.bytes[1]^=1;if(kind==='metadata')p.manifest.source_origin_id='ALTERED';if(kind==='replay')ctx.used_capture_ids=new Set(['capture-178']);if(kind==='length')p.manifest.byte_length++;if(kind==='root')p.manifest.source_origin_id='DUT-root';const r=await assess(p,ctx);document.getElementById('result').textContent='SCENARIO: '+kind+'\nSTATUS: '+r.status+'\nREASONS:\n'+r.reasons.join('\n')+'\nCOMPUTED CAPTURE SHA-256: '+r.computed_capture_sha256+'\nCOMPUTED MANIFEST SHA-256: '+r.computed_manifest_sha256+'\n\nPHYSICAL 0% · ACT '+r.operational_authority;});
+</script>
+<script>
+(()=>{'use strict';const canvas=document.getElementById('hypercube'),ctx=canvas.getContext('2d');if(!ctx)return;const state={paused:matchMedia('(prefers-reduced-motion: reduce)').matches,slow:false,shadow:true};let w=700,h=450,dpr=1,t=0,last=0;
+const verts=Array.from({length:16},(_,i)=>[0,1,2,3].map(bit=>i&(1<<bit)?1:-1));
+const edges=[];for(let i=0;i<16;i++)for(let b=0;b<4;b++){const j=i^(1<<b);if(i<j)edges.push([i,j,b])}
+function rotate(v,a,b,c){let[x,y,z,u]=v;let co=Math.cos(a),si=Math.sin(a);[x,u]=[x*co-u*si,x*si+u*co];co=Math.cos(b);si=Math.sin(b);[y,z]=[y*co-z*si,y*si+z*co];co=Math.cos(c);si=Math.sin(c);[x,z]=[x*co-z*si,x*si+z*co];return[x,y,z,u]}
+function project(v,s){let[x,y,z,u]=v;let d4=3.75/(3.75-u);x*=d4;y*=d4;z*=d4;let d3=5/(5-z);return{x:w/2+x*d3*s,y:h/2+y*d3*s,depth:d3}}
+function line(a,b,col,weight,blur){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=col;ctx.lineWidth=weight;ctx.shadowColor=col;ctx.shadowBlur=blur;ctx.stroke()}
+function draw(){const bg=ctx.createRadialGradient(w/2,h/2,5,w/2,h/2,Math.max(w,h)*.78);bg.addColorStop(0,'#173d58');bg.addColorStop(1,'#050c1a');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);ctx.strokeStyle='#55d9e015';for(let x=0;x<w;x+=34){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}for(let y=0;y<h;y+=34){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+const scale=Math.min(w*.15,h*.28,115);const p=verts.map(v=>project(rotate(v,t*.53+.2,t*.33-.2,t*.47+.5),scale));const ghost=verts.map(v=>project(rotate(v,t*.53+.55,t*.33+.17,t*.47-.2),scale*.97));
+ctx.save();if(state.shadow)for(const [a,b]of edges){const sh=q=>({x:w/2+(q.x-w/2)*1.17+17,y:h/2+(q.y-h/2)*.87+23});line(sh(p[a]),sh(p[b]),'rgba(136,65,255,.17)',1.6,15);line(ghost[a],ghost[b],'rgba(195,112,255,.27)',1.5,12)}
+for(const [a,b,axis]of edges){const rgb=axis===3?'189,125,255':axis===2?'62,191,255':'98,255,233';line(p[a],p[b],'rgba('+rgb+',.1)',8,21);line(p[a],p[b],'rgba('+rgb+',.82)',1.8,11)}
+for(const q of p){ctx.beginPath();ctx.arc(q.x,q.y,2.5,0,Math.PI*2);ctx.fillStyle='#d6fff9';ctx.shadowColor='#5affef';ctx.shadowBlur=16;ctx.fill()}ctx.restore()}
+function resize(){const r=canvas.getBoundingClientRect();w=Math.max(200,r.width||700);h=Math.max(200,r.height||450);dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw()}
+function frame(ms){if(!last)last=ms;const dt=Math.min(.05,(ms-last)/1000);last=ms;if(!state.paused)t+=dt*(state.slow?.2:1);draw();requestAnimationFrame(frame)}
+function controls(){const p=document.getElementById('pause'),s=document.getElementById('slow'),sh=document.getElementById('shadow');p.textContent=state.paused?'Resume rotation':'Pause rotation';p.setAttribute('aria-pressed',String(state.paused));s.textContent=state.slow?'Normal orbit':'Slow orbit';s.setAttribute('aria-pressed',String(state.slow));sh.textContent=state.shadow?'Shadow ON':'Shadow OFF';sh.setAttribute('aria-pressed',String(state.shadow));document.getElementById('motion').textContent=state.paused?'ORBIT PAUSED':'ORBIT ACTIVE'}
+document.getElementById('pause').addEventListener('click',()=>{state.paused=!state.paused;controls()});document.getElementById('slow').addEventListener('click',()=>{state.slow=!state.slow;controls()});document.getElementById('shadow').addEventListener('click',()=>{state.shadow=!state.shadow;controls()});
+if(window.ResizeObserver)new ResizeObserver(resize).observe(canvas.parentElement);else window.addEventListener('resize',resize);resize();controls();requestAnimationFrame(frame);
+})();
+</script></body></html>
