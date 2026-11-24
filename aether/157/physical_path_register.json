@@ -1,0 +1,17 @@
+{
+  "bound": "AETHER-157",
+  "commissioning_status": "UNVERIFIED",
+  "dut_serial": null,
+  "reference_serial": null,
+  "pulse_generator_make_model_serial": null,
+  "injection_port": null,
+  "measured_acquisition_path": null,
+  "pulse_waveform_file_sha256": null,
+  "physical_coupling_trace": null,
+  "verified_clock": null,
+  "oscilloscope_trace_sha256": null,
+  "calibrated_reference_certificate": null,
+  "actual_physical_samples": 0,
+  "physical_qualification_percent": 0,
+  "operational_permission": "HOLD"
+}
