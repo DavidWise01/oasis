@@ -1,6 +1,6 @@
 # AETHER Phase XI — Real-World Physical Evidence Acquisition
 
-**AETHER-163 original capture and timebase synthetic intake PASSED. Phase XI synthetic software acquisition-protocol readiness: 3/8 = 37.5%. Empirical physical qualification: 0% (NO VERIFIED ORIGINAL PHYSICAL CAPTURE OR CLOCK). Operational authority: HOLD.**
+**AETHER-164 traceability and uncertainty-budget synthetic intake PASSED. Phase XI synthetic software acquisition-protocol readiness: 4/8 = 50%. Empirical physical qualification: 0% (NO MEASURED PHYSICAL UNCERTAINTY OR VERIFIED INDEPENDENT CALIBRATION). Operational authority: HOLD.**
 
 Phase IX and Phase X each closed at **100% synthetic software protocol readiness**, NOT physical qualification. Phase XI tracks a distinct new series of eight planned software intake bounds. Real-world qualification is awarded **only** after independent reference hardware, provenance, calibration, raw capture and measured behavior are actually authenticated; no mock receipt, signature, counter, or synthetic test can alter the real-world qualification metric. Maintain immutable prior phase freezes and failed 154A record.
 
@@ -9,11 +9,20 @@ Phase IX and Phase X each closed at **100% synthetic software protocol readiness
 | 1 | 161 Acquisition boundary and physical-evidence register | **ACCEPTED — synthetic only** | **12.5%** |
 | 2 | 162 Genuine instrument and reference identity intake | **ACCEPTED — synthetic identity contract only** | **25%** |
 | 3 | 163 Original physical capture package and timebase | **ACCEPTED — synthetic only** | **37.5%** |
-| 4 | 164 Calibration traceability and uncertainty evidence | Planned | 37.5% |
-| 5 | 165 Real same-path challenge evidence package | Planned | 37.5% |
-| 6 | 166 Physical drift and alarm evidence intake | Planned | 37.5% |
-| 7 | 167 Blind independent physical evidence adjudication | Planned | 37.5% |
-| 8 | 168 Physical qualification decision and immutable freeze | Planned | 37.5% |
+| 4 | 164 Calibration traceability and uncertainty evidence | **ACCEPTED — synthetic only** | **50%** |
+| 5 | 165 Real same-path challenge evidence package | Planned | 50% |
+| 6 | 166 Physical drift and alarm evidence intake | Planned | 50% |
+| 7 | 167 Blind independent physical evidence adjudication | Planned | 50% |
+| 8 | 168 Physical qualification decision and immutable freeze | Planned | 50% |
+
+## AETHER-164 — Calibration ancestry and evidence-derived uncertainty contract
+
+- Exact local Python synthetic audit: **25 seeds × eight scenarios × 20 ticks × two policies**; **200 episodes and 4,000 decisions per policy**; all **3,200/3,200 checks PASSED** including deterministic replay, SHA-256 decision chain, one action per tick, scenario-blind gate and operational HOLD.
+- Signed-only comparator admitted **1,200 unsafe synthetic dry-run ACT**; conservative uncertainty gate admitted **0 unsafe synthetic ACT** and preserved **2,800 safe dry-run ACT**, including 500/500 clean and 500/500 legitimate rotation.
+- Six fault scenarios: missing uncertainty component, shared DUT/reference ancestry, expired reference certificate, understated measurement resolution, unsupported held-out coverage, and contradictory reference/bench readings. Mock standard uncertainty inputs: calibration .001, repeatability .0005, resolution .0004, drift .0006; combined by RSS then expanded ×2. Simulated coverage requires a 90% one-sided Wilson lower bound ≥95% across 120 artificial examples.
+- **Physical qualification 0%.** Neither reference/bench independence, accredited lab identity, calibration genealogy nor measurement uncertainties were physically verified. The [physical calibration register](164/physical_calibration_register.json) retains explicit nulls and zero genuine samples. All operational ACT HOLD.
+- Locally executed source SHA-256 `93f5d7d536209ff7b1ac079b2e27c4b4417f6519e9828390e665b4181602f798`; complete evidence ZIP SHA-256 `9bce6347fdd891c65036e3ba9d6a4c24267b7beed58042ac7dc9cea3ea3117fb`. [GitHub code and interactive Pages-ready HTML](164/) committed with separately authored compact Python reproducer; GitHub checkout replay and live Pages deployment unverified.
+- **Phase XI synthetic protocol readiness 4/8 = 50%, physical qualification 0%.** Next AETHER-165: same-path physical challenge evidence package.
 
 ## AETHER-163 — Original capture bytes, sample counters and simulated timebase
 
