@@ -1,0 +1,20 @@
+{
+  "bound": "AETHER-166",
+  "phase": "XI",
+  "status": "PASS",
+  "checks_total": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "signed_only_unsafe": 1200,
+  "drift_alarm_gated_unsafe": 0,
+  "safe_dry_run": 2800,
+  "software_readiness_percent": 75,
+  "empirical_physical_qualification_percent": 0,
+  "actual_physical_samples": 0,
+  "operational_action": "HOLD",
+  "local_executed_source_sha256": "5c096f560730de2171d5538c842bce3abfc52a7d452ca70db3b9db348cda9613",
+  "local_evidence_zip_sha256": "aea689f2ede7caa9a96bc454db0361a904f4050ae5d34dddcbb0e12039a2cca0",
+  "github_reproduction": "Separately authored compact source, not independently executed from GitHub checkout",
+  "limits": "Synthetic clocks, samples, and alarm monitoring are not empirical measurements"
+}
