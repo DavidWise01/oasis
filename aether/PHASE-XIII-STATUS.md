@@ -1,6 +1,6 @@
 # AETHER Phase XIII — Physical Evidence Escrow and Source Custody
 
-**AETHER-181 CLOCK, SOURCE AND CHALLENGE PROVENANCE SOFTWARE GATE COMMITTED. Phase XIII: 5/8 = 62.5% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
+**AETHER-182 ARCHIVE REPLICATION & TAMPER-DETECTION SOFTWARE GATE COMMITTED. Phase XIII: 6/8 = 75% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
 
 Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json), explicitly **without physical qualification**. All past freezes remain historical records. Phase XIII tracks software protocols for acquiring and protecting evidence from genuinely independent original physical sources; no synthetic receipt, signature-shaped string, or declared root label qualifies as physical data.
 
@@ -11,9 +11,17 @@ Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json),
 | 3 | 179 Authenticated custodian identity and signatures | **ACCEPTED — cryptographic mock-key signature gate only** | **37.5%** |
 | 4 | 180 Independent transfer and receipt countersignature | **ACCEPTED — synthetic dual-key cryptographic gate only** | **50%** |
 | 5 | 181 Clock, source and challenge provenance escrow | **ACCEPTED — synthetic source/clock/digest protocol only** | **62.5%** |
-| 6 | 182 External archive replication and tamper detection | Planned | 62.5% |
-| 7 | 183 Blind original physical evidence admission review | Planned | 62.5% |
-| 8 | 184 Phase XIII qualification decision and freeze | Planned | 62.5% |
+| 6 | 182 External archive replication and tamper detection | **ACCEPTED — synthetic three-replica integrity gate only** | **75%** |
+| 7 | 183 Blind original physical evidence admission review | Planned | 75% |
+| 8 | 184 Phase XIII qualification decision and freeze | Planned | 75% |
+
+## AETHER-182 — External archive replication and tamper detection
+
+- [Replication verifier](182/verification.mjs) recalculates SHA-256 of three supplied replica byte arrays against one canonical acquisition manifest; recomputes canonical receipt content digests, checks predecessor links, generation rollback, duplicate archive IDs, root identifiers and administrators. All trusted-source flags remain unverified unless externally authenticated.
+- [Synthetic test suite](182/test.mjs) includes **21 authored cases**, covering corrupted bytes, tampered receipts, replayed archive or root claims, shared administrator, generation rollback, predecessor mismatch and false physical attestation. **Execution has not been independently confirmed from a GitHub checkout.**
+- [Full 4D neon shadow-tesseract lab](182/) maintains 16 vertices, 32 edges, rotating cyan/blue/violet layers and animation controls. Six fault-injection buttons compare synthetic replicas. Source is published; Pages deployment and Chromium execution remain unverified.
+- [Protocol contract](182/protocol.json): **Phase XIII 6/8 = 75%**, physical qualification **0%**, authenticated original hardware captures **0**, operational ACT **HOLD**. Equal replica content and distinct declared roots cannot prove genuine storage independence or physical capture source.
+- Append-only historical milestone: prior Phase XII freeze and AETHER-177–181 remain unchanged. **Next bound AETHER-183:** blind original physical evidence admission review, with evidence roots traced to actual independent origins and HOLD retained in the absence of real physical evidence. `.dlw`
 
 ## AETHER-181 — Clock, source, challenge & acquisition provenance escrow
 
