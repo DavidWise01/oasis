@@ -1,6 +1,6 @@
 # AETHER Phase XII — Independent Physical Evidence Admission
 
-**AETHER-171 REFERENCE CERTIFICATE STRUCTURAL AUDIT PASSED 16/16 LOCALLY. Planned Phase XII software bounds: 3/8 = 37.5%. Empirical physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-172 SOURCE-ANCESTRY GRAPH AUDIT PASSED 15/15 LOCALLY. Planned Phase XII software bounds: 4/8 = 50%. Empirical physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](168/decision.json); it was **not** physically qualified. Phase XII performs strict intake of independently authenticated original hardware evidence without allowing simulated signatures, synthetically separate credential strings, or shared-root witnesses to count as independent physical observations.
 
@@ -9,11 +9,20 @@ Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](
 | 1 | 169 Independent Physical Evidence Admission | **ACCEPTED — documentary contract only** | **12.5%** |
 | 2 | 170 Original hardware identity challenge | **ACCEPTED — structural simulation only** | **25%** |
 | 3 | 171 External reference certificate authentication | **ACCEPTED — synthetic structural certificate audit only** | **37.5%** |
-| 4 | 172 Independent ancestry and common-root exclusion | Planned | 37.5% |
-| 5 | 173 Original physical acquisition digest and clock | Planned | 37.5% |
-| 6 | 174 Same-path response and uncertainty review | Planned | 37.5% |
-| 7 | 175 Drift/alarm real trace qualification | Planned | 37.5% |
-| 8 | 176 Physical qualification decision / freeze | Planned | 37.5% |
+| 4 | 172 Independent ancestry and common-root exclusion | **ACCEPTED — synthetic graph-structure checks only** | **50%** |
+| 5 | 173 Original physical acquisition digest and clock | Planned | 50% |
+| 6 | 174 Same-path response and uncertainty review | Planned | 50% |
+| 7 | 175 Drift/alarm real trace qualification | Planned | 50% |
+| 8 | 176 Physical qualification decision / freeze | Planned | 50% |
+
+## AETHER-172 — Ancestry graph and shared-origin exclusion
+
+- [Deterministic ancestry gate](172/verification.mjs) resolves original root ancestry by following directed graph links for DUT, REFERENCE, BENCH. Rejects unresolved parents, ancestry cycles, duplicate node IDs, root-with-parent contradictions, orphan derived nodes, duplicate roles, shared device serials, malformed or duplicated capture SHA-256, and every shared-root pair.
+- **15/15 local synthetic graph assertions passed**, including three independent common-root pair faults and a deliberately forged assertion of external origin authentication. The forged flag can reach only **DOCUMENTARY_REVIEW_ONLY**; no branch ever grants real-world ACT.
+- [Published test suite](172/test.mjs), [protocol](172/protocol.json) and [neon interactive ancestry laboratory](172/) are source-committed. A byte-identical checkout execution and deployed GitHub Pages browser run remain separately unverified.
+- **No real physical sample, root genealogy, certificate issuer or instrument provenance is authenticated.** Separate root labels are simulated source claims, never three independently verified physical sources. A graph of declared origins cannot establish the truth of those origins.
+- **Phase XII protocol progress: 4/8 = 50%; physical qualification 0%, operational authority HOLD.** Phase XI predecessor record and earlier Phase XII bounds are not overwritten.
+- **Next natural bound AETHER-173:** original acquisition bytes, capture digest and monotonic hardware clock, with fail-closed original-source verification. `.dlw`
 
 ## AETHER-171 — External reference-certificate chain structural admission
 
