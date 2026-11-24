@@ -1,0 +1,13 @@
+{
+  "bound": "AETHER-145",
+  "phase": "IX",
+  "status": "FAIL",
+  "episodes_per_policy": 240,
+  "decisions_per_policy": 4800,
+  "checks": 3840,
+  "signed_only_unsafe": 1440,
+  "initial_gate_unsafe": 240,
+  "operational_ACT": 0,
+  "local_source_sha256": "7deef899c1d2c80caf24bc46bb3410825de8200a5ed572b2fed4acf9114f033d",
+  "reason": "Forged reference value agreed with the untrusted instrument; signed consistency was not independence."
+}
