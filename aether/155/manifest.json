@@ -1,0 +1,19 @@
+{
+  "bound": "AETHER-155",
+  "phase": "X",
+  "status": "PASS",
+  "mode": "exact local synthetic audit",
+  "local_sha256": "8b5a4310b2f78031ba06f8fbe148b1a05417257194bff4ea9103f3cba3831a61",
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "checks_passed": 3200,
+  "checks_total": 3200,
+  "signed_only_unsafe": 1200,
+  "raw_timing_gated_unsafe": 0,
+  "safe_dry_run_act": 2800,
+  "physical_samples": 0,
+  "operational_act": 0,
+  "software_setup_readiness_percent": 37.5,
+  "empirical_physical_qualification_percent": 0,
+  "caveat": "All original bytes, clocks, signing roots and measurements originate in a synthetic fixture. GitHub reproducer is separately authored; checkout replay not verified."
+}
