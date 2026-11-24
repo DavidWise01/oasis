@@ -1,6 +1,6 @@
 # AETHER Phase VIII — Physical Validation Readiness and Empirical Evidence
 
-**AETHER-143 adversarial reference-readiness synthetic PASS: Phase VIII 7/8 = 87.5%. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-144 local integration PASS. PHASE VIII FROZEN: 8/8 = 100% of synthetic software readiness. PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase VIII deliberately has two non-interchangeable progress measures. The phase percentage tracks completed **software/readiness acceptance turns**. The physical-evidence percentage tracks actual observed and independently validated instrument measurements. It remains **0%** until real evidence exists.
 
@@ -13,7 +13,17 @@ Phase VIII deliberately has two non-interchangeable progress measures. The phase
 | 5 | 141 Empirical same-path insertion readiness | **ACCEPTED — synthetic only** | **62.5%** |
 | 6 | 142 Measured drift and alarm requirements | **ACCEPTED — synthetic only** | **75%** |
 | 7 | 143 Adversarial hardware-readiness failure modes | **ACCEPTED — synthetic only** | **87.5%** |
-| 8 | 144 Integrated readiness evidence freeze | Planned | 87.5% |
+| 8 | 144 Integrated readiness evidence freeze | **ACCEPTED — SYNTHETIC FREEZE** | **100%** |
+
+## AETHER-144 — Phase VIII synthetic readiness integration and empirical-gap freeze
+
+- **200 fresh-seed synthetic episodes**, 25 seeds × eight sensor-reference scenarios × 24 ticks, **4,800 controller decisions**, **1,600/1,600** deterministic replay, SHA-256 trace, ordered action, source freeze, reference gate and no-real-ACT checks passed in local test.
+- Frozen local AETHER-143 controller: **zero unsafe dry-run ACT**, **3,600 safe dry-run ACT**, **zero operational ACT**. Clean and legitimate rotation cases each preserve **600/600 safe dry-run ACT**.
+- All **seven previous local Phase VIII archives** (137–143) were inventoried, with source and manifest SHA-256 hashes. Their original archives were preserved and older tests were not exhaustively rerun.
+- **Physical validation 0%**: the 'external bench' is a synthetic ground-truth oracle, signing roots are mock keys, and no independent physical calibration, actual ingress path continuity, measured drift/alarms, uncertainty coverage or real reference data was validated. **Operational authority remains HOLD**.
+- Source reproducibility: published GitHub `aether/144/experiment.py` is a separately authored checkout harness that imports the GitHub version of AETHER-143; local accepted experiment imports frozen local AETHER-143. Exact numerical checkout replay has **not been independently verified**.
+- [AETHER-144 integration results, manifest, local SHA-256 inventory, runnable checkout script and interactive HTML](144/) committed; live Pages deployment not verified.
+- **Phase VIII CLOSED at 8/8=100% of synthetic software-readiness tests. Independent physical validation is distinct and remains 0%.** The next phase should establish a real-world qualification test protocol from a zero empirical baseline, not create another paper guarantee.
 
 ## AETHER-143 — Adversarial reference-root compromises and unattested physical truth
 
