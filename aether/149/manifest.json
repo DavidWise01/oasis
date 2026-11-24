@@ -1,0 +1,29 @@
+{
+  "bound": "AETHER-149",
+  "phase": "IX",
+  "status": "PASS",
+  "mode": "exact local synthetic test",
+  "seeds": [
+    149001,
+    149030
+  ],
+  "episodes_per_policy": 240,
+  "decisions_per_policy": 4800,
+  "checks": 3840,
+  "checks_passed": 3840,
+  "baseline_unsafe": 1440,
+  "same_path_unsafe": 0,
+  "safe_act": 3360,
+  "clean_safe_act": 600,
+  "rotation_safe_act": 600,
+  "operational_ACT": 0,
+  "software_protocol_readiness_percent": 62.5,
+  "empirical_physical_qualification_percent": 0,
+  "local_source_sha256": "dd0c2084db331273789b29a03a0b98285f01db540ef2f38555c6d8d5e57f8ddf",
+  "github_source_note": "Separately authored mini reproducer; no byte-identical checkout replay verified",
+  "assumptions": [
+    "Pulse and route observations originate in one simulated fixture",
+    "DUT/reference keys are test HMAC secrets",
+    "No physical path, sensor, calibration standard or challenge was independently verified"
+  ]
+}
