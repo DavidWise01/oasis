@@ -1,6 +1,6 @@
 # AETHER Phase XI — Real-World Physical Evidence Acquisition
 
-**AETHER-162 mock device/reference identity intake PASSED. Phase XI synthetic software acquisition-protocol readiness: 2/8 = 25%. Empirical physical qualification: 0% (NO INDEPENDENTLY AUTHENTICATED INSTRUMENT OR CALIBRATION CERTIFICATE). Operational authority: HOLD.**
+**AETHER-163 original capture and timebase synthetic intake PASSED. Phase XI synthetic software acquisition-protocol readiness: 3/8 = 37.5%. Empirical physical qualification: 0% (NO VERIFIED ORIGINAL PHYSICAL CAPTURE OR CLOCK). Operational authority: HOLD.**
 
 Phase IX and Phase X each closed at **100% synthetic software protocol readiness**, NOT physical qualification. Phase XI tracks a distinct new series of eight planned software intake bounds. Real-world qualification is awarded **only** after independent reference hardware, provenance, calibration, raw capture and measured behavior are actually authenticated; no mock receipt, signature, counter, or synthetic test can alter the real-world qualification metric. Maintain immutable prior phase freezes and failed 154A record.
 
@@ -8,12 +8,21 @@ Phase IX and Phase X each closed at **100% synthetic software protocol readiness
 |---|---|---|---:|
 | 1 | 161 Acquisition boundary and physical-evidence register | **ACCEPTED — synthetic only** | **12.5%** |
 | 2 | 162 Genuine instrument and reference identity intake | **ACCEPTED — synthetic identity contract only** | **25%** |
-| 3 | 163 Original physical capture package and timebase | Planned | 25% |
-| 4 | 164 Calibration traceability and uncertainty evidence | Planned | 25% |
-| 5 | 165 Real same-path challenge evidence package | Planned | 25% |
-| 6 | 166 Physical drift and alarm evidence intake | Planned | 25% |
-| 7 | 167 Blind independent physical evidence adjudication | Planned | 25% |
-| 8 | 168 Physical qualification decision and immutable freeze | Planned | 25% |
+| 3 | 163 Original physical capture package and timebase | **ACCEPTED — synthetic only** | **37.5%** |
+| 4 | 164 Calibration traceability and uncertainty evidence | Planned | 37.5% |
+| 5 | 165 Real same-path challenge evidence package | Planned | 37.5% |
+| 6 | 166 Physical drift and alarm evidence intake | Planned | 37.5% |
+| 7 | 167 Blind independent physical evidence adjudication | Planned | 37.5% |
+| 8 | 168 Physical qualification decision and immutable freeze | Planned | 37.5% |
+
+## AETHER-163 — Original capture bytes, sample counters and simulated timebase
+
+- Locally executed **25 seeds × eight acquisition scenarios × 20 ticks × two policies**, **200 episodes and 4,000 decisions per policy**, passing **3,200/3,200** deterministic checks.
+- Signed-only comparator produced **1,200 unsafe synthetic dry-run ACT**; original-capture/timebase gate produced **0 unsafe**, preserving **2,800 safe dry-run ACT**, including **500/500 clean** and **500/500 legitimate clock rotation**.
+- Six synthetic fault classes: missing original bytes, appended/altered bytes, skipped sample counter, clock rollback, forged timebase anchor, and substituted source identity. Receipt hashes, challenge nonce, captured serial, sample count, counter monotonicity and exactly 10 ms simulated sampling intervals are checked.
+- **Physical qualification 0%.** No actual original acquisition file, calibrated timebase, hardware timestamp, independently checked instrument or real physical measurement has been provided. [Physical capture register](163/physical_capture_register.json) leaves real source fields null; all operational authority HOLD.
+- Exact locally executed source SHA-256 `f7f97695000d4cb20f1f1daee7aeabfcc28adb25dcad46bd43b6a61b2736f04c`; ZIP SHA-256 `170fe43fc7588c08890ab72a66492f30a3afbbdc831996576d10af869e004916`. Full source and check ledger preserved in local ZIP. [GitHub lab](163/) published with separate condensed Python reproducer, aggregate results and Pages-ready HTML; identical checkout replay and live Pages deployment remain unverified.
+- **Phase XI synthetic protocol readiness: 3/8 = 37.5%. Empirical qualification remains 0%.** Next AETHER-164: actual calibration traceability and uncertainty evidence.
 
 ## AETHER-162 — Instrument, reference and source-of-truth identity
 
