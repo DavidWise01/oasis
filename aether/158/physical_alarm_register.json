@@ -1,0 +1,15 @@
+{
+  "bound": "AETHER-158",
+  "status": "NOT PHYSICALLY TESTED",
+  "actual_instrument_serial": null,
+  "reference_calibration_certificate": null,
+  "raw_drift_capture_sha256": null,
+  "physical_drift_rate": null,
+  "drift_units": null,
+  "actual_alarm_trigger_capture": null,
+  "observed_alarm_latency_ms": null,
+  "alarm_detection_rate": null,
+  "actual_physical_samples": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD"
+}
