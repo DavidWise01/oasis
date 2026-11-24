@@ -1,0 +1,30 @@
+{
+  "bound": "AETHER-160",
+  "phase": "X",
+  "status": "PASS",
+  "mode": "locally executed fresh-seed integration of unmodified local 159 controller",
+  "prior_archives_audited": 7,
+  "archives_passing_crc_manifest_checks": 7,
+  "original_AETHER_154A_failure_preserved": true,
+  "checks": 3200,
+  "checks_passed": 3200,
+  "seeds": [
+    160001,
+    160025
+  ],
+  "scenarios": 8,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "baseline_unsafe": 1200,
+  "gated_unsafe": 0,
+  "gated_safe": 2800,
+  "operational_ACT": 0,
+  "physical_qualification_percent": 0,
+  "synthetic_setup_readiness_percent": 100,
+  "physical_measurements": 0,
+  "local_executed_source_sha256": "d053b735efac8ddb19f3efcd7f06e8e22d0fd4b42bf6032151e3bcac8fd279ac",
+  "frozen_local_159_source_sha256": "c02f6aa6bf43b46b0b0e92fa5b604c05392c6a237b7d0cde3c971a9a13cb4f56",
+  "full_evidence_zip_sha256": "21bb35254464a81ad945813a1bf9633701a8a441372eb1157a5280771a31cd1b",
+  "github_source_limitation": "The GitHub experiment.py is a separately authored checkout companion relying on the separately authored GitHub 159 model; matching exact local execution not verified",
+  "physical_status": "OPEN_UNVERIFIED"
+}
