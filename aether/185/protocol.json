@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-185",
+  "phase": "XIV",
+  "turn": 1,
+  "planned_turns": 8,
+  "software_protocol_percent": 12.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "evidence_intake_type": "Original externally issued acquisition receipt and raw bytes",
+  "scope": [
+    "Real SHA-256 on supplied Uint8Array bytes",
+    "ECDSA P-256 verification against separately supplied issuer public key",
+    "Challenge, source device serial, source origin, time-window and replay checks",
+    "Missing and revoked issuer checks",
+    "Client cannot elevate to physical ACT"
+  ],
+  "constraints": [
+    "Browser-generated keys and issuer registries are not externally authenticated",
+    "No real hardware source or external custody received",
+    "Signature verifies possession of key, not independent physical issuer provenance",
+    "An uploaded file's bytes may be hashed but original physical source still must be established separately"
+  ],
+  "original_physical_captures_authenticated": 0,
+  "physical_act_allowed": false,
+  "previous_phase": "../184/decision.json",
+  "watermark": ".dlw"
+}
