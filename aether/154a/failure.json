@@ -1,0 +1,10 @@
+{
+  "bound": "AETHER-154A",
+  "status": "FAIL",
+  "reason": "Hash writer included previous in hashed payload, verifier dropped it; 400 of 400 chain gates failed",
+  "unsafe_guarded_actions": 0,
+  "checks": 3200,
+  "checks_passed": 2800,
+  "corrected_under": "aether/154/",
+  "original_executed_source_sha256": "3825d96f8449ca353bdb9c8c06375a5955d4c6cbd2544db94b04edc652f08f78"
+}
