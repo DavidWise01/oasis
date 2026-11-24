@@ -1,0 +1,57 @@
+{
+  "bound": "AETHER-184",
+  "phase": "XIII",
+  "turn": 8,
+  "planned_turns": 8,
+  "phase_state": "CLOSED_DOCUMENTARY_SOFTWARE_PROTOCOL",
+  "software_protocol_progress_percent": 100,
+  "physical_qualification_percent": 0,
+  "authenticated_original_hardware_captures": 0,
+  "authenticated_independent_physical_source_roots": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "decision": "PHYSICAL_QUALIFICATION_DENIED_PENDING_INDEPENDENT_ORIGINAL_EVIDENCE",
+  "decision_basis": "No independently authenticated original physical hardware acquisition, external physical-source attestations, physically verified calibration/clock, or verified physical alarm/custody chain supplied.",
+  "completed_bounds": [
+    "AETHER-177",
+    "AETHER-178",
+    "AETHER-179",
+    "AETHER-180",
+    "AETHER-181",
+    "AETHER-182",
+    "AETHER-183",
+    "AETHER-184"
+  ],
+  "documentary_scope": [
+    "Escrow structure and continuity",
+    "SHA-256 byte and canonical-manifest integrity within supplied inputs",
+    "Cryptographically valid synthetic ECDSA P-256 signatures",
+    "Separate declared sender and receiver signatures",
+    "Clock/source/challenge structural provenance checks",
+    "Three declared replica digest, rollback and common ancestry checks",
+    "Blind synthetic evidence-admission review",
+    "Conservative final documentary qualification decision"
+  ],
+  "unresolved_external_evidence": [
+    "Independently authenticated original physical acquisition bytes from real DUT and reference instruments",
+    "Manufacturer-verifiable instrument identities and traceable independent reference",
+    "Externally authenticated calibrated physical clock, counters, challenges and timestamp proof",
+    "Authenticated custody holders and trusted certificate/public-key origins",
+    "Signed physically observed handoff and receipt evidence",
+    "External archives demonstrated independent in ownership, administration and source ancestry",
+    "Original same-path measurements with uncertainty calibration and physical alarm issuance/response",
+    "Independent review of original real-world evidence against approved physical criteria"
+  ],
+  "safeguards": {
+    "software_completion_not_physical_qualification": true,
+    "single_deterministic_adjudicator": true,
+    "quorum_cannot_promote_act": true,
+    "mock_trust_flags_cannot_promote_act": true,
+    "historical_freeze_append_only_documentary": true,
+    "git_branch_technically_immutable": false,
+    "subsequent_authentication_requires_new_separate_review": true
+  },
+  "previous_bound": "../183/protocol.json",
+  "phase_xii_freeze": "../176/decision.json",
+  "watermark": ".dlw"
+}
