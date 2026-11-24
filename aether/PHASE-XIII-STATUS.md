@@ -1,19 +1,28 @@
 # AETHER Phase XIII — Physical Evidence Escrow and Source Custody
 
-**AETHER-177 documentary escrow gate: 1/8 = 12.5% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
+**AETHER-178 BYTE-EXACT CAPTURE/MANIFEST SOFTWARE GATE PASSED 20/20 LOCAL SYNTHETIC CHECKS. Phase XIII: 2/8 = 25% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
 
 Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json), explicitly **without physical qualification**. All past freezes remain historical records. Phase XIII tracks software protocols for acquiring and protecting evidence from genuinely independent original physical sources; no synthetic receipt, signature-shaped string, or declared root label qualifies as physical data.
 
 | Turn | Bound | Software protocol state | Progress |
 |---|---|---|---:|
 | 1 | 177 Physical evidence escrow and custody | **ACCEPTED — synthetic structural gate only** | **12.5%** |
-| 2 | 178 Byte-exact sealed capture manifest | Planned | 12.5% |
-| 3 | 179 Authenticated custodian identity and signatures | Planned | 12.5% |
-| 4 | 180 Independent transfer and receipt countersignature | Planned | 12.5% |
-| 5 | 181 Clock, source and challenge provenance escrow | Planned | 12.5% |
-| 6 | 182 External archive replication and tamper detection | Planned | 12.5% |
-| 7 | 183 Blind original physical evidence admission review | Planned | 12.5% |
-| 8 | 184 Phase XIII qualification decision and freeze | Planned | 12.5% |
+| 2 | 178 Byte-exact sealed capture manifest | **ACCEPTED — synthetic byte-integrity audit only** | **25%** |
+| 3 | 179 Authenticated custodian identity and signatures | Planned | 25% |
+| 4 | 180 Independent transfer and receipt countersignature | Planned | 25% |
+| 5 | 181 Clock, source and challenge provenance escrow | Planned | 25% |
+| 6 | 182 External archive replication and tamper detection | Planned | 25% |
+| 7 | 183 Blind original physical evidence admission review | Planned | 25% |
+| 8 | 184 Phase XIII qualification decision and freeze | Planned | 25% |
+
+## AETHER-178 — Byte-exact original capture and canonical manifest escrow
+
+- [Verifier](178/verification.mjs) uses WebCrypto SHA-256 over actual supplied Uint8Array capture bytes, recomputes a second SHA-256 over fixed-field-order canonical UTF-8 JSON, and checks length, schema, instrument/challenge identity, declared source ancestry, capture ID replay, sequence/genesis/predecessor references and seal timestamp form.
+- **20/20 local Node.js WebCrypto synthetic checks passed**. Tests cover missing/empty bytes, byte tampering, changed metadata, length errors, replay, identity/challenge mismatch, shared DUT origin, bad digests, malformed timestamp, invalid genesis/sequence/predecessor and unauthenticated physical origin, custody and acquisition. Even a fully flagged synthetic case remains DOCUMENTARY_REVIEW_ONLY and cannot authorize ACT. [Published tests](178/test.mjs) have not been independently replayed from GitHub checkout.
+- [Full 4D neon HTML lab](178/) projects a 16-vertex 32-edge rotating tesseract with cyan-blue and violet shadow, plus six synthetic capture integrity scenarios, pause/slow/shadow controls and four-stage byte-digest-manifest-HOLD visualization. Browser/Pages execution remains unverified.
+- [Protocol contract](178/protocol.json) explicitly retains zero original physical samples, physical qualification 0% and operational HOLD. SHA-256 detects altered received bytes and manifest fields, but **cannot independently prove instrument source, original acquisition, custody identity or signatures**.
+- **Phase XIII 2/8 = 25%.** The AETHER-176 Phase XII decision and AETHER-177 evidence remain untouched.
+- **Next AETHER-179:** real custodian identity and verifiable digital signatures over canonicalized custody events, with trusted roots externally established; mock signatures must never grant physical authority. `.dlw`
 
 ## AETHER-177 — Physical evidence escrow chain-of-custody structural gate
 
