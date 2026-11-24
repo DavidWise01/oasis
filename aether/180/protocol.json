@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-180",
+  "phase": "XIII",
+  "turn": 4,
+  "planned_turns": 8,
+  "software_protocol_percent": 50,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "DUAL ECDSA P-256 SIGNED TRANSFER/RECEIPT",
+  "physical_samples": 0,
+  "signature_scheme": "WebCrypto ECDSA SHA-256 P-256 IEEE P1363 64-byte raw signature",
+  "canonical_contract": "JSON.stringify over fixed ordered transferFields and receiptFields",
+  "requirements": [
+    "distinct sender and receiver key IDs and declared custodians",
+    "independently signed transfer and receipt",
+    "receipt binds transfer SHA-256 and capture SHA-256",
+    "challenge, sequence, time ordering and non-replayed identity",
+    "externally authenticated custodian identities and distinct actual source ancestry"
+  ],
+  "limitations": [
+    "Locally generated distinct keys are not independently authenticated people",
+    "No issuer trust roots, physical custody receipts or original instrument samples are authenticated",
+    "No ACT pathway even with client flags true"
+  ],
+  "predecessor": "../179/protocol.json",
+  "watermark": ".dlw"
+}
