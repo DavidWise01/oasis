@@ -1,0 +1,29 @@
+{
+  "bound": "AETHER-181",
+  "phase": "XIII",
+  "turn": 5,
+  "total_turns": 8,
+  "software_protocol_percent": 62.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "SYNTHETIC SOURCE/CLOCK/CHALLENGE PROVENANCE ESCROW",
+  "raw_digest": "SHA-256 original Uint8Array bytes",
+  "record_digest": "SHA-256 UTF8 fixed-order canonical JSON",
+  "checks": [
+    "instrument and source identity binding",
+    "acquisition challenge nonce replay and expiry",
+    "clock identifier and calibration receipt reference",
+    "monotonic hardware tick and contiguous sample-counter range claims",
+    "custody receipt reference",
+    "capture and provenance record digests"
+  ],
+  "limits": [
+    "Sample counter endpoints are structural declarations; no sample-by-sample physical continuity verified",
+    "SHA-256 matching does not authenticate original physical source, clock or calibration",
+    "Externally authenticated issuer and signed receipt are absent",
+    "Client-supplied trust flags never confer physical ACT"
+  ],
+  "real_hardware_samples": 0,
+  "predecessor": "../180/protocol.json",
+  "watermark": ".dlw"
+}
