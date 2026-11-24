@@ -1,0 +1,39 @@
+{
+  "bound": "AETHER-168",
+  "phase": "XI",
+  "turn": 8,
+  "decision": "PHYSICAL_QUALIFICATION_DENIED_PENDING_EVIDENCE",
+  "software_protocol_phase": "CLOSED",
+  "software_turns_completed": 8,
+  "software_turns_planned": 8,
+  "software_readiness_percent": 100,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "independent_physical_sources_authenticated": 0,
+  "original_hardware_captures": 0,
+  "synthetic_audit_reference": {
+    "bound": "AETHER-167",
+    "checks_passed": 3200,
+    "checks_total": 3200,
+    "baseline_unsafe_dry_run_act": 1200,
+    "gated_unsafe_dry_run_act": 0,
+    "gated_safe_dry_run_act": 2800,
+    "executed_source_sha256": "60401569f875a87de629b7233155288e3f0c1fdbad74a33b5f63d314d5a41b17",
+    "archive_sha256": "552d51652950938655e096673ddac74f13142b86ed1f2f12ea755e4fa21b4aad"
+  },
+  "missing_required_physical_evidence": [
+    "actual DUT hardware identity and manufacturer-verifiable serial",
+    "independent reference instrument provenance and calibration certificate",
+    "independent bench instrument provenance and calibration certificate",
+    "three separately authenticated real-world evidence ancestries",
+    "original raw hardware capture with reproducible SHA-256 digest",
+    "measured same-path injection and response traces",
+    "physical drift and alarm timing measurements",
+    "traceable uncertainty budget and acceptance bounds"
+  ],
+  "rule": "Synthetic tests cannot grant physical ACT; missing evidence is a veto; only separately authenticated original physical evidence may reopen qualification.",
+  "predecessor_register": "../167/physical_adjudication_register.json",
+  "freeze_model": "append-only decision record; predecessor evidence remains immutable",
+  "validation": "DOCUMENTARY CLOSURE ONLY; no new physical experiment executed",
+  "watermark": ".dlw"
+}
