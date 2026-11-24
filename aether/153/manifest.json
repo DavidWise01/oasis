@@ -1,0 +1,24 @@
+{
+  "bound": "AETHER-153",
+  "phase": "X",
+  "status": "PASS",
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "checks": 3200,
+  "checks_passed": 3200,
+  "baseline_unsafe": 1200,
+  "setup_gated_unsafe": 0,
+  "setup_gated_safe": 2800,
+  "operational_act": 0,
+  "software_setup_readiness_percent": 12.5,
+  "physical_qualification_percent": 0,
+  "physical_reference_acquired": false,
+  "actual_measurements": 0,
+  "local_executed_source_sha256": "e61bcff26a003ae570a8279b57f45709e15fabb42cd1ad285a250db14e9a069b",
+  "github_python": "Compact separately authored demonstration, exact local script is in ZIP; no independent checkout replay",
+  "warnings": [
+    "Mock HMAC issuer is not a real accredited calibration source",
+    "No hardware connected and all physical register values null",
+    "No real-world ACT authorized"
+  ]
+}
