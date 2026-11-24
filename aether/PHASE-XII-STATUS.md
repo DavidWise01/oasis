@@ -1,6 +1,6 @@
 # AETHER Phase XII — Independent Physical Evidence Admission
 
-**AETHER-170 SOFTWARE HARDWARE-IDENTITY CHALLENGE GATE COMMITTED. Planned Phase XII software bounds: 2/8 = 25%. Empirical physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-171 REFERENCE CERTIFICATE STRUCTURAL AUDIT PASSED 16/16 LOCALLY. Planned Phase XII software bounds: 3/8 = 37.5%. Empirical physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](168/decision.json); it was **not** physically qualified. Phase XII performs strict intake of independently authenticated original hardware evidence without allowing simulated signatures, synthetically separate credential strings, or shared-root witnesses to count as independent physical observations.
 
@@ -8,12 +8,21 @@ Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](
 |---|---|---|---:|
 | 1 | 169 Independent Physical Evidence Admission | **ACCEPTED — documentary contract only** | **12.5%** |
 | 2 | 170 Original hardware identity challenge | **ACCEPTED — structural simulation only** | **25%** |
-| 3 | 171 External reference certificate authentication | Planned | 25% |
-| 4 | 172 Independent ancestry and common-root exclusion | Planned | 25% |
-| 5 | 173 Original physical acquisition digest and clock | Planned | 25% |
-| 6 | 174 Same-path response and uncertainty review | Planned | 25% |
-| 7 | 175 Drift/alarm real trace qualification | Planned | 25% |
-| 8 | 176 Physical qualification decision / freeze | Planned | 25% |
+| 3 | 171 External reference certificate authentication | **ACCEPTED — synthetic structural certificate audit only** | **37.5%** |
+| 4 | 172 Independent ancestry and common-root exclusion | Planned | 37.5% |
+| 5 | 173 Original physical acquisition digest and clock | Planned | 37.5% |
+| 6 | 174 Same-path response and uncertainty review | Planned | 37.5% |
+| 7 | 175 Drift/alarm real trace qualification | Planned | 37.5% |
+| 8 | 176 Physical qualification decision / freeze | Planned | 37.5% |
+
+## AETHER-171 — External reference-certificate chain structural admission
+
+- [Deterministic certificate gate](171/verification.mjs) checks issuer/subject linkage across three levels, serial collisions, self-issuance, timestamp windows, fingerprint format, explicit pinned root, shared-DUT-root exclusion, reference device serial, revocation state and timestamp binding.
+- **16/16 local synthetic assertions passed** in an isolated JavaScript execution of the verifier before publication. The [published test suite](171/test.mjs) reproduces 15 negative cases plus one documentary acceptance; a byte-identical GitHub checkout run is not claimed.
+- Even with fictional external-verification flags all set true, the verifier returns only **DOCUMENTARY_REVIEW_ONLY** and always **HOLD**; no cryptographic signature, trust anchor, external issuer registry, certificate revocation responder or physical reference instrument has actually been authenticated. Trust booleans are not external evidence.
+- [Neon Pages-ready visualization](171/) runs mock browser certificate challenges; [protocol](171/protocol.json) records missing physical inputs and the zero percent physical qualification.
+- Phase XII protocol progress **3/8 = 37.5%**; physically authenticated references **0**, original physical samples **0**, operational ACT **HOLD**. No alteration of prior Phase XI freeze or Phase XII bounds.
+- **Next AETHER-172** independently resolve complete source ancestry and common-root exclusion, without switching to quorum, a voting regime, or Byzantine consensus. `.dlw`
 
 ## AETHER-170 — Original instrument identity structural challenge
 
