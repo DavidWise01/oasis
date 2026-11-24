@@ -1,6 +1,6 @@
 # AETHER Phase IX — Real Instrument Qualification Protocol
 
-**AETHER-151 blind adversarial intake rehearsal synthetic gate PASSED. Software readiness: 7/8 = 87.5%. EMPIRICAL PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-152 integration and evidence freeze PASSED. PHASE IX SYNTHETIC SOFTWARE READINESS CLOSED: 8/8 = 100%. EMPIRICAL PHYSICAL QUALIFICATION: 0% (NOT PERFORMED).**
 
 Phase IX deliberately keeps **synthetic software-protocol readiness** separate from **real physical instrument qualification**. No software result, simulated bench, mock HMAC key, acceptance counter or signature may advance the physical metric. All real-world operational permissions remain **HOLD**.
 
@@ -13,7 +13,17 @@ Phase IX deliberately keeps **synthetic software-protocol readiness** separate f
 | 5 | 149 Measured same-path challenge protocol | **ACCEPTED — synthetic only** | **62.5%** |
 | 6 | 150 Drift and alarm characterization protocol | **ACCEPTED — synthetic only** | **75%** |
 | 7 | 151 Blind adversarial physical-data intake rehearsal | **ACCEPTED — synthetic only** | **87.5%** |
-| 8 | 152 Qualification evidence freeze | Planned | 87.5% |
+| 8 | 152 Qualification evidence freeze | **ACCEPTED — SYNTHETIC FREEZE** | **100%** |
+
+## AETHER-152 — Phase IX synthetic qualification evidence freeze
+
+- Final locally executed integration passed **3,200/3,200 checks** over **25 fresh seeds × eight scenarios × 20 ticks**, with **200 episodes and 4,000 decisions per policy**. The exact frozen local AETHER-151 source was reused by SHA-256 identity `d4861612d1858ed333da70843251c24e7d40f3d14eede303afd97079f3f165a7`. Its decision function was not modified.
+- Signed-only comparator: **1,200 unsafe dry-run ACT**. Frozen blind-intake gate: **0 unsafe dry-run ACT**, retaining **2,800 safe dry-run ACT** (including **500/500 clean** and **500/500 legitimate rotation**). Real operational ACT = **0** throughout.
+- All **seven accepted Phase IX predecessor local evidence archives (145B–151)** were inventoried and ZIP CRC validated, with source/manifest/check ledgers required. Actual SHA-256 values were recorded in [AETHER-152 inventory](152/archive_inventory.csv). Earlier source and failed AETHER-145 counterexample are preserved, not rewritten or counted as real-world measurements.
+- **Physical qualification: 0% and still OPEN.** No real instrument connected. No independently traceable calibration standard, physical acquisition route, empirical uncertainty coverage, actual drift or alarm characterization was established. Synthetic oracle bench inputs and test credentials do not certify independent physical truth. Operational authority remains HOLD.
+- Local full-run `aether152/experiment.py` SHA-256 `4c4e8f2bbb29346d9b8467462cb4b97035878713cd9f32358fa94477afe2ec73`; complete local test and frozen 151 source, manifest, checks, seed cases, trace and archive inventory are in the companion ZIP.
+- GitHub [AETHER-152](152/) contains a distinct checkout-companion program referencing GitHub 151 source, not the byte-identical locally executed code. GitHub checkout execution and live Pages deployment are **unverified**.
+- **Phase IX CLOSED at 8/8 = 100% of synthetic software-protocol readiness. Empirical physical qualification remains 0%.** Next phase must begin from zero empirical evidence by selecting a real reference instrument and testing the physical acquisition boundary without releasing operational HOLD.
 
 ## AETHER-151 — Blind adversarial data intake, independent scoring boundary
 
