@@ -1,0 +1,38 @@
+{
+  "bound": "AETHER-171",
+  "phase": "XII",
+  "turn": 3,
+  "software_protocol_coverage_percent": 37.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "original_reference_certificates_authenticated": 0,
+  "real_physical_samples": 0,
+  "decision": "NO_EXTERNAL_REFERENCE_CERTIFICATE_PRESENT",
+  "verification_scope": "DETERMINISTIC STRUCTURAL VALIDATION, NOT CRYPTOGRAPHIC AUTHENTICATION",
+  "certificate_chain": [
+    "reference leaf",
+    "intermediate authority",
+    "externally pinned independent root"
+  ],
+  "tests_executed_locally": {
+    "passed": 16,
+    "total": 16,
+    "kind": "synthetic structural"
+  },
+  "requirements": [
+    "complete certificate chain with validated signature and validity windows",
+    "trusted external issuer registry and pinned root",
+    "fresh independently authenticated certificate-revocation status",
+    "distinct DUT and reference evidence ancestry",
+    "physical reference instrument possession and serial validation",
+    "original capture bound to authenticated physical reference"
+  ],
+  "gaps": [
+    "No certificate bytes or manufacturer issuer records supplied",
+    "No trusted CRL/OCSP responder connection",
+    "No genuine physical reference instrument or original acquisition",
+    "Client-supplied validation booleans can be forged and cannot grant ACT"
+  ],
+  "predecessor": "../170/protocol.json",
+  "watermark": ".dlw"
+}
