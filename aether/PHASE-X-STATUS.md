@@ -1,6 +1,6 @@
 # AETHER Phase X — Physical Reference Acquisition Setup and Evidence Intake
 
-**AETHER-156 reference traceability and uncertainty-budget synthetic test PASSED. Phase X software setup readiness: 4/8 = 50%. Empirical physical qualification: 0% (NO QUALIFIED INSTRUMENT OR REFERENCE MEASUREMENTS). Operational authority: HOLD.**
+**AETHER-157 same-path simulated challenge intake PASSED. Phase X synthetic software setup readiness: 5/8 = 62.5%. Empirical physical qualification: 0% (NO REAL HARDWARE PROBE OR REFERENCE MEASUREMENTS). Operational authority: HOLD.**
 
 Phase X distinguishes *software protocol development* from *actual independent reference equipment acquisition, calibration and measurements*. Passing the former cannot advance the latter. This ledger does not claim that any instrument is physically attached or any traceability certificate has been authenticated.
 
@@ -10,10 +10,19 @@ Phase X distinguishes *software protocol development* from *actual independent r
 | 2 | 154 Independent reference identity and certificate intake | **ACCEPTED — synthetic corrected test** | **25%** |
 | 3 | 155 Original physical-capture file and timing intake | **ACCEPTED — synthetic only** | **37.5%** |
 | 4 | 156 Reference traceability and uncertainty budget | **ACCEPTED — synthetic only** | **50%** |
-| 5 | 157 Same-path hardware challenge procedure | Planned | 50% |
-| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 50% |
-| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 50% |
-| 8 | 160 Real-world qualification evidence decision freeze | Planned | 50% |
+| 5 | 157 Same-path hardware challenge procedure | **ACCEPTED — synthetic only** | **62.5%** |
+| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 62.5% |
+| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 62.5% |
+| 8 | 160 Real-world qualification evidence decision freeze | Planned | 62.5% |
+
+## AETHER-157 — Same-path challenge-pulse and hardware route intake
+
+- Exact local synthetic run: **25 seeds × eight route/pulse scenarios × 20 ticks**, **200 paired episodes and 4,000 decisions per policy**, **3,200/3,200 deterministic checks passed**.
+- Signed-only comparator authorized **1,200 unsafe dry-run ACT**; the route/challenge gate authorized **zero unsafe**, preserving **2,800 safe dry-run ACT**, including **500/500 clean** and **500/500 legitimate device rotation**. Operational action remained HOLD.
+- Six constructed failures were quarantined: missing probe, bypassed pulse observation, substituted acquisition route, replayed pulse counter, excessive propagation delay and false coupling assertion. Mock nonce, device serial, generation, original raw hash, challenge amplitude and a maximum 50 ms propagation window must match.
+- **Physical qualification 0%:** pulse, route and reference observations derive from one software fixture and cannot establish a real shared hardware path. [Physical path register](157/physical_path_register.json) remains uncommissioned and has no physical waveform, input route trace, reference certificate or hardware serial. Operational authority stays HOLD.
+- Exact locally executed source SHA-256 `924bd012dbaba31647692a96744985935abbe09f7ef858abae2c67f3b529e82e`. [Interactive HTML, test demo, results and register](157/) published; GitHub Python is separately authored from local executed code, independent checkout replay and live Pages deployment unverified. ZIP evidence includes exact local code, full check ledger, sample traces and manifest.
+- **Phase X synthetic setup readiness: 5/8 = 62.5%; empirical qualification: 0%.** Next AETHER-158: measured drift and alarm thresholds protocol.
 
 ## AETHER-156 — Calibration ancestry, RSS uncertainty and supported coverage
 
