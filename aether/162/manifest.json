@@ -1,0 +1,21 @@
+{
+  "bound": "AETHER-162",
+  "phase": "XI",
+  "status": "PASS",
+  "mode": "EXACT LOCAL SYNTHETIC AUDIT",
+  "checks": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "signed_only_unsafe": 1200,
+  "identity_gated_unsafe": 0,
+  "safe_dry_run": 2800,
+  "software_readiness_percent": 25,
+  "physical_qualification_percent": 0,
+  "physical_samples": 0,
+  "operational_act": 0,
+  "local_source_sha256": "f296840cb73970d98787e81e706d96e15e72170cfa1db16d8ea6fd9e06543a01",
+  "local_evidence_zip_sha256": "fb1bd1b73f49a3e0ec17561c8e077fb92db28c951d803b5c181222d709ebb55f",
+  "github_source_reproduction": "Separately authored compact demo; independently tested checkout not yet established",
+  "warning": "All mock issuers, registry entries, attestations and physical readings originated from one synthetic fixture"
+}
