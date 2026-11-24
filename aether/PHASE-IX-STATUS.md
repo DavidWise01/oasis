@@ -1,6 +1,6 @@
 # AETHER Phase IX — Real Instrument Qualification Protocol
 
-**AETHER-149 same-path challenge synthetic gate PASSED. Software readiness: 5/8 = 62.5%. EMPIRICAL PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-150 drift and alarm characterization synthetic gate PASSED. Software readiness: 6/8 = 75%. EMPIRICAL PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase IX deliberately keeps **synthetic software-protocol readiness** separate from **real physical instrument qualification**. No software result, simulated bench, mock HMAC key, acceptance counter or signature may advance the physical metric. All real-world operational permissions remain **HOLD**.
 
@@ -11,9 +11,18 @@ Phase IX deliberately keeps **synthetic software-protocol readiness** separate f
 | 3 | 147 Raw acquisition and provenance requirements | **ACCEPTED — synthetic only** | **37.5%** |
 | 4 | 148 Empirical uncertainty/coverage acceptance plan | **ACCEPTED — synthetic only** | **50%** |
 | 5 | 149 Measured same-path challenge protocol | **ACCEPTED — synthetic only** | **62.5%** |
-| 6 | 150 Drift and alarm characterization protocol | Planned | 62.5% |
-| 7 | 151 Blind adversarial physical-data intake rehearsal | Planned | 62.5% |
-| 8 | 152 Qualification evidence freeze | Planned | 62.5% |
+| 6 | 150 Drift and alarm characterization protocol | **ACCEPTED — synthetic only** | **75%** |
+| 7 | 151 Blind adversarial physical-data intake rehearsal | Planned | 75% |
+| 8 | 152 Qualification evidence freeze | Planned | 75% |
+
+## AETHER-150 — Drift/alarm characterization, bounded calibration freshness
+
+- Local exact synthetic execution: **240 episodes per policy**, 30 seeds × eight calibration/drift/alarm scenarios × 20 ticks, **4,800 decisions per policy**, **3,840/3,840** append-only replay, hash chain, chronological, one-action, safety and operational HOLD checks passed.
+- Signed-only comparator authorized **1,440 unsafe dry-run ACT** across six constructed faults. Drift/alarm-gated controller allowed **0 unsafe dry-run ACT** while preserving **3,360 safe dry-run ACT**, including **600/600 clean** and **600/600 valid replacement**.
+- Fault regimes: hidden slow drift, abrupt drift, suppressed alarm, delayed alarm, stale calibration and forged drift certificate. The modeled controller checks reference identity and observed risk, current calibration, drift budget, alarm agreement, alarm latency, generation, challenge nonce and counter before DRY-RUN ACT.
+- **Empirical physical qualification 0%**: the simulation reference oracle knows ground truth and all issuer keys are mock. No physical drift rate, alarm sensitivity/latency, actual reference or same-path acquisition validated. Operational authority remains HOLD.
+- Local executed source SHA-256 `b6459d27a9f15b7d29a6410e178c44dae365268cd524a6393084d711523c75e1`. GitHub [150](150/) has a separately authored reduced standalone reproducer and published local evidence summary; exact checkout replay and live Pages deployment unverified. Full locally executed code, results, individual checks and traces are in the associated ZIP.
+- **Phase IX: 6/8 = 75% synthetic software protocol readiness. Physical qualification = 0%.** Next AETHER-151: blind adversarial physical-data intake rehearsal.
 
 ## AETHER-149 — Challenge and operation ingress path binding
 
