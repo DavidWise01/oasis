@@ -1,0 +1,39 @@
+{
+  "bound": "AETHER-179",
+  "phase": "XIII",
+  "turn": 3,
+  "planned_turns": 8,
+  "software_protocol_percent": 37.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "P-256 ECDSA over canonical JSON custody events with synthetic key registry",
+  "signature_algorithm": "ECDSA-P256-SHA256",
+  "signature_encoding": "WebCrypto IEEE P1363 raw r||s 64 bytes, encoded lowercase hex",
+  "canonical_fields": [
+    "schema",
+    "event_id",
+    "capture_sha256",
+    "custodian_id",
+    "key_id",
+    "action",
+    "sequence",
+    "timestamp",
+    "previous_event_sha256",
+    "challenge_id"
+  ],
+  "verified_scope": [
+    "WebCrypto signature validity against admitted public JWK",
+    "registry key-to-custodian binding as declarative local policy",
+    "action permission and revocation flags",
+    "timestamp, replay and challenge structural checks"
+  ],
+  "not_verified": [
+    "externally trusted real custodian identity",
+    "independent root registration",
+    "physical receipt or hardware sensor evidence",
+    "physical custody completion"
+  ],
+  "original_physical_samples": 0,
+  "predecessor": "../178/protocol.json",
+  "watermark": ".dlw"
+}
