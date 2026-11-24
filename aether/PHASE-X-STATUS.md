@@ -1,6 +1,6 @@
 # AETHER Phase X — Physical Reference Acquisition Setup and Evidence Intake
 
-**AETHER-154 corrected certificate-identity intake PASSED. Phase X synthetic software setup readiness: 2/8 = 25%. Empirical physical qualification: 0% (NO PHYSICAL INSTRUMENT OR CERTIFICATE VERIFIED). Operational authority: HOLD.**
+**AETHER-155 original raw-capture and timing intake PASSED. Phase X synthetic software setup readiness: 3/8 = 37.5%. Empirical physical qualification: 0% (NO PHYSICAL MEASUREMENTS). Operational authority: HOLD.**
 
 Phase X distinguishes *software protocol development* from *actual independent reference equipment acquisition, calibration and measurements*. Passing the former cannot advance the latter. This ledger does not claim that any instrument is physically attached or any traceability certificate has been authenticated.
 
@@ -8,12 +8,21 @@ Phase X distinguishes *software protocol development* from *actual independent r
 |---|---|---|---:|
 | 1 | 153 Equipment register and commissioning contract | **ACCEPTED — synthetic only** | **12.5%** |
 | 2 | 154 Independent reference identity and certificate intake | **ACCEPTED — synthetic corrected test** | **25%** |
-| 3 | 155 Original physical-capture file and timing intake | Planned | 25% |
-| 4 | 156 Reference traceability and uncertainty budget | Planned | 25% |
-| 5 | 157 Same-path hardware challenge procedure | Planned | 25% |
-| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 25% |
-| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 25% |
-| 8 | 160 Real-world qualification evidence decision freeze | Planned | 25% |
+| 3 | 155 Original physical-capture file and timing intake | **ACCEPTED — synthetic only** | **37.5%** |
+| 4 | 156 Reference traceability and uncertainty budget | Planned | 37.5% |
+| 5 | 157 Same-path hardware challenge procedure | Planned | 37.5% |
+| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 37.5% |
+| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 37.5% |
+| 8 | 160 Real-world qualification evidence decision freeze | Planned | 37.5% |
+
+## AETHER-155 — Immutable raw-capture bytes and monotonic sample timing
+
+- Local exact synthetic run: **25 seeds × eight conditions × 20 ticks**, **200 episodes and 4,000 decisions per policy**, **3,200/3,200** checks passed for deterministic replay, hash chaining, order, one decision, modeled safety, preserved safe cases and permanent operational HOLD.
+- The signed-only comparator admitted **1,200 unsafe dry-run ACT**; the original-byte/timing gate admitted **0 unsafe**, retaining **2,800 safe dry-run ACT**, including **500/500 clean** and **500/500 legitimate clock rotation**.
+- Six constructed failures: missing raw capture, appended/modified bytes, sample counter gap, clock rollback, forged timestamp origin and captured reference identity substitution. The source byte hash, challenge nonce, signed generation, counter sequence, declared sample interval and source identity must agree.
+- **Physical qualification remains 0%**. The original bytes and absolute clock are synthetic, no actual instrument/timebase was observed, and all real operational permissions remain HOLD. [Blank physical-capture register](155/physical_capture_register.json) retains missing physical metadata.
+- Exact locally executed Python SHA-256 `8b5a4310b2f78031ba06f8fbe148b1a05417257194bff4ea9103f3cba3831a61`. [AETHER-155 source, results, acceptance manifest and interactive lab](155/) published; GitHub source is separately authored from the local test, and independent GitHub checkout replay and live Pages status are unverified. Full locally executed audit is available in the companion ZIP.
+- **Phase X setup readiness 3/8 = 37.5% synthetic; empirical qualification = 0%.** Next AETHER-156: traceability and uncertainty budget intake.
 
 ## AETHER-154 — Quarantined reference-issuer identity and calibration certificate intake
 
