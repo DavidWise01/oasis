@@ -1,6 +1,6 @@
 # AETHER Phase XI — Real-World Physical Evidence Acquisition
 
-**AETHER-167 blind synthetic provenance adjudication PASSED. Phase XI synthetic software acquisition-protocol readiness: 7/8 = 87.5%. Empirical physical qualification: 0% (NO INDEPENDENT PHYSICAL SOURCES AUTHENTICATED). Operational authority: HOLD.**
+**AETHER-168 DOCUMENTARY FREEZE COMMITTED. Phase XI planned software acquisition-protocol sequence: 8/8 = 100% CLOSED. Empirical physical qualification: 0% (NO INDEPENDENT PHYSICAL SOURCES AUTHENTICATED). Operational authority: HOLD.**
 
 Phase IX and Phase X each closed at **100% synthetic software protocol readiness**, NOT physical qualification. Phase XI tracks a distinct new series of eight planned software intake bounds. Real-world qualification is awarded **only** after independent reference hardware, provenance, calibration, raw capture and measured behavior are actually authenticated; no mock receipt, signature, counter, or synthetic test can alter the real-world qualification metric. Maintain immutable prior phase freezes and failed 154A record.
 
@@ -13,7 +13,17 @@ Phase IX and Phase X each closed at **100% synthetic software protocol readiness
 | 5 | 165 Real same-path challenge evidence package | **ACCEPTED — synthetic only** | **62.5%** |
 | 6 | 166 Physical drift and alarm evidence intake | **ACCEPTED — synthetic only** | **75%** |
 | 7 | 167 Blind independent physical evidence adjudication | **ACCEPTED — synthetic-only provenance gate** | **87.5%** |
-| 8 | 168 Physical qualification decision and immutable freeze | Planned | 87.5% |
+| 8 | 168 Physical qualification decision and immutable freeze | **CLOSED — documentary freeze, physical HOLD** | **100%** |
+
+## AETHER-168 — Physical qualification decision and append-only freeze
+
+- **Phase XI planned software-protocol sequence CLOSED: 8/8 = 100%.** Completion measures only the eight planned development bounds; no assertion of physical success or independent checkout execution.
+- **Physical qualification: 0%. Operational authority: HOLD.** Review of the [AETHER-167 unverified physical register](167/physical_adjudication_register.json) shows zero actual hardware samples, null hardware serials, no independently authenticated reference/bench certificates, no original capture hash and no real independent source ancestry.
+- **Decision: PHYSICAL_QUALIFICATION_DENIED_PENDING_EVIDENCE.** The [machine-readable immutable documentary decision](168/decision.json) explicitly lists outstanding DUT, reference/bench ancestry, original capture, same-path response, drift/alarm and measurement uncertainty requirements.
+- [AETHER-168 read-only interactive dashboard](168/) displays completed software protocol coverage separately from physical authorization and can inspect its adjacent JSON decision. Dashboard verification requires a working deployed Pages fetch; this is not evidence of hardware behavior.
+- **AETHER-167 precedent unchanged:** 3,200/3,200 synthetic checks; baseline unsafe dry-run ACT 1,200; ancestry-gated unsafe dry-run ACT zero; safe dry-run ACT 2,800. Its executed-source SHA-256 and archive SHA-256 remain in their original manifest; no previous bound or evidence archive is rewritten.
+- **Freeze semantics:** append-only record of the closure decision, not cryptographic immutability of the Git branch. GitHub commits provide historical identity; branch protection, signed tags and archival replication are separate operational controls. Live Pages and independent hardware validation remain unverified.
+- **Next phase boundary:** a physical-evidence intake phase is eligible for planning, but physical qualification is blocked pending independently authenticated measurements. No witness consensus or synthetic voting can substitute for physical data.
 
 ## AETHER-167 — Blind source-ancestry and conflicting-evidence quarantine
 
