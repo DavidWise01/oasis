@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-164",
+  "phase": "XI",
+  "status": "PASS",
+  "local_executed_source_sha256": "93f5d7d536209ff7b1ac079b2e27c4b4417f6519e9828390e665b4181602f798",
+  "local_evidence_zip_sha256": "9bce6347fdd891c65036e3ba9d6a4c24267b7beed58042ac7dc9cea3ea3117fb",
+  "checks_total": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "signed_only_unsafe": 1200,
+  "uncertainty_gated_unsafe": 0,
+  "safe_dry_run": 2800,
+  "software_readiness_percent": 50,
+  "physical_qualification_percent": 0,
+  "actual_physical_samples": 0,
+  "operational_action": "HOLD",
+  "budget": {
+    "calibration": 0.001,
+    "repeatability": 0.0005,
+    "resolution": 0.0004,
+    "drift": 0.0006,
+    "expansion_factor": 2
+  },
+  "coverage": "synthetic 120-case one-sided Wilson 90% bound for declared 95% coverage",
+  "reproduction_limit": "GitHub experiment.py is a separately authored condensed companion; not the exact executed local source."
+}
