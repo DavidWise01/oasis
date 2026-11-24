@@ -1,6 +1,6 @@
 # AETHER Phase IX — Real Instrument Qualification Protocol
 
-**AETHER-147 raw-byte provenance synthetic gate PASSED. Software readiness: 3/8 = 37.5%. EMPIRICAL PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-148 held-out uncertainty coverage synthetic gate PASSED. Software readiness: 4/8 = 50%. EMPIRICAL PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase IX deliberately keeps **synthetic software-protocol readiness** separate from **real physical instrument qualification**. No software result, simulated bench, mock HMAC key, acceptance counter or signature may advance the physical metric. All real-world operational permissions remain **HOLD**.
 
@@ -9,11 +9,20 @@ Phase IX deliberately keeps **synthetic software-protocol readiness** separate f
 | 1 | 145 Actual-instrument qualification contract | **ACCEPTED via 145B (synthetic)** | **12.5%** |
 | 2 | 146 Physical reference and certificate intake | **ACCEPTED — synthetic only** | **25%** |
 | 3 | 147 Raw acquisition and provenance requirements | **ACCEPTED — synthetic only** | **37.5%** |
-| 4 | 148 Empirical uncertainty/coverage acceptance plan | Planned | 37.5% |
-| 5 | 149 Measured same-path challenge protocol | Planned | 37.5% |
-| 6 | 150 Drift and alarm characterization protocol | Planned | 37.5% |
-| 7 | 151 Blind adversarial physical-data intake rehearsal | Planned | 37.5% |
-| 8 | 152 Qualification evidence freeze | Planned | 37.5% |
+| 4 | 148 Empirical uncertainty/coverage acceptance plan | **ACCEPTED — synthetic only** | **50%** |
+| 5 | 149 Measured same-path challenge protocol | Planned | 50% |
+| 6 | 150 Drift and alarm characterization protocol | Planned | 50% |
+| 7 | 151 Blind adversarial physical-data intake rehearsal | Planned | 50% |
+| 8 | 152 Qualification evidence freeze | Planned | 50% |
+
+## AETHER-148 — Held-out uncertainty coverage acceptance contract
+
+- Local full synthetic run: **240 paired episodes**, 30 seeds × eight uncertainty conditions × 20 ticks, **4,800 decisions per policy**, **3,840/3,840** deterministic checks passed.
+- Signed-only comparator: **1,440 unsafe dry-run ACT**; declared-coverage gate: **0 unsafe dry-run ACT**; all **3,360 safe dry-run ACT** preserved including **600/600 clean** and **600/600 valid calibration rotation**.
+- Rejected six modeled faults: missing held-out observations, unsupported claimed coverage, shared calibration ancestry, understated uncertainty budget, expired calibration and uncertainty upper bound crossing permission threshold.
+- Acceptance contract uses **120 simulated held-out samples per decision** and a one-sided **90% Wilson lower confidence bound supporting ≥95% interval coverage**, under a synthetic ±0.002 envelope. This is **not empirical physical coverage**: every sample is generated from synthetic ground truth, so observed real sensor error, reference uncertainty and calibration genealogy remain unknown.
+- **Physical qualification 0%**, all operational decisions HOLD. Exact locally executed `aether148/experiment.py` SHA-256 `17d1f3640c560ae636311ec73b0f01c146f61bc2a9274142bbb7ecfc73294b65` recorded in downloadable archive. GitHub [148](148/) contains a separately authored standalone reproducer and the local-run summaries, not byte-identical test source. GitHub checkout replay and live Pages deployment unverified.
+- **Phase IX: 4/8 = 50% synthetic readiness; real physical qualification: 0%.** Next AETHER-149: measured same-path challenge protocol.
 
 ## AETHER-147 — Original-byte and deterministic transformation provenance
 
