@@ -1,6 +1,6 @@
 # AETHER Phase XII — Independent Physical Evidence Admission
 
-**AETHER-173 ORIGINAL BYTE-DIGEST AND HARDWARE-CLOCK ADMISSION CONTRACT COMMITTED. Planned Phase XII software bounds: 5/8 = 62.5%. Empirical physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-174 SAME-PATH RESPONSE AND UNCERTAINTY GATE PASSED 21/21 LOCAL SYNTHETIC TESTS. Planned Phase XII software bounds: 6/8 = 75%. Empirical physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](168/decision.json); it was **not** physically qualified. Phase XII performs strict intake of independently authenticated original hardware evidence without allowing simulated signatures, synthetically separate credential strings, or shared-root witnesses to count as independent physical observations.
 
@@ -11,9 +11,18 @@ Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](
 | 3 | 171 External reference certificate authentication | **ACCEPTED — synthetic structural certificate audit only** | **37.5%** |
 | 4 | 172 Independent ancestry and common-root exclusion | **ACCEPTED — synthetic graph-structure checks only** | **50%** |
 | 5 | 173 Original physical acquisition digest and clock | **ACCEPTED — synthetic capture-integrity contract only** | **62.5%** |
-| 6 | 174 Same-path response and uncertainty review | Planned | 62.5% |
-| 7 | 175 Drift/alarm real trace qualification | Planned | 62.5% |
-| 8 | 176 Physical qualification decision / freeze | Planned | 62.5% |
+| 6 | 174 Same-path response and uncertainty review | **ACCEPTED — synthetic numerical tolerance gate only** | **75%** |
+| 7 | 175 Drift/alarm real trace qualification | Planned | 75% |
+| 8 | 176 Physical qualification decision / freeze | Planned | 75% |
+
+## AETHER-174 — Same-path response & uncertainty admission
+
+- [Deterministic numerical verifier](174/verification.mjs) checks DUT, independent reference and bench identity claims, source-bound nonce, common injection and acquisition routes, original capture digest formatting, paired time ordering, response delay, finite measurements and externally specified tolerance limits.
+- Uncertainty envelope is computed as **U = k × sqrt(u_calibration² + u_repeatability² + u_resolution² + u_drift²)**; both |DUT-REF|+U and |BENCH-REF|+U must fit the modeled bound. DUT/bench divergence is also rejected. The uncertainty components are synthetic inputs, **not** accredited calibration results.
+- **21/21 local synthetic cases passed** using Node.js v22, including missing captures and identity, wrong route/nonce, nonmonotonic acquisition, excessive delays, invalid uncertainty terms, broken DUT/bench agreement, missing tolerances, and claimed trust flags. Independent GitHub checkout execution was not established.
+- [Published test suite](174/test.mjs), [machine contract](174/protocol.json), and [neon HTML fault-injection laboratory](174/) are available as source files. Live Pages deployment/browser execution remains unverified.
+- **Physical qualification 0%, physical samples 0, operational authority HOLD.** Even a perfectly matching numerical trace with all client-supplied trust flags true returns at most DOCUMENTARY_REVIEW_ONLY. The software does not contain an operational ACT path.
+- **Phase XII 6/8 = 75%.** Next bound **AETHER-175**: original physical drift and alarm timing qualification. No witness consensus or synthetic attestation can replace source authenticity. `.dlw`
 
 ## AETHER-173 — Raw acquisition digest and monotonic hardware clock
 
