@@ -1,19 +1,28 @@
 # AETHER Phase XI — Real-World Physical Evidence Acquisition
 
-**AETHER-161 acquisition boundary synthetic test PASSED. Phase XI software acquisition-protocol readiness: 1/8 = 12.5%. Empirical physical instrument qualification: 0% (NO AUTHENTICATED PHYSICAL EVIDENCE). Operational authority: HOLD.**
+**AETHER-162 mock device/reference identity intake PASSED. Phase XI synthetic software acquisition-protocol readiness: 2/8 = 25%. Empirical physical qualification: 0% (NO INDEPENDENTLY AUTHENTICATED INSTRUMENT OR CALIBRATION CERTIFICATE). Operational authority: HOLD.**
 
 Phase IX and Phase X each closed at **100% synthetic software protocol readiness**, NOT physical qualification. Phase XI tracks a distinct new series of eight planned software intake bounds. Real-world qualification is awarded **only** after independent reference hardware, provenance, calibration, raw capture and measured behavior are actually authenticated; no mock receipt, signature, counter, or synthetic test can alter the real-world qualification metric. Maintain immutable prior phase freezes and failed 154A record.
 
 | Turn | Bound | Synthetic protocol acceptance | Software readiness |
 |---|---|---|---:|
 | 1 | 161 Acquisition boundary and physical-evidence register | **ACCEPTED — synthetic only** | **12.5%** |
-| 2 | 162 Genuine instrument and reference identity intake | Planned | 12.5% |
-| 3 | 163 Original physical capture package and timebase | Planned | 12.5% |
-| 4 | 164 Calibration traceability and uncertainty evidence | Planned | 12.5% |
-| 5 | 165 Real same-path challenge evidence package | Planned | 12.5% |
-| 6 | 166 Physical drift and alarm evidence intake | Planned | 12.5% |
-| 7 | 167 Blind independent physical evidence adjudication | Planned | 12.5% |
-| 8 | 168 Physical qualification decision and immutable freeze | Planned | 12.5% |
+| 2 | 162 Genuine instrument and reference identity intake | **ACCEPTED — synthetic identity contract only** | **25%** |
+| 3 | 163 Original physical capture package and timebase | Planned | 25% |
+| 4 | 164 Calibration traceability and uncertainty evidence | Planned | 25% |
+| 5 | 165 Real same-path challenge evidence package | Planned | 25% |
+| 6 | 166 Physical drift and alarm evidence intake | Planned | 25% |
+| 7 | 167 Blind independent physical evidence adjudication | Planned | 25% |
+| 8 | 168 Physical qualification decision and immutable freeze | Planned | 25% |
+
+## AETHER-162 — Instrument, reference and source-of-truth identity
+
+- Exact local synthetic experiment: **25 seeds × 8 scenarios × 20 ticks × two policies**, **200 episodes and 4,000 decisions per policy**, **3,200/3,200 deterministic gates passed**, including replay, immutable hash chain, tick order, one decision, guard safety, safe clean/rotation and no hidden fault labels.
+- Signed-only comparator: **1,200 unsafe synthetic dry-run ACT**; identity-gated model: **0 unsafe**, with **2,800 safe dry-run ACT** preserved, including 500/500 clean and 500/500 valid mock reference rotation.
+- Six simulated identity attacks: absent instrument serial; serial clone with invalid device challenge; unknown reference certificate issuer; falsely asserted accreditation; self-rooted reference ancestry; and missing proof-of-possession receipt. Mock registry and issuer credentials agree only in synthetic fixtures.
+- **No independently authenticated manufacturer, physical device, calibration issuer, accreditation registry, real original sample, or physically traceable reference has been obtained.** [Physical identity register](162/physical_identity_register.json) retains null evidence fields. All real-world operational ACT are HOLD and empirical physical qualification remains **0%**.
+- Exact locally executed source SHA-256 `f296840cb73970d98787e81e706d96e15e72170cfa1db16d8ea6fd9e06543a01`; verified full evidence ZIP SHA-256 `fb1bd1b73f49a3e0ec17561c8e077fb92db28c951d803b5c181222d709ebb55f`. Full local source, 3,200 checks, results, seed rows and traces archived. [GitHub 162](162/) includes a **separately authored compact reproducer** plus Pages-ready HTML; checkout replay and live deployment have not been independently verified.
+- **Phase XI synthetic setup readiness: 2/8 = 25%; empirical physical qualification remains 0%.** Next AETHER-163: genuine original capture file and verified timebase intake.
 
 ## AETHER-161 — Acquisition boundary
 
