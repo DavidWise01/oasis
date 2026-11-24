@@ -1,0 +1,30 @@
+{
+  "bound": "AETHER-175",
+  "phase": "XII",
+  "turn": 7,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 87.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "real_physical_samples": 0,
+  "mode": "SIMULATED DRIFT / ALARM STRUCTURAL INTAKE",
+  "local_synthetic_checks": {
+    "passed": 25,
+    "total": 25
+  },
+  "requirements": [
+    "original DUT and reference sensor capture provenance",
+    "calibrated monotonic acquisition timebase",
+    "independent reference origin",
+    "bound alarm issuance record and original alarm capture digest",
+    "traceable approved drift and alarm thresholds",
+    "complete chain of custody"
+  ],
+  "source_limitations": [
+    "sample values and alarms are synthetic",
+    "digest format does not prove original physical acquisition",
+    "synthetic trust booleans never grant ACT"
+  ],
+  "previous": "../174/protocol.json",
+  "watermark": ".dlw"
+}
