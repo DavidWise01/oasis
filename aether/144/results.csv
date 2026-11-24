@@ -1,0 +1,10 @@
+scenario,cases,decisions,unsafe,safe_act,safe_hold,reference_ok,operational_act
+clean,25,600,0,600,0,600,0
+valid_rotation,25,600,0,600,0,600,0
+compromised_reference_root,25,600,0,400,0,400,0
+replayed_attestation,25,600,0,400,0,400,0
+tampered_calibration,25,600,0,400,0,400,0
+false_same_path,25,600,0,400,0,400,0
+suppressed_alarm,25,600,0,400,0,400,0
+dual_compromise,25,600,0,400,0,400,0
+ALL,200,4800,0,3600,0,3600,0
