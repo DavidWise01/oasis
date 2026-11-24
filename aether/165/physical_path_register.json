@@ -1,0 +1,15 @@
+{
+  "bound": "AETHER-165",
+  "physical_status": "OPEN_UNVERIFIED",
+  "probe_generator_serial": null,
+  "physical_injection_port": null,
+  "physical_acquisition_route": null,
+  "real_reference_serial": null,
+  "actual_pulse_waveform_sha256": null,
+  "original_physical_capture_sha256": null,
+  "traceable_calibration_certificate": null,
+  "measured_propagation_ns": null,
+  "actual_physical_samples": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD"
+}
