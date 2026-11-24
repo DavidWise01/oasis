@@ -1,0 +1,19 @@
+{
+  "bound": "AETHER-159",
+  "phase": "X",
+  "status": "PASS",
+  "synthetic_software_readiness_percent": 87.5,
+  "physical_qualification_percent": 0,
+  "checks": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "signed_only_unsafe": 1200,
+  "blind_intake_unsafe": 0,
+  "blind_intake_safe": 2800,
+  "operational_act": 0,
+  "physical_samples": 0,
+  "local_executed_source_sha256": "c02f6aa6bf43b46b0b0e92fa5b604c05392c6a237b7d0cde3c971a9a13cb4f56",
+  "github_source": "Separately authored compact reproduction, not checkout-verified",
+  "provenance_caveat": "Generated bench and reference share simulation origins; labels/truth hidden from admission but test cases are known to harness"
+}
