@@ -1,6 +1,6 @@
 # AETHER Phase XIII — Physical Evidence Escrow and Source Custody
 
-**AETHER-180 DUAL ECDSA P-256 TRANSFER/RECEIPT COUNTERSIGNATURE GATE COMMITTED. Phase XIII: 4/8 = 50% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
+**AETHER-181 CLOCK, SOURCE AND CHALLENGE PROVENANCE SOFTWARE GATE COMMITTED. Phase XIII: 5/8 = 62.5% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
 
 Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json), explicitly **without physical qualification**. All past freezes remain historical records. Phase XIII tracks software protocols for acquiring and protecting evidence from genuinely independent original physical sources; no synthetic receipt, signature-shaped string, or declared root label qualifies as physical data.
 
@@ -10,10 +10,18 @@ Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json),
 | 2 | 178 Byte-exact sealed capture manifest | **ACCEPTED — synthetic byte-integrity audit only** | **25%** |
 | 3 | 179 Authenticated custodian identity and signatures | **ACCEPTED — cryptographic mock-key signature gate only** | **37.5%** |
 | 4 | 180 Independent transfer and receipt countersignature | **ACCEPTED — synthetic dual-key cryptographic gate only** | **50%** |
-| 5 | 181 Clock, source and challenge provenance escrow | Planned | 50% |
-| 6 | 182 External archive replication and tamper detection | Planned | 50% |
-| 7 | 183 Blind original physical evidence admission review | Planned | 50% |
-| 8 | 184 Phase XIII qualification decision and freeze | Planned | 50% |
+| 5 | 181 Clock, source and challenge provenance escrow | **ACCEPTED — synthetic source/clock/digest protocol only** | **62.5%** |
+| 6 | 182 External archive replication and tamper detection | Planned | 62.5% |
+| 7 | 183 Blind original physical evidence admission review | Planned | 62.5% |
+| 8 | 184 Phase XIII qualification decision and freeze | Planned | 62.5% |
+
+## AETHER-181 — Clock, source, challenge & acquisition provenance escrow
+
+- [Verifier](181/verification.mjs) recomputes SHA-256 from supplied raw bytes and fixed-order canonical provenance fields, checks source and device identity, clock identifier and calibration reference digest, custody receipt digest, sample-counter endpoints and hardware tick range, freshness of a nonce-bound challenge, capture replay and expiry. All outputs are **DOCUMENTARY_REVIEW_ONLY or REJECT**, with ACT **HOLD**.
+- [25-case synthetic test suite](181/test.mjs) covers challenge reuse/expiry, source substitution, incorrect clock identities, nonmonotonic ticks, counter disagreements, byte and metadata mutation and unverified physical source/calibration. **The suite is published but not independently executed from a GitHub checkout.**
+- [Full 4D neon Pages-ready laboratory](181/) inherits the 16-vertex/32-edge rotating cyan, blue and violet shadow tesseract with pause, slow-orbit and shadow controls and six synthetic provenance fault buttons. Live Pages deployment and actual Chromium execution remain unverified.
+- [Protocol contract](181/protocol.json) specifies **Phase XIII 5/8 = 62.5%**, physical qualification 0%, and zero original authenticated physical samples. Hashes and endpoint continuity cannot establish a calibrated physical clock, sample-by-sample hardware continuity or the original instrument's physical custody.
+- Earlier phases and bounds remain unchanged. **Next AETHER-182:** independent external archive replication and tamper detection, with genuine storage and independent root verification pending. `.dlw`
 
 ## AETHER-180 — Dual-signed transfer and receipt countersignature
 
