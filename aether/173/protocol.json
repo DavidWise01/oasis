@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-173",
+  "phase": "XII",
+  "turn": 5,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 62.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "scope": "original capture bytes SHA-256 recomputation and hardware-clock continuity structural audit",
+  "physical_samples": 0,
+  "hardware_clock_authenticated": false,
+  "original_capture_authenticated": false,
+  "independent_sources_authenticated": 0,
+  "acceptance_limit": "DOCUMENTARY_REVIEW_ONLY regardless of client-provided flags",
+  "input_contract": {
+    "raw_bytes": "Uint8Array original capture bytes, not a claimed digest",
+    "declared_sha256": "hex 64",
+    "samples": "sample counter and hardware_time_ns per sample",
+    "clock_source_id": "non-empty exact expected source identifier",
+    "device_serial": "expected device identity",
+    "challenge_nonce": "expected acquisition challenge",
+    "capture_id": "unique across intake",
+    "expected_sample_count": "matches samples length"
+  },
+  "predecessor": "../172/protocol.json",
+  "watermark": ".dlw"
+}
