@@ -1,0 +1,14 @@
+{
+  "bound": "AETHER-163",
+  "status": "OPEN_UNVERIFIED",
+  "instrument_serial": null,
+  "reference_serial": null,
+  "original_physical_capture_file": null,
+  "original_bytes_sha256": null,
+  "physical_clock_serial": null,
+  "trusted_timebase_calibration": null,
+  "physical_clock_trace": null,
+  "actual_sample_count": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD"
+}
