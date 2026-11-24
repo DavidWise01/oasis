@@ -1,0 +1,15 @@
+{
+  "bound": "AETHER-167",
+  "status": "OPEN_UNVERIFIED",
+  "dut_hardware_serial": null,
+  "reference_hardware_serial": null,
+  "bench_hardware_serial": null,
+  "original_physical_capture_sha256": null,
+  "independent_reference_certificate": null,
+  "independent_bench_certificate": null,
+  "real_root_ancestry_evidence": null,
+  "physical_disagreement_samples": null,
+  "actual_physical_samples": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD"
+}
