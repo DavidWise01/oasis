@@ -1,0 +1,15 @@
+{
+  "bound": "AETHER-154",
+  "physical_reference_status": "NOT ACQUIRED OR VERIFIED",
+  "reference_serial": null,
+  "calibration_certificate_id": null,
+  "issuer_legal_name": null,
+  "issuer_accreditation_identifier": null,
+  "metrological_traceability": null,
+  "expiry": null,
+  "issuer_public_key_provenance": null,
+  "reference_raw_acquisition_file": null,
+  "qualified_physical_measurements": 0,
+  "operational_permission": "HOLD",
+  "note": "All null entries mean missing evidence, not zero instrument error."
+}
