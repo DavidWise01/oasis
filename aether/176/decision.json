@@ -1,0 +1,44 @@
+{
+  "bound": "AETHER-176",
+  "phase": "XII",
+  "turn": 8,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 100,
+  "phase_state": "CLOSED_DOCUMENTARY_SOFTWARE_PROTOCOL",
+  "physical_qualification_percent": 0,
+  "physical_samples_authenticated": 0,
+  "operational_authority": "HOLD",
+  "decision": "PHYSICAL_QUALIFICATION_DENIED_PENDING_ORIGINAL_INDEPENDENT_EVIDENCE",
+  "phase_bounds": [
+    "AETHER-169",
+    "AETHER-170",
+    "AETHER-171",
+    "AETHER-172",
+    "AETHER-173",
+    "AETHER-174",
+    "AETHER-175",
+    "AETHER-176"
+  ],
+  "predecessor": "../175/protocol.json",
+  "phase_xi_freeze": "../168/decision.json",
+  "required_evidence_unmet": [
+    "Manufacturer-verifiable original DUT identity and physical possession",
+    "Independently authenticated reference certificate and traceability",
+    "Independent reference and bench ancestry with shared-root exclusion",
+    "Original raw acquisition bytes linked to hardware and source identity",
+    "Authenticated calibrated hardware clock with contiguous counters",
+    "Same-path injection and response with traceable uncertainty",
+    "Original physical drift and alarm issuance and response traces",
+    "Independent external confirmation of evidence provenance and acceptance bounds"
+  ],
+  "synthetic_results": {
+    "AETHER_171": "16/16 local structural assertions",
+    "AETHER_172": "15/15 local graph assertions",
+    "AETHER_174": "21/21 local numerical assertions",
+    "AETHER_175": "25/25 local drift/alarm assertions",
+    "note": "These are software-only tests and cannot qualify physical hardware."
+  },
+  "freeze_semantics": "Append-only historical documentary decision. Git repository mutability and future revisions are not technologically prohibited.",
+  "reopening_requirements": "New, independently authenticated original physical evidence and separate authorized evaluation; do not alter frozen historical decision.",
+  "watermark": ".dlw"
+}
