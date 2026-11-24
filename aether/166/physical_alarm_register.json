@@ -1,0 +1,17 @@
+{
+  "bound": "AETHER-166",
+  "status": "OPEN_UNVERIFIED",
+  "instrument_serial": null,
+  "independent_reference_serial": null,
+  "calibration_certificate": null,
+  "original_hardware_drift_capture_sha256": null,
+  "original_hardware_alarm_capture_sha256": null,
+  "traceable_clock_certificate": null,
+  "observed_physical_alarm_latency_ms": null,
+  "measured_drift_rate": null,
+  "drift_units": null,
+  "empirical_false_negative_rate": null,
+  "actual_physical_samples": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD"
+}
