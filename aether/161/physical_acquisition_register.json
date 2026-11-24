@@ -1,0 +1,38 @@
+{
+  "bound": "AETHER-161",
+  "status": "NO_PHYSICAL_EVIDENCE_ACQUIRED",
+  "instrument": {
+    "manufacturer": null,
+    "model": null,
+    "serial": null,
+    "firmware": null
+  },
+  "reference": {
+    "manufacturer": null,
+    "model": null,
+    "serial": null,
+    "certificate_number": null,
+    "issuer": null,
+    "accreditation_evidence": null,
+    "traceability": null
+  },
+  "raw_capture": {
+    "original_filename": null,
+    "sha256": null,
+    "sample_count": 0,
+    "clock_record": null,
+    "device_issued_nonce": null
+  },
+  "challenge": {
+    "physical_injection_port": null,
+    "pulse_source": null,
+    "recording_sha256": null
+  },
+  "qualification": {
+    "actual_samples": 0,
+    "empirical_physical_percent": 0,
+    "decision": "OPEN_UNVERIFIED",
+    "operational_permission": "HOLD"
+  },
+  "notice": "Null values are missing evidence, never confirmed absent hardware or a numeric zero measurement."
+}
