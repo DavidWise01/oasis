@@ -1,0 +1,40 @@
+{
+  "bound": "AETHER-170",
+  "phase": "XII",
+  "turn": 2,
+  "software_protocol_coverage_percent": 25,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "real_instrument_challenges": 0,
+  "status": "SOFTWARE_GATE_ONLY",
+  "previous": "../169/admission.json",
+  "required_fields": [
+    "challenge_id",
+    "nonce",
+    "issued_at",
+    "expires_at",
+    "device_serial",
+    "manufacturer",
+    "device_key_fingerprint",
+    "device_response_signature",
+    "manufacturer_attestation",
+    "original_capture_sha256",
+    "external_registry_receipt"
+  ],
+  "hard_gate": [
+    "challenge identity",
+    "fresh unique nonce",
+    "bounded time window",
+    "manufacturer verification",
+    "external registry identity",
+    "independently validated original capture"
+  ],
+  "limitations": [
+    "Browser form fields can be forged",
+    "Client Boolean validation flags must never be accepted as external proof",
+    "Separate credentials may have shared roots",
+    "No trusted manufacturer verifier, clock attestation or hardware connection deployed",
+    "No operational ACT pathway"
+  ],
+  "watermark": ".dlw"
+}
