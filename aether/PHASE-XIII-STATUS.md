@@ -1,6 +1,6 @@
 # AETHER Phase XIII — Physical Evidence Escrow and Source Custody
 
-**AETHER-182 ARCHIVE REPLICATION & TAMPER-DETECTION SOFTWARE GATE COMMITTED. Phase XIII: 6/8 = 75% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
+**AETHER-183 BLIND ORIGINAL PHYSICAL EVIDENCE ADMISSION SCREENING GATE COMMITTED. Phase XIII: 7/8 = 87.5% software protocol coverage. Physical qualification 0%. Operational authority HOLD.**
 
 Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json), explicitly **without physical qualification**. All past freezes remain historical records. Phase XIII tracks software protocols for acquiring and protecting evidence from genuinely independent original physical sources; no synthetic receipt, signature-shaped string, or declared root label qualifies as physical data.
 
@@ -12,8 +12,16 @@ Phase XII closed at 8/8 software bounds through [AETHER-176](176/decision.json),
 | 4 | 180 Independent transfer and receipt countersignature | **ACCEPTED — synthetic dual-key cryptographic gate only** | **50%** |
 | 5 | 181 Clock, source and challenge provenance escrow | **ACCEPTED — synthetic source/clock/digest protocol only** | **62.5%** |
 | 6 | 182 External archive replication and tamper detection | **ACCEPTED — synthetic three-replica integrity gate only** | **75%** |
-| 7 | 183 Blind original physical evidence admission review | Planned | 75% |
-| 8 | 184 Phase XIII qualification decision and freeze | Planned | 75% |
+| 7 | 183 Blind original physical evidence admission review | **ACCEPTED — synthetic blinded admission contract only** | **87.5%** |
+| 8 | 184 Phase XIII qualification decision and freeze | Planned | 87.5% |
+
+## AETHER-183 — Blind Original Physical Evidence Admission Review
+
+- [Verifier](183/verification.mjs) projects each application into a restricted blind view, excluding applicants' asserted source names, recomputes SHA-256 over supplied bytes, checks challenge/replay/capture-window claims, then compares opaque root handles against separately provided (still synthetic) provenance attestations. It rejects shared declared root ancestry, issuers, administrators and missing or unauthenticated attestations using one deterministic decision function and no quorum.
+- [22-case synthetic test suite](183/test.mjs) includes corrupted bytes, reused trial/capture IDs, incomplete or duplicated roots, common ancestry, overlapping issuers, shared administrators and missing physical clock, physical alarm or independent verification. The mock flags can only produce DOCUMENTARY_SCREEN_ONLY, never physical ACT. **Source published; independent Node.js checkout execution not yet verified.**
+- [Full 4D neon lab](183/) preserves the rotating 16-vertex / 32-edge cyan-blue-violet tesseract, ghost shadow and animation controls, with six blind evidence fault-injection scenarios. Pages/live browser execution is not independently verified.
+- [Protocol](183/protocol.json) records **Phase XIII 7/8 = 87.5%**, authenticated physical samples **0**, physical qualification **0%**, authority **HOLD**. Source attestations held in local mock maps are not independently sourced proof of real-world independence.
+- All preceding AETHER and Phase XII milestone records remain unchanged. **Next AETHER-184:** Phase XIII documentary qualification decision and freeze, 8/8 software milestones; physical authority HOLD without independently authenticated acquisition evidence. `.dlw`
 
 ## AETHER-182 — External archive replication and tamper detection
 
