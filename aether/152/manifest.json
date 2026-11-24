@@ -1,0 +1,23 @@
+{
+  "bound": "AETHER-152",
+  "status": "PASS",
+  "phase": "IX",
+  "local_execution": "complete fresh-seed integration with locally frozen AETHER-151 controller",
+  "synthetic_software_readiness_percent": 100,
+  "empirical_physical_qualification_percent": 0,
+  "seven_predecessor_archives_crc_and_manifests": "PASS",
+  "checks": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "baseline_unsafe": 1200,
+  "blind_guard_unsafe": 0,
+  "blind_guard_safe_act": 2800,
+  "clean_safe_act": 500,
+  "rotation_safe_act": 500,
+  "operational_ACT": 0,
+  "frozen_local_AETHER_151_source_sha256": "d4861612d1858ed333da70843251c24e7d40f3d14eede303afd97079f3f165a7",
+  "exact_local_AETHER_152_source_sha256": "4c4e8f2bbb29346d9b8467462cb4b97035878713cd9f32358fa94477afe2ec73",
+  "provenance": "The GitHub 152 Python is a separately authored companion to the locally executed source, not independently checkout-tested",
+  "physical_limit": "Reference bench is synthetic truth oracle; all real-world actions HOLD"
+}
