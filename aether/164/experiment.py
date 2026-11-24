@@ -40,7 +40,7 @@ def fixture(seed,case,t):
 def admit(raw,c,b):
  if not (valid(c,KEY) and valid(b,BENCH)):return False
  if c["issuer"]!="MOCK-LAB" or c["parent"]!="MOCK-INDEPENDENT-ROOT":return False
- if c["serial"]!=b["reference"]!="REF-164" or c["dut"]!=b["device"]!="DUT-164":return False
+ if not (c["serial"]==b["reference"]=="REF-164" and c["dut"]==b["device"]=="DUT-164"):return False
  if any(c[k]!=b[k] for k in ("tick","nonce","generation")):return False
  if c["expiry"]!=c["tick"]+1 or sha(raw)!=c["raw_sha"]:return False
  u=c["uncertainty_components"]
