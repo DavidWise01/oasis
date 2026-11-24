@@ -1,0 +1,21 @@
+{
+  "bound": "AETHER-167",
+  "phase": "XI",
+  "status": "PASS",
+  "mode": "LOCALLY EXECUTED SYNTHETIC AUDIT",
+  "checks": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "baseline_unsafe": 1200,
+  "gated_unsafe": 0,
+  "gated_safe": 2800,
+  "synthetic_readiness_percent": 87.5,
+  "physical_qualification_percent": 0,
+  "real_ACT": "HOLD",
+  "physical_samples": 0,
+  "executed_source_sha256": "60401569f875a87de629b7233155288e3f0c1fdbad74a33b5f63d314d5a41b17",
+  "archive_sha256": "552d51652950938655e096673ddac74f13142b86ed1f2f12ea755e4fa21b4aad",
+  "github_reproducer": "Separately authored compact demo; no byte-identical checkout replay verified",
+  "physical_independence": "UNVERIFIED: three test signatures share one generating fixture"
+}
