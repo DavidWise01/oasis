@@ -1,6 +1,6 @@
 # AETHER Phase XI — Real-World Physical Evidence Acquisition
 
-**AETHER-166 physical drift/alarm synthetic intake PASSED. Phase XI synthetic software acquisition-protocol readiness: 6/8 = 75%. Empirical physical qualification: 0% (NO ORIGINAL HARDWARE DRIFT OR ALARM MEASUREMENTS). Operational authority: HOLD.**
+**AETHER-167 blind synthetic provenance adjudication PASSED. Phase XI synthetic software acquisition-protocol readiness: 7/8 = 87.5%. Empirical physical qualification: 0% (NO INDEPENDENT PHYSICAL SOURCES AUTHENTICATED). Operational authority: HOLD.**
 
 Phase IX and Phase X each closed at **100% synthetic software protocol readiness**, NOT physical qualification. Phase XI tracks a distinct new series of eight planned software intake bounds. Real-world qualification is awarded **only** after independent reference hardware, provenance, calibration, raw capture and measured behavior are actually authenticated; no mock receipt, signature, counter, or synthetic test can alter the real-world qualification metric. Maintain immutable prior phase freezes and failed 154A record.
 
@@ -12,8 +12,17 @@ Phase IX and Phase X each closed at **100% synthetic software protocol readiness
 | 4 | 164 Calibration traceability and uncertainty evidence | **ACCEPTED — synthetic only** | **50%** |
 | 5 | 165 Real same-path challenge evidence package | **ACCEPTED — synthetic only** | **62.5%** |
 | 6 | 166 Physical drift and alarm evidence intake | **ACCEPTED — synthetic only** | **75%** |
-| 7 | 167 Blind independent physical evidence adjudication | Planned | 75% |
-| 8 | 168 Physical qualification decision and immutable freeze | Planned | 75% |
+| 7 | 167 Blind independent physical evidence adjudication | **ACCEPTED — synthetic-only provenance gate** | **87.5%** |
+| 8 | 168 Physical qualification decision and immutable freeze | Planned | 87.5% |
+
+## AETHER-167 — Blind source-ancestry and conflicting-evidence quarantine
+
+- Exact executed local program used **25 seeds × eight scenarios × 20 ticks × two policies**, 200 episodes and 4,000 decisions per policy, passing **3,200/3,200** checks of deterministic replay, SHA-256 ledger, time order, single decision, guarded safety, clean-case availability, authorization blindness to fault labels, and immutable operational HOLD.
+- Signed-only comparator admitted **1,200 unsafe synthetic dry-run ACT**; blind ancestry gate admitted **zero unsafe**, preserving **2,800 safe dry-run ACT**, including 500/500 clean and 500/500 valid mock rotation.
+- Six synthetic provenance faults: shared root ancestry, duplicated record posed as another root, DUT-issued reference, contradictory bench reading, missing root and replayed challenge nonce. Admission requires distinct claimed source ancestry and issuer roles, role-specific synthetic MACs, matching nonce/generation/tick/capture hash and measurements within .001. One controller, **no quorum/vote**.
+- **Physical qualification stays 0%.** All three declared roots were created by one test fixture; distinct strings/keys are NOT proof of independent physical sources. No external certificates, physical sample, or original hardware data were authenticated. [Physical register](167/physical_adjudication_register.json) holds explicit nulls; actual operational ACT always HOLD.
+- Exact locally executed Python SHA-256 `60401569f875a87de629b7233155288e3f0c1fdbad74a33b5f63d314d5a41b17`; verified ZIP SHA-256 `552d51652950938655e096673ddac74f13142b86ed1f2f12ea755e4fa21b4aad`. ZIP contains full executed source, 3,200 checks, seed-level summaries, and SHA-256 chained trace samples. [GitHub lab](167/) contains separately authored compact reproducer, results, manifest and Pages-ready HTML. Byte-identical checkout replay and live Pages deployment remain unverified.
+- **Phase XI synthetic readiness: 7/8 = 87.5%, physical qualification 0%.** Next AETHER-168: final freeze retaining real-world qualification as OPEN_UNVERIFIED.
 
 ## AETHER-166 — Drift, alarm and clock evidence-intake simulation
 
