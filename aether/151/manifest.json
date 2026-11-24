@@ -1,0 +1,28 @@
+{
+  "bound": "AETHER-151",
+  "phase": "IX",
+  "status": "PASS",
+  "evaluation": "independently executed local synthetic audit",
+  "scenarios": 8,
+  "seeds": 30,
+  "ticks_per_episode": 20,
+  "episodes_per_policy": 240,
+  "decisions_per_policy": 4800,
+  "checks": 3840,
+  "checks_passed": 3840,
+  "baseline_unsafe": 1440,
+  "blind_intake_unsafe": 0,
+  "blind_intake_safe_act": 3360,
+  "operational_act": 0,
+  "software_protocol_readiness_percent": 87.5,
+  "empirical_physical_qualification_percent": 0,
+  "local_executed_file": "local_audit.py",
+  "local_source_sha256": "d4861612d1858ed333da70843251c24e7d40f3d14eede303afd97079f3f165a7",
+  "github_source": "experiment.py is separately authored, has not been independently replayed from checkout",
+  "limits": [
+    "Synthetic bench receives truth from scenario generator",
+    "No genuine physical reference instrument was tested",
+    "Issuer credentials are test HMAC keys",
+    "Blindness applies to hidden scenario labels and truth inputs, not all future physical faults"
+  ]
+}
