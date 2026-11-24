@@ -1,0 +1,28 @@
+{
+  "bound": "AETHER-146",
+  "phase": "IX",
+  "status": "PASS",
+  "mode": "local synthetic acceptance",
+  "seeds": [
+    146001,
+    146030
+  ],
+  "episodes_per_policy": 240,
+  "decisions_per_policy": 4800,
+  "checks": 3840,
+  "checks_passed": 3840,
+  "signed_only_unsafe": 1440,
+  "quarantined_unsafe": 0,
+  "safe_act": 3360,
+  "quarantine_fault_ticks": 1440,
+  "operational_act": 0,
+  "software_readiness_percent": 25,
+  "physical_qualification_percent": 0,
+  "acceptance": "SYNTHETIC_PROTOCOL_ONLY",
+  "limitations": [
+    "Issuer allowlist is a mock root string not independently authenticated",
+    "HMAC keys and raw measurements are simulated",
+    "No real device/accredited certificate or lab standard validated",
+    "GitHub standalone reproducer differs from fully executed local experiment"
+  ]
+}
