@@ -1,0 +1,26 @@
+{
+  "bound": "AETHER-144",
+  "phase": "VIII",
+  "status": "PASS",
+  "run": "LOCAL_SYNTHETIC",
+  "software_readiness_percent": 100,
+  "physical_validation_percent": 0,
+  "episodes": 200,
+  "decisions": 4800,
+  "checks": 1600,
+  "gates": {
+    "all_checks_pass": true,
+    "zero_synthetic_unsafe": true,
+    "clean_availability": true,
+    "rotation_availability": true,
+    "operational_hold": true,
+    "seven_archives_present": true
+  },
+  "frozen_local_143_source_sha256": "8a629056bcb9fdd67a01939788e62fa42cf90e997dc1b3f3f324608912c3d547",
+  "warnings": [
+    "No physical instrument or externally calibrated reference was validated",
+    "Synthetic reference bench receives scenario truth",
+    "GitHub experiment.py is separately authored; independently executed checkout result not yet verified",
+    "Historical source manifests and SHA-256 inventoried; older tests not rerun"
+  ]
+}
