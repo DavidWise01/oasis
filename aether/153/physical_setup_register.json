@@ -1,0 +1,37 @@
+{
+  "bound": "AETHER-153",
+  "phase": "X",
+  "state": "NOT_COMMISSIONED",
+  "device_under_test": {
+    "serial": null,
+    "manufacturer": null,
+    "model": null,
+    "firmware": null
+  },
+  "independent_reference": {
+    "serial": null,
+    "manufacturer": null,
+    "model": null,
+    "traceable_certificate_id": null,
+    "certificate_issuer": null,
+    "certificate_expiry": null
+  },
+  "physical_path": {
+    "acquisition_interface": null,
+    "capture_instrument": null,
+    "challenge_source": null,
+    "challenge_coupling_verified": false
+  },
+  "measurement_capture": {
+    "raw_file_sha256": null,
+    "sampling_clock_trace": null,
+    "uncertainty_budget": null,
+    "actual_samples_count": 0
+  },
+  "control": {
+    "operational_authority": "HOLD",
+    "physical_qualification_percent": 0,
+    "synthetic_protocol_readiness_percent": 12.5
+  },
+  "note": "Blank items are not evidence. This is an intake specification, not a commissioning record."
+}
