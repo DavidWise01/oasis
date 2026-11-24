@@ -1,0 +1,29 @@
+{
+  "bound": "AETHER-182",
+  "phase": "XIII",
+  "turn": 6,
+  "planned_turns": 8,
+  "software_protocol_percent": 75,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "SYNTHETIC EXTERNAL ARCHIVE REPLICA TAMPER/ROLLBACK GATE",
+  "replicas_expected": 3,
+  "original_hardware_samples": 0,
+  "checks": [
+    "Recompute canonical manifest SHA-256",
+    "Recompute SHA-256 of every replica's actual bytes",
+    "Verify canonical receipt content digest",
+    "Require matching generations and minimum archival generation",
+    "Check distinct claimed archive identifiers, administrator identifiers and root IDs",
+    "Detect altered bytes, capture substitutions and predecessor receipt mismatch",
+    "Reject malformed timestamps and incomplete replica structure"
+  ],
+  "limits": [
+    "Distinct archive labels and administrators are untrusted declarations",
+    "Real independent archive systems were not contacted",
+    "No authenticated physical capture or external custody signatures",
+    "No operational ACT path"
+  ],
+  "predecessor": "../181/protocol.json",
+  "watermark": ".dlw"
+}
