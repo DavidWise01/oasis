@@ -1,6 +1,6 @@
 # AETHER Phase XII — Independent Physical Evidence Admission
 
-**AETHER-175 DRIFT AND ALARM STRUCTURAL GATE PASSED 25/25 LOCAL SYNTHETIC CHECKS. Planned Phase XII software bounds: 7/8 = 87.5%. Empirical physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-176 PHYSICAL QUALIFICATION DENIED PENDING INDEPENDENT ORIGINAL EVIDENCE; PHASE XII DOCUMENTARY SOFTWARE PROTOCOL CLOSED AT 8/8 = 100%. Empirical physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](168/decision.json); it was **not** physically qualified. Phase XII performs strict intake of independently authenticated original hardware evidence without allowing simulated signatures, synthetically separate credential strings, or shared-root witnesses to count as independent physical observations.
 
@@ -13,7 +13,17 @@ Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](
 | 5 | 173 Original physical acquisition digest and clock | **ACCEPTED — synthetic capture-integrity contract only** | **62.5%** |
 | 6 | 174 Same-path response and uncertainty review | **ACCEPTED — synthetic numerical tolerance gate only** | **75%** |
 | 7 | 175 Drift/alarm real trace qualification | **ACCEPTED — synthetic structural gate only; no real trace** | **87.5%** |
-| 8 | 176 Physical qualification decision / freeze | Planned | 87.5% |
+| 8 | 176 Physical qualification decision / freeze | **CLOSED — documentary freeze, physical HOLD** | **100%** |
+
+## AETHER-176 — Phase XII qualification decision and documentary freeze
+
+- **Phase XII 8/8 = 100% of planned software-protocol bounds, CLOSED.** The completion metric is documentary/software coverage, not physical qualification.
+- **Decision: PHYSICAL_QUALIFICATION_DENIED_PENDING_ORIGINAL_INDEPENDENT_EVIDENCE.** [Machine-readable freeze](176/decision.json) enumerates eight unmet requirements across physical device identity, reference certification, independent ancestry, raw captured bytes, hardware clock, same-path measurements, alarm issuance and external verification. No independent physical source or original sample was authenticated. **Physical qualification 0%, operational ACT HOLD.**
+- [Read-only neon freeze dashboard](176/) presents all eight completed software bounds, physical HOLD and a JSON consistency inspection. It does not validate instruments or provide ACT.
+- Inherited synthetic results remain as recorded in previous bounds: AETHER-171 16/16, AETHER-172 15/15, AETHER-174 21/21, AETHER-175 25/25. They establish only local synthetic software behavior. Prior source, manifests and decision records remain untouched.
+- **Freeze means appended historical decision, not that a GitHub branch is technologically immutable.** Commit identifiers preserve historical versions; hardware qualification remains separately pending and may only be reassessed through newly sourced, independently authenticated evidence.
+- GitHub source commits/readback are not equivalent to verified GitHub Pages deployment, browser execution, physical capture or certified hardware qualification.
+- **Next natural bound:** AETHER-177 in Phase XIII: physical-evidence intake escrow and custody verification, not another simulated grant of physical ACT. `.dlw`
 
 ## AETHER-175 — Original physical drift and alarm timing structural gate
 
