@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-150",
+  "phase": "IX",
+  "status": "PASS",
+  "mode": "local synthetic acceptance",
+  "seeds": [
+    150001,
+    150030
+  ],
+  "cases_per_policy": 240,
+  "decisions_per_policy": 4800,
+  "checks": 3840,
+  "checks_passed": 3840,
+  "signed_only_unsafe": 1440,
+  "drift_alarm_gated_unsafe": 0,
+  "drift_alarm_gated_safe": 3360,
+  "operational_ACT": 0,
+  "software_readiness_percent": 75,
+  "physical_qualification_percent": 0,
+  "local_executed_sha256": "b6459d27a9f15b7d29a6410e178c44dae365268cd524a6393084d711523c75e1",
+  "reproducibility": "GitHub experiment.py is a reduced separate implementation; independent checkout execution not verified.",
+  "limits": [
+    "Synthetic reference oracle receives ground truth",
+    "No measured drift or alarm latency from hardware",
+    "No real physical instrument or calibrated reference tested"
+  ]
+}
