@@ -1,0 +1,28 @@
+{
+  "bound": "AETHER-186",
+  "phase": "XIV",
+  "turn": 2,
+  "planned_turns": 8,
+  "software_protocol_percent": 25,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "SIMULATED MANUFACTURER P-256 CERTIFICATE TRUST ANCHOR",
+  "crypto": "WebCrypto ECDSA P-256 SHA-256 over fixed-field canonical JSON",
+  "checkpoints": [
+    "Locally pinned root fingerprint",
+    "Root-to-manufacturer CA ECDSA certificate signature",
+    "Manufacturer CA-to-instrument-issuer certificate signature",
+    "Instrument issuer acquisition receipt signature",
+    "Certificate roles, usage, validity and revocation",
+    "Receipt source device serial, challenge and freshness"
+  ],
+  "unresolved": [
+    "Manufacturer root obtained and authenticated out of band",
+    "Independent issuer identity and revocation authority",
+    "Original physical device authenticity",
+    "Original external acquisition provenance"
+  ],
+  "note": "Certificate records are a synthetic custom protocol, not standard X.509; locally pinned mock root is not an externally validated manufacturer root.",
+  "previous": "../185/protocol.json",
+  "watermark": ".dlw"
+}
