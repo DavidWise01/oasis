@@ -1,0 +1,31 @@
+{
+  "bound": "AETHER-148",
+  "phase": "IX",
+  "status": "PASS",
+  "mode": "exact local synthetic experiment",
+  "seeds": [
+    148001,
+    148030
+  ],
+  "episodes_per_policy": 240,
+  "decisions_per_policy": 4800,
+  "checks": 3840,
+  "checks_passed": 3840,
+  "baseline_unsafe": 1440,
+  "coverage_gated_unsafe": 0,
+  "safe_act": 3360,
+  "clean_safe_act": 600,
+  "rotation_safe_act": 600,
+  "operational_ACT": 0,
+  "software_protocol_readiness_percent": 50,
+  "physical_qualification_percent": 0,
+  "local_executed_source_sha256": "17d1f3640c560ae636311ec73b0f01c146f61bc2a9274142bbb7ecfc73294b65",
+  "coverage_test": "120 synthetic held-out samples; Wilson one-sided 90% lower bound >=95%; assumed synthetic uncertainty width",
+  "source_note": "GitHub experiment.py is separately authored mini reproducer and has not been independently executed from checkout.",
+  "limitations": [
+    "Simulated held-out data is not empirical instrument calibration",
+    "Reference source origin is mock HMAC/assumed data",
+    "95% coverage target is a test protocol choice, not established hardware confidence",
+    "No physical qualification or operational ACT"
+  ]
+}
