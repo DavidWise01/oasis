@@ -1,0 +1,19 @@
+{
+  "bound": "AETHER-160",
+  "phase": "X",
+  "software_protocol_closed": true,
+  "synthetic_setup_readiness_percent": 100,
+  "physical_qualification_percent": 0,
+  "status": "OPEN_UNVERIFIED",
+  "actual_instrument_serial": null,
+  "independent_reference_serial": null,
+  "traceable_calibration_certificate": null,
+  "original_physical_capture_sha256": null,
+  "physical_challenge_waveform_sha256": null,
+  "measured_drift": null,
+  "measured_alarm_latency": null,
+  "actual_physical_samples": 0,
+  "operational_authority": "HOLD",
+  "preserved_failed_test": "AETHER-154A",
+  "note": "Completing software protocols is not real-world physical qualification."
+}
