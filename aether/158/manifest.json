@@ -1,0 +1,28 @@
+{
+  "bound": "AETHER-158",
+  "phase": "X",
+  "local_status": "PASS",
+  "mode": "LOCAL SYNTHETIC",
+  "checks": 3200,
+  "checks_passed": 3200,
+  "seeds": 25,
+  "scenarios": 8,
+  "ticks_per_episode": 20,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "baseline_unsafe": 1200,
+  "gated_unsafe": 0,
+  "safe_dry_run": 2800,
+  "operational_act": 0,
+  "physical_measurements": 0,
+  "synthetic_setup_readiness_percent": 75,
+  "physical_qualification_percent": 0,
+  "local_executed_file": "local_audit.py",
+  "local_executed_source_sha256": "f6ded480f5de2b82e1ed7e2ceb352016d7f63ab540183a53b9e6cdf5ae98de2e",
+  "github_experiment": "Separately authored full experiment, not byte-identical to locally executed audit; GitHub checkout replay unverified",
+  "limits": [
+    "No physical sensor, reference or calibrated signal",
+    "Mock reference sees hidden scenario truth",
+    "No measured physical drift, alarm latency or detection coverage"
+  ]
+}
