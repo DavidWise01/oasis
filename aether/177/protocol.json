@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-177",
+  "phase": "XIII",
+  "turn": 1,
+  "planned_turns": 8,
+  "software_protocol_percent": 12.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "SIMULATED CHAIN OF CUSTODY STRUCTURAL GATE",
+  "synthetic_checks": {
+    "passed": 25,
+    "total": 25,
+    "scope": "in-process JavaScript evaluation"
+  },
+  "physical_evidence_received": 0,
+  "required_physical_verification": [
+    "original capture bytes and independently verified SHA-256",
+    "hardware source identity and external issuer provenance",
+    "authenticated timebase with monotonic receipt clock",
+    "independent custodian credentials and independently confirmed transfer",
+    "cryptographic verification of event signatures over canonicalized records",
+    "tamper-evident external storage and independent audit",
+    "original instrument response and physically observed alarm"
+  ],
+  "limitations": [
+    "event SHA-256 fields are checked only for form and linkage, not recomputed from canonical event contents",
+    "client-side attestation flags are not independent evidence",
+    "synthetic root names do not establish physical source independence",
+    "no physical ACT pathway"
+  ],
+  "previous_phase_freeze": "../176/decision.json",
+  "watermark": ".dlw"
+}
