@@ -1,6 +1,6 @@
 # AETHER Phase X — Physical Reference Acquisition Setup and Evidence Intake
 
-**AETHER-157 same-path simulated challenge intake PASSED. Phase X synthetic software setup readiness: 5/8 = 62.5%. Empirical physical qualification: 0% (NO REAL HARDWARE PROBE OR REFERENCE MEASUREMENTS). Operational authority: HOLD.**
+**AETHER-158 modeled drift/alarm acceptance PASSED. Phase X synthetic software setup readiness: 6/8 = 75%. Empirical physical qualification: 0% (NO ACTUAL DRIFT OR ALARM MEASUREMENTS). Operational authority: HOLD.**
 
 Phase X distinguishes *software protocol development* from *actual independent reference equipment acquisition, calibration and measurements*. Passing the former cannot advance the latter. This ledger does not claim that any instrument is physically attached or any traceability certificate has been authenticated.
 
@@ -11,9 +11,18 @@ Phase X distinguishes *software protocol development* from *actual independent r
 | 3 | 155 Original physical-capture file and timing intake | **ACCEPTED — synthetic only** | **37.5%** |
 | 4 | 156 Reference traceability and uncertainty budget | **ACCEPTED — synthetic only** | **50%** |
 | 5 | 157 Same-path hardware challenge procedure | **ACCEPTED — synthetic only** | **62.5%** |
-| 6 | 158 Physical drift/alarm acceptance thresholds | Planned | 62.5% |
-| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 62.5% |
-| 8 | 160 Real-world qualification evidence decision freeze | Planned | 62.5% |
+| 6 | 158 Physical drift/alarm acceptance thresholds | **ACCEPTED — synthetic only** | **75%** |
+| 7 | 159 Unknown-fault blind physical intake rehearsal | Planned | 75% |
+| 8 | 160 Real-world qualification evidence decision freeze | Planned | 75% |
+
+## AETHER-158 — Synthetic drift and alarm acceptance, calibrated response protocol
+
+- Locally executed 25 seeds × eight drift/alarm scenarios × 20 ticks, **200 episodes and 4,000 decisions per policy**. All **3,200/3,200 checks passed**, including replay, SHA-256 append-only ledger, tick order, one action, fail-closed model safety, clean availability and permanent real-world HOLD.
+- Signed-only comparator authorized **1,200 unsafe dry-run ACT**. The drift/alarm gated controller authorized **0 unsafe dry-run ACT** while retaining **2,800 safe dry-run ACT** (500 clean, 500 legitimate device rotation).
+- Six modeled faults: slow drift exceeding the declared threshold, abrupt drift, suppressed alarm, delayed alarm, stale drift receipt and forged baseline epoch. The software requires drift ≤.001/tick, a fresh baseline/expiry, matching mock alarm observations, latency ≤50 ms and risk bound below .025. These limits are simulation parameters **not empirical tolerances**.
+- **Physical qualification remains 0%**. No real hardware alarms, sensor drift, calibrated reference, acquisition timing, or empirical detection performance was measured. [Physical alarm register](158/physical_alarm_register.json) remains empty; operational authority stays HOLD.
+- Exact executed local audit source SHA-256 `f6ded480f5de2b82e1ed7e2ceb352016d7f63ab540183a53b9e6cdf5ae98de2e`, complete checks, seed results and traces packaged in companion evidence ZIP. [GitHub Python, local summaries, manifest, and interactive HTML](158/) committed. The GitHub script was **separately authored and has not been independently checkout-tested**, and live Pages deployment remains unverified.
+- **Phase X synthetic software setup readiness: 6/8 = 75%; physical qualification 0%.** Next AETHER-159: blind unknown-fault physical-data intake rehearsal.
 
 ## AETHER-157 — Same-path challenge-pulse and hardware route intake
 
