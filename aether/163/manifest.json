@@ -1,0 +1,22 @@
+{
+  "bound": "AETHER-163",
+  "phase": "XI",
+  "status": "PASS",
+  "checks": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "baseline_unsafe": 1200,
+  "guarded_unsafe": 0,
+  "safe_dry_run": 2800,
+  "clean_safe": 500,
+  "valid_clock_rotation_safe": 500,
+  "physical_qualification_percent": 0,
+  "physical_samples": 0,
+  "operational_act": 0,
+  "synthetic_setup_readiness_percent": 37.5,
+  "local_executed_source_sha256": "f7f97695000d4cb20f1f1daee7aeabfcc28adb25dcad46bd43b6a61b2736f04c",
+  "evidence_zip_sha256": "170fe43fc7588c08890ab72a66492f30a3afbbdc831996576d10af869e004916",
+  "github_source": "Separately authored condensed reproducer; checkout replay not verified",
+  "physical_note": "All bytes, timestamps, signer roots and source fields are synthetic; physical qualification remains OPEN_UNVERIFIED."
+}
