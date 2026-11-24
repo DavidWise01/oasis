@@ -1,6 +1,6 @@
 # AETHER Phase XI — Real-World Physical Evidence Acquisition
 
-**AETHER-165 same-path challenge synthetic intake PASSED. Phase XI synthetic software acquisition-protocol readiness: 5/8 = 62.5%. Empirical physical qualification: 0% (NO AUTHENTICATED HARDWARE PROBE OR ORIGINAL PHYSICAL CAPTURE). Operational authority: HOLD.**
+**AETHER-166 physical drift/alarm synthetic intake PASSED. Phase XI synthetic software acquisition-protocol readiness: 6/8 = 75%. Empirical physical qualification: 0% (NO ORIGINAL HARDWARE DRIFT OR ALARM MEASUREMENTS). Operational authority: HOLD.**
 
 Phase IX and Phase X each closed at **100% synthetic software protocol readiness**, NOT physical qualification. Phase XI tracks a distinct new series of eight planned software intake bounds. Real-world qualification is awarded **only** after independent reference hardware, provenance, calibration, raw capture and measured behavior are actually authenticated; no mock receipt, signature, counter, or synthetic test can alter the real-world qualification metric. Maintain immutable prior phase freezes and failed 154A record.
 
@@ -11,9 +11,18 @@ Phase IX and Phase X each closed at **100% synthetic software protocol readiness
 | 3 | 163 Original physical capture package and timebase | **ACCEPTED — synthetic only** | **37.5%** |
 | 4 | 164 Calibration traceability and uncertainty evidence | **ACCEPTED — synthetic only** | **50%** |
 | 5 | 165 Real same-path challenge evidence package | **ACCEPTED — synthetic only** | **62.5%** |
-| 6 | 166 Physical drift and alarm evidence intake | Planned | 62.5% |
-| 7 | 167 Blind independent physical evidence adjudication | Planned | 62.5% |
-| 8 | 168 Physical qualification decision and immutable freeze | Planned | 62.5% |
+| 6 | 166 Physical drift and alarm evidence intake | **ACCEPTED — synthetic only** | **75%** |
+| 7 | 167 Blind independent physical evidence adjudication | Planned | 75% |
+| 8 | 168 Physical qualification decision and immutable freeze | Planned | 75% |
+
+## AETHER-166 — Drift, alarm and clock evidence-intake simulation
+
+- Exact locally executed synthetic Python: **25 seeds × eight scenarios × 20 ticks × two policies**, **200 episodes and 4,000 decisions per policy**; **3,200/3,200 checks passed** for deterministic replay, SHA-256 evidence-chain integrity, tick order, one action, guarded safety, safe-case availability, gate blindness and permanent real operational HOLD.
+- Signed-only comparator admitted **1,200 unsafe synthetic dry-run ACT**, while drift/alarm gate admitted **zero unsafe**, preserving **2,800 safe dry-run ACT** (500/500 clean; 500/500 legitimate rotation).
+- Six constructed faults: missing drift sample, drift >.001/tick, suppressed alarm, delayed alarm >50 ms, forged baseline epoch, and regressing clock. Modeled reference uncertainty .0005 and risk bound .025 are **synthetic limits, not physical calibration**.
+- **Physical qualification remains 0%**: no original hardware sensor stream, independent calibration, physical drift evidence or alarm response trace has been supplied. [Physical alarm register](166/physical_alarm_register.json) holds null measured fields. Operational authority HOLD.
+- Exact locally executed Python SHA-256 `5c096f560730de2171d5538c842bce3abfc52a7d452ca70db3b9db348cda9613`, complete ZIP SHA-256 `aea689f2ede7caa9a96bc454db0361a904f4050ae5d34dddcbb0e12039a2cca0`. [GitHub lab](166/) holds separately authored compact Python reproduction, aggregate outputs, blank physical evidence register and Pages-ready HTML; independent GitHub checkout replay/live Pages deployment unverified.
+- **Phase XI synthetic protocol readiness: 6/8 = 75%; physical qualification: 0%.** Next AETHER-167: blind independent physical-evidence adjudication protocol.
 
 ## AETHER-165 — Same-path hardware challenge evidence-contract simulation
 
