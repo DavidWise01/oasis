@@ -1,6 +1,6 @@
 # AETHER Phase X — Physical Reference Acquisition Setup and Evidence Intake
 
-**AETHER-159 blind combined-fault synthetic intake PASSED. Phase X software setup readiness: 7/8 = 87.5%. Empirical physical qualification: 0% (NO AUTHENTICATED PHYSICAL MEASUREMENTS). Operational authority: HOLD.**
+**AETHER-160 local evidence freeze PASSED. PHASE X SYNTHETIC SOFTWARE SETUP READINESS CLOSED: 8/8 = 100%. EMPIRICAL PHYSICAL QUALIFICATION: 0% (NO INSTRUMENT, TRACEABLE CALIBRATION OR MEASURED SAMPLES). Operational authority: HOLD.**
 
 Phase X distinguishes *software protocol development* from *actual independent reference equipment acquisition, calibration and measurements*. Passing the former cannot advance the latter. This ledger does not claim that any instrument is physically attached or any traceability certificate has been authenticated.
 
@@ -13,7 +13,17 @@ Phase X distinguishes *software protocol development* from *actual independent r
 | 5 | 157 Same-path hardware challenge procedure | **ACCEPTED — synthetic only** | **62.5%** |
 | 6 | 158 Physical drift/alarm acceptance thresholds | **ACCEPTED — synthetic only** | **75%** |
 | 7 | 159 Unknown-fault blind physical intake rehearsal | **ACCEPTED — synthetic combined faults only** | **87.5%** |
-| 8 | 160 Real-world qualification evidence decision freeze | Planned | 87.5% |
+| 8 | 160 Real-world qualification evidence decision freeze | **ACCEPTED — SYNTHETIC EVIDENCE FREEZE ONLY** | **100%** |
+
+## AETHER-160 — Phase X synthetic evidence-freeze closure
+
+- Exact locally executed program imported the **unmodified frozen AETHER-159** Python controller (source SHA-256 `c02f6aa6bf43b46b0b0e92fa5b604c05392c6a237b7d0cde3c971a9a13cb4f56`). It reran 25 **fresh** seeds × eight combined-fault scenarios × 20 ticks = **200 episodes and 4,000 decisions per policy**, passing **3,200/3,200 deterministic checks**.
+- Signed-only comparator: **1,200 unsafe synthetic dry-run ACT**; frozen blind-intake gate: **zero unsafe synthetic dry-run ACT**, **2,800 safe synthetic dry-run ACT** retained (500 clean; 500 legitimate rotation). All physical operational permissions remained **HOLD**.
+- Inspected and hashed all **seven predecessor local ZIPs AETHER-153–159**. Every archive passed CRC, contained its accepted manifest, exact executed source, results and **3,200/3,200** passing source check rows. The original **AETHER-154A FAIL** manifest is preserved. Earlier experiments were archived and audited, **not comprehensively rerun**.
+- Final local source SHA-256 `d053b735efac8ddb19f3efcd7f06e8e22d0fd4b42bf6032151e3bcac8fd279ac`. The complete locally executed code, frozen source, checks, seed cases, SHA-256 chain samples, inventory, manifest and physical decision register are in the companion ZIP (SHA-256 `21bb35254464a81ad945813a1bf9633701a8a441372eb1157a5280771a31cd1b`).
+- **Real physical qualification is OPEN at 0%.** No actual instrument, traceable independent reference, certified physical source, original instrument acquisition bytes, same-path pulse test, hardware drift or alarm timing was supplied or validated. [Physical qualification decision](160/physical_qualification_decision.json) retains explicit null values. No real operational ACT.
+- The [GitHub AETHER-160](160/) Python is a separately authored checkout companion using GitHub 159 rather than the exact frozen local source. Matching GitHub checkout replay and live Pages deployment are **unverified**, although committed files can be checked by GitHub readback.
+- **Phase X synthetic setup readiness is CLOSED: 8/8 = 100% software-only; empirical qualification remains 0%.** The next phase must collect and authenticate actual physical evidence without altering this freeze or prematurely lifting operational HOLD.
 
 ## AETHER-159 — Blind combined-fault intake and unknown-evidence quarantine
 
