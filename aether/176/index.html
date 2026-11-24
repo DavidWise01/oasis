@@ -1,8 +1,141 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AETHER-176 — Phase XII Freeze</title><style>
-:root{color-scheme:dark;font:16px/1.5 system-ui,Arial;color:#eafcff;background:#060918}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0,#123b53,#060918 70%);min-height:100vh}main{max-width:1100px;margin:auto;padding:30px 18px}h1{font-size:clamp(2.4rem,5vw,4.3rem);color:#70ffe5;text-shadow:0 0 32px #24fff38a;margin:0}h2{color:#b5e8fa}small{color:#a7c4d3}.tag{letter-spacing:.12em;color:#ffc183;font-weight:800}.rail{height:12px;border-radius:9px;background:#1e394b;overflow:hidden}.rail b{height:100%;width:100%;display:block;background:linear-gradient(90deg,#16bda3,#73ffed)}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:14px;margin:24px 0}.tile{border:1px solid #3b6a80;background:#10283ac9;border-radius:12px;padding:18px;box-shadow:0 0 22px #2fffe51a}.big{font-size:2.25rem;font-weight:850}.hold{color:#ffc07d}ul{padding-left:22px}li{margin:.55em 0}a{color:#85fce9}button{background:#17445b;color:white;border:1px solid #69ecdc;padding:11px 15px;border-radius:8px;cursor:pointer}button:hover{box-shadow:0 0 17px #35fce380}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#101e30;padding:15px;border-left:3px solid #ffbe7b}.circuit{width:100%;height:auto;max-height:250px;display:block}.node{fill:#102b40;stroke:#61fbe0;stroke-width:2}.trace{fill:none;stroke:#59e6df;stroke-width:2.5}footer{color:#a6c2d3;margin:34px 0}</style></head><body><main><small>OASIS / AETHER / PHASE XII / TURN 8 OF 8</small><h1>AETHER-176</h1><h2>Physical Qualification Decision & Documentary Freeze</h2><p class="tag">SOFTWARE PHASE CLOSED · PHYSICAL AUTHORITY HOLD</p><div class="rail"><b></b></div><div class="stats"><section class="tile"><small>Planned protocol coverage</small><div class="big">8/8</div><small>100% documentary completion</small></section><section class="tile"><small>Authenticated physical samples</small><div class="big">0</div><small>No independent original captures</small></section><section class="tile"><small>Physical qualification</small><div class="big">0%</div><small>Not qualified</small></section><section class="tile"><small>Operational authority</small><div class="big hold">HOLD</div><small>No ACT permission</small></section></div><h2>Phase XII evidence boundary</h2><svg viewBox="0 0 1000 240" class="circuit" role="img" aria-label="Eight sealed software milestones feed a single physical qualification gate, which remains on HOLD"><g><path class="trace" d="M90 62 H930 M90 174 H930 M500 62 V112 M500 174 V133"/><g id="left"><rect class="node" x="24" y="28" width="150" height="68" rx="12"/><rect class="node" x="225" y="28" width="150" height="68" rx="12"/><rect class="node" x="425" y="28" width="150" height="68" rx="12"/><rect class="node" x="625" y="28" width="150" height="68" rx="12"/><rect class="node" x="24" y="148" width="150" height="68" rx="12"/><rect class="node" x="225" y="148" width="150" height="68" rx="12"/><rect class="node" x="625" y="148" width="150" height="68" rx="12"/><rect class="node" x="825" y="148" width="150" height="68" rx="12"/></g><rect x="409" y="104" width="182" height="46" rx="12" fill="#472f25" stroke="#ffc083" stroke-width="2"/><g fill="#d5fffd" font-family="system-ui" font-size="19" text-anchor="middle"><text x="99" y="68">169</text><text x="300" y="68">170</text><text x="500" y="68">171</text><text x="700" y="68">172</text><text x="99" y="189">173</text><text x="300" y="189">174</text><text x="700" y="189">175</text><text x="900" y="189">176</text></g><text x="500" y="133" fill="#ffc083" text-anchor="middle" font-size="23" font-weight="800">HOLD</text></g></svg><p><small>Completed software milestones do not supply physical instrument evidence. The visual is a documentary illustration.</small></p><h2>Unresolved physical admission</h2><ul id="requirements"><li>Loading committed decision record...</li></ul><button id="verify">Inspect published freeze contract</button> <a href="decision.json">Decision JSON</a> · <a href="../175/">Previous bound</a><pre id="output" aria-live="polite">No JSON validation performed.</pre><footer>Historical append-only decision · physical authority cannot be granted by this browser · .dlw</footer></main><script>
-const requirements=document.getElementById('requirements'),output=document.getElementById('output');
-async function read(){const r=await fetch('decision.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
-async function load(){const d=await read();requirements.textContent='';for(const item of d.required_evidence_unmet||[]){const li=document.createElement('li');li.textContent=item;requirements.append(li)}return d}
-document.getElementById('verify').addEventListener('click',async()=>{try{const d=await load();const pass=d.bound==='AETHER-176'&&d.phase==='XII'&&d.phase_bounds.length===8&&d.software_protocol_progress_percent===100&&d.physical_qualification_percent===0&&d.physical_samples_authenticated===0&&d.operational_authority==='HOLD'&&d.required_evidence_unmet.length===8;output.textContent=pass?'PASS: documentary freeze internally consistent. Eight software turns closed. Physical qualification 0%. ACT HOLD.':'FAIL: published decision inconsistent. Physical authority must remain HOLD.'}catch(e){output.textContent='UNVERIFIED: '+e.message+'. Physical authority stays HOLD.'}});
-load().catch(e=>requirements.textContent='Decision fetch unavailable: '+e.message);
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#060a18">
+<meta name="description" content="AETHER-176 4D shadow tesseract · Phase XII documentary freeze · operational authority HOLD.">
+<title>AETHER-176 · 4D Shadow Tesseract Freeze</title>
+<style>
+:root{color-scheme:dark;--cyan:#74fff1;--blue:#40bdff;--violet:#b784ff;--amber:#ffc17c;--bg:#050815;--panel:#0b2035dd;--line:#5cf8e65c;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:#e8faff;background:var(--bg)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,#193b58 0%,#081322 35%,#050815 78%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#5affe908 1px,transparent 1px),linear-gradient(#5affe908 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(#0008,transparent 90%)}
+main{max-width:1250px;padding:24px clamp(14px,3vw,38px) 56px;margin:auto}
+h1{font-size:clamp(2.5rem,6vw,5.4rem);line-height:1.08;margin:0;letter-spacing:-.04em;color:var(--cyan);text-shadow:0 0 18px #2dffe862,0 0 64px #10a9ef45}
+h2{font-size:clamp(1.25rem,2vw,1.65rem);color:#c0f6ff;margin:0 0 12px}
+p{line-height:1.65}a{color:#8dffee;text-underline-offset:4px}a:hover{color:#fff}
+.eyebrow,.kicker{font-size:.75rem;letter-spacing:.19em;text-transform:uppercase;font-weight:800;color:#abc5d5}
+.kicker{color:var(--amber)}.hero-heading{padding:16px 0 14px}
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(270px,.9fr);gap:18px;align-items:stretch}
+.vault,.panel,.metric{position:relative;border:1px solid #6dfff03f;border-radius:18px;background:linear-gradient(145deg,#102e45e6,#081323f2 70%);box-shadow:0 0 35px #17ffdb12,inset 0 0 40px #41faff08;overflow:hidden}
+.vault{min-height:455px;isolation:isolate;background:radial-gradient(circle at 50% 42%,#1b416085,#071528 62%,#050d1b)}
+.vault:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,#a2ffec05 4px);z-index:3}
+#tesseract{display:block;width:100%;height:455px;touch-action:pan-y}
+.vault-top,.vault-bottom{position:absolute;left:17px;right:17px;z-index:4;display:flex;justify-content:space-between;gap:10px;font-size:.69rem;letter-spacing:.11em;color:#a6dce5;text-shadow:0 0 12px #58e7ee95;pointer-events:none}
+.vault-top{top:14px}.vault-bottom{bottom:14px}
+.glyph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:900;letter-spacing:.16em;font-size:.8rem;color:#b8fff7;text-shadow:0 0 10px #48ffeb,0 0 28px #74f3ff;pointer-events:none;z-index:2;opacity:.86}
+.side{padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.side .statement{font-size:clamp(1.1rem,2.15vw,1.55rem);font-weight:650;line-height:1.4;margin:6px 0}
+.side strong{color:#fff}
+.hold{color:var(--amber)!important;text-shadow:0 0 16px #ffb46c63}
+.freeze-badge{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;border:1px solid #fbbc7788;background:#9a552522;color:#ffd5a6;padding:9px 13px;border-radius:10px;box-shadow:0 0 20px #f6a65d12;font-weight:850;letter-spacing:.14em}
+.freeze-badge:before{content:"";width:9px;height:9px;background:#ffb771;border-radius:50%;box-shadow:0 0 13px #ffc184;animation:beacon 2s ease-in-out infinite}
+@keyframes beacon{50%{opacity:.4;box-shadow:0 0 4px #ffc184}}
+.buttonbar{display:flex;flex-wrap:wrap;gap:9px}.buttonbar button{font:inherit;font-weight:650;font-size:.82rem;border:1px solid #72f4e66e;background:#15384bc9;color:#dffefa;border-radius:9px;padding:9px 12px;cursor:pointer}.buttonbar button:hover,.buttonbar button:focus-visible{box-shadow:0 0 18px #40ffe95b;outline:1px solid #8dffef}.buttonbar button[aria-pressed="true"]{background:#237c8099;color:#fff;border-color:#82ffef}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}.metric{padding:18px;min-height:120px}.metric:before{content:"";height:3px;position:absolute;inset:0 30% auto 0;background:linear-gradient(90deg,var(--cyan),transparent);box-shadow:0 0 14px var(--cyan)}
+.number{font-size:clamp(1.7rem,3vw,2.8rem);line-height:1.1;font-weight:850;margin:7px 0;color:#e9ffff;font-variant-numeric:tabular-nums}.metric small,.muted{color:#acc3d4;font-size:.84rem}
+.track{height:11px;border-radius:99px;background:#213d4c;overflow:hidden;margin:18px 0 8px;box-shadow:inset 0 0 10px #020b16}.track span{display:block;width:100%;height:100%;background:linear-gradient(90deg,#00bcaa,#21e0ea,#ad8aff,#59ffe9);background-size:210% 100%;box-shadow:0 0 14px #44fff1;animation:flow 6s linear infinite}@keyframes flow{to{background-position:210% 0}}
+.section-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.8fr);gap:18px;margin:18px 0}.panel{padding:20px 22px}
+.milestones{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:15px}.milestone{border:1px solid #60efdd4d;background:#0a2939;padding:12px;border-radius:10px;text-align:center;box-shadow:inset 0 0 16px #30fdd00a}.milestone b{display:block;font-size:1.2rem;color:#85fff0}.milestone small{font-size:.7rem}
+ul{padding-left:20px;margin:8px 0}li{margin:.53rem 0}.links{display:flex;gap:16px;flex-wrap:wrap;padding-top:12px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow:auto;border-left:3px solid var(--amber);background:#081727;padding:13px 16px;border-radius:3px;color:#d5f6f4}
+footer{padding:18px 0;color:#9eb8cb;font-size:.8rem}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:900px){.hero,.section-grid{grid-template-columns:1fr}.vault{min-height:380px}#tesseract{height:380px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.milestones{grid-template-columns:repeat(2,1fr)}.stats{gap:9px}.metric{padding:13px}.side{padding:17px}.vault{min-height:330px}#tesseract{height:330px}}
+@media(prefers-reduced-motion:reduce){.track span,.freeze-badge:before{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero-heading"><div class="eyebrow">OASIS / AETHER / PHASE XII / TURN 8 OF 8</div><h1>AETHER-176</h1><p class="kicker">4D Shadow Tesseract · Documentary Qualification Freeze</p></header>
+<section class="hero" aria-label="4D hypercube and final phase decision">
+ <div class="vault" id="vault">
+  <div class="vault-top"><span>HYPERCUBE / 16 VERTICES / 32 EDGES</span><span>4D → 3D → 2D</span></div>
+  <canvas id="tesseract" role="img" aria-label="Animated neon 4D hypercube projected through a 3D shadow lattice; synthetic visualization only"></canvas>
+  <div class="glyph" aria-hidden="true">.dlw</div>
+  <div class="vault-bottom"><span>QUARTZ SHADOW / PHASE LOCK</span><span id="frameState">PROJECTION ACTIVE</span></div>
+ </div>
+ <section class="panel side">
+  <div><div class="eyebrow">Phase XII · Immutable historical decision</div><h2>Eight software bounds sealed in the shadow of a fourth dimension.</h2><p class="statement"><strong>8/8 complete.</strong> No independent original physical acquisition has been authenticated. Physical authority remains <strong class="hold">HOLD</strong>.</p></div>
+  <div class="freeze-badge" aria-label="Operational authority HOLD">ACT · HOLD</div>
+  <div><p class="muted">The paired glowing hypercubes are projected geometry, not sensor evidence. The shadow moves; the frozen decision does not.</p>
+   <div class="buttonbar" aria-label="Tesseract visualization controls">
+    <button id="toggle" type="button" aria-pressed="false">Pause rotation</button>
+    <button id="speed" type="button" aria-pressed="false">Slow orbit</button>
+    <button id="shadow" type="button" aria-pressed="true">Shadow ON</button>
+   </div>
+  </div>
+ </section>
+</section>
+<section class="stats" aria-label="Verified project state">
+ <div class="metric"><small>Software protocol</small><div class="number">8 / 8</div><small>100% documentary closure</small></div>
+ <div class="metric"><small>Original physical samples</small><div class="number">0</div><small>None authenticated</small></div>
+ <div class="metric"><small>Physical qualification</small><div class="number">0%</div><small>Not qualified</small></div>
+ <div class="metric"><small>Operational authority</small><div class="number hold">HOLD</div><small>No physical ACT</small></div>
+</section>
+<div class="track" aria-label="Eight of eight planned software bounds completed"><span></span></div>
+<div class="muted">SOFTWARE PHASE COMPLETE · PHYSICAL QUALIFICATION NOT ESTABLISHED</div>
+<div class="section-grid">
+ <section class="panel">
+  <h2>Sealed software milestones</h2><p class="muted">These eight protocol bounds are complete as historical software records. They are not eight independent physical measurements.</p>
+  <div class="milestones" aria-label="Phase XII bounds">
+   <div class="milestone"><b>169</b><small>Evidence intake</small></div>
+   <div class="milestone"><b>170</b><small>Hardware identity</small></div>
+   <div class="milestone"><b>171</b><small>Certificate chain</small></div>
+   <div class="milestone"><b>172</b><small>Root ancestry</small></div>
+   <div class="milestone"><b>173</b><small>Acquisition digest</small></div>
+   <div class="milestone"><b>174</b><small>Response uncertainty</small></div>
+   <div class="milestone"><b>175</b><small>Drift and alarm</small></div>
+   <div class="milestone"><b>176</b><small>HOLD freeze</small></div>
+  </div>
+  <div class="links"><a href="decision.json">Original decision JSON</a><a href="../175/">Previous bound</a><a href="../PHASE-XII-STATUS.md">Phase XII tracker</a></div>
+ </section>
+ <section class="panel">
+  <h2>Physical admission remains open</h2><ul id="requirements"><li>Loading historical evidence requirements…</li></ul>
+  <button id="verify" class="buttonbar" type="button" style="display:inline-block;border:1px solid #72f4e66e;background:#15384bc9;color:#dffefa;border-radius:9px;padding:10px 14px;cursor:pointer">Verify committed freeze JSON</button>
+  <pre id="output" aria-live="polite">No live document check has been performed.</pre>
+ </section>
+</div>
+<footer>.dlw · All 4D light, shadows, and visual pulses are illustrative. This dashboard neither authenticates instruments nor grants operational authority. Historical Git commits preserve a record, not an unchangeable branch.</footer>
+</main>
+<script>
+(()=>{'use strict';
+const canvas=document.getElementById('tesseract'),ctx=canvas.getContext('2d',{alpha:false}),vault=document.getElementById('vault');
+const state={paused:matchMedia('(prefers-reduced-motion: reduce)').matches,slow:false,shadow:true,t:0,last:0,raf:0};
+const buttons={toggle:document.getElementById('toggle'),speed:document.getElementById('speed'),shadow:document.getElementById('shadow')};
+const verts=Array.from({length:16},(_,i)=>[0,1,2,3].map(bit=>(i&(1<<bit))?1:-1));
+const edges=[];for(let i=0;i<16;i++)for(let bit=0;bit<4;bit++){const j=i^(1<<bit);if(i<j)edges.push([i,j,bit]);}
+let width=720,height=455,dpr=1;function resize(){const box=canvas.getBoundingClientRect();width=Math.max(200,box.width||720);height=Math.max(200,box.height||455);dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
+function spin(v,a,b,c){let [x,y,z,w]=v;let cs=Math.cos(a),sn=Math.sin(a);[x,w]=[x*cs-w*sn,x*sn+w*cs];cs=Math.cos(b);sn=Math.sin(b);[y,z]=[y*cs-z*sn,y*sn+z*cs];cs=Math.cos(c);sn=Math.sin(c);[y,w]=[y*cs-w*sn,y*sn+w*cs];cs=Math.cos(a*.57);sn=Math.sin(a*.57);[x,z]=[x*cs-z*sn,x*sn+z*cs];return[x,y,z,w];}
+function project(v,scale){let[x,y,z,w]=v;const p4=3.8/(3.8-w);x*=p4;y*=p4;z*=p4;const p3=5/(5-z);return{x:width/2+x*p3*scale,y:height/2+y*p3*scale,z:z,w:w,depth:p3};}
+function shadowVertex(v){return{x:width/2+(v.x-width/2)*1.19+17,y:height/2+(v.y-height/2)*.88+26,depth:v.depth};}
+function line(a,b,color,weight,blur){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=color;ctx.lineWidth=weight;ctx.shadowColor=color;ctx.shadowBlur=blur;ctx.stroke();}
+function draw(){
+ ctx.clearRect(0,0,width,height);
+ const bg=ctx.createRadialGradient(width*.5,height*.48,5,width*.5,height*.48,Math.max(width,height)*.72);bg.addColorStop(0,'#15344c');bg.addColorStop(.45,'#0a1d31');bg.addColorStop(1,'#050c18');ctx.fillStyle=bg;ctx.fillRect(0,0,width,height);
+ ctx.save();ctx.strokeStyle='rgba(59,206,224,.085)';ctx.lineWidth=1;const stride=30;for(let x=0;x<width;x+=stride){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,height);ctx.stroke()}for(let y=0;y<height;y+=stride){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(width,y);ctx.stroke()}ctx.restore();
+ const t=state.t,scale=Math.min(width*.14,height*.25,111);
+ const points=verts.map(v=>project(spin(v,t*.61+.27,t*.39-.22,t*.43+.41),scale));
+ const ghost=verts.map(v=>project(spin(v,t*.61+.51,t*.39+.17,t*.43+.21),scale*.96));
+ const shade=points.map(shadowVertex);
+ ctx.save();
+ if(state.shadow){for(const [a,b] of edges)line(shade[a],shade[b],'rgba(109,77,255,.19)',1.6,12);for(const [a,b]of edges)line(ghost[a],ghost[b],'rgba(193,101,255,.31)',1.6,11);}
+ const ordered=edges.slice().sort((e1,e2)=>((points[e1[0]].depth+points[e1[1]].depth)-(points[e2[0]].depth+points[e2[1]].depth)));
+ for(const [a,b,axis]of ordered){const hue=axis===3?'183,127,255':axis===2?'60,189,255':'93,255,232';line(points[a],points[b],'rgba('+hue+',.11)',8,19);line(points[a],points[b],'rgba('+hue+',.81)',1.65,10);}
+ for(const p of points){ctx.beginPath();ctx.arc(p.x,p.y,2.45,0,Math.PI*2);ctx.fillStyle='#d2fffb';ctx.shadowColor='#5affee';ctx.shadowBlur=18;ctx.fill();}
+ ctx.restore();
+ const core=ctx.createRadialGradient(width/2,height/2,1,width/2,height/2,scale*.62);core.addColorStop(0,'rgba(102,255,237,.15)');core.addColorStop(1,'rgba(102,255,237,0)');ctx.fillStyle=core;ctx.fillRect(0,0,width,height);
+}
+function frame(ms){if(!state.last)state.last=ms;const dt=Math.min(0.05,(ms-state.last)/1000);state.last=ms;if(!state.paused)state.t+=dt*(state.slow?.19:1);draw();state.raf=requestAnimationFrame(frame);}
+function sync(){buttons.toggle.textContent=state.paused?'Resume rotation':'Pause rotation';buttons.toggle.setAttribute('aria-pressed',String(state.paused));buttons.speed.textContent=state.slow?'Normal orbit':'Slow orbit';buttons.speed.setAttribute('aria-pressed',String(state.slow));buttons.shadow.textContent=state.shadow?'Shadow ON':'Shadow OFF';buttons.shadow.setAttribute('aria-pressed',String(state.shadow));document.getElementById('frameState').textContent=state.paused?'PROJECTION PAUSED':'PROJECTION ACTIVE';}
+buttons.toggle.addEventListener('click',()=>{state.paused=!state.paused;sync();draw()});buttons.speed.addEventListener('click',()=>{state.slow=!state.slow;sync()});buttons.shadow.addEventListener('click',()=>{state.shadow=!state.shadow;sync();draw()});
+if(ctx){const ro=window.ResizeObserver?new ResizeObserver(resize):null;if(ro)ro.observe(vault);else window.addEventListener('resize',resize);resize();sync();state.raf=requestAnimationFrame(frame)}
+})();
+(()=>{'use strict';const req=document.getElementById('requirements'),out=document.getElementById('output');
+async function load(){const r=await fetch('decision.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
+async function render(){const d=await load();req.textContent='';for(const item of d.required_evidence_unmet||[]){const li=document.createElement('li');li.textContent=item;req.append(li)}return d}
+document.getElementById('verify').addEventListener('click',async()=>{try{const d=await render();const ok=d.bound==='AETHER-176'&&d.phase==='XII'&&d.phase_bounds?.length===8&&d.software_protocol_progress_percent===100&&d.physical_qualification_percent===0&&d.physical_samples_authenticated===0&&d.operational_authority==='HOLD'&&d.required_evidence_unmet?.length===8;out.textContent=ok?'PASS: published decision JSON is internally consistent. Phase XII 8/8; physical qualification 0%; ACT HOLD.':'FAIL: contract mismatch. Operational authority remains HOLD.'}catch(e){out.textContent='UNVERIFIED: '+e.message+' — HOLD remains in force.'}});
+render().catch(e=>{req.textContent='Historical decision unavailable: '+e.message});
+})();
+</script>
+</body></html>
