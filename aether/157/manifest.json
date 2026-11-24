@@ -1,0 +1,20 @@
+{
+  "bound": "AETHER-157",
+  "phase": "X",
+  "status": "PASS",
+  "checks_total": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "baseline_unsafe": 1200,
+  "same_path_gated_unsafe": 0,
+  "safe_dry_run_act": 2800,
+  "physical_measurements": 0,
+  "operational_act": 0,
+  "synthetic_setup_readiness_percent": 62.5,
+  "physical_qualification_percent": 0,
+  "local_executed_source_sha256": "924bd012dbaba31647692a96744985935abbe09f7ef858abae2c67f3b529e82e",
+  "local_zip_sha256": "52bd51699a405751db46e2b5484688280528474f7e1433f31f40b64e536f8887",
+  "github_experiment": "Distinct reduced reproduction; GitHub checkout replay not independently confirmed",
+  "physical_limit": "No real pulse, physical path or calibration hardware observed"
+}
