@@ -1,0 +1,19 @@
+{
+  "bound": "AETHER-164",
+  "status": "OPEN_UNVERIFIED",
+  "instrument_serial": null,
+  "reference_serial": null,
+  "calibration_issuer": null,
+  "accreditation_evidence": null,
+  "certificate_id": null,
+  "independent_traceability_chain": null,
+  "original_physical_capture_sha256": null,
+  "physical_calibration_uncertainty": null,
+  "physical_repeatability_uncertainty": null,
+  "physical_resolution_uncertainty": null,
+  "physical_drift_uncertainty": null,
+  "empirical_coverage_samples": 0,
+  "actual_physical_samples": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD"
+}
