@@ -1,0 +1,34 @@
+{
+  "bound": "AETHER-174",
+  "phase": "XII",
+  "turn": 6,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 75,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_samples": 0,
+  "mode": "SYNTHETIC SAME-PATH UNCERTAINTY ADMISSION",
+  "local_tests": {
+    "passed": 21,
+    "total": 21,
+    "execution": "local node v22; GitHub checkout replay not verified"
+  },
+  "requirements": [
+    "DUT reference bench original source authentication",
+    "same injection port and acquisition route",
+    "challenge nonce device serial and acquisition time linkage",
+    "monotonic paired sample ordering",
+    "bounded physical response delay",
+    "independently traceable uncertainty components and externally approved tolerance",
+    "original capture hashes bound to authentic source"
+  ],
+  "uncertainty": "U = k × sqrt(u_calibration² + u_repeatability² + u_resolution² + u_drift²); require |DUT−REF|+U ≤ tolerance and |BENCH−REF|+U ≤ tolerance",
+  "notes": [
+    "Numerical agreement is not hardware evidence",
+    "Client-side flags are not trusted verifiers",
+    "No real ACT branch exists",
+    "Prior freezes preserved"
+  ],
+  "predecessor": "../173/protocol.json",
+  "watermark": ".dlw"
+}
