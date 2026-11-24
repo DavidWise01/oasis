@@ -1,0 +1,15 @@
+{
+  "bound": "AETHER-155",
+  "commissioning_status": "UNVERIFIED",
+  "dut_serial": null,
+  "reference_serial": null,
+  "raw_capture_file": null,
+  "raw_capture_sha256": null,
+  "instrument_clock_id": null,
+  "clock_synchronization_certificate": null,
+  "timestamp_origin": null,
+  "sample_counter_trace": null,
+  "independent_calibration_certificate": null,
+  "physical_samples": 0,
+  "operational_permission": "HOLD"
+}
