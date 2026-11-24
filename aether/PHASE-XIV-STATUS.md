@@ -1,0 +1,24 @@
+# AETHER Phase XIV — Original External Evidence Intake and Custody Onboarding
+
+**AETHER-185 SOURCE COMMITTED. Phase XIV software-protocol progress: 1/8 = 12.5%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority: HOLD.**
+
+Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound documentary software protocol; no physically authenticated independent source was admitted. Phase XIV introduces original external evidence intake contracts without treating mock external issuers, signed keys, or synthetic bundles as physical proof.
+
+| Turn | Planned bound | Status | Software progress |
+|---|---|---|---:|
+| 1 | 185 Original acquisition receipt and custody onboarding | **COMMITTED — synthetic intake cryptography only** | **12.5%** |
+| 2 | 186 External issuer identity and manufacturer anchor | Planned | 12.5% |
+| 3 | 187 Original acquisition byte custody with external verifier | Planned | 12.5% |
+| 4 | 188 Physical instrument, clock and challenge binding | Planned | 12.5% |
+| 5 | 189 Independent custodian and transfer receipt authentication | Planned | 12.5% |
+| 6 | 190 Blind external-source physical replay audit | Planned | 12.5% |
+| 7 | 191 Original physical response and alarm qualification | Planned | 12.5% |
+| 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 12.5% |
+
+## AETHER-185 — Original external evidence acquisition receipt
+
+- [Verification engine](185/verification.mjs) performs genuine WebCrypto SHA-256 over supplied original byte arrays and ECDSA P-256 verification of a canonical acquisition receipt against a separately supplied issuer registry key. It checks source serial and origin, challenge equality, package and intake replay, receipt time policy, declared byte length, key revocation and issuer ancestry.
+- [24-case synthetic test suite](185/test.mjs) exercises missing bytes, capture mutation, forged signatures, replayed package, wrong challenge/device, stale/future receipts, revoked issuers, self-issued roots and all four missing external trust conditions. **Test execution has not yet been confirmed from a GitHub checkout; this is a published suite, not a 24/24 runtime-pass claim.**
+- [Full 4D neon Pages-ready HTML lab](185/) retains the 16-vertex, 32-edge rotating cyan/blue/violet tesseract and offset shadow projection, motion controls and six browser fault-injection scenarios. Browser and Pages execution remain unverified.
+- [Protocol contract](185/protocol.json) preserves **physical qualification 0%** and **ACT HOLD**, irrespective of mock-key signature or locally asserted trust flags. No actual original externally verified physical capture has been supplied. A valid signature authenticates possession of a key, not an independent physically validated issuer.
+- Historical AETHER-184 and all preceding records remain unchanged. **Next AETHER-186:** independently authenticated issuer identity, manufacturer credential anchors and trust-root ancestry; physical ACT remains HOLD without real evidence. `.dlw`
