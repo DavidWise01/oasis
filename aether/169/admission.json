@@ -1,0 +1,58 @@
+{
+  "bound": "AETHER-169",
+  "phase": "XII",
+  "turn": 1,
+  "phase_turns": 8,
+  "software_protocol_coverage_percent": 12.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "admission_state": "NO_PHYSICAL_PACKAGE_SUBMITTED",
+  "preceding_freeze": "../168/decision.json",
+  "requirements": [
+    {
+      "id": "DUT",
+      "description": "original DUT manufacturer, serial, physical challenge identity",
+      "status": "MISSING"
+    },
+    {
+      "id": "REF",
+      "description": "independent reference identity, certificate, issuer registry and expiry",
+      "status": "MISSING"
+    },
+    {
+      "id": "BENCH",
+      "description": "independent bench identity, certificate, issuer registry and expiry",
+      "status": "MISSING"
+    },
+    {
+      "id": "ROOTS",
+      "description": "independent human-verified physical origin for DUT, REF, BENCH, shared-ancestry resolution",
+      "status": "MISSING"
+    },
+    {
+      "id": "CAPTURE",
+      "description": "original unmodified acquisition bytes, sample counter, SHA-256 and clock provenance",
+      "status": "MISSING"
+    },
+    {
+      "id": "PATH",
+      "description": "same-path physical injection and output measurement",
+      "status": "MISSING"
+    },
+    {
+      "id": "DRIFT",
+      "description": "original drift and alarm traces with calibrated timebase",
+      "status": "MISSING"
+    },
+    {
+      "id": "UNCERTAINTY",
+      "description": "traceable uncertainty budget and declared decision tolerances",
+      "status": "MISSING"
+    }
+  ],
+  "logic": "deny if any required field missing; structured completeness is not authentication; external credential, ancestry and original-sample verification required for qualification review",
+  "simulated_tests": "not an instrument test; no new empirical dataset",
+  "real_samples": 0,
+  "separation": "software intake completeness != real physical provenance != operational permission",
+  "watermark": ".dlw"
+}
