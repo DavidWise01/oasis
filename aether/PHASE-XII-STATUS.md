@@ -1,6 +1,6 @@
 # AETHER Phase XII — Independent Physical Evidence Admission
 
-**AETHER-174 SAME-PATH RESPONSE AND UNCERTAINTY GATE PASSED 21/21 LOCAL SYNTHETIC TESTS. Planned Phase XII software bounds: 6/8 = 75%. Empirical physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-175 DRIFT AND ALARM STRUCTURAL GATE PASSED 25/25 LOCAL SYNTHETIC CHECKS. Planned Phase XII software bounds: 7/8 = 87.5%. Empirical physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](168/decision.json); it was **not** physically qualified. Phase XII performs strict intake of independently authenticated original hardware evidence without allowing simulated signatures, synthetically separate credential strings, or shared-root witnesses to count as independent physical observations.
 
@@ -12,8 +12,17 @@ Phase XI was closed as an eight-turn software protocol sequence by [AETHER-168](
 | 4 | 172 Independent ancestry and common-root exclusion | **ACCEPTED — synthetic graph-structure checks only** | **50%** |
 | 5 | 173 Original physical acquisition digest and clock | **ACCEPTED — synthetic capture-integrity contract only** | **62.5%** |
 | 6 | 174 Same-path response and uncertainty review | **ACCEPTED — synthetic numerical tolerance gate only** | **75%** |
-| 7 | 175 Drift/alarm real trace qualification | Planned | 75% |
-| 8 | 176 Physical qualification decision / freeze | Planned | 75% |
+| 7 | 175 Drift/alarm real trace qualification | **ACCEPTED — synthetic structural gate only; no real trace** | **87.5%** |
+| 8 | 176 Physical qualification decision / freeze | Planned | 87.5% |
+
+## AETHER-175 — Original physical drift and alarm timing structural gate
+
+- [Drift/alarm verification engine](175/verification.mjs) evaluates consecutive sample counters, monotonic timestamps, bounded drift rate (change of DUT-reference residual per second), threshold-triggered alarm issuance, matching source counter, timing relative to trigger and duplicate alarm events.
+- **25/25 local synthetic checks passed**, including nonexistent trace, wrong serial/nonce/clock, malformed capture digests, unavailable policy thresholds, counter gaps, clock rollback, excessive drift, suppressed alarm, delayed alarm, pre-trigger alarm, duplicate event IDs, duplicate alarm for a trigger, unauthenticated original trace/clock/reference/alarm issuance and simulated trust-flag elevation. [Published synthetic test source](175/test.mjs) and [protocol](175/protocol.json) accompany the verifier; byte-identical GitHub checkout replay remains unverified.
+- [Neon Pages-ready oscilloscope](175/) provides selectable clean, rapid drift, suppressed alarm, late alarm, rollback and duplicate alarm scenarios. These all use generated fixture measurements. Live Pages/browser execution unverified.
+- **No original physical sensor samples, externally validated clock, trusted reference, or genuine alarm issuance receipts were obtained.** SHA-256 strings in synthetic fixtures establish neither actual captured bytes nor provenance. No client-side boolean can promote the result to physical ACT.
+- **Phase XII software: 7/8 = 87.5%. Physical qualification: 0%; operational authority: HOLD.** Prior bounds and Phase XI evidence freezes remain unchanged.
+- **Next natural bound AETHER-176:** final physical qualification decision and Phase XII documentary freeze; close software protocol at 8/8 while retaining HOLD if independent physical data is missing. `.dlw`
 
 ## AETHER-174 — Same-path response & uncertainty admission
 
