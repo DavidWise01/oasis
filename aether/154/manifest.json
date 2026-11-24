@@ -1,0 +1,24 @@
+{
+  "bound": "AETHER-154",
+  "phase": "X",
+  "status": "PASS_AFTER_VERIFIER_CORRECTION",
+  "software_readiness_percent": 25,
+  "empirical_physical_qualification_percent": 0,
+  "checks": 3200,
+  "checks_passed": 3200,
+  "episodes_per_policy": 200,
+  "decisions_per_policy": 4000,
+  "baseline_unsafe": 1200,
+  "certificate_gate_unsafe": 0,
+  "certificate_gate_safe": 2800,
+  "physical_measurements": 0,
+  "operational_act": 0,
+  "local_passed_source_sha256": "c40bf52d6a1b5ed5068d6e6967d2d25130b16cee9a62963dd354f675747e9fc7",
+  "original_failed_154a_sha256": "3825d96f8449ca353bdb9c8c06375a5955d4c6cbd2544db94b04edc652f08f78",
+  "notes": [
+    "154A failed chain verification on all 400 episodes; no unsafe guarded ACT",
+    "154 corrected hashed field inconsistency without modifying authorization gate",
+    "Real reference instrument, issuer and measurements are not authenticated",
+    "GitHub Python is separately authored demonstration, local executed code is inside evidence ZIP"
+  ]
+}
