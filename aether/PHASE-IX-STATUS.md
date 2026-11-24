@@ -1,6 +1,6 @@
 # AETHER Phase IX — Real Instrument Qualification Protocol
 
-**AETHER-150 drift and alarm characterization synthetic gate PASSED. Software readiness: 6/8 = 75%. EMPIRICAL PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
+**AETHER-151 blind adversarial intake rehearsal synthetic gate PASSED. Software readiness: 7/8 = 87.5%. EMPIRICAL PHYSICAL VALIDATION: 0% (NOT PERFORMED).**
 
 Phase IX deliberately keeps **synthetic software-protocol readiness** separate from **real physical instrument qualification**. No software result, simulated bench, mock HMAC key, acceptance counter or signature may advance the physical metric. All real-world operational permissions remain **HOLD**.
 
@@ -12,8 +12,18 @@ Phase IX deliberately keeps **synthetic software-protocol readiness** separate f
 | 4 | 148 Empirical uncertainty/coverage acceptance plan | **ACCEPTED — synthetic only** | **50%** |
 | 5 | 149 Measured same-path challenge protocol | **ACCEPTED — synthetic only** | **62.5%** |
 | 6 | 150 Drift and alarm characterization protocol | **ACCEPTED — synthetic only** | **75%** |
-| 7 | 151 Blind adversarial physical-data intake rehearsal | Planned | 75% |
-| 8 | 152 Qualification evidence freeze | Planned | 75% |
+| 7 | 151 Blind adversarial physical-data intake rehearsal | **ACCEPTED — synthetic only** | **87.5%** |
+| 8 | 152 Qualification evidence freeze | Planned | 87.5% |
+
+## AETHER-151 — Blind adversarial data intake, independent scoring boundary
+
+- Independent local synthetic audit: **240 paired episodes**, 30 seeds × eight submission scenarios × 20 ticks = **4,800 decisions per policy**. All **3,840/3,840** deterministic checks passed (replay, SHA-256 chain, order, one action, fail-closed model safety, clean availability and operational HOLD).
+- Signed-only comparator: **1,440 unsafe dry-run ACT**; blind-intake gate: **0 unsafe dry-run ACT**, **3,360 safe dry-run ACT** preserved, including **600/600 clean** and **600/600 legitimate rotation**.
+- The intake policy is not passed scenario labels, generator truth, or fault classifications. Those are retained for **post-decision test scoring** only. Mock-device/root/bench receipts, original byte hash, source root, generation, challenge nonce, counter and upper risk are validated before a dry-run action.
+- Six synthetic fault cases: missing raw evidence, replayed counter, route substitution, self-issued reference, false-but-signed reference value, and a bench acquisition with mismatched nonce. Fail closed without rewriting source evidence.
+- **Physical qualification 0%**: the supposed independent bench is a synthetic ground-truth oracle. Mock HMAC roots, generated raw records and simulation-only labels do not demonstrate that a real instrument is trustworthy. Operational permissions remain HOLD.
+- [AETHER-151 source, acceptance report, results and interactive HTML](151/) published. Exact local audit source SHA-256 `d4861612d1858ed333da70843251c24e7d40f3d14eede303afd97079f3f165a7`; the GitHub `experiment.py` is separately authored and has **not been independently executed from checkout**. Live Pages deployment remains unverified.
+- **Phase IX readiness: 7/8 = 87.5% synthetic software only; physical qualification: 0%.** Next AETHER-152: qualification evidence freeze.
 
 ## AETHER-150 — Drift/alarm characterization, bounded calibration freshness
 
