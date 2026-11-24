@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-162",
+  "status": "OPEN_UNVERIFIED",
+  "instrument": {
+    "manufacturer": null,
+    "model": null,
+    "serial": null,
+    "hardware_attestation": null
+  },
+  "reference": {
+    "manufacturer": null,
+    "model": null,
+    "serial": null,
+    "calibration_issuer": null,
+    "certificate": null,
+    "accreditation": null,
+    "root_ancestry": null
+  },
+  "physical_evidence": {
+    "original_capture_sha256": null,
+    "device_challenge_response": null,
+    "actual_sample_count": 0
+  },
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "note": "Mock registry assertions are not independently verified equipment identity."
+}
