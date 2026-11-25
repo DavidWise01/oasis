@@ -4,9 +4,9 @@
 use crate::sha256_hex;
 use serde::{Deserialize,Serialize};
 use std::collections::HashSet;
-use std::fs::{self,File,OpenOptions};
+use std::fs::{File,OpenOptions};
 use std::io::{Read,Write};
-use std::path::{Path,PathBuf};
+use std::path::Path;
 
 pub const GENESIS: &str = "AETHER-201/GENESIS";
 #[derive(Debug,Clone,Serialize,Deserialize,PartialEq,Eq)]
@@ -66,13 +66,8 @@ fn read_all(path:&Path)->Result<Vec<Entry>,String>{
  }
  Ok(entries)
 }
-struct Lock {path:PathBuf,file:File}
-impl Drop for Lock {fn drop(&mut self){let _=self.file.sync_all();let _=fs::remove_file(&self.path);}}
-fn lock(path:&Path)->Result<Lock,String>{
- let lock_path=path.with_extension("lock");
- let file=OpenOptions::new().write(true).create_new(true).open(&lock_path)
-  .map_err(|e|format!("LOCK_UNAVAILABLE_FAIL_CLOSED: {e}"))?;
- Ok(Lock{path:lock_path,file})
+fn lock(path:&Path)->Result<crate::process_liveness::Guard,String>{
+    crate::process_liveness::acquire(&path.with_extension("lock"))
 }
 fn directory_sync(path:&Path)->Result<(),String>{
  let dir=path.parent().filter(|p|!p.as_os_str().is_empty()).unwrap_or(Path::new("."));
