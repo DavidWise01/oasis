@@ -1,0 +1,36 @@
+{
+  "bound": "AETHER-205",
+  "phase": "XVI",
+  "turn": 5,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 62.5,
+  "rust_source": "../rust/src/external_custody.rs",
+  "rust_tests": "../rust/tests/external_custody.rs",
+  "authored_tests": 33,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "admission_checks": [
+    "Original checkpoint SHA-256 and ledger ID must match separately provisioned policy pins",
+    "An issuer-signed and holder-signed admission binds the exact same canonical fields",
+    "Holder, issuer and source ancestry must declare distinct root/operator/administrator control",
+    "P-256 public keys must match independently pre-pinned SHA-256 fingerprints",
+    "Revoked issuer, holder and rotation keys are rejected",
+    "Admission IDs and nonces must not be replayed",
+    "Holder key changes require a rotation record signed by a separately pinned authority",
+    "Rotation chain binds old and new holder key fingerprints, policy epoch and unique approval nonce"
+  ],
+  "limitations": [
+    "The code verifies cryptographic documentary consistency, not actual independent custody",
+    "External identity-authentication booleans and root labels are caller assertions",
+    "Independent trust pins, revocation history and authorization epochs require separate authenticated custodians",
+    "Not yet wired to AETHER-204 atomic append; independent admission will need an atomic and persistent replay ledger",
+    "No authenticated external custody holder or original physical hardware has been observed",
+    "Rust compilation, GitHub Actions and live Pages deployment remain unverified"
+  ],
+  "authenticated_external_custody_holders": 0,
+  "authenticated_original_physical_captures": 0,
+  "previous": "../204/protocol.json",
+  "phase_xv_freeze": "../200/decision.json",
+  "watermark": ".dlw"
+}
