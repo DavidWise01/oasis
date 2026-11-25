@@ -1,0 +1,78 @@
+name: UEP-211R qualification evidence
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/uep-qualification-211.yml'
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ee6c6daab80e98410965a540293041a7a8b524d8
+      - name: Toolchain
+        run: |
+          rustup toolchain install 1.85.1 --profile minimal --target wasm32-unknown-unknown
+          mkdir -p evidence/browser
+          rustc +1.85.1 -Vv > evidence/toolchain.txt
+          git rev-parse HEAD > evidence/source.txt
+      - name: Native regression
+        shell: bash
+        run: |
+          set -o pipefail
+          cargo +1.85.1 generate-lockfile --manifest-path apps/uep/rust/Cargo.toml
+          cp apps/uep/rust/Cargo.lock evidence/
+          cargo +1.85.1 test --locked --manifest-path apps/uep/rust/Cargo.toml 2>&1 | tee evidence/native.txt
+      - name: WASM build
+        run: |
+          cargo +1.85.1 build --locked --manifest-path apps/uep/rust/Cargo.toml --lib --release --target wasm32-unknown-unknown
+          cp apps/uep/rust/target/wasm32-unknown-unknown/release/oasis_uep.wasm evidence/browser/
+          cp apps/uep/UEP-209R-rust-restitution/index.html evidence/browser/
+      - name: Native ABI parity
+        shell: bash
+        run: |
+          set -o pipefail
+          node <<'JS' | tee evidence/parity.txt
+          const fs=require('fs'),assert=require('node:assert/strict');
+          (async()=>{const {instance}=await WebAssembly.instantiate(fs.readFileSync('evidence/browser/oasis_uep.wasm'),{});
+          const e=instance.exports;assert.equal(e.uep_abi_version(),209);
+          let count=0;
+          for(const v of [0n,1n,10000n,120000000000n,18446744073709551615n])for(const p of [0,1,500,999])for(const n of [0,1,500,999]){
+          const d=v*BigInt(p)*BigInt(999-n)*2050n/(999n*999n*10000n),c=d*80n/100n;
+          assert.equal(e.uep_estimate(v,p,n,0),d);assert.equal(e.uep_estimate(v,p,n,1),c);assert.equal(e.uep_estimate(v,p,n,2),d-c);count++;}
+          assert.equal(e.uep_estimate(1n,1000,0,0),-1n);
+          console.log(count+' WASM arithmetic fixtures passed');
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - name: Browser qualification
+        run: |
+          npm install --prefix /tmp/uep-browser playwright@1.51.1
+          /tmp/uep-browser/node_modules/.bin/playwright install --with-deps chromium
+          python3 -m http.server 8765 --directory evidence/browser >/tmp/uep-http.log 2>&1 &
+          node <<'JS'
+          const {chromium}=require('/tmp/uep-browser/node_modules/playwright');
+          const assert=require('node:assert/strict');
+          (async()=>{const b=await chromium.launch({headless:true});try{
+          const p=await b.newPage();await p.goto('http://localhost:8765/');
+          await p.waitForFunction(()=>document.querySelector('#status').textContent.includes('RUST WASM ACTIVE'));
+          assert.equal(await p.locator('#due').textContent(),'$20.50');
+          await p.locator('#v').fill('bad');assert.equal(await p.locator('#due').textContent(),'—');
+          await p.screenshot({path:'evidence/browser.png'});
+          const q=await b.newPage();await q.route('**/*.wasm',r=>r.abort());await q.goto('http://localhost:8765/');
+          await q.waitForFunction(()=>document.querySelector('#status').textContent.includes('HOLD')&&!document.querySelector('#status').textContent.includes('loading'));
+          assert.equal(await q.locator('#due').textContent(),'—');
+          require('fs').writeFileSync('evidence/browser-result.txt','Chromium native ABI and missing-WASM fail-closed checks passed\n');
+          }finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - name: Hash evidence
+        if: always()
+        run: |
+          if [ -d evidence ]; then find evidence -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 -r sha256sum > evidence/SHA256SUMS; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-211r-qualification
+          path: evidence/
