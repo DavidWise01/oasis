@@ -1,6 +1,6 @@
 # AETHER Phase XVI — Durable Replay Evidence & Independent Admission
 
-**AETHER-204-RS ATOMIC CHECKPOINT ADMISSION & DURABLE READBACK GATE COMMITTED. Phase XVI documentary software progress 4/8 = 50%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-205-RS EXTERNAL CUSTODY ROOT & ISSUER ADMISSION GATE COMMITTED. Phase XVI documentary software progress 5/8 = 62.5%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 software milestones were closed without any independently authenticated original physical evidence or actual alarm observations. Phase XVI shifts from multiplying synthetic gates to on-disk evidence continuity, recovery and independent external custody.
 
@@ -10,10 +10,19 @@ Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 
 | 2 | 202 OS-process lock ownership and liveness fencing | **COMMITTED — local Linux PID/starttime/boot ID verification; never automatic reclaim** | **25%** |
 | 3 | 203 Crash recovery with independent signed checkpoint | **COMMITTED — Rust externally pinned documentary checkpoint gate** | **37.5%** |
 | 4 | 204 Atomic cross-process admission and checkpoint readback | **COMMITTED — one local OS lock across checkpoint validation, append and readback** | **50%** |
-| 5 | 205 External custody root and issuer admission | Planned | 50% |
-| 6 | 206 Independent ancestral cross-check and custody transfer | Planned | 50% |
-| 7 | 207 Adversarial original evidence admission replay | Planned | 50% |
-| 8 | 208 Phase XVI software decision and documented freeze | Planned | 50% |
+| 5 | 205 External custody root and issuer admission | **COMMITTED — synthetic pinned issuer, holder and rotation gate only** | **62.5%** |
+| 6 | 206 Independent ancestral cross-check and custody transfer | Planned | 62.5% |
+| 7 | 207 Adversarial original evidence admission replay | Planned | 62.5% |
+| 8 | 208 Phase XVI software decision and documented freeze | Planned | 62.5% |
+
+## AETHER-205-RS — Pinned custody issuer, holder and independent rotation admission
+
+- [Rust external custody admission verifier](rust/src/external_custody.rs) checks real P-256 signatures from the issuer and holder over the same custody record; exact SHA-256 pins for issuer and holder public keys; original checkpoint digest; ledger ID; declared source, holder and issuer root/operator/administrator ancestry; policy epoch, replayed nonces, and revocation lists.
+- A holder-key change must carry a separately signed [rotation approval](rust/src/external_custody.rs), with old and new holder fingerprints, independent approver root/operator/administrator, a pinned rotation authority key, policy epoch, unique approval nonce and revocation checks. Otherwise rotation fails closed.
+- [33 authored Rust integration tests](rust/tests/external_custody.rs) cover two-signature consistency, shared/self-issued roots, revocation, replay, key substitution, missing external origin, forged signatures and unauthorized or recycled rotation authority. **Cargo/Actions execution remains unverified.**
+- [4D neon HTML lab](205/) retains the rotating 16-vertex/32-edge tesseract and six illustrative custody scenarios. The browser does not perform native Rust checks or external identity authentication. [Protocol](205/protocol.json) records **Phase XVI 5/8 = 62.5%**.
+- **Trust boundary:** actual issuer and holder independence is *not* authenticated by root labels or caller-set booleans. No externally authenticated custody holders or real original physical evidence have been provided. This gate is documentary only and is not yet bound atomically to the AETHER-204 append critical section. Physical qualification remains **0%**, operational ACT **HOLD**.
+- **Next AETHER-206-RS:** independent custody admission integrated with the same locked ledger write, including revocation and ancestry readback. `.dlw`
 
 ## AETHER-204-RS — One-lock checkpoint admission and fsynced readback
 
