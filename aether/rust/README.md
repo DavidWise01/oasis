@@ -59,6 +59,12 @@ The native [custody-commit module](src/custody_commit.rs) and [24 authored regre
 
 The [4D neon lab](../206/) visualizes synthetic rejection paths, but cannot run Rust or prove remote custody. Out-of-band physical issuer/holder authentication and independently persisted revocation/replay authority are **not provided**. Local atomicity is not an atomic remote custody transaction. The Rust tests and Pages deployment still require independent runtime verification. Physical qualification stays **0%** and ACT **HOLD**.
 
+## AETHER-207-RS persistent replay and revocation registry
+
+The [native authorization registry](src/authorization_registry.rs) and [41 authored Rust tests](tests/authorization_registry.rs) persist the journal head/count, consumed custody admission and signed transition IDs/nonces/digests, revocation epoch, and monotonic revoked-key set. The [AETHER-206 custody-bound append](src/custody_commit.rs) is now callable under a registry-owned, OS-verified Linux process lock; both ledger append and registry publication occur under the same lock. A signed P-256 revocation amendment separately pins revocation authority, proof ancestry and a strictly increasing epoch. The [4D neon Pages laboratory](../207/) illustrates the failure modes without executing Rust.
+
+**Important:** Ledger fsync followed by registry rename is not one atomic two-file transaction. Any interrupted write may leave divergence; the next call refuses admission until independently approved recovery. An attacker able to roll back *both* files may evade this local comparison without an externally retained checkpoint. Root enrollment and external identity authentication are not independently established. No actual original physical capture or external custody was observed; physical qualification **0%**, ACT **HOLD**. Cargo compilation, tests, Actions and live Pages deployment remain unverified.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
