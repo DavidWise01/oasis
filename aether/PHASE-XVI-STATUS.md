@@ -1,6 +1,6 @@
 # AETHER Phase XVI — Durable Replay Evidence & Independent Admission
 
-**AETHER-207-RS PERSISTENT AUTHORIZATION REPLAY & SIGNED REVOCATION EPOCH GATE COMMITTED. Phase XVI documentary software progress 7/8 = 87.5%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-208-RS PHASE XVI FINAL DOCUMENTARY QUALIFICATION FREEZE COMMITTED. Phase XVI software protocol CLOSED: 8/8 = 100%. Authenticated independent external evidence roots: 0. Authenticated original physical captures: 0. Independent remote checkpoints: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 software milestones were closed without any independently authenticated original physical evidence or actual alarm observations. Phase XVI shifts from multiplying synthetic gates to on-disk evidence continuity, recovery and independent external custody.
 
@@ -13,7 +13,17 @@ Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 
 | 5 | 205 External custody root and issuer admission | **COMMITTED — synthetic pinned issuer, holder and rotation gate only** | **62.5%** |
 | 6 | 206 Independent ancestral cross-check and custody transfer | **COMMITTED — signed exact-transition admission under one local process lock** | **75%** |
 | 7 | 207 Adversarial original evidence admission replay | **COMMITTED — persisted replay registry and signed revocation amendment** | **87.5%** |
-| 8 | 208 Phase XVI software decision and documented freeze | Planned | 87.5% |
+| 8 | 208 Phase XVI software decision and documented freeze | **CLOSED — machine-readable Rust documentary freeze; physical ACT HOLD** | **100%** |
+
+## AETHER-208-RS — Phase XVI documentary qualification decision and historical freeze
+
+- **Phase XVI software contract CLOSED: 8/8 = 100%.** This is completion of authored documentary software milestones, not independently executed Rust qualification or real-world physical authorization. Independently authenticated external evidence roots: **0**; authenticated original physical captures: **0**; independently retained remote checkpoints: **0**; physical qualification **0%**; ACT **HOLD**.
+- [Native Rust freeze evaluator](rust/src/phase_xvi_freeze.rs) checks AETHER-201–208 sequence and coverage, software closure state, unresolved evidence categories, prior Phase XV freeze, historical append-only intent, absence of physical ACT and accurate disclosures of unverified compilation/CI/browser deployment.
+- [39 authored Rust regression tests](rust/tests/phase_xvi_freeze.rs) cover the documentary readback, missing/reordered bounds, fabricated external custody, physical hardware or remote checkpoints, forged test/CI/Pages success, omission of crash-recovery gaps, claimed Git branch immutability and ACT promotion. **Actual Rust compilation and test execution remain unverified.**
+- [Machine-readable final decision](208/decision.json) and [protocol](208/protocol.json) distinguish **100% software phase progress** from **0% physical qualification**. A recorded documentary freeze is not technical immutability of a mutable Git branch.
+- [Full neon 4D HTML laboratory](208/) preserves the animated 16-vertex / 32-edge shadow tesseract and reads final decision JSON in an interactive inspection panel. It does not run Rust, verify independent physical evidence or imply the live Pages deployment was observed.
+- **Unresolved HOLD boundaries:** two-file ledger/registry update is not crash-atomic; externally held rollback anchors are absent; independent issuer/custodian origin remains unverified; revocation authority and physical alarm evidence have not been externally authenticated; the Linux lock is local, not distributed fencing. Fail-closed incident review, not automatic repair or physical ACT, remains the allowed response.
+- No AETHER-201–207 historical source is overwritten to claim new physical evidence. A new phase must begin only with explicitly declared trust and recovery requirements. `.dlw`
 
 ## AETHER-207-RS — Persistent authorization replay and signed revocation epoch
 
