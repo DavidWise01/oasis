@@ -329,3 +329,6 @@ pub mod crash_incident;
 
 /// AETHER-213-RS: signed incident custody witnesses and declared-control ancestry screening.
 pub mod custody_ancestry;
+
+/// AETHER-214-RS: cross-host signed receipt equivocation without history selection.
+pub mod cross_host_equivocation;
