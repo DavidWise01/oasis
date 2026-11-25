@@ -53,6 +53,12 @@ The native [external custody gate](src/external_custody.rs) and [33 authored reg
 
 The [animated 4D neon laboratory](../205/) illustrates six fail-closed custody cases; it does not execute native Rust or connect to a physical holder. **Signer root labels and caller authentication flags alone do not establish real-world independence.** There has been no authenticated external custody holder or physical source, and the gate is not yet wired to the same critical section as AETHER-204's durable append. Physical qualification remains **0%**, ACT **HOLD**. Cargo, CI, and live Pages validation remain separate checks.
 
+## AETHER-206-RS custody-bound atomic journal transition
+
+The native [custody-commit module](src/custody_commit.rs) and [24 authored regression tests](tests/custody_commit.rs) bind the AETHER-205 issuer and holder signatures to a separately signed canonical transition intent, which includes the exact AETHER-203 checkpoint digest, custody-admission digest, expected journal head, next sequence, event digest and each event identifier. The [AETHER-204 single-lock append](src/durable_ledger.rs) performs full hash-chain readback and fsync while the same Linux process-owned lock is held.
+
+The [4D neon lab](../206/) visualizes synthetic rejection paths, but cannot run Rust or prove remote custody. Out-of-band physical issuer/holder authentication and independently persisted revocation/replay authority are **not provided**. Local atomicity is not an atomic remote custody transaction. The Rust tests and Pages deployment still require independent runtime verification. Physical qualification stays **0%** and ACT **HOLD**.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
