@@ -136,3 +136,6 @@ pub mod browser;
 
 // UEP-216R: complete axiom-vector ABI.
 pub mod vector;
+
+// UEP-217R: persistent evidence snapshots.
+pub mod journal;
