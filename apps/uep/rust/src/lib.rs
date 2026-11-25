@@ -151,3 +151,5 @@ pub mod dividend;
 pub mod entitlement;
 
 pub mod arrears;
+
+pub mod equilibrium;
