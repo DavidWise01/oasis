@@ -275,3 +275,6 @@ pub mod intake;
 
 /// AETHER-194-RS: independently pinned manufacturer/calibration authority credentials.
 pub mod credentials;
+
+/// AETHER-195-RS: signed fresh acquisition challenge, receipt, and replay ledger.
+pub mod challenge;
