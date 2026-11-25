@@ -1,6 +1,6 @@
 # AETHER Phase XVII — External Recovery Anchors and Independently Held Evidence
 
-**AETHER-212-RS READ-ONLY THREE-STORE CRASH INCIDENT GATE COMMITTED. Phase XVII documentary software progress 4/8 = 50%. Independently authenticated remote receipts: 0. Authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-213-RS THREE-WITNESS CONTROL-ANCESTRY & SIGNED INCIDENT GATE COMMITTED. Phase XVII documentary software progress 5/8 = 62.5%. Independently authenticated remote receipts: 0. Independently authenticated physical witnesses: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 software milestones closed but original physical evidence, independent remote custody, and runtime certification unresolved. A locally valid journal and registry can be rolled back together; Phase XVII examines the need for externally anchored history and independently adjudicated recovery.
 
@@ -10,10 +10,19 @@ Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 s
 | 2 | 210 Independent anchor-receipt custody envelope and durable replay | **COMMITTED — local receipt journal, not independent external custody** | **25%** |
 | 3 | 211 Signed external-receipt refresh and nonrollback chain | **COMMITTED — monotonic predecessor and forward history; rotation checks** | **37.5%** |
 | 4 | 212 Crash recovery incident proof without automatic repair | **COMMITTED — three-store forensic inspection, never repair or ACT** | **50%** |
-| 5 | 213 Independently retained control-ancestry evidence | Planned | 50% |
-| 6 | 214 Cross-host receipt-consistency and equivocation screening | Planned | 50% |
-| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 50% |
-| 8 | 216 Phase XVII documentary software freeze | Planned | 50% |
+| 5 | 213 Independently retained control-ancestry evidence | **COMMITTED — signed three-witness documentary ancestry screening** | **62.5%** |
+| 6 | 214 Cross-host receipt-consistency and equivocation screening | Planned | 62.5% |
+| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 62.5% |
+| 8 | 216 Phase XVII documentary software freeze | Planned | 62.5% |
+
+## AETHER-213-RS — Signed incident witnesses and distinct declared control ancestry
+
+- [Rust custody-ancestry gate](rust/src/custody_ancestry.rs) links exactly **three P-256 signed observations** to the immutable SHA-256 digest of the AETHER-212 incident record and the declared source corpus. Witness signatures are checked against distinct pinned public-key fingerprints.
+- The verifier rejects the same source and witness controlling root/operator/administrator, shared roots/operators/administrators among witnesses, duplicated host IDs, reused signing key pins, copied receipt references, or missing enrollment/retention assertions. Source GitHub/0root.ai copies remain **one owned ancestry**, not independent observations.
+- The result `DOCUMENTARY_ANCESTRY_CLAIMS_CONSISTENT` means only that signatures and declared separation fields match; **different self-reported labels, platforms and signatures do not prove distinct real-world controllers or original physical witnesses**. Caller flags asserting independent enrollment/receipt custody are not independently authenticated.
+- [30 authored adversarial Rust tests](rust/tests/custody_ancestry.rs) cover a matching synthetic three-signature envelope, incident digest changes, missing/duplicated witnesses, mirrored root/operator/admin, shared hosts, substituted key pins, forged signatures, missing external enrollment and unresolved incident anomalies. **Compilation, test execution and CI results remain unverified.**
+- [Animated 4D neon laboratory](213/) preserves the rotating 16-vertex, 32-edge tesseract and illustrates six synthetic ancestry decisions. The browser does not execute Rust or authenticate physical evidence. [Protocol](213/protocol.json) records **Phase XVII 5/8 = 62.5%**, independently authenticated physical witnesses **0**, physical qualification **0%**, recovery and ACT **HOLD**.
+- **Next AETHER-214-RS:** cross-host receipt-consistency and equivocation screening where multiple separately retained copies disagree on the same sequence, without falsely treating controlled mirrors as independent witnesses. `.dlw`
 
 ## AETHER-212-RS — Read-only crash incident evidence and three-store comparison
 
