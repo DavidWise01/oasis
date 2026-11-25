@@ -1,0 +1,41 @@
+{
+  "bound": "AETHER-204",
+  "phase": "XVI",
+  "turn": 4,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 50,
+  "implementation": "Rust aether/rust/src/recovery_checkpoint.rs + aether/rust/src/durable_ledger.rs + aether/rust/src/process_liveness.rs",
+  "tests": "../rust/tests/atomic_checkpoint.rs",
+  "authored_tests": 20,
+  "physical_qualification_percent": 0,
+  "externally_authenticated_checkpoint_holders_observed": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "critical_section": [
+    "Acquire exclusive Linux process-identity lock once",
+    "Reverify matching lock record, inode, process boot ID/start ticks",
+    "Under that exact lock: read and validate complete JSONL hash chain",
+    "Under that lock: verify externally pinned checkpoint signature, ancestry and sequence",
+    "Under same lock: compare caller expected head and sequence, reject stale intervening writes",
+    "Under same lock: re-read ledger, append one event and fsync file and directory",
+    "Under same lock: read entire chain back, check committed record, revalidate lock identity, then release"
+  ],
+  "tests_scope": [
+    "Dual writer exclusion, stale count/head, competing prior writer",
+    "Valid-but-truncated journal, malformed JSON, torn tail, duplicate replay",
+    "Checkpoint digest substitution, signature forgery, absent external custody",
+    "Orphan lock fail-closed, guard path mismatch, metadata tampering, inode replacement",
+    "Accepted documentary append retains physical ACT HOLD"
+  ],
+  "remaining_limits": [
+    "No actual independently authenticated external checkpoint, issuer or hardware has been supplied",
+    "Caller-provided policy authentication booleans remain assertions; not externally proven",
+    "OS lock and path checks on mutable local directories are not a full hostile-filesystem security boundary",
+    "Independent remote readback/atomic external custody commitment not yet implemented",
+    "Crash may leave torn tail which must be adjudicated; no automatic lock takeover or repair",
+    "Native Rust compilation, CI and live Pages execution have not been independently verified"
+  ],
+  "predecessor": "../203/protocol.json",
+  "phase_xv_freeze": "../200/decision.json",
+  "watermark": ".dlw"
+}
