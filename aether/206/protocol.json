@@ -1,0 +1,32 @@
+{
+  "bound": "AETHER-206",
+  "phase": "XVI",
+  "turn": 6,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 75,
+  "rust_source": "../rust/src/custody_commit.rs",
+  "rust_tests": "../rust/tests/custody_commit.rs",
+  "authored_test_count": 24,
+  "physical_qualification_percent": 0,
+  "independently_authenticated_external_custody_holders": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "sequence": [
+    "Acquire Linux process-identity lock once",
+    "Verify locked journal history and signed AETHER-203 checkpoint",
+    "Verify AETHER-205 issuer and holder admission, revocation and ancestry",
+    "Verify separately issuer-signed and holder-signed transition intent tied to event SHA-256, checkpoint, admission, expected head, next sequence and nonce",
+    "Recheck guard, append under same guard, fsync and verify full ledger readback"
+  ],
+  "limitations": [
+    "Caller-provided authentication flags are not proof of real independent external custody",
+    "Independent external issuer, holder and trust-key enrollment is not operationally authenticated",
+    "Transition replay history and policy epochs remain supplied by caller; a separate authoritative append-only storage is needed",
+    "Local process lock cannot establish distributed transaction or atomic remote custody acceptance",
+    "No original physical capture or independently observed alarm",
+    "Cargo, tests, GitHub Actions and live Pages execution unverified"
+  ],
+  "prior": "../205/protocol.json",
+  "phase_xv_freeze": "../200/decision.json",
+  "watermark": ".dlw"
+}
