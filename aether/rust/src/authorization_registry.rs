@@ -33,7 +33,7 @@ pub struct RegistryDecision {
  pub physical_act_allowed:bool,
 }
 pub fn registry_path(ledger:&Path)->std::path::PathBuf{ledger.with_extension("registry.json")}
-fn temp_path(registry:&Path)->std::path::PathBuf{registry.with_extension("registry.pending")}
+fn temp_path(registry:&Path)->std::path::PathBuf{registry.with_extension("pending")}
 fn dir_sync(path:&Path)->Result<(),String>{
  let parent=path.parent().filter(|p|!p.as_os_str().is_empty()).unwrap_or(Path::new("."));
  File::open(parent).and_then(|f|f.sync_all()).map_err(|e|format!("DIR_SYNC: {e}"))
