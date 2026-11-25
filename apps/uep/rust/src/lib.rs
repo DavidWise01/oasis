@@ -143,3 +143,5 @@ pub mod journal;
 pub mod lifecycle;
 
 pub mod generation;
+
+pub mod capacity;
