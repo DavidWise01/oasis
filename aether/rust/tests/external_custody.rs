@@ -44,7 +44,6 @@ fn fail<F:FnOnce(&mut Packet,&mut Policy)>(reason:&str,f:F){
  assert_eq!(d.verdict,"REJECT");assert!(d.proposed_admission_id.is_none());
  assert!(!d.physical_act_allowed);assert_eq!(d.operational_authority,"HOLD");
 }
-fn re_sign(p:&mut Packet){p.issuer_signature_hex=signed(&key(71),&p.admission);p.holder_signature_hex=signed(&key(72),&p.admission);}
 fn rotate(p:&mut Packet,policy:&mut Policy){
  let previous=policy.previous_holder_key_sha256.clone();
  let new_holder=key(74);let new_jwk=jwk(&new_holder);
