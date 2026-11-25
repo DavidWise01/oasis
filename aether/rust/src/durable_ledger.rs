@@ -78,11 +78,19 @@ fn state(entries:&[Entry])->State{
  .unwrap_or_else(||GENESIS.into()),physical_act_allowed:false,operational_authority:"HOLD".into()}
 }
 pub fn inspect(path:&Path)->Result<State,String>{read_all(path).map(|v|state(&v))}
-/// An event is accepted only if both the expected head and expected sequence match.
-/// Never recovers an orphan lock by guessing process liveness or a caller-supplied flag.
+/// Normal append acquires an exclusive OS-observed process lock.
 pub fn append(path:&Path,event:Event,expected_head:&str,expected_entries:u64)->Result<State,String>{
+ let guard=lock(path)?;
+ append_under_guard(path,event,expected_head,expected_entries,&guard)
+}
+/// Called by AETHER-204 while holding the same lock used for checkpoint admission.
+/// Never acquire a second lock or silently drop the existing guard.
+pub(crate) fn append_under_guard(
+ path:&Path,event:Event,expected_head:&str,expected_entries:u64,
+ guard:&crate::process_liveness::Guard,
+)->Result<State,String>{
+ guard.verify_for(&path.with_extension("lock"))?;
  validate_event(&event)?;
- let _guard=lock(path)?;
  let old=read_all(path)?;
  let prior=state(&old);
  if prior.head_sha256!=expected_head||prior.entries!=expected_entries{return Err("STALE_HEAD".into());}
@@ -102,5 +110,6 @@ pub fn append(path:&Path,event:Event,expected_head:&str,expected_entries:u64)->R
  directory_sync(path)?;
  let rebuilt=read_all(path)?;
  if rebuilt.len()!=old.len()+1||rebuilt.last()!=Some(&next){return Err("READBACK_MISMATCH".into());}
+ guard.verify_for(&path.with_extension("lock"))?;
  Ok(state(&rebuilt))
 }
