@@ -287,3 +287,6 @@ pub mod calibration;
 
 /// AETHER-198-RS: blinded external verifier ancestry and digest gate.
 pub mod blind_verifier;
+
+/// AETHER-199-RS: dual-signed physical response and alarm observation screening.
+pub mod physical_alarm;
