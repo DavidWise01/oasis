@@ -1,6 +1,6 @@
 # AETHER Phase XVI — Durable Replay Evidence & Independent Admission
 
-**AETHER-206-RS CUSTODY-BOUND ATOMIC LEDGER TRANSITION GATE COMMITTED. Phase XVI documentary software progress 6/8 = 75%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-207-RS PERSISTENT AUTHORIZATION REPLAY & SIGNED REVOCATION EPOCH GATE COMMITTED. Phase XVI documentary software progress 7/8 = 87.5%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 software milestones were closed without any independently authenticated original physical evidence or actual alarm observations. Phase XVI shifts from multiplying synthetic gates to on-disk evidence continuity, recovery and independent external custody.
 
@@ -12,8 +12,19 @@ Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 
 | 4 | 204 Atomic cross-process admission and checkpoint readback | **COMMITTED — one local OS lock across checkpoint validation, append and readback** | **50%** |
 | 5 | 205 External custody root and issuer admission | **COMMITTED — synthetic pinned issuer, holder and rotation gate only** | **62.5%** |
 | 6 | 206 Independent ancestral cross-check and custody transfer | **COMMITTED — signed exact-transition admission under one local process lock** | **75%** |
-| 7 | 207 Adversarial original evidence admission replay | Planned | 75% |
-| 8 | 208 Phase XVI software decision and documented freeze | Planned | 75% |
+| 7 | 207 Adversarial original evidence admission replay | **COMMITTED — persisted replay registry and signed revocation amendment** | **87.5%** |
+| 8 | 208 Phase XVI software decision and documented freeze | Planned | 87.5% |
+
+## AETHER-207-RS — Persistent authorization replay and signed revocation epoch
+
+- [Native Rust authorization registry](rust/src/authorization_registry.rs) stores the exact ledger head and entry count, consumed admission and transition identifiers/nonces/intent hashes, separately pinned issuer/holder fingerprints, a monotonically increasing revocation epoch and signed revocation amendment IDs.
+- Under a **single verified Linux process lock**, it rechecks the registry against the full hash-chained ledger, adjudicates AETHER-206 signed checkpoint/custody/transition, fsyncs the journal, then publishes the updated registry via a fsynced pending file and rename with directory sync.
+- A journal/registry mismatch, corrupt registry, unauthorized revocation, stale epoch, reused authorization, or abandoned pending transaction **fails closed**. Two-file persistence is **not a single crash-atomic transaction**; after an interrupted append, the next admission is withheld pending independent adjudication.
+- A separate P-256 signed revocation amendment binds the old/new epoch, journal head, amended revoked fingerprints, and distinct revocation-authority root/operator/administrator. Revoked keys cannot be unrevoked via this interface. A caller-provided external-authentication boolean does not establish independent custody.
+- [41 authored Rust adversarial tests](rust/tests/authorization_registry.rs) cover integrated admission, persisted restart readback, replay, rollback, corrupt/missing registry, pending write, changed pins/epochs, forged and replayed revocation, separate authority and fail-closed ACT. **Compilation, tests and CI runtime are not yet independently verified.**
+- [Animated 4D neon lab](207/) preserves the rotating tesseract and shows registry failure scenarios. The browser does not run Rust or persist disk state. [Protocol](207/protocol.json) records **Phase XVI 7/8 = 87.5%**, physical qualification **0%**, operational ACT **HOLD**.
+- **Remaining limitation:** a privileged adversary can roll back the ledger and registry together absent an independently retained checkpoint; no physical acquisition or external custody root has been authenticated. Trust pin initial enrollment remains a documentary input. No distributed fencing, cross-host consensus or automatic recovery is claimed.
+- **Next AETHER-208-RS:** close Phase XVI with a machine-readable documentary freeze and explicitly record unresolved external-custody, crash-recovery and physical-evidence requirements. `.dlw`
 
 ## AETHER-206-RS — One custody admission, one exact signed journal transition
 
