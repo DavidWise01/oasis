@@ -290,3 +290,6 @@ pub mod blind_verifier;
 
 /// AETHER-199-RS: dual-signed physical response and alarm observation screening.
 pub mod physical_alarm;
+
+/// AETHER-200-RS: fail-closed Phase XV documentary freeze.
+pub mod phase_xv_freeze;
