@@ -1,0 +1,30 @@
+{
+  "bound": "AETHER-198",
+  "phase": "XV",
+  "turn": 6,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 75,
+  "rust_source": "../rust/src/blind_verifier.rs",
+  "rust_tests": "../rust/tests/blind_external.rs",
+  "authored_tests": 25,
+  "authenticated_original_hardware_captures": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "checks": [
+    "P-256 signed blinded review over SHA-256 evidence digest",
+    "Exact capture, acquisition receipt, custody manifest and calibration digest binding",
+    "Duplicate ancestry and shared source/verifier operator or administrator rejection",
+    "Independent verifier identity, physical source, calibration and custody authentication required",
+    "Replay detection using review IDs and challenge nonce",
+    "Documentary acceptance cannot enable physical ACT"
+  ],
+  "limits": [
+    "All roots and external authentication claims remain synthetic or caller supplied",
+    "No independently authenticated physical samples or blinded verifier observed",
+    "No durable external replay ledger",
+    "Rust tests, CI and GitHub Pages execution not yet verified"
+  ],
+  "previous": "../197/protocol.json",
+  "watermark": ".dlw"
+}
