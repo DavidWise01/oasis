@@ -302,3 +302,6 @@ pub mod process_liveness;
 
 /// AETHER-203-RS: externally pinned checkpoint recovery and rollback screening.
 pub mod recovery_checkpoint;
+
+/// AETHER-205-RS: independently pinned external custody issuer, holder and rotation gate.
+pub mod external_custody;
