@@ -149,3 +149,5 @@ pub mod capacity;
 pub mod dividend;
 
 pub mod entitlement;
+
+pub mod arrears;
