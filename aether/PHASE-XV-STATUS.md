@@ -1,6 +1,6 @@
 # AETHER Phase XV — Original Physical Evidence Acquisition in Rust
 
-**AETHER-195-RS SIGNED INSTRUMENT CHALLENGE AND CAPTURE REPLAY GATE COMMITTED. Phase XV software protocol: 3/8 = 37.5%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
+**AETHER-196-RS SIGNED CUSTODY EXPORT AND RECEIVER COUNTERSIGNATURE GATE COMMITTED. Phase XV software protocol: 4/8 = 50%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
 
 The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), with 8/8 software milestones and **no independently verified original physical measurements or alarms**. Phase XV moves the native Rust code toward ingestion of externally supplied acquisition evidence. Neither synthetic fixtures nor locally assigned source roles may create a physical qualification.
 
@@ -9,11 +9,20 @@ The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), wi
 | 1 | 193 Rust original-byte physical acquisition intake | **COMMITTED — synthetic Rust structural and signature gate only** | **12.5%** |
 | 2 | 194 Out-of-band manufacturer / calibration authority credential import | **COMMITTED — synthetic pinned-credential gate only** | **25%** |
 | 3 | 195 Real instrument challenge acquisition receipt and anti-replay | **COMMITTED — synthetic signed acquisition replay gate only** | **37.5%** |
-| 4 | 196 Original acquisition secure custody export and independent holder | Planned | 37.5% |
-| 5 | 197 Traceable calibration and physical timing uncertainty | Planned | 37.5% |
-| 6 | 198 External blinded verifier record and ancestry authentication | Planned | 37.5% |
-| 7 | 199 Physical response and alarm original observation qualification | Planned | 37.5% |
-| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 37.5% |
+| 4 | 196 Original acquisition secure custody export and independent holder | **COMMITTED — synthetic dual-signature custody gate only** | **50%** |
+| 5 | 197 Traceable calibration and physical timing uncertainty | Planned | 50% |
+| 6 | 198 External blinded verifier record and ancestry authentication | Planned | 50% |
+| 7 | 199 Physical response and alarm original observation qualification | Planned | 50% |
+| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 50% |
+
+## AETHER-196-RS — Signed custody export and receiver receipt
+
+- [Native Rust verifier](rust/src/custody_export.rs) binds exported original byte SHA-256, source capture receipt, predecessor hash, sender-signed manifest and receiver-signed receipt. Independent claimed ancestry, revoked keys, duplicate export/receipt/nonce and time ordering are checked.
+- [32 authored tests](rust/tests/custody_export.rs) include source-byte substitution, signature forgery, ancestry collisions, replay, altered sequence and swapped receiver. Tests were committed; execution remains unverified.
+- [4D neon Pages-ready laboratory](196/) retains the rotating 16-vertex, 32-edge shadow tesseract and illustrative faults. Live Pages unverified; no Rust executes in browser.
+- [Protocol](196/protocol.json): **Phase XV 4/8 = 50%**, original authenticated physical captures **0**, physical qualification **0%**, ACT **HOLD**.
+- A countersignature is not independently observed possession. Durable atomic replay-ledger persistence and independent physical custody remain unverified. Previous bounds unchanged.
+- **Next AETHER-197-RS:** traceable calibration and physical timing uncertainty. `.dlw`
 
 ## AETHER-195-RS — Signed acquisition challenge, capture receipt and replay screening
 
