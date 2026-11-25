@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-190",
+  "phase": "XIV",
+  "turn": 6,
+  "planned_turns": 8,
+  "software_protocol_percent": 75,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "mode": "BLINDED THREE-SOURCE SYNTHETIC REPLAY AUDIT",
+  "method": [
+    "Canonical raw-byte SHA-256 and P-256 signature verification",
+    "Review excludes applicant-supplied names and self-asserted origins",
+    "Cross-capture nonce/trial/capture ID replay checks",
+    "External registry source and verifier root, operator, administrator and physical-source ancestry comparison",
+    "No quorum; one deterministic fail-closed assessment"
+  ],
+  "limits": [
+    "Three registry entries are mock claims, not three independently verified physical instruments",
+    "Each capture must have externally authenticated device keys and source ancestry before physical admission",
+    "No original physical hardware, independently authenticated registry, or actual observed replay available",
+    "No client-supplied trust flag promotes physical ACT"
+  ],
+  "original_physical_captures_authenticated": 0,
+  "previous": "../189/protocol.json",
+  "watermark": ".dlw"
+}
