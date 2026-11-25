@@ -77,6 +77,12 @@ The [external recovery-anchor verifier](src/remote_anchor.rs) and [25 authored r
 
 The [4D neon browser laboratory](../209/) is a synthetic display and never executes Rust or contacts an external custodian. The new Rust gate is explicitly observation-only: `may_append = false`, `may_recover = false`, physical ACT false. No authentic external remote receipt or physically witnessed original evidence was supplied. The externally supplied trust pin and authentication booleans do not establish independence on their own. Cargo, tests, CI and Pages deployment remain unverified. Phase XVI's [documentary freeze](../208/decision.json) remains unchanged.
 
+## AETHER-210-RS durable local receipt custody
+
+The [receipt custody Rust module](src/receipt_custody.rs) and [25 authored integration tests](tests/receipt_custody.rs) add an append-only local JSONL receipt chain using ordered SHA-256 links, exclusive Linux process-owner lock, expected-head/sequence checks, replay protection, fsync and complete readback. Every copied receipt is tied to an AETHER-209 signed anchor, separately supplied key pins and a claimed holder/source locator. The [animated 4D neon Pages laboratory](../210/) illustrates failure decisions only; it does not execute Rust.
+
+**External evidence boundary:** a local copy of a signed remote receipt is not independently retained remote custody. The submitted `remote_receipt_sha256` is the anchor's claimed content digest, not independently fetched remote bytes. Local receipt storage is separate from the ledger's lock, and neither joint rollback nor distributed atomicity is solved. Zero remote holders or original physical captures are independently authenticated. Both `may_recover` and physical ACT remain disabled. Compilation, tests, Actions and live Pages deployment remain unverified.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
