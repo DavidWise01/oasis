@@ -1,6 +1,6 @@
 # AETHER Phase XV — Original Physical Evidence Acquisition in Rust
 
-**AETHER-197-RS TRACEABLE CALIBRATION AND CLOCK-UNCERTAINTY GATE COMMITTED. Phase XV software protocol: 5/8 = 62.5%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
+**AETHER-198-RS BLIND EXTERNAL VERIFIER GATE COMMITTED. Phase XV software protocol: 6/8 = 75%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
 
 The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), with 8/8 software milestones and **no independently verified original physical measurements or alarms**. Phase XV moves the native Rust code toward ingestion of externally supplied acquisition evidence. Neither synthetic fixtures nor locally assigned source roles may create a physical qualification.
 
@@ -11,9 +11,16 @@ The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), wi
 | 3 | 195 Real instrument challenge acquisition receipt and anti-replay | **COMMITTED — synthetic signed acquisition replay gate only** | **37.5%** |
 | 4 | 196 Original acquisition secure custody export and independent holder | **COMMITTED — synthetic dual-signature custody gate only** | **50%** |
 | 5 | 197 Traceable calibration and physical timing uncertainty | **COMMITTED — synthetic signed-calibration uncertainty gate only** | **62.5%** |
-| 6 | 198 External blinded verifier record and ancestry authentication | Planned | 62.5% |
-| 7 | 199 Physical response and alarm original observation qualification | Planned | 62.5% |
-| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 62.5% |
+| 6 | 198 External blinded verifier record and ancestry authentication | **COMMITTED — synthetic Rust blinded digest and ancestry gate only** | **75%** |
+| 7 | 199 Physical response and alarm original observation qualification | Planned | 75% |
+| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 75% |
+
+## AETHER-198-RS — Blind external verifier and ancestry qualification
+
+- [Rust blind verifier](rust/src/blind_verifier.rs) binds capture, acquisition receipt, custody and calibration digests into a P-256 signed documentary review. It rejects a verifier controlled by the source, repeated physical source ancestry, missing roots, replayed reviews and substituted evidence digests.
+- [25 authored Rust cases](rust/tests/blind_external.rs) exercise signatures, replay, shared ownership and digest binding. Rust compilation and test execution are not yet verified.
+- [Protocol](198/protocol.json) records Phase XV 6/8 = 75% software progression, physical qualification 0%, operational ACT HOLD. Caller supplied authentication booleans are not out-of-band identity proof.
+- No independent physical acquisition, external custody observation, calibration chain or verifier has been authenticated. Original Phase XIV freeze and all previous Phase XV bounds remain unchanged. `.dlw`
 
 ## AETHER-197-RS — Calibration traceability and clock uncertainty bounds
 
