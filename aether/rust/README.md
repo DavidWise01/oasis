@@ -33,6 +33,12 @@ The [Linux process-liveness guard](src/process_liveness.rs) and [20 authored Rus
 
 [The animated 4D Pages laboratory](../202/) illustrates state transitions but does not access Linux process information or run Rust. Local process identity is not independent external custody. The process-liveness implementation is Linux-only; no pidfd/distributed fencing or complete protection against hostile path mutation is claimed. Physical qualification stays 0% and ACT HOLD. Compilation and CI execution require separate verification.
 
+## AETHER-203-RS signed recovery checkpoint
+
+The [native checkpoint verifier](src/recovery_checkpoint.rs) and [25 authored integration tests](tests/recovery_checkpoint.rs) compare a locally validated ledger history to an independently pinned, ECDSA P-256 signed holder checkpoint. The exact checkpoint digest and holder public-key fingerprint must be provisioned outside the submitted evidence, or the output has no independent evidentiary authority. Truncated, deleted, forked or tampered ledger histories are rejected, as are replayed checkpoint identifiers and shared source-holder ancestry.
+
+The [4D neon laboratory](../203/) illustrates these cases without running Rust. The [ledger append integration](src/durable_ledger.rs) enforces expected-head and count compare-and-append, but checkpoint validation is performed **before** taking the OS lock; an atomic re-verification under that same lock is deferred to AETHER-204. No independent holder has yet been authenticated, no physical qualification is conferred, and ACT always remains HOLD. Cargo and Actions verification remain unconfirmed.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
