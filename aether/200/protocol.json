@@ -1,0 +1,23 @@
+{
+  "bound": "AETHER-200",
+  "phase": "XV",
+  "turn": 8,
+  "planned_turns": 8,
+  "software_protocol_percent": 100,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "mode": "RUST DOCUMENTARY DECISION FREEZE",
+  "rust_source": "../rust/src/phase_xv_freeze.rs",
+  "rust_tests": "../rust/tests/phase_xv_freeze.rs",
+  "freeze_record": "decision.json",
+  "previous": "../199/protocol.json",
+  "phase_xiv_freeze": "../192/decision.json",
+  "limitations": [
+    "No independently authenticated original physical acquisition, custody, clock, response or alarm observation was supplied",
+    "Successful software checks are not physical authority",
+    "Historical freeze is a Git commit/documentary convention, not technical branch immutability",
+    "Native Rust tests and deployment status require independent runtime confirmation"
+  ],
+  "watermark": ".dlw"
+}
