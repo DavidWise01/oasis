@@ -115,3 +115,6 @@ pub mod population;
 
 // UEP-203R: 42-Universe model estimate kernel.
 pub mod restitution;
+
+// UEP-204R: hash-linked restitution evidence.
+pub mod evidence;
