@@ -147,3 +147,5 @@ pub mod generation;
 pub mod capacity;
 
 pub mod dividend;
+
+pub mod entitlement;
