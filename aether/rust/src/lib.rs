@@ -278,3 +278,6 @@ pub mod credentials;
 
 /// AETHER-195-RS: signed fresh acquisition challenge, receipt, and replay ledger.
 pub mod challenge;
+
+/// AETHER-196-RS: signed sender export and receiver custody receipt.
+pub mod custody_export;
