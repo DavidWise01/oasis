@@ -320,3 +320,6 @@ pub mod remote_anchor;
 
 /// AETHER-210-RS: durable local receipt custody ingestion and replay screening.
 pub mod receipt_custody;
+
+/// AETHER-211-RS: forward-only remote receipt ancestry and independently signed holder rotations.
+pub mod monotonic_receipt;
