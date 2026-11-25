@@ -1,0 +1,29 @@
+{
+  "bound": "AETHER-197",
+  "phase": "XV",
+  "turn": 5,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 62.5,
+  "rust_source": "../rust/src/calibration.rs",
+  "rust_tests": "../rust/tests/calibration_uncertainty.rs",
+  "tests_authored": 22,
+  "physical_qualification_percent": 0,
+  "original_authenticated_hardware_captures": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "checks": [
+    "P-256 signed calibration",
+    "calibration and challenge UTC validity",
+    "reference chain digest and separated declared ancestry",
+    "rounded-up clock drift uncertainty",
+    "conservative threshold-straddling decision gate"
+  ],
+  "limitations": [
+    "Declared physical calibration or clock authentication is not independent metrology proof",
+    "No physical measurements have been authenticated",
+    "No ACT pathway",
+    "CI and Pages runtime unverified"
+  ],
+  "previous": "../196/protocol.json",
+  "watermark": ".dlw"
+}
