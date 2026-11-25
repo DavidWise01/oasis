@@ -311,3 +311,6 @@ pub mod custody_commit;
 
 /// AETHER-207-RS: persistent replay registry and signed revocation epochs.
 pub mod authorization_registry;
+
+/// AETHER-208-RS: Phase XVI documentary freeze with permanent physical ACT HOLD.
+pub mod phase_xvi_freeze;
