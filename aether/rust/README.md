@@ -71,6 +71,12 @@ The [Phase XVI Rust freeze evaluator](src/phase_xvi_freeze.rs) and [39 authored 
 
 The [4D neon laboratory](../208/) illustrates the documentary freeze and inspects the JSON in-browser, but does not run native Rust or independently authenticate source custody. Neither Cargo compilation, tests, GitHub Actions result nor actual Pages deployment is certified by this freeze. The ledger and registry are **two files without joint crash atomicity**, and simultaneous rollback remains undetectable without a separately held trusted checkpoint. A Git commit is a historical documentary anchor, not proof of an immutable branch or remote physical custody. Any later physical-evidence review must be a new bound with explicit independent provenance.
 
+## AETHER-209-RS independently pinned remote anchor observation
+
+The [external recovery-anchor verifier](src/remote_anchor.rs) and [25 authored regression cases](tests/remote_anchor.rs) compare the locally verified JSONL journal and authorization registry to a separately pinned, ECDSA P-256 signed checkpoint. An anchor contains the ledger sequence/head hash, the complete registry snapshot SHA-256, revocation epoch, holder/source/issuer ancestry and predecessor digest. It detects a locally consistent journal and registry that have both been truncated below an independently retained checkpoint.
+
+The [4D neon browser laboratory](../209/) is a synthetic display and never executes Rust or contacts an external custodian. The new Rust gate is explicitly observation-only: `may_append = false`, `may_recover = false`, physical ACT false. No authentic external remote receipt or physically witnessed original evidence was supplied. The externally supplied trust pin and authentication booleans do not establish independence on their own. Cargo, tests, CI and Pages deployment remain unverified. Phase XVI's [documentary freeze](../208/decision.json) remains unchanged.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
