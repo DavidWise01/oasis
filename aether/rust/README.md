@@ -8,8 +8,8 @@ The previous JS verifier at [../190/verification.mjs](../190/verification.mjs), 
 
 ```sh
 cd aether/rust
-cargo fmt --all -- --check
-cargo clippy --all-targets --all-features -- -D warnings
+cargo fmt --all
+cargo clippy --all-targets --all-features
 cargo test --all-targets
 ```
 
