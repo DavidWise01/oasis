@@ -27,6 +27,12 @@ The [native ledger](src/durable_ledger.rs) and [18 authored integration tests](t
 
 **Security limits:** An orphan lock fails closed; no authenticated process-liveness fencing yet. A torn tail is rejected, not automatically repaired. The local file can be rolled back or deleted without an independent trusted checkpoint. Fsync is not external witness custody. Physical qualification stays 0%, operational ACT stays HOLD. Compilation and CI test outcomes remain unverified.
 
+## AETHER-202-RS Linux process identity
+
+The [Linux process-liveness guard](src/process_liveness.rs) and [20 authored Rust integration tests](tests/process_liveness.rs) add OS-observed PID, `/proc` process-start ticks and kernel boot identity to the lock acquired by [AETHER-201's durable replay ledger](src/durable_ledger.rs). The guard writes fsynced mode-0600 metadata under exclusive create and refuses to release a replaced or ownership-mismatched lock. It **never automatically reclaims a lock**, even if the owner has exited.
+
+[The animated 4D Pages laboratory](../202/) illustrates state transitions but does not access Linux process information or run Rust. Local process identity is not independent external custody. The process-liveness implementation is Linux-only; no pidfd/distributed fencing or complete protection against hostile path mutation is claimed. Physical qualification stays 0% and ACT HOLD. Compilation and CI execution require separate verification.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
