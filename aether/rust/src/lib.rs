@@ -323,3 +323,6 @@ pub mod receipt_custody;
 
 /// AETHER-211-RS: forward-only remote receipt ancestry and independently signed holder rotations.
 pub mod monotonic_receipt;
+
+/// AETHER-212-RS: read-only three-store incident and crash reconciliation inspection.
+pub mod crash_incident;
