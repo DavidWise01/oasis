@@ -1,0 +1,47 @@
+name: UEP-212R native-only qualification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/uep-native-212.yml'
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ee6c6daab80e98410965a540293041a7a8b524d8
+      - name: Initialize evidence
+        run: |
+          mkdir -p evidence
+          git rev-parse HEAD > evidence/source.txt
+      - name: Compile and execute
+        shell: bash
+        run: |
+          set -o pipefail
+          rustup toolchain install 1.85.1 --profile minimal
+          rustc +1.85.1 -Vv > evidence/toolchain.txt
+          cargo +1.85.1 generate-lockfile --manifest-path apps/uep/rust/Cargo.toml
+          cp apps/uep/rust/Cargo.lock evidence/
+          cargo +1.85.1 test --locked --manifest-path apps/uep/rust/Cargo.toml 2>&1 | tee evidence/native.txt
+      - name: Validate test count
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          text=Path('evidence/native.txt').read_text()
+          rows=re.findall(r'test result: ok\. (\d+) passed; (\d+) failed; (\d+) ignored; (\d+) measured; (\d+) filtered out',text)
+          assert rows and sum(int(r[0]) for r in rows)==42, rows
+          assert all(all(int(x)==0 for x in r[1:]) for r in rows), rows
+          Path('evidence/result.txt').write_text('42 native tests passed; zero failed, ignored or filtered\n')
+          PY
+      - name: Hash evidence
+        if: always()
+        run: find evidence -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 -r sha256sum > evidence/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-212r-native
+          path: evidence/
