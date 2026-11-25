@@ -1,6 +1,6 @@
 # AETHER Phase XVII — External Recovery Anchors and Independently Held Evidence
 
-**AETHER-210-RS DURABLE LOCAL RECEIPT CUSTODY & REPLAY SCREENING COMMITTED. Phase XVII documentary software progress 2/8 = 25%. Independently authenticated remote receipts: 0. Authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-211-RS MONOTONIC RECEIPT EXTENSION & SIGNED HOLDER ROTATION GATE COMMITTED. Phase XVII documentary software progress 3/8 = 37.5%. Independently authenticated remote receipts: 0. Authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 software milestones closed but original physical evidence, independent remote custody, and runtime certification unresolved. A locally valid journal and registry can be rolled back together; Phase XVII examines the need for externally anchored history and independently adjudicated recovery.
 
@@ -8,12 +8,22 @@ Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 s
 |---|---|---|---:|
 | 1 | 209 Remote-anchor verifier and joint-rollback screening | **COMMITTED — synthetic signed anchor and ledger/registry comparison** | **12.5%** |
 | 2 | 210 Independent anchor-receipt custody envelope and durable replay | **COMMITTED — local receipt journal, not independent external custody** | **25%** |
-| 3 | 211 Signed external-receipt refresh and nonrollback chain | Planned | 25% |
-| 4 | 212 Crash recovery incident proof without automatic repair | Planned | 25% |
-| 5 | 213 Independently retained control-ancestry evidence | Planned | 25% |
-| 6 | 214 Cross-host receipt-consistency and equivocation screening | Planned | 25% |
-| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 25% |
-| 8 | 216 Phase XVII documentary software freeze | Planned | 25% |
+| 3 | 211 Signed external-receipt refresh and nonrollback chain | **COMMITTED — monotonic predecessor and forward history; rotation checks** | **37.5%** |
+| 4 | 212 Crash recovery incident proof without automatic repair | Planned | 37.5% |
+| 5 | 213 Independently retained control-ancestry evidence | Planned | 37.5% |
+| 6 | 214 Cross-host receipt-consistency and equivocation screening | Planned | 37.5% |
+| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 37.5% |
+| 8 | 216 Phase XVII documentary software freeze | Planned | 37.5% |
+
+## AETHER-211-RS — Monotonic receipt history and independent holder-rotation screening
+
+- [Rust forward-extension module](rust/src/monotonic_receipt.rs) requires every subsequent receipt to bind the **exact SHA-256 digest of the previous anchor**, increase the ledger entry count, change the ledger head digest, and retain a nondecreasing registry revocation epoch. Source and issuer root/operator/administrator ancestry may not silently change. A later timestamp alone never proves forward progression.
+- Changes to holder identity, ancestry or pinned key require a separately signed P-256 [rotation record](rust/src/monotonic_receipt.rs) bound to old/new anchor digests, old/new holder identity and fingerprints, independent rotation authority ancestry and a unique authorization nonce. Independent authority key pin and external-origin qualification are required as documentary inputs; no self-declared real-world independence is accepted as proof.
+- The [receipt custody module](rust/src/receipt_custody.rs) now offers `ingest_monotonic`, invoking extension checks **inside its existing exclusive Linux process-owned lock**, before existing signed-anchor screening, append, fsync and full journal readback. Earlier `ingest` remains available for historical compatibility; use the new function for forward-chain enforcement.
+- [25 authored Rust regression tests](rust/tests/monotonic_receipt.rs) cover valid synthetic successor, broken predecessor, older head/sequence, regressed revocation epoch, source/issuer ancestry substitution, changed holder, invalid or replayed rotation, rotation authority pin or signature forgery, and locked first-receipt/replay acceptance. **Cargo compilation, test execution and CI results remain unverified.**
+- [Neon 4D GitHub Pages-ready lab](211/) retains the 16-vertex/32-edge tesseract and illustrates six synthetic forward-chain decisions. The browser neither executes Rust nor authenticates real remote custody. [Protocol](211/protocol.json) records **Phase XVII 3/8 = 37.5%**, physical qualification **0%**, operational ACT **HOLD**.
+- **Limits:** real independent external receipts and rotation authority are unverified; rotation replay policy sets remain supplied instead of independently persisted; receipt and evidence journals use different locks and do not have distributed atomicity. Original physical acquisition remains unobserved and no recovery/physical ACT is authorized.
+- **Next AETHER-212-RS:** crash recovery incident proof and ordered two-store reconciliation **without** automatic repair or privilege escalation. `.dlw`
 
 ## AETHER-210-RS — Durable local receipt custody and replay screening
 
