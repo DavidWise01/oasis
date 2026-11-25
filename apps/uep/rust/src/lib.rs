@@ -118,3 +118,6 @@ pub mod restitution;
 
 // UEP-204R: hash-linked restitution evidence.
 pub mod evidence;
+
+// UEP-205R: independent restitution accounting bridge.
+pub mod bridge;
