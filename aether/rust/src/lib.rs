@@ -263,3 +263,6 @@ pub fn assess(packet: &Packet, policy: &Policy) -> AuditResult {
         physical_act_allowed: false,
     }
 }
+
+/// AETHER-191-RS: physical-response/alarm documentary evidence gate.
+pub mod alarm;
