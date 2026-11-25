@@ -21,6 +21,12 @@ The native [Phase XV freeze evaluator](src/phase_xv_freeze.rs) and [30 authored 
 
 The [animated 4D Pages laboratory](../200/) displays the JSON and illustrates the freeze. It does not execute the Rust crate. Runtime compilation and GitHub Actions pass status remain unverified. A Git branch is not inherently immutable and the freeze is a documented historical decision, not external physical evidence.
 
+## AETHER-201-RS local durable replay ledger
+
+The [native ledger](src/durable_ledger.rs) and [18 authored integration tests](tests/durable_ledger.rs) add a local JSON Lines SHA-256 chain, exclusive lock-file writer arbitration, append-and-fsync, directory sync, recovery readback, stale-head rejection, and event/nonce/capture/review/payload replay screening. The [4D neon Pages laboratory](../201/) visualizes failure states but does not persist data or execute Rust.
+
+**Security limits:** An orphan lock fails closed; no authenticated process-liveness fencing yet. A torn tail is rejected, not automatically repaired. The local file can be rolled back or deleted without an independent trusted checkpoint. Fsync is not external witness custody. Physical qualification stays 0%, operational ACT stays HOLD. Compilation and CI test outcomes remain unverified.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
