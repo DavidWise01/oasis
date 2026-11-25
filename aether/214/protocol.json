@@ -1,0 +1,34 @@
+{
+  "bound": "AETHER-214",
+  "phase": "XVII",
+  "turn": 6,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 75,
+  "rust_source": "../rust/src/cross_host_equivocation.rs",
+  "rust_tests": "../rust/tests/cross_host_equivocation.rs",
+  "authored_regression_tests": 30,
+  "physical_qualification_percent": 0,
+  "independently_authenticated_external_witnesses": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "checks": [
+    "Three separately pinned ECDSA P-256 signed documentary host receipt envelopes",
+    "Same-ledger, same-sequence head and predecessor conflicts remain explicit forks",
+    "Same-sequence registry hash or epoch discrepancies remain visible",
+    "Adjacent-sequence mismatched predecessor and decreased registry epoch are preserved as conflicts",
+    "Repeated host, declared root, operator, administrator or signing key treated as shared ancestry",
+    "Owned GitHub and 0root.ai mirrors count as one ancestry, not independent observations",
+    "No clock-time or majority voting may resolve conflicting signed claims"
+  ],
+  "limitations": [
+    "Remote host identity and external custody are not independently authenticated by this software",
+    "Caller-provided enrolled and retained flags are assertions not verified evidence",
+    "Three signatures cannot prove separate ultimate real-world controllers",
+    "This module makes no network request and cannot independently retrieve signed remote receipts",
+    "No fork is repaired, selected or used for operational authorization",
+    "Rust compilation, test execution, Actions and live Pages deployment unverified"
+  ],
+  "prior": "../213/protocol.json",
+  "freeze": "../208/decision.json",
+  "watermark": ".dlw"
+}
