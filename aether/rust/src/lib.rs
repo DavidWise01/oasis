@@ -293,3 +293,6 @@ pub mod physical_alarm;
 
 /// AETHER-200-RS: fail-closed Phase XV documentary freeze.
 pub mod phase_xv_freeze;
+
+/// AETHER-201-RS: durable local append/recovery and replay detection.
+pub mod durable_ledger;
