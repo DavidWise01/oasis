@@ -281,3 +281,6 @@ pub mod challenge;
 
 /// AETHER-196-RS: signed sender export and receiver custody receipt.
 pub mod custody_export;
+
+/// AETHER-197-RS: signed calibration uncertainty gate.
+pub mod calibration;
