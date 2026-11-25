@@ -110,6 +110,31 @@ fn directory_sync(path:&Path)->Result<(),String>{
 pub struct Guard {path:PathBuf,file:File,owner:Owner,released:bool}
 impl Guard{
     pub fn owner(&self)->&Owner{&self.owner}
+    /// Reaffirm the exact owned lock and its current OS process identity.
+    /// Caller must keep Guard alive throughout every protected filesystem operation.
+    pub fn verify_for(&self, expected:&Path)->Result<(),String>{
+        if self.released || self.path!=expected{return Err("LOCK_GUARD_NOT_FOR_LEDGER".into());}
+        let actual=fs::read(&self.path).map_err(|e|format!("LOCK_READ: {e}"))?;
+        let recorded:Owner=serde_json::from_slice(&actual)
+            .map_err(|_|"LOCK_METADATA_CHANGED")?;
+        if recorded!=self.owner{return Err("LOCK_OWNER_CHANGED".into());}
+        #[cfg(unix)]
+        {
+            use std::os::unix::fs::MetadataExt;
+            let held=self.file.metadata().map_err(|e|format!("FD_STAT: {e}"))?;
+            let on_disk=fs::symlink_metadata(&self.path).map_err(|e|format!("PATH_STAT: {e}"))?;
+            if held.ino()!=on_disk.ino()||held.dev()!=on_disk.dev(){
+                return Err("LOCK_FILE_REPLACED".into());
+            }
+        }
+        #[cfg(target_os="linux")]
+        {
+            if inspect(&self.path).state!=Liveness::Alive{
+                return Err("LOCK_OWNER_NO_LONGER_OS_VERIFIED".into());
+            }
+        }
+        Ok(())
+    }
     pub fn release(&mut self)->Result<(),String>{
         if self.released{return Ok(());}
         // Metadata tampering or replacement leaves the lock in place for
