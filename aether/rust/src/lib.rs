@@ -266,3 +266,6 @@ pub fn assess(packet: &Packet, policy: &Policy) -> AuditResult {
 
 /// AETHER-191-RS: physical-response/alarm documentary evidence gate.
 pub mod alarm;
+
+/// AETHER-192-RS: fail-closed Phase XIV documentary qualification freeze.
+pub mod freeze;
