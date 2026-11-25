@@ -1,6 +1,6 @@
 # AETHER Phase XVII — External Recovery Anchors and Independently Held Evidence
 
-**AETHER-213-RS THREE-WITNESS CONTROL-ANCESTRY & SIGNED INCIDENT GATE COMMITTED. Phase XVII documentary software progress 5/8 = 62.5%. Independently authenticated remote receipts: 0. Independently authenticated physical witnesses: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-214-RS CROSS-HOST RECEIPT EQUIVOCATION & FORK DETECTION COMMITTED. Phase XVII documentary software progress 6/8 = 75%. Independently authenticated remote receipts: 0. Independently authenticated physical witnesses: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 software milestones closed but original physical evidence, independent remote custody, and runtime certification unresolved. A locally valid journal and registry can be rolled back together; Phase XVII examines the need for externally anchored history and independently adjudicated recovery.
 
@@ -11,9 +11,18 @@ Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 s
 | 3 | 211 Signed external-receipt refresh and nonrollback chain | **COMMITTED — monotonic predecessor and forward history; rotation checks** | **37.5%** |
 | 4 | 212 Crash recovery incident proof without automatic repair | **COMMITTED — three-store forensic inspection, never repair or ACT** | **50%** |
 | 5 | 213 Independently retained control-ancestry evidence | **COMMITTED — signed three-witness documentary ancestry screening** | **62.5%** |
-| 6 | 214 Cross-host receipt-consistency and equivocation screening | Planned | 62.5% |
-| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 62.5% |
-| 8 | 216 Phase XVII documentary software freeze | Planned | 62.5% |
+| 6 | 214 Cross-host receipt-consistency and equivocation screening | **COMMITTED — signed forks preserved, shared ancestry rejected** | **75%** |
+| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 75% |
+| 8 | 216 Phase XVII documentary software freeze | Planned | 75% |
+
+## AETHER-214-RS — Signed cross-host fork detection and declared control ancestry
+
+- [Rust cross-host verifier](rust/src/cross_host_equivocation.rs) compares exactly three signed documentary host receipts against pre-pinned P-256 public keys and claimed source/host control ancestry. Same-ledger, same-sequence differences in head digest, predecessor SHA-256, registry snapshot or epoch are preserved as explicit conflict records. Adjacent-sequence predecessor mismatches and epoch rewind are also recorded.
+- A distinct host name or platform does not establish independence. Source and witness mirrors, duplicate witness IDs, shared roots/operators/administrators, repeated hosts/keys and unavailable externally enrolled custody are screened. Owned GitHub and 0root.ai remain one ancestry; even different signing keys can share an ultimate controller.
+- [30 authored Rust adversarial tests](rust/tests/cross_host_equivocation.rs) cover signed same-sequence forks, predecessor and registry contradictions, timestamps, shared identities, key substitutions, forgery, duplicate pinned witnesses, adjacent-sequence forks and epoch rewind. Rust compilation, test execution and GitHub Actions remain unverified.
+- [Animated 4D neon lab](214/) retains the tesseract and illustrates six static synthetic scenarios; it does not contact hosts or execute Rust. [Protocol](214/protocol.json) records **Phase XVII 6/8 = 75%**, independently authenticated external witnesses **0**, physical qualification **0%**, ACT **HOLD**.
+- **Trust boundary:** a consensus of declared signatures is not proof of independently controlled originals. The gate reports and retains conflicting receipt IDs; it never votes away forks, chooses a history, authorizes recovery or operational ACT.
+- **Next AETHER-215-RS:** adversarial cross-host custody and recovery qualification with independently verified custody origin requirements; preserve every unresolved conflict. `.dlw`
 
 ## AETHER-213-RS — Signed incident witnesses and distinct declared control ancestry
 
