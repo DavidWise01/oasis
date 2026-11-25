@@ -1,6 +1,6 @@
 # AETHER Phase XVI — Durable Replay Evidence & Independent Admission
 
-**AETHER-203-RS INDEPENDENTLY PINNED SIGNED RECOVERY CHECKPOINT GATE COMMITTED. Phase XVI documentary software progress 3/8 = 37.5%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-204-RS ATOMIC CHECKPOINT ADMISSION & DURABLE READBACK GATE COMMITTED. Phase XVI documentary software progress 4/8 = 50%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 software milestones were closed without any independently authenticated original physical evidence or actual alarm observations. Phase XVI shifts from multiplying synthetic gates to on-disk evidence continuity, recovery and independent external custody.
 
@@ -9,11 +9,21 @@ Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 
 | 1 | 201 Durable append-only replay ledger and fail-closed recovery | **COMMITTED — local Rust ledger, tests authored** | **12.5%** |
 | 2 | 202 OS-process lock ownership and liveness fencing | **COMMITTED — local Linux PID/starttime/boot ID verification; never automatic reclaim** | **25%** |
 | 3 | 203 Crash recovery with independent signed checkpoint | **COMMITTED — Rust externally pinned documentary checkpoint gate** | **37.5%** |
-| 4 | 204 Atomic cross-process admission and checkpoint readback | Planned | 37.5% |
-| 5 | 205 External custody root and issuer admission | Planned | 37.5% |
-| 6 | 206 Independent ancestral cross-check and custody transfer | Planned | 37.5% |
-| 7 | 207 Adversarial original evidence admission replay | Planned | 37.5% |
-| 8 | 208 Phase XVI software decision and documented freeze | Planned | 37.5% |
+| 4 | 204 Atomic cross-process admission and checkpoint readback | **COMMITTED — one local OS lock across checkpoint validation, append and readback** | **50%** |
+| 5 | 205 External custody root and issuer admission | Planned | 50% |
+| 6 | 206 Independent ancestral cross-check and custody transfer | Planned | 50% |
+| 7 | 207 Adversarial original evidence admission replay | Planned | 50% |
+| 8 | 208 Phase XVI software decision and documented freeze | Planned | 50% |
+
+## AETHER-204-RS — One-lock checkpoint admission and fsynced readback
+
+- [Rust recovery checkpoint](rust/src/recovery_checkpoint.rs) now acquires the verified Linux process-owner lock **before** reading ledger history, evaluating the pinned holder-signed checkpoint or comparing the expected head and sequence.
+- [Durable ledger](rust/src/durable_ledger.rs) exposes a guarded append internal API. The **same guard** is retained through replay screening, byte append, file `sync_all`, parent directory sync, complete journal readback and record identity verification. Ordinary durable appends retain their own exclusive lock acquisition.
+- [Process identity verifier](rust/src/process_liveness.rs) now offers `verify_for` for a specific lock path. It checks recorded owner metadata and inode identity and rechecks Linux OS liveness before and after the protected operation. An invalidated guard never authorizes lock seizure.
+- [20 authored Rust regression tests](rust/tests/atomic_checkpoint.rs) cover the intended successful documentary append and readback, competing writers, stale counts and heads, an intervening writer, truncated/corrupt/torn history, replay, forged checkpoint, missing custody, malformed lock and owner/inode mutation. **Cargo compilation, all regression execution and GitHub Actions status are not independently verified.**
+- [Animated 4D neon lab](204/) preserves the 16-vertex, 32-edge shadow tesseract and illustrates six admission outcomes; it cannot execute Rust or validate external custody. [Protocol](204/protocol.json) records **Phase XVI 4/8 = 50%**, physical qualification **0%**, operational ACT **HOLD**.
+- **Remaining limitations:** externally authenticated checkpoint custody and remote readback have not been supplied; caller policy booleans are not independent proof. A mutable hostile directory or remote filesystem is beyond this local guard. Torn journal tails remain fail-closed and require controlled recovery. No physical ACT, lock reclamation, or operational promotion is allowed.
+- **Next AETHER-205-RS:** external holder identity/root admission and independent custody-proof verification, rather than additional synthetic self-issued certificates. `.dlw`
 
 ## AETHER-203-RS — Signed independent recovery checkpoint and rollback detection
 
