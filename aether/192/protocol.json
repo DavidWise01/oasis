@@ -1,0 +1,22 @@
+{
+  "bound": "AETHER-192",
+  "phase": "XIV",
+  "turn": 8,
+  "planned_turns": 8,
+  "software_protocol_percent": 100,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "mode": "NATIVE RUST DOCUMENTARY QUALIFICATION DECISION",
+  "rust_source": "../rust/src/freeze.rs",
+  "rust_tests": "../rust/tests/freeze_decision.rs",
+  "freeze_record": "decision.json",
+  "conclusion": "Software protocol closed; physical qualification denied absent externally authenticated original physical evidence",
+  "limitations": [
+    "Historical freeze is documentary, not GitHub technical immutability",
+    "Rust tests demonstrate machine-readable contract consistency, not real physical hardware",
+    "No signed or authenticated physical alarm or measured original source provided"
+  ],
+  "previous": "../191/protocol.json",
+  "watermark": ".dlw"
+}
