@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-208",
+  "phase": "XVI",
+  "turn": 8,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 100,
+  "phase_state": "CLOSED_DOCUMENTARY_SOFTWARE_PROTOCOL",
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "rust_source": "../rust/src/phase_xvi_freeze.rs",
+  "rust_tests": "../rust/tests/phase_xvi_freeze.rs",
+  "freeze_decision": "decision.json",
+  "preserved_prior": "../207/protocol.json",
+  "previous_phase": "../200/decision.json",
+  "limitations": [
+    "Local journal and registry are two files without a crash-atomic joint commit",
+    "A privileged actor can jointly roll back both files absent external checkpoint readback",
+    "Independent key-pinning and holder/issuer origin authentication are not operationally demonstrated",
+    "Caller-declared evidence-control ancestry is not independent real-world observation",
+    "Authenticated remote revocation and checkpoint custody are not independently witnessed",
+    "Linux local lock identity does not provide distributed fencing or hostile-directory safety",
+    "No authenticated original physical captures or physically witnessed alarm occurrence",
+    "Cargo compilation, complete test run, CI result and actual Pages execution remain unverified"
+  ],
+  "watermark": ".dlw"
+}
