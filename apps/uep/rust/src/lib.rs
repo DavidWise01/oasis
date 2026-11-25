@@ -145,3 +145,5 @@ pub mod lifecycle;
 pub mod generation;
 
 pub mod capacity;
+
+pub mod dividend;
