@@ -39,6 +39,14 @@ The [native checkpoint verifier](src/recovery_checkpoint.rs) and [25 authored in
 
 The [4D neon laboratory](../203/) illustrates these cases without running Rust. The [ledger append integration](src/durable_ledger.rs) enforces expected-head and count compare-and-append, but checkpoint validation is performed **before** taking the OS lock; an atomic re-verification under that same lock is deferred to AETHER-204. No independent holder has yet been authenticated, no physical qualification is conferred, and ACT always remains HOLD. Cargo and Actions verification remain unconfirmed.
 
+## AETHER-204-RS atomic checkpoint admission under one process-owned lock
+
+The [signed recovery gate](src/recovery_checkpoint.rs) and [durable ledger](src/durable_ledger.rs) now hold **one verified OS-owned Linux lock** through complete checkpoint-history revalidation, expected-head admission, fsynced append, full JSONL readback, and committed-record verification. The [lock guard](src/process_liveness.rs) rechecks lock-file owner identity, inode and kernel-observed process identity before and after the critical operation.
+
+[20 authored Rust regression tests](tests/atomic_checkpoint.rs) cover lock contention, stale head, intervening writes, torn/corrupted/truncated history, replay, forged checkpoint evidence, and lock-file tampering. The [4D neon laboratory](../204/) is a browser visualization; it does not run Rust or authenticate external custody.
+
+This strengthens local atomicity but does not implement remote checkpoint storage or an authenticated independent holder. It is not a defense against every hostile directory race or distributed filesystem operation, and cannot authorize lock reclamation or physical ACT. Physical qualification remains **0%**; operational authority **HOLD**. Cargo, CI and Pages live execution remain unverified.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
