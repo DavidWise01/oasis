@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-207",
+  "phase": "XVI",
+  "turn": 7,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 87.5,
+  "rust_source": "../rust/src/authorization_registry.rs",
+  "rust_tests": "../rust/tests/authorization_registry.rs",
+  "authored_tests": 41,
+  "physical_qualification_percent": 0,
+  "externally_authenticated_original_physical_captures": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "checks": [
+    "Persistent same-directory JSON registry binds ledger head digest and count to consumed custody and transition IDs/nonces/intent digests",
+    "Initial registry enrollment requires externally provisioned issuer and holder key fingerprints and epoch, but independently authenticated sources are not available",
+    "Registry inspection and custody append take one Linux process-owned exclusive lock and reject missing, corrupt, stale or pending registry states",
+    "Signed revocation amendment requires separately pre-pinned P-256 authority, root/operator/admin separation, strictly increasing epoch and monotonic key revocations",
+    "Journal is appended/fsynced/read back under lock; registry temp file is fsynced and atomically renamed with directory fsync under same lock",
+    "An interrupted two-file journal/registry update will block subsequent admission until independently adjudicated rather than silently reset consumed history"
+  ],
+  "limitations": [
+    "Not an atomic two-file transaction; crashes can leave journal and registry divergent; subsequent admission is refused but no automatic recovery exists",
+    "Both local files can be jointly rolled back by a hostile administrator without independently retained external checkpoint",
+    "Revocation approvals still depend on externally provisioned pins and a caller-supplied authenticity flag, which does not prove real-world independence",
+    "Registry file and lock paths require trusted local directory; no distributed/quorum or cross-host fencing",
+    "Signed rotation, revocation and replay control remains documentary and no authenticated original physical evidence has been supplied",
+    "Authored Rust tests, GitHub Actions success and live Pages execution unverified"
+  ],
+  "predecessor": "../206/protocol.json",
+  "phase_xv_freeze": "../200/decision.json",
+  "watermark": ".dlw"
+}
