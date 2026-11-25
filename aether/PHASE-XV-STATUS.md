@@ -1,6 +1,6 @@
 # AETHER Phase XV — Original Physical Evidence Acquisition in Rust
 
-**AETHER-198-RS BLIND EXTERNAL VERIFIER GATE COMMITTED. Phase XV software protocol: 6/8 = 75%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
+**AETHER-199-RS DUAL-SIGNED PHYSICAL RESPONSE AND ALARM OBSERVER GATE COMMITTED. Phase XV software protocol: 7/8 = 87.5%. Authenticated original physical captures: 0; independently witnessed physical alarms: 0. Physical qualification: 0%. Operational authority HOLD.**
 
 The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), with 8/8 software milestones and **no independently verified original physical measurements or alarms**. Phase XV moves the native Rust code toward ingestion of externally supplied acquisition evidence. Neither synthetic fixtures nor locally assigned source roles may create a physical qualification.
 
@@ -12,8 +12,17 @@ The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), wi
 | 4 | 196 Original acquisition secure custody export and independent holder | **COMMITTED — synthetic dual-signature custody gate only** | **50%** |
 | 5 | 197 Traceable calibration and physical timing uncertainty | **COMMITTED — synthetic signed-calibration uncertainty gate only** | **62.5%** |
 | 6 | 198 External blinded verifier record and ancestry authentication | **COMMITTED — synthetic Rust blinded digest and ancestry gate only** | **75%** |
-| 7 | 199 Physical response and alarm original observation qualification | Planned | 75% |
-| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 75% |
+| 7 | 199 Physical response and alarm original observation qualification | **COMMITTED — synthetic dual-signed alarm observation gate only** | **87.5%** |
+| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 87.5% |
+
+## AETHER-199-RS — Original physical response and independent alarm observation screening
+
+- [Rust physical-response and alarm verifier](rust/src/physical_alarm.rs) checks independent ECDSA P-256 signatures over the response and observer's alarm records, a digest of the exact response bound into the alarm, original capture and calibration SHA-256, challenge identity, timing and response tolerance.
+- It rejects reviewer ancestry shared with the original source, replayed response or alarm IDs and nonces, forged signatures, substituted captures, simulated alarm states, missing external authentication and timing inconsistencies.
+- [30 authored Rust regression tests](rust/tests/physical_alarm_observation.rs) cover synthetic signature verification and false physical-trust escalation as well as rejection paths. The tests were committed but **Cargo execution and CI success remain unverified**.
+- [Full 4D neon Pages-ready lab](199/) preserves the moving 16-vertex / 32-edge tesseract and projected shadow, with browser demonstrations of six alarm failure cases. Browser HTML does not run compiled Rust or establish an actual hardware observation.
+- [Protocol](199/protocol.json) records **Phase XV 7/8 = 87.5% software**, authenticated original physical responses **0**, independently verified physical alarm observations **0**, physical qualification **0%**, ACT **HOLD**.
+- A signed declaration of a physical alarm is not evidence that a real alarm actually sounded. Historical Phase XIV freeze and previous Phase XV modules remain unchanged. **Next AETHER-200-RS:** final documentary qualification decision and Phase XV freeze. `.dlw`
 
 ## AETHER-198-RS — Blind external verifier and ancestry qualification
 
