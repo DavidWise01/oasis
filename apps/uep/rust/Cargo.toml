@@ -6,3 +6,6 @@ publish = false
 
 [dependencies]
 sha2 = "=0.10.9"
+
+[lib]
+crate-type = ["rlib", "cdylib"]
