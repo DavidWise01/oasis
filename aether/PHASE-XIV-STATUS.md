@@ -1,6 +1,6 @@
 # AETHER Phase XIV — Original External Evidence Intake and Custody Onboarding
 
-**AETHER-190 BLIND EXTERNAL-SOURCE REPLAY AUDIT COMMITTED. Phase XIV software-protocol progress: 6/8 = 75%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-191 RUST PHYSICAL-RESPONSE AND ALARM-EVIDENCE SCREENING COMMITTED. Phase XIV software-protocol progress: 7/8 = 87.5%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound documentary software protocol; no physically authenticated independent source was admitted. Phase XIV introduces original external evidence intake contracts without treating mock external issuers, signed keys, or synthetic bundles as physical proof.
 
@@ -12,8 +12,8 @@ Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound document
 | 4 | 188 Physical instrument, clock and challenge binding | **COMMITTED — synthetic signed calibration and acquisition gate only** | **50%** |
 | 5 | 189 Independent custodian and transfer receipt authentication | **COMMITTED — synthetic dual-custodian handoff gate only** | **62.5%** |
 | 6 | 190 Blind external-source physical replay audit | **COMMITTED — synthetic blind replay and ancestry audit only** | **75%** |
-| 7 | 191 Original physical response and alarm qualification | Planned | 75% |
-| 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 75% |
+| 7 | 191 Original physical response and alarm qualification | **COMMITTED — Rust synthetic response/alarm gate only** | **87.5%** |
+| 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 87.5% |
 
 ## Rust migration — AETHER-RS-001 (2026-11-25)
 
@@ -22,6 +22,14 @@ Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound document
 - [GitHub Actions workflow](../.github/workflows/aether-rust.yml) installs stable Rust and runs formatting normalization, Clippy and Cargo tests on push/PR/manual dispatch. **No Rust toolchain was available in this assistant environment; test execution and GitHub Actions result are not yet verified.**
 - The existing AETHER-185–190 JavaScript source and GitHub Pages 4D labs are preserved unchanged. Future verification work can use Rust; browser integration requires a separate compiled WebAssembly bridge.
 - This is a software-language migration, **not a new Phase XIV bound**: software phase progress remains **6/8 = 75%**, physical qualification **0%**, ACT **HOLD**. `.dlw`
+
+## AETHER-191-RS — Original physical response and alarm documentary screening
+
+- [Native Rust alarm verifier](rust/src/alarm.rs) binds original capture SHA-256 and P-256 signature verification to claimed device/reference identity, acquisition nonce, calibration digest, separately declared roots, reported response and tolerance, issued-alarm event and acknowledgement timestamps. It detects replay, substitutions and excessive observation/issuance/acknowledgement delays.
+- [28 authored Rust integration tests](rust/tests/alarm_response.rs) cover signed synthetic baseline, false trust escalation, capture substitution, signature forgery, device/reference switching, challenge/capture mismatch, alarm replay, missing ACK, tolerance failure, alarm chronology and authentication failures. **Runtime execution and GitHub Actions success have not been independently verified.**
+- [Full 4D neon HTML dashboard](191/) retains the rotating cyan/blue/violet tesseract and shadow with six illustrative alarm scenarios. The browser visualization explicitly does **not** execute Rust or assert actual hardware observation. Future WASM integration would be a separate task.
+- [Protocol](191/protocol.json) records **Phase XIV 7/8 = 87.5%** of documentary software milestones. Real authenticated physical source captures **0**, physical qualification **0%**, operational **HOLD**.
+- All preceding AETHER-184–190 records remain intact. **Next AETHER-192-RS:** close Phase XIV with a Rust-validated documentary decision and evidence freeze, never authorizing ACT absent original independent physical evidence. `.dlw`
 
 ## AETHER-190 — Blind external-source replay audit
 
