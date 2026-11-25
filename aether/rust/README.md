@@ -103,6 +103,12 @@ The [Rust witness-ancestry evaluator](src/custody_ancestry.rs) and [30 authored 
 
 The [AETHER-213 neon 4D lab](../213/) is an illustrative HTML display, not a cryptographic execution environment. The documentary verdict does not certify independent remote control, original physical capture or independently retained external witnesses. GitHub and 0root.ai copies of one corpus are not two independent sources. Claimed enrollment and receipt-retention flags are inputs, not proof of real-world independence. Independently authenticated physical witnesses remain **0**; qualification **0%**; recovery and ACT **HOLD**. Cargo compilation, test execution, Actions and live Pages checks remain unverified.
 
+## AETHER-214-RS signed cross-host equivocation screening
+
+The [Rust cross-host verifier](src/cross_host_equivocation.rs) and [30 authored adversarial tests](tests/cross_host_equivocation.rs) preserve conflicting signed claims about the same ledger sequence, head, predecessor, registry snapshot or epoch; detect adjacent-sequence forks and revocation epoch rewind; and screen claimed source/witness root, operator, administrator, host and key ancestry. Signing keys are verified against individually pinned P-256 public keys, but cryptographic validity cannot establish independently controlled remote custody.
+
+The [4D neon Pages lab](../214/) illustrates six synthetic cases without contacting remote hosts or running Rust. The gate never chooses a winner by quorum, timestamp or signature count. Conflict receipts remain documentary evidence, and the result has `may_choose_history=false`, `may_recover=false`, physical qualification **0%** and ACT **HOLD**. Three separately hosted copies under one controller are not three independent witnesses. Rust compilation, regression execution, CI and deployed Pages runtime remain unverified.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
