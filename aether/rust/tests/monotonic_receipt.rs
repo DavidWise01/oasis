@@ -199,3 +199,11 @@ fn rotation(prior:&receipt_custody::Entry,next:&SignedAnchor,p:&AnchorPolicy)->(
  assert_eq!(receipt_custody::ingest_monotonic(&t.ledger,&t.store,receipt,a,&p,&first.head_sha256,first.entries,None,None).unwrap_err(),
  "MONOTONIC_RECEIPT_HOLD: ANCHOR_PREDECESSOR_NOT_CONTIGUOUS");
 }
+
+#[test]fn substituted_rotation_target_anchor(){
+ let(prior,mut next,p)=pair();next.anchor.holder_id="NEW-HOLDER".into();
+ let(mut r,rp)=rotation(&prior,&next,&p);
+ r.record.new_anchor_sha256="f".repeat(64);
+ assert_eq!(monotonic_receipt::assess(&prior,&next,&p,Some(&r),Some(&rp)).reasons[0],
+ "ROTATION_BINDING_MISMATCH");
+}
