@@ -272,3 +272,6 @@ pub mod freeze;
 
 /// AETHER-193-RS: fail-closed original capture ingestion.
 pub mod intake;
+
+/// AETHER-194-RS: independently pinned manufacturer/calibration authority credentials.
+pub mod credentials;
