@@ -36,7 +36,7 @@ fn validate_event(e:&Event)->Result<(),String>{
  ||!hex64(&e.capture_sha256)||!hex64(&e.payload_sha256){return Err("INVALID_EVENT".into());}
  Ok(())
 }
-fn read_all(path:&Path)->Result<Vec<Entry>,String>{
+pub(crate) fn read_all(path:&Path)->Result<Vec<Entry>,String>{
  let mut bytes=Vec::new();match File::open(path){
   Ok(mut f)=>{f.read_to_end(&mut bytes).map_err(|e|format!("READ: {e}"))?;},
   Err(e)if e.kind()==std::io::ErrorKind::NotFound=>return Ok(vec![]),
