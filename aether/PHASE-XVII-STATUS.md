@@ -1,6 +1,6 @@
 # AETHER Phase XVII — External Recovery Anchors and Independently Held Evidence
 
-**AETHER-211-RS MONOTONIC RECEIPT EXTENSION & SIGNED HOLDER ROTATION GATE COMMITTED. Phase XVII documentary software progress 3/8 = 37.5%. Independently authenticated remote receipts: 0. Authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-212-RS READ-ONLY THREE-STORE CRASH INCIDENT GATE COMMITTED. Phase XVII documentary software progress 4/8 = 50%. Independently authenticated remote receipts: 0. Authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 software milestones closed but original physical evidence, independent remote custody, and runtime certification unresolved. A locally valid journal and registry can be rolled back together; Phase XVII examines the need for externally anchored history and independently adjudicated recovery.
 
@@ -9,11 +9,20 @@ Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 s
 | 1 | 209 Remote-anchor verifier and joint-rollback screening | **COMMITTED — synthetic signed anchor and ledger/registry comparison** | **12.5%** |
 | 2 | 210 Independent anchor-receipt custody envelope and durable replay | **COMMITTED — local receipt journal, not independent external custody** | **25%** |
 | 3 | 211 Signed external-receipt refresh and nonrollback chain | **COMMITTED — monotonic predecessor and forward history; rotation checks** | **37.5%** |
-| 4 | 212 Crash recovery incident proof without automatic repair | Planned | 37.5% |
-| 5 | 213 Independently retained control-ancestry evidence | Planned | 37.5% |
-| 6 | 214 Cross-host receipt-consistency and equivocation screening | Planned | 37.5% |
-| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 37.5% |
-| 8 | 216 Phase XVII documentary software freeze | Planned | 37.5% |
+| 4 | 212 Crash recovery incident proof without automatic repair | **COMMITTED — three-store forensic inspection, never repair or ACT** | **50%** |
+| 5 | 213 Independently retained control-ancestry evidence | Planned | 50% |
+| 6 | 214 Cross-host receipt-consistency and equivocation screening | Planned | 50% |
+| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 50% |
+| 8 | 216 Phase XVII documentary software freeze | Planned | 50% |
+
+## AETHER-212-RS — Read-only crash incident evidence and three-store comparison
+
+- [Native Rust incident evaluator](rust/src/crash_incident.rs) compares the journal, local authorization registry and signed-receipt store without modifying files. It reports each raw SHA-256 snapshot, entry count, head hash and anomalies.
+- The observer detects missing or invalid stores, broken journal/receipt hash chains, ledger-registry head/count divergence, an abandoned registry pending file, unresolved local process locks, and receipt anchor claims about later journal history or revocation epochs.
+- [21 authored regression tests](rust/tests/crash_incident.rs) cover coherent local snapshots, machine-readable incident report, missing stores, malformed or torn data, pending publication, stale registry, unresolved locks and receipt-anchored rollback claims. Tests also check that inspection does not change input file bytes. **Native Rust compilation, test execution and Actions success remain unverified.**
+- [4D neon HTML laboratory](212/) retains the rotating 16-vertex/32-edge tesseract and provides six synthetic incident scenarios. The browser does not execute Rust, read user files, create atomic snapshots or authenticate physical evidence. [Protocol](212/protocol.json) records **Phase XVII 4/8 = 50%**.
+- **Limits:** comparing sequential filesystem reads cannot create an atomic three-file snapshot. Readback hashes attempt to detect concurrent mutation, but hostile directory mutation, jointly rolled-back local stores and missing independent external checkpoints remain unsolved. The incident observer has **no repair, recovery, lock takeover or ACT capability**. Independent remote receipts **0**, physical qualification **0%**, operational ACT **HOLD**.
+- **Next AETHER-213-RS:** independently retained control-ancestry evidence and a custody-origin proof interface, with no assumption that different labels mean independent controllers. `.dlw`
 
 ## AETHER-211-RS — Monotonic receipt history and independent holder-rotation screening
 
