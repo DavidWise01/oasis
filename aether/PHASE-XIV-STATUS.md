@@ -1,6 +1,6 @@
 # AETHER Phase XIV — Original External Evidence Intake and Custody Onboarding
 
-**AETHER-191 RUST PHYSICAL-RESPONSE AND ALARM-EVIDENCE SCREENING COMMITTED. Phase XIV software-protocol progress: 7/8 = 87.5%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-192 RUST DOCUMENTARY QUALIFICATION FREEZE COMMITTED. Phase XIV software protocol CLOSED: 8/8 = 100%. Authenticated original physical captures: 0; physically observed alarm events: 0. Physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound documentary software protocol; no physically authenticated independent source was admitted. Phase XIV introduces original external evidence intake contracts without treating mock external issuers, signed keys, or synthetic bundles as physical proof.
 
@@ -13,7 +13,7 @@ Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound document
 | 5 | 189 Independent custodian and transfer receipt authentication | **COMMITTED — synthetic dual-custodian handoff gate only** | **62.5%** |
 | 6 | 190 Blind external-source physical replay audit | **COMMITTED — synthetic blind replay and ancestry audit only** | **75%** |
 | 7 | 191 Original physical response and alarm qualification | **COMMITTED — Rust synthetic response/alarm gate only** | **87.5%** |
-| 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 87.5% |
+| 8 | 192 Phase XIV documentary qualification decision and freeze | **CLOSED — Rust documentary freeze; physical ACT HOLD** | **100%** |
 
 ## Rust migration — AETHER-RS-001 (2026-11-25)
 
@@ -22,6 +22,15 @@ Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound document
 - [GitHub Actions workflow](../.github/workflows/aether-rust.yml) installs stable Rust and runs formatting normalization, Clippy and Cargo tests on push/PR/manual dispatch. **No Rust toolchain was available in this assistant environment; test execution and GitHub Actions result are not yet verified.**
 - The existing AETHER-185–190 JavaScript source and GitHub Pages 4D labs are preserved unchanged. Future verification work can use Rust; browser integration requires a separate compiled WebAssembly bridge.
 - This is a software-language migration, **not a new Phase XIV bound**: software phase progress remains **6/8 = 75%**, physical qualification **0%**, ACT **HOLD**. `.dlw`
+
+## AETHER-192-RS — Phase XIV documentary qualification decision and historical freeze
+
+- **Phase XIV software-protocol milestones CLOSED: 8/8 = 100%.** This is completion of the planned documentary and synthetic software gates, **not qualification of original physical hardware**.
+- [Rust native freeze evaluator](rust/src/freeze.rs) parses and checks [AETHER-192 decision.json](192/decision.json) with an explicit eight-bound sequence, zero authenticated physical captures, zero independent authenticated physical sources, zero observed physical alarm events, six unresolved external-evidence categories, recorded documentary closure and operational ACT HOLD.
+- [25 authored Rust integration tests](rust/tests/freeze_decision.rs) exercise consistent decision readback, all eight bounds, tampered ancestry, false physical qualification and ACT promotion, omitted evidence, dishonest branch-immutability claims and historical predecessor changes. **The suite was committed but cannot be claimed passing without verified Rust CI or Cargo execution.**
+- [Full 4D neon freeze dashboard](192/) preserves the 16-vertex, 32-edge cyan-blue-violet animated shadow tesseract, with a browser read-only check of the published decision JSON, eight bounds, unresolved evidence and safeguards. It does **not** execute Rust in the browser or authenticate original physical data; live Pages not independently verified.
+- [Machine-readable protocol](192/protocol.json) records final **Phase XIV 100% software, physical qualification 0%, original captures 0, actual alarm observations 0, physical ACT HOLD**. The historical freeze is an appended documentary record, not an assertion of Git branch technical immutability.
+- All prior Phase XIII and XIV files remain untouched. Any future physically authenticated evidence requires independently verifiable original instruments, separate custody provenance and a new recorded physical-admission review; synthetic test runs never unlock operational permission. **Next phase AETHER-193-RS** can focus on original physical data ingestion with independent hardware witness qualification instead of multiplying synthetic sources. `.dlw`
 
 ## AETHER-191-RS — Original physical response and alarm documentary screening
 
