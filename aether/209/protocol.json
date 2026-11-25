@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-209",
+  "phase": "XVII",
+  "turn": 1,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 12.5,
+  "rust_source": "../rust/src/remote_anchor.rs",
+  "rust_tests": "../rust/tests/remote_anchor.rs",
+  "authored_tests": 25,
+  "physical_qualification_percent": 0,
+  "externally_authenticated_remote_receipts": 0,
+  "independently_authenticated_holders": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "checks": [
+    "ECDSA P-256 signature on exact externally pinned anchor digest and predecessor",
+    "Compare local journal history at externally pinned sequence and SHA-256 head",
+    "Compare a full local registry snapshot digest and revocation epoch",
+    "Reject jointly rolled-back journal and registry when remote anchor records later sequence",
+    "Holder, issuer and source control-root separation, replayed anchor ID and nonce",
+    "Local file inspection refuses missing registry, pending update, torn/corrupt ledger"
+  ],
+  "limitations": [
+    "No real remote custodian or independent receipt was supplied",
+    "Holder authenticity booleans are caller assertions; independent external verification is not established",
+    "This is an observation gate with may_append=false and may_recover=false, not an automatic recovery procedure",
+    "Joint rollback can evade local-only checks if the purported remote anchor is also controlled or rewound",
+    "No distributed consensus, cross-host fencing or physical-act authority",
+    "Cargo tests, GitHub Actions results and live Pages deployment not independently confirmed"
+  ],
+  "predecessor": "../208/decision.json",
+  "watermark": ".dlw"
+}
