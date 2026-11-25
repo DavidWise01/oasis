@@ -1,0 +1,35 @@
+{
+  "bound": "AETHER-210",
+  "phase": "XVII",
+  "turn": 2,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 25,
+  "rust_source": "../rust/src/receipt_custody.rs",
+  "rust_tests": "../rust/tests/receipt_custody.rs",
+  "authored_tests": 25,
+  "physical_qualification_percent": 0,
+  "independently_authenticated_remote_receipts": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "may_recover": false,
+  "checks": [
+    "Local receipt store uses exclusive OS process-identity lock, ordered SHA-256 JSONL chain and expected-head/sequence compare",
+    "Signed anchor is validated against ledger and registry snapshot and separately supplied holder/custody policy",
+    "Exact receipt and anchor content hashes, holder public-key pin, custody nonce, and documentary source locator checked",
+    "Duplicate receipt ID, signed anchor ID/hash and custody nonce rejected across persisted history",
+    "Append/fsync/parent directory sync/readback under same receipt-store lock",
+    "Torn tail, corrupt record, replaced entry hash and unclaimed lock fail closed"
+  ],
+  "limitations": [
+    "A copied receipt on local disk is not an independently retained remote receipt",
+    "The remote_receipt_sha256 is a declared anchor-content digest; no remote bytes were fetched or independently attested",
+    "Caller-supplied holder-authentication booleans and source locator do not authenticate remote custody",
+    "Receipt lock is distinct from ledger lock; remote observation and local storage are not a distributed atomic transaction",
+    "Local receipt store deletion/joint rollback cannot be independently detected without an external ledger or separately held anchor",
+    "No automatic recovery, remote-authority promotion or physical ACT",
+    "Rust compilation, test execution, CI and live Pages deployment remain unverified"
+  ],
+  "predecessor": "../209/protocol.json",
+  "prior_phase_freeze": "../208/decision.json",
+  "watermark": ".dlw"
+}
