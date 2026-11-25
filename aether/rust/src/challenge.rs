@@ -2,7 +2,7 @@
 //! A valid signed challenge is documentary consistency, never proof of physical origin.
 use crate::{sha256_hex, PublicJwk};
 use chrono::DateTime;
-use p256::ecdsa::{signature::Verifier, Signature, VerifyingKey};
+use p256::ecdsa::{signature::Verifier, Signature};
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeSet, HashSet};
 
