@@ -1,0 +1,26 @@
+{
+  "bound": "AETHER-189",
+  "phase": "XIV",
+  "turn": 5,
+  "planned_turns": 8,
+  "software_protocol_percent": 62.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "mode": "TWO-SIGNATURE CUSTODY HANDOFF WITH LOCAL DISTINCT-ROOT PINS",
+  "checks": [
+    "Actual ECDSA P-256 verification over separately canonicalized transfer and receiver receipt",
+    "SHA-256 receiver receipt binding to exact handoff bytes",
+    "Distinct declared sender and receiver identities, credentials, root ancestry, operator and administrator",
+    "Externally supplied root fingerprint pin consistency",
+    "Replay, chronology, permissions and revocation checks"
+  ],
+  "limitations": [
+    "A locally pinned credential root is not an independently authenticated real-world issuer",
+    "Declared distinct root IDs, administrators or keys are not proof of separate physical operators",
+    "No physical custody handoff verified; client attestation flags never grant ACT"
+  ],
+  "physical_samples_authenticated": 0,
+  "predecessor": "../188/protocol.json",
+  "watermark": ".dlw"
+}
