@@ -326,3 +326,6 @@ pub mod monotonic_receipt;
 
 /// AETHER-212-RS: read-only three-store incident and crash reconciliation inspection.
 pub mod crash_incident;
+
+/// AETHER-213-RS: signed incident custody witnesses and declared-control ancestry screening.
+pub mod custody_ancestry;
