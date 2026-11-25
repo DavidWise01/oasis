@@ -1,0 +1,92 @@
+name: UEP-218R qualified vector binary publication
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: uep-218r-vector-publication
+  cancel-in-progress: false
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Frozen input
+        run: |
+          test "$(git rev-parse HEAD:apps/uep/rust/src/lib.rs)" = e684e6909113b47347e6287dcbca3e86aa4137a1
+          test "$(git rev-parse HEAD:apps/uep/rust/src/vector.rs)" = 86e12a465995ca37de6a8fbe479e919ce5b261ba
+          test "$(git rev-parse HEAD:apps/uep/UEP-216R-vector-restitution/index.html)" = 45a590b9bfae330256337fb3954b83418723b37a
+          git rev-parse HEAD > /tmp/uep-source
+      - name: Native and WASM qualification
+        shell: bash
+        run: |
+          set -o pipefail
+          rustup toolchain install 1.85.1 --profile minimal --target wasm32-unknown-unknown
+          cargo +1.85.1 generate-lockfile --manifest-path apps/uep/rust/Cargo.toml
+          cargo +1.85.1 test --locked --manifest-path apps/uep/rust/Cargo.toml 2>&1 | tee /tmp/uep-native.txt
+          python3 - <<'PY'
+          import re
+          s=open('/tmp/uep-native.txt').read()
+          rows=re.findall(r'test result: ok\. (\d+) passed; (\d+) failed; (\d+) ignored; (\d+) measured; (\d+) filtered out',s)
+          assert sum(int(x[0]) for x in rows)==49 and all(all(int(v)==0 for v in x[1:]) for x in rows), rows
+          PY
+          cargo +1.85.1 build --locked --manifest-path apps/uep/rust/Cargo.toml --lib --release --target wasm32-unknown-unknown
+          mkdir -p /tmp/uep-evidence
+          cp apps/uep/rust/target/wasm32-unknown-unknown/release/oasis_uep.wasm /tmp/uep-evidence/
+          cp apps/uep/rust/Cargo.lock /tmp/uep-evidence/
+          cp /tmp/uep-native.txt /tmp/uep-source /tmp/uep-evidence/
+          node apps/uep/rust/qualification/wasm-213.cjs /tmp/uep-evidence/oasis_uep.wasm > /tmp/uep-evidence/parity.json
+      - name: Full vector parity
+        run: |
+          node <<'JS'
+          const fs=require('node:fs'),a=require('node:assert/strict');
+          (async()=>{const e=(await WebAssembly.instantiate(fs.readFileSync('/tmp/uep-evidence/oasis_uep.wasm'),{})).instance.exports;
+          a.equal(e.uep_vector_version(),216);let count=0;
+          for(let k=0;k<44;k++)for(const value of [0n,10000n,18446744073709551615n]){
+          const x=Array.from({length:44},(_,i)=>i<22?999:0);x[k]=500;
+          const w=Array(8).fill(0n);x.forEach((v,i)=>w[Math.floor(i/6)]|=BigInt(v)<<BigInt(i%6*10));
+          const p=BigInt(x.slice(0,22).reduce((a,b)=>a+b,0)),n=BigInt(x.slice(22).reduce((a,b)=>a+b,0)),d=21978n;
+          const r=value*p*(d-n)*2050n/(d*d*10000n),c=r*80n/100n;
+          [r,c,r-c].forEach((v,s)=>a.equal(BigInt.asUintN(64,e.uep_vector_estimate(value,s,...w)),v));count++;
+          }fs.writeFileSync('/tmp/uep-evidence/vector.json',JSON.stringify({cases:count,comparisons:count*3,abi:216}));})().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - name: Chromium acceptance before publication
+        run: |
+          mkdir -p /tmp/uep-browser-site
+          cp apps/uep/UEP-216R-vector-restitution/index.html /tmp/uep-browser-site/
+          cp /tmp/uep-evidence/oasis_uep.wasm /tmp/uep-browser-site/
+          npm install --prefix /tmp/uep-playwright playwright@1.51.1
+          /tmp/uep-playwright/node_modules/.bin/playwright install --with-deps chromium
+          python3 -m http.server 8765 --directory /tmp/uep-browser-site >/tmp/uep-http.log 2>&1 &
+          node <<'JS'
+          const {chromium}=require('/tmp/uep-playwright/node_modules/playwright'),a=require('node:assert/strict'),fs=require('node:fs');
+          (async()=>{const b=await chromium.launch();try{const p=await b.newPage();await p.route('https://unpkg.com/**',r=>r.abort());await p.goto('http://localhost:8765/');
+          await p.waitForFunction(()=>document.querySelector('#status').textContent.includes('VECTOR 216'));
+          a.equal(await p.locator('#due').textContent(),'$20.50');
+          a.equal(await p.locator('input[type=number]').count(),44);
+          await p.locator('input[type=number]').first().fill('1000');a.equal(await p.locator('#due').textContent(),'—');
+          await p.locator('#max').click();a.equal(await p.locator('#due').textContent(),'$20.50');
+          const q=await b.newPage();await q.route('**/*.wasm',r=>r.abort());await q.route('https://unpkg.com/**',r=>r.abort());await q.goto('http://localhost:8765/');
+          await q.waitForFunction(()=>document.querySelector('#status').textContent.includes('HOLD')&&!document.querySelector('#status').textContent.includes('loading'));
+          a.equal(await q.locator('#due').textContent(),'—');
+          fs.writeFileSync('/tmp/uep-evidence/browser.txt','Vector ABI, 44 controls, invalid input recovery and missing binary gate passed; CDN intentionally blocked.');
+          }finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - name: Publish new asset only
+        run: |
+          dest=apps/uep/UEP-216R-vector-restitution/oasis_uep.wasm
+          test ! -e "$dest"
+          cp /tmp/uep-evidence/oasis_uep.wasm "$dest"
+          sha256sum "$dest" > /tmp/uep-evidence/binary.sha256
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$dest"
+          git commit -m 'UEP-218R: publish qualified vector WASM asset'
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-218r-publication-evidence
+          path: /tmp/uep-evidence/
