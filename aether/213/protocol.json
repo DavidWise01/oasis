@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-213",
+  "phase": "XVII",
+  "turn": 5,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 62.5,
+  "rust_source": "../rust/src/custody_ancestry.rs",
+  "rust_tests": "../rust/tests/custody_ancestry.rs",
+  "authored_regression_tests": 30,
+  "physical_qualification_percent": 0,
+  "independently_authenticated_physical_witnesses": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "observation_contract": [
+    "Source corpus, controller root, operator, administrator and claimed locator are recorded",
+    "Exactly three signed observation envelopes bind the AETHER-212 incident SHA-256 and common source-corpus ancestry",
+    "Each witness public key is compared with a separately provisioned SHA-256 pin and ECDSA P-256 signature verified",
+    "Declared witness roots, operators, administrators, hosts and key fingerprints must be mutually distinct and separate from the source",
+    "Reused witness identity, receipt reference, missing evidence hash and an unresolved incident anomaly fail closed",
+    "Missing alleged independent enrollment or receipt retention fails documentary admission"
+  ],
+  "limits": [
+    "Different labels or signatures do not authenticate real-world independent control",
+    "GitHub and 0root.ai mirrors of one owned corpus are one ancestry, not independent witnesses",
+    "Caller-provided independently_enrolled and receipt_retention_verified booleans are assertions, not external proof",
+    "The verifier is a pure read-only evaluation and does not fetch or authenticate remote receipts",
+    "No original physical acquisition, independent authenticated remote witness, lock reclamation, recovery or operational ACT",
+    "Rust compilation, tests, GitHub Actions execution and live Pages deployment have not been verified"
+  ],
+  "prior": "../212/protocol.json",
+  "phase_xvi_freeze": "../208/decision.json",
+  "watermark": ".dlw"
+}
