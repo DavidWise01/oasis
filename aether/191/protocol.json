@@ -1,0 +1,37 @@
+{
+  "bound": "AETHER-191",
+  "implementation": "Rust (aether/rust/src/alarm.rs)",
+  "phase": "XIV",
+  "turn": 7,
+  "planned_turns": 8,
+  "software_protocol_percent": 87.5,
+  "physical_qualification_percent": 0,
+  "original_physical_captures_authenticated": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "decision_space": [
+    "REJECT",
+    "DOCUMENTARY_RESPONSE_ONLY"
+  ],
+  "tests_authored": 28,
+  "checks": [
+    "Capture bytes SHA-256 and ECDSA P-256 signature",
+    "Device and independent reference instrument serial identity",
+    "Challenge nonce and capture-alarm linkage",
+    "Calibration digest and distinct declared reference/device roots",
+    "Reported response difference compared to declared tolerance",
+    "Response observation, alarm issuance, acknowledgement chronology and delay bounds",
+    "Duplicate capture and alarm replay checks",
+    "Four separate missing original physical-evidence/authentication gates"
+  ],
+  "limits": [
+    "Software-supplied millivalue measurements do not prove sensor responses",
+    "Alarm issued/acknowledged state is a signed-or-declared event, not proof that a physical alarm sounded",
+    "Calibration digest and distinct root names are not independent calibration or ancestry proof",
+    "Synthetic trust flags do not grant operational ACT",
+    "Rust CI run success is unverified until GitHub Actions confirms it"
+  ],
+  "predecessor": "../190/protocol.json",
+  "phase_14_tracker": "../PHASE-XIV-STATUS.md",
+  "watermark": ".dlw"
+}
