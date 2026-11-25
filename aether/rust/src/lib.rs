@@ -305,3 +305,6 @@ pub mod recovery_checkpoint;
 
 /// AETHER-205-RS: independently pinned external custody issuer, holder and rotation gate.
 pub mod external_custody;
+
+/// AETHER-206-RS: custody-bound signed transition under one process lock.
+pub mod custody_commit;
