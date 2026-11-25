@@ -1,0 +1,42 @@
+name: UEP-213R WASM qualification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/uep-wasm-213.yml'
+      - 'apps/uep/rust/qualification/wasm-213.cjs'
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve frozen economic source
+        run: |
+          git fetch --depth=1 origin ee6c6daab80e98410965a540293041a7a8b524d8
+          git worktree add --detach /tmp/uep-frozen FETCH_HEAD
+          mkdir -p evidence
+          git -C /tmp/uep-frozen rev-parse HEAD > evidence/source.txt
+      - name: Build frozen Rust
+        run: |
+          rustup toolchain install 1.85.1 --profile minimal --target wasm32-unknown-unknown
+          rustc +1.85.1 -Vv > evidence/toolchain.txt
+          cargo +1.85.1 generate-lockfile --manifest-path /tmp/uep-frozen/apps/uep/rust/Cargo.toml
+          cp /tmp/uep-frozen/apps/uep/rust/Cargo.lock evidence/
+          cargo +1.85.1 build --locked --manifest-path /tmp/uep-frozen/apps/uep/rust/Cargo.toml --lib --release --target wasm32-unknown-unknown
+          cp /tmp/uep-frozen/apps/uep/rust/target/wasm32-unknown-unknown/release/oasis_uep.wasm evidence/
+      - name: Execute independent parity harness
+        shell: bash
+        run: |
+          set -o pipefail
+          node apps/uep/rust/qualification/wasm-213.cjs evidence/oasis_uep.wasm | tee evidence/parity.json
+      - name: Hash evidence
+        if: always()
+        run: |
+          if [ -d evidence ]; then find evidence -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 -r sha256sum > evidence/SHA256SUMS; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-213r-wasm
+          path: evidence/
