@@ -1,6 +1,6 @@
 # AETHER Phase XIV — Original External Evidence Intake and Custody Onboarding
 
-**AETHER-188 SIGNED DEVICE, CALIBRATION CLOCK AND CHALLENGE BINDING GATE COMMITTED. Phase XIV software-protocol progress: 4/8 = 50%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority: HOLD.**
+**AETHER-189 DUAL-CUSTODIAN COUNTERSIGNED HANDOFF AND ROOT ANCESTRY GATE COMMITTED. Phase XIV software-protocol progress: 5/8 = 62.5%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority: HOLD.**
 
 Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound documentary software protocol; no physically authenticated independent source was admitted. Phase XIV introduces original external evidence intake contracts without treating mock external issuers, signed keys, or synthetic bundles as physical proof.
 
@@ -10,10 +10,18 @@ Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound document
 | 2 | 186 External issuer identity and manufacturer anchor | **COMMITTED — synthetic certificate chain only** | **25%** |
 | 3 | 187 Original acquisition byte custody with external verifier | **COMMITTED — synthetic dual-signature custody gate only** | **37.5%** |
 | 4 | 188 Physical instrument, clock and challenge binding | **COMMITTED — synthetic signed calibration and acquisition gate only** | **50%** |
-| 5 | 189 Independent custodian and transfer receipt authentication | Planned | 50% |
-| 6 | 190 Blind external-source physical replay audit | Planned | 50% |
-| 7 | 191 Original physical response and alarm qualification | Planned | 50% |
-| 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 50% |
+| 5 | 189 Independent custodian and transfer receipt authentication | **COMMITTED — synthetic dual-custodian handoff gate only** | **62.5%** |
+| 6 | 190 Blind external-source physical replay audit | Planned | 62.5% |
+| 7 | 191 Original physical response and alarm qualification | Planned | 62.5% |
+| 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 62.5% |
+
+## AETHER-189 — Independent custodian identity and countersigned receipt gate
+
+- [Verifier](189/verification.mjs) validates real ECDSA P-256 signatures over exact canonical sender transfer and receiver receipt, computes handoff SHA-256, and requires receipt binding to the original capture identity and digest. Checks anti-replay, transfer/receipt chronology, predecessor continuity, local public-key root fingerprint pins, key permissions, revocation and distinct declared ancestry roots, operators and administrators.
+- [30-case synthetic suite](189/test.mjs) was committed. It exercises altered receipts, forged sender/receiver signatures, replay, missing identities, revoked credentials, shared root/operator/administrator and false physical-attestation flags. **The published suite has not been executed from a GitHub checkout in this turn; no 30/30 runtime result is asserted.**
+- [Full 4D neon Pages-ready laboratory](189/) retains the rotating 16-vertex / 32-edge cyan-blue-violet shadow tesseract and animation controls, with six handoff fault-injection buttons. Live Pages deployment and Chromium execution remain unverified.
+- [Protocol](189/protocol.json) records **Phase XIV 5/8 = 62.5%**, externally authenticated original physical samples **0**, physical qualification **0%**, and operational authority **HOLD**. Locally pinned test roots and two independent software keys are not real authenticated custodians or real physical handoff proof.
+- Previous Phase XIII freeze and AETHER-185–188 records are unchanged. **Next AETHER-190:** blind external-source physical replay audit with duplicate ancestry rejection and original hardware evidence requirements. `.dlw`
 
 ## AETHER-188 — Signed instrument, calibration, clock and challenge binding
 
