@@ -296,3 +296,6 @@ pub mod phase_xv_freeze;
 
 /// AETHER-201-RS: durable local append/recovery and replay detection.
 pub mod durable_ledger;
+
+/// AETHER-202-RS: Linux verified process-owner lock metadata and liveness checks.
+pub mod process_liveness;
