@@ -299,3 +299,6 @@ pub mod durable_ledger;
 
 /// AETHER-202-RS: Linux verified process-owner lock metadata and liveness checks.
 pub mod process_liveness;
+
+/// AETHER-203-RS: externally pinned checkpoint recovery and rollback screening.
+pub mod recovery_checkpoint;
