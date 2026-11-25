@@ -130,3 +130,6 @@ pub mod infrastructure;
 
 // UEP-208R: adaptive forward protection.
 pub mod recovery;
+
+// UEP-209R: browser-facing arithmetic ABI.
+pub mod browser;
