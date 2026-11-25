@@ -1,19 +1,28 @@
 # AETHER Phase XV — Original Physical Evidence Acquisition in Rust
 
-**AETHER-193-RS ORIGINAL EVIDENCE INTAKE CONTRACT COMMITTED. Phase XV: 1/8 = 12.5% software protocol development. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
+**AETHER-194-RS MANUFACTURER & CALIBRATION CREDENTIAL GATE COMMITTED. Phase XV software protocol: 2/8 = 25%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
 
 The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), with 8/8 software milestones and **no independently verified original physical measurements or alarms**. Phase XV moves the native Rust code toward ingestion of externally supplied acquisition evidence. Neither synthetic fixtures nor locally assigned source roles may create a physical qualification.
 
 | Turn | Planned bound | State | Progress |
 |---|---|---|---:|
 | 1 | 193 Rust original-byte physical acquisition intake | **COMMITTED — synthetic Rust structural and signature gate only** | **12.5%** |
-| 2 | 194 Out-of-band manufacturer / calibration authority credential import | Planned | 12.5% |
-| 3 | 195 Real instrument challenge acquisition receipt and anti-replay | Planned | 12.5% |
-| 4 | 196 Original acquisition secure custody export and independent holder | Planned | 12.5% |
-| 5 | 197 Traceable calibration and physical timing uncertainty | Planned | 12.5% |
-| 6 | 198 External blinded verifier record and ancestry authentication | Planned | 12.5% |
-| 7 | 199 Physical response and alarm original observation qualification | Planned | 12.5% |
-| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 12.5% |
+| 2 | 194 Out-of-band manufacturer / calibration authority credential import | **COMMITTED — synthetic pinned-credential gate only** | **25%** |
+| 3 | 195 Real instrument challenge acquisition receipt and anti-replay | Planned | 25% |
+| 4 | 196 Original acquisition secure custody export and independent holder | Planned | 25% |
+| 5 | 197 Traceable calibration and physical timing uncertainty | Planned | 25% |
+| 6 | 198 External blinded verifier record and ancestry authentication | Planned | 25% |
+| 7 | 199 Physical response and alarm original observation qualification | Planned | 25% |
+| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 25% |
+
+## AETHER-194-RS — Manufacturer and calibration authority credential import
+
+- [Native Rust signed credential verifier](rust/src/credentials.rs) checks separate manufacturer-device-issuer and calibration-authority ECDSA P-256 signatures over ordered, custom-schema JSON credentials, with two independently declared root pins, usage/role/identity permissions, dates, revocation lists, and root ancestry/operator controls.
+- [28 authored Rust integration tests](rust/tests/credential_import.rs) cover successful synthetic signatures, root-pin substitution, forged or revoked certificates, expired signing rights, self-issued identity, permission mismatch and false authority flags. **No local Rust toolchain was available; Cargo or GitHub Actions execution was not verified.**
+- [Full 4D neon HTML laboratory](194/) retains the 16-vertex, 32-edge cyan-blue-violet tesseract shadow, motion controls, and interactive illustrative credential failures. This browser dashboard **does not run native Rust**.
+- [Protocol](194/protocol.json) records **Phase XV 2/8 = 25%**, original independently authenticated hardware captures **0**, physical qualification **0%**, operational ACT **HOLD**.
+- The two pinned mock roots remain *synthetic trust assumptions*. A certificate signature or applicant-controlled root pin does not independently authenticate a manufacturer, a qualified calibration laboratory, or real physical source custody. The custom credential format is **not** a full X.509 trust-chain implementation.
+- Earlier Phase XIV closure and AETHER-193 remain unmodified. **Next AETHER-195-RS:** instrument challenge acquisition receipt and anti-replay with externally established source identity required. `.dlw`
 
 ## AETHER-193-RS — Original physical acquisition intake (software contract only)
 
