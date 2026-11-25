@@ -1,6 +1,6 @@
 # AETHER Phase XVI — Durable Replay Evidence & Independent Admission
 
-**AETHER-202-RS Linux process identity and liveness-fenced local lock COMMITTED. Phase XVI documentary software progress 2/8 = 25%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-203-RS INDEPENDENTLY PINNED SIGNED RECOVERY CHECKPOINT GATE COMMITTED. Phase XVI documentary software progress 3/8 = 37.5%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 software milestones were closed without any independently authenticated original physical evidence or actual alarm observations. Phase XVI shifts from multiplying synthetic gates to on-disk evidence continuity, recovery and independent external custody.
 
@@ -8,12 +8,21 @@ Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 
 |---|---|---|---:|
 | 1 | 201 Durable append-only replay ledger and fail-closed recovery | **COMMITTED — local Rust ledger, tests authored** | **12.5%** |
 | 2 | 202 OS-process lock ownership and liveness fencing | **COMMITTED — local Linux PID/starttime/boot ID verification; never automatic reclaim** | **25%** |
-| 3 | 203 Crash recovery with independent signed checkpoint | Planned | 25% |
-| 4 | 204 Atomic cross-process admission and checkpoint readback | Planned | 25% |
-| 5 | 205 External custody root and issuer admission | Planned | 25% |
-| 6 | 206 Independent ancestral cross-check and custody transfer | Planned | 25% |
-| 7 | 207 Adversarial original evidence admission replay | Planned | 25% |
-| 8 | 208 Phase XVI software decision and documented freeze | Planned | 25% |
+| 3 | 203 Crash recovery with independent signed checkpoint | **COMMITTED — Rust externally pinned documentary checkpoint gate** | **37.5%** |
+| 4 | 204 Atomic cross-process admission and checkpoint readback | Planned | 37.5% |
+| 5 | 205 External custody root and issuer admission | Planned | 37.5% |
+| 6 | 206 Independent ancestral cross-check and custody transfer | Planned | 37.5% |
+| 7 | 207 Adversarial original evidence admission replay | Planned | 37.5% |
+| 8 | 208 Phase XVI software decision and documented freeze | Planned | 37.5% |
+
+## AETHER-203-RS — Signed independent recovery checkpoint and rollback detection
+
+- [Native Rust checkpoint gate](rust/src/recovery_checkpoint.rs) verifies ECDSA P-256 signatures over ordered checkpoint metadata, an independently provisioned holder-key fingerprint and exact checkpoint digest, chain predecessor, source-holder ancestry separation, replayed checkpoint identifiers and nonces, and ledger ID.
+- The verifier reads the [durable ledger](rust/src/durable_ledger.rs) through its already implemented JSONL hash-chain verifier. It rejects a **locally valid but truncated prefix**, deleted history, substituted checkpoint signatures or full-history divergence from the independently pinned checkpoint. Missing independent holder custody causes HOLD.
+- [25 authored Rust regression tests](rust/tests/recovery_checkpoint.rs) include valid synthetic signatures, complete rollback, valid-prefix truncation, independent digest substitutions, forged signatures, shared ancestry, replay, corrupt trailing bytes and documentary-gated append.
+- The [neon 4D laboratory](203/) preserves the animated 16-vertex/32-edge hypercube and displays six synthetic checkpoint failure paths. It does not run Rust or authenticate any physical or externally held records. [Protocol](203/protocol.json) records **Phase XVI 3/8 = 37.5%**, physical 0%, ACT HOLD.
+- **Limits:** no real externally authenticated custodian or independently held checkpoint was supplied; holder-authentication flags in the Rust policy are not proof of origin. Ledger append checks its expected head under the process lock, but the external checkpoint proof is currently evaluated before that lock, leaving stronger atomic admission for AETHER-204. No lock takeover or history repair is enabled.
+- **Next AETHER-204-RS:** inspect checkpoint under the exact acquired OS process lock and seal a locally durable checkpoint commitment only after full readback. `.dlw`
 
 ## AETHER-202-RS — OS-observed process-owner identity and liveness
 
