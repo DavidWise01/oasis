@@ -1,0 +1,32 @@
+{
+  "bound": "AETHER-194",
+  "phase": "XV",
+  "turn": 2,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 25,
+  "implementation": "Rust aether/rust/src/credentials.rs",
+  "rust_tests": "../rust/tests/credential_import.rs",
+  "authored_test_count": 28,
+  "original_authenticated_physical_samples": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "scope": [
+    "Custom P-256 ECDSA signed manufacturer device-issuer credential",
+    "Separate P-256 signed calibration authority credential",
+    "Independent externally pinned root SHA-256 fingerprints",
+    "Issuer/subject, role, permission, organization and serial checks",
+    "Validity interval and revocation registers",
+    "Declared root ancestry/operator disjointness"
+  ],
+  "limitations": [
+    "Custom signed credential schema; not a full X.509 path builder",
+    "Pinning a root supplied inside the same evidence package does not establish external authenticity",
+    "External authentication boolean must come from an independent offline or institutional workflow and is not self-proving",
+    "Synthetic roots, valid signatures, or flags can never authorize physical ACT",
+    "Actual physical hardware and certified calibration records have not been acquired"
+  ],
+  "phase_xiv_freeze": "../192/decision.json",
+  "predecessor": "../193/protocol.json",
+  "watermark": ".dlw"
+}
