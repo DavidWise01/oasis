@@ -83,6 +83,14 @@ The [receipt custody Rust module](src/receipt_custody.rs) and [25 authored integ
 
 **External evidence boundary:** a local copy of a signed remote receipt is not independently retained remote custody. The submitted `remote_receipt_sha256` is the anchor's claimed content digest, not independently fetched remote bytes. Local receipt storage is separate from the ledger's lock, and neither joint rollback nor distributed atomicity is solved. Zero remote holders or original physical captures are independently authenticated. Both `may_recover` and physical ACT remain disabled. Compilation, tests, Actions and live Pages deployment remain unverified.
 
+## AETHER-211-RS monotonic signed receipt refresh
+
+The [forward-extension Rust verifier](src/monotonic_receipt.rs) and [25 authored regression tests](tests/monotonic_receipt.rs) require an exact previous signed-anchor SHA-256 digest, strictly increasing ledger sequence and changed head, nondecreasing registry epoch, and unchanged source/issuer ancestry. Holder identity/key changes require a separately pinned P-256 signed rotation approval from a distinct declared authority with an authorization ID and nonce.
+
+The [receipt custody module](src/receipt_custody.rs) adds `ingest_monotonic`, which runs these checks **under the same local Linux receipt-store lock** used for replay screening, journal append, fsync and readback. The original `ingest` API remains for backward compatibility; callers requiring monotonic ancestry must explicitly select the new one.
+
+[Neon 4D Pages laboratory](../211/) illustrates the failure outcomes but does not run Rust. Independent physical custody, remote availability, persistent rotation-policy replay state and cross-store atomicity remain unverified. Timestamps are not authorization. Authenticated remote receipts **0**; physical qualification **0%**; recovery and ACT **HOLD**. Compilation, regression execution, Actions and Pages deployment remain unverified.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
