@@ -1,0 +1,31 @@
+{
+  "bound": "AETHER-196",
+  "phase": "XV",
+  "turn": 4,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 50,
+  "implementation": "Rust aether/rust/src/custody_export.rs",
+  "rust_tests": "../rust/tests/custody_export.rs",
+  "authored_test_count": 32,
+  "original_authenticated_physical_captures": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "mode": "SIGNED CUSTODY EXPORT AND RECEIVER COUNTERSIGNATURE",
+  "checks": [
+    "Original capture bytes SHA-256 and length remain unchanged",
+    "Manifest binds source capture, challenge, prior receipt hash and predecessor custody digest",
+    "Sender ECDSA P-256 signature over manifest",
+    "Receiver ECDSA P-256 signature over receipt binding exact manifest SHA-256",
+    "Declared custodian control separation, non-revocation, sequence, nonce and time checks",
+    "Proposed replay ledger identifiers require external durable commit"
+  ],
+  "limitations": [
+    "A countersignature is an assertion of receipt, not independently verified physical possession",
+    "No original physical acquisition or independently authenticated custodians supplied",
+    "No durable atomic replay-ledger storage implemented",
+    "Cargo tests and live Pages execution not independently confirmed"
+  ],
+  "predecessor": "../195/protocol.json",
+  "watermark": ".dlw"
+}
