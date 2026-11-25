@@ -139,3 +139,5 @@ pub mod vector;
 
 // UEP-217R: persistent evidence snapshots.
 pub mod journal;
+
+pub mod lifecycle;
