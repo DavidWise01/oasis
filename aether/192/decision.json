@@ -1,0 +1,55 @@
+{
+  "bound": "AETHER-192",
+  "implementation": "Rust aether/rust/src/freeze.rs",
+  "phase": "XIV",
+  "turn": 8,
+  "planned_turns": 8,
+  "phase_state": "CLOSED_DOCUMENTARY_SOFTWARE_PROTOCOL",
+  "software_protocol_progress_percent": 100,
+  "completed_bounds": [
+    "AETHER-185",
+    "AETHER-186",
+    "AETHER-187",
+    "AETHER-188",
+    "AETHER-189",
+    "AETHER-190",
+    "AETHER-191",
+    "AETHER-192"
+  ],
+  "physical_qualification_percent": 0,
+  "authenticated_original_hardware_captures": 0,
+  "independently_authenticated_physical_sources": 0,
+  "physically_observed_alarm_events": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "decision": "PHYSICAL_QUALIFICATION_DENIED_PENDING_ORIGINAL_INDEPENDENT_EVIDENCE",
+  "documentary_coverage": [
+    "Signed acquisition intake and bytes",
+    "Synthetic manufacturer issuer trust chain",
+    "Synthetic independent verifier receipt",
+    "Signed device clock and challenge claim",
+    "Countersigned synthetic custody handoff",
+    "Blind replay ancestry screening",
+    "Synthetic response and alarm chronology",
+    "Rust documentary decision consistency freeze"
+  ],
+  "external_evidence_missing": [
+    "Original hardware acquisition from independently authenticated instruments",
+    "Out-of-band manufacturer and issuer public-key provenance",
+    "Independent calibration traceability of reference and clock",
+    "Independent physical-source and custodian ancestry confirmation",
+    "Physical alarm occurrence and acknowledgment observations",
+    "Qualified external reproducible review of real device response"
+  ],
+  "safeguards": {
+    "historical_append_only_intent": true,
+    "git_branch_technically_immutable": false,
+    "synthetic_attestations_cannot_grant_act": true,
+    "all_passes_documentary_only": true,
+    "new_physical_evidence_requires_new_review": true
+  },
+  "prior": "../191/protocol.json",
+  "phase_xiii_freeze": "../184/decision.json",
+  "physical_evidence_submitted": false,
+  "watermark": ".dlw"
+}
