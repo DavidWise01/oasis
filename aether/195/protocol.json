@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-195",
+  "phase": "XV",
+  "turn": 3,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 37.5,
+  "implementation": "Rust aether/rust/src/challenge.rs",
+  "rust_tests": "../rust/tests/challenge_receipt.rs",
+  "authored_test_count": 28,
+  "physical_qualification_percent": 0,
+  "authenticated_original_hardware_captures": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "mode": "SIGNED CHALLENGE AND DEVICE CAPTURE RECEIPT WITH REPLAY LEDGER",
+  "checks": [
+    "ECDSA P-256 signatures of challenge issuer and device receipt",
+    "Capture payload SHA-256 and canonical challenge hash",
+    "Device serial, signing key identifier and exact challenge nonce binding",
+    "Issuance/capture/expiry/review timestamp ordering and latency policy",
+    "Replay against externally supplied challenge, nonce, capture and payload digest history",
+    "Proposed ledger additions only after complete documentary evaluation"
+  ],
+  "limitations": [
+    "No actual hardware source has been authenticated",
+    "Replay ledger is caller supplied; durable atomic persistence has not been implemented",
+    "Booleans for trust claims are not proof of external credential origins",
+    "A signed timestamp remains an assertion, not physical clock calibration",
+    "Rust test execution and GitHub Actions results have not been independently confirmed"
+  ],
+  "previous": "../194/protocol.json",
+  "phase_xiv_freeze": "../192/decision.json",
+  "watermark": ".dlw"
+}
