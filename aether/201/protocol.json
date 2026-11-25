@@ -1,0 +1,32 @@
+{
+  "bound": "AETHER-201",
+  "phase": "XVI",
+  "turn": 1,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 12.5,
+  "rust_source": "../rust/src/durable_ledger.rs",
+  "rust_tests": "../rust/tests/durable_ledger.rs",
+  "authored_tests": 18,
+  "physical_qualification_percent": 0,
+  "authenticated_external_evidence_roots": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "features": [
+    "Local exclusive O_CREAT|O_EXCL-like lock via Rust create_new",
+    "JSON Lines canonical ordered SHA-256 hash chaining",
+    "Append plus file fsync, parent directory sync, full recovery readback",
+    "Replay checks for event, capture, nonce, review and payload digest",
+    "Expected-head and expected-count compare-and-append gate",
+    "Recovery rejects torn tail, corrupted JSON, invalid sequence or hash link"
+  ],
+  "limitations": [
+    "Local filesystem lock ownership is not authenticated process-liveness fencing",
+    "Append writes can leave torn tail after a crash: recovery fails closed and requires external recovery procedure",
+    "Replay ledger is local and not independently externally anchored or replicated",
+    "Physical source identity and custody remain unauthenticated",
+    "No Cargo/CI runtime pass confirmed",
+    "No operational ACT pathway"
+  ],
+  "previous": "../200/decision.json",
+  "watermark": ".dlw"
+}
