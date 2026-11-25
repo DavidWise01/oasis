@@ -1,0 +1,23 @@
+name: OaSIs UEP Rust verification
+on:
+  push:
+    paths:
+      - 'apps/uep/rust/**'
+      - '.github/workflows/uep-rust-201.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/uep/rust
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rust toolchain
+        run: rustup toolchain install stable --profile minimal
+      - name: Test
+        run: cargo +stable test
+      - name: Native simulation
+        run: cargo +stable run --release
