@@ -7,6 +7,8 @@ use crate::{durable_ledger::{self,Event,State},custody_commit::{self,SignedTrans
   recovery_checkpoint::{SignedCheckpoint,RecoveryPolicy},
   external_custody::{Packet as CustodyPacket,Policy as CustodyPolicy}};
 use serde::{Serialize,Deserialize};
+use p256::ecdsa::{signature::Verifier,Signature};
+use crate::PublicJwk;
 use std::{collections::BTreeSet,fs::{self,File,OpenOptions},io::Write,path::Path};
 
 pub const REGISTRY_SCHEMA:&str="AETHER-207/authorization-registry-v1";
@@ -21,6 +23,7 @@ pub struct Registry {
  pub consumed_authorization_ids:BTreeSet<String>,
  pub consumed_authorization_nonces:BTreeSet<String>,
  pub consumed_intent_sha256:BTreeSet<String>,
+ pub consumed_revocation_ids:BTreeSet<String>,
 }
 #[derive(Debug,Clone,Serialize,Deserialize)]
 pub struct RegistryDecision {
@@ -88,7 +91,8 @@ pub fn initialize(ledger:&Path,ledger_id:&str,issuer_pin:&str,holder_pin:&str,ep
   pinned_issuer_key_sha256:issuer_pin.into(),pinned_holder_key_sha256:holder_pin.into(),
   revoked_key_sha256:BTreeSet::new(),consumed_admission_ids:BTreeSet::new(),
   consumed_admission_nonces:BTreeSet::new(),consumed_authorization_ids:BTreeSet::new(),
-  consumed_authorization_nonces:BTreeSet::new(),consumed_intent_sha256:BTreeSet::new()};
+  consumed_authorization_nonces:BTreeSet::new(),consumed_intent_sha256:BTreeSet::new(),
+  consumed_revocation_ids:BTreeSet::new()};
  atomic_publish(&path,&r)?;
  guard.verify_for(&lock_path)?;
  Ok(state(&r))
@@ -168,7 +172,90 @@ pub fn append_registered(
  if readback!=r{return Err("REGISTRY_READBACK_MISMATCH".into());}
  Ok(result)
 }
-/// Signed external revocation procedures are NOT implemented in AETHER-207.
+#[derive(Debug,Clone,Serialize,Deserialize)]
+pub struct RevocationAmendment{
+ pub schema:String,pub amendment_id:String,pub ledger_id:String,
+ pub ledger_head_sha256:String,pub prior_epoch:u64,pub next_epoch:u64,
+ pub authority_root:String,pub authority_operator:String,pub authority_admin:String,
+ pub issuer_root:String,pub issuer_operator:String,pub issuer_admin:String,
+ pub holder_root:String,pub holder_operator:String,pub holder_admin:String,
+ pub newly_revoked_key_sha256:Vec<String>,
+}
+#[derive(Debug,Clone,Serialize,Deserialize)]
+pub struct SignedAmendment{
+ pub amendment:RevocationAmendment,pub signature_hex:String,
+}
+#[derive(Debug,Clone,Serialize,Deserialize)]
+pub struct AmendmentPolicy{
+ pub pinned_authority_key_sha256:String,pub authority_key:PublicJwk,
+ pub authority_root_authenticated_out_of_band:bool,
+}
+pub fn amendment_hash(a:&RevocationAmendment)->String{
+ crate::sha256_hex(&serde_json::to_vec(a).unwrap_or_default())
+}
+fn valid_hash(s:&str)->bool{s.len()==64&&s.bytes().all(|b|b.is_ascii_hexdigit())}
+/// A signed documentary revocation amendment. This API never unrevokes keys,
+/// never changes the ledger head, and requires a strictly increasing epoch.
+pub fn apply_signed_revocation(
+ ledger:&Path,signed:&SignedAmendment,policy:&AmendmentPolicy
+)->Result<RegistryDecision,String>{
+ let lock_path=ledger.with_extension("lock");
+ let guard=crate::process_liveness::acquire(&lock_path)?;
+ guard.verify_for(&lock_path)?;
+ let path=registry_path(ledger);
+ let mut r=load(&path)?;
+ let entries=durable_ledger::read_all(ledger).map_err(|e|format!("LEDGER_HOLD: {e}"))?;
+ let head=entries.last().map(|e|e.entry_sha256.clone())
+   .unwrap_or_else(||durable_ledger::GENESIS.into());
+ check(&r,&head,entries.len() as u64,&r.ledger_id,
+  &r.pinned_issuer_key_sha256,&r.pinned_holder_key_sha256,r.revocation_epoch)?;
+ let a=&signed.amendment;
+ if a.schema!="AETHER-207/revocation-v1"||a.amendment_id.is_empty()
+ ||a.ledger_id!=r.ledger_id||a.ledger_head_sha256!=head
+ ||a.prior_epoch!=r.revocation_epoch||a.next_epoch<=a.prior_epoch{
+  return Err("REVOCATION_EPOCH_OR_HEAD_MISMATCH".into());
+ }
+ if a.authority_root.is_empty()||a.authority_operator.is_empty()||
+ a.authority_admin.is_empty()||a.authority_root==a.issuer_root||
+ a.authority_root==a.holder_root||a.authority_operator==a.issuer_operator||
+ a.authority_operator==a.holder_operator||a.authority_admin==a.issuer_admin||
+ a.authority_admin==a.holder_admin{
+  return Err("REVOCATION_AUTHORITY_NOT_SEPARATE".into());
+ }
+ if r.consumed_revocation_ids.contains(&a.amendment_id){
+  return Err("REPLAYED_REVOCATION_AMENDMENT".into());
+ }
+ if a.newly_revoked_key_sha256.is_empty()
+ ||a.newly_revoked_key_sha256.iter().any(|v|!valid_hash(v)||
+     r.revoked_key_sha256.contains(v)){
+  return Err("INVALID_OR_REPLAYED_REVOCATION_KEY".into());
+ }
+ let key_hash=crate::sha256_hex(&serde_json::to_vec(&policy.authority_key)
+  .map_err(|e|format!("KEY_SERIALIZE: {e}"))?);
+ if key_hash!=policy.pinned_authority_key_sha256||!valid_hash(&key_hash){
+  return Err("REVOCATION_AUTHORITY_KEY_PIN_MISMATCH".into());
+ }
+ let verifying=crate::verifying_key(&policy.authority_key)
+  .map_err(|_|"REVOCATION_AUTHORITY_KEY_INVALID")?;
+ let signature_bytes=hex::decode(&signed.signature_hex)
+  .map_err(|_|"REVOCATION_SIGNATURE_INVALID")?;
+ let signature=Signature::from_slice(&signature_bytes)
+  .map_err(|_|"REVOCATION_SIGNATURE_INVALID")?;
+ verifying.verify(&serde_json::to_vec(a)
+  .map_err(|_|"REVOCATION_SERIALIZE_FAILED")?,&signature)
+  .map_err(|_|"REVOCATION_SIGNATURE_INVALID")?;
+ if !policy.authority_root_authenticated_out_of_band{
+  return Err("REVOCATION_AUTHORITY_EXTERNAL_ORIGIN_UNAUTHENTICATED".into());
+ }
+ for key in &a.newly_revoked_key_sha256{r.revoked_key_sha256.insert(key.clone());}
+ r.consumed_revocation_ids.insert(a.amendment_id.clone());
+ r.revocation_epoch=a.next_epoch;
+ atomic_publish(&path,&r)?;
+ guard.verify_for(&lock_path)?;
+ if load(&path)?!=r{return Err("REVOCATION_READBACK_MISMATCH".into());}
+ Ok(state(&r))
+}
+
 /// Local revocation amendments may be staged only after independent custody
 /// qualification in a later bound. Never trust caller toggles as approval.
 pub fn stage_revocation_unsupported()->Result<(),String>{
