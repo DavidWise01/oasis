@@ -15,6 +15,14 @@ Phase XIII [AETHER-184](184/decision.json) was closed as an eight-bound document
 | 7 | 191 Original physical response and alarm qualification | Planned | 75% |
 | 8 | 192 Phase XIV documentary qualification decision and freeze | Planned | 75% |
 
+## Rust migration — AETHER-RS-001 (2026-11-25)
+
+- **Rust source committed:** [aether/rust](rust/) introduces native Rust 2021 `aether-evidence` crate with actual SHA-256 byte hashing, P-256 ECDSA raw-signature verification, blinded AETHER-190 capture schema, separate caller-supplied source/verifier registries, challenge nonce/replay and shared-ancestry checks. Applicant names are excluded from the canonical review record.
+- [Rust integration tests](rust/tests/blind_replay.rs) contain **23 source-level tests**, including valid synthetic signatures, byte substitution, signature forgery, duplicate trial/capture/challenge, shared operator/admin/root/source ancestry, missing registry, and immutable physical HOLD.
+- [GitHub Actions workflow](../.github/workflows/aether-rust.yml) installs stable Rust and runs formatting normalization, Clippy and Cargo tests on push/PR/manual dispatch. **No Rust toolchain was available in this assistant environment; test execution and GitHub Actions result are not yet verified.**
+- The existing AETHER-185–190 JavaScript source and GitHub Pages 4D labs are preserved unchanged. Future verification work can use Rust; browser integration requires a separate compiled WebAssembly bridge.
+- This is a software-language migration, **not a new Phase XIV bound**: software phase progress remains **6/8 = 75%**, physical qualification **0%**, ACT **HOLD**. `.dlw`
+
 ## AETHER-190 — Blind external-source replay audit
 
 - [Verifier](190/verification.mjs) reviews three capture records without using applicant names, recomputes actual SHA-256 from supplied bytes, validates each ECDSA P-256 capture signature against separately supplied synthetic source registry keys, and checks duplicate capture/trial IDs, reused challenge nonces, declared physical-source ancestry, operator/admin/root collisions and verifier provenance conflicts.
