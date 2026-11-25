@@ -1,0 +1,38 @@
+{
+  "bound": "AETHER-211",
+  "phase": "XVII",
+  "turn": 3,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 37.5,
+  "rust_source": "../rust/src/monotonic_receipt.rs",
+  "receipt_store_integration": "../rust/src/receipt_custody.rs",
+  "rust_tests": "../rust/tests/monotonic_receipt.rs",
+  "authored_tests": 25,
+  "physical_qualification_percent": 0,
+  "independently_authenticated_remote_receipts": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "may_recover": false,
+  "forward_extension_checks": [
+    "The previous signed anchor's exact SHA-256 digest must equal the successor's prior_anchor_sha256",
+    "Ledger sequence must strictly increase, and ledger head digest must change",
+    "Revocation registry epoch must not decrease",
+    "Source and issuer root/operator/administrator continuity required",
+    "Holder ID, root, operator, administrator and pinned key must remain constant unless separately signed rotation proof is supplied",
+    "Rotation binds previous and next anchor digests, both holder IDs and public key fingerprints, independent authority ancestry, authorization ID and nonce",
+    "Rotation authority key must match a separately supplied fingerprint and provide valid P-256 signature",
+    "Checked under the same process-owned local receipt-store lock before append, file/directory fsync and complete readback"
+  ],
+  "remaining_limits": [
+    "A timestamp is informational, never evidence of monotonic ancestry",
+    "External issuer/holder/rotation authority authentication remains caller asserted and independently unverified",
+    "The receipt store is local, not a separately held remote checkpoint",
+    "The receipt store and evidence ledger use different locks, not distributed atomicity",
+    "The rotation policy replay sets remain supplied, not independently durably stored; further work required",
+    "Rust compilation, CI execution and Pages live deployment unverified",
+    "No original authenticated physical capture, recovery grant or physical ACT"
+  ],
+  "predecessor": "../210/protocol.json",
+  "phase_xvi_freeze": "../208/decision.json",
+  "watermark": ".dlw"
+}
