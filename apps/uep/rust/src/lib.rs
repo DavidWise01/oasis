@@ -124,3 +124,6 @@ pub mod bridge;
 
 // UEP-206R: systemic case-level prioritization.
 pub mod priority;
+
+// UEP-207R: staged restorative infrastructure conversion.
+pub mod infrastructure;
