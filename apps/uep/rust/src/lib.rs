@@ -141,3 +141,5 @@ pub mod vector;
 pub mod journal;
 
 pub mod lifecycle;
+
+pub mod generation;
