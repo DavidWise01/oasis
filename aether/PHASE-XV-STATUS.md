@@ -1,6 +1,6 @@
 # AETHER Phase XV — Original Physical Evidence Acquisition in Rust
 
-**AETHER-199-RS DUAL-SIGNED PHYSICAL RESPONSE AND ALARM OBSERVER GATE COMMITTED. Phase XV software protocol: 7/8 = 87.5%. Authenticated original physical captures: 0; independently witnessed physical alarms: 0. Physical qualification: 0%. Operational authority HOLD.**
+**AETHER-200-RS PHASE XV DOCUMENTARY QUALIFICATION FREEZE COMMITTED. Phase XV software protocol CLOSED: 8/8 = 100%. Authenticated original physical captures: 0; independently witnessed physical alarms: 0. Physical qualification: 0%. Operational authority HOLD.**
 
 The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), with 8/8 software milestones and **no independently verified original physical measurements or alarms**. Phase XV moves the native Rust code toward ingestion of externally supplied acquisition evidence. Neither synthetic fixtures nor locally assigned source roles may create a physical qualification.
 
@@ -13,7 +13,16 @@ The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), wi
 | 5 | 197 Traceable calibration and physical timing uncertainty | **COMMITTED — synthetic signed-calibration uncertainty gate only** | **62.5%** |
 | 6 | 198 External blinded verifier record and ancestry authentication | **COMMITTED — synthetic Rust blinded digest and ancestry gate only** | **75%** |
 | 7 | 199 Physical response and alarm original observation qualification | **COMMITTED — synthetic dual-signed alarm observation gate only** | **87.5%** |
-| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 87.5% |
+| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | **CLOSED — Rust documentary freeze, physical ACT HOLD** | **100%** |
+
+## AETHER-200-RS — Phase XV final documentary qualification decision and historical freeze
+
+- **Phase XV documentary software milestones are CLOSED: 8/8 = 100%.** This is completion of the planned software contract and synthetic checks, not physical qualification. Original independently authenticated physical captures: **0**; independently observed physical alarm events: **0**; physical qualification **0%**; operational ACT **HOLD**.
+- [Native Rust freeze verifier](rust/src/phase_xv_freeze.rs) checks the exact AETHER-193–200 bound sequence, final phase state, original evidence counts, physically observed alarm and custody status, unresolved evidence categories, predecessor pointers and non-promotion safeguards. It cannot grant ACT.
+- [30 authored Rust regression tests](rust/tests/phase_xv_freeze.rs) cover documentary readback, missing/reordered bounds, fabricated physical samples, custody, calibration, alarms or independent verification, artificial ACT promotion, omitted external evidence, and dishonest Git-immutability claims. **Rust compilation and test execution have not yet been independently confirmed.**
+- [Machine-readable freeze record](200/decision.json) and [protocol](200/protocol.json) explicitly distinguish **100% software completion** from **0% physical qualification** and document the missing external proofs. This is a Git historical freeze convention, not technical branch immutability.
+- [Full animated 4D neon Pages-ready dashboard](200/) retains the 16-vertex / 32-edge cyan-blue-violet shadow tesseract and adds browser-only decision JSON inspection, evidence requirements and safeguards. It does **not** execute Rust in the browser or independently authenticate physical hardware. Live Pages not yet verified.
+- A signed synthetic claim cannot prove real instrument output, possession or alarm occurrence. A subsequent bound should focus on independent external origin authentication and durable original evidence capture rather than multiplying synthetic attestations. Prior Phase XIV freeze and Phase XV AETHER-193–199 files remain untouched. `.dlw`
 
 ## AETHER-199-RS — Original physical response and independent alarm observation screening
 
