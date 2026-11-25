@@ -317,3 +317,6 @@ pub mod phase_xvi_freeze;
 
 /// AETHER-209-RS: externally pinned remote anchor and local joint-rollback screening.
 pub mod remote_anchor;
+
+/// AETHER-210-RS: durable local receipt custody ingestion and replay screening.
+pub mod receipt_custody;
