@@ -1,0 +1,58 @@
+{
+  "bound": "AETHER-200",
+  "implementation": "Rust aether/rust/src/phase_xv_freeze.rs",
+  "phase": "XV",
+  "turn": 8,
+  "planned_turns": 8,
+  "phase_state": "CLOSED_DOCUMENTARY_SOFTWARE_PROTOCOL",
+  "software_protocol_progress_percent": 100,
+  "completed_bounds": [
+    "AETHER-193",
+    "AETHER-194",
+    "AETHER-195",
+    "AETHER-196",
+    "AETHER-197",
+    "AETHER-198",
+    "AETHER-199",
+    "AETHER-200"
+  ],
+  "authenticated_original_hardware_captures": 0,
+  "independently_authenticated_physical_sources": 0,
+  "independently_authenticated_custody_holders": 0,
+  "traceable_physical_calibration_chains": 0,
+  "physically_observed_alarm_events": 0,
+  "external_independent_verification_sessions": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "decision": "PHYSICAL_QUALIFICATION_DENIED_PENDING_ORIGINAL_INDEPENDENT_EVIDENCE",
+  "documentary_coverage": [
+    "193 Original capture byte intake and challenge binding",
+    "194 Manufacturer and calibration root credential screening",
+    "195 Signed acquisition challenge and replay checking",
+    "196 Custody export and receiver countersignature screening",
+    "197 Traceability, calibration and timing-uncertainty interval",
+    "198 Blinded external-review signature and ancestry screening",
+    "199 Physical response and independent alarm observer claims",
+    "200 Documentary qualification decision and phase freeze"
+  ],
+  "external_evidence_missing": [
+    "Out-of-band authenticated original hardware acquisition bytes and instrument identity",
+    "Independently authenticated manufacturer trust root and calibration reference chain",
+    "Independent custody holders and externally attested actual possession transfer",
+    "Authenticated physical clock, timing uncertainty, challenge origin and replay custody",
+    "Real response and physically observed alarm issuance/acknowledgement",
+    "Independently authenticated external verifier with separate source ancestry"
+  ],
+  "safeguards": {
+    "historical_append_only_intent": true,
+    "git_branch_technically_immutable": false,
+    "synthetic_attestations_cannot_grant_act": true,
+    "software_completion_is_not_physical_qualification": true,
+    "new_physical_evidence_requires_new_review": true
+  },
+  "prior": "../199/protocol.json",
+  "phase_xiv_freeze": "../192/decision.json",
+  "physical_evidence_submitted": false,
+  "watermark": ".dlw"
+}
