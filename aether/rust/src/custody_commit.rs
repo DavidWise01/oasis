@@ -123,6 +123,19 @@ pub fn append_with_custody(
 )->Result<State,String>{
  let lock_path=path.with_extension("lock");
  let guard=crate::process_liveness::acquire(&lock_path)?;
+ append_with_custody_under_guard(path,event,head,count,checkpoint,recovery_policy,
+ custody,custody_policy,signed,transition_policy,&guard)
+}
+/// AETHER-207: caller-owned guard remains held across registry and ledger work.
+/// This function MUST only be invoked with a guard for this exact ledger.
+pub(crate) fn append_with_custody_under_guard(
+ path:&Path,event:Event,head:&str,count:u64,
+ checkpoint:&SignedCheckpoint,recovery_policy:&RecoveryPolicy,
+ custody:&CustodyPacket,custody_policy:&CustodyPolicy,
+ signed:&SignedTransition,transition_policy:&TransitionPolicy,
+ guard:&crate::process_liveness::Guard
+)->Result<State,String>{
+ let lock_path=path.with_extension("lock");
  guard.verify_for(&lock_path)?;
  let entries=durable_ledger::read_all(path).map_err(|e|format!("LEDGER_HOLD: {e}"))?;
  let recovered=recovery_checkpoint::assess_entries(&entries,checkpoint,recovery_policy);
@@ -147,5 +160,5 @@ pub fn append_with_custody(
   return Err(format!("TRANSITION_HOLD: {}",signed_decision.reasons.join(",")));
  }
  guard.verify_for(&lock_path)?;
- durable_ledger::append_under_guard(path,event,head,count,&guard)
+ durable_ledger::append_under_guard(path,event,head,count,guard)
 }
