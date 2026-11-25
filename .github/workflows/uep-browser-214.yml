@@ -1,0 +1,55 @@
+name: UEP-214R Chromium acceptance
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/uep-browser-214.yml'
+      - 'apps/uep/rust/qualification/browser-214.cjs'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare frozen interface
+        run: |
+          mkdir -p evidence/browser
+          git fetch --depth=1 origin ee6c6daab80e98410965a540293041a7a8b524d8
+          git worktree add --detach /tmp/uep-frozen FETCH_HEAD
+          git -C /tmp/uep-frozen rev-parse HEAD > evidence/source.txt
+          cp /tmp/uep-frozen/apps/uep/UEP-209R-rust-restitution/index.html evidence/browser/
+      - name: Chromium setup
+        run: |
+          npm install --prefix /tmp/uep-browser playwright@1.51.1
+          /tmp/uep-browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Negative qualification without Rust
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 -m http.server 8765 --directory evidence/browser >/tmp/http.log 2>&1 &
+          trap 'kill $!' EXIT
+          NODE_PATH=/tmp/uep-browser/node_modules node apps/uep/rust/qualification/browser-214.cjs http://localhost:8765/ - negative | tee evidence/negative.json
+      - name: Build frozen Rust binary
+        run: |
+          rustup toolchain install 1.85.1 --profile minimal --target wasm32-unknown-unknown
+          cargo +1.85.1 generate-lockfile --manifest-path /tmp/uep-frozen/apps/uep/rust/Cargo.toml
+          cp /tmp/uep-frozen/apps/uep/rust/Cargo.lock evidence/
+          cargo +1.85.1 build --locked --manifest-path /tmp/uep-frozen/apps/uep/rust/Cargo.toml --lib --release --target wasm32-unknown-unknown
+          cp /tmp/uep-frozen/apps/uep/rust/target/wasm32-unknown-unknown/release/oasis_uep.wasm evidence/browser/
+          node apps/uep/rust/qualification/wasm-213.cjs evidence/browser/oasis_uep.wasm > evidence/parity.json
+      - name: Full browser qualification
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 -m http.server 8765 --directory evidence/browser >/tmp/http.log 2>&1 &
+          trap 'kill $!' EXIT
+          NODE_PATH=/tmp/uep-browser/node_modules node apps/uep/rust/qualification/browser-214.cjs http://localhost:8765/ evidence/browser/oasis_uep.wasm full | tee evidence/full.json
+      - name: Hash evidence
+        if: always()
+        run: find evidence -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 -r sha256sum > evidence/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-214r-browser
+          path: evidence/
