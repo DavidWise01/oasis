@@ -1,0 +1,41 @@
+{
+  "bound": "AETHER-202",
+  "phase": "XVI",
+  "turn": 2,
+  "planned_turns": 8,
+  "software_protocol_percent": 25,
+  "implementation": "Rust aether/rust/src/process_liveness.rs",
+  "integrated_ledger": "../rust/src/durable_ledger.rs",
+  "tests": "../rust/tests/process_liveness.rs",
+  "authored_tests": 20,
+  "original_physical_sources_authenticated": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "linux_owner_identity": [
+    "PID read from local OS process",
+    "Linux /proc/<pid>/stat starttime tick count to reject PID reuse",
+    "Kernel boot_id matched to lock acquisition boot",
+    "OS-observed process state, zombie and exited classification"
+  ],
+  "lock_protocol": [
+    "Private mode 0600 create_new exclusive acquisition",
+    "Write and fsync lock-owner JSON before returning success",
+    "Sync parent directory",
+    "Existing lock must not be automatically reclaimed even if owner exited",
+    "Only own matching lock record and inode eligible for release",
+    "Process liveness failure, unsupported OS, malformed metadata or replaced file fail closed"
+  ],
+  "limitations": [
+    "Linux /proc only; non-Linux remains unsupported/fail closed",
+    "Identity of lock-holder process is OS-observed locally, not cryptographic external owner authentication",
+    "No pidfd, multi-host fencing, atomic external checkpoint or distributed consensus",
+    "Read/verify/unlink path check has remaining local filesystem races under hostile directory mutation",
+    "Orphaned locks require independently approved operator recovery; automatic seizure forbidden",
+    "No physical evidence has been independently authenticated",
+    "Rust tests, GitHub Actions and live Pages not yet independently verified"
+  ],
+  "previous": "../201/protocol.json",
+  "phase_xv_freeze": "../200/decision.json",
+  "watermark": ".dlw"
+}
