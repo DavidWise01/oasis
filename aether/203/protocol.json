@@ -1,0 +1,35 @@
+{
+  "bound": "AETHER-203",
+  "phase": "XVI",
+  "turn": 3,
+  "planned_turns": 8,
+  "software_protocol_percent": 37.5,
+  "rust_source": "../rust/src/recovery_checkpoint.rs",
+  "rust_tests": "../rust/tests/recovery_checkpoint.rs",
+  "authored_tests": 25,
+  "ledger_integration": "../rust/src/durable_ledger.rs",
+  "physical_qualification_percent": 0,
+  "original_physical_captures_authenticated": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "checks": [
+    "ECDSA P-256 signature over ordered canonical checkpoint fields",
+    "Externally provisioned holder public-key fingerprint and exact checkpoint digest pin",
+    "Explicit ledger ID, sequence, head and predecessor-checkpoint digest binding",
+    "Linux durable ledger integrity and indexed historical checkpoint head match",
+    "Refusal of valid-but-rolled-back ledger prefixes and divergent complete histories",
+    "Challenge nonce, checkpoint ID replay, source/holder root/operator/admin disjointness"
+  ],
+  "limitations": [
+    "The pinned key, checkpoint digest and true holder custody must be provisioned independently; caller-controlled flags prove nothing",
+    "Hash-chain matching cannot establish real-world original acquisition or physical provenance",
+    "External checkpoint storage, durable issuance and distributed consensus are not implemented",
+    "Lock recovery and stale lock seizure remain forbidden",
+    "Checkpoint assessment precedes atomic ledger append; externally malicious filesystem mutation and cross-process ABA require additional fencing",
+    "Cargo/CI and live Pages tests not independently confirmed"
+  ],
+  "next": "AETHER-204-RS — atomic admission under process lock with checkpoint re-verification and external readback",
+  "predecessor": "../202/protocol.json",
+  "phase_xv_freeze": "../200/decision.json",
+  "watermark": ".dlw"
+}
