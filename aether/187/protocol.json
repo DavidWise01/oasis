@@ -1,0 +1,27 @@
+{
+  "bound": "AETHER-187",
+  "phase": "XIV",
+  "turn": 3,
+  "planned_turns": 8,
+  "software_protocol_percent": 37.5,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "mode": "SYNTHETIC ORIGINAL-BYTE CUSTODY & EXTERNAL VERIFIER SIGNATURE",
+  "checks": [
+    "SHA-256 actual raw Uint8Array bytes",
+    "ECDSA P-256 original acquisition and independent verification signatures",
+    "Verification binds SHA-256 of canonical acquisition and custody receipts",
+    "Issuer/verifier distinct declared ancestry, operator and administrator",
+    "Clock ordering, challenge, instrument identity and anti-replay"
+  ],
+  "limitations": [
+    "Separate mock public keys and declared roots are not physical independence",
+    "No cryptographic signature on custody handoff itself in this bound",
+    "No external manufacturer, custodian or actual hardware acquisition authenticated",
+    "Client trust flags never permit ACT"
+  ],
+  "predecessor": "../186/protocol.json",
+  "original_physical_samples": 0,
+  "physical_act_allowed": false,
+  "watermark": ".dlw"
+}
