@@ -1,0 +1,30 @@
+{
+  "bound": "AETHER-188",
+  "phase": "XIV",
+  "turn": 4,
+  "planned_turns": 8,
+  "software_protocol_percent": 50,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "mode": "SIGNED SYNTHETIC INSTRUMENT CLOCK CALIBRATION CHALLENGE BINDING",
+  "tests_planned": 27,
+  "cryptography": "WebCrypto ECDSA P-256 SHA-256 over canonical fixed-field calibration and capture JSON plus SHA-256 original bytes",
+  "binding": [
+    "Device serial and clock serial equality to calibration and expected policy",
+    "Signature over calibration and acquisition records",
+    "Calibration record SHA-256 sealed into acquisition record",
+    "Time-bounded one-use challenge nonce and capture replay gate",
+    "Hardware tick and sample counter monotonicity",
+    "Bounded projected tick span versus declared challenge acquisition interval"
+  ],
+  "limitations": [
+    "A signed hardware tick is a signer assertion, not direct observation",
+    "Clock calibration signature from a synthetic key is not metrological traceability",
+    "An acquisition timestamp does not prove exact time of hardware sampling",
+    "No independently authenticated original physical evidence or trusted manufacturer anchors"
+  ],
+  "original_physical_samples": 0,
+  "previous": "../187/protocol.json",
+  "watermark": ".dlw"
+}
