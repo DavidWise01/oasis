@@ -109,3 +109,6 @@ mod tests {
         assert!(advance(&State::genesis(),p).is_err());
     }
 }
+
+// UEP-202R: reusable population ledger.
+pub mod population;
