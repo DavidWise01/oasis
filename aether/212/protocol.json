@@ -1,0 +1,38 @@
+{
+  "bound": "AETHER-212",
+  "phase": "XVII",
+  "turn": 4,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 50,
+  "rust_source": "../rust/src/crash_incident.rs",
+  "rust_tests": "../rust/tests/crash_incident.rs",
+  "authored_tests": 21,
+  "physical_qualification_percent": 0,
+  "independently_authenticated_remote_receipts": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "may_recover": false,
+  "may_repair": false,
+  "may_reclaim_lock": false,
+  "checks": [
+    "Read and hash raw journal, registry and local signed-receipt JSONL; do not write any of them",
+    "Verify ledger hash chain, registry schema, ledger head and entry-count parity",
+    "Detect registry.pending publication and outstanding ledger or receipt process locks without deleting either",
+    "Validate receipt journal chain and cross-compare receipt anchor sequence/head against indexed ledger history",
+    "Detect a receipt that claims a later registry revocation epoch than available locally",
+    "Detect receipt anchor predecessor breaks and nonmonotonic signed history, including post hoc tampering",
+    "Rehash all three byte snapshots after read; refuse changed-during-inspection snapshots",
+    "Export machine-readable incident record without any repair/recovery/ACT authority"
+  ],
+  "limitations": [
+    "Read-only inspection is not an atomic three-file snapshot; concurrent change checks are best-effort",
+    "An attacker who controls and rewinds all local stores can still fabricate coherent local state absent independent remote anchors",
+    "Receipt anchor claims are documentary; real external custody signatures are not authenticated by this module",
+    "No automatic file repair, orphan lock takeover, distributed fencing or incident closure",
+    "No authenticated original physical capture or independent remote receipt",
+    "Rust compilation/tests, Actions success, and live Pages deployment not independently verified"
+  ],
+  "predecessor": "../211/protocol.json",
+  "phase_xvi_freeze": "../208/decision.json",
+  "watermark": ".dlw"
+}
