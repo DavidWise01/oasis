@@ -1,0 +1,32 @@
+{
+  "bound": "AETHER-199",
+  "phase": "XV",
+  "turn": 7,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 87.5,
+  "rust_source": "../rust/src/physical_alarm.rs",
+  "rust_tests": "../rust/tests/physical_alarm_observation.rs",
+  "authored_tests": 30,
+  "authenticated_original_hardware_captures": 0,
+  "independently_observed_physical_alarms": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "checks": [
+    "P-256 signed original response claim and independent physical alarm observer claim",
+    "Exact response SHA-256 and original capture SHA-256 binding",
+    "Challenge nonce, device and calibration binding",
+    "Source and observer root/operator/admin independence screening",
+    "Threshold response tolerance and monotonic alarm/acknowledgement timing",
+    "Reused event IDs, alarm IDs and challenge nonces rejected",
+    "External source, observer, alarm and physical clock authentication required"
+  ],
+  "limitations": [
+    "Both signed records are documentary assertions, not observed hardware proof",
+    "Caller-supplied authority booleans are never sufficient for physical ACT",
+    "No original authenticated physical evidence or independent alarm observation supplied",
+    "Durable replay persistence, Cargo execution and Pages deployment unverified"
+  ],
+  "previous": "../198/protocol.json",
+  "watermark": ".dlw"
+}
