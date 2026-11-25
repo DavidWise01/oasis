@@ -55,7 +55,7 @@ fn validate(receipt:&Receipt,anchor:&SignedAnchor,policy:&AnchorPolicy)->Result<
  }
  Ok(())
 }
-fn read_all(path:&Path)->Result<Vec<Entry>,String>{
+pub(crate) fn read_all(path:&Path)->Result<Vec<Entry>,String>{
  let mut bytes=Vec::new();
  match File::open(path){
   Ok(mut f)=>f.read_to_end(&mut bytes).map_err(|e|format!("RECEIPT_READ: {e}"))?,
@@ -105,6 +105,26 @@ pub fn ingest(
  ledger:&Path,store:&Path,receipt:Receipt,anchor:SignedAnchor,policy:&AnchorPolicy,
  expected_head:&str,expected_count:u64,
 )->Result<ReceiptState,String>{
+ ingest_with_extension(ledger,store,receipt,anchor,policy,expected_head,expected_count,None,None,false)
+}
+/// AETHER-211: enforce an exact forward extension *inside* the same local
+/// receipt-store lock used for journal append and readback.
+pub fn ingest_monotonic(
+ ledger:&Path,store:&Path,receipt:Receipt,anchor:SignedAnchor,policy:&AnchorPolicy,
+ expected_head:&str,expected_count:u64,
+ rotation:Option<&crate::monotonic_receipt::SignedRotation>,
+ rotation_policy:Option<&crate::monotonic_receipt::RotationPolicy>,
+)->Result<ReceiptState,String>{
+ ingest_with_extension(ledger,store,receipt,anchor,policy,expected_head,expected_count,
+  rotation,rotation_policy,true)
+}
+fn ingest_with_extension(
+ ledger:&Path,store:&Path,receipt:Receipt,anchor:SignedAnchor,policy:&AnchorPolicy,
+ expected_head:&str,expected_count:u64,
+ rotation:Option<&crate::monotonic_receipt::SignedRotation>,
+ rotation_policy:Option<&crate::monotonic_receipt::RotationPolicy>,
+ require_forward:bool,
+)->Result<ReceiptState,String>{
  validate(&receipt,&anchor,policy)?;
  let lock_path=store.with_extension("lock");
  let guard=crate::process_liveness::acquire(&lock_path)?;
@@ -113,6 +133,16 @@ pub fn ingest(
  let old=state(&prior);
  if old.head_sha256!=expected_head||old.entries!=expected_count{
   return Err("STALE_RECEIPT_STORE_HEAD".into());
+ }
+ if require_forward {
+  if let Some(previous)=prior.last(){
+   let extension=crate::monotonic_receipt::assess(previous,&anchor,policy,rotation,rotation_policy);
+   if !extension.may_store_documentary_receipt {
+    return Err(format!("MONOTONIC_RECEIPT_HOLD: {}",extension.reasons.join(",")));
+   }
+  }else if rotation.is_some()||rotation_policy.is_some(){
+   return Err("GENESIS_ROTATION_NOT_ALLOWED".into());
+  }
  }
  if prior.iter().any(|e|e.receipt.receipt_id==receipt.receipt_id||
   e.receipt.anchor_sha256==receipt.anchor_sha256||
