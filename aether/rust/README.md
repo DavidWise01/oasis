@@ -91,6 +91,12 @@ The [receipt custody module](src/receipt_custody.rs) adds `ingest_monotonic`, wh
 
 [Neon 4D Pages laboratory](../211/) illustrates the failure outcomes but does not run Rust. Independent physical custody, remote availability, persistent rotation-policy replay state and cross-store atomicity remain unverified. Timestamps are not authorization. Authenticated remote receipts **0**; physical qualification **0%**; recovery and ACT **HOLD**. Compilation, regression execution, Actions and Pages deployment remain unverified.
 
+## AETHER-212-RS read-only crash incident reconciliation
+
+The [Rust incident observer](src/crash_incident.rs) and [21 authored regression tests](tests/crash_incident.rs) compare the local evidence journal, authorization registry and receipt-custody journal without changing any of them. They record byte-level SHA-256 snapshots and validated head/count summaries, detect torn or corrupt histories, missing stores, pending registry updates, outstanding process locks and receipt claims beyond the available journal/registry epoch. A second filesystem read detects some intervening writes but cannot make a three-file snapshot atomic.
+
+The [4D neon Pages lab](../212/) illustrates six synthetic forensic decisions without running Rust. The module cannot repair a journal, reconcile persisted records, seize a lock, authenticate a remote holder or grant physical ACT. Local consistency does not prove original remote custody, and jointly rolled-back local files may still appear internally coherent. Independently authenticated remote receipts: **0**. Physical qualification **0%**, ACT **HOLD**. Cargo, tests, CI and live Pages verification remain pending.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
