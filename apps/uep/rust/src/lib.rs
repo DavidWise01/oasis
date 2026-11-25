@@ -133,3 +133,6 @@ pub mod recovery;
 
 // UEP-209R: browser-facing arithmetic ABI.
 pub mod browser;
+
+// UEP-216R: complete axiom-vector ABI.
+pub mod vector;
