@@ -34,7 +34,7 @@ impl Recovery{
        // Exclude new restoration gain; maintenance effects remain modeled.
        let mut shadow=c.clone();if let Some(r)=&mut shadow.request{r.accept_units=0;}
        match step(&self.state,i,&shadow){
-        Ok(x) if protects(&candidate,&base)&&protects(&x,&base)&&forward(candidate.next.clone(),base.next.clone(),future)?&&forward(x.next,base.next.clone(),future)?=>{chosen=candidate;decision=Decision::Accepted;}
+        Ok(x) if protects(&candidate,&base)&&protects(&x,&base)&&forward(candidate.next.clone(),base.next.clone(),future)?&&forward(x.next.clone(),base.next.clone(),future)?=>{chosen=candidate;decision=Decision::Accepted;}
         _=>decision=Decision::ForwardHold,
        }
       }
