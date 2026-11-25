@@ -65,6 +65,12 @@ The [native authorization registry](src/authorization_registry.rs) and [41 autho
 
 **Important:** Ledger fsync followed by registry rename is not one atomic two-file transaction. Any interrupted write may leave divergence; the next call refuses admission until independently approved recovery. An attacker able to roll back *both* files may evade this local comparison without an externally retained checkpoint. Root enrollment and external identity authentication are not independently established. No actual original physical capture or external custody was observed; physical qualification **0%**, ACT **HOLD**. Cargo compilation, tests, Actions and live Pages deployment remain unverified.
 
+## AETHER-208-RS — Phase XVI documented freeze
+
+The [Phase XVI Rust freeze evaluator](src/phase_xvi_freeze.rs) and [39 authored regression tests](tests/phase_xvi_freeze.rs) inspect the [AETHER-208 decision record](../208/decision.json). Phase XVI's eight documentary software milestones AETHER-201–208 are recorded as closed; original physical captures, independently authenticated external roots, external remote checkpoints, and physically witnessed alarms remain **0**. Physical qualification is **0%**, operational ACT **HOLD**.
+
+The [4D neon laboratory](../208/) illustrates the documentary freeze and inspects the JSON in-browser, but does not run native Rust or independently authenticate source custody. Neither Cargo compilation, tests, GitHub Actions result nor actual Pages deployment is certified by this freeze. The ledger and registry are **two files without joint crash atomicity**, and simultaneous rollback remains undetectable without a separately held trusted checkpoint. A Git commit is a historical documentary anchor, not proof of an immutable branch or remote physical custody. Any later physical-evidence review must be a new bound with explicit independent provenance.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
