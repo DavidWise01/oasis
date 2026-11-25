@@ -308,3 +308,6 @@ pub mod external_custody;
 
 /// AETHER-206-RS: custody-bound signed transition under one process lock.
 pub mod custody_commit;
+
+/// AETHER-207-RS: persistent replay registry and signed revocation epochs.
+pub mod authorization_registry;
