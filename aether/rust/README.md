@@ -97,6 +97,12 @@ The [Rust incident observer](src/crash_incident.rs) and [21 authored regression 
 
 The [4D neon Pages lab](../212/) illustrates six synthetic forensic decisions without running Rust. The module cannot repair a journal, reconcile persisted records, seize a lock, authenticate a remote holder or grant physical ACT. Local consistency does not prove original remote custody, and jointly rolled-back local files may still appear internally coherent. Independently authenticated remote receipts: **0**. Physical qualification **0%**, ACT **HOLD**. Cargo, tests, CI and live Pages verification remain pending.
 
+## AETHER-213-RS signed custody-ancestry incident screening
+
+The [Rust witness-ancestry evaluator](src/custody_ancestry.rs) and [30 authored regression cases](tests/custody_ancestry.rs) bind exactly three P-256 signed observation envelopes to the SHA-256 digest of the [AETHER-212 incident](src/crash_incident.rs). Each envelope records its source corpus, declared controlling root/operator/administrator, host, signature key fingerprint, evidence hash and receipt reference. Declared source/witness controller overlap, mirror ancestry, reused receipts, shared witness administrators/operators/hosts and invalid pins or signatures fail closed.
+
+The [AETHER-213 neon 4D lab](../213/) is an illustrative HTML display, not a cryptographic execution environment. The documentary verdict does not certify independent remote control, original physical capture or independently retained external witnesses. GitHub and 0root.ai copies of one corpus are not two independent sources. Claimed enrollment and receipt-retention flags are inputs, not proof of real-world independence. Independently authenticated physical witnesses remain **0**; qualification **0%**; recovery and ACT **HOLD**. Cargo compilation, test execution, Actions and live Pages checks remain unverified.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
