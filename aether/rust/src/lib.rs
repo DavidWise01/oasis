@@ -314,3 +314,6 @@ pub mod authorization_registry;
 
 /// AETHER-208-RS: Phase XVI documentary freeze with permanent physical ACT HOLD.
 pub mod phase_xvi_freeze;
+
+/// AETHER-209-RS: externally pinned remote anchor and local joint-rollback screening.
+pub mod remote_anchor;
