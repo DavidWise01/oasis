@@ -1,6 +1,6 @@
 # AETHER Phase XVI — Durable Replay Evidence & Independent Admission
 
-**AETHER-205-RS EXTERNAL CUSTODY ROOT & ISSUER ADMISSION GATE COMMITTED. Phase XVI documentary software progress 5/8 = 62.5%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-206-RS CUSTODY-BOUND ATOMIC LEDGER TRANSITION GATE COMMITTED. Phase XVI documentary software progress 6/8 = 75%. Authenticated independent external evidence roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 software milestones were closed without any independently authenticated original physical evidence or actual alarm observations. Phase XVI shifts from multiplying synthetic gates to on-disk evidence continuity, recovery and independent external custody.
 
@@ -11,9 +11,18 @@ Phase XV [AETHER-200 documentary freeze](200/decision.json) remains intact: 8/8 
 | 3 | 203 Crash recovery with independent signed checkpoint | **COMMITTED — Rust externally pinned documentary checkpoint gate** | **37.5%** |
 | 4 | 204 Atomic cross-process admission and checkpoint readback | **COMMITTED — one local OS lock across checkpoint validation, append and readback** | **50%** |
 | 5 | 205 External custody root and issuer admission | **COMMITTED — synthetic pinned issuer, holder and rotation gate only** | **62.5%** |
-| 6 | 206 Independent ancestral cross-check and custody transfer | Planned | 62.5% |
-| 7 | 207 Adversarial original evidence admission replay | Planned | 62.5% |
-| 8 | 208 Phase XVI software decision and documented freeze | Planned | 62.5% |
+| 6 | 206 Independent ancestral cross-check and custody transfer | **COMMITTED — signed exact-transition admission under one local process lock** | **75%** |
+| 7 | 207 Adversarial original evidence admission replay | Planned | 75% |
+| 8 | 208 Phase XVI software decision and documented freeze | Planned | 75% |
+
+## AETHER-206-RS — One custody admission, one exact signed journal transition
+
+- [Native Rust custody-commit verifier](rust/src/custody_commit.rs) binds **both issuer and holder P-256 signatures** to the same canonical transition intent: original event digest and individual fields, checkpoint SHA-256, custody admission SHA-256, expected journal head, sequence, ledger identity and unique authorization nonce.
+- Under **one Linux OS-owned lock**, the gate checks the AETHER-203 signed checkpoint against the full journal, re-adjudicates the AETHER-205 issuer/holder admission, verifies pinned holder and issuer keys and exact transition signatures, compares expected head and count, then calls AETHER-204's [guarded durable append](rust/src/durable_ledger.rs). The write is fsynced and journal read back before the lock is released.
+- [24 authored Rust regression tests](rust/tests/custody_commit.rs) cover the intended synthetic path plus competing writers, stale head/sequence and intervening prior writer, changed original event and checksum, mismatched checkpoint or admission, forged holder/issuer signatures, revoked credentials, replayed authorization IDs/nonces, unauthorized origins, torn journal tail and orphaned locks. **Compilation, tests and Actions results remain unverified.**
+- [Animated neon 4D GitHub Pages-ready lab](206/) retains the 16-vertex/32-edge tesseract and illustrates six documentary scenarios. The browser does not execute native Rust. [Protocol](206/protocol.json) records **Phase XVI 6/8 = 75%**, authenticated independent external custody **0**, physical qualification **0%**, ACT **HOLD**.
+- **Limits:** custody-policy trust flags and independently provisioned pins remain supplied evidence, not out-of-band authenticity proof; the authorization replay set and revocation epoch have not been bound to an independent durable registry. The Linux lock does not establish distributed atomic external custody, and the mutable local directory is not a hardened hostile-filesystem boundary. No real original physical measurements or independently held checkpoint have been authenticated.
+- **Next AETHER-207-RS:** adversarial original-evidence admission replay with custody revocation and independent ancestry under realistic persisted registry state. `.dlw`
 
 ## AETHER-205-RS — Pinned custody issuer, holder and independent rotation admission
 
