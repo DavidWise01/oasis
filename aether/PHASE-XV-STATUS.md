@@ -1,6 +1,6 @@
 # AETHER Phase XV — Original Physical Evidence Acquisition in Rust
 
-**AETHER-194-RS MANUFACTURER & CALIBRATION CREDENTIAL GATE COMMITTED. Phase XV software protocol: 2/8 = 25%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
+**AETHER-195-RS SIGNED INSTRUMENT CHALLENGE AND CAPTURE REPLAY GATE COMMITTED. Phase XV software protocol: 3/8 = 37.5%. Authenticated original physical captures: 0. Physical qualification: 0%. Operational authority HOLD.**
 
 The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), with 8/8 software milestones and **no independently verified original physical measurements or alarms**. Phase XV moves the native Rust code toward ingestion of externally supplied acquisition evidence. Neither synthetic fixtures nor locally assigned source roles may create a physical qualification.
 
@@ -8,12 +8,21 @@ The Phase XIV documentary protocol [closed at AETHER-192](192/decision.json), wi
 |---|---|---|---:|
 | 1 | 193 Rust original-byte physical acquisition intake | **COMMITTED — synthetic Rust structural and signature gate only** | **12.5%** |
 | 2 | 194 Out-of-band manufacturer / calibration authority credential import | **COMMITTED — synthetic pinned-credential gate only** | **25%** |
-| 3 | 195 Real instrument challenge acquisition receipt and anti-replay | Planned | 25% |
-| 4 | 196 Original acquisition secure custody export and independent holder | Planned | 25% |
-| 5 | 197 Traceable calibration and physical timing uncertainty | Planned | 25% |
-| 6 | 198 External blinded verifier record and ancestry authentication | Planned | 25% |
-| 7 | 199 Physical response and alarm original observation qualification | Planned | 25% |
-| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 25% |
+| 3 | 195 Real instrument challenge acquisition receipt and anti-replay | **COMMITTED — synthetic signed acquisition replay gate only** | **37.5%** |
+| 4 | 196 Original acquisition secure custody export and independent holder | Planned | 37.5% |
+| 5 | 197 Traceable calibration and physical timing uncertainty | Planned | 37.5% |
+| 6 | 198 External blinded verifier record and ancestry authentication | Planned | 37.5% |
+| 7 | 199 Physical response and alarm original observation qualification | Planned | 37.5% |
+| 8 | 200 Phase XV documentary qualification freeze and physical ACT gate | Planned | 37.5% |
+
+## AETHER-195-RS — Signed acquisition challenge, capture receipt and replay screening
+
+- [Rust challenge module](rust/src/challenge.rs) verifies ECDSA P-256 signatures from the challenge authority and device signing key, a captured-payload SHA-256, an exact challenge record SHA-256 sealed into the receipt, and device/nonce identity, chronology and bounded capture latency. It also checks challenge ID, nonce, capture ID and payload digest against supplied prior history.
+- [28 authored Rust integration tests](rust/tests/challenge_receipt.rs) cover document consistency, valid synthetic signatures, altered bytes, stale/expired/future captures, signature forgery, challenge substitution, duplicates against replay history and false trust-flag escalation. **Cargo/CI execution not independently confirmed.**
+- [Full 4D neon Pages-ready lab](195/) retains the 16-vertex/32-edge rotating cyan-blue-violet hypercube and projected shadow, adding illustrative replay, forgery, timing and ledger fault buttons. The browser does not execute Rust.
+- [Protocol](195/protocol.json) records **Phase XV 3/8 = 37.5%**, original authenticated physical samples **0**, physical qualification **0%**, operational ACT **HOLD**.
+- The Rust evaluator emits *proposed ledger identifiers* only after a documentary pass. **Atomic append-only persistence, real hardware capture, externally authenticated signing keys and independent physical calibration remain missing.** A caller-supplied ledger cannot authenticate its own history.
+- Previous AETHER-193 and AETHER-194 records and Phase XIV freeze remain unchanged. **Next AETHER-196-RS:** secure custody export and independently authenticated receiving holder. `.dlw`
 
 ## AETHER-194-RS — Manufacturer and calibration authority credential import
 
