@@ -1,0 +1,40 @@
+name: UEP-209R WebAssembly build
+on:
+  push:
+    paths:
+      - 'apps/uep/rust/**'
+      - 'apps/uep/UEP-209R-rust-restitution/index.html'
+      - '.github/workflows/uep-wasm-209.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup toolchain install stable --profile minimal --target wasm32-unknown-unknown
+      - run: cargo +stable test --manifest-path apps/uep/rust/Cargo.toml
+      - run: cargo +stable build --manifest-path apps/uep/rust/Cargo.toml --lib --release --target wasm32-unknown-unknown
+      - name: Verify exported Rust arithmetic
+        run: |
+          node <<'JS'
+          const fs=require('fs'),assert=require('node:assert/strict');
+          (async()=>{const {instance}=await WebAssembly.instantiate(fs.readFileSync('apps/uep/rust/target/wasm32-unknown-unknown/release/oasis_uep.wasm'),{});
+          const e=instance.exports;assert.equal(e.uep_abi_version(),209);
+          for(const v of [0n,1n,10000n,120000000000n,18446744073709551615n])for(const p of [0,1,500,999])for(const n of [0,1,500,999]){
+          const d=v*BigInt(p)*BigInt(999-n)*2050n/(999n*999n*10000n),c=d*80n/100n;
+          assert.equal(e.uep_estimate(v,p,n,0),d);assert.equal(e.uep_estimate(v,p,n,1),c);assert.equal(e.uep_estimate(v,p,n,2),d-c);}
+          assert.equal(e.uep_estimate(1n,1000,0,0),-1n);
+          console.log('80 WASM arithmetic cases passed');
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - name: Package browser artifact
+        run: |
+          mkdir -p browser
+          cp apps/uep/UEP-209R-rust-restitution/index.html browser/
+          cp apps/uep/rust/target/wasm32-unknown-unknown/release/oasis_uep.wasm browser/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: uep-209r-browser
+          path: browser/
