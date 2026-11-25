@@ -284,3 +284,6 @@ pub mod custody_export;
 
 /// AETHER-197-RS: signed calibration uncertainty gate.
 pub mod calibration;
+
+/// AETHER-198-RS: blinded external verifier ancestry and digest gate.
+pub mod blind_verifier;
