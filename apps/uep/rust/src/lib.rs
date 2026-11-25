@@ -112,3 +112,6 @@ mod tests {
 
 // UEP-202R: reusable population ledger.
 pub mod population;
+
+// UEP-203R: 42-Universe model estimate kernel.
+pub mod restitution;
