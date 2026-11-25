@@ -127,3 +127,6 @@ pub mod priority;
 
 // UEP-207R: staged restorative infrastructure conversion.
 pub mod infrastructure;
+
+// UEP-208R: adaptive forward protection.
+pub mod recovery;
