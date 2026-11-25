@@ -118,14 +118,23 @@ pub fn assess_file(path:&Path,c:&SignedCheckpoint,p:&RecoveryPolicy)->RecoveryDe
   },
  }
 }
-/// Documentary-gated append. The durable ledger still checks head/count under its own
-/// process lock. If external custody is not authenticated, this function refuses append.
+/// AETHER-204: checkpoint adjudication and append use the exact same OS-owned lock.
+/// The caller's policy is only documentary; out-of-band authentication MUST be
+/// established independently and checked again when the checkpoint is admitted.
+/// No automatic recovery, lock seizure, or physical ACT is possible here.
 pub fn append_with_checkpoint(path:&Path,event:Event,head:&str,count:u64,
  c:&SignedCheckpoint,p:&RecoveryPolicy)->Result<State,String>{
- let assessment=assess_file(path,c,p);
- if !assessment.may_append{return Err(format!("CHECKPOINT_HOLD: {}",assessment.reasons.join(",")));}
+ let guard=crate::process_liveness::acquire(&path.with_extension("lock"))?;
+ guard.verify_for(&path.with_extension("lock"))?;
+ let entries=read_all(path).map_err(|e|format!("LEDGER_HOLD: {e}"))?;
+ let assessment=assess_entries(&entries,c,p);
+ if !assessment.may_append{
+  return Err(format!("CHECKPOINT_HOLD: {}",assessment.reasons.join(",")));
+ }
  if assessment.local_entries!=count||assessment.local_head_sha256!=head{
   return Err("STALE_CHECKPOINT_ADMISSION_HEAD".into());
  }
- crate::durable_ledger::append(path,event,head,count)
+ // append_under_guard rereads history and compares expected head and count;
+ // its file/dir fsync and complete readback occur while guard is still owned.
+ crate::durable_ledger::append_under_guard(path,event,head,count,&guard)
 }
