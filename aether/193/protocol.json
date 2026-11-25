@@ -1,0 +1,31 @@
+{
+  "bound": "AETHER-193",
+  "phase": "XV",
+  "turn": 1,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 12.5,
+  "implementation": "Rust aether/rust/src/intake.rs",
+  "rust_tests": "../rust/tests/original_intake.rs",
+  "test_cases_authored": 26,
+  "physical_qualification_percent": 0,
+  "authenticated_original_physical_captures": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "mode": "ORIGINAL BYTE INTAKE CONTRACT; EXTERNAL SOURCE REGISTRY UNAUTHENTICATED",
+  "checks": [
+    "SHA-256 original supplied bytes and ECDSA P-256 signed canonical capture",
+    "Independent external issuer record required, but registry assertions cannot self-authenticate",
+    "Challenge issuance/acquisition/expiry chronology and nonce anti-replay",
+    "Instrument serial, calibration digest, distinct declared custody root binding",
+    "Issuer revocation, capture size policy and capture anti-replay"
+  ],
+  "limitations": [
+    "No real independently authenticated hardware bytes submitted",
+    "Distinct declared roots are not actual independent physical provenance",
+    "Client-provided authentication booleans can never promote ACT",
+    "Browser demo visualizes documentary gates; Rust is not compiled to WASM here",
+    "Rust Cargo and Actions execution remain pending until independent confirmation"
+  ],
+  "phase_xiv_freeze": "../192/decision.json",
+  "watermark": ".dlw"
+}
