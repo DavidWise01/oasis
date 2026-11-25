@@ -47,6 +47,12 @@ The [signed recovery gate](src/recovery_checkpoint.rs) and [durable ledger](src/
 
 This strengthens local atomicity but does not implement remote checkpoint storage or an authenticated independent holder. It is not a defense against every hostile directory race or distributed filesystem operation, and cannot authorize lock reclamation or physical ACT. Physical qualification remains **0%**; operational authority **HOLD**. Cargo, CI and Pages live execution remain unverified.
 
+## AETHER-205-RS independently pinned custody issuer and holder
+
+The native [external custody gate](src/external_custody.rs) and [33 authored regression cases](tests/external_custody.rs) verify separate ECDSA P-256 issuer and holder signatures on the same admission record, independently provisioned public-key fingerprints, non-overlapping declared source/issuer/holder ancestry, revocation and nonce replay. A holder-key rotation requires a separately pinned and signed authority approval with a distinct root and matching policy epoch.
+
+The [animated 4D neon laboratory](../205/) illustrates six fail-closed custody cases; it does not execute native Rust or connect to a physical holder. **Signer root labels and caller authentication flags alone do not establish real-world independence.** There has been no authenticated external custody holder or physical source, and the gate is not yet wired to the same critical section as AETHER-204's durable append. Physical qualification remains **0%**, ACT **HOLD**. Cargo, CI, and live Pages validation remain separate checks.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
