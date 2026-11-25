@@ -269,3 +269,6 @@ pub mod alarm;
 
 /// AETHER-192-RS: fail-closed Phase XIV documentary qualification freeze.
 pub mod freeze;
+
+/// AETHER-193-RS: fail-closed original capture ingestion.
+pub mod intake;
