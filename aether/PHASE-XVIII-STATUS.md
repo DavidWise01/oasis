@@ -1,6 +1,6 @@
 # AETHER Phase XVIII — Executable Rust Qualification & Independent Evidence Acquisition
 
-**AETHER-222-RS OUT-OF-BAND CHALLENGE, NONCE REPLAY & ORIGINAL EVIDENCE BYTE SCREEN COMMITTED. Phase XVIII documentary software progress 6/8 = 75%. Independent remote custody, original device authentication, native Rust compilation and Actions conclusion: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-223-RS INTEGRATED ADVERSARIAL INDEPENDENT-EVIDENCE QUALIFICATION COMMITTED. Phase XVIII documentary software progress 7/8 = 87.5%. Independent remote custody, physical device authentication, native Rust compilation and Actions conclusion: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intact, with eight authored Phase XVII documentary milestones closed and all physical authority withheld. Phase XVIII separates verified *execution* from source-only acceptance and independently anchored external acquisition from locally copied evidence.
 
@@ -12,8 +12,17 @@ The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intac
 | 4 | 220 Browser-to-native parity and controlled artifact validation | **COMMITTED — synthetic pinned-byte demonstration and native HOLD** | **50%** |
 | 5 | 221 External custody enrollment evidence interface | **COMMITTED — documentary source/custodian/issuer ancestry and challenge checks** | **62.5%** |
 | 6 | 222 Out-of-band challenge and origin verification | **COMMITTED — supplied original bytes, receipt binding and nonce replay screen (origin unverified)** | **75%** |
-| 7 | 223 Adversarial qualification and independent physical-evidence review | Planned | 75% |
-| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 75% |
+| 7 | 223 Adversarial qualification and independent physical-evidence review | **COMMITTED — integrated documentary ancestry, capture and native-report HOLD gate** | **87.5%** |
+| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 87.5% |
+
+## AETHER-223-RS — Integrated adversarial independent-evidence review
+
+- [Python read-only integration gate](223/adversarial_review.py) invokes the AETHER-221 enrollment and AETHER-222 original-byte challenge gates, then compares original source, custodian and issuer controller roots/operators/administrators, holder key fingerprint, nonce and enrollment identity across the two records. It additionally checks claimed AETHER-218 native execution and AETHER-219 manifest source-revision consistency.
+- Divergent signed-receipt ancestry, altered capture bytes, nonce replays, forged enrollment identities, mismatched host controls, failed or absent claimed native execution and inconsistent source revisions cause **REJECT**. Fully matching synthetic claims produce **DOCUMENTARY_ENSEMBLE_CONSISTENT_ONLY**, not externally authenticated custody.
+- [24 authored cross-protocol tests](223/test_adversarial_review.py) cover shared source/holder/issuer control, challenged original bytes, substitutions, missing evidence, native gate/manifest absence, claimed authority promotion and replay conditions. **No passing runtime execution or real independent external evidence is claimed.**
+- The [CI workflow](../.github/workflows/aether217-rust-qualification.yml) now invokes the AETHER-223 synthetic integration tests independently of native Rust tests, without promoting a source commit into a CI PASS. [Neon 4D lab](223/) preserves the rotating tesseract and illustrates six synthetic integration cases; browser execution and live Pages deployment remain unverified.
+- [Protocol](223/protocol.json) records **Phase XVIII 7/8 = 87.5% documentary software progress**, authenticated external custodians **0**, independently verified original physical captures **0**, physical qualification **0%**, operational ACT **HOLD**. GitHub and 0root.ai owned mirrors remain one ancestry.
+- **Next AETHER-224-RS:** Phase XVIII documentary freeze preserving all unverified executable, external-custody, original-device and independent-witness boundaries. `.dlw`
 
 ## AETHER-222-RS — Original evidence bytes, receipt binding and replay-screen evidence
 
