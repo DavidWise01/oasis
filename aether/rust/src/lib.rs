@@ -332,3 +332,6 @@ pub mod custody_ancestry;
 
 /// AETHER-214-RS: cross-host signed receipt equivocation without history selection.
 pub mod cross_host_equivocation;
+
+/// AETHER-215-RS: integrated incident and signed-host adversarial qualification gate.
+pub mod adversarial_qualification;
