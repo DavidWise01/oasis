@@ -1,0 +1,21 @@
+{
+  "schema": "AETHER-230/external-challenge-v1",
+  "nonce": null,
+  "enrollment_id": null,
+  "challenge_id": null,
+  "custodian_id": null,
+  "source_root": "DavidWise01-owned-corpus",
+  "holder_root": null,
+  "issuer_root": null,
+  "holder_key_sha256": null,
+  "capture_sha256": null,
+  "receipt_sha256": null,
+  "ledger_sha256": null,
+  "external_controller_authentication": "NOT_PERFORMED",
+  "signature_verification": "NOT_PERFORMED",
+  "previous_phase_freeze": "../224/decision.json",
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "may_recover": false,
+  "reason": "No independently sourced receipt bytes, externally authenticated controller key or nonce-consumption ledger has been obtained."
+}
