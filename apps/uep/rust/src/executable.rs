@@ -43,3 +43,6 @@ mod tests{
  #[test]fn scarcity(){let mut s=root();let mut r=req(&s);r.present.period.funding=500;s=s.advance(&r).unwrap();let o=&s.observations()[0];assert_eq!((o.work,o.funded,o.arrears),(0,500,500));}
  #[test]fn wrong_head(){assert!(Universe::new(ledger(),[0;32]).is_err());}
 }
+
+// UEP-242R: explicit canonical state encoding.
+impl Universe{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>)->Result<(),&'static str>{self.ledger.verify_head(self.head)?;self.verify_observations()?;self.state.state_bytes(b);crate::state_hash::population(b,&self.population);b.extend_from_slice(&self.head);crate::state_hash::num(b,self.ledger.records().len() as u64);crate::state_hash::num(b,self.observations.len() as u64);b.extend_from_slice(&self.observations.last().map_or(self.head,|o|o.digest));Ok(())}}
