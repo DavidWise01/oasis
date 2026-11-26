@@ -33,7 +33,7 @@ def sha(raw:bytes)->str:
 
 def read_api(token:str,path:str,raw:bool=False):
     if not token:raise ValueError("GITHUB_TOKEN_MISSING")
-    if not path.startswith("/actions/runs/") or ".." in path:
+    if (not re.fullmatch(r"/actions/(?:runs/[0-9]+(?:/(?:jobs|artifacts)\\?per_page=100)?|jobs/[0-9]+/logs|artifacts/[0-9]+/zip)",path)) or ".." in path):
         raise ValueError("UNSAFE_API_ENDPOINT")
     headers={"Accept":"application/vnd.github+json",
              "Authorization":"Bearer "+token,
@@ -43,7 +43,7 @@ def read_api(token:str,path:str,raw:bool=False):
     with urlopen(req,timeout=18) as response:
         content=response.read(MAX_BYTES+1)
     if len(content)>MAX_BYTES:raise ValueError("API_BYTE_LIMIT_EXCEEDED")
-    return content if raw else json.loads(content)
+    return content
 
 def acquire(run_id:int,expected_sha:str,fetch):
     problems=set()
@@ -103,7 +103,7 @@ def acquire(run_id:int,expected_sha:str,fetch):
         job_id=job.get("id")
         if type(job_id) is int and job_id>0:
             try:
-                log=fetch(f"/actions/runs/{run_id}/jobs/{job_id}/logs",True)
+                log=fetch(f"/actions/jobs/{job_id}/logs",True)
                 if not isinstance(log,bytes) or not log:raise ValueError("EMPTY_JOB_LOG")
                 observed["job_log"]={"sha256":sha(log),"bytes":len(log),"job_id":job_id}
             except (OSError,ValueError,TypeError) as err:
@@ -127,7 +127,7 @@ def acquire(run_id:int,expected_sha:str,fetch):
         artifact_id=a.get("id")
         if type(artifact_id) is int and artifact_id>0 and not a.get("expired"):
             try:
-                archive=fetch(f"/actions/runs/{run_id}/artifacts/{artifact_id}/zip",True)
+                archive=fetch(f"/actions/artifacts/{artifact_id}/zip",True)
                 if not isinstance(archive,bytes) or not archive:raise ValueError("EMPTY_HOSTED_ZIP")
                 observed["hosted_artifact_zip"]={"sha256":sha(archive),"bytes":len(archive),"artifact_id":artifact_id}
             except (OSError,ValueError,TypeError) as err:
