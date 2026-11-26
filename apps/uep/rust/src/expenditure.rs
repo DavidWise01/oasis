@@ -41,3 +41,6 @@ impl Execution{
  pub(crate) fn queue_yield(&mut self,units:u64)->Result<(),&'static str>{self.capacity.queue_yield(units)}
  pub(crate) fn pending_yield(&self)->[u64;4]{self.capacity.pending_yield()}
 }
+
+// UEP-242R: explicit canonical state encoding.
+impl Execution{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>){self.economy.state_bytes(b);self.capacity.state_bytes(b);crate::state_hash::num(b,self.spent_cents);crate::state_hash::num(b,self.funded_units)}}
