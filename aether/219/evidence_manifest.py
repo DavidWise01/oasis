@@ -74,10 +74,27 @@ def read_git_revision(root: Path) -> str | None:
     return None
 
 
+def source_paths(root: Path) -> tuple[str, ...]:
+    """Include every Rust module and regression source, not only the CLI entrypoint."""
+    names = set(INPUTS)
+    crate = root / "aether" / "rust"
+    if crate.is_dir():
+        for prefix in ("src", "tests"):
+            subtree = crate / prefix
+            if subtree.is_dir():
+                for file in subtree.rglob("*.rs"):
+                    if file.is_file() or file.is_symlink():
+                        names.add(file.relative_to(root).as_posix())
+        for name in ("Cargo.lock", "Cargo.toml"):
+            if (crate / name).exists():
+                names.add((crate / name).relative_to(root).as_posix())
+    return tuple(sorted(names))
+
+
 def build_manifest(root: Path, artifacts: Path, revision: str | None) -> dict:
     input_items = {
         name: observed_bytes(root / name, root)
-        for name in INPUTS
+        for name in source_paths(root)
     }
     evidence_items = {
         name: observed_bytes(artifacts / name, artifacts)
