@@ -201,6 +201,14 @@ The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) now 
 
 The [neon 4D Pages lab](../226/) displays synthetic run-provenance discrepancy cases and a static protocol only. Authenticated external custodians **0**, original physical captures **0**, physical qualification **0%**, recovery and ACT **HOLD**. The historical [Phase XVIII freeze](../224/decision.json) remains unchanged.
 
+## AETHER-227-RS — Deterministic ZIP export and exact-byte evidence inventory
+
+The [AETHER-227 read-only archive verifier](../227/archive_evidence.py) hashes an observed ZIP and its individual evidence files without extraction; it rejects missing logs/manifests, duplicate or unsafe entries, symlinks, corrupt archives, changed source SHA and unsupported authority promotion. Its deterministic export mode creates a sorted **local runner ZIP**, which must not be conflated with the separate ZIP actually stored and later served by GitHub Actions.
+
+The [24 authored adversarial regressions](../227/test_archive_evidence.py) and [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) attempt the archive inspection and preserve a local ZIP/inventory even on failing native tests. **GitHub-hosted archive retrieval, its exact-byte SHA-256, native Rust test execution, and Python regression results are not independently verified.** Artifact hashes identify bytes; they do not authenticate external control ancestry, original hardware origin or remote retention.
+
+The [neon 4D evidence laboratory](../227/) displays synthetic ZIP integrity outcomes. Physical qualification **0%**, authenticated external custodians **0**, original hardware captures **0**, recovery and ACT **HOLD**. Previously sealed Phase XVIII decision records remain unchanged.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
