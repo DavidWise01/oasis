@@ -239,6 +239,14 @@ The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) now 
 
 The [animated 4D neon lab](../231/) retains the original 16-vertex/32-edge shadow tesseract and illustrates five-gate synthetic discrepancies. Phase XIX documentary source progress **7/8 = 87.5%**; independently authenticated external roots **0**, original hardware captures **0**, physical qualification **0%**, recovery and ACT **HOLD**. The Phase XVIII freeze is unchanged.
 
+## AETHER-232-RS — Phase XIX final documentary freeze
+
+The [AETHER-232 final Phase XIX decision](../232/decision.json) seals the eight authored documentary software milestones AETHER-225 through AETHER-232 without inventing GitHub Actions success, native Rust compilation or authentic physical-world evidence. The [read-only freeze evaluator](../232/phase_xix_freeze.py) rejects attempts to promote CI/hosted ZIP/browser digest claims into independent execution provenance, repeat owned-mirror corpora as independent roots, or grant physical recovery/ACT. The [59 authored synthetic regressions](../232/test_phase_xix_freeze.py) check missing prior freeze links, altered milestone ancestry, weakened trust requirements and unsupported permission or evidence elevation.
+
+The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) includes the Phase XIX decision tests and assessment artifact, but **actual workflow completion and test execution have not been independently confirmed**. The [animated neon 4D dashboard](../232/) displays the published decision but cannot authenticate the origin of its own hosting or an external controller. The previous [Phase XVIII freeze](../224/decision.json) is preserved unchanged.
+
+**Final Phase XIX record:** documentary software milestones **8/8 = 100%**, authenticated independent external witness roots **0**, authenticated original hardware captures **0**, physical qualification **0%**, recovery and operational ACT **HOLD**. External execution, remote custody, and independently anchored nonce/physical evidence remain unqualified. Later evidence must be documented in a new phase; no historical freeze rewriting.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
