@@ -1,6 +1,6 @@
 # AETHER Phase XVII — External Recovery Anchors and Independently Held Evidence
 
-**AETHER-215-RS ADVERSARIAL REMOTE-CUSTODY & RECOVERY QUALIFICATION GATE COMMITTED. Phase XVII documentary software progress 7/8 = 87.5%. Independently authenticated remote receipts: 0. Independently authenticated physical witnesses: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-216-RS PHASE XVII FINAL DOCUMENTARY QUALIFICATION FREEZE COMMITTED. Phase XVII documentary software protocol CLOSED: 8/8 = 100%. Independently authenticated remote receipts: 0. Independently authenticated physical witnesses: 0. Authenticated original hardware captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 software milestones closed but original physical evidence, independent remote custody, and runtime certification unresolved. A locally valid journal and registry can be rolled back together; Phase XVII examines the need for externally anchored history and independently adjudicated recovery.
 
@@ -13,7 +13,17 @@ Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 s
 | 5 | 213 Independently retained control-ancestry evidence | **COMMITTED — signed three-witness documentary ancestry screening** | **62.5%** |
 | 6 | 214 Cross-host receipt-consistency and equivocation screening | **COMMITTED — signed forks preserved, shared ancestry rejected** | **75%** |
 | 7 | 215 Adversarial remote custody and recovery qualification | **COMMITTED — integrated incident, signed-witness and host-fork HOLD gate** | **87.5%** |
-| 8 | 216 Phase XVII documentary software freeze | Planned | 87.5% |
+| 8 | 216 Phase XVII documentary software freeze | **CLOSED — final Rust documentary freeze and unresolved evidence HOLD** | **100%** |
+
+## AETHER-216-RS — Final Phase XVII documentary qualification and freeze
+
+- **Phase XVII documentary software milestones CLOSED: 8/8 = 100%.** Completion describes authored source and records, not executed Rust qualification, real-world external custody, or original physical authorization. Independently authenticated remote receipts: **0**; independent physical witnesses: **0**; authenticated original hardware captures: **0**; remotely retained external checkpoint copies: **0**; physical qualification **0%**, operational ACT **HOLD**.
+- [Native Rust freeze evaluator](rust/src/phase_xvii_freeze.rs) checks the exact AETHER-209–216 milestone sequence and coverage, prior [Phase XVI freeze](208/decision.json), the historical .dlw watermark, all unresolved external-evidence requirements, and unqualified runtime-testing status. It rejects attempts to permit repair, recovery, history selection, lock reclamation or physical ACT.
+- [45 authored Rust regression tests](rust/tests/phase_xvii_freeze.rs) challenge omitted/reordered milestones, fabricated remote receipts, claimed independent witnesses or original captures, invented compilation/CI/Pages passes, withheld crash-consistency risks, majority-vote fork resolution and unsupported physical ACT. **Native Rust compilation, test execution and Actions results remain unverified.**
+- [Machine-readable final decision](216/decision.json) and [protocol](216/protocol.json) distinguish documentary software completion **100%** from physical qualification **0%**. The historical Git commits document provenance, not technical immutability of a mutable branch.
+- [Neon 4D HTML freeze laboratory](216/) preserves the animated 16-vertex, 32-edge shadow tesseract and provides a read-only browser check of the decision JSON. The dashboard does not run native Rust, prove a deployed Pages runtime, or authenticate remote evidence.
+- **Remaining HOLD boundaries:** no independently retained externally authenticated checkpoint; local journal, registry and receipt store are not one crash-atomic transaction; no certified independent custodian enrollment or non-self-attested root ancestry; signed host claims can share a hidden controller and equivocate; no original hardware captures or independently observed alarm; no verified native Rust/CI/browser execution. The evidence of failure is preserved; no automatic recovery or operational escalation follows.
+- The earlier AETHER-209–215 versions and Phase XVI freeze remain untouched. New independent measurements, custody and external checkpoints require a separately declared subsequent phase. .dlw
 
 ## AETHER-215-RS — Integrated adversarial remote-custody qualification
 
