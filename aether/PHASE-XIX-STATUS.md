@@ -1,6 +1,6 @@
 # AETHER Phase XIX — Independently Checked Execution Evidence and Custody Provenance
 
-**AETHER-229-RS THREE-ROOT SOURCE ANCESTRY SCREENING COMMITTED. Phase XIX documentary software progress 5/8 = 62.5%. Real external witness control, live native execution and independent external custody: NOT VERIFIED. Authenticated independent witness roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-230-RS EXTERNAL CHALLENGE RECEIPT & NONCE REPLAY LEDGER SCREEN COMMITTED. Phase XIX documentary software progress 6/8 = 75%. Real external controller authentication, nonce consumption, signature verification and native execution: NOT VERIFIED. Authenticated independent witness roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [Phase XVIII freeze](224/decision.json) remains unchanged and records all eight documentary software milestones, without pretending historical Rust/Python execution, independent remote custody or physical-origin authentication was established. Phase XIX asks whether evidence of execution has been independently checked.
 
@@ -11,9 +11,18 @@ The [Phase XVIII freeze](224/decision.json) remains unchanged and records all ei
 | 3 | 227 Immutable evidence export and artifact content digest reconciliation | **COMMITTED — deterministic local ZIP, exact-byte inventory and hosted-artifact distinction** | **37.5%** |
 | 4 | 228 GitHub execution-to-browser parity | **COMMITTED — hosted ZIP/browser parity gate and unpinned reference; live hosted evidence absent** | **50%** |
 | 5 | 229 Independent source-ancestry test against owned mirrors | **COMMITTED — three-root ancestry and owned-mirror consolidation** | **62.5%** |
-| 6 | 230 External challenge and replay control | Planned | 62.5% |
-| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 62.5% |
-| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 62.5% |
+| 6 | 230 External challenge and replay control | **COMMITTED — receipt binding, nonce replay and hash-chain screening (external origin unverified)** | **75%** |
+| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 75% |
+| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 75% |
+
+## AETHER-230-RS — External challenge receipt and nonce-consumption replay gate
+
+- [Python challenge/replay verifier](230/challenge_replay.py) checks the exact supplied receipt and ledger bytes against their SHA-256 pins, binds a claimed nonce, challenge ID, enrollment ID, custodian ID, signing-key digest and capture digest, and verifies hash-linked nonce-consumption entries. It rejects missing files, reused nonces, wrong receipt bindings, mutated chain digests and self-claimed authentication.
+- [30 authored synthetic tests](230/test_challenge_replay.py) cover duplicate nonce consumption, broken chain pointers, bogus ledger heads, missing capture/key pins, swapped receipts, missing ledger and receipt bytes, shared source/holder/issuer ancestry, false signature/controller authentication, and ACT/recovery promotion. **Execution of the tests or a native Rust job was not independently verified.**
+- The [GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) runs the new synthetic tests and writes an explicitly rejected `aether230-challenge.json` report from [the unverified challenge record](230/unverified-challenge.json). Neither a local hash chain nor GitHub-generated evidence is independent remote nonce-consumption proof.
+- The [neon 4D laboratory](230/) retains its 16-vertex/32-edge animated shadow tesseract and illustrates six challenge/nonce scenarios, but does not perform a cryptographic signature verification, authenticate remote controller keys, or retrieve independently retained receipts. [Protocol](230/protocol.json) records **Phase XIX 6/8 = 75% documentary software progress**, independently authenticated roots **0**, physical qualification **0%**, ACT **HOLD**.
+- **Unresolved:** independent nonce-ledger custody and replay finality, controller/key origin, external signature verification, real original hardware captures, verified native execution and live Pages deployment. The [Phase XVIII freeze](224/decision.json) remains unchanged.
+- **Next AETHER-231-RS:** adversarial combined review of controller ancestry, remote nonce consumption, CI provenance, and independently sourced original physical evidence, with no self-certified PASS. `.dlw`
 
 ## AETHER-229-RS — Independent source ancestry and three-root screening
 
