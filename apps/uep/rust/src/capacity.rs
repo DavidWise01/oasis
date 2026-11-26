@@ -45,3 +45,11 @@ impl Capacity {
   Ok((f,spent,work))
  }
 }
+
+// UEP-236R: queue accepted yield after the current transition.
+impl Capacity{
+ pub(crate) fn queue_yield(&mut self,units:u64)->Result<(),&'static str>{
+  for k in 0..4{self.pending[k]=self.pending[k].checked_add(units.checked_mul(YIELD[k]).ok_or("yield overflow")?).ok_or("pending overflow")?;}Ok(())
+ }
+ pub fn pending_yield(&self)->[u64;4]{self.pending}
+}
