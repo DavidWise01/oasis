@@ -1,6 +1,6 @@
 # AETHER Phase XIX — Independently Checked Execution Evidence and Custody Provenance
 
-**AETHER-226-RS AUTHENTICATED GITHUB ACTIONS API RUN PROVENANCE PROBE COMMITTED. Phase XIX documentary software progress 2/8 = 25%. Actual CI completion and external execution authentication: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-227-RS CONTENT-ADDRESSED CI EVIDENCE ZIP EXPORT & SAFETY VERIFIER COMMITTED. Phase XIX documentary software progress 3/8 = 37.5%. Native test execution, GitHub-hosted artifact retrieval and retention authentication: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [Phase XVIII freeze](224/decision.json) remains unchanged and records all eight documentary software milestones, without pretending historical Rust/Python execution, independent remote custody or physical-origin authentication was established. Phase XIX asks whether evidence of execution has been independently checked.
 
@@ -8,12 +8,21 @@ The [Phase XVIII freeze](224/decision.json) remains unchanged and records all ei
 |---|---|---|---:|
 | 1 | 225 Native CI run/job/log/artifact source-revision reconciliation | **COMMITTED — actual CI outcome unverified** | **12.5%** |
 | 2 | 226 Actual Actions run provenance and source-revision check | **COMMITTED — authenticated API probe source; live terminal run unverified** | **25%** |
-| 3 | 227 Immutable evidence export and artifact content digest reconciliation | Planned | 25% |
-| 4 | 228 GitHub execution-to-browser parity | Planned | 25% |
-| 5 | 229 Independent source-ancestry test against owned mirrors | Planned | 25% |
-| 6 | 230 External challenge and replay control | Planned | 25% |
-| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 25% |
-| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 25% |
+| 3 | 227 Immutable evidence export and artifact content digest reconciliation | **COMMITTED — deterministic local ZIP, exact-byte inventory and hosted-artifact distinction** | **37.5%** |
+| 4 | 228 GitHub execution-to-browser parity | Planned | 37.5% |
+| 5 | 229 Independent source-ancestry test against owned mirrors | Planned | 37.5% |
+| 6 | 230 External challenge and replay control | Planned | 37.5% |
+| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 37.5% |
+| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 37.5% |
+
+## AETHER-227-RS — Deterministic local artifact ZIP and exact-byte qualification
+
+- [AETHER-227 ZIP verifier/exporter](227/archive_evidence.py) creates an exact-byte, sorted local ZIP of observed Rust compiler, regression, executable and qualification files with normalized metadata. It checks the ZIP archive and each entry SHA-256, required file presence, source commit consistency, AETHER-218 gate claims and AETHER-219 manifest HOLD fields. It rejects duplicate entry names, traversal/absolute paths, symlinks, oversized entries and corrupt archives without extracting them.
+- [24 authored adversarial Python regressions](227/test_archive_evidence.py) exercise missing logs, corrupt ZIPs, swapped commits, counterfeit native qualification, altered manifests, unsafe paths, symlinks, archive substitution, exact digesting and deterministic repeat export. Test execution is **not independently confirmed**.
+- The [GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) runs the synthetic ZIP regression tests and attempts a local `aether227-local-export.zip` and `aether227-local-inventory.json` prior to upload. The existing GitHub upload-artifact step remains separate, which may package the locally exported ZIP as a nested entry. **The locally built ZIP is not the GitHub-hosted Actions artifact ZIP**, and its matching content hashes cannot prove external retention.
+- No actual GitHub-hosted ZIP was independently downloaded, read or SHA-256 verified in this turn, and no completed native Rust or Python CI result was observed. The verifier is published source—not a successful independent Actions acceptance run.
+- [Animated 4D neon laboratory](227/) retains the 16-vertex/32-edge tesseract and shows synthetic archive failure conditions. [Protocol](227/protocol.json) records **Phase XIX 3/8 = 37.5%**, physical qualification **0%**, ACT **HOLD**. Sealed [Phase XVIII freeze](224/decision.json) is unchanged.
+- **Next AETHER-228-RS:** host-delivered archive and browser display parity under an independently anchored digest/reference, without promoting self-hosted dashboard output to an independent witness. .dlw
 
 ## AETHER-226-RS — Authenticated Actions API run metadata readback
 
