@@ -14,7 +14,8 @@ pub fn append(s:&Segment,r:&Request)->Result<(Segment,Audit),&'static str>{
  if q!=&a.settlement.closing||o.due!=a.settlement.current_due||o.funded!=a.settlement.current_funded||o.historical_reserved!=a.total_reserved||o.arrears!=closing||q.unattributed!=p.unattributed{return Err("integrated obligation parity")}
  if u128::from(opening)+u128::from(o.due)!=u128::from(closing)+u128::from(o.funded)+u128::from(a.total_reserved){return Err("conservation")}
  if o.funded!=o.due.min(r.present.period.funding){return Err("current priority")}
- Ok((n,Audit{opening,due:o.due,current_funded:o.funded,historical_reserved:a.total_reserved,closing,receipts:a.receipts}))
+ let audit=Audit{opening,due:o.due,current_funded:o.funded,historical_reserved:a.total_reserved,closing,receipts:a.receipts};
+ Ok((n,audit))
 }
 pub fn attributable(p:&Population,id:&str)->Result<u64,&'static str>{p.lots.iter().filter(|l|l.id==id).try_fold(0u64,|a,l|a.checked_add(l.amount).ok_or("amount overflow"))}
 #[cfg(test)]mod tests{
