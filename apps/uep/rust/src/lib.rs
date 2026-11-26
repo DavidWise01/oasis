@@ -173,3 +173,5 @@ pub mod executable;
 pub mod request_codec;
 
 pub mod state_hash;
+
+pub mod replay_archive;
