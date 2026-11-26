@@ -1,6 +1,6 @@
 # AETHER Phase XVIII — Executable Rust Qualification & Independent Evidence Acquisition
 
-**AETHER-223-RS INTEGRATED ADVERSARIAL INDEPENDENT-EVIDENCE QUALIFICATION COMMITTED. Phase XVIII documentary software progress 7/8 = 87.5%. Independent remote custody, physical device authentication, native Rust compilation and Actions conclusion: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-224-RS FINAL PHASE XVIII DOCUMENTARY FREEZE COMMITTED. Phase XVIII documentary software protocol CLOSED: 8/8 = 100%. Native Rust and Python test execution, CI success, independently authenticated external custody and original physical device evidence: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intact, with eight authored Phase XVII documentary milestones closed and all physical authority withheld. Phase XVIII separates verified *execution* from source-only acceptance and independently anchored external acquisition from locally copied evidence.
 
@@ -13,7 +13,17 @@ The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intac
 | 5 | 221 External custody enrollment evidence interface | **COMMITTED — documentary source/custodian/issuer ancestry and challenge checks** | **62.5%** |
 | 6 | 222 Out-of-band challenge and origin verification | **COMMITTED — supplied original bytes, receipt binding and nonce replay screen (origin unverified)** | **75%** |
 | 7 | 223 Adversarial qualification and independent physical-evidence review | **COMMITTED — integrated documentary ancestry, capture and native-report HOLD gate** | **87.5%** |
-| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 87.5% |
+| 8 | 224 Phase XVIII documentary software decision and freeze | **CLOSED — final documentary decision and fail-closed evaluator** | **100%** |
+
+## AETHER-224-RS — Phase XVIII documentary software freeze
+
+- **Phase XVIII documentary software milestone sequence CLOSED: 8/8 = 100%.** This records source publication and the frozen historical qualifications of AETHER-217 through AETHER-224. It is **not** a claim that native Rust compiled, Python tests were executed, CI succeeded, remote custody was authenticated or the 4D Pages dashboard ran in an independently verified browser.
+- [Machine-readable final decision](224/decision.json) preserves **zero independently authenticated remote custodians**, external receipts, original physical hardware captures, independent replay ledgers and checkpoints. Physical qualification remains **0%**. Repair, recovery, lock reclamation, contested-history selection and operational ACT remain **HOLD**.
+- [Python read-only freeze evaluator](224/phase_xviii_freeze.py) rejects missing or reordered milestones, invented runtime success, missing unresolved evidence requirements, strengthened independence claims without external evidence, weakened ancestry boundaries and all permission promotion. [54 authored adversarial regressions](224/test_phase_xviii_freeze.py) cover these freeze invariants; **their execution has not been independently verified**.
+- [Updated GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) invokes the freeze tests and creates a machine-readable freeze assessment artifact, subject to actual CI execution and logs, which remain unverified.
+- [Final neon 4D laboratory](224/) preserves the animated 16-vertex/32-edge tesseract and checks the published decision JSON's basic structural and authority fields in the browser. It does not execute the native Rust gate or acquire independent remote evidence. [Protocol](224/protocol.json) explicitly records documentary software **100%**, physical **0%**, ACT **HOLD**.
+- **Unresolved qualification gates:** CI toolchain and test execution, independently anchored source/runner provenance, original hardware capture and device signature, custodian controller lineage and remote receipt retention, external replay/nonce state, distributed rollback and multi-store crash atomicity. The previous [AETHER-216 Phase XVII freeze](216/decision.json) is unchanged.
+- **Next AETHER-225-RS:** Phase XIX begins with execution-evidence reconciliation and independent CI result verification. Never change sealed Phase XVIII source records to make later tests appear historically completed. .dlw
 
 ## AETHER-223-RS — Integrated adversarial independent-evidence review
 
