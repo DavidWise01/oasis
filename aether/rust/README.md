@@ -193,6 +193,14 @@ The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) incl
 
 The [Phase XVIII freeze](../224/decision.json) remains unchanged. Authenticated independent physical custodians **0**, original hardware captures **0**, physical qualification **0%**, operational ACT and recovery **HOLD**.
 
+## AETHER-226-RS — Authenticated Actions API provenance screening
+
+The [AETHER-226 read-only GitHub API probe](../226/actions_provenance.py) consumes a repository-scoped token from the runtime environment, fetches exact GitHub Actions run/job/artifact metadata, and checks expected source commit, repository, workflow file, job/step conclusions, artifact ownership and API pagination. The [26 authored mocked tests](../226/test_actions_provenance.py) challenge spoofed run IDs, foreign repositories, pending or failed Actions jobs, altered source revisions and missing/expired artifacts.
+
+The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) now requests `actions: read` permission and captures a noncertifying API readback report on every attempt. Because a workflow cannot normally observe its own completed conclusion while it is executing, a pending own-run report is not considered a verified CI PASS. Public web lookup did not expose a verifiable terminal run, and connected status lookup only sees PR-associated runs for the inspected commit. Actual native Rust compilation and test execution remain unverified.
+
+The [neon 4D Pages lab](../226/) displays synthetic run-provenance discrepancy cases and a static protocol only. Authenticated external custodians **0**, original physical captures **0**, physical qualification **0%**, recovery and ACT **HOLD**. The historical [Phase XVIII freeze](../224/decision.json) remains unchanged.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
