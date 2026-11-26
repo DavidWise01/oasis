@@ -1,19 +1,29 @@
 # AETHER Phase XIX — Independently Checked Execution Evidence and Custody Provenance
 
-**AETHER-225-RS NATIVE CI EXECUTION EVIDENCE RECONCILIATION COMMITTED. Phase XIX documentary software progress 1/8 = 12.5%. Independent CI run authentication: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-226-RS AUTHENTICATED GITHUB ACTIONS API RUN PROVENANCE PROBE COMMITTED. Phase XIX documentary software progress 2/8 = 25%. Actual CI completion and external execution authentication: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [Phase XVIII freeze](224/decision.json) remains unchanged and records all eight documentary software milestones, without pretending historical Rust/Python execution, independent remote custody or physical-origin authentication was established. Phase XIX asks whether evidence of execution has been independently checked.
 
 | Turn | Software milestone | Status | Progress |
 |---|---|---|---:|
 | 1 | 225 Native CI run/job/log/artifact source-revision reconciliation | **COMMITTED — actual CI outcome unverified** | **12.5%** |
-| 2 | 226 Actual Actions run provenance and source-revision check | Planned | 12.5% |
-| 3 | 227 Immutable evidence export and artifact content digest reconciliation | Planned | 12.5% |
-| 4 | 228 GitHub execution-to-browser parity | Planned | 12.5% |
-| 5 | 229 Independent source-ancestry test against owned mirrors | Planned | 12.5% |
-| 6 | 230 External challenge and replay control | Planned | 12.5% |
-| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 12.5% |
-| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 12.5% |
+| 2 | 226 Actual Actions run provenance and source-revision check | **COMMITTED — authenticated API probe source; live terminal run unverified** | **25%** |
+| 3 | 227 Immutable evidence export and artifact content digest reconciliation | Planned | 25% |
+| 4 | 228 GitHub execution-to-browser parity | Planned | 25% |
+| 5 | 229 Independent source-ancestry test against owned mirrors | Planned | 25% |
+| 6 | 230 External challenge and replay control | Planned | 25% |
+| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 25% |
+| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 25% |
+
+## AETHER-226-RS — Authenticated Actions API run metadata readback
+
+- [Read-only Actions provenance probe](226/actions_provenance.py) requests exact run, job and artifact metadata using GitHub's API and a token supplied through the environment. It pins expected source SHA, repository and workflow, checks run trigger and completed conclusion, matches the unique qualification job and its steps, and checks artifact ownership/expiration. It hashes exact decoded API response bytes. Missing, incomplete or contradictory evidence is **REJECT_OR_UNVERIFIED**.
+- [26 authored mocked Python regressions](226/test_actions_provenance.py) cover bad run identity, source swap, foreign repository, incorrect workflow path, pending/failed jobs, incomplete API pagination, mismatched artifacts, failed steps, and missing API responses. **These fixtures are synthetic; no Python or native Rust test execution has been independently verified.**
+- [Updated GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) grants `actions: read`, runs the synthetic regression suite, and uses the token to record its own run metadata as `aether226-api-readback.json` in the existing artifact upload. An in-progress workflow cannot observe its own terminal PASS, so missing terminal status remains explicitly unqualified. No token is embedded in the report.
+- Current live run verification remains **UNVERIFIED**: public GitHub Actions and API pages could not be opened, and the connected PR-filtered workflow-run lookup is not a complete push/dispatch search. No actual terminal workflow run, runner log or artifact identity is claimed verified.
+- [Neon 4D Pages laboratory](226/) retains the animated 16-vertex/32-edge shadow tesseract, with synthetic API discrepancy cases and a read-only view of [the published protocol](226/protocol.json). HTML publication is confirmed via GitHub source, not verified live Pages execution.
+- **Phase XIX documentary progress 2/8 = 25%.** Independent external custodian control **0**, original hardware captures **0**, physical qualification **0%**, operational ACT **HOLD**. The [Phase XVIII freeze](224/decision.json) stays unchanged.
+- **Next AETHER-227-RS:** exact action artifact content export and hash verification with run-bound evidence retention, while continuing to reject unauthenticated or absent CI evidence. `.dlw`
 
 ## AETHER-225-RS — Read-only execution evidence reconciliation
 
