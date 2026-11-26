@@ -335,3 +335,6 @@ pub mod cross_host_equivocation;
 
 /// AETHER-215-RS: integrated incident and signed-host adversarial qualification gate.
 pub mod adversarial_qualification;
+
+/// AETHER-216-RS: Phase XVII documentary freeze; external custody and ACT HOLD.
+pub mod phase_xvii_freeze;
