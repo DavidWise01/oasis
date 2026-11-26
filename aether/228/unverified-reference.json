@@ -1,0 +1,10 @@
+{
+  "schema": "AETHER-228/expected-hosted-archive-v1",
+  "sha256": null,
+  "source_commit": null,
+  "run_id": null,
+  "origin_type": "UNVERIFIED_NO_HOSTED_ARCHIVE_DOWNLOADED",
+  "reason": "No actual hosted GitHub Actions ZIP or independently established digest was obtained. Null pins deliberately fail closed.",
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false
+}
