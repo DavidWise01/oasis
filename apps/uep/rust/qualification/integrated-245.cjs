@@ -1,0 +1,10 @@
+const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+(async()=>{const {instance:{exports:e}}=await WebAssembly.instantiate(fs.readFileSync(process.argv[2]),{});assert.equal(e.uep_integrated_version(),245);assert.equal(e.uep_abi_version(),209);
+const n=x=>{let b=Buffer.alloc(8);b.writeBigUInt64BE(BigInt(x));return b};
+const init=Buffer.concat([Buffer.alloc(40),Buffer.from('UEP217\0'),n(0)]);
+function step(funding){return Buffer.concat([0,0,100,funding,0,0,0,0,0,0,0,100,100,100,100,20,20,20,20,0,17].map(n))}
+const req=f=>Buffer.concat([Buffer.from('UEP241R\0'),step(f),n(0),n(0),n(0),n(1),step(600)]);
+function op(k,b=Buffer.alloc(0)){e.uep_integrated_input_clear();for(const v of b)assert.equal(e.uep_integrated_input_byte(v),0);return e.uep_integrated_run(k)}
+function out(){return Buffer.from(Array.from({length:e.uep_integrated_output_len()},(_,i)=>e.uep_integrated_output_byte(i)))}
+function run(){e.uep_integrated_reset();assert.equal(op(1,init),0);for(let i=0;i<12;i++)assert.equal(op(2,req(i%3===0?500:600)),0);assert.equal(op(3),0);let a=out();assert.equal(op(4),0);let c=out();assert.equal(c.length,112);assert.equal(op(6),0);let s=out();assert.equal(op(2,Buffer.from('bad')),1);assert.equal(e.uep_integrated_output_len(),0);assert.equal(op(3),0);assert.deepEqual(out(),a);e.uep_integrated_reset();assert.equal(op(5,Buffer.concat([c,a])),0);assert.equal(op(6),0);assert.deepEqual(out(),s);assert.equal(op(3),0);assert.deepEqual(out(),a);return {a,c,s}}
+let x=run(),y=run();assert.deepEqual(x,y);e.uep_integrated_reset();e.uep_integrated_input_clear();for(const v of init)assert.equal(e.uep_integrated_input_byte(v),0);assert.equal(e.uep_integrated_input_byte(256),1);assert.equal(e.uep_integrated_run(1),1);assert.equal(op(1,init),0);console.log(JSON.stringify({abi:245,transitions:12,replays:2,archiveBytes:x.a.length,archiveSha256:crypto.createHash('sha256').update(x.a).digest('hex'),checkpointBytes:x.c.length,deterministic:true,recovery:true,invalidTransferRejected:true,actualPayments:0}));})().catch(e=>{console.error(e);process.exit(1)});
