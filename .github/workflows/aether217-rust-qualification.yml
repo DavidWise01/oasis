@@ -1,4 +1,4 @@
-name: AETHER-217/230 Rust Executable Qualification
+name: AETHER-217/231 Rust Executable Qualification
 on:
   push:
     paths:
@@ -17,6 +17,7 @@ on:
       - 'aether/228/**'
       - 'aether/229/**'
       - 'aether/230/**'
+      - 'aether/231/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -178,6 +179,19 @@ jobs:
           mkdir -p qualification-artifacts
           python3 ../230/challenge_replay.py --challenge ../230/unverified-challenge.json --out qualification-artifacts/aether230-challenge.json || true
           echo "No real remote challenge receipt, cryptographic signature or authenticated consumption ledger observed."
+      - name: Run integrated cross-evidence adversarial tests
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../231 -p 'test_integrated_review.py' -v
+      - name: Record fail-closed integrated evidence review
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qualification-artifacts
+          python3 ../231/integrated_review.py --bundle ../231/unverified-review.json --out qualification-artifacts/aether231-review.json || true
+          echo "No independent execution, remote custody or physical ACT qualified."
       - name: Upload compiler logs and qualification evidence on pass OR failure
         if: always()
         uses: actions/upload-artifact@v4
