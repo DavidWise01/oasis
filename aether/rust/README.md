@@ -131,6 +131,14 @@ The [GitHub Actions workflow](../../.github/workflows/aether217-rust-qualificati
 
 The [4D neon Pages lab](../217/) provides source-level documentary inspection only. Original remote custody and physical captures remain unverified; physical qualification 0%, operational ACT HOLD. A passing compiler build is not an independent physical witness.
 
+## AETHER-218-RS — Fail-closed native CI diagnostics
+
+The [AETHER-218 diagnostic runner](../218/qualification_gate.py) and [11 authored Python unit tests](../218/test_qualification_gate.py) preserve actual native Rust command stdout/stderr, exit status, commit revision, compiler versions and structured qualification outcome as GitHub Actions artifacts. If Cargo is missing, a command is not run, tests fail or the AETHER-217 binary emits invalid JSON, **native qualification cannot be reported as passed**. Python synthetic classifier tests never substitute for the entire Rust suite.
+
+The [revised workflow](../../.github/workflows/aether217-rust-qualification.yml) uses `if: always()` for uploading diagnostic artifacts on success or failure. The [4D neon diagnostic dashboard](../218/) reads only the static protocol. The GitHub combined-status and PR-associated workflow lookup produced no checks or runs for the last AETHER-217 commit. This is insufficient to infer that Actions started, passed or failed. Native cargo/rustc and actual failing compiler logs are unavailable in this assistant environment; there was **no verified native Rust regression repair** at this bound.
+
+Physical qualification 0%, independent remote custodians 0, original hardware captures 0, operational ACT HOLD.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
