@@ -109,6 +109,12 @@ The [Rust cross-host verifier](src/cross_host_equivocation.rs) and [30 authored 
 
 The [4D neon Pages lab](../214/) illustrates six synthetic cases without contacting remote hosts or running Rust. The gate never chooses a winner by quorum, timestamp or signature count. Conflict receipts remain documentary evidence, and the result has `may_choose_history=false`, `may_recover=false`, physical qualification **0%** and ACT **HOLD**. Three separately hosted copies under one controller are not three independent witnesses. Rust compilation, regression execution, CI and deployed Pages runtime remain unverified.
 
+## AETHER-215-RS integrated adversarial remote-custody qualification
+
+The [Rust qualification gate](src/adversarial_qualification.rs) and [24 authored regression cases](tests/adversarial_qualification.rs) bind exact SHA-256 digests for the read-only AETHER-212 incident, signed AETHER-213 custody-witness envelope, and AETHER-214 cross-host receipt ensemble. They independently recheck signed evidence, reject conflicting predecessor/ledger/registry histories, and compare source ancestry, witness identity, receipt references, signing keys, root/operator/admin and host controls across both witness protocols.
+
+The [neon 4D Pages lab](../215/) illustrates six synthetic fault categories; it neither executes Rust nor communicates with remote custodians. A positive documentary finding cannot establish real independent control: even fully signed, synthetically consistent claims **cannot authorize recovery, repair, lock reclamation, contested history selection or physical ACT**. No physically authenticated original evidence or remote holder has been observed, and the external enrollment/retention fields are caller-supplied assertions. Physical qualification is **0%**; ACT **HOLD**. Cargo, tests, GitHub Actions success and live Pages deployment remain unverified.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
