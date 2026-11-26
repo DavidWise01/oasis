@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AETHER-230-RS · Phase XIX Challenge Replay Ledger Tesseract</title><style>
+:root{font:16px/1.5 system-ui,sans-serif;color:#dcfaff;color-scheme:dark;background:#040b19}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 40% 15%,#123855,#050c1a 65%);min-height:100vh}
+main{max-width:1240px;margin:auto;padding:28px 18px}h1{font-size:clamp(2.5rem,6vw,5rem);margin:4px 0;color:#80ffe8;text-shadow:0 0 24px #37eddd7a;line-height:1.1}h2{font-size:1.35rem;color:#c5faff}small,.muted{color:#9dbacb}.tag{letter-spacing:.15em;font-weight:700;color:#ffbe8b;font-size:.8rem}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin:24px 0}.frame,.panel,.stat{border:1px solid #5df9df44;background:#071c31dc;border-radius:16px;box-shadow:0 0 25px #15d1e016;overflow:hidden}.frame{position:relative}canvas{width:100%;height:460px;display:block}.corner{position:absolute;top:15px;left:17px;right:17px;display:flex;justify-content:space-between;font-size:.7rem;letter-spacing:.08em;color:#b2eefa;pointer-events:none}.foot{top:auto;bottom:15px}.core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-shadow:0 0 15px #49fff8;color:#c4fff3;font-weight:800;pointer-events:none}.panel{padding:22px}.hold{font-size:2rem;color:#ffbe8b;font-weight:800;text-shadow:0 0 18px #fbb66e6b}button{background:#124058;border:1px solid #70f7e0;border-radius:8px;color:#e6fffb;padding:9px 12px;font:inherit;cursor:pointer}button:hover{box-shadow:0 0 16px #4df5e8}button:focus-visible{outline:3px solid #ffc085}.controls{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{padding:14px}.num{font-size:1.8rem;font-weight:800}.bar{height:10px;background:#244052;border-radius:8px;overflow:hidden;margin-top:20px}.bar span{display:block;width:75%;height:100%;background:linear-gradient(90deg,#00c9bb,#a2fff0,#bf89ff);box-shadow:0 0 20px #40ffe0}.lab{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;margin-top:22px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#04101d;border-left:3px solid #ffbe8b;padding:16px;max-height:440px;overflow:auto}a{color:#79ffec}footer{margin:24px 0;color:#9cb9cd;font-size:.85rem}@media(max-width:850px){.hero,.lab{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}canvas{height:380px}}
+</style></head><body><main>
+<header><div class="tag">OASIS / AETHER / PHASE XIX / TURN 6 OF 8</div><h1>AETHER-230-RS</h1><div class="tag">PHASE XIX CHALLENGE & REPLAY-LEDGER · 4D NEON SHADOW</div></header>
+<div class="hero"><section class="frame"><div class="corner"><span>16 VERTICES / 32 EDGES</span><span>4D → 3D → SHADOW</span></div><canvas id="tesseract" aria-label="Animated 4D neon tesseract projection" role="img"></canvas><div class="core">.dlw</div><div class="corner foot"><span>CHALLENGE → RECEIPT → NONCE → CHAIN → HOLD</span><span id="motion">ORBIT ACTIVE</span></div></section><section class="panel"><h2>A recorded nonce is not independently consumed by declaration.</h2><p>AETHER-230-RS joins acquisition bytes, custody transfer, calibration and signed reviewer receipt through exact SHA-256 hashes. An apparently external verifier is rejected if its operator or controlling ancestry repeats a source.</p><p class="hold">ACT HOLD</p><p class="muted">No authenticated remote challenge receipt or independently retained nonce ledger was obtained. Signature verification is NOT PERFORMED; physical ACT HOLD.</p><div class="controls"><button id="pause">Pause rotation</button><button id="slow">Slow orbit</button><button id="shadow">Shadow ON</button></div></section></div>
+<div class="stats"><div class="stat"><small>Software progress</small><div class="num">6 / 8</div><small>75% complete</small></div><div class="stat"><small>Rust regression tests</small><div class="num">30</div><small>Replay regression, unexecuted</small></div><div class="stat"><small>Physical qualification</small><div class="num">0%</div><small>No authenticated hardware</small></div><div class="stat"><small>Operational authority</small><div class="num hold">HOLD</div><small>Fail closed</small></div></div><div class="bar"><span></span></div>
+<div class="lab"><section class="panel"><h2>External challenge and nonce-consumption ledger</h2><p class="muted">Read-only synthetic scenarios model challenge/receipt binding and hash-chain replay rejection. The browser cannot authenticate an external controller, remote nonce authority or device signature.</p><div class="controls" id="cases"><button data-case="status">Documented challenge status</button><button data-case="matching">Consistent synthetic ledger</button><button data-case="replay">Duplicate nonce</button><button data-case="binding">Substituted receipt identity</button><button data-case="chain">Broken ledger SHA-256 chain</button><button data-case="signature">Self-attested signature verified</button></div><pre id="result" aria-live="polite">Select a challenge scenario. ACT HOLD.</pre></section><section class="panel"><h2>Consumption evidence needs independent custody</h2><p><strong>A hash-chained ledger can document internal consistency without proving that a remote nonce was actually consumed.</strong> A valid response must bind nonce, challenge ID, enrollment ID, claimed custodian, signing-key fingerprint and original-capture digest.</p><p>Without authenticated third-party control, an immutable remote replay authority and actual signature verification, no source-controlled JSON or duplicate GitHub mirror can become a witness.</p><p><a href="challenge_replay.py">Python challenge verifier</a> · <a href="test_challenge_replay.py">30 authored tests</a> · <a href="unverified-challenge.json">Missing external evidence</a> · <a href="protocol.json">Protocol</a> · <a href="../229/">Previous bound</a> · <a href="https://github.com/DavidWise01/oasis/actions/workflows/aether217-rust-qualification.yml">Actions status</a></p></section></div>
+<footer>Past observes · Present deserves · Future reserves · Append-only historical policy · .dlw</footer></main>
+<script>
+const result=document.getElementById('result');
+const scenarios={
+ matching:['DOCUMENTARY_CHALLENGE_LEDGER_CONSISTENT_ONLY','Self-supplied receipt and hash-chain agree, but no remote controller is authenticated'],
+ replay:['REJECT','LEDGER_NONCE_REPLAY'],
+ binding:['REJECT','RECEIPT_CHALLENGE_BINDING_MISMATCH'],
+ chain:['REJECT','LEDGER_CHAIN_BROKEN'],
+ signature:['REJECT','EXTERNAL_AUTHENTICATION_MISREPRESENTED']
+};
+document.getElementById('cases').addEventListener('click',async event=>{
+ const id=event.target?.dataset?.case;if(!id)return;
+ const out=document.getElementById('result');
+ if(id==='status'){
+  try{
+   const response=await fetch('./protocol.json',{cache:'no-store}');
+   if(!response.ok)throw Error('PROTOCOL_UNAVAILABLE');
+   const r=await response.json();
+   if(r.bound!=='AETHER-230'||r.phase!=='XIX'||r.operational_authority!=='HOLD'||r.physical_qualification_percent!==0||r.physical_act_allowed!==false)throw Error('HOLD_INVARIANT_INVALID');
+   out.textContent=['AETHER-230 · DOCUMENTARY CHALLENGE STATUS',
+    'PHASE XIX: '+r.documentary_software_progress_percent+'%',
+    'INDEPENDENT NONCE CONSUMPTION: '+r.independent_nonce_consumption_authenticated,
+    'REMOTE SIGNATURE VERIFIED: '+r.remote_signature_cryptographically_verified,
+    'EXTERNAL CONTROLLER VERIFIED: '+r.external_controller_authenticated,
+    'AUTHENTICATED WITNESS ROOTS: '+r.independent_witness_roots_authenticated,
+    'PHYSICAL QUALIFICATION: 0% · ACT HOLD',
+    'BROWSER PROTOCOL VIEW ONLY — NOT REMOTE VERIFICATION'].join(String.fromCharCode(10));
+  }catch(e){out.textContent='REJECT / UNVERIFIED: '+String(e.message||e)+' · ACT HOLD';}
+  return;
+ }
+ const result=scenarios[id];if(!result)return;
+ out.textContent=['AETHER-230 · SYNTHETIC CHALLENGE REPLAY SCREEN',
+  'SCENARIO: '+id.toUpperCase(),'DOCUMENTARY VERDICT: '+result[0],
+  'EVIDENCE CONDITION: '+result[1],
+  'REMOTE NONCE CONSUMPTION AUTHENTICATED: FALSE',
+  'CONTROLLER SIGNATURE VERIFIED: FALSE',
+  'INDEPENDENT PHYSICAL CAPTURES: 0',
+  'PHYSICAL QUALIFICATION: 0% · OPERATIONAL ACT HOLD'].join(String.fromCharCode(10));
+});const canvas=document.getElementById('tesseract'),ctx=canvas.getContext('2d');let w=700,h=460,dpr=1,t=0,last=0,paused=false,slow=false,shadow=true;
+const vertices=Array.from({length:16},(_,i)=>[0,1,2,3].map(b=>i&(1<<b)?1:-1));
+const edges=[];for(let i=0;i<16;i++)for(let b=0;b<4;b++){const j=i^(1<<b);if(i<j)edges.push([i,j,b]);}
+function rot(v){let [x,y,z,q]=v;let c=Math.cos(t*.5),s=Math.sin(t*.5);[x,q]=[x*c-q*s,x*s+q*c];c=Math.cos(t*.3);s=Math.sin(t*.3);[y,z]=[y*c-z*s,y*s+z*c];c=Math.cos(t*.41);s=Math.sin(t*.41);[x,z]=[x*c-z*s,x*s+z*c];let f=4/(4-q),g=5/(5-z*f);return{x:w/2+x*f*g*Math.min(w*.15,h*.29),y:h/2+y*f*g*Math.min(w*.15,h*.29)}}
+function line(a,b,color,width,blur){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.shadowBlur=blur;ctx.shadowColor=color;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+function draw(){ctx.fillStyle='#061323';ctx.fillRect(0,0,w,h);ctx.shadowBlur=0;ctx.strokeStyle='#55ffff10';for(let x=0;x<w;x+=35){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}for(let y=0;y<h;y+=35){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}const p=vertices.map(rot);ctx.save();for(const [a,b,axis]of edges){if(shadow){const offset=q=>({x:q.x*1.09-w*.045+18,y:q.y*.91+h*.045+20});line(offset(p[a]),offset(p[b]),'#a766ff33',1.5,12)}const color=axis===3?'#b78cff':axis===2?'#48bcff':'#67ffe9';line(p[a],p[b],color+'22',8,21);line(p[a],p[b],color,1.8,9)}for(const q of p){ctx.fillStyle='#e6fffc';ctx.shadowColor='#66ffe9';ctx.shadowBlur=15;ctx.beginPath();ctx.arc(q.x,q.y,2.3,0,Math.PI*2);ctx.fill()}ctx.restore()}
+function resize(){const r=canvas.getBoundingClientRect();w=Math.max(200,r.width);h=Math.max(200,r.height);dpr=Math.min(devicePixelRatio||1,2);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);draw()}new ResizeObserver(resize).observe(canvas);resize();function frame(ms){if(!last)last=ms;if(!paused)t+=Math.min(.05,(ms-last)/1000)*(slow?.2:1);last=ms;draw();requestAnimationFrame(frame)}requestAnimationFrame(frame);
+document.getElementById('pause').onclick=()=>{paused=!paused;document.getElementById('pause').textContent=paused?'Resume rotation':'Pause rotation';document.getElementById('motion').textContent=paused?'ORBIT PAUSED':'ORBIT ACTIVE'};
+document.getElementById('slow').onclick=()=>{slow=!slow;document.getElementById('slow').textContent=slow?'Normal orbit':'Slow orbit'};
+document.getElementById('shadow').onclick=()=>{shadow=!shadow;document.getElementById('shadow').textContent=shadow?'Shadow ON':'Shadow OFF'};
+</script></body></html>
