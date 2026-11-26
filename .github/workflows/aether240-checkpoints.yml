@@ -1,0 +1,20 @@
+name: AETHER-240 Read-Only Checkpoint Consistency
+on:
+  push:
+    paths:
+      - 'aether/240/**'
+      - '.github/workflows/aether240-checkpoints.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checkpoint-regression:
+    name: Synthetic checkpoint consistency tests (noncertifying)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/240 -p 'test_*.py' -v
+      - run: echo 'Synthetic witness snapshots cannot authenticate external custody or physical ACT.'
