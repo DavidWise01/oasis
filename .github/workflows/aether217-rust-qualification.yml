@@ -1,4 +1,4 @@
-name: AETHER-217/223 Rust Executable Qualification
+name: AETHER-217/224 Rust Executable Qualification
 on:
   push:
     paths:
@@ -10,6 +10,7 @@ on:
       - 'aether/221/**'
       - 'aether/222/**'
       - 'aether/223/**'
+      - 'aether/224/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -72,6 +73,13 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m unittest discover -s ../223 -p 'test_adversarial_review.py' -v
+      - name: Verify Phase XVIII frozen documentary decision (Python, not Rust)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../224 -p 'test_phase_xviii_freeze.py' -v
+          mkdir -p qualification-artifacts
+          python3 ../224/phase_xviii_freeze.py --out qualification-artifacts/aether224-freeze-assessment.json
       - name: Run native Cargo gate and capture failures
         shell: bash
         run: |
