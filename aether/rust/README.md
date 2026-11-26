@@ -155,6 +155,14 @@ The [animated neon 4D WebCrypto dashboard](../220/) checks an explicitly [synthe
 
 A pinned digest proves only equality to the supplied reference; reference authority requires separate provenance. Physical qualification **0%**, recovery and ACT **HOLD**.
 
+## AETHER-221-RS — External custodian enrollment and ancestry evidence
+
+The [AETHER-221 documentary enrollment evaluator](../221/custodian_enrollment.py) and [21 authored synthetic regression tests](../221/test_custodian_enrollment.py) extend custody screening to separately declared source-corpus, external holder and challenge-issuer controller roots/operators/administrators. It binds enrollment IDs, claimed holder signing-key SHA-256 fingerprints, challenge nonces and challenge-document digests. Reused ancestry, missing out-of-band verification assertions, swapped enrollment data or attempts to enable recovery/ACT are rejected.
+
+The [4D neon enrollment laboratory](../221/) displays synthetic controller-ancestry outcomes. It does not run the Python gate, verify a P-256 signature, contact a remote custodian or independently authenticate origin. Enrollment/retention flags remain caller declarations, not third-party proof. The [GitHub Actions workflow](../../.github/workflows/aether217-rust-qualification.yml) includes these Python tests but native Rust and CI execution are not verified in this session.
+
+Actual independent external custodians authenticated **0**, original hardware captures **0**, physical qualification **0%**, operational ACT **HOLD**. Source GitHub and 0root.ai copies share one owned ancestry.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
