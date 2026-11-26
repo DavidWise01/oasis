@@ -209,6 +209,14 @@ The [24 authored adversarial regressions](../227/test_archive_evidence.py) and [
 
 The [neon 4D evidence laboratory](../227/) displays synthetic ZIP integrity outcomes. Physical qualification **0%**, authenticated external custodians **0**, original hardware captures **0**, recovery and ACT **HOLD**. Previously sealed Phase XVIII decision records remain unchanged.
 
+## AETHER-228-RS — GitHub-hosted archive ↔ browser exact-byte parity
+
+The [AETHER-228 parity evaluator](../228/hosted_browser_parity.py) compares two separately supplied complete archive byte streams against an explicitly pinned expected SHA-256, plus claimed Actions run metadata and the prior AETHER-227 local archive inventory. It rejects missing, substituted, unpinned, expired, incorrectly sourced or conflicting evidence; accepted inputs establish only documentary byte parity, not independent origin or original hardware evidence.
+
+The [25 authored synthetic regressions](../228/test_hosted_browser_parity.py) and the [workflow](../../.github/workflows/aether217-rust-qualification.yml) include a fail-closed assessment. The [reference file](../228/unverified-reference.json) intentionally lacks a pinned digest because an actual GitHub-hosted Actions ZIP was not independently downloaded and hashed. The workflow cannot verify its own GitHub-hosted output before remote upload and later retrieval.
+
+The [4D neon WebCrypto laboratory](../228/) hashes user-selected ZIP bytes in-browser and compares them to an explicitly entered digest, without uploading them. A matching value is not an independently authenticated expected digest. Live browser deployment, real CI completion, independent custodian retention and native compilation remain unverified. Phase XIX documentary progress **4/8 = 50%**, physical qualification **0%**, operational ACT **HOLD**. Historical Phase XVIII freezes are preserved.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
