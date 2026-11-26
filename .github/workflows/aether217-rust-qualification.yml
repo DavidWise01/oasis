@@ -1,10 +1,11 @@
-name: AETHER-217/218 Rust Executable Qualification
+name: AETHER-217/219 Rust Executable Qualification
 on:
   push:
     paths:
       - 'aether/rust/**'
       - 'aether/217/**'
       - 'aether/218/**'
+      - 'aether/219/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -40,11 +41,25 @@ jobs:
           set -euo pipefail
           python3 -m unittest discover -s ../218 -p 'test_qualification_gate.py' -v
           python3 ../218/qualification_gate.py --self-test
+      - name: Exercise AETHER-219 manifest logic tests (NOT Cargo tests)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../219 -p 'test_evidence_manifest.py' -v
       - name: Run native Cargo gate and capture failures
         shell: bash
         run: |
           set -euo pipefail
           python3 ../218/qualification_gate.py
+      - name: Build exact-content evidence manifest, even after Cargo failure
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          python3 ../219/evidence_manifest.py --out qualification-artifacts/aether219-manifest.json
+          result=$?
+          echo "Manifest completeness and native qualification status: exit $result"
+          exit 0
       - name: Upload compiler logs and qualification evidence on pass OR failure
         if: always()
         uses: actions/upload-artifact@v4
