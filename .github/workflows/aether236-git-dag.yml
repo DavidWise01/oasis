@@ -1,0 +1,22 @@
+name: AETHER-236 Git DAG Boundary Tests
+on:
+  push:
+    paths:
+      - 'aether/236/**'
+      - '.github/workflows/aether236-git-dag.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-dag-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Fetch source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run bounded commit-DAG mock regressions
+        run: python3 -m unittest discover -s aether/236 -p 'test_*.py' -v
+      - name: Preserve evidence boundary
+        run: echo 'Offline mock tests cannot certify actual GitHub commits, host custody, or ACT authority.'
