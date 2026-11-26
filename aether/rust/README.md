@@ -115,6 +115,14 @@ The [Rust qualification gate](src/adversarial_qualification.rs) and [24 authored
 
 The [neon 4D Pages lab](../215/) illustrates six synthetic fault categories; it neither executes Rust nor communicates with remote custodians. A positive documentary finding cannot establish real independent control: even fully signed, synthetically consistent claims **cannot authorize recovery, repair, lock reclamation, contested history selection or physical ACT**. No physically authenticated original evidence or remote holder has been observed, and the external enrollment/retention fields are caller-supplied assertions. Physical qualification is **0%**; ACT **HOLD**. Cargo, tests, GitHub Actions success and live Pages deployment remain unverified.
 
+## AETHER-216-RS — Phase XVII final documentary freeze
+
+The [Phase XVII Rust freeze evaluator](src/phase_xvii_freeze.rs) and [45 authored regression cases](tests/phase_xvii_freeze.rs) check the [machine-readable AETHER-216 decision](../216/decision.json). All eight AETHER-209–216 software authoring milestones are recorded as closed. This is **not** native execution certification, independent remote custody, physically authenticated original evidence or operational authority.
+
+The [animated 4D neon Pages laboratory](../216/) inspects the final JSON using browser logic but does not run native Rust or independently verify external witnesses. Authenticated original hardware captures **0**, authenticated independent physical witnesses **0**, independently retained external checkpoints **0**, physical qualification **0%**, recovery and ACT **HOLD**.
+
+Historical problems remain recorded: journal, registry and receipt store updates are not one crash-atomic transaction; local copies do not prove externally retained receipts; three valid signatures can share one controller; unresolved signed host forks cannot be voted away; no independent acquisition or alarm has been physically observed. Cargo compilation, regression execution, GitHub Actions and live Pages runtime remain unverified. The Phase XVI freeze is preserved unchanged.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
