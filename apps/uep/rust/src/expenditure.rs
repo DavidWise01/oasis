@@ -35,3 +35,9 @@ mod tests{
  #[test]fn no_repeat_spend(){let mut s=root();for _ in 0..360{s=s.advance(&step(),17).unwrap().next;}assert_eq!(s.funded_units(),17);assert_eq!(s.spent_cents(),34);}
  #[test]fn grid(){for funding in [0,500,750]{for demand in [10,40,90]{for carbon in [0,2,100]{let mut s=root();for _ in 0..360{let mut p=step();p.period.funding=funding;p.resources.essential=[demand;4];p.restitution.carbon=carbon;let f=s.advance(&p,17).unwrap();assert_eq!(f.physical.next.harm(),17);if f.units>0{assert!(f.physical.next.stock().iter().all(|&v|v>=10));}s=f.next;}}}}}
 }
+
+// UEP-236R: internal lifecycle handoff, not external authorization.
+impl Execution{
+ pub(crate) fn queue_yield(&mut self,units:u64)->Result<(),&'static str>{self.capacity.queue_yield(units)}
+ pub(crate) fn pending_yield(&self)->[u64;4]{self.capacity.pending_yield()}
+}
