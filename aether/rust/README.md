@@ -217,6 +217,14 @@ The [25 authored synthetic regressions](../228/test_hosted_browser_parity.py) an
 
 The [4D neon WebCrypto laboratory](../228/) hashes user-selected ZIP bytes in-browser and compares them to an explicitly entered digest, without uploading them. A matching value is not an independently authenticated expected digest. Live browser deployment, real CI completion, independent custodian retention and native compilation remain unverified. Phase XIX documentary progress **4/8 = 50%**, physical qualification **0%**, operational ACT **HOLD**. Historical Phase XVIII freezes are preserved.
 
+## AETHER-229-RS — Three-root controller ancestry and mirror consolidation
+
+The [AETHER-229 source-ancestry evaluator](../229/ancestry_gate.py) screens three declared witnesses for distinct source corpora, ultimate controllers, root IDs, operators, administrators, custody hosts and signing-key fingerprints, alongside SHA-256 artifact pins. [Thirty authored synthetic regressions](../229/test_ancestry_gate.py) cover repetition, aliasing, missing witnesses, unreliable signatures, and attempted authority promotion; actual execution remains unverified.
+
+The owned `DavidWise01` GitHub repositories, their GitHub Pages deployment and `0root.ai` count as **one controlling corpus**, regardless of URL or apparent signature separation. The [unverified-witness record](../229/unverified-witnesses.json) intentionally contains no external records; the [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) records this absence without inventing external roots. Even three mutually distinct synthetic claims cannot authenticate actual third-party origin.
+
+The [animated neon 4D laboratory](../229/) illustrates the boundary. Independently authenticated external witnesses **0**, original physical captures **0**, physical qualification **0%**, recovery and ACT **HOLD**. Phase XIX documentary progress **5/8 = 62.5%**; prior Phase XVIII freeze preserved.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
