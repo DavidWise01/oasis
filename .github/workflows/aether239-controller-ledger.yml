@@ -1,0 +1,21 @@
+name: AETHER-239 Controller and Ledger Tests
+on:
+  push:
+    paths:
+      - 'aether/239/**'
+      - '.github/workflows/aether239-controller-ledger.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Adversarial ancestry and nonce regressions
+        run: python3 -m unittest discover -s aether/239 -p 'test_*.py' -v
+      - name: Noncertifying boundary
+        run: echo 'Offline authored test results do not prove independent custody, immutability or physical authority.'
