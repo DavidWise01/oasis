@@ -169,6 +169,14 @@ The [Python challenge verifier](../222/original_evidence.py) compares separately
 
 The [4D neon HTML laboratory](../222/) illustrates synthetic receipts and original-evidence integrity checks without running the native Python or Rust software. The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) now includes Python challenge regression tests; their actual execution, native Rust compilation and live Pages deployment remain unverified. Original physical captures authenticated **0**, independent external custodians **0**, physical qualification **0%**, operational ACT **HOLD**.
 
+## AETHER-223-RS — Integrated adversarial evidence qualification
+
+The [AETHER-223 Python integration gate](../223/adversarial_review.py) jointly reviews the declared enrollment ancestry of [AETHER-221](../221/), claimed original receipt/capture byte integrity of [AETHER-222](../222/), and claimed AETHER-218/219 native qualification manifests. It cross-binds source/holder/issuer controller, operator and administrator ancestry with enrollment ID, challenge nonce and holder key fingerprints. Mismatches, replay, capture substitutions, unverified native results or conflicting source revisions remain explicit fail-closed findings.
+
+The [24 authored cross-protocol regressions](../223/test_adversarial_review.py) are included in the [GitHub Actions workflow](../../.github/workflows/aether217-rust-qualification.yml), but no independent proof of their execution or native Rust compilation has been obtained. The [4D neon Pages laboratory](../223/) illustrates synthetic integrated decisions without executing Python or authenticating hardware.
+
+Even a fully consistent signed/documentary bundle cannot authenticate the ultimate real-world controller, externally retained receipt or source device. Authenticated independent custodians **0**, original physical captures **0**, physical qualification **0%**, operational ACT **HOLD**.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
