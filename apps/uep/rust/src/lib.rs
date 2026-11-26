@@ -161,3 +161,5 @@ pub mod universe;
 pub mod expenditure;
 
 pub mod restoration;
+
+pub mod regeneration;
