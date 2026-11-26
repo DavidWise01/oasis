@@ -1,0 +1,40 @@
+{
+  "bound": "AETHER-217",
+  "phase": "XVIII",
+  "turn": 1,
+  "planned_turns": 8,
+  "documentary_software_progress_percent": 12.5,
+  "task": "Executable Rust Qualification and Independent Evidence Acquisition Boundary",
+  "rust_binary": "../rust/src/bin/aether217_qualification.rs",
+  "rust_integration_tests": "../rust/tests/executable_qualification.rs",
+  "native_regression_tests_authored": 4,
+  "workflow": "../../.github/workflows/aether217-rust-qualification.yml",
+  "expected_artifact": "aether217-rust-qualification",
+  "github_source_published": true,
+  "rust_compilation_verified": false,
+  "rust_tests_executed_verified": false,
+  "github_actions_success_verified": false,
+  "pages_execution_verified": false,
+  "independently_authenticated_original_physical_captures": 0,
+  "independently_authenticated_remote_custodians": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "may_recover": false,
+  "evidence_model": [
+    "An executable CLI loads the frozen AETHER-216 decision and verifies its documentary HOLD invariants",
+    "A deterministic GitHub Actions job runs cargo check, cargo test --all-targets, and cargo run --bin aether217_qualification",
+    "Compiler version, Cargo version, commit SHA, and generated JSON qualification report are captured as workflow artifacts",
+    "Workflow success or failure must be read from the actual run and job logs; source publication alone does not certify execution",
+    "Original hardware captures and independent remote-holder identities require separately observed external evidence"
+  ],
+  "limitations": [
+    "No cargo or rustc are available in this assistant runtime; no native test execution can be claimed here",
+    "Earlier Rust sources have not been independently compiled and may require repair after CI results",
+    "A workflow file being committed does not prove GitHub Actions execution or pass",
+    "Even a successful native build is not original physical acquisition or independent remote custody",
+    "The frozen Phase XVII decision remains historically accurate and is not rewritten by future executable results"
+  ],
+  "predecessor": "../216/decision.json",
+  "watermark": ".dlw"
+}
