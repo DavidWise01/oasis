@@ -177,6 +177,14 @@ The [24 authored cross-protocol regressions](../223/test_adversarial_review.py) 
 
 Even a fully consistent signed/documentary bundle cannot authenticate the ultimate real-world controller, externally retained receipt or source device. Authenticated independent custodians **0**, original physical captures **0**, physical qualification **0%**, operational ACT **HOLD**.
 
+## AETHER-224-RS — Phase XVIII final documentary freeze
+
+The [Phase XVIII freeze record](../224/decision.json) closes the eight authored software milestones AETHER-217–224 while preserving unresolved external evidence and native runtime requirements. The [Python documentary freeze evaluator](../224/phase_xviii_freeze.py) and [54 authored adversarial regression tests](../224/test_phase_xviii_freeze.py) reject changed phase ancestry, invented native compilation/CI success, fabricated independent custodians, forged hardware capture assertions, weakened original-evidence obligations, and physical ACT/recovery promotion.
+
+The [AETHER-224 4D neon dashboard](../224/) checks the published JSON structurally but cannot prove independent origin, run Rust, or authenticate remote custody. The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) includes Phase XVIII freeze-test execution and JSON artifact export, but actual GitHub Actions results, Rust compilation, Python tests and browser deployment are **not independently verified here**.
+
+Software milestone completion **8/8 = 100%** must never be conflated with native-runtime qualification or real physical evidence. External remote custodians authenticated **0**, original physical hardware captures **0**, physical qualification **0%**, recovery and operational ACT **HOLD**. The preceding Phase XVII freeze is retained unchanged. New evidence belongs in a subsequent phase without rewriting this historical freeze.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
