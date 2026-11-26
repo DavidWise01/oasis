@@ -123,6 +123,14 @@ The [animated 4D neon Pages laboratory](../216/) inspects the final JSON using b
 
 Historical problems remain recorded: journal, registry and receipt store updates are not one crash-atomic transaction; local copies do not prove externally retained receipts; three valid signatures can share one controller; unresolved signed host forks cannot be voted away; no independent acquisition or alarm has been physically observed. Cargo compilation, regression execution, GitHub Actions and live Pages runtime remain unverified. The Phase XVI freeze is preserved unchanged.
 
+## AETHER-217-RS reproducible executable qualification
+
+The [native Rust CLI](src/bin/aether217_qualification.rs) embeds the preserved [Phase XVII AETHER-216 decision](../216/decision.json), checks the frozen documentary HOLD decision, and emits JSON without permitting recovery, physical ACT, lock takeover or history selection. The [four authored integration tests](tests/executable_qualification.rs) invoke that compiled CLI via Cargo's binary test environment and assert that original evidence, custody and authority remain unqualified.
+
+The [GitHub Actions workflow](../../.github/workflows/aether217-rust-qualification.yml) is configured to run `cargo check --all-targets`, `cargo test --all-targets -- --nocapture`, the qualification CLI, and upload version/commit/report artifacts. The workflow and binary are GitHub source commits; **execution and CI PASS are not independently verified here**. A prior Phase XVII freeze remains historically accurate even after a subsequent run proves successful.
+
+The [4D neon Pages lab](../217/) provides source-level documentary inspection only. Original remote custody and physical captures remain unverified; physical qualification 0%, operational ACT HOLD. A passing compiler build is not an independent physical witness.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
