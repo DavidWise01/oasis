@@ -1,4 +1,4 @@
-name: AETHER-217/221 Rust Executable Qualification
+name: AETHER-217/222 Rust Executable Qualification
 on:
   push:
     paths:
@@ -8,6 +8,7 @@ on:
       - 'aether/219/**'
       - 'aether/220/**'
       - 'aether/221/**'
+      - 'aether/222/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -60,6 +61,11 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m unittest discover -s ../221 -p 'test_custodian_enrollment.py' -v
+      - name: Execute synthetic original-evidence and nonce replay regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../222 -p 'test_original_evidence.py' -v
       - name: Run native Cargo gate and capture failures
         shell: bash
         run: |
