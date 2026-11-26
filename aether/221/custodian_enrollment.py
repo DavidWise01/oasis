@@ -60,7 +60,7 @@ def evaluate(enrollment: dict, challenge: dict, owned: dict) -> dict:
         problems.add("CUSTODIAN_KEY_FINGERPRINT_INVALID")
     if enrollment.get("enrollment_id") != challenge.get("enrollment_id"):
         problems.add("CHALLENGE_ENROLLMENT_MISMATCH")
-    if enrollment.get("custodian", {}).get("custodian_id") != challenge.get("custodian_id") if isinstance(enrollment.get("custodian"), dict) else True:
+    if identity.get("custodian_id") != challenge.get("custodian_id"):
         problems.add("CHALLENGE_CUSTODIAN_MISMATCH")
     if enrollment.get("challenge_nonce") != challenge.get("nonce") or not isinstance(challenge.get("nonce"), str) or len(challenge.get("nonce")) < 16:
         problems.add("CHALLENGE_NONCE_MISMATCH_OR_WEAK")
@@ -73,7 +73,7 @@ def evaluate(enrollment: dict, challenge: dict, owned: dict) -> dict:
         problems.add("CHALLENGE_RECORD_DIGEST_MISMATCH")
     if not isinstance(challenge.get("external_receipt_locator"), str) or not challenge.get("external_receipt_locator"):
         problems.add("EXTERNAL_RECEIPT_LOCATOR_MISSING")
-    if challenge.get("issuer", {}).get("controller_root") == "owned" if isinstance(challenge.get("issuer"), dict) else False:
+    if issuer.get("controller_root") == "owned":
         problems.add("SELF_ISSUED_CHALLENGE")
     if challenge.get("replay_checked_out_of_band") is not True:
         problems.add("REPLAY_NOT_INDEPENDENTLY_CHECKED")
