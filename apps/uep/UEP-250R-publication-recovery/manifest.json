@@ -1,0 +1,37 @@
+{
+  "bound": "UEP-250R",
+  "phase": "XIV",
+  "closure": "HOLD",
+  "nativeTests": 141,
+  "parity": {
+    "periods": 24,
+    "commands": 135,
+    "bytes": 227480,
+    "run": 45877482915,
+    "sha256": "e3bcb6c99c76ae4ec13aab7102775c8a3a2676bf55c49253720db83aa7734b78"
+  },
+  "generation": {
+    "periods": 360,
+    "turnovers": 12,
+    "shortfalls": 120,
+    "peakArrears": 1400,
+    "closingArrears": 400,
+    "historicalReserved": 12000,
+    "accepted": 17,
+    "archiveBytes": 185017,
+    "replayEqual": true,
+    "run": 45878318619,
+    "actualPayments": 0
+  },
+  "publication": {
+    "failedRun": 45883527660,
+    "failedJob": 140128452159,
+    "artifactArchivesVerified": true,
+    "error": "fatal: bad object 453c106b360787a7162321b910f98d733a33129d",
+    "browser": "not executed",
+    "assets": "not published by failed run",
+    "retryCommit": "43bad8178e415171f6c81b17735f4b7ced6fe8d3",
+    "retryResult": "unverified"
+  },
+  "livePages": "unverified"
+}
