@@ -159,3 +159,5 @@ pub mod stress;
 pub mod universe;
 
 pub mod expenditure;
+
+pub mod restoration;
