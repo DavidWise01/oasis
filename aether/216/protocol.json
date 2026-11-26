@@ -1,0 +1,33 @@
+{
+  "bound": "AETHER-216",
+  "phase": "XVII",
+  "turn": 8,
+  "planned_turns": 8,
+  "phase_state": "CLOSED_DOCUMENTARY_SOFTWARE_PROTOCOL",
+  "software_protocol_progress_percent": 100,
+  "rust_source": "../rust/src/phase_xvii_freeze.rs",
+  "rust_tests": "../rust/tests/phase_xvii_freeze.rs",
+  "freeze_decision": "decision.json",
+  "previous_bound": "../215/protocol.json",
+  "previous_phase_freeze": "../208/decision.json",
+  "independently_authenticated_remote_receipts": 0,
+  "independently_authenticated_physical_witnesses": 0,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "may_repair": false,
+  "may_recover": false,
+  "may_reclaim_lock": false,
+  "may_choose_history": false,
+  "limitations": [
+    "Independent real-world remote custodian enrollment and control ancestry are not authenticated",
+    "Remote receipt retention is caller-asserted, not independently retrieved and checked",
+    "No independently retained checkpoint protects against simultaneous rollback of all owned stores",
+    "Evidence journal, registry and receipt store do not form one crash-atomic transaction",
+    "Read-only three-store inspection cannot establish an atomic snapshot or safe automatic recovery",
+    "Signed host receipts may equivocate or share a hidden controlling operator; no external adjudication exists",
+    "No authenticated original hardware capture or independent physical alarm observation was supplied",
+    "Rust compilation, regression execution, GitHub Actions result and live Pages runtime remain unverified"
+  ],
+  "watermark": ".dlw"
+}
