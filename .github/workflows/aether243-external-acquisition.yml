@@ -1,0 +1,19 @@
+name: AETHER-243 External Acquisition Boundary
+on:
+  push:
+    paths:
+      - 'aether/243/**'
+      - '.github/workflows/aether243-external-acquisition.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-mock-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/243 -p 'test_*.py' -v
+      - run: echo 'Offline mocks do not certify remote custody, network isolation or physical authority.'
