@@ -1,0 +1,74 @@
+{
+  "bound": "UEP-250R-FF",
+  "phase": "XIV",
+  "closure": "SEALED computational and repository publication scope",
+  "livePages": "unverified",
+  "releaseCommit": "a4770904ea0e53aa6b387984c40fc97dc35c4cde",
+  "nativeTests": 141,
+  "parity": {
+    "periods": 24,
+    "commands": 135,
+    "bytes": 227480,
+    "run": 45877482915
+  },
+  "generation": {
+    "periods": 360,
+    "turnovers": 12,
+    "shortfalls": 120,
+    "peakArrears": 1400,
+    "closingArrears": 400,
+    "historicalReserved": 12000,
+    "accepted": 17,
+    "firstFullyRestoredPeriod": 16,
+    "archiveBytes": 185017,
+    "replayEqual": true,
+    "run": 45878318619,
+    "actualPayments": 0
+  },
+  "publication": {
+    "run": 45889764899,
+    "job": 140149227878,
+    "artifact": 15150972332,
+    "artifactZipSha256": "158084a64b2374c99b6fc3fa33aeaffd2c24b5c23c75ddf330a2a58f351c1357",
+    "browser": {
+      "missingRejected": true,
+      "corruptRejected": true,
+      "pinnedLoaded": true,
+      "committedPeriods": 3,
+      "invalidRequestPreserved": true,
+      "downloads": 2,
+      "pageErrors": 0
+    },
+    "priorFailures": [
+      45883527660,
+      45884452682
+    ]
+  },
+  "assets": [
+    {
+      "name": "oasis_uep.wasm",
+      "size": 249051,
+      "blob": "8d5603ab13914a1c71c6e4c43be8364877c847f2",
+      "sha256": "446b4ad220613de363446e3276a472bf9c0ada405c4cd1916639ed01afed217e"
+    },
+    {
+      "name": "generation.archive",
+      "size": 185017,
+      "blob": "1dd71223d70d6d2da8b68a279475446fcc6c1812",
+      "sha256": "350b963eb98dce3f6be1168e7a93f4a210e0980c9720421ef0706d3947a9e56d"
+    },
+    {
+      "name": "generation.checkpoint",
+      "size": 112,
+      "blob": "f5fc3d41803900bca67e6d1309296f0a76961250",
+      "sha256": "72d0dc0892494e410af435236917abd04d53c2751939105908f4a49fc6d71526"
+    },
+    {
+      "name": "generation.csv",
+      "size": 19849,
+      "blob": "0e1df4f9bf28d3b663a364d59725943e51d411f6",
+      "sha256": "a097bee75cd777b3134fa8f43d3eba40a35d2acad31a6db7da1d9aab5b1eee51"
+    }
+  ],
+  "scope": "SHA256 observed in publication runner logs; remote directory metadata read at pinned commit; CSV parsed independently via connector; binary bytes not independently rehashed; synthetic only."
+}
