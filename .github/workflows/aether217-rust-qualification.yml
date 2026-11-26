@@ -1,4 +1,4 @@
-name: AETHER-217/219 Rust Executable Qualification
+name: AETHER-217/220 Rust Executable Qualification
 on:
   push:
     paths:
@@ -6,6 +6,7 @@ on:
       - 'aether/217/**'
       - 'aether/218/**'
       - 'aether/219/**'
+      - 'aether/220/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -46,6 +47,13 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m unittest discover -s ../219 -p 'test_evidence_manifest.py' -v
+      - name: Exercise AETHER-220 browser/native parity logic (synthetic only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../220 -p 'test_parity_gate.py' -v
+          mkdir -p qualification-artifacts
+          python3 ../220/parity_gate.py --reference ../220/reference.json --native ../220/synthetic-hold.json --browser ../220/synthetic-hold.json --out qualification-artifacts/aether220-synthetic-parity.json
       - name: Run native Cargo gate and capture failures
         shell: bash
         run: |
