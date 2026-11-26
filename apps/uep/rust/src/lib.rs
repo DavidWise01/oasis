@@ -185,3 +185,5 @@ pub mod linked_segment;
 pub mod cross_arrears;
 
 pub mod identity_continuity;
+
+pub mod capacity_inheritance;
