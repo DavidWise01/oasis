@@ -1,4 +1,4 @@
-name: AETHER-217/220 Rust Executable Qualification
+name: AETHER-217/221 Rust Executable Qualification
 on:
   push:
     paths:
@@ -7,6 +7,7 @@ on:
       - 'aether/218/**'
       - 'aether/219/**'
       - 'aether/220/**'
+      - 'aether/221/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -54,6 +55,11 @@ jobs:
           python3 -m unittest discover -s ../220 -p 'test_parity_gate.py' -v
           mkdir -p qualification-artifacts
           python3 ../220/parity_gate.py --reference ../220/reference.json --native ../220/synthetic-hold.json --browser ../220/synthetic-hold.json --out qualification-artifacts/aether220-synthetic-parity.json
+      - name: Test synthetic custodian ancestry gate (NOT independent custody)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../221 -p 'test_custodian_enrollment.py' -v
       - name: Run native Cargo gate and capture failures
         shell: bash
         run: |
