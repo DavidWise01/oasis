@@ -1,0 +1,42 @@
+{
+  "bound": "AETHER-218",
+  "phase": "XVIII",
+  "turn": 2,
+  "planned_turns": 8,
+  "documentary_software_progress_percent": 25,
+  "title": "Fail-Closed Native CI Triage, Executed Gate Diagnostics and Evidence Preservation",
+  "source_diagnostic_runner": "qualification_gate.py",
+  "source_diagnostic_tests": "test_qualification_gate.py",
+  "authored_diagnostic_unit_tests": 11,
+  "ci_workflow": "../../.github/workflows/aether217-rust-qualification.yml",
+  "artifact_name": "aether218-rust-qualification",
+  "git_source_committed": true,
+  "native_rust_compilation_verified": false,
+  "native_rust_regression_tests_verified": false,
+  "github_actions_success_verified": false,
+  "live_pages_deployment_verified": false,
+  "native_ci_status": "NOT_VERIFIED",
+  "observed_ci_evidence": "No combined status checks or PR-associated workflow runs returned for the last AETHER-217 commit; not evidence of pass or failure.",
+  "diagnostic_actions": [
+    "Capture Rust compiler and Cargo versions plus the source revision in Actions artifacts",
+    "Run source-level Python unit tests of fail-closed result classification",
+    "Attempt cargo check --all-targets, cargo test --all-targets, cargo run --bin aether217_qualification",
+    "Always preserve native command logs and structured exit codes, including on a failed build",
+    "Report PASS only when all three commands demonstrably executed with zero exit and exact frozen ACT HOLD JSON",
+    "Never label a source commit, synthetic Python test or absent status check as native Rust qualification"
+  ],
+  "limits": [
+    "Cargo and rustc unavailable in this assistant runtime, so native execution is unverified",
+    "GitHub status lookup is limited; no positive or negative Actions conclusion was independently established",
+    "Actual compiler diagnostics could not be examined and no speculative Rust source rewrites were made",
+    "Future failure logs will need a new repair commit and verified rerun",
+    "No remote custody or authenticated original hardware captures, physical qualification 0%, ACT HOLD"
+  ],
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "may_repair": false,
+  "may_recover": false,
+  "previous_bound": "../217/protocol.json",
+  "watermark": ".dlw"
+}
