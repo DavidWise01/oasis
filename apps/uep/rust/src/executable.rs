@@ -69,3 +69,6 @@ impl Universe{
  #[test]fn repeated_compaction(){let mut u=root();let mut c=u.clone();for i in 0..24{let r=req(if i%3==0{500}else{750});u=u.advance(&r).unwrap();c=c.advance(&r).unwrap();assert_eq!(state_hash::encode(&u).unwrap(),state_hash::encode(&c).unwrap());c=c.compact(state_hash::fingerprint(&c).unwrap()).unwrap();}assert_eq!(c.total_observations(),24);assert!(c.observations().is_empty());}
  #[test]fn prefix_tamper(){let u=root().advance(&req(600)).unwrap();let mut c=u.compact(state_hash::fingerprint(&u).unwrap()).unwrap();c.prefix_count+=1;assert!(c.verify_observations().is_err());}
 }
+
+// UEP-253R: read-only exact obligation ledger for boundary auditing.
+impl Universe{pub fn population_ledger(&self)->&Population{&self.population}}
