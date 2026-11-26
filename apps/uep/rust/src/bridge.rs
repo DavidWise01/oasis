@@ -65,3 +65,6 @@ mod tests {
  #[test]fn independent_funding(){let l=accepted();let b=Bridge::genesis().sync(&l,l.head()).unwrap();let r=b.advance(&period(500),Shares{carbon:2000,ai:100}).unwrap();assert_eq!(r.next.outstanding(),Shares{carbon:0,ai:310});assert_eq!(r.unallocated,Shares{carbon:360,ai:0});assert_eq!(r.universal.current_funded,500);assert_eq!(r.next.population().outstanding().unwrap(),500);}
  #[test]fn grid_non_offset(){let l=accepted();let b=Bridge::genesis().sync(&l,l.head()).unwrap();for ubi in [0,400,800]{for carbon in [0,500,2000]{for ai in [0,100,500]{let mut x=b.clone();let mut y=Bridge::genesis();for _ in 0..360{let a=x.advance(&period(ubi),Shares{carbon,ai}).unwrap();let z=y.advance(&period(ubi),Shares::default()).unwrap();assert_eq!(a.universal,z.universal);assert_eq!(a.next.funded().carbon+a.next.outstanding().carbon,1640);assert_eq!(a.next.funded().ai+a.next.outstanding().ai,410);x=a.next;y=z.next;}}}}}
 }
+
+// UEP-242R: explicit canonical state encoding.
+impl Bridge{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>){crate::state_hash::population(b,&self.population);crate::state_hash::num(b,self.sequence as u64);b.extend_from_slice(&self.head);for x in [self.assessed.carbon,self.assessed.ai,self.funded.carbon,self.funded.ai]{crate::state_hash::num(b,x)}}}
