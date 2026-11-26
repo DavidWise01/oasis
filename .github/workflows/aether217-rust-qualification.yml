@@ -1,4 +1,4 @@
-name: AETHER-217/226 Rust Executable Qualification
+name: AETHER-217/227 Rust Executable Qualification
 on:
   push:
     paths:
@@ -13,6 +13,7 @@ on:
       - 'aether/224/**'
       - 'aether/225/**'
       - 'aether/226/**'
+      - 'aether/227/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -116,6 +117,23 @@ jobs:
           mkdir -p qualification-artifacts
           python3 ../226/actions_provenance.py --run-id "$GITHUB_RUN_ID" --source-sha "$GITHUB_SHA" --out qualification-artifacts/aether226-api-readback.json || true
           echo "Run may still be active; an API readback is NOT proof of completed CI."
+      - name: Test deterministic ZIP archive safety and source bindings (synthetic)
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../227 -p 'test_archive_evidence.py' -v
+      - name: Export local deterministic evidence ZIP and verify hashes
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qualification-artifacts
+          python3 ../227/archive_evidence.py \
+            --directory qualification-artifacts \
+            --source-sha "$GITHUB_SHA" \
+            --export qualification-artifacts/aether227-local-export.zip \
+            --out qualification-artifacts/aether227-local-inventory.json || true
+          echo "Local export ZIP is not the GitHub-hosted artifact ZIP."
       - name: Upload compiler logs and qualification evidence on pass OR failure
         if: always()
         uses: actions/upload-artifact@v4
