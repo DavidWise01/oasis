@@ -1,6 +1,6 @@
 # AETHER Phase XIX — Independently Checked Execution Evidence and Custody Provenance
 
-**AETHER-227-RS CONTENT-ADDRESSED CI EVIDENCE ZIP EXPORT & SAFETY VERIFIER COMMITTED. Phase XIX documentary software progress 3/8 = 37.5%. Native test execution, GitHub-hosted artifact retrieval and retention authentication: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-228-RS HOSTED ARTIFACT-TO-BROWSER EXACT-BYTE PARITY GATE COMMITTED. Phase XIX documentary software progress 4/8 = 50%. Live GitHub-hosted archive download, exact digest provenance, native execution and browser deployment: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [Phase XVIII freeze](224/decision.json) remains unchanged and records all eight documentary software milestones, without pretending historical Rust/Python execution, independent remote custody or physical-origin authentication was established. Phase XIX asks whether evidence of execution has been independently checked.
 
@@ -9,11 +9,21 @@ The [Phase XVIII freeze](224/decision.json) remains unchanged and records all ei
 | 1 | 225 Native CI run/job/log/artifact source-revision reconciliation | **COMMITTED — actual CI outcome unverified** | **12.5%** |
 | 2 | 226 Actual Actions run provenance and source-revision check | **COMMITTED — authenticated API probe source; live terminal run unverified** | **25%** |
 | 3 | 227 Immutable evidence export and artifact content digest reconciliation | **COMMITTED — deterministic local ZIP, exact-byte inventory and hosted-artifact distinction** | **37.5%** |
-| 4 | 228 GitHub execution-to-browser parity | Planned | 37.5% |
-| 5 | 229 Independent source-ancestry test against owned mirrors | Planned | 37.5% |
-| 6 | 230 External challenge and replay control | Planned | 37.5% |
-| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 37.5% |
-| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 37.5% |
+| 4 | 228 GitHub execution-to-browser parity | **COMMITTED — hosted ZIP/browser parity gate and unpinned reference; live hosted evidence absent** | **50%** |
+| 5 | 229 Independent source-ancestry test against owned mirrors | Planned | 50% |
+| 6 | 230 External challenge and replay control | Planned | 50% |
+| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 50% |
+| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 50% |
+
+## AETHER-228-RS — Hosted artifact to browser exact-byte parity
+
+- [AETHER-228 Python parity gate](228/hosted_browser_parity.py) accepts separately supplied hosted ZIP bytes, browser-delivered bytes, a pinned expected SHA-256, claimed run identity and the AETHER-227 archive inventory. Missing evidence, substitutions, missing pins, mismatched source revisions, expired/failed runs and unsupported authority promotion are rejected. Even fully matching supplied records are reported only as **DOCUMENTARY_HOSTED_BROWSER_BYTES_MATCH_ONLY**.
+- [25 authored adversarial tests](228/test_hosted_browser_parity.py) cover missing archive/reference, differing bytes, jointly substituted evidence, source/run mismatch, invalid or expired artifacts, manifest inconsistency, and physical ACT HOLD. Tests are **not independently verified as executed**.
+- [Unverified reference](228/unverified-reference.json) deliberately contains **null** SHA-256, source-commit and run-ID pins. No actual GitHub-hosted Actions ZIP has been retrieved and independently hashed, so the CI workflow's read-only [parity assessment](228/hosted_browser_parity.py) records an explicit **REJECT_OR_UNVERIFIED** rather than constructing a false successful artifact.
+- The [GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) runs the synthetic parity regressions and emits an intentionally unqualified `aether228-hosted-parity.json` after previous local-archive steps. Its own hosted artifact is not available for self-authentication before upload and external retrieval.
+- The [neon 4D WebCrypto lab](228/) retains the animated 16-vertex/32-edge tesseract; a selected ZIP is hashed locally in the browser and compared against a user-supplied digest without uploading its contents. This only proves matching bytes to the user's supplied value, not the authority of the pin, GitHub-hosted provenance or independent physical custody.
+- [AETHER-228 protocol](228/protocol.json) records **Phase XIX 4/8 = 50% documentary progress**, physical qualification **0%**, original physical captures **0**, ACT **HOLD**. Phase XVIII freeze remains untouched.
+- **Next AETHER-229-RS:** check independently controlled ancestry of externally delivered artifacts and distinguish same-origin GitHub/0root.ai mirrors from genuinely separate evidence roots. `.dlw`
 
 ## AETHER-227-RS — Deterministic local artifact ZIP and exact-byte qualification
 
