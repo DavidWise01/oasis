@@ -1,4 +1,4 @@
-name: AETHER-217/225 Rust Executable Qualification
+name: AETHER-217/226 Rust Executable Qualification
 on:
   push:
     paths:
@@ -12,11 +12,13 @@ on:
       - 'aether/223/**'
       - 'aether/224/**'
       - 'aether/225/**'
+      - 'aether/226/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   rust-qualification:
@@ -86,6 +88,11 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m unittest discover -s ../225 -p 'test_ci_reconciliation.py' -v
+      - name: Validate AETHER-226 GitHub API metadata mock regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../226 -p 'test_actions_provenance.py' -v
       - name: Run native Cargo gate and capture failures
         shell: bash
         run: |
@@ -100,6 +107,15 @@ jobs:
           result=$?
           echo "Manifest completeness and native qualification status: exit $result"
           exit 0
+      - name: Probe actual GitHub Actions run metadata (noncertifying while active)
+        if: always()
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p qualification-artifacts
+          python3 ../226/actions_provenance.py --run-id "$GITHUB_RUN_ID" --source-sha "$GITHUB_SHA" --out qualification-artifacts/aether226-api-readback.json || true
+          echo "Run may still be active; an API readback is NOT proof of completed CI."
       - name: Upload compiler logs and qualification evidence on pass OR failure
         if: always()
         uses: actions/upload-artifact@v4
