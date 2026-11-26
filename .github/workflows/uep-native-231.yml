@@ -1,0 +1,61 @@
+name: UEP-231R native qualification
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-native-231.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  statuses: write
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 4120b2d137e64809374929281dfd33d3d8ce1462
+          persist-credentials: false
+      - name: Record source and initialize evidence
+        run: |
+          mkdir -p "$RUNNER_TEMP/uep231"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep231/source.txt"
+          test "$(git rev-parse HEAD)" = 4120b2d137e64809374929281dfd33d3d8ce1462
+          git ls-tree -r HEAD apps/uep/rust > "$RUNNER_TEMP/uep231/source-tree.txt"
+      - name: Pinned compiler and dependency resolution
+        working-directory: apps/uep/rust
+        run: |
+          rustup toolchain install 1.85.1 --profile minimal
+          rustc +1.85.1 -Vv | tee "$RUNNER_TEMP/uep231/compiler.txt"
+          cargo +1.85.1 generate-lockfile
+          cp Cargo.lock "$RUNNER_TEMP/uep231/Cargo.lock"
+      - name: Compile and execute native suite
+        working-directory: apps/uep/rust
+        shell: bash
+        run: |
+          set -o pipefail
+          cargo +1.85.1 test --locked 2>&1 | tee "$RUNNER_TEMP/uep231/tests.txt"
+          python3 - <<'PY'
+          import os,re,json,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep231'
+          rows=re.findall(r'test result: ok\. (\d+) passed; (\d+) failed; (\d+) ignored; (\d+) measured; (\d+) filtered out',(p/'tests.txt').read_text())
+          counts=[sum(int(r[i]) for r in rows) for i in range(5)]
+          (p/'counts.json').write_text(json.dumps(dict(zip(['passed','failed','ignored','measured','filtered'],counts))))
+          assert counts==[82,0,0,0,0], counts
+          PY
+          cargo +1.85.1 run --locked --release 2>&1 | tee "$RUNNER_TEMP/uep231/simulation.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-231r-native-evidence
+          path: ${{ runner.temp }}/uep231/
+          if-no-files-found: error
+      - name: Publish qualification status to trigger commit
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-231R/native" -f description="Frozen Phase XII native qualification" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
