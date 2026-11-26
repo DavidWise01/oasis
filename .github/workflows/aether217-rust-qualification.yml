@@ -1,0 +1,62 @@
+name: AETHER-217 Rust Executable Qualification
+on:
+  push:
+    paths:
+      - 'aether/rust/**'
+      - 'aether/217/**'
+      - '.github/workflows/aether217-rust-qualification.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rust-qualification:
+    name: Rust check, regression suite and documentary CLI
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: aether/rust
+    steps:
+      - name: Fetch exact repository revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install stable Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Record compiler and source revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qualification-artifacts
+          rustc --version | tee qualification-artifacts/rustc-version.txt
+          cargo --version | tee qualification-artifacts/cargo-version.txt
+          git rev-parse HEAD | tee qualification-artifacts/commit.txt
+      - name: Compile all native targets
+        run: cargo check --all-targets
+      - name: Execute Rust regression tests
+        run: cargo test --all-targets -- --nocapture
+      - name: Execute AETHER-217 documentary qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          cargo run --quiet --bin aether217_qualification | tee qualification-artifacts/aether217-report.json
+          python3 - <<'PY'
+          import json
+          with open("qualification-artifacts/aether217-report.json", encoding="utf-8") as f:
+              report=json.load(f)
+          assert report["documentary_decision_consistent"] is True
+          assert report["physical_qualification_percent"] == 0
+          assert report["operational_authority"] == "HOLD"
+          assert report["physical_act_allowed"] is False
+          print("Documentary executable qualification PASS; external physical authority HOLD")
+          PY
+      - name: Upload compiler and qualification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aether217-rust-qualification
+          path: aether/rust/qualification-artifacts/
+          if-no-files-found: warn
+          retention-days: 30
