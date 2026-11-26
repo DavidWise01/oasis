@@ -139,6 +139,14 @@ The [revised workflow](../../.github/workflows/aether217-rust-qualification.yml)
 
 Physical qualification 0%, independent remote custodians 0, original hardware captures 0, operational ACT HOLD.
 
+## AETHER-219-RS deterministic source and qualification evidence manifest
+
+The [AETHER-219 manifest generator](../219/evidence_manifest.py) hashes each observed Rust module and integration test, Cargo manifest/lockfile if present, archived AETHER-216 decision, GitHub Actions configuration, diagnostic runner and recorded compiler/test/CLI artifacts. It emits sorted JSON with an SHA-256 digest over relative paths, exact sizes, file hashes and Git commit. Manifest comparison can expose changed source bytes, substituted logs and missing evidence, but cannot prove remote control ancestry. Missing inputs and failed Cargo runs remain visible and cannot be reported as a verified native qualification.
+
+The [15 authored Python tests](../219/test_evidence_manifest.py) exercise deterministic hashing, path traversal/symlink rejection, missing artifacts, log or fixture substitution, and fail-closed native execution qualification. The [updated Actions workflow](../../.github/workflows/aether217-rust-qualification.yml) runs these classifier tests separately from Rust tests and always creates an evidence manifest after attempted Cargo qualification, including failures. Native Cargo tests, Python tests and Actions success have **not been independently verified** from a run in this conversation. Local downloading of GitHub source for Python testing failed due to unavailable name resolution.
+
+The [4D neon evidence laboratory](../219/) is a protocol browser, not a native execution environment. Immutable external custody, original physical measurements, ACT authority and complete reproducible toolchain pinning remain unproven. Physical qualification **0%** · ACT **HOLD**.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
