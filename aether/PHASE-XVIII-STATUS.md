@@ -1,6 +1,6 @@
 # AETHER Phase XVIII — Executable Rust Qualification & Independent Evidence Acquisition
 
-**AETHER-220-RS BROWSER-TO-NATIVE BYTE PARITY & WEBCRYPTO GATE COMMITTED. Phase XVIII documentary software progress 4/8 = 50%. Real native/browser artifact parity, Rust compilation and Actions conclusion: NOT VERIFIED. Independently authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-221-RS EXTERNAL CUSTODIAN ENROLLMENT & CONTROL-ANCESTRY SCREEN COMMITTED. Phase XVIII documentary software progress 5/8 = 62.5%. Independent external custodian authentication, native Rust compilation and Actions conclusion: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intact, with eight authored Phase XVII documentary milestones closed and all physical authority withheld. Phase XVIII separates verified *execution* from source-only acceptance and independently anchored external acquisition from locally copied evidence.
 
@@ -10,10 +10,19 @@ The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intac
 | 2 | 218 Native compile-failure triage and fail-closed regression repair | **COMMITTED — run/log diagnostic capture; no actual compiler failure logs available for repair** | **25%** |
 | 3 | 219 Deterministic test fixture and reproducible artifact manifest | **COMMITTED — SHA-256 inventory, CI manifest hook, authored tests** | **37.5%** |
 | 4 | 220 Browser-to-native parity and controlled artifact validation | **COMMITTED — synthetic pinned-byte demonstration and native HOLD** | **50%** |
-| 5 | 221 External custody enrollment evidence interface | Planned | 50% |
-| 6 | 222 Out-of-band challenge and origin verification | Planned | 50% |
-| 7 | 223 Adversarial qualification and independent physical-evidence review | Planned | 50% |
-| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 50% |
+| 5 | 221 External custody enrollment evidence interface | **COMMITTED — documentary source/custodian/issuer ancestry and challenge checks** | **62.5%** |
+| 6 | 222 Out-of-band challenge and origin verification | Planned | 62.5% |
+| 7 | 223 Adversarial qualification and independent physical-evidence review | Planned | 62.5% |
+| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 62.5% |
+
+## AETHER-221-RS — External custodian enrollment and out-of-band ancestry claims
+
+- [Python documentary enrollment gate](221/custodian_enrollment.py) records a custodian's claimed controller root, operator, administrator, host, external locator and pinned signing-key fingerprint. The out-of-band challenge record binds enrollment ID, custodian ID, key, nonce, evidence hash and independently claimed issuer ancestry. Missing claimed external authentication, replay checks, retention, or shared source/issuer/custodian controller lineage fails closed.
+- The evaluator never authenticates signatures against a real external provider, retrieves a remote receipt or independently checks out-of-band claims. Even a consistent documentary envelope reports **0 authenticated external custodians**, original physical captures **0**, and permanently refuses recovery, repair, lock reclamation and physical ACT. GitHub and 0root.ai mirrors remain one source ancestry.
+- [21 authored synthetic Python tests](221/test_custodian_enrollment.py) cover mirrors, shared controllers/operators/administrators, swapped keys, enrollment mismatch, nonce replay, unavailable remote retention, absent challenge issuer and authority promotion. **Test execution and native Rust/CI completion remain unverified.**
+- The [existing GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) is extended to execute the Python enrollment tests separately from any native Rust regression suite; source publication is not a CI pass.
+- [Neon 4D laboratory](221/) retains a rotating 16-vertex/32-edge tesseract and offers six synthetic ancestry cases. It does not run Python or authenticate external custodians. [Protocol](221/protocol.json) records **Phase XVIII 5/8 = 62.5%**, physical qualification **0%**, ACT **HOLD**.
+- **Next AETHER-222-RS:** independently sourced out-of-band challenge verification and receipt-replay review, with actual independent evidence remaining a prerequisite for any physical qualification. `.dlw`
 
 ## AETHER-220-RS — Browser-to-native byte parity and pinned artifact checks
 
