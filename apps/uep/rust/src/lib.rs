@@ -157,3 +157,5 @@ pub mod equilibrium;
 pub mod stress;
 
 pub mod universe;
+
+pub mod expenditure;
