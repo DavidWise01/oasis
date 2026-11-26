@@ -1,0 +1,99 @@
+name: UEP-232R repeatable WASM qualification
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-wasm-232.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  statuses: write
+jobs:
+  wasm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 4120b2d137e64809374929281dfd33d3d8ce1462
+          persist-credentials: false
+      - name: Recover qualified dependency lock
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 4120b2d137e64809374929281dfd33d3d8ce1462
+          mkdir -p "$RUNNER_TEMP/uep232"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15077861777/zip" > "$RUNNER_TEMP/native.zip"
+          echo "b0b1a676ef7ee44e33c4907dc08a926227edc4851f4495c2a406686475f0313e  $RUNNER_TEMP/native.zip" | sha256sum -c -
+          unzip -p "$RUNNER_TEMP/native.zip" Cargo.lock > apps/uep/rust/Cargo.lock
+          unzip -p "$RUNNER_TEMP/native.zip" source.txt | grep -Fx 4120b2d137e64809374929281dfd33d3d8ce1462
+          cp apps/uep/rust/Cargo.lock "$RUNNER_TEMP/uep232/"
+          sha256sum apps/uep/rust/Cargo.lock | tee "$RUNNER_TEMP/uep232/lock.sha256"
+          git rev-parse HEAD > "$RUNNER_TEMP/uep232/source.txt"
+      - name: Two clean locked WASM builds
+        working-directory: apps/uep/rust
+        shell: bash
+        env:
+          CARGO_INCREMENTAL: '0'
+          SOURCE_DATE_EPOCH: '0'
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.85.1 --profile minimal --target wasm32-unknown-unknown
+          rustc +1.85.1 -Vv | tee "$RUNNER_TEMP/uep232/compiler.txt"
+          cargo +1.85.1 fetch --locked --target wasm32-unknown-unknown
+          for n in a b; do
+            test ! -e "$RUNNER_TEMP/uep-build-$n"
+            CARGO_TARGET_DIR="$RUNNER_TEMP/uep-build-$n" cargo +1.85.1 build --frozen --lib --release --target wasm32-unknown-unknown 2>&1 | tee "$RUNNER_TEMP/uep232/build-$n.txt"
+            cp "$RUNNER_TEMP/uep-build-$n/wasm32-unknown-unknown/release/oasis_uep.wasm" "$RUNNER_TEMP/uep232/$n.wasm"
+          done
+          cd "$RUNNER_TEMP/uep232"
+          sha256sum a.wasm b.wasm | tee binary.sha256
+          cmp a.wasm b.wasm
+          cp a.wasm oasis_uep.wasm
+      - name: Original ABI parity
+        shell: bash
+        run: |
+          set -o pipefail
+          node apps/uep/rust/qualification/wasm-213.cjs "$RUNNER_TEMP/uep232/oasis_uep.wasm" | tee "$RUNNER_TEMP/uep232/uniform.json"
+      - name: Full axiom vector parity and invalid inputs
+        shell: bash
+        run: |
+          set -o pipefail
+          node <<'JS' | tee "$RUNNER_TEMP/uep232/vector.json"
+          const fs=require('node:fs'),a=require('node:assert/strict'),crypto=require('node:crypto');
+          const bytes=fs.readFileSync(process.env.RUNNER_TEMP+'/uep232/oasis_uep.wasm'),max=(1n<<64n)-1n;
+          const pack=x=>{const w=Array(8).fill(0n);x.forEach((v,i)=>w[Math.floor(i/6)]|=BigInt(v)<<BigInt(i%6*10));return w};
+          (async()=>{const e=(await WebAssembly.instantiate(bytes,{})).instance.exports;
+          a.equal(e.uep_vector_version(),216);let cases=0;
+          for(let k=0;k<44;k++)for(const value of [0n,1n,10000n,120000000000n,max])for(const score of [0,1,500,998,999]){
+            const x=Array.from({length:44},(_,i)=>i<22?999:0);x[k]=score;
+            const p=BigInt(x.slice(0,22).reduce((a,b)=>a+b,0)),n=BigInt(x.slice(22).reduce((a,b)=>a+b,0)),d=21978n;
+            const r=value*p*(d-n)*2050n/(d*d*10000n),c=r*80n/100n;
+            [r,c,r-c].forEach((v,s)=>a.equal(BigInt.asUintN(64,e.uep_vector_estimate(value,s,...pack(x))),v));cases++;
+          }
+          let invalid=0;
+          const reject=(s,w)=>{a.equal(BigInt.asUintN(64,e.uep_vector_estimate(10000n,s,...w)),max);invalid++};
+          for(let k=0;k<44;k++){const x=Array(48).fill(0);x[k]=1000;reject(0,pack(x))}
+          for(let k=44;k<48;k++){const x=Array(48).fill(0);x[k]=1;reject(0,pack(x))}
+          for(let k=0;k<8;k++){const w=Array(8).fill(0n);w[k]=1n<<60n;reject(0,w)}
+          reject(3,Array(8).fill(0n));
+          console.log(JSON.stringify({abi:216,cases,comparisons:cases*3,invalidRejected:invalid,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),actualPayments:0},null,2));
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-232r-wasm-evidence
+          path: ${{ runner.temp }}/uep232/
+          if-no-files-found: error
+      - name: Publish qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-232R/wasm" -f description="Frozen source and lockfile WASM parity" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
