@@ -89,5 +89,5 @@ class GitObjectTests(unittest.TestCase):
            {"path":"a","mode":"100644","type":"blob","sha":"2"*40}]
         self.assertEqual(tree_bytes(a),tree_bytes(list(reversed(a))))
     def test_git_blob_fixture_sha(self):
-        self.assertEqual(object_id("blob",b"test\\n"),"9daeafb9864cf43055ae93beb0afd6c7d144bfa4")
+        self.assertEqual(object_id("blob",bytes([116,101,115,116,10])),"9daeafb9864cf43055ae93beb0afd6c7d144bfa4")
 if __name__=="__main__":unittest.main()
