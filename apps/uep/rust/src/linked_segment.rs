@@ -54,3 +54,52 @@ impl Segment{
 
 // UEP-252R: opt-in compaction at qualified segment boundaries; legacy behavior retained.
 impl Segment{pub fn compact_boundary(&self,expected:&Anchor)->Result<Self,&'static str>{if self.entries.len()!=LIMIT||self.anchor()?!=*expected{return Err("boundary mismatch")}let u=self.universe.compact(expected.closing)?;Self::start(expected.clone(),&u)}}
+
+// UEP-256R: canonical successor decoding against an authenticated-by-caller opening and expected closing anchor.
+// No standalone state deserialization, no reset, no implicit trust in archive-supplied digests.
+struct SegmentReader<'a>{b:&'a[u8],pos:usize}
+impl<'a> SegmentReader<'a>{
+ fn take(&mut self,n:usize)->Result<&'a[u8],&'static str>{let end=self.pos.checked_add(n).ok_or("segment offset overflow")?;let s=self.b.get(self.pos..end).ok_or("truncated segment")?;self.pos=end;Ok(s)}
+ fn num(&mut self)->Result<u64,&'static str>{Ok(u64::from_be_bytes(self.take(8)?.try_into().map_err(|_|"number")?))}
+ fn digest(&mut self)->Result<[u8;32],&'static str>{self.take(32)?.try_into().map_err(|_|"digest")}
+ fn anchor(&mut self)->Result<Anchor,&'static str>{Ok(Anchor{total:self.num()?,ancestry:self.digest()?,closing:self.digest()?})}
+}
+impl Segment{
+ pub fn recover(open:&Segment,bytes:&[u8],expected:&Anchor)->Result<Self,&'static str>{
+  if !open.entries.is_empty(){return Err("nonempty opening segment")}
+  if bytes.len()>BYTE_LIMIT{return Err("segment size")}
+  if hash(b"OASIS-UEP-251R-segment-v1",bytes)!=expected.ancestry{return Err("segment digest mismatch")}
+  let mut d=SegmentReader{b:bytes,pos:0};
+  if d.take(8)?!=b"UEP251R\0"{return Err("segment version")}
+  let parent=d.anchor()?;
+  if parent!=open.parent{return Err("segment parent mismatch")}
+  let count=d.num()?;
+  if count>LIMIT as u64||parent.total.checked_add(count)!=Some(expected.total){return Err("segment count")}
+  let mut s=Self::start(parent,&open.universe)?;
+  for _ in 0..count{
+   let len=d.num()?;if len>BYTE_LIMIT as u64{return Err("request length")}
+   let raw=d.take(len as usize)?;
+   let req=request_codec::decode(raw)?;
+   if request_codec::encode(&req)?.as_slice()!=raw{return Err("noncanonical request")}
+   let recorded=Commitment{opening:d.digest()?,request:d.digest()?,closing:d.digest()?,digest:d.digest()?};
+   let(u,actual)=state_hash::advance(&s.universe,&req)?;
+   if !recorded.verify()||recorded!=actual{return Err("segment transition mismatch")}
+   s.universe=u;s.entries.push((raw.to_vec(),actual));
+  }
+  if d.pos!=bytes.len()||s.anchor()?!=*expected{return Err("segment closing or trailing bytes")}
+  if s.encode()?.as_slice()!=bytes{return Err("segment canonical mismatch")}
+  Ok(s)
+ }
+}
+#[cfg(test)]mod fulcrum_tests{
+ use super::*;use crate::{evidence::Ledger,equilibrium::Step,population::Period,bridge::Shares,dividend::Revenue,capacity::Input};
+ fn req(f:u64)->Request{let s=Step{period:Period{enter:vec![],depart:vec![],award:100,funding:f},restitution:Shares::default(),revenue:Revenue{public_equity:0,licensing:0,automation_royalties:0,infrastructure_return:0},dividend_cap:0,resources:Input{inflow:[100;4],essential:[20;4],decay_bps:0,work_ceiling:17}};Request{present:s.clone(),requested:0,complete:0,accept:0,future:vec![s]}}
+ fn open()->Segment{let a=Archive::new(Ledger::default(),[0;32]).unwrap();Segment::start(root_anchor(&a.checkpoint().unwrap()),a.universe()).unwrap()}
+ fn fixture()->(Segment,Segment){let a=open();let b=a.append(&req(500)).unwrap().append(&req(750)).unwrap();(a,b)}
+ fn rehash(b:&[u8],c:&Anchor)->Anchor{let mut c=c.clone();c.ancestry=hash(b"OASIS-UEP-251R-segment-v1",b);c}
+ #[test]fn roundtrip(){let(a,b)=fixture();let raw=b.encode().unwrap();assert_eq!(Segment::recover(&a,&raw,&b.anchor().unwrap()).unwrap(),b);assert_eq!(Segment::recover(&a,&a.encode().unwrap(),&a.anchor().unwrap()).unwrap(),a);}
+ #[test]fn truncation_and_trailing(){let(a,b)=fixture();let mut raw=b.encode().unwrap();let c=b.anchor().unwrap();for i in 0..raw.len(){let p=&raw[..i];assert!(Segment::recover(&a,p,&rehash(p,&c)).is_err())}raw.push(0);assert!(Segment::recover(&a,&raw,&rehash(&raw,&c)).is_err());}
+ #[test]fn altered_commitments(){let(a,b)=fixture();let raw=b.encode().unwrap();let c=b.anchor().unwrap();for i in raw.len()-128..raw.len(){let mut x=raw.clone();x[i]^=1;assert!(Segment::recover(&a,&x,&rehash(&x,&c)).is_err());}}
+ #[test]fn wrong_parent_and_count(){let(a,b)=fixture();let raw=b.encode().unwrap();let c=b.anchor().unwrap();for i in [0,8,16,48,80]{let mut x=raw.clone();x[i]^=128;assert!(Segment::recover(&a,&x,&rehash(&x,&c)).is_err());}let mut x=raw.clone();x[80..88].copy_from_slice(&361u64.to_be_bytes());assert!(Segment::recover(&a,&x,&rehash(&x,&c)).is_err());let mut x=raw.clone();x[88..96].copy_from_slice(&u64::MAX.to_be_bytes());assert!(Segment::recover(&a,&x,&rehash(&x,&c)).is_err());assert!(Segment::recover(&b,&raw,&c).is_err());}
+ #[test]fn compacted_successor(){let mut a=Archive::new(Ledger::default(),[0;32]).unwrap();for _ in 0..360{a=a.append(&req(600)).unwrap()}let mut s=Segment::from_root(&a,&a.checkpoint().unwrap()).unwrap();for _ in 0..359{s=s.append(&req(600)).unwrap()}s=s.append(&req(0)).unwrap();let anchor=s.anchor().unwrap();let o=s.compact_boundary(&anchor).unwrap();let n=o.append(&req(700)).unwrap();let raw=n.encode().unwrap();let restored=Segment::recover(&o,&raw,&n.anchor().unwrap()).unwrap();assert_eq!(restored,n);assert_eq!(restored.universe().total_observations(),721);assert_eq!(restored.universe().observations().len(),1);assert_eq!(restored.universe().population_ledger().outstanding().unwrap(),900);}
+}
