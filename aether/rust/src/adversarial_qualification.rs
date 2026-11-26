@@ -66,11 +66,11 @@ pub fn assess(
  }
  if ancestry.verdict!="DOCUMENTARY_ANCESTRY_CLAIMS_CONSISTENT"{
   fail("INCIDENT_WITNESS_CHAIN_REJECTED");
-  for reason in &ancestry.reasons{faults.insert(format!("ANCESTRY: {reason}"));}
+  for reason in &ancestry.reasons{fail(&format!("ANCESTRY: {reason}"));}
  }
  if hosts.verdict!="DOCUMENTARY_CROSS_HOST_CLAIMS_CONSISTENT"{
   fail("CROSS_HOST_WITNESS_CHAIN_REJECTED");
-  for reason in &hosts.reasons{faults.insert(format!("HOST: {reason}"));}
+  for reason in &hosts.reasons{fail(&format!("HOST: {reason}"));}
  }
  if !hosts.conflicts.is_empty(){
   fail("SIGNED_HISTORY_FORK_UNRESOLVED");
