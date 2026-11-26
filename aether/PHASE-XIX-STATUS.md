@@ -1,6 +1,6 @@
 # AETHER Phase XIX — Independently Checked Execution Evidence and Custody Provenance
 
-**AETHER-228-RS HOSTED ARTIFACT-TO-BROWSER EXACT-BYTE PARITY GATE COMMITTED. Phase XIX documentary software progress 4/8 = 50%. Live GitHub-hosted archive download, exact digest provenance, native execution and browser deployment: NOT VERIFIED. Authenticated external custodians: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-229-RS THREE-ROOT SOURCE ANCESTRY SCREENING COMMITTED. Phase XIX documentary software progress 5/8 = 62.5%. Real external witness control, live native execution and independent external custody: NOT VERIFIED. Authenticated independent witness roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [Phase XVIII freeze](224/decision.json) remains unchanged and records all eight documentary software milestones, without pretending historical Rust/Python execution, independent remote custody or physical-origin authentication was established. Phase XIX asks whether evidence of execution has been independently checked.
 
@@ -10,10 +10,20 @@ The [Phase XVIII freeze](224/decision.json) remains unchanged and records all ei
 | 2 | 226 Actual Actions run provenance and source-revision check | **COMMITTED — authenticated API probe source; live terminal run unverified** | **25%** |
 | 3 | 227 Immutable evidence export and artifact content digest reconciliation | **COMMITTED — deterministic local ZIP, exact-byte inventory and hosted-artifact distinction** | **37.5%** |
 | 4 | 228 GitHub execution-to-browser parity | **COMMITTED — hosted ZIP/browser parity gate and unpinned reference; live hosted evidence absent** | **50%** |
-| 5 | 229 Independent source-ancestry test against owned mirrors | Planned | 50% |
-| 6 | 230 External challenge and replay control | Planned | 50% |
-| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 50% |
-| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 50% |
+| 5 | 229 Independent source-ancestry test against owned mirrors | **COMMITTED — three-root ancestry and owned-mirror consolidation** | **62.5%** |
+| 6 | 230 External challenge and replay control | Planned | 62.5% |
+| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 62.5% |
+| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 62.5% |
+
+## AETHER-229-RS — Independent source ancestry and three-root screening
+
+- [AETHER-229 Python ancestry gate](229/ancestry_gate.py) accepts three declared witness records, checking exact controller/root/operator/administrator/custody-host identities, source corpus, signing-key SHA-256 and artifact SHA-256. A repeated origin, owner, operator, administrator, host or key is rejected as distinct witness evidence.
+- **Owned corpus is one ancestry**: `DavidWise01` GitHub repositories, GitHub Pages, and `0root.ai` are not automatically separate witnesses because they are different domains. Reclassification of these owned mirrors as externally independent is rejected.
+- [30 authored synthetic adversarial tests](229/test_ancestry_gate.py) cover mirror collapse, reused control identities, duplicate keys, deceptive corpus labels, invalid URL/digests, missing third witness and forbidden ACT promotion. Test execution has **not been independently verified**.
+- [Unverified witness document](229/unverified-witnesses.json) records an empty evidence collection rather than fabricating three external custodians. The [existing GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) attempts the tests and writes a deliberately failing/uncertified `aether229-ancestry.json` record.
+- The [neon 4D lab](229/) retains the rotating 16-vertex/32-edge tesseract and illustrates synthetic ancestry outcomes. It does not independently authenticate external controller lineage or original physical hardware. [Protocol](229/protocol.json) records **Phase XIX 5/8 = 62.5% documentary progress**, authenticated independent roots **0**, physical qualification **0%**, operational ACT **HOLD**.
+- **Unresolved:** real third-party control authentication, verified signatures, original hardware and remote receipt evidence, actual native Rust execution and live Pages deployment. The sealed [Phase XVIII freeze](224/decision.json) remains unchanged.
+- **Next AETHER-230-RS:** independently sourced challenge-response and replay ledger with explicit external-controller evidence boundary; unsupported claims continue to fail closed. `.dlw`
 
 ## AETHER-228-RS — Hosted artifact to browser exact-byte parity
 
