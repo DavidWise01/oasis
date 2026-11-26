@@ -1,0 +1,11 @@
+{
+  "schema": "AETHER-220/synthetic-hold-v1",
+  "fixture": "SYNTHETIC_ONLY_NOT_NATIVE",
+  "operational_authority": "HOLD",
+  "physical_qualification_percent": 0,
+  "physical_act_allowed": false,
+  "may_recover": false,
+  "may_repair": false,
+  "may_reclaim_lock": false,
+  "may_choose_history": false
+}
