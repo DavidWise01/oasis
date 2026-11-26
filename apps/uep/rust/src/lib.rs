@@ -179,3 +179,5 @@ pub mod replay_archive;
 pub mod checkpoint;
 
 pub mod integrated_abi;
+
+pub mod linked_segment;
