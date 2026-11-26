@@ -14,7 +14,8 @@ import os
 from pathlib import Path
 import re
 import sys
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
+from urllib.parse import urlsplit
 
 REPO="DavidWise01/oasis"
 BASE="https://api.github.com/repos/"+REPO
@@ -40,7 +41,16 @@ def read_api(token:str,path:str,raw:bool=False):
              "X-GitHub-Api-Version":"2022-11-28",
              "User-Agent":"AETHER-233-read-only"}
     req=Request(BASE+path,headers=headers)
-    with urlopen(req,timeout=18) as response:
+    class NoTokenOnRedirect(HTTPRedirectHandler):
+        def redirect_request(self,request,fp,code,msg,headers,newurl):
+            forwarded=super().redirect_request(request,fp,code,msg,headers,newurl)
+            if forwarded is not None and urlsplit(newurl).hostname!="api.github.com":
+                for key in list(forwarded.headers):
+                    if key.lower()=="authorization":
+                        del forwarded.headers[key]
+            return forwarded
+    opener=build_opener(NoTokenOnRedirect())
+    with opener.open(req,timeout=18) as response:
         content=response.read(MAX_BYTES+1)
     if len(content)>MAX_BYTES:raise ValueError("API_BYTE_LIMIT_EXCEEDED")
     return content
