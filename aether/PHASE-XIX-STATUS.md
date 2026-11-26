@@ -1,6 +1,6 @@
 # AETHER Phase XIX — Independently Checked Execution Evidence and Custody Provenance
 
-**AETHER-231-RS INTEGRATED FIVE-GATE ADVERSARIAL REVIEW COMMITTED. Phase XIX documentary software progress 7/8 = 87.5%. Native CI execution, hosted evidence, remote controller authentication, nonce consumption and original physical captures: NOT VERIFIED. Authenticated independent witness roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-232-RS PHASE XIX DOCUMENTARY SOFTWARE FREEZE COMMITTED. Phase XIX milestone protocol CLOSED: 8/8 = 100%. Native Rust and Python execution, GitHub Actions success, hosted artifact origin, independently authenticated external custody, nonce finality and original physical captures: NOT VERIFIED. Independent witness roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [Phase XVIII freeze](224/decision.json) remains unchanged and records all eight documentary software milestones, without pretending historical Rust/Python execution, independent remote custody or physical-origin authentication was established. Phase XIX asks whether evidence of execution has been independently checked.
 
@@ -13,7 +13,18 @@ The [Phase XVIII freeze](224/decision.json) remains unchanged and records all ei
 | 5 | 229 Independent source-ancestry test against owned mirrors | **COMMITTED — three-root ancestry and owned-mirror consolidation** | **62.5%** |
 | 6 | 230 External challenge and replay control | **COMMITTED — receipt binding, nonce replay and hash-chain screening (external origin unverified)** | **75%** |
 | 7 | 231 Adversarial independently verified custody and CI evidence review | **COMMITTED — five-gate cross-evidence documentary review, ACT HOLD** | **87.5%** |
-| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 87.5% |
+| 8 | 232 Final Phase XIX documentary decision and freeze | **CLOSED — fail-closed final decision and documentary freeze** | **100%** |
+
+## AETHER-232-RS — Final Phase XIX documentary software freeze
+
+- **Phase XIX documentary software milestones CLOSED: AETHER-225–232, 8/8 = 100%.** The completed count describes source publication and software protocol milestones, **not** tested Rust execution, successful Python regressions, authenticated hosted artifact provenance, independently sourced custody or physical qualification.
+- [Final machine-readable decision](232/decision.json) preserves the ten unresolved evidence gates: real Rust/Python execution outcomes, GitHub Actions terminal result and runner provenance, exact hosted artifact ZIP and independent digest, browser parity, controller/signature identity, original physical capture, remote nonce consumption, owned corpus ancestry and independent antirollback/crash-atomic evidence.
+- [Fail-closed Python freeze evaluator](232/phase_xix_freeze.py) rejects missing/reordered phase ancestry, invented execution or witness passes, weakened trust constraints, changed prior freeze links, evidence promotion and ACT/recovery permission elevation. [59 authored regression tests](232/test_phase_xix_freeze.py) cover the inherited safeguards; runtime execution remains **unverified**.
+- [Updated GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) invokes these tests and writes `aether232-freeze.json` on eligible workflow attempts. The workflow source being committed is not evidence that a real run completed successfully.
+- [Final neon 4D dashboard](232/) preserves the animated 16-vertex, 32-edge tesseract and inspects the published decision's structural and HOLD boundaries. It does not execute Python/Rust, prove Pages deployment, authenticate physical original evidence or qualify external custodians.
+- The preceding [Phase XVIII decision](224/decision.json) remains unchanged. `DavidWise01` GitHub, Pages and `0root.ai` owned mirrors are one ancestry, not independent witness roots.
+- **Final recorded result: documentary software 100%, independently authenticated external roots 0, physical qualification 0%, operational ACT HOLD.** Any later verified execution or physical evidence must be recorded in a new phase without retroactively rewriting this frozen result.
+- **Next AETHER-233-RS / Phase XX:** start a new evidence acquisition attempt focused on externally observable CI execution and independently anchored hosted-artifact retrieval, preserving all historical freezes. `.dlw`
 
 ## AETHER-231-RS — Integrated five-gate adversarial qualification review
 
