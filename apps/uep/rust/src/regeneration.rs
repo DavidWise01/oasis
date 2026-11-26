@@ -37,3 +37,6 @@ mod tests{
  #[test]fn no_replay_credit(){let p=step();let f=accepted(5).next.advance(&p,0,0,0).unwrap();let g=f.next.advance(&p,0,0,0).unwrap();assert_eq!(g.activated,[0;4]);assert_eq!(g.queued,[0;4]);assert!(g.next.advance(&p,0,0,5).is_err());}
  #[test]fn long_horizon(){let mut s=root();let mut p=step();p.resources.decay_bps=1000;for _ in 0..360{let r=s.restoration();let f=s.advance(&p,17,r.funded()-r.completed(),r.completed()-r.accepted()).unwrap();assert!(f.lifecycle.expenditure.physical.next.gain().iter().all(|&x|x<=30));assert_eq!(f.lifecycle.residual_harm+f.next.restoration().accepted(),17);s=f.next;}assert_eq!(s.restoration().accepted(),17);}
 }
+
+// UEP-242R: explicit canonical state encoding.
+impl Regeneration{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>){self.state.state_bytes(b);for x in self.gain{crate::state_hash::num(b,x)}}}
