@@ -63,3 +63,6 @@ mod tests{
  #[test]fn trailing(){let a=root().append(&req()).unwrap();let mut b=a.encode().unwrap();b.push(0);let mut c=a.checkpoint().unwrap();c.archive_digest=digest(&b);assert!(decode(&b,&c).is_err());}
  #[test]fn nonempty_ledger(){use crate::{evidence::Event,restitution::Assessment};let l=Ledger::default().append(Event::Estimate{id:"e".into(),valuation:10000,assessment:Assessment{target:"synthetic".into(),evidence_refs:vec!["source".into()],human_observation_ref:"h".into(),ai_observation_ref:"a".into(),positive:[999;22],negative:[0;22]}}).unwrap();let a=Archive::new(l.clone(),l.head()).unwrap().append(&req()).unwrap();assert_eq!(decode(&a.encode().unwrap(),&a.checkpoint().unwrap()).unwrap(),a);}
 }
+
+// UEP-244R: exact immutable ancestry comparison.
+impl Archive{pub fn extends(&self,prior:&Self)->bool{self.ledger==prior.ledger&&self.entries.starts_with(&prior.entries)}}
