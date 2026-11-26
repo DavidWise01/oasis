@@ -163,6 +163,12 @@ The [4D neon enrollment laboratory](../221/) displays synthetic controller-ances
 
 Actual independent external custodians authenticated **0**, original hardware captures **0**, physical qualification **0%**, operational ACT **HOLD**. Source GitHub and 0root.ai copies share one owned ancestry.
 
+## AETHER-222-RS — Original evidence byte binding and out-of-band challenge replay
+
+The [Python challenge verifier](../222/original_evidence.py) compares separately supplied receipt and candidate original-capture byte streams to exact SHA-256 digests, binds claimed enrollment and receipt IDs, custodian key fingerprint and nonce, and rejects missing/altered files, shared declared controller ancestry or a nonce present in a supplied prior list. Its [24 authored synthetic tests](../222/test_original_evidence.py) cover replay, substitutions, evidence absence, malformed receipt JSON, unsupported authentication assertions and forbidden repair/ACT. This is a documentary byte verifier, **not a cryptographic remote signature verifier, authenticated anti-replay server, or physical-device acquisition agent**.
+
+The [4D neon HTML laboratory](../222/) illustrates synthetic receipts and original-evidence integrity checks without running the native Python or Rust software. The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) now includes Python challenge regression tests; their actual execution, native Rust compilation and live Pages deployment remain unverified. Original physical captures authenticated **0**, independent external custodians **0**, physical qualification **0%**, operational ACT **HOLD**.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
