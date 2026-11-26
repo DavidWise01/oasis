@@ -1,6 +1,6 @@
 # AETHER Phase XVIII — Executable Rust Qualification & Independent Evidence Acquisition
 
-**AETHER-219-RS DETERMINISTIC SOURCE AND CI EVIDENCE MANIFEST COMMITTED. Phase XVIII documentary software progress 3/8 = 37.5%. Native Rust compilation, tests and Actions conclusion: NOT VERIFIED. Independently authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-220-RS BROWSER-TO-NATIVE BYTE PARITY & WEBCRYPTO GATE COMMITTED. Phase XVIII documentary software progress 4/8 = 50%. Real native/browser artifact parity, Rust compilation and Actions conclusion: NOT VERIFIED. Independently authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intact, with eight authored Phase XVII documentary milestones closed and all physical authority withheld. Phase XVIII separates verified *execution* from source-only acceptance and independently anchored external acquisition from locally copied evidence.
 
@@ -9,11 +9,21 @@ The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intac
 | 1 | 217 Executable qualification and reproducible Rust CI evidence | **COMMITTED — execution pending verification** | **12.5%** |
 | 2 | 218 Native compile-failure triage and fail-closed regression repair | **COMMITTED — run/log diagnostic capture; no actual compiler failure logs available for repair** | **25%** |
 | 3 | 219 Deterministic test fixture and reproducible artifact manifest | **COMMITTED — SHA-256 inventory, CI manifest hook, authored tests** | **37.5%** |
-| 4 | 220 Browser-to-native parity and controlled artifact validation | Planned | 37.5% |
-| 5 | 221 External custody enrollment evidence interface | Planned | 37.5% |
-| 6 | 222 Out-of-band challenge and origin verification | Planned | 37.5% |
-| 7 | 223 Adversarial qualification and independent physical-evidence review | Planned | 37.5% |
-| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 37.5% |
+| 4 | 220 Browser-to-native parity and controlled artifact validation | **COMMITTED — synthetic pinned-byte demonstration and native HOLD** | **50%** |
+| 5 | 221 External custody enrollment evidence interface | Planned | 50% |
+| 6 | 222 Out-of-band challenge and origin verification | Planned | 50% |
+| 7 | 223 Adversarial qualification and independent physical-evidence review | Planned | 50% |
+| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 50% |
+
+## AETHER-220-RS — Browser-to-native byte parity and pinned artifact checks
+
+- [Python parity gate](220/parity_gate.py) compares exact native and browser artifact bytes with a pinned SHA-256 digest and source commit declaration. It rejects missing bytes, changed content, malformed pins or JSON, unsupported operational permissions, and conflicting optional native-manifest evidence. The result never certifies actual native execution or independently held custody.
+- [15 authored Python parity tests](220/test_parity_gate.py) screen missing native/browser artifacts, one-byte substitutions, jointly replaced files, malformed pins, source-commit mismatch, native-manifest falsification, invalid JSON and attempted ACT promotion. **The authored tests are not yet verified as executed.**
+- [Neon 4D WebCrypto laboratory](220/) preserves the animated tesseract, fetches [pinned reference](220/reference.json) and [explicitly synthetic HOLD specimen](220/synthetic-hold.json), hashes exact browser-delivered bytes, and optionally compares a user-selected local file entirely in the browser. It labels specimen parity as **synthetic documentary parity**, not native Rust execution. Both pin and specimen are controlled by the same repository ancestry, so they provide **no independent external witness**.
+- The [GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) now runs AETHER-220 synthetic parity tests and saves their evidence as `aether220-synthetic-parity.json` alongside existing Rust diagnostics. **Native Cargo, CI outcome and live Pages execution remain unverified.**
+- [Protocol](220/protocol.json) records **Phase XVIII 4/8 = 50%** documentary milestone completion, independently authenticated physical qualification **0%**, operational ACT **HOLD**.
+- **Unresolved:** no independently verified and published native CLI artifact available for the browser to compare; matching source-owned pins can be jointly altered; no separately controlled remote-custody attestation or physical capture. Signed forks, interrupted writes and rollback remain subject to existing HOLD gates.
+- **Next AETHER-221-RS:** out-of-band external custodian enrollment evidence interface with explicit operator/controller ancestry and independently verified challenge requirements. `.dlw`
 
 ## AETHER-219-RS — Reproducible evidence manifest and source inventory
 
