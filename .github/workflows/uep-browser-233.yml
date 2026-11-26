@@ -1,0 +1,103 @@
+name: UEP-233R Chromium acceptance and qualified asset publication
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-browser-233.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+  statuses: write
+concurrency:
+  group: uep-233r-publication
+  cancel-in-progress: false
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Recover exact qualified binary and frozen interface
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/uep233" "$RUNNER_TEMP/site233"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15079560789/zip" > "$RUNNER_TEMP/wasm.zip"
+          echo "59b140af81c1311eb445eb182210fa101c6f484b85664e008508582dd2d40a47  $RUNNER_TEMP/wasm.zip" | sha256sum -c -
+          unzip -p "$RUNNER_TEMP/wasm.zip" oasis_uep.wasm > "$RUNNER_TEMP/site233/oasis_uep.wasm"
+          echo "957d03cbe6988d82b5fa2542fccd84512617c8e17f6f395250ee38a9b191642f  $RUNNER_TEMP/site233/oasis_uep.wasm" | sha256sum -c -
+          test "$(git hash-object apps/uep/UEP-216R-vector-restitution/index.html)" = 45a590b9bfae330256337fb3954b83418723b37a
+          cp apps/uep/UEP-216R-vector-restitution/index.html "$RUNNER_TEMP/site233/"
+      - name: Chromium acceptance
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/pw233" playwright@1.51.1
+          "$RUNNER_TEMP/pw233/node_modules/.bin/playwright" install --with-deps chromium
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$RUNNER_TEMP/site233" > "$RUNNER_TEMP/uep233/http.txt" 2>&1 &
+          for i in $(seq 1 30); do if curl -fsS http://127.0.0.1:8765/ >/dev/null; then break; fi; sleep 1; done
+          curl -fsS http://127.0.0.1:8765/ >/dev/null
+          node <<'JS' | tee "$RUNNER_TEMP/uep233/browser.json"
+          const {chromium}=require(process.env.RUNNER_TEMP+'/pw233/node_modules/playwright'),a=require('node:assert/strict');
+          const url='http://127.0.0.1:8765/',expected=['$20.50','$16.40','$4.10'],blank=['—','—','—'];
+          const outputs=async p=>Promise.all(['due','carbon','ai'].map(id=>p.locator('#'+id).textContent()));
+          const money=v=>'$'+(v/100n).toLocaleString('en-US')+'.'+String(v%100n).padStart(2,'0');
+          (async()=>{const b=await chromium.launch();let cases=0,rejected=0;
+          try{
+          const p=await b.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
+          await p.route('https://unpkg.com/**',r=>r.abort());
+          await p.goto(url);await p.waitForFunction(()=>document.querySelector('#status').textContent.includes('VECTOR 216'));
+          a.deepEqual(await outputs(p),expected);const fields=p.locator('input[type=number]');a.equal(await fields.count(),44);
+          for(let k=0;k<44;k++){
+            await p.locator('#max').click();await fields.nth(k).fill('500');
+            const x=Array.from({length:44},(_,i)=>i<22?999:0);x[k]=500;
+            const d=21978n,pos=BigInt(x.slice(0,22).reduce((a,b)=>a+b,0)),neg=BigInt(x.slice(22).reduce((a,b)=>a+b,0));
+            const total=10000n*pos*(d-neg)*2050n/(d*d*10000n),carbon=total*80n/100n;
+            a.deepEqual(await outputs(p),[total,carbon,total-carbon].map(money));cases++;
+          }
+          for(const value of ['1000','-1','1.5','']){await p.locator('#max').click();await fields.first().fill(value);a.deepEqual(await outputs(p),blank);rejected++;}
+          await p.locator('#max').click();
+          for(const value of ['-1','1.5','18446744073709551616','']){await p.locator('#v').fill(value);a.deepEqual(await outputs(p),blank);rejected++;}
+          await p.locator('#v').fill('10000');a.deepEqual(await outputs(p),expected);
+          await p.locator('#zero').click();a.deepEqual(await outputs(p),['$0.00','$0.00','$0.00']);await p.locator('#max').click();a.deepEqual(await outputs(p),expected);
+          a.deepEqual(errors,[]);await p.screenshot({path:process.env.RUNNER_TEMP+'/uep233/qualified.png',fullPage:true});
+          for(const mode of ['missing','corrupt','empty']){
+            const q=await b.newPage();await q.route('https://unpkg.com/**',r=>r.abort());
+            await q.route('**/*.wasm',r=>mode==='missing'?r.fulfill({status:404}):r.fulfill({status:200,contentType:'application/wasm',body:mode==='empty'?Buffer.from([0,97,115,109,1,0,0,0]):Buffer.from('bad')}));
+            await q.goto(url);await q.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('HOLD')&&!document.querySelector('#status').textContent.includes('loading'));
+            await q.locator('#max').click();a.deepEqual(await outputs(q),blank);rejected++;await q.close();
+          }
+          console.log(JSON.stringify({vectorCases:cases,outputComparisons:cases*3,rejected,canonicalRecovery:true,zeroFixture:true,pageErrors:errors.length,visualMode:'CDN blocked; Canvas2D fallback',actualPayments:0}));
+          }finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - name: Publish exact qualified binary without overwriting
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=apps/uep/UEP-216R-vector-restitution/oasis_uep.wasm
+          test ! -e "$dest"
+          cp "$RUNNER_TEMP/site233/oasis_uep.wasm" "$dest"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$dest"
+          git commit -m 'UEP-233R: publish Chromium-qualified restitution WASM'
+          git push origin HEAD:main
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep233/publication.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-233r-browser-evidence
+          path: ${{ runner.temp }}/uep233/
+      - name: Publish qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-233R/browser" -f description="Chromium acceptance and binary publication" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
