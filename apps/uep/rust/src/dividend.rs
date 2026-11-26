@@ -38,3 +38,6 @@ mod tests{
  #[test]fn overflow(){assert!(root().advance(&p(600),Shares::default(),&Revenue{public_equity:u64::MAX,licensing:1,automation_royalties:0,infrastructure_return:0},100).is_err());}
  #[test]fn grid(){for rev in [0,300,1000]{for ubi in [0,500,600]{for carbon in [0,100,2000]{let mut a=root();let mut b=root();for _ in 0..360{let f=a.advance(&p(ubi),Shares{carbon,ai:25},&r(rev),100).unwrap();let z=b.advance(&p(ubi),Shares{carbon,ai:25},&r(0),100).unwrap();assert_eq!(f.universal,z.universal);assert_eq!(f.next.bridge(),z.next.bridge());assert_eq!(a.reserve()+rev,f.next.reserve()+f.dividend_total);a=f.next;b=z.next;}}}}}
 }
+
+// UEP-242R: explicit canonical state encoding.
+impl Economy{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>){self.bridge.state_bytes(b);for x in [self.public_reserve,self.dividend_reserved,self.revenue_total]{crate::state_hash::num(b,x)}}}
