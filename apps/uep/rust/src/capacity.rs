@@ -34,3 +34,14 @@ mod tests{
  #[test]fn no_phantom_restoration(){let f=Capacity::genesis().advance(&input(),&u(600)).unwrap();assert!(f.work>0);assert_eq!(f.next.harm(),17);assert_eq!(f.next.stock(),[80,80,70,80]);}
  #[test]fn grid(){for a in [0,20,40]{for b in [10,40,90]{for funds in [0,500,600]{let mut s=Capacity::genesis();let u=u(funds);for _ in 0..360{let f=s.advance(&Input{inflow:[a;4],essential:[b;4],decay_bps:2000,work_ceiling:17},&u).unwrap();assert!(!f.blocked||f.work==0);for k in 0..4{assert!(f.next.stock()[k]<=100);assert!(f.work==0||f.next.stock()[k]-f.work*COST[k]>=10);}assert_eq!(f.next.harm(),17);s=f.next;}}}}}
 }
+
+// UEP-234R: consume a freshly computed candidate within the same transition.
+impl Capacity {
+ pub(crate) fn spend_candidate(&self,i:&Input,u:&crate::population::Settlement,requested:u64,budget:u64,remaining:u64)->Result<(Frame,[u64;4],u64),&'static str>{
+  let mut f=self.advance(i,u)?;
+  let work=requested.min(f.work).min(budget/2).min(remaining);
+  let mut spent=[0;4];
+  for k in 0..4{spent[k]=work.checked_mul(COST[k]).ok_or("cost overflow")?;f.next.stock[k]=f.next.stock[k].checked_sub(spent[k]).ok_or("stock underflow")?;if work>0&&f.next.stock[k]<10{return Err("reserve breach")}}
+  Ok((f,spent,work))
+ }
+}
