@@ -1,0 +1,25 @@
+name: AETHER-235 Read-Only Evidence Boundary Tests
+on:
+  push:
+    paths:
+      - 'aether/234/**'
+      - 'aether/235/**'
+      - '.github/workflows/aether235-evidence-boundary.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-boundary-tests:
+    name: Offline manifest and ZIP integrity regressions (noncertifying)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run hosted archive checks
+        run: python3 -m unittest discover -s aether/234 -p 'test_*.py' -v
+      - name: Run manifest ancestry checks
+        run: python3 -m unittest discover -s aether/235 -p 'test_*.py' -v
+      - name: Explain authority
+        run: echo 'Mock/offline regression checks do NOT authenticate hosted execution, custody, or physical authority.'
