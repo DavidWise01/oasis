@@ -1,0 +1,22 @@
+name: AETHER-237 Git Object Boundary Tests
+on:
+  push:
+    paths:
+      - 'aether/237/**'
+      - '.github/workflows/aether237-git-objects.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-object-tests:
+    name: Git object identity adversarial regressions (noncertifying)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify object serialization and failure cases
+        run: python3 -m unittest discover -s aether/237 -p 'test_*.py' -v
+      - name: State noncertification explicitly
+        run: echo 'Synthetic tests do not authenticate independently retained, pre-run evidence or grant physical ACT.'
