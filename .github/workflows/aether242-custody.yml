@@ -1,0 +1,19 @@
+name: AETHER-242 External Custody Claim Regressions
+on:
+  push:
+    paths:
+      - 'aether/242/**'
+      - '.github/workflows/aether242-custody.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  custody-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/242 -p 'test_*.py' -v
+      - run: echo 'Offline record consistency is not authenticated independent custody or trusted UTC.'
