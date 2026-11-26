@@ -231,6 +231,14 @@ The [AETHER-230 Python replay evaluator](../230/challenge_replay.py) checks exac
 
 The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) records the explicit absence of actual remotely acquired evidence using [an unverified challenge document](../230/unverified-challenge.json). It does **not** authenticate any real external signing key or independent replay ledger. The [neon 4D laboratory](../230/) provides documentary scenarios only. A hash-chain can show internal byte consistency but cannot prove an external system consumed a nonce. Phase XIX documentary progress **6/8 = 75%**, authenticated external roots **0**, original physical captures **0**, physical qualification **0%**, operational ACT **HOLD**. The sealed Phase XVIII decision is preserved.
 
+## AETHER-231-RS — Integrated five-gate adversarial evidence assessment
+
+The [AETHER-231 read-only evaluator](../231/integrated_review.py) cross-checks source SHA, run ID, browser/hosted archive digest parity and source/holder/issuer ancestry across five earlier documentary assessments: AETHER-226 authenticated GitHub API response claims, AETHER-227 exact archive inventory, AETHER-228 browser parity, AETHER-229 three-root source ancestry and AETHER-230 nonce-consumption ledger. [Thirty-one authored synthetic tests](../231/test_integrated_review.py) screen absent/contradictory sources, altered hashes, unverified runtime, missing witness roots and physical ACT promotion.
+
+The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) now invokes the AETHER-231 tests and retains a deliberately rejected [unverified integrated evidence record](../231/unverified-review.json). A fully consistent synthetic ensemble remains explicitly **DOCUMENTARY_ENSEMBLE_CONSISTENT_UNAUTHENTICATED**; it cannot independently authenticate its own controller, runner, external receipt or original hardware. No CI PASS or native Rust execution was independently observed.
+
+The [animated 4D neon lab](../231/) retains the original 16-vertex/32-edge shadow tesseract and illustrates five-gate synthetic discrepancies. Phase XIX documentary source progress **7/8 = 87.5%**; independently authenticated external roots **0**, original hardware captures **0**, physical qualification **0%**, recovery and ACT **HOLD**. The Phase XVIII freeze is unchanged.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
