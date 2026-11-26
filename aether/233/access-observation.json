@@ -1,0 +1,17 @@
+{
+  "schema": "AETHER-233/observed-access-v1",
+  "bound": "AETHER-233",
+  "source_commit_inspected": "9fa4635265f2abdf7b1be38889c0aaac8d55cd72",
+  "combined_status_entries": 0,
+  "pr_associated_workflow_runs": 0,
+  "completed_run_id": null,
+  "job_log_sha256": null,
+  "hosted_artifact_sha256": null,
+  "api_observation": "NO_CONFIRMED_COMPLETED_RUN_FROM_LIMITED_AVAILABLE_LOOKUPS",
+  "scope_limitation": "Connected workflow-run lookup is pull-request filtered and cannot exhaust push or workflow_dispatch runs; no actual completed CI run was confirmed.",
+  "independent_runner_authentication": false,
+  "physical_qualification_percent": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "watermark": ".dlw"
+}
