@@ -1,0 +1,22 @@
+{
+  "bound": "AETHER-224",
+  "phase": "XVIII",
+  "turn": 8,
+  "planned_turns": 8,
+  "documentary_software_progress_percent": 100,
+  "status": "CLOSED_DOCUMENTARY_SOFTWARE_PROTOCOL",
+  "decision": "decision.json",
+  "evaluator": "phase_xviii_freeze.py",
+  "tests": "test_phase_xviii_freeze.py",
+  "previous_phase": "../216/decision.json",
+  "previous_bound": "../223/protocol.json",
+  "rust_compilation_verified": false,
+  "python_tests_executed_verified": false,
+  "git_actions_verified": false,
+  "physical_qualification_percent": 0,
+  "independent_external_custodians": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "source_status": "COMMITTED_ONLY_NOT_RUNTIME_CERTIFIED",
+  "watermark": ".dlw"
+}
