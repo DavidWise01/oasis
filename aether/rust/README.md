@@ -185,6 +185,14 @@ The [AETHER-224 4D neon dashboard](../224/) checks the published JSON structural
 
 Software milestone completion **8/8 = 100%** must never be conflated with native-runtime qualification or real physical evidence. External remote custodians authenticated **0**, original physical hardware captures **0**, physical qualification **0%**, recovery and operational ACT **HOLD**. The preceding Phase XVII freeze is retained unchanged. New evidence belongs in a subsequent phase without rewriting this historical freeze.
 
+## AETHER-225-RS — Phase XIX execution-evidence reconciliation
+
+The [AETHER-225 read-only Python reconciler](../225/ci_reconciliation.py) checks claimed Actions run identity, source commit SHA, repository, workflow trigger, completed job and required steps, linked artifact identity/expiration, and actual job-log and native-manifest bytes. A consistent caller-provided bundle remains only `DOCUMENTARY_CI_RECORD_CONSISTENT_UNAUTHENTICATED`, **not** independent GitHub API verification or a native-Rust CI PASS. The [27 authored tests](../225/test_ci_reconciliation.py) are synthetic; their execution has not been independently verified.
+
+The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) includes the AETHER-225 reconciliation tests, and the [neon 4D lab](../225/) illustrates the same fail-closed constraints. A connected status lookup returned no combined status entries and no PR-associated workflow runs for the prior Phase XVIII commit; that API does not exhaust push or dispatch runs. Actual CI results remain unverified, not proven absent.
+
+The [Phase XVIII freeze](../224/decision.json) remains unchanged. Authenticated independent physical custodians **0**, original hardware captures **0**, physical qualification **0%**, operational ACT and recovery **HOLD**.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
