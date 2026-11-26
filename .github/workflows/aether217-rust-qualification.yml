@@ -1,4 +1,4 @@
-name: AETHER-217/228 Rust Executable Qualification
+name: AETHER-217/229 Rust Executable Qualification
 on:
   push:
     paths:
@@ -15,6 +15,7 @@ on:
       - 'aether/226/**'
       - 'aether/227/**'
       - 'aether/228/**'
+      - 'aether/229/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -150,6 +151,19 @@ jobs:
             --reference ../228/unverified-reference.json \
             --out qualification-artifacts/aether228-hosted-parity.json || true
           echo "A workflow cannot establish independent GitHub-hosted archive retention before external download."
+      - name: Run three-root control ancestry regressions (synthetic only)
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ../229 -p 'test_ancestry_gate.py' -v
+      - name: Record missing external witnesses as fail-closed evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qualification-artifacts
+          python3 ../229/ancestry_gate.py --evidence ../229/unverified-witnesses.json --out qualification-artifacts/aether229-ancestry.json || true
+          echo "No independently authenticated external source roots acquired."
       - name: Upload compiler logs and qualification evidence on pass OR failure
         if: always()
         uses: actions/upload-artifact@v4
