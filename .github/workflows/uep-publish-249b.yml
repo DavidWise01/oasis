@@ -1,0 +1,74 @@
+name: UEP-250R publication recovery
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-publish-249b.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+  statuses: write
+concurrency:
+  group: uep-publish-249
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Acquire and verify qualified artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/uep249" "$RUNNER_TEMP/parity" "$RUNNER_TEMP/generation"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15145895905/zip" > "$RUNNER_TEMP/parity.zip"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15145747402/zip" > "$RUNNER_TEMP/generation.zip"
+          echo "bcfdc9fd28fe7cbabfeb4be6c129e1b263d1c6b83c521776a67ba0b8ceb12060  $RUNNER_TEMP/parity.zip" | sha256sum -c -
+          echo "10645de88cc77f5a71c4b3438dbdae55980186bcce4637c384d486f0f63306f4  $RUNNER_TEMP/generation.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/parity.zip" -d "$RUNNER_TEMP/parity"
+          unzip -q "$RUNNER_TEMP/generation.zip" -d "$RUNNER_TEMP/generation"
+          p=apps/uep/UEP-249R-integrated-release
+          git diff --exit-code 453c106b360787a7162321b910f98d733a33129d HEAD -- "$p/index.html"
+          git diff --exit-code d21828a58565f5545f2f2186780a23dc631b5708 HEAD -- apps/uep/rust/qualification/publication-249.cjs
+          echo "446b4ad220613de363446e3276a472bf9c0ada405c4cd1916639ed01afed217e  $RUNNER_TEMP/parity/oasis_uep.wasm" | sha256sum -c -
+          echo "350b963eb98dce3f6be1168e7a93f4a210e0980c9720421ef0706d3947a9e56d  $RUNNER_TEMP/generation/generation.archive" | sha256sum -c -
+          echo "72d0dc0892494e410af435236917abd04d53c2751939105908f4a49fc6d71526  $RUNNER_TEMP/generation/generation.checkpoint" | sha256sum -c -
+          echo "a097bee75cd777b3134fa8f43d3eba40a35d2acad31a6db7da1d9aab5b1eee51  $RUNNER_TEMP/generation/generation.csv" | sha256sum -c -
+          for f in oasis_uep.wasm generation.archive generation.checkpoint generation.csv; do test ! -e "$p/$f"; done
+          cp "$RUNNER_TEMP/parity/oasis_uep.wasm" "$p/"
+          cp "$RUNNER_TEMP/generation"/generation.{archive,checkpoint,csv} "$p/"
+      - name: Full browser acceptance before publication
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/uep249-node" --no-audit --no-fund playwright@1.51.1
+          "$RUNNER_TEMP/uep249-node/node_modules/.bin/playwright" install --with-deps chromium
+          NODE_PATH="$RUNNER_TEMP/uep249-node/node_modules" node apps/uep/rust/qualification/publication-249.cjs "$PWD/apps/uep/UEP-249R-integrated-release" | tee "$RUNNER_TEMP/uep249/browser.txt"
+      - name: Publish new immutable release assets
+        run: |
+          set -euo pipefail
+          p=apps/uep/UEP-249R-integrated-release
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -f "$p/oasis_uep.wasm" "$p/generation.archive" "$p/generation.checkpoint" "$p/generation.csv"
+          git commit -m "UEP-250R: publish hash-pinned browser-qualified integrated assets"
+          git push origin HEAD:main
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep249/published.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-250r-publication-evidence
+          path: ${{ runner.temp }}/uep249/
+      - name: Report qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-250R/publication" -f description="Integrated browser publication" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
