@@ -1,0 +1,38 @@
+{
+  "bound": "AETHER-215",
+  "phase": "XVII",
+  "turn": 7,
+  "planned_turns": 8,
+  "software_protocol_progress_percent": 87.5,
+  "rust_source": "../rust/src/adversarial_qualification.rs",
+  "rust_tests": "../rust/tests/adversarial_qualification.rs",
+  "authored_regression_tests": 24,
+  "physical_qualification_percent": 0,
+  "independently_authenticated_physical_witnesses": 0,
+  "independently_authenticated_remote_receipts": 0,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "may_recover": false,
+  "may_repair": false,
+  "may_reclaim_lock": false,
+  "may_choose_history": false,
+  "checks": [
+    "Bound to exact incident, signed witness-envelope and signed-host-receipt SHA-256 digests",
+    "Reassess AETHER-213 three-witness incident observations and AETHER-214 cross-host signed claims independently",
+    "Compare witness ID, receipt reference, pinned signing key, declared controller root/operator/admin/host, and source corpus across both protocols",
+    "Retain pairwise same-sequence fork and contradictory predecessor/registry claims without any majority selection",
+    "Reject missing external-original-capture claims and any attempted incident or requested-operation authority promotion",
+    "Even correctly signed synthetic ensembles cannot prove independent remote retention or actual original physical capture"
+  ],
+  "limitations": [
+    "Externally authenticated origin and remote custody are not independently observed",
+    "Caller-declared witness enrollment, retained-receipt and external-authentication booleans do not establish independence",
+    "This pure Rust screening function does not contact external custodian systems or physically witness instruments",
+    "No separate durable external anchor is available to defeat joint rollback of owned files",
+    "All operational actions, recovery, lock reclamation and history selection remain prohibited",
+    "Rust compilation, test execution, GitHub Actions and live Pages deployment remain unverified"
+  ],
+  "prior": "../214/protocol.json",
+  "phase_xvi_freeze": "../208/decision.json",
+  "watermark": ".dlw"
+}
