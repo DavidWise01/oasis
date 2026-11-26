@@ -225,6 +225,12 @@ The owned `DavidWise01` GitHub repositories, their GitHub Pages deployment and `
 
 The [animated neon 4D laboratory](../229/) illustrates the boundary. Independently authenticated external witnesses **0**, original physical captures **0**, physical qualification **0%**, recovery and ACT **HOLD**. Phase XIX documentary progress **5/8 = 62.5%**; prior Phase XVIII freeze preserved.
 
+## AETHER-230-RS — Challenge receipt binding and documentary nonce-replay screening
+
+The [AETHER-230 Python replay evaluator](../230/challenge_replay.py) checks exact externally supplied receipt and ledger bytes against SHA-256 pins, binds nonce/challenge/enrollment/custodian/key and capture-digest fields, and checks that a claimed nonce appears once in a hash-linked ledger. The [30 authored synthetic tests](../230/test_challenge_replay.py) cover record substitutions, duplicate nonce consumption, broken hash chains, weak nonces, absent receipts, and forbidden controller/signature/ACT promotion. Test execution has not been independently verified.
+
+The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) records the explicit absence of actual remotely acquired evidence using [an unverified challenge document](../230/unverified-challenge.json). It does **not** authenticate any real external signing key or independent replay ledger. The [neon 4D laboratory](../230/) provides documentary scenarios only. A hash-chain can show internal byte consistency but cannot prove an external system consumed a nonce. Phase XIX documentary progress **6/8 = 75%**, authenticated external roots **0**, original physical captures **0**, physical qualification **0%**, operational ACT **HOLD**. The sealed Phase XVIII decision is preserved.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
