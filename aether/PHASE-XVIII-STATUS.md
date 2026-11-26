@@ -1,6 +1,6 @@
 # AETHER Phase XVIII — Executable Rust Qualification & Independent Evidence Acquisition
 
-**AETHER-218-RS NATIVE EXECUTION TRIAGE & FAIL-CLOSED CI DIAGNOSTICS COMMITTED. Phase XVIII documentary software progress 2/8 = 25%. Native Rust compilation, tests and Actions conclusion: NOT VERIFIED. Independently authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-219-RS DETERMINISTIC SOURCE AND CI EVIDENCE MANIFEST COMMITTED. Phase XVIII documentary software progress 3/8 = 37.5%. Native Rust compilation, tests and Actions conclusion: NOT VERIFIED. Independently authenticated original physical captures: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intact, with eight authored Phase XVII documentary milestones closed and all physical authority withheld. Phase XVIII separates verified *execution* from source-only acceptance and independently anchored external acquisition from locally copied evidence.
 
@@ -8,12 +8,21 @@ The [AETHER-216 Phase XVII freeze](216/decision.json) remains historically intac
 |---|---|---|---:|
 | 1 | 217 Executable qualification and reproducible Rust CI evidence | **COMMITTED — execution pending verification** | **12.5%** |
 | 2 | 218 Native compile-failure triage and fail-closed regression repair | **COMMITTED — run/log diagnostic capture; no actual compiler failure logs available for repair** | **25%** |
-| 3 | 219 Deterministic test fixture and reproducible artifact manifest | Planned | 25% |
-| 4 | 220 Browser-to-native parity and controlled artifact validation | Planned | 25% |
-| 5 | 221 External custody enrollment evidence interface | Planned | 25% |
-| 6 | 222 Out-of-band challenge and origin verification | Planned | 25% |
-| 7 | 223 Adversarial qualification and independent physical-evidence review | Planned | 25% |
-| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 25% |
+| 3 | 219 Deterministic test fixture and reproducible artifact manifest | **COMMITTED — SHA-256 inventory, CI manifest hook, authored tests** | **37.5%** |
+| 4 | 220 Browser-to-native parity and controlled artifact validation | Planned | 37.5% |
+| 5 | 221 External custody enrollment evidence interface | Planned | 37.5% |
+| 6 | 222 Out-of-band challenge and origin verification | Planned | 37.5% |
+| 7 | 223 Adversarial qualification and independent physical-evidence review | Planned | 37.5% |
+| 8 | 224 Phase XVIII documentary software decision and freeze | Planned | 37.5% |
+
+## AETHER-219-RS — Reproducible evidence manifest and source inventory
+
+- [Python evidence manifest generator](219/evidence_manifest.py) hashes every available Rust source and integration test module, Cargo manifest and lockfile when present, historical AETHER-216 freeze fixture, AETHER-218 diagnostic runner, workflow and exact CI logs/report bytes. It records the source Git SHA, relative paths, sizes and SHA-256 digests; missing or unsafe files remain explicit. Timestamps, absolute runner paths and the manifest's own digest are excluded from the deterministic comparison digest.
+- [15 authored Python tests](219/test_evidence_manifest.py) check missing source/evidence, content mutation, log substitution, commit mismatch, unsupported physical promotion, symlink escape and deterministic JSON hashing. **These tests have not been independently executed in this conversation.**
+- The [GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) invokes the Python manifest tests and runs the manifest builder in an `if: always()` step after native qualification, including when Cargo fails. The manifest is retained in the qualification artifact ZIP. A manifest records observed local bytes and never qualifies external custody.
+- [Neon 4D Pages-ready laboratory](219/) retains the rotating 16-vertex/32-edge tesseract and exposes a read-only view of [protocol](219/protocol.json). **Phase XVIII 3/8 = 37.5% documentary progress**, physical qualification **0%**, operational ACT **HOLD**.
+- **Execution and ancestry boundaries:** live native Cargo results and GitHub Actions success remain unverified. An attempted offline download of the committed Python test sources failed because name resolution was unavailable; no actual Python-test PASS is claimed. GitHub and 0root.ai copies remain one owned ancestry; SHA-256 equality alone does not prove independent custody. Dependency/toolchain reproducibility still requires verified lockfile and runner evidence.
+- **Next AETHER-220-RS:** validate native/browser artifact parity against actual immutable CI evidence, with failure detection and explicit provenance. `.dlw`
 
 ## AETHER-218-RS — Native qualification evidence and failure diagnostics
 
