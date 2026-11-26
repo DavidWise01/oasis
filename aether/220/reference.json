@@ -1,0 +1,11 @@
+{
+  "schema": "AETHER-220/pinned-reference-v1",
+  "artifact_sha256": "bf09c5a0c465c0f4d5213445cdadf4014648adf2aef6aecb52809a107677183a",
+  "source_commit": "bc5ba52e335e3a45c0b5dab591e9a3766938b5fc",
+  "artifact_path": "synthetic-hold.json",
+  "artifact_kind": "SYNTHETIC_REFERENCE_ONLY_NOT_RUST_EXECUTION",
+  "pin_ancestry": "Same owned GitHub repository; not independently held or authenticated",
+  "original_physical_evidence_authenticated": false,
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false
+}
