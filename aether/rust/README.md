@@ -247,6 +247,14 @@ The [CI workflow](../../.github/workflows/aether217-rust-qualification.yml) incl
 
 **Final Phase XIX record:** documentary software milestones **8/8 = 100%**, authenticated independent external witness roots **0**, authenticated original hardware captures **0**, physical qualification **0%**, recovery and operational ACT **HOLD**. External execution, remote custody, and independently anchored nonce/physical evidence remain unqualified. Later evidence must be documented in a new phase; no historical freeze rewriting.
 
+## AETHER-233-RS — Phase XX live GitHub execution evidence acquisition
+
+The [AETHER-233 read-only GitHub API acquisition tool](../233/acquire_execution.py) requests an explicitly pinned, already completed Actions run. It checks the exact source commit, repository/workflow identity, terminal status, qualification job and steps, and downloads actual job-log bytes and GitHub-hosted Actions ZIP bytes where available. It hashes returned API, log and archive byte streams without storing an access token or falsely elevating documentary evidence into independent physical authority.
+
+The [27 authored mocked transport tests](../233/test_acquire_execution.py) test missing run, jobs, logs and artifact bytes, stale source revision, failed or incomplete CI runs, truncated pagination, mismatched artifact origin and retained ACT HOLD. The [GitHub Actions workflow](../../.github/workflows/aether217-rust-qualification.yml) captures only a **pre-upload own-run status report**, which cannot certify its own terminal conclusion or hosted artifact retention. No completed independent run has been confirmed in this turn. [Observed source access limits](../233/access-observation.json) report zero status entries and zero PR-associated runs on the inspected prior commit, which does not rule out push/dispatch runs.
+
+The [Phase XX status](../PHASE-XX-STATUS.md) begins at **1/8 = 12.5%** documentary source progress. The [neon 4D lab](../233/) illustrates evidence acquisition limits without authenticated API access from the browser. Historical [Phase XIX](../232/decision.json) and [Phase XVIII](../224/decision.json) freezes are unchanged. Authenticated original hardware captures **0**, externally independent custodians **0**, physical qualification **0%**, recovery and operational ACT **HOLD**.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
