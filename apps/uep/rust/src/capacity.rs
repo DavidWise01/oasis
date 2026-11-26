@@ -53,3 +53,6 @@ impl Capacity{
  }
  pub fn pending_yield(&self)->[u64;4]{self.pending}
 }
+
+// UEP-242R: explicit canonical state encoding.
+impl Capacity{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>){for x in self.stock.iter().chain(self.gain.iter()).chain(self.pending.iter()){crate::state_hash::num(b,*x)}crate::state_hash::num(b,self.harm)}}
