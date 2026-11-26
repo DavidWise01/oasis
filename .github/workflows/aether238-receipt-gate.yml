@@ -1,0 +1,21 @@
+name: AETHER-238 Receipt Gate Tests
+on:
+  push:
+    paths:
+      - 'aether/238/**'
+      - '.github/workflows/aether238-receipt-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  receipt-mock-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run fail-closed receipt mock tests
+        run: python3 -m unittest discover -s aether/238 -p 'test_*.py' -v
+      - name: Mark noncertifying scope
+        run: echo 'Mock tests do not authenticate external keys, timestamps, witness roots or physical authority.'
