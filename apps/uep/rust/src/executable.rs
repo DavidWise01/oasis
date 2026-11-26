@@ -11,9 +11,9 @@ impl Observation{
  h.update([u8::from(self.rejected)]);for v in self.stock.iter().chain(self.gain.iter()).chain(self.queued.iter()){h.update(v.to_be_bytes());}h.finalize().into()}
 }
 #[derive(Clone,Debug,PartialEq,Eq)]
-pub struct Universe{state:Recovery,population:Population,ledger:Ledger,head:[u8;32],observations:Vec<Observation>}
+pub struct Universe{state:Recovery,population:Population,ledger:Ledger,head:[u8;32],observations:Vec<Observation>,prefix_count:u64,prefix_digest:[u8;32]}
 impl Universe{
- pub fn new(ledger:Ledger,head:[u8;32])->Result<Self,&'static str>{ledger.verify_head(head)?;Ok(Self{state:Recovery::new(&ledger,head)?,population:Population::phase_ix(),ledger,head,observations:vec![]})}
+ pub fn new(ledger:Ledger,head:[u8;32])->Result<Self,&'static str>{ledger.verify_head(head)?;Ok(Self{state:Recovery::new(&ledger,head)?,population:Population::phase_ix(),ledger,head,observations:vec![],prefix_count:0,prefix_digest:head})}
  pub fn observations(&self)->&[Observation]{&self.observations}
  pub fn state(&self)->&Recovery{&self.state}
  pub fn advance(&self,r:&Request)->Result<Self,&'static str>{
@@ -24,10 +24,10 @@ impl Universe{
   if u!=&audit.settlement||e.economic.next.bridge().head()!=self.head{return Err("ancestry or universal parity")}
   let shares:&Shares=e.economic.next.bridge().funded();let stage=g.next.restoration();
   if stage.accepted()>stage.completed()||stage.completed()>stage.funded()||stage.accepted()+g.lifecycle.residual_harm!=17{return Err("stage parity")}
-  let mut o=Observation{epoch:u.closing.epoch,due:u.current_due,funded:u.current_funded,arrears:u.closing.outstanding()?,carbon_reserved:shares.carbon,ai_reserved:shares.ai,dividend:e.economic.dividend_total,work:e.units,completed:stage.completed(),accepted:stage.accepted(),residual_harm:g.lifecycle.residual_harm,stock:e.physical.next.stock(),gain:e.physical.next.gain(),queued:g.queued,rate:f.chosen.next.rate(),rejected:f.rejected,first_violation:f.first_violation,historical_reserved:audit.total_reserved,previous:self.observations.last().map_or(self.head,|x|x.digest),digest:[0;32]};
+  let mut o=Observation{epoch:u.closing.epoch,due:u.current_due,funded:u.current_funded,arrears:u.closing.outstanding()?,carbon_reserved:shares.carbon,ai_reserved:shares.ai,dividend:e.economic.dividend_total,work:e.units,completed:stage.completed(),accepted:stage.accepted(),residual_harm:g.lifecycle.residual_harm,stock:e.physical.next.stock(),gain:e.physical.next.gain(),queued:g.queued,rate:f.chosen.next.rate(),rejected:f.rejected,first_violation:f.first_violation,historical_reserved:audit.total_reserved,previous:self.observations.last().map_or(self.prefix_digest,|x|x.digest),digest:[0;32]};
   o.digest=o.hash();let mut n=self.clone();n.state=f.chosen.next;n.population=u.closing.clone();n.observations.push(o);Ok(n)
  }
- pub fn verify_observations(&self)->Result<(),&'static str>{let mut prev=self.head;for (i,o) in self.observations.iter().enumerate(){if o.previous!=prev||o.digest!=o.hash()||o.epoch!=7+i as u64{return Err("observation chain")}prev=o.digest;}Ok(())}
+ pub fn verify_observations(&self)->Result<(),&'static str>{let mut prev=self.prefix_digest;for (i,o) in self.observations.iter().enumerate(){if o.previous!=prev||o.digest!=o.hash()||Some(o.epoch)!=self.prefix_count.checked_add(i as u64).and_then(|v|v.checked_add(7)){return Err("observation chain")}prev=o.digest;}if self.total_observations().checked_add(6)!=Some(self.population.epoch){return Err("observation count")}Ok(())}
  pub fn replay(ledger:Ledger,head:[u8;32],requests:&[Request])->Result<Self,&'static str>{let mut n=Self::new(ledger,head)?;for r in requests{n=n.advance(r)?;}n.verify_observations()?;Ok(n)}
 }
 #[cfg(test)]
@@ -45,7 +45,27 @@ mod tests{
 }
 
 // UEP-242R: explicit canonical state encoding.
-impl Universe{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>)->Result<(),&'static str>{self.ledger.verify_head(self.head)?;self.verify_observations()?;self.state.state_bytes(b);crate::state_hash::population(b,&self.population);b.extend_from_slice(&self.head);crate::state_hash::num(b,self.ledger.records().len() as u64);crate::state_hash::num(b,self.observations.len() as u64);b.extend_from_slice(&self.observations.last().map_or(self.head,|o|o.digest));Ok(())}}
+impl Universe{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>)->Result<(),&'static str>{self.ledger.verify_head(self.head)?;self.verify_observations()?;self.state.state_bytes(b);crate::state_hash::population(b,&self.population);b.extend_from_slice(&self.head);crate::state_hash::num(b,self.ledger.records().len() as u64);crate::state_hash::num(b,self.total_observations());b.extend_from_slice(&self.observations.last().map_or(self.prefix_digest,|o|o.digest));Ok(())}}
 
 // UEP-246R: read-only population observation.
 impl Universe{pub fn population_count(&self)->usize{self.population.active.len()}}
+
+// UEP-252R: compact only against an externally supplied closing fingerprint.
+impl Universe{
+ pub fn total_observations(&self)->u64{self.prefix_count+self.observations.len() as u64}
+ pub fn compact(&self,expected:[u8;32])->Result<Self,&'static str>{
+  if crate::state_hash::fingerprint(self)?!=expected{return Err("compaction fingerprint mismatch")}
+  let mut n=self.clone();n.prefix_count=self.total_observations();n.prefix_digest=self.observations.last().map_or(self.prefix_digest,|o|o.digest);n.observations=Vec::new();
+  if crate::state_hash::fingerprint(&n)?!=expected{return Err("compaction changed state")}Ok(n)
+ }
+}
+#[cfg(test)]mod continuation_tests{
+ use super::*;use crate::{equilibrium::Step,population::Period,bridge::Shares,dividend::Revenue,capacity::Input,state_hash};
+ fn req(funding:u64)->Request{let s=Step{period:Period{enter:vec![],depart:vec![],award:100,funding},restitution:Shares::default(),revenue:Revenue{public_equity:0,licensing:0,automation_royalties:0,infrastructure_return:0},dividend_cap:0,resources:Input{inflow:[100;4],essential:[20;4],decay_bps:0,work_ceiling:17}};Request{present:s.clone(),requested:0,complete:0,accept:0,future:vec![s]}}
+ fn root()->Universe{Universe::new(Ledger::default(),[0;32]).unwrap()}
+ #[test]fn exact_bytes(){let u=root().advance(&req(500)).unwrap();let b=state_hash::encode(&u).unwrap();let n=u.compact(state_hash::fingerprint(&u).unwrap()).unwrap();assert_eq!(state_hash::encode(&n).unwrap(),b);assert_eq!(n.total_observations(),1);assert!(n.observations().is_empty());assert_eq!(u.observations().len(),1);}
+ #[test]fn next_parity(){let u=root().advance(&req(500)).unwrap();let c=u.compact(state_hash::fingerprint(&u).unwrap()).unwrap();let(a,x)=state_hash::advance(&u,&req(750)).unwrap();let(b,y)=state_hash::advance(&c,&req(750)).unwrap();assert_eq!(x,y);assert_eq!(a.observations().last(),b.observations().last());assert_eq!(a.total_observations(),b.total_observations());}
+ #[test]fn wrong_fingerprint(){assert!(root().compact([1;32]).is_err());}
+ #[test]fn repeated_compaction(){let mut u=root();let mut c=u.clone();for i in 0..24{let r=req(if i%3==0{500}else{750});u=u.advance(&r).unwrap();c=c.advance(&r).unwrap();assert_eq!(state_hash::encode(&u).unwrap(),state_hash::encode(&c).unwrap());c=c.compact(state_hash::fingerprint(&c).unwrap()).unwrap();}assert_eq!(c.total_observations(),24);assert!(c.observations().is_empty());}
+ #[test]fn prefix_tamper(){let u=root().advance(&req(600)).unwrap();let mut c=u.compact(state_hash::fingerprint(&u).unwrap()).unwrap();c.prefix_count+=1;assert!(c.verify_observations().is_err());}
+}
