@@ -48,3 +48,6 @@ impl Restoration{
  }
  pub(crate) fn pending_yield(&self)->[u64;4]{self.execution.pending_yield()}
 }
+
+// UEP-242R: explicit canonical state encoding.
+impl Restoration{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>){self.execution.state_bytes(b);crate::state_hash::num(b,self.completed);crate::state_hash::num(b,self.accepted)}}
