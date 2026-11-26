@@ -1,0 +1,14 @@
+{
+  "schema": "AETHER-231/integrated-adversarial-review-v1",
+  "bound": "AETHER-231",
+  "phase": "XIX",
+  "source_commit": null,
+  "run_id": null,
+  "previous_phase_freeze": "../224/decision.json",
+  "previous_bound": "../230/protocol.json",
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "original_physical_evidence": "UNVERIFIED",
+  "assessments": {},
+  "reason": "No confirmed CI run, independent artifact archive, authenticated external witnesses, or externally controlled nonce ledger supplied."
+}
