@@ -1,6 +1,6 @@
 # AETHER Phase XIX — Independently Checked Execution Evidence and Custody Provenance
 
-**AETHER-230-RS EXTERNAL CHALLENGE RECEIPT & NONCE REPLAY LEDGER SCREEN COMMITTED. Phase XIX documentary software progress 6/8 = 75%. Real external controller authentication, nonce consumption, signature verification and native execution: NOT VERIFIED. Authenticated independent witness roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-231-RS INTEGRATED FIVE-GATE ADVERSARIAL REVIEW COMMITTED. Phase XIX documentary software progress 7/8 = 87.5%. Native CI execution, hosted evidence, remote controller authentication, nonce consumption and original physical captures: NOT VERIFIED. Authenticated independent witness roots: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 The [Phase XVIII freeze](224/decision.json) remains unchanged and records all eight documentary software milestones, without pretending historical Rust/Python execution, independent remote custody or physical-origin authentication was established. Phase XIX asks whether evidence of execution has been independently checked.
 
@@ -12,8 +12,17 @@ The [Phase XVIII freeze](224/decision.json) remains unchanged and records all ei
 | 4 | 228 GitHub execution-to-browser parity | **COMMITTED — hosted ZIP/browser parity gate and unpinned reference; live hosted evidence absent** | **50%** |
 | 5 | 229 Independent source-ancestry test against owned mirrors | **COMMITTED — three-root ancestry and owned-mirror consolidation** | **62.5%** |
 | 6 | 230 External challenge and replay control | **COMMITTED — receipt binding, nonce replay and hash-chain screening (external origin unverified)** | **75%** |
-| 7 | 231 Adversarial independently verified custody and CI evidence review | Planned | 75% |
-| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 75% |
+| 7 | 231 Adversarial independently verified custody and CI evidence review | **COMMITTED — five-gate cross-evidence documentary review, ACT HOLD** | **87.5%** |
+| 8 | 232 Final Phase XIX documentary decision and freeze | Planned | 87.5% |
+
+## AETHER-231-RS — Integrated five-gate adversarial qualification review
+
+- [Read-only integrated Python evaluator](231/integrated_review.py) reconciles the five AETHER-226–230 documentary assessments: GitHub CI provenance, content-addressed archive integrity, hosted-to-browser parity, independent controller ancestry, and challenge/nonce-ledger review. It checks source revisions, run IDs, expected verdict schemas, matching browser/hosted digests and declared witness counts. Missing or contradictory evidence fails closed.
+- [31 authored synthetic adversarial tests](231/test_integrated_review.py) address source or run substitutions, absent/failed gate results, missing external receipts, replay ledger digests, insufficient ancestry roots, falsely promoted physical ACT and missing historical freeze links. **No tests or native Rust execution are independently verified as run.**
+- [Unverified integrated record](231/unverified-review.json) intentionally has no real run, source SHA or inherited evidence assessments. The [GitHub Actions workflow](../.github/workflows/aether217-rust-qualification.yml) attempts synthetic tests and emits `aether231-review.json` with explicit REJECT/UNVERIFIED, not invented independent qualification.
+- [Animated neon 4D laboratory](231/) retains the 16-vertex/32-edge shadow tesseract and illustrates five-gate discrepancy scenarios. It only reads the [published protocol](231/protocol.json); no authenticated external source or physical device is accessed by the browser.
+- A perfectly consistent synthetic bundle returns **DOCUMENTARY_ENSEMBLE_CONSISTENT_UNAUTHENTICATED**; this is not independent source corroboration, a real CI PASS or hardware authority. **Phase XIX 7/8 = 87.5% documentary progress. Physical qualification 0%, ACT HOLD.** The [Phase XVIII freeze](224/decision.json) remains intact.
+- **Next AETHER-232-RS:** final Phase XIX documentary freeze, preserving the missing externally authenticated execution, artifact, custody and physical evidence without rewriting historical milestones. `.dlw`
 
 ## AETHER-230-RS — External challenge receipt and nonce-consumption replay gate
 
