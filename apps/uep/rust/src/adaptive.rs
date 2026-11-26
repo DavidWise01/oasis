@@ -35,3 +35,6 @@ mod tests{
  #[test]fn invalid_ancestry(){let mut p=step();p.period.funding=0;assert!(root().advance(&p,0,1,0).is_err());}
  #[test]fn cycles(){let mut s=root();for t in 0..360{let mut p=step();if t%30<10{p.period.funding=500;p.resources.inflow=[0;4];}let r=s.state().restoration();let f=s.advance(&p,17,r.funded()-r.completed(),r.completed()-r.accepted()).unwrap();assert!(!f.blocked||f.regeneration.lifecycle.expenditure.units==0);assert_eq!(f.regeneration.lifecycle.residual_harm+f.next.state().restoration().accepted(),17);s=f.next;}assert_eq!(s.state().restoration().accepted(),17);}
 }
+
+// UEP-242R: explicit canonical state encoding.
+impl Recovery{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>){self.state.state_bytes(b);crate::state_hash::num(b,self.rate);crate::state_hash::num(b,self.clear)}}
