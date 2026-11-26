@@ -165,3 +165,5 @@ pub mod restoration;
 pub mod regeneration;
 
 pub mod adaptive;
+
+pub mod forward;
