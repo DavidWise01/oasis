@@ -46,3 +46,6 @@ mod tests{
 
 // UEP-242R: explicit canonical state encoding.
 impl Universe{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>)->Result<(),&'static str>{self.ledger.verify_head(self.head)?;self.verify_observations()?;self.state.state_bytes(b);crate::state_hash::population(b,&self.population);b.extend_from_slice(&self.head);crate::state_hash::num(b,self.ledger.records().len() as u64);crate::state_hash::num(b,self.observations.len() as u64);b.extend_from_slice(&self.observations.last().map_or(self.head,|o|o.digest));Ok(())}}
+
+// UEP-246R: read-only population observation.
+impl Universe{pub fn population_count(&self)->usize{self.population.active.len()}}
