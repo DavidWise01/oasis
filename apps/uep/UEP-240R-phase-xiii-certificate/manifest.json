@@ -1,0 +1,113 @@
+{
+  "bound": "UEP-240R",
+  "phase": "XIII",
+  "frozenNativeSource": "ae766f4429c429eb3304e1ea7256f748f3a3f2e1",
+  "inventory": [
+    {
+      "path": "apps/uep/rust/Cargo.toml",
+      "blob": "669d3c382f3befc26dc49555d68451635a3682b7"
+    },
+    {
+      "path": "apps/uep/rust/src/lib.rs",
+      "blob": "9dfc086b8149e01d2dc57e65cf2f0a5e0c7e2173"
+    },
+    {
+      "path": "apps/uep/rust/src/main.rs",
+      "blob": "1573a2e27eda4f325ebda67dd4a3c909d7f91850"
+    },
+    {
+      "path": "apps/uep/rust/src/capacity.rs",
+      "blob": "de935cb09fba21377cded60988d910bbafe6f304"
+    },
+    {
+      "path": "apps/uep/rust/src/expenditure.rs",
+      "blob": "5c73d09a1c8909371f94a1c7497b73f089c0608d"
+    },
+    {
+      "path": "apps/uep/rust/src/restoration.rs",
+      "blob": "019b2c932cf4af7bfee1a63156f7baaf43e8e608"
+    },
+    {
+      "path": "apps/uep/rust/src/regeneration.rs",
+      "blob": "746110df8e5e059588304b615b1562bae0ca12d4"
+    },
+    {
+      "path": "apps/uep/rust/src/adaptive.rs",
+      "blob": "42d3980eeb6a3dba1d65e5acfeac02e7f397449e"
+    },
+    {
+      "path": "apps/uep/rust/src/forward.rs",
+      "blob": "005d9f085e8b7898854516708ac860b620b34a1d"
+    },
+    {
+      "path": "apps/uep/rust/src/executable.rs",
+      "blob": "0fc4b07e22bd190f533af51e71dff1d53d0bd88d"
+    },
+    {
+      "path": "apps/uep/rust/src/evidence.rs",
+      "blob": "0a8ebfde0963c6680786f4dd7fb849d8a9d27b5a"
+    },
+    {
+      "path": "apps/uep/rust/src/bridge.rs",
+      "blob": "f87f24a1da9e634eba59a71b7e9c7de42d7ef807"
+    },
+    {
+      "path": "apps/uep/rust/src/population.rs",
+      "blob": "16c43bc348b487d4d2cd5c93f53f49c3c57dee29"
+    },
+    {
+      "path": "apps/uep/rust/src/dividend.rs",
+      "blob": "a8bfcdb191861502c39894bafa6abf48971db5f9"
+    },
+    {
+      "path": "apps/uep/rust/src/arrears.rs",
+      "blob": "0a7565aee85a49f70360ace245a3f4dad52c4e0f"
+    },
+    {
+      "path": "apps/uep/rust/src/equilibrium.rs",
+      "blob": "2e532d7aebb5223c77bbf101fcb9c3bf7bc7711d"
+    },
+    {
+      "path": "apps/uep/rust/src/vector.rs",
+      "blob": "86e12a465995ca37de6a8fbe479e919ce5b261ba"
+    },
+    {
+      "path": "apps/uep/rust/src/browser.rs",
+      "blob": "383af31bc13fbf7bd140010ffefc40c1359c8790"
+    },
+    {
+      "path": "apps/uep/rust/tests/protection.rs",
+      "blob": "6856aad15ded1e085628ad475c365e3347504913"
+    },
+    {
+      "path": "apps/uep/rust/tests/recovery.rs",
+      "blob": "3ccf60ef24de29d6696aa43d222c5200b66d1ea1"
+    }
+  ],
+  "inventoryScope": "Selected files retrieved at frozen commit, not entire repository",
+  "native": {
+    "passed": 112,
+    "failed": 0,
+    "ignored": 0,
+    "run": 45857325231,
+    "job": 140039013497,
+    "artifact": 15136233177,
+    "archiveSha256": "bea21c709e2f16f06053f4fa72588b54e4b014dcdb78d5f10e10e8096930e2ba"
+  },
+  "wasm": {
+    "source": "4120b2d137e64809374929281dfd33d3d8ce1462",
+    "run": 45736487943,
+    "comparisons": 4644,
+    "rejections": 63,
+    "sha256": "957d03cbe6988d82b5fa2542fccd84512617c8e17f6f395250ee38a9b191642f"
+  },
+  "browser": {
+    "run": 45737931321,
+    "comparisons": 132,
+    "rejections": 11,
+    "publishedCommit": "9f12a2da14839f26421ee8c52a1b14f59437419d"
+  },
+  "actualPayments": 0,
+  "livePages": "HOLD",
+  "integratedBrowser": "HOLD"
+}
