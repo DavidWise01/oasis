@@ -38,3 +38,13 @@ mod tests{
  #[test]fn scarcity_hold(){let s=root().advance(&step(),5,0,0).unwrap().next;let mut p=step();p.period.funding=500;assert!(s.advance(&p,0,1,0).is_err());assert_eq!(s.advance(&p,5,0,0).unwrap().expenditure.units,0);}
  #[test]fn long_horizon(){let mut s=root();let p=step();for _ in 0..360{let f=s.advance(&p,17,s.funded()-s.completed(),s.completed()-s.accepted()).unwrap();assert_eq!(f.residual_harm+f.next.accepted(),17);assert!(f.next.accepted()<=f.next.completed()&&f.next.completed()<=f.next.funded());s=f.next;}assert_eq!((s.funded(),s.completed(),s.accepted()),(17,17,17));}
 }
+
+// UEP-236R: acceptance queues yield in closing state only.
+impl Restoration{
+ pub(crate) fn advance_regenerative(&self,s:&Step,requested:u64,complete:u64,accept:u64)->Result<Frame,&'static str>{
+  let mut f=self.advance(s,requested,complete,accept)?;
+  f.next.execution.queue_yield(f.accepted_now)?;
+  Ok(f)
+ }
+ pub(crate) fn pending_yield(&self)->[u64;4]{self.execution.pending_yield()}
+}
