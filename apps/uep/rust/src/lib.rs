@@ -177,3 +177,5 @@ pub mod state_hash;
 pub mod replay_archive;
 
 pub mod checkpoint;
+
+pub mod integrated_abi;
