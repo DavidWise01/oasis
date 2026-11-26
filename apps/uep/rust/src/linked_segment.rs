@@ -15,7 +15,7 @@ impl Segment{
   Self::start(root_anchor(expected),a.universe())
  }
  fn start(parent:Anchor,u:&Universe)->Result<Self,&'static str>{
-  if parent.total!=u.observations().len() as u64||parent.closing!=state_hash::fingerprint(u)?{return Err("parent state mismatch")}
+  if parent.total!=u.total_observations()||parent.closing!=state_hash::fingerprint(u)?{return Err("parent state mismatch")}
   Ok(Self{parent,universe:u.clone(),entries:vec![]})
  }
  pub fn universe(&self)->&Universe{&self.universe}
@@ -51,3 +51,6 @@ impl Segment{
  #[test]fn continuation(){let mut a=root();for _ in 0..360{a=a.append(&req(600)).unwrap()}let c=a.checkpoint().unwrap();let s=Segment::from_root(&a,&c).unwrap();let n=s.append(&req(500)).unwrap();assert_eq!(n.anchor().unwrap().total,361);assert_eq!(n.universe().observations().last().unwrap().epoch,367);assert_eq!(n.universe(),&a.universe().advance(&req(500)).unwrap());assert_eq!(a.checkpoint().unwrap(),c)}
  #[test]fn full_segment(){let mut s=small();for _ in 0..360{s=s.append(&req(600)).unwrap()}let c=s.anchor().unwrap();assert!(s.append(&req(600)).is_err());let mut wrong=c.clone();wrong.ancestry[0]^=1;assert!(s.successor(&wrong).is_err());let n=s.successor(&c).unwrap();assert_eq!(n.parent(),&c);assert_eq!(n.universe(),s.universe());}
 }
+
+// UEP-252R: opt-in compaction at qualified segment boundaries; legacy behavior retained.
+impl Segment{pub fn compact_boundary(&self,expected:&Anchor)->Result<Self,&'static str>{if self.entries.len()!=LIMIT||self.anchor()?!=*expected{return Err("boundary mismatch")}let u=self.universe.compact(expected.closing)?;Self::start(expected.clone(),&u)}}
