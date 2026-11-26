@@ -1,0 +1,8 @@
+{
+  "schema": "AETHER-229/three-root-ancestry-v1",
+  "witnesses": [],
+  "previous_phase_freeze": "../224/decision.json",
+  "operational_authority": "HOLD",
+  "physical_act_allowed": false,
+  "reason": "No authenticated independently controlled external source records obtained; missing witnesses intentionally rejected."
+}
