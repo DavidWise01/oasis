@@ -28,7 +28,7 @@ HOLD={"operational_authority":"HOLD","physical_qualification_percent":0,
 
 def object_id(kind: str,content: bytes) -> str:
     if kind not in ("blob","tree"):raise ValueError("INVALID_GIT_OBJECT_TYPE")
-    return hashlib.sha1(kind.encode()+b" "+str(len(content)).encode()+b"\\0"+content).hexdigest()
+    return hashlib.sha1(kind.encode()+b" "+str(len(content)).encode()+bytes([0])+content).hexdigest()
 
 def tree_bytes(entries):
     if not isinstance(entries,list) or len(entries)>MAX_ENTRIES:
@@ -55,7 +55,7 @@ def tree_bytes(entries):
             raise ValueError("ENTRY_SHA_INVALID")
         git_mode="40000" if mode=="040000" else mode
         raw_name=name.encode("utf-8")
-        rows.append((raw_name+(b"/" if kind=="tree" else b""),git_mode.encode()+b" "+raw_name+b"\\0"+bytes.fromhex(oid)))
+        rows.append((raw_name+(b"/" if kind=="tree" else b""),git_mode.encode()+b" "+raw_name+bytes([0])+bytes.fromhex(oid)))
     return b"".join(row for _,row in sorted(rows,key=lambda item:item[0]))
 
 def parse_json(raw,expected_sha=None):
@@ -155,7 +155,7 @@ def main():
     p.add_argument("--out",type=Path)
     a=p.parse_args()
     report=verify(a.pin_commit,a.path,a.sha256,api_fetch)
-    rendered=json.dumps(report,indent=2,sort_keys=True)+"\\n"
+    rendered=json.dumps(report,indent=2,sort_keys=True)+"\n"
     if a.out:
         a.out.parent.mkdir(parents=True,exist_ok=True)
         a.out.write_text(rendered,encoding="utf-8")
