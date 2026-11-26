@@ -1,6 +1,6 @@
 # AETHER Phase XVII — External Recovery Anchors and Independently Held Evidence
 
-**AETHER-214-RS CROSS-HOST RECEIPT EQUIVOCATION & FORK DETECTION COMMITTED. Phase XVII documentary software progress 6/8 = 75%. Independently authenticated remote receipts: 0. Independently authenticated physical witnesses: 0. Physical qualification: 0%. Operational ACT: HOLD.**
+**AETHER-215-RS ADVERSARIAL REMOTE-CUSTODY & RECOVERY QUALIFICATION GATE COMMITTED. Phase XVII documentary software progress 7/8 = 87.5%. Independently authenticated remote receipts: 0. Independently authenticated physical witnesses: 0. Physical qualification: 0%. Operational ACT: HOLD.**
 
 Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 software milestones closed but original physical evidence, independent remote custody, and runtime certification unresolved. A locally valid journal and registry can be rolled back together; Phase XVII examines the need for externally anchored history and independently adjudicated recovery.
 
@@ -12,8 +12,17 @@ Phase XVI's [AETHER-208 freeze](208/decision.json) remains unchanged, with 8/8 s
 | 4 | 212 Crash recovery incident proof without automatic repair | **COMMITTED — three-store forensic inspection, never repair or ACT** | **50%** |
 | 5 | 213 Independently retained control-ancestry evidence | **COMMITTED — signed three-witness documentary ancestry screening** | **62.5%** |
 | 6 | 214 Cross-host receipt-consistency and equivocation screening | **COMMITTED — signed forks preserved, shared ancestry rejected** | **75%** |
-| 7 | 215 Adversarial remote custody and recovery qualification | Planned | 75% |
-| 8 | 216 Phase XVII documentary software freeze | Planned | 75% |
+| 7 | 215 Adversarial remote custody and recovery qualification | **COMMITTED — integrated incident, signed-witness and host-fork HOLD gate** | **87.5%** |
+| 8 | 216 Phase XVII documentary software freeze | Planned | 87.5% |
+
+## AETHER-215-RS — Integrated adversarial remote-custody qualification
+
+- [Native Rust adversarial qualification gate](rust/src/adversarial_qualification.rs) binds **the exact SHA-256 digests** of AETHER-212 incident data, the AETHER-213 signed three-witness envelope, and the AETHER-214 signed host-receipt bundle. It reuses both verifiers and compares witness IDs, receipt references, signing pins, declared root/operator/administrator/host controls and source-corpus identity across protocols.
+- Three fully signed but conflicting host histories are **not reconciled by majority**. All pairwise conflicts remain visible and the decision rejects unresolved forks, missing external evidence, shared control ancestry, forged signatures, switched host identities and attempts to promote a read-only incident into repair, recovery, lock reclamation or physical ACT.
+- [24 authored Rust regression tests](rust/tests/adversarial_qualification.rs) include a synthetically matching ensemble (documentary only), signed same-sequence forks, conflicting predecessors and registry epochs, forged witness/host signatures, swapped bundle digests, shared operators, mismatched cross-protocol identity and invented original physical-capture claims. **Native Rust compilation, tests and GitHub Actions remain unverified.**
+- [4D neon Pages-ready laboratory](215/) retains the rotating 16-vertex/32-edge tesseract and six synthetic adversarial cases. The browser does not execute Rust or authenticate remote custody. [Protocol](215/protocol.json) records **Phase XVII 7/8 = 87.5%**, independently authenticated physical witnesses **0**, physical qualification **0%**, ACT **HOLD**.
+- **Evidence boundary:** no independently retrieved and physically authenticated original capture, real remote custodian enrollment or separately retained external checkpoint was demonstrated. Pinned public keys and caller-asserted enrollment flags can only establish documentary consistency. The result always forbids selecting a fork, recovering, repairing, reclaiming locks and physical ACT.
+- **Next AETHER-216-RS:** close Phase XVII with a machine-readable qualification freeze that discloses unresolved physical, remote-ancestry, crash-consistency and Rust runtime-certification boundaries. `.dlw`
 
 ## AETHER-214-RS — Signed cross-host fork detection and declared control ancestry
 
