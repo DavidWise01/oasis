@@ -147,6 +147,14 @@ The [15 authored Python tests](../219/test_evidence_manifest.py) exercise determ
 
 The [4D neon evidence laboratory](../219/) is a protocol browser, not a native execution environment. Immutable external custody, original physical measurements, ACT authority and complete reproducible toolchain pinning remain unproven. Physical qualification **0%** · ACT **HOLD**.
 
+## AETHER-220-RS — Browser SHA-256 parity and native provenance gate
+
+The [Python parity evaluator](../220/parity_gate.py) checks exact bytes from two explicit sources against an exact SHA-256 pin and historical commit reference, and optionally checks the native manifest. It rejects changed bytes, missing artifacts, mismatched source pins, invalid JSON, and unsupported authority. The [15 authored tests](../220/test_parity_gate.py) cover synthetic matches, one-byte and joint substitutions, absent native artifacts, falsified native manifests, malformed pins and physical ACT promotion. These tests are **not verified as executed**.
+
+The [animated neon 4D WebCrypto dashboard](../220/) checks an explicitly [synthetic HOLD fixture](../220/synthetic-hold.json) against a [reference pin](../220/reference.json) in the same owned repository, and can compare user-selected files without transmitting their bytes. **A same-corpus match is documentary byte parity, not a native Rust execution, independent remote custodian, or physical witness.** The committed [GitHub Actions workflow](../../.github/workflows/aether217-rust-qualification.yml) separately attempts Python parity tests and records synthetic parity output in qualification artifacts. Live run status and native/browser parity are unverified.
+
+A pinned digest proves only equality to the supplied reference; reference authority requires separate provenance. Physical qualification **0%**, recovery and ACT **HOLD**.
+
 ## Trust boundary
 
 - Each capture's raw bytes must match its SHA-256.
