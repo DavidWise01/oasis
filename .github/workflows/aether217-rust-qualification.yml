@@ -1,9 +1,10 @@
-name: AETHER-217 Rust Executable Qualification
+name: AETHER-217/218 Rust Executable Qualification
 on:
   push:
     paths:
       - 'aether/rust/**'
       - 'aether/217/**'
+      - 'aether/218/**'
       - '.github/workflows/aether217-rust-qualification.yml'
   workflow_dispatch:
 
@@ -12,9 +13,9 @@ permissions:
 
 jobs:
   rust-qualification:
-    name: Rust check, regression suite and documentary CLI
+    name: Native Rust qualification with captured failure diagnostics
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 25
     defaults:
       run:
         working-directory: aether/rust
@@ -33,30 +34,22 @@ jobs:
           rustc --version | tee qualification-artifacts/rustc-version.txt
           cargo --version | tee qualification-artifacts/cargo-version.txt
           git rev-parse HEAD | tee qualification-artifacts/commit.txt
-      - name: Compile all native targets
-        run: cargo check --all-targets
-      - name: Execute Rust regression tests
-        run: cargo test --all-targets -- --nocapture
-      - name: Execute AETHER-217 documentary qualification
+      - name: Exercise Python diagnostic gate tests (NOT Cargo tests)
         shell: bash
         run: |
           set -euo pipefail
-          cargo run --quiet --bin aether217_qualification | tee qualification-artifacts/aether217-report.json
-          python3 - <<'PY'
-          import json
-          with open("qualification-artifacts/aether217-report.json", encoding="utf-8") as f:
-              report=json.load(f)
-          assert report["documentary_decision_consistent"] is True
-          assert report["physical_qualification_percent"] == 0
-          assert report["operational_authority"] == "HOLD"
-          assert report["physical_act_allowed"] is False
-          print("Documentary executable qualification PASS; external physical authority HOLD")
-          PY
-      - name: Upload compiler and qualification evidence
+          python3 -m unittest discover -s ../218 -p 'test_qualification_gate.py' -v
+          python3 ../218/qualification_gate.py --self-test
+      - name: Run native Cargo gate and capture failures
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 ../218/qualification_gate.py
+      - name: Upload compiler logs and qualification evidence on pass OR failure
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: aether217-rust-qualification
+          name: aether218-rust-qualification
           path: aether/rust/qualification-artifacts/
           if-no-files-found: warn
           retention-days: 30
