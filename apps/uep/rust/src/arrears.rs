@@ -6,7 +6,7 @@ pub struct Receipt{pub origin:u64,pub beneficiary:String,pub opening_index:usize
 #[derive(Clone,Debug,PartialEq,Eq)]
 pub struct Audit{pub settlement:Settlement,pub receipts:Vec<Receipt>,pub total_reserved:u64}
 pub fn advance(s:&Population,p:&Period)->Result<Audit,&'static str>{
- let settlement=settle(s,p)?;
+ let _profile=crate::verification_profile::span(1);let settlement=settle(s,p)?;
  let mut left=p.funding.checked_sub(settlement.current_funded).ok_or("funding")?;
  let mut receipts=Vec::new();let mut closing=Vec::new();let mut by_id=BTreeMap::<String,u64>::new();let mut total=0u64;
  for (index,lot) in s.lots.iter().enumerate(){
