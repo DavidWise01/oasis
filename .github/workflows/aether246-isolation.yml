@@ -1,0 +1,19 @@
+name: AETHER-246 Offline Isolation Evidence Tests
+on:
+  push:
+    paths:
+      - 'aether/246/**'
+      - '.github/workflows/aether246-isolation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/246 -p 'test_*.py' -v
+      - run: echo 'Offline telemetry checks do not constitute measured network isolation or physical ACT authorization.'
