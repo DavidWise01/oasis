@@ -207,3 +207,5 @@ pub mod balance_tree;
 pub mod membership_tree;
 
 pub mod chronology_tree;
+
+pub mod authenticated_state;
