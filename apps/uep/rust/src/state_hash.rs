@@ -8,8 +8,8 @@ pub(crate) fn population(b:&mut Vec<u8>,p:&Population){
  num(b,p.lots.len() as u64);for l in &p.lots{num(b,l.origin);string(b,&l.id);num(b,l.amount)}
  num(b,p.unattributed);match &p.cursor{None=>b.push(0),Some(s)=>{b.push(1);string(b,s)}}
 }
-pub fn encode(u:&Universe)->Result<Vec<u8>,&'static str>{let mut b=b"UEP242R\0".to_vec();u.state_bytes(&mut b)?;Ok(b)}
-pub fn fingerprint(u:&Universe)->Result<[u8;32],&'static str>{let mut h=Sha256::new();h.update(b"OASIS-UEP-242R-state-v1");h.update(encode(u)?);Ok(h.finalize().into())}
+pub fn encode(u:&Universe)->Result<Vec<u8>,&'static str>{let _profile=crate::verification_profile::span(2);let mut b=b"UEP242R\0".to_vec();u.state_bytes(&mut b)?;Ok(b)}
+pub fn fingerprint(u:&Universe)->Result<[u8;32],&'static str>{let _profile=crate::verification_profile::span(3);let mut h=Sha256::new();h.update(b"OASIS-UEP-242R-state-v1");h.update(encode(u)?);Ok(h.finalize().into())}
 #[derive(Clone,Debug,PartialEq,Eq)]
 pub struct Commitment{pub opening:[u8;32],pub request:[u8;32],pub closing:[u8;32],pub digest:[u8;32]}
 impl Commitment{
