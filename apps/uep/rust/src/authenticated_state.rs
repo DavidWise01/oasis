@@ -16,7 +16,7 @@ pub struct Work{pub balance_paths:usize,pub chronology_paths:usize}
 impl State{
  pub fn build(u:&Universe,expected:Hash)->Result<Self,&'static str>{if state_hash::fingerprint(u)?!=expected{return Err("opening authority")}let p=u.population_ledger();let n=Self{authority:expected,balances:Tree::build(p)?,membership:Membership::build(p)?,chronology:Queue::build(p)?};n.verify(u)?;Ok(n)}
  pub fn root(&self)->Root{let mut r=Root{authority:self.authority,balances:self.balances.commitment(),membership:self.membership.commitment(),chronology:self.chronology.commitment(),digest:[0;32]};r.digest=r.calculate();r}
- pub fn verify(&self,u:&Universe)->Result<(),&'static str>{if self.authority!=state_hash::fingerprint(u)?{return Err("authority mismatch")}let p=u.population_ledger();self.balances.verify(p)?;self.membership.verify(p)?;self.chronology.verify(p)?;if self.balances.total()?!=p.outstanding()?{return Err("total mismatch")}Ok(())}
+ pub fn verify(&self,u:&Universe)->Result<(),&'static str>{let _profile=crate::verification_profile::span(18);if self.authority!=state_hash::fingerprint(u)?{return Err("authority mismatch")}let p=u.population_ledger();self.balances.verify(p)?;self.membership.verify(p)?;self.chronology.verify(p)?;if self.balances.total()?!=p.outstanding()?{return Err("total mismatch")}Ok(())}
  pub fn verify_root(&self,u:&Universe,expected:&Root)->Result<(),&'static str>{self.verify(u)?;if !expected.verify()||self.root()!=*expected{return Err("root mismatch")}Ok(())}
  pub fn balance_tree(&self)->&Tree{&self.balances}
  pub fn membership(&self)->&Membership{&self.membership}
