@@ -35,3 +35,6 @@ impl IdentityIndex{
  #[test]fn batch_order_canonical(){let p=Population::phase_ix();let i=IdentityIndex::build(&p).unwrap();let mut r=req();r.enter=vec!["Z".into(),"E".into()];let q=settle(&p,&r).unwrap().closing;let n=i.advance(&p,&q,&r).unwrap();r.enter.reverse();let q=settle(&p,&r).unwrap().closing;assert_eq!(n,i.advance(&p,&q,&r).unwrap());}
  #[test]fn stale_and_debt_substitution(){let p=Population::phase_ix();let i=IdentityIndex::build(&p).unwrap();let mut r=req();r.funding=0;let q=settle(&p,&r).unwrap().closing;let n=i.advance(&p,&q,&r).unwrap();assert!(i.verify_membership(&q).is_err());let mut r=req();r.enter=vec!["G".into()];r.depart=vec!["A_1".into()];let mut z=settle(&q,&r).unwrap().closing;z.lots[0].id="G".into();assert!(n.advance(&q,&z,&r).is_err());}
 }
+
+// UEP-266R: commit actual membership as well as incremental historical head.
+impl IdentityIndex{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let mut b=b"UEP266I\0".to_vec();b.extend_from_slice(&self.epoch.to_be_bytes());b.extend_from_slice(&self.count.to_be_bytes());b.extend_from_slice(&self.head);for set in [&self.known,&self.active]{b.extend_from_slice(&(set.len() as u64).to_be_bytes());for id in set{b.extend_from_slice(&(id.len() as u64).to_be_bytes());b.extend_from_slice(id.as_bytes())}}b}}
