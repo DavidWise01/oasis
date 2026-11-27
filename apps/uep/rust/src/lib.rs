@@ -197,3 +197,5 @@ pub mod identity_index;
 pub mod funding_cursor;
 
 pub mod working_projection;
+
+pub mod indexed_recovery;
