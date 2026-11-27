@@ -1,0 +1,19 @@
+name: AETHER-268 Issuance Readback and Nonce Fence
+on:
+  push:
+    paths:
+      - 'aether/268/**'
+      - '.github/workflows/aether268-issuance-pin.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/268 -p 'test_*.py' -v
+      - run: echo 'Local nonce persistence and supplied pin integrity do not establish external custody.'
