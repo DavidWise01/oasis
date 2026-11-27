@@ -1,0 +1,29 @@
+{
+  "bound": "UEP-260R",
+  "phase": "XV",
+  "computational": "PASS",
+  "closure": "HOLD",
+  "native": {
+    "run": 45922908878,
+    "job": 140257583251,
+    "tests": 176,
+    "periods": 1080,
+    "successorPeriods": 720,
+    "exactStateParity": true,
+    "replayEqual": true,
+    "actualPayments": 0,
+    "artifact": 15165532111,
+    "zipSha256": "01e5a54c1a6237ebe18d38c635f5a31e6a5c69b12ff1b6354a5d0916822c1f59"
+  },
+  "publication": {
+    "run": 45925827054,
+    "job": 140266771268,
+    "zipCheck": "PASS",
+    "individualChecks": 9,
+    "browser": "FAIL: fieldset isDisabled assertion",
+    "remotePublication": "SKIPPED",
+    "artifact": 15165914026,
+    "artifactZipSha256": "3c931e335a5dcde283381cf4b1c4d5b037e5fa33cc9347015274b6cff8450057"
+  },
+  "scope": "Runner evidence checks verified, not independently rehashed by connector. Retry tests exact failure reasons and effective input state. Live Pages unverified."
+}
