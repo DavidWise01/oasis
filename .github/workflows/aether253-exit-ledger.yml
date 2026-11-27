@@ -1,0 +1,20 @@
+name: AETHER-253 Exit and Ledger Offline Regressions
+on:
+  push:
+    paths:
+      - 'aether/253/**'
+      - '.github/workflows/aether253-exit-ledger.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-exit-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/253 -p 'test_*.py' -v
+      - run: echo 'Synthetic pidfd claims and local signatures do not authenticate live process exit or external ledger custody.'
