@@ -211,3 +211,5 @@ pub mod chronology_tree;
 pub mod authenticated_state;
 
 pub mod authenticated_recovery;
+
+pub mod compact_membership;
