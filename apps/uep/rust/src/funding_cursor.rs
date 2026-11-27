@@ -19,7 +19,7 @@ impl Cursor{
  /// Qualification mode: original settlement remains authoritative.
  /// Only the incremental queue loop is counted as visited work; clones and scans are excluded.
  pub fn advance(&self,p:&Population,r:&Period)->Result<(Self,Audit,Work),&'static str>{
-  self.verify(p)?;let audit=arrears::advance(p,r)?;let mut n=self.clone();
+  self.verify(p)?;let audit=arrears::advance(p,r)?;let mut n={let _profile=crate::verification_profile::span(8);self.clone()};
   let mut left=r.funding.checked_sub(audit.settlement.current_funded).ok_or("funding")?;
   let mut receipts=Vec::new();let mut work=Work{opening_lots:n.len(),visited:0,retired:0,appended:0};
   while left>0{
@@ -47,4 +47,4 @@ impl Cursor{
 }
 
 // UEP-266R: commit exact queue order, partial remainders and retired counter.
-impl Cursor{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let mut b=b"UEP266Q\0".to_vec();for v in [self.epoch,self.retired,self.identified,self.unattributed,self.queue.len() as u64]{b.extend_from_slice(&v.to_be_bytes())}for l in &self.queue{b.extend_from_slice(&l.origin.to_be_bytes());b.extend_from_slice(&(l.id.len() as u64).to_be_bytes());b.extend_from_slice(l.id.as_bytes());b.extend_from_slice(&l.amount.to_be_bytes())}b}}
+impl Cursor{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let _profile=crate::verification_profile::span(5);let mut b=b"UEP266Q\0".to_vec();for v in [self.epoch,self.retired,self.identified,self.unattributed,self.queue.len() as u64]{b.extend_from_slice(&v.to_be_bytes())}for l in &self.queue{b.extend_from_slice(&l.origin.to_be_bytes());b.extend_from_slice(&(l.id.len() as u64).to_be_bytes());b.extend_from_slice(l.id.as_bytes());b.extend_from_slice(&l.amount.to_be_bytes())}b}}
