@@ -45,3 +45,6 @@ impl Cursor{
  #[test]fn stale_and_empty(){let p=Population::phase_ix();let c=Cursor::build(&p).unwrap();let(n,a,_)=c.advance(&p,&req(0)).unwrap();assert!(c.advance(&a.settlement.closing,&req(1200)).is_err());let(z,b,w)=n.advance(&a.settlement.closing,&req(2000)).unwrap();assert_eq!((w.visited,w.retired,z.len()),(6,6,0));assert_eq!(z.total().unwrap(),400);let(_,_,w)=z.advance(&b.settlement.closing,&req(2000)).unwrap();assert_eq!(w.visited,0);}
  #[test]fn mixed_parity(){let mut p=Population::phase_ix();let mut c=Cursor::build(&p).unwrap();for t in 0..360{let r=req([0,500,600,750,1200][t%5]);let(n,a,w)=c.advance(&p,&r).unwrap();assert_eq!(a,arrears::advance(&p,&r).unwrap());assert!(w.visited<=w.opening_lots);assert_eq!(w.visited,a.receipts.len());p=a.settlement.closing;c=n;}c.verify(&p).unwrap();}
 }
+
+// UEP-266R: commit exact queue order, partial remainders and retired counter.
+impl Cursor{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let mut b=b"UEP266Q\0".to_vec();for v in [self.epoch,self.retired,self.identified,self.unattributed,self.queue.len() as u64]{b.extend_from_slice(&v.to_be_bytes())}for l in &self.queue{b.extend_from_slice(&l.origin.to_be_bytes());b.extend_from_slice(&(l.id.len() as u64).to_be_bytes());b.extend_from_slice(l.id.as_bytes());b.extend_from_slice(&l.amount.to_be_bytes())}b}}
