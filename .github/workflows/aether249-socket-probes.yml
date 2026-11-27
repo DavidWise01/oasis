@@ -1,0 +1,20 @@
+name: AETHER-249 Socket Probe Unit Regressions
+on:
+  push:
+    paths:
+      - 'aether/249/**'
+      - '.github/workflows/aether249-socket-probes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Offline mocked namespace unit tests only
+        run: python3 -m unittest discover -s aether/249 -p 'test_*.py' -v
+      - run: echo 'The CI job does NOT run live sockets or assert independent isolation.'
