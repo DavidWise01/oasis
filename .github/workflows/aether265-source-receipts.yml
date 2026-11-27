@@ -1,0 +1,20 @@
+name: AETHER-265 Signed Source Evidence Regressions
+on:
+  push:
+    paths:
+      - 'aether/265/**'
+      - '.github/workflows/aether265-source-receipts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-ed25519-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/265 -p 'test_*.py' -v
+      - run: echo 'Signed local fixtures cannot authenticate independent source custody.'
