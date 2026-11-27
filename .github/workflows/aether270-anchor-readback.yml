@@ -1,0 +1,20 @@
+name: AETHER-270 Anchored Checkpoint Readback Regressions
+on:
+  push:
+    paths:
+      - 'aether/270/**'
+      - '.github/workflows/aether270-anchor-readback.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/270 -p 'test_*.py' -v
+      - run: echo 'Caller-provided key pins and readbacks do not prove independent custody.'
