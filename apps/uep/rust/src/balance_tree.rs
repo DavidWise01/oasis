@@ -38,12 +38,15 @@ impl Tree{
  pub fn verify(&self,p:&Population)->Result<(),&'static str>{if self.commitment()!=Self::build(p)?.commitment(){return Err("tree parity")}Ok(())}
  /// Qualification mode: derive deltas from canonical audit, then compare with rebuilt tree.
  pub fn advance(&self,p:&Population,r:&Period)->Result<(Self,Audit,usize),&'static str>{
-  self.verify(p)?;let a=arrears::advance(p,r)?;let mut n=self.clone();let mut delta=BTreeMap::<String,i128>::new();
+  self.verify(p)?;let a=arrears::advance(p,r)?;let (n,k)=self.apply_audit(r,&a)?;Ok((n,a,k))
+ }
+ // Internal consumer: caller must establish opening parity and generate canonical audit.
+ pub(crate) fn apply_audit(&self,r:&Period,a:&Audit)->Result<(Self,usize),&'static str>{let mut n=self.clone();let mut delta=BTreeMap::<String,i128>::new();
   for(id,v)in &a.settlement.historical_reserved{*delta.entry(id.clone()).or_default()-=i128::from(*v);}
   for x in &a.settlement.awards{*delta.entry(x.id.clone()).or_default()+=i128::from(x.due.checked_sub(x.funded).ok_or("award")?);}
   let mut changed=0;for(id,d)in delta{if d==0{continue}let v=u64::try_from(i128::from(n.balance(&id)?)+d).map_err(|_|"delta range")?;n.set(&id,v)?;changed+=1;}
   n.epoch=a.settlement.closing.epoch;n.verify(&a.settlement.closing)?;
-  if n.total()?!=a.settlement.closing.outstanding()?||a.settlement.current_funded!=a.settlement.current_due.min(r.funding){return Err("accounting parity")}Ok((n,a,changed))
+  if n.total()?!=a.settlement.closing.outstanding()?||a.settlement.current_funded!=a.settlement.current_due.min(r.funding){return Err("accounting parity")}Ok((n,changed))
  }
 }
 #[cfg(test)]mod tests{
