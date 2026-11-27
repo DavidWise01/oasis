@@ -1,0 +1,79 @@
+name: UEP-271R redundant verification instrumentation
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-verification-271.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  statuses: write
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 18c293998e3e11d87bb715ccd3c0e89bcd844264
+          persist-credentials: false
+      - name: Recover native-qualified dependency lock
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/uep271"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15077861777/zip" > "$RUNNER_TEMP/native.zip"
+          echo "b0b1a676ef7ee44e33c4907dc08a926227edc4851f4495c2a406686475f0313e  $RUNNER_TEMP/native.zip" | sha256sum -c -
+          unzip -p "$RUNNER_TEMP/native.zip" Cargo.lock > apps/uep/rust/Cargo.lock
+          echo "af9e971445417daa5d9996aac6e35dafc51b8f93313076f7a70af2c59e5109f5  apps/uep/rust/Cargo.lock" | sha256sum -c -
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep271/source.txt"
+      - name: Execute inherited and new native regressions
+        working-directory: apps/uep/rust
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.85.1 --profile minimal
+          cargo +1.85.1 fetch --locked
+          cargo +1.85.1 test --frozen 2>&1 | tee "$RUNNER_TEMP/uep271/tests.txt"
+          python3 - <<'PY'
+          import os,re,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep271'
+          s=(p/'tests.txt').read_text()
+          rows=re.findall(r'test result: ok\. (\d+) passed; (\d+) failed; (\d+) ignored; (\d+) measured; (\d+) filtered out',s)
+          assert [sum(int(r[i]) for r in rows) for i in range(5)]==[209,0,0,0,0], rows
+          assert len(re.findall(r'^test verification_profile::tests::.* \.\.\. ok$',s,re.M))==3
+          PY
+      - name: Execute paired verification profiler
+        working-directory: apps/uep/rust
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/uep271"
+          (cd ../UEP-259R-integrated-generations && sha256sum -c SHA256SUMS)
+          cargo +1.85.1 run --frozen --release --bin verification271 -- "$out" | tee "$out/verification271.json"
+          python3 - <<'PY' | tee "$out/summary271.json"
+          import csv,json,os,pathlib,statistics,collections
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep271'
+          a=list(csv.DictReader((p/'verification271.csv').open()))
+          assert len(a)==7200
+          g=collections.defaultdict(list)
+          for r in a:g[(r['scenario'],r['path'],r['operation'])].append(r)
+          assert len(g)==60 and all(len(v)==120 for v in g.values())
+          print(json.dumps({'rows':len(a),'groups':[{'scenario':k[0],'path':k[1],'operation':k[2],'calls':sum(int(r['calls']) for r in v),'medianInclusiveNs':statistics.median(int(r['inclusive_ns']) for r in v),'medianElapsedNs':statistics.median(int(r['elapsed_ns']) for r in v)} for k,v in sorted(g.items())]},sort_keys=True))
+          PY
+          (cd "$out" && sha256sum verification271.csv verification271.json summary271.json > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-271r-native-evidence
+          path: ${{ runner.temp }}/uep271/
+      - name: Report qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-271R/native" -f description="Redundant verification instrumentation" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
