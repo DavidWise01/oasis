@@ -205,3 +205,5 @@ pub mod verification_profile;
 pub mod balance_tree;
 
 pub mod membership_tree;
+
+pub mod chronology_tree;
