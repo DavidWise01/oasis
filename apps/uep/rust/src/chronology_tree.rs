@@ -30,12 +30,15 @@ impl Queue{
  fn push(&mut self,l:Lot)->Result<(),&'static str>{let t=self.tail.checked_add(1).ok_or("tail")?;let v=self.total.checked_add(l.amount).ok_or("balance")?;v.checked_add(self.unattributed).ok_or("total")?;self.tree=set(&self.tree,&self.empty,self.tail,Some(l),0);self.tail=t;self.total=v;Ok(())}
  pub fn verify(&self,p:&Population)->Result<(),&'static str>{if self.epoch!=p.epoch||self.unattributed!=p.unattributed||self.tail.checked_sub(self.head)!=Some(p.lots.len() as u64)||self.total.checked_add(self.unattributed)!=Some(p.outstanding()?){return Err("queue metadata")}for(i,l)in (self.head..self.tail).zip(&p.lots){if self.get(i)!=Some(l){return Err("lot parity")}}Ok(())}
  pub fn advance(&self,p:&Population,r:&Period)->Result<(Self,Audit,usize),&'static str>{
- self.verify(p)?;let a=arrears::advance(p,r)?;let mut n=self.clone();let mut left=r.funding.checked_sub(a.settlement.current_funded).ok_or("funding")?;let mut receipts=Vec::new();let mut changes=0;
+ self.verify(p)?;let a=arrears::advance(p,r)?;let (n,k)=self.apply_audit(r,&a)?;Ok((n,a,k))
+ }
+ // Internal consumer: caller must establish opening parity and generate canonical audit.
+ pub(crate) fn apply_audit(&self,r:&Period,a:&Audit)->Result<(Self,usize),&'static str>{let mut n=self.clone();let mut left=r.funding.checked_sub(a.settlement.current_funded).ok_or("funding")?;let mut receipts=Vec::new();let mut changes=0;
  while left>0&&n.head<n.tail{let i=n.head;let l=n.get(i).ok_or("head missing")?.clone();let paid=left.min(l.amount);left-=paid;let remaining=l.amount-paid;n.total=n.total.checked_sub(paid).ok_or("debit")?;
  receipts.push(Receipt{origin:l.origin,beneficiary:l.id.clone(),opening_index:usize::try_from(i-self.head).map_err(|_|"index")?,reserved:paid,remainder:remaining,departed:!a.settlement.closing.active.contains(&l.id)});
  if remaining==0{n.retirement=hash(b"OASIS-UEP-274R-retire-v1",&[&n.retirement,&leaf(i,&l),&a.settlement.closing.epoch.to_be_bytes()]);n.tree=set(&n.tree,&n.empty,i,None,0);n.head=n.head.checked_add(1).ok_or("head")?;}else{n.tree=set(&n.tree,&n.empty,i,Some(Lot{amount:remaining,..l}),0);}changes+=1;}
  n.epoch=a.settlement.closing.epoch;for x in &a.settlement.awards{let v=x.due.checked_sub(x.funded).ok_or("award")?;if v>0{n.push(Lot{origin:n.epoch,id:x.id.clone(),amount:v})?;changes+=1;}}
- if receipts!=a.receipts||left!=a.settlement.unallocated{return Err("receipt parity")}n.verify(&a.settlement.closing)?;Ok((n,a,changes))
+ if receipts!=a.receipts||left!=a.settlement.unallocated{return Err("receipt parity")}n.verify(&a.settlement.closing)?;Ok((n,changes))
  }
 }
 #[cfg(test)]mod tests{use super::*;fn r(f:u64)->Period{Period{enter:vec![],depart:vec![],award:100,funding:f}}
