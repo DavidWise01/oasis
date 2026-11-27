@@ -195,3 +195,5 @@ pub mod obligation_index;
 pub mod identity_index;
 
 pub mod funding_cursor;
+
+pub mod working_projection;
