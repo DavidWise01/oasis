@@ -1,0 +1,19 @@
+name: AETHER-257 CAS Split-Brain Regressions
+on:
+  push:
+    paths:
+      - 'aether/257/**'
+      - '.github/workflows/aether257-cas-split-brain.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/257 -p 'test_*.py' -v
+      - run: echo 'Offline CAS record checks do not establish external atomicity or ACT.'
