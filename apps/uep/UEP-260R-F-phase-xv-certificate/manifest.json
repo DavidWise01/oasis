@@ -1,0 +1,125 @@
+{
+  "bound": "UEP-260R-F",
+  "phase": "XV",
+  "closure": "SEALED computational and repository publication scope",
+  "livePages": "UNVERIFIED",
+  "releaseCommit": "2636ed27518e766781ef159785bab7d1016e8aeb",
+  "native": {
+    "run": 45922908878,
+    "job": 140257583251,
+    "tests": 176,
+    "periods": 1080,
+    "successorPeriods": 720,
+    "exactStateParity": true,
+    "replayEqual": true,
+    "actualPayments": 0,
+    "artifact": 15165532111,
+    "zipSha256": "01e5a54c1a6237ebe18d38c635f5a31e6a5c69b12ff1b6354a5d0916822c1f59"
+  },
+  "publication": {
+    "run": 45930218349,
+    "job": 140280865028,
+    "artifact": 15168047519,
+    "zipSha256": "a2dd0c99144f48351712cc5ecb5e79804349b07715953b5e322cf543facd2828",
+    "browser": {
+      "rows": 1080,
+      "boundaryChecks": 6,
+      "missingRejected": true,
+      "corruptRejected": true,
+      "pageErrors": 0
+    },
+    "normalPush": true,
+    "rejectedPushAttempts": 2,
+    "previousFailure": 45925827054
+  },
+  "assets": [
+    {
+      "name": "SHA256SUMS",
+      "blob": "f231d85c39dac443666024cbf6eae751b6ad0ca4",
+      "bytes": 735
+    },
+    {
+      "name": "anchors.bin",
+      "blob": "da35f3e5490ccd271c3450240dd79fe3c40abc26",
+      "bytes": 144,
+      "sha256": "073c7ff1cedf8953705560e903417106df8aa042e559e1ee349dc030811eef70"
+    },
+    {
+      "name": "generation.csv",
+      "blob": "0e1df4f9bf28d3b663a364d59725943e51d411f6",
+      "bytes": 19849,
+      "sha256": "a097bee75cd777b3134fa8f43d3eba40a35d2acad31a6db7da1d9aab5b1eee51"
+    },
+    {
+      "name": "generation258.csv",
+      "blob": "0e0ce7b7d2701287e066d2e720768d35e9c891aa",
+      "bytes": 35219,
+      "sha256": "87a3c66076efc5ea9ca265a77691a23c96c76f847c03194df2d9c979e3b1cfe9"
+    },
+    {
+      "name": "generation258.json",
+      "blob": "7aaf3e0941b82fa4958e3f90f3d3a4e794afb914",
+      "bytes": 262,
+      "sha256": "166818a678fc8c451fa4814f9cadddfd6b64f55a6d706fc98a28f23fc6cff4a5"
+    },
+    {
+      "name": "index.html",
+      "blob": "dd413808967f751acbd244998457d41b451e524f",
+      "bytes": 6694
+    },
+    {
+      "name": "manifest.sha256",
+      "blob": "5651f4046fad60d76e5aca640ef50a1505ad331c",
+      "bytes": 65
+    },
+    {
+      "name": "root.archive",
+      "blob": "1dd71223d70d6d2da8b68a279475446fcc6c1812",
+      "bytes": 185017,
+      "sha256": "350b963eb98dce3f6be1168e7a93f4a210e0980c9720421ef0706d3947a9e56d"
+    },
+    {
+      "name": "root.checkpoint",
+      "blob": "f5fc3d41803900bca67e6d1309296f0a76961250",
+      "bytes": 112,
+      "sha256": "72d0dc0892494e410af435236917abd04d53c2751939105908f4a49fc6d71526"
+    },
+    {
+      "name": "segment-1080.bin",
+      "blob": "5538f246c550fef43c8a3ef5751f085acb060d4a",
+      "bytes": 184696,
+      "sha256": "240687d1151cc6d9cf00d0f689e8d80ec48ab976dde2c8c7a8577212a730e1ba"
+    },
+    {
+      "name": "segment-720.bin",
+      "blob": "2733b49eb081b0b9c0785d9ad43a188241580945",
+      "bytes": 184696,
+      "sha256": "2ca082b3d8bdabb3116657ee46c6b92a3c7bd8c358b081c367c6aa2446966547"
+    },
+    {
+      "name": "terminal.state",
+      "blob": "f73ddfeabbf0ba24c7c4fdd7fa4a71b82c5f1746",
+      "bytes": 1606,
+      "sha256": "f839f3a823eb3bb3de5acbcf46f502a044e0a78357620bfa0d45650293c9a8ee"
+    }
+  ],
+  "manifestSha256": "1c084ccf9fcc3f7c9a7d0013bda2adec416907907e05f3e53bc1f45911f476ca",
+  "observed": {
+    "successorRows": 720,
+    "successorShortfalls": 240,
+    "successorHistoricalReserved": 24000,
+    "combinedHistoricalReserved": 36000,
+    "combinedTurnovers": 36,
+    "peakArrears": 1400,
+    "closingArrears": 400,
+    "accepted": 17,
+    "activeRecords": 360,
+    "terminalStocks": [
+      80,
+      80,
+      80,
+      80
+    ]
+  },
+  "scope": "Native and browser runner logs checked; pinned remote metadata and CSV readback confirmed. Binary bytes not separately rehashed outside runner. Companion manifest is not independent custody. Synthetic only."
+}
