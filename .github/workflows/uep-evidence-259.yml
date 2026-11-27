@@ -1,0 +1,87 @@
+name: UEP-259R evidence publication
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-evidence-259.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+  statuses: write
+concurrency:
+  group: uep-evidence-259
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Verify and stage actual evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          p=apps/uep/UEP-259R-integrated-generations
+          mkdir -p "$RUNNER_TEMP/uep259" "$RUNNER_TEMP/extract259"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15165532111/zip" > "$RUNNER_TEMP/evidence259.zip"
+          echo "01e5a54c1a6237ebe18d38c635f5a31e6a5c69b12ff1b6354a5d0916822c1f59  $RUNNER_TEMP/evidence259.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/evidence259.zip" -d "$RUNNER_TEMP/extract259"
+          e="$RUNNER_TEMP/extract259"
+          (cd "$e" && sha256sum -c SHA256SUMS)
+          git diff --exit-code 6bc8b9c638b0a183a7b774d7a0598000fd5e51de HEAD -- "$p/index.html"
+          for f in root.archive root.checkpoint segment-720.bin segment-1080.bin anchors.bin generation258.csv terminal.state generation258.json generation.csv SHA256SUMS manifest.sha256; do test ! -e "$p/$f"; done
+          for f in root.archive root.checkpoint segment-720.bin segment-1080.bin anchors.bin generation258.csv terminal.state generation258.json SHA256SUMS; do cp "$e/$f" "$p/"; done
+          git show a4770904ea0e53aa6b387984c40fc97dc35c4cde:apps/uep/UEP-249R-integrated-release/generation.csv > "$p/generation.csv"
+          echo "a097bee75cd777b3134fa8f43d3eba40a35d2acad31a6db7da1d9aab5b1eee51  $p/generation.csv" | sha256sum -c -
+          (cd "$p" && sha256sum generation.csv >> SHA256SUMS && sha256sum -c SHA256SUMS && sha256sum SHA256SUMS | cut -d' ' -f1 > manifest.sha256)
+          cp "$p/SHA256SUMS" "$p/manifest.sha256" "$RUNNER_TEMP/uep259/"
+      - name: Browser acceptance
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/uep259-node" --no-audit --no-fund playwright@1.51.1
+          "$RUNNER_TEMP/uep259-node/node_modules/.bin/playwright" install --with-deps chromium
+          python3 -m http.server 8765 --directory apps/uep/UEP-259R-integrated-generations > /tmp/uep259-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" || true' EXIT
+          NODE_PATH="$RUNNER_TEMP/uep259-node/node_modules" node <<'JS' | tee "$RUNNER_TEMP/uep259/browser.txt"
+          const {chromium}=require('playwright');const assert=require('node:assert/strict');
+          (async()=>{const b=await chromium.launch();try{const p=await b.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://localhost:8765');await p.route('**/generation258.csv',r=>r.fulfill({status:404}));await p.click('#load');await p.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('HOLD'));assert(await p.locator('#gate').isDisabled());await p.unroute('**/generation258.csv');await p.route('**/generation258.csv',r=>r.fulfill({status:200,body:'corrupt'}));await p.click('#load');await p.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('HOLD'));assert(await p.locator('#gate').isDisabled());await p.unroute('**/generation258.csv');await p.click('#load');await p.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('PASS'));for(const t of [1,360,361,720,721,1080]){await p.locator('#n').evaluate((e,t)=>{e.value=t;e.dispatchEvent(new Event('input'))},t);assert((await p.locator('#o').textContent()).startsWith('Period '+t+' |'));}assert((await p.locator('#o').textContent()).includes('Arrears 400'));assert.equal(errors.length,0);console.log(JSON.stringify({rows:1080,boundaryChecks:6,missingRejected:true,corruptRejected:true,pageErrors:0}));}finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - name: Publish immutable evidence
+        run: |
+          set -euo pipefail
+          p=apps/uep/UEP-259R-integrated-generations
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -f "$p/"{root.archive,root.checkpoint,segment-720.bin,segment-1080.bin,anchors.bin,generation258.csv,terminal.state,generation258.json,generation.csv,SHA256SUMS,manifest.sha256}
+          git commit -m "UEP-259R: publish actual qualified generational evidence"
+          published=0
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            git diff --exit-code 6bc8b9c638b0a183a7b774d7a0598000fd5e51de HEAD -- "$p/index.html"
+            cmp "$p/SHA256SUMS" "$RUNNER_TEMP/uep259/SHA256SUMS"
+            cmp "$p/manifest.sha256" "$RUNNER_TEMP/uep259/manifest.sha256"
+            (cd "$p" && sha256sum -c SHA256SUMS)
+            if git push origin HEAD:main; then published=1; break; fi
+          done
+          test "$published" = 1
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep259/published.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-259r-publication-evidence
+          path: ${{ runner.temp }}/uep259/
+      - name: Report qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-259R/publication" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
