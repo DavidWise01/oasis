@@ -25,7 +25,7 @@ impl Tape{
   if self.entries.len()>=LIMIT{return Err("tape full")}
   let c=self.entries.last().map_or(&self.opening,|e|&e.1);
   let(p,u,_,_,next)=self.projection.advance_committed(&self.universe,r,c)?;
-  let mut n=self.clone();n.projection=p;n.universe=u;n.entries.push((request_codec::encode(r)?,next));n.encode()?;Ok(n)
+  let mut n={let _profile=crate::verification_profile::span(9);self.clone()};n.projection=p;n.universe=u;n.entries.push((request_codec::encode(r)?,next));n.encode()?;Ok(n)
  }
  pub fn encode(&self)->Result<Vec<u8>,&'static str>{
   let mut b=b"UEP267R\0".to_vec();b.extend_from_slice(&self.start.to_be_bytes());b.extend_from_slice(&self.opening.encode());b.extend_from_slice(&(self.entries.len() as u64).to_be_bytes());
