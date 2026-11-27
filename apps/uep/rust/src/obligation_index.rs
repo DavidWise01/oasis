@@ -39,3 +39,6 @@ impl Index{
  #[test]fn retirement_once(){let p=Population::phase_ix();let(i,a)=Index::build(&p).unwrap().advance(&p,&req(0)).unwrap();let(n,b)=i.advance(&a.settlement.closing,&req(1200)).unwrap();assert_eq!(n.total().unwrap(),400);assert_eq!(n.beneficiaries(),0);assert!(i.advance(&b.settlement.closing,&req(1200)).is_err());let(_,c)=n.advance(&b.settlement.closing,&req(1200)).unwrap();assert_eq!(c.total_reserved,0);}
  #[test]fn mixed_parity(){let mut p=Population::phase_ix();let mut i=Index::build(&p).unwrap();let mut current="A_1".to_string();for t in 0..360{let mut r=req([0,500,600,750,1200][t%5]);if t%30==0{let next=format!("G_{t}");r.depart=vec![std::mem::replace(&mut current,next.clone())];r.enter=vec![next];}let(n,a)=i.advance(&p,&r).unwrap();assert_eq!(a.settlement,crate::population::settle(&p,&r).unwrap());p=a.settlement.closing;i=n;}i.verify(&p).unwrap();}
 }
+
+// UEP-266R: canonical component encoding, sorted by beneficiary.
+impl Index{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let mut b=b"UEP266B\0".to_vec();for v in [self.epoch,self.identified,self.unattributed,self.balances.len() as u64]{b.extend_from_slice(&v.to_be_bytes())}for(id,v)in &self.balances{b.extend_from_slice(&(id.len() as u64).to_be_bytes());b.extend_from_slice(id.as_bytes());b.extend_from_slice(&v.to_be_bytes())}b}}
