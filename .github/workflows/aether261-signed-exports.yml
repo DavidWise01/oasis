@@ -1,0 +1,22 @@
+name: AETHER-261 Signed Export Regression
+on:
+  push:
+    paths:
+      - 'aether/258/**'
+      - 'aether/260/**'
+      - 'aether/261/**'
+      - '.github/workflows/aether261-signed-exports.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-signature-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/261 -p 'test_*.py' -v
+      - run: echo 'Locally generated signatures do not prove independent external custody.'
