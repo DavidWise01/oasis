@@ -1,0 +1,20 @@
+name: AETHER-271 Raw Evidence and Out-of-Band Pin Tests
+on:
+  push:
+    paths:
+      - 'aether/271/**'
+      - '.github/workflows/aether271-raw-pin-owner.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/271 -p 'test_*.py' -v
+      - run: echo 'Out-of-band SHA-256 is a trust precondition, not independently proven ownership.'
