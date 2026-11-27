@@ -1,0 +1,21 @@
+name: AETHER-254 pidfd Child Exit Qualification
+on:
+  push:
+    paths:
+      - 'aether/254/**'
+      - '.github/workflows/aether254-pidfd-exit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pidfd-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Offline and Linux direct-child integration tests
+        run: python3 -m unittest discover -s aether/254 -p 'test_*.py' -v
+      - name: State certification boundary
+        run: echo 'A Linux child pidfd observation is not independent custody or recovery authority.'
