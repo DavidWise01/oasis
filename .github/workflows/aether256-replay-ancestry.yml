@@ -1,0 +1,19 @@
+name: AETHER-256 Replay Ledger and Controller Ancestry
+on:
+  push:
+    paths:
+      - 'aether/256/**'
+      - '.github/workflows/aether256-replay-ancestry.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regression-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/256 -p 'test_*.py' -v
+      - run: echo 'Ledger snapshots and signer ancestry labels are not independently authenticated evidence.'
