@@ -1,0 +1,20 @@
+name: AETHER-259 Multiprocess CAS and Restart Regression
+on:
+  push:
+    paths:
+      - 'aether/258/**'
+      - 'aether/259/**'
+      - '.github/workflows/aether259-process-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  local-multiprocess-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/259 -p 'test_*.py' -v
+      - run: echo 'Multi-process SQLite results do not prove multi-host CAS or external durability.'
