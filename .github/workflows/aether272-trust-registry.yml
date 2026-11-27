@@ -1,0 +1,20 @@
+name: AETHER-272 Persistent Transcript Registry Tests
+on:
+  push:
+    paths:
+      - 'aether/272/**'
+      - '.github/workflows/aether272-trust-registry.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-sqlite-signature-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/272 -p 'test_*.py' -v
+      - run: echo 'Local SQLite trust pins and receipts are not independent external custody.'
