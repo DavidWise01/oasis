@@ -203,3 +203,5 @@ pub mod indexed_recovery;
 pub mod verification_profile;
 
 pub mod balance_tree;
+
+pub mod membership_tree;
