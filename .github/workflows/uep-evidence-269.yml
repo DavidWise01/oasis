@@ -1,0 +1,88 @@
+name: UEP-269R indexed evidence publication
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-evidence-269.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+  statuses: write
+concurrency:
+  group: uep-evidence-269
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Verify and stage actual evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          p=apps/uep/UEP-269R-integrated-indexed
+          mkdir -p "$RUNNER_TEMP/uep269" "$RUNNER_TEMP/extract269"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15207421496/zip" > "$RUNNER_TEMP/evidence269.zip"
+          echo "e4eb72a3eb93bdc031c177d99066cc7f762900dcd9cb34de47e1e6ba439a5d67  $RUNNER_TEMP/evidence269.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/evidence269.zip" -d "$RUNNER_TEMP/extract269"
+          e="$RUNNER_TEMP/extract269"
+          (cd "$e" && sha256sum -c SHA256SUMS)
+          git diff --exit-code aa0e3b7a5d3f5b480637f344e4ae8857247790c5 HEAD -- "$p/index.html"
+          for f in tape-1440.bin tape-1800.bin tape-2160.bin tape-2520.bin tape-2880.bin tape-3240.bin tape-3600.bin opening.commitment terminal.commitment terminal.state indexed-anchors.bin indexed268.csv recovery268.csv indexed268.json summary268.json SHA256SUMS manifest.sha256; do test ! -e "$p/$f"; done
+          for f in tape-1440.bin tape-1800.bin tape-2160.bin tape-2520.bin tape-2880.bin tape-3240.bin tape-3600.bin opening.commitment terminal.commitment terminal.state indexed-anchors.bin indexed268.csv recovery268.csv indexed268.json summary268.json SHA256SUMS; do cp "$e/$f" "$p/"; done
+          (cd "$p" && sha256sum -c SHA256SUMS && sha256sum SHA256SUMS | cut -d' ' -f1 > manifest.sha256)
+          cp "$p/SHA256SUMS" "$p/manifest.sha256" "$RUNNER_TEMP/uep269/"
+      - name: Browser acceptance
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/uep269-node" --no-audit --no-fund playwright@1.51.1
+          "$RUNNER_TEMP/uep269-node/node_modules/.bin/playwright" install --with-deps chromium
+          python3 -m http.server 8765 --directory apps/uep/UEP-269R-integrated-indexed > /tmp/uep269-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" || true' EXIT
+          for attempt in $(seq 1 30); do if curl --fail --silent http://localhost:8765/ > /dev/null; then break; fi; sleep 1; done
+          curl --fail --silent http://localhost:8765/ > /dev/null
+          NODE_PATH="$RUNNER_TEMP/uep269-node/node_modules" node <<'JS' | tee "$RUNNER_TEMP/uep269/browser.txt"
+          const {chromium}=require('playwright');const assert=require('node:assert/strict');
+          (async()=>{const b=await chromium.launch();try{const p=await b.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://localhost:8765');for(const [response,msg] of [[{status:404},'HOLD · indexed268.csv HTTP 404'],[{status:200,body:'corrupt'},'HOLD · digest indexed268.csv']]){await p.route('**/indexed268.csv',r=>r.fulfill(response));await p.click('#load');await p.waitForFunction(msg=>document.querySelector('#status').textContent===msg,msg);assert.equal(await p.locator('#gate').evaluate(e=>e.disabled),true);assert(await p.locator('#n').isDisabled());assert.equal(await p.locator('#o').textContent(),'');await p.unroute('**/indexed268.csv');}await p.click('#load');await p.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('PASS'));assert(await p.locator('#n').isEnabled());let periods=[1081,1440,1441,1800,1801,2160,2161,2520,2521,2880,2881,3240,3241,3600];for(const t of periods){await p.locator('#n').evaluate((e,t)=>{e.value=t;e.dispatchEvent(new Event('input'))},t);assert((await p.locator('#o').textContent()).startsWith('Period '+t+' |'));assert((await p.locator('#recovery').textContent()).startsWith('Tape terminal '+Math.ceil(t/360)*360+' |'));assert(/^[a-f0-9]{64}$/.test(await p.locator('#commit').textContent()));}assert((await p.locator('#o').textContent()).includes('Arrears 400'));assert.equal(errors.length,0);console.log(JSON.stringify({rows:2520,tapes:7,boundaryChecks:14,missingRejected:true,corruptRejected:true,pageErrors:0}));}finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});
+
+          JS
+      - name: Publish immutable evidence
+        run: |
+          set -euo pipefail
+          p=apps/uep/UEP-269R-integrated-indexed
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -f "$p/"{tape-1440.bin,tape-1800.bin,tape-2160.bin,tape-2520.bin,tape-2880.bin,tape-3240.bin,tape-3600.bin,opening.commitment,terminal.commitment,terminal.state,indexed-anchors.bin,indexed268.csv,recovery268.csv,indexed268.json,summary268.json,SHA256SUMS,manifest.sha256}
+          git commit -m "UEP-269R: publish actual qualified generational evidence"
+          published=0
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            git diff --exit-code aa0e3b7a5d3f5b480637f344e4ae8857247790c5 HEAD -- "$p/index.html"
+            cmp "$p/SHA256SUMS" "$RUNNER_TEMP/uep269/SHA256SUMS"
+            cmp "$p/manifest.sha256" "$RUNNER_TEMP/uep269/manifest.sha256"
+            (cd "$p" && sha256sum -c SHA256SUMS)
+            if git push origin HEAD:main; then published=1; break; fi
+          done
+          test "$published" = 1
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep269/published.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-269r-publication-evidence
+          path: ${{ runner.temp }}/uep269/
+      - name: Report qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-269R/publication" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
