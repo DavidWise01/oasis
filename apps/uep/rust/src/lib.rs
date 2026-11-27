@@ -199,3 +199,5 @@ pub mod funding_cursor;
 pub mod working_projection;
 
 pub mod indexed_recovery;
+
+pub mod verification_profile;
