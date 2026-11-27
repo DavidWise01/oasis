@@ -1,0 +1,20 @@
+name: AETHER-250 Namespace Observer Unit Tests
+on:
+  push:
+    paths:
+      - 'aether/250/**'
+      - '.github/workflows/aether250-namespace-observer.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-cryptographic-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/250 -p 'test_*.py' -v
+      - run: echo 'Self-generated signatures and /proc fixtures are not independent custody or live isolation.'
