@@ -25,9 +25,9 @@ impl Universe{
   let shares:&Shares=e.economic.next.bridge().funded();let stage=g.next.restoration();
   if stage.accepted()>stage.completed()||stage.completed()>stage.funded()||stage.accepted()+g.lifecycle.residual_harm!=17{return Err("stage parity")}
   let mut o=Observation{epoch:u.closing.epoch,due:u.current_due,funded:u.current_funded,arrears:u.closing.outstanding()?,carbon_reserved:shares.carbon,ai_reserved:shares.ai,dividend:e.economic.dividend_total,work:e.units,completed:stage.completed(),accepted:stage.accepted(),residual_harm:g.lifecycle.residual_harm,stock:e.physical.next.stock(),gain:e.physical.next.gain(),queued:g.queued,rate:f.chosen.next.rate(),rejected:f.rejected,first_violation:f.first_violation,historical_reserved:audit.total_reserved,previous:self.observations.last().map_or(self.prefix_digest,|x|x.digest),digest:[0;32]};
-  o.digest=o.hash();let mut n=self.clone();n.state=f.chosen.next;n.population=u.closing.clone();n.observations.push(o);Ok(n)
+  o.digest=o.hash();let mut n={let _profile=crate::verification_profile::span(7);self.clone()};n.state=f.chosen.next;n.population=u.closing.clone();n.observations.push(o);Ok(n)
  }
- pub fn verify_observations(&self)->Result<(),&'static str>{let mut prev=self.prefix_digest;for (i,o) in self.observations.iter().enumerate(){if o.previous!=prev||o.digest!=o.hash()||Some(o.epoch)!=self.prefix_count.checked_add(i as u64).and_then(|v|v.checked_add(7)){return Err("observation chain")}prev=o.digest;}if self.total_observations().checked_add(6)!=Some(self.population.epoch){return Err("observation count")}Ok(())}
+ pub fn verify_observations(&self)->Result<(),&'static str>{let _profile=crate::verification_profile::span(6);let mut prev=self.prefix_digest;for (i,o) in self.observations.iter().enumerate(){if o.previous!=prev||o.digest!=o.hash()||Some(o.epoch)!=self.prefix_count.checked_add(i as u64).and_then(|v|v.checked_add(7)){return Err("observation chain")}prev=o.digest;}if self.total_observations().checked_add(6)!=Some(self.population.epoch){return Err("observation count")}Ok(())}
  pub fn replay(ledger:Ledger,head:[u8;32],requests:&[Request])->Result<Self,&'static str>{let mut n=Self::new(ledger,head)?;for r in requests{n=n.advance(r)?;}n.verify_observations()?;Ok(n)}
 }
 #[cfg(test)]
