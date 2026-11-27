@@ -22,7 +22,7 @@ impl IdentityIndex{
  /// Full-scan qualification remains enabled; the history head changes only on new identities.
  pub fn advance(&self,opening:&Population,closing:&Population,r:&Period)->Result<Self,&'static str>{
   self.verify_membership(opening)?;let d=identity_continuity::verify(opening,closing,r)?;
-  let mut n=self.clone();for id in d.departed{n.active.remove(&id);}for id in d.entered{n.insert(&id)?;n.active.insert(id);}
+  let mut n={let _profile=crate::verification_profile::span(8);self.clone()};for id in d.departed{n.active.remove(&id);}for id in d.entered{n.insert(&id)?;n.active.insert(id);}
   n.epoch=closing.epoch;n.verify_membership(closing)?;Ok(n)
  }
 }
@@ -37,4 +37,4 @@ impl IdentityIndex{
 }
 
 // UEP-266R: commit actual membership as well as incremental historical head.
-impl IdentityIndex{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let mut b=b"UEP266I\0".to_vec();b.extend_from_slice(&self.epoch.to_be_bytes());b.extend_from_slice(&self.count.to_be_bytes());b.extend_from_slice(&self.head);for set in [&self.known,&self.active]{b.extend_from_slice(&(set.len() as u64).to_be_bytes());for id in set{b.extend_from_slice(&(id.len() as u64).to_be_bytes());b.extend_from_slice(id.as_bytes())}}b}}
+impl IdentityIndex{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let _profile=crate::verification_profile::span(5);let mut b=b"UEP266I\0".to_vec();b.extend_from_slice(&self.epoch.to_be_bytes());b.extend_from_slice(&self.count.to_be_bytes());b.extend_from_slice(&self.head);for set in [&self.known,&self.active]{b.extend_from_slice(&(set.len() as u64).to_be_bytes());for id in set{b.extend_from_slice(&(id.len() as u64).to_be_bytes());b.extend_from_slice(id.as_bytes())}}b}}
