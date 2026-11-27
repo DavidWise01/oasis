@@ -9,18 +9,19 @@ fn branch(d:usize,l:Hash,r:Hash)->Hash{hash(b"OASIS-UEP-274R-node-v1",&[&(d as u
 fn empties()->[Hash;65]{let mut e=[[0;32];65];e[64]=hash(b"OASIS-UEP-274R-empty-v1",&[]);for d in (0..64).rev(){e[d]=branch(d,e[d+1],e[d+1])}e}
 #[derive(Clone,Debug,PartialEq,Eq)]
 struct Node{h:Hash,c:[Option<Arc<Node>>;2],lot:Option<Lot>}
+fn profile_node(n:Node)->Arc<Node>{let _profile=crate::verification_profile::span(15);Arc::new(n)}
 fn root(n:&Option<Arc<Node>>,e:&[Hash;65],d:usize)->Hash{n.as_ref().map_or(e[d],|x|x.h)}
 fn bit(i:u64,d:usize)->usize{((i>>(63-d))&1) as usize}
 fn set(n:&Option<Arc<Node>>,e:&[Hash;65],i:u64,l:Option<Lot>,d:usize)->Option<Arc<Node>>{
- if d==64{return l.map(|l|Arc::new(Node{h:leaf(i,&l),c:[None,None],lot:Some(l)}))}
+ if d==64{return l.map(|l|profile_node(Node{h:leaf(i,&l),c:[None,None],lot:Some(l)}))}
  let mut c=n.as_ref().map_or([None,None],|x|x.c.clone());let b=bit(i,d);c[b]=set(&c[b],e,i,l,d+1);
  if c.iter().all(Option::is_none){return None}
- Some(Arc::new(Node{h:branch(d,root(&c[0],e,d+1),root(&c[1],e,d+1)),c,lot:None}))
+ Some(profile_node(Node{h:branch(d,root(&c[0],e,d+1),root(&c[1],e,d+1)),c,lot:None}))
 }
 #[derive(Clone,Debug,PartialEq,Eq)]
 pub struct Queue{tree:Option<Arc<Node>>,empty:Arc<[Hash;65]>,head:u64,tail:u64,epoch:u64,total:u64,unattributed:u64,retirement:Hash}
 impl Queue{
- pub fn build(p:&Population)->Result<Self,&'static str>{if p.lots.windows(2).any(|w|w[0].origin>w[1].origin){return Err("chronology")}let mut n=Self{tree:None,empty:Arc::new(empties()),head:0,tail:0,epoch:p.epoch,total:0,unattributed:p.unattributed,retirement:hash(b"OASIS-UEP-274R-retirement-genesis-v1",&[])};for l in &p.lots{if l.amount==0||l.origin>p.epoch||!p.known.contains(&l.id){return Err("lot")}n.push(l.clone())?;}n.verify(p)?;Ok(n)}
+ pub fn build(p:&Population)->Result<Self,&'static str>{let _profile=crate::verification_profile::span(19);if p.lots.windows(2).any(|w|w[0].origin>w[1].origin){return Err("chronology")}let mut n=Self{tree:None,empty:Arc::new(empties()),head:0,tail:0,epoch:p.epoch,total:0,unattributed:p.unattributed,retirement:hash(b"OASIS-UEP-274R-retirement-genesis-v1",&[])};for l in &p.lots{if l.amount==0||l.origin>p.epoch||!p.known.contains(&l.id){return Err("lot")}n.push(l.clone())?;}n.verify(p)?;Ok(n)}
  pub fn head(&self)->u64{self.head}
  pub fn tail(&self)->u64{self.tail}
  pub fn root(&self)->Hash{root(&self.tree,&self.empty,0)}
@@ -28,7 +29,7 @@ impl Queue{
  pub fn commitment(&self)->Hash{hash(b"OASIS-UEP-274R-queue-v1",&[&self.epoch.to_be_bytes(),&self.head.to_be_bytes(),&self.tail.to_be_bytes(),&self.total.to_be_bytes(),&self.unattributed.to_be_bytes(),&self.root(),&self.retirement])}
  pub fn get(&self,i:u64)->Option<&Lot>{let mut n=self.tree.as_ref();for d in 0..64{n=n.and_then(|x|x.c[bit(i,d)].as_ref());}n.and_then(|x|x.lot.as_ref())}
  fn push(&mut self,l:Lot)->Result<(),&'static str>{let t=self.tail.checked_add(1).ok_or("tail")?;let v=self.total.checked_add(l.amount).ok_or("balance")?;v.checked_add(self.unattributed).ok_or("total")?;self.tree=set(&self.tree,&self.empty,self.tail,Some(l),0);self.tail=t;self.total=v;Ok(())}
- pub fn verify(&self,p:&Population)->Result<(),&'static str>{if self.epoch!=p.epoch||self.unattributed!=p.unattributed||self.tail.checked_sub(self.head)!=Some(p.lots.len() as u64)||self.total.checked_add(self.unattributed)!=Some(p.outstanding()?){return Err("queue metadata")}for(i,l)in (self.head..self.tail).zip(&p.lots){if self.get(i)!=Some(l){return Err("lot parity")}}Ok(())}
+ pub fn verify(&self,p:&Population)->Result<(),&'static str>{let _profile=crate::verification_profile::span(12);if self.epoch!=p.epoch||self.unattributed!=p.unattributed||self.tail.checked_sub(self.head)!=Some(p.lots.len() as u64)||self.total.checked_add(self.unattributed)!=Some(p.outstanding()?){return Err("queue metadata")}for(i,l)in (self.head..self.tail).zip(&p.lots){if self.get(i)!=Some(l){return Err("lot parity")}}Ok(())}
  pub fn advance(&self,p:&Population,r:&Period)->Result<(Self,Audit,usize),&'static str>{
  self.verify(p)?;let a=arrears::advance(p,r)?;let (n,k)=self.apply_audit(r,&a)?;Ok((n,a,k))
  }
