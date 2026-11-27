@@ -1,0 +1,21 @@
+name: AETHER-269 Signed Monotonic Nonce Checkpoints
+on:
+  push:
+    paths:
+      - 'aether/268/**'
+      - 'aether/269/**'
+      - '.github/workflows/aether269-checkpoints.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-rollback-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/269 -p 'test_*.py' -v
+      - run: echo 'A signed local snapshot is not independently authenticated external custody.'
