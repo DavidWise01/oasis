@@ -1,0 +1,81 @@
+name: UEP-268R 3600-period indexed qualification
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-indexed-268.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  statuses: write
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f65a3f90b8b0b9163a73b21a82e9e779e5494dde
+          persist-credentials: false
+      - name: Recover native-qualified dependency lock
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/uep268"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15077861777/zip" > "$RUNNER_TEMP/native.zip"
+          echo "b0b1a676ef7ee44e33c4907dc08a926227edc4851f4495c2a406686475f0313e  $RUNNER_TEMP/native.zip" | sha256sum -c -
+          unzip -p "$RUNNER_TEMP/native.zip" Cargo.lock > apps/uep/rust/Cargo.lock
+          echo "af9e971445417daa5d9996aac6e35dafc51b8f93313076f7a70af2c59e5109f5  apps/uep/rust/Cargo.lock" | sha256sum -c -
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep268/source.txt"
+      - name: Execute inherited and new native regressions
+        working-directory: apps/uep/rust
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.85.1 --profile minimal
+          cargo +1.85.1 fetch --locked
+          cargo +1.85.1 test --frozen 2>&1 | tee "$RUNNER_TEMP/uep268/tests.txt"
+          python3 - <<'PY'
+          import os,re,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep268'
+          s=(p/'tests.txt').read_text()
+          rows=re.findall(r'test result: ok\. (\d+) passed; (\d+) failed; (\d+) ignored; (\d+) measured; (\d+) filtered out',s)
+          assert [sum(int(r[i]) for r in rows) for i in range(5)]==[206,0,0,0,0], rows
+          assert len(re.findall(r'^test indexed_recovery::tests::.* \.\.\. ok$',s,re.M))==5
+          PY
+      - name: Execute and recover seven indexed tapes
+        working-directory: apps/uep/rust
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/uep268"
+          (cd ../UEP-259R-integrated-generations && sha256sum -c SHA256SUMS)
+          cargo +1.85.1 run --frozen --release --bin indexed268 -- "$out" | tee "$out/indexed268.json"
+          python3 - <<'PY' | tee "$out/summary268.json"
+          import csv,json,os,pathlib,statistics
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep268'
+          a=list(csv.DictReader((p/'indexed268.csv').open()))
+          b=list(csv.DictReader((p/'recovery268.csv').open()))
+          assert [int(r['period']) for r in a]==list(range(1081,3601))
+          assert [int(r['terminal']) for r in b]==list(range(1440,3601,360))
+          assert all(int(r['observations'])==(int(r['period'])-1)%360+1 for r in a)
+          assert len((p/'indexed-anchors.bin').read_bytes())==7*208
+          print(json.dumps({'rows':len(a),'tapes':len(b),'tapeBytes':sum(int(r['bytes']) for r in b),'medianAppendNs':statistics.median(int(r['tape_append_ns']) for r in a),'medianReferenceNs':statistics.median(int(r['reference_advance_ns']) for r in a),'totalRecoveryNs':sum(int(r['recovery_ns']) for r in b),'peakCanonicalBytes':max(int(r['canonical_bytes']) for r in a),'terminalCanonicalBytes':int(a[-1]['canonical_bytes']),'peakLots':max(int(r['lots']) for r in a)},sort_keys=True))
+          PY
+          (cd "$out" && sha256sum tape-*.bin opening.commitment terminal.commitment terminal.state indexed-anchors.bin indexed268.csv recovery268.csv indexed268.json summary268.json > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-268r-native-evidence
+          path: ${{ runner.temp }}/uep268/
+      - name: Report qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-268R/native" -f description="3600-period indexed qualification" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
