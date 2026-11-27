@@ -1,0 +1,7 @@
+scenario,path,terminal,tape_bytes,recovery_ns
+balanced,indexed,1440,199213,198561280
+balanced,authenticated,1440,199213,3653792966
+scarcity,indexed,1440,199213,1390225042
+scarcity,authenticated,1440,199213,5406331178
+churn,indexed,1440,208055,472323299
+churn,authenticated,1440,208055,14898436895
