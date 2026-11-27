@@ -1,0 +1,199 @@
+{
+  "bound": "UEP-270R",
+  "phase": "XVI",
+  "closure": "SEALED computational and repository publication scope",
+  "livePages": "UNVERIFIED",
+  "releaseCommit": "29795a42f4c29f169a1ef375b1c9545f62f334af",
+  "native": {
+    "run": 46018497424,
+    "job": 140571712765,
+    "tests": 206,
+    "periods": 3600,
+    "newPeriods": 2520,
+    "tapes": 7,
+    "exactStateParity": true,
+    "indexedRecoveryEqual": true,
+    "actualPayments": 0,
+    "artifact": 15207421496,
+    "zipSha256": "e4eb72a3eb93bdc031c177d99066cc7f762900dcd9cb34de47e1e6ba439a5d67"
+  },
+  "publication": {
+    "run": 46027491873,
+    "job": 140602542700,
+    "artifact": 15212721724,
+    "zipSha256": "d5c357cf346694189163e36e09f9b0590d3354c84c3ff45458478ee714e0abc1",
+    "browser": {
+      "rows": 2520,
+      "tapes": 7,
+      "boundaryChecks": 14,
+      "missingRejected": true,
+      "corruptRejected": true,
+      "pageErrors": 0
+    },
+    "normalPush": true
+  },
+  "assets": [
+    {
+      "name": "SHA256SUMS",
+      "blob": "dfd29372647aeb34c66b9b18ae7252e951a8caaf",
+      "bytes": 1225
+    },
+    {
+      "name": "index.html",
+      "blob": "5876d67a87c9bb8f4e129347c7a9863b1fd47f8a",
+      "bytes": 8093
+    },
+    {
+      "name": "indexed-anchors.bin",
+      "blob": "0129b94e4327507e1792468419186a85fb40c304",
+      "bytes": 1456,
+      "sha256": "c0922331f5118ed6680b93bb35604d062edfb8b0e3a37b5b9b0da29d02f76eec"
+    },
+    {
+      "name": "indexed268.csv",
+      "blob": "407880124576223ac38c73900acbd21f924ce962",
+      "bytes": 167396,
+      "sha256": "268cf3cbd1f1760a13ee6214c6be7f2c364fca74a6e1eca763694b7ee7b53710"
+    },
+    {
+      "name": "indexed268.json",
+      "blob": "633e0c296eddd0ce12eabcc0b03b1cff753b1ffd",
+      "bytes": 256,
+      "sha256": "239f4ed2a37ab1ecb17ec4b52d294a806ad8adcaaa24888f06868b196875c41c"
+    },
+    {
+      "name": "manifest.sha256",
+      "blob": "cfcd9d76ee916c4c81e09655b1cdcfc8d5a22c29",
+      "bytes": 65
+    },
+    {
+      "name": "opening.commitment",
+      "blob": "dfd27a5c8146bd2c04081538faf5ecbc784970f1",
+      "bytes": 168,
+      "sha256": "dd07d8041bf53fdc5476463c80582a2109b35a12311d9b79d7087b2937af9d77"
+    },
+    {
+      "name": "recovery268.csv",
+      "blob": "ec7d8d7ff66546445c5ac4e1355e0ac6bc84323c",
+      "bytes": 181,
+      "sha256": "7f8f2e80e9be89681e5dae29a0228040787a63cb5b6fd439f67be235bf2edc27"
+    },
+    {
+      "name": "summary268.json",
+      "blob": "ab54bbf4ca1c9ed45942a3459983306659fa572e",
+      "bytes": 215,
+      "sha256": "50f31b39ddbeda344c84bece69374f93359040a1dda82ffd308618870393a54d"
+    },
+    {
+      "name": "tape-1440.bin",
+      "blob": "a261f4e826a461121fc37eb0fabd54706c1d715c",
+      "bytes": 199200,
+      "sha256": "6f189b2d2289794ce9f6fee85deede21f94eb58e051fe9a9efaa7cb7af790919"
+    },
+    {
+      "name": "tape-1800.bin",
+      "blob": "ee9987769f0f42081d978251c1997cfc52838ea6",
+      "bytes": 199200,
+      "sha256": "30b1cef1fed655e6b2537ea66abb38f0577440865b61f95373f155ac9af2c6c1"
+    },
+    {
+      "name": "tape-2160.bin",
+      "blob": "2646cca5881401e32df095a420efe9172cb3d430",
+      "bytes": 199200,
+      "sha256": "cb2dea29e7d112b99a3dd5dcbf2ab775666a2fd702816d218dd8215eedf773e2"
+    },
+    {
+      "name": "tape-2520.bin",
+      "blob": "d265a9735a4f4d1457720f89050647e609ee168c",
+      "bytes": 199200,
+      "sha256": "50d53421b1739fa491fc3046ebf908c906a78b4db48963d42407968c979265f9"
+    },
+    {
+      "name": "tape-2880.bin",
+      "blob": "db7f3958ef8783fb2ee76a64740621dfd06abaf7",
+      "bytes": 199200,
+      "sha256": "e142a66cbf31566b8a92d96f9a176830fef248bb2384815f3e5dcef7cf7b3567"
+    },
+    {
+      "name": "tape-3240.bin",
+      "blob": "160224ac115d2ec26ebe33417a487e5cb5134f05",
+      "bytes": 199217,
+      "sha256": "73d92c6bd3dc3dc8ecfa4c769ad515e5fb75e84ad047b860d5bac3dd4d7960a6"
+    },
+    {
+      "name": "tape-3600.bin",
+      "blob": "00fb41ee815392d19a024bfddd71d3890e3b02d4",
+      "bytes": 199224,
+      "sha256": "b9db03828bed03648d2c5d6eecbcef30ca0594ac36a834e0c720ebbcf3eeee04"
+    },
+    {
+      "name": "terminal.commitment",
+      "blob": "a74142c386d4a6454138bf8ae7a55c49355c392d",
+      "bytes": 168,
+      "sha256": "c112ebcc7a8292140b6a11c01ac3f17190a6b5db2f4cb04fd9697748523848f0"
+    },
+    {
+      "name": "terminal.state",
+      "blob": "ba2ff09cd4b43d113bddab3534f1939eca7e45e1",
+      "bytes": 3666,
+      "sha256": "876563c2ed24ae63b6c3174a584904ec1435251f3a994f72999ed28a00fc6a6e"
+    }
+  ],
+  "manifestSha256": "848500dae3c4419d9a7c2adcaed1d5e0c9654d29fefe2f66eaa5abf9aad756a2",
+  "observed": {
+    "newShortfalls": 840,
+    "newHistoricalReserved": 84000,
+    "combinedHistoricalReserved": 120000,
+    "combinedTurnovers": 120,
+    "peakArrears": 1400,
+    "closingArrears": 400,
+    "known": 127,
+    "activeRecords": 360,
+    "peakLots": 60,
+    "peakCanonicalBytes": 6946,
+    "terminalCanonicalBytes": 3666,
+    "medianAppendNs": 706645,
+    "medianReferenceNs": 410414.5,
+    "totalRecoveryNs": 1780453482,
+    "tapeBytes": 1394441,
+    "recovery": [
+      {
+        "terminal": 1440,
+        "bytes": 199200,
+        "recoveryNs": 211311601
+      },
+      {
+        "terminal": 1800,
+        "bytes": 199200,
+        "recoveryNs": 224829282
+      },
+      {
+        "terminal": 2160,
+        "bytes": 199200,
+        "recoveryNs": 240139843
+      },
+      {
+        "terminal": 2520,
+        "bytes": 199200,
+        "recoveryNs": 255310227
+      },
+      {
+        "terminal": 2880,
+        "bytes": 199200,
+        "recoveryNs": 271042499
+      },
+      {
+        "terminal": 3240,
+        "bytes": 199217,
+        "recoveryNs": 281874507
+      },
+      {
+        "terminal": 3600,
+        "bytes": 199224,
+        "recoveryNs": 295945523
+      }
+    ]
+  },
+  "scope": "Runner logs, remote metadata and CSV readback confirmed. Binary bytes not independently rehashed outside runner. Same-origin manifest is not independent custody. Observation count bounded, not total memory; indexed qualification slower than reference. Synthetic only.",
+  "nextPhase": "XVII: authenticated incremental state and reduced redundant verification"
+}
