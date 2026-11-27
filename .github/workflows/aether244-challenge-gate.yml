@@ -1,0 +1,21 @@
+name: AETHER-244 Source Ancestry Challenge Tests
+on:
+  push:
+    paths:
+      - 'aether/244/**'
+      - '.github/workflows/aether244-challenge-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-challenge-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exercise mock challenge and ancestry cases
+        run: python3 -m unittest discover -s aether/244 -p 'test_*.py' -v
+      - name: Noncertifying boundary
+        run: echo 'Offline mocks do not establish live network isolation, independent keys, or physical ACT.'
