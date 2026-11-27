@@ -12,12 +12,13 @@ fn branch(d:usize,l:&Hash,r:&Hash)->Hash{hash(b"OASIS-UEP-273R-branch-v1",&[&(d 
 fn empties()->[Hash;257]{let mut e=[[0;32];257];e[256]=hash(b"OASIS-UEP-273R-empty-v1",&[]);for d in (0..256).rev(){e[d]=branch(d,&e[d+1],&e[d+1]);}e}
 #[derive(Clone,Debug,PartialEq,Eq)]
 struct Node{digest:Hash,value:u64,children:[Option<Arc<Node>>;2],id:Option<String>}
+fn profile_node(n:Node)->Arc<Node>{let _profile=crate::verification_profile::span(14);Arc::new(n)}
 fn digest(n:&Option<Arc<Node>>,e:&[Hash;257],d:usize)->Hash{n.as_ref().map_or(e[d],|x|x.digest)}
 fn update(n:&Option<Arc<Node>>,k:&Hash,id:&str,v:u64,e:&[Hash;257],d:usize)->Result<Option<Arc<Node>>,&'static str>{
- if d==DEPTH{if let Some(x)=n{if x.id.as_deref()!=Some(id){return Err("key collision")}}return Ok(if v==0{None}else{Some(Arc::new(Node{digest:leaf(k,v),value:v,children:[None,None],id:Some(id.into())}))})}
+ if d==DEPTH{if let Some(x)=n{if x.id.as_deref()!=Some(id){return Err("key collision")}}return Ok(if v==0{None}else{Some(profile_node(Node{digest:leaf(k,v),value:v,children:[None,None],id:Some(id.into())}))})}
  let mut c=n.as_ref().map_or([None,None],|x|x.children.clone());let i=bit(k,d);c[i]=update(&c[i],k,id,v,e,d+1)?;
  if c.iter().all(Option::is_none){return Ok(None)}
- Ok(Some(Arc::new(Node{digest:branch(d,&digest(&c[0],e,d+1),&digest(&c[1],e,d+1)),value:0,children:c,id:None})))
+ Ok(Some(profile_node(Node{digest:branch(d,&digest(&c[0],e,d+1),&digest(&c[1],e,d+1)),value:0,children:c,id:None})))
 }
 #[derive(Clone,Debug,PartialEq,Eq)]
 pub struct Proof{pub value:u64,pub siblings:Vec<Hash>}
@@ -27,7 +28,7 @@ impl Proof{pub fn verify(&self,id:&str,root:Hash)->Result<bool,&'static str>{let
 pub struct Membership{known:Option<Arc<Node>>,active:Option<Arc<Node>>,empty:Arc<[Hash;257]>,epoch:u64,count:u64,active_count:u64}
 fn lookup(n:&Option<Arc<Node>>,id:&str,e:&[Hash;257])->Result<Proof,&'static str>{let k=key(id)?;let mut n=n.as_ref();let mut siblings=Vec::with_capacity(DEPTH);for d in 0..DEPTH{let i=bit(&k,d);siblings.push(n.map_or(e[d+1],|x|digest(&x.children[1-i],e,d+1)));n=n.and_then(|x|x.children[i].as_ref());}if let Some(x)=n{if x.id.as_deref()!=Some(id){return Err("key collision")}}Ok(Proof{value:n.map_or(0,|x|x.value),siblings})}
 impl Membership{
- pub fn build(p:&Population)->Result<Self,&'static str>{
+ pub fn build(p:&Population)->Result<Self,&'static str>{let _profile=crate::verification_profile::span(11);
   if p.known.len()>10000||!p.active.is_subset(&p.known){return Err("population")}
   let mut n=Self{known:None,active:None,empty:Arc::new(empties()),epoch:p.epoch,count:p.known.len() as u64,active_count:p.active.len() as u64};
   for id in &p.known{n.known=update(&n.known,&key(id)?,id,1,&n.empty,0)?;}
@@ -38,8 +39,8 @@ impl Membership{
  pub fn known_proof(&self,id:&str)->Result<Proof,&'static str>{lookup(&self.known,id,&self.empty)}
  pub fn active_proof(&self,id:&str)->Result<Proof,&'static str>{lookup(&self.active,id,&self.empty)}
  pub fn commitment(&self)->Hash{hash(b"OASIS-UEP-273R-membership-v1",&[&self.epoch.to_be_bytes(),&self.count.to_be_bytes(),&self.active_count.to_be_bytes(),&self.known_root(),&self.active_root()])}
- pub fn verify(&self,p:&Population)->Result<(),&'static str>{if self.commitment()!=Self::build(p)?.commitment(){return Err("membership parity")}Ok(())}
- pub fn advance(&self,p:&Population,q:&Population,r:&Period)->Result<Self,&'static str>{
+ pub fn verify(&self,p:&Population)->Result<(),&'static str>{let _profile=crate::verification_profile::span(17);if self.commitment()!=Self::build(p)?.commitment(){return Err("membership parity")}Ok(())}
+ pub fn advance(&self,p:&Population,q:&Population,r:&Period)->Result<Self,&'static str>{let _profile=crate::verification_profile::span(21);
   self.verify(p)?;let delta=identity_continuity::verify(p,q,r)?;let mut n=self.clone();
   for id in delta.departed{n.active=update(&n.active,&key(&id)?,&id,0,&n.empty,0)?;n.active_count=n.active_count.checked_sub(1).ok_or("active count")?;}
   for id in delta.entered{if n.known_proof(&id)?.value!=0{return Err("identity reuse")}let k=key(&id)?;n.known=update(&n.known,&k,&id,1,&n.empty,0)?;n.active=update(&n.active,&k,&id,1,&n.empty,0)?;n.count=n.count.checked_add(1).ok_or("count")?;n.active_count=n.active_count.checked_add(1).ok_or("active count")?;}
