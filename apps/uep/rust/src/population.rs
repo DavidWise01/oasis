@@ -49,7 +49,7 @@ impl Population {
         total(&self.lots)?.checked_add(self.unattributed).ok_or("balance overflow")
     }
 }
-pub fn settle(s: &Population, p: &Period) -> Result<Settlement, &'static str> {
+pub fn settle(s: &Population, p: &Period) -> Result<Settlement, &'static str> {let _profile=crate::verification_profile::span(0);
     if p.award > 1_000_000 || p.funding > 1_000_000 || s.known.len() > 10_000
         || !s.active.is_subset(&s.known) || !s.known.iter().all(|x| valid(x))
         || s.lots.iter().any(|x| !s.known.contains(&x.id) || x.origin > s.epoch || x.amount == 0)
