@@ -1,0 +1,20 @@
+name: AETHER-262 Nonce Checkpoint Ancestry Regressions
+on:
+  push:
+    paths:
+      - 'aether/262/**'
+      - '.github/workflows/aether262-checkpoint.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/262 -p 'test_*.py' -v
+      - run: echo 'Three local signatures do not establish three independent external custodians.'
