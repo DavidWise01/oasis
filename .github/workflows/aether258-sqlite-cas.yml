@@ -1,0 +1,19 @@
+name: AETHER-258 SQLite CAS Concurrency Regressions
+on:
+  push:
+    paths:
+      - 'aether/258/**'
+      - '.github/workflows/aether258-sqlite-cas.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sqlite-cas-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/258 -p 'test_*.py' -v
+      - run: echo 'SQLite local atomicity is not independently authenticated external CAS.'
