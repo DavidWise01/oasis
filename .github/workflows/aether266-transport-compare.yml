@@ -1,0 +1,20 @@
+name: AETHER-266 Three-Session Transport Comparison
+on:
+  push:
+    paths:
+      - 'aether/266/**'
+      - '.github/workflows/aether266-transport-compare.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/266 -p 'test_*.py' -v
+      - run: echo 'Three signed local observations do not prove three independent transport sessions.'
