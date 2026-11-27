@@ -20,7 +20,7 @@ impl Index{
  pub fn advance(&self,p:&Population,r:&Period)->Result<(Self,Audit),&'static str>{
   self.verify(p)?;
   let audit=arrears::advance(p,r)?;
-  let mut n=self.clone();
+  let mut n={let _profile=crate::verification_profile::span(8);self.clone()};
   for (id,v) in &audit.settlement.historical_reserved{n.debit(id,*v)?;}
   for a in &audit.settlement.awards{n.credit(&a.id,a.due.checked_sub(a.funded).ok_or("award")?)?;}
   n.epoch=audit.settlement.closing.epoch;
@@ -41,4 +41,4 @@ impl Index{
 }
 
 // UEP-266R: canonical component encoding, sorted by beneficiary.
-impl Index{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let mut b=b"UEP266B\0".to_vec();for v in [self.epoch,self.identified,self.unattributed,self.balances.len() as u64]{b.extend_from_slice(&v.to_be_bytes())}for(id,v)in &self.balances{b.extend_from_slice(&(id.len() as u64).to_be_bytes());b.extend_from_slice(id.as_bytes());b.extend_from_slice(&v.to_be_bytes())}b}}
+impl Index{pub(crate) fn commitment_bytes(&self)->Vec<u8>{let _profile=crate::verification_profile::span(5);let mut b=b"UEP266B\0".to_vec();for v in [self.epoch,self.identified,self.unattributed,self.balances.len() as u64]{b.extend_from_slice(&v.to_be_bytes())}for(id,v)in &self.balances{b.extend_from_slice(&(id.len() as u64).to_be_bytes());b.extend_from_slice(id.as_bytes());b.extend_from_slice(&v.to_be_bytes())}b}}
