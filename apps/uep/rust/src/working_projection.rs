@@ -13,7 +13,7 @@ impl Projection{
   self.balances.verify(p)?;self.identities.verify_membership(p)?;self.chronology.verify(p)?;
   if self.balances.total()?!=self.chronology.total()?{return Err("aggregate parity")}Ok(())
  }
- pub fn verify(&self,u:&Universe)->Result<(),&'static str>{if self.anchor!=state_hash::fingerprint(u)?{return Err("projection anchor")}self.verify_population(u.population_ledger())}
+ pub fn verify(&self,u:&Universe)->Result<(),&'static str>{let _profile=crate::verification_profile::span(4);if self.anchor!=state_hash::fingerprint(u)?{return Err("projection anchor")}self.verify_population(u.population_ledger())}
  pub fn view(&self,u:&Universe)->Result<View,&'static str>{self.verify(u)?;Ok(View{active:u.population_count(),known:self.identities.count(),beneficiaries:self.balances.beneficiaries(),lots:self.chronology.len(),outstanding:self.balances.total()?,observations:u.observations().len(),cumulative:u.total_observations(),identity_head:self.identities.head(),anchor:self.anchor})}
  pub fn balance(&self,id:&str)->u64{self.balances.balance(id)}
  pub fn known(&self,id:&str)->bool{self.identities.known(id)}
