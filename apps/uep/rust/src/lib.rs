@@ -187,3 +187,5 @@ pub mod cross_arrears;
 pub mod identity_continuity;
 
 pub mod capacity_inheritance;
+
+pub mod multi_archive;
