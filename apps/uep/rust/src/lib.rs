@@ -191,3 +191,5 @@ pub mod capacity_inheritance;
 pub mod multi_archive;
 
 pub mod obligation_index;
+
+pub mod identity_index;
