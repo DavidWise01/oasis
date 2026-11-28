@@ -1,0 +1,37 @@
+name: RESTITUTION-55 ledger verification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'apps/uep/rust/**'
+      - '.github/workflows/restitution55-ledger.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate and independently verify
+        shell: bash
+        working-directory: apps/uep/rust
+        run: |
+          set -euo pipefail
+          out="$(mktemp -d "$RUNNER_TEMP/restitution55.XXXXXXXX")"
+          echo "LEDGER_OUT=$out" >> "$GITHUB_ENV"
+          git rev-parse HEAD > "$out/commit.txt"
+          rustup toolchain install 1.100.0 --profile minimal
+          cargo +1.100.0 run --locked --release --bin restitution54_ledger > "$out/ledger.jsonl"
+          python3 tools/restitution55_verify.py "$out/ledger.jsonl" > "$out/verification.json"
+          cargo +1.100.0 run --locked --release --bin restitution54_ledger > "$out/replay.jsonl"
+          cmp "$out/ledger.jsonl" "$out/replay.jsonl"
+          rm "$out/replay.jsonl"
+          (cd "$out" && sha256sum commit.txt ledger.jsonl verification.json > SHA256SUMS)
+      - name: Upload qualified ledger
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: restitution55-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ env.LEDGER_OUT }}/
+          if-no-files-found: error
