@@ -1,0 +1,23 @@
+name: AETHER-302 Signed Exact-Object Binding
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/292/**'
+      - 'aether/294/**'
+      - 'aether/302/**'
+      - '.github/workflows/aether302-signed-object-binding.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-bound-object:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/302 -p 'test_*.py' -v
+      - run: echo 'Object URI, version and byte signatures are not independent custodial provenance.'
