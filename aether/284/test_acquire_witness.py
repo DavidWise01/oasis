@@ -49,6 +49,11 @@ class Tests(unittest.TestCase):
                      "status":200,"raw_b64":base64.b64encode(data).decode(),
                      "raw_length":len(data),"raw_sha256":digest(data)}
         observation["observation_sha256"]=objhash(observation)
+        observation.update({"operational_authority":"HOLD",
+                            "physical_act_allowed":False,
+                            "physical_qualification_percent":0,
+                            "independent_custody_authenticated":False,
+                            "independent_source_ancestry_verified":False})
         return observation
     def run_capture(self,collector=None,challenge=None):
         return acquire_and_seal(self.db,self.journal,self.trust,self.pin,self.urls,
