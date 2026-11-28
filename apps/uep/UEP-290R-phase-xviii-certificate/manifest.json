@@ -1,0 +1,260 @@
+{
+  "bound": "UEP-290R",
+  "phase": "XVIII",
+  "closure": "SEALED: computational correctness, measured authenticated speedup, replay parity, repository publication",
+  "priorPhase": "UEP-280R remains sealed and unchanged",
+  "releaseCommit": "a17149f7310a9f02607a0eab8296e515a3645d09",
+  "native": {
+    "run": 46100356900,
+    "job": 140841157900,
+    "tests": 269,
+    "pairedTransitions": 1080,
+    "timedTransitions": 4320,
+    "instrumentedTransitions": 4320,
+    "recoveredTapes": 9,
+    "physicalTapes": 6,
+    "exactAuthenticatedTapeComparisons": 1080,
+    "actualPayments": 0,
+    "artifact": 15244374644,
+    "zipSha256": "8cadf15f2dd8c4102953d71df9ad6248a16fa1124b2d51859ed816ea138eb5e6"
+  },
+  "publication": {
+    "run": 46106695753,
+    "job": 140860938404,
+    "artifact": 15248012206,
+    "zipSha256": "a84abe600f225f59be9d3062484b8440bc072ec3c9c3aae993ec21f5343443b7",
+    "browser": {
+      "rows": 1080,
+      "tapes": 6,
+      "recoveries": 9,
+      "scenarioChecks": 9,
+      "missingRejected": true,
+      "corruptRejected": true,
+      "pageErrors": 0
+    }
+  },
+  "manifestSha256": "82274cf90938a7dca71e3f86c6a1f35b121506934219cf9ff71a9528852e7563",
+  "assets": [
+    {
+      "name": "SHA256SUMS",
+      "blob": "5675a2d5977382c01ac3324360132e220f696086",
+      "bytes": 1479
+    },
+    {
+      "name": "balanced-anchors.bin",
+      "blob": "a44be023f13e4e7dba4e491e6bcdb0ce23b2c9ec",
+      "bytes": 416,
+      "sha256": "0729df094f8be6eacf92627b87ee46bf6b0a73c16b138e48ceeb4b4c17493caa"
+    },
+    {
+      "name": "balanced-authenticated.bin",
+      "blob": "1f0e76d797b0b595e239bdf59fe72e3f2fdbff52",
+      "bytes": 199213,
+      "sha256": "309a8d7b55257058864e2b3a6dc138b1377ccd5f2c75be6ad192a254365b3224"
+    },
+    {
+      "name": "balanced-indexed.bin",
+      "blob": "f14bb51dbb99df51de5cb5ec4c47a94a50e5fb2a",
+      "bytes": 199213,
+      "sha256": "55aee18f7472b0ffc7b6fa6774c6ae6e1d095c01d13ff176bc4e414a1c66627f"
+    },
+    {
+      "name": "balanced-terminal.state",
+      "blob": "7a54e4c07f7d869f019424fd2205fd1a056cd91d",
+      "bytes": 1910,
+      "sha256": "02fff32f0a162c323889f724380f16d4294389ff6030ed705e2499650296edf2"
+    },
+    {
+      "name": "churn-anchors.bin",
+      "blob": "867d44f0013df566f1e7cc324357daeb41fd1dc1",
+      "bytes": 416,
+      "sha256": "68487c55c4d5da32545b3e6c7dd52bd3fff8c536a62800ced0d523226266e05a"
+    },
+    {
+      "name": "churn-authenticated.bin",
+      "blob": "c36191f052ec59f8786b3d8a0896e5417e25b97c",
+      "bytes": 208055,
+      "sha256": "18add49d3a762d6fd5127819fd397a28135c9eb241649386f504aac4290658ce"
+    },
+    {
+      "name": "churn-indexed.bin",
+      "blob": "8fe9402b1d388dbbcf4b9be5573b97df697fae7b",
+      "bytes": 208055,
+      "sha256": "52045d16e117aa694cda6f11076200f46270b4aad85b2534ea1957e479b35791"
+    },
+    {
+      "name": "churn-terminal.state",
+      "blob": "653bdc4141b6f3e2779cad2072822eb9a017b9b6",
+      "bytes": 10752,
+      "sha256": "8335c8298103101fcac76dbf883844cd240673c4d3c853a3737390763489efb4"
+    },
+    {
+      "name": "index.html",
+      "blob": "64637f39a2656d9fff5df658292d2866f59b3807",
+      "bytes": 9673
+    },
+    {
+      "name": "manifest.sha256",
+      "blob": "3e8d6129acbb04a676aa6fb5b11928ce2e723509",
+      "bytes": 65
+    },
+    {
+      "name": "opening.commitment",
+      "blob": "295a17bb3274a6e377eb1363ff83ac01ed30ecee",
+      "bytes": 168,
+      "sha256": "c12e99ad89316f112dd5821bd692b9d8a463dcc4a801e57ca8cca855da711286"
+    },
+    {
+      "name": "performance288.csv",
+      "blob": "2ea663e9d491377ffaa16f0d609cf845d5fe2ffb",
+      "bytes": 85561,
+      "sha256": "e8d28c7c815e8c256ee360b1d577e8ccf28b519102c029c10306ba45bb380e97"
+    },
+    {
+      "name": "performance288.json",
+      "blob": "77665596b0860579c0a0d613a82f0a49b9fd1b39",
+      "bytes": 155,
+      "sha256": "b1764590b9d502023d012f3d50e063ac8565469be1e74caa8b9f12291e7f5632"
+    },
+    {
+      "name": "recovery288.csv",
+      "blob": "6b79eb016cc1c449f7e9c982e966590d970f8e87",
+      "bytes": 418,
+      "sha256": "004ebe66b6e870c3db51c28cefc5bcf4d4ac6c47dec523ea4417e1ee9a3f096a"
+    },
+    {
+      "name": "scarcity-anchors.bin",
+      "blob": "877c6a2760eb9afbb960aca54455469c60d8db43",
+      "bytes": 416,
+      "sha256": "fb14c43f89edc1e47066c2067324a9eb0afec60dbb35e364efe0b7d00fa028f4"
+    },
+    {
+      "name": "scarcity-authenticated.bin",
+      "blob": "c6823c8e254503935829b002c91d12be832de1e2",
+      "bytes": 199213,
+      "sha256": "5cca89bd31c10d76857b4cdafe452ddd7f5fb9f759529d7b3ea51ad5679a178f"
+    },
+    {
+      "name": "scarcity-indexed.bin",
+      "blob": "53a15adc27c57a9b4f58588db0a41c36a9f006d3",
+      "bytes": 199213,
+      "sha256": "27a3295823537f2b8223458a5c79a3bdc8da11e16c3af058632b1af550963ba9"
+    },
+    {
+      "name": "scarcity-terminal.state",
+      "blob": "685e5b39ecf22264d63587f09621965bc8318aeb",
+      "bytes": 119690,
+      "sha256": "c58591de0ef08e20058838d10161dab3d9e01b2e94c378f3c0b54e025f0a3022"
+    },
+    {
+      "name": "summary288.json",
+      "blob": "233a3ec5459986f95d7392a8f37f64028173edba",
+      "bytes": 1646,
+      "sha256": "b459ac8fd2b29861b0d3c7e16d1508bad4bb9429118c8358090aa146f281caa1"
+    }
+  ],
+  "crossPhase": {
+    "priorCommit": "62a336515e0590f8ac77b7aaa63ec6d92b058eea",
+    "identicalManifestPayloads": [
+      "balanced-anchors.bin",
+      "balanced-authenticated.bin",
+      "balanced-indexed.bin",
+      "balanced-terminal.state",
+      "scarcity-anchors.bin",
+      "scarcity-authenticated.bin",
+      "scarcity-indexed.bin",
+      "scarcity-terminal.state",
+      "churn-anchors.bin",
+      "churn-authenticated.bin",
+      "churn-indexed.bin",
+      "churn-terminal.state",
+      "opening.commitment"
+    ]
+  },
+  "observed": {
+    "groups": [
+      {
+        "authenticatedMedianNs": 12241726,
+        "authenticatedP95Ns": 14081262,
+        "authenticatedRecoveryNs": 4441638240,
+        "authenticatedTapeBytes": 199213,
+        "indexedMedianNs": 756158,
+        "indexedP95Ns": 1179049,
+        "indexedRecoveryNs": 268456331,
+        "indexedTapeBytes": 199213,
+        "peakLots": 60,
+        "qualifiedMedianNs": 1260101,
+        "qualifiedP95Ns": 1751579,
+        "qualifiedRecoveryNs": 388283173,
+        "qualifiedTapeBytes": 199213,
+        "referenceMedianNs": 266550,
+        "referenceP95Ns": 475683,
+        "rows": 360,
+        "scenario": "balanced",
+        "terminalArrears": 400,
+        "terminalKnown": 55
+      },
+      {
+        "authenticatedMedianNs": 18840287.5,
+        "authenticatedP95Ns": 25385788,
+        "authenticatedRecoveryNs": 6935458995,
+        "authenticatedTapeBytes": 199213,
+        "indexedMedianNs": 5850298.5,
+        "indexedP95Ns": 10796164,
+        "indexedRecoveryNs": 2170913966,
+        "indexedTapeBytes": 199213,
+        "peakLots": 2160,
+        "qualifiedMedianNs": 5371049,
+        "qualifiedP95Ns": 9028644,
+        "qualifiedRecoveryNs": 2183859568,
+        "qualifiedTapeBytes": 199213,
+        "referenceMedianNs": 3949896,
+        "referenceP95Ns": 7211144,
+        "rows": 360,
+        "scenario": "scarcity",
+        "terminalArrears": 36400,
+        "terminalKnown": 55
+      },
+      {
+        "authenticatedMedianNs": 49841890,
+        "authenticatedP95Ns": 88456514,
+        "authenticatedRecoveryNs": 18624437648,
+        "authenticatedTapeBytes": 208055,
+        "indexedMedianNs": 1766923,
+        "indexedP95Ns": 3582611,
+        "indexedRecoveryNs": 762356726,
+        "indexedTapeBytes": 208055,
+        "peakLots": 0,
+        "qualifiedMedianNs": 2086170,
+        "qualifiedP95Ns": 3769504,
+        "qualifiedRecoveryNs": 748260687,
+        "qualifiedTapeBytes": 208055,
+        "referenceMedianNs": 1105278.5,
+        "referenceP95Ns": 2227498,
+        "rows": 360,
+        "scenario": "churn",
+        "terminalArrears": 400,
+        "terminalKnown": 403
+      }
+    ],
+    "rows": 1080,
+    "qualifiedAudits": 1080,
+    "qualifiedBalanceBuilds": 0,
+    "qualifiedMembershipBuilds": 0,
+    "qualifiedChronologyVerifies": 0,
+    "baselineRedundantCallModel": 10800,
+    "terminalCanonicalBytes": {
+      "balanced": 1910,
+      "scarcity": 119690,
+      "churn": 10752
+    }
+  },
+  "limitations": [
+    "Initial import and full qualification excluded from timing; nonpersistent reference omits tape encoding.",
+    "Same runner comparison only; no universal speed claim. Indexed faster in balanced and churn; reference faster in every scenario.",
+    "Browser validates evidence and controls, not independent Rust replay. Runner verified hashes; binary payloads not independently rehashed here.",
+    "Three independent 360-period branches from 1080, not cumulative extension. Synthetic accounting, no payment authority.",
+    "Live Pages deployment, external custody, crash durability and heap measurements unverified."
+  ],
+  "nextPhase": "XIX: profile remaining authoritative scans, fingerprinting and tape copy/serialization; preserve byte format and qualified oracle."
+}
