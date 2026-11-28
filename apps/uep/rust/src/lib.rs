@@ -223,3 +223,5 @@ pub mod incremental_balance;
 pub mod incremental_chronology;
 
 pub mod qualified_delta;
+
+pub mod qualified_recovery;
