@@ -1,0 +1,23 @@
+name: AETHER-286 Atomic Acquisition Preimages
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/282/**'
+      - 'aether/283/**'
+      - 'aether/286/**'
+      - '.github/workflows/aether286-atomic-manifest.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mock-acquisition-atomic-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/286 -p 'test_*.py' -v
+      - run: echo 'Mocked TLS and atomic local manifest retention do not prove external custody.'
