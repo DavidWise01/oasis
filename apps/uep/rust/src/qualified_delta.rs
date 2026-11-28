@@ -7,7 +7,7 @@ pub struct Qualified{universe:Universe,balances:Balances,membership:Registry,chr
 #[derive(Clone,Debug,PartialEq,Eq)]
 pub struct Work{pub balance_paths:usize,pub historical_paths:usize,pub active_paths:usize,pub chronology_paths:usize}
 fn root(authority:Hash,b:&Balances,m:&Registry,q:&Chronology)->Root{
- let mut r=Root{authority,balances:b.commitment(),membership:m.commitment(),chronology:q.commitment(),digest:[0;32]};let mut h=Sha256::new();h.update(b"OASIS-UEP-275R-unified-v1");for v in [&r.authority,&r.balances,&r.membership,&r.chronology]{h.update(v)}r.digest=h.finalize().into();r
+ let _span=crate::verification_profile::span(27);let mut r=Root{authority,balances:b.commitment(),membership:m.commitment(),chronology:q.commitment(),digest:[0;32]};let mut h=Sha256::new();h.update(b"OASIS-UEP-275R-unified-v1");for v in [&r.authority,&r.balances,&r.membership,&r.chronology]{h.update(v)}r.digest=h.finalize().into();r
 }
 impl Qualified{
  /// Import only a fully checked legacy opening; preserve chronological retirement history.
@@ -21,19 +21,19 @@ impl Qualified{
  pub fn balances(&self)->&Balances{&self.balances}
  pub fn membership(&self)->&Registry{&self.membership}
  pub fn chronology(&self)->&Chronology{&self.chronology}
- fn verify_anchor(&self,expected:&Root)->Result<(),&'static str>{
+ fn verify_anchor(&self,expected:&Root)->Result<(),&'static str>{let _span=crate::verification_profile::span(22);
  if !expected.verify()||self.root!=*expected||root(state_hash::fingerprint(&self.universe)?,&self.balances,&self.membership,&self.chronology)!=*expected{return Err("qualified opening mismatch")}Ok(())
  }
  pub fn verify_full(&self,expected:&Root)->Result<(),&'static str>{
  self.verify_anchor(expected)?;let p=self.universe.population_ledger();self.balances.verify_full(p)?;self.membership.verify_full(p)?;self.chronology.verify_full(p)?;if self.balances.total()?!=p.outstanding()?{return Err("total mismatch")}Ok(())
  }
  pub fn advance(&self,r:&Request,expected:&Root)->Result<(Self,Audit,Work),&'static str>{
- self.verify_anchor(expected)?;let(v,a)=self.universe.advance_audited(r)?;let p=self.universe.population_ledger();let q=v.population_ledger();
+ self.verify_anchor(expected)?;let(v,a)={let _span=crate::verification_profile::span(23);self.universe.advance_audited(r)?};let p=self.universe.population_ledger();let q=v.population_ledger();
  if q!=&a.settlement.closing{return Err("settlement parity")}
  let o=v.observations().last().ok_or("observation")?;if(o.due,o.funded,o.arrears,o.historical_reserved)!=(a.settlement.current_due,a.settlement.current_funded,q.outstanding()?,a.total_reserved){return Err("observation parity")}
- let(b,bw)=self.balances.apply_audit(p,&r.present.period,&a,expected.balances)?;
- let(m,mw)=self.membership.advance(p,q,&r.present.period,expected.membership)?;
- let(c,cw)=self.chronology.apply_audit(p,&r.present.period,&a,expected.chronology)?;
+ let(b,bw)={let _span=crate::verification_profile::span(24);self.balances.apply_audit(p,&r.present.period,&a,expected.balances)?};
+ let(m,mw)={let _span=crate::verification_profile::span(25);self.membership.advance(p,q,&r.present.period,expected.membership)?};
+ let(c,cw)={let _span=crate::verification_profile::span(26);self.chronology.apply_audit(p,&r.present.period,&a,expected.chronology)?};
  if b.total()?!=q.outstanding()?{return Err("closing total")}
  let root=root(state_hash::fingerprint(&v)?,&b,&m,&c);
  let n=Self{universe:v,balances:b,membership:m,chronology:c,root};
