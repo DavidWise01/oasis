@@ -1,0 +1,23 @@
+name: AETHER-291 Dual-Window Remote Retention Readback
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/289/**'
+      - 'aether/290/**'
+      - 'aether/291/**'
+      - '.github/workflows/aether291-paired-readback.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-ordered-windows:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/291 -p 'test_*.py' -v
+      - run: echo 'Two local observation ordinals do not establish independent elapsed time.'
