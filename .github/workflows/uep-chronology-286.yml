@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 8eb7099924b967ef9b70beeccd65da640e13228d
+          ref: 751b02a07dbc5fbe2e2543331861aca07960bdd9
           persist-credentials: false
       - name: Recover native-qualified dependency lock
         env:
