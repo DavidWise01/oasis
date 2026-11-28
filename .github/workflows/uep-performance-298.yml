@@ -1,0 +1,115 @@
+name: UEP-298R extended performance comparison
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-performance-298.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  statuses: write
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 27e33586a217f6d4356467a1561b049fda4fb318
+          persist-credentials: false
+      - name: Recover native-qualified dependency lock
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/uep298"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15077861777/zip" > "$RUNNER_TEMP/native.zip"
+          echo "b0b1a676ef7ee44e33c4907dc08a926227edc4851f4495c2a406686475f0313e  $RUNNER_TEMP/native.zip" | sha256sum -c -
+          unzip -p "$RUNNER_TEMP/native.zip" Cargo.lock > apps/uep/rust/Cargo.lock
+          echo "af9e971445417daa5d9996aac6e35dafc51b8f93313076f7a70af2c59e5109f5  apps/uep/rust/Cargo.lock" | sha256sum -c -
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep298/source.txt"
+      - name: Execute inherited and new native regressions
+        working-directory: apps/uep/rust
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.85.1 --profile minimal
+          cargo +1.85.1 fetch --locked
+          cargo +1.85.1 test --frozen 2>&1 | tee "$RUNNER_TEMP/uep298/tests.txt"
+          python3 - <<'PY'
+          import os,re,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep298'
+          s=(p/'tests.txt').read_text()
+          rows=re.findall(r'test result: ok\. (\d+) passed; (\d+) failed; (\d+) ignored; (\d+) measured; (\d+) filtered out',s)
+          assert [sum(int(r[i]) for r in rows) for i in range(5)]==[291,0,0,0,0], rows
+          assert len(re.findall(r'^test qualified_delta::tests::.* \.\.\. ok$',s,re.M))==5
+          PY
+      - name: Execute five-path performance comparison
+        working-directory: apps/uep/rust
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/uep298"
+          (cd ../UEP-259R-integrated-generations && sha256sum -c SHA256SUMS)
+          (cd ../UEP-289R-integrated-changed-path && sha256sum -c SHA256SUMS)
+          # Check out the exact Phase XVIII crate separately. Distinct package name avoids Cargo package collision.
+          root="$GITHUB_WORKSPACE"
+          git archive 392d2f577dc12f6d36c6248534eb292a3c87e4d9 apps/uep/rust | tar -x -C "$RUNNER_TEMP"
+          old="$RUNNER_TEMP/apps/uep/rust"
+          sed -i 's/^name = "oasis-uep"/name = "oasis-uep-baseline"/' "$old/Cargo.toml"
+          # Build both libraries together in the same executable and runner.
+          mkdir -p "$root/apps/uep/rust/bench298/src"
+          cp "$root/apps/uep/UEP-298R-matched-performance/performance298.rs" "$root/apps/uep/rust/bench298/src/main.rs"
+          cat > "$root/apps/uep/rust/bench298/Cargo.toml" <<EOF
+          [package]
+          name = "uep-bench298"
+          version = "0.1.0"
+          edition = "2021"
+          [dependencies]
+          baseline = { package = "oasis-uep-baseline", path = "$old" }
+          oasis-uep = { path = ".." }
+          EOF
+          cp Cargo.lock bench298/Cargo.lock
+          cargo +1.85.1 generate-lockfile --offline --manifest-path bench298/Cargo.toml
+          cargo +1.85.1 run --frozen --release --manifest-path bench298/Cargo.toml -- "$out" | tee "$out/performance298.json"
+          python3 - <<'PY' | tee "$out/summary298.json"
+          import csv,json,os,pathlib,statistics
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep298'
+          a=list(csv.DictReader((p/'performance298.csv').open()))
+          b=list(csv.DictReader((p/'recovery298.csv').open()))
+          assert len(a)==1080 and len(b)==12
+          assert all(int(r['refined_audits'])==1 and int(r['refined_full_encodes'])==0 for r in a)
+          groups=[]
+          for s in ['balanced','scarcity','churn']:
+              rows=[r for r in a if r['scenario']==s]
+              assert [int(r['period']) for r in rows]==list(range(1081,1441))
+              assert all(tuple(int(r[k]) for k in ['reference_audits','indexed_audits','authenticated_audits','qualified_audits','qualified_balance_builds','qualified_membership_builds','qualified_chronology_verifies'])==(1,3,1,1,0,0,0) for r in rows)
+              assert [int(r['observations']) for r in rows]==list(range(1,361))
+              g={'scenario':s,'rows':len(rows),'peakLots':max(int(r['lots']) for r in rows),'terminalKnown':int(rows[-1]['known']),'terminalArrears':int(rows[-1]['arrears'])}
+              for path in ['reference','indexed','authenticated','qualified','refined']:
+                  v=[int(r[path+'_ns']) for r in rows]
+                  g[path+'MedianNs']=statistics.median(v)
+                  g[path+'P95Ns']=sorted(v)[341]
+              for path in ['indexed','authenticated','qualified','refined']:
+                  z=[r for r in b if r['scenario']==s and r['path']==path]
+                  assert len(z)==1 and int(z[0]['terminal'])==1440
+                  g[path+'RecoveryNs']=int(z[0]['recovery_ns'])
+                  g[path+'TapeBytes']=int(z[0]['tape_bytes'])
+              groups.append(g)
+          print(json.dumps({'rows':len(a),'groups':groups},sort_keys=True))
+          PY
+          (cd "$out" && sha256sum balanced-*.bin balanced-terminal.state scarcity-*.bin scarcity-terminal.state churn-*.bin churn-terminal.state opening.commitment performance298.csv recovery298.csv performance298.json summary298.json > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-298r-native-evidence
+          path: ${{ runner.temp }}/uep298/
+      - name: Report qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-298R/native" -f description="Extended performance comparison" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
