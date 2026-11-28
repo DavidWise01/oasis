@@ -1,0 +1,21 @@
+name: AETHER-298 SigV4 Oracle and Durable Export
+on:
+  push:
+    paths:
+      - 'aether/297/**'
+      - 'aether/298/**'
+      - '.github/workflows/aether298-sigv4-export.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-qualification:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'botocore>=1.35,<2'
+      - run: python3 -m unittest discover -s aether/298 -p 'test_*.py' -v
+      - run: echo 'Offline signing-vector parity and local evidence retention cannot establish independent external custody.'
