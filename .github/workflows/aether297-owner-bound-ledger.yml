@@ -1,0 +1,20 @@
+name: AETHER-297 Owner-Bound S3 Evidence Ledger
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/297/**'
+      - '.github/workflows/aether297-owner-bound-ledger.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-owner-bound-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/297 -p 'test_*.py' -v
+      - run: echo 'Expected owner guard and journal integrity are not independent external custody.'
