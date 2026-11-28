@@ -1,0 +1,23 @@
+name: AETHER-288 HTTPS Acknowledgment and Nonce Ledger
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/286/**'
+      - 'aether/287/**'
+      - 'aether/288/**'
+      - '.github/workflows/aether288-ack-acquisition.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-ack-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/288 -p 'test_*.py' -v
+      - run: echo 'Mock HTTPS results and signed acknowledgments cannot prove independent external custody.'
