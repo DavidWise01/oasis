@@ -1,0 +1,23 @@
+name: AETHER-290 External Highwater Retention
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/288/**'
+      - 'aether/289/**'
+      - 'aether/290/**'
+      - '.github/workflows/aether290-external-highwater.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-retention-records:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/290 -p 'test_*.py' -v
+      - run: echo 'Signed retention metadata is not proof of immutable externally held custody.'
