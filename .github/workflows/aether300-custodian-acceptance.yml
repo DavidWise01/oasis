@@ -1,0 +1,24 @@
+name: AETHER-300 Custodian Signed Acceptance
+on:
+  push:
+    paths:
+      - 'aether/292/**'
+      - 'aether/297/**'
+      - 'aether/298/**'
+      - 'aether/299/**'
+      - 'aether/300/**'
+      - '.github/workflows/aether300-custodian-acceptance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-signed-acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/300 -p 'test_*.py' -v
+      - run: echo 'Signed custodian claims do not independently prove external storage or ownership.'
