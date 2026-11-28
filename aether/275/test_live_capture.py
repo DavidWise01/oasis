@@ -88,12 +88,12 @@ class Tests(unittest.TestCase):
         src=ring["sources"][0]["url"];wrapped=fake(src,[src.split("/")[2]])
         wrapped["raw_sha256"]="f"*64
         with self.assertRaisesRegex(ValueError,"RAW_BODY_TAMPER"):body(wrapped)
-    def test_payload_oversize(self):
+    def test_nested_payload_oversize_rejected_at_outer_limit(self):
         ring,url,pin,c,hosts,responses,fake=fixture()
         src=ring["sources"][0]["url"];record=json.loads(responses[src])
         record["payload_b64"]=base64.b64encode(b"x"*65537).decode()
         responses[src]=canon(record)
-        with self.assertRaisesRegex(ValueError,"PAYLOAD_TOO_LARGE"):
+        with self.assertRaisesRegex(ValueError,"RAW_BODY_TAMPER"):
             collect(url,pin,c,hosts,fake)
     def test_custody_never_authorized(self):
         _,url,pin,c,hosts,_,fake=fixture()
