@@ -1,0 +1,20 @@
+name: AETHER-276 Durable Receipts and Key Rotation
+on:
+  push:
+    paths:
+      - 'aether/276/**'
+      - '.github/workflows/aether276-durable-receipts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sqlite-ed25519-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/276 -p 'test_*.py' -v
+      - run: echo 'Local persisted signed receipts are not independent external custody.'
