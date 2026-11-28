@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Rust toolchain
-        run: rustup toolchain install stable --profile minimal
+        run: rustup toolchain install 1.100.0 --profile minimal
       - name: Test
-        run: cargo +stable test
+        run: cargo +1.100.0 test --locked
       - name: Native simulation
-        run: cargo +stable run --release
+        run: cargo +1.100.0 run --locked --release --bin oasis-uep
