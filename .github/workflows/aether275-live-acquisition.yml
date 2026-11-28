@@ -1,0 +1,21 @@
+name: AETHER-275 Live Acquisition Interface Regressions
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/275/**'
+      - '.github/workflows/aether275-live-acquisition.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-https-mock-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/275 -p 'test_*.py' -v
+      - run: echo 'Mocked acquisition tests are not evidence of real external source custody.'
