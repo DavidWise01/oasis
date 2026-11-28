@@ -157,8 +157,8 @@ def qualify(windows,nonces,trust,pin,versions,times):
             reading_ids={v["endpoint_id"] for v in manifest["readings"]}
             if reading_ids!=set(providers) or len(manifest["readings"])!=3:
                 problems.append("PROVIDER_WINDOW_SOURCE_MISMATCH")
-            if manifest["artifact_sha256"]!=row["artifact_sha"] or
-               manifest["window_nonce"]!=row["window_nonce"]:
+            if (manifest["artifact_sha256"]!=row["artifact_sha"] or
+                manifest["window_nonce"]!=row["window_nonce"]):
                 problems.append("WINDOW_PREIMAGE_CONFLICT")
         except (ValueError,KeyError,TypeError):
             problems.append("WINDOW_PREIMAGE_INVALID")
@@ -193,7 +193,7 @@ def main():
         if failures:raise ValueError("BASELINE_291_INVALID:"+",".join(sorted(failures)))
         raw=[args.trust.read_bytes(),args.versions.read_bytes(),args.times.read_bytes()]
         if any(len(data)>1_000_000 for data in raw):raise ValueError("INPUT_LIMIT")
-        result=qualify(windows,nonces,*(json.loads(x) for x in (raw[0],)),args.trust_sha256,
+        result=qualify(windows,nonces,json.loads(raw[0]),args.trust_sha256,
                        json.loads(raw[1]),json.loads(raw[2]))
     except (OSError,ValueError,KeyError,TypeError) as e:
         result={**HOLD,"reasons":["INPUT_REJECTED:"+type(e).__name__+":"+str(e)[:100]]}
