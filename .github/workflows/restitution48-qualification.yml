@@ -1,0 +1,43 @@
+name: RESTITUTION-48 native qualification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'apps/uep/rust/**'
+      - '.github/workflows/restitution48-qualification.yml'
+permissions:
+  contents: read
+jobs:
+  qualification:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Qualify native Rust
+        shell: bash
+        run: |
+          mkdir -p evidence
+          git rev-parse HEAD > evidence/commit.txt
+          rustc -Vv > evidence/rustc.txt
+          cargo -V > evidence/cargo.txt
+          cd apps/uep/rust
+          set +e
+          cargo generate-lockfile > ../../../evidence/resolve.log 2>&1
+          resolve=$?
+          test_status=125
+          if [ "$resolve" -eq 0 ]; then
+            cp Cargo.lock ../../../evidence/Cargo.lock
+            cargo test --locked --test restitution45_identity --test restitution46_differential --test restitution47_boundaries > ../../../evidence/test.log 2>&1
+            test_status=$?
+          fi
+          cd ../../..
+          printf '{"commit":"%s","resolution_exit":%s,"test_exit":%s,"performance_authority":"HOLD"}\n' "$(cat evidence/commit.txt)" "$resolve" "$test_status" > evidence/result.json
+          (cd evidence && sha256sum * > SHA256SUMS)
+          test "$resolve" -eq 0 && test "$test_status" -eq 0
+      - name: Retain evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: restitution48-${{ github.sha }}-${{ github.run_attempt }}
+          path: evidence/
+          if-no-files-found: error
