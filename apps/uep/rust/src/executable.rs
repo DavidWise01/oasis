@@ -46,7 +46,8 @@ mod tests{
 }
 
 // UEP-242R: explicit canonical state encoding.
-impl Universe{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>)->Result<(),&'static str>{self.ledger.verify_head(self.head)?;self.verify_observations()?;self.state.state_bytes(b);crate::state_hash::population(b,&self.population);b.extend_from_slice(&self.head);crate::state_hash::num(b,self.ledger.records().len() as u64);crate::state_hash::num(b,self.total_observations());b.extend_from_slice(&self.observations.last().map_or(self.prefix_digest,|o|o.digest));Ok(())}}
+impl Universe{pub(crate) fn state_bytes(&self,b:&mut Vec<u8>)->Result<(),&'static str>{self.ledger.verify_head(self.head)?;self.verify_observations()?;self.state_payload(b);Ok(())}
+ fn state_payload(&self,b:&mut Vec<u8>){self.state.state_bytes(b);crate::state_hash::population(b,&self.population);b.extend_from_slice(&self.head);crate::state_hash::num(b,self.ledger.records().len() as u64);crate::state_hash::num(b,self.total_observations());b.extend_from_slice(&self.observations.last().map_or(self.prefix_digest,|o|o.digest));}}
 
 // UEP-246R: read-only population observation.
 impl Universe{pub fn population_count(&self)->usize{self.population.active.len()}}
@@ -73,3 +74,24 @@ impl Universe{
 
 // UEP-253R: read-only exact obligation ledger for boundary auditing.
 impl Universe{pub fn population_ledger(&self)->&Population{&self.population}}
+
+// UEP-293R: called only on a fully verified opening by qualified execution.
+// Successor is produced internally; no public unchecked encoder or caller-supplied successor.
+impl Universe{
+ pub(crate) fn advance_qualified_fingerprint(&self,r:&Request)->Result<(Self,arrears::Audit,[u8;32]),&'static str>{
+  let(n,a)=self.advance_audited(r)?;
+  let o=n.observations.last().ok_or("missing successor")?;
+  if n.head!=self.head||n.prefix_count!=self.prefix_count||n.prefix_digest!=self.prefix_digest||self.observations.len().checked_add(1)!=Some(n.observations.len())||o.previous!=self.observations.last().map_or(self.prefix_digest,|x|x.digest)||o.digest!=o.hash()||self.total_observations().checked_add(7)!=Some(o.epoch)||n.total_observations().checked_add(6)!=Some(n.population.epoch){return Err("successor ancestry")}
+  let _profile=crate::verification_profile::span(3);
+  let b={let _encode=crate::verification_profile::span(2);let mut b=b"UEP242R\0".to_vec();n.state_payload(&mut b);b};
+  let mut h=Sha256::new();h.update(b"OASIS-UEP-242R-state-v1");h.update(b);
+  Ok((n,a,h.finalize().into()))
+ }
+}
+#[cfg(test)]mod fingerprint293_tests{
+ use super::*;use crate::{equilibrium::Step,population::Period,bridge::Shares,dividend::Revenue,capacity::Input,state_hash,verification_profile};
+ fn req(f:u64)->Request{let s=Step{period:Period{enter:vec![],depart:vec![],award:100,funding:f},restitution:Shares::default(),revenue:Revenue{public_equity:0,licensing:0,automation_royalties:0,infrastructure_return:0},dividend_cap:0,resources:Input{inflow:[100;4],essential:[20;4],decay_bps:0,work_ceiling:17}};Request{present:s.clone(),requested:0,complete:0,accept:0,future:vec![s]}}
+ #[test]fn mixed_digest(){let mut u=Universe::new(Ledger::default(),[0;32]).unwrap();for i in 0..120{state_hash::fingerprint(&u).unwrap();let r=req([0,500,600,750,1200][i%5]);let(n,a,h)=u.advance_qualified_fingerprint(&r).unwrap();assert_eq!(h,state_hash::fingerprint(&n).unwrap());assert_eq!((n.clone(),a),u.advance_audited(&r).unwrap());u=n;}}
+ #[test]fn compacted_digest(){let u=Universe::new(Ledger::default(),[0;32]).unwrap().advance(&req(500)).unwrap();let c=u.compact(state_hash::fingerprint(&u).unwrap()).unwrap();let(n,_,h)=c.advance_qualified_fingerprint(&req(750)).unwrap();assert_eq!(h,state_hash::fingerprint(&n).unwrap());assert_eq!(h,state_hash::fingerprint(&u.advance(&req(750)).unwrap()).unwrap());}
+ #[test]fn scoped_calls(){let u=Universe::new(Ledger::default(),[0;32]).unwrap();state_hash::fingerprint(&u).unwrap();let(a,c)=verification_profile::measure(||u.advance_qualified_fingerprint(&req(600))).unwrap();let(n,_,h)=a.unwrap();assert_eq!((c.calls[2],c.calls[3],c.calls[6]),(1,1,0));assert_eq!(h,state_hash::fingerprint(&n).unwrap());}
+}
