@@ -1,7 +1,7 @@
 //! UEP-271R: opt-in thread-local diagnostic counters; no settlement authority. .dlw
 use std::{cell::RefCell,time::Instant};
-pub const N:usize=22;
-pub const NAMES:[&str;N]=["settle","arrears","state_encode","state_fingerprint","projection_verify","component_encode","observation_verify","universe_clone","projection_component_clone","tape_clone","balance_build","membership_build","chronology_verify","balance_node_alloc","membership_node_alloc","chronology_node_alloc","balance_verify","membership_verify","unified_verify","chronology_build","balance_apply","membership_advance"];
+pub const N:usize=31;
+pub const NAMES:[&str;N]=["settle","arrears","state_encode","state_fingerprint","projection_verify","component_encode","observation_verify","universe_clone","projection_component_clone","tape_clone","balance_build","membership_build","chronology_verify","balance_node_alloc","membership_node_alloc","chronology_node_alloc","balance_verify","membership_verify","unified_verify","chronology_build","balance_apply","membership_advance","qualified_anchor","qualified_authoritative","qualified_balance","qualified_membership","qualified_chronology","qualified_root","qualified_tape_encode","qualified_request_encode","qualified_append"];
 #[derive(Clone,Debug,Default,PartialEq,Eq)]
 pub struct Counts{pub calls:[u64;N],pub inclusive_ns:[u128;N]}
 thread_local!{static ACTIVE:RefCell<Option<Counts>>=const{RefCell::new(None)};}
