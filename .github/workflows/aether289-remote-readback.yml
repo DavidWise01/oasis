@@ -1,0 +1,23 @@
+name: AETHER-289 Remote Export Readback and ACK Highwater
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/286/**'
+      - 'aether/287/**'
+      - 'aether/288/**'
+      - 'aether/289/**'
+      - '.github/workflows/aether289-remote-readback.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-remote-readback-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/289 -p 'test_*.py' -v
+      - run: echo 'Mocked remote readback and operator-pinned ACK heads do not prove independent custody.'
