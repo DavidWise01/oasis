@@ -16,13 +16,13 @@ impl Tape{
  }
  pub fn projection(&self)->&Qualified{&self.projection}
  pub fn universe(&self)->&Universe{self.projection.universe()}
- pub fn append(&self,r:&Request)->Result<Self,&'static str>{
+ pub fn append(&self,r:&Request)->Result<Self,&'static str>{let _span=crate::verification_profile::span(30);
   if self.entries.len()>=LIMIT{return Err("tape full")}
   let c=self.entries.last().map_or(&self.opening,|e|&e.1);
   let(p,_,_)=self.projection.advance(r,c)?;let next=p.root().clone();
-  let mut n={let _profile=crate::verification_profile::span(9);self.clone()};n.projection=p;n.entries.push((request_codec::encode(r)?,next));n.encode()?;Ok(n)
+  let mut n={let _profile=crate::verification_profile::span(9);self.clone()};n.projection=p;let raw={let _span=crate::verification_profile::span(29);request_codec::encode(r)?};n.entries.push((raw,next));n.encode()?;Ok(n)
  }
- pub fn encode(&self)->Result<Vec<u8>,&'static str>{
+ pub fn encode(&self)->Result<Vec<u8>,&'static str>{let _span=crate::verification_profile::span(28);
   let mut b=b"UEP277R\0".to_vec();b.extend_from_slice(&self.start.to_be_bytes());b.extend_from_slice(&self.opening.encode());b.extend_from_slice(&(self.entries.len() as u64).to_be_bytes());
   for(r,c)in &self.entries{if b.len().checked_add(r.len()).and_then(|n|n.checked_add(176)).ok_or("size")?>BYTE_LIMIT{return Err("tape size")}b.extend_from_slice(&(r.len() as u64).to_be_bytes());b.extend_from_slice(r);b.extend_from_slice(&c.encode());}Ok(b)
  }
