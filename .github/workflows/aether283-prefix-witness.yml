@@ -1,0 +1,21 @@
+name: AETHER-283 Prefix Witness and Crash Interruption Tests
+on:
+  push:
+    paths:
+      - 'aether/282/**'
+      - 'aether/283/**'
+      - '.github/workflows/aether283-prefix-witness.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-signatures-and-subprocess:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/283 -p 'test_*.py' -v
+      - run: echo 'Claimed witness custody and process-exit tests do not prove external power-loss qualification.'
