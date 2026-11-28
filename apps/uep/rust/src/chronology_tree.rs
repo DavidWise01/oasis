@@ -49,3 +49,41 @@ impl Queue{
 #[test]fn departed_stale(){let p=Population::phase_ix();let(q,a,_)=Queue::build(&p).unwrap().advance(&p,&r(0)).unwrap();let mut x=r(650);x.enter=vec!["G".into()];x.depart=vec!["A_1".into()];let(n,b,_)=q.advance(&a.settlement.closing,&x).unwrap();assert!(b.receipts[0].departed);assert_eq!(n.get(0).unwrap().id,"A_1");assert!(q.advance(&b.settlement.closing,&r(600)).is_err());}
 #[test]fn mixed(){let mut p=Population::phase_ix();let mut q=Queue::build(&p).unwrap();for t in 0..120{let(n,a,_)=q.advance(&p,&r([0,500,600,750,1200][t%5])).unwrap();p=a.settlement.closing;q=n;}q.verify(&p).unwrap();}
 }
+
+// UEP-286R: proof-checked chronological replacements preserve legacy commitments.
+#[derive(Clone,Debug,PartialEq,Eq)]
+pub struct LotProof{pub lot:Option<Lot>,pub siblings:Vec<Hash>}
+impl LotProof{
+ pub fn verify(&self,i:u64,expected:Hash)->Result<bool,&'static str>{
+ if self.siblings.len()!=64{return Err("proof length")}
+ let mut h=self.lot.as_ref().map_or_else(||hash(b"OASIS-UEP-274R-empty-v1",&[]),|l|leaf(i,l));
+ for d in (0..64).rev(){h=if bit(i,d)==0{branch(d,h,self.siblings[d])}else{branch(d,self.siblings[d],h)}}Ok(h==expected)
+ }
+}
+impl Queue{
+ pub fn proof(&self,i:u64)->LotProof{let mut n=self.tree.as_ref();let mut siblings=Vec::with_capacity(64);for d in 0..64{let b=bit(i,d);siblings.push(n.map_or(self.empty[d+1],|x|root(&x.c[1-b],&self.empty,d+1)));n=n.and_then(|x|x.c[b].as_ref());}LotProof{lot:n.and_then(|x|x.lot.clone()),siblings}}
+ fn replace_proved(&mut self,i:u64,old:Option<&Lot>,new:Option<Lot>)->Result<(),&'static str>{
+ let mut p=self.proof(i);if p.lot.as_ref()!=old||!p.verify(i,self.root())?{return Err("opening path")}
+ let tree=set(&self.tree,&self.empty,i,new.clone(),0);p.lot=new;if !p.verify(i,root(&tree,&self.empty,0))?{return Err("closing path")}self.tree=tree;Ok(())
+ }
+ /// Internal audit must originate from authoritative settlement of the paired population.
+ pub(crate) fn apply_qualified(&self,p:&Population,r:&Period,a:&Audit,expected:Hash)->Result<(Self,usize),&'static str>{
+ if self.commitment()!=expected||self.epoch!=p.epoch||self.unattributed!=p.unattributed||self.tail.checked_sub(self.head)!=Some(p.lots.len() as u64)||self.total.checked_add(self.unattributed)!=Some(p.outstanding()?){return Err("opening metadata")}
+ let q=&a.settlement.closing;if p.epoch.checked_add(1)!=Some(q.epoch)||q.unattributed!=p.unattributed||a.settlement.current_funded!=a.settlement.current_due.min(r.funding){return Err("closing metadata")}
+ let mut n=self.clone();let mut left=r.funding.checked_sub(a.settlement.current_funded).ok_or("funding")?;let mut receipts=Vec::new();let mut changes=0usize;let mut paid_total=0u64;
+ while left>0&&n.head<n.tail{
+ let i=n.head;let l=n.get(i).ok_or("head missing")?.clone();let idx=usize::try_from(i-self.head).map_err(|_|"index")?;
+ if p.lots.get(idx)!=Some(&l){return Err("opening lot")}
+ let paid=left.min(l.amount);left-=paid;paid_total=paid_total.checked_add(paid).ok_or("paid")?;let remaining=l.amount-paid;n.total=n.total.checked_sub(paid).ok_or("debit")?;
+ receipts.push(Receipt{origin:l.origin,beneficiary:l.id.clone(),opening_index:idx,reserved:paid,remainder:remaining,departed:!q.active.contains(&l.id)});
+ if remaining==0{n.replace_proved(i,Some(&l),None)?;n.retirement=hash(b"OASIS-UEP-274R-retire-v1",&[&n.retirement,&leaf(i,&l),&q.epoch.to_be_bytes()]);n.head=n.head.checked_add(1).ok_or("head")?;}
+ else{let next=Lot{amount:remaining,..l.clone()};if q.lots.first()!=Some(&next){return Err("partial closing lot")}n.replace_proved(i,Some(&l),Some(next))?;}
+ changes+=1;
+ }
+ n.epoch=q.epoch;let mut appended=0usize;
+ for x in &a.settlement.awards{let v=x.due.checked_sub(x.funded).ok_or("award")?;if v==0{continue}let l=Lot{origin:q.epoch,id:x.id.clone(),amount:v};let idx=usize::try_from(n.tail-n.head).map_err(|_|"index")?;if q.lots.get(idx)!=Some(&l){return Err("append parity")}
+ let t=n.tail.checked_add(1).ok_or("tail")?;let total=n.total.checked_add(v).ok_or("total")?;total.checked_add(n.unattributed).ok_or("aggregate")?;n.replace_proved(n.tail,None,Some(l))?;n.tail=t;n.total=total;changes+=1;appended+=1;}
+ if receipts!=a.receipts||paid_total!=a.total_reserved||left!=a.settlement.unallocated||n.tail.checked_sub(n.head)!=Some(q.lots.len() as u64)||n.total.checked_add(n.unattributed)!=Some(q.outstanding()?){return Err("closing parity")}
+ let retired=usize::try_from(n.head-self.head).map_err(|_|"retired")?;if p.lots.len().checked_sub(retired).and_then(|v|v.checked_add(appended))!=Some(q.lots.len()){return Err("lot count")}Ok((n,changes))
+ }
+}
