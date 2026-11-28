@@ -42,7 +42,14 @@ class Tests(unittest.TestCase):
     def test_persisted_session_nonce_replay(self):
         consume(self.db,self.bundle(1),self.pin)
         b=self.bundle(2);b["receipts"][0]["session_nonce"]="nonce1-0"
-        with self.assertRaises(ValueError):consume(self.db,b,self.pin)
+        row=b["receipts"][0]
+        stmt={"schema":SCHEMA,"operation":"RECEIPT","challenge":b["challenge"],
+              "registry_sha256":self.pin,"source_id":row["source_id"],
+              "session_id":row["session_id"],"session_nonce":row["session_nonce"],
+              "payload_sha256":row["payload_sha256"]}
+        row["signature_b64"]=signature(self.keys[row["source_id"]],stmt)
+        with self.assertRaisesRegex(ValueError,"PERSISTED_RECEIPT_REPLAY"):
+            consume(self.db,b,self.pin)
     def test_invalid_signature_atomic_rollback(self):
         b=self.bundle(1);b["receipts"][2]["signature_b64"]="AAAA"
         with self.assertRaisesRegex(ValueError,"RECEIPT_SIGNATURE_INVALID"):consume(self.db,b,self.pin)
