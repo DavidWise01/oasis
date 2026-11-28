@@ -1,0 +1,20 @@
+name: AETHER-294 Provider and Clock Capture
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/294/**'
+      - '.github/workflows/aether294-provider-clock-capture.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-provider-and-clock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/294 -p 'test_*.py' -v
+      - run: echo 'Public HTTPS observations do not prove vendor API account identity, immutable storage, or trusted time.'
