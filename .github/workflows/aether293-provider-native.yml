@@ -1,0 +1,22 @@
+name: AETHER-293 Provider Response and Signed Time Chain
+on:
+  push:
+    paths:
+      - 'aether/291/**'
+      - 'aether/292/**'
+      - 'aether/293/**'
+      - '.github/workflows/aether293-provider-native.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-provider-time-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/293 -p 'test_*.py' -v
+      - run: echo 'Offline provider-response claims cannot prove vendor identity or trusted elapsed time.'
