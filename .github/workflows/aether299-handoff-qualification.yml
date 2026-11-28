@@ -1,0 +1,22 @@
+name: AETHER-299 SigV4 Production Parity and Handoff Crash Tests
+on:
+  push:
+    paths:
+      - 'aether/297/**'
+      - 'aether/298/**'
+      - 'aether/299/**'
+      - '.github/workflows/aether299-handoff-qualification.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-actual-signer-and-crash-recovery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'botocore>=1.35,<2'
+      - run: python3 -m unittest discover -s aether/299 -p 'test_*.py' -v
+      - run: echo 'Actual signer parity and crash-resilient local handoff do not prove independent external custody.'
