@@ -1,0 +1,23 @@
+name: AETHER-284 Witness Acquisition and Nonce Replay
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/282/**'
+      - 'aether/283/**'
+      - 'aether/284/**'
+      - '.github/workflows/aether284-witness-acquisition.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mocked-https-ed25519-sqlite:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/284 -p 'test_*.py' -v
+      - run: echo 'HTTPS mock and local nonce ledger do not establish independent external custody.'
