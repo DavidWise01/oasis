@@ -59,3 +59,16 @@ impl Tree{
  #[test]fn mixed_parity(){let mut p=Population::phase_ix();let mut t=Tree::build(&p).unwrap();for i in 0..120{let(n,a,_)=t.advance(&p,&req([0,500,600,750,1200][i%5])).unwrap();p=a.settlement.closing;t=n;}t.verify(&p).unwrap();assert_eq!(t.total().unwrap(),p.outstanding().unwrap());}
  #[test]fn departed_and_stale(){let p=Population::phase_ix();let(t,a,_)=Tree::build(&p).unwrap().advance(&p,&req(0)).unwrap();let p=a.settlement.closing;let mut r=req(650);r.enter=vec!["G".into()];r.depart=vec!["A_1".into()];let(n,a,c)=t.advance(&p,&r).unwrap();assert_eq!(c,1);assert_eq!(n.balance("A_1").unwrap(),50);assert_eq!(n.balance("G").unwrap(),0);assert!(t.advance(&a.settlement.closing,&req(600)).is_err());assert!(n.proof("A_1").unwrap().verify("A_1",n.root()).unwrap());}
 }
+
+// UEP-285R: crate-internal proof-checked replacement; no reconstruction.
+impl Tree{
+ pub(crate) fn replace_qualified(&self,id:&str,old:u64,new:u64)->Result<Self,&'static str>{
+  let p=self.proof(id)?;if p.value!=old||!p.verify(id,self.root())?{return Err("opening leaf")}
+  let mut n=self.clone();n.set(id,new)?;
+  let mut q=p;q.value=new;if !q.verify(id,n.root())?{return Err("closing leaf")}Ok(n)
+ }
+ pub(crate) fn finish_qualified(&self,epoch:u64,unattributed:u64,total:u64)->Result<Self,&'static str>{
+  if self.epoch.checked_add(1)!=Some(epoch)||self.unattributed!=unattributed||self.total()?!=total{return Err("closing metadata")}
+  let mut n=self.clone();n.epoch=epoch;Ok(n)
+ }
+}
