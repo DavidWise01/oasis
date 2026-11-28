@@ -50,9 +50,9 @@ def fixture():
             "receipt_head_sha256":receipt,"custodian_id":custodian,
             "old_key":old,"new_key":new,"old_registry":old_registration,
             "rotation":rotation,"new_registry":new_registration,"time_windows":times}
-    return bundle,roots,sha(roots)
+    return bundle,roots,sha(roots),clock_sk
 class Tests(unittest.TestCase):
-    def setUp(self):self.bundle,self.roots,self.pin=fixture()
+    def setUp(self):self.bundle,self.roots,self.pin,self.clock_sk=fixture()
     def check(self):return qualify(self.bundle,self.roots,self.pin)
     def rejected(self,fragment):
         response=self.check()
@@ -104,9 +104,13 @@ class Tests(unittest.TestCase):
         self.rejected("SIGNATURE_INVALID")
     def test_time_nonce_reused(self):
         self.bundle["time_windows"][1]["nonce"]=self.bundle["time_windows"][0]["nonce"]
+        statement={k:v for k,v in self.bundle["time_windows"][1].items() if k!="signature_b64"}
+        self.bundle["time_windows"][1]["signature_b64"]=base64.b64encode(self.clock_sk.sign(canon(statement))).decode()
         self.rejected("TIME_NONCE_INVALID_OR_REPLAY")
     def test_time_nonmonotonic(self):
         self.bundle["time_windows"][1]["unix_ms_claim"]=1
+        statement={k:v for k,v in self.bundle["time_windows"][1].items() if k!="signature_b64"}
+        self.bundle["time_windows"][1]["signature_b64"]=base64.b64encode(self.clock_sk.sign(canon(statement))).decode()
         self.rejected("TIME_CLAIM_NOT_INCREASING")
     def test_time_predecessor_invalid(self):
         self.bundle["time_windows"][1]["previous_time_sha256"]="f"*64
