@@ -47,7 +47,7 @@ def raw_body(observation,url):
     if len(raw)>MAX_RESPONSE or type(observation.get("raw_length")) is not int or len(raw)!=observation["raw_length"]:
         raise ValueError("RAW_SIZE_INVALID")
     if observation.get("raw_sha256")!=digest(raw):raise ValueError("RAW_DIGEST_INVALID")
-    if observation.get("observation_sha256")!=objhash({k:v for k,v in observation.items() if k!="observation_sha256"}):
+    if observation.get("observation_sha256")!=objhash({k:v for k,v in observation.items() if k in {"schema","requested_url","host","pinned_ip","dns_address_count","tls_hostname_validation","status","elapsed_ms","raw_length","raw_sha256","raw_b64"}}):
         raise ValueError("OBSERVATION_HASH_INVALID")
     return raw
 
