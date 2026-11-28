@@ -1,0 +1,21 @@
+name: AETHER-303 Custodian Identity Rotation Time
+on:
+  push:
+    paths:
+      - 'aether/292/**'
+      - 'aether/303/**'
+      - '.github/workflows/aether303-identity-rotation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-registry-rotation-clock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/303 -p 'test_*.py' -v
+      - run: echo 'Pinned keys and signatures are not independent custodian identity or clock authority.'
