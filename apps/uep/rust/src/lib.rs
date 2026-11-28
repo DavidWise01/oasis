@@ -215,3 +215,5 @@ pub mod authenticated_recovery;
 pub mod compact_membership;
 
 pub mod changed_path;
+
+pub mod incremental_membership;
