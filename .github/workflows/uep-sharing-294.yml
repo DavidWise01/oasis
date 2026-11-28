@@ -1,0 +1,84 @@
+name: UEP-294R qualified execution attribution
+on:
+  push:
+    paths:
+      - '.github/workflows/uep-sharing-294.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  statuses: write
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ef8f425deb3c03a33f50b6204b138f5baf0c6540
+          persist-credentials: false
+      - name: Recover native-qualified dependency lock
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/uep294"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15077861777/zip" > "$RUNNER_TEMP/native.zip"
+          echo "b0b1a676ef7ee44e33c4907dc08a926227edc4851f4495c2a406686475f0313e  $RUNNER_TEMP/native.zip" | sha256sum -c -
+          unzip -p "$RUNNER_TEMP/native.zip" Cargo.lock > apps/uep/rust/Cargo.lock
+          echo "af9e971445417daa5d9996aac6e35dafc51b8f93313076f7a70af2c59e5109f5  apps/uep/rust/Cargo.lock" | sha256sum -c -
+          git rev-parse HEAD | tee "$RUNNER_TEMP/uep294/source.txt"
+      - name: Execute inherited and new native regressions
+        working-directory: apps/uep/rust
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.85.1 --profile minimal
+          cargo +1.85.1 fetch --locked
+          cargo +1.85.1 test --frozen 2>&1 | tee "$RUNNER_TEMP/uep294/tests.txt"
+          python3 - <<'PY'
+          import os,re,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep294'
+          s=(p/'tests.txt').read_text()
+          rows=re.findall(r'test result: ok\. (\d+) passed; (\d+) failed; (\d+) ignored; (\d+) measured; (\d+) filtered out',s)
+          assert [sum(int(r[i]) for r in rows) for i in range(5)]==[281,0,0,0,0], rows
+          assert len(re.findall(r'^test qualified_recovery::sharing294_tests::.* \.\.\. ok$',s,re.M))==4
+          PY
+      - name: Execute isolated reconstruction profiler
+        working-directory: apps/uep/rust
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/uep294"
+          (cd ../UEP-259R-integrated-generations && sha256sum -c SHA256SUMS)
+          (cd ../UEP-289R-integrated-changed-path && sha256sum -c SHA256SUMS)
+          cargo +1.85.1 run --frozen --release --bin attribution291 -- "$out" | tee "$out/attribution291.json"
+          python3 - <<'PY' | tee "$out/summary294.json"
+          import csv,json,os,pathlib,statistics,collections
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'uep294'
+          a=list(csv.DictReader((p/'attribution291.csv').open()))
+          assert len(a)==33480
+          g=collections.defaultdict(list)
+          for r in a:g[(r['scenario'],r['operation'])].append(r)
+          assert len(g)==93
+          groups=[]
+          for (s,o),v in sorted(g.items()):
+              assert [int(r['period']) for r in v]==list(range(1081,1441))
+              groups.append(dict(scenario=s,operation=o,calls=sum(int(r['calls']) for r in v),medianInclusiveNs=statistics.median(int(r['inclusive_ns']) for r in v),medianPlainNs=statistics.median(int(r['plain_ns']) for r in v),medianProfiledNs=statistics.median(int(r['profiled_ns']) for r in v)))
+          print(json.dumps(dict(rows=len(a),groups=groups),sort_keys=True))
+          PY
+          (cd "$out" && sha256sum attribution291.csv attribution291.json summary294.json *-terminal.commitment > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uep-294r-native-evidence
+          path: ${{ runner.temp }}/uep294/
+      - name: Report qualification status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          state=failure
+          if [ "$RESULT" = success ]; then state=success; fi
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" -f state="$state" -f context="UEP-294R/native" -f description="Qualified execution attribution" -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
