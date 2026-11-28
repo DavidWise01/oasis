@@ -1,0 +1,20 @@
+name: AETHER-280 Single Atomic Journal Regression
+on:
+  push:
+    paths:
+      - 'aether/280/**'
+      - '.github/workflows/aether280-atomic-journal.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-sqlite-ed25519:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/280 -p 'test_*.py' -v
+      - run: echo 'Single SQLite transaction does not prove external custody or anti-rollback.'
