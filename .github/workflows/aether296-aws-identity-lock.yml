@@ -1,0 +1,21 @@
+name: AETHER-296 AWS Identity and Object Lock Readback
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/295/**'
+      - 'aether/296/**'
+      - '.github/workflows/aether296-aws-identity-lock.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-sts-s3-identity-lock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s aether/296 -p 'test_*.py' -v
+      - run: echo 'SigV4 caller identity and bucket Object Lock metadata are not independent custody or trusted elapsed time.'
