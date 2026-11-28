@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: 27e33586a217f6d4356467a1561b049fda4fb318
+          fetch-depth: 0
           persist-credentials: false
       - name: Recover native-qualified dependency lock
         env:
@@ -57,6 +58,9 @@ jobs:
           git archive 392d2f577dc12f6d36c6248534eb292a3c87e4d9 apps/uep/rust | tar -x -C "$RUNNER_TEMP"
           old="$RUNNER_TEMP/apps/uep/rust"
           sed -i 's/^name = "oasis-uep"/name = "oasis-uep-baseline"/' "$old/Cargo.toml"
+          # Only native Rust library linkage is needed; remove duplicate exported browser ABI symbols from the benchmark build.
+          sed -i 's/^crate-type = .*/crate-type = ["rlib"]/' "$old/Cargo.toml"
+          sed -i 's/^crate-type = .*/crate-type = ["rlib"]/' Cargo.toml
           # Build both libraries together in the same executable and runner.
           mkdir -p "$root/apps/uep/rust/bench298/src"
           cp "$root/apps/uep/UEP-298R-matched-performance/performance298.rs" "$root/apps/uep/rust/bench298/src/main.rs"
