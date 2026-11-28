@@ -49,7 +49,7 @@ impl Population {
         total(&self.lots)?.checked_add(self.unattributed).ok_or("balance overflow")
     }
 }
-pub fn settle(s: &Population, p: &Period) -> Result<Settlement, &'static str> {let _profile=crate::verification_profile::span(0);
+pub fn settle_reference(s: &Population, p: &Period) -> Result<Settlement, &'static str> {let _profile=crate::verification_profile::span(0);
     if p.award > 1_000_000 || p.funding > 1_000_000 || s.known.len() > 10_000
         || !s.active.is_subset(&s.known) || !s.known.iter().all(|x| valid(x))
         || s.lots.iter().any(|x| !s.known.contains(&x.id) || x.origin > s.epoch || x.amount == 0)
@@ -100,6 +100,61 @@ pub fn settle(s: &Population, p: &Period) -> Result<Settlement, &'static str> {l
     }
     Ok(Settlement{closing:n,awards,current_due:due,current_funded:paid,historical_reserved:reserved,unallocated:left})
 }
+pub fn settle_refined(s: &Population, p: &Period) -> Result<Settlement, &'static str> {let _profile=crate::verification_profile::span(0);
+    if p.award > 1_000_000 || p.funding > 1_000_000 || s.known.len() > 10_000
+        || !s.active.is_subset(&s.known) || !s.known.iter().all(|x| valid(x))
+        || s.lots.iter().any(|x| !s.known.contains(&x.id) || x.origin > s.epoch || x.amount == 0)
+        || s.lots.windows(2).any(|x| x[0].origin > x[1].origin)
+        || s.cursor.as_ref().map_or(false, |x| !s.known.contains(x)) {
+        return Err("invalid ledger");
+    }
+    let opening = s.outstanding()?;
+    let enter: BTreeSet<_> = p.enter.iter().cloned().collect();
+    let depart: BTreeSet<_> = p.depart.iter().cloned().collect();
+    if enter.len()!=p.enter.len() || depart.len()!=p.depart.len() ||
+        !depart.is_subset(&s.active) || !enter.is_disjoint(&s.known) ||
+        !enter.iter().all(|x| valid(x)) || s.known.len()+enter.len()>10_000 {
+        return Err("invalid population transition");
+    }
+    let mut n=s.clone();
+    n.epoch=n.epoch.checked_add(1).ok_or("epoch overflow")?;
+    for id in depart { n.active.remove(&id); }
+    n.active.extend(enter.iter().cloned()); n.known.extend(enter);
+    let ids: Vec<_>=n.active.iter().cloned().collect();
+    let count=ids.len() as u64;
+    let due=count.checked_mul(p.award).ok_or("award overflow")?;
+    let paid=due.min(p.funding);
+    let base=if count==0 {0} else {paid/count};
+    let extra=if count==0 {0} else {paid%count};
+    let start=ids.iter().position(|id| n.cursor.as_ref().map_or(true,|c|id>c)).unwrap_or(0);
+    let mut rank=ids.clone(); rank.rotate_left(start);
+    if extra>0 { n.cursor=Some(rank[extra as usize-1].clone()); }
+    let awards: Vec<_>=rank.iter().enumerate().map(|(i,id)|Award{
+        id:id.clone(),due:p.award,funded:base+u64::from((i as u64)<extra)
+    }).collect();
+    let mut left=p.funding-paid;
+    let mut reserved=BTreeMap::<String,u64>::new();
+    // Do not assign or settle unattributed inherited debt without attribution.
+    // Identified lots are served in recorded chronological order.
+    for lot in &mut n.lots {
+        if left==0 { break; }
+        let a=left.min(lot.amount); lot.amount-=a; left-=a;
+        if a>0 { let entry=reserved.entry(lot.id.clone()).or_default();
+            *entry=entry.checked_add(a).ok_or("reservation overflow")?; }
+    }
+    // Opening lots were validated positive. Only a fully funded prefix can become zero.
+    let retired=n.lots.iter().take_while(|x|x.amount==0).count();
+    if retired>0 { n.lots.drain(..retired); }
+    for a in &awards { if a.funded<a.due {
+        n.lots.push(Lot{origin:n.epoch,id:a.id.clone(),amount:a.due-a.funded});
+    }}
+    let back=p.funding-paid-left;
+    if u128::from(opening)+u128::from(due)!=u128::from(n.outstanding()?)+u128::from(paid)+u128::from(back) {
+        return Err("obligation conservation");
+    }
+    Ok(Settlement{closing:n,awards,current_due:due,current_funded:paid,historical_reserved:reserved,unallocated:left})
+}
+pub fn settle(s:&Population,p:&Period)->Result<Settlement,&'static str>{settle_refined(s,p)}
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -147,4 +202,12 @@ mod tests {
             }
         }}}
     }
+}
+
+#[cfg(test)]mod refinement292_tests{
+ use super::*;
+ fn req(f:u64)->Period{Period{enter:vec![],depart:vec![],award:100,funding:f}}
+ #[test]fn mixed_oracle(){let mut s=Population::phase_ix();for i in 0..360{let mut p=req([0,500,600,750,1200][i%5]);p.award=[0,100,200][i%3];if i==20{p.enter=vec!["G".into()];p.depart=vec!["A_1".into()];}let a=settle_reference(&s,&p);let b=settle_refined(&s,&p);assert_eq!(a,b);s=b.unwrap().closing;}}
+ #[test]fn scarcity_oracle(){let mut s=Population::phase_ix();for _ in 0..360{let a=settle_reference(&s,&req(500));let b=settle_refined(&s,&req(500));assert_eq!(a,b);s=b.unwrap().closing;}assert_eq!(s.lots.len(),2160);assert_eq!(settle_reference(&s,&req(600)),settle_refined(&s,&req(600)));assert_eq!(settle_reference(&s,&req(750)),settle_refined(&s,&req(750)));assert_eq!(settle_reference(&s,&req(36600)),settle_refined(&s,&req(36600)));}
+ #[test]fn invalid_oracle(){let mut s=Population::phase_ix();s.lots.push(Lot{origin:6,id:"A_1".into(),amount:0});assert_eq!(settle_reference(&s,&req(0)),settle_refined(&s,&req(0)));s.lots[0].amount=u64::MAX;assert_eq!(settle_reference(&s,&req(0)),settle_refined(&s,&req(0)));let mut p=req(600);p.enter=vec!["A_0".into()];assert_eq!(settle_reference(&Population::phase_ix(),&p),settle_refined(&Population::phase_ix(),&p));}
 }
