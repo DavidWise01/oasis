@@ -1,0 +1,24 @@
+name: AETHER-304 Registry and Clock Readback
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/292/**'
+      - 'aether/294/**'
+      - 'aether/303/**'
+      - 'aether/304/**'
+      - '.github/workflows/aether304-controller-readback.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-controller-readback:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/304 -p 'test_*.py' -v
+      - run: echo 'TLS preimages and signed time claims are not independent custodial or clock authority.'
