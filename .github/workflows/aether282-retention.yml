@@ -1,0 +1,20 @@
+name: AETHER-282 Original Challenge and Prefix Replay
+on:
+  push:
+    paths:
+      - 'aether/282/**'
+      - '.github/workflows/aether282-retention.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retained-signature-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/282 -p 'test_*.py' -v
+      - run: echo 'Signature replay proves only pinned-key consistency, not independent custody.'
