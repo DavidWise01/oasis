@@ -1,0 +1,59 @@
+name: RESTITUTION-50 isolated qualification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'apps/uep/rust/**'
+      - '.github/workflows/restitution50-isolated.yml'
+permissions:
+  contents: read
+jobs:
+  qualification:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare isolated evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$(mktemp -d "$RUNNER_TEMP/restitution50.XXXXXXXX")"
+          echo "QUAL_OUT=$out" >> "$GITHUB_ENV"
+          git rev-parse HEAD > "$out/commit.txt"
+      - name: Execute pinned toolchain and dependency graph
+        shell: bash
+        working-directory: apps/uep/rust
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.100.0 --profile minimal
+          rustc +1.100.0 -Vv > "$QUAL_OUT/rustc.txt"
+          cargo +1.100.0 -V > "$QUAL_OUT/cargo.txt"
+          cp Cargo.lock "$QUAL_OUT/Cargo.lock"
+          set +e
+          cargo +1.100.0 test --locked --test restitution45_identity --test restitution46_differential --test restitution47_boundaries > "$QUAL_OUT/test.log" 2>&1
+          status=$?
+          set -e
+          printf '{"commit":"%s","test_exit":%s,"performance_authority":"HOLD"}\n' "$(cat "$QUAL_OUT/commit.txt")" "$status" > "$QUAL_OUT/result.json"
+          exit "$status"
+      - name: Seal exact evidence allowlist
+        if: always() && env.QUAL_OUT != ''
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os, pathlib, hashlib
+          root=pathlib.Path(os.environ["QUAL_OUT"])
+          allowed={"commit.txt","rustc.txt","cargo.txt","Cargo.lock","test.log","result.json"}
+          entries=list(root.iterdir())
+          if any(p.name not in allowed or not p.is_file() or p.is_symlink() for p in entries):
+              raise SystemExit("unexpected evidence entry")
+          (root/"SHA256SUMS").write_text("".join(f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n" for p in sorted(entries)))
+          if {p.name for p in entries} != allowed:
+              raise SystemExit("incomplete evidence")
+          PY
+      - name: Retain isolated evidence
+        if: always() && env.QUAL_OUT != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: restitution50-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ env.QUAL_OUT }}/
+          if-no-files-found: error
