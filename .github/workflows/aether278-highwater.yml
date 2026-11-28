@@ -1,0 +1,20 @@
+name: AETHER-278 Highwater and Multi-Restart Forensics
+on:
+  push:
+    paths:
+      - 'aether/278/**'
+      - '.github/workflows/aether278-highwater.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-highwater-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/278 -p 'test_*.py' -v
+      - run: echo 'Local highwater checkpoints are not independently retained evidence.'
