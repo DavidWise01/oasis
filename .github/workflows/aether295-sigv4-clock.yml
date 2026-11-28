@@ -1,0 +1,22 @@
+name: AETHER-295 SigV4 Metadata and Clock Signatures
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/292/**'
+      - 'aether/295/**'
+      - '.github/workflows/aether295-sigv4-clock.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-authenticated-metadata:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/295 -p 'test_*.py' -v
+      - run: echo 'Signed client requests and pinned clock signatures do not prove remote custody or independent elapsed time.'
