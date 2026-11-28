@@ -1,0 +1,20 @@
+name: AETHER-277 Rotation Ancestry and Restart Audit
+on:
+  push:
+    paths:
+      - 'aether/277/**'
+      - '.github/workflows/aether277-recovery-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-anomaly-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/277 -p 'test_*.py' -v
+      - run: echo 'Signed in-bundle anchors do not prove independent external custody.'
