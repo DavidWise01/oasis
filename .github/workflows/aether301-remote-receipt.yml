@@ -1,0 +1,24 @@
+name: AETHER-301 Remote Receipt and Object Readback
+on:
+  push:
+    paths:
+      - 'aether/264/**'
+      - 'aether/294/**'
+      - 'aether/299/**'
+      - 'aether/300/**'
+      - 'aether/301/**'
+      - '.github/workflows/aether301-remote-receipt.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-receipt-object-parity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/301 -p 'test_*.py' -v
+      - run: echo 'Two exact remote reads are not proof of immutable or independent custody.'
