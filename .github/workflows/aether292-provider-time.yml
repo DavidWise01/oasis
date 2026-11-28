@@ -1,0 +1,21 @@
+name: AETHER-292 Object Version and Time Attestations
+on:
+  push:
+    paths:
+      - 'aether/291/**'
+      - 'aether/292/**'
+      - '.github/workflows/aether292-provider-time.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-signed-claims:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install 'cryptography>=43,<47'
+      - run: python3 -m unittest discover -s aether/292 -p 'test_*.py' -v
+      - run: echo 'Provider claims and signed clock numbers are not independent custody or elapsed-time proof.'
